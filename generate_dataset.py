@@ -57,13 +57,19 @@ def generate_dataset(input_data: pd.DataFrame,
       "labels": label_names,
       "sequence": sequences,
   }
+  datset_features = datasets.Features({
+                                    "protein": datasets.Value("string"),
+                                    "labels": datasets.Sequence(label_feature),
+                                    "sequence": datasets.Value("string"),
+                                })
+  dataset_info = datasets.DatasetInfo(description="CAFA-6 based datasets for training ans exploring purposes",
+                                citation= "Iddo Friedberg, Predrag Radivojac, Paul D Thomas, An Phan, M. Clara De Paolis Kaluza, Damiano Piovesan, Parnal Joshi, Chris Mungall, Martyna Plomecka, Walter Reade, and María Cruz. CAFA 6 Protein Function Prediction. https://kaggle.com/competitions/cafa-6-protein-function-prediction, 2025. Kaggle.",
+                                features= datset_features,
+                                )
   return datasets.Dataset.from_dict(
       dataset_dict,
-      features=datasets.Features({
-          "protein": datasets.Value("string"),
-          "labels": datasets.Sequence(label_feature),
-          "sequence": datasets.Value("string"),
-      }),
+      datset_features,
+      info=dataset_info,
   )
 
 # Create train, test, validation split

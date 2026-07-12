@@ -91,15 +91,15 @@ def preprocess_batch(examples,
 
   # Construct output safely
   output_dict = {
-      "input_ids": [torch.tensor(ids, dtype=torch.long) for ids in tokenized_output["input_ids"]],
-      "attention_mask": [torch.tensor(ids, dtype=torch.long) for ids in tokenized_output["attention_mask"]]
+    "input_ids": [torch.tensor(ids, dtype=torch.long) for ids in tokenized_output["input_ids"]],
+    "attention_mask": [torch.tensor(ids, dtype=torch.long) for ids in tokenized_output["attention_mask"]]
   }
 
   if "protein" in examples:
-      output_dict["protein"] = examples["protein"]
+    output_dict["protein"] = examples["protein"]
 
   if "labels" in examples:
-      output_dict["labels"] = labels_list
+    output_dict["labels"] = labels_list
 
   return output_dict
 
@@ -148,71 +148,77 @@ def data_collate_function(preprocessed_batch: List[Dict[str, Any]])-> Dict[str, 
   return collated_data
 
 
-dataset = load_dataset(path="kelmoir/CAFA6")
+if __name__ == "main":
 
-tokenizer = create_esm_tokenizer()
+  dataset = load_dataset(path="kelmoir/CAFA6")
+  id2label = {index:item for index, item in enumerate(dataset["train"].features["labels"].feature.names)}
+  label2id = {value:key for key, value in id2label.items()}
+  device = "cuda" if torch.cuda.is_available() == True else "cpu"
 
-preprocess_batch_partial = partial(preprocess_batch,
-                                   tokenizer = tokenizer,
-                                   transforms = None,
-                                   max_length = MAX_LENGTH,
-                                   unique_items=unique_aspects)
+  tokenizer = create_esm_tokenizer()
 
-processed_dataset={"train": dataset["train"].with_transform(transform=preprocess_batch_partial),
-                  "validation": dataset["validation"].with_transform(transform=preprocess_batch_partial),
-                  "test": dataset["test"].with_transform(transform=preprocess_batch_partial)}
+  preprocess_batch_partial = partial(preprocess_batch,
+                                    tokenizer = tokenizer,
+                                    transforms = None,
+                                    max_length = MAX_LENGTH,
+                                    unique_items=unique_aspects,
+                                    label2id=label2id)
+
+  processed_dataset={"train": dataset["train"].with_transform(transform=preprocess_batch_partial),
+                    "validation": dataset["validation"].with_transform(transform=preprocess_batch_partial),
+                    "test": dataset["test"].with_transform(transform=preprocess_batch_partial)}
 
 
 
-model_esm = create_esm(unfreeze_last_n=4,
-                       model_type=SELECTED_MODEL,
-                       output_dropout=0.2,
-                       esm_dropout=0.0,
-                       attention_dropout=0.0)
+  model_esm = create_esm(unfreeze_last_n=4,
+                        model_type=SELECTED_MODEL,
+                        output_dropout=0.2,
+                        esm_dropout=0.0,
+                        attention_dropout=0.0)
 
-train_dataloader = torch.utils.data.DataLoader(processed_dataset["train"],
-                                               batch_size=32,
-                                               shuffle=True,
-                                               collate_fn=coll)
+  train_dataloader = torch.utils.data.DataLoader(processed_dataset["train"],
+                                                batch_size=32,
+                                                shuffle=True,
+                                                collate_fn=data_collate_function)
 
-# 2. Optimizer und Scheduler
-optimizer = AdamW(model_esm.parameters(), lr=5e-5, weight_decay=0.01)
-scheduler = get_linear_schedule_with_warmup(
-    optimizer,
-    num_warmup_steps=100,
-    num_training_steps=1000
-)
+  # 2. Optimizer und Scheduler
+  optimizer = AdamW(model_esm.parameters(), lr=5e-5, weight_decay=0.01)
+  scheduler = get_linear_schedule_with_warmup(
+      optimizer,
+      num_warmup_steps=100,
+      num_training_steps=1000
+  )
 
-# 3. Loss mit Label Smoothing
-criterion = torch.nn.CrossEntropyLoss(label_smoothing=0.1)
+  # 3. Loss mit Label Smoothing
+  criterion = torch.nn.CrossEntropyLoss(label_smoothing=0.1)
 
-# 4. Training Loop
-model_esm.train()
-for epoch in range(10):
+  # 4. Training Loop
+  model_esm.train()
+  for epoch in range(10):
     for batch in train_dataloader:
-        inputs = batch["input_ids"].to(device)
-        labels = batch["labels"].to(device)  # Annahme: Labels für MLM (Masked Language Modeling)
+      inputs = batch["input_ids"].to(device)
+      labels = batch["labels"].to(device)  # Annahme: Labels für MLM (Masked Language Modeling)
 
-        # Forward Pass
-        outputs = model_esm(inputs)
-        logits = outputs.logits  # [batch_size, seq_len, vocab_size]
+      # Forward Pass
+      outputs = model_esm(inputs)
+      logits = outputs.logits  # [batch_size, seq_len, vocab_size]
 
-        # Reshape für CrossEntropyLoss (combines log_softmax + nll_loss)
-        logits = logits.view(-1, logits.size(-1))  # [batch_size * seq_len, vocab_size]
-        labels = labels.view(-1)  # [batch_size * seq_len]
+      # Reshape für CrossEntropyLoss (combines log_softmax + nll_loss)
+      logits = logits.view(-1, logits.size(-1))  # [batch_size * seq_len, vocab_size]
+      labels = labels.view(-1)  # [batch_size * seq_len]
 
-        # Loss berechnen
-        loss = criterion(logits, labels)
+      # Loss berechnen
+      loss = criterion(logits, labels)
 
-        # Backward Pass
-        loss.backward()
+      # Backward Pass
+      loss.backward()
 
-        # Gradient Clipping
-        torch.nn.utils.clip_grad_norm_(model_esm.parameters(), max_norm=1.0)
+      # Gradient Clipping
+      torch.nn.utils.clip_grad_norm_(model_esm.parameters(), max_norm=1.0)
 
-        # Optimizer Step
-        optimizer.step()
-        scheduler.step()
-        optimizer.zero_grad()
+      # Optimizer Step
+      optimizer.step()
+      scheduler.step()
+      optimizer.zero_grad()
 
 
