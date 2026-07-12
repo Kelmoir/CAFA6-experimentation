@@ -155,3 +155,7 @@ Werkzeug @ file:///croot/werkzeug_1737448706492/work
 wheel==0.45.1
 widgetsnbextension @ file:///home/task_176155666455817/conda-bld/widgetsnbextension_1761556740113/work
 wrapt @ file:///croot/wrapt_1736540904746/work
+trackio
+huggingface-hub>=1.3,<2
+transformers>=4.45,<5
+datasets>=2.20,<3
