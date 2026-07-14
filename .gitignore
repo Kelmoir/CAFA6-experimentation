@@ -3,3 +3,8 @@
 /data/cafa-6-protein-function-prediction/*
 /__pycache__/*
 /.vscode/*
+
+# Podman sandbox files
+.podman/
+*.token
+*.secret
