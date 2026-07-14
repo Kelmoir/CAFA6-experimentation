@@ -1,0 +1,13 @@
+# Large files and directories to ignore
+data/*
+models/*
+env/*
+__pycache__/*
+.ipynb_checkpoints/*
+*.ipynb
+*.safetensors
+*.h5
+*.pt
+*.pkl
+*.bin
+*.gguf
