@@ -1,0 +1,68 @@
+# Docker ignore file for CAFA 6 Protein Challenge
+
+# Large data directories
+data/
+models/
+.env/
+__pycache__/
+
+# Podman configuration (handled separately)
+.podman/
+
+# Git directory
+.git/
+.gitignore
+
+# IDE directories
+.idea/
+.vscode/
+
+# Notebook checkpoints
+.ipynb_checkpoints/
+
+# Large files
+*.ipynb
+*.h5
+*.pt
+*.pkl
+*.bin
+*.gguf
+*.safetensors
+
+# Logs
+*.log
+logs/
+
+# Cache
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environment (host)
+env/
+venv/
+
+# Backup files
+*.backup
+*~
+
+# Temporary files
+*.tmp
+*.swp
+
+# Docker specific
+Dockerfile
+docker-compose*
+.dockerignore
+
+# Documentation
+*.md
+
+# Scripts that should not be in the image
+podman-*.sh
+
+# Requirements backup files
+requirements-backup.txt
+requirements-original.txt
+requirements.txt.backup

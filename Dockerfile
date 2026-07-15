@@ -2,7 +2,7 @@
 # Multi-stage build for optimized container
 
 # Base stage with Python and system dependencies
-FROM python:3.10-slim as base
+FROM python:3.12-slim as base
 
 # Install system dependencies for Python packages and OAuth
 RUN apt-get update && \
@@ -14,14 +14,19 @@ RUN apt-get update && \
         libssl-dev \
         && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies from requirements.txt
+# Copy requirements first to leverage Docker cache
 COPY requirements.txt .
+
+# Install Python dependencies
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-# Create workspace structure
-RUN mkdir -p /workspace/input /workspace/output /workspace/data /workspace/models
+# Create workspace structure and secrets directory
+RUN mkdir -p /workspace/input /workspace/output /workspace/data /workspace/models /secrets
 WORKDIR /workspace
+
+# Copy project files (except those in .dockerignore)
+COPY . .
 
 # Final stage
 FROM base as final
@@ -37,12 +42,11 @@ WORKDIR /workspace
 
 # Environment variables for token locations
 ENV HUGGINGFACE_TOKEN_FILE="/secrets/huggingface_token" \
-    GOOGLE_COLAB_TOKEN_FILE="/secrets/colab_token" \
+    GOOGLE_APPLICATION_CREDENTIALS="/secrets/google_credentials.json" \
+    GOOGLE_AUTH_OAUTHLIB_FLOW="true" \
     HF_HOME="/home/sandboxuser/.cache/huggingface" \
-    GIT_CONFIG_GLOBAL="/etc/gitconfig"
-
-# Create secrets directory (will be mounted from host)
-RUN mkdir -p /secrets
+    GIT_CONFIG_GLOBAL="/etc/gitconfig" \
+    COLAB_CLI_CONFIG="/home/sandboxuser/.config/colab-cli"
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
