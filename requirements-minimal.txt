@@ -1,0 +1,23 @@
+# CAFA 6 Protein Challenge - Minimal Docker Requirements
+# Only the essential packages needed for the training script
+
+# Core
+numpy
+torch
+transformers
+datasets
+huggingface-hub
+biopython
+
+# Utilities
+requests
+pandas
+scikit-learn
+
+# Google Colab CLI (for notebook management, not for running notebooks)
+google-colab-cli
+
+# Optional
+trackio
+accelerate
+tqdm

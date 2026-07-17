@@ -55,21 +55,38 @@ setup_oauth() {
     if is_in_container; then
         echo "Running inside container - performing container-specific setup"
         
+        # Ensure required directories exist within the sandbox
+        echo "Creating required directories within sandbox..."
+        mkdir -p "${HOME}/.config/colab-cli"
+        mkdir -p "${HOME}/.cache/colab-cli"
+        mkdir -p "/workspace/.colab-logs"
+        
+        # Set environment variables for colab CLI to use container directories
+        export COLAB_CLI_CONFIG="${HOME}/.config/colab-cli"
+        export COLAB_CLI_LOG_DIR="/workspace/.colab-logs"
+        export COLAB_CLI_CACHE_DIR="${HOME}/.cache/colab-cli"
+        
         # Check if colab CLI is installed
         if ! command -v colab &> /dev/null; then
             echo "colab CLI not found. Installing..."
-            pip install google-colab-cli
+            pip install --user google-colab-cli
         fi
         
         # Run OAuth flow
         echo "Starting OAuth flow for Google Colab..."
         echo "This will open a browser window for authentication."
         echo "After successful authentication, the credentials will be saved."
+        echo ""
+        echo "Note: If you see 'Permission denied' errors, ensure:"
+        echo "  1. All colab CLI directories are within /workspace or /home/sandboxuser"
+        echo "  2. The container has network access"
+        echo "  3. Your browser can open OAuth URLs"
         
-        colab auth login
+        # Redirect stderr to avoid permission denied messages to /var/log
+        colab auth login 2>/workspace/.colab-logs/auth_error.log || true
         
         # Check if authentication was successful
-        if [ $? -eq 0 ]; then
+        if colab auth status >/dev/null 2>&1; then
             echo "OAuth authentication successful!"
             
             # Show where credentials are stored
@@ -81,6 +98,8 @@ setup_oauth() {
             test_colab_connection
         else
             echo "OAuth authentication failed."
+            echo "Check /workspace/.colab-logs/auth_error.log for details:"
+            cat /workspace/.colab-logs/auth_error.log 2>/dev/null || echo "No error log found"
             return 1
         fi
     else
@@ -111,9 +130,12 @@ auth_colab_cli() {
     
     if ! command -v colab &> /dev/null; then
         echo "colab CLI not found. Please install it first:"
-        echo "pip install google-colab-cli"
+        echo "pip install --user google-colab-cli"
         return 1
     fi
+    
+    # Ensure directories exist
+    mkdir -p "${HOME}/.config/colab-cli" "${HOME}/.cache/colab-cli" "/workspace/.colab-logs"
     
     # Check if already authenticated
     if colab auth status >/dev/null 2>&1; then
@@ -122,14 +144,17 @@ auth_colab_cli() {
         return 0
     fi
     
-    # Perform authentication
-    colab auth login
+    # Perform authentication with redirected logs
+    echo "Starting OAuth flow..."
+    colab auth login 2>/workspace/.colab-logs/auth_error.log
     
     if [ $? -eq 0 ]; then
         echo "Authentication successful!"
         colab auth status
     else
         echo "Authentication failed"
+        echo "Check /workspace/.colab-logs/auth_error.log for details"
+        cat /workspace/.colab-logs/auth_error.log 2>/dev/null || echo "No error log found"
         return 1
     fi
 }

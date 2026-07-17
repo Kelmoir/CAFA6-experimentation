@@ -1,53 +1,11 @@
-# CAFA 6 Protein Challenge - Docker Requirements
-# Minimal requirements for Docker container
-# This file contains the essential packages needed for the project
+# CAFA 6 Protein Challenge - Container Requirements
+# Minimal requirements for colab CLI and authentication
 
-# Core scientific computing
-numpy>=1.26.0
-pandas>=2.0.0
-scikit-learn>=1.3.0
-scipy>=1.10.0
-
-# Machine Learning
-# Note: TensorFlow installation can be memory-intensive
-# Installing a compatible version for Python 3.12
-tensorflow>=2.15.0
-keras>=3.0.0
-
-# Jupyter ecosystem (for notebook compatibility)
-ipython>=8.0.0
-ipykernel>=6.0.0
-jupyter>=1.0.0
-nbconvert>=7.0.0
-notebook>=7.0.0
-
-# Visualization
-matplotlib>=3.7.0
-seaborn>=0.12.0
-
-# Data processing
-joblib>=1.3.0
-scikit-learn>=1.3.0
-
-# Utilities
-requests>=2.31.0
-Pillow>=10.0.0
-protobuf>=4.24.0
-
-# Hugging Face for model/dataset access
-huggingface-hub>=0.20.0
-transformers>=4.36.0
-datasets>=2.16.0
-
-# Google Colab CLI for automation
+# Google Colab CLI
 google-colab-cli>=0.6.0
 
-# TensorFlow dependencies
-tensorboard>=2.15.0
-tensorflow-hub>=0.14.0
+# Hugging Face for dataset access
+huggingface-hub>=0.20.0
 
-# Additional utilities
-wcwidth>=0.2.0
-pyparsing>=3.0.0
-packaging>=23.0.0
-typing_extensions>=4.8.0
+# HTTP requests
+requests>=2.31.0
