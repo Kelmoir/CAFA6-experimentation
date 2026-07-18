@@ -17,6 +17,12 @@ echo "Creating required directories..."
 mkdir -p "${PROJECT_DIR}/.podman/secrets"
 mkdir -p "${PROJECT_DIR}/.podman/config"
 mkdir -p "${PROJECT_DIR}/.podman/colab-config"
+mkdir -p "${PROJECT_DIR}/.podman/colab-config/colab-cli"
+mkdir -p "${PROJECT_DIR}/.podman/colab-cache"
+mkdir -p "${PROJECT_DIR}/.podman/colab-cache/colab-cli"
+mkdir -p "${PROJECT_DIR}/.podman/colab-local"
+mkdir -p "${PROJECT_DIR}/.podman/tmp"
+mkdir -p "${PROJECT_DIR}/.colab-logs"
 mkdir -p "${PROJECT_DIR}/data"
 mkdir -p "${PROJECT_DIR}/models"
 
@@ -191,6 +197,11 @@ chmod +x "${PROJECT_DIR}/podman-start.sh" 2>/dev/null || true
 chmod +x "${PROJECT_DIR}/podman-stop.sh" 2>/dev/null || true
 chmod +x "${PROJECT_DIR}/podman-tokens.sh" 2>/dev/null || true
 chmod +x "${PROJECT_DIR}/podman-colab-setup.sh" 2>/dev/null || true
+
+# Set permissions for podman directories (writable by container)
+echo "Setting permissions for podman directories..."
+find "${PROJECT_DIR}/.podman" -type d -exec chmod 777 {} \; 2>/dev/null || true
+chmod 777 "${PROJECT_DIR}/.colab-logs" 2>/dev/null || true
 
 echo ""
 echo "=== Initialization Complete ==="
