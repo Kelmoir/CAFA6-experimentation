@@ -19,7 +19,13 @@ RUN apt-get update && \
         && rm -rf /var/lib/apt/lists/*
 
 # Create workspace structure
-RUN mkdir -p /workspace/input /workspace/output /workspace/data /workspace/models /secrets /home/sandboxuser/.config
+RUN mkdir -p /workspace/input 
+RUN mkdir -p /workspace/output 
+RUN mkdir -p /workspace/data 
+RUN mkdir -p /workspace/models 
+RUN mkdir -p /secrets
+RUN mkdir -p /home/sandboxuser/.config 
+RUN mkdir -p /home/sandboxuser/.cache/colab-cli
 WORKDIR /workspace
 
 # Install colab CLI and dependencies
