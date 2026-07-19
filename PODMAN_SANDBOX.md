@@ -80,29 +80,45 @@ echo "your_huggingface_token_here" > .podman/secrets/huggingface_token
 chmod 600 .podman/secrets/huggingface_token
 ```
 
-#### Google Colab OAuth (QAuth)
+#### Google Colab CLI Authentication
 
-**Important:** Google Colab CLI uses OAuth2 rather than static tokens.
+**Important:** Google Colab CLI (`colab`) uses OAuth2 rather than static tokens.
 
-1. Start the podman sandbox:
+There are **two authentication methods**:
+
+##### Method 1: Application Default Credentials (Recommended for Automation)
+
+1. Get a Google Cloud service account JSON key file
+2. Copy it to secrets:
 ```bash
-./podman-start.sh
-```
-
-2. Enter the container and run the colab setup:
-```bash
-podman exec -it cafa6-sandbox bash
-./podman-colab-setup.sh setup
-```
-
-This will start the OAuth flow and open a browser window for authentication.
-
-For offline authentication (optional):
-```bash
-# Copy your Google service account JSON to secrets
 cp /path/to/your-service-account.json .podman/secrets/google_credentials.json
 chmod 600 .podman/secrets/google_credentials.json
 ```
+
+3. Start the sandbox and use ADC:
+```bash
+./podman-start.sh
+podman exec -it cafa6-sandbox colab --auth adc new
+```
+
+##### Method 2: Interactive OAuth2 (For Development)
+
+1. Start the sandbox with an interactive terminal:
+```bash
+./podman-start.sh
+podman exec -it cafa6-sandbox bash
+```
+
+2. Run the OAuth flow (requires browser on host):
+```bash
+./podman-colab-setup.sh setup
+# Or directly:
+colab --auth oauth2 new
+```
+
+3. Copy the authorization code from your browser back to the terminal
+
+**Note:** The OAuth flow requires browser access. For CI/CD or headless environments, use Method 1.
 
 #### Validate Tokens
 

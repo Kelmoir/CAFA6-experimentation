@@ -73,34 +73,43 @@ setup_oauth() {
         fi
         
         # Run OAuth flow
-        echo "Starting OAuth flow for Google Colab..."
-        echo "This will open a browser window for authentication."
-        echo "After successful authentication, the credentials will be saved."
+        echo "Starting OAuth flow for Google Colab CLI..."
         echo ""
-        echo "Note: If you see 'Permission denied' errors, ensure:"
-        echo "  1. All colab CLI directories are within /workspace or /home/sandboxuser"
-        echo "  2. The container has network access"
-        echo "  3. Your browser can open OAuth URLs"
+        echo "For authentication, you have two options:"
+        echo ""
+        echo "Option 1: Use Google OAuth2 (interactive browser required)"
+        echo "  - Run this OUTSIDE the container with X11 forwarding"
+        echo "  - Or copy the OAuth URL from the container to your host browser"
+        echo ""
+        echo "Option 2: Use Application Default Credentials (recommended for automation)"
+        echo "  - Provide google_credentials.json in .podman/secrets/"
+        echo "  - Use: colab --auth adc <command>"
+        echo ""
         
-        # Redirect stderr to avoid permission denied messages to /var/log
-        colab auth login 2>/workspace/.colab-logs/auth_error.log || true
-        
-        # Check if authentication was successful
-        if colab auth status >/dev/null 2>&1; then
-            echo "OAuth authentication successful!"
+        # Check if we have ADC credentials
+        if [ -f "/secrets/google_credentials.json" ]; then
+            echo "Found Google credentials file. Using Application Default Credentials..."
+            export GOOGLE_APPLICATION_CREDENTIALS="/secrets/google_credentials.json"
             
-            # Show where credentials are stored
-            if [ -f "${HOME}/.config/colab-cli/credentials.json" ]; then
-                echo "Credentials saved to: ${HOME}/.config/colab-cli/credentials.json"
+            # Test with ADC
+            if colab --auth adc sessions 2>/workspace/.colab-logs/auth_error.log; then
+                echo "ADC authentication successful!"
+                echo "You can now use colab CLI commands with --auth adc"
+            else
+                echo "ADC authentication failed. Check /workspace/.colab-logs/auth_error.log"
+                cat /workspace/.colab-logs/auth_error.log 2>/dev/null || true
             fi
-            
-            # Test the connection
-            test_colab_connection
         else
-            echo "OAuth authentication failed."
-            echo "Check /workspace/.colab-logs/auth_error.log for details:"
-            cat /workspace/.colab-logs/auth_error.log 2>/dev/null || echo "No error log found"
-            return 1
+            echo "No Google credentials file found."
+            echo "To use OAuth2, run this command from a terminal with browser access:"
+            echo ""
+            echo "  colab --auth oauth2 new"
+            echo ""
+            echo "Or provide google_credentials.json in .podman/secrets/ and use --auth adc"
+            
+            # Try OAuth2 (will fail in non-interactive mode, but show the URL)
+            echo "Attempting OAuth2 flow (will show URL)..."
+            colab --auth oauth2 sessions 2>&1 | grep -E "(https://|accounts.google.com|authorization code)" | head -5 || true
         fi
     else
         echo "Running on host system - preparing configuration for container"
@@ -137,24 +146,26 @@ auth_colab_cli() {
     # Ensure directories exist
     mkdir -p "${HOME}/.config/colab-cli" "${HOME}/.cache/colab-cli" "/workspace/.colab-logs"
     
-    # Check if already authenticated
-    if colab auth status >/dev/null 2>&1; then
-        echo "Already authenticated with colab CLI"
-        colab auth status
-        return 0
-    fi
-    
-    # Perform authentication with redirected logs
-    echo "Starting OAuth flow..."
-    colab auth login 2>/workspace/.colab-logs/auth_error.log
-    
-    if [ $? -eq 0 ]; then
-        echo "Authentication successful!"
-        colab auth status
+    # Check if we have ADC credentials
+    if [ -f "/secrets/google_credentials.json" ]; then
+        echo "Using Application Default Credentials..."
+        export GOOGLE_APPLICATION_CREDENTIALS="/secrets/google_credentials.json"
+        
+        if colab --auth adc sessions >/dev/null 2>&1; then
+            echo "Already authenticated with ADC"
+            colab --auth adc sessions
+            return 0
+        fi
+        
+        echo "ADC credentials found but not authenticated. Try:"
+        echo "  colab --auth adc new"
+        return 1
     else
-        echo "Authentication failed"
-        echo "Check /workspace/.colab-logs/auth_error.log for details"
-        cat /workspace/.colab-logs/auth_error.log 2>/dev/null || echo "No error log found"
+        echo "No ADC credentials found. OAuth2 flow requires a browser."
+        echo "Please run this command from a terminal with browser access:"
+        echo "  colab --auth oauth2 new"
+        echo ""
+        echo "Or provide google_credentials.json in .podman/secrets/ and use --auth adc"
         return 1
     fi
 }
