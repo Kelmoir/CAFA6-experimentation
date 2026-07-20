@@ -1,8 +1,10 @@
 /data/exports/*
 /env/*
 /data/cafa-6-protein-function-prediction/*
-/__pycache__/*
+__pycache__/
 /.vscode/*
+/models/*
+!/models/.gitkeep
 
 # Podman sandbox files
 .podman/

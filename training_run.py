@@ -1,14 +1,16 @@
 import argparse
+import json
 import os
 import subprocess
 import sys
+import time
 from functools import partial
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 import torch
 from datasets import load_dataset, load_from_disk
-from huggingface_hub import get_token
+from huggingface_hub import HfApi, get_token
 from torch.optim import AdamW
 from transformers import AutoModelForSequenceClassification, EsmTokenizer
 
@@ -182,17 +184,82 @@ def compute_metrics(logits: torch.Tensor, labels: torch.Tensor) -> Dict[str, flo
     return {"accuracy": accuracy, "recall": recall}
 
 
-def init_trackio_run(run_name: str):
+def init_trackio_run(run_name: str, space_id: Optional[str] = None, config: Optional[Dict[str, Any]] = None):
     if trackio is None:
         print("[INFO] trackio is not installed; skipping experiment tracking.")
         return None
 
     try:
-        trackio.init(project="cafa6", name=run_name)
+        trackio.init(project="cafa6", name=run_name, space_id=space_id, config=config)
         return trackio
     except Exception as exc:  # pragma: no cover - runtime dependency
         print(f"[WARN] Could not initialize trackio: {exc}")
         return None
+
+
+def get_hf_token(hf_token_file: Optional[str] = None) -> Optional[str]:
+    try:
+        from google.colab import userdata  # type: ignore
+
+        token = userdata.get("HF_TOKEN")
+        if token:
+            print("[INFO] HF token resolved via Colab Secrets")
+            return token
+    except Exception:
+        pass
+
+    if hf_token_file:
+        try:
+            token = Path(hf_token_file).read_text().strip()
+            os.remove(hf_token_file)
+            if token:
+                print("[INFO] HF token resolved via --hf-token-file")
+                return token
+        except Exception as exc:
+            print(f"[WARN] Could not read --hf-token-file {hf_token_file}: {exc}")
+
+    env_token = os.getenv("HF_TOKEN")
+    if env_token:
+        print("[INFO] HF token resolved via HF_TOKEN env var")
+        return env_token
+
+    cached_token = get_token()
+    if cached_token:
+        print("[INFO] HF token resolved via huggingface_hub cache")
+        return cached_token
+
+    print("[WARN] No HF token found from any source")
+    return None
+
+
+def push_checkpoint(
+    model,
+    tokenizer,
+    repo_id: str,
+    branch: str,
+    token: str,
+    epoch: int,
+    metrics: Dict[str, float],
+    config: Dict[str, Any],
+    local_dir: Path,
+) -> None:
+    local_dir.mkdir(parents=True, exist_ok=True)
+    model.save_pretrained(local_dir)
+    tokenizer.save_pretrained(local_dir)
+    (local_dir / "trial_metrics.json").write_text(
+        json.dumps({"epoch": epoch, **metrics, "config": config}, default=str)
+    )
+
+    api = HfApi()
+    api.create_repo(repo_id, repo_type="model", private=True, exist_ok=True, token=token)
+    api.create_branch(repo_id, branch=branch, exist_ok=True, token=token)
+    api.upload_folder(
+        repo_id=repo_id,
+        folder_path=str(local_dir),
+        revision=branch,
+        token=token,
+        commit_message=f"epoch {epoch}: val_loss={metrics.get('val_loss', float('nan')):.4f}",
+    )
 
 
 def load_training_data(data_path: Optional[Path] = None):
@@ -219,11 +286,25 @@ def main() -> None:
     parser.add_argument("--push-to-hub", action="store_true", help="Upload the finished model to Hugging Face Hub")
     parser.add_argument("--hf-repo-id", default=HF_REPO_ID, help="Hugging Face Hub repository id, e.g. kelmoir/cafa6-esm")
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--output-dropout", type=float, default=0.2, help="Dropout on the classifier head")
+    parser.add_argument("--esm-dropout", type=float, default=0.0, help="Dropout on unfrozen ESM encoder layers")
+    parser.add_argument("--attention-dropout", type=float, default=0.0, help="Attention dropout on unfrozen ESM encoder layers")
+    parser.add_argument("--grad-clip-norm", type=float, default=1.0, help="Max gradient norm for clipping")
+    parser.add_argument("--weight-decay", type=float, default=0.01, help="AdamW weight decay")
+    parser.add_argument("--max-minutes", type=float, default=None, help="Wall-clock safety cutoff; stop after the current epoch once exceeded")
+    parser.add_argument("--run-name", default=None, help="Explicit run/trial id; used for trackio run name and checkpoint branch name")
+    parser.add_argument("--trackio-space-id", default=None, help="HF Space id to persist trackio runs to, e.g. kelmoir/cafa6-trackio")
+    parser.add_argument("--checkpoint", action=argparse.BooleanOptionalAction, default=True, help="Push a per-epoch checkpoint to a per-trial Hub branch")
+    parser.add_argument("--checkpoint-branch", default=None, help="Overrides the auto-derived (run-name) branch name for per-epoch checkpoints")
+    parser.add_argument("--hf-token-file", default=None, help="Path to a file containing only an HF token; read once, then deleted")
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(args.seed)
+
+    config = vars(args)
+    print(f"[CONFIG] {json.dumps(config, default=str)}")
 
     device = torch.device(args.device)
     data_path = Path("data/cafa-6-protein-function-prediction/dataset")
@@ -257,9 +338,9 @@ def main() -> None:
     model_esm = create_esm(
         unfreeze_last_n=args.unfreeze_last_n,
         model_type=args.model_name,
-        output_dropout=0.2,
-        esm_dropout=0.0,
-        attention_dropout=0.0,
+        output_dropout=args.output_dropout,
+        esm_dropout=args.esm_dropout,
+        attention_dropout=args.attention_dropout,
         id2label=id2label,
         label2id=label2id,
     ).to(device)
@@ -276,7 +357,7 @@ def main() -> None:
         collate_fn=partial(data_collate_function, tokenizer=tokenizer),
     )
 
-    optimizer = AdamW(model_esm.parameters(), lr=args.learning_rate, weight_decay=0.01)
+    optimizer = AdamW(model_esm.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
     scheduler = get_linear_schedule_with_warmup(
         optimizer,
         num_warmup_steps=max(1, min(100, len(train_dataloader) // 10)),
@@ -284,10 +365,15 @@ def main() -> None:
     )
     criterion = torch.nn.BCEWithLogitsLoss()
 
-    run_name = f"{args.model_name.split('/')[-1]}-epochs{args.epochs}-bs{args.batch_size}-device{device.type}"
-    tracker = init_trackio_run(run_name)
+    run_name = args.run_name or f"{args.model_name.split('/')[-1]}-epochs{args.epochs}-bs{args.batch_size}-device{device.type}"
+    tracker = init_trackio_run(run_name, space_id=args.trackio_space_id, config=config)
+    token = get_hf_token(args.hf_token_file)
+    checkpoint_branch = args.checkpoint_branch or run_name
+    checkpoint_dir = Path("models") / run_name / "checkpoint"
+    start_time = time.time()
 
     for epoch in range(args.epochs):
+        epoch_start = time.time()
         model_esm.train()
         train_loss = 0.0
         train_metrics = {"accuracy": 0.0, "recall": 0.0}
@@ -303,7 +389,7 @@ def main() -> None:
             loss = criterion(logits, labels)
             loss.backward()
 
-            torch.nn.utils.clip_grad_norm_(model_esm.parameters(), max_norm=1.0)
+            torch.nn.utils.clip_grad_norm_(model_esm.parameters(), max_norm=args.grad_clip_norm)
             optimizer.step()
             scheduler.step()
 
@@ -345,6 +431,7 @@ def main() -> None:
             f"train_acc={train_metrics['accuracy']:.4f} | val_acc={validation_metrics['accuracy']:.4f} | "
             f"train_recall={train_metrics['recall']:.4f} | val_recall={validation_metrics['recall']:.4f}"
         )
+        print(f"[TIMING] epoch {epoch + 1} elapsed={time.time() - epoch_start:.1f}s")
 
         if tracker is not None:
             tracker.log(
@@ -359,8 +446,49 @@ def main() -> None:
                 }
             )
 
+        if args.checkpoint and token:
+            try:
+                push_checkpoint(
+                    model_esm,
+                    tokenizer,
+                    repo_id=args.hf_repo_id,
+                    branch=checkpoint_branch,
+                    token=token,
+                    epoch=epoch + 1,
+                    metrics={
+                        "train_loss": train_loss,
+                        "val_loss": validation_loss,
+                        "train_accuracy": train_metrics["accuracy"],
+                        "val_accuracy": validation_metrics["accuracy"],
+                        "train_recall": train_metrics["recall"],
+                        "val_recall": validation_metrics["recall"],
+                    },
+                    config=config,
+                    local_dir=checkpoint_dir,
+                )
+                print(f"[INFO] Pushed checkpoint for epoch {epoch + 1} to {args.hf_repo_id}@{checkpoint_branch}")
+            except Exception as exc:  # pragma: no cover - runtime dependency
+                print(f"[WARN] Checkpoint push failed for epoch {epoch + 1}: {exc}")
+        elif args.checkpoint and not token:
+            print("[WARN] --checkpoint requested but no HF token was found; skipping checkpoint push.")
+
+        if args.max_minutes and (time.time() - start_time) / 60 >= args.max_minutes:
+            print(f"[INFO] Reached --max-minutes={args.max_minutes} after epoch {epoch + 1}; stopping early.")
+            break
+
+    summary = {
+        "run_name": run_name,
+        "epochs_completed": epoch + 1,
+        "final_train_loss": train_loss,
+        "final_val_loss": validation_loss,
+        "train_accuracy": train_metrics["accuracy"],
+        "val_accuracy": validation_metrics["accuracy"],
+        "train_recall": train_metrics["recall"],
+        "val_recall": validation_metrics["recall"],
+    }
+    print(f"[SUMMARY] {json.dumps(summary, default=str)}")
+
     if args.push_to_hub:
-        token = os.getenv("HF_TOKEN") or get_token()
         if token:
             print(f"[INFO] Uploading model to Hugging Face Hub as {args.hf_repo_id}")
             model_esm.push_to_hub(args.hf_repo_id, token=token, commit_message="CAFA6 ESM training run")
