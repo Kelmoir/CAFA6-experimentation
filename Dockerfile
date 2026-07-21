@@ -48,7 +48,8 @@ ENV HUGGINGFACE_TOKEN_FILE="/secrets/huggingface_token" \
     HF_HOME="/home/sandboxuser/.cache/huggingface" \
     GIT_CONFIG_GLOBAL="/etc/gitconfig" \
     COLAB_CLI_CONFIG="/home/sandboxuser/.config/colab-cli" \
-    OAUTHLIB_RELAX_TOKEN_SCOPE=1
+    OAUTHLIB_RELAX_TOKEN_SCOPE=1 \
+    PATH="/home/sandboxuser/.local/bin:${PATH}"
 
 # Default command - keep container running for interactive work
 CMD ["tail", "-f", "/dev/null"]

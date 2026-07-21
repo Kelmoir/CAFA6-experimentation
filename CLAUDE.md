@@ -17,8 +17,11 @@ acid sequences. The active pipeline has two stages, each with its own entry poin
    sweep on Colab — see "Colab regularization sweep" below.
 
 Training is intended to run on Google Colab (for GPU access). Colab is driven via the real `colab`
-CLI (`google-colab-cli` package) run **directly on the host**, not through the Podman sandbox — see
-"Colab CLI" below for why.
+CLI (`google-colab-cli` package) run **inside the Podman sandbox container** (`podman exec cafa6-sandbox
+colab ...`) — see "Colab CLI" below. (An earlier version of this doc said to run `colab` directly on
+the host instead; that's no longer the case — host-side OAuth is a separate, unrelated credential
+from the container's, and the operative auth/session state now lives in the container's bind-mounted
+`.podman/colab-config`.)
 
 There is no `claude_cafa6.py` in this repo — an earlier session created a same-named file directly
 on a Colab VM as an unmodified copy of `training_run.py`. It's superseded: `training_run.py` is
@@ -61,10 +64,19 @@ python training_run.py --max-train-samples 100 --max-val-samples 50 --device cpu
 # Train and push the resulting model to the HF Hub
 python training_run.py --push-to-hub --hf-repo-id kelmoir/cafa6-esm
 
-# Launch a ~1h regularization-sweep trial on a Colab T4 (see experiments/sweep_log.md)
-colab run --session trial-NNN --gpu T4 --timeout 4200 training_run.py \
-  --run-name trial-NNN --max-minutes 55 --trackio-space-id kelmoir/cafa6-trackio \
-  [other hyperparameter flags...] > experiments/logs/trial-NNN.log 2>&1
+# Launch a ~1h regularization-sweep trial on a Colab T4 (see experiments/sweep_log.md).
+# Colab Secrets are NOT reachable from CLI-provisioned sessions (confirmed via
+# experiments/smoke_test.py: "Secrets can only be fetched when running from the Colab UI"),
+# so `colab run`'s one-shot form can't be used directly — the HF token has to be uploaded as
+# a file to a persistent session instead. Run from inside the container
+# (podman exec cafa6-sandbox sh -c '...'):
+colab new -s trial-NNN --gpu T4
+colab upload /secrets/huggingface_token /content/.hf_token -s trial-NNN
+colab upload training_run.py /content/training_run.py -s trial-NNN
+colab exec -s trial-NNN --timeout 4200 -f wrapper.py   # sets sys.argv incl.
+  # --run-name trial-NNN --max-minutes 55 --hf-token-file /content/.hf_token
+  # [other hyperparameter flags...], then execs /content/training_run.py
+colab stop -s trial-NNN
 
 # Hugging Face auth (needed for dataset/model push, or to read gated resources)
 hf auth token
@@ -106,9 +118,12 @@ There is no test suite, linter, or CI configured in this repo.
 - **Training loop**: plain PyTorch (no `Trainer`/`accelerate` loop abstraction) — manual epoch loop,
   `AdamW`, linear warmup schedule, `BCEWithLogitsLoss`, gradient clipping. Metrics
   (`compute_metrics`) are simple threshold-0.5 accuracy/recall, not the official CAFA metric.
-- **Experiment tracking**: optional `trackio` integration (`init_trackio_run`) — the script degrades
-  gracefully (prints a warning, continues without tracking) if `trackio` isn't installed or fails to
-  init.
+- **Experiment tracking**: optional `trackio` integration (`init_trackio_run`) exists but is currently
+  **unused** — trackio's Hub-Space persistence isn't viable right now (HF changed free-Space policy),
+  so sweep trials don't pass `--trackio-space-id`. The script degrades gracefully (prints a warning,
+  continues without tracking) if `trackio` isn't installed, isn't passed a space, or fails to init.
+  Per-trial `experiments/logs/trial-NNN.log` plus the `trial_metrics.json` pushed alongside each
+  Hub checkpoint are the actual source of truth for the sweep (see "Colab regularization sweep").
 - **Colab bootstrapping**: `training_run.py` detects `google.colab` in `sys.modules` and pip-installs
   missing heavy dependencies at import time — this is intentional for the Colab-first workflow, don't
   "fix" it into a hard requirements dependency.
@@ -121,35 +136,59 @@ stale. Don't follow them. The real CLI (verified via `colab --help` / `colab ski
 `notebook` subcommand; the ones that matter here are `new`, `exec`, `run`, `install`, `log`,
 `status`, `sessions`, `stop`. Auth defaults to `--auth=oauth2` (not `adc`).
 
-Two commands cover almost everything:
+Commands that matter here:
 - `colab exec -s <name> -f script.py --timeout <seconds>` — runs a local script's *content* on an
   existing session (no argv passthrough; default timeout is only 30s, always override for real work).
 - `colab run --session <name> --gpu T4 --timeout <seconds> script.py [args...]` — provisions a fresh
-  VM, runs the script with real `sys.argv`/`__name__=="__main__"` semantics (so `training_run.py`'s
-  argparse CLI works verbatim), then tears the VM down automatically, even on error (unless `--keep`).
-  This is the primary way trials are launched — see "Colab regularization sweep" below. Note the flag
-  spelling difference: `run` takes `--session NAME`; `new`/`exec`/`stop` take `-s NAME`.
+  VM, runs the script with real `sys.argv`/`__name__=="__main__"` semantics, then tears the VM down
+  automatically, even on error (unless `--keep`). Fine for smoke tests, but **not used for real sweep
+  trials** — it has no window to pre-upload a file, and Colab Secrets are unreachable from
+  CLI-provisioned sessions (see "Colab regularization sweep"), so trials need the token uploaded as a
+  file via `colab new`/`colab upload`/`colab exec`/`colab stop` instead. Note the flag spelling
+  difference: `run` takes `--session NAME`; `new`/`exec`/`stop`/`upload` take `-s NAME`.
 
-Colab CLI auth lives at `~/.config/colab-cli/` on whichever host runs the commands. The Podman
-sandbox (`Dockerfile`, `podman-*.sh`, `.podman/`) is not used for this workflow — it adds no real
-isolation here (the CLI just calls Google's API, it doesn't run untrusted code) and its docs are the
-stale ones above. If reviving it, note `.podman/colab-config/colab.log` has previously logged
-plaintext OAuth tokens at DEBUG level — don't reintroduce that log level.
+**Run all `colab` commands from inside the Podman sandbox container**
+(`podman exec cafa6-sandbox colab ...`, or `podman exec -it cafa6-sandbox bash` for an interactive
+shell) — not on the host. The container's `.podman/colab-config` is bind-mounted to
+`/home/sandboxuser/.config/colab-cli` and genuinely persists across `podman-start.sh`/`podman-stop.sh`
+cycles (verified directly: stopping and restarting the container does not lose this state). Host-side
+`colab` auth is a **separate, unrelated OAuth grant** from the container's — don't conflate the two,
+and don't try to share credentials between them (an earlier attempt at this, via a `COLAB_CLI_CONFIG`
+env-var trick, did not work).
+
+If `colab` commands start demanding a fresh interactive login on every invocation even though
+`.podman/colab-config/token.json` exists and looks current, check
+`.podman/colab-config/colab.log` for `colab_cli.auth - WARNING - Failed to refresh token:
+invalid_scope` — that means the cached refresh token is stale/broken (not a persistence problem; the
+bind mount is fine), and the fix is one fresh interactive login (`podman exec -it cafa6-sandbox colab
+status`, click through the browser prompt) after moving the broken `token.json` aside. `.podman/colab-config/colab.log` has previously logged plaintext OAuth tokens at DEBUG level —
+don't reintroduce that log level, and never `cat`/print this log's contents into a shared or logged
+context without filtering.
+
+Claude Code itself needs `/home/sandboxuser/.local/bin` on `PATH` inside the container (fixed via an
+`ENV PATH=...` in the `Dockerfile`) — a native install already lives there (bind-mounted via
+`.podman/colab-local`), it just wasn't reachable by non-interactive shells until that fix.
 
 ## Colab regularization sweep
 
-An agent-driven loop (see `experiments/sweep_log.md`) launches ~1h training trials on a Colab T4 via
-`colab run`, judges each trial's train/val curves against a fixed rubric, and iterates toward
-regularization/unfreezing settings that train reliably (manual attempts had consistently either
-overfit or failed to learn at all). `experiments/sweep_log.md` is the source of truth: it pins the
-judgment rubric and search strategy at the top, then logs one section per trial (config, per-epoch
+An agent-driven loop (see `experiments/sweep_log.md`) launches ~1h training trials on a Colab T4 (via
+the `colab new`/`upload`/`exec`/`stop` sequence described in "Colab CLI" above, run from inside the
+Podman sandbox container), judges each trial's train/val curves against a fixed rubric, and iterates
+toward regularization/unfreezing settings that train reliably (manual attempts had consistently
+either overfit or failed to learn at all). `experiments/sweep_log.md` is the source of truth: it pins
+the judgment rubric and search strategy at the top, then logs one section per trial (config, per-epoch
 metrics, verdict, next-config decision, Hub checkpoint branch, commit sha). `experiments/logs/`
 holds each trial's captured stdout/stderr; `experiments/smoke_test.py` is a throwaway infra check
-(GPU, Colab Secrets reachability, trackio Space write) run once before trusting the pipeline for real
-trials. Every trial pushes per-epoch checkpoints to its own branch (`kelmoir/cafa6-esm@trial-NNN`) so
-progress survives the VM teardown; only a config confirmed HEALTHY at target scale gets promoted via
-`--push-to-hub` to `kelmoir/cafa6-esm@main`. Each loop iteration ends in a git commit (no push — no
-remote is configured on this repo).
+(GPU availability, Colab Secrets reachability) run once before trusting the pipeline for real trials —
+it confirmed GPU access works but **Colab Secrets are not reachable from CLI-provisioned sessions**
+(`"Secrets can only be fetched when running from the Colab UI"`), which is why every trial uploads the
+HF token as a file rather than relying on `google.colab.userdata`. trackio-Space tracking
+(`--trackio-space-id`) is currently **not used** — HF's free-Space policy changes made it a non-option
+for now — so `experiments/logs/trial-NNN.log` and each checkpoint's `trial_metrics.json` are the sole
+record of a trial's curves. Every trial pushes per-epoch checkpoints to its own branch
+(`kelmoir/cafa6-esm@trial-NNN`) so progress survives the VM teardown; only a config confirmed HEALTHY
+at target scale gets promoted via `--push-to-hub` to `kelmoir/cafa6-esm@main`. Each loop iteration
+ends in a git commit (no push — no remote is configured on this repo).
 
 ## Data science conventions in this repo
 

@@ -5,10 +5,13 @@ Run via a persistent session (exec does not forward argv, unlike `colab run`):
     colab exec -s cafa6-smoke -f experiments/smoke_test.py --timeout 120
     colab stop -s cafa6-smoke
 
-Checks, in order: GPU availability, whether a Colab Secret named HF_TOKEN is
-reachable from a CLI-provisioned session, and whether trackio can write to a
-persistent HF Space. Never prints the token value itself, only whether it
-resolved.
+Checks, in order: GPU availability, and whether a Colab Secret named HF_TOKEN
+is reachable from a CLI-provisioned session. Never prints the token value
+itself, only whether it resolved.
+
+trackio-Space tracking is currently dropped from the sweep plan (HF free-Space
+policy changes made it a non-option) - no trackio check here; per-trial logs
+and Hub checkpoint branches are the source of truth instead.
 """
 
 import subprocess
@@ -16,7 +19,7 @@ import sys
 import traceback
 
 if "google.colab" in sys.modules:
-    for package in ("trackio", "huggingface_hub"):
+    for package in ("huggingface_hub",):
         try:
             __import__(package)
         except ImportError:
@@ -45,18 +48,6 @@ def check_hf_secret():
         print(f"[SMOKE] colab_secret_hf_token_found=False reason={type(exc).__name__}: {exc}")
 
 
-def check_trackio():
-    try:
-        import trackio
-
-        trackio.init(project="cafa6", name="smoke-test", space_id="kelmoir/cafa6-trackio")
-        trackio.log({"ping": 1})
-        print("[SMOKE] trackio_write=True")
-    except Exception as exc:
-        print(f"[SMOKE] trackio_write=False reason={type(exc).__name__}: {exc}")
-
-
 if __name__ == "__main__":
     check_gpu()
     check_hf_secret()
-    check_trackio()
