@@ -138,15 +138,20 @@ def preprocess_batch(
         for labels_value in raw_labels:
             labels = torch.zeros((len(unique_items),), dtype=torch.float)
             if isinstance(labels_value, str):
-                label_terms = labels_value.split()
+                for item in labels_value.split():
+                    if item in label2id:
+                        labels[label2id[item]] = 1.0
             elif isinstance(labels_value, (list, tuple)):
-                label_terms = [str(item) for item in labels_value]
-            else:
-                label_terms = []
-
-            for item in label_terms:
-                if item in label2id:
-                    labels[label2id[item]] = 1.0
+                # datasets.Sequence(ClassLabel(...)) yields already-encoded integer
+                # class ids here, not the string names label2id is keyed on.
+                for item in labels_value:
+                    if isinstance(item, str):
+                        if item in label2id:
+                            labels[label2id[item]] = 1.0
+                    else:
+                        idx = int(item)
+                        if 0 <= idx < len(unique_items):
+                            labels[idx] = 1.0
             labels_list.append(labels)
         output_dict["labels"] = labels_list
 

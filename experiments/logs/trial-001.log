@@ -1,0 +1,80 @@
++ colab new -s trial-001 --gpu T4
+[colab] Creating session 'trial-001'...
+[colab] Session READY.
++ colab upload /secrets/huggingface_token /content/.hf_token -s trial-001
+[colab] Uploaded '/secrets/huggingface_token' to '/content/.hf_token'
++ colab upload training_run.py /content/training_run.py -s trial-001
+[colab] Uploaded 'training_run.py' to '/content/training_run.py'
++ colab exec -s trial-001 -f /tmp/trial-001_wrapper.py --timeout 7200
+[CONFIG] {"device": "cuda", "epochs": 2, "batch_size": 8, "learning_rate": 5e-05, "max_length": 1024, "model_name": "facebook/esm2_t6_8M_UR50D", "unfreeze_last_n": 2, "max_train_samples": 20000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.01, "max_minutes": null, "run_name": "trial-001", "trackio_space_id": null, "checkpoint": true, "checkpoint_branch": "trial-001", "hf_token_file": "/content/.hf_token"}
+/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_auth.py:138: UserWarning: 
+Error while fetching `HF_TOKEN` secret value from your vault: 'Requesting secret HF_TOKEN timed out. Secrets can only be fetched when running from the Colab UI.'.
+  warnings.warn(f"\nError while fetching `HF_TOKEN` secret value from your vault: '{str(e)}'.")
+README.md:   0%|          | 0.00/668 [00:00<?, ?B/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+data/train-00000-of-00001.parquet: reconstructing file:   0%|          |  0.00B 
+/ 22.3MB            
+data/train-00000-of-00001.parquet: downloading bytes:           |  0.00B        
+data/validation-00000-of-00001.parquet: reconstructing file:   0%|          |  
+0.00B / 6.26MB            
+data/validation-00000-of-00001.parquet: downloading bytes:           |  0.00B   
+data/test-00000-of-00001.parquet: reconstructing file:   0%|          |  0.00B /
+6.28MB            
+data/test-00000-of-00001.parquet: downloading bytes:           |  0.00B         
+Generating train split:   0%|          | 0/50168 [00:00<?, ? examples/s]
+Generating validation split:   0%|          | 0/14131 [00:00<?, ? examples/s]
+Generating test split:   0%|          | 0/14182 [00:00<?, ? examples/s]
+tokenizer_config.json:   0%|          | 0.00/95.0 [00:00<?, ?B/s]
+vocab.txt:   0%|          | 0.00/93.0 [00:00<?, ?B/s]
+special_tokens_map.json:   0%|          | 0.00/125 [00:00<?, ?B/s]
+config.json:   0%|          | 0.00/775 [00:00<?, ?B/s]
+model.safetensors: reconstructing file:   0%|          |  0.00B / 31.4MB        
+model.safetensors: downloading bytes:           |  0.00B            
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]
+[transformers] [1mEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t6_8M_UR50D
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.dense.bias         | UNEXPECTED | 
+lm_head.bias               | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+lm_head.layer_norm.bias    | UNEXPECTED | 
+lm_head.layer_norm.weight  | UNEXPECTED | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+classifier.out_proj.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+Model layers: 6, request unfreeze layers: 2
+* Trackio project initialized: cafa6
+* Trackio metrics logged to: /root/.cache/huggingface/trackio
+* NVIDIA GPU detected, enabling automatic GPU metrics logging
+* psutil detected, enabling automatic CPU/system metrics logging
+* Created new run: trial-001
+[INFO] HF token resolved via --hf-token-file
+/usr/local/lib/python3.12/dist-packages/trackio/utils.py:27: UserWarning: Reserved keys renamed: ['step'] → '__{key}'
+  warnings.warn(message, *args, **kwargs)
+Epoch 1/2 | train_loss=0.0273 | val_loss=0.0004 | train_acc=0.9982 | val_acc=1.0000 | train_recall=0.0000 | val_recall=0.0000
+[TIMING] epoch 1 elapsed=451.0s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 1 to kelmoir/cafa6-esm@trial-001
+Epoch 2/2 | train_loss=0.0002 | val_loss=0.0001 | train_acc=1.0000 | val_acc=1.0000 | train_recall=0.0000 | val_recall=0.0000
+[TIMING] epoch 2 elapsed=450.3s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 2 to kelmoir/cafa6-esm@trial-001
+[SUMMARY] {"run_name": "trial-001", "epochs_completed": 2, "final_train_loss": 0.00018817275101318956, "final_val_loss": 7.311996063799598e-05, "train_accuracy": 1.0, "val_accuracy": 1.0, "train_recall": 0.0, "val_recall": 0.0}
++ status=0
++ colab stop -s trial-001
+[colab] Stopping session 'trial-001'...
+Enter the authorization code: 
+To authorize colab-cli, visit this URL in any browser:
+
+  https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=764086051850-6qr4p6gpi6hn506pt8ejuq83di341hur.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fsdk.cloud.google.com%2Fapplicationdefaultauthcode.html&scope=openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcolaboratory+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fdrive.file&state=HJGuv6lbIhO70DojlpdqouzgSoPcBV&code_challenge=uRGI52GczcXPAfCQb1NYCbXNFGFegMu0Nx14J64qVoo&code_challenge_method=S256&prompt=consent&token_usage=remote&access_type=offline
+
+After approving, Google will display an authorization code.
+
+Aborted.
++ exit 0
