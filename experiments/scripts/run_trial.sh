@@ -2,8 +2,18 @@
 # Launch one training_run.py trial against an existing (already-provisioned/adopted) Colab
 # session, capturing output to experiments/logs/<trial-name>.log.
 #
+# Robustness: the underlying colab exec connection has been observed to die mid-run
+# unpredictably (mid-epoch or between epochs), independent of wall-clock length. Rather than
+# treat that as a hard failure, this script retries automatically: after each attempt it scans
+# the log for the highest completed epoch and, if short of the target, launches the next
+# attempt with --resume-from-revision/--start-epoch picking up from there (checkpoints are
+# pushed after every epoch, so at most one epoch of progress is ever repeated). Before each
+# retry it first checks the session is still alive; if the runtime itself is gone, it stops
+# retrying immediately (further attempts would just fail on upload) rather than burning the
+# full retry budget on a dead session.
+#
 # Usage:
-#   run_trial.sh <trial-name> <session-name> [--timeout SECONDS] -- <training_run.py args...>
+#   run_trial.sh <trial-name> <session-name> [--timeout SECONDS] [--max-attempts N] -- <training_run.py args...>
 #
 # Example:
 #   run_trial.sh trial-016 claude_cafa6 -- \
@@ -12,11 +22,11 @@
 #     --seed 42
 #
 # --run-name, --checkpoint-branch, and --hf-token-file are always appended automatically;
-# don't pass them again in the args after --.
-set -euo pipefail
+# don't pass them (or --epochs/--start-epoch/--resume-from-revision) again after --.
+set -uo pipefail  # no -e: a failed attempt should trigger our own retry logic, not abort the script
 
 if [ "$#" -lt 4 ]; then
-  echo "Usage: $0 <trial-name> <session-name> [--timeout SECONDS] -- <training_run.py args...>" >&2
+  echo "Usage: $0 <trial-name> <session-name> [--timeout SECONDS] [--max-attempts N] -- <training_run.py args...>" >&2
   exit 1
 fi
 
@@ -25,10 +35,11 @@ SESSION_NAME="$2"
 shift 2
 
 TIMEOUT=3600
-if [ "$1" = "--timeout" ]; then
-  TIMEOUT="$2"
+MAX_ATTEMPTS=6
+while [ "$1" = "--timeout" ] || [ "$1" = "--max-attempts" ]; do
+  if [ "$1" = "--timeout" ]; then TIMEOUT="$2"; else MAX_ATTEMPTS="$2"; fi
   shift 2
-fi
+done
 
 if [ "$1" != "--" ]; then
   echo "Expected -- before training_run.py args, got: $1" >&2
@@ -41,39 +52,56 @@ cd "$REPO_ROOT"
 export PATH="$HOME/.local/share/google-cloud-sdk/bin:$PATH"
 
 mkdir -p .podman/tmp experiments/logs
-WRAPPER=".podman/tmp/${TRIAL_NAME}_wrapper.py"
-
-python3 - "$WRAPPER" "$TRIAL_NAME" "$@" <<'PYEOF'
-import json
-import sys
-
-wrapper_path, trial_name, *extra_args = sys.argv[1:]
-
-argv = ["training_run.py", *extra_args,
-        "--run-name", trial_name,
-        "--checkpoint-branch", trial_name,
-        "--hf-token-file", "/content/.hf_token"]
-
-with open(wrapper_path, "w") as f:
-    f.write("import sys\n\n")
-    f.write(f"sys.argv = {json.dumps(argv, indent=4)}\n\n")
-    f.write(
-        'exec(\n'
-        '    compile(open("/content/training_run.py").read(), "/content/training_run.py", "exec"),\n'
-        '    {"__name__": "__main__"},\n'
-        ')\n'
-    )
-PYEOF
-
-echo "[run_trial] wrapper written to $WRAPPER"
-colab --auth=adc upload .podman/secrets/huggingface_token /content/.hf_token -s "$SESSION_NAME"
-colab --auth=adc upload training_run.py /content/training_run.py -s "$SESSION_NAME"
-
 LOG="experiments/logs/${TRIAL_NAME}.log"
-echo "[run_trial] running trial '$TRIAL_NAME' on session '$SESSION_NAME' (timeout ${TIMEOUT}s), logging to $LOG"
-set +e
-colab --auth=adc exec -s "$SESSION_NAME" --timeout "$TIMEOUT" -f "$WRAPPER" > "$LOG" 2>&1
-EXIT_CODE=$?
-set -e
-echo "EXEC_EXIT=$EXIT_CODE"
-exit "$EXIT_CODE"
+: > "$LOG"
+
+TARGET_EPOCHS=1
+prev=""
+for i in "$@"; do
+  if [ "$prev" = "--epochs" ]; then TARGET_EPOCHS="$i"; fi
+  prev="$i"
+done
+
+completed=0
+attempt=1
+
+while [ "$attempt" -le "$MAX_ATTEMPTS" ] && [ "$completed" -lt "$TARGET_EPOCHS" ]; do
+  echo "[run_trial] === attempt $attempt/$MAX_ATTEMPTS for $TRIAL_NAME (completed=$completed/$TARGET_EPOCHS) ===" | tee -a "$LOG"
+
+  if [ "$attempt" -gt 1 ]; then
+    if ! colab --auth=adc status -s "$SESSION_NAME" 2>&1 | grep -q "IDLE\|BUSY"; then
+      echo "[run_trial] session '$SESSION_NAME' is not alive; stopping retries for $TRIAL_NAME (needs reconnection)." | tee -a "$LOG"
+      break
+    fi
+  fi
+
+  WRAPPER=".podman/tmp/${TRIAL_NAME}_attempt${attempt}_wrapper.py"
+  python3 experiments/scripts/make_wrapper.py "$WRAPPER" "$TRIAL_NAME" "$TARGET_EPOCHS" "$completed" "$@" | tee -a "$LOG"
+
+  colab --auth=adc upload .podman/secrets/huggingface_token /content/.hf_token -s "$SESSION_NAME" >>"$LOG" 2>&1
+  if [ $? -ne 0 ]; then
+    echo "[run_trial] token upload failed; session likely dead. Stopping retries for $TRIAL_NAME." | tee -a "$LOG"
+    break
+  fi
+  colab --auth=adc upload training_run.py /content/training_run.py -s "$SESSION_NAME" >>"$LOG" 2>&1
+
+  colab --auth=adc exec -s "$SESSION_NAME" --timeout "$TIMEOUT" -f "$WRAPPER" >>"$LOG" 2>&1
+
+  new_completed=$(grep -oE '^Epoch [0-9]+/[0-9]+' "$LOG" | grep -oE '[0-9]+' | awk 'NR%2==1' | sort -n | tail -1)
+  new_completed=${new_completed:-0}
+  if [ "$new_completed" -gt "$completed" ]; then
+    completed=$new_completed
+  else
+    echo "[run_trial] attempt $attempt made no epoch progress (still at $completed)." | tee -a "$LOG"
+  fi
+
+  attempt=$((attempt + 1))
+done
+
+if [ "$completed" -ge "$TARGET_EPOCHS" ]; then
+  echo "[run_trial] $TRIAL_NAME COMPLETE ($completed/$TARGET_EPOCHS epochs, $((attempt - 1)) attempt(s))" | tee -a "$LOG"
+  exit 0
+else
+  echo "[run_trial] $TRIAL_NAME INCOMPLETE ($completed/$TARGET_EPOCHS epochs after $((attempt - 1)) attempt(s))" | tee -a "$LOG"
+  exit 1
+fi

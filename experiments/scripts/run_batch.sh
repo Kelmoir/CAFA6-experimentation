@@ -26,6 +26,12 @@ echo "[run_batch] running $N experiment(s) from $MANIFEST on session '$SESSION_N
 
 for i in $(seq 0 $((N - 1))); do
   TRIAL_ID=$(python3 -c "import json; print(json.load(open('$MANIFEST'))[$i]['trial_id'])")
+
+  if [ "$i" -gt 0 ] && ! colab --auth=adc status -s "$SESSION_NAME" 2>&1 | grep -q "IDLE\|BUSY"; then
+    echo "[run_batch] session '$SESSION_NAME' is not alive; stopping the batch before $TRIAL_ID (needs reconnection). Remaining: $(python3 -c "import json; print([e['trial_id'] for e in json.load(open('$MANIFEST'))[$i:]])")"
+    break
+  fi
+
   mapfile -t ARGS < <(python3 -c "import json; [print(a) for a in json.load(open('$MANIFEST'))[$i]['args']]")
   echo "[run_batch] ($((i + 1))/$N) launching $TRIAL_ID"
   bash experiments/scripts/run_trial.sh "$TRIAL_ID" "$SESSION_NAME" -- "${ARGS[@]}"
