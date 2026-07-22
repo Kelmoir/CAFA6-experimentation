@@ -74,6 +74,7 @@ purely to hit the ~1h wall-clock budget, not a regularization lever.
 | trial-007 | esm2_t12_35M | 4 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 1 | 6000 | 2000 | ~7.6min | DEAD (same plateau, 4x larger model) | pause sweep, consult user — 5 materially different configs all converge to the same plateau |
 | trial-008 | esm2_t6_8M | 1 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 4 (via resume) | 12000 | 2000 | ~3.75min/epoch x4 | OVERFITTING (epochs 1-2 flat, 3-4 diverge) | raise esm/attn dropout to 0.1 for trial-009 |
 | trial-009 | esm2_t6_8M | 1 | 2e-4 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 4 (via resume) | 12000 | 2000 | ~3.8min/epoch x4 | OVERFITTING (dropout didn't help) | raise weight-decay to 0.1 for trial-010 |
+| trial-010 | esm2_t6_8M | 1 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.1 | 4 (via resume) | 12000 | 2000 | ~3.8min/epoch x4 | OVERFITTING but smallest gap yet (0.133 vs 0.168/0.191) | push weight-decay further to 0.3 for trial-011 |
 
 ## trial-001
 
@@ -399,6 +400,29 @@ newly-unfrozen encoder capacity).
 change cleanly) and instead raises `--weight-decay` from 0.01 to 0.1 (10x) — this axis hasn't been
 touched in any trial so far, and weight decay directly penalizes the large weight magnitudes that let a
 tiny classifier head memorize training-set specifics.
+
+## trial-010
+
+**Config**: identical to trial-008 except `--weight-decay 0.1` (up from 0.01, 10x). Same 4-epoch
+chained run via resume.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 1 | 0.6131 | 0.6048 | 0.6873 | 0.6885 | 0.9914 | 0.9732 |
+| 2 | 0.5958 | 0.6042 | 0.6941 | 0.6945 | 0.9622 | 0.9820 |
+| 3 | 0.5652 | 0.6115 | 0.7153 | 0.6893 | 0.9342 | 0.9555 |
+| 4 | 0.5113 | 0.6441 | 0.7520 | 0.6745 | 0.9146 | 0.9154 |
+
+**Verdict: still OVERFITTING, but the smallest gap of the three regularization attempts so far.**
+Epoch-4 train/val gap is 0.133 (0.5113 vs 0.6441) — meaningfully smaller than trial-008's 0.168 and
+trial-009's 0.191. val_loss at every epoch is the best of the three variants tried. Weight decay is a
+real, working lever here (unlike encoder dropout, which did nothing) — it's just not strong enough yet
+at 0.1 to produce a genuinely healthy (both-improving) curve; val still turns upward starting epoch 3.
+
+**Next action**: trial-011 pushes `--weight-decay` further to 0.3 (3x trial-010) to see whether more of
+the same lever closes the gap further, keeping everything else identical.
 
 **trial-006 epoch 2** (extension, same config, resumed from the trial-006 checkpoint):
 
