@@ -61,6 +61,7 @@ def create_esm(
     esm_dropout: float = 0.0,
     id2label: Optional[Dict[int, str]] = None,
     label2id: Optional[Dict[str, int]] = None,
+    revision: Optional[str] = None,
 ):
     if id2label is None or label2id is None:
         raise ValueError("id2label and label2id must be provided")
@@ -71,6 +72,7 @@ def create_esm(
         id2label=id2label,
         label2id=label2id,
         problem_type="multi_label_classification",
+        revision=revision,
     )
 
     for param in model.esm.parameters():
@@ -302,6 +304,8 @@ def main() -> None:
     parser.add_argument("--checkpoint", action=argparse.BooleanOptionalAction, default=True, help="Push a per-epoch checkpoint to a per-trial Hub branch")
     parser.add_argument("--checkpoint-branch", default=None, help="Overrides the auto-derived (run-name) branch name for per-epoch checkpoints")
     parser.add_argument("--hf-token-file", default=None, help="Path to a file containing only an HF token; read once, then deleted")
+    parser.add_argument("--resume-from-revision", default=None, help="Load model weights from this revision (branch) of --hf-repo-id instead of the base pretrained model; used to continue a multi-epoch trial across separate colab exec invocations after a connection drop")
+    parser.add_argument("--start-epoch", type=int, default=0, help="Count of already-completed epochs when resuming; offsets epoch numbering in logs/checkpoints (0 for a fresh run)")
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
@@ -342,13 +346,16 @@ def main() -> None:
 
     model_esm = create_esm(
         unfreeze_last_n=args.unfreeze_last_n,
-        model_type=args.model_name,
+        model_type=args.hf_repo_id if args.resume_from_revision else args.model_name,
         output_dropout=args.output_dropout,
         esm_dropout=args.esm_dropout,
         attention_dropout=args.attention_dropout,
         id2label=id2label,
         label2id=label2id,
+        revision=args.resume_from_revision,
     ).to(device)
+    if args.resume_from_revision:
+        print(f"[INFO] Resumed model weights from {args.hf_repo_id}@{args.resume_from_revision}")
 
     train_dataloader = torch.utils.data.DataLoader(
         processed_dataset["train"],
@@ -377,7 +384,7 @@ def main() -> None:
     checkpoint_dir = Path("models") / run_name / "checkpoint"
     start_time = time.time()
 
-    for epoch in range(args.epochs):
+    for epoch in range(args.start_epoch, args.start_epoch + args.epochs):
         epoch_start = time.time()
         model_esm.train()
         train_loss = 0.0
@@ -431,7 +438,7 @@ def main() -> None:
         validation_metrics["recall"] /= max(1, len(validation_dataloader))
 
         print(
-            f"Epoch {epoch + 1}/{args.epochs} | "
+            f"Epoch {epoch + 1}/{args.start_epoch + args.epochs} | "
             f"train_loss={train_loss:.4f} | val_loss={validation_loss:.4f} | "
             f"train_acc={train_metrics['accuracy']:.4f} | val_acc={validation_metrics['accuracy']:.4f} | "
             f"train_recall={train_metrics['recall']:.4f} | val_recall={validation_metrics['recall']:.4f}"
