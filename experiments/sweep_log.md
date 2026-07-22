@@ -31,6 +31,26 @@ Judge from the *shape* of the per-epoch curve (all epochs together), not a singl
   tighten `--grad-clip-norm` (e.g. 1.0 → 0.5), or check `--batch-size` isn't too small for stable
   gradient estimates.
 
+## Operational constraint: colab exec connection ceiling
+
+Discovered across trial-002/003/004: a `colab exec` invocation reliably loses its websocket
+connection (`RuntimeError: Connection was lost`, raised by `jupyter_kernel_client`, fatal — colab-cli
+never passes a nonzero `reconnect_interval`) somewhere around **~9-10 minutes of total wall clock**
+from `colab exec` start, regardless of whether the kernel is producing periodic output (trial-004's
+first attempt died ~2-3min in with zero output produced yet; adding a `[STEP]` print roughly every
+20s pushed the failure to 96% through the same epoch, i.e. much later wall-clock-wise, but it still
+died before completing — ruling out pure output-silence as the cause and pointing to a roughly fixed
+connection lifetime for headless, non-UI-driven kernel connections). Until/unless this is fixed
+upstream in colab-cli, every trial config must keep **each single `colab exec` invocation's training
+volume small enough to finish within that ceiling** — in practice, `--max-train-samples` around
+10000-12000 (≈1250-1500 steps at batch-size 8, ~4-5min of training loop time, leaving comfortable
+margin under the ~9min ceiling once data/model download overhead is included) rather than the
+20000 used in trial-001 through trial-004's first attempt. Multi-epoch trials are stitched together
+across separate `colab exec` calls using `--resume-from-revision`/`--start-epoch` (added for
+trial-003) — one epoch (or fewer, if needed) per invocation. This changes trial-to-trial sample-size
+comparability going forward; note the actual `--max-train-samples` used in each trial's config rather
+than assuming 20000.
+
 ## Search strategy
 
 Coordinate descent from today's hardcoded defaults (`esm2_t12_35M`, `unfreeze=2`, `lr=5e-5`,
@@ -48,6 +68,7 @@ purely to hit the ~1h wall-clock budget, not a regularization lever.
 | trial-001 | esm2_t6_8M | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 | 20000 | 2000 | ~18min (2x~450s+overhead) | VOID (data bug) | fix label bug, rerun as trial-002 |
 | trial-002 | esm2_t6_8M | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (only 1 completed) | 20000 | 2000 | ~7.3min (438.7s epoch 1) then dropped | INCOMPLETE (connection lost) | identical config, rerun as trial-003 |
 | trial-003 | esm2_t6_8M | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (split across 2 sessions via resume) | 20000 | 2000 | ~7.4min + ~7.4min (2 sessions) | DEAD (weak signal) | raise lr to 2e-4 and unfreeze-last-n to 4 for trial-004 |
+| trial-004 | esm2_t6_8M | 4 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (split across 2 sessions via resume) | 12000 | 2000 | ~7.0min + ~6.5min (2 sessions) | DEAD (still, prior-prediction basin) | raise lr to 1e-3 for trial-005; local diagnostic ruled out a pipeline bug |
 
 ## trial-001
 
@@ -154,3 +175,42 @@ config would meaningfully change the curve shape.
 raises `--learning-rate` from 5e-5 to 2e-4 (×4) and `--unfreeze-last-n` from 2 to 4 (out of 6 layers on
 `esm2_t6_8M`), keeping all other hyperparameters and sample sizes unchanged, to establish whether the
 model can learn at all at this scale before returning to one-axis-at-a-time regularization tuning.
+
+## trial-004
+
+**Config**: `esm2_t6_8M`, unfreeze=4, lr=2e-4, out_drop=0.2, esm_drop=0.0, attn_drop=0.0, grad_clip=1.0,
+wd=0.01, epochs=2, train_n=12000 (reduced from 20000 — see the operational-constraint note above),
+val_n=2000, seed=42. Ran as two `colab exec` invocations (fresh session per epoch, resume via
+`--resume-from-revision`), after the first attempt at train_n=20000 hit the connection-loss ceiling
+mid-epoch-1 (documented above) even with periodic `[STEP]` keepalive logging added.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 1 | 0.6180 | 0.6066 | 0.6849 | 0.6933 | 0.9844 | 0.9893 |
+| 2 | 0.6028 | 0.6073 | 0.6913 | 0.6910 | 0.9665 | 0.9873 |
+
+**Verdict: DEAD (still).** Despite 4x the LR and 2x the unfrozen layers vs. trial-003, the curve lands
+in almost the same place: val_loss flat-to-slightly-up (0.6066 → 0.6073), recall pinned near-ceiling
+(~0.97-0.99) both epochs, accuracy barely moving (~0.69). Two materially different configs converging
+to the same shape means this isn't primarily an LR/capacity problem — see the diagnostic below.
+
+**Diagnostic (before spending a 3rd trial guessing blind)**: the label distribution is `C=72%, F=67%,
+P=67%` positive (checked directly against `kelmoir/cafa6`, 20000-example sample) — moderately imbalanced
+toward positive. The theoretical BCE loss of a trivial "always predict the population base rate, ignore
+the input" classifier for a ~69% average positive rate is `-[0.69·ln(0.69) + 0.31·ln(0.31)] ≈ 0.619` —
+strikingly close to the ~0.60-0.62 losses seen in both trial-003 and trial-004. This is the signature of
+the model converging to (and getting stuck at) the "predict the prior" local minimum rather than using
+sequence information. Ran a local CPU sanity check (`create_esm`/`preprocess_batch` reused directly,
+not a Colab trial) to rule out a real pipeline bug before chasing this further: overfitting a fixed
+16-example batch at lr=5e-4 took loss from 0.6931 → 0.0095 in 40 steps, with nonzero, healthy gradient
+norms flowing into `classifier.out_proj.weight` throughout. Gradients and the freeze/unfreeze wiring are
+correct — the bottleneck is that 1-2 epochs (1500-3000 steps) at lr≤2e-4 isn't enough push to escape the
+prior-prediction basin on the full, diverse (not memorizable) dataset, not a code defect.
+
+**Next action**: trial-005 raises `--learning-rate` further to 1e-3 (~5x trial-004, within the rubric's
+suggested ×3-5 DEAD response), keeping `--unfreeze-last-n 4` (more capacity didn't hurt) and all other
+settings unchanged. Watch the `[STEP]` loss trajectory early in epoch 1 — if it doesn't move
+meaningfully below ~0.60 within the first few hundred steps this time either, the next lever is more
+epochs/steps rather than a further LR increase (a still-higher LR risks UNSTABLE before it helps).
