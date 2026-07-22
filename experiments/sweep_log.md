@@ -69,6 +69,7 @@ purely to hit the ~1h wall-clock budget, not a regularization lever.
 | trial-002 | esm2_t6_8M | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (only 1 completed) | 20000 | 2000 | ~7.3min (438.7s epoch 1) then dropped | INCOMPLETE (connection lost) | identical config, rerun as trial-003 |
 | trial-003 | esm2_t6_8M | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (split across 2 sessions via resume) | 20000 | 2000 | ~7.4min + ~7.4min (2 sessions) | DEAD (weak signal) | raise lr to 2e-4 and unfreeze-last-n to 4 for trial-004 |
 | trial-004 | esm2_t6_8M | 4 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (split across 2 sessions via resume) | 12000 | 2000 | ~7.0min + ~6.5min (2 sessions) | DEAD (still, prior-prediction basin) | raise lr to 1e-3 for trial-005; local diagnostic ruled out a pipeline bug |
+| trial-005 | esm2_t6_8M | 4 | 1e-3 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 1 | 12000 | 2000 | ~6.4min | WORSE (full collapse, val_recall=1.0) | root-caused to BCE bias-saturation trap; add classifier bias-to-prior init for trial-006 |
 
 ## trial-001
 
@@ -214,3 +215,42 @@ suggested ×3-5 DEAD response), keeping `--unfreeze-last-n 4` (more capacity did
 settings unchanged. Watch the `[STEP]` loss trajectory early in epoch 1 — if it doesn't move
 meaningfully below ~0.60 within the first few hundred steps this time either, the next lever is more
 epochs/steps rather than a further LR increase (a still-higher LR risks UNSTABLE before it helps).
+
+## trial-005
+
+**Config**: `esm2_t6_8M`, unfreeze=4, lr=1e-3, out_drop=0.2, esm_drop=0.0, attn_drop=0.0, grad_clip=1.0,
+wd=0.01, epochs=1, train_n=12000, val_n=2000, seed=42.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 1 | 0.6252 | 0.6195 | 0.6853 | 0.6895 | 0.9959 | 1.0000 |
+
+**Verdict: WORSE, not DEAD-but-improving — the LR increase made the collapse more complete.** val_recall
+hit a literal 1.0000 (predicting positive on every single validation example) and val_loss rose slightly
+vs. trial-004 epoch 1 (0.6195 vs 0.6066). Raising LR pushed the model to converge on the trivial
+"always predict positive" solution *faster and more completely*, not to escape it — the opposite of
+what the DEAD rubric's "raise LR" response assumes. This ruled out "not enough push" as the mechanism
+and prompted a root-cause investigation (see below) rather than a third blind LR trial.
+
+**Root cause**: classic BCE + imbalanced-label saturation trap. The classifier head's `out_proj.bias`
+starts at zero at init. Early gradient descent has a strong, easy signal to move the bias toward
+matching the label prior (C=72%, F=67%, P=67%) — this happens fast regardless of LR. Once logits
+saturate near the prior, the per-example BCE gradient (`sigmoid(logit) - label`) shrinks toward zero on
+average (since predictions ≈ the label's mean value), starving the weight matrix of the differential
+signal it needs to actually use sequence content. A higher LR just reaches this degenerate fixed point
+faster and lands closer to it, worsening rather than fixing the symptom.
+
+**Fix**: initialize `model.classifier.out_proj.bias` to the training label prior's log-odds at model
+creation (skipped on `--resume-from-revision`, since that already loads real trained weights) — a
+standard technique from the imbalanced-classification literature (e.g. the RetinaNet/focal-loss paper's
+bias-init trick). This lets the model start past the saturation point instead of spending its early
+gradient budget getting there, hopefully freeing gradient signal for genuine discrimination from step 1.
+Verified locally (not a Colab trial): pre-training loss on a 200-example sample moved from ~0.696
+(zero-bias, ≈ln(2)) to ~0.656 after the fix — confirms the mechanism engages as intended.
+
+**Next action**: trial-006 retests at a moderate `--learning-rate 2e-4` (trial-004's LR, since 1e-3 is
+now known to push toward collapse) with the bias-prior fix in place, `--unfreeze-last-n 4` unchanged.
+If the bias fix works, expect val_loss to drop meaningfully below the ~0.60-0.62 plateau and val_recall
+to move off its ~0.97-1.0 ceiling within the first epoch.
