@@ -1,0 +1,17 @@
+trial_id,verdict,model_name,unfreeze_last_n,learning_rate,output_dropout,esm_dropout,attention_dropout,weight_decay,max_train_samples,max_val_samples,epochs_completed,best_epoch,best_val_loss,best_val_acc,best_val_recall,best_train_loss,best_train_acc,n_log_fragments
+trial-001,VOID (label bug),facebook/esm2_t6_8M_UR50D,2,5e-05,0.2,0.0,0.0,0.01,20000,2000,2,2,0.0001,1.0,0.0,0.0002,1.0,1
+trial-002,INCOMPLETE (connection lost),facebook/esm2_t6_8M_UR50D,2,5e-05,0.2,0.0,0.0,0.01,20000,2000,1,1,0.6018,0.6885,0.9704,0.6109,0.688,1
+trial-003,DEAD,facebook/esm2_t6_8M_UR50D,2,5e-05,0.2,0.0,0.0,0.01,20000,2000,2,2,0.6009,0.695,0.9815,0.5932,0.6978,2
+trial-004,DEAD,facebook/esm2_t6_8M_UR50D,4,0.0002,0.2,0.0,0.0,0.01,12000,2000,2,1,0.6066,0.6933,0.9893,0.618,0.6849,2
+trial-005,WORSE (collapse toward all-positive),facebook/esm2_t6_8M_UR50D,4,0.001,0.2,0.0,0.0,0.01,12000,2000,1,1,0.6195,0.6895,1.0,0.6252,0.6853,1
+trial-006,DEAD,facebook/esm2_t6_8M_UR50D,4,0.0002,0.2,0.0,0.0,0.01,12000,2000,2,1,0.607,0.6933,0.9877,0.6153,0.6873,2
+trial-007,DEAD,facebook/esm2_t12_35M_UR50D,4,0.0002,0.2,0.0,0.0,0.01,6000,2000,1,1,0.6089,0.6902,0.9982,0.6158,0.6851,1
+trial-008,OVERFITTING,facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.01,12000,2000,4,2,0.6046,0.6937,0.981,0.5949,0.6947,4
+trial-009,OVERFITTING,facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.1,0.1,0.01,12000,2000,4,2,0.6037,0.6953,0.9858,0.5985,0.6925,4
+trial-010,OVERFITTING,facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.1,12000,2000,4,2,0.6042,0.6945,0.982,0.5958,0.6941,4
+trial-011,OVERFITTING,facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.3,12000,2000,4,1,0.6047,0.6888,0.9759,0.6133,0.6872,4
+trial-012,OVERFITTING,facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.5,12000,2000,5,1,0.6046,0.6897,0.9785,0.6136,0.687,5
+trial-013,DEAD (re-approached via excess wd),facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,1.0,12000,2000,4,1,0.6051,0.6903,0.9842,0.6143,0.6875,4
+trial-014,"MIXED (epochs 1-4 pre-fix, 5-6 post per-epoch-variation fix)",facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.5,12000,2000,6,3,0.6021,0.6953,0.9885,0.5942,0.7024,5
+trial-015,"PLATEAU (stable, best trajectory so far)",facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.5,12000,2000,10,8,0.599,0.6947,0.9749,0.5928,0.7027,1
+trial-016,"PLATEAU (matches trial-015, unfreeze bump had no effect)",facebook/esm2_t6_8M_UR50D,2,0.0002,0.2,0.0,0.0,0.5,12000,2000,10,9,0.5995,0.6935,0.9789,0.587,0.7081,1
