@@ -1,0 +1,21 @@
+{
+  "algorithm": "beam search, width 2, branching factor 3 per beam member (6 experiments/round, 2 of which must tweak a regularization hyperparameter)",
+  "success_criterion": "val_loss < 0.45 on any single epoch of a trial",
+  "fixed_across_all_rounds": {
+    "epochs": 10,
+    "max_train_samples": 12000,
+    "max_val_samples": 2000,
+    "seed": 42,
+    "model_name": "facebook/esm2_t6_8M_UR50D",
+    "batch_size": 8,
+    "grad_clip_norm": 1.0
+  },
+  "regularization_axes": ["output_dropout", "esm_dropout", "attention_dropout", "weight_decay"],
+  "non_regularization_axes": ["learning_rate", "unfreeze_last_n"],
+  "round": 0,
+  "status": "awaiting_round_0_seed_result",
+  "beam": [],
+  "queued_experiments": [],
+  "completed_this_round": [],
+  "history": []
+}
