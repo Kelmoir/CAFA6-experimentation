@@ -72,6 +72,7 @@ purely to hit the ~1h wall-clock budget, not a regularization lever.
 | trial-005 | esm2_t6_8M | 4 | 1e-3 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 1 | 12000 | 2000 | ~6.4min | WORSE (full collapse, val_recall=1.0) | root-caused to BCE bias-saturation trap; add classifier bias-to-prior init for trial-006 |
 | trial-006 | esm2_t6_8M | 4 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (via resume) | 12000 | 2000 | ~6.6min + ~6.5min | DEAD (2 epochs, still flat) | pivot to model size for trial-007 |
 | trial-007 | esm2_t12_35M | 4 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 1 | 6000 | 2000 | ~7.6min | DEAD (same plateau, 4x larger model) | pause sweep, consult user — 5 materially different configs all converge to the same plateau |
+| trial-008 | esm2_t6_8M | 1 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 4 (via resume) | 12000 | 2000 | ~3.75min/epoch x4 | OVERFITTING (epochs 1-2 flat, 3-4 diverge) | raise esm/attn dropout to 0.1 for trial-009 |
 
 ## trial-001
 
@@ -333,6 +334,43 @@ in order of how cheap they are to test:
 Stopping here to consult the user given the compute already spent (7 trials, several multi-epoch) and
 because the next move is a strategic choice about budget/direction rather than a confident next
 hyperparameter guess.
+
+**User direction**: run longer (5-10+ epochs, matching what it took in prior manual attempts before the
+model "learned things") and keep `--unfreeze-last-n` as small as possible, for efficiency at the final
+target scale.
+
+## trial-008
+
+**Config**: `esm2_t6_8M`, unfreeze=1 (the smallest tested so far), lr=2e-4, out_drop=0.2, esm_drop=0.0,
+attn_drop=0.0, grad_clip=1.0, wd=0.01, train_n=12000, val_n=2000, seed=42, bias-init fix in place. Run
+across 4 chained `colab exec` invocations via `--resume-from-revision`. Epoch time dropped to ~225s
+(vs. ~390-420s at unfreeze=4) — unfreeze=1 is meaningfully cheaper, consistent with the user's
+efficiency goal.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 1 | 0.6132 | 0.6050 | 0.6874 | 0.6877 | 0.9915 | 0.9730 |
+| 2 | 0.5949 | 0.6046 | 0.6947 | 0.6937 | 0.9603 | 0.9810 |
+| 3 | 0.5604 | 0.6150 | 0.7185 | 0.6877 | 0.9310 | 0.9525 |
+| 4 | 0.4945 | 0.6628 | 0.7621 | 0.6725 | 0.9135 | 0.9024 |
+
+**Verdict: OVERFITTING (a qualitatively new, more informative state than DEAD)**. Epochs 1-2 replicate
+the familiar flat plateau. Epoch 3 shows the first real train-side movement (loss drops, accuracy rises,
+recall moves off the ceiling) with val barely moved. Epoch 4 is unambiguous: train continues improving
+sharply while val gets *worse* (val_loss 0.6150 → 0.6628, val_acc 0.6877 → 0.6725) — the train/val gap
+opens from ~0.05 (epoch 3) to ~0.17 (epoch 4) in a single epoch. This closely matches the project's
+original standing problem (manual attempts "consistently either overfit or failed to learn at all") —
+here we see the same model transition almost directly from dead-flat to overfitting within a couple of
+epochs, with little sustained middle ground where both splits improve together.
+
+**Next action** (OVERFITTING → one axis per the rubric): trial-009 raises `--esm-dropout` and
+`--attention-dropout` together from 0.0 to 0.1 (treated as one axis — both apply to the same single
+unfrozen encoder layer, which is presumably where the overfitting-prone adaptation is happening; they
+were previously completely unregularized). `--unfreeze-last-n` stays at 1 per the user's efficiency
+preference rather than reducing further. Everything else unchanged. Run through several epochs again
+watching for whether the healthy (both-improving) window widens before overfitting sets in.
 
 **trial-006 epoch 2** (extension, same config, resumed from the trial-006 checkpoint):
 
