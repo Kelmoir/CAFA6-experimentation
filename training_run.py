@@ -356,6 +356,22 @@ def main() -> None:
     ).to(device)
     if args.resume_from_revision:
         print(f"[INFO] Resumed model weights from {args.hf_repo_id}@{args.resume_from_revision}")
+    else:
+        # BCE with an imbalanced label prior otherwise wastes early gradient budget just
+        # learning the bias (saturating logits toward the prior), which shrinks per-example
+        # gradient magnitude and starves the weight matrix of signal to actually discriminate.
+        raw_train_labels = dataset_train["labels"]
+        if args.max_train_samples is not None:
+            raw_train_labels = raw_train_labels[: min(args.max_train_samples, len(raw_train_labels))]
+        label_counts = torch.zeros(len(UNIQUE_ASPECTS))
+        for labs in raw_train_labels:
+            for idx in labs:
+                label_counts[int(idx)] += 1
+        label_priors = (label_counts / max(1, len(raw_train_labels))).clamp(1e-4, 1 - 1e-4)
+        prior_bias = torch.log(label_priors / (1 - label_priors)).to(device)
+        with torch.no_grad():
+            model_esm.classifier.out_proj.bias.copy_(prior_bias)
+        print(f"[INFO] Initialized classifier bias to label priors: {dict(zip(label_names, label_priors.tolist()))}")
 
     train_dataloader = torch.utils.data.DataLoader(
         processed_dataset["train"],
