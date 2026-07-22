@@ -1,0 +1,127 @@
+[
+  {
+    "trial_id": "trial-018",
+    "axis": "lr_schedule",
+    "note": "cosine decay over the full 10-epoch run instead of flat post-warmup",
+    "args": [
+      "--model-name", "facebook/esm2_t6_8M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--lr-schedule", "cosine"
+    ]
+  },
+  {
+    "trial_id": "trial-019",
+    "axis": "warmup_steps",
+    "note": "longer warmup (300 steps vs default ~60)",
+    "args": [
+      "--model-name", "facebook/esm2_t6_8M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--warmup-steps", "300"
+    ]
+  },
+  {
+    "trial_id": "trial-020",
+    "axis": "label_smoothing (regularization)",
+    "note": "smooth 0/1 BCE targets by 0.05",
+    "args": [
+      "--model-name", "facebook/esm2_t6_8M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--label-smoothing", "0.05"
+    ]
+  },
+  {
+    "trial_id": "trial-021",
+    "axis": "decouple_bias_wd (regularization)",
+    "note": "exclude bias/LayerNorm params from weight decay (standard AdamW refinement)",
+    "args": [
+      "--model-name", "facebook/esm2_t6_8M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--decouple-bias-wd"
+    ]
+  },
+  {
+    "trial_id": "trial-022",
+    "axis": "grad_accum_steps",
+    "note": "effective batch size 16 (accum=2) instead of 8, less gradient noise",
+    "args": [
+      "--model-name", "facebook/esm2_t6_8M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--grad-accum-steps", "2"
+    ]
+  },
+  {
+    "trial_id": "trial-023",
+    "axis": "unfreeze_last_n",
+    "note": "moderate capacity increase (3 vs 1) - untested increment between the no-effect 1/2 and the unreliable-to-run 6",
+    "args": [
+      "--model-name", "facebook/esm2_t6_8M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "3",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  }
+]

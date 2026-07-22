@@ -10,12 +10,30 @@
     "batch_size": 8,
     "grad_clip_norm": 1.0
   },
-  "regularization_axes": ["output_dropout", "esm_dropout", "attention_dropout", "weight_decay"],
-  "non_regularization_axes": ["learning_rate", "unfreeze_last_n"],
-  "round": 0,
-  "status": "awaiting_round_0_seed_result",
-  "beam": [],
-  "queued_experiments": [],
+  "regularization_axes": ["output_dropout", "esm_dropout", "attention_dropout", "weight_decay", "label_smoothing", "decouple_bias_wd"],
+  "non_regularization_axes": ["learning_rate", "unfreeze_last_n", "lr_schedule", "warmup_steps", "grad_accum_steps"],
+  "round": 1,
+  "status": "round_1_running",
+  "beam": [
+    {
+      "trial": "trial-015",
+      "config": {
+        "model_name": "facebook/esm2_t6_8M_UR50D",
+        "unfreeze_last_n": 1,
+        "learning_rate": 0.0002,
+        "output_dropout": 0.2,
+        "esm_dropout": 0.0,
+        "attention_dropout": 0.0,
+        "weight_decay": 0.5
+      },
+      "best_val_loss": 0.599,
+      "note": "sole seed for round 1 (trial-016 nearly identical at unfreeze=2, folded into round 1's unfreeze axis instead of carried as a second beam member)"
+    }
+  ],
+  "queued_experiments": ["trial-018", "trial-019", "trial-020", "trial-021", "trial-022", "trial-023"],
+  "manifest_file": "experiments/round1_manifest.json",
   "completed_this_round": [],
-  "history": []
+  "history": [
+    {"round": 0, "note": "ad hoc single-axis exploration, trial-001 through trial-017 (trial-017 abandoned after 3 infra failures)"}
+  ]
 }
