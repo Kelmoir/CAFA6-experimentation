@@ -390,7 +390,8 @@ def main() -> None:
         train_loss = 0.0
         train_metrics = {"accuracy": 0.0, "recall": 0.0}
 
-        for batch in train_dataloader:
+        log_every = max(1, len(train_dataloader) // 25)
+        for step, batch in enumerate(train_dataloader):
             input_ids = batch["input_ids"].to(device)
             attention_mask = batch["attention_mask"].to(device)
             labels = batch["labels"].to(device)
@@ -404,6 +405,12 @@ def main() -> None:
             torch.nn.utils.clip_grad_norm_(model_esm.parameters(), max_norm=args.grad_clip_norm)
             optimizer.step()
             scheduler.step()
+
+            if (step + 1) % log_every == 0:
+                # Periodic output keeps the colab exec websocket carrying traffic during
+                # the otherwise-silent multi-minute training loop; a long silent stretch
+                # has been observed to trigger "Connection was lost" mid-epoch.
+                print(f"[STEP] epoch={epoch + 1} step={step + 1}/{len(train_dataloader)} loss={loss.item():.4f}")
 
             batch_metrics = compute_metrics(logits, labels)
             train_metrics["accuracy"] += batch_metrics["accuracy"]
