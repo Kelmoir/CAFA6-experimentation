@@ -513,6 +513,71 @@ been run past 4 epochs yet despite the user's guidance to try 5-10+.
 Gap widens back out to 0.080 (from epoch 4's 0.046) — the delay bought by wd=0.5 was real but finite;
 overfitting resumes by epoch 5.
 
+## Infra update: `colab exec` connection-drop root cause found, workaround adopted
+
+Researched the recurring `RuntimeError: Connection was lost` against the upstream `google-colab-cli`
+and `jupyter-kernel-client` GitHub repos. The VM-idle-pruning bug behind it (CLI-created runtimes hit
+`403 USER_PROJECT_DENIED` on their keep-alive RPC, since ordinary accounts lack entitlement on Colab's
+internal project) is documented in `googlecolab/google-colab-cli#14` and was fixed upstream in
+v0.6.0 (which we already have installed) by switching to a Tunnel Frontend HTTP ping. A related,
+apparently-still-open gap affects CLI-driven sessions run as discrete invocations with idle gaps
+between them. Separately, the underlying `jupyter_kernel_client` websocket has `reconnect_interval`
+disabled by design (`datalayer/jupyter-kernel-client#17`), and `google-colab-cli` never overrides that
+default — so any transient blip on that connection during an active `exec` call is unrecoverable.
+
+**Workaround (adopted per user direction)**: manually provision a T4 runtime via the Colab web UI (named
+`claude_cafa6`), then adopt it into the CLI's local session store using `colab_cli`'s internal
+`list_assignments()`/`SessionState`/`store.add()` APIs (documented as a community workaround in the
+same GitHub issue thread). A **browser-owned** runtime is kept alive by the browser tab itself, not the
+CLI's keep-alive daemon, sidestepping both known failure paths. Verified working: a GPU smoke test and
+then a full 10-epoch training run (trial-015, below) both completed in a single `colab exec` call with
+zero connection drops — a first for this sweep. Per user instruction, this session is not stopped
+between trials; it stays alive until the user says so or the browser tab/instance is closed.
+**Operating pattern going forward**: one `colab exec` call per experiment, up to 10 epochs, reusing the
+adopted `claude_cafa6` session — no more per-epoch chunking.
+
+## trial-015
+
+**Config**: `esm2_t6_8M`, unfreeze=1, lr=2e-4, out_drop=0.2, esm_drop=0.0, attn_drop=0.0, grad_clip=1.0,
+wd=0.5, train_n=12000/epoch (varying subset per epoch), val_n=2000, seed=42, bias-init fix. First clean,
+uninterrupted 10-epoch run in a single `colab exec` call (no resume/optimizer-reset artifacts).
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 1 | 0.6046 | 0.6039 | 0.6991 | 0.6918 | 0.9925 | 0.9812 |
+| 2 | 0.5938 | 0.6049 | 0.7041 | 0.6938 | 0.9802 | 0.9889 |
+| 3 | 0.5937 | 0.6020 | 0.7020 | 0.6947 | 0.9777 | 0.9849 |
+| 4 | 0.5936 | 0.6076 | 0.7025 | 0.6943 | 0.9741 | 0.9677 |
+| 5 | 0.5885 | 0.6015 | 0.7063 | 0.6885 | 0.9760 | 0.9593 |
+| 6 | 0.5887 | 0.6040 | 0.7073 | 0.6870 | 0.9766 | 0.9529 |
+| 7 | 0.5887 | 0.6133 | 0.7051 | 0.6953 | 0.9694 | 0.9949 |
+| 8 | 0.5928 | 0.5990 | 0.7027 | 0.6947 | 0.9731 | 0.9749 |
+| 9 | 0.5850 | 0.6000 | 0.7098 | 0.6912 | 0.9737 | 0.9672 |
+| 10 | 0.5926 | 0.6074 | 0.7035 | 0.6947 | 0.9740 | 0.9773 |
+
+**Verdict: the best-behaved trajectory in the sweep so far — a stable plateau, not overfitting or dead.**
+train_loss drops from 0.6046 to a ~0.585-0.593 plateau by epoch 5 and stays there (not continuing toward
+memorization). val_loss oscillates in a tight band (0.599-0.613) around ~0.605 with no systematic drift
+in either direction across all 10 epochs — best value (0.5990) at epoch 8, essentially matching epoch
+1's start. The train/val gap stays small (~0.01-0.02) and doesn't widen the way it did in every earlier
+multi-epoch trial. This isn't a strong "both improving together" HEALTHY curve (val isn't clearly
+trending down), but it's unambiguously stable rather than diverging — and train_loss itself plateauing
+suggests the bottleneck is now model **capacity** at unfreeze=1, not regularization.
+
+**Next action**: trial-016 tests `--unfreeze-last-n 2` (still minimal per the user's efficiency
+preference, but more than the current capacity-limited 1), same wd=0.5, lr=2e-4, 10 epochs — check
+whether more trainable capacity lets train_loss (and hopefully val_loss) push meaningfully past the
+current plateau.
+
+**User-confirmed constraints going forward**: (1) every trial from here on runs exactly 10 epochs with
+`--max-train-samples` fixed at 12000, so trials stay directly comparable; (2) once a satisfactory config
+is found at this model size (`esm2_t6_8M`), scale up to a larger model but re-run the regularization
+search from scratch on the larger model rather than assuming trial-015/016/...'s settings transfer —
+given how much trouble regularization caused at this scale, nothing about it should be assumed to
+generalize across model sizes.
+
 ## Important nuance surfaced by the full trial-012 trajectory
 
 Looking at trial-012's val_loss across all 5 epochs: **0.6046 → 0.6053 → 0.6077 → 0.6132 → 0.6252 — it

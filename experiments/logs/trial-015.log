@@ -1,0 +1,343 @@
+[CONFIG] {"device": "cuda", "epochs": 10, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t6_8M_UR50D", "unfreeze_last_n": 1, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.5, "max_minutes": null, "run_name": "trial-015", "trackio_space_id": null, "checkpoint": true, "checkpoint_branch": "trial-015", "hf_token_file": "/content/.hf_token", "resume_from_revision": null, "start_epoch": 0}
+/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_auth.py:138: UserWarning: 
+Error while fetching `HF_TOKEN` secret value from your vault: 'Requesting secret HF_TOKEN timed out. Secrets can only be fetched when running from the Colab UI.'.
+  warnings.warn(f"\nError while fetching `HF_TOKEN` secret value from your vault: '{str(e)}'.")
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+README.md:   0%|          | 0.00/668 [00:00<?, ?B/s]
+data/train-00000-of-00001.parquet: reconstructing file:   0%|          |  0.00B 
+/ 22.3MB            
+data/train-00000-of-00001.parquet: downloading bytes:           |  0.00B        
+data/validation-00000-of-00001.parquet: reconstructing file:   0%|          |  
+0.00B / 6.26MB            
+data/validation-00000-of-00001.parquet: downloading bytes:           |  0.00B   
+data/test-00000-of-00001.parquet: reconstructing file:   0%|          |  0.00B /
+6.28MB            
+data/test-00000-of-00001.parquet: downloading bytes:           |  0.00B         
+Generating train split:   0%|          | 0/50168 [00:00<?, ? examples/s]
+Generating validation split:   0%|          | 0/14131 [00:00<?, ? examples/s]
+Generating test split:   0%|          | 0/14182 [00:00<?, ? examples/s]
+tokenizer_config.json:   0%|          | 0.00/95.0 [00:00<?, ?B/s]
+vocab.txt:   0%|          | 0.00/93.0 [00:00<?, ?B/s]
+special_tokens_map.json:   0%|          | 0.00/125 [00:00<?, ?B/s]
+config.json:   0%|          | 0.00/775 [00:00<?, ?B/s]
+model.safetensors: reconstructing file:   0%|          |  0.00B / 31.4MB        
+model.safetensors: downloading bytes:           |  0.00B            
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]
+[transformers] [1mEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t6_8M_UR50D
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.dense.bias         | UNEXPECTED | 
+lm_head.layer_norm.bias    | UNEXPECTED | 
+lm_head.bias               | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+lm_head.layer_norm.weight  | UNEXPECTED | 
+classifier.dense.weight    | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.out_proj.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+Model layers: 6, request unfreeze layers: 1
+[INFO] Initialized classifier bias to label priors: {'C': 0.7161936163902283, 'F': 0.6852575540542603, 'P': 0.6928520202636719}
+* Trackio project initialized: cafa6
+* Trackio metrics logged to: /root/.cache/huggingface/trackio
+* NVIDIA GPU detected, enabling automatic GPU metrics logging
+* psutil detected, enabling automatic CPU/system metrics logging
+* Created new run: trial-015
+[INFO] HF token resolved via --hf-token-file
+/usr/local/lib/python3.12/dist-packages/trackio/utils.py:27: UserWarning: Reserved keys renamed: ['step'] → '__{key}'
+  warnings.warn(message, *args, **kwargs)
+[STEP] epoch=1 step=60/1500 loss=0.5691
+[STEP] epoch=1 step=120/1500 loss=0.4518
+[STEP] epoch=1 step=180/1500 loss=0.5991
+[STEP] epoch=1 step=240/1500 loss=0.6854
+[STEP] epoch=1 step=300/1500 loss=0.5630
+[STEP] epoch=1 step=360/1500 loss=0.7436
+[STEP] epoch=1 step=420/1500 loss=0.6539
+[STEP] epoch=1 step=480/1500 loss=0.5361
+[STEP] epoch=1 step=540/1500 loss=0.6466
+[STEP] epoch=1 step=600/1500 loss=0.6333
+[STEP] epoch=1 step=660/1500 loss=0.6719
+[STEP] epoch=1 step=720/1500 loss=0.5576
+[STEP] epoch=1 step=780/1500 loss=0.4627
+[STEP] epoch=1 step=840/1500 loss=0.5407
+[STEP] epoch=1 step=900/1500 loss=0.6047
+[STEP] epoch=1 step=960/1500 loss=0.5609
+[STEP] epoch=1 step=1020/1500 loss=0.5388
+[STEP] epoch=1 step=1080/1500 loss=0.5268
+[STEP] epoch=1 step=1140/1500 loss=0.6688
+[STEP] epoch=1 step=1200/1500 loss=0.6289
+[STEP] epoch=1 step=1260/1500 loss=0.8062
+[STEP] epoch=1 step=1320/1500 loss=0.4860
+[STEP] epoch=1 step=1380/1500 loss=0.6867
+[STEP] epoch=1 step=1440/1500 loss=0.5483
+[STEP] epoch=1 step=1500/1500 loss=0.6895
+Epoch 1/10 | train_loss=0.6046 | val_loss=0.6039 | train_acc=0.6991 | val_acc=0.6918 | train_recall=0.9925 | val_recall=0.9812
+[TIMING] epoch 1 elapsed=225.4s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 1 to kelmoir/cafa6-esm@trial-015
+[STEP] epoch=2 step=60/1500 loss=0.3466
+[STEP] epoch=2 step=120/1500 loss=0.5891
+[STEP] epoch=2 step=180/1500 loss=0.5067
+[STEP] epoch=2 step=240/1500 loss=0.5462
+[STEP] epoch=2 step=300/1500 loss=0.4988
+[STEP] epoch=2 step=360/1500 loss=0.6086
+[STEP] epoch=2 step=420/1500 loss=0.5719
+[STEP] epoch=2 step=480/1500 loss=0.6308
+[STEP] epoch=2 step=540/1500 loss=0.5659
+[STEP] epoch=2 step=600/1500 loss=0.4955
+[STEP] epoch=2 step=660/1500 loss=0.4850
+[STEP] epoch=2 step=720/1500 loss=0.6249
+[STEP] epoch=2 step=780/1500 loss=0.6643
+[STEP] epoch=2 step=840/1500 loss=0.4555
+[STEP] epoch=2 step=900/1500 loss=0.3779
+[STEP] epoch=2 step=960/1500 loss=0.4247
+[STEP] epoch=2 step=1020/1500 loss=0.5009
+[STEP] epoch=2 step=1080/1500 loss=0.5536
+[STEP] epoch=2 step=1140/1500 loss=0.6405
+[STEP] epoch=2 step=1200/1500 loss=0.5501
+[STEP] epoch=2 step=1260/1500 loss=0.6668
+[STEP] epoch=2 step=1320/1500 loss=0.6527
+[STEP] epoch=2 step=1380/1500 loss=0.6357
+[STEP] epoch=2 step=1440/1500 loss=0.7684
+[STEP] epoch=2 step=1500/1500 loss=0.5709
+Epoch 2/10 | train_loss=0.5938 | val_loss=0.6049 | train_acc=0.7041 | val_acc=0.6938 | train_recall=0.9802 | val_recall=0.9889
+[TIMING] epoch 2 elapsed=233.7s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 2 to kelmoir/cafa6-esm@trial-015
+[STEP] epoch=3 step=60/1500 loss=0.4994
+[STEP] epoch=3 step=120/1500 loss=0.6075
+[STEP] epoch=3 step=180/1500 loss=0.7029
+[STEP] epoch=3 step=240/1500 loss=0.5920
+[STEP] epoch=3 step=300/1500 loss=0.6304
+[STEP] epoch=3 step=360/1500 loss=0.6154
+[STEP] epoch=3 step=420/1500 loss=0.6455
+[STEP] epoch=3 step=480/1500 loss=0.7291
+[STEP] epoch=3 step=540/1500 loss=0.6161
+[STEP] epoch=3 step=600/1500 loss=0.6423
+[STEP] epoch=3 step=660/1500 loss=0.6251
+[STEP] epoch=3 step=720/1500 loss=0.4942
+[STEP] epoch=3 step=780/1500 loss=0.7469
+[STEP] epoch=3 step=840/1500 loss=0.7289
+[STEP] epoch=3 step=900/1500 loss=0.5672
+[STEP] epoch=3 step=960/1500 loss=0.4877
+[STEP] epoch=3 step=1020/1500 loss=0.5311
+[STEP] epoch=3 step=1080/1500 loss=0.6936
+[STEP] epoch=3 step=1140/1500 loss=0.5319
+[STEP] epoch=3 step=1200/1500 loss=0.7231
+[STEP] epoch=3 step=1260/1500 loss=0.6254
+[STEP] epoch=3 step=1320/1500 loss=0.8628
+[STEP] epoch=3 step=1380/1500 loss=0.6201
+[STEP] epoch=3 step=1440/1500 loss=0.7434
+[STEP] epoch=3 step=1500/1500 loss=0.5215
+Epoch 3/10 | train_loss=0.5937 | val_loss=0.6020 | train_acc=0.7020 | val_acc=0.6947 | train_recall=0.9777 | val_recall=0.9849
+[TIMING] epoch 3 elapsed=233.0s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 3 to kelmoir/cafa6-esm@trial-015
+[STEP] epoch=4 step=60/1500 loss=0.5888
+[STEP] epoch=4 step=120/1500 loss=0.7883
+[STEP] epoch=4 step=180/1500 loss=0.5394
+[STEP] epoch=4 step=240/1500 loss=0.5249
+[STEP] epoch=4 step=300/1500 loss=0.6830
+[STEP] epoch=4 step=360/1500 loss=0.6019
+[STEP] epoch=4 step=420/1500 loss=0.5847
+[STEP] epoch=4 step=480/1500 loss=0.5829
+[STEP] epoch=4 step=540/1500 loss=0.5911
+[STEP] epoch=4 step=600/1500 loss=0.6174
+[STEP] epoch=4 step=660/1500 loss=0.7328
+[STEP] epoch=4 step=720/1500 loss=0.4582
+[STEP] epoch=4 step=780/1500 loss=0.6503
+[STEP] epoch=4 step=840/1500 loss=0.7090
+[STEP] epoch=4 step=900/1500 loss=0.5973
+[STEP] epoch=4 step=960/1500 loss=0.6195
+[STEP] epoch=4 step=1020/1500 loss=0.5605
+[STEP] epoch=4 step=1080/1500 loss=0.5388
+[STEP] epoch=4 step=1140/1500 loss=0.7395
+[STEP] epoch=4 step=1200/1500 loss=0.6693
+[STEP] epoch=4 step=1260/1500 loss=0.6651
+[STEP] epoch=4 step=1320/1500 loss=0.7097
+[STEP] epoch=4 step=1380/1500 loss=0.6161
+[STEP] epoch=4 step=1440/1500 loss=0.6986
+[STEP] epoch=4 step=1500/1500 loss=0.8516
+Epoch 4/10 | train_loss=0.5936 | val_loss=0.6076 | train_acc=0.7025 | val_acc=0.6943 | train_recall=0.9741 | val_recall=0.9677
+[TIMING] epoch 4 elapsed=232.0s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 4 to kelmoir/cafa6-esm@trial-015
+[STEP] epoch=5 step=60/1500 loss=0.5510
+[STEP] epoch=5 step=120/1500 loss=0.5437
+[STEP] epoch=5 step=180/1500 loss=0.6621
+[STEP] epoch=5 step=240/1500 loss=0.5016
+[STEP] epoch=5 step=300/1500 loss=0.5644
+[STEP] epoch=5 step=360/1500 loss=0.8600
+[STEP] epoch=5 step=420/1500 loss=0.5889
+[STEP] epoch=5 step=480/1500 loss=0.7145
+[STEP] epoch=5 step=540/1500 loss=0.4298
+[STEP] epoch=5 step=600/1500 loss=0.6692
+[STEP] epoch=5 step=660/1500 loss=0.5585
+[STEP] epoch=5 step=720/1500 loss=0.5216
+[STEP] epoch=5 step=780/1500 loss=0.6780
+[STEP] epoch=5 step=840/1500 loss=0.6110
+[STEP] epoch=5 step=900/1500 loss=0.3944
+[STEP] epoch=5 step=960/1500 loss=0.5355
+[STEP] epoch=5 step=1020/1500 loss=0.6384
+[STEP] epoch=5 step=1080/1500 loss=0.7086
+[STEP] epoch=5 step=1140/1500 loss=0.5611
+[STEP] epoch=5 step=1200/1500 loss=0.4826
+[STEP] epoch=5 step=1260/1500 loss=0.6968
+[STEP] epoch=5 step=1320/1500 loss=0.4976
+[STEP] epoch=5 step=1380/1500 loss=0.6577
+[STEP] epoch=5 step=1440/1500 loss=0.6206
+[STEP] epoch=5 step=1500/1500 loss=0.6460
+Epoch 5/10 | train_loss=0.5885 | val_loss=0.6015 | train_acc=0.7063 | val_acc=0.6885 | train_recall=0.9760 | val_recall=0.9593
+[TIMING] epoch 5 elapsed=235.7s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 5 to kelmoir/cafa6-esm@trial-015
+[STEP] epoch=6 step=60/1500 loss=0.4452
+[STEP] epoch=6 step=120/1500 loss=0.6374
+[STEP] epoch=6 step=180/1500 loss=0.5501
+[STEP] epoch=6 step=240/1500 loss=0.5661
+[STEP] epoch=6 step=300/1500 loss=0.6349
+[STEP] epoch=6 step=360/1500 loss=0.5647
+[STEP] epoch=6 step=420/1500 loss=0.3967
+[STEP] epoch=6 step=480/1500 loss=0.6526
+[STEP] epoch=6 step=540/1500 loss=0.4845
+[STEP] epoch=6 step=600/1500 loss=0.5089
+[STEP] epoch=6 step=660/1500 loss=0.5977
+[STEP] epoch=6 step=720/1500 loss=0.5728
+[STEP] epoch=6 step=780/1500 loss=0.6449
+[STEP] epoch=6 step=840/1500 loss=0.4927
+[STEP] epoch=6 step=900/1500 loss=0.5371
+[STEP] epoch=6 step=960/1500 loss=0.6450
+[STEP] epoch=6 step=1020/1500 loss=0.6302
+[STEP] epoch=6 step=1080/1500 loss=0.4536
+[STEP] epoch=6 step=1140/1500 loss=0.6243
+[STEP] epoch=6 step=1200/1500 loss=0.5975
+[STEP] epoch=6 step=1260/1500 loss=0.6054
+[STEP] epoch=6 step=1320/1500 loss=0.5714
+[STEP] epoch=6 step=1380/1500 loss=0.6364
+[STEP] epoch=6 step=1440/1500 loss=0.4473
+[STEP] epoch=6 step=1500/1500 loss=0.5484
+Epoch 6/10 | train_loss=0.5887 | val_loss=0.6040 | train_acc=0.7073 | val_acc=0.6870 | train_recall=0.9766 | val_recall=0.9529
+[TIMING] epoch 6 elapsed=231.4s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 6 to kelmoir/cafa6-esm@trial-015
+[STEP] epoch=7 step=60/1500 loss=0.6772
+[STEP] epoch=7 step=120/1500 loss=0.5823
+[STEP] epoch=7 step=180/1500 loss=0.4607
+[STEP] epoch=7 step=240/1500 loss=0.5333
+[STEP] epoch=7 step=300/1500 loss=0.5814
+[STEP] epoch=7 step=360/1500 loss=0.5586
+[STEP] epoch=7 step=420/1500 loss=0.6305
+[STEP] epoch=7 step=480/1500 loss=0.5662
+[STEP] epoch=7 step=540/1500 loss=0.4873
+[STEP] epoch=7 step=600/1500 loss=0.5657
+[STEP] epoch=7 step=660/1500 loss=0.5443
+[STEP] epoch=7 step=720/1500 loss=0.6093
+[STEP] epoch=7 step=780/1500 loss=0.7299
+[STEP] epoch=7 step=840/1500 loss=0.4938
+[STEP] epoch=7 step=900/1500 loss=0.7437
+[STEP] epoch=7 step=960/1500 loss=0.6160
+[STEP] epoch=7 step=1020/1500 loss=0.5795
+[STEP] epoch=7 step=1080/1500 loss=0.5684
+[STEP] epoch=7 step=1140/1500 loss=0.5323
+[STEP] epoch=7 step=1200/1500 loss=0.6258
+[STEP] epoch=7 step=1260/1500 loss=0.4409
+[STEP] epoch=7 step=1320/1500 loss=0.5684
+[STEP] epoch=7 step=1380/1500 loss=0.7005
+[STEP] epoch=7 step=1440/1500 loss=0.5142
+[STEP] epoch=7 step=1500/1500 loss=0.6917
+Epoch 7/10 | train_loss=0.5887 | val_loss=0.6133 | train_acc=0.7051 | val_acc=0.6953 | train_recall=0.9694 | val_recall=0.9949
+[TIMING] epoch 7 elapsed=231.6s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 7 to kelmoir/cafa6-esm@trial-015
+[STEP] epoch=8 step=60/1500 loss=0.5638
+[STEP] epoch=8 step=120/1500 loss=0.3778
+[STEP] epoch=8 step=180/1500 loss=0.5261
+[STEP] epoch=8 step=240/1500 loss=0.6398
+[STEP] epoch=8 step=300/1500 loss=0.4425
+[STEP] epoch=8 step=360/1500 loss=0.6115
+[STEP] epoch=8 step=420/1500 loss=0.5248
+[STEP] epoch=8 step=480/1500 loss=0.6345
+[STEP] epoch=8 step=540/1500 loss=0.4909
+[STEP] epoch=8 step=600/1500 loss=0.6546
+[STEP] epoch=8 step=660/1500 loss=0.4730
+[STEP] epoch=8 step=720/1500 loss=0.6568
+[STEP] epoch=8 step=780/1500 loss=0.6654
+[STEP] epoch=8 step=840/1500 loss=0.5036
+[STEP] epoch=8 step=900/1500 loss=0.6609
+[STEP] epoch=8 step=960/1500 loss=0.8969
+[STEP] epoch=8 step=1020/1500 loss=0.6120
+[STEP] epoch=8 step=1080/1500 loss=0.7450
+[STEP] epoch=8 step=1140/1500 loss=0.6570
+[STEP] epoch=8 step=1200/1500 loss=0.6569
+[STEP] epoch=8 step=1260/1500 loss=0.4658
+[STEP] epoch=8 step=1320/1500 loss=0.5759
+[STEP] epoch=8 step=1380/1500 loss=0.5279
+[STEP] epoch=8 step=1440/1500 loss=0.6720
+[STEP] epoch=8 step=1500/1500 loss=0.6017
+Epoch 8/10 | train_loss=0.5928 | val_loss=0.5990 | train_acc=0.7027 | val_acc=0.6947 | train_recall=0.9731 | val_recall=0.9749
+[TIMING] epoch 8 elapsed=234.1s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 8 to kelmoir/cafa6-esm@trial-015
+[STEP] epoch=9 step=60/1500 loss=0.5410
+[STEP] epoch=9 step=120/1500 loss=0.4982
+[STEP] epoch=9 step=180/1500 loss=0.5415
+[STEP] epoch=9 step=240/1500 loss=0.7141
+[STEP] epoch=9 step=300/1500 loss=0.6723
+[STEP] epoch=9 step=360/1500 loss=0.6015
+[STEP] epoch=9 step=420/1500 loss=0.5203
+[STEP] epoch=9 step=480/1500 loss=0.4551
+[STEP] epoch=9 step=540/1500 loss=0.6067
+[STEP] epoch=9 step=600/1500 loss=0.4640
+[STEP] epoch=9 step=660/1500 loss=0.4579
+[STEP] epoch=9 step=720/1500 loss=0.6288
+[STEP] epoch=9 step=780/1500 loss=0.4607
+[STEP] epoch=9 step=840/1500 loss=0.4314
+[STEP] epoch=9 step=900/1500 loss=0.5138
+[STEP] epoch=9 step=960/1500 loss=0.4620
+[STEP] epoch=9 step=1020/1500 loss=0.5353
+[STEP] epoch=9 step=1080/1500 loss=0.6744
+[STEP] epoch=9 step=1140/1500 loss=0.6137
+[STEP] epoch=9 step=1200/1500 loss=0.5007
+[STEP] epoch=9 step=1260/1500 loss=0.6523
+[STEP] epoch=9 step=1320/1500 loss=0.6187
+[STEP] epoch=9 step=1380/1500 loss=0.5642
+[STEP] epoch=9 step=1440/1500 loss=0.5158
+[STEP] epoch=9 step=1500/1500 loss=0.5739
+Epoch 9/10 | train_loss=0.5850 | val_loss=0.6000 | train_acc=0.7098 | val_acc=0.6912 | train_recall=0.9737 | val_recall=0.9672
+[TIMING] epoch 9 elapsed=233.4s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 9 to kelmoir/cafa6-esm@trial-015
+[STEP] epoch=10 step=60/1500 loss=0.6060
+[STEP] epoch=10 step=120/1500 loss=0.5791
+[STEP] epoch=10 step=180/1500 loss=0.6148
+[STEP] epoch=10 step=240/1500 loss=0.5861
+[STEP] epoch=10 step=300/1500 loss=0.6259
+[STEP] epoch=10 step=360/1500 loss=0.6318
+[STEP] epoch=10 step=420/1500 loss=0.6362
+[STEP] epoch=10 step=480/1500 loss=0.6699
+[STEP] epoch=10 step=540/1500 loss=0.4487
+[STEP] epoch=10 step=600/1500 loss=0.6052
+[STEP] epoch=10 step=660/1500 loss=0.7664
+[STEP] epoch=10 step=720/1500 loss=0.6006
+[STEP] epoch=10 step=780/1500 loss=0.5570
+[STEP] epoch=10 step=840/1500 loss=0.5810
+[STEP] epoch=10 step=900/1500 loss=0.7140
+[STEP] epoch=10 step=960/1500 loss=0.6177
+[STEP] epoch=10 step=1020/1500 loss=0.7894
+[STEP] epoch=10 step=1080/1500 loss=0.8164
+[STEP] epoch=10 step=1140/1500 loss=0.6515
+[STEP] epoch=10 step=1200/1500 loss=0.8179
+[STEP] epoch=10 step=1260/1500 loss=0.7423
+[STEP] epoch=10 step=1320/1500 loss=0.4649
+[STEP] epoch=10 step=1380/1500 loss=0.6814
+[STEP] epoch=10 step=1440/1500 loss=0.5334
+[STEP] epoch=10 step=1500/1500 loss=0.5319
+Epoch 10/10 | train_loss=0.5926 | val_loss=0.6074 | train_acc=0.7035 | val_acc=0.6947 | train_recall=0.9740 | val_recall=0.9773
+[TIMING] epoch 10 elapsed=233.4s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 10 to kelmoir/cafa6-esm@trial-015
+[SUMMARY] {"run_name": "trial-015", "epochs_completed": 10, "final_train_loss": 0.5925531119306883, "final_val_loss": 0.6074265550374984, "train_accuracy": 0.7034722422162691, "val_accuracy": 0.694666685461998, "train_recall": 0.974011646270752, "val_recall": 0.9772920699119568}
