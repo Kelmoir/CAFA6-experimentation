@@ -339,8 +339,9 @@ def main() -> None:
         "test": dataset["test"].with_transform(transform=preprocess_batch_partial),
     }
 
-    if args.max_train_samples is not None:
-        processed_dataset["train"] = processed_dataset["train"].select(range(min(args.max_train_samples, len(processed_dataset["train"]))))
+    # train stays unsliced here (unlike validation) so each epoch can draw a different
+    # --max-train-samples-sized subset below, instead of memorizing the same fixed rows
+    # every epoch of a multi-epoch run.
     if args.max_val_samples is not None:
         processed_dataset["validation"] = processed_dataset["validation"].select(range(min(args.max_val_samples, len(processed_dataset["validation"]))))
 
@@ -361,8 +362,6 @@ def main() -> None:
         # learning the bias (saturating logits toward the prior), which shrinks per-example
         # gradient magnitude and starves the weight matrix of signal to actually discriminate.
         raw_train_labels = dataset_train["labels"]
-        if args.max_train_samples is not None:
-            raw_train_labels = raw_train_labels[: min(args.max_train_samples, len(raw_train_labels))]
         label_counts = torch.zeros(len(UNIQUE_ASPECTS))
         for labs in raw_train_labels:
             for idx in labs:
@@ -373,12 +372,19 @@ def main() -> None:
             model_esm.classifier.out_proj.bias.copy_(prior_bias)
         print(f"[INFO] Initialized classifier bias to label priors: {dict(zip(label_names, label_priors.tolist()))}")
 
-    train_dataloader = torch.utils.data.DataLoader(
-        processed_dataset["train"],
-        batch_size=args.batch_size,
-        shuffle=True,
-        collate_fn=partial(data_collate_function, tokenizer=tokenizer),
-    )
+    def build_train_dataloader(epoch: int) -> torch.utils.data.DataLoader:
+        train_subset = processed_dataset["train"]
+        if args.max_train_samples is not None:
+            n = min(args.max_train_samples, len(train_subset))
+            train_subset = train_subset.shuffle(seed=args.seed + epoch).select(range(n))
+        return torch.utils.data.DataLoader(
+            train_subset,
+            batch_size=args.batch_size,
+            shuffle=True,
+            collate_fn=partial(data_collate_function, tokenizer=tokenizer),
+        )
+
+    train_dataloader = build_train_dataloader(args.start_epoch)
     validation_dataloader = torch.utils.data.DataLoader(
         processed_dataset["validation"],
         batch_size=args.batch_size,
@@ -401,6 +407,8 @@ def main() -> None:
     start_time = time.time()
 
     for epoch in range(args.start_epoch, args.start_epoch + args.epochs):
+        if epoch != args.start_epoch:
+            train_dataloader = build_train_dataloader(epoch)
         epoch_start = time.time()
         model_esm.train()
         train_loss = 0.0
