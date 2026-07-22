@@ -578,6 +578,54 @@ search from scratch on the larger model rather than assuming trial-015/016/...'s
 given how much trouble regularization caused at this scale, nothing about it should be assumed to
 generalize across model sizes.
 
+## Infra note: workspace crash, session re-adoption, reusable scripts
+
+The `claude_cafa6` adopted session was lost when the user's browser/workspace crashed mid-trial-016
+(first attempt): the `colab exec` call hung indefinitely against the dead runtime rather than erroring
+out (consistent with the busy-poll-on-timeout class of bug in `googlecolab/google-colab-cli#82`), and
+had to be killed via `TaskStop`. No progress was lost — the crash happened before any epoch completed
+or checkpoint pushed. Re-adopted a freshly-reprovisioned browser runtime under the same name and
+re-verified with a GPU smoke test before continuing.
+
+Also extracted the repeated launch sequence (generate a `sys.argv` wrapper, upload token, upload
+script, run `colab exec`, log output) into reusable scripts, since it had been copy-pasted by hand for
+every single trial: `experiments/scripts/run_trial.sh <trial-name> <session-name> [--timeout N] --
+<training_run.py args...>`, `experiments/scripts/adopt_session.py <session-name>`, and
+`experiments/scripts/check_and_adopt_session.sh <session-name>` (checks liveness, adopts + smoke-tests
+if needed). All trials from trial-016 onward are launched via `run_trial.sh`.
+
+## trial-016
+
+**Config**: `esm2_t6_8M`, unfreeze=2 (up from trial-015's 1), lr=2e-4, out_drop=0.2, esm_drop=0.0,
+attn_drop=0.0, grad_clip=1.0, wd=0.5, train_n=12000/epoch (per-epoch variation), val_n=2000, seed=42,
+10 epochs in one clean `colab exec` call (via `run_trial.sh`, on the re-adopted `claude_cafa6` session).
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 1 | 0.6038 | 0.6031 | 0.6991 | 0.6902 | 0.9897 | 0.9730 |
+| 2 | 0.5940 | 0.6063 | 0.7042 | 0.6943 | 0.9783 | 0.9750 |
+| 3 | 0.5947 | 0.6021 | 0.7007 | 0.6935 | 0.9744 | 0.9863 |
+| 4 | 0.5948 | 0.6077 | 0.7022 | 0.6917 | 0.9742 | 0.9595 |
+| 5 | 0.5899 | 0.6017 | 0.7061 | 0.6912 | 0.9759 | 0.9578 |
+| 6 | 0.5905 | 0.6053 | 0.7062 | 0.6887 | 0.9742 | 0.9577 |
+| 7 | 0.5908 | 0.6185 | 0.7040 | 0.6945 | 0.9688 | 0.9956 |
+| 8 | 0.5946 | 0.5997 | 0.7013 | 0.6947 | 0.9728 | 0.9833 |
+| 9 | 0.5870 | 0.5995 | 0.7081 | 0.6935 | 0.9724 | 0.9789 |
+| 10 | 0.5946 | 0.6080 | 0.7003 | 0.6922 | 0.9735 | 0.9795 |
+
+**Verdict: essentially identical to trial-015 — doubling unfrozen layers (1→2) made no meaningful
+difference.** Train_loss plateau (~0.587-0.595) and val_loss oscillation band (0.5995-0.6185) both
+closely match trial-015's (~0.585-0.593 / 0.599-0.613). A small capacity increase isn't the lever here.
+
+**Next action**: trial-017 tests a much larger capacity jump — full unfreeze (`--unfreeze-last-n 6`,
+i.e. the entire `esm2_t6_8M` encoder) — to decisively check whether capacity matters at all before
+concluding this plateau reflects a data/task ceiling rather than a model-size limitation. If full
+unfreeze still lands in the same place, the plateau is likely close to what's achievable with the
+current `--max-train-samples 12000` budget and this task's difficulty, and it may be time to consider
+this model size "satisfactory" per the user's stated criteria before moving to scale-up.
+
 ## Important nuance surfaced by the full trial-012 trajectory
 
 Looking at trial-012's val_loss across all 5 epochs: **0.6046 → 0.6053 → 0.6077 → 0.6132 → 0.6252 — it
