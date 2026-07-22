@@ -70,7 +70,8 @@ purely to hit the ~1h wall-clock budget, not a regularization lever.
 | trial-003 | esm2_t6_8M | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (split across 2 sessions via resume) | 20000 | 2000 | ~7.4min + ~7.4min (2 sessions) | DEAD (weak signal) | raise lr to 2e-4 and unfreeze-last-n to 4 for trial-004 |
 | trial-004 | esm2_t6_8M | 4 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (split across 2 sessions via resume) | 12000 | 2000 | ~7.0min + ~6.5min (2 sessions) | DEAD (still, prior-prediction basin) | raise lr to 1e-3 for trial-005; local diagnostic ruled out a pipeline bug |
 | trial-005 | esm2_t6_8M | 4 | 1e-3 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 1 | 12000 | 2000 | ~6.4min | WORSE (full collapse, val_recall=1.0) | root-caused to BCE bias-saturation trap; add classifier bias-to-prior init for trial-006 |
-| trial-006 | esm2_t6_8M | 4 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 1 (epoch 1 of an extended run) | 12000 | 2000 | ~6.6min | DEAD (bias-init fix made no difference) | extend to more epochs via resume to test "needs more steps" |
+| trial-006 | esm2_t6_8M | 4 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (via resume) | 12000 | 2000 | ~6.6min + ~6.5min | DEAD (2 epochs, still flat) | pivot to model size for trial-007 |
+| trial-007 | esm2_t12_35M | 4 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 1 | 6000 | 2000 | ~7.6min | DEAD (same plateau, 4x larger model) | pause sweep, consult user — 5 materially different configs all converge to the same plateau |
 
 ## trial-001
 
@@ -284,6 +285,54 @@ where the bias starts or how large the LR is.
 "needs more steps" hypothesis. Continue epoch-by-epoch and stop early if the plateau breaks or if
 several more epochs still show no movement (at which point the next lever is architecture: more
 unfrozen layers or a larger base model, not more patience).
+
+## trial-007
+
+**Config**: `esm2_t12_35M` (4x larger than trial-001-006's `esm2_t6_8M`; 12 layers vs 6), unfreeze=4,
+lr=2e-4, out_drop=0.2, esm_drop=0.0, attn_drop=0.0, grad_clip=1.0, wd=0.01, epochs=1, train_n=6000
+(reduced further for the larger model's slower per-step time), val_n=2000, seed=42, bias-init fix in
+place.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 1 | 0.6158 | 0.6089 | 0.6851 | 0.6902 | 0.9894 | 0.9982 |
+
+**Verdict: DEAD — same plateau as every prior config.** val_loss (0.6089) and val_recall (0.9982) are
+statistically indistinguishable from trial-003 through trial-006, despite this model having 4x the
+parameters and 2x the encoder depth of every trial before it.
+
+## Status: pausing the sweep to reassess
+
+Five materially different configurations have now converged to the same "predict near the population
+prior" plateau (val_loss ≈ 0.60-0.62, val_recall ≈ 0.97-1.0, val_acc ≈ 0.69) within one epoch, and stay
+there:
+- learning rate spanning 5e-5 to 1e-3 (20x range) — trial-003 vs trial-005
+- unfrozen-layer count 2 vs 4 — trial-003 vs trial-004
+- classifier bias initialized to zero vs. the label prior's log-odds — trial-004 vs trial-006
+- 1 epoch vs 2 epochs at an identical config — trial-006 epoch 1 vs epoch 2
+- model size 8M vs 35M params (6 vs 12 encoder layers) — trial-006 vs trial-007
+
+A local CPU check (not a GPU trial) confirmed gradients flow correctly and the model can drive loss to
+near-zero memorizing a small fixed batch, ruling out a dead-gradient/pipeline bug. Given how consistent
+the plateau is across every lever tried so far, further blind hyperparameter trials are unlikely to be
+a good use of GPU time/compute credits without a new hypothesis. Plausible remaining directions, roughly
+in order of how cheap they are to test:
+1. **Much longer training budget** — everything so far has been capped at 1-2 epochs (~1500-3000 steps)
+   per the connection-ceiling constraint; genuine generalization on a hard, high-level task (predicting
+   only 3 coarse GO aspects from raw sequence) may need many more total steps than tested so far, via
+   many more chained `--resume-from-revision` epochs.
+2. **Full unfreeze** — `--unfreeze-last-n` has only been tried at 2/6, 4/6, and 4/12; a fully unfrozen
+   backbone hasn't been tested.
+3. **Loss/architecture changes** — e.g. focal loss instead of plain BCE, or a higher-capacity
+   classifier head — bigger code changes, worth trying only after (1)/(2) are exhausted.
+4. **Revisit the task framing itself** — verify aspect-level (C/F/P presence) prediction isn't close to
+   a genuinely hard-to-learn-from-sequence task at this scale, independent of everything tried so far.
+
+Stopping here to consult the user given the compute already spent (7 trials, several multi-epoch) and
+because the next move is a strategic choice about budget/direction rather than a confident next
+hyperparameter guess.
 
 **trial-006 epoch 2** (extension, same config, resumed from the trial-006 checkpoint):
 
