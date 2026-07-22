@@ -70,6 +70,7 @@ purely to hit the ~1h wall-clock budget, not a regularization lever.
 | trial-003 | esm2_t6_8M | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (split across 2 sessions via resume) | 20000 | 2000 | ~7.4min + ~7.4min (2 sessions) | DEAD (weak signal) | raise lr to 2e-4 and unfreeze-last-n to 4 for trial-004 |
 | trial-004 | esm2_t6_8M | 4 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (split across 2 sessions via resume) | 12000 | 2000 | ~7.0min + ~6.5min (2 sessions) | DEAD (still, prior-prediction basin) | raise lr to 1e-3 for trial-005; local diagnostic ruled out a pipeline bug |
 | trial-005 | esm2_t6_8M | 4 | 1e-3 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 1 | 12000 | 2000 | ~6.4min | WORSE (full collapse, val_recall=1.0) | root-caused to BCE bias-saturation trap; add classifier bias-to-prior init for trial-006 |
+| trial-006 | esm2_t6_8M | 4 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 1 (epoch 1 of an extended run) | 12000 | 2000 | ~6.6min | DEAD (bias-init fix made no difference) | extend to more epochs via resume to test "needs more steps" |
 
 ## trial-001
 
@@ -254,3 +255,32 @@ Verified locally (not a Colab trial): pre-training loss on a 200-example sample 
 now known to push toward collapse) with the bias-prior fix in place, `--unfreeze-last-n 4` unchanged.
 If the bias fix works, expect val_loss to drop meaningfully below the ~0.60-0.62 plateau and val_recall
 to move off its ~0.97-1.0 ceiling within the first epoch.
+
+## trial-006
+
+**Config**: `esm2_t6_8M`, unfreeze=4, lr=2e-4, out_drop=0.2, esm_drop=0.0, attn_drop=0.0, grad_clip=1.0,
+wd=0.01, train_n=12000, val_n=2000, seed=42, classifier bias initialized to label priors (`C=0.722,
+F=0.674, P=0.663` on this 12000-example subset).
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 1 | 0.6153 | 0.6070 | 0.6873 | 0.6933 | 0.9916 | 0.9877 |
+
+**Verdict: DEAD — the bias-init fix made essentially no difference.** val_loss (0.6070) and val_recall
+(0.9877) after epoch 1 are nearly identical to trial-004's epoch 1 (0.6066, 0.9893) at the same LR
+without the fix. The fix demonstrably engages (confirmed both by the printed prior values and the
+earlier local check showing it shifts pre-training loss), so this isn't a "the fix didn't run" issue —
+bias saturation is not the (sole) real bottleneck. Combined with trial-005 (higher LR made things
+worse), both of the DEAD rubric's first-line responses (raise LR, fix bias saturation) have now been
+tried without success. What hasn't been tested: patience. Every trial so far has been capped at 1-2
+epochs (forced by the connection-ceiling operational constraint). It's possible the weight matrix
+genuinely needs more gradient steps to develop discriminative signal beyond the prior, independent of
+where the bias starts or how large the LR is.
+
+**Next action**: extend trial-006 for several more epochs via `--resume-from-revision`/`--start-epoch`
+(same config, no hyperparameter change) rather than launching a new trial — this directly tests the
+"needs more steps" hypothesis. Continue epoch-by-epoch and stop early if the plateau breaks or if
+several more epochs still show no movement (at which point the next lever is architecture: more
+unfrozen layers or a larger base model, not more patience).
