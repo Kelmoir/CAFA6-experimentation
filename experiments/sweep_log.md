@@ -77,6 +77,7 @@ purely to hit the ~1h wall-clock budget, not a regularization lever.
 | trial-010 | esm2_t6_8M | 1 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.1 | 4 (via resume) | 12000 | 2000 | ~3.8min/epoch x4 | OVERFITTING but smallest gap yet (0.133 vs 0.168/0.191) | push weight-decay further to 0.3 for trial-011 |
 | trial-011 | esm2_t6_8M | 1 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.3 | 4 (via resume) | 12000 | 2000 | ~3.7min/epoch x4 | OVERFITTING, gap keeps shrinking (0.079) | push weight-decay to 0.5 for trial-012 |
 | trial-012 | esm2_t6_8M | 1 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.5 | 4 (via resume; one epoch-2 retry after a transient connection drop) | 12000 | 2000 | ~3.8min/epoch x4 | OVERFITTING, gap down to 0.046 | push weight-decay to 1.0 for trial-013 |
+| trial-013 | esm2_t6_8M | 1 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 1.0 | 4 (via resume) | 12000 | 2000 | ~3.7min/epoch x4 | gap ~0 but train_loss stalled (re-approaching DEAD) | extend trial-012 (wd=0.5) further instead — better tradeoff point |
 
 ## trial-001
 
@@ -475,6 +476,33 @@ closing the generalization gap. No sign of diminishing returns so far.
 
 **Next action**: trial-013 pushes `--weight-decay` to 1.0 to continue probing for where this trend
 saturates or reverses.
+
+## trial-013
+
+**Config**: identical to trial-008/010/011/012 except `--weight-decay 1.0` (2x trial-012, 100x the
+original default). Same 4-epoch chained run via resume.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 1 | 0.6143 | 0.6051 | 0.6875 | 0.6903 | 0.9953 | 0.9842 |
+| 2 | 0.6050 | 0.6067 | 0.6898 | 0.6885 | 0.9826 | 0.9907 |
+| 3 | 0.6000 | 0.6066 | 0.6928 | 0.6895 | 0.9787 | 0.9873 |
+| 4 | 0.5962 | 0.6067 | 0.6944 | 0.6907 | 0.9755 | 0.9839 |
+
+**Verdict: the trend reverses here — this is the other failure mode creeping back in.** The train/val
+gap is now nearly zero (0.0105 at epoch 4), continuing the monotonic pattern from trial-008→012. But
+unlike every prior trial, train_loss has essentially stalled (0.614 → 0.605 → 0.600 → 0.596, barely
+moving after epoch 1) rather than continuing to drop — and recall stays pinned near-ceiling throughout
+(0.98-0.99), the same signature as the original DEAD plateau (trial-001 through 007). wd=1.0 is strong
+enough to be suppressing genuine learning capacity again, not just closing the generalization gap.
+trial-012 (wd=0.5) is the more promising point: still-improving train_loss with only a modest (0.046)
+gap, i.e. actively learning without wd=1.0's re-approach to DEAD.
+
+**Next action**: extend trial-012 (wd=0.5) for more epochs (5, 6, ...) rather than testing another wd
+value — it's the best candidate seen so far for a genuinely HEALTHY multi-epoch curve, and no config has
+been run past 4 epochs yet despite the user's guidance to try 5-10+.
 
 **trial-006 epoch 2** (extension, same config, resumed from the trial-006 checkpoint):
 
