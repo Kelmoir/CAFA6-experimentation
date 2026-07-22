@@ -47,6 +47,7 @@ purely to hit the ~1h wall-clock budget, not a regularization lever.
 |----|-------|----------|----|----|----|----|----|----|----|----|----|----|----|----|
 | trial-001 | esm2_t6_8M | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 | 20000 | 2000 | ~18min (2x~450s+overhead) | VOID (data bug) | fix label bug, rerun as trial-002 |
 | trial-002 | esm2_t6_8M | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (only 1 completed) | 20000 | 2000 | ~7.3min (438.7s epoch 1) then dropped | INCOMPLETE (connection lost) | identical config, rerun as trial-003 |
+| trial-003 | esm2_t6_8M | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (split across 2 sessions via resume) | 20000 | 2000 | ~7.4min + ~7.4min (2 sessions) | DEAD (weak signal) | raise lr to 2e-4 and unfreeze-last-n to 4 for trial-004 |
 
 ## trial-001
 
@@ -116,3 +117,40 @@ curves.
 
 **Next action**: rerun the identical config as trial-003 (pure infra retry, no config change) to get a
 complete 2-epoch curve for the first real rubric judgment.
+
+## trial-003
+
+**Config**: identical to trial-001/002 (`esm2_t6_8M`, unfreeze=2, lr=5e-5, out_drop=0.2, esm_drop=0.0,
+attn_drop=0.0, grad_clip=1.0, wd=0.01, epochs=2, train_n=20000, val_n=2000, seed=42). Epoch 1 hit the
+same `RuntimeError: Connection was lost` as trial-002, at the identical point (right after the epoch-1
+checkpoint push) with identical epoch-1 metrics (fully deterministic given the fixed seed) — confirming
+this is a reproducible colab-cli/Colab-tunnel limitation, not random flakiness (see `training_run.py`'s
+new `--resume-from-revision`/`--start-epoch` flags, added specifically to work around it: colab-cli's
+`exec` never passes a nonzero `reconnect_interval` to its underlying websocket client, so any drop is
+fatal to the whole run — likely an idle/session timeout Colab's tunnel enforces on headless,
+non-UI-driven kernel connections around the ~9-10min wall-clock mark). Epoch 2 was completed on a fresh
+Colab session, resuming model weights from the `trial-003` checkpoint branch pushed after epoch 1
+(`--resume-from-revision trial-003 --start-epoch 1 --epochs 1`) — optimizer/LR-schedule state was not
+preserved across the resume (fresh AdamW + warmup within the second invocation), a minor documented
+deviation from a true single-process run.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 1 | 0.6109 | 0.6018 | 0.6880 | 0.6885 | 0.9826 | 0.9704 |
+| 2 | 0.5932 | 0.6009 | 0.6978 | 0.6950 | 0.9687 | 0.9815 |
+
+**Verdict: DEAD (weak/near-stagnant learning signal).** Val loss is essentially flat (0.6018 → 0.6009,
+a 0.0009 move) across the full 2 epochs; train loss moves a little more (0.6109 → 0.5932) but train/val
+track closely with no meaningful gap opening (not overfitting). Both losses sit modestly below chance
+(~0.693) but recall is pinned near-ceiling (~0.97-0.98) on both splits both epochs while accuracy barely
+moves (~0.69 → ~0.70) — consistent with the model mostly predicting positive across the board rather
+than learning to discriminate, and not meaningfully progressing epoch over epoch. Per the rubric this is
+closer to DEAD than a slow-but-real HEALTHY start: nothing here suggests two more epochs at this
+config would meaningfully change the curve shape.
+
+**Next action** (DEAD → raise LR and/or unfreeze-last-n; multi-axis change permitted for DEAD): trial-004
+raises `--learning-rate` from 5e-5 to 2e-4 (×4) and `--unfreeze-last-n` from 2 to 4 (out of 6 layers on
+`esm2_t6_8M`), keeping all other hyperparameters and sample sizes unchanged, to establish whether the
+model can learn at all at this scale before returning to one-axis-at-a-time regularization tuning.
