@@ -504,6 +504,29 @@ gap, i.e. actively learning without wd=1.0's re-approach to DEAD.
 value — it's the best candidate seen so far for a genuinely HEALTHY multi-epoch curve, and no config has
 been run past 4 epochs yet despite the user's guidance to try 5-10+.
 
+**trial-012 epoch 5** (extension, same config, resumed from the trial-012 checkpoint):
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 5 | 0.5449 | 0.6252 | 0.7264 | 0.6805 | 0.9170 | 0.9214 |
+
+Gap widens back out to 0.080 (from epoch 4's 0.046) — the delay bought by wd=0.5 was real but finite;
+overfitting resumes by epoch 5.
+
+## Important nuance surfaced by the full trial-012 trajectory
+
+Looking at trial-012's val_loss across all 5 epochs: **0.6046 → 0.6053 → 0.6077 → 0.6132 → 0.6252 — it
+rises every single epoch, never once dropping below its epoch-1 value.** This pattern holds across every
+regularization trial so far (008-013): train_loss reliably decreases (proving the model can learn
+*something*), but val_loss has never yet gone meaningfully below where it started. What weight decay has
+been doing is slowing the *rate* of val_loss's rise, not producing genuine held-out improvement — every
+"OVERFITTING, smaller gap" verdict so far has been relatively better, not absolutely good. This is a more
+specific and more concerning framing than plain overfitting: it raises the possibility of a genuine
+train/val distribution mismatch (rather than just "not enough regularization"), which no amount of
+weight-decay tuning alone would fix. Worth checking directly (e.g. inspect whether train/val splits have
+any systematic difference — sequence length distribution, label distribution, near-duplicate proteins
+leaking across the split) before continuing to chase weight-decay values further.
+
 **trial-006 epoch 2** (extension, same config, resumed from the trial-006 checkpoint):
 
 | epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |

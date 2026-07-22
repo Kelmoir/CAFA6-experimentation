@@ -1,0 +1,66 @@
+[CONFIG] {"device": "cuda", "epochs": 1, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t6_8M_UR50D", "unfreeze_last_n": 1, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.5, "max_minutes": null, "run_name": "trial-012", "trackio_space_id": null, "checkpoint": true, "checkpoint_branch": "trial-012", "hf_token_file": "/content/.hf_token", "resume_from_revision": "trial-012", "start_epoch": 4}
+/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_auth.py:138: UserWarning: 
+Error while fetching `HF_TOKEN` secret value from your vault: 'Requesting secret HF_TOKEN timed out. Secrets can only be fetched when running from the Colab UI.'.
+  warnings.warn(f"\nError while fetching `HF_TOKEN` secret value from your vault: '{str(e)}'.")
+README.md:   0%|          | 0.00/668 [00:00<?, ?B/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+data/train-00000-of-00001.parquet: reconstructing file:   0%|          |  0.00B 
+/ 22.3MB            
+data/train-00000-of-00001.parquet: downloading bytes:           |  0.00B        
+data/validation-00000-of-00001.parquet: reconstructing file:   0%|          |  
+0.00B / 6.26MB            
+data/validation-00000-of-00001.parquet: downloading bytes:           |  0.00B   
+data/test-00000-of-00001.parquet: reconstructing file:   0%|          |  0.00B /
+6.28MB            
+data/test-00000-of-00001.parquet: downloading bytes:           |  0.00B         
+Generating train split:   0%|          | 0/50168 [00:00<?, ? examples/s]
+Generating validation split:   0%|          | 0/14131 [00:00<?, ? examples/s]
+Generating test split:   0%|          | 0/14182 [00:00<?, ? examples/s]
+tokenizer_config.json:   0%|          | 0.00/95.0 [00:00<?, ?B/s]
+vocab.txt:   0%|          | 0.00/93.0 [00:00<?, ?B/s]
+special_tokens_map.json:   0%|          | 0.00/125 [00:00<?, ?B/s]
+config.json:   0%|          | 0.00/1.05k [00:00<?, ?B/s]
+model.safetensors: reconstructing file:   0%|          |  0.00B / 30.1MB        
+model.safetensors: downloading bytes:           |  0.00B            
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]
+Model layers: 6, request unfreeze layers: 1
+[INFO] Resumed model weights from kelmoir/cafa6-esm@trial-012
+* Trackio project initialized: cafa6
+* Trackio metrics logged to: /root/.cache/huggingface/trackio
+* NVIDIA GPU detected, enabling automatic GPU metrics logging
+* psutil detected, enabling automatic CPU/system metrics logging
+* Created new run: trial-012
+[INFO] HF token resolved via --hf-token-file
+/usr/local/lib/python3.12/dist-packages/trackio/utils.py:27: UserWarning: Reserved keys renamed: ['step'] → '__{key}'
+  warnings.warn(message, *args, **kwargs)
+[STEP] epoch=5 step=60/1500 loss=0.6031
+[STEP] epoch=5 step=120/1500 loss=0.5614
+[STEP] epoch=5 step=180/1500 loss=0.6674
+[STEP] epoch=5 step=240/1500 loss=0.7682
+[STEP] epoch=5 step=300/1500 loss=0.7046
+[STEP] epoch=5 step=360/1500 loss=0.4670
+[STEP] epoch=5 step=420/1500 loss=0.4565
+[STEP] epoch=5 step=480/1500 loss=0.5097
+[STEP] epoch=5 step=540/1500 loss=0.4567
+[STEP] epoch=5 step=600/1500 loss=0.4111
+[STEP] epoch=5 step=660/1500 loss=0.4980
+[STEP] epoch=5 step=720/1500 loss=0.6711
+[STEP] epoch=5 step=780/1500 loss=0.5685
+[STEP] epoch=5 step=840/1500 loss=0.4800
+[STEP] epoch=5 step=900/1500 loss=0.4118
+[STEP] epoch=5 step=960/1500 loss=0.5038
+[STEP] epoch=5 step=1020/1500 loss=0.6119
+[STEP] epoch=5 step=1080/1500 loss=0.4363
+[STEP] epoch=5 step=1140/1500 loss=0.4703
+[STEP] epoch=5 step=1200/1500 loss=0.8133
+[STEP] epoch=5 step=1260/1500 loss=0.5571
+[STEP] epoch=5 step=1320/1500 loss=0.6929
+[STEP] epoch=5 step=1380/1500 loss=0.7007
+[STEP] epoch=5 step=1440/1500 loss=0.5776
+[STEP] epoch=5 step=1500/1500 loss=0.5136
+Epoch 5/5 | train_loss=0.5449 | val_loss=0.6252 | train_acc=0.7264 | val_acc=0.6805 | train_recall=0.9170 | val_recall=0.9214
+[TIMING] epoch 5 elapsed=224.5s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 5 to kelmoir/cafa6-esm@trial-012
+[SUMMARY] {"run_name": "trial-012", "epochs_completed": 5, "final_train_loss": 0.5448632498979569, "final_val_loss": 0.6252334529161453, "train_accuracy": 0.7263889091610909, "val_accuracy": 0.6805000195503235, "train_recall": 0.9170076855421067, "val_recall": 0.9214015998840333}
