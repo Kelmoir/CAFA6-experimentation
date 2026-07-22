@@ -73,6 +73,7 @@ purely to hit the ~1h wall-clock budget, not a regularization lever.
 | trial-006 | esm2_t6_8M | 4 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (via resume) | 12000 | 2000 | ~6.6min + ~6.5min | DEAD (2 epochs, still flat) | pivot to model size for trial-007 |
 | trial-007 | esm2_t12_35M | 4 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 1 | 6000 | 2000 | ~7.6min | DEAD (same plateau, 4x larger model) | pause sweep, consult user — 5 materially different configs all converge to the same plateau |
 | trial-008 | esm2_t6_8M | 1 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 4 (via resume) | 12000 | 2000 | ~3.75min/epoch x4 | OVERFITTING (epochs 1-2 flat, 3-4 diverge) | raise esm/attn dropout to 0.1 for trial-009 |
+| trial-009 | esm2_t6_8M | 1 | 2e-4 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 4 (via resume) | 12000 | 2000 | ~3.8min/epoch x4 | OVERFITTING (dropout didn't help) | raise weight-decay to 0.1 for trial-010 |
 
 ## trial-001
 
@@ -371,6 +372,33 @@ unfrozen encoder layer, which is presumably where the overfitting-prone adaptati
 were previously completely unregularized). `--unfreeze-last-n` stays at 1 per the user's efficiency
 preference rather than reducing further. Everything else unchanged. Run through several epochs again
 watching for whether the healthy (both-improving) window widens before overfitting sets in.
+
+## trial-009
+
+**Config**: identical to trial-008 except `--esm-dropout 0.1 --attention-dropout 0.1` (up from 0.0).
+Same 4-epoch chained run via resume.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 1 | 0.6142 | 0.6053 | 0.6866 | 0.6912 | 0.9921 | 0.9729 |
+| 2 | 0.5985 | 0.6037 | 0.6925 | 0.6953 | 0.9655 | 0.9858 |
+| 3 | 0.5622 | 0.6137 | 0.7152 | 0.6905 | 0.9310 | 0.9556 |
+| 4 | 0.4815 | 0.6727 | 0.7716 | 0.6603 | 0.9164 | 0.8633 |
+
+**Verdict: OVERFITTING — dropout on the unfrozen encoder layer made no meaningful difference.** Epochs
+1-3 track trial-008 almost exactly (train/val losses within ~0.002 of each other at every epoch). Epoch
+4's train/val gap (0.4815 vs 0.6727 = 0.191) is essentially the same as trial-008's (0.4945 vs 0.6628 =
+0.168) — if anything marginally worse, not better. 0.1 dropout on a single unfrozen layer's
+attention/output sublayers isn't a strong enough regularizer here (or isn't the right lever for this
+overfitting mode, which may be more about the classifier head's capacity than the tiny amount of
+newly-unfrozen encoder capacity).
+
+**Next action**: trial-010 reverts esm/attn dropout to 0.0 (trial-008's baseline, to isolate the next
+change cleanly) and instead raises `--weight-decay` from 0.01 to 0.1 (10x) — this axis hasn't been
+touched in any trial so far, and weight decay directly penalizes the large weight magnitudes that let a
+tiny classifier head memorize training-set specifics.
 
 **trial-006 epoch 2** (extension, same config, resumed from the trial-006 checkpoint):
 
