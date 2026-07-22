@@ -1,5 +1,6 @@
 import argparse
 import json
+import math
 import os
 import subprocess
 import sys
@@ -41,12 +42,25 @@ SELECTED_MODEL = "facebook/esm2_t12_35M_UR50D"
 HF_REPO_ID = os.getenv("HF_REPO_ID", "kelmoir/cafa6-esm")
 
 
-def get_linear_schedule_with_warmup(optimizer: torch.optim.Optimizer, num_warmup_steps: int, num_training_steps: int):
-    warmup = torch.optim.lr_scheduler.LambdaLR(
-        optimizer,
-        lr_lambda=lambda step: min(1.0, (step + 1) / max(1, num_warmup_steps)) if step < num_warmup_steps else 1.0,
-    )
-    return warmup
+def get_lr_schedule(
+    optimizer: torch.optim.Optimizer,
+    num_warmup_steps: int,
+    num_training_steps: int,
+    schedule_type: str = "constant",
+):
+    def lr_lambda(step: int) -> float:
+        if step < num_warmup_steps:
+            return (step + 1) / max(1, num_warmup_steps)
+        if schedule_type == "constant":
+            return 1.0
+        progress = min(1.0, (step - num_warmup_steps) / max(1, num_training_steps - num_warmup_steps))
+        if schedule_type == "linear_decay":
+            return max(0.0, 1.0 - progress)
+        if schedule_type == "cosine":
+            return 0.5 * (1.0 + math.cos(math.pi * progress))
+        raise ValueError(f"Unknown schedule_type: {schedule_type}")
+
+    return torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda=lr_lambda)
 
 
 def create_esm_tokenizer(model_name: str = "facebook/esm2_t30_150M_UR50D") -> EsmTokenizer:
@@ -306,6 +320,11 @@ def main() -> None:
     parser.add_argument("--hf-token-file", default=None, help="Path to a file containing only an HF token; read once, then deleted")
     parser.add_argument("--resume-from-revision", default=None, help="Load model weights from this revision (branch) of --hf-repo-id instead of the base pretrained model; used to continue a multi-epoch trial across separate colab exec invocations after a connection drop")
     parser.add_argument("--start-epoch", type=int, default=0, help="Count of already-completed epochs when resuming; offsets epoch numbering in logs/checkpoints (0 for a fresh run)")
+    parser.add_argument("--lr-schedule", choices=["constant", "linear_decay", "cosine"], default="constant", help="Shape of the post-warmup LR schedule")
+    parser.add_argument("--warmup-steps", type=int, default=None, help="Override the default warmup step count (default: min(100, steps_per_epoch // 10))")
+    parser.add_argument("--label-smoothing", type=float, default=0.0, help="Smooth 0/1 BCE targets toward 0.5 by this amount (0 disables)")
+    parser.add_argument("--decouple-bias-wd", action=argparse.BooleanOptionalAction, default=False, help="Exclude bias and LayerNorm params from weight decay (standard AdamW refinement)")
+    parser.add_argument("--grad-accum-steps", type=int, default=1, help="Accumulate gradients over this many steps before each optimizer step (raises effective batch size)")
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
@@ -391,11 +410,28 @@ def main() -> None:
         collate_fn=partial(data_collate_function, tokenizer=tokenizer),
     )
 
-    optimizer = AdamW(model_esm.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
-    scheduler = get_linear_schedule_with_warmup(
+    if args.decouple_bias_wd:
+        decay_params, no_decay_params = [], []
+        for name, param in model_esm.named_parameters():
+            if not param.requires_grad:
+                continue
+            (no_decay_params if param.ndim == 1 else decay_params).append(param)
+        optimizer = AdamW(
+            [
+                {"params": decay_params, "weight_decay": args.weight_decay},
+                {"params": no_decay_params, "weight_decay": 0.0},
+            ],
+            lr=args.learning_rate,
+        )
+    else:
+        optimizer = AdamW(model_esm.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
+
+    warmup_steps = args.warmup_steps if args.warmup_steps is not None else max(1, min(100, len(train_dataloader) // 10))
+    scheduler = get_lr_schedule(
         optimizer,
-        num_warmup_steps=max(1, min(100, len(train_dataloader) // 10)),
+        num_warmup_steps=warmup_steps,
         num_training_steps=max(1, len(train_dataloader) * args.epochs),
+        schedule_type=args.lr_schedule,
     )
     criterion = torch.nn.BCEWithLogitsLoss()
 
@@ -415,20 +451,25 @@ def main() -> None:
         train_metrics = {"accuracy": 0.0, "recall": 0.0}
 
         log_every = max(1, len(train_dataloader) // 25)
+        optimizer.zero_grad()
         for step, batch in enumerate(train_dataloader):
             input_ids = batch["input_ids"].to(device)
             attention_mask = batch["attention_mask"].to(device)
             labels = batch["labels"].to(device)
+            if args.label_smoothing > 0:
+                labels = labels * (1 - args.label_smoothing) + 0.5 * args.label_smoothing
 
-            optimizer.zero_grad()
             outputs = model_esm(input_ids=input_ids, attention_mask=attention_mask)
             logits = outputs.logits
             loss = criterion(logits, labels)
-            loss.backward()
+            (loss / args.grad_accum_steps).backward()
 
-            torch.nn.utils.clip_grad_norm_(model_esm.parameters(), max_norm=args.grad_clip_norm)
-            optimizer.step()
-            scheduler.step()
+            is_accum_boundary = (step + 1) % args.grad_accum_steps == 0 or (step + 1) == len(train_dataloader)
+            if is_accum_boundary:
+                torch.nn.utils.clip_grad_norm_(model_esm.parameters(), max_norm=args.grad_clip_norm)
+                optimizer.step()
+                scheduler.step()
+                optimizer.zero_grad()
 
             if (step + 1) % log_every == 0:
                 # Periodic output keeps the colab exec websocket carrying traffic during

@@ -594,6 +594,46 @@ every single trial: `experiments/scripts/run_trial.sh <trial-name> <session-name
 `experiments/scripts/check_and_adopt_session.sh <session-name>` (checks liveness, adopts + smoke-tests
 if needed). All trials from trial-016 onward are launched via `run_trial.sh`.
 
+## trial-017 (abandoned)
+
+**Config**: `esm2_t6_8M`, unfreeze=6 (full model), else identical to trial-016. Attempted 3 times against
+the browser-adopted session — first attempt hung indefinitely after a workspace crash (killed via
+`TaskStop`), second attempt found no active session at all, third attempt failed partway through epoch 1
+(step ~1260/1500, no epoch completed, `exit code 1`, no captured traceback). All three failures cluster
+in the back half of epoch 1, consistent with full-unfreeze's heavier per-step compute pushing epoch 1's
+wall-clock past whatever window this connection can reliably sustain — the browser-adoption workaround
+fixes VM idle-pruning but not the separate, still-unfixed `jupyter_kernel_client` zero-reconnect-interval
+issue.
+
+**Decision**: abandoned rather than retried further. It predates the user's new beam-search methodology
+(below) and isn't required to seed it — trial-015/016 are both complete, reliable, and nearly identical.
+"More capacity" (unfreeze) is folded into the beam search's own candidate axes instead of chased in
+isolation.
+
+## Methodology change: beam search
+
+Per user direction, from here on the search follows a **beam search** (width 2, branching factor 3 per
+beam member — 6 experiments per round) instead of ad hoc single-axis guessing:
+1. From the best config(s) of the previous round, generate 6 experiments, each tweaking exactly one
+   hyperparameter. 2 of the 6 must tweak a regularization axis.
+2. Judge the 6, select the best 2, log what helped and what hurt.
+3. From those top 2 (3 tweaks from each), generate the next 6. Repeat.
+4. Stop when any single epoch hits **val_loss < 0.45** (the user-confirmed success criterion), when all
+   imaginable options are exhausted, or when the user says stop — in the last case, keep enough state to
+   resume cleanly.
+
+New tracking files: `experiments/beam_search_state.json` (round/beam/queue state, resumable),
+`experiments/results_index.csv` (rebuildable full index of every trial's config + best-epoch metrics +
+verdict, via `experiments/scripts/build_results_index.py`). The user explicitly authorized adding new
+search axes beyond the existing CLI flags and extending `training_run.py` as needed — this isn't meant
+to be a pure grid search over already-exposed hyperparameters.
+
+**Seed for Round 1**: trial-015 (unfreeze=1, lr=2e-4, wd=0.5, dropout=0.2/0.0/0.0) — best_val_loss=0.5990,
+narrowly ahead of trial-016's 0.5995 (unfreeze=2, otherwise identical) and more efficient per the user's
+minimal-unfreeze preference. Given the two are statistically indistinguishable, treating trial-015 as
+sole seed rather than both is a simplification (pure width-2 beam would carry both forward) — acceptable
+since unfreeze itself is one of the axes Round 1 tests anyway.
+
 ## trial-016
 
 **Config**: `esm2_t6_8M`, unfreeze=2 (up from trial-015's 1), lr=2e-4, out_drop=0.2, esm_drop=0.0,
