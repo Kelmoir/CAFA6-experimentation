@@ -46,6 +46,7 @@ purely to hit the ~1h wall-clock budget, not a regularization lever.
 | id | model | unfreeze | lr | out_drop | esm_drop | attn_drop | grad_clip | wd | epochs | train_n | val_n | wall_clock | verdict | next_action |
 |----|-------|----------|----|----|----|----|----|----|----|----|----|----|----|----|
 | trial-001 | esm2_t6_8M | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 | 20000 | 2000 | ~18min (2x~450s+overhead) | VOID (data bug) | fix label bug, rerun as trial-002 |
+| trial-002 | esm2_t6_8M | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 2 (only 1 completed) | 20000 | 2000 | ~7.3min (438.7s epoch 1) then dropped | INCOMPLETE (connection lost) | identical config, rerun as trial-003 |
 
 ## trial-001
 
@@ -83,3 +84,35 @@ align). Compiles clean (`py_compile`).
 **Next action**: rerun the identical config as trial-002 with the fix in place — this is the real
 first data point for the sweep. trial-001's numbers are not meaningful for the DEAD/OVERFITTING/
 HEALTHY/UNSTABLE rubric and must not be compared against future trials.
+
+## trial-002
+
+**Config**: identical to trial-001 (`esm2_t6_8M`, unfreeze=2, lr=5e-5, out_drop=0.2, esm_drop=0.0,
+attn_drop=0.0, grad_clip=1.0, wd=0.01, epochs=2, train_n=20000, val_n=2000, seed=42), run via
+`colab --auth=adc new/upload/exec` directly on host (no podman) — first real trial after switching
+off the buggy `oauth2` auth mode to `adc`, which resolved the recurring `invalid_scope` refresh
+failure.
+
+**Per-epoch metrics** (only epoch 1 completed):
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 1 | 0.6109 | 0.6018 | 0.6880 | 0.6885 | 0.9826 | 0.9704 |
+
+**Verdict: INCOMPLETE — infra failure (connection lost), not a rubric verdict.** The `colab exec`
+websocket connection dropped (`RuntimeError: Connection was lost`) partway through epoch 2, after the
+epoch-1 checkpoint had already been pushed successfully to `kelmoir/cafa6-esm@trial-002`. This is a
+transient Colab/tunnel reliability issue, unrelated to the auth fix (session provisioning, upload, and
+epoch 1 all completed normally under `--auth=adc`) and unrelated to training itself.
+
+Epoch 1's numbers are still meaningful as a sanity check even though the trial is incomplete: loss
+(0.6018 val) is already below chance (~0.693) and recall is high and non-zero (0.9704 val) — confirming
+the label-encoding fix from trial-001 is working (real supervision signal is reaching the model). Not
+enough data yet to judge DEAD/OVERFITTING/HEALTHY/UNSTABLE — one epoch's high-recall/moderate-accuracy
+shape is consistent with an early "predict-mostly-positive" phase that a second epoch would clarify
+(recall creeping toward precision as it discriminates further, or accuracy failing to rise = overfit
+risk on the harder classes). Do not compare this epoch-1 data point against future trials' full 2-epoch
+curves.
+
+**Next action**: rerun the identical config as trial-003 (pure infra retry, no config change) to get a
+complete 2-epoch curve for the first real rubric judgment.
