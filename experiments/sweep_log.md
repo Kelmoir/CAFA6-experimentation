@@ -75,6 +75,7 @@ purely to hit the ~1h wall-clock budget, not a regularization lever.
 | trial-008 | esm2_t6_8M | 1 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 4 (via resume) | 12000 | 2000 | ~3.75min/epoch x4 | OVERFITTING (epochs 1-2 flat, 3-4 diverge) | raise esm/attn dropout to 0.1 for trial-009 |
 | trial-009 | esm2_t6_8M | 1 | 2e-4 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 4 (via resume) | 12000 | 2000 | ~3.8min/epoch x4 | OVERFITTING (dropout didn't help) | raise weight-decay to 0.1 for trial-010 |
 | trial-010 | esm2_t6_8M | 1 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.1 | 4 (via resume) | 12000 | 2000 | ~3.8min/epoch x4 | OVERFITTING but smallest gap yet (0.133 vs 0.168/0.191) | push weight-decay further to 0.3 for trial-011 |
+| trial-011 | esm2_t6_8M | 1 | 2e-4 | 0.2 | 0.0 | 0.0 | 1.0 | 0.3 | 4 (via resume) | 12000 | 2000 | ~3.7min/epoch x4 | OVERFITTING, gap keeps shrinking (0.079) | push weight-decay to 0.5 for trial-012 |
 
 ## trial-001
 
@@ -423,6 +424,31 @@ at 0.1 to produce a genuinely healthy (both-improving) curve; val still turns up
 
 **Next action**: trial-011 pushes `--weight-decay` further to 0.3 (3x trial-010) to see whether more of
 the same lever closes the gap further, keeping everything else identical.
+
+## trial-011
+
+**Config**: identical to trial-008/010 except `--weight-decay 0.3` (3x trial-010, 30x the original
+default). Same 4-epoch chained run via resume.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 1 | 0.6133 | 0.6047 | 0.6872 | 0.6888 | 0.9921 | 0.9759 |
+| 2 | 0.5982 | 0.6050 | 0.6921 | 0.6938 | 0.9660 | 0.9832 |
+| 3 | 0.5772 | 0.6093 | 0.7060 | 0.6902 | 0.9426 | 0.9596 |
+| 4 | 0.5447 | 0.6235 | 0.7289 | 0.6783 | 0.9209 | 0.9214 |
+
+**Verdict: still OVERFITTING, but the trend across trial-008/010/011 is now unambiguous and monotonic.**
+Epoch-4 train/val gap: 0.168 (wd=0.01) → 0.133 (wd=0.1) → 0.079 (wd=0.3). val_loss at epoch 4: 0.6628 →
+0.6441 → 0.6235, each one the best yet. The shape within trial-011 itself is still classic overfitting
+(gap widens epoch over epoch: 0.008 → 0.007 → 0.032 → 0.079) — weight decay is delaying and dampening
+the onset, not eliminating it, but the effect is large and consistent enough to keep pushing this same
+lever rather than diversify.
+
+**Next action**: trial-012 pushes `--weight-decay` to 0.5 to test whether the monotonic improvement
+continues or starts to plateau/hurt (very high weight decay can eventually suppress genuine learning
+capacity too, which would show up as train_loss failing to drop at all — watch for that).
 
 **trial-006 epoch 2** (extension, same config, resumed from the trial-006 checkpoint):
 
