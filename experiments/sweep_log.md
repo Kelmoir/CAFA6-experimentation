@@ -284,3 +284,21 @@ where the bias starts or how large the LR is.
 "needs more steps" hypothesis. Continue epoch-by-epoch and stop early if the plateau breaks or if
 several more epochs still show no movement (at which point the next lever is architecture: more
 unfrozen layers or a larger base model, not more patience).
+
+**trial-006 epoch 2** (extension, same config, resumed from the trial-006 checkpoint):
+
+| epoch | train_loss | val_loss | train_acc | val_acc | train_recall | val_recall |
+|-------|-----------|----------|-----------|---------|--------------|------------|
+| 2 | 0.6023 | 0.6074 | 0.6902 | 0.6922 | 0.9686 | 0.9801 |
+
+val_loss is essentially unchanged from epoch 1 (0.6070 → 0.6074, technically a hair worse) after 3000
+total steps. recall drifted down slightly (0.9877 → 0.9801, a small move away from the ceiling, but
+nowhere near enough to call it real progress). Two full epochs of flat val_loss is strong evidence
+against "just needs more steps at this config" — all three quick levers tried so far (raise LR, fix
+bias saturation, more patience) have failed to move the needle. **Pivoting to model capacity**: this is
+`esm2_t6_8M`, Facebook's smallest ESM-2 checkpoint (8M params) — its own pretraining may simply not have
+produced rich enough general protein representations for a small fine-tuning budget to extract
+GO-aspect signal from. trial-007 tests the actual project default, `facebook/esm2_t12_35M_UR50D`
+(per `SELECTED_MODEL` in `training_run.py`), keeping lr=2e-4 and the bias-init fix, with
+`--max-train-samples` reduced (to ~6000) to leave margin for the larger model's slower per-step time
+against the same ~9-10min connection ceiling.
