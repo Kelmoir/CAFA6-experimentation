@@ -325,6 +325,7 @@ def main() -> None:
     parser.add_argument("--label-smoothing", type=float, default=0.0, help="Smooth 0/1 BCE targets toward 0.5 by this amount (0 disables)")
     parser.add_argument("--decouple-bias-wd", action=argparse.BooleanOptionalAction, default=False, help="Exclude bias and LayerNorm params from weight decay (standard AdamW refinement)")
     parser.add_argument("--grad-accum-steps", type=int, default=1, help="Accumulate gradients over this many steps before each optimizer step (raises effective batch size)")
+    parser.add_argument("--quiet", action=argparse.BooleanOptionalAction, default=False, help="Suppress per-step [STEP] prints (only needed to keep a colab-cli exec websocket alive; noisy for interactive/notebook use)")
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
@@ -471,7 +472,7 @@ def main() -> None:
                 scheduler.step()
                 optimizer.zero_grad()
 
-            if (step + 1) % log_every == 0:
+            if not args.quiet and (step + 1) % log_every == 0:
                 # Periodic output keeps the colab exec websocket carrying traffic during
                 # the otherwise-silent multi-minute training loop; a long silent stretch
                 # has been observed to trigger "Connection was lost" mid-epoch.
