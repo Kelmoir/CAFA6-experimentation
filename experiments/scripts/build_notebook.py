@@ -43,6 +43,17 @@ after every epoch, same as the CLI-driven runs.
 This notebook runs {len(experiments)} experiment(s) sequentially: {', '.join(e['trial_id'] for e in experiments)}.
 """
 
+    module_load_cell = """try:
+    import torch
+    from datasets import load_dataset, load_from_disk
+    from huggingface_hub import HfApi, get_token
+    from transformers import AutoModelForSequenceClassification, EsmTokenizer
+except ModuleNotFoundError:
+    !pip install datasets
+    !pip install huggingface_hub
+    !pip install transformers
+"""
+
     writefile_cell = "%%writefile training_run.py\n" + training_source
 
     runner_lines = [
@@ -50,6 +61,7 @@ This notebook runs {len(experiments)} experiment(s) sequentially: {', '.join(e['
         "import time",
         "",
         "import training_run",
+        "training_run.trackio = None  # pure text output, no trackio dashboard noise",
         "",
         "experiments = " + json.dumps(experiments, indent=4),
         "",
@@ -79,6 +91,7 @@ This notebook runs {len(experiments)} experiment(s) sequentially: {', '.join(e['
     notebook = {
         "cells": [
             markdown_cell(intro),
+            code_cell(module_load_cell),
             code_cell(writefile_cell),
             code_cell(runner_source),
         ],

@@ -16,7 +16,7 @@ from torch.optim import AdamW
 from transformers import AutoModelForSequenceClassification, EsmTokenizer
 
 if "google.colab" in sys.modules:
-    required_packages = ["torch", "transformers", "datasets", "trackio", "huggingface_hub"]
+    required_packages = ["torch", "transformers", "datasets", "huggingface_hub"]
     for package in required_packages:
         try:
             __import__(package)
