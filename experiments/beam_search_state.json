@@ -96,6 +96,10 @@
       "status": "seed_and_diagnostic_queued",
       "started": "2026-07-24",
       "why": "User-directed pivot after the esm2_t6_8M phase's round-1/round-2 plateau (best val_loss flat at ~0.596 across 12 trials, all far from the val_loss<0.45 target). Per the project's original plan, once a config is confirmed at small scale, scale up and re-run the regularization search from scratch rather than assuming settings transfer. esm2_t12_35M is the project's actual default model (SELECTED_MODEL in training_run.py) and was only ever tried once before, in trial-007, at 1 epoch pre-beam-search - not a fair comparison to the now-mature 10-epoch/tuned-baseline methodology.",
+      "fixed_across_all_rounds": {
+        "epochs": 10,
+        "note": "User direction 2026-07-24: keep epochs fixed at 10 for every trial at this scale, model size aside, for cross-run comparability, and because harsh overfitting has been observed to show up in later epochs (trial-031's train/val gap was still widening at epoch 6, its last epoch). EXCEPTION: trial-030/031 (seed/diagnostic) and round_1 (trial-032..037) below were already launched at epochs=6 before this policy was set - their results are not directly epoch-for-epoch comparable to anything run at epochs=10, only their per-epoch trajectories (e.g. best_epoch, overfitting onset) are."
+      },
       "seed_config": {
         "model_name": "facebook/esm2_t12_35M_UR50D",
         "unfreeze_last_n": 1,
@@ -132,15 +136,16 @@
         }
       ],
       "round_1": {
-        "status": "queued",
+        "status": "in_progress (epochs=6, predates the epochs=10 policy above - user reports trial-032/033/034 done, trial-035/036/037 still running as of 2026-07-24)",
         "manifest_file": "experiments/round4_manifest.json",
         "notebook_file": "experiments/round4_manual.ipynb",
         "run_mode": "user-run manual browser Colab session (kept alive via a different technique than the CLI flow) - no colab session for the assistant to stop; user closes it themselves once the batch finishes",
+        "gpu_memory_observations": "User reports trial-033 (batch_size=128, grad_accum_steps=1) almost OOM'd the T4; trial-034 (batch_size=128, grad_accum_steps=4, run immediately after) was surprisingly easier on memory. Per training_run.py (create_esm/DataLoader), grad_accum_steps does NOT reduce per-step batch size - the DataLoader batch_size is used as-is every micro-step, so trial-034 processes full batches of 128 exactly like trial-033; the code gives no mechanism for grad_accum alone to lower peak memory. Most likely explanation: CUDA's caching allocator already expanded its pool to fit batch=128 during trial-033, so trial-034 (running right after, same session) reused that already-grown pool instead of needing to allocate further - an artifact of run order within one session, not a real property of grad_accum_steps. Don't read 'higher grad_accum = lower memory' as a real effect without a controlled A/B (same batch size, accum vs no-accum, in fresh sessions on both sides).",
         "queued_experiments": ["trial-032", "trial-033", "trial-034", "trial-035", "trial-036", "trial-037"],
         "queued_experiment_notes": {
           "trial-032": "user-requested, off trial-031: batch_size=32, learning_rate unchanged at 2e-4",
-          "trial-033": "user-requested, off trial-031: batch_size=128, learning_rate unchanged - ~94 opt steps/epoch (16x fewer than trial-031), throughput/OOM probe more than a val_loss contender",
-          "trial-034": "user-requested, off trial-031: batch_size=128, grad_accum_steps=4 (effective batch 512) - ~23 opt steps/epoch, pure throughput probe",
+          "trial-033": "user-requested, off trial-031: batch_size=128, learning_rate unchanged - ~94 opt steps/epoch (16x fewer than trial-031), throughput/OOM probe more than a val_loss contender. Confirmed by the user to almost OOM the T4.",
+          "trial-034": "user-requested, off trial-031: batch_size=128, grad_accum_steps=4 (effective batch 512) - ~23 opt steps/epoch, pure throughput probe. User reports this was easier on GPU memory than trial-033 despite the same batch_size=128 - see gpu_memory_observations above for why that's probably a run-order artifact, not a real grad_accum effect.",
           "trial-035": "regularization, off trial-030: output_dropout=0.1, weight_decay=0.1 - light middle ground between trial-030 and trial-031, aiming to reach trial-031's early gains without its late overfit",
           "trial-036": "regularization, off trial-030: weight_decay=0.0 with dropout unchanged at 0.2 - isolates which of trial-030's two regularizers matters",
           "trial-037": "off trial-030: unfreeze_last_n=2 - capacity bump untested so far at this scale"

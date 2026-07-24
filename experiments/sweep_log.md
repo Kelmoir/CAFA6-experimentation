@@ -892,3 +892,19 @@ Per the user's operational note: they're running this batch in a browser Colab s
 manually (not the CLI-driven `colab new`/`exec`/`stop` flow), so there's no session for me to
 explicitly stop between trials — the user closes it themselves once the batch is done and they're
 ready to hand results back for analysis.
+
+**Mid-batch update (round_1/trial-032..037 still running)**: two user notes, both recorded in
+`beam_search_state.json`:
+- **Epochs fixed at 10 going forward**, model scale aside — for cross-run comparability, and because
+  the user has seen harsh overfitting show up in later epochs (matches trial-031, whose train/val gap
+  was still widening at epoch 6, its last epoch). trial-030/031 and this round (trial-032..037) already
+  ran at epochs=6 before this policy was set, so their results aren't directly epoch-for-epoch
+  comparable to future epochs=10 trials at this scale — only per-epoch trajectory shape is.
+- **GPU memory**: trial-033 (batch=128) almost OOM'd the T4; trial-034 (batch=128, grad_accum=4),
+  run right after, was surprisingly easier on memory. Checked `training_run.py`: `grad_accum_steps`
+  doesn't reduce per-step batch size (the DataLoader uses `batch_size` as-is every micro-step), so
+  there's no mechanism in the code for accumulation alone to lower peak memory — trial-034 processes
+  identical full batches of 128. Most likely explanation is CUDA's caching allocator having already
+  grown its pool to fit batch=128 during trial-033, letting trial-034 reuse it — a run-order artifact
+  of one session, not a real property of `grad_accum_steps`. Flagging so this isn't misread as
+  "accumulation saves memory" in a future config decision.
