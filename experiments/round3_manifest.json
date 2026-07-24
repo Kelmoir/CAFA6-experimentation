@@ -1,0 +1,44 @@
+[
+  {
+    "trial_id": "trial-030",
+    "parent": null,
+    "axis": "model_scale (esm2_t6_8M -> esm2_t12_35M)",
+    "note": "Timing/seed trial for the scale-up phase. Reuses the esm2_t6_8M sweep's actually-validated baseline (unfreeze=1, lr=2e-4, wd=0.5, dropout=0.2/0.0/0.0, batch=8, grad_clip=1.0, constant schedule) unchanged except swapping model_name -- this is the config that held up across trial-015 through trial-029, not the round-1/2 micro-tweaks (lr_schedule, wd=0.2, unfreeze=2), which never beat it outside noise. Epochs capped at 6 (vs. 10 at 8M scale) purely as a timing probe: esm2_t12_35M has 2x the encoder depth, so per-epoch wall clock is unknown and this run's [TIMING] lines will size epoch count / max_train_samples for the rest of the scale-up round.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "6",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-031",
+    "parent": "trial-030",
+    "axis": "zero regularization (diagnostic)",
+    "note": "Every trial across the entire esm2_t6_8M sweep (trial-008 through trial-029) kept a small, stable train/val gap (~0.01-0.02) regardless of how much regularization was dialed up or down -- meaning the sweep has never actually observed overfitting, which makes 'reduce regularization further' hard to interpret (is 0.596 the true ceiling, or are we still under wd=0/dropout=0's real effect?). This trial strips ALL regularization (weight_decay=0.0, output_dropout=0.0, esm_dropout=0.0, attention_dropout=0.0) at the new esm2_t12_35M scale, changing nothing else vs trial-030, as a direct diagnostic: if train/val loss finally diverge here, that confirms the metric can detect overfitting at all and calibrates how much regularization is actually load-bearing; if the gap stays just as flat as every prior trial even at zero regularization and higher model capacity, that's strong evidence the plateau is a data/task ceiling rather than anything regularization-related.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "6",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.0",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.0",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  }
+]

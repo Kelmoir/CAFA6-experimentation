@@ -798,3 +798,37 @@ break. Flagging this to the user now rather than queuing a round 3 that's unlike
 input on whether to continue hyperparameter search at `esm2_t6_8M` scale or pivot to a larger model
 per the project's original plan ("once a satisfactory config is found at this scale, scale up and
 re-run the regularization search from scratch") — model-scale is the one major lever untested so far.
+
+## Scale-up phase: esm2_t6_8M -> esm2_t12_35M
+
+User direction (2026-07-24): pivot to model scale rather than continue tuning at `esm2_t6_8M`. The
+`esm2_t6_8M` phase is paused (not abandoned) in `experiments/beam_search_state.json`'s `phases` map;
+`esm2_t12_35M_scale_up` is now the active phase. `esm2_t12_35M` is the project's actual default model
+(`SELECTED_MODEL` in `training_run.py`) and was only tried once before — trial-007, 1 epoch,
+pre-beam-search, before the bias-init fix's effects were well understood and before 10-epoch training
+was shown to matter — so it isn't a fair prior data point against the now-mature methodology.
+
+The user also flagged something worth acting on directly: across the *entire* `esm2_t6_8M` phase
+(trial-008 through trial-029), train/val loss gap stayed small and stable (~0.01-0.02) no matter how
+regularization was dialed — the sweep has never actually observed overfitting. That makes "reduce
+regularization further" hard to interpret: is 0.596 a true ceiling, or is the metric just not sensitive
+to regularization changes in this regime? Per the user's request, one of the two seed-phase trials
+strips all regularization to check.
+
+`experiments/round3_manifest.json` (2 trials, notebook: `experiments/round3_manual.ipynb`):
+- **trial-030** (seed/timing): the `esm2_t6_8M` phase's actually-validated baseline (unfreeze=1,
+  lr=2e-4, wd=0.5, dropout=0.2/0.0/0.0, batch=8, grad_clip=1.0, constant schedule — deliberately *not*
+  round-1/2's micro-tweaks, since those never beat this baseline outside noise), model swapped to
+  `esm2_t12_35M_UR50D`. Epochs capped at 6 (vs. 10 at 8M) as a wall-clock probe — 35M has 2x the
+  encoder depth of 8M and per-epoch time at this scale is unmeasured; its `[TIMING]` lines will size
+  epoch count / `max_train_samples` for the rest of this phase.
+- **trial-031** (diagnostic, user-requested): identical to trial-030 except `weight_decay=0.0`,
+  `output_dropout=0.0`, `esm_dropout=0.0`, `attention_dropout=0.0` — zero regularization. If train/val
+  loss finally diverge here, that confirms the metric can detect overfitting at all, calibrating how
+  much regularization is actually load-bearing going forward. If the gap stays just as flat as every
+  prior trial even at zero regularization and 4x the parameters, that's strong evidence the plateau is
+  a data/task ceiling rather than a regularization problem.
+
+**Next step**: once trial-030/031 land, size and launch a full 6-experiment round-1 beam-search batch
+at this scale (branching off trial-030, same width-2/branching-3/2-regularization-required protocol as
+the 8M phase), informed by trial-031's overfitting-or-not signal.
