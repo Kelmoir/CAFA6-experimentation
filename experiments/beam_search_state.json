@@ -1,6 +1,8 @@
 {
   "algorithm": "beam search, width 2, branching factor 3 per beam member (6 experiments/round, 2 of which must tweak a regularization hyperparameter)",
   "success_criterion": "val_loss < 0.45 on any single epoch of a trial",
+  "noise_floor_val_loss": 0.595,
+  "noise_floor_note": "User direction 2026-07-24: val_loss > 0.595 should be treated as noise, not a real result. Under this bar, every esm2_t6_8M-phase trial (0.596-0.6015 across 22 trials, rounds 1-2) was noise - none of that phase's beam-search 'winners' were ever distinguishable from the trial-015 seed. Only trial-030 (0.5946) and trial-031 (0.5918), both at esm2_t12_35M scale, have cleared 0.595 so far. Apply this bar to every trial ranking going forward.",
   "regularization_axes": ["output_dropout", "esm_dropout", "attention_dropout", "weight_decay", "label_smoothing", "decouple_bias_wd"],
   "non_regularization_axes": ["learning_rate", "unfreeze_last_n", "lr_schedule", "warmup_steps", "grad_accum_steps"],
   "active_phase": "esm2_t12_35M_scale_up",
@@ -110,14 +112,41 @@
         "seed": 42,
         "note": "Deliberately the esm2_t6_8M phase's actually-validated baseline (trial-015 through trial-029 all clustered around this), not the round-1/2 micro-tweaks (cosine schedule, wd=0.2, unfreeze=2) which never beat it outside noise - re-running 'from scratch' means not assuming those noise-level effects transfer either."
       },
-      "queued_experiments": ["trial-030", "trial-031"],
-      "manifest_file": "experiments/round3_manifest.json",
-      "completed": [],
-      "queued_experiment_notes": {
-        "trial-030": "Timing/seed trial: seed_config unchanged, epochs capped at 6 (vs 10 at 8M scale) as a wall-clock probe - esm2_t12_35M has 2x the encoder depth of esm2_t6_8M and per-epoch time at this scale is unmeasured. Its [TIMING] lines will size epoch count / max_train_samples for the rest of this phase's rounds.",
-        "trial-031": "Diagnostic, user-requested: same as trial-030 but weight_decay=0.0, output_dropout=0.0, esm_dropout=0.0, attention_dropout=0.0 (all regularization stripped). Every trial across the entire 8M phase kept a small, stable train/val gap regardless of regularization level, meaning the sweep never actually observed overfitting - this trial checks whether overfitting is even visible with zero regularization at higher capacity, which calibrates whether 'reduce regularization further' is a real lever or the plateau is data/task-limited."
+      "queued_experiments": [],
+      "manifest_file": "experiments/round4_manifest.json",
+      "completed": ["trial-030", "trial-031"],
+      "seed_results": [
+        {
+          "trial": "trial-030",
+          "config_note": "baseline (wd=0.5, dropout=0.2/0.0/0.0)",
+          "best_val_loss": 0.5946,
+          "best_epoch": 4,
+          "verdict": "MILD OVERFITTING - same shape as trial-031 (val_loss rises 0.5946->0.5959 after epoch 4 while train_loss keeps falling), just much weaker (train/val gap widens ~0 to only ~0.016, vs trial-031's ~0.03 to ~0.04). Clears the 0.595 noise floor, unlike every esm2_t6_8M-phase trial. ~530s/epoch (~2.3x slower than 8M scale)."
+        },
+        {
+          "trial": "trial-031",
+          "config_note": "zero regularization (wd=0.0, dropout=0.0/0.0/0.0)",
+          "best_val_loss": 0.5918,
+          "best_epoch": 4,
+          "verdict": "OVERFITTING - best result of the whole sweep at epoch 4, but train_loss keeps falling (0.6012->0.5584) while val_loss rises after epoch 4 (0.5918->0.5988 by epoch 6); train/val gap widens from ~0.03 to ~0.04. First clear overfitting signal in the entire sweep (8M phase never showed this regardless of regularization level) - confirms regularization is a real, measurable lever at this scale, not just capacity."
+        }
+      ],
+      "round_1": {
+        "status": "queued",
+        "manifest_file": "experiments/round4_manifest.json",
+        "notebook_file": "experiments/round4_manual.ipynb",
+        "run_mode": "user-run manual browser Colab session (kept alive via a different technique than the CLI flow) - no colab session for the assistant to stop; user closes it themselves once the batch finishes",
+        "queued_experiments": ["trial-032", "trial-033", "trial-034", "trial-035", "trial-036", "trial-037"],
+        "queued_experiment_notes": {
+          "trial-032": "user-requested, off trial-031: batch_size=32, learning_rate unchanged at 2e-4",
+          "trial-033": "user-requested, off trial-031: batch_size=128, learning_rate unchanged - ~94 opt steps/epoch (16x fewer than trial-031), throughput/OOM probe more than a val_loss contender",
+          "trial-034": "user-requested, off trial-031: batch_size=128, grad_accum_steps=4 (effective batch 512) - ~23 opt steps/epoch, pure throughput probe",
+          "trial-035": "regularization, off trial-030: output_dropout=0.1, weight_decay=0.1 - light middle ground between trial-030 and trial-031, aiming to reach trial-031's early gains without its late overfit",
+          "trial-036": "regularization, off trial-030: weight_decay=0.0 with dropout unchanged at 0.2 - isolates which of trial-030's two regularizers matters",
+          "trial-037": "off trial-030: unfreeze_last_n=2 - capacity bump untested so far at this scale"
+        }
       },
-      "next_step": "Once trial-030/031 land: read [TIMING] to size a full 6-experiment round-1 beam-search batch at this scale (branching off trial-030, following the same width-2/branching-3/2-regularization-required protocol as the 8M phase), and check trial-031's train/val gap for an overfitting signal before deciding how aggressively to regularize."
+      "next_step": "Once trial-032..037 land: rank by best val_loss, check trial-035/036 against trial-031's overfitting curve to see which regularizer (dropout vs weight_decay) actually controls it, and use the batch-size trials' [TIMING] to decide whether a larger batch is worth adopting going forward. Then pick the new width-2 beam and design round 2 at this scale."
     }
   }
 }

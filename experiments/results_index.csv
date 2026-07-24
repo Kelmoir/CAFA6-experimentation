@@ -1,29 +1,31 @@
-trial_id,verdict,model_name,unfreeze_last_n,learning_rate,output_dropout,esm_dropout,attention_dropout,weight_decay,lr_schedule,warmup_steps,label_smoothing,decouple_bias_wd,grad_accum_steps,max_train_samples,max_val_samples,epochs_completed,best_epoch,best_val_loss,best_val_acc,best_val_recall,best_train_loss,best_train_acc,n_log_fragments
-trial-001,VOID (label bug),facebook/esm2_t6_8M_UR50D,2,5e-05,0.2,0.0,0.0,0.01,constant,,0.0,False,1,20000,2000,2,2,0.0001,1.0,0.0,0.0002,1.0,1
-trial-002,INCOMPLETE (connection lost),facebook/esm2_t6_8M_UR50D,2,5e-05,0.2,0.0,0.0,0.01,constant,,0.0,False,1,20000,2000,1,1,0.6018,0.6885,0.9704,0.6109,0.688,1
-trial-003,DEAD,facebook/esm2_t6_8M_UR50D,2,5e-05,0.2,0.0,0.0,0.01,constant,,0.0,False,1,20000,2000,2,2,0.6009,0.695,0.9815,0.5932,0.6978,2
-trial-004,DEAD,facebook/esm2_t6_8M_UR50D,4,0.0002,0.2,0.0,0.0,0.01,constant,,0.0,False,1,12000,2000,2,1,0.6066,0.6933,0.9893,0.618,0.6849,2
-trial-005,WORSE (collapse toward all-positive),facebook/esm2_t6_8M_UR50D,4,0.001,0.2,0.0,0.0,0.01,constant,,0.0,False,1,12000,2000,1,1,0.6195,0.6895,1.0,0.6252,0.6853,1
-trial-006,DEAD,facebook/esm2_t6_8M_UR50D,4,0.0002,0.2,0.0,0.0,0.01,constant,,0.0,False,1,12000,2000,2,1,0.607,0.6933,0.9877,0.6153,0.6873,2
-trial-007,DEAD,facebook/esm2_t12_35M_UR50D,4,0.0002,0.2,0.0,0.0,0.01,constant,,0.0,False,1,6000,2000,1,1,0.6089,0.6902,0.9982,0.6158,0.6851,1
-trial-008,OVERFITTING,facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.01,constant,,0.0,False,1,12000,2000,4,2,0.6046,0.6937,0.981,0.5949,0.6947,4
-trial-009,OVERFITTING,facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.1,0.1,0.01,constant,,0.0,False,1,12000,2000,4,2,0.6037,0.6953,0.9858,0.5985,0.6925,4
-trial-010,OVERFITTING,facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.1,constant,,0.0,False,1,12000,2000,4,2,0.6042,0.6945,0.982,0.5958,0.6941,4
-trial-011,OVERFITTING,facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.3,constant,,0.0,False,1,12000,2000,4,1,0.6047,0.6888,0.9759,0.6133,0.6872,4
-trial-012,OVERFITTING,facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,1,12000,2000,5,1,0.6046,0.6897,0.9785,0.6136,0.687,5
-trial-013,DEAD (re-approached via excess wd),facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,1.0,constant,,0.0,False,1,12000,2000,4,1,0.6051,0.6903,0.9842,0.6143,0.6875,4
-trial-014,"MIXED (epochs 1-4 pre-fix, 5-6 post per-epoch-variation fix)",facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,1,12000,2000,6,3,0.6021,0.6953,0.9885,0.5942,0.7024,5
-trial-015,"PLATEAU (stable, beam search round-0 seed)",facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,1,12000,2000,10,8,0.599,0.6947,0.9749,0.5928,0.7027,1
-trial-016,"PLATEAU (matches trial-015, unfreeze bump had no effect)",facebook/esm2_t6_8M_UR50D,2,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,1,12000,2000,10,9,0.5995,0.6935,0.9789,0.587,0.7081,1
-trial-018,"PLATEAU (round-1 winner: cosine lr_schedule, best val_loss of round)",facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.5,cosine,,0.0,False,1,12000,2000,10,8,0.5959,0.6955,0.9636,0.5865,0.7054,1
-trial-019,"PLATEAU (round-1: warmup_steps=300, no improvement over seed)",facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.5,constant,300,0.0,False,1,12000,2000,10,8,0.5981,0.6948,0.975,0.5925,0.7027,1
-trial-020,"PLATEAU (round-1 reg: label_smoothing=0.05, no improvement; train_acc/recall=0 is a metric-computation artifact, not the real training signal - fixed post-hoc, see training_run.py)",facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.05,False,1,12000,2000,10,8,0.5996,0.695,0.9755,0.6033,0.0,1
-trial-021,"PLATEAU (round-1 reg: decouple_bias_wd, roughly ties seed)",facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,True,1,12000,2000,10,8,0.599,0.695,0.9722,0.5834,0.707,1
-trial-022,"PLATEAU (round-1 runner-up: grad_accum_steps=2, ~seed-level)",facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,2,12000,2000,10,8,0.5978,0.6973,0.969,0.5861,0.7061,1
-trial-023,"PLATEAU (round-1: unfreeze_last_n=3, noisier + worse than seed, slower per-epoch)",facebook/esm2_t6_8M_UR50D,3,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,1,12000,2000,10,9,0.6015,0.6917,0.9745,0.5883,0.707,1
-trial-024,"PLATEAU (round-2: learning_rate=3e-4 off trial-018, no improvement over parent)",facebook/esm2_t6_8M_UR50D,1,0.0003,0.2,0.0,0.0,0.5,cosine,,0.0,False,1,12000,2000,10,8,0.5966,0.6942,0.9651,0.5878,0.7056,1
-trial-025,"PLATEAU (round-2 winner: weight_decay=0.2 off trial-018, ties trial-018 within noise)",facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.2,cosine,,0.0,False,1,12000,2000,10,8,0.596,0.6945,0.9415,0.5753,0.7114,1
-trial-026,"PLATEAU (round-2 runner-up: unfreeze_last_n=2 off trial-018, ties trial-018 within noise, slower per-epoch)",facebook/esm2_t6_8M_UR50D,2,0.0002,0.2,0.0,0.0,0.5,cosine,,0.0,False,1,12000,2000,10,10,0.5961,0.6968,0.9614,0.5817,0.7077,1
-trial-027,"PLATEAU (round-2: cosine+grad_accum=2 stacked off trial-022, no improvement over trial-018)",facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.5,cosine,,0.0,False,2,12000,2000,10,9,0.5968,0.696,0.972,0.5748,0.7153,1
-trial-028,"PLATEAU (round-2 reg: output_dropout=0.1 off trial-022, worst of round 2)",facebook/esm2_t6_8M_UR50D,1,0.0002,0.1,0.0,0.0,0.5,constant,,0.0,False,2,12000,2000,10,8,0.5984,0.6958,0.9693,0.5855,0.7066,1
-trial-029,"PLATEAU (round-2: grad_accum_steps=4 off trial-022, no improvement over trial-022)",facebook/esm2_t6_8M_UR50D,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,4,12000,2000,10,7,0.5971,0.6982,0.9845,0.5789,0.7111,1
+trial_id,verdict,model_name,batch_size,unfreeze_last_n,learning_rate,output_dropout,esm_dropout,attention_dropout,weight_decay,lr_schedule,warmup_steps,label_smoothing,decouple_bias_wd,grad_accum_steps,max_train_samples,max_val_samples,epochs_completed,best_epoch,best_val_loss,best_val_acc,best_val_recall,best_train_loss,best_train_acc,n_log_fragments
+trial-001,VOID (label bug),facebook/esm2_t6_8M_UR50D,8,2,5e-05,0.2,0.0,0.0,0.01,constant,,0.0,False,1,20000,2000,2,2,0.0001,1.0,0.0,0.0002,1.0,1
+trial-002,INCOMPLETE (connection lost),facebook/esm2_t6_8M_UR50D,8,2,5e-05,0.2,0.0,0.0,0.01,constant,,0.0,False,1,20000,2000,1,1,0.6018,0.6885,0.9704,0.6109,0.688,1
+trial-003,DEAD,facebook/esm2_t6_8M_UR50D,8,2,5e-05,0.2,0.0,0.0,0.01,constant,,0.0,False,1,20000,2000,2,2,0.6009,0.695,0.9815,0.5932,0.6978,2
+trial-004,DEAD,facebook/esm2_t6_8M_UR50D,8,4,0.0002,0.2,0.0,0.0,0.01,constant,,0.0,False,1,12000,2000,2,1,0.6066,0.6933,0.9893,0.618,0.6849,2
+trial-005,WORSE (collapse toward all-positive),facebook/esm2_t6_8M_UR50D,8,4,0.001,0.2,0.0,0.0,0.01,constant,,0.0,False,1,12000,2000,1,1,0.6195,0.6895,1.0,0.6252,0.6853,1
+trial-006,DEAD,facebook/esm2_t6_8M_UR50D,8,4,0.0002,0.2,0.0,0.0,0.01,constant,,0.0,False,1,12000,2000,2,1,0.607,0.6933,0.9877,0.6153,0.6873,2
+trial-007,DEAD,facebook/esm2_t12_35M_UR50D,8,4,0.0002,0.2,0.0,0.0,0.01,constant,,0.0,False,1,6000,2000,1,1,0.6089,0.6902,0.9982,0.6158,0.6851,1
+trial-008,OVERFITTING,facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.01,constant,,0.0,False,1,12000,2000,4,2,0.6046,0.6937,0.981,0.5949,0.6947,4
+trial-009,OVERFITTING,facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.1,0.1,0.01,constant,,0.0,False,1,12000,2000,4,2,0.6037,0.6953,0.9858,0.5985,0.6925,4
+trial-010,OVERFITTING,facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.1,constant,,0.0,False,1,12000,2000,4,2,0.6042,0.6945,0.982,0.5958,0.6941,4
+trial-011,OVERFITTING,facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.3,constant,,0.0,False,1,12000,2000,4,1,0.6047,0.6888,0.9759,0.6133,0.6872,4
+trial-012,OVERFITTING,facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,1,12000,2000,5,1,0.6046,0.6897,0.9785,0.6136,0.687,5
+trial-013,DEAD (re-approached via excess wd),facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,1.0,constant,,0.0,False,1,12000,2000,4,1,0.6051,0.6903,0.9842,0.6143,0.6875,4
+trial-014,"MIXED (epochs 1-4 pre-fix, 5-6 post per-epoch-variation fix)",facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,1,12000,2000,6,3,0.6021,0.6953,0.9885,0.5942,0.7024,5
+trial-015,"PLATEAU (stable, beam search round-0 seed)",facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,1,12000,2000,10,8,0.599,0.6947,0.9749,0.5928,0.7027,1
+trial-016,"PLATEAU (matches trial-015, unfreeze bump had no effect)",facebook/esm2_t6_8M_UR50D,8,2,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,1,12000,2000,10,9,0.5995,0.6935,0.9789,0.587,0.7081,1
+trial-018,"PLATEAU (round-1 winner: cosine lr_schedule, best val_loss of round)",facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.5,cosine,,0.0,False,1,12000,2000,10,8,0.5959,0.6955,0.9636,0.5865,0.7054,1
+trial-019,"PLATEAU (round-1: warmup_steps=300, no improvement over seed)",facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.5,constant,300,0.0,False,1,12000,2000,10,8,0.5981,0.6948,0.975,0.5925,0.7027,1
+trial-020,"PLATEAU (round-1 reg: label_smoothing=0.05, no improvement; train_acc/recall=0 is a metric-computation artifact, not the real training signal - fixed post-hoc, see training_run.py)",facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.05,False,1,12000,2000,10,8,0.5996,0.695,0.9755,0.6033,0.0,1
+trial-021,"PLATEAU (round-1 reg: decouple_bias_wd, roughly ties seed)",facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,True,1,12000,2000,10,8,0.599,0.695,0.9722,0.5834,0.707,1
+trial-022,"PLATEAU (round-1 runner-up: grad_accum_steps=2, ~seed-level)",facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,2,12000,2000,10,8,0.5978,0.6973,0.969,0.5861,0.7061,1
+trial-023,"PLATEAU (round-1: unfreeze_last_n=3, noisier + worse than seed, slower per-epoch)",facebook/esm2_t6_8M_UR50D,8,3,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,1,12000,2000,10,9,0.6015,0.6917,0.9745,0.5883,0.707,1
+trial-024,"PLATEAU (round-2: learning_rate=3e-4 off trial-018, no improvement over parent)",facebook/esm2_t6_8M_UR50D,8,1,0.0003,0.2,0.0,0.0,0.5,cosine,,0.0,False,1,12000,2000,10,8,0.5966,0.6942,0.9651,0.5878,0.7056,1
+trial-025,"PLATEAU (round-2 winner: weight_decay=0.2 off trial-018, ties trial-018 within noise)",facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.2,cosine,,0.0,False,1,12000,2000,10,8,0.596,0.6945,0.9415,0.5753,0.7114,1
+trial-026,"PLATEAU (round-2 runner-up: unfreeze_last_n=2 off trial-018, ties trial-018 within noise, slower per-epoch)",facebook/esm2_t6_8M_UR50D,8,2,0.0002,0.2,0.0,0.0,0.5,cosine,,0.0,False,1,12000,2000,10,10,0.5961,0.6968,0.9614,0.5817,0.7077,1
+trial-027,"PLATEAU (round-2: cosine+grad_accum=2 stacked off trial-022, no improvement over trial-018)",facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.5,cosine,,0.0,False,2,12000,2000,10,9,0.5968,0.696,0.972,0.5748,0.7153,1
+trial-028,"PLATEAU (round-2 reg: output_dropout=0.1 off trial-022, worst of round 2)",facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.1,0.0,0.0,0.5,constant,,0.0,False,2,12000,2000,10,8,0.5984,0.6958,0.9693,0.5855,0.7066,1
+trial-029,"PLATEAU (round-2: grad_accum_steps=4 off trial-022, no improvement over trial-022)",facebook/esm2_t6_8M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,4,12000,2000,10,7,0.5971,0.6982,0.9845,0.5789,0.7111,1
+trial-030,"MILD OVERFITTING (35M-scale seed, 6 epochs: best val_loss 0.5946 at epoch 4, then val_loss rises 0.5946->0.5959 while train_loss keeps falling - same shape as trial-031, much weaker; per user's val_loss>0.595 noise-floor call, this is the only 8M/35M-comparable result besides trial-031 to clear it)",facebook/esm2_t12_35M_UR50D,8,1,0.0002,0.2,0.0,0.0,0.5,constant,,0.0,False,1,12000,2000,6,4,0.5946,0.6957,0.9605,0.587,0.7064,1
+trial-031,"OVERFITTING (35M-scale, zero regularization: best val_loss 0.5918 at epoch 4 - new best overall, clears the 0.595 noise floor clearly - then val_loss rises while train_loss keeps falling through epoch 6; first clear overfitting signal in the whole sweep)",facebook/esm2_t12_35M_UR50D,8,1,0.0002,0.0,0.0,0.0,0.0,constant,,0.0,False,1,12000,2000,6,4,0.5918,0.7002,0.9438,0.5769,0.7138,1

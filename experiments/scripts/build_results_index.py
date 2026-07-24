@@ -47,6 +47,8 @@ VERDICTS = {
     "trial-027": "PLATEAU (round-2: cosine+grad_accum=2 stacked off trial-022, no improvement over trial-018)",
     "trial-028": "PLATEAU (round-2 reg: output_dropout=0.1 off trial-022, worst of round 2)",
     "trial-029": "PLATEAU (round-2: grad_accum_steps=4 off trial-022, no improvement over trial-022)",
+    "trial-030": "MILD OVERFITTING (35M-scale seed, 6 epochs: best val_loss 0.5946 at epoch 4, then val_loss rises 0.5946->0.5959 while train_loss keeps falling - same shape as trial-031, much weaker; per user's val_loss>0.595 noise-floor call, this is the only 8M/35M-comparable result besides trial-031 to clear it)",
+    "trial-031": "OVERFITTING (35M-scale, zero regularization: best val_loss 0.5918 at epoch 4 - new best overall, clears the 0.595 noise floor clearly - then val_loss rises while train_loss keeps falling through epoch 6; first clear overfitting signal in the whole sweep)",
 }
 
 CONFIG_RE = re.compile(r"^\[CONFIG\] (\{.*\})$")
@@ -56,7 +58,7 @@ EPOCH_RE = re.compile(
 )
 
 FIELDS = [
-    "trial_id", "verdict", "model_name", "unfreeze_last_n", "learning_rate",
+    "trial_id", "verdict", "model_name", "batch_size", "unfreeze_last_n", "learning_rate",
     "output_dropout", "esm_dropout", "attention_dropout", "weight_decay",
     "lr_schedule", "warmup_steps", "label_smoothing", "decouple_bias_wd", "grad_accum_steps",
     "max_train_samples", "max_val_samples", "epochs_completed",
@@ -120,6 +122,7 @@ def main() -> None:
             "trial_id": trial_id,
             "verdict": VERDICTS.get(trial_id, "UNVERIFIED - add to VERDICTS in this script"),
             "model_name": config.get("model_name"),
+            "batch_size": config.get("batch_size"),
             "unfreeze_last_n": config.get("unfreeze_last_n"),
             "learning_rate": config.get("learning_rate"),
             "output_dropout": config.get("output_dropout"),

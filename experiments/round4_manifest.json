@@ -1,0 +1,129 @@
+[
+  {
+    "trial_id": "trial-032",
+    "parent": "trial-031",
+    "axis": "batch_size=32",
+    "note": "User-requested batch-size ablation off trial-031 (zero-regularization, best val_loss 0.5918 of the whole sweep, but overfitting past epoch 4). Only batch_size changes vs trial-031 -- learning_rate stays 2e-4 (no linear-scaling-rule adjustment applied) so this isolates the raw effect of batch size on throughput and training dynamics. At batch=32, 12000 train samples means ~375 optimizer steps/epoch (vs trial-031's 1500) -- 4x fewer updates, so expect this to be somewhat undertrained relative to trial-031 if compared on val_loss alone; the main things to read from this trial are [TIMING] (does a bigger batch use the T4 better and cut wall-clock?) and whether the overfitting curve trial-031 showed still appears at this batch size.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "6",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "32",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.0",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.0",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-033",
+    "parent": "trial-031",
+    "axis": "batch_size=128",
+    "note": "User-requested batch-size ablation off trial-031. batch_size=128 means ~94 optimizer steps/epoch (16x fewer than trial-031's 1500) -- likely meaningfully undertrained if judged on val_loss alone; read this primarily for [TIMING] (throughput at a much larger batch on a T4) and whether memory headroom is even sufficient (risk of OOM at batch=128, seq len up to 1024, is unverified going in -- if it fails, that's itself the useful answer).",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "6",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "128",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.0",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.0",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-034",
+    "parent": "trial-031",
+    "axis": "batch_size=128, grad_accum_steps=4",
+    "note": "User-requested batch-size ablation off trial-031. Effective batch 512 (128 x 4) means only ~23 optimizer steps/epoch, ~138 over all 6 epochs -- almost certainly too few updates to train well; this trial is a pure throughput/memory probe (does gradient accumulation at this batch size run at all on a T4, and what does it cost in wall-clock vs trial-033's un-accumulated batch=128), not expected to produce a competitive val_loss.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "6",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "128",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.0",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.0",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--grad-accum-steps", "4"
+    ]
+  },
+  {
+    "trial_id": "trial-035",
+    "parent": "trial-030",
+    "axis": "light regularization (regularization)",
+    "note": "Beam-search protocol trial (2 of 6 this round must tweak regularization) filling the round out to 6. trial-031 (zero reg) beat trial-030 (heavy reg) at epoch 4 (0.5918 vs 0.5946) but then overfit hard by epoch 6 (train/val gap widened to 0.04) -- suggesting the true optimum is somewhere between trial-030's wd=0.5/dropout=0.2 and trial-031's wd=0/dropout=0, not at either extreme. This trial tests a light middle ground (dropout=0.1, wd=0.1) off trial-030, aiming to keep trial-031's early-epoch gains without its late-epoch blowup.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "6",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.1",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.1",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-036",
+    "parent": "trial-030",
+    "axis": "weight_decay=0.0, dropout unchanged (regularization)",
+    "note": "2nd required regularization trial this round. Isolates which of trial-030's two regularizers (dropout=0.2 vs weight_decay=0.5) is actually responsible for its flatter, non-overfitting curve vs trial-031 -- this trial keeps dropout=0.2 but zeroes weight_decay, the complement of trial-035's 'both light' test.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "6",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.0",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-037",
+    "parent": "trial-030",
+    "axis": "unfreeze_last_n=2",
+    "note": "Non-regularization trial completing the round of 6. Capacity bump untested so far at the 35M scale (unfreeze was only tried at 1/12 layers in trial-030/031) -- more of the deeper model unfrozen could change both speed and how much it can learn/overfit.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "6",
+      "--unfreeze-last-n", "2",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  }
+]

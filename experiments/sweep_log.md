@@ -832,3 +832,63 @@ strips all regularization to check.
 **Next step**: once trial-030/031 land, size and launch a full 6-experiment round-1 beam-search batch
 at this scale (branching off trial-030, same width-2/branching-3/2-regularization-required protocol as
 the 8M phase), informed by trial-031's overfitting-or-not signal.
+
+## Scale-up results: trial-030 (seed/timing), trial-031 (zero-regularization diagnostic)
+
+Both ran in one manual browser Colab session (`experiments/round3_manual.ipynb`), pasted back as
+`experiments/logs/trial-030-031.log`, split into per-trial files. Both completed all 6 epochs.
+
+**trial-030** (baseline: unfreeze=1, lr=2e-4, wd=0.5, dropout=0.2/0.0/0.0, batch=8): best val_loss
+**0.5946** at epoch 4, edging past the entire `esm2_t6_8M` phase's best (0.5959) in 6 epochs instead of
+10. **Correction**: this is not a clean "healthy" result — val_loss rises from 0.5946 (epoch 4) to
+0.5959 (epoch 6) while train_loss keeps falling the whole time (0.6027 → 0.5795), the same
+overfitting shape as trial-031, just much weaker (train/val gap widens from ~0 to only ~0.016, vs.
+trial-031's ~0.03 to ~0.04). `[TIMING]`: ~530s/epoch (vs. ~230s/epoch at 8M scale, ~2.3x slower per
+epoch — roughly tracks the 2x encoder-depth difference plus some overhead). Total wall clock 3225s
+(~54min) for 6 epochs, in line with the ~1h trial budget.
+
+**Noise floor, per user direction**: val_loss > 0.595 should be treated as noise, not signal. Under
+that bar, every single `esm2_t6_8M`-phase result (0.596–0.6015 across 22 trials) was noise — none of
+that phase's "winners" were ever real. Only trial-030 (0.5946) and trial-031 (0.5918) have cleared
+0.595 so far, both at the 35M scale. This is now the standing bar for judging every trial going
+forward, recorded in `beam_search_state.json` as `noise_floor_val_loss`.
+
+**trial-031** (zero regularization: wd=0.0, dropout=0.0/0.0/0.0, otherwise identical to trial-030):
+best val_loss **0.5918** at epoch 4 — the best result of the entire sweep so far, both phases. But
+critically, this is the **first clear overfitting signal in the whole sweep**: train_loss falls
+monotonically every epoch (0.6012 → 0.5875 → 0.5826 → 0.5769 → 0.5660 → 0.5584) while val_loss bottoms
+at epoch 4 (0.5918) and then rises through epoch 6 (0.5988) — the train/val gap widens from ~0.03 at
+epoch 1 to ~0.04 by epoch 6. Every trial across the entire `esm2_t6_8M` phase kept a flat, stable gap
+regardless of regularization; this is the first time removing regularization actually produced a
+textbook overfitting curve.
+
+**Interpretation**: the `esm2_t6_8M` plateau wasn't purely a "regularization doesn't matter" ceiling —
+it was at least partly a capacity ceiling. At 4x the parameters (`esm2_t12_35M`), the model is finally
+expressive enough to overfit, and it does so *even with trial-030's full regularization* (wd=0.5,
+dropout=0.2) — just weakly. Zeroing regularization (trial-031) doesn't create the overfitting, it just
+amplifies an effect that was already present. This directly answers the diagnostic question raised
+before this batch: regularization *is* a real, measurable lever again at this scale — the question is
+now *how much*, not *whether*.
+
+**Decision**: the beam-search protocol continues into a proper round-1 at this scale (`trial-030` and
+`trial-031` as the two seed points), designed jointly with three additional batch-size trials the user
+asked for directly off trial-031. See `experiments/round4_manifest.json` /
+`experiments/round4_manual.ipynb` (6 trials, trial-032 through trial-037):
+
+- **trial-032/033/034** (user-requested, off trial-031, `learning_rate` unchanged at 2e-4): batch_size
+  32, batch_size 128, and batch_size 128 with `grad_accum_steps=4` (effective batch 512). Primarily a
+  throughput/memory probe on the T4 at this model scale — batch=128 cuts optimizer steps/epoch from
+  1500 to ~94 (16x fewer), and the accum=4 variant to ~23/epoch, so neither is expected to be
+  competitive on val_loss purely from undertraining; the useful signal is `[TIMING]` (does a bigger
+  batch use the T4 better?) and whether OOM becomes a constraint.
+- **trial-035** (regularization, off trial-030): light-touch middle ground — `output_dropout=0.1`,
+  `weight_decay=0.1` — testing whether trial-031's early-epoch gains are reachable without its
+  late-epoch blowup.
+- **trial-036** (regularization, off trial-030): isolates which of trial-030's two regularizers
+  actually matters — keeps `output_dropout=0.2`, zeroes `weight_decay`.
+- **trial-037** (off trial-030): `unfreeze_last_n=2` — capacity bump untested so far at this scale.
+
+Per the user's operational note: they're running this batch in a browser Colab session kept alive
+manually (not the CLI-driven `colab new`/`exec`/`stop` flow), so there's no session for me to
+explicitly stop between trials — the user closes it themselves once the batch is done and they're
+ready to hand results back for analysis.

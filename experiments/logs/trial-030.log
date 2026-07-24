@@ -1,0 +1,78 @@
+note: Timing/seed trial for the scale-up phase. Reuses the esm2_t6_8M sweep's actually-validated baseline (unfreeze=1, lr=2e-4, wd=0.5, dropout=0.2/0.0/0.0, batch=8, grad_clip=1.0, constant schedule) unchanged except swapping model_name -- this is the config that held up across trial-015 through trial-029, not the round-1/2 micro-tweaks (lr_schedule, wd=0.2, unfreeze=2), which never beat it outside noise. Epochs capped at 6 (vs. 10 at 8M scale) purely as a timing probe: esm2_t12_35M has 2x the encoder depth, so per-epoch wall clock is unknown and this run's [TIMING] lines will size epoch count / max_train_samples for the rest of the scale-up round.
+[CONFIG] {"device": "cuda", "epochs": 6, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t12_35M_UR50D", "unfreeze_last_n": 1, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.5, "max_minutes": null, "run_name": "trial-030", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-030", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "quiet": true}
+
+README.md: 100%
+ 668/668 [00:00<00:00, 67.6kB/s]
+data/train-00000-of-00001.parquet: reconstructing file: 100%
+ 22.3MB / 22.3MB, 2.12MB/s  
+data/train-00000-of-00001.parquet: downloading bytes: 
+ 21.7MB, 2.04MB/s  
+data/validation-00000-of-00001.parquet: reconstructing file: 100%
+ 6.26MB / 6.26MB,  605kB/s  
+data/validation-00000-of-00001.parquet: downloading bytes: 
+ 6.08MB,  588kB/s  
+data/test-00000-of-00001.parquet: reconstructing file: 100%
+ 6.28MB / 6.28MB,  608kB/s  
+data/test-00000-of-00001.parquet: downloading bytes: 
+ 6.11MB,  590kB/s  
+Generating train split: 100%
+ 50168/50168 [00:00<00:00, 490674.43 examples/s]
+Generating validation split: 100%
+ 14131/14131 [00:00<00:00, 304875.93 examples/s]
+Generating test split: 100%
+ 14182/14182 [00:00<00:00, 408157.29 examples/s]
+tokenizer_config.json: 100%
+ 95.0/95.0 [00:00<00:00, 9.74kB/s]
+vocab.txt: 100%
+ 93.0/93.0 [00:00<00:00, 8.30kB/s]
+special_tokens_map.json: 100%
+ 125/125 [00:00<00:00, 10.6kB/s]
+config.json: 100%
+ 778/778 [00:00<00:00, 18.5kB/s]
+model.safetensors: reconstructing file: 100%
+  136MB /  136MB, 12.9MB/s  
+model.safetensors: downloading bytes: 
+ 92.1MB, 8.65MB/s  
+Loading weights: 100%
+ 198/198 [00:00<00:00, 4537.95it/s]
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t12_35M_UR50D
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.layer_norm.weight  | UNEXPECTED | 
+lm_head.dense.bias         | UNEXPECTED | 
+lm_head.layer_norm.bias    | UNEXPECTED | 
+lm_head.bias               | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+classifier.out_proj.weight | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+
+Model layers: 12, request unfreeze layers: 1
+[INFO] Initialized classifier bias to label priors: {'C': 0.7161936163902283, 'F': 0.6852575540542603, 'P': 0.6928520202636719}
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+Epoch 1/6 | train_loss=0.6027 | val_loss=0.5996 | train_acc=0.6997 | val_acc=0.6917 | train_recall=0.9908 | val_recall=0.9682
+[TIMING] epoch 1 elapsed=532.6s
+Epoch 2/6 | train_loss=0.5905 | val_loss=0.6033 | train_acc=0.7025 | val_acc=0.6858 | train_recall=0.9742 | val_recall=0.9375
+[TIMING] epoch 2 elapsed=532.7s
+Epoch 3/6 | train_loss=0.5882 | val_loss=0.5973 | train_acc=0.7046 | val_acc=0.6935 | train_recall=0.9721 | val_recall=0.9773
+[TIMING] epoch 3 elapsed=528.4s
+Epoch 4/6 | train_loss=0.5870 | val_loss=0.5946 | train_acc=0.7064 | val_acc=0.6957 | train_recall=0.9684 | val_recall=0.9605
+[TIMING] epoch 4 elapsed=527.5s
+Epoch 5/6 | train_loss=0.5807 | val_loss=0.5953 | train_acc=0.7115 | val_acc=0.6942 | train_recall=0.9692 | val_recall=0.9619
+[TIMING] epoch 5 elapsed=539.0s
+Epoch 6/6 | train_loss=0.5795 | val_loss=0.5959 | train_acc=0.7122 | val_acc=0.6968 | train_recall=0.9667 | val_recall=0.9718
+[TIMING] epoch 6 elapsed=526.4s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00,  4.30it/s]
+
+[INFO] Pushed final-epoch checkpoint (epoch 6) to kelmoir/cafa6-esm@trial-030
+[SUMMARY] {"run_name": "trial-030", "epochs_completed": 6, "final_train_loss": 0.5794921255906423, "final_val_loss": 0.5959392585754395, "train_accuracy": 0.7122222416003545, "val_accuracy": 0.6968333534002304, "train_recall": 0.9666587373018265, "val_recall": 0.971771434545517}
+[TIMING] trial-030 total wall clock: 3225.0s
