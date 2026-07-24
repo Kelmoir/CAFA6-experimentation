@@ -136,22 +136,43 @@
         }
       ],
       "round_1": {
-        "status": "in_progress (epochs=6, predates the epochs=10 policy above - user reports trial-032/033/034 done, trial-035/036/037 still running as of 2026-07-24)",
+        "status": "complete",
         "manifest_file": "experiments/round4_manifest.json",
         "notebook_file": "experiments/round4_manual.ipynb",
         "run_mode": "user-run manual browser Colab session (kept alive via a different technique than the CLI flow) - no colab session for the assistant to stop; user closes it themselves once the batch finishes",
-        "gpu_memory_observations": "User reports trial-033 (batch_size=128, grad_accum_steps=1) almost OOM'd the T4; trial-034 (batch_size=128, grad_accum_steps=4, run immediately after) was surprisingly easier on memory. Per training_run.py (create_esm/DataLoader), grad_accum_steps does NOT reduce per-step batch size - the DataLoader batch_size is used as-is every micro-step, so trial-034 processes full batches of 128 exactly like trial-033; the code gives no mechanism for grad_accum alone to lower peak memory. Most likely explanation: CUDA's caching allocator already expanded its pool to fit batch=128 during trial-033, so trial-034 (running right after, same session) reused that already-grown pool instead of needing to allocate further - an artifact of run order within one session, not a real property of grad_accum_steps. Don't read 'higher grad_accum = lower memory' as a real effect without a controlled A/B (same batch size, accum vs no-accum, in fresh sessions on both sides).",
-        "queued_experiments": ["trial-032", "trial-033", "trial-034", "trial-035", "trial-036", "trial-037"],
-        "queued_experiment_notes": {
-          "trial-032": "user-requested, off trial-031: batch_size=32, learning_rate unchanged at 2e-4",
-          "trial-033": "user-requested, off trial-031: batch_size=128, learning_rate unchanged - ~94 opt steps/epoch (16x fewer than trial-031), throughput/OOM probe more than a val_loss contender. Confirmed by the user to almost OOM the T4.",
-          "trial-034": "user-requested, off trial-031: batch_size=128, grad_accum_steps=4 (effective batch 512) - ~23 opt steps/epoch, pure throughput probe. User reports this was easier on GPU memory than trial-033 despite the same batch_size=128 - see gpu_memory_observations above for why that's probably a run-order artifact, not a real grad_accum effect.",
-          "trial-035": "regularization, off trial-030: output_dropout=0.1, weight_decay=0.1 - light middle ground between trial-030 and trial-031, aiming to reach trial-031's early gains without its late overfit",
-          "trial-036": "regularization, off trial-030: weight_decay=0.0 with dropout unchanged at 0.2 - isolates which of trial-030's two regularizers matters",
-          "trial-037": "off trial-030: unfreeze_last_n=2 - capacity bump untested so far at this scale"
-        }
+        "completed": ["trial-032", "trial-033", "trial-034", "trial-035", "trial-036", "trial-037"],
+        "results_by_val_loss": [
+          {"trial": "trial-033", "parent": "trial-031", "axis": "batch_size=128", "best_val_loss": 0.5902, "best_epoch": 5, "note": "new best of the entire sweep; user reports this nearly OOM'd the T4"},
+          {"trial": "trial-035", "parent": "trial-030", "axis": "dropout=0.1, wd=0.1 (reg)", "best_val_loss": 0.5914, "best_epoch": 5, "note": "beats both trial-030 (heavy reg) and trial-031 (zero reg)"},
+          {"trial": "trial-032", "parent": "trial-031", "axis": "batch_size=32", "best_val_loss": 0.5916, "best_epoch": 4},
+          {"trial": "trial-037", "parent": "trial-030", "axis": "unfreeze_last_n=2", "best_val_loss": 0.5936, "best_epoch": 4, "note": "~15% slower per epoch than unfreeze=1"},
+          {"trial": "trial-036", "parent": "trial-030", "axis": "wd=0.0, dropout=0.2 (reg)", "best_val_loss": 0.5937, "best_epoch": 4},
+          {"trial": "trial-034", "parent": "trial-031", "axis": "batch_size=128, grad_accum_steps=4", "best_val_loss": 0.596, "best_epoch": 6, "note": "still falling at its last epoch, undertrained; above the 0.595 noise floor - not yet a real result, revisit at more epochs if the batch=128 lineage keeps winning"}
+        ],
+        "batch_size_finding": "Bigger batch (128) gave the sweep's best val_loss despite ~94 opt steps/epoch (16x fewer than batch=8's 1500), but did NOT speed up wall-clock - batch=8 ran ~530-540s/epoch, batch=32 ~680s/epoch, batch=128 ~735s/epoch, the opposite of the usual larger-batch-is-faster expectation. Likely cause (code-level, not batch-size-inherent): data_collate_function pads each batch to its own longest sequence with no length-bucketing, and shuffle=True draws batches randomly - larger batches have a higher chance of containing a near-max_length (1024) outlier, forcing more padding waste as batch size grows. Not fixed as part of this round; would need length-bucketed batching in training_run.py to actually test batch size's effect on throughput cleanly.",
+        "gpu_memory_observations": "User reports trial-033 (batch_size=128, grad_accum_steps=1) almost OOM'd the T4; trial-034 (batch_size=128, grad_accum_steps=4, run immediately after) was surprisingly easier on memory. Per training_run.py (create_esm/DataLoader), grad_accum_steps does NOT reduce per-step batch size - the DataLoader batch_size is used as-is every micro-step, so trial-034 processes full batches of 128 exactly like trial-033; the code gives no mechanism for grad_accum alone to lower peak memory. Most likely explanation: CUDA's caching allocator already expanded its pool to fit batch=128 during trial-033, so trial-034 (running right after, same session) reused that already-grown pool instead of needing to allocate further - an artifact of run order within one session, not a real property of grad_accum_steps. Don't read 'higher grad_accum = lower memory' as a real effect without a controlled A/B (same batch size, accum vs no-accum, in fresh sessions on both sides)."
       },
-      "next_step": "Once trial-032..037 land: rank by best val_loss, check trial-035/036 against trial-031's overfitting curve to see which regularizer (dropout vs weight_decay) actually controls it, and use the batch-size trials' [TIMING] to decide whether a larger batch is worth adopting going forward. Then pick the new width-2 beam and design round 2 at this scale."
+      "beam": [
+        {"trial": "trial-033", "best_val_loss": 0.5902, "best_epoch": 5, "config_note": "batch_size=128, zero regularization, unfreeze=1 - measured at epochs=6, predates the epochs=10 policy"},
+        {"trial": "trial-035", "best_val_loss": 0.5914, "best_epoch": 5, "config_note": "dropout=0.1, wd=0.1, batch_size=8, unfreeze=1 - measured at epochs=6, predates the epochs=10 policy"}
+      ],
+      "round_2": {
+        "status": "queued",
+        "manifest_file": "experiments/round5_manifest.json",
+        "notebook_file": "experiments/round5_manual.ipynb",
+        "epochs": 10,
+        "queued_experiments": ["trial-038", "trial-039", "trial-040", "trial-041", "trial-042", "trial-043"],
+        "queued_experiment_notes": {
+          "trial-038": "off trial-033, rerun at epochs=10 (unchanged config) - trial-033's own 6-epoch curve was just starting to tick back up, need the full picture. Same near-OOM risk as trial-033, now for 10 epochs.",
+          "trial-039": "regularization, off trial-033: adds trial-035's dropout=0.1/wd=0.1 on top of batch_size=128 - tests whether the two independent wins stack. Same OOM caution.",
+          "trial-040": "off trial-033: batch_size=64, interpolating between trial-032 (32) and trial-033 (128) to map the batch-size curve more finely",
+          "trial-041": "off trial-035, rerun at epochs=10 (unchanged config)",
+          "trial-042": "regularization, off trial-035: even lighter touch, dropout=0.05/wd=0.05, to see if 0.1/0.1 is close to the true optimum or if there's more room below it",
+          "trial-043": "off trial-035: unfreeze_last_n=2 combined with the light-regularization config (trial-037 only tested unfreeze=2 under heavy regularization)"
+        },
+        "runtime_warning": "At epochs=10, extrapolating round_1's per-epoch timings across 6 trials, this round is likely ~10-11 hours run back-to-back in one session - flagged before the user commits to running it in one sitting via the manually-kept-alive browser session."
+      },
+      "next_step": "Once trial-038..043 land: rank by best val_loss against the 0.595 noise floor, check trial-038/041 (the epochs=10 reruns) for how much worse the overfitting gets vs. the epochs=6 baseline, and pick the new width-2 beam for round 3."
     }
   }
 }

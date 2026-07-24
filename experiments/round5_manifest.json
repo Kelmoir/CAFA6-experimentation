@@ -1,0 +1,128 @@
+[
+  {
+    "trial_id": "trial-038",
+    "parent": "trial-033",
+    "axis": "epochs 6->10 (rerun at fixed policy)",
+    "note": "New beam member trial-033 (batch_size=128, zero regularization) is the best result of the entire sweep (val_loss 0.5902 at epoch 5/6) but was only measured at 6 epochs, before the epochs=10 policy. Its own curve was still just starting to tick back up by epoch 6 (0.5902 -> 0.5922) - unchanged config, run to 10 epochs, to see whether it overfits harder like trial-031 did or holds up. CAUTION: the user reported trial-033 nearly OOM'd the T4 at 6 epochs - same batch_size=128 risk applies here, now for 4 more epochs of exposure.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "128",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.0",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.0",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-039",
+    "parent": "trial-033",
+    "axis": "light regularization (regularization)",
+    "note": "1st required regularization trial. Combines trial-033's batch_size=128 with trial-035's regularization finding (dropout=0.1/wd=0.1 beat both zero and heavy regularization) - tests whether the two independent wins stack. Same OOM caution as trial-038.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "128",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.1",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.1",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-040",
+    "parent": "trial-033",
+    "axis": "batch_size=64",
+    "note": "Interpolates between trial-032 (batch=32, val_loss 0.5916) and trial-033 (batch=128, val_loss 0.5902, best of the sweep) to map the batch-size curve more finely. Lower OOM risk than batch=128 but untested at this exact size.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "64",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.0",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.0",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-041",
+    "parent": "trial-035",
+    "axis": "epochs 6->10 (rerun at fixed policy)",
+    "note": "New beam member trial-035 (dropout=0.1/wd=0.1, batch=8) was 2nd-best of the sweep (val_loss 0.5914 at epoch 5) but only measured at 6 epochs. Unchanged config, run to 10 epochs to see if it holds up or starts overfitting like trial-030/031 did by their later epochs.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.1",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.1",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-042",
+    "parent": "trial-035",
+    "axis": "lighter regularization (regularization)",
+    "note": "2nd required regularization trial. trial-035's dropout=0.1/wd=0.1 beat both trial-030's heavy (0.5/0.2) and trial-031's zero regularization - tests whether an even lighter touch (0.05/0.05) does better still, or whether 0.1/0.1 is closer to the actual sweet spot.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.05",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.05",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-043",
+    "parent": "trial-035",
+    "axis": "unfreeze_last_n=2",
+    "note": "Combines the light-regularization sweet spot (dropout=0.1/wd=0.1) with the capacity bump trial-037 tested under heavy regularization (wd=0.5/dropout=0.2, val_loss 0.5936) - tests whether unfreeze=2 helps more once regularization isn't overconstraining it.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "2",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.1",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.1",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  }
+]

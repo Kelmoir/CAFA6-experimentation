@@ -48,7 +48,13 @@ VERDICTS = {
     "trial-028": "PLATEAU (round-2 reg: output_dropout=0.1 off trial-022, worst of round 2)",
     "trial-029": "PLATEAU (round-2: grad_accum_steps=4 off trial-022, no improvement over trial-022)",
     "trial-030": "MILD OVERFITTING (35M-scale seed, 6 epochs: best val_loss 0.5946 at epoch 4, then val_loss rises 0.5946->0.5959 while train_loss keeps falling - same shape as trial-031, much weaker; per user's val_loss>0.595 noise-floor call, this is the only 8M/35M-comparable result besides trial-031 to clear it)",
-    "trial-031": "OVERFITTING (35M-scale, zero regularization: best val_loss 0.5918 at epoch 4 - new best overall, clears the 0.595 noise floor clearly - then val_loss rises while train_loss keeps falling through epoch 6; first clear overfitting signal in the whole sweep)",
+    "trial-031": "OVERFITTING (35M-scale, zero regularization: best val_loss 0.5918 at epoch 4 - then val_loss rises while train_loss keeps falling through epoch 6; first clear overfitting signal in the whole sweep)",
+    "trial-032": "MILD OVERFITTING (batch_size=32 off trial-031: best val_loss 0.5916 at epoch 4, ties trial-031; slower per-epoch than batch=8 despite fewer steps, likely padding-waste from random per-batch length padding)",
+    "trial-033": "MILD OVERFITTING (batch_size=128 off trial-031: best val_loss 0.5902 at epoch 5 - new best of the entire sweep, despite ~94 opt steps/epoch (16x fewer than trial-031); user reports this trial nearly OOM'd the T4)",
+    "trial-034": "STILL CONVERGING (batch_size=128 + grad_accum_steps=4 off trial-031: best val_loss 0.5960 at epoch 6, its last epoch and still falling - above the 0.595 noise floor, so not yet a real result; too few optimizer steps (~23/epoch) to have converged in 6 epochs)",
+    "trial-035": "MILD OVERFITTING (light regularization off trial-030, dropout=0.1/wd=0.1: best val_loss 0.5914 at epoch 5 - 2nd best of the sweep, beats both trial-030's heavy reg and roughly ties trial-031's zero reg)",
+    "trial-036": "MILD OVERFITTING (wd=0.0 with dropout=0.2 off trial-030: best val_loss 0.5937 at epoch 4 - better than trial-030 but worse than trial-035's lighter-both combo)",
+    "trial-037": "MILD OVERFITTING (unfreeze_last_n=2 off trial-030: best val_loss 0.5936 at epoch 4, ~15% slower per epoch than unfreeze=1)",
 }
 
 CONFIG_RE = re.compile(r"^\[CONFIG\] (\{.*\})$")

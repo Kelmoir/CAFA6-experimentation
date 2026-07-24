@@ -1,0 +1,46 @@
+note: 2nd required regularization trial this round. Isolates which of trial-030's two regularizers (dropout=0.2 vs weight_decay=0.5) is actually responsible for its flatter, non-overfitting curve vs trial-031 -- this trial keeps dropout=0.2 but zeroes weight_decay, the complement of trial-035's 'both light' test.
+[CONFIG] {"device": "cuda", "epochs": 6, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t12_35M_UR50D", "unfreeze_last_n": 1, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.0, "max_minutes": null, "run_name": "trial-036", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-036", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "quiet": true}
+
+Loading weights: 100%
+ 198/198 [00:00<00:00, 4110.05it/s]
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t12_35M_UR50D
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.layer_norm.weight  | UNEXPECTED | 
+lm_head.bias               | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+lm_head.layer_norm.bias    | UNEXPECTED | 
+lm_head.dense.bias         | UNEXPECTED | 
+classifier.out_proj.weight | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+
+Model layers: 12, request unfreeze layers: 1
+[INFO] Initialized classifier bias to label priors: {'C': 0.7161936163902283, 'F': 0.6852575540542603, 'P': 0.6928520202636719}
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+Epoch 1/6 | train_loss=0.6024 | val_loss=0.5995 | train_acc=0.7000 | val_acc=0.6923 | train_recall=0.9890 | val_recall=0.9641
+[TIMING] epoch 1 elapsed=539.8s
+Epoch 2/6 | train_loss=0.5885 | val_loss=0.6015 | train_acc=0.7040 | val_acc=0.6918 | train_recall=0.9685 | val_recall=0.9438
+[TIMING] epoch 2 elapsed=539.8s
+Epoch 3/6 | train_loss=0.5837 | val_loss=0.5957 | train_acc=0.7074 | val_acc=0.6958 | train_recall=0.9641 | val_recall=0.9682
+[TIMING] epoch 3 elapsed=535.1s
+Epoch 4/6 | train_loss=0.5787 | val_loss=0.5937 | train_acc=0.7124 | val_acc=0.6973 | train_recall=0.9569 | val_recall=0.9442
+[TIMING] epoch 4 elapsed=534.3s
+Epoch 5/6 | train_loss=0.5681 | val_loss=0.5965 | train_acc=0.7199 | val_acc=0.6982 | train_recall=0.9538 | val_recall=0.9503
+[TIMING] epoch 5 elapsed=545.7s
+Epoch 6/6 | train_loss=0.5613 | val_loss=0.5966 | train_acc=0.7225 | val_acc=0.7000 | train_recall=0.9473 | val_recall=0.9493
+[TIMING] epoch 6 elapsed=532.6s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00,  5.04it/s]
+
+[INFO] Pushed final-epoch checkpoint (epoch 6) to kelmoir/cafa6-esm@trial-036
+[SUMMARY] {"run_name": "trial-036", "epochs_completed": 6, "final_train_loss": 0.5612613809307416, "final_val_loss": 0.5965725945234299, "train_accuracy": 0.7224722417791685, "val_accuracy": 0.7000000191926956, "train_recall": 0.9472846666574478, "val_recall": 0.9492968344688415}
+[TIMING] trial-036 total wall clock: 3237.0s

@@ -1,0 +1,46 @@
+note: Non-regularization trial completing the round of 6. Capacity bump untested so far at the 35M scale (unfreeze was only tried at 1/12 layers in trial-030/031) -- more of the deeper model unfrozen could change both speed and how much it can learn/overfit.
+[CONFIG] {"device": "cuda", "epochs": 6, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t12_35M_UR50D", "unfreeze_last_n": 2, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.5, "max_minutes": null, "run_name": "trial-037", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-037", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "quiet": true}
+
+Loading weights: 100%
+ 198/198 [00:00<00:00, 4595.53it/s]
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t12_35M_UR50D
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.layer_norm.weight  | UNEXPECTED | 
+lm_head.bias               | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+lm_head.layer_norm.bias    | UNEXPECTED | 
+lm_head.dense.bias         | UNEXPECTED | 
+classifier.out_proj.weight | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+
+Model layers: 12, request unfreeze layers: 2
+[INFO] Initialized classifier bias to label priors: {'C': 0.7161936163902283, 'F': 0.6852575540542603, 'P': 0.6928520202636719}
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+Epoch 1/6 | train_loss=0.6008 | val_loss=0.5999 | train_acc=0.6996 | val_acc=0.6923 | train_recall=0.9853 | val_recall=0.9717
+[TIMING] epoch 1 elapsed=616.0s
+Epoch 2/6 | train_loss=0.5893 | val_loss=0.6008 | train_acc=0.7050 | val_acc=0.6918 | train_recall=0.9708 | val_recall=0.9569
+[TIMING] epoch 2 elapsed=615.0s
+Epoch 3/6 | train_loss=0.5880 | val_loss=0.5957 | train_acc=0.7041 | val_acc=0.6965 | train_recall=0.9693 | val_recall=0.9758
+[TIMING] epoch 3 elapsed=609.9s
+Epoch 4/6 | train_loss=0.5880 | val_loss=0.5936 | train_acc=0.7054 | val_acc=0.6975 | train_recall=0.9660 | val_recall=0.9616
+[TIMING] epoch 4 elapsed=608.9s
+Epoch 5/6 | train_loss=0.5820 | val_loss=0.5962 | train_acc=0.7103 | val_acc=0.6932 | train_recall=0.9672 | val_recall=0.9651
+[TIMING] epoch 5 elapsed=622.4s
+Epoch 6/6 | train_loss=0.5809 | val_loss=0.5956 | train_acc=0.7116 | val_acc=0.6968 | train_recall=0.9653 | val_recall=0.9712
+[TIMING] epoch 6 elapsed=607.4s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00,  6.33it/s]
+
+[INFO] Pushed final-epoch checkpoint (epoch 6) to kelmoir/cafa6-esm@trial-037
+[SUMMARY] {"run_name": "trial-037", "epochs_completed": 6, "final_train_loss": 0.5808647649089496, "final_val_loss": 0.5956242115497589, "train_accuracy": 0.7115833531816801, "val_accuracy": 0.6968333532810211, "train_recall": 0.9652923358678818, "val_recall": 0.9711634991168976}
+[TIMING] trial-037 total wall clock: 3689.9s

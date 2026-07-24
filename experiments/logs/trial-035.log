@@ -1,0 +1,46 @@
+note: Beam-search protocol trial (2 of 6 this round must tweak regularization) filling the round out to 6. trial-031 (zero reg) beat trial-030 (heavy reg) at epoch 4 (0.5918 vs 0.5946) but then overfit hard by epoch 6 (train/val gap widened to 0.04) -- suggesting the true optimum is somewhere between trial-030's wd=0.5/dropout=0.2 and trial-031's wd=0/dropout=0, not at either extreme. This trial tests a light middle ground (dropout=0.1, wd=0.1) off trial-030, aiming to keep trial-031's early-epoch gains without its late-epoch blowup.
+[CONFIG] {"device": "cuda", "epochs": 6, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t12_35M_UR50D", "unfreeze_last_n": 1, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.1, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.1, "max_minutes": null, "run_name": "trial-035", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-035", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "quiet": true}
+
+Loading weights: 100%
+ 198/198 [00:00<00:00, 5437.66it/s]
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t12_35M_UR50D
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.layer_norm.weight  | UNEXPECTED | 
+lm_head.bias               | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+lm_head.layer_norm.bias    | UNEXPECTED | 
+lm_head.dense.bias         | UNEXPECTED | 
+classifier.out_proj.weight | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+
+Model layers: 12, request unfreeze layers: 1
+[INFO] Initialized classifier bias to label priors: {'C': 0.7161936163902283, 'F': 0.6852575540542603, 'P': 0.6928520202636719}
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+Epoch 1/6 | train_loss=0.6019 | val_loss=0.5988 | train_acc=0.6997 | val_acc=0.6913 | train_recall=0.9879 | val_recall=0.9656
+[TIMING] epoch 1 elapsed=539.7s
+Epoch 2/6 | train_loss=0.5879 | val_loss=0.6020 | train_acc=0.7067 | val_acc=0.6895 | train_recall=0.9699 | val_recall=0.9411
+[TIMING] epoch 2 elapsed=539.5s
+Epoch 3/6 | train_loss=0.5837 | val_loss=0.5945 | train_acc=0.7073 | val_acc=0.6960 | train_recall=0.9653 | val_recall=0.9716
+[TIMING] epoch 3 elapsed=534.8s
+Epoch 4/6 | train_loss=0.5791 | val_loss=0.5929 | train_acc=0.7128 | val_acc=0.6980 | train_recall=0.9591 | val_recall=0.9451
+[TIMING] epoch 4 elapsed=534.3s
+Epoch 5/6 | train_loss=0.5697 | val_loss=0.5914 | train_acc=0.7190 | val_acc=0.6980 | train_recall=0.9556 | val_recall=0.9572
+[TIMING] epoch 5 elapsed=545.3s
+Epoch 6/6 | train_loss=0.5631 | val_loss=0.5958 | train_acc=0.7213 | val_acc=0.6983 | train_recall=0.9508 | val_recall=0.9523
+[TIMING] epoch 6 elapsed=533.1s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00,  4.92it/s]
+
+[INFO] Pushed final-epoch checkpoint (epoch 6) to kelmoir/cafa6-esm@trial-035
+[SUMMARY] {"run_name": "trial-035", "epochs_completed": 6, "final_train_loss": 0.5631383824149767, "final_val_loss": 0.5957695351839065, "train_accuracy": 0.7213333529233933, "val_accuracy": 0.6983333530426026, "train_recall": 0.9507857238054276, "val_recall": 0.952312707901001}
+[TIMING] trial-035 total wall clock: 3237.0s

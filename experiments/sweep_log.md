@@ -908,3 +908,62 @@ ready to hand results back for analysis.
   grown its pool to fit batch=128 during trial-033, letting trial-034 reuse it — a run-order artifact
   of one session, not a real property of `grad_accum_steps`. Flagging so this isn't misread as
   "accumulation saves memory" in a future config decision.
+
+## round_1 results (trial-032 through trial-037)
+
+All 6 ran in the user's manually-kept-alive browser Colab session, pasted back as
+`experiments/logs/trial-032-037.log`, split per-trial. All completed their (pre-policy) 6 epochs.
+
+| trial | parent | axis | best epoch | best val_loss | notes |
+|-------|--------|------|-----------|----------------|-------|
+| trial-033 | trial-031 | batch_size=128 | 5 | **0.5902** | new best of the entire sweep; nearly OOM'd the T4 |
+| trial-035 | trial-030 | dropout=0.1, wd=0.1 (reg) | 5 | 0.5914 | 2nd best; beats both trial-030 (heavy reg) and trial-031 (zero reg) |
+| trial-032 | trial-031 | batch_size=32 | 4 | 0.5916 | ties trial-031 |
+| trial-031 | (seed) | zero regularization | 4 | 0.5918 | prior best, for reference |
+| trial-037 | trial-030 | unfreeze_last_n=2 | 4 | 0.5936 | ~15% slower/epoch than unfreeze=1 |
+| trial-036 | trial-030 | wd=0.0, dropout=0.2 (reg) | 4 | 0.5937 | better than trial-030, worse than trial-035's lighter combo |
+| trial-030 | (seed) | baseline (wd=0.5, dropout=0.2) | 4 | 0.5946 | prior baseline, for reference |
+| trial-034 | trial-031 | batch=128, grad_accum=4 | 6 | 0.5960 | still falling at epoch 6 (last), undertrained — above the 0.595 noise floor, not yet a real result |
+
+**Batch size, surprising result**: bigger batch (128) gave the best val_loss of the sweep so far
+despite ~94 optimizer steps/epoch — 16x fewer than batch=8's 1500. But it did **not** speed up
+wall-clock: batch=8 trials ran ~530-540s/epoch, batch=32 ~680s/epoch, batch=128 ~735s/epoch — *larger*
+batches were *slower* per epoch, the opposite of the usual "bigger batch, better GPU utilization"
+expectation. Likely cause: `data_collate_function` pads each batch to that batch's own longest
+sequence (`pad_sequence`, no length-bucketing), and batches are drawn from a random shuffle
+(`shuffle=True`, no sorting) — a larger batch has a higher chance of containing at least one
+near-`max_length` (1024) sequence, forcing more padding waste per batch as batch size grows. Total
+GPU-perceived work per epoch likely rises with batch size even though the underlying token count is
+fixed, which would fully explain the trend. Not fixed as part of this batch (would need
+length-bucketed batching in `training_run.py`); noting it as a real code-level explanation rather than
+something specific to `batch_size=128` itself.
+
+**Regularization**: trial-035's light-touch (dropout=0.1/wd=0.1) beat trial-030 (heavy: wd=0.5/dropout=0.2)
+and roughly tied trial-031 (zero) — regularization strength here behaves like a real, tunable
+parameter with a genuine sweet spot in the middle, not a monotonic "less is more" or "more is better"
+relationship.
+
+**GPU memory (user-reported)**: trial-033 (batch=128) nearly OOM'd the T4; trial-034 (batch=128,
+grad_accum=4, same per-step batch size) was easier — consistent with the run-order/allocator-caching
+explanation above rather than a real accumulation effect.
+
+**Decision**: new beam = `[trial-033 (0.5902), trial-035 (0.5914)]`. Round 2 at this scale
+(`experiments/round5_manifest.json` / `experiments/round5_manual.ipynb`, trial-038 through trial-043)
+branches 3 children off each, now at the newly-fixed **epochs=10**:
+- from trial-033 (batch=128, zero reg): `trial-038` reruns the exact same config at epochs=10 (its
+  own 6-epoch curve was just starting to tick up — need the full 10-epoch picture); `trial-039`
+  (regularization) adds trial-035's dropout=0.1/wd=0.1 on top of batch=128, testing whether the two
+  independent wins stack; `trial-040` tries batch_size=64, interpolating between trial-032 and
+  trial-033 to map the batch-size curve more finely.
+- from trial-035 (dropout=0.1/wd=0.1, batch=8): `trial-041` reruns the exact same config at
+  epochs=10; `trial-042` (regularization) tries an even lighter touch (dropout=0.05/wd=0.05) to see if
+  0.1/0.1 is close to the true optimum or if there's more room; `trial-043` adds `unfreeze_last_n=2` on
+  top of the light-regularization config (trial-037 tested unfreeze=2 only under heavy regularization).
+
+**Runtime warning**: at epochs=10, this round is meaningfully longer than round_1. Extrapolating from
+round_1's per-epoch timings (~530-540s/epoch at batch=8, ~680s at batch=32, ~735s at batch=128) across
+6 trials at 10 epochs each, total wall clock for this batch is likely **~10-11 hours** run back to
+back in one session — worth knowing before committing to running it in one sitting, especially via a
+manually-kept-alive browser session rather than the CLI's auto-managed one. trial-038/039 repeat
+trial-033's near-OOM batch_size=128, now for 10 epochs instead of 6 — same memory risk, longer
+exposure.
