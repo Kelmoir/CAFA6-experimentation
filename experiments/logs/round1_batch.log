@@ -1,0 +1,71 @@
+[run_batch] running 6 experiment(s) from experiments/round1_manifest.json on session 'claude_cafa6'
+[run_batch] (1/6) launching trial-018
+[run_trial] wrapper written to .podman/tmp/trial-018_wrapper.py
+[colab] Uploaded '.podman/secrets/huggingface_token' to '/content/.hf_token'
+[colab] Uploaded 'training_run.py' to '/content/training_run.py'
+[run_trial] running trial 'trial-018' on session 'claude_cafa6' (timeout 3600s), logging to experiments/logs/trial-018.log
+EXEC_EXIT=1
+[run_batch] (1/6) trial-018 finished (exit 1)
+[run_batch] (2/6) launching trial-019
+[run_trial] wrapper written to .podman/tmp/trial-019_wrapper.py
+[colab] Upload failed: File or directory not found: /content/.hf_token
+[run_batch] (2/6) trial-019 finished (exit 1)
+[run_batch] (3/6) launching trial-020
+[run_trial] wrapper written to .podman/tmp/trial-020_wrapper.py
+[colab] Upload failed: File or directory not found: /content/.hf_token
+[run_batch] (3/6) trial-020 finished (exit 1)
+[run_batch] (4/6) launching trial-021
+[run_trial] wrapper written to .podman/tmp/trial-021_wrapper.py
+[colab] Upload failed: File or directory not found: /content/.hf_token
+[run_batch] (4/6) trial-021 finished (exit 1)
+[run_batch] (5/6) launching trial-022
+[run_trial] wrapper written to .podman/tmp/trial-022_wrapper.py
+[colab] Upload failed: File or directory not found: /content/.hf_token
+[run_batch] (5/6) trial-022 finished (exit 1)
+[run_batch] (6/6) launching trial-023
+[run_trial] wrapper written to .podman/tmp/trial-023_wrapper.py
+[colab] Upload failed: File or directory not found: /content/.hf_token
+[run_batch] (6/6) trial-023 finished (exit 1)
+[run_batch] batch complete.
+[run_batch] stopping session 'claude_cafa6'...
+[colab] Stopping session 'claude_cafa6'...
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /home/kelmoir/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-pac │
+│ kages/colab_cli/commands/session.py:380 in stop                              │
+│                                                                              │
+│   377 │   except Exception:                                                  │
+│   378 │   │   pass                                                           │
+│   379 │                                                                      │
+│ ❱ 380 │   state.client.unassign(s.endpoint)                                  │
+│   381 │   state.store.remove(name)                                           │
+│   382 │   state.history.log_event(name, "session_terminated", {"reason":     │
+│       "user_requested"})                                                     │
+│   383 │   typer.echo("[colab] Session terminated.")                          │
+│                                                                              │
+│ /home/kelmoir/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-pac │
+│ kages/colab_cli/client.py:220 in unassign                                    │
+│                                                                              │
+│   217 │                                                                      │
+│   218 │   def unassign(self, endpoint: str):                                 │
+│   219 │   │   url = urljoin(self.colab_domain,                               │
+│       f"{TUN_ENDPOINT}/unassign/{endpoint}")                                 │
+│ ❱ 220 │   │   resp = self._issue_request(url, schema=GetUnassignRequest)     │
+│   221 │   │   headers = {COLAB_XSRF_TOKEN_HEADER["key"]: resp.token}         │
+│   222 │   │   return self._issue_request(                                    │
+│   223 │   │   │   url, method="POST", headers=headers, schema=BaseModel      │
+│                                                                              │
+│ /home/kelmoir/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-pac │
+│ kages/colab_cli/client.py:196 in _issue_request                              │
+│                                                                              │
+│   193 │   │   self.logger.debug(f"Response Headers: {response.headers}")     │
+│   194 │   │   self.logger.debug(f"Response Body: {response.text}")           │
+│   195 │   │   if not response.ok:                                            │
+│ ❱ 196 │   │   │   raise ColabRequestError(                                   │
+│   197 │   │   │   │   f"Failed to issue request {method} {endpoint}:         │
+│       {response.reason}",                                                    │
+│   198 │   │   │   │   request=response.request,                              │
+│   199 │   │   │   │   response=response,                                     │
+╰──────────────────────────────────────────────────────────────────────────────╯
+ColabRequestError: Failed to issue request GET 
+https://colab.research.google.com/tun/m/unassign/gpu-t4-s-kkb-usw1b2-2sgt6pf4i45
+na: Not Found

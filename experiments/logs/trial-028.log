@@ -1,0 +1,54 @@
+note: from trial-022 (grad_accum_steps=2): lower output_dropout 0.2 -> 0.1 - same under- vs over-regularization question as trial-025, tested from the other beam member and via a different regularization axis
+[CONFIG] {"device": "cuda", "epochs": 10, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t6_8M_UR50D", "unfreeze_last_n": 1, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.1, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.5, "max_minutes": null, "run_name": "trial-028", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-028", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 2, "quiet": true}
+
+Loading weights: 100%
+ 102/102 [00:00<00:00, 2924.62it/s]
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t6_8M_UR50D
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.bias               | UNEXPECTED | 
+lm_head.layer_norm.weight  | UNEXPECTED | 
+lm_head.dense.bias         | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+lm_head.layer_norm.bias    | UNEXPECTED | 
+classifier.out_proj.weight | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+
+Model layers: 6, request unfreeze layers: 1
+[INFO] Initialized classifier bias to label priors: {'C': 0.7161936163902283, 'F': 0.6852575540542603, 'P': 0.6928520202636719}
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+Epoch 1/10 | train_loss=0.6049 | val_loss=0.6039 | train_acc=0.6986 | val_acc=0.6923 | train_recall=0.9927 | val_recall=0.9824
+[TIMING] epoch 1 elapsed=232.9s
+Epoch 2/10 | train_loss=0.5937 | val_loss=0.6020 | train_acc=0.7032 | val_acc=0.6930 | train_recall=0.9791 | val_recall=0.9921
+[TIMING] epoch 2 elapsed=232.0s
+Epoch 3/10 | train_loss=0.5916 | val_loss=0.6012 | train_acc=0.7018 | val_acc=0.6935 | train_recall=0.9763 | val_recall=0.9759
+[TIMING] epoch 3 elapsed=231.1s
+Epoch 4/10 | train_loss=0.5899 | val_loss=0.6001 | train_acc=0.7053 | val_acc=0.6962 | train_recall=0.9706 | val_recall=0.9650
+[TIMING] epoch 4 elapsed=230.2s
+Epoch 5/10 | train_loss=0.5841 | val_loss=0.5985 | train_acc=0.7092 | val_acc=0.6953 | train_recall=0.9724 | val_recall=0.9637
+[TIMING] epoch 5 elapsed=234.6s
+Epoch 6/10 | train_loss=0.5826 | val_loss=0.6010 | train_acc=0.7096 | val_acc=0.6905 | train_recall=0.9690 | val_recall=0.9471
+[TIMING] epoch 6 elapsed=229.7s
+Epoch 7/10 | train_loss=0.5821 | val_loss=0.6021 | train_acc=0.7077 | val_acc=0.6965 | train_recall=0.9620 | val_recall=0.9877
+[TIMING] epoch 7 elapsed=230.9s
+Epoch 8/10 | train_loss=0.5855 | val_loss=0.5984 | train_acc=0.7066 | val_acc=0.6958 | train_recall=0.9654 | val_recall=0.9693
+[TIMING] epoch 8 elapsed=232.0s
+Epoch 9/10 | train_loss=0.5769 | val_loss=0.5989 | train_acc=0.7133 | val_acc=0.6938 | train_recall=0.9646 | val_recall=0.9693
+[TIMING] epoch 9 elapsed=232.0s
+Epoch 10/10 | train_loss=0.5830 | val_loss=0.6014 | train_acc=0.7076 | val_acc=0.6948 | train_recall=0.9630 | val_recall=0.9637
+[TIMING] epoch 10 elapsed=232.7s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00, 19.99it/s]
+
+[INFO] Pushed final-epoch checkpoint (epoch 10) to kelmoir/cafa6-esm@trial-028
+[SUMMARY] {"run_name": "trial-028", "epochs_completed": 10, "final_train_loss": 0.5829705394903819, "final_val_loss": 0.6013600496053696, "train_accuracy": 0.7075555751721064, "val_accuracy": 0.6948333524465561, "train_recall": 0.9629970976909001, "val_recall": 0.9637111203670502}
+[TIMING] trial-028 total wall clock: 2326.9s

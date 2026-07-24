@@ -1,0 +1,151 @@
+[CONFIG] {"device": "cuda", "epochs": 10, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t6_8M_UR50D", "unfreeze_last_n": 1, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.5, "max_minutes": null, "run_name": "trial-014", "trackio_space_id": null, "checkpoint": true, "checkpoint_branch": "trial-014", "hf_token_file": "/content/.hf_token", "resume_from_revision": "trial-014", "start_epoch": 4}
+/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_auth.py:138: UserWarning: 
+Error while fetching `HF_TOKEN` secret value from your vault: 'Requesting secret HF_TOKEN timed out. Secrets can only be fetched when running from the Colab UI.'.
+  warnings.warn(f"\nError while fetching `HF_TOKEN` secret value from your vault: '{str(e)}'.")
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+README.md:   0%|          | 0.00/668 [00:00<?, ?B/s]
+data/train-00000-of-00001.parquet: reconstructing file:   0%|          |  0.00B 
+/ 22.3MB            
+data/train-00000-of-00001.parquet: downloading bytes:           |  0.00B        
+data/validation-00000-of-00001.parquet: reconstructing file:   0%|          |  
+0.00B / 6.26MB            
+data/validation-00000-of-00001.parquet: downloading bytes:           |  0.00B   
+data/test-00000-of-00001.parquet: reconstructing file:   0%|          |  0.00B /
+6.28MB            
+data/test-00000-of-00001.parquet: downloading bytes:           |  0.00B         
+Generating train split:   0%|          | 0/50168 [00:00<?, ? examples/s]
+Generating validation split:   0%|          | 0/14131 [00:00<?, ? examples/s]
+Generating test split:   0%|          | 0/14182 [00:00<?, ? examples/s]
+tokenizer_config.json:   0%|          | 0.00/95.0 [00:00<?, ?B/s]
+vocab.txt:   0%|          | 0.00/93.0 [00:00<?, ?B/s]
+special_tokens_map.json:   0%|          | 0.00/125 [00:00<?, ?B/s]
+config.json:   0%|          | 0.00/1.05k [00:00<?, ?B/s]
+model.safetensors: reconstructing file:   0%|          |  0.00B / 30.1MB        
+model.safetensors: downloading bytes:           |  0.00B            
+Loading weights:   0%|          | 0/106 [00:00<?, ?it/s]
+Model layers: 6, request unfreeze layers: 1
+[INFO] Resumed model weights from kelmoir/cafa6-esm@trial-014
+* Trackio project initialized: cafa6
+* Trackio metrics logged to: /root/.cache/huggingface/trackio
+* NVIDIA GPU detected, enabling automatic GPU metrics logging
+* psutil detected, enabling automatic CPU/system metrics logging
+* Created new run: trial-014
+[INFO] HF token resolved via --hf-token-file
+/usr/local/lib/python3.12/dist-packages/trackio/utils.py:27: UserWarning: Reserved keys renamed: ['step'] → '__{key}'
+  warnings.warn(message, *args, **kwargs)
+[STEP] epoch=5 step=60/1500 loss=0.5482
+[STEP] epoch=5 step=120/1500 loss=0.5136
+[STEP] epoch=5 step=180/1500 loss=0.6922
+[STEP] epoch=5 step=240/1500 loss=0.5666
+[STEP] epoch=5 step=300/1500 loss=0.4471
+[STEP] epoch=5 step=360/1500 loss=0.5504
+[STEP] epoch=5 step=420/1500 loss=0.8047
+[STEP] epoch=5 step=480/1500 loss=0.4295
+[STEP] epoch=5 step=540/1500 loss=0.5945
+[STEP] epoch=5 step=600/1500 loss=0.5905
+[STEP] epoch=5 step=660/1500 loss=0.4492
+[STEP] epoch=5 step=720/1500 loss=0.6115
+[STEP] epoch=5 step=780/1500 loss=0.7654
+[STEP] epoch=5 step=840/1500 loss=0.4442
+[STEP] epoch=5 step=900/1500 loss=0.6360
+[STEP] epoch=5 step=960/1500 loss=0.5989
+[STEP] epoch=5 step=1020/1500 loss=0.5924
+[STEP] epoch=5 step=1080/1500 loss=0.6283
+[STEP] epoch=5 step=1140/1500 loss=0.5520
+[STEP] epoch=5 step=1200/1500 loss=0.6491
+[STEP] epoch=5 step=1260/1500 loss=0.7497
+[STEP] epoch=5 step=1320/1500 loss=0.6922
+[STEP] epoch=5 step=1380/1500 loss=0.6314
+[STEP] epoch=5 step=1440/1500 loss=0.5120
+[STEP] epoch=5 step=1500/1500 loss=0.4322
+Epoch 5/14 | train_loss=0.5875 | val_loss=0.6049 | train_acc=0.7076 | val_acc=0.6917 | train_recall=0.9762 | val_recall=0.9677
+[TIMING] epoch 5 elapsed=234.5s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 5 to kelmoir/cafa6-esm@trial-014
+[STEP] epoch=6 step=60/1500 loss=0.5875
+[STEP] epoch=6 step=120/1500 loss=0.5843
+[STEP] epoch=6 step=180/1500 loss=0.6602
+[STEP] epoch=6 step=240/1500 loss=0.6052
+[STEP] epoch=6 step=300/1500 loss=0.7093
+[STEP] epoch=6 step=360/1500 loss=0.4593
+[STEP] epoch=6 step=420/1500 loss=0.4778
+[STEP] epoch=6 step=480/1500 loss=0.7935
+[STEP] epoch=6 step=540/1500 loss=0.6261
+[STEP] epoch=6 step=600/1500 loss=0.5831
+[STEP] epoch=6 step=660/1500 loss=0.6264
+[STEP] epoch=6 step=720/1500 loss=0.5530
+[STEP] epoch=6 step=780/1500 loss=0.6130
+[STEP] epoch=6 step=840/1500 loss=0.7735
+[STEP] epoch=6 step=900/1500 loss=0.5587
+[STEP] epoch=6 step=960/1500 loss=0.4602
+[STEP] epoch=6 step=1020/1500 loss=0.6061
+[STEP] epoch=6 step=1080/1500 loss=0.5320
+[STEP] epoch=6 step=1140/1500 loss=0.5380
+[STEP] epoch=6 step=1200/1500 loss=0.5763
+[STEP] epoch=6 step=1260/1500 loss=0.5737
+[STEP] epoch=6 step=1320/1500 loss=0.5601
+[STEP] epoch=6 step=1380/1500 loss=0.7078
+[STEP] epoch=6 step=1440/1500 loss=0.6448
+[STEP] epoch=6 step=1500/1500 loss=0.7331
+Epoch 6/14 | train_loss=0.5889 | val_loss=0.6052 | train_acc=0.7072 | val_acc=0.6928 | train_recall=0.9766 | val_recall=0.9782
+[TIMING] epoch 6 elapsed=230.1s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]
+[INFO] Pushed checkpoint for epoch 6 to kelmoir/cafa6-esm@trial-014
+[STEP] epoch=7 step=60/1500 loss=0.6393
+[STEP] epoch=7 step=120/1500 loss=0.5849
+[STEP] epoch=7 step=180/1500 loss=0.4969
+[STEP] epoch=7 step=240/1500 loss=0.7037
+[STEP] epoch=7 step=300/1500 loss=0.4937
+[STEP] epoch=7 step=360/1500 loss=0.6705
+[STEP] epoch=7 step=420/1500 loss=0.6928
+[STEP] epoch=7 step=480/1500 loss=0.8243
+[STEP] epoch=7 step=540/1500 loss=0.6778
+[STEP] epoch=7 step=600/1500 loss=0.7072
+[STEP] epoch=7 step=660/1500 loss=0.5649
+╭───────────────────── Traceback (most recent call last) ──────────────────────╮
+│ /home/kelmoir/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-pac │
+│ kages/colab_cli/commands/execution.py:216 in exec_command                    │
+│                                                                              │
+│   213 │   │   │   )                                                          │
+│   214 │   │   │   state.store.add(s)                                         │
+│   215 │   │   │                                                              │
+│ ❱ 216 │   │   │   outputs = runtime.execute_code(                            │
+│   217 │   │   │   │   code,                                                  │
+│   218 │   │   │   │   output_hook=lambda o: display_output(o, output_image), │
+│   219 │   │   │   │   timeout=timeout,                                       │
+│                                                                              │
+│ /home/kelmoir/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-pac │
+│ kages/colab_cli/runtime.py:221 in execute_code                               │
+│                                                                              │
+│   218 │   │   │   │   │   │   if idx < len(outputs):                         │
+│   219 │   │   │   │   │   │   │   output_hook(outputs[idx])                  │
+│   220 │   │   │                                                              │
+│ ❱ 221 │   │   │   reply = self.kernel_client.execute_interactive(            │
+│   222 │   │   │   │   code, output_hook=wrapped_output_hook, **kwargs        │
+│   223 │   │   │   )                                                          │
+│   224 │   │   │   # execute_interactive returns the raw reply message        │
+│                                                                              │
+│ /home/kelmoir/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-pac │
+│ kages/jupyter_kernel_client/client.py:364 in execute_interactive             │
+│                                                                              │
+│   361 │   │   │   The reply message for this request                         │
+│   362 │   │   """                                                            │
+│   363 │   │   self._set_variables(variables)                                 │
+│ ❱ 364 │   │   return self._manager.client.execute_interactive(               │
+│   365 │   │   │   code,                                                      │
+│   366 │   │   │   silent=silent,                                             │
+│   367 │   │   │   store_history=store_history,                               │
+│                                                                              │
+│ /home/kelmoir/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-pac │
+│ kages/jupyter_kernel_client/wsclient.py:1073 in execute_interactive          │
+│                                                                              │
+│   1070 │   │   │   # wait for output and redisplay it                        │
+│   1071 │   │   │   while True:                                               │
+│   1072 │   │   │   │   if not self.connection_ready.is_set():                │
+│ ❱ 1073 │   │   │   │   │   raise RuntimeError("Connection was lost.")        │
+│   1074 │   │   │   │                                                         │
+│   1075 │   │   │   │   if timeout is not None:                               │
+│   1076 │   │   │   │   │   timeout = max(0, deadline - time.monotonic())     │
+╰──────────────────────────────────────────────────────────────────────────────╯
+RuntimeError: Connection was lost.

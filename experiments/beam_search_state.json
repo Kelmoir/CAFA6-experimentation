@@ -12,11 +12,11 @@
   },
   "regularization_axes": ["output_dropout", "esm_dropout", "attention_dropout", "weight_decay", "label_smoothing", "decouple_bias_wd"],
   "non_regularization_axes": ["learning_rate", "unfreeze_last_n", "lr_schedule", "warmup_steps", "grad_accum_steps"],
-  "round": 1,
-  "status": "round_1_running",
+  "round": 3,
+  "status": "round_3_blocked_on_user_decision",
   "beam": [
     {
-      "trial": "trial-015",
+      "trial": "trial-025",
       "config": {
         "model_name": "facebook/esm2_t6_8M_UR50D",
         "unfreeze_last_n": 1,
@@ -24,16 +24,70 @@
         "output_dropout": 0.2,
         "esm_dropout": 0.0,
         "attention_dropout": 0.0,
-        "weight_decay": 0.5
+        "weight_decay": 0.2,
+        "lr_schedule": "cosine"
       },
-      "best_val_loss": 0.599,
-      "note": "sole seed for round 1 (trial-016 nearly identical at unfreeze=2, folded into round 1's unfreeze axis instead of carried as a second beam member)"
+      "best_val_loss": 0.596,
+      "best_epoch": 8,
+      "note": "round-2 winner: weight_decay 0.5->0.2 off trial-018; ties trial-018 (0.5959) within noise, does not beat it"
+    },
+    {
+      "trial": "trial-026",
+      "config": {
+        "model_name": "facebook/esm2_t6_8M_UR50D",
+        "unfreeze_last_n": 2,
+        "learning_rate": 0.0002,
+        "output_dropout": 0.2,
+        "esm_dropout": 0.0,
+        "attention_dropout": 0.0,
+        "weight_decay": 0.5,
+        "lr_schedule": "cosine"
+      },
+      "best_val_loss": 0.5961,
+      "best_epoch": 10,
+      "note": "round-2 runner-up: unfreeze_last_n 1->2 off trial-018; ties trial-018 within noise, ~24% slower per epoch"
     }
   ],
-  "queued_experiments": ["trial-018", "trial-019", "trial-020", "trial-021", "trial-022", "trial-023"],
-  "manifest_file": "experiments/round1_manifest.json",
+  "queued_experiments": [],
+  "manifest_file": null,
   "completed_this_round": [],
+  "blocked_reason": "Round 2's best result (trial-025, val_loss=0.5960) is statistically indistinguishable from round 1's best (trial-018, val_loss=0.5959) - the round-1 caveat's trigger condition ('if round 2 doesn't break the plateau meaningfully, raise with the user') has been met. 12 trials across 2 rounds spanning all regularization and non-regularization axes have moved best val_loss from 0.599 to 0.5959, essentially flat since round 1. Paused before designing round 3; see sweep_log.md Round 2 section for full reasoning. Awaiting user decision: continue hyperparameter search at esm2_t6_8M scale, or pivot to a larger model (untested lever, and the project's original plan calls for re-running the search from scratch at target scale once a config is confirmed here).",
   "history": [
-    {"round": 0, "note": "ad hoc single-axis exploration, trial-001 through trial-017 (trial-017 abandoned after 3 infra failures)"}
+    {"round": 0, "note": "ad hoc single-axis exploration, trial-001 through trial-017 (trial-017 abandoned after 3 infra failures)"},
+    {
+      "round": 1,
+      "seed": "trial-015 (val_loss 0.599)",
+      "completed": ["trial-018", "trial-019", "trial-020", "trial-021", "trial-022", "trial-023"],
+      "results_by_val_loss": [
+        {"trial": "trial-018", "axis": "lr_schedule=cosine", "best_val_loss": 0.5959},
+        {"trial": "trial-022", "axis": "grad_accum_steps=2", "best_val_loss": 0.5978},
+        {"trial": "trial-019", "axis": "warmup_steps=300", "best_val_loss": 0.5981},
+        {"trial": "trial-021", "axis": "decouple_bias_wd (reg)", "best_val_loss": 0.599},
+        {"trial": "trial-020", "axis": "label_smoothing=0.05 (reg)", "best_val_loss": 0.5996},
+        {"trial": "trial-023", "axis": "unfreeze_last_n=3", "best_val_loss": 0.6015}
+      ],
+      "what_helped": "Both non-regularization schedule/optimization tweaks (cosine lr decay, larger effective batch via grad accumulation) gave small real reductions vs the trial-015 seed (0.599 -> 0.596/0.598). Every trial's best epoch landed at epoch 8/10, suggesting the plateau is being approached from above rather than a random walk.",
+      "what_hurt": "Both regularization tweaks (label_smoothing, decouple_bias_wd) underperformed or merely tied the seed - no evidence we're currently overfitting hard enough for more regularization to help (train/val gap stayed a modest ~0.01-0.02 throughout). unfreeze_last_n=3 was worse AND noisier (val_loss oscillated 0.60-0.622 across epochs) AND ~48% slower per epoch (327s vs 220s) than unfreeze=1, for no benefit - more capacity alone is not the fix.",
+      "caveat": "All 6 results (0.5959-0.6015) sit within a narrow band of the seed (0.599) and show meaningful epoch-to-epoch noise even within a single trial (e.g. trial-018 itself ranges 0.5959-0.6044 across its own 10 epochs) - round 1's 'winner' margin is close to that noise floor, so trial-018/trial-022 are the best available signal per the beam-search protocol, not confirmed robust wins. All results are far from the val_loss<0.45 target; nothing so far suggests wd/dropout/schedule tuning alone will close that gap at this model scale (esm2_t6_8M, unfreeze<=3) - worth watching whether round 2 breaks the plateau meaningfully before committing to more rounds at this scale.",
+      "bug_found": "training_run.py computed train_acc/train_recall against the label-smoothed targets instead of the original hard 0/1 labels, so trial-020 (label_smoothing=0.05) reported train_acc=train_recall=0.0000 every epoch - an exact-equality-comparison artifact, not a real training failure (val metrics were unaffected since smoothing is train-only). Fixed post-hoc by computing metrics against a separate hard_labels tensor; val_loss numbers used for the round-1 ranking were never affected by this bug.",
+      "decision": "beam updated to [trial-018, trial-022]; round 2 (trial-024..029) branches 3 children off each, 2 of 6 tweak regularization (weight_decay from trial-018, output_dropout from trial-022) - both in the 'reduce' direction given the under- vs over-regularization question raised above."
+    },
+    {
+      "round": 2,
+      "parents": ["trial-018 (val_loss 0.5959)", "trial-022 (val_loss 0.5978)"],
+      "completed": ["trial-024", "trial-025", "trial-026", "trial-027", "trial-028", "trial-029"],
+      "results_by_val_loss": [
+        {"trial": "trial-025", "parent": "trial-018", "axis": "weight_decay=0.2 (reg)", "best_val_loss": 0.596},
+        {"trial": "trial-026", "parent": "trial-018", "axis": "unfreeze_last_n=2", "best_val_loss": 0.5961},
+        {"trial": "trial-024", "parent": "trial-018", "axis": "learning_rate=3e-4", "best_val_loss": 0.5966},
+        {"trial": "trial-027", "parent": "trial-022", "axis": "+cosine lr_schedule", "best_val_loss": 0.5968},
+        {"trial": "trial-029", "parent": "trial-022", "axis": "grad_accum_steps=4", "best_val_loss": 0.5971},
+        {"trial": "trial-028", "parent": "trial-022", "axis": "output_dropout=0.1 (reg)", "best_val_loss": 0.5984}
+      ],
+      "what_helped": "Lower weight_decay (trial-025) and unfreeze=2 (trial-026), both off the trial-018 lineage, marginally edged past their parent's noise band - but neither beats trial-018's own best (0.5959) in absolute terms.",
+      "what_hurt": "Stacking cosine schedule onto trial-022 (trial-027) did not combine round-1's two gains additively - worse than trial-018 alone, so the two round-1 wins weren't independent. grad_accum=4 (trial-029) was flat-to-worse than grad_accum=2. Lowering output_dropout further (trial-028) was the worst trial of the round.",
+      "plateau_confirmed": "Round 2's best (trial-025, 0.5960) is statistically indistinguishable from round 1's best (trial-018, 0.5959) - a 0.0001 gap, an order of magnitude below single-trial epoch-to-epoch noise (~0.004-0.008). Best val_loss has been essentially flat since round 1 (0.599 -> 0.5959 -> 0.5960) despite covering every regularization and non-regularization axis in both directions across 12 trials. val_acc/val_recall also converge to near-identical values regardless of config. Reads as a representational/data-budget ceiling for esm2_t6_8M at max_train_samples=12000, not a remaining hyperparameter to find.",
+      "decision": "Beam updated to [trial-025, trial-026] per protocol, but round 3 design paused - raising the plateau with the user before spending more Colab trials on this model scale, per the trigger condition logged after round 1."
+    }
   ]
 }

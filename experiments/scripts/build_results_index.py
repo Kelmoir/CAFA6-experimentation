@@ -33,8 +33,20 @@ VERDICTS = {
     "trial-012": "OVERFITTING",
     "trial-013": "DEAD (re-approached via excess wd)",
     "trial-014": "MIXED (epochs 1-4 pre-fix, 5-6 post per-epoch-variation fix)",
-    "trial-015": "PLATEAU (stable, best trajectory so far)",
+    "trial-015": "PLATEAU (stable, beam search round-0 seed)",
     "trial-016": "PLATEAU (matches trial-015, unfreeze bump had no effect)",
+    "trial-018": "PLATEAU (round-1 winner: cosine lr_schedule, best val_loss of round)",
+    "trial-019": "PLATEAU (round-1: warmup_steps=300, no improvement over seed)",
+    "trial-020": "PLATEAU (round-1 reg: label_smoothing=0.05, no improvement; train_acc/recall=0 is a metric-computation artifact, not the real training signal - fixed post-hoc, see training_run.py)",
+    "trial-021": "PLATEAU (round-1 reg: decouple_bias_wd, roughly ties seed)",
+    "trial-022": "PLATEAU (round-1 runner-up: grad_accum_steps=2, ~seed-level)",
+    "trial-023": "PLATEAU (round-1: unfreeze_last_n=3, noisier + worse than seed, slower per-epoch)",
+    "trial-024": "PLATEAU (round-2: learning_rate=3e-4 off trial-018, no improvement over parent)",
+    "trial-025": "PLATEAU (round-2 winner: weight_decay=0.2 off trial-018, ties trial-018 within noise)",
+    "trial-026": "PLATEAU (round-2 runner-up: unfreeze_last_n=2 off trial-018, ties trial-018 within noise, slower per-epoch)",
+    "trial-027": "PLATEAU (round-2: cosine+grad_accum=2 stacked off trial-022, no improvement over trial-018)",
+    "trial-028": "PLATEAU (round-2 reg: output_dropout=0.1 off trial-022, worst of round 2)",
+    "trial-029": "PLATEAU (round-2: grad_accum_steps=4 off trial-022, no improvement over trial-022)",
 }
 
 CONFIG_RE = re.compile(r"^\[CONFIG\] (\{.*\})$")

@@ -185,10 +185,16 @@ it confirmed GPU access works but **Colab Secrets are not reachable from CLI-pro
 HF token as a file rather than relying on `google.colab.userdata`. trackio-Space tracking
 (`--trackio-space-id`) is currently **not used** — HF's free-Space policy changes made it a non-option
 for now — so `experiments/logs/trial-NNN.log` and each checkpoint's `trial_metrics.json` are the sole
-record of a trial's curves. Every trial pushes per-epoch checkpoints to its own branch
-(`kelmoir/cafa6-esm@trial-NNN`) so progress survives the VM teardown; only a config confirmed HEALTHY
-at target scale gets promoted via `--push-to-hub` to `kelmoir/cafa6-esm@main`. Each loop iteration
-ends in a git commit (no push — no remote is configured on this repo).
+record of a trial's curves. `training_run.py`'s `--checkpoint-mode` defaults to `final`: exactly one
+commit gets pushed per trial, to that trial's own branch (`kelmoir/cafa6-esm@trial-NNN`), after the
+last completed epoch — cheap re-runs (~40min) don't justify littering the Hub with a commit per
+epoch, and since there's only ever one commit on the branch, the branch name alone identifies the
+checkpoint (no SHA needed). The one exception is the CLI self-healing retry path
+(`run_trial.sh`/`make_wrapper.py`), which forces `--checkpoint-mode every-epoch` because its
+`--resume-from-revision` retry logic needs a checkpoint to resume from after a connection drop
+mid-trial. Only a config confirmed HEALTHY at target scale gets promoted via `--push-to-hub` to
+`kelmoir/cafa6-esm@main`. Each loop iteration ends in a git commit (no push — no remote is configured
+on this repo).
 
 ## Data science conventions in this repo
 

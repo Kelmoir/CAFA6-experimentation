@@ -1,0 +1,135 @@
+[
+  {
+    "trial_id": "trial-024",
+    "parent": "trial-018",
+    "axis": "learning_rate",
+    "note": "from trial-018 (cosine lr_schedule, round-1 best): raise peak LR 2e-4 -> 3e-4 - train_loss floor (~0.58-0.59) suggests optimization headroom, not just overfitting",
+    "args": [
+      "--model-name", "facebook/esm2_t6_8M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "3e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--lr-schedule", "cosine"
+    ]
+  },
+  {
+    "trial_id": "trial-025",
+    "parent": "trial-018",
+    "axis": "weight_decay (regularization)",
+    "note": "from trial-018 (cosine lr_schedule): lower weight_decay 0.5 -> 0.2 - round-1's regularization tweaks (label_smoothing, decouple_bias_wd) didn't help and the small train/val gap (~0.01-0.02) suggests we're not overfitting hard, so wd=0.5 may already be over-constraining rather than under",
+    "args": [
+      "--model-name", "facebook/esm2_t6_8M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.2",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--lr-schedule", "cosine"
+    ]
+  },
+  {
+    "trial_id": "trial-026",
+    "parent": "trial-018",
+    "axis": "unfreeze_last_n",
+    "note": "from trial-018 (cosine lr_schedule): unfreeze 1 -> 2 - a smaller capacity step than trial-023's unfreeze=3 (which was noisier and worse), now paired with the cosine schedule instead of the flat one it failed under",
+    "args": [
+      "--model-name", "facebook/esm2_t6_8M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "2",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--lr-schedule", "cosine"
+    ]
+  },
+  {
+    "trial_id": "trial-027",
+    "parent": "trial-022",
+    "axis": "lr_schedule",
+    "note": "from trial-022 (grad_accum_steps=2, round-1 runner-up): add cosine lr_schedule - combine both round-1 non-regularization winners (larger effective batch + decaying LR) to see if their small individual gains stack",
+    "args": [
+      "--model-name", "facebook/esm2_t6_8M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--grad-accum-steps", "2",
+      "--lr-schedule", "cosine"
+    ]
+  },
+  {
+    "trial_id": "trial-028",
+    "parent": "trial-022",
+    "axis": "output_dropout (regularization)",
+    "note": "from trial-022 (grad_accum_steps=2): lower output_dropout 0.2 -> 0.1 - same under- vs over-regularization question as trial-025, tested from the other beam member and via a different regularization axis",
+    "args": [
+      "--model-name", "facebook/esm2_t6_8M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.1",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--grad-accum-steps", "2"
+    ]
+  },
+  {
+    "trial_id": "trial-029",
+    "parent": "trial-022",
+    "axis": "grad_accum_steps",
+    "note": "from trial-022: push grad_accum further, 2 -> 4 (effective batch 32) - if less gradient noise is genuinely helping, doubling it again should help more, not just be noise",
+    "args": [
+      "--model-name", "facebook/esm2_t6_8M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--grad-accum-steps", "4"
+    ]
+  }
+]

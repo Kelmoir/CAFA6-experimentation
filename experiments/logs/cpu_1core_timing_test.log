@@ -1,0 +1,21 @@
+[CONFIG] {"device": "cpu", "epochs": 1, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t6_8M_UR50D", "unfreeze_last_n": 1, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.5, "max_minutes": null, "run_name": "cpu-1core-timing-test", "trackio_space_id": null, "checkpoint": false, "checkpoint_branch": null, "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "quiet": false}
+Loading weights:   0%|          | 0/107 [00:00<?, ?it/s]Loading weights: 100%|██████████| 107/107 [00:00<00:00, 35843.03it/s]
+[1mEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t6_8M_UR50D
+Key                         | Status     | 
+----------------------------+------------+-
+lm_head.dense.bias          | UNEXPECTED | 
+lm_head.layer_norm.weight   | UNEXPECTED | 
+lm_head.bias                | UNEXPECTED | 
+esm.embeddings.position_ids | UNEXPECTED | 
+lm_head.dense.weight        | UNEXPECTED | 
+lm_head.layer_norm.bias     | UNEXPECTED | 
+classifier.dense.weight     | MISSING    | 
+classifier.dense.bias       | MISSING    | 
+classifier.out_proj.weight  | MISSING    | 
+classifier.out_proj.bias    | MISSING    | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING[3m	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.[0m
+/home/kelmoir/Dokumente/python/CAFA_6_protein_challenge/env/lib/python3.12/site-packages/trackio/utils.py:27: UserWarning: Reserved keys renamed: ['step'] → '__{key}'
+  warnings.warn(message, *args, **kwargs)

@@ -315,7 +315,7 @@ def main() -> None:
     parser.add_argument("--max-minutes", type=float, default=None, help="Wall-clock safety cutoff; stop after the current epoch once exceeded")
     parser.add_argument("--run-name", default=None, help="Explicit run/trial id; used for trackio run name and checkpoint branch name")
     parser.add_argument("--trackio-space-id", default=None, help="HF Space id to persist trackio runs to, e.g. kelmoir/cafa6-trackio")
-    parser.add_argument("--checkpoint", action=argparse.BooleanOptionalAction, default=True, help="Push a per-epoch checkpoint to a per-trial Hub branch")
+    parser.add_argument("--checkpoint-mode", choices=["none", "final", "every-epoch"], default="final", help="'final' pushes one commit (the last completed epoch) to the trial's Hub branch; 'every-epoch' pushes after each epoch (needed for --resume-from-revision retries); 'none' disables Hub checkpointing entirely")
     parser.add_argument("--checkpoint-branch", default=None, help="Overrides the auto-derived (run-name) branch name for per-epoch checkpoints")
     parser.add_argument("--hf-token-file", default=None, help="Path to a file containing only an HF token; read once, then deleted")
     parser.add_argument("--resume-from-revision", default=None, help="Load model weights from this revision (branch) of --hf-repo-id instead of the base pretrained model; used to continue a multi-epoch trial across separate colab exec invocations after a connection drop")
@@ -456,7 +456,8 @@ def main() -> None:
         for step, batch in enumerate(train_dataloader):
             input_ids = batch["input_ids"].to(device)
             attention_mask = batch["attention_mask"].to(device)
-            labels = batch["labels"].to(device)
+            hard_labels = batch["labels"].to(device)
+            labels = hard_labels
             if args.label_smoothing > 0:
                 labels = labels * (1 - args.label_smoothing) + 0.5 * args.label_smoothing
 
@@ -478,7 +479,7 @@ def main() -> None:
                 # has been observed to trigger "Connection was lost" mid-epoch.
                 print(f"[STEP] epoch={epoch + 1} step={step + 1}/{len(train_dataloader)} loss={loss.item():.4f}")
 
-            batch_metrics = compute_metrics(logits, labels)
+            batch_metrics = compute_metrics(logits, hard_labels)
             train_metrics["accuracy"] += batch_metrics["accuracy"]
             train_metrics["recall"] += batch_metrics["recall"]
             train_loss += loss.item()
@@ -531,7 +532,16 @@ def main() -> None:
                 }
             )
 
-        if args.checkpoint and token:
+        latest_metrics = {
+            "train_loss": train_loss,
+            "val_loss": validation_loss,
+            "train_accuracy": train_metrics["accuracy"],
+            "val_accuracy": validation_metrics["accuracy"],
+            "train_recall": train_metrics["recall"],
+            "val_recall": validation_metrics["recall"],
+        }
+
+        if args.checkpoint_mode == "every-epoch" and token:
             try:
                 push_checkpoint(
                     model_esm,
@@ -540,26 +550,39 @@ def main() -> None:
                     branch=checkpoint_branch,
                     token=token,
                     epoch=epoch + 1,
-                    metrics={
-                        "train_loss": train_loss,
-                        "val_loss": validation_loss,
-                        "train_accuracy": train_metrics["accuracy"],
-                        "val_accuracy": validation_metrics["accuracy"],
-                        "train_recall": train_metrics["recall"],
-                        "val_recall": validation_metrics["recall"],
-                    },
+                    metrics=latest_metrics,
                     config=config,
                     local_dir=checkpoint_dir,
                 )
                 print(f"[INFO] Pushed checkpoint for epoch {epoch + 1} to {args.hf_repo_id}@{checkpoint_branch}")
             except Exception as exc:  # pragma: no cover - runtime dependency
                 print(f"[WARN] Checkpoint push failed for epoch {epoch + 1}: {exc}")
-        elif args.checkpoint and not token:
-            print("[WARN] --checkpoint requested but no HF token was found; skipping checkpoint push.")
+        elif args.checkpoint_mode == "every-epoch" and not token:
+            print("[WARN] --checkpoint-mode every-epoch requested but no HF token was found; skipping checkpoint push.")
 
         if args.max_minutes and (time.time() - start_time) / 60 >= args.max_minutes:
             print(f"[INFO] Reached --max-minutes={args.max_minutes} after epoch {epoch + 1}; stopping early.")
             break
+
+    if args.checkpoint_mode == "final":
+        if token:
+            try:
+                push_checkpoint(
+                    model_esm,
+                    tokenizer,
+                    repo_id=args.hf_repo_id,
+                    branch=checkpoint_branch,
+                    token=token,
+                    epoch=epoch + 1,
+                    metrics=latest_metrics,
+                    config=config,
+                    local_dir=checkpoint_dir,
+                )
+                print(f"[INFO] Pushed final-epoch checkpoint (epoch {epoch + 1}) to {args.hf_repo_id}@{checkpoint_branch}")
+            except Exception as exc:  # pragma: no cover - runtime dependency
+                print(f"[WARN] Final checkpoint push failed: {exc}")
+        else:
+            print("[WARN] --checkpoint-mode final requested but no HF token was found; skipping checkpoint push.")
 
     summary = {
         "run_name": run_name,

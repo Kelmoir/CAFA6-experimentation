@@ -1,0 +1,44 @@
+[CONFIG] {"device": "cuda", "epochs": 10, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t6_8M_UR50D", "unfreeze_last_n": 6, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.5, "max_minutes": null, "run_name": "trial-017", "trackio_space_id": null, "checkpoint": true, "checkpoint_branch": "trial-017", "hf_token_file": "/content/.hf_token", "resume_from_revision": null, "start_epoch": 0}
+Loading weights:   0%|          | 0/102 [00:00<?, ?it/s]
+[transformers] [1mEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t6_8M_UR50D
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.dense.bias         | UNEXPECTED | 
+lm_head.layer_norm.weight  | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+lm_head.bias               | UNEXPECTED | 
+lm_head.layer_norm.bias    | UNEXPECTED | 
+classifier.dense.bias      | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.out_proj.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+Model layers: 6, request unfreeze layers: 6
+[INFO] Initialized classifier bias to label priors: {'C': 0.7161936163902283, 'F': 0.6852575540542603, 'P': 0.6928520202636719}
+* Run finished. Uploading logs to Trackio (please wait...)
+* Created new run: trial-017
+[INFO] HF token resolved via --hf-token-file
+[STEP] epoch=1 step=60/1500 loss=0.5709
+[STEP] epoch=1 step=120/1500 loss=0.4683
+[STEP] epoch=1 step=180/1500 loss=0.6035
+[STEP] epoch=1 step=240/1500 loss=0.6870
+[STEP] epoch=1 step=300/1500 loss=0.5780
+[STEP] epoch=1 step=360/1500 loss=0.7532
+[STEP] epoch=1 step=420/1500 loss=0.6437
+[STEP] epoch=1 step=480/1500 loss=0.5478
+[STEP] epoch=1 step=540/1500 loss=0.6806
+[STEP] epoch=1 step=600/1500 loss=0.6732
+[STEP] epoch=1 step=660/1500 loss=0.7089
+[STEP] epoch=1 step=720/1500 loss=0.5507
+[STEP] epoch=1 step=780/1500 loss=0.4125
+[STEP] epoch=1 step=840/1500 loss=0.5197
+[STEP] epoch=1 step=900/1500 loss=0.6322
+[STEP] epoch=1 step=960/1500 loss=0.6073
+[STEP] epoch=1 step=1020/1500 loss=0.5606
+[STEP] epoch=1 step=1080/1500 loss=0.6034
+[STEP] epoch=1 step=1140/1500 loss=0.6655
+[STEP] epoch=1 step=1200/1500 loss=0.6591
+[STEP] epoch=1 step=1260/1500 loss=0.7810

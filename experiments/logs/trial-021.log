@@ -1,0 +1,103 @@
+==================== RUNNING trial-021 (decouple_bias_wd (regularization)) ====================
+
+note: exclude bias/LayerNorm params from weight decay (standard AdamW refinement)
+[CONFIG] {"device": "cuda", "epochs": 10, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t6_8M_UR50D", "unfreeze_last_n": 1, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.5, "max_minutes": null, "run_name": "trial-021", "trackio_space_id": null, "checkpoint": true, "checkpoint_branch": "trial-021", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": true, "grad_accum_steps": 1, "quiet": true}
+
+Loading weights: 100%
+ 102/102 [00:00<00:00, 4005.01it/s]
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t6_8M_UR50D
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.layer_norm.weight  | UNEXPECTED | 
+lm_head.layer_norm.bias    | UNEXPECTED | 
+lm_head.dense.bias         | UNEXPECTED | 
+lm_head.bias               | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+classifier.dense.bias      | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.out_proj.weight | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+
+Model layers: 6, request unfreeze layers: 1
+[INFO] Initialized classifier bias to label priors: {'C': 0.7161936163902283, 'F': 0.6852575540542603, 'P': 0.6928520202636719}
+* Run finished. Uploading logs to Trackio (please wait...)
+* Created new run: trial-021
+[INFO] HF token resolved via Colab Secrets
+Epoch 1/10 | train_loss=0.6045 | val_loss=0.6042 | train_acc=0.6992 | val_acc=0.6900 | train_recall=0.9926 | val_recall=0.9772
+[TIMING] epoch 1 elapsed=223.4s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00, 20.23it/s]
+
+[INFO] Pushed checkpoint for epoch 1 to kelmoir/cafa6-esm@trial-021
+Epoch 2/10 | train_loss=0.5934 | val_loss=0.6040 | train_acc=0.7045 | val_acc=0.6930 | train_recall=0.9796 | val_recall=0.9844
+[TIMING] epoch 2 elapsed=220.8s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00, 11.18it/s]
+
+[INFO] Pushed checkpoint for epoch 2 to kelmoir/cafa6-esm@trial-021
+Epoch 3/10 | train_loss=0.5917 | val_loss=0.6020 | train_acc=0.7033 | val_acc=0.6945 | train_recall=0.9766 | val_recall=0.9832
+[TIMING] epoch 3 elapsed=223.0s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00, 11.09it/s]
+
+[INFO] Pushed checkpoint for epoch 3 to kelmoir/cafa6-esm@trial-021
+Epoch 4/10 | train_loss=0.5906 | val_loss=0.6046 | train_acc=0.7041 | val_acc=0.6935 | train_recall=0.9708 | val_recall=0.9672
+[TIMING] epoch 4 elapsed=220.4s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00, 12.06it/s]
+
+[INFO] Pushed checkpoint for epoch 4 to kelmoir/cafa6-esm@trial-021
+Epoch 5/10 | train_loss=0.5836 | val_loss=0.6028 | train_acc=0.7090 | val_acc=0.6882 | train_recall=0.9707 | val_recall=0.9354
+[TIMING] epoch 5 elapsed=223.3s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00, 12.40it/s]
+
+[INFO] Pushed checkpoint for epoch 5 to kelmoir/cafa6-esm@trial-021
+Epoch 6/10 | train_loss=0.5824 | val_loss=0.6025 | train_acc=0.7099 | val_acc=0.6902 | train_recall=0.9682 | val_recall=0.9521
+[TIMING] epoch 6 elapsed=218.5s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00, 11.69it/s]
+
+[INFO] Pushed checkpoint for epoch 6 to kelmoir/cafa6-esm@trial-021
+Epoch 7/10 | train_loss=0.5803 | val_loss=0.6120 | train_acc=0.7098 | val_acc=0.6962 | train_recall=0.9589 | val_recall=0.9884
+[TIMING] epoch 7 elapsed=219.2s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00, 11.38it/s]
+
+[INFO] Pushed checkpoint for epoch 7 to kelmoir/cafa6-esm@trial-021
+Epoch 8/10 | train_loss=0.5834 | val_loss=0.5990 | train_acc=0.7070 | val_acc=0.6950 | train_recall=0.9600 | val_recall=0.9722
+[TIMING] epoch 8 elapsed=221.5s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00, 11.71it/s]
+
+[INFO] Pushed checkpoint for epoch 8 to kelmoir/cafa6-esm@trial-021
+Epoch 9/10 | train_loss=0.5744 | val_loss=0.5996 | train_acc=0.7149 | val_acc=0.6947 | train_recall=0.9600 | val_recall=0.9594
+[TIMING] epoch 9 elapsed=220.2s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00, 11.16it/s]
+
+[INFO] Pushed checkpoint for epoch 9 to kelmoir/cafa6-esm@trial-021
+Epoch 10/10 | train_loss=0.5789 | val_loss=0.6104 | train_acc=0.7101 | val_acc=0.6913 | train_recall=0.9550 | val_recall=0.9533
+[TIMING] epoch 10 elapsed=220.7s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00, 10.66it/s]
+
+[INFO] Pushed checkpoint for epoch 10 to kelmoir/cafa6-esm@trial-021
+[SUMMARY] {"run_name": "trial-021", "epochs_completed": 10, "final_train_loss": 0.5789431840777397, "final_val_loss": 0.6104276834726333, "train_accuracy": 0.7101111307740211, "val_accuracy": 0.6913333534002304, "train_recall": 0.9550261996189753, "val_recall": 0.9533095326423645}
+[TIMING] trial-021 total wall clock: 2255.8s
+
