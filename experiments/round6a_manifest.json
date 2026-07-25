@@ -1,0 +1,65 @@
+[
+  {
+    "trial_id": "trial-044",
+    "parent": "trial-038",
+    "axis": "seed replication check",
+    "note": "Diagnostic, not a hyperparameter axis. trial-038 (batch=128, zero reg) is the sweep's best (0.5891 @ epoch 7), but its val_loss oscillates rather than declining cleanly (0.5902->0.5922->0.5891->0.5923->0.5939->0.5948 across epochs 5-10) - a symptom of only ~94 optimizer steps/epoch making each epoch's estimate noisier. Before treating 0.5891 as a real result worth building the next round on, this reruns the exact same config with a different seed (123 instead of 42) to see if a ~0.589 minimum is reproducible or was a lucky low epoch.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "128",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.0",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.0",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "123"
+    ]
+  },
+  {
+    "trial_id": "trial-045",
+    "parent": "trial-038",
+    "axis": "lighter regularization at batch=128 (regularization)",
+    "note": "1st required regularization trial. trial-039 tested dropout=0.1/wd=0.1 on top of batch=128 and did slightly worse than trial-038's zero regularization (0.5900 vs 0.5891) - the opposite direction from batch=8, where the same 0.1/0.1 beat zero regularization (trial-041 0.5914 vs trial-031 0.5918). This tests whether batch=128 simply wants a lighter regularization optimum than batch=8's (0.05/0.05, half of trial-039's), rather than concluding regularization doesn't help at this batch size.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "128",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.05",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.05",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-046",
+    "parent": "trial-038",
+    "axis": "batch_size=96",
+    "note": "Further maps the batch-size curve between trial-040 (batch=64, 0.5905) and trial-038 (batch=128, 0.5891, best of the sweep) to see if the trend keeps improving toward 128 or has already peaked somewhere in between.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "96",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.0",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.0",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  }
+]

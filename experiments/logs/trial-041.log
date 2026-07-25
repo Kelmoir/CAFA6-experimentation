@@ -1,21 +1,53 @@
 note: New beam member trial-035 (dropout=0.1/wd=0.1, batch=8) was 2nd-best of the sweep (val_loss 0.5914 at epoch 5) but only measured at 6 epochs. Unchanged config, run to 10 epochs to see if it holds up or starts overfitting like trial-030/031 did by their later epochs.
 [CONFIG] {"device": "cuda", "epochs": 10, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t12_35M_UR50D", "unfreeze_last_n": 1, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.1, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.1, "max_minutes": null, "run_name": "trial-041", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-041", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "quiet": true}
 
+README.md: 100%
+ 668/668 [00:00<00:00, 75.2kB/s]
+data/train-00000-of-00001.parquet: reconstructing file: 100%
+ 22.3MB / 22.3MB, 2.19MB/s  
+data/train-00000-of-00001.parquet: downloading bytes: 
+ 21.7MB, 2.12MB/s  
+data/validation-00000-of-00001.parquet: reconstructing file: 100%
+ 6.26MB / 6.26MB,  617kB/s  
+data/validation-00000-of-00001.parquet: downloading bytes: 
+ 6.08MB,  600kB/s  
+data/test-00000-of-00001.parquet: reconstructing file: 100%
+ 6.28MB / 6.28MB,  613kB/s  
+data/test-00000-of-00001.parquet: downloading bytes: 
+ 6.11MB,  595kB/s  
+Generating train split: 100%
+ 50168/50168 [00:00<00:00, 485980.51 examples/s]
+Generating validation split: 100%
+ 14131/14131 [00:00<00:00, 348930.65 examples/s]
+Generating test split: 100%
+ 14182/14182 [00:00<00:00, 336880.25 examples/s]
+tokenizer_config.json: 100%
+ 95.0/95.0 [00:00<00:00, 9.15kB/s]
+vocab.txt: 100%
+ 93.0/93.0 [00:00<00:00, 10.5kB/s]
+special_tokens_map.json: 100%
+ 125/125 [00:00<00:00, 14.3kB/s]
+config.json: 100%
+ 778/778 [00:00<00:00, 87.3kB/s]
+model.safetensors: reconstructing file: 100%
+  136MB /  136MB, 12.9MB/s  
+model.safetensors: downloading bytes: 
+ 92.1MB, 8.63MB/s  
 Loading weights: 100%
- 198/198 [00:00<00:00, 4576.16it/s]
+ 198/198 [00:00<00:00, 4396.92it/s]
 
 [transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t12_35M_UR50D
 Key                        | Status     | 
 ---------------------------+------------+-
 lm_head.layer_norm.bias    | UNEXPECTED | 
-lm_head.dense.weight       | UNEXPECTED | 
 lm_head.dense.bias         | UNEXPECTED | 
 lm_head.bias               | UNEXPECTED | 
 lm_head.layer_norm.weight  | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+classifier.dense.bias      | MISSING    | 
 classifier.out_proj.bias   | MISSING    | 
 classifier.out_proj.weight | MISSING    | 
 classifier.dense.weight    | MISSING    | 
-classifier.dense.bias      | MISSING    | 
 
 Notes:
 - UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
@@ -26,16 +58,29 @@ Model layers: 12, request unfreeze layers: 1
 [INFO] trackio is not installed; skipping experiment tracking.
 [INFO] HF token resolved via Colab Secrets
 Epoch 1/10 | train_loss=0.6019 | val_loss=0.5988 | train_acc=0.6997 | val_acc=0.6913 | train_recall=0.9879 | val_recall=0.9656
-[TIMING] epoch 1 elapsed=588.1s
-Epoch 2/10 | train_loss=0.5879 | val_loss=0.6020 | train_acc=0.7066 | val_acc=0.6895 | train_recall=0.9698 | val_recall=0.9411
-[TIMING] epoch 2 elapsed=586.3s
-Epoch 3/10 | train_loss=0.5837 | val_loss=0.5945 | train_acc=0.7073 | val_acc=0.6960 | train_recall=0.9654 | val_recall=0.9716
-[TIMING] epoch 3 elapsed=582.8s
+[TIMING] epoch 1 elapsed=587.2s
+Epoch 2/10 | train_loss=0.5879 | val_loss=0.6020 | train_acc=0.7067 | val_acc=0.6895 | train_recall=0.9699 | val_recall=0.9411
+[TIMING] epoch 2 elapsed=583.5s
+Epoch 3/10 | train_loss=0.5837 | val_loss=0.5945 | train_acc=0.7073 | val_acc=0.6960 | train_recall=0.9653 | val_recall=0.9716
+[TIMING] epoch 3 elapsed=579.2s
 Epoch 4/10 | train_loss=0.5791 | val_loss=0.5929 | train_acc=0.7128 | val_acc=0.6978 | train_recall=0.9590 | val_recall=0.9451
-[TIMING] epoch 4 elapsed=582.0s
+[TIMING] epoch 4 elapsed=578.6s
 Epoch 5/10 | train_loss=0.5697 | val_loss=0.5914 | train_acc=0.7189 | val_acc=0.6980 | train_recall=0.9555 | val_recall=0.9574
-[TIMING] epoch 5 elapsed=593.6s
-Epoch 6/10 | train_loss=0.5631 | val_loss=0.5958 | train_acc=0.7213 | val_acc=0.6985 | train_recall=0.9506 | val_recall=0.9525
-[TIMING] epoch 6 elapsed=580.6s
-Epoch 7/10 | train_loss=0.5604 | val_loss=0.5955 | train_acc=0.7227 | val_acc=0.6965 | train_recall=0.9434 | val_recall=0.9176
-[TIMING] epoch 7 elapsed=584.4s
+[TIMING] epoch 5 elapsed=590.3s
+Epoch 6/10 | train_loss=0.5631 | val_loss=0.5958 | train_acc=0.7214 | val_acc=0.6983 | train_recall=0.9508 | val_recall=0.9518
+[TIMING] epoch 6 elapsed=576.3s
+Epoch 7/10 | train_loss=0.5604 | val_loss=0.5955 | train_acc=0.7226 | val_acc=0.6960 | train_recall=0.9434 | val_recall=0.9170
+[TIMING] epoch 7 elapsed=580.2s
+Epoch 8/10 | train_loss=0.5599 | val_loss=0.5994 | train_acc=0.7210 | val_acc=0.6997 | train_recall=0.9389 | val_recall=0.9530
+[TIMING] epoch 8 elapsed=577.8s
+Epoch 9/10 | train_loss=0.5476 | val_loss=0.6052 | train_acc=0.7323 | val_acc=0.6905 | train_recall=0.9421 | val_recall=0.9091
+[TIMING] epoch 9 elapsed=578.7s
+Epoch 10/10 | train_loss=0.5463 | val_loss=0.6088 | train_acc=0.7319 | val_acc=0.6892 | train_recall=0.9328 | val_recall=0.9113
+[TIMING] epoch 10 elapsed=581.3s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00,  3.66it/s]
+
+[INFO] Pushed final-epoch checkpoint (epoch 10) to kelmoir/cafa6-esm@trial-041
+[SUMMARY] {"run_name": "trial-041", "epochs_completed": 10, "final_train_loss": 0.5463259683052699, "final_val_loss": 0.6088267529010772, "train_accuracy": 0.7319166863361994, "val_accuracy": 0.6891666849851609, "train_recall": 0.9328251430988311, "val_recall": 0.9113158848285675}
+[TIMING] trial-041 total wall clock: 5833.1s

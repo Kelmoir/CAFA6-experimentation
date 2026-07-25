@@ -1,0 +1,66 @@
+[
+  {
+    "trial_id": "trial-047",
+    "parent": "trial-039",
+    "axis": "seed replication check",
+    "note": "Diagnostic, not a hyperparameter axis - paired with trial-044. trial-039 (batch=128, dropout=0.1/wd=0.1) was the sweep's 2nd best (0.5900 @ epoch 7) but shares trial-038's noisy, oscillating val_loss pattern at this batch size. Reruns the exact same config at seed=123 to check reproducibility of the ~0.590 minimum before building further rounds on it.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "128",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.1",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.1",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "123"
+    ]
+  },
+  {
+    "trial_id": "trial-048",
+    "parent": "trial-039",
+    "axis": "isolate weight_decay vs dropout at batch=128 (regularization)",
+    "note": "2nd required regularization trial. trial-039 combined dropout=0.1 and weight_decay=0.1 - this isolates weight_decay alone (dropout=0.0) at batch=128, mirroring the isolation trial-036 ran for trial-030 at batch=8 (which showed dropout mattered more than weight_decay there). Tests whether the same holds at batch=128.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "128",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.0",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.1",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-049",
+    "parent": "trial-039",
+    "axis": "grad_accum_steps=2",
+    "note": "trial-034 tested batch=128+grad_accum=4 (effective batch 512) but only at epochs=6, where it was still improving and inconclusive - not carried into this round directly. This tests a more moderate accum=2 (effective batch 256) on top of trial-039's config at the now-standard epochs=10, checking whether smoothing gradient noise further helps or hurts once batch is already large.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "128",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.1",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.1",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--grad-accum-steps", "2"
+    ]
+  }
+]

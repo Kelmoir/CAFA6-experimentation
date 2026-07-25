@@ -1003,3 +1003,65 @@ roughly halves session length too (a 3-trial batch-8 round is ~5h vs. 6-trial's 
 `trial-041` (full rerun, unchanged config), `trial-042` (regularization: dropout=0.05/wd=0.05, even
 lighter than trial-035's 0.1/0.1), `trial-043` (unfreeze_last_n=2 on top of the light-regularization
 config). This completes round_2's original 6-trial design, just split across two smaller batches.
+
+## round_2 results, part 2 (trial-041 through trial-043) — full 10-epoch curves complete
+
+All 3 ran cleanly to 10 epochs this time, pasted back as `experiments/logs/trial-041-043.log`.
+
+| trial | axis | best epoch | best val_loss | epoch-10 val_loss |
+|-------|------|-----------|----------------|--------------------|
+| trial-041 | dropout=0.1/wd=0.1, batch=8 (rerun, complete) | 5 | 0.5914 | 0.6088 |
+| trial-042 | dropout=0.05/wd=0.05, batch=8 (reg) | 4 | 0.5929 | 0.6046 |
+| trial-043 | unfreeze_last_n=2, dropout=0.1/wd=0.1 | 3 | 0.5923 | 0.6249 |
+
+This is the **harsh late-epoch overfit the user expected** — and exactly why epochs got fixed at 10.
+All three curves rise sharply after their best epoch while train_loss keeps falling: trial-041 goes
+0.5914 → 0.6088 (epochs 5→10), trial-043 goes 0.5923 → 0.6249 (epochs 3→10, the worst of the round —
+capacity (unfreeze=2) makes the overfit worse once regularization isn't holding it back). trial-042
+confirms trial-035/041's dropout=0.1/wd=0.1 is closer to the real sweet spot than going lighter still
+— 0.05/0.05 landed worse (0.5929 vs 0.5914).
+
+### round_2 complete — full ranking (trial-038 through trial-043)
+
+| trial | axis | best val_loss | shape |
+|-------|------|----------------|-------|
+| trial-038 | batch=128, zero reg | **0.5891** | noisy oscillation, not monotonic |
+| trial-039 | batch=128, dropout=0.1/wd=0.1 | 0.5900 | noisy oscillation, not monotonic |
+| trial-040 | batch=64, zero reg | 0.5905 | noisy oscillation, not monotonic |
+| trial-041 | batch=8, dropout=0.1/wd=0.1 | 0.5914 | clean rise-then-overfit |
+| trial-043 | batch=8, unfreeze=2, dropout=0.1/wd=0.1 | 0.5923 | clean rise-then-overfit, sharpest |
+| trial-042 | batch=8, dropout=0.05/wd=0.05 | 0.5929 | clean rise-then-overfit |
+
+**Caveat worth taking seriously**: the top 3 (all batch≥64) show *noisy oscillation*, not the clean
+"improve then overfit" shape the batch=8 trials show. That makes "best single epoch" a shakier
+statistic for them — with only ~94-188 optimizer steps/epoch, each epoch's val_loss is a noisier
+estimate, and the minimum of a noisy sequence is downward-biased vs. its true expected value. It's
+not yet clear whether trial-038's 0.5891 reflects a genuinely better-trained model or a lucky low
+epoch in a noisier curve. Also interesting: light regularization (0.1/0.1) *helped* at batch=8
+(trial-041 0.5914 beats trial-031's zero-reg 0.5918) but *hurt* at batch=128 (trial-039 0.5900 is
+worse than trial-038's zero-reg 0.5891) — plausibly a real batch-size interaction, or plausibly just
+noise given the gap (0.0009) is smaller than the oscillation band itself. Round 3 is designed to
+settle both questions.
+
+**Decision**: new beam = `[trial-038 (0.5891), trial-039 (0.5900)]`, both batch=128. Round 3
+(`experiments/round6a_manifest.json` + `round6b_manifest.json`, trial-044 through trial-049, split
+into the now-standard two 3-trial batches) branches 3 children off each:
+
+- from trial-038 (batch=128, zero reg): `trial-044` reruns the exact same config at `seed=123` — a
+  reproducibility check, not a hyperparameter axis, addressing the noise-vs-real-result question
+  above directly; `trial-045` (regularization) tries a lighter touch than trial-039's (dropout=0.05/
+  wd=0.05) to see if batch=128 simply wants less regularization than batch=8's optimum, rather than
+  concluding regularization doesn't help at this batch size; `trial-046` tries `batch_size=96`,
+  further mapping the curve between trial-040 (64) and trial-038 (128).
+- from trial-039 (batch=128, dropout=0.1/wd=0.1): `trial-047` reruns at `seed=123`, paired with
+  trial-044; `trial-048` (regularization) isolates weight_decay alone (dropout=0.0) at batch=128,
+  mirroring trial-036's isolation test for trial-030 at batch=8; `trial-049` adds
+  `grad_accum_steps=2` (effective batch 256) — a more moderate accumulation than trial-034's
+  inconclusive accum=4 test.
+
+**Runtime note**: this round's leading lineage (batch=128, ~810s/epoch) is much slower per trial than
+batch=8's ~580s/epoch. Even at the new 3-trials-per-batch policy, each batch here is likely
+**~6-6.5 hours** (3 trials × ~10 epochs × ~800s), not the ~5h a batch=8 round of 3 would take — the
+batching policy caps trial *count* per session, not total time, and this round's trials are all
+individually expensive. Flagging in case the user wants an even smaller batch (e.g. 2) specifically
+for this batch=128-heavy round.

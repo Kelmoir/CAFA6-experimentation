@@ -177,18 +177,55 @@
           "action": "Full rerun queued as part of round_2 part 2 below."
         },
         "part_2": {
-          "status": "queued",
+          "status": "complete",
           "manifest_file": "experiments/round5b_manifest.json",
           "notebook_file": "experiments/round5b_manual.ipynb",
-          "queued_experiments": ["trial-041", "trial-042", "trial-043"],
-          "queued_experiment_notes": {
-            "trial-041": "full rerun (unchanged config) after the disconnect above",
-            "trial-042": "regularization, off trial-035: even lighter touch, dropout=0.05/wd=0.05, to see if 0.1/0.1 is close to the true optimum or if there's more room below it",
-            "trial-043": "off trial-035: unfreeze_last_n=2 combined with the light-regularization config (trial-037 only tested unfreeze=2 under heavy regularization)"
-          }
+          "completed": ["trial-041", "trial-042", "trial-043"],
+          "results_by_val_loss": [
+            {"trial": "trial-041", "axis": "dropout=0.1/wd=0.1, batch=8 (rerun, complete)", "best_val_loss": 0.5914, "best_epoch": 5, "epoch_10_val_loss": 0.6088, "note": "clean rise-then-overfit, matching what the user expected from harsher late-epoch overfitting"},
+            {"trial": "trial-042", "axis": "dropout=0.05/wd=0.05 (reg)", "best_val_loss": 0.5929, "best_epoch": 4, "epoch_10_val_loss": 0.6046, "note": "worse than trial-041's 0.1/0.1 - that combo is closer to the sweet spot than going lighter"},
+            {"trial": "trial-043", "axis": "unfreeze_last_n=2 + dropout=0.1/wd=0.1", "best_val_loss": 0.5923, "best_epoch": 3, "epoch_10_val_loss": 0.6249, "note": "sharpest overfit of the round - capacity bump makes it worse once regularization isn't holding it back"}
+          ]
         }
       },
-      "next_step": "Once trial-041/042/043 land: rank all of round_2 by best val_loss against the 0.595 noise floor, and pick the new width-2 beam for round 3. Going forward, batch every round into sets of 3 per manual_notebook_batch_size above."
+      "round_2_full_ranking": [
+        {"trial": "trial-038", "best_val_loss": 0.5891, "shape": "noisy oscillation, not monotonic"},
+        {"trial": "trial-039", "best_val_loss": 0.59, "shape": "noisy oscillation, not monotonic"},
+        {"trial": "trial-040", "best_val_loss": 0.5905, "shape": "noisy oscillation, not monotonic"},
+        {"trial": "trial-041", "best_val_loss": 0.5914, "shape": "clean rise-then-overfit"},
+        {"trial": "trial-043", "best_val_loss": 0.5923, "shape": "clean rise-then-overfit, sharpest"},
+        {"trial": "trial-042", "best_val_loss": 0.5929, "shape": "clean rise-then-overfit"}
+      ],
+      "round_2_caveat": "The top 3 (all batch>=64) show noisy oscillation rather than the clean improve-then-overfit shape the batch=8 trials show - with only ~94-188 optimizer steps/epoch, each epoch's val_loss is a noisier estimate, and the minimum of a noisy sequence is downward-biased vs its true expected value. Not yet clear whether trial-038's 0.5891 is a genuinely better-trained model or a lucky low epoch. Also: light regularization (0.1/0.1) helped at batch=8 (trial-041 beats trial-031's zero-reg) but hurt at batch=128 (trial-039 worse than trial-038's zero-reg) - plausibly a real batch-size interaction, plausibly noise (the gap, 0.0009, is smaller than the oscillation band itself). Round 3 designed to settle both questions.",
+      "beam": [
+        {"trial": "trial-038", "best_val_loss": 0.5891, "best_epoch": 7, "config_note": "batch_size=128, zero regularization, unfreeze=1, epochs=10 - noisy/oscillating curve, reproducibility unconfirmed"},
+        {"trial": "trial-039", "best_val_loss": 0.59, "best_epoch": 7, "config_note": "batch_size=128, dropout=0.1/wd=0.1, unfreeze=1, epochs=10 - noisy/oscillating curve, reproducibility unconfirmed"}
+      ],
+      "round_3": {
+        "status": "part 1 queued",
+        "part_1": {
+          "manifest_file": "experiments/round6a_manifest.json",
+          "notebook_file": "experiments/round6a_manual.ipynb",
+          "queued_experiments": ["trial-044", "trial-045", "trial-046"],
+          "queued_experiment_notes": {
+            "trial-044": "off trial-038, seed=123 replication check (not a hyperparameter axis) - tests whether the 0.5891 minimum is reproducible or a noise artifact of the oscillating batch=128 curve",
+            "trial-045": "regularization, off trial-038: dropout=0.05/wd=0.05 (lighter than trial-039's 0.1/0.1) - tests whether batch=128 wants a lighter regularization optimum than batch=8's, rather than concluding regularization doesn't help here",
+            "trial-046": "off trial-038: batch_size=96, further mapping the curve between trial-040 (64) and trial-038 (128)"
+          }
+        },
+        "part_2": {
+          "manifest_file": "experiments/round6b_manifest.json",
+          "notebook_file": "experiments/round6b_manual.ipynb (not yet generated - send after part_1 results land)",
+          "queued_experiments": ["trial-047", "trial-048", "trial-049"],
+          "queued_experiment_notes": {
+            "trial-047": "off trial-039, seed=123 replication check, paired with trial-044",
+            "trial-048": "regularization, off trial-039: isolates weight_decay alone (dropout=0.0) at batch=128, mirroring trial-036's isolation test for trial-030 at batch=8",
+            "trial-049": "off trial-039: grad_accum_steps=2 (effective batch 256) - a more moderate accumulation than trial-034's inconclusive accum=4 test"
+          }
+        },
+        "runtime_note": "This round's leading lineage (batch=128, ~810s/epoch) is much slower per trial than batch=8's ~580s/epoch. Even at the 3-trials-per-batch policy, each batch here is likely ~6-6.5 hours (3 trials x 10 epochs x ~800s) - the batching policy caps trial count per session, not total time. Flagged to the user in case they want an even smaller batch specifically for this batch=128-heavy round."
+      },
+      "next_step": "Once trial-044/045/046 land, send round6b_manual.ipynb (generate it then). Once all of round_3 lands: check trial-044/047 against trial-038/039 to resolve the noise-vs-real question, rank everything against the 0.595 noise floor, and pick the round-4 beam."
     }
   }
 }

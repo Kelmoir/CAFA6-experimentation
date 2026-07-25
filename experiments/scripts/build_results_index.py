@@ -58,7 +58,9 @@ VERDICTS = {
     "trial-038": "NOISY (batch_size=128 off trial-033, epochs=10 rerun: best val_loss 0.5891 at epoch 7 - new best of the entire sweep - but val_loss oscillates rather than cleanly rising after its epoch-5 local min (0.5902->0.5922->0.5891->0.5923...), consistent with few (~94) optimizer steps/epoch adding noise, not a clean overfitting curve)",
     "trial-039": "NOISY (batch=128, dropout=0.1/wd=0.1 off trial-033, epochs=10 rerun: best val_loss 0.5900 at epoch 7, same oscillating pattern as trial-038)",
     "trial-040": "NOISY (batch_size=64 off trial-033: best val_loss 0.5905 at epoch 7, same oscillating pattern, milder)",
-    "trial-041": "INCOMPLETE (Colab session disconnected after epoch 7/10; checkpoint_mode=final means no Hub checkpoint exists to resume from - needs a full rerun. Partial data: best val_loss so far 0.5914 at epoch 5, matching trial-035's original 6-epoch run exactly through epoch 6, confirming reproducibility)",
+    "trial-041": "OVERFITTING (rerun, complete: dropout=0.1/wd=0.1, batch=8 - best val_loss 0.5914 at epoch 5, then rises clearly through epoch 10 (0.6088) while train_loss keeps falling - the harsh late-epoch overfit the user expected, now visible at the full 10 epochs)",
+    "trial-042": "OVERFITTING (dropout=0.05/wd=0.05 off trial-035, batch=8: best val_loss 0.5929 at epoch 4 - worse than trial-035/041's 0.1/0.1, so 0.1/0.1 is closer to the regularization sweet spot than going lighter still; also overfits clearly by epoch 10 (0.6046))",
+    "trial-043": "OVERFITTING (unfreeze_last_n=2 + dropout=0.1/wd=0.1 off trial-035: best val_loss 0.5923 at epoch 3, worse than trial-041's unfreeze=1 (0.5914) and the most severe late-epoch overfit of the round - val_loss jumps to 0.6166/0.6249 at epochs 9-10)",
 }
 
 CONFIG_RE = re.compile(r"^\[CONFIG\] (\{.*\})$")
