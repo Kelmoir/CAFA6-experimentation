@@ -1,0 +1,41 @@
+note: New beam member trial-035 (dropout=0.1/wd=0.1, batch=8) was 2nd-best of the sweep (val_loss 0.5914 at epoch 5) but only measured at 6 epochs. Unchanged config, run to 10 epochs to see if it holds up or starts overfitting like trial-030/031 did by their later epochs.
+[CONFIG] {"device": "cuda", "epochs": 10, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t12_35M_UR50D", "unfreeze_last_n": 1, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.1, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.1, "max_minutes": null, "run_name": "trial-041", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-041", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "quiet": true}
+
+Loading weights: 100%
+ 198/198 [00:00<00:00, 4576.16it/s]
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t12_35M_UR50D
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.layer_norm.bias    | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+lm_head.dense.bias         | UNEXPECTED | 
+lm_head.bias               | UNEXPECTED | 
+lm_head.layer_norm.weight  | UNEXPECTED | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.out_proj.weight | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+
+Model layers: 12, request unfreeze layers: 1
+[INFO] Initialized classifier bias to label priors: {'C': 0.7161936163902283, 'F': 0.6852575540542603, 'P': 0.6928520202636719}
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+Epoch 1/10 | train_loss=0.6019 | val_loss=0.5988 | train_acc=0.6997 | val_acc=0.6913 | train_recall=0.9879 | val_recall=0.9656
+[TIMING] epoch 1 elapsed=588.1s
+Epoch 2/10 | train_loss=0.5879 | val_loss=0.6020 | train_acc=0.7066 | val_acc=0.6895 | train_recall=0.9698 | val_recall=0.9411
+[TIMING] epoch 2 elapsed=586.3s
+Epoch 3/10 | train_loss=0.5837 | val_loss=0.5945 | train_acc=0.7073 | val_acc=0.6960 | train_recall=0.9654 | val_recall=0.9716
+[TIMING] epoch 3 elapsed=582.8s
+Epoch 4/10 | train_loss=0.5791 | val_loss=0.5929 | train_acc=0.7128 | val_acc=0.6978 | train_recall=0.9590 | val_recall=0.9451
+[TIMING] epoch 4 elapsed=582.0s
+Epoch 5/10 | train_loss=0.5697 | val_loss=0.5914 | train_acc=0.7189 | val_acc=0.6980 | train_recall=0.9555 | val_recall=0.9574
+[TIMING] epoch 5 elapsed=593.6s
+Epoch 6/10 | train_loss=0.5631 | val_loss=0.5958 | train_acc=0.7213 | val_acc=0.6985 | train_recall=0.9506 | val_recall=0.9525
+[TIMING] epoch 6 elapsed=580.6s
+Epoch 7/10 | train_loss=0.5604 | val_loss=0.5955 | train_acc=0.7227 | val_acc=0.6965 | train_recall=0.9434 | val_recall=0.9176
+[TIMING] epoch 7 elapsed=584.4s

@@ -1,0 +1,54 @@
+note: Interpolates between trial-032 (batch=32, val_loss 0.5916) and trial-033 (batch=128, val_loss 0.5902, best of the sweep) to map the batch-size curve more finely. Lower OOM risk than batch=128 but untested at this exact size.
+[CONFIG] {"device": "cuda", "epochs": 10, "batch_size": 64, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t12_35M_UR50D", "unfreeze_last_n": 1, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.0, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.0, "max_minutes": null, "run_name": "trial-040", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-040", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "quiet": true}
+
+Loading weights: 100%
+ 198/198 [00:00<00:00, 3876.98it/s]
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t12_35M_UR50D
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.layer_norm.bias    | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+lm_head.dense.bias         | UNEXPECTED | 
+lm_head.bias               | UNEXPECTED | 
+lm_head.layer_norm.weight  | UNEXPECTED | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.out_proj.weight | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+
+Model layers: 12, request unfreeze layers: 1
+[INFO] Initialized classifier bias to label priors: {'C': 0.7161936163902283, 'F': 0.6852575540542603, 'P': 0.6928520202636719}
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+Epoch 1/10 | train_loss=0.6025 | val_loss=0.6041 | train_acc=0.6996 | val_acc=0.6882 | train_recall=0.9930 | val_recall=0.9373
+[TIMING] epoch 1 elapsed=787.2s
+Epoch 2/10 | train_loss=0.5907 | val_loss=0.6076 | train_acc=0.7046 | val_acc=0.6922 | train_recall=0.9758 | val_recall=0.9591
+[TIMING] epoch 2 elapsed=784.4s
+Epoch 3/10 | train_loss=0.5866 | val_loss=0.5946 | train_acc=0.7055 | val_acc=0.6932 | train_recall=0.9690 | val_recall=0.9644
+[TIMING] epoch 3 elapsed=783.0s
+Epoch 4/10 | train_loss=0.5830 | val_loss=0.5919 | train_acc=0.7084 | val_acc=0.6987 | train_recall=0.9635 | val_recall=0.9671
+[TIMING] epoch 4 elapsed=779.1s
+Epoch 5/10 | train_loss=0.5740 | val_loss=0.5930 | train_acc=0.7156 | val_acc=0.6958 | train_recall=0.9627 | val_recall=0.9457
+[TIMING] epoch 5 elapsed=786.8s
+Epoch 6/10 | train_loss=0.5697 | val_loss=0.5912 | train_acc=0.7179 | val_acc=0.6992 | train_recall=0.9572 | val_recall=0.9634
+[TIMING] epoch 6 elapsed=787.6s
+Epoch 7/10 | train_loss=0.5674 | val_loss=0.5905 | train_acc=0.7182 | val_acc=0.6976 | train_recall=0.9522 | val_recall=0.9542
+[TIMING] epoch 7 elapsed=784.2s
+Epoch 8/10 | train_loss=0.5682 | val_loss=0.5907 | train_acc=0.7157 | val_acc=0.6951 | train_recall=0.9477 | val_recall=0.9450
+[TIMING] epoch 8 elapsed=779.5s
+Epoch 9/10 | train_loss=0.5573 | val_loss=0.5960 | train_acc=0.7231 | val_acc=0.6963 | train_recall=0.9487 | val_recall=0.9430
+[TIMING] epoch 9 elapsed=785.1s
+Epoch 10/10 | train_loss=0.5572 | val_loss=0.5937 | train_acc=0.7240 | val_acc=0.6948 | train_recall=0.9406 | val_recall=0.9414
+[TIMING] epoch 10 elapsed=784.1s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00,  6.25it/s]
+
+[INFO] Pushed final-epoch checkpoint (epoch 10) to kelmoir/cafa6-esm@trial-040
+[SUMMARY] {"run_name": "trial-040", "epochs_completed": 10, "final_train_loss": 0.557240884830343, "final_val_loss": 0.5937466248869896, "train_accuracy": 0.7240414625786721, "val_accuracy": 0.6948242392390966, "train_recall": 0.9405883655269095, "val_recall": 0.9414370525628328}
+[TIMING] trial-040 total wall clock: 7850.8s

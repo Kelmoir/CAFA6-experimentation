@@ -55,6 +55,10 @@ VERDICTS = {
     "trial-035": "MILD OVERFITTING (light regularization off trial-030, dropout=0.1/wd=0.1: best val_loss 0.5914 at epoch 5 - 2nd best of the sweep, beats both trial-030's heavy reg and roughly ties trial-031's zero reg)",
     "trial-036": "MILD OVERFITTING (wd=0.0 with dropout=0.2 off trial-030: best val_loss 0.5937 at epoch 4 - better than trial-030 but worse than trial-035's lighter-both combo)",
     "trial-037": "MILD OVERFITTING (unfreeze_last_n=2 off trial-030: best val_loss 0.5936 at epoch 4, ~15% slower per epoch than unfreeze=1)",
+    "trial-038": "NOISY (batch_size=128 off trial-033, epochs=10 rerun: best val_loss 0.5891 at epoch 7 - new best of the entire sweep - but val_loss oscillates rather than cleanly rising after its epoch-5 local min (0.5902->0.5922->0.5891->0.5923...), consistent with few (~94) optimizer steps/epoch adding noise, not a clean overfitting curve)",
+    "trial-039": "NOISY (batch=128, dropout=0.1/wd=0.1 off trial-033, epochs=10 rerun: best val_loss 0.5900 at epoch 7, same oscillating pattern as trial-038)",
+    "trial-040": "NOISY (batch_size=64 off trial-033: best val_loss 0.5905 at epoch 7, same oscillating pattern, milder)",
+    "trial-041": "INCOMPLETE (Colab session disconnected after epoch 7/10; checkpoint_mode=final means no Hub checkpoint exists to resume from - needs a full rerun. Partial data: best val_loss so far 0.5914 at epoch 5, matching trial-035's original 6-epoch run exactly through epoch 6, confirming reproducibility)",
 }
 
 CONFIG_RE = re.compile(r"^\[CONFIG\] (\{.*\})$")

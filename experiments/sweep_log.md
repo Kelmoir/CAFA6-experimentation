@@ -967,3 +967,39 @@ back in one session — worth knowing before committing to running it in one sit
 manually-kept-alive browser session rather than the CLI's auto-managed one. trial-038/039 repeat
 trial-033's near-OOM batch_size=128, now for 10 epochs instead of 6 — same memory risk, longer
 exposure.
+
+## round_2 results, part 1 (trial-038 through trial-040; trial-041 interrupted)
+
+Ran in the user's manual browser Colab session, pasted back as `experiments/logs/trial-038-041.log`.
+The session **disconnected mid-trial-041**, after epoch 7/10 — this is exactly the long-single-session
+risk flagged above. trial-038/039/040 completed all 10 epochs cleanly first.
+
+| trial | axis | best epoch | best val_loss | status |
+|-------|------|-----------|----------------|--------|
+| trial-038 | batch=128, zero reg (rerun @10ep) | 7 | **0.5891** | complete — new best of the entire sweep |
+| trial-039 | batch=128, dropout=0.1/wd=0.1 (rerun @10ep) | 7 | 0.5900 | complete |
+| trial-040 | batch_size=64 | 7 | 0.5905 | complete |
+| trial-041 | dropout=0.1/wd=0.1, batch=8 (rerun @10ep) | 5 (so far) | 0.5914 (so far) | **interrupted at epoch 7/10** — no checkpoint (`checkpoint_mode=final`), needs a full rerun |
+
+**New best of the sweep**: trial-038 at 0.5891 (epoch 7), edging past trial-033's 0.5902. But the
+extra epochs revealed something round_1 (capped at 6 epochs) couldn't show: at batch=128, val_loss
+doesn't rise cleanly after its early minimum — it **oscillates** (0.5902 → 0.5922 → 0.5891 → 0.5923 →
+0.5939 → 0.5948 across epochs 5–10). trial-039 and trial-040 show the same pattern. Most likely
+explanation: batch=128 means only ~94 optimizer steps/epoch (vs. batch=8's 1500), so each epoch's
+val_loss is a noisier estimate — this reads more like a wide-noise regime than a textbook overfitting
+curve. trial-041's own first 6 epochs reproduced trial-035's original run bit-for-bit (deterministic,
+same seed) — useful confirmation the pipeline is reproducible — and its epoch 7 (0.5955) sat close to
+epoch 6 (0.5958), no clean overfit turn visible yet before the disconnect.
+
+**Interruption**: with `--checkpoint-mode final` (the sweep's default, chosen specifically to avoid
+per-epoch Hub commits), a mid-trial disconnect loses the whole trial — there's no partial checkpoint
+to resume from. trial-041 must be fully rerun. Not switching the default to `every-epoch` for this
+(that mode exists specifically for the CLI's `--resume-from-revision` retry path, and adds a Hub
+commit per epoch); instead, per the user's direction, **future rounds are batched into sets of 3
+trials per notebook** (down from 6) — this halves how much work a single disconnect can lose, and
+roughly halves session length too (a 3-trial batch-8 round is ~5h vs. 6-trial's ~10-11h).
+
+**Next batch** (`experiments/round5b_manifest.json` / `experiments/round5b_manual.ipynb`, 3 trials):
+`trial-041` (full rerun, unchanged config), `trial-042` (regularization: dropout=0.05/wd=0.05, even
+lighter than trial-035's 0.1/0.1), `trial-043` (unfreeze_last_n=2 on top of the light-regularization
+config). This completes round_2's original 6-trial design, just split across two smaller batches.

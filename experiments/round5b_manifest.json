@@ -1,0 +1,65 @@
+[
+  {
+    "trial_id": "trial-041",
+    "parent": "trial-035",
+    "axis": "epochs 6->10 (rerun, retry after disconnect)",
+    "note": "Full rerun. The Colab session disconnected mid-trial-041 during the first attempt (round5_manifest.json/round5_manual.ipynb), after epoch 7/10 - checkpoint_mode=final means no Hub checkpoint existed to resume from, so this has to restart from epoch 0. Config unchanged: dropout=0.1/wd=0.1, batch=8, unfreeze=1. The interrupted attempt's first 7 epochs exactly reproduced trial-035's original 6-epoch run (deterministic, same seed) and then continued to a 7th (val_loss 0.5955, vs. best-so-far 0.5914 at epoch 5) without yet showing a clear overfit turn - this rerun is needed for the full 10-epoch picture.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.1",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.1",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-042",
+    "parent": "trial-035",
+    "axis": "lighter regularization (regularization)",
+    "note": "2nd required regularization trial. trial-035's dropout=0.1/wd=0.1 beat both trial-030's heavy (0.5/0.2) and trial-031's zero regularization - tests whether an even lighter touch (0.05/0.05) does better still, or whether 0.1/0.1 is closer to the actual sweet spot.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.05",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.05",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-043",
+    "parent": "trial-035",
+    "axis": "unfreeze_last_n=2",
+    "note": "Combines the light-regularization sweet spot (dropout=0.1/wd=0.1) with the capacity bump trial-037 tested under heavy regularization (wd=0.5/dropout=0.2, val_loss 0.5936) - tests whether unfreeze=2 helps more once regularization isn't overconstraining it.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "2",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.1",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.1",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  }
+]

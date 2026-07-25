@@ -3,6 +3,8 @@
   "success_criterion": "val_loss < 0.45 on any single epoch of a trial",
   "noise_floor_val_loss": 0.595,
   "noise_floor_note": "User direction 2026-07-24: val_loss > 0.595 should be treated as noise, not a real result. Under this bar, every esm2_t6_8M-phase trial (0.596-0.6015 across 22 trials, rounds 1-2) was noise - none of that phase's beam-search 'winners' were ever distinguishable from the trial-015 seed. Only trial-030 (0.5946) and trial-031 (0.5918), both at esm2_t12_35M scale, have cleared 0.595 so far. Apply this bar to every trial ranking going forward.",
+  "manual_notebook_batch_size": 3,
+  "manual_notebook_batch_size_note": "User direction 2026-07-25, after the Colab session disconnected mid-trial-041 (7/10 epochs in, no checkpoint since checkpoint_mode=final - the whole trial had to be rerun from scratch): batch future manual-notebook rounds into sets of 3 trials instead of 6. Halves both how much work a single disconnect can lose and typical session length (a 3-trial batch=8 round at epochs=10 is ~5h vs. a 6-trial round's ~10-11h).",
   "regularization_axes": ["output_dropout", "esm_dropout", "attention_dropout", "weight_decay", "label_smoothing", "decouple_bias_wd"],
   "non_regularization_axes": ["learning_rate", "unfreeze_last_n", "lr_schedule", "warmup_steps", "grad_accum_steps"],
   "active_phase": "esm2_t12_35M_scale_up",
@@ -157,22 +159,36 @@
         {"trial": "trial-035", "best_val_loss": 0.5914, "best_epoch": 5, "config_note": "dropout=0.1, wd=0.1, batch_size=8, unfreeze=1 - measured at epochs=6, predates the epochs=10 policy"}
       ],
       "round_2": {
-        "status": "queued",
+        "status": "part 1 complete (trial-038/039/040), trial-041 interrupted mid-run, part 2 queued",
         "manifest_file": "experiments/round5_manifest.json",
         "notebook_file": "experiments/round5_manual.ipynb",
         "epochs": 10,
-        "queued_experiments": ["trial-038", "trial-039", "trial-040", "trial-041", "trial-042", "trial-043"],
-        "queued_experiment_notes": {
-          "trial-038": "off trial-033, rerun at epochs=10 (unchanged config) - trial-033's own 6-epoch curve was just starting to tick back up, need the full picture. Same near-OOM risk as trial-033, now for 10 epochs.",
-          "trial-039": "regularization, off trial-033: adds trial-035's dropout=0.1/wd=0.1 on top of batch_size=128 - tests whether the two independent wins stack. Same OOM caution.",
-          "trial-040": "off trial-033: batch_size=64, interpolating between trial-032 (32) and trial-033 (128) to map the batch-size curve more finely",
-          "trial-041": "off trial-035, rerun at epochs=10 (unchanged config)",
-          "trial-042": "regularization, off trial-035: even lighter touch, dropout=0.05/wd=0.05, to see if 0.1/0.1 is close to the true optimum or if there's more room below it",
-          "trial-043": "off trial-035: unfreeze_last_n=2 combined with the light-regularization config (trial-037 only tested unfreeze=2 under heavy regularization)"
+        "completed": ["trial-038", "trial-039", "trial-040"],
+        "results_by_val_loss": [
+          {"trial": "trial-038", "parent": "trial-033", "axis": "batch=128, zero reg (rerun @10ep)", "best_val_loss": 0.5891, "best_epoch": 7, "note": "new best of the entire sweep"},
+          {"trial": "trial-039", "parent": "trial-033", "axis": "batch=128, dropout=0.1/wd=0.1 (rerun @10ep, reg)", "best_val_loss": 0.59, "best_epoch": 7},
+          {"trial": "trial-040", "parent": "trial-033", "axis": "batch_size=64", "best_val_loss": 0.5905, "best_epoch": 7}
+        ],
+        "oscillation_finding": "At batch=128 (and to a lesser extent batch=64), extending to epochs=10 revealed val_loss oscillating rather than cleanly rising after an early minimum (trial-038: 0.5902->0.5922->0.5891->0.5923->0.5939->0.5948 across epochs 5-10). Likely because batch=128 means only ~94 optimizer steps/epoch (vs batch=8's 1500), making each epoch's val_loss a noisier estimate - reads as a wide-noise regime rather than a textbook overfitting curve, unlike trial-030/031 at batch=8.",
+        "interrupted": {
+          "trial": "trial-041",
+          "reason": "Colab session disconnected after epoch 7/10 during the user's manual browser run. checkpoint_mode=final means no Hub checkpoint existed to resume from - the trial has to be fully rerun, not resumed.",
+          "partial_data": "First 6 epochs reproduced trial-035's original 6-epoch run exactly (deterministic, same seed) - confirms pipeline reproducibility. Epoch 7 val_loss=0.5955 (best so far still epoch 5's 0.5914), no clear overfit turn visible yet before the disconnect.",
+          "action": "Full rerun queued as part of round_2 part 2 below."
         },
-        "runtime_warning": "At epochs=10, extrapolating round_1's per-epoch timings across 6 trials, this round is likely ~10-11 hours run back-to-back in one session - flagged before the user commits to running it in one sitting via the manually-kept-alive browser session."
+        "part_2": {
+          "status": "queued",
+          "manifest_file": "experiments/round5b_manifest.json",
+          "notebook_file": "experiments/round5b_manual.ipynb",
+          "queued_experiments": ["trial-041", "trial-042", "trial-043"],
+          "queued_experiment_notes": {
+            "trial-041": "full rerun (unchanged config) after the disconnect above",
+            "trial-042": "regularization, off trial-035: even lighter touch, dropout=0.05/wd=0.05, to see if 0.1/0.1 is close to the true optimum or if there's more room below it",
+            "trial-043": "off trial-035: unfreeze_last_n=2 combined with the light-regularization config (trial-037 only tested unfreeze=2 under heavy regularization)"
+          }
+        }
       },
-      "next_step": "Once trial-038..043 land: rank by best val_loss against the 0.595 noise floor, check trial-038/041 (the epochs=10 reruns) for how much worse the overfitting gets vs. the epochs=6 baseline, and pick the new width-2 beam for round 3."
+      "next_step": "Once trial-041/042/043 land: rank all of round_2 by best val_loss against the 0.595 noise floor, and pick the new width-2 beam for round 3. Going forward, batch every round into sets of 3 per manual_notebook_batch_size above."
     }
   }
 }
