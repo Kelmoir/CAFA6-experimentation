@@ -1,0 +1,88 @@
+note: Diagnostic, not a hyperparameter axis. trial-038 (batch=128, zero reg) is the sweep's best (0.5891 @ epoch 7), but its val_loss oscillates rather than declining cleanly (0.5902->0.5922->0.5891->0.5923->0.5939->0.5948 across epochs 5-10) - a symptom of only ~94 optimizer steps/epoch making each epoch's estimate noisier. Before treating 0.5891 as a real result worth building the next round on, this reruns the exact same config with a different seed (123 instead of 42) to see if a ~0.589 minimum is reproducible or was a lucky low epoch.
+[CONFIG] {"device": "cuda", "epochs": 10, "batch_size": 128, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t12_35M_UR50D", "unfreeze_last_n": 1, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 123, "output_dropout": 0.0, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.0, "max_minutes": null, "run_name": "trial-044", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-044", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "quiet": true}
+
+/usr/local/lib/python3.12/dist-packages/huggingface_hub/utils/_auth.py:138: UserWarning: 
+Error while fetching `HF_TOKEN` secret value from your vault: 'Requesting secret HF_TOKEN timed out. Secrets can only be fetched when running from the Colab UI.'.
+  warnings.warn(f"\nError while fetching `HF_TOKEN` secret value from your vault: '{str(e)}'.")
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+WARNING:huggingface_hub.utils._http:Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+README.md: 100%
+ 668/668 [00:00<00:00, 72.9kB/s]
+data/train-00000-of-00001.parquet: reconstructing file: 100%
+ 22.3MB / 22.3MB, 2.18MB/s  
+data/train-00000-of-00001.parquet: downloading bytes: 
+ 21.7MB, 2.11MB/s  
+data/validation-00000-of-00001.parquet: reconstructing file: 100%
+ 6.26MB / 6.26MB,  617kB/s  
+data/validation-00000-of-00001.parquet: downloading bytes: 
+ 6.08MB,  599kB/s  
+data/test-00000-of-00001.parquet: reconstructing file: 100%
+ 6.28MB / 6.28MB,  619kB/s  
+data/test-00000-of-00001.parquet: downloading bytes: 
+ 6.11MB,  602kB/s  
+Generating train split: 100%
+ 50168/50168 [00:00<00:00, 502128.22 examples/s]
+Generating validation split: 100%
+ 14131/14131 [00:00<00:00, 348215.20 examples/s]
+Generating test split: 100%
+ 14182/14182 [00:00<00:00, 400660.22 examples/s]
+tokenizer_config.json: 100%
+ 95.0/95.0 [00:00<00:00, 9.70kB/s]
+vocab.txt: 100%
+ 93.0/93.0 [00:00<00:00, 11.0kB/s]
+special_tokens_map.json: 100%
+ 125/125 [00:00<00:00, 11.2kB/s]
+config.json: 100%
+ 778/778 [00:00<00:00, 82.6kB/s]
+model.safetensors: reconstructing file: 100%
+  136MB /  136MB, 13.1MB/s  
+model.safetensors: downloading bytes: 
+ 92.1MB, 8.66MB/s  
+Loading weights: 100%
+ 198/198 [00:00<00:00, 5411.65it/s]
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t12_35M_UR50D
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.layer_norm.bias    | UNEXPECTED | 
+lm_head.layer_norm.weight  | UNEXPECTED | 
+lm_head.dense.bias         | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+lm_head.bias               | UNEXPECTED | 
+classifier.dense.weight    | MISSING    | 
+classifier.out_proj.weight | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+
+Model layers: 12, request unfreeze layers: 1
+[INFO] Initialized classifier bias to label priors: {'C': 0.7161936163902283, 'F': 0.6852575540542603, 'P': 0.6928520202636719}
+[INFO] trackio is not installed; skipping experiment tracking.
+[WARN] No HF token found from any source
+Epoch 1/10 | train_loss=0.6066 | val_loss=0.6041 | train_acc=0.6957 | val_acc=0.6923 | train_recall=0.9986 | val_recall=0.9966
+[TIMING] epoch 1 elapsed=778.8s
+Epoch 2/10 | train_loss=0.5914 | val_loss=0.5976 | train_acc=0.7044 | val_acc=0.6968 | train_recall=0.9815 | val_recall=0.9774
+[TIMING] epoch 2 elapsed=795.4s
+Epoch 3/10 | train_loss=0.5823 | val_loss=0.5958 | train_acc=0.7118 | val_acc=0.6971 | train_recall=0.9740 | val_recall=0.9768
+[TIMING] epoch 3 elapsed=794.2s
+Epoch 4/10 | train_loss=0.5847 | val_loss=0.5936 | train_acc=0.7067 | val_acc=0.6971 | train_recall=0.9669 | val_recall=0.9690
+[TIMING] epoch 4 elapsed=794.7s
+Epoch 5/10 | train_loss=0.5813 | val_loss=0.5927 | train_acc=0.7088 | val_acc=0.6981 | train_recall=0.9646 | val_recall=0.9687
+[TIMING] epoch 5 elapsed=792.4s
+Epoch 6/10 | train_loss=0.5750 | val_loss=0.5921 | train_acc=0.7148 | val_acc=0.6981 | train_recall=0.9620 | val_recall=0.9541
+[TIMING] epoch 6 elapsed=797.1s
+Epoch 7/10 | train_loss=0.5766 | val_loss=0.5930 | train_acc=0.7104 | val_acc=0.6986 | train_recall=0.9576 | val_recall=0.9590
+[TIMING] epoch 7 elapsed=793.9s
+Epoch 8/10 | train_loss=0.5642 | val_loss=0.5929 | train_acc=0.7202 | val_acc=0.6981 | train_recall=0.9532 | val_recall=0.9566
+[TIMING] epoch 8 elapsed=798.6s
+Epoch 9/10 | train_loss=0.5662 | val_loss=0.5971 | train_acc=0.7180 | val_acc=0.6941 | train_recall=0.9507 | val_recall=0.9408
+[TIMING] epoch 9 elapsed=796.1s
+Epoch 10/10 | train_loss=0.5606 | val_loss=0.5980 | train_acc=0.7237 | val_acc=0.6960 | train_recall=0.9481 | val_recall=0.9391
+[TIMING] epoch 10 elapsed=792.9s
+[WARN] --checkpoint-mode final requested but no HF token was found; skipping checkpoint push.
+[SUMMARY] {"run_name": "trial-044", "epochs_completed": 10, "final_train_loss": 0.5605605231954697, "final_val_loss": 0.5979757979512215, "train_accuracy": 0.7236536107164748, "val_accuracy": 0.6960286758840084, "train_recall": 0.9480762215370827, "val_recall": 0.939096249639988}
+[TIMING] trial-044 total wall clock: 7968.6s

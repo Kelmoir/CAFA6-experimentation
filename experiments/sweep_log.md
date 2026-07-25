@@ -1065,3 +1065,46 @@ batch=8's ~580s/epoch. Even at the new 3-trials-per-batch policy, each batch her
 batching policy caps trial *count* per session, not total time, and this round's trials are all
 individually expensive. Flagging in case the user wants an even smaller batch (e.g. 2) specifically
 for this batch=128-heavy round.
+
+## round_3 part 1 results (trial-044 through trial-046) — the noise question is answered
+
+All 3 completed 10 epochs, pasted back as `experiments/logs/trial-044-046.log`. trial-044 hit a
+transient infra hiccup — `HF_TOKEN` fetch from Colab Secrets timed out mid-run (`"Requesting secret
+HF_TOKEN timed out"`), so no Hub checkpoint was pushed for it (`[WARN] --checkpoint-mode final
+requested but no HF token was found`). Training itself was unaffected — all 10 epochs completed and
+the logged metrics are fully valid, there's just no `kelmoir/cafa6-esm@trial-044` branch. Every other
+trial resolved its token normally; treating this as a one-off flake, not a new structural issue like
+the earlier documented CLI-Secrets unreachability.
+
+| trial | axis | best epoch | best val_loss |
+|-------|------|-----------|----------------|
+| trial-038 | batch=128, zero reg (seed=42) | 7 | 0.5891 |
+| trial-046 | batch_size=96, zero reg | 5 | 0.5893 |
+| trial-045 | batch=128, dropout=0.05/wd=0.05 (reg) | 7 | 0.5895 |
+| trial-039 | batch=128, dropout=0.1/wd=0.1 (reg) | 7 | 0.5900 |
+| trial-040 | batch_size=64, zero reg | 7 | 0.5905 |
+| **trial-044** | **batch=128, zero reg (seed=123)** | 6 | **0.5921** |
+
+**trial-044 answers the reproducibility question directly, and the answer is: mostly noise.**
+trial-044 is the *exact same config* as trial-038 — only the random seed changed (123 vs 42) — and its
+best val_loss (0.5921) is **worse than every other trial in this table**, a 0.0030 gap from trial-038
+purely from re-seeding. Every other "improvement" in the table (batch 64→96→128, or the choice of
+regularization) spans a narrower band (0.5891–0.5905, just 0.0014) than that single seed-to-seed gap.
+In other words: the fine-grained ranking this round has been chasing — is 96 better than 64? is
+0.05/0.05 better than zero? — sits **inside** the noise floor set by ordinary seed variance, not above
+it. The batch-size/regularization exploration at this scale has reached the point where a single
+seed=42 run per config is no longer a reliable enough signal to rank configs this close together.
+
+**What this doesn't undermine**: the *large* effects found earlier in the sweep remain solid —
+batch≥64 beating batch=8 by ~0.002-0.003 minimum, the 8M→35M capacity jump, and the harsh late-epoch
+overfitting at batch=8 with heavier regularization (trial-041/043's 0.03-0.06 blowups) are all well
+outside this noise band. It's specifically the *last* round of fine-tuning (batch 64 vs 96 vs 128,
+0.05 vs 0.1 regularization) that this result calls into question.
+
+**Decision**: round_3 part 2 (`experiments/round6b_manifest.json` / `experiments/round6b_manual.ipynb`,
+trial-047/048/049 — seed-123 replication of trial-039, weight-decay isolation, grad_accum=2) is
+already designed and gets sent as planned, since trial-047 will add a second seed-variance data point
+specifically for the light-regularization config. But **this is a natural point to ask the user
+whether to keep grinding this axis** — further fine hyperparameter search here would need multi-seed
+averaging per config to produce a trustworthy ranking, multiplying cost, for gains that (per this
+data) may not be real. Not deciding this unilaterally; raising it once round_3 part 2 is back.

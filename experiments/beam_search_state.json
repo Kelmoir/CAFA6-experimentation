@@ -202,30 +202,36 @@
         {"trial": "trial-039", "best_val_loss": 0.59, "best_epoch": 7, "config_note": "batch_size=128, dropout=0.1/wd=0.1, unfreeze=1, epochs=10 - noisy/oscillating curve, reproducibility unconfirmed"}
       ],
       "round_3": {
-        "status": "part 1 queued",
+        "status": "part 1 complete, part 2 queued",
         "part_1": {
           "manifest_file": "experiments/round6a_manifest.json",
           "notebook_file": "experiments/round6a_manual.ipynb",
-          "queued_experiments": ["trial-044", "trial-045", "trial-046"],
-          "queued_experiment_notes": {
-            "trial-044": "off trial-038, seed=123 replication check (not a hyperparameter axis) - tests whether the 0.5891 minimum is reproducible or a noise artifact of the oscillating batch=128 curve",
-            "trial-045": "regularization, off trial-038: dropout=0.05/wd=0.05 (lighter than trial-039's 0.1/0.1) - tests whether batch=128 wants a lighter regularization optimum than batch=8's, rather than concluding regularization doesn't help here",
-            "trial-046": "off trial-038: batch_size=96, further mapping the curve between trial-040 (64) and trial-038 (128)"
-          }
+          "completed": ["trial-044", "trial-045", "trial-046"],
+          "results_by_val_loss": [
+            {"trial": "trial-038", "axis": "batch=128, zero reg (seed=42, for reference)", "best_val_loss": 0.5891, "best_epoch": 7},
+            {"trial": "trial-046", "axis": "batch_size=96, zero reg", "best_val_loss": 0.5893, "best_epoch": 5},
+            {"trial": "trial-045", "axis": "dropout=0.05/wd=0.05 (reg)", "best_val_loss": 0.5895, "best_epoch": 7},
+            {"trial": "trial-039", "axis": "dropout=0.1/wd=0.1 (reg, for reference)", "best_val_loss": 0.59, "best_epoch": 7},
+            {"trial": "trial-040", "axis": "batch_size=64, zero reg (for reference)", "best_val_loss": 0.5905, "best_epoch": 7},
+            {"trial": "trial-044", "axis": "batch=128, zero reg (seed=123, replication of trial-038)", "best_val_loss": 0.5921, "best_epoch": 6, "note": "identical config to trial-038 except seed - worst of the group despite being a replicate of the 'best' config"}
+          ],
+          "noise_finding": "trial-044 is the exact same config as trial-038, only the seed changed (123 vs 42), and its best val_loss (0.5921) is worse than every other trial in this round - a 0.0030 gap from seed alone. Every other 'improvement' this round chased (batch 64->96->128, regularization 0 vs 0.05 vs 0.1) spans only 0.0014 (0.5891-0.5905), narrower than that single seed-to-seed gap. Conclusion: the fine-grained ranking within this round sits inside ordinary seed noise, not above it - a single seed=42 run per config is not a reliable enough signal to rank configs this close together at this scale. Does NOT undermine the larger, earlier effects (batch>=64 beating batch=8 by ~0.002-0.003, the 8M->35M jump, harsh batch=8 overfitting under heavy regularization) - those remain well outside this noise band.",
+          "infra_note": "trial-044 hit a transient HF_TOKEN fetch timeout from Colab Secrets mid-run ('Requesting secret HF_TOKEN timed out') - no Hub checkpoint was pushed, but training completed all 10 epochs and the logged metrics are fully valid. Treated as a one-off flake (every other trial resolved its token normally), not the known CLI-Secrets-unreachability issue documented elsewhere."
         },
         "part_2": {
+          "status": "queued",
           "manifest_file": "experiments/round6b_manifest.json",
-          "notebook_file": "experiments/round6b_manual.ipynb (not yet generated - send after part_1 results land)",
+          "notebook_file": "experiments/round6b_manual.ipynb",
           "queued_experiments": ["trial-047", "trial-048", "trial-049"],
           "queued_experiment_notes": {
-            "trial-047": "off trial-039, seed=123 replication check, paired with trial-044",
+            "trial-047": "off trial-039, seed=123 replication check, paired with trial-044 - second seed-variance data point, this time for the light-regularization config",
             "trial-048": "regularization, off trial-039: isolates weight_decay alone (dropout=0.0) at batch=128, mirroring trial-036's isolation test for trial-030 at batch=8",
             "trial-049": "off trial-039: grad_accum_steps=2 (effective batch 256) - a more moderate accumulation than trial-034's inconclusive accum=4 test"
           }
         },
         "runtime_note": "This round's leading lineage (batch=128, ~810s/epoch) is much slower per trial than batch=8's ~580s/epoch. Even at the 3-trials-per-batch policy, each batch here is likely ~6-6.5 hours (3 trials x 10 epochs x ~800s) - the batching policy caps trial count per session, not total time. Flagged to the user in case they want an even smaller batch specifically for this batch=128-heavy round."
       },
-      "next_step": "Once trial-044/045/046 land, send round6b_manual.ipynb (generate it then). Once all of round_3 lands: check trial-044/047 against trial-038/039 to resolve the noise-vs-real question, rank everything against the 0.595 noise floor, and pick the round-4 beam."
+      "next_step": "Once trial-047/048/049 land: check trial-047 against trial-039 for a second seed-variance data point (confirming or refining the noise-floor read from trial-044/038), then raise with the user whether further fine-grained search on this axis is worth multi-seed-averaging cost, or whether to lock in current best-guess hyperparameters and move to a longer/larger real training run instead."
     }
   }
 }
