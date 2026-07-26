@@ -1233,3 +1233,38 @@ old 3-aspect task's ~70% per-label positive rate. This changes two things:
 The `noise_floor_val_loss` (0.595) from the old task does **not** carry over — this task's BCE loss
 sits at a structurally different scale given the different positive rate, and needs its own
 calibration once trial-050 lands.
+
+## trial-050 result — looked like a collapse, wasn't, and exposed a real metrics bug
+
+Raw log: val_loss improved cleanly (0.0803 → 0.0772 over 10 epochs, best at epoch 7), but val_recall
+stayed pinned at 2.7–3.6% the entire run and val_accuracy (97.2%) sat barely above the trivial
+always-negative baseline (96.4%). This is the textbook signature of unweighted BCE collapsing under
+severe class imbalance — before concluding that, ran a proper diagnostic
+(`experiments/scripts/diagnostic_eval_stage2.py`, locally on CPU) on the same checkpoint.
+
+**The model is actually healthy.** Median per-label AUROC = 0.8366 (mean 0.8283), 87.3% of the 362
+evaluable labels clear AUROC > 0.7. Pooled at threshold 0.5: precision 0.6565, recall 0.4583,
+F1 0.5398 — nothing like the training log's reported 3.55% recall. Best pooled F1 over a threshold
+sweep: 0.5727 @ threshold 0.32.
+
+**Root cause, found and fixed**: `compute_metrics()` computed per-batch recall (`tp/(tp+fn)`) and
+averaged those *ratios* across batches — mathematically fine for accuracy (a linear average
+aggregates correctly regardless of grouping) but wrong for recall. With `batch_size=8` and 383 labels
+at 3.58% positive rate, the expected positive count for any given label in an 8-example batch is
+~0.29 — the overwhelming majority of (label, batch) pairs have **zero** true positives, so
+`tp/(tp+fn+eps) = 0` for most labels in most batches *regardless of model quality*, dragging every
+batch's — and therefore the epoch's — averaged recall toward 0. Confirmed with a synthetic test: a
+model constructed to have true recall = 1.0 was reported as 25.7% under the old code, 100% under the
+fix. Fixed in `training_run.py`: `compute_metrics()` now returns raw per-batch counts
+(correct/total/tp/fn), and a new `finalize_metrics()` accumulates those across a full epoch before
+computing the ratio once — applied to both the training and validation loops.
+
+**Scope of the bug**: only ever affected `recall`, never `accuracy` or `val_loss` (both unaffected —
+`val_loss` remains trustworthy across the entire sweep, old and new phases alike). Every prior trial
+(all on the 3-label task) was only mildly affected, since 3 sparse-but-not-*this*-sparse labels rarely
+hit zero-positives-per-8-example-batch the way 383 labels do — not worth re-running retroactively.
+`val_recall`/`train_recall` from trial-051 onward are now computed correctly and can be trusted.
+
+**Decision**: trial-050 stands as a genuinely healthy seed for this phase (val_loss 0.0772 best, real
+AUROC ~0.83). Next: design a proper first beam-search round here, now that both the pipeline and its
+metrics are trustworthy.

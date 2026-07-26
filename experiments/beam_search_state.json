@@ -10,7 +10,7 @@
   "active_phase": "esm2_t12_35M_coarse_go_terms",
   "phases": {
     "esm2_t12_35M_coarse_go_terms": {
-      "status": "seed trial queued",
+      "status": "seed trial (trial-050) complete and healthy; a real training_run.py metrics bug found and fixed along the way",
       "started": "2026-07-27",
       "why": "dataset_expansion (see below) replaced the label space with 383 coarse GO terms (3 aspect roots + depth<=2 terms, >=50 post-propagation annotations), a fundamentally different and much sparser task (3.58% overall positive rate, mean 13.7/383 labels positive per protein) than the esm2_t12_35M_scale_up phase's 3-aspect task (~70% positive rate per label). None of that phase's hyperparameter conclusions (zero regularization preferred, batch=128 edge) are assumed to transfer - this is a fresh phase, same model scale.",
       "seed_config": {
@@ -28,11 +28,16 @@
         "seed": 42,
         "note": "Deliberately the esm2_t12_35M_scale_up phase's ORIGINAL validated baseline (trial-030), not that phase's later zero-regularization conclusion (trial-038) - that conclusion was reached on a ~70%-positive-rate task and shouldn't be assumed to hold at 3.58% positive rate, where overfitting dynamics on rare classes are unvalidated. batch_size=8 chosen deliberately over 128: the batch-size finding at 35M was about a val_loss quality edge from noisier updates, not speed (larger batches were consistently slower per epoch in this codebase due to per-batch padding waste) - no reason to start large on an unvalidated new task, and batch=8 has zero OOM history."
       },
-      "queued_experiments": ["trial-050"],
       "manifest_file": "experiments/round7_manifest.json",
       "notebook_file": "experiments/round7_manual.ipynb",
-      "metric_caveat": "compute_metrics()'s accuracy will be close to meaningless on this task - a trivial 'always predict negative' baseline already scores ~96.4% accuracy given the 3.58% positive rate. Watch val_loss and recall, not accuracy. Precision/F1/AUROC (as used in the Stage-1 diagnostic, experiments/scripts/diagnostic_eval_stage1.py) are not yet wired into the regular training loop's metrics - worth adding once trial-050's baseline behavior is understood.",
-      "next_step": "Once trial-050 lands: read [TIMING] to confirm nothing about the new label space (larger classifier head, longer multi-hot label vectors) meaningfully changed per-epoch cost vs the old 3-aspect task at the same batch size, establish this task's own val_loss noise floor (see noise_floor_note caveat above), and design a proper first beam-search round from there."
+      "trial_050_result": {
+        "status": "complete - genuinely healthy result, initial reading was wrong due to a real bug (now fixed)",
+        "raw_log_numbers": "val_loss improved cleanly 0.0803 -> 0.0772 over 10 epochs (best at epoch 7), but val_recall stayed pinned at 2.7-3.6% the whole run and val_accuracy (97.2%) sat barely above the trivial always-negative baseline (96.4%) - looked exactly like unweighted-BCE collapse under severe class imbalance.",
+        "diagnostic": "Ran experiments/scripts/diagnostic_eval_stage2.py (locally, CPU, ~2000 val examples) on the trial-050 checkpoint to check for real per-label ranking signal underneath the threshold. Result: median per-label AUROC=0.8366 (mean 0.8283), 87.3% of the 362 evaluable labels have AUROC>0.7. Pooled @ threshold 0.5: precision=0.6565, recall=0.4583, F1=0.5398 (vs. trivial baseline accuracy 0.9643). Best pooled F1 over a threshold sweep: 0.5727 @ threshold=0.32. This is a genuinely well-performing model, not a collapsed one.",
+        "root_cause_found_and_fixed": "training_run.py's compute_metrics() computed per-batch recall (tp/(tp+fn)) and averaged those ratios across batches. With batch_size=8 and 383 labels at 3.58% positive rate, the expected positive count for any given label in an 8-example batch is ~0.29 - meaning the overwhelming majority of (label, batch) pairs have zero true positives, so tp/(tp+fn+eps)=0 for most labels in most batches regardless of model quality, dragging every batch's (and therefore the epoch's) averaged recall toward 0. This is a ratio-aggregation error (average-of-ratios != ratio-of-sums), not present for accuracy (a linear average, aggregates correctly regardless of batching) - only recall was affected. Confirmed via a synthetic test: a model constructed to have true recall=1.0 was reported as 25.7% recall under the old per-batch-averaging code, 100% under the fix. Fixed by having compute_metrics() return raw per-batch counts (correct/total/tp/fn) and adding finalize_metrics() to accumulate those across a full epoch before computing the final ratio once - applied to both the training and validation loops. Prior trials (3-label task) were only mildly affected by this bug, since 3 sparse-but-not-this-sparse labels rarely hit zero-positives-per-8-example-batch the way 383 labels do; not worth re-running them retroactively.",
+        "implication": "val_loss (never affected by this bug) remains the trustworthy metric across the whole sweep, old and new phases alike. val_recall/train_recall going forward (trial-051+) will now be computed correctly and should be trusted; anything before this fix (all of trial-001 through trial-050) has recall numbers that undersold real model quality on sparse/high-label-count tasks, worst for trial-050 specifically."
+      },
+      "next_step": "Metrics bug fixed and trial-050 confirmed healthy (val_loss 0.0772 best, real per-label AUROC ~0.83). Design a proper first beam-search round for this phase, now trusting recall going forward."
     },
     "esm2_t6_8M": {
       "status": "paused_plateaued",

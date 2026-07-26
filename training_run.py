@@ -193,14 +193,32 @@ def data_collate_function(preprocessed_batch: List[Dict[str, Any]], tokenizer: E
     return collated_data
 
 
-def compute_metrics(logits: torch.Tensor, labels: torch.Tensor) -> Dict[str, float]:
+def compute_metrics(logits: torch.Tensor, labels: torch.Tensor) -> Dict[str, Any]:
+    """Per-batch correct/tp/fn counts, meant to be summed across an epoch and turned
+    into accuracy/recall via finalize_metrics() rather than averaged as per-batch
+    ratios. Averaging per-batch recall directly (the previous approach) systematically
+    underestimates it once label count is high and positive rate is low relative to
+    batch size (e.g. 383 labels at ~3.6% positive with batch_size=8: most (label,
+    batch) pairs then have zero true positives, so tp/(tp+fn+eps) is spuriously 0 for
+    the overwhelming majority of a batch's labels regardless of true model quality,
+    dragging every batch's - and therefore the epoch's - averaged recall toward 0).
+    Confirmed directly on trial-050: training reported val_recall=3.55% at epoch 10,
+    while a proper pooled-over-the-full-validation-set recall was 45.8% for the same
+    checkpoint.
+    """
     probs = torch.sigmoid(logits)
     preds = (probs >= 0.5).float()
 
-    accuracy = (preds == labels).float().mean().item()
+    correct = (preds == labels).float().sum().item()
+    total = labels.numel()
     tp = ((preds == 1) & (labels == 1)).sum(dim=0)
     fn = ((preds == 0) & (labels == 1)).sum(dim=0)
-    recall = (tp / (tp + fn + 1e-8)).mean().item()
+    return {"correct": correct, "total": total, "tp": tp, "fn": fn}
+
+
+def finalize_metrics(accumulated: Dict[str, Any]) -> Dict[str, float]:
+    accuracy = accumulated["correct"] / max(1, accumulated["total"])
+    recall = (accumulated["tp"] / (accumulated["tp"] + accumulated["fn"] + 1e-8)).mean().item()
     return {"accuracy": accuracy, "recall": recall}
 
 
@@ -448,7 +466,7 @@ def main() -> None:
         epoch_start = time.time()
         model_esm.train()
         train_loss = 0.0
-        train_metrics = {"accuracy": 0.0, "recall": 0.0}
+        train_metrics_acc = {"correct": 0.0, "total": 0, "tp": torch.zeros(len(label_names)), "fn": torch.zeros(len(label_names))}
 
         log_every = max(1, len(train_dataloader) // 25)
         optimizer.zero_grad()
@@ -479,19 +497,20 @@ def main() -> None:
                 print(f"[STEP] epoch={epoch + 1} step={step + 1}/{len(train_dataloader)} loss={loss.item():.4f}")
 
             batch_metrics = compute_metrics(logits, hard_labels)
-            train_metrics["accuracy"] += batch_metrics["accuracy"]
-            train_metrics["recall"] += batch_metrics["recall"]
+            train_metrics_acc["correct"] += batch_metrics["correct"]
+            train_metrics_acc["total"] += batch_metrics["total"]
+            train_metrics_acc["tp"] += batch_metrics["tp"]
+            train_metrics_acc["fn"] += batch_metrics["fn"]
             train_loss += loss.item()
 
             if tracker is not None:
-                tracker.log({"epoch": epoch, "step": len(train_dataloader) * epoch + 1, "train_loss": loss.item(), **batch_metrics})
+                tracker.log({"epoch": epoch, "step": len(train_dataloader) * epoch + 1, "train_loss": loss.item(), **finalize_metrics(batch_metrics)})
 
         train_loss /= max(1, len(train_dataloader))
-        train_metrics["accuracy"] /= max(1, len(train_dataloader))
-        train_metrics["recall"] /= max(1, len(train_dataloader))
+        train_metrics = finalize_metrics(train_metrics_acc)
 
         validation_loss = 0.0
-        validation_metrics = {"accuracy": 0.0, "recall": 0.0}
+        validation_metrics_acc = {"correct": 0.0, "total": 0, "tp": torch.zeros(len(label_names)), "fn": torch.zeros(len(label_names))}
         model_esm.eval()
         with torch.inference_mode():
             for batch in validation_dataloader:
@@ -503,12 +522,13 @@ def main() -> None:
                 validation_loss += loss.item()
 
                 batch_metrics = compute_metrics(outputs.logits, labels)
-                validation_metrics["accuracy"] += batch_metrics["accuracy"]
-                validation_metrics["recall"] += batch_metrics["recall"]
+                validation_metrics_acc["correct"] += batch_metrics["correct"]
+                validation_metrics_acc["total"] += batch_metrics["total"]
+                validation_metrics_acc["tp"] += batch_metrics["tp"]
+                validation_metrics_acc["fn"] += batch_metrics["fn"]
 
         validation_loss /= max(1, len(validation_dataloader))
-        validation_metrics["accuracy"] /= max(1, len(validation_dataloader))
-        validation_metrics["recall"] /= max(1, len(validation_dataloader))
+        validation_metrics = finalize_metrics(validation_metrics_acc)
 
         print(
             f"Epoch {epoch + 1}/{args.start_epoch + args.epochs} | "
