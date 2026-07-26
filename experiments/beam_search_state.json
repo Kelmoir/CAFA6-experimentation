@@ -2,13 +2,38 @@
   "algorithm": "beam search, width 2, branching factor 3 per beam member (6 experiments/round, 2 of which must tweak a regularization hyperparameter)",
   "success_criterion": "val_loss < 0.45 on any single epoch of a trial",
   "noise_floor_val_loss": 0.595,
-  "noise_floor_note": "User direction 2026-07-24: val_loss > 0.595 should be treated as noise, not a real result. Under this bar, every esm2_t6_8M-phase trial (0.596-0.6015 across 22 trials, rounds 1-2) was noise - none of that phase's beam-search 'winners' were ever distinguishable from the trial-015 seed. Only trial-030 (0.5946) and trial-031 (0.5918), both at esm2_t12_35M scale, have cleared 0.595 so far. Apply this bar to every trial ranking going forward.",
+  "noise_floor_note": "User direction 2026-07-24: val_loss > 0.595 should be treated as noise, not a real result. Under this bar, every esm2_t6_8M-phase trial (0.596-0.6015 across 22 trials, rounds 1-2) was noise - none of that phase's beam-search 'winners' were ever distinguishable from the trial-015 seed. Only trial-030 (0.5946) and trial-031 (0.5918), both at esm2_t12_35M scale, have cleared 0.595 so far. Apply this bar to every trial ranking going forward. CAVEAT added 2026-07-27: this specific 0.595 number was calibrated on the old 3-aspect task's BCE loss scale (~70% average positive rate) - it does NOT automatically transfer to the new 383-coarse-GO-term task (3.58% average positive rate), whose val_loss will likely sit at a very different absolute scale. Needs recalibration once trial-050 establishes what this task's own baseline/noise looks like - don't compare trial-050+'s val_loss numbers directly against 0.595.",
   "manual_notebook_batch_size": 3,
   "manual_notebook_batch_size_note": "User direction 2026-07-25, after the Colab session disconnected mid-trial-041 (7/10 epochs in, no checkpoint since checkpoint_mode=final - the whole trial had to be rerun from scratch): batch future manual-notebook rounds into sets of 3 trials instead of 6. Halves both how much work a single disconnect can lose and typical session length (a 3-trial batch=8 round at epochs=10 is ~5h vs. a 6-trial round's ~10-11h).",
   "regularization_axes": ["output_dropout", "esm_dropout", "attention_dropout", "weight_decay", "label_smoothing", "decouple_bias_wd"],
   "non_regularization_axes": ["learning_rate", "unfreeze_last_n", "lr_schedule", "warmup_steps", "grad_accum_steps"],
-  "active_phase": "esm2_t12_35M_scale_up",
+  "active_phase": "esm2_t12_35M_coarse_go_terms",
   "phases": {
+    "esm2_t12_35M_coarse_go_terms": {
+      "status": "seed trial queued",
+      "started": "2026-07-27",
+      "why": "dataset_expansion (see below) replaced the label space with 383 coarse GO terms (3 aspect roots + depth<=2 terms, >=50 post-propagation annotations), a fundamentally different and much sparser task (3.58% overall positive rate, mean 13.7/383 labels positive per protein) than the esm2_t12_35M_scale_up phase's 3-aspect task (~70% positive rate per label). None of that phase's hyperparameter conclusions (zero regularization preferred, batch=128 edge) are assumed to transfer - this is a fresh phase, same model scale.",
+      "seed_config": {
+        "model_name": "facebook/esm2_t12_35M_UR50D",
+        "unfreeze_last_n": 1,
+        "learning_rate": 0.0002,
+        "output_dropout": 0.2,
+        "esm_dropout": 0.0,
+        "attention_dropout": 0.0,
+        "weight_decay": 0.5,
+        "batch_size": 8,
+        "epochs": 10,
+        "max_train_samples": 12000,
+        "max_val_samples": 2000,
+        "seed": 42,
+        "note": "Deliberately the esm2_t12_35M_scale_up phase's ORIGINAL validated baseline (trial-030), not that phase's later zero-regularization conclusion (trial-038) - that conclusion was reached on a ~70%-positive-rate task and shouldn't be assumed to hold at 3.58% positive rate, where overfitting dynamics on rare classes are unvalidated. batch_size=8 chosen deliberately over 128: the batch-size finding at 35M was about a val_loss quality edge from noisier updates, not speed (larger batches were consistently slower per epoch in this codebase due to per-batch padding waste) - no reason to start large on an unvalidated new task, and batch=8 has zero OOM history."
+      },
+      "queued_experiments": ["trial-050"],
+      "manifest_file": "experiments/round7_manifest.json",
+      "notebook_file": "experiments/round7_manual.ipynb",
+      "metric_caveat": "compute_metrics()'s accuracy will be close to meaningless on this task - a trivial 'always predict negative' baseline already scores ~96.4% accuracy given the 3.58% positive rate. Watch val_loss and recall, not accuracy. Precision/F1/AUROC (as used in the Stage-1 diagnostic, experiments/scripts/diagnostic_eval_stage1.py) are not yet wired into the regular training loop's metrics - worth adding once trial-050's baseline behavior is understood.",
+      "next_step": "Once trial-050 lands: read [TIMING] to confirm nothing about the new label space (larger classifier head, longer multi-hot label vectors) meaningfully changed per-epoch cost vs the old 3-aspect task at the same batch size, establish this task's own val_loss noise floor (see noise_floor_note caveat above), and design a proper first beam-search round from there."
+    },
     "esm2_t6_8M": {
       "status": "paused_plateaued",
       "fixed_across_all_rounds": {

@@ -1,0 +1,23 @@
+[
+  {
+    "trial_id": "trial-050",
+    "parent": null,
+    "axis": "coarse GO term task (383 labels) - seed/timing trial",
+    "note": "First real trial against the new 383-coarse-GO-term dataset (up from 3 aspects). Reuses the esm2_t12_35M phase's original actually-validated baseline (unfreeze=1, lr=2e-4, wd=0.5, dropout=0.2/0.0/0.0, batch=8) rather than that phase's later zero-regularization conclusion (trial-038) - that conclusion was reached on a ~70%-positive-rate 3-class task and shouldn't be assumed to transfer to this one. Checked directly: the new task has only 3.58% overall positive rate (mean 13.7 of 383 labels positive per protein, median 12) - a much sparser, higher-class-count regime where overfitting dynamics are unvalidated, so starting from the conservative, well-tested baseline is safer than assuming zero regularization is still fine. batch_size=8 chosen deliberately over 128: the earlier batch-size finding was about a slight val_loss quality edge from fewer/noisier updates, not speed - larger batches were consistently *slower* per epoch in this codebase (padding waste from unsorted per-batch length padding), so there's no efficiency reason to start large on an unvalidated new task, and batch=8 has zero OOM history. CAUTION for interpreting results: compute_metrics()'s accuracy metric will be close to meaningless here - a trivial 'always predict negative' baseline already scores ~96.4% accuracy given the 3.58% positive rate, so watch val_loss and recall, not accuracy, until a richer metric (precision/F1/AUROC, as used in the Stage-1 diagnostic) is added.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  }
+]

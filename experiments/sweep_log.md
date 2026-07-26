@@ -1207,3 +1207,29 @@ the process (`HF_HUB_DISABLE_XET=1`, documented in `CLAUDE.md`).
 **Every trial in this log (trial-001 through trial-049) was run against the old 3-aspect label
 space** — none of the regularization/batch-size conclusions above have been validated against the
 new 383-term task. First real step from here: an actual training trial against the new dataset.
+
+## New phase: esm2_t12_35M_coarse_go_terms (trial-050)
+
+Checked the new dataset's actual label profile before designing the trial: **3.58% overall positive
+rate** (mean 13.7 of 383 labels positive per protein, median 12, range 2–96) — much sparser than the
+old 3-aspect task's ~70% per-label positive rate. This changes two things:
+
+- **compute_metrics()'s accuracy is now close to meaningless.** A trivial "always predict negative"
+  baseline already scores ~96.4% accuracy at this positive rate — the opposite failure mode from the
+  old task's "always predict positive" trivial baseline (~69.8%), but the same underlying problem:
+  accuracy alone can't be trusted here either. val_loss and recall are the metrics worth watching
+  until precision/F1/AUROC (already built for the Stage-1 diagnostic) get wired into the regular
+  training loop.
+- **The esm2_t12_35M_scale_up phase's "zero regularization is fine" conclusion is not assumed to
+  transfer.** That was reached on a dense, ~70%-positive task; overfitting dynamics on a sparse,
+  383-way, rare-class-heavy task are unvalidated. trial-050 (`experiments/round7_manifest.json` /
+  `experiments/round7_manual.ipynb`) reuses that phase's *original* validated baseline instead
+  (unfreeze=1, lr=2e-4, wd=0.5, dropout=0.2/0.0/0.0, batch=8, epochs=10, matching trial-030's
+  config) — the safe, well-tested starting point, not the later fine-tuned conclusion. batch=8 over
+  128 for the same reason as before: the batch-size finding was about a quality edge from noisier
+  updates, not speed (larger batches were consistently slower per epoch here), so there's no reason
+  to start large on an unvalidated task.
+
+The `noise_floor_val_loss` (0.595) from the old task does **not** carry over — this task's BCE loss
+sits at a structurally different scale given the different positive rate, and needs its own
+calibration once trial-050 lands.
