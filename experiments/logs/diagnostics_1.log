@@ -1,0 +1,85 @@
+[INFO] HF token resolved via Colab Secrets
+
+README.md: 100%
+ 668/668 [00:00<00:00, 25.4kB/s]
+data/train-00000-of-00001.parquet: reconstructing file: 100%
+ 22.3MB / 22.3MB, 2.09MB/s  
+data/train-00000-of-00001.parquet: downloading bytes: 
+ 21.7MB, 1.98MB/s  
+data/validation-00000-of-00001.parquet: reconstructing file: 100%
+ 6.26MB / 6.26MB,  615kB/s  
+data/validation-00000-of-00001.parquet: downloading bytes: 
+ 6.08MB,  597kB/s  
+data/test-00000-of-00001.parquet: reconstructing file: 100%
+ 6.28MB / 6.28MB,  617kB/s  
+data/test-00000-of-00001.parquet: downloading bytes: 
+ 6.11MB,  600kB/s  
+Generating train split: 100%
+ 50168/50168 [00:00<00:00, 179958.15 examples/s]
+Generating validation split: 100%
+ 14131/14131 [00:00<00:00, 150196.67 examples/s]
+Generating test split: 100%
+ 14182/14182 [00:00<00:00, 285042.96 examples/s]
+tokenizer_config.json: 100%
+ 95.0/95.0 [00:00<00:00, 3.98kB/s]
+vocab.txt: 100%
+ 93.0/93.0 [00:00<00:00, 1.56kB/s]
+special_tokens_map.json: 100%
+ 125/125 [00:00<00:00, 2.45kB/s]
+config.json: 100%
+ 1.05k/1.05k [00:00<00:00, 30.7kB/s]
+model.safetensors: reconstructing file: 100%
+  134MB /  134MB, 11.2MB/s  
+model.safetensors: downloading bytes: 
+ 94.0MB, 7.60MB/s  
+Loading weights: 100%
+ 202/202 [00:00<00:00, 3442.79it/s]
+
+Model layers: 12, request unfreeze layers: 1
+[INFO] Loaded kelmoir/cafa6-esm@trial-038 (facebook/esm2_t12_35M_UR50D) for eval
+[INFO] Ran inference on 2000 validation examples
+======================================================================
+STAGE-1 DIAGNOSTIC: trial-038 (esm2_t12_35M, epoch 10) vs trivial baseline
+======================================================================
+
+[C] prior=0.7190  n=2000
+  metric        model @0.5  trivial baseline
+  accuracy          0.7295            0.7190
+  precision         0.7354            0.7190
+  recall            0.9743            1.0000
+  f1                0.8382            0.8365
+  auroc             0.6759            0.5000   (0.5 = no ranking power at all, i.e. the trivial case)
+  best f1 over threshold sweep: 0.8394 @ threshold=0.35
+
+[F] prior=0.6815  n=2000
+  metric        model @0.5  trivial baseline
+  accuracy          0.6830            0.6815
+  precision         0.7060            0.6815
+  recall            0.9164            1.0000
+  f1                0.7976            0.8106
+  auroc             0.6313            0.5000   (0.5 = no ranking power at all, i.e. the trivial case)
+  best f1 over threshold sweep: 0.8167 @ threshold=0.35
+
+[P] prior=0.6680  n=2000
+  metric        model @0.5  trivial baseline
+  accuracy          0.6550            0.6680
+  precision         0.6900            0.6680
+  recall            0.8780            1.0000
+  f1                0.7727            0.8010
+  auroc             0.6070            0.5000   (0.5 = no ranking power at all, i.e. the trivial case)
+  best f1 over threshold sweep: 0.8025 @ threshold=0.30
+
+[MACRO (all aspects pooled)] prior=0.6895  n=6000
+  metric        model @0.5  trivial baseline
+  accuracy          0.6892            0.6895
+  precision         0.7114            0.6895
+  recall            0.9241            1.0000
+  f1                0.8039            0.8162
+  auroc             0.6386            0.5000   (0.5 = no ranking power at all, i.e. the trivial case)
+  best f1 over threshold sweep: 0.8192 @ threshold=0.35
+
+[SUMMARY] If AUROC is close to 0.5 across aspects, the model has ~no real
+per-protein discriminative signal beyond the label prior. If AUROC is clearly
+above 0.5 (e.g. >0.65-0.7), it has learned something real even if 0.5-threshold
+accuracy looks unimpressive next to the trivial baseline.
+

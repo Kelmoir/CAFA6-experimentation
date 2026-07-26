@@ -1178,3 +1178,32 @@ term-level prediction head (filtered to a frequency-thresholded subset of terms,
 top of the existing aspect head, exploiting the GO DAG's hierarchy rather than flattening it away —
 full reasoning and alternatives discussed with the user, to be captured in a fresh planning pass
 before implementation starts.
+
+## Dataset expansion deployed (2026-07-26) — every trial above predates this
+
+Before touching `generate_dataset.py`, ran a diagnostic (`experiments/diagnostic_eval_stage1.ipynb`,
+log in `experiments/logs/diagnostics_1.log`) to check whether the aspect model was worth building on
+at all — `compute_metrics()`'s accuracy/recall alone couldn't distinguish "learned real signal" from
+"learned the label prior" (a trivial always-positive baseline scores ~0.698 accuracy / 1.0 recall,
+suspiciously close to every trial's reported numbers). Result: AUROC clearly above 0.5 for every
+aspect (C 0.676, F 0.631, P 0.607, macro 0.639) — the model has real, if modest, discriminative
+signal, not just the prior. Not a dead end, though genuinely useful quality would need far more data
+and training than this sweep's scale (12,000 train samples, 6-10 epochs) — noted as an open
+possibility, not pursued further for now.
+
+`generate_dataset.py` was then rewritten: labels are now **383 coarse GO terms** (the 3 aspect roots
++ every term within 2 hops with ≥50 annotations after true-path propagation via `obonet`), not just
+the 3 aspects. Propagation restricted to `is_a`/`part_of` edges (the two relationship types that
+support GO's true-path rule); `regulates`/`positively_regulates`/`negatively_regulates` edges are
+excluded from label propagation but preserved in a new `go_dependency_graph.json` artifact (the full
+40,122-node/77,229-edge graph, all 5 relationship types) pushed alongside the dataset to
+`kelmoir/cafa6`, so a later curriculum stage can look up any coarse term's descendants without
+recomputing anything. `training_run.py`'s hardcoded `UNIQUE_ASPECTS = ["C","F","P"]` (used to size
+the label vector and the bias-prior computation) was removed in favor of reading the dataset's real
+label count dynamically — it's now label-space-agnostic. Dataset regenerated and pushed for real
+(Train=47,817 / Val=13,485 / Test=13,479); hit and worked around a `hf_xet` version-mismatch bug in
+the process (`HF_HUB_DISABLE_XET=1`, documented in `CLAUDE.md`).
+
+**Every trial in this log (trial-001 through trial-049) was run against the old 3-aspect label
+space** — none of the regularization/batch-size conclusions above have been validated against the
+new 383-term task. First real step from here: an actual training trial against the new dataset.

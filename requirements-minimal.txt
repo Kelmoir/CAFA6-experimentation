@@ -13,6 +13,9 @@ biopython
 requests
 pandas
 scikit-learn
+obonet
+networkx
+progressbar2
 
 # Google Colab CLI (for notebook management, not for running notebooks)
 google-colab-cli

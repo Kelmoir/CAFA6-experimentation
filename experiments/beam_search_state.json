@@ -248,7 +248,7 @@
     }
   },
   "dataset_expansion": {
-    "status": "discussed, not started",
+    "status": "generate_dataset.py rewritten and dry-run verified against real data; NOT yet regenerated/pushed (awaiting go-ahead) and training_run.py NOT yet updated to match the new schema",
     "started": "2026-07-26",
     "why": "The whole sweep above (both phases) optimized training_run.py's current label space - the 3 top-level GO aspects (C/F/P) - a heavy simplification of the actual CAFA task. generate_dataset.py computes unique_go_terms from train_terms.tsv but discards it, building label2id from unique_aspects instead. Likely explains why the aspect-only task plateaus so early: 3 classes carries very little information for the model to differentiate proteins by, regardless of hyperparameters.",
     "real_task_stats": {
@@ -267,6 +267,54 @@
       "Switch tracked metrics toward the real CAFA Fmax (using IA.tsv, already in the data dir but unused) instead of threshold-0.5 accuracy/val_loss, once past aspect-only prediction"
     ],
     "recommended_first_step": "Coarse-to-fine curriculum (approach 1) combined with a frequency-filtered term subset (approach 2) as stage 2's label space; true-path-rule loss (approach 3) as a follow-up once basic term-level training is validated. Requires a generate_dataset.py change to build a term-level label space before anything is testable - a bigger lift than another hyperparameter trial, sequenced after this round_3 close-out rather than alongside it.",
-    "next_step": "Not yet started - awaiting user go-ahead to begin generate_dataset.py changes."
+    "stage1_diagnostic": {
+      "status": "complete - result: aspect model has real, if modest, discriminative signal - not a dead end",
+      "why": "compute_metrics() only tracks accuracy/recall, both of which a trivial 'always predict positive' baseline would already score ~0.698 accuracy / 1.0 recall (the average label prior C=0.716/F=0.685/P=0.693) - suspiciously close to what every trial in the whole sweep has reported (val_acc 0.69-0.70, val_recall usually 0.94-0.99+). Can't tell from existing logs whether the aspect model learned real per-protein signal or just the prior.",
+      "script": "experiments/scripts/diagnostic_eval_stage1.py",
+      "notebook": "experiments/diagnostic_eval_stage1.ipynb",
+      "evaluates": "kelmoir/cafa6-esm@trial-038, epoch-10 weights (checkpoint_mode=final only ever saves the last epoch, not trial-038's reported-best epoch 7/val_loss 0.5891 - epoch 10 was val_loss 0.5948). Still representative for a yes/no signal question.",
+      "metrics": "per-aspect and macro accuracy/precision/recall/F1 at threshold 0.5, best-F1 over a threshold sweep, and AUROC - all reported alongside the analytically-known trivial baseline (accuracy=prior, precision=prior, recall=1.0, AUROC=0.5). AUROC is the key number: close to 0.5 means no real per-protein discriminative signal; clearly above it means the model learned something real even if 0.5-threshold accuracy looks unimpressive.",
+      "bug_fixed_along_the_way": "create_esm()'s AutoModelForSequenceClassification.from_pretrained(..., revision=...) call has no explicit token= param, and get_hf_token() never sets os.environ['HF_TOKEN'] after resolving one - so loading a private Hub checkpoint via --resume-from-revision has no real auth path in training_run.py today. Worked around locally in the diagnostic script (os.environ['HF_TOKEN'] = token before calling create_esm); not yet fixed in training_run.py itself since it hasn't visibly broken the CLI self-healing retry path that also uses --resume-from-revision - worth revisiting if that path ever needs it.",
+      "results": {
+        "log": "experiments/logs/diagnostics_1.log",
+        "n_val_examples": 2000,
+        "auroc": {"C": 0.6759, "F": 0.6313, "P": 0.607, "macro": 0.6386},
+        "f1_at_0.5": {"C": 0.8382, "F": 0.7976, "P": 0.7727, "macro": 0.8039, "trivial_baseline_macro": 0.8162},
+        "accuracy_at_0.5": {"C": 0.7295, "F": 0.683, "P": 0.655, "macro": 0.6892, "trivial_baseline_macro": 0.6895},
+        "interpretation": "AUROC is clearly above 0.5 for every aspect (0.61-0.68, macro 0.64) - the model has learned real per-protein discriminative signal, not just the label prior. This resolves the 'is it a dead end' question from before: it's not. Nuance worth keeping in mind though: at the standard 0.5 threshold, F1 doesn't clearly beat the trivial baseline (and is slightly worse for F/P) - AUROC (ranking ability, threshold-independent) and F1-at-a-fixed-threshold tell different stories here, because F1 rewards the trivial baseline's perfect recall in a way that undersells the model's real but modest ranking improvement. accuracy/recall alone (the only two metrics compute_metrics() has ever tracked) would never have surfaced this - they sat right on top of the trivial baseline the whole sweep, which is exactly why this diagnostic was worth running before deciding whether Stage 1 was usable."
+      },
+      "user_caveat_2026-07-27": "The aspect-only model (AUROC 0.61-0.68, modest but real) could plausibly be trained to genuinely useful quality - IF sequence input actually carries enough real signal for this task at all - but getting there would require substantially more data and training than the current sweep's scale (12,000 train samples, 6-10 epochs, small ESM-2 variants). Not pursued for now; noted as a live possibility rather than a closed question, separate from and prior to the coarse-to-fine dataset expansion below."
+    },
+    "ancestor_propagation_check": {
+      "checked": "2026-07-26",
+      "method": "500 randomly sampled proteins (seed=42) from train_terms.tsv; for each, computed the full true-path ancestor closure of its listed terms via networkx over the obonet-parsed go-basic.obo graph, then checked what fraction of that closure is already present as explicit rows for that protein.",
+      "result": "Only 2.27% of implied ancestor annotations (450 of 19,813) are already explicit in train_terms.tsv; 97.73% are missing. Every single sampled protein (500/500) had at least one missing ancestor annotation; mean per-protein missing fraction was 98.2%.",
+      "conclusion": "train_terms.tsv lists close to only the most-specific asserted annotations, not the propagated closure. Ancestor propagation (via the obonet graph) is NOT optional for any term-level label space - without it, virtually every candidate depth<=2 term (see real_task_stats) would have its positive examples massively undercounted, since most proteins' coarse-level annotations exist only implicitly through their deeper, more specific terms."
+    },
+    "ambiguity_check": {
+      "checked": "2026-07-26",
+      "findings": [
+        "go-basic.obo has 5 relationship types: is_a (62,410 edges), part_of (6,597), regulates (2,989), positively_regulates (2,619), negatively_regulates (2,614). Only is_a/part_of support the true-path rule (regulates does not mean is-a-kind-of/part-of) - restricting propagation to those two changes the ancestor-completeness result only marginally (97.65% missing vs. 97.73% with all 5 edge types), but is still the methodologically correct restriction going forward.",
+        "0 of 26,125 terms used in train_terms.tsv are missing/obsolete relative to this go-basic.obo - fully version-consistent, no ambiguity from a stale ontology file.",
+        "0 of 77,229 edges cross between the C/F/P namespaces - the 3 aspects stay cleanly disjoint.",
+        "Depth is convention-dependent: shortest-path vs longest-path depth disagree for 61% of a 2000-term sample, by 1.73 levels on average, up to 10 in the worst case. The ancestor/descendant SET itself is exact and deterministic once edge types are fixed - only the scalar 'depth' summary is ambiguous. Resolved by committing explicitly to shortest-path depth throughout."
+      ]
+    },
+    "implementation": {
+      "status": "complete and deployed: training_run.py's UNIQUE_ASPECTS coupling fixed, dataset regenerated and pushed to kelmoir/cafa6, go_dependency_graph.json uploaded alongside it",
+      "date": "2026-07-26",
+      "training_run_py_fix": "Removed the hardcoded UNIQUE_ASPECTS = [\"C\",\"F\",\"P\"] constant entirely. preprocess_batch's unique_items= and the bias-prior loop's torch.zeros(...) now both use label_names (already derived dynamically from dataset[\"train\"].features[\"labels\"].feature.names, just a few lines above each call site) - training_run.py is now correctly label-space-agnostic. Same fix applied to experiments/scripts/diagnostic_eval_stage1.py, which had copied the same hardcoded pattern. Verified with a dry run using a fake 5-label dataset: preprocess_batch now sizes the label vector from the real label count instead of silently truncating to 3.",
+      "regeneration_run": "Ran generate_dataset.py for real. Locally confirmed: 383 coarse terms selected (3 roots + 380 depth<=2 terms), splits Train=47,817 / Validation=13,485 / Test=13,479 (after length/label filtering), go_dependency_graph.json written (40,122 nodes, 77,229 edges, 11.5MB). push_to_hub() initially failed with ImportError: cannot import name 'XetSession' from 'hf_xet' (huggingface_hub/hf_xet version mismatch, documented in CLAUDE.md's new 'Known env gotcha' note) - retried locally with HF_HUB_DISABLE_XET=1, succeeded. go_dependency_graph.json was uploaded separately via HfApi.upload_file (push_to_hub only uploads the DatasetDict's own parquet/arrow files, not sidecar files in the local dataset/ dir) since Colab has no local access to go-basic.obo to regenerate it - without this upload, the 'look up any coarse term's descendants later' capability wouldn't actually be reachable from where training happens. Verified post-push via HfApi.dataset_info('kelmoir/cafa6'): both the dataset splits and go_dependency_graph.json are present as siblings, last modified 2026-07-26.",
+      "what_changed_in_generate_dataset.py": [
+        "New helpers: restrict_to_true_path() (is_a/part_of only), compute_depths() (shortest-path from aspect root), propagate_protein_terms() (per-protein ancestor closure, cached), select_coarse_terms() (depth<=2 + >=50 post-propagation annotations, roots always included), export_dependency_graph() (full graph incl. regulates-family edges, saved as JSON alongside coarse-term selection metadata).",
+        "generate_dataset() refactored to consume a precomputed protein_id -> label list mapping instead of parsing a raw dataframe column row-by-row - decouples 'how labels are computed' from 'how the HF Dataset gets built', reusable for any future label scheme.",
+        "label2id/id2label now built from the 383 coarse GO term IDs (3 roots + 380 depth<=2 terms clearing the propagated-frequency bar) instead of the 3 aspect strings - the roots subsume the old aspect task exactly (a protein has aspect X iff it propagates to root X), so the separate aspect-only path was dropped rather than kept alongside.",
+        "Output directory gains a new file: dataset/go_dependency_graph.json (~11.5MB) - the full 40,122-node/77,229-edge GO graph with every relationship type preserved (not just is_a/part_of), plus the coarse-term selection and its rule parameters, so a later curriculum stage can look up any coarse term's descendants (the 'remaining' finer terms) directly without recomputing anything.",
+        "requirements-minimal.txt: added obonet, networkx, progressbar2 - already imported/used by generate_dataset.py but never listed (pre-existing gap, fixed while touching this file)."
+      ],
+      "verified_by_dry_run": "Loaded the preamble (imports + function defs) of generate_dataset.py in isolation (not the trailing script body) against the real local train_terms.tsv/go-basic.obo. Confirmed: 383 coarse terms selected (matches the hand-computed estimate); 0 of 82,404 proteins end up with zero coarse labels after propagation+intersection; generate_dataset() builds a correct HF Dataset on a sample; export_dependency_graph() writes a valid, reloadable JSON (networkx.node_link_graph(data, edges='links') round-trips correctly) containing all 5 relationship types; demonstrated the 'remaining terms' use case directly - querying the reloaded graph for descendants of coarse term GO:0009987 ('cellular process', depth 1, 45,634 proteins) returns 11,854 finer descendant terms.",
+      "still_open": "training_run.py's --resume-from-revision auth gap (no explicit token= on the private-repo load path, worked around locally in the diagnostic script only) remains unfixed - not hit by anything in this deployment, but noted in stage1_diagnostic above."
+    },
+    "next_step": "Dataset expansion infrastructure is fully live (383-term coarse GO label space, dependency graph on the Hub, training_run.py compatible). Next real step is an actual training trial against the new dataset to see how it performs in practice - not yet started."
   }
 }

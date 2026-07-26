@@ -87,6 +87,12 @@ hf upload --repo-type=dataset kelmoir/cafa6 ./data/cafa-6-protein-function-predi
 
 There is no test suite, linter, or CI configured in this repo.
 
+**Known env gotcha**: `datasets`/`huggingface_hub`'s push/upload calls (`push_to_hub`, `HfApi.upload_file`)
+can fail with `ImportError: cannot import name 'XetSession' from 'hf_xet'` on this host — a version
+mismatch between the installed `huggingface_hub` and `hf_xet` packages, not a code bug. Fix: set
+`HF_HUB_DISABLE_XET=1` in the environment before running the push (falls back to the older, non-xet
+upload path).
+
 ## Data layout
 
 - `data/cafa-6-protein-function-prediction/` — raw Kaggle competition data (`Train/`, `Test/`,
@@ -104,9 +110,26 @@ There is no test suite, linter, or CI configured in this repo.
 
 ## Architecture notes
 
-- **Label space**: `training_run.py` currently classifies proteins into the three top-level GO
-  aspects (`C`ellular component, `F`unction, `P`rocess) as a multi-label problem, not individual GO
-  terms — `id2label`/`label2id` are derived from `dataset["train"].features["labels"].feature.names`.
+- **Label space**: `training_run.py` classifies proteins over a set of **coarse GO terms** (not just
+  the 3 top-level aspects) as a multi-label problem — `id2label`/`label2id` are derived from
+  `dataset["train"].features["labels"].feature.names`, so the script itself is label-space-agnostic;
+  what the label space actually contains is decided entirely in `generate_dataset.py`. That script
+  loads `go-basic.obo` with `obonet`, restricts propagation to `is_a`/`part_of` edges (the two
+  relationship types GO's true-path rule supports — `regulates`/`positively_regulates`/
+  `negatively_regulates` are excluded from label propagation, though preserved in the exported
+  dependency graph below), and propagates every protein's asserted `train_terms.tsv` annotations to
+  their full ancestor closure (necessary: ~98% of a protein's implied ancestor annotations aren't
+  spelled out as explicit rows in the raw file). The label vocabulary is the 3 aspect roots (depth 0,
+  informationally equivalent to the old aspect-only task) plus every term within `COARSE_MAX_DEPTH`
+  (2) hops of its root with at least `COARSE_MIN_ANNOTATIONS` (50) proteins after propagation — 383
+  terms as of the last regeneration. `generate_dataset.py` also writes
+  `data/cafa-6-protein-function-prediction/dataset/go_dependency_graph.json`: the full GO graph (all
+  5 relationship types, not just the propagation-safe 2) plus the coarse-term selection, so a future
+  curriculum stage can look up any coarse term's descendants directly without recomputing the graph.
+  **Note**: the beam-search sweep documented in `experiments/sweep_log.md` (trial-001 through
+  trial-049) predates this change and was run against the old 3-aspect-only label space — its
+  hyperparameter conclusions (regularization, batch size, etc.) don't automatically transfer to the
+  richer label space, per the project's own "re-run from scratch at a new scale" precedent.
 - **Model**: ESM-2 (`facebook/esm2_t*`) loaded via `AutoModelForSequenceClassification` with
   `problem_type="multi_label_classification"`. Only the classifier head plus the last
   `--unfreeze-last-n` encoder layers are trainable; the rest of the ESM backbone is frozen

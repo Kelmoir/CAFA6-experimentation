@@ -29,7 +29,6 @@ except ImportError:  # pragma: no cover - optional dependency
     trackio = None
 
 MAX_LENGTH = 1024
-UNIQUE_ASPECTS = ["C", "F", "P"]
 ESM_MODEL_NAMES = [
     "facebook/esm2_t6_8M_UR50D",
     "facebook/esm2_t12_35M_UR50D",
@@ -349,7 +348,7 @@ def main() -> None:
         preprocess_batch,
         tokenizer=tokenizer,
         max_length=args.max_length,
-        unique_items=UNIQUE_ASPECTS,
+        unique_items=label_names,
         label2id=label2id,
     )
 
@@ -382,7 +381,7 @@ def main() -> None:
         # learning the bias (saturating logits toward the prior), which shrinks per-example
         # gradient magnitude and starves the weight matrix of signal to actually discriminate.
         raw_train_labels = dataset_train["labels"]
-        label_counts = torch.zeros(len(UNIQUE_ASPECTS))
+        label_counts = torch.zeros(len(label_names))
         for labs in raw_train_labels:
             for idx in labs:
                 label_counts[int(idx)] += 1
