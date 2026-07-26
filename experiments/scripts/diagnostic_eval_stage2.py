@@ -29,7 +29,7 @@ from torch.utils.data import DataLoader
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 import training_run
 
-CHECKPOINT_REVISION = "trial-050"
+CHECKPOINT_REVISION = sys.argv[1] if len(sys.argv) > 1 else "trial-050"
 MODEL_NAME = "facebook/esm2_t12_35M_UR50D"
 MAX_VAL_SAMPLES = 2000
 

@@ -1285,3 +1285,42 @@ aspect roots, since their raw ratio is <1). Verified the tensor's shape/values a
 `trial-051` (`experiments/round8_manifest.json` / `experiments/round8_manual.ipynb`) is an isolated
 A/B against trial-050 — identical config, only `--pos-weight` added — to get a clean read on whether
 it actually helps before folding it into a broader beam-search round.
+
+**First attempt crashed**: `Expected all tensors to be on the same device`. Root cause was in the
+`compute_metrics()`/`finalize_metrics()` refactor from the trial-050 write-up, not the pos_weight
+code — `train_metrics_acc`/`validation_metrics_acc` initialized their `tp`/`fn` accumulator tensors
+with plain `torch.zeros(len(label_names))` (CPU by default), while `compute_metrics()`'s per-batch
+outputs live on whatever device `logits`/`labels` are on (CUDA during real training). Missed locally
+since this sandbox has no CUDA — every tensor happened to be CPU on both sides there, so the mismatch
+never had a chance to appear. Fixed with `device=device` on both `torch.zeros(...)` calls, and
+`round8_manual.ipynb` regenerated (it embeds `training_run.py`'s source directly) before resending.
+
+## trial-051 result: negative for pos_weight as formulated
+
+trial-051's own `val_loss` (0.24–0.27) and `val_recall` numbers are **not directly comparable** to
+trial-050's: `pos_weight` changes the loss function's numeric scale (up to 69x multiplier on
+rare-label positive mistakes), and trial-050's recall was computed under the old buggy metric anyway.
+Ran the same AUROC diagnostic (`diagnostic_eval_stage2.py`, now parameterized by checkpoint revision)
+on both checkpoints for an apples-to-apples read:
+
+| | trial-050 (no pos_weight) | trial-051 (pos_weight) |
+|---|---|---|
+| median per-label AUROC | 0.8366 | 0.8456 |
+| precision @ 0.5 | 0.6565 | 0.4724 |
+| recall @ 0.5 | 0.4583 | 0.5286 |
+| F1 @ 0.5 | 0.5398 | 0.4989 |
+| best F1 (threshold sweep) | **0.5727** @ 0.32 | 0.5007 @ 0.48 |
+
+`pos_weight`'s mechanism worked exactly as designed — median AUROC ticked up slightly (a real, if
+small, ranking-quality improvement) and the optimal threshold recalibrated back toward 0.5 (0.32 →
+0.48), confirming it counteracts the low-probability bias from class imbalance. But the
+best-achievable F1 got **worse** (0.5727 → 0.5007): at threshold 0.5, recall rose but precision fell
+harder, a net-negative trade for the metric that matters most practically. Both trials used identical
+`seed=42`, so this isn't seed noise — `sqrt(n_neg/n_pos)` as formulated overcorrects on this dataset.
+
+**Decision**: not adopting `pos_weight` as tried. Directions not yet tried: a gentler compression
+(`ratio**0.3`, range 0.75–12.7 vs. sqrt's 0.61–69.14) or lighter regularization alongside it. But the
+more promising, *cheaper* lever is sitting right there in trial-050's own numbers: post-hoc threshold
+tuning (free at inference, no retraining) already recovers 0.5398 → 0.5727 F1 just by picking 0.32
+instead of 0.5. The first proper beam-search round for this phase should use unweighted BCE +
+threshold tuning as the baseline, not `pos_weight`.
