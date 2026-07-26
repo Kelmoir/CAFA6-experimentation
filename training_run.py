@@ -481,7 +481,7 @@ def main() -> None:
         epoch_start = time.time()
         model_esm.train()
         train_loss = 0.0
-        train_metrics_acc = {"correct": 0.0, "total": 0, "tp": torch.zeros(len(label_names)), "fn": torch.zeros(len(label_names))}
+        train_metrics_acc = {"correct": 0.0, "total": 0, "tp": torch.zeros(len(label_names), device=device), "fn": torch.zeros(len(label_names), device=device)}
 
         log_every = max(1, len(train_dataloader) // 25)
         optimizer.zero_grad()
@@ -525,7 +525,7 @@ def main() -> None:
         train_metrics = finalize_metrics(train_metrics_acc)
 
         validation_loss = 0.0
-        validation_metrics_acc = {"correct": 0.0, "total": 0, "tp": torch.zeros(len(label_names)), "fn": torch.zeros(len(label_names))}
+        validation_metrics_acc = {"correct": 0.0, "total": 0, "tp": torch.zeros(len(label_names), device=device), "fn": torch.zeros(len(label_names), device=device)}
         model_esm.eval()
         with torch.inference_mode():
             for batch in validation_dataloader:
