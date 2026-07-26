@@ -1,0 +1,54 @@
+note: trial-034 tested batch=128+grad_accum=4 (effective batch 512) but only at epochs=6, where it was still improving and inconclusive - not carried into this round directly. This tests a more moderate accum=2 (effective batch 256) on top of trial-039's config at the now-standard epochs=10, checking whether smoothing gradient noise further helps or hurts once batch is already large.
+[CONFIG] {"device": "cuda", "epochs": 10, "batch_size": 128, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t12_35M_UR50D", "unfreeze_last_n": 1, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.1, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.1, "max_minutes": null, "run_name": "trial-049", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-049", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 2, "quiet": true}
+
+Loading weights: 100%
+ 198/198 [00:00<00:00, 6261.81it/s]
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t12_35M_UR50D
+Key                        | Status     | 
+---------------------------+------------+-
+lm_head.dense.bias         | UNEXPECTED | 
+lm_head.dense.weight       | UNEXPECTED | 
+lm_head.bias               | UNEXPECTED | 
+lm_head.layer_norm.bias    | UNEXPECTED | 
+lm_head.layer_norm.weight  | UNEXPECTED | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+classifier.out_proj.weight | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+
+Model layers: 12, request unfreeze layers: 1
+[INFO] Initialized classifier bias to label priors: {'C': 0.7161936163902283, 'F': 0.6852575540542603, 'P': 0.6928520202636719}
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+Epoch 1/10 | train_loss=0.6084 | val_loss=0.6100 | train_acc=0.6973 | val_acc=0.6916 | train_recall=1.0000 | val_recall=0.9983
+[TIMING] epoch 1 elapsed=794.0s
+Epoch 2/10 | train_loss=0.5965 | val_loss=0.6029 | train_acc=0.7008 | val_acc=0.6938 | train_recall=0.9877 | val_recall=0.9700
+[TIMING] epoch 2 elapsed=791.7s
+Epoch 3/10 | train_loss=0.5915 | val_loss=0.5982 | train_acc=0.7024 | val_acc=0.6961 | train_recall=0.9759 | val_recall=0.9782
+[TIMING] epoch 3 elapsed=789.7s
+Epoch 4/10 | train_loss=0.5882 | val_loss=0.5949 | train_acc=0.7043 | val_acc=0.6961 | train_recall=0.9709 | val_recall=0.9761
+[TIMING] epoch 4 elapsed=789.2s
+Epoch 5/10 | train_loss=0.5816 | val_loss=0.5943 | train_acc=0.7111 | val_acc=0.6966 | train_recall=0.9696 | val_recall=0.9810
+[TIMING] epoch 5 elapsed=792.0s
+Epoch 6/10 | train_loss=0.5781 | val_loss=0.5933 | train_acc=0.7123 | val_acc=0.6971 | train_recall=0.9661 | val_recall=0.9617
+[TIMING] epoch 6 elapsed=794.3s
+Epoch 7/10 | train_loss=0.5772 | val_loss=0.5925 | train_acc=0.7113 | val_acc=0.6939 | train_recall=0.9616 | val_recall=0.9305
+[TIMING] epoch 7 elapsed=790.8s
+Epoch 8/10 | train_loss=0.5795 | val_loss=0.5933 | train_acc=0.7107 | val_acc=0.6987 | train_recall=0.9566 | val_recall=0.9677
+[TIMING] epoch 8 elapsed=789.0s
+Epoch 9/10 | train_loss=0.5706 | val_loss=0.5913 | train_acc=0.7163 | val_acc=0.6979 | train_recall=0.9601 | val_recall=0.9678
+[TIMING] epoch 9 elapsed=790.5s
+Epoch 10/10 | train_loss=0.5748 | val_loss=0.5931 | train_acc=0.7102 | val_acc=0.6941 | train_recall=0.9538 | val_recall=0.9503
+[TIMING] epoch 10 elapsed=790.2s
+
+Writing model shards: 100%
+ 1/1 [00:00<00:00,  6.60it/s]
+
+[INFO] Pushed final-epoch checkpoint (epoch 10) to kelmoir/cafa6-esm@trial-049
+[SUMMARY] {"run_name": "trial-049", "epochs_completed": 10, "final_train_loss": 0.5747606323120442, "final_val_loss": 0.5931454077363014, "train_accuracy": 0.7102079848025707, "val_accuracy": 0.6940755434334278, "train_recall": 0.9537549031541702, "val_recall": 0.9503483325242996}
+[TIMING] trial-049 total wall clock: 7928.3s

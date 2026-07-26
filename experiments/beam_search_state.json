@@ -219,19 +219,54 @@
           "infra_note": "trial-044 hit a transient HF_TOKEN fetch timeout from Colab Secrets mid-run ('Requesting secret HF_TOKEN timed out') - no Hub checkpoint was pushed, but training completed all 10 epochs and the logged metrics are fully valid. Treated as a one-off flake (every other trial resolved its token normally), not the known CLI-Secrets-unreachability issue documented elsewhere."
         },
         "part_2": {
-          "status": "queued",
+          "status": "complete",
           "manifest_file": "experiments/round6b_manifest.json",
           "notebook_file": "experiments/round6b_manual.ipynb",
-          "queued_experiments": ["trial-047", "trial-048", "trial-049"],
-          "queued_experiment_notes": {
-            "trial-047": "off trial-039, seed=123 replication check, paired with trial-044 - second seed-variance data point, this time for the light-regularization config",
-            "trial-048": "regularization, off trial-039: isolates weight_decay alone (dropout=0.0) at batch=128, mirroring trial-036's isolation test for trial-030 at batch=8",
-            "trial-049": "off trial-039: grad_accum_steps=2 (effective batch 256) - a more moderate accumulation than trial-034's inconclusive accum=4 test"
-          }
-        },
-        "runtime_note": "This round's leading lineage (batch=128, ~810s/epoch) is much slower per trial than batch=8's ~580s/epoch. Even at the 3-trials-per-batch policy, each batch here is likely ~6-6.5 hours (3 trials x 10 epochs x ~800s) - the batching policy caps trial count per session, not total time. Flagged to the user in case they want an even smaller batch specifically for this batch=128-heavy round."
+          "completed": ["trial-047", "trial-048", "trial-049"],
+          "results_by_val_loss": [
+            {"trial": "trial-048", "axis": "weight_decay=0.1 alone, dropout=0.0 (reg)", "best_val_loss": 0.5892, "best_epoch": 7, "note": "ties trial-038's zero-reg almost exactly - weight_decay alone has ~no effect at batch=128, mirrors trial-036's finding at batch=8"},
+            {"trial": "trial-049", "axis": "dropout=0.1/wd=0.1, grad_accum_steps=2", "best_val_loss": 0.5913, "best_epoch": 9, "note": "later, less oscillating minimum, consistent with even fewer optimizer steps/epoch (~47) at effective batch 256"},
+            {"trial": "trial-047", "axis": "dropout=0.1/wd=0.1 (seed=123, replicate of trial-039)", "best_val_loss": 0.5929, "best_epoch": 6, "note": "2nd independent seed-replication result: 0.0029 worse than trial-039's seed=42 (0.5900), confirming trial-044's ~0.003 seed-noise finding"}
+          ],
+          "noise_finding_confirmed": "trial-047 independently confirms trial-044: two different base configs (trial-038 zero-reg, trial-039 light-reg), each reseeded once, both degrade by ~0.003 (0.5891->0.5921, 0.5900->0.5929). Every seed=42 result across the whole round (038,039,040,045,046,048,049) spans only 0.5891-0.5913 (0.0022), narrower than either seed swap. This is no longer a single data point - at this scale, a single seed=42 run per config cannot reliably rank configs differing by less than ~0.003 val_loss, and essentially all of round_3's hyperparameter variation falls inside that band."
+        }
       },
-      "next_step": "Once trial-047/048/049 land: check trial-047 against trial-039 for a second seed-variance data point (confirming or refining the noise-floor read from trial-044/038), then raise with the user whether further fine-grained search on this axis is worth multi-seed-averaging cost, or whether to lock in current best-guess hyperparameters and move to a longer/larger real training run instead."
+      "round_3_final_ranking": [
+        {"trial": "trial-038", "best_val_loss": 0.5891, "note": "batch=128, zero reg (seed=42)"},
+        {"trial": "trial-048", "best_val_loss": 0.5892, "note": "weight_decay=0.1 alone ties zero-reg - wd has no effect at this batch size"},
+        {"trial": "trial-046", "best_val_loss": 0.5893, "note": "batch=96, zero reg"},
+        {"trial": "trial-045", "best_val_loss": 0.5895, "note": "dropout=0.05/wd=0.05"},
+        {"trial": "trial-039", "best_val_loss": 0.59, "note": "dropout=0.1/wd=0.1 (seed=42)"},
+        {"trial": "trial-040", "best_val_loss": 0.5905, "note": "batch=64, zero reg"},
+        {"trial": "trial-049", "best_val_loss": 0.5913, "note": "dropout=0.1/wd=0.1, grad_accum=2"},
+        {"trial": "trial-044", "best_val_loss": 0.5921, "note": "seed=123 replicate of trial-038 - outside the seed=42 cluster"},
+        {"trial": "trial-047", "best_val_loss": 0.5929, "note": "seed=123 replicate of trial-039 - outside the seed=42 cluster"}
+      ],
+      "phase_status": "closed - moving to dataset/task expansion per user direction 2026-07-26",
+      "phase_conclusion": "Anything in {trial-038, trial-039, trial-040, trial-045, trial-046, trial-048} (batch 64-128, unfreeze=1, zero-to-light regularization) performs equivalently within noise, val_loss ~0.589-0.591. trial-038's config (batch=128, zero regularization) is as good a default as any going forward: simplest, among the best measured, and dropout (not weight_decay) is the regularizer that would matter if any gets added later. Not spending more compute narrowing this further before the task itself changes substantially (see dataset_expansion below) - overfitting/regularization dynamics may look completely different once training on real GO terms instead of 3 aspects.",
+      "sweep_summary": "esm2_t6_8M (rounds 1-2) plateaued at val_loss ~0.596, never distinguishable from noise per the 0.595 floor established mid-sweep. Pivoting to esm2_t12_35M broke that ceiling immediately (~0.589-0.595, real signal) - the plateau was at least partly a capacity ceiling. Batch size was the single largest lever found (batch>=64 beating batch=8 by ~0.002-0.003, outside the noise band) - an unplanned discovery from a user-requested throughput test."
     }
+  },
+  "dataset_expansion": {
+    "status": "discussed, not started",
+    "started": "2026-07-26",
+    "why": "The whole sweep above (both phases) optimized training_run.py's current label space - the 3 top-level GO aspects (C/F/P) - a heavy simplification of the actual CAFA task. generate_dataset.py computes unique_go_terms from train_terms.tsv but discards it, building label2id from unique_aspects instead. Likely explains why the aspect-only task plateaus so early: 3 classes carries very little information for the model to differentiate proteins by, regardless of hyperparameters.",
+    "real_task_stats": {
+      "unique_go_terms": 26125,
+      "terms_per_aspect": {"C": 2651, "F": 6616, "P": 16858},
+      "terms_with_ge_100_annotations": 668,
+      "terms_with_ge_50_annotations": 1585,
+      "terms_with_ge_10_annotations": 7873,
+      "median_annotated_terms_per_protein": 4,
+      "mean_annotated_terms_per_protein": 6.5
+    },
+    "candidate_approaches": [
+      "Coarse-to-fine curriculum: keep the aspect head as stage 1 (already tuned), add a term-level head as stage 2, fine-tuned from the stage-1 checkpoint, using aspect predictions as an auxiliary signal",
+      "Frequency-filtered flat multi-label term set (e.g. terms with >=50-100 annotations, ~700-1600 terms) instead of all 26,125 - standard CAFA-baseline move, needs positive-class weighting or focal loss given ~6.5 positives per protein",
+      "True-path-rule-aware loss/label propagation: exploit the GO DAG so rare specific terms borrow gradient signal from their much more frequent ancestors",
+      "Switch tracked metrics toward the real CAFA Fmax (using IA.tsv, already in the data dir but unused) instead of threshold-0.5 accuracy/val_loss, once past aspect-only prediction"
+    ],
+    "recommended_first_step": "Coarse-to-fine curriculum (approach 1) combined with a frequency-filtered term subset (approach 2) as stage 2's label space; true-path-rule loss (approach 3) as a follow-up once basic term-level training is validated. Requires a generate_dataset.py change to build a term-level label space before anything is testable - a bigger lift than another hyperparameter trial, sequenced after this round_3 close-out rather than alongside it.",
+    "next_step": "Not yet started - awaiting user go-ahead to begin generate_dataset.py changes."
   }
 }

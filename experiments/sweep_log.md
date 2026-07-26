@@ -1108,3 +1108,73 @@ specifically for the light-regularization config. But **this is a natural point 
 whether to keep grinding this axis** — further fine hyperparameter search here would need multi-seed
 averaging per config to produce a trustworthy ranking, multiplying cost, for gains that (per this
 data) may not be real. Not deciding this unilaterally; raising it once round_3 part 2 is back.
+
+## round_3 part 2 results (trial-047 through trial-049) — noise finding confirmed twice, phase closes
+
+All 3 completed 10 epochs, pasted back as `experiments/logs/trial-047-049.log`.
+
+| trial | axis | best epoch | best val_loss |
+|-------|------|-----------|----------------|
+| trial-038 | batch=128, zero reg (seed=42, ref) | 7 | 0.5891 |
+| trial-048 | weight_decay=0.1 alone, dropout=0.0 (reg) | 7 | 0.5892 |
+| trial-046 | batch_size=96, zero reg (ref) | 5 | 0.5893 |
+| trial-045 | dropout=0.05/wd=0.05 (reg, ref) | 7 | 0.5895 |
+| trial-039 | dropout=0.1/wd=0.1 (seed=42, ref) | 7 | 0.5900 |
+| trial-040 | batch_size=64, zero reg (ref) | 7 | 0.5905 |
+| trial-049 | dropout=0.1/wd=0.1, grad_accum_steps=2 | 9 | 0.5913 |
+| **trial-044** | **batch=128, zero reg (seed=123, replicate of 038)** | 6 | **0.5921** |
+| **trial-047** | **dropout=0.1/wd=0.1 (seed=123, replicate of 039)** | 6 | **0.5929** |
+
+**The noise finding is now confirmed twice, independently.** trial-047 reruns trial-039's exact config
+at seed=123 and lands at 0.5929 — worse than trial-039's 0.5900 by 0.0029, almost identical to the
+0.0030 gap trial-044 showed vs. trial-038. Two different base configs, reseeded independently, both
+degrade by ~0.003. Meanwhile every seed=42 result in this family (038, 039, 040, 045, 046, 048, 049)
+spans only 0.5891–0.5913 — a 0.0022 band, still narrower than either single seed-swap. This isn't a
+one-off anymore: **at this scale, a single seed=42 run per config cannot reliably rank configs that
+differ by less than ~0.003 val_loss**, and essentially every hyperparameter variation tried in round_3
+(batch 64→96→128, regularization 0→0.05→0.1, grad_accum 1→2) falls inside that band.
+
+**One result does survive as a real (if small) finding**: trial-048 isolates weight_decay alone
+(0.1, dropout=0.0) and lands at 0.5892 — indistinguishable from zero regularization (trial-038,
+0.5891). Weight_decay alone has essentially no effect at batch=128, mirroring trial-036's finding at
+batch=8 (dropout mattered, weight_decay didn't). This is a qualitative conclusion about *which axis
+has any effect at all*, not a fine ranking, so it isn't undercut by the noise-floor finding above.
+
+### Closing the esm2_t12_35M_scale_up regularization/batch-size search
+
+Per the user's direction, this phase closes here rather than continuing into more multi-seed-averaged
+rounds — the next phase is dataset expansion (see below), and further grinding on batch
+size/regularization at single-seed resolution would mostly be chasing noise per the finding above.
+
+**Practical takeaway for whatever config gets carried forward**: anything in the cluster
+`{trial-038, trial-039, trial-040, trial-045, trial-046, trial-048}` — batch 64–128, unfreeze=1, zero
+to light regularization (dropout 0–0.1, weight_decay optional) — performs equivalently within noise,
+best val_loss ≈0.589–0.591. `trial-038`'s exact config (batch=128, zero regularization) is as
+reasonable a default as any: simplest (no regularization to tune), among the best measured, and
+dropout's the regularizer that would matter if any is added later. Given the model/task itself is
+about to change substantially (see below), it's not worth spending more compute narrowing this
+further before that change — the overfitting/regularization dynamics may look completely different
+once training on ~26,000 real GO terms instead of 3 aspects.
+
+**Full sweep summary, both phases**: `esm2_t6_8M` (rounds 1–2, trial-018–029) plateaued at val_loss
+≈0.596, never distinguishable from noise per the later-established 0.595 floor. Pivoting to
+`esm2_t12_35M` (trial-030 onward) broke that ceiling immediately (val_loss ≈0.589–0.595, real
+signal), confirming the plateau was at least partly a capacity ceiling, not a fundamental limit of the
+architecture or data. Batch size turned out to be the single largest lever found (batch≥64 beating
+batch=8 by ~0.002-0.003, consistently, outside the noise band) — an unplanned discovery from a
+user-requested throughput test, not something the original search design anticipated.
+
+## Next: dataset/task expansion
+
+The whole sweep above optimized `training_run.py`'s current label space — the 3 top-level GO aspects
+(C/F/P) — which is a heavy simplification of the actual CAFA task. `generate_dataset.py` currently
+computes `unique_go_terms` from `train_terms.tsv` but discards it, building `label2id` from
+`unique_aspects` instead. The raw data has **26,125 unique GO terms** (2,651 C / 6,616 F / 16,858 P),
+with a long tail (668 terms have ≥100 annotations, 1,585 have ≥50, 7,873 have ≥10) and a median of 4
+annotated terms per protein. This likely explains why the aspect-only task plateaus so early: 3
+classes carries very little information for the model to differentiate proteins by, regardless of
+hyperparameters. Planned next direction (not yet started): a coarse-to-fine curriculum that adds a
+term-level prediction head (filtered to a frequency-thresholded subset of terms, not all 26,125) on
+top of the existing aspect head, exploiting the GO DAG's hierarchy rather than flattening it away —
+full reasoning and alternatives discussed with the user, to be captured in a fresh planning pass
+before implementation starts.
