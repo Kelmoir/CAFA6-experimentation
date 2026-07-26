@@ -1,0 +1,24 @@
+[
+  {
+    "trial_id": "trial-051",
+    "parent": "trial-050",
+    "axis": "pos_weight (regularization/loss-weighting)",
+    "note": "Isolated A/B against trial-050: identical config, only --pos-weight added (sqrt(n_negative/n_positive) per label, computed from the training split - range 0.61-69.14 across the 383 coarse GO terms, verified before launch). Tests whether upweighting rare-label positives in the loss recovers some of the gap between trial-050's threshold-0.5 recall (45.8%, from the post-hoc diagnostic - the training loop's own recall metric was unreliable until the finalize_metrics() fix landed this session) and its best-threshold recall, without needing manual threshold tuning at inference time. Everything else held identical to trial-050 for a clean comparison: unfreeze=1, lr=2e-4, batch=8, dropout=0.2, wd=0.5, epochs=10.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--pos-weight"
+    ]
+  }
+]

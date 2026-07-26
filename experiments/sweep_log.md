@@ -1268,3 +1268,20 @@ hit zero-positives-per-8-example-batch the way 383 labels do — not worth re-ru
 **Decision**: trial-050 stands as a genuinely healthy seed for this phase (val_loss 0.0772 best, real
 AUROC ~0.83). Next: design a proper first beam-search round here, now that both the pipeline and its
 metrics are trustworthy.
+
+## pos_weight added, trial-051 (A/B against trial-050)
+
+trial-050's diagnostic left one real (if moderate) issue on the table: best F1 came at
+threshold=0.32, not the standard 0.5, and recall@0.5 was only 45.8% — unweighted BCE naturally
+pushes predicted probabilities low when negatives outnumber positives 27-to-1 on average. Added a
+`--pos-weight` flag to `training_run.py`: per-label `sqrt(n_negative/n_positive)`, computed from the
+training split. Checked the real distribution before picking sqrt over raw inverse-frequency: raw
+ratio spans 0.38–4780.7 across the 383 labels (~12,600x — would spike gradients whenever a rare
+positive shows up in a batch), sqrt compresses that to 0.61–69.14 (~113x) while staying well-behaved
+at both ends without needing a clamp (a naive `log2` version goes negative for the majority-positive
+aspect roots, since their raw ratio is <1). Verified the tensor's shape/values and that
+`BCEWithLogitsLoss` broadcasts it correctly before launching anything.
+
+`trial-051` (`experiments/round8_manifest.json` / `experiments/round8_manual.ipynb`) is an isolated
+A/B against trial-050 — identical config, only `--pos-weight` added — to get a clean read on whether
+it actually helps before folding it into a broader beam-search round.

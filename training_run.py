@@ -342,6 +342,7 @@ def main() -> None:
     parser.add_argument("--label-smoothing", type=float, default=0.0, help="Smooth 0/1 BCE targets toward 0.5 by this amount (0 disables)")
     parser.add_argument("--decouple-bias-wd", action=argparse.BooleanOptionalAction, default=False, help="Exclude bias and LayerNorm params from weight decay (standard AdamW refinement)")
     parser.add_argument("--grad-accum-steps", type=int, default=1, help="Accumulate gradients over this many steps before each optimizer step (raises effective batch size)")
+    parser.add_argument("--pos-weight", action=argparse.BooleanOptionalAction, default=False, help="Weight positive examples in BCE loss by sqrt(n_negative/n_positive) per label, computed from the training split - helps severely imbalanced multi-label tasks (e.g. the coarse GO-term label space, ~3.6% average positive rate) at the cost of one more axis to tune")
     parser.add_argument("--quiet", action=argparse.BooleanOptionalAction, default=False, help="Suppress per-step [STEP] prints (only needed to keep a colab-cli exec websocket alive; noisy for interactive/notebook use)")
     args = parser.parse_args()
 
@@ -392,17 +393,20 @@ def main() -> None:
         label2id=label2id,
         revision=args.resume_from_revision,
     ).to(device)
+    # Computed unconditionally (not just on a fresh start) since --pos-weight needs it
+    # regardless of whether we're resuming from a checkpoint.
+    raw_train_labels = dataset_train["labels"]
+    label_counts = torch.zeros(len(label_names))
+    for labs in raw_train_labels:
+        for idx in labs:
+            label_counts[int(idx)] += 1
+
     if args.resume_from_revision:
         print(f"[INFO] Resumed model weights from {args.hf_repo_id}@{args.resume_from_revision}")
     else:
         # BCE with an imbalanced label prior otherwise wastes early gradient budget just
         # learning the bias (saturating logits toward the prior), which shrinks per-example
         # gradient magnitude and starves the weight matrix of signal to actually discriminate.
-        raw_train_labels = dataset_train["labels"]
-        label_counts = torch.zeros(len(label_names))
-        for labs in raw_train_labels:
-            for idx in labs:
-                label_counts[int(idx)] += 1
         label_priors = (label_counts / max(1, len(raw_train_labels))).clamp(1e-4, 1 - 1e-4)
         prior_bias = torch.log(label_priors / (1 - label_priors)).to(device)
         with torch.no_grad():
@@ -451,7 +455,18 @@ def main() -> None:
         num_training_steps=max(1, len(train_dataloader) * args.epochs),
         schedule_type=args.lr_schedule,
     )
-    criterion = torch.nn.BCEWithLogitsLoss()
+    pos_weight = None
+    if args.pos_weight:
+        # sqrt compression, not raw n_negative/n_positive: raw inverse frequency on this
+        # dataset spans ~0.4-4800x across labels (the 3 majority-positive aspect roots vs.
+        # the rarest depth<=2 terms), which would blow up gradients on the rare occasions a
+        # rare-term positive appears in a batch. sqrt compresses that to ~0.6-70x while
+        # staying well-behaved (no clamp/floor needed) at both ends.
+        n_negative = len(raw_train_labels) - label_counts
+        pos_weight = torch.sqrt(n_negative / label_counts.clamp(min=1)).to(device)
+        print(f"[INFO] Using --pos-weight (sqrt inverse frequency): "
+              f"min={pos_weight.min():.2f} median={pos_weight.median():.2f} max={pos_weight.max():.2f}")
+    criterion = torch.nn.BCEWithLogitsLoss(pos_weight=pos_weight)
 
     run_name = args.run_name or f"{args.model_name.split('/')[-1]}-epochs{args.epochs}-bs{args.batch_size}-device{device.type}"
     tracker = init_trackio_run(run_name, space_id=args.trackio_space_id, config=config)
