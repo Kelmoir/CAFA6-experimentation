@@ -1324,3 +1324,36 @@ more promising, *cheaper* lever is sitting right there in trial-050's own number
 tuning (free at inference, no retraining) already recovers 0.5398 → 0.5727 F1 just by picking 0.32
 instead of 0.5. The first proper beam-search round for this phase should use unweighted BCE +
 threshold tuning as the baseline, not `pos_weight`.
+
+## Round 1 for this phase (trial-052 through trial-057)
+
+Generalized `--pos-weight` before designing the round: `training_run.py` now takes
+`--pos-weight-exponent` (default 0.5), so `pos_weight = (n_negative/n_positive)**exponent` — the old
+hardcoded `sqrt()` call is just the exponent=0.5 case. Verified exponent=0.5 exactly reproduces
+trial-051's tensor via `torch.allclose` against the old code, and exponent=0.3 gives the gentler
+0.75–12.70x range identified earlier (vs. 0.5's 0.61–69.14x).
+
+Sole seed for this round is trial-050 — trial-051 underperformed on best-achievable F1 (0.5007 vs.
+0.5727), so it's not used as a second beam member to branch off. 6 children, split into the standard
+two 3-trial batches:
+
+- **trial-052** (regularization): `pos_weight_exponent=0.3`, the gentler correction — does it recover
+  trial-051's small AUROC gain (0.8366→0.8456) without its F1 cost (0.5727→0.5007)?
+- **trial-053** (regularization): `weight_decay=0.2` — trial-050 inherited `wd=0.5`/`dropout=0.2`
+  unchanged from the old aspect-task phase, untested whether that's actually right for this smaller,
+  sparser, 383-label task.
+- **trial-054**: `batch_size=32` — re-tests whether the old phase's biggest finding (batch≥64 beating
+  batch=8 outside its noise floor) transfers here; trial-050 deliberately started conservative at
+  batch=8.
+- **trial-055**: `unfreeze_last_n=2` — capacity, untested at this scale/task.
+- **trial-056**: `lr_schedule=cosine` — small real win in the old `esm2_t6_8M` phase, cheap to re-test.
+- **trial-057**: `learning_rate=3e-4` — untested here, trial-050 used the inherited `2e-4`.
+
+Part 1 (`experiments/round9a_manifest.json` / `experiments/round9a_manual.ipynb`, trial-052/053/054)
+sent now; part 2 (`round9b_manifest.json`, trial-055/056/057) held until part 1 lands.
+
+**Evaluation caveat carried into this round**: don't trust raw training-loop val_loss for
+cross-config comparison against any trial that changes `pos_weight` settings — it changes the loss's
+numeric scale (per the trial-050 vs. trial-051 lesson). trial-052 specifically needs the post-hoc
+AUROC/threshold-sweep diagnostic, not a direct val_loss comparison; the other five trials are fine to
+compare on val_loss directly.

@@ -1,0 +1,67 @@
+[
+  {
+    "trial_id": "trial-052",
+    "parent": "trial-050",
+    "axis": "pos_weight_exponent=0.3 (regularization)",
+    "note": "1st required regularization trial of this round. trial-051 (pos_weight exponent=0.5, i.e. sqrt) gave a small AUROC gain (0.8366->0.8456) but a net-worse best-achievable F1 (0.5727->0.5007) - overcorrected precision away by upweighting rare-label positives too aggressively (range 0.61-69.14x). exponent=0.3 is a gentler compression (range 0.75-12.70x, verified before launch) - tests whether a lighter touch on the same mechanism recovers the AUROC gain without trial-051's F1 cost.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--pos-weight",
+      "--pos-weight-exponent", "0.3"
+    ]
+  },
+  {
+    "trial_id": "trial-053",
+    "parent": "trial-050",
+    "axis": "weight_decay=0.2 (regularization)",
+    "note": "2nd required regularization trial. trial-050 inherited wd=0.5/dropout=0.2 unchanged from the old esm2_t12_35M_scale_up phase's baseline - untested whether that's actually a good choice for this new, much sparser 383-label task with only 12,000 training examples. Tests lighter weight_decay, mirroring the 'test less regularization' pattern that worked in the old aspect phase (trial-025 etc.).",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.2",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-054",
+    "parent": "trial-050",
+    "axis": "batch_size=32",
+    "note": "batch_size was the single largest lever found in the old esm2_t12_35M_scale_up phase (batch>=64 beat batch=8 by ~0.002-0.003 val_loss, outside that phase's noise floor) - untested whether that finding transfers to this new, much sparser task. trial-050 deliberately started at batch=8 (safest, zero OOM history) rather than assuming it would; this is the first real test of batch size on the new label space.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "32",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.5",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  }
+]

@@ -342,7 +342,8 @@ def main() -> None:
     parser.add_argument("--label-smoothing", type=float, default=0.0, help="Smooth 0/1 BCE targets toward 0.5 by this amount (0 disables)")
     parser.add_argument("--decouple-bias-wd", action=argparse.BooleanOptionalAction, default=False, help="Exclude bias and LayerNorm params from weight decay (standard AdamW refinement)")
     parser.add_argument("--grad-accum-steps", type=int, default=1, help="Accumulate gradients over this many steps before each optimizer step (raises effective batch size)")
-    parser.add_argument("--pos-weight", action=argparse.BooleanOptionalAction, default=False, help="Weight positive examples in BCE loss by sqrt(n_negative/n_positive) per label, computed from the training split - helps severely imbalanced multi-label tasks (e.g. the coarse GO-term label space, ~3.6% average positive rate) at the cost of one more axis to tune")
+    parser.add_argument("--pos-weight", action=argparse.BooleanOptionalAction, default=False, help="Weight positive examples in BCE loss by (n_negative/n_positive)**--pos-weight-exponent per label, computed from the training split - helps severely imbalanced multi-label tasks (e.g. the coarse GO-term label space, ~3.6% average positive rate) at the cost of one more axis to tune")
+    parser.add_argument("--pos-weight-exponent", type=float, default=0.5, help="Compression exponent for --pos-weight: pos_weight = (n_negative/n_positive)**exponent per label. 0.5=sqrt (default; trial-051 used this), 1.0=raw inverse frequency (not recommended - spans ~12,600x on the coarse-GO-term dataset), lower=gentler correction")
     parser.add_argument("--quiet", action=argparse.BooleanOptionalAction, default=False, help="Suppress per-step [STEP] prints (only needed to keep a colab-cli exec websocket alive; noisy for interactive/notebook use)")
     args = parser.parse_args()
 
@@ -457,14 +458,17 @@ def main() -> None:
     )
     pos_weight = None
     if args.pos_weight:
-        # sqrt compression, not raw n_negative/n_positive: raw inverse frequency on this
-        # dataset spans ~0.4-4800x across labels (the 3 majority-positive aspect roots vs.
-        # the rarest depth<=2 terms), which would blow up gradients on the rare occasions a
-        # rare-term positive appears in a batch. sqrt compresses that to ~0.6-70x while
-        # staying well-behaved (no clamp/floor needed) at both ends.
+        # Compression exponent, not raw n_negative/n_positive: raw inverse frequency on
+        # this dataset spans ~0.4-4800x across labels (the 3 majority-positive aspect
+        # roots vs. the rarest depth<=2 terms), which would blow up gradients on the rare
+        # occasions a rare-term positive appears in a batch. ratio**exponent compresses
+        # that range - trial-051 (exponent=0.5, i.e. sqrt) gave a small AUROC gain but a
+        # net-worse best-achievable F1 (0.5727 -> 0.5007), overcorrecting precision away;
+        # a lower exponent is a gentler correction, worth testing directly.
         n_negative = len(raw_train_labels) - label_counts
-        pos_weight = torch.sqrt(n_negative / label_counts.clamp(min=1)).to(device)
-        print(f"[INFO] Using --pos-weight (sqrt inverse frequency): "
+        ratio = n_negative / label_counts.clamp(min=1)
+        pos_weight = ratio.pow(args.pos_weight_exponent).to(device)
+        print(f"[INFO] Using --pos-weight (exponent={args.pos_weight_exponent}): "
               f"min={pos_weight.min():.2f} median={pos_weight.median():.2f} max={pos_weight.max():.2f}")
     criterion = torch.nn.BCEWithLogitsLoss(pos_weight=pos_weight)
 

@@ -5,7 +5,7 @@
   "noise_floor_note": "User direction 2026-07-24: val_loss > 0.595 should be treated as noise, not a real result. Under this bar, every esm2_t6_8M-phase trial (0.596-0.6015 across 22 trials, rounds 1-2) was noise - none of that phase's beam-search 'winners' were ever distinguishable from the trial-015 seed. Only trial-030 (0.5946) and trial-031 (0.5918), both at esm2_t12_35M scale, have cleared 0.595 so far. Apply this bar to every trial ranking going forward. CAVEAT added 2026-07-27: this specific 0.595 number was calibrated on the old 3-aspect task's BCE loss scale (~70% average positive rate) - it does NOT automatically transfer to the new 383-coarse-GO-term task (3.58% average positive rate), whose val_loss will likely sit at a very different absolute scale. Needs recalibration once trial-050 establishes what this task's own baseline/noise looks like - don't compare trial-050+'s val_loss numbers directly against 0.595.",
   "manual_notebook_batch_size": 3,
   "manual_notebook_batch_size_note": "User direction 2026-07-25, after the Colab session disconnected mid-trial-041 (7/10 epochs in, no checkpoint since checkpoint_mode=final - the whole trial had to be rerun from scratch): batch future manual-notebook rounds into sets of 3 trials instead of 6. Halves both how much work a single disconnect can lose and typical session length (a 3-trial batch=8 round at epochs=10 is ~5h vs. a 6-trial round's ~10-11h).",
-  "regularization_axes": ["output_dropout", "esm_dropout", "attention_dropout", "weight_decay", "label_smoothing", "decouple_bias_wd"],
+  "regularization_axes": ["output_dropout", "esm_dropout", "attention_dropout", "weight_decay", "label_smoothing", "decouple_bias_wd", "pos_weight_exponent"],
   "non_regularization_axes": ["learning_rate", "unfreeze_last_n", "lr_schedule", "warmup_steps", "grad_accum_steps"],
   "active_phase": "esm2_t12_35M_coarse_go_terms",
   "phases": {
@@ -58,7 +58,35 @@
           ]
         }
       },
-      "next_step": "trial-051 result: pos_weight as tried (sqrt inverse frequency) is a net negative on best-achievable F1 despite a small AUROC gain - not adopting it as-is. Post-hoc threshold tuning looks like the more promising, cheaper lever (already recovers real F1 gains on trial-050 with zero retraining cost). Design the first proper beam-search round for this phase using unweighted BCE + threshold tuning as the baseline, not pos_weight."
+      "pos_weight_generalized": "training_run.py's --pos-weight now takes a --pos-weight-exponent (float, default 0.5) instead of being hardcoded to sqrt: pos_weight = (n_negative/n_positive)**exponent. exponent=0.5 exactly reproduces trial-051's behavior (verified via torch.allclose against the old torch.sqrt() call); exponent=0.3 gives the gentler compression (range 0.75-12.70x vs 0.5's 0.61-69.14x) queued in round_1 below. Added pos_weight_exponent to the top-level regularization_axes list.",
+      "beam": [
+        {"trial": "trial-050", "best_val_loss": 0.0772, "best_epoch": 7, "config_note": "sole seed for round_1 - trial-051 (pos_weight) underperformed on best-achievable F1 (0.5007 vs trial-050's 0.5727), so it's not used as a second beam member to branch off of."}
+      ],
+      "round_1": {
+        "status": "part 1 queued",
+        "part_1": {
+          "manifest_file": "experiments/round9a_manifest.json",
+          "notebook_file": "experiments/round9a_manual.ipynb",
+          "queued_experiments": ["trial-052", "trial-053", "trial-054"],
+          "queued_experiment_notes": {
+            "trial-052": "regularization: pos_weight_exponent=0.3 (gentler than trial-051's 0.5) - tests whether a lighter touch recovers trial-051's AUROC gain (0.8366->0.8456) without its F1 cost (0.5727->0.5007)",
+            "trial-053": "regularization: weight_decay=0.2 (lighter than trial-050's inherited 0.5) - untested whether that inherited value is even appropriate for this new, sparser, smaller-training-set task",
+            "trial-054": "batch_size=32 - re-tests whether the old esm2_t12_35M_scale_up phase's batch-size finding (batch>=64 beat batch=8 outside its noise floor) transfers to this new task; trial-050 deliberately started conservative at batch=8"
+          }
+        },
+        "part_2": {
+          "manifest_file": "experiments/round9b_manifest.json",
+          "notebook_file": "experiments/round9b_manual.ipynb (not yet generated - send after part_1 results land)",
+          "queued_experiments": ["trial-055", "trial-056", "trial-057"],
+          "queued_experiment_notes": {
+            "trial-055": "unfreeze_last_n=2 - capacity, untested at this task/scale",
+            "trial-056": "lr_schedule=cosine - gave a small real improvement in the old esm2_t6_8M phase, cheap to re-test here",
+            "trial-057": "learning_rate=3e-4 - untested on this task, trial-050 used the inherited 2e-4"
+          }
+        },
+        "evaluation_note": "Given trial-050/051's lesson, don't trust the raw training-loop val_loss/val_recall for cross-config comparison alone if any trial in this round changes pos_weight settings (changes the loss's numeric scale) - use the post-hoc AUROC/threshold-sweep diagnostic (experiments/scripts/diagnostic_eval_stage2.py, parameterized by checkpoint revision) for any pos_weight trial, val_loss is fine for direct comparison among the non-pos_weight trials."
+      },
+      "next_step": "round_1 part 1 (trial-052/053/054) queued and sent. Once it lands, send part 2 (trial-055/056/057). Rank the full round against trial-050 (val_loss for non-pos_weight trials, AUROC/best-F1 diagnostic for trial-052) and pick the round-2 beam."
     },
     "esm2_t6_8M": {
       "status": "paused_plateaued",
