@@ -44,6 +44,8 @@ trial_metrics_path = hf_hub_download(repo_id=HF_REPO_ID, filename="trial_metrics
 trial_config = json.loads(Path(trial_metrics_path).read_text())["config"]
 MODEL_NAME = trial_config["model_name"]
 USE_LORA = trial_config.get("use_lora", False)
+MIXED_PRECISION = trial_config.get("mixed_precision", "no")
+AUTOCAST_DTYPE = {"fp16": torch.float16, "bf16": torch.bfloat16}.get(MIXED_PRECISION)
 
 dataset = training_run.load_training_data(data_path=Path("data/cafa-6-protein-function-prediction/dataset"))
 label_names = [str(name) for name in dataset["train"].features["labels"].feature.names]
@@ -63,12 +65,19 @@ val_ds = dataset["validation"].select(range(min(MAX_VAL_SAMPLES, len(dataset["va
 val_ds = val_ds.with_transform(transform=preprocess)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+use_amp = AUTOCAST_DTYPE is not None and device.type == "cuda"
 if USE_LORA:
     # A LoRA checkpoint on HF_REPO_ID is adapter-only, not a full standalone model - the
     # base architecture must load fresh from MODEL_NAME, with the adapter weights
     # attached separately via lora_resume_repo_id. PeftModel.from_pretrained reads the
     # adapter's own saved adapter_config.json (rank/alpha/target_modules) rather than
     # anything passed here, so lora_r/lora_alpha/etc. don't need to be reconstructed.
+    # lora_base_dtype must match how the checkpoint was trained (e.g. bf16) - if the
+    # frozen backbone loads in a different dtype than the trainable classifier/adapters
+    # (which peft/create_esm always keep fp32), any forward pass run outside an autocast
+    # region raises "mat1 and mat2 must have the same dtype" - only training_run.py's own
+    # training loop wraps every forward pass in autocast, so this script needs the same
+    # treatment for its own inference-only forward passes below.
     model = training_run.create_esm(
         model_type=MODEL_NAME,
         use_lora=True,
@@ -76,6 +85,7 @@ if USE_LORA:
         revision=CHECKPOINT_REVISION,
         id2label=id2label,
         label2id=label2id,
+        lora_base_dtype=AUTOCAST_DTYPE,
     ).to(device)
 else:
     model = training_run.create_esm(
@@ -100,8 +110,9 @@ with torch.no_grad():
     for i, batch in enumerate(loader):
         input_ids = batch["input_ids"].to(device)
         attention_mask = batch["attention_mask"].to(device)
-        logits = model(input_ids=input_ids, attention_mask=attention_mask).logits
-        all_probs.append(torch.sigmoid(logits).cpu())
+        with torch.autocast(device_type="cuda", dtype=AUTOCAST_DTYPE, enabled=use_amp):
+            logits = model(input_ids=input_ids, attention_mask=attention_mask).logits
+        all_probs.append(torch.sigmoid(logits.float()).cpu())
         all_labels.append(batch["labels"])
         if (i + 1) % 20 == 0:
             print(f"[INFO] processed {(i + 1) * 16}/{len(val_ds)} examples")

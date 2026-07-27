@@ -95,7 +95,7 @@ total_size_mb = sum(f.stat().st_size for f in ckpt_files) / 1e6
 print(f"[INFO] Saved checkpoint: {[f.name for f in ckpt_files]}, total {total_size_mb:.1f}MB")
 
 model.eval()
-with torch.no_grad():
+with torch.no_grad(), torch.autocast(device_type="cuda", dtype=torch.bfloat16, enabled=(device.type == "cuda")):
     out_before = model(input_ids=input_ids, attention_mask=attention_mask).logits
 
 reloaded = training_run.create_esm(
@@ -105,11 +105,15 @@ reloaded = training_run.create_esm(
     label2id=label2id,
     use_lora=True,
     lora_resume_repo_id=str(save_dir),
+    lora_base_dtype=torch.bfloat16,
 ).to(device)
 reloaded.eval()
-with torch.no_grad():
+with torch.no_grad(), torch.autocast(device_type="cuda", dtype=torch.bfloat16, enabled=(device.type == "cuda")):
     out_after = reloaded(input_ids=input_ids, attention_mask=attention_mask).logits
-print(f"[INFO] save/reload round-trip logits match: {torch.allclose(out_before, out_after, atol=1e-4)}")
+# bf16 has ~3 decimal digits of precision, so a looser tolerance than the fp32 case
+# (verified locally at tiny scale, atol=1e-5) is expected and fine here.
+max_diff = (out_before.float() - out_after.float()).abs().max().item()
+print(f"[INFO] save/reload round-trip logits match (bf16, atol=0.05): {torch.allclose(out_before, out_after, atol=0.05)} (max abs diff: {max_diff:.5f})")
 
 print("\n[SUMMARY] Smoke test complete. Review the [TIMING]/[INFO] GPU memory lines above "
       "against your rented VRAM budget before launching the real trial.")
