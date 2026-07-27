@@ -1497,6 +1497,34 @@ set up trial-064/065/066 directly: trial-052/053/054's exact configs rerun at `s
 ranking is noise-dominated and the round-2 design built on top of it needs re-examining. Running in
 parallel with round 2 part 1, expected to land around the same time.
 
+### Round 2 part 2 results (trial-061/062/063) — round 2 concludes, search plateaued
+
+`[CONFIG]` lines verified correct (all three at `weight_decay=0.2`, no repeat of round 1 part 2's
+mismatch).
+
+- **trial-061** (`unfreeze_last_n=2` + `weight_decay=0.2`): best val_loss 0.0748 @ epoch 8 — ties
+  trial-060 for best of round 2. Δ=-0.0006 vs. trial-053.
+- **trial-062** (`learning_rate=3e-4` + `weight_decay=0.2`): best val_loss 0.0755 @ epoch 9 —
+  essentially ties the baseline. Δ=+0.0001.
+- **trial-063** (`warmup_steps=300`): best val_loss 0.0753 @ epoch 9. Δ=-0.0001.
+
+**All three fall within the calibrated noise floor** (~0.0007–0.0011). Combined with round 2 part 1
+(also all within noise), the full round's 6 trials land in a `[0.0748, 0.0755]` band — a 0.0007
+spread, tighter than the noise floor itself. Not one clears the >0.001 bar.
+
+**Round 2 final ranking**: trial-060 (0.0748) ≈ trial-061 (0.0748) > trial-058 (0.0749) > trial-059
+(0.0751) > trial-063 (0.0753) > trial-053 seed (0.0754) > trial-062 (0.0755) — all statistically
+indistinguishable given the noise floor.
+
+**Conclusion**: two full beam-search rounds of coordinate descent around trial-053 found nothing
+further. Per the plan already recorded when round 2 part 1 landed, this triggers stopping
+fine-grained axis search here. **trial-053 (`weight_decay=0.2`) is the phase's best-known,
+confirmed-real config** — its win over trial-050 (Δ=0.0018) is the only margin in this entire phase
+that ever cleared the noise floor. The natural next step, mirroring how the old
+`esm2_t12_35M_scale_up` phase closed out, is a longer uncapped confirmation run with trial-053's
+config, promoted via `--push-to-hub` to `kelmoir/cafa6-esm@main` — not yet started, pending user
+direction given current attention is on the `esm2_t36_3B_lora_scaleup` phase.
+
 ## New phase, in progress: esm2_t36_3B_lora_scaleup
 
 User dropped their original (unrelated, pre-dating this whole sweep) ProtBERT fine-tuning notebook

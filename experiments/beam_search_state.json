@@ -10,7 +10,7 @@
   "active_phase": "esm2_t12_35M_coarse_go_terms",
   "phases": {
     "esm2_t12_35M_coarse_go_terms": {
-      "status": "seed trial (trial-050) complete and healthy; a real training_run.py metrics bug found and fixed along the way",
+      "status": "regularization/schedule search COMPLETE - trial-053 (weight_decay=0.2) is final, plateaued after 2 full beam-search rounds. Awaiting decision on a longer confirmation run + --push-to-hub promotion.",
       "started": "2026-07-27",
       "why": "dataset_expansion (see below) replaced the label space with 383 coarse GO terms (3 aspect roots + depth<=2 terms, >=50 post-propagation annotations), a fundamentally different and much sparser task (3.58% overall positive rate, mean 13.7/383 labels positive per protein) than the esm2_t12_35M_scale_up phase's 3-aspect task (~70% positive rate per label). None of that phase's hyperparameter conclusions (zero regularization preferred, batch=128 edge) are assumed to transfer - this is a fresh phase, same model scale.",
       "seed_config": {
@@ -60,7 +60,7 @@
       },
       "pos_weight_generalized": "training_run.py's --pos-weight now takes a --pos-weight-exponent (float, default 0.5) instead of being hardcoded to sqrt: pos_weight = (n_negative/n_positive)**exponent. exponent=0.5 exactly reproduces trial-051's behavior (verified via torch.allclose against the old torch.sqrt() call); exponent=0.3 gives the gentler compression (range 0.75-12.70x vs 0.5's 0.61-69.14x) queued in round_1 below. Added pos_weight_exponent to the top-level regularization_axes list.",
       "beam": [
-        {"trial": "trial-053", "best_val_loss": 0.0754, "best_epoch": 7, "config_note": "round_1 winner (weight_decay=0.2 off trial-050) - beat all 5 other round_1 trials on val_loss, not confounded by pos_weight's loss-scale change. Sole seed for round_2."}
+        {"trial": "trial-053", "best_val_loss": 0.0754, "best_epoch": 7, "config_note": "FINAL for this phase's regularization/schedule search. round_1 winner (weight_decay=0.2 off trial-050); round_2's full 6-trial coordinate-descent search around it found nothing that cleared the noise floor. Best-known, confirmed-real config - candidate for a longer confirmation run + --push-to-hub promotion."}
       ],
       "round_1": {
         "status": "part 1 complete, part 2 sent (re-parented to trial-053, see below)",
@@ -111,7 +111,7 @@
       "next_step": "round_1 complete. trial-053 (weight_decay=0.2) confirmed as the round winner and promoted to round_2 seed. Round_2 part 1 (trial-058/059/060) sent; part 2 (trial-061/062/063) held until part 1 lands."
     },
     "round_2": {
-      "status": "part 1 complete - margins confirmed within noise floor (see noise_floor_check), part 2 sent",
+      "status": "COMPLETE - all 6 trials within noise, phase's regularization/schedule search declared plateaued at trial-053",
       "seed": "trial-053",
       "part_1": {
         "manifest_file": "experiments/round10a_manifest.json",
@@ -138,9 +138,25 @@
           "trial-061": "unfreeze_last_n=2, properly stacked with weight_decay=0.2 (round_1's trial-055 tested it independently at wd=0.5 due to the mismatch, found a mild improvement)",
           "trial-062": "learning_rate=3e-4, properly stacked with weight_decay=0.2 (round_1's trial-057 tested it independently at wd=0.5, found no improvement - closing out the intended test though a reversal seems unlikely)",
           "trial-063": "warmup_steps=300 - fresh axis for this task, no improvement in the old esm2_t12_35M_scale_up phase but that phase's conclusions aren't assumed to transfer"
+        },
+        "config_check": "CONFIG lines verified correct - all three at weight_decay=0.2, no mismatch this time.",
+        "results": {
+          "trial-061": {"best_val_loss": 0.0748, "best_epoch": 8, "verdict": "ties trial-060 for best of round_2, delta=-0.0006 vs trial-053 - still at/below the noise floor, not confirmed real"},
+          "trial-062": {"best_val_loss": 0.0755, "best_epoch": 9, "verdict": "delta=+0.0001 vs trial-053 - essentially ties baseline, no improvement"},
+          "trial-063": {"best_val_loss": 0.0753, "best_epoch": 9, "verdict": "delta=-0.0001 vs trial-053 - within noise, no real effect"}
         }
       },
-      "next_step": "Noise floor now calibrated at ~0.001 (see noise_floor_check) - round_2 part_1 found nothing that clears it, so trial-053 remains the only confirmed-real improvement in this phase so far. Awaiting round_2 part 2 (trial-061/062/063); apply the same >0.001 bar to its results. If part_2 also comes back within noise, consider declaring trial-053 the phase's config and moving to a longer confirmation run rather than continuing fine-grained axis search at this budget."
+      "final_ranking": [
+        {"trial": "trial-060", "best_val_loss": 0.0748, "note": "lr_schedule=cosine + wd=0.2"},
+        {"trial": "trial-061", "best_val_loss": 0.0748, "note": "unfreeze_last_n=2 + wd=0.2"},
+        {"trial": "trial-058", "best_val_loss": 0.0749, "note": "weight_decay=0.1"},
+        {"trial": "trial-059", "best_val_loss": 0.0751, "note": "output_dropout=0.1"},
+        {"trial": "trial-063", "best_val_loss": 0.0753, "note": "warmup_steps=300"},
+        {"trial": "trial-053", "best_val_loss": 0.0754, "note": "seed - weight_decay=0.2 alone"},
+        {"trial": "trial-062", "best_val_loss": 0.0755, "note": "learning_rate=3e-4"}
+      ],
+      "conclusion": "All 6 of round_2's trials land in [0.0748, 0.0755], a 0.0007 spread - within this phase's own calibrated noise floor (~0.0007-0.0011). Not one clears the >0.001 bar established by noise_floor_check. Combined with round_1's already-confirmed result (trial-053 beating trial-050 by 0.0018, a real effect), this means: two full beam-search rounds of coordinate descent around trial-053 found nothing further. Per the plan already recorded after round_2 part_1 landed, this triggers stopping fine-grained axis search here rather than continuing to chase deltas smaller than the noise floor.",
+      "next_step": "Phase's regularization/schedule search is DECLARED COMPLETE. trial-053 (weight_decay=0.2, otherwise the phase's original seed_config) is the best-known, confirmed-real config. Natural next step per the project's own established pattern (used at the close of the old esm2_t12_35M_scale_up phase): run a longer, uncapped confirmation trial with trial-053's config and --push-to-hub to promote it to kelmoir/cafa6-esm@main - not yet done, needs user direction given current attention is on the esm2_t36_3B_lora_scaleup phase (trial-069 in flight)."
     },
     "noise_floor_check": {
       "status": "complete",
