@@ -1357,3 +1357,40 @@ cross-config comparison against any trial that changes `pos_weight` settings —
 numeric scale (per the trial-050 vs. trial-051 lesson). trial-052 specifically needs the post-hoc
 AUROC/threshold-sweep diagnostic, not a direct val_loss comparison; the other five trials are fine to
 compare on val_loss directly.
+
+### Round 1 part 1 results (trial-052/053/054)
+
+All three completed cleanly, 10/10 epochs, checkpoints pushed to their own `trial-NNN` Hub branches.
+Combined log arrived as a single `trial-052-054.log` (batched-run convention) — split into individual
+`trial-052.log`/`trial-053.log`/`trial-054.log` to match `build_results_index.py`'s one-file-per-trial
+parsing convention, and `results_index.csv` rebuilt.
+
+- **trial-052** (`pos_weight_exponent=0.3`): ran the AUROC diagnostic
+  (`experiments/scripts/diagnostic_eval_stage2.py trial-052`) for the required apples-to-apples read.
+  Median AUROC=0.8473 (best of trial-050/051/052), pooled F1@0.5=0.5445 (beats trial-050's 0.5398 and
+  trial-051's 0.4989), best F1 over a threshold sweep=0.5604@0.42 — clearly better than trial-051's
+  0.5007 but still short of trial-050's plain-BCE best F1 of 0.5727. Confirms a monotonic trend: as
+  the pos_weight exponent goes from 0.5→0.3 (gentler), F1 cost shrinks but so does the AUROC/threshold-
+  calibration gain, approaching but not beating plain BCE. Since trial-050 already reaches 0.5727 for
+  free via post-hoc threshold tuning (no retraining needed), pos_weight at either exponent tried isn't
+  earning its cost for this task. Not carried forward into round 2.
+- **trial-053** (`weight_decay=0.2`): best val_loss 0.0754 at epoch 7 — a clear, real improvement over
+  trial-050's 0.0772, not confounded by any loss-scale change. trial-050's inherited `wd=0.5` (carried
+  over unchanged from the old 3-aspect phase's baseline) was simply too strong for this task's smaller
+  (12k example) training set. **New round-1 winner.**
+- **trial-054** (`batch_size=32`): best val_loss 0.0754 at epoch 10 — ties trial-053's number, but
+  hadn't plateaued yet (still falling at the last epoch) and each epoch took ~742s vs. trial-053's
+  ~574s (~29% slower) despite 4x fewer optimizer steps/epoch — the *opposite* of the old
+  `esm2_t12_35M_scale_up` phase's finding that larger batch sped up wall-clock. No demonstrated
+  advantage over trial-053 within the fixed 10-epoch budget, and it costs more. Not carried forward.
+
+**Part 2 re-parented before sending**: `round9b_manifest.json` (trial-055/056/057) was originally
+designed branching off trial-050 (`weight_decay=0.5`). With trial-053 now a confirmed, un-confounded
+improvement, running three more axes against the stale `wd=0.5` baseline would have wasted the
+batch's ~5h GPU budget testing against a baseline already known to be worse. Edited the manifest
+in-place before generating the notebook: parent trial-050→trial-053, `weight_decay` 0.5→0.2 for all
+three trials, the axis under test in each is otherwise unchanged (`unfreeze_last_n=2`,
+`lr_schedule=cosine`, `learning_rate=3e-4`). Regenerated and sent `round9b_manual.ipynb`.
+
+Beam updated: trial-053 (val_loss=0.0754) replaces trial-050 as the sole seed going into round 2,
+pending part 2's results.

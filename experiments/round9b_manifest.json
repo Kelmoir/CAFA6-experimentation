@@ -1,9 +1,9 @@
 [
   {
     "trial_id": "trial-055",
-    "parent": "trial-050",
+    "parent": "trial-053",
     "axis": "unfreeze_last_n=2",
-    "note": "Capacity bump, untested at this scale/task so far (trial-050 used unfreeze=1). The old esm2_t6_8M phase found more capacity didn't help on a 3-class task; unclear whether that holds on a much richer 383-term task where there's plausibly more to learn per-sequence.",
+    "note": "Capacity bump, untested at this scale/task so far (trial-050 used unfreeze=1). The old esm2_t6_8M phase found more capacity didn't help on a 3-class task; unclear whether that holds on a much richer 383-term task where there's plausibly more to learn per-sequence. Re-parented from trial-050 to trial-053 after part_1 landed: trial-053 (weight_decay=0.2) beat trial-050 (0.0754 vs 0.0772 val_loss, a real drop, not pos_weight-confounded) - continuing to test other axes against the now-stale wd=0.5 baseline would waste this batch's compute on a baseline already known to be worse.",
     "args": [
       "--model-name", "facebook/esm2_t12_35M_UR50D",
       "--epochs", "10",
@@ -14,7 +14,7 @@
       "--esm-dropout", "0.0",
       "--attention-dropout", "0.0",
       "--grad-clip-norm", "1.0",
-      "--weight-decay", "0.5",
+      "--weight-decay", "0.2",
       "--max-train-samples", "12000",
       "--max-val-samples", "2000",
       "--seed", "42"
@@ -22,9 +22,9 @@
   },
   {
     "trial_id": "trial-056",
-    "parent": "trial-050",
+    "parent": "trial-053",
     "axis": "lr_schedule=cosine",
-    "note": "Cosine decay gave a small real improvement in the old esm2_t6_8M phase (trial-018) and stacked reasonably at 35M scale too - worth re-testing here since it's cheap (no new risk, just a schedule shape change) even though that phase's specific numeric conclusions aren't assumed to transfer.",
+    "note": "Cosine decay gave a small real improvement in the old esm2_t6_8M phase (trial-018) and stacked reasonably at 35M scale too - worth re-testing here since it's cheap (no new risk, just a schedule shape change) even though that phase's specific numeric conclusions aren't assumed to transfer. Re-parented from trial-050 to trial-053 (see trial-055's note) - weight_decay=0.2 baseline now, not 0.5.",
     "args": [
       "--model-name", "facebook/esm2_t12_35M_UR50D",
       "--epochs", "10",
@@ -35,7 +35,7 @@
       "--esm-dropout", "0.0",
       "--attention-dropout", "0.0",
       "--grad-clip-norm", "1.0",
-      "--weight-decay", "0.5",
+      "--weight-decay", "0.2",
       "--max-train-samples", "12000",
       "--max-val-samples", "2000",
       "--seed", "42",
@@ -44,9 +44,9 @@
   },
   {
     "trial_id": "trial-057",
-    "parent": "trial-050",
+    "parent": "trial-053",
     "axis": "learning_rate=3e-4",
-    "note": "Slightly higher LR - untested on this task so far (trial-050 used the old aspect-phase's inherited 2e-4). Tests whether a faster learning rate helps within the fixed 10-epoch budget on this harder, richer-label task.",
+    "note": "Slightly higher LR - untested on this task so far (trial-050 used the old aspect-phase's inherited 2e-4). Tests whether a faster learning rate helps within the fixed 10-epoch budget on this harder, richer-label task. Re-parented from trial-050 to trial-053 (see trial-055's note) - weight_decay=0.2 baseline now, not 0.5.",
     "args": [
       "--model-name", "facebook/esm2_t12_35M_UR50D",
       "--epochs", "10",
@@ -57,7 +57,7 @@
       "--esm-dropout", "0.0",
       "--attention-dropout", "0.0",
       "--grad-clip-norm", "1.0",
-      "--weight-decay", "0.5",
+      "--weight-decay", "0.2",
       "--max-train-samples", "12000",
       "--max-val-samples", "2000",
       "--seed", "42"
