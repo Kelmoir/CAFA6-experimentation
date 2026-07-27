@@ -1,0 +1,66 @@
+[
+  {
+    "trial_id": "trial-061",
+    "parent": "trial-053",
+    "axis": "unfreeze_last_n=2 (stacked with weight_decay=0.2)",
+    "note": "Round_1's trial-055 tested unfreeze=2 independently (off wd=0.5, due to a notebook mismatch) and found a mild improvement (val_loss 0.0768). This trial actually stacks it with the confirmed wd=0.2 baseline, the original intent before the mismatch.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "2",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.2",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-062",
+    "parent": "trial-053",
+    "axis": "learning_rate=3e-4 (stacked with weight_decay=0.2)",
+    "note": "Round_1's trial-057 tested lr=3e-4 independently (off wd=0.5, due to a notebook mismatch) and found no improvement (val_loss 0.0775, ~ties trial-050). This trial re-tests it stacked with the confirmed wd=0.2 baseline to close out the intended round_1 part_2 test, though a reversal seems unlikely given the null result at wd=0.5.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "3e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.2",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-063",
+    "parent": "trial-053",
+    "axis": "warmup_steps=300",
+    "note": "Fresh axis, never tested on this task. Gave no improvement in the old esm2_t12_35M_scale_up phase (trial-019), but that phase's conclusions aren't assumed to transfer - confirming (or overturning) that on the new sparser 383-label task, at minimal marginal cost.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.2",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--warmup-steps", "300"
+    ]
+  }
+]

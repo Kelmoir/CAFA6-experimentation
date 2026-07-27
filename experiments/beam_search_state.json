@@ -60,7 +60,7 @@
       },
       "pos_weight_generalized": "training_run.py's --pos-weight now takes a --pos-weight-exponent (float, default 0.5) instead of being hardcoded to sqrt: pos_weight = (n_negative/n_positive)**exponent. exponent=0.5 exactly reproduces trial-051's behavior (verified via torch.allclose against the old torch.sqrt() call); exponent=0.3 gives the gentler compression (range 0.75-12.70x vs 0.5's 0.61-69.14x) queued in round_1 below. Added pos_weight_exponent to the top-level regularization_axes list.",
       "beam": [
-        {"trial": "trial-053", "best_val_loss": 0.0754, "best_epoch": 7, "config_note": "current round_1 leader (weight_decay=0.2 off trial-050) - real improvement over trial-050's 0.0772, not confounded by pos_weight's loss-scale change. Provisional pending round_1 part_2's results (trial-055/056/057, all re-parented to branch off this trial)."}
+        {"trial": "trial-053", "best_val_loss": 0.0754, "best_epoch": 7, "config_note": "round_1 winner (weight_decay=0.2 off trial-050) - beat all 5 other round_1 trials on val_loss, not confounded by pos_weight's loss-scale change. Sole seed for round_2."}
       ],
       "round_1": {
         "status": "part 1 complete, part 2 sent (re-parented to trial-053, see below)",
@@ -84,15 +84,56 @@
           "notebook_file": "experiments/round9b_manual.ipynb",
           "queued_experiments": ["trial-055", "trial-056", "trial-057"],
           "reparented_note": "Originally designed branching off trial-050 (weight_decay=0.5). After part_1 landed and showed trial-053 (weight_decay=0.2) is a real, un-confounded improvement over trial-050, the manifest was edited in place before sending: parent changed trial-050->trial-053 and weight_decay changed 0.5->0.2 for all three trials, axis under test otherwise unchanged. Continuing to test unfreeze/lr_schedule/lr against the now-known-worse wd=0.5 baseline would have wasted this batch's ~5h GPU budget on a stale baseline.",
+          "execution_mismatch": "The actual run's [CONFIG] lines show weight_decay=0.5 for all three trials, not the intended 0.2 - the notebook that actually ran was the pre-pivot version (most likely a stale local copy predating the manifest correction; the committed/sent .ipynb was verified to contain wd=0.2). So trial-055/056/057 actually tested unfreeze_last_n=2 / lr_schedule=cosine / learning_rate=3e-4 each independently off trial-050, not stacked with trial-053's wd=0.2 as intended. Results are still valid and usable, just answering a different question than planned - flagged to the user rather than silently reinterpreted.",
+          "results": {
+            "trial-055": {"best_val_loss": 0.0768, "best_epoch": 7, "verdict": "unfreeze_last_n=2 off trial-050 (wd=0.5): mild improvement over trial-050 (0.0772) but short of trial-053 alone (0.0754)."},
+            "trial-056": {"best_val_loss": 0.0762, "best_epoch": 9, "verdict": "lr_schedule=cosine off trial-050 (wd=0.5): best of this batch, beats trial-050 but still short of trial-053 alone. Most promising secondary lever seen independently so far - candidate to stack with wd=0.2 in round 2."},
+            "trial-057": {"best_val_loss": 0.0775, "best_epoch": 9, "verdict": "learning_rate=3e-4 off trial-050 (wd=0.5): ties trial-050 within noise, no real improvement."}
+          },
           "queued_experiment_notes": {
-            "trial-055": "unfreeze_last_n=2 (off trial-053, wd=0.2) - capacity, untested at this task/scale",
-            "trial-056": "lr_schedule=cosine (off trial-053, wd=0.2) - gave a small real improvement in the old esm2_t6_8M phase, cheap to re-test here",
-            "trial-057": "learning_rate=3e-4 (off trial-053, wd=0.2) - untested on this task, trial-050/053 used the inherited 2e-4"
+            "trial-055": "unfreeze_last_n=2 (intended off trial-053, wd=0.2; actually ran off trial-050, wd=0.5 - see execution_mismatch)",
+            "trial-056": "lr_schedule=cosine (intended off trial-053, wd=0.2; actually ran off trial-050, wd=0.5 - see execution_mismatch)",
+            "trial-057": "learning_rate=3e-4 (intended off trial-053, wd=0.2; actually ran off trial-050, wd=0.5 - see execution_mismatch)"
           }
         },
-        "evaluation_note": "Given trial-050/051's lesson, don't trust the raw training-loop val_loss/val_recall for cross-config comparison alone if any trial in this round changes pos_weight settings (changes the loss's numeric scale) - use the post-hoc AUROC/threshold-sweep diagnostic (experiments/scripts/diagnostic_eval_stage2.py, parameterized by checkpoint revision) for any pos_weight trial, val_loss is fine for direct comparison among the non-pos_weight trials."
+        "evaluation_note": "Given trial-050/051's lesson, don't trust the raw training-loop val_loss/val_recall for cross-config comparison alone if any trial in this round changes pos_weight settings (changes the loss's numeric scale) - use the post-hoc AUROC/threshold-sweep diagnostic (experiments/scripts/diagnostic_eval_stage2.py, parameterized by checkpoint revision) for any pos_weight trial, val_loss is fine for direct comparison among the non-pos_weight trials.",
+        "final_ranking": [
+          {"trial": "trial-053", "best_val_loss": 0.0754, "note": "round winner - weight_decay=0.2 alone"},
+          {"trial": "trial-054", "best_val_loss": 0.0754, "note": "ties on val_loss but not converged + 29% slower wall-clock, not adopted"},
+          {"trial": "trial-056", "best_val_loss": 0.0762, "note": "lr_schedule=cosine off wd=0.5 - best independent secondary lever"},
+          {"trial": "trial-055", "best_val_loss": 0.0768, "note": "unfreeze_last_n=2 off wd=0.5"},
+          {"trial": "trial-050", "best_val_loss": 0.0772, "note": "phase seed"},
+          {"trial": "trial-057", "best_val_loss": 0.0775, "note": "learning_rate=3e-4 off wd=0.5, no improvement"},
+          {"trial": "trial-052", "best_f1": 0.5604, "note": "pos_weight_exponent=0.3, not val_loss-comparable; still below trial-050's best F1"},
+          {"trial": "trial-051", "best_f1": 0.5007, "note": "pos_weight_exponent=0.5, worst of the round"}
+        ]
       },
-      "next_step": "round_1 part 2 (trial-055/056/057, off trial-053) sent. Once it lands, rank the full 6-trial round (val_loss for non-pos_weight trials, best-F1 diagnostic for trial-052) against trial-053 as the current best and pick the round-2 beam."
+      "next_step": "round_1 complete. trial-053 (weight_decay=0.2) confirmed as the round winner and promoted to round_2 seed. Round_2 part 1 (trial-058/059/060) sent; part 2 (trial-061/062/063) held until part 1 lands."
+    },
+    "round_2": {
+      "status": "part 1 sent",
+      "seed": "trial-053",
+      "part_1": {
+        "manifest_file": "experiments/round10a_manifest.json",
+        "notebook_file": "experiments/round10a_manual.ipynb",
+        "queued_experiments": ["trial-058", "trial-059", "trial-060"],
+        "queued_experiment_notes": {
+          "trial-058": "regularization: weight_decay=0.1 off trial-053 - only two points (0.5, 0.2) tested on this axis so far, both favoring lighter; tests whether the trend continues",
+          "trial-059": "regularization: output_dropout=0.1 off trial-053 - dropout has been left at its inherited 0.2 the whole phase while wd was found too strong at its inherited value; tests the same hypothesis on the other reg knob",
+          "trial-060": "lr_schedule=cosine, properly stacked with weight_decay=0.2 this time (round_1's trial-056 tested cosine independently at wd=0.5 due to the notebook mismatch, and it was the best secondary lever found - this closes the loop)"
+        }
+      },
+      "part_2": {
+        "manifest_file": "experiments/round10b_manifest.json",
+        "notebook_file": "experiments/round10b_manual.ipynb (not yet generated - send after part_1 results land)",
+        "queued_experiments": ["trial-061", "trial-062", "trial-063"],
+        "queued_experiment_notes": {
+          "trial-061": "unfreeze_last_n=2, properly stacked with weight_decay=0.2 (round_1's trial-055 tested it independently at wd=0.5 due to the mismatch, found a mild improvement)",
+          "trial-062": "learning_rate=3e-4, properly stacked with weight_decay=0.2 (round_1's trial-057 tested it independently at wd=0.5, found no improvement - closing out the intended test though a reversal seems unlikely)",
+          "trial-063": "warmup_steps=300 - fresh axis for this task, no improvement in the old esm2_t12_35M_scale_up phase but that phase's conclusions aren't assumed to transfer"
+        }
+      },
+      "next_step": "round_2 part 1 (trial-058/059/060) sent. Once it lands, send part 2 (trial-061/062/063). Rank the full 6-trial round against trial-053 and pick the round-3 beam."
     },
     "esm2_t6_8M": {
       "status": "paused_plateaued",

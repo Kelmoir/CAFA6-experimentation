@@ -1394,3 +1394,51 @@ three trials, the axis under test in each is otherwise unchanged (`unfreeze_last
 
 Beam updated: trial-053 (val_loss=0.0754) replaces trial-050 as the sole seed going into round 2,
 pending part 2's results.
+
+### Round 1 part 2 results (trial-055/056/057) — and a notebook mismatch
+
+All three completed cleanly, 10/10 epochs. **Their `[CONFIG]` lines show `weight_decay=0.5`, not the
+`0.2` they were re-parented to** before `round9b_manual.ipynb` was sent — the run used the pre-pivot
+design branching off trial-050, not trial-053. The committed/sent `.ipynb` was independently verified
+to contain `weight_decay: "0.2"` for all three trials, so the mismatch traces to something on the
+execution side (most likely a stale local copy predating the correction), not the file that was
+delivered. Flagging this plainly rather than silently reinterpreting the results — they're still
+valid data, just answering a different question than the one intended:
+
+- **trial-055** (`unfreeze_last_n=2`, off trial-050/wd=0.5): best val_loss 0.0768 @ epoch 7 — mild
+  improvement over trial-050 (0.0772), short of trial-053 alone (0.0754).
+- **trial-056** (`lr_schedule=cosine`, off trial-050/wd=0.5): best val_loss 0.0762 @ epoch 9 — best of
+  this batch, still short of trial-053 alone. The most promising secondary lever found independently
+  so far.
+- **trial-057** (`learning_rate=3e-4`, off trial-050/wd=0.5): best val_loss 0.0775 @ epoch 9 — ties
+  trial-050 within noise, no real improvement.
+
+**Round 1 final ranking** (val_loss for non-pos_weight trials, best-F1 diagnostic for pos_weight
+trials): trial-053 (0.0754) ≈ trial-054 (0.0754, not adopted — unconverged + slower) > trial-056
+(0.0762) > trial-055 (0.0768) > trial-050 (0.0772) > trial-057 (0.0775) > trial-052 (best F1 0.5604)
+> trial-051 (best F1 0.5007). **trial-053 (`weight_decay=0.2`) is the confirmed round winner**,
+promoted to round 2's sole seed.
+
+## Round 2 (trial-058 through trial-063)
+
+Seed: trial-053 (`weight_decay=0.2`). Since round 1 part 2's `unfreeze_last_n=2` and `lr_schedule=cosine`
+tests never actually got stacked with `wd=0.2` as intended (the mismatch above), two of round 2's
+slots re-run those exact stacked combinations properly, closing the loop rather than treating the
+mismatch as wasted data — the standalone-at-wd=0.5 results already told us the ranking (cosine >
+unfreeze=2 > baseline > higher-lr), so round 2 checks whether those gains compound with `wd=0.2` or
+just overlap with it.
+
+- **trial-058** (regularization): `weight_decay=0.1` — only two points on this axis tested so far
+  (0.5, 0.2), both favoring lighter. Tests whether the trend continues.
+- **trial-059** (regularization): `output_dropout=0.1` — dropout has sat at its inherited 0.2 the
+  whole phase while weight_decay turned out to be too strong at its own inherited value; tests the
+  same hypothesis on the other regularization knob.
+- **trial-060**: `lr_schedule=cosine` properly stacked with `weight_decay=0.2` this time.
+- **trial-061**: `unfreeze_last_n=2` properly stacked with `weight_decay=0.2` this time.
+- **trial-062**: `learning_rate=3e-4` properly stacked with `weight_decay=0.2` — closing out the
+  intended test, though a reversal seems unlikely given the null result at wd=0.5.
+- **trial-063**: `warmup_steps=300` — fresh axis for this task; no improvement in the old
+  `esm2_t12_35M_scale_up` phase, but that phase's conclusions aren't assumed to transfer.
+
+Part 1 (`round10a_manifest.json`/`round10a_manual.ipynb`, trial-058/059/060) sent now; part 2
+(`round10b_manifest.json`, trial-061/062/063) held until part 1 lands.

@@ -1,0 +1,66 @@
+[
+  {
+    "trial_id": "trial-058",
+    "parent": "trial-053",
+    "axis": "weight_decay=0.1 (regularization)",
+    "note": "1st required regularization trial of round 2. trial-053 (wd=0.2) beat trial-050 (wd=0.5) - only two points on this axis tested so far, both showing lighter is better. Tests whether the trend continues at wd=0.1 or whether 0.2 is already near the sweet spot.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.1",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-059",
+    "parent": "trial-053",
+    "axis": "output_dropout=0.1 (regularization)",
+    "note": "2nd required regularization trial. output_dropout=0.2 has been left unchanged since trial-050 (inherited from the old 3-aspect phase) while weight_decay was found to be too strong at the inherited value - untested whether dropout has the same problem. Tests the same 'inherited value may be too strong for this smaller/sparser task' hypothesis on the other regularization knob.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.1",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.2",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42"
+    ]
+  },
+  {
+    "trial_id": "trial-060",
+    "parent": "trial-053",
+    "axis": "lr_schedule=cosine (stacked with weight_decay=0.2)",
+    "note": "Round_1's trial-056 tested cosine independently (off wd=0.5, due to a notebook mismatch) and found it the best secondary lever of that round (val_loss 0.0762). This trial actually stacks cosine with the now-confirmed wd=0.2 baseline, which was the original intent before the mismatch. Tests whether the two gains compound or overlap.",
+    "args": [
+      "--model-name", "facebook/esm2_t12_35M_UR50D",
+      "--epochs", "10",
+      "--unfreeze-last-n", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--esm-dropout", "0.0",
+      "--attention-dropout", "0.0",
+      "--grad-clip-norm", "1.0",
+      "--weight-decay", "0.2",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--seed", "42",
+      "--lr-schedule", "cosine"
+    ]
+  }
+]
