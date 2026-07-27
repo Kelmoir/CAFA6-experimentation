@@ -135,6 +135,20 @@
       },
       "next_step": "round_2 part 1 (trial-058/059/060) sent. Once it lands, send part 2 (trial-061/062/063). Rank the full 6-trial round against trial-053 and pick the round-3 beam."
     },
+    "noise_floor_check": {
+      "status": "queued by user, running in parallel with round_2 part_1",
+      "why": "The old esm2_t12_35M_scale_up phase measured seed-to-seed noise directly (trial-044/047: same config, seed 42 vs 123, moved val_loss by ~0.003) but this new coarse-GO-term phase never got the equivalent check. Round_1's winning margins are all smaller than that old noise figure (trial-053 vs trial-050: 0.0018; trial-053 vs trial-054: ~0.0000; trial-056 vs trial-050: 0.0010), so it's currently unknown whether round_1's ranking reflects real effects or is within this phase's own seed noise. Flagged as an open question in chat; user set this up directly rather than having it designed as part of round_2.",
+      "queued_experiments": ["trial-064", "trial-065", "trial-066"],
+      "queued_experiment_notes": {
+        "trial-064": "trial-052's config (pos_weight_exponent=0.3) at seed=123",
+        "trial-065": "trial-053's config (weight_decay=0.2, the round_1 winner) at seed=123 - the one that matters most: if this doesn't land close to trial-053's 0.0754, the round_1 ranking is noise-dominated",
+        "trial-066": "trial-054's config (batch_size=32) at seed=123"
+      },
+      "manifest_file": null,
+      "notebook_file": null,
+      "note": "User built and launched this batch directly (not generated via build_notebook.py/build_notebook manifest convention used for other rounds) - no manifest file to track here, evaluate straight from the returned log against trial-052/053/054's seed=42 numbers.",
+      "next_step": "Awaiting trial-064/065/066 results (expected around the same time as round_2 part_1). On arrival: compare each to its seed=42 counterpart (trial-052/053/054) to get this phase's noise-floor magnitude, then use that to sanity-check whether round_1's and round_2's rankings are actually distinguishable from noise."
+    },
     "esm2_t6_8M": {
       "status": "paused_plateaued",
       "fixed_across_all_rounds": {

@@ -1442,3 +1442,11 @@ just overlap with it.
 
 Part 1 (`round10a_manifest.json`/`round10a_manual.ipynb`, trial-058/059/060) sent now; part 2
 (`round10b_manifest.json`, trial-061/062/063) held until part 1 lands.
+
+**Noise-floor check (trial-064/065/066)**: round 1's margins (trial-053 vs. trial-050: Δ0.0018;
+trial-053 vs. trial-054: Δ~0.0000) are all smaller than the seed-to-seed noise measured directly in
+the old `esm2_t12_35M_scale_up` phase (~0.003, trial-044/047) — a check never run for this phase. User
+set up trial-064/065/066 directly: trial-052/053/054's exact configs rerun at `seed=123`. trial-065
+(the trial-053 analog) is the one that matters most — if it doesn't land close to 0.0754, round 1's
+ranking is noise-dominated and the round-2 design built on top of it needs re-examining. Running in
+parallel with round 2 part 1, expected to land around the same time.
