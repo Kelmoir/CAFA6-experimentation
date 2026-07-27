@@ -131,9 +131,35 @@ upload path).
   hyperparameter conclusions (regularization, batch size, etc.) don't automatically transfer to the
   richer label space, per the project's own "re-run from scratch at a new scale" precedent.
 - **Model**: ESM-2 (`facebook/esm2_t*`) loaded via `AutoModelForSequenceClassification` with
-  `problem_type="multi_label_classification"`. Only the classifier head plus the last
-  `--unfreeze-last-n` encoder layers are trainable; the rest of the ESM backbone is frozen
-  (`create_esm` in `training_run.py`).
+  `problem_type="multi_label_classification"`. Default mode: only the classifier head plus the
+  last `--unfreeze-last-n` encoder layers are trainable; the rest of the ESM backbone is frozen
+  (`create_esm` in `training_run.py`). **`--use-lora`** (added for the scale-up phase, see
+  "Colab regularization sweep" below) switches to LoRA fine-tuning via `peft` instead: the entire
+  backbone is frozen and small rank-`--lora-r` adapters are injected into `query`/`value`
+  attention projections (`--lora-target-modules` to override), with `modules_to_save=["classifier"]`
+  keeping the (newly-initialized, not pretrained) classification head fully trainable alongside
+  the adapters. This is what makes a much bigger model (e.g. `esm2_t36_3B_UR50D`) fit in limited
+  VRAM — only the adapters + classifier need gradient/optimizer memory, not the frozen backbone.
+  Two non-obvious things verified directly against a real `peft` install (not just assumed from
+  docs, since the exact internal structure is version-dependent): (1) `modules_to_save` wraps the
+  classifier in a `ModulesToSaveWrapper` that changes its attribute path
+  (`classifier.modules_to_save.default.out_proj.bias`, with a frozen `classifier.original_module...`
+  sibling) — `get_classifier_bias_param()`/`set_classifier_dropout()` locate it by
+  parameter/module-name suffix instead of a hardcoded attribute chain, so they work whether or not
+  `--use-lora` is set; (2) when the frozen base loads in reduced precision via `--mixed-precision`
+  (`torch_dtype=` at `from_pretrained` time), `peft` automatically upcasts LoRA adapter weights to
+  fp32 for training stability, but `modules_to_save`'s classifier copy has no such special-casing
+  and silently inherits the reduced dtype — `create_esm` explicitly upcasts it back to fp32 after
+  wrapping (negligible VRAM cost, avoids AdamW updates getting rounded away on a bf16/fp16
+  classifier with no fp32 master copy). A `--use-lora` checkpoint pushed to the Hub is adapter-only
+  (a few MB), not a full standalone model — `--resume-from-revision` and
+  `experiments/scripts/diagnostic_eval_stage2.py` both branch on this (loading the base architecture
+  fresh from `--model-name`/the trial's recorded `model_name`, then attaching the adapter via
+  `PeftModel.from_pretrained`), never treating the checkpoint repo itself as a loadable full model
+  the way the non-LoRA path does. `--mixed-precision {fp16,bf16}` (autocast + `GradScaler` for fp16)
+  and `--gradient-checkpointing` (with the peft-required `model.enable_input_require_grads()`) are
+  independent flags, useful with or without `--use-lora`, but especially necessary to fit a 3B-scale
+  model in a capped VRAM budget at all.
 - **Preprocessing**: `preprocess_batch` tokenizes with `EsmTokenizer` and multi-hot encodes labels;
   it's applied lazily via `dataset.with_transform(...)` rather than a full `.map()` pass. Sequences
   longer than `max_length` (1024 by default) are truncated at generation time in

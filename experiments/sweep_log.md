@@ -1496,3 +1496,69 @@ set up trial-064/065/066 directly: trial-052/053/054's exact configs rerun at `s
 (the trial-053 analog) is the one that matters most — if it doesn't land close to 0.0754, round 1's
 ranking is noise-dominated and the round-2 design built on top of it needs re-examining. Running in
 parallel with round 2 part 1, expected to land around the same time.
+
+## New phase, in progress: esm2_t36_3B_lora_scaleup
+
+User dropped their original (unrelated, pre-dating this whole sweep) ProtBERT fine-tuning notebook
+for comparison — it "learned to some visible extent" and they'd never felt this sweep quite reach
+that. Comparison found two structural differences that plausibly matter more than any regularization
+axis tested so far: (1) ProtBERT was **fully fine-tuned** (~420M params, every one trainable) vs. this
+sweep's frozen-mostly `esm2_t12_35M`; (2) ProtBERT trained on **~2.4x more total data** (6 full
+epochs, no sampling cap, vs. this phase's `--max-train-samples 12000`/epoch reshuffle giving ~2.5
+dataset-equivalents over 10 epochs). ProtBERT's own metric wasn't great in absolute terms either (89%
+error rate on its "active loss" metric, on a much harder ~26-40k-term unpropagated label space) — so
+this isn't "the old approach was quantitatively better," more "a bigger, fully-trainable model on more
+data probably produces more visibly differentiated outputs even on a harder task."
+
+User's constraint: GPU rental must stay under 25GB VRAM. Full fine-tuning tops out around
+`esm2_t33_650M` under that budget (~10.4GB for weights+grads+optimizer at the standard ~16
+bytes/param mixed-precision-AdamW estimate). To go bigger, chose **LoRA/PEFT on `esm2_t36_3B_UR50D`**
+(full fine-tune would need ~48GB; LoRA needs only ~6-7GB for the frozen backbone + adapters), out of
+three options presented (650M full-FT / 3B LoRA / keep 35M + remove the data cap instead).
+
+**Implementation** (`training_run.py`): `--use-lora` (peft `LoraConfig`, `target_modules` default
+`query,value`, `modules_to_save=["classifier"]` to keep the new classification head fully trainable),
+`--lora-r`/`--lora-alpha`/`--lora-dropout`/`--lora-target-modules`, `--mixed-precision {no,fp16,bf16}`
+(autocast + `GradScaler` for fp16; also sets the dtype the frozen LoRA base loads in),
+`--gradient-checkpointing` (with the peft-required `model.enable_input_require_grads()`).
+`resume_from_revision` is LoRA-aware: a `--use-lora` checkpoint is adapter-only, so the base
+architecture always loads fresh from `--model-name`, with adapter weights attached via
+`PeftModel.from_pretrained`.
+
+**Verification found two real bugs before they could hit a paid GPU run.** Structurally verified
+against a real `peft` install (0.19.1 — confirmed to match what Colab has pre-installed, so no
+version-skew risk) using a tiny `esm2_t6_8M` model, since this sandbox has no GPU and PyPI isn't
+network-reachable from it for a from-scratch install:
+1. The bias-init helper's first attempt assumed `classifier.out_proj.bias` stays the attribute path
+   under LoRA — wrong. peft's `modules_to_save` wrapping actually produces
+   `classifier.modules_to_save.default.out_proj.bias` (with a frozen `classifier.original_module...`
+   sibling). Fixed by matching on parameter-name *suffix* (`out_proj.bias` + `requires_grad`) instead
+   of a hardcoded attribute chain — works for both the wrapped and unwrapped case. Same fix applied to
+   the classifier-dropout setter.
+2. When the frozen base loads in bf16, peft automatically upcasts LoRA adapter weights back to fp32
+   for training stability — but does *not* do this for the `modules_to_save` classifier copy, which
+   silently inherits bf16. `create_esm` now explicitly upcasts the classifier's trainable params back
+   to fp32 after wrapping (negligible VRAM cost, avoids AdamW updates on the head getting rounded away
+   with no fp32 master copy).
+
+End-to-end verified after the fixes: forward+backward produces real gradients on both LoRA and
+classifier params, gradient checkpointing doesn't break backprop, `save_pretrained` produces a small
+adapter-only checkpoint, and `PeftModel.from_pretrained` reload is byte-exact (`torch.allclose`,
+atol=1e-5) against the pre-save model in eval mode. Also re-ran the existing non-LoRA CLI path (full
+`training_run.py --unfreeze-last-n 1 --output-dropout 0.2 ...`) after the shared helper-function
+refactor to confirm no regression to the still-in-flight round 2.
+
+`experiments/scripts/diagnostic_eval_stage2.py` generalized to read `trial_metrics.json` (already
+pushed alongside every checkpoint, contains the full CLI config) instead of hardcoding
+`MODEL_NAME`/assuming non-LoRA — verified against a real checkpoint (trial-053): correctly resolved
+`use_lora=False`, ran to completion, and as a bonus turned up trial-053's own diagnostic numbers
+(median AUROC 0.8545, best F1 0.5810@0.32) — both better than trial-050's, reinforcing that round 1's
+win is real across multiple metrics, not just val_loss.
+
+**Smoke test sent, not yet run**: `experiments/smoke_test_lora_3b.py` (`.ipynb` wrapper sent to user)
+loads `esm2_t36_3B_UR50D` with LoRA (r=16, bf16 frozen base, gradient checkpointing), does one
+forward+backward at batch=4/seq_len=1024, and reports GPU memory allocated/reserved/peak against the
+25GB budget, plus re-confirms bias-init/gradients/save-reload at real scale (not just the tiny model
+used for local verification) — no HF token needed, doesn't push to the Hub. This isn't yet
+`active_phase` (round 2 part 2 of `esm2_t12_35M_coarse_go_terms` is still in flight); becomes active
+once the smoke test confirms the VRAM budget works and a first real trial is designed.

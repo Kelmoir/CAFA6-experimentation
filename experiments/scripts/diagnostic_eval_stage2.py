@@ -17,12 +17,14 @@ not through Colab, since it doesn't need training_run.py's Colab-secrets HF toke
 (local huggingface_hub cache already has one).
 """
 
+import json
 import sys
 from functools import partial
 from pathlib import Path
 
 import numpy as np
 import torch
+from huggingface_hub import hf_hub_download
 from sklearn.metrics import f1_score, roc_auc_score
 from torch.utils.data import DataLoader
 
@@ -30,8 +32,18 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 import training_run
 
 CHECKPOINT_REVISION = sys.argv[1] if len(sys.argv) > 1 else "trial-050"
-MODEL_NAME = "facebook/esm2_t12_35M_UR50D"
+HF_REPO_ID = "kelmoir/cafa6-esm"
 MAX_VAL_SAMPLES = 2000
+
+# push_checkpoint() (training_run.py) writes trial_metrics.json alongside every
+# checkpoint with the full CLI config for that trial (model_name, use_lora, etc.) - read
+# it back instead of hardcoding model_name/use_lora here, so this script works
+# unmodified for any future trial (e.g. a --use-lora esm2_t36_3B run), not just the
+# esm2_t12_35M non-LoRA trials it was originally written against.
+trial_metrics_path = hf_hub_download(repo_id=HF_REPO_ID, filename="trial_metrics.json", revision=CHECKPOINT_REVISION)
+trial_config = json.loads(Path(trial_metrics_path).read_text())["config"]
+MODEL_NAME = trial_config["model_name"]
+USE_LORA = trial_config.get("use_lora", False)
 
 dataset = training_run.load_training_data(data_path=Path("data/cafa-6-protein-function-prediction/dataset"))
 label_names = [str(name) for name in dataset["train"].features["labels"].feature.names]
@@ -51,15 +63,30 @@ val_ds = dataset["validation"].select(range(min(MAX_VAL_SAMPLES, len(dataset["va
 val_ds = val_ds.with_transform(transform=preprocess)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = training_run.create_esm(
-    unfreeze_last_n=1,
-    model_type="kelmoir/cafa6-esm",
-    revision=CHECKPOINT_REVISION,
-    id2label=id2label,
-    label2id=label2id,
-).to(device)
+if USE_LORA:
+    # A LoRA checkpoint on HF_REPO_ID is adapter-only, not a full standalone model - the
+    # base architecture must load fresh from MODEL_NAME, with the adapter weights
+    # attached separately via lora_resume_repo_id. PeftModel.from_pretrained reads the
+    # adapter's own saved adapter_config.json (rank/alpha/target_modules) rather than
+    # anything passed here, so lora_r/lora_alpha/etc. don't need to be reconstructed.
+    model = training_run.create_esm(
+        model_type=MODEL_NAME,
+        use_lora=True,
+        lora_resume_repo_id=HF_REPO_ID,
+        revision=CHECKPOINT_REVISION,
+        id2label=id2label,
+        label2id=label2id,
+    ).to(device)
+else:
+    model = training_run.create_esm(
+        unfreeze_last_n=1,
+        model_type=HF_REPO_ID,
+        revision=CHECKPOINT_REVISION,
+        id2label=id2label,
+        label2id=label2id,
+    ).to(device)
 model.eval()
-print(f"[INFO] Loaded kelmoir/cafa6-esm@{CHECKPOINT_REVISION} ({MODEL_NAME}) for eval, device={device}")
+print(f"[INFO] Loaded {HF_REPO_ID}@{CHECKPOINT_REVISION} ({MODEL_NAME}, use_lora={USE_LORA}) for eval, device={device}")
 
 loader = DataLoader(
     val_ds,

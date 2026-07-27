@@ -16,7 +16,7 @@ from torch.optim import AdamW
 from transformers import AutoModelForSequenceClassification, EsmTokenizer
 
 if "google.colab" in sys.modules:
-    required_packages = ["torch", "transformers", "datasets", "huggingface_hub"]
+    required_packages = ["torch", "transformers", "datasets", "huggingface_hub", "peft"]
     for package in required_packages:
         try:
             __import__(package)
@@ -27,6 +27,14 @@ try:
     import trackio
 except ImportError:  # pragma: no cover - optional dependency
     trackio = None
+
+try:
+    from peft import LoraConfig, PeftModel, TaskType, get_peft_model
+except ImportError:  # pragma: no cover - optional dependency, only required for --use-lora
+    LoraConfig = None
+    PeftModel = None
+    TaskType = None
+    get_peft_model = None
 
 MAX_LENGTH = 1024
 ESM_MODEL_NAMES = [
@@ -66,6 +74,51 @@ def create_esm_tokenizer(model_name: str = "facebook/esm2_t30_150M_UR50D") -> Es
     return EsmTokenizer.from_pretrained(model_name)
 
 
+def set_classifier_dropout(model, dropout_p: float) -> None:
+    """Sets dropout on the classification head. Under plain EsmForSequenceClassification
+    the module lives at `classifier.dropout`. Under peft's `modules_to_save=["classifier"]`
+    wrapping (used by --use-lora), peft replaces `classifier` with a ModulesToSaveWrapper
+    holding TWO copies - a frozen `classifier.original_module.dropout` and the active,
+    trainable `classifier.modules_to_save.default.dropout` - verified directly against
+    peft 0.19.1 rather than assumed, since the exact wrapping structure isn't
+    guessable/stable across peft versions. Matching on "classifier" appearing anywhere
+    in the name plus a "dropout" suffix catches both copies in the wrapped case (setting
+    the frozen copy too is harmless - it's never invoked in the forward pass while the
+    adapter is active) and the single copy in the unwrapped case, without depending on
+    the exact intermediate path.
+    """
+    matched = 0
+    for name, module in model.named_modules():
+        if "classifier" in name and name.endswith("dropout") and isinstance(module, torch.nn.Dropout):
+            module.p = dropout_p
+            matched += 1
+    if matched == 0:
+        raise RuntimeError("Could not find classifier dropout module(s) on model - unexpected model structure")
+
+
+def get_classifier_bias_param(model) -> torch.nn.Parameter:
+    """Locates the trainable classifier output-projection bias. Under plain
+    EsmForSequenceClassification this is `classifier.out_proj.bias`. Under peft's
+    modules_to_save wrapping (--use-lora) it's `classifier.modules_to_save.default.out_proj.bias`,
+    with a frozen `classifier.original_module.out_proj.bias` sibling (requires_grad=False) -
+    verified directly against peft 0.19.1. Matching on the "out_proj.bias" suffix
+    (unambiguous: nothing else in ESM's architecture is named out_proj) plus
+    requires_grad correctly isolates the one live copy in both cases without depending
+    on the exact intermediate path peft inserts.
+    """
+    candidates = [
+        (name, param)
+        for name, param in model.named_parameters()
+        if name.endswith("out_proj.bias") and param.requires_grad
+    ]
+    if len(candidates) != 1:
+        raise RuntimeError(
+            "Expected exactly one trainable out_proj.bias parameter, found "
+            f"{len(candidates)}: {[n for n, _ in candidates]}"
+        )
+    return candidates[0][1]
+
+
 def create_esm(
     unfreeze_last_n: int = 2,
     model_type: str = "facebook/esm2_t30_150M_UR50D",
@@ -75,9 +128,87 @@ def create_esm(
     id2label: Optional[Dict[int, str]] = None,
     label2id: Optional[Dict[str, int]] = None,
     revision: Optional[str] = None,
+    use_lora: bool = False,
+    lora_r: int = 16,
+    lora_alpha: int = 32,
+    lora_dropout: float = 0.05,
+    lora_target_modules: Optional[List[str]] = None,
+    lora_resume_repo_id: Optional[str] = None,
+    lora_base_dtype: Optional[torch.dtype] = None,
+    gradient_checkpointing: bool = False,
 ):
     if id2label is None or label2id is None:
         raise ValueError("id2label and label2id must be provided")
+
+    if use_lora:
+        if get_peft_model is None:
+            raise RuntimeError("--use-lora requires the 'peft' package; install it or drop --use-lora")
+
+        # The LoRA base architecture always loads from the original pretrained
+        # model_type, never from --hf-repo-id: a LoRA checkpoint on the Hub is
+        # adapter-only (a few MB of low-rank deltas), not a full standalone model, so
+        # it can't itself serve as the base the way a full-fine-tune checkpoint can
+        # (see the non-LoRA branch below, and the model_type selection in main()).
+        base_model = AutoModelForSequenceClassification.from_pretrained(
+            model_type,
+            num_labels=len(id2label),
+            id2label=id2label,
+            label2id=label2id,
+            problem_type="multi_label_classification",
+            torch_dtype=lora_base_dtype,
+        )
+        for param in base_model.esm.parameters():
+            param.requires_grad = False
+        if esm_dropout or attention_dropout:
+            # No "last N unfrozen" boundary applies under LoRA - every layer
+            # participates in the forward/backward graph regardless of which weights
+            # receive gradients, so these are applied uniformly across all layers
+            # rather than only the last unfreeze_last_n.
+            for layer in base_model.esm.encoder.layer:
+                layer.output.dropout.p = esm_dropout
+                layer.attention.output.dropout.p = attention_dropout
+
+        lora_config = LoraConfig(
+            r=lora_r,
+            lora_alpha=lora_alpha,
+            lora_dropout=lora_dropout,
+            target_modules=lora_target_modules or ["query", "value"],
+            modules_to_save=["classifier"],
+            task_type=TaskType.SEQ_CLS,
+        )
+        if lora_resume_repo_id:
+            model = PeftModel.from_pretrained(base_model, lora_resume_repo_id, revision=revision, is_trainable=True)
+            print(f"[INFO] Resumed LoRA adapter weights from {lora_resume_repo_id}@{revision}")
+        else:
+            model = get_peft_model(base_model, lora_config)
+
+        if lora_base_dtype is not None:
+            # peft explicitly upcasts LoRA A/B matrices to fp32 regardless of the frozen
+            # base's dtype (verified directly against peft 0.19.1), but modules_to_save's
+            # classifier copy has no such special-casing - it's a plain deep-copy of the
+            # original module, so it silently inherited lora_base_dtype (bf16/fp16) from
+            # the base load above. Training a classifier head purely in reduced precision
+            # risks AdamW's small per-step updates getting rounded away with no fp32
+            # master copy; the VRAM cost of keeping it fp32 is negligible (a few hundred
+            # KB against a multi-GB frozen backbone), so there's no real tradeoff here.
+            for name, param in model.named_parameters():
+                if "classifier" in name and param.requires_grad and param.dtype != torch.float32:
+                    param.data = param.data.float()
+
+        model.print_trainable_parameters()
+        print("[INFO] --use-lora set: --unfreeze-last-n is ignored (LoRA adapters apply "
+              "per --lora-target-modules across all backbone layers).")
+
+        if gradient_checkpointing:
+            model.gradient_checkpointing_enable()
+            # Required with LoRA: the input embeddings are frozen, so without this the
+            # activation entering the first checkpointed layer has requires_grad=False
+            # and the backward graph never reaches the trainable LoRA/classifier
+            # params - a well-documented peft + gradient-checkpointing interaction.
+            model.enable_input_require_grads()
+
+        set_classifier_dropout(model, output_dropout)
+        return model
 
     model = AutoModelForSequenceClassification.from_pretrained(
         model_type,
@@ -101,7 +232,10 @@ def create_esm(
             model.esm.encoder.layer[i].output.dropout.p = esm_dropout
             model.esm.encoder.layer[i].attention.output.dropout.p = attention_dropout
 
-    model.classifier.dropout.p = output_dropout
+    if gradient_checkpointing:
+        model.gradient_checkpointing_enable()
+
+    set_classifier_dropout(model, output_dropout)
     return model
 
 
@@ -345,6 +479,13 @@ def main() -> None:
     parser.add_argument("--pos-weight", action=argparse.BooleanOptionalAction, default=False, help="Weight positive examples in BCE loss by (n_negative/n_positive)**--pos-weight-exponent per label, computed from the training split - helps severely imbalanced multi-label tasks (e.g. the coarse GO-term label space, ~3.6% average positive rate) at the cost of one more axis to tune")
     parser.add_argument("--pos-weight-exponent", type=float, default=0.5, help="Compression exponent for --pos-weight: pos_weight = (n_negative/n_positive)**exponent per label. 0.5=sqrt (default; trial-051 used this), 1.0=raw inverse frequency (not recommended - spans ~12,600x on the coarse-GO-term dataset), lower=gentler correction")
     parser.add_argument("--quiet", action=argparse.BooleanOptionalAction, default=False, help="Suppress per-step [STEP] prints (only needed to keep a colab-cli exec websocket alive; noisy for interactive/notebook use)")
+    parser.add_argument("--use-lora", action=argparse.BooleanOptionalAction, default=False, help="Fine-tune via LoRA adapters (peft) instead of freeze-mostly/unfreeze-last-n: freezes the entire backbone and trains small low-rank adapters plus the classifier head, letting a much bigger model fit in limited VRAM. --unfreeze-last-n is ignored when this is set")
+    parser.add_argument("--lora-r", type=int, default=16, help="LoRA rank (only used with --use-lora)")
+    parser.add_argument("--lora-alpha", type=int, default=32, help="LoRA scaling factor, typically 2x --lora-r (only used with --use-lora)")
+    parser.add_argument("--lora-dropout", type=float, default=0.05, help="Dropout on LoRA adapter layers (only used with --use-lora)")
+    parser.add_argument("--lora-target-modules", default=None, help="Comma-separated submodule names to attach LoRA adapters to (default: query,value - the original LoRA paper's minimal config). Only used with --use-lora")
+    parser.add_argument("--mixed-precision", choices=["no", "fp16", "bf16"], default="no", help="Enable autocast mixed-precision training - needed to fit larger models (e.g. via --use-lora) in limited VRAM, and also controls the dtype frozen LoRA base weights are loaded in. bf16 is preferred on Ampere+ GPUs (A10G, L4, A100); fp16 needs GradScaler (handled automatically) and works on older GPUs (T4) too")
+    parser.add_argument("--gradient-checkpointing", action=argparse.BooleanOptionalAction, default=False, help="Trade compute for activation memory by recomputing the forward pass during backward - needed to fit larger models/batches in limited VRAM")
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
@@ -384,15 +525,29 @@ def main() -> None:
     if args.max_val_samples is not None:
         processed_dataset["validation"] = processed_dataset["validation"].select(range(min(args.max_val_samples, len(processed_dataset["validation"]))))
 
+    # A --use-lora checkpoint on --hf-repo-id is adapter-only (a few MB of low-rank
+    # deltas), not a full standalone model - it can never itself serve as the base to
+    # load AutoModelForSequenceClassification from the way a full-fine-tune checkpoint
+    # can. So the LoRA base architecture always loads fresh from --model-name, and
+    # resuming pulls adapter weights separately via lora_resume_repo_id.
+    lora_base_dtype = {"fp16": torch.float16, "bf16": torch.bfloat16}.get(args.mixed_precision)
     model_esm = create_esm(
         unfreeze_last_n=args.unfreeze_last_n,
-        model_type=args.hf_repo_id if args.resume_from_revision else args.model_name,
+        model_type=(args.hf_repo_id if (args.resume_from_revision and not args.use_lora) else args.model_name),
         output_dropout=args.output_dropout,
         esm_dropout=args.esm_dropout,
         attention_dropout=args.attention_dropout,
         id2label=id2label,
         label2id=label2id,
         revision=args.resume_from_revision,
+        use_lora=args.use_lora,
+        lora_r=args.lora_r,
+        lora_alpha=args.lora_alpha,
+        lora_dropout=args.lora_dropout,
+        lora_target_modules=args.lora_target_modules.split(",") if args.lora_target_modules else None,
+        lora_resume_repo_id=(args.hf_repo_id if (args.resume_from_revision and args.use_lora) else None),
+        lora_base_dtype=lora_base_dtype,
+        gradient_checkpointing=args.gradient_checkpointing,
     ).to(device)
     # Computed unconditionally (not just on a fresh start) since --pos-weight needs it
     # regardless of whether we're resuming from a checkpoint.
@@ -479,6 +634,13 @@ def main() -> None:
     checkpoint_dir = Path("models") / run_name / "checkpoint"
     start_time = time.time()
 
+    use_amp = args.mixed_precision != "no" and device.type == "cuda"
+    if args.mixed_precision != "no" and device.type != "cuda":
+        print(f"[WARN] --mixed-precision={args.mixed_precision} requested but device is {device.type}; autocast only applies on CUDA, ignoring.")
+    autocast_dtype = {"fp16": torch.float16, "bf16": torch.bfloat16}.get(args.mixed_precision)
+    use_grad_scaler = use_amp and args.mixed_precision == "fp16"
+    scaler = torch.amp.GradScaler(device="cuda", enabled=use_grad_scaler)
+
     for epoch in range(args.start_epoch, args.start_epoch + args.epochs):
         if epoch != args.start_epoch:
             train_dataloader = build_train_dataloader(epoch)
@@ -497,15 +659,23 @@ def main() -> None:
             if args.label_smoothing > 0:
                 labels = labels * (1 - args.label_smoothing) + 0.5 * args.label_smoothing
 
-            outputs = model_esm(input_ids=input_ids, attention_mask=attention_mask)
-            logits = outputs.logits
-            loss = criterion(logits, labels)
-            (loss / args.grad_accum_steps).backward()
+            with torch.autocast(device_type="cuda", dtype=autocast_dtype, enabled=use_amp):
+                outputs = model_esm(input_ids=input_ids, attention_mask=attention_mask)
+                logits = outputs.logits
+                loss = criterion(logits, labels)
+            scaled_loss = scaler.scale(loss / args.grad_accum_steps) if use_grad_scaler else (loss / args.grad_accum_steps)
+            scaled_loss.backward()
 
             is_accum_boundary = (step + 1) % args.grad_accum_steps == 0 or (step + 1) == len(train_dataloader)
             if is_accum_boundary:
+                if use_grad_scaler:
+                    scaler.unscale_(optimizer)
                 torch.nn.utils.clip_grad_norm_(model_esm.parameters(), max_norm=args.grad_clip_norm)
-                optimizer.step()
+                if use_grad_scaler:
+                    scaler.step(optimizer)
+                    scaler.update()
+                else:
+                    optimizer.step()
                 scheduler.step()
                 optimizer.zero_grad()
 
@@ -536,8 +706,9 @@ def main() -> None:
                 input_ids = batch["input_ids"].to(device)
                 attention_mask = batch["attention_mask"].to(device)
                 labels = batch["labels"].to(device)
-                outputs = model_esm(input_ids=input_ids, attention_mask=attention_mask)
-                loss = criterion(outputs.logits, labels)
+                with torch.autocast(device_type="cuda", dtype=autocast_dtype, enabled=use_amp):
+                    outputs = model_esm(input_ids=input_ids, attention_mask=attention_mask)
+                    loss = criterion(outputs.logits, labels)
                 validation_loss += loss.item()
 
                 batch_metrics = compute_metrics(outputs.logits, labels)

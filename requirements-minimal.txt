@@ -24,3 +24,4 @@ google-colab-cli
 trackio
 accelerate
 tqdm
+peft
