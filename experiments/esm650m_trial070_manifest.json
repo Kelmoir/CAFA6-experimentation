@@ -1,0 +1,23 @@
+[
+  {
+    "trial_id": "trial-070",
+    "parent": null,
+    "axis": "esm2_t33_650M_full_finetune phase kickoff: timing calibration (not a quality trial)",
+    "note": "Pivot from esm2_t36_3B_lora_scaleup after two throughput-recovery attempts (removing gradient_checkpointing OOM'd; halving LoRA depth only recovered 11.8%, leaving trial-069 still ~122x slower per example than the esm2_t12_35M phase). esm2_t33_650M_UR50D is the largest ESM2 tier that fits FULL fine-tuning under the 25GB VRAM budget (~10.4GB for weights+grads+optimizer at the standard ~16 bytes/param mixed-precision-AdamW estimate, per the original three-way analysis) - this matches the old ProtBERT notebook's approach (full fine-tune of a big model) more directly than LoRA did, without LoRA's forward-pass-dominated compute ceiling. Uses --unfreeze-last-n 33 (all 33 layers - the non-LoRA path, not --use-lora) so every parameter is trainable, matching 'fully trainable' as requested. Mirrors trial-067's role: 200 train / 100 val examples, 1 epoch, to get real per-example throughput before committing to a properly-budgeted real trial. --gradient-checkpointing kept on as a cautious default given trial-068's OOM lesson (full fine-tuning of 650M params needs real weight+gradient+optimizer memory on top of activations, unlike LoRA's tiny trainable footprint) - verified locally beforehand that checkpointing works correctly on this fully-unfrozen path without needing LoRA's enable_input_require_grads() hook (no frozen boundary exists). weight_decay=0.2/output_dropout=0.2/learning_rate=2e-4 carried forward from esm2_t12_35M_coarse_go_terms's own findings as a starting point, not yet validated at this scale or fine-tuning mode.",
+    "args": [
+      "--model-name", "facebook/esm2_t33_650M_UR50D",
+      "--unfreeze-last-n", "33",
+      "--mixed-precision", "bf16",
+      "--gradient-checkpointing",
+      "--epochs", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--weight-decay", "0.2",
+      "--grad-clip-norm", "1.0",
+      "--max-train-samples", "200",
+      "--max-val-samples", "100",
+      "--seed", "42"
+    ]
+  }
+]

@@ -1750,3 +1750,19 @@ unfrozen (non-LoRA) path without needing the `enable_input_require_grads()` hook
 hook is only necessary when the input to the first checkpointed layer doesn't itself require grad
 (the frozen-backbone-with-trainable-tail scenario); with everything unfrozen, no such boundary
 exists. Confirmed on a tiny model: the earliest layer received a real, nonzero gradient.
+
+## trial-070: esm2_t33_650M full fine-tune, timing calibration
+
+Mirrors trial-067's role for this new direction — 200 train / 100 val examples, 1 epoch, to get real
+per-example throughput before committing to a properly-budgeted real trial. Config:
+`esm2_t33_650M_UR50D`, `--unfreeze-last-n 33` (all layers, the non-LoRA path — every parameter
+trainable, matching "fully trainable" as requested), `--mixed-precision bf16`,
+`--gradient-checkpointing` (kept on as a cautious default given trial-068's OOM lesson — full
+fine-tuning needs real weight+gradient+optimizer memory on top of activations, unlike LoRA's tiny
+trainable footprint), `batch_size=8`, `weight_decay=0.2`/`output_dropout=0.2`/`learning_rate=2e-4`
+carried forward from `esm2_t12_35M_coarse_go_terms`'s own findings as a starting point — not yet
+validated at this scale or fine-tuning mode. Sent as `experiments/esm650m_trial070_manual.ipynb`.
+
+`esm2_t36_3B_lora_scaleup` is now paused (not deleted) — its infrastructure (`--use-lora`,
+`--lora-layers-to-transform`, mixed precision, gradient checkpointing) stays in `training_run.py` for
+potential future use. `active_phase` moves to `esm2_t33_650M_full_finetune`.

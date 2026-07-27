@@ -7,7 +7,7 @@
   "manual_notebook_batch_size_note": "User direction 2026-07-25, after the Colab session disconnected mid-trial-041 (7/10 epochs in, no checkpoint since checkpoint_mode=final - the whole trial had to be rerun from scratch): batch future manual-notebook rounds into sets of 3 trials instead of 6. Halves both how much work a single disconnect can lose and typical session length (a 3-trial batch=8 round at epochs=10 is ~5h vs. a 6-trial round's ~10-11h).",
   "regularization_axes": ["output_dropout", "esm_dropout", "attention_dropout", "weight_decay", "label_smoothing", "decouple_bias_wd", "pos_weight_exponent"],
   "non_regularization_axes": ["learning_rate", "unfreeze_last_n", "lr_schedule", "warmup_steps", "grad_accum_steps"],
-  "active_phase": "esm2_t12_35M_coarse_go_terms",
+  "active_phase": "esm2_t33_650M_full_finetune",
   "phases": {
     "esm2_t12_35M_coarse_go_terms": {
       "status": "regularization/schedule search COMPLETE - trial-053 (weight_decay=0.2) is final, plateaued after 2 full beam-search rounds. Awaiting decision on a longer confirmation run + --push-to-hub promotion.",
@@ -171,7 +171,7 @@
       "next_step": "Complete. Apply this floor when evaluating round_2 part_2 (trial-061/062/063, pending) and any future round in this phase - a delta must exceed ~0.001 to be treated as a real effect, not noise."
     },
     "esm2_t36_3B_lora_scaleup": {
-      "status": "infrastructure built, smoke test not yet run - not the active_phase yet, esm2_t12_35M_coarse_go_terms round_2 part_2 is still in flight",
+      "status": "PAUSED - superseded by esm2_t33_650M_full_finetune after throughput proved unrecoverable enough (see trial_069 below). Infrastructure (--use-lora, --lora-layers-to-transform, mixed precision, gradient checkpointing) stays in training_run.py for potential future use, but this is not the active scale-up direction.",
       "started": "2026-07-27",
       "why": "User compared this sweep against an old, unrelated ProtBERT notebook (CAFA6_protBert.ipynb) that felt like it 'learned more visibly' despite a much sparser, unpropagated ~26-40k-term label space and no bias-init/pos_weight - the two biggest structural differences found were (1) full fine-tune of a much bigger model (ProtBERT ~420M, every param trainable) vs. this project's frozen-mostly esm2_t12_35M, and (2) ~2.4x more total data exposure (6 full epochs vs. this phase's ~2.5 dataset-equivalents from the 12k-sample-per-epoch cap). User's cost constraint: GPU rental must stay under 25GB VRAM. Full fine-tuning tops out around esm2_t33_650M under that cap (~10.4GB for weights+grads+optimizer at the standard ~16 bytes/param mixed-precision-AdamW estimate); user chose to go bigger instead via LoRA/PEFT on esm2_t36_3B_UR50D (~48GB to full-fine-tune, but only ~6-7GB frozen-backbone + adapters), after being presented all three options (650M full-FT / 3B LoRA / keep 35M + more data) via AskUserQuestion.",
       "implementation": {
@@ -236,7 +236,22 @@
         "synthesis_of_both_levers_tried": "Removing gradient_checkpointing (trial-068): OOM, not viable at this depth/batch. Restricting LoRA depth by half (trial-069): +11.8% throughput, real but modest - forward-pass compute (unavoidable, runs for all 36 layers regardless of where adapters sit) apparently dominates per-step cost more than backward, so cutting backward's scope helps less than hoped. Batch size (still untested - all three real trials used batch=8) is the one major lever not yet tried; trial-069 should have equal-or-lower peak memory than trial-067's 9.5GB, meaning there's likely substantial unused VRAM headroom that a bigger batch could exploit for better GPU utilization/throughput (distinct from the compute-bound FLOPs argument - larger batches often improve hardware parallelization efficiency even when total FLOPs/example don't change).",
         "next_step": "Presented full findings to user rather than continuing to probe unilaterally - two calibration attempts have only marginally moved the needle, this is a real cost/strategy decision point now."
       },
-      "next_step": "Both throughput levers tried (checkpointing removal: OOM; layer restriction: +11.8%, real but modest). Still ~122x slower per example than the 35M phase. Presented findings to user for direction: test batch size (untested, most promising remaining lever), accept the current throughput and design a small-data-budget real trial, or reconsider the scale-up direction - this becomes active_phase once esm2_t12_35M_coarse_go_terms's round_2 part_2 also concludes (that phase is now itself concluded, pending a confirmation-run decision)."
+      "next_step": "Superseded - see esm2_t33_650M_full_finetune below. This phase is paused, not deleted; the LoRA infra it built stays in training_run.py."
+    },
+    "esm2_t33_650M_full_finetune": {
+      "status": "active_phase candidate - trial-070 (timing calibration) designed and sent",
+      "started": "2026-07-27",
+      "why": "User's direct decision after seeing esm2_t36_3B_lora_scaleup's full throughput picture (trial-067: 138x slower/example than esm2_t12_35M; trial-068: OOM removing checkpointing; trial-069: only +11.8% from halving LoRA depth, still ~122x slower): pivot to full fine-tuning of a smaller model instead of LoRA on a much bigger one. esm2_t33_650M_UR50D is the largest ESM2 tier that fits FULL fine-tuning under the 25GB VRAM budget (~10.4GB for weights+grads+optimizer at the standard ~16 bytes/param mixed-precision-AdamW estimate, from the original three-way analysis that also produced the 3B/LoRA and 35M+more-data options). This is architecturally closer to the old ProtBERT notebook comparison that originally motivated the whole scale-up effort (full fine-tune of a bigger model) than LoRA was, and avoids LoRA's forward-pass-dominated compute ceiling entirely - every parameter is trainable, no frozen backbone to pay a FLOPs tax on without benefit.",
+      "verification_before_launch": "Confirmed locally (tiny model) that gradient checkpointing works correctly on the fully-unfrozen (non-LoRA) path without needing LoRA's enable_input_require_grads() hook - that hook is only necessary when the input to the first checkpointed layer doesn't itself require grad (the frozen-backbone-with-trainable-tail scenario); with everything unfrozen, no such boundary exists. The earliest layer received a real, nonzero gradient with checkpointing enabled.",
+      "trial_070": {
+        "status": "designed and sent, awaiting results",
+        "manifest_file": "experiments/esm650m_trial070_manifest.json",
+        "notebook_file": "experiments/esm650m_trial070_manual.ipynb",
+        "purpose": "Timing calibration (mirrors trial-067's role for the LoRA phase) - NOT a quality trial. 200 train / 100 val examples, 1 epoch, to get real per-example throughput for this new model/mode before committing to a properly-budgeted real trial.",
+        "config": "esm2_t33_650M_UR50D, --unfreeze-last-n 33 (all layers, non-LoRA path - every parameter trainable), --mixed-precision bf16, --gradient-checkpointing (kept on as a cautious default given trial-068's OOM lesson - full fine-tuning needs real weight+gradient+optimizer memory on top of activations, unlike LoRA's tiny trainable footprint), batch_size=8, weight_decay=0.2/output_dropout=0.2/learning_rate=2e-4 carried forward from esm2_t12_35M_coarse_go_terms's own findings as a starting point, not yet validated at this scale or fine-tuning mode.",
+        "next_step": "Awaiting the [TIMING] epoch line. Compare per-example throughput against both esm2_t12_35M (0.0411s/example) and the LoRA/3B attempts (5.01-5.68s/example) to see where full-fine-tune-at-650M lands, then size a properly-budgeted real trial off the real number."
+      },
+      "next_step": "trial-070 sent. Once it lands, evaluate throughput and design a properly-budgeted real trial. This becomes active_phase (esm2_t12_35M_coarse_go_terms's regularization search is itself concluded, pending only a confirmation-run decision that doesn't block this)."
     },
     "esm2_t6_8M": {
       "status": "paused_plateaued",
