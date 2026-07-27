@@ -1461,6 +1461,34 @@ results, but this round's ranking is provisional until trial-064/065/066 (the no
 running in parallel — trial-052/053/054's exact configs at `seed=123`) lands. Not picking a round-3
 seed off these numbers alone. Part 2 (`round10b_manual.ipynb`, trial-061/062/063) sent.
 
+### Noise-floor check results (trial-064/065/066)
+
+CONFIG lines confirmed each trial is its seed=42 counterpart with only `seed` changed to 123.
+
+| seed=42 (config) | val_loss | seed=123 (trial) | val_loss | delta |
+|---|---|---|---|---|
+| trial-052 (`pos_weight_exponent=0.3`) | 0.1438 | trial-064 | 0.1449 | 0.0011 |
+| trial-053 (`weight_decay=0.2`) | 0.0754 | trial-065 | 0.0755 | **0.0001** |
+| trial-054 (`batch_size=32`) | 0.0754 | trial-066 | 0.0762 | 0.0008 |
+
+**Calibrated noise floor for this phase: ~0.0007–0.0011** (mean 0.00067, max 0.0011 across the 3
+seed-pairs; n=3, so provisional, but usable) — notably tighter than the old
+`esm2_t12_35M_scale_up` phase's ~0.003. trial-065 in particular (the noise sample for trial-053's own
+config) came back almost identical to trial-053 (0.0755 vs. 0.0754), which is a strong direct
+confirmation of that config's stability.
+
+**Applying the floor**:
+- Round 1's trial-053-vs-trial-050 margin (0.0018) **clears the floor — confirmed real.**
+- Round 2 part 1's margins over trial-053 (trial-058: 0.0005, trial-059: 0.0003, trial-060: 0.0006)
+  **all fall at or below the floor — none should be trusted as real improvements on their own.**
+
+So round 2 part 1 effectively found nothing that beats trial-053 outside noise. Possible read: we're
+near a plateau for the regularization/schedule axes tested so far, at this model size and 12k-example
+training budget. Applying the same >0.001 bar to round 2 part 2 (trial-061/062/063, pending) once it
+lands — if that also comes back within noise, the natural next move is to stop fine-grained axis
+search here and treat trial-053 as this phase's config for a longer confirmation run, rather than
+continuing to chase deltas smaller than the noise floor.
+
 **Noise-floor check (trial-064/065/066)**: round 1's margins (trial-053 vs. trial-050: Δ0.0018;
 trial-053 vs. trial-054: Δ~0.0000) are all smaller than the seed-to-seed noise measured directly in
 the old `esm2_t12_35M_scale_up` phase (~0.003, trial-044/047) — a check never run for this phase. User

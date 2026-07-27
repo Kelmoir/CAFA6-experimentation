@@ -111,7 +111,7 @@
       "next_step": "round_1 complete. trial-053 (weight_decay=0.2) confirmed as the round winner and promoted to round_2 seed. Round_2 part 1 (trial-058/059/060) sent; part 2 (trial-061/062/063) held until part 1 lands."
     },
     "round_2": {
-      "status": "part 1 complete (results provisional, see noise_floor_check below), part 2 sent",
+      "status": "part 1 complete - margins confirmed within noise floor (see noise_floor_check), part 2 sent",
       "seed": "trial-053",
       "part_1": {
         "manifest_file": "experiments/round10a_manifest.json",
@@ -128,7 +128,7 @@
           "trial-059": {"best_val_loss": 0.0751, "best_epoch": 8, "verdict": "edges out trial-053 by 0.0003 - smallest gain of the batch"},
           "trial-060": {"best_val_loss": 0.0748, "best_epoch": 9, "verdict": "best of the batch - confirms cosine's round_1 gain (found independently at wd=0.5) compounds with wd=0.2 rather than just overlapping"}
         },
-        "caveat": "All three margins (0.0003-0.0006 over trial-053) are narrower than round_1's own margins, which were themselves already close to the old phase's measured seed-noise floor (~0.003). Treat this ranking as provisional until trial-064/065/066 (noise_floor_check, running in parallel) lands - do not pick a round-3 seed off these numbers alone."
+        "caveat": "CONFIRMED WITHIN NOISE: noise_floor_check (trial-064/065/066) established this phase's noise floor at ~0.0007-0.0011. All three of this batch's margins (0.0003-0.0006 over trial-053) fall at or below that floor - none should be trusted as real improvements over trial-053 on their own. By contrast, round_1's trial-053-vs-trial-050 margin (0.0018) clears the floor and is confirmed real."
       },
       "part_2": {
         "manifest_file": "experiments/round10b_manifest.json",
@@ -140,21 +140,19 @@
           "trial-063": "warmup_steps=300 - fresh axis for this task, no improvement in the old esm2_t12_35M_scale_up phase but that phase's conclusions aren't assumed to transfer"
         }
       },
-      "next_step": "round_2 part 2 (trial-061/062/063) sent. Once it lands AND trial-064/065/066 (noise_floor_check) lands, rank the full round with the noise floor in hand before picking a round-3 seed - round_2 part_1's margins are too small to trust in isolation."
+      "next_step": "Noise floor now calibrated at ~0.001 (see noise_floor_check) - round_2 part_1 found nothing that clears it, so trial-053 remains the only confirmed-real improvement in this phase so far. Awaiting round_2 part 2 (trial-061/062/063); apply the same >0.001 bar to its results. If part_2 also comes back within noise, consider declaring trial-053 the phase's config and moving to a longer confirmation run rather than continuing fine-grained axis search at this budget."
     },
     "noise_floor_check": {
-      "status": "queued by user, running in parallel with round_2 part_1",
-      "why": "The old esm2_t12_35M_scale_up phase measured seed-to-seed noise directly (trial-044/047: same config, seed 42 vs 123, moved val_loss by ~0.003) but this new coarse-GO-term phase never got the equivalent check. Round_1's winning margins are all smaller than that old noise figure (trial-053 vs trial-050: 0.0018; trial-053 vs trial-054: ~0.0000; trial-056 vs trial-050: 0.0010), so it's currently unknown whether round_1's ranking reflects real effects or is within this phase's own seed noise. Flagged as an open question in chat; user set this up directly rather than having it designed as part of round_2.",
-      "queued_experiments": ["trial-064", "trial-065", "trial-066"],
-      "queued_experiment_notes": {
-        "trial-064": "trial-052's config (pos_weight_exponent=0.3) at seed=123",
-        "trial-065": "trial-053's config (weight_decay=0.2, the round_1 winner) at seed=123 - the one that matters most: if this doesn't land close to trial-053's 0.0754, the round_1 ranking is noise-dominated",
-        "trial-066": "trial-054's config (batch_size=32) at seed=123"
+      "status": "complete",
+      "why": "The old esm2_t12_35M_scale_up phase measured seed-to-seed noise directly (trial-044/047: same config, seed 42 vs 123, moved val_loss by ~0.003) but this new coarse-GO-term phase never got the equivalent check. Round_1's winning margins are all smaller than that old noise figure, so it was unknown whether round_1's ranking reflected real effects or was within this phase's own seed noise. User set this up directly (trial-064/065/066 = trial-052/053/054's exact configs at seed=123) rather than having it designed as part of round_2.",
+      "results": {
+        "trial-064": {"seed42_parent": "trial-052", "seed42_val_loss": 0.1438, "seed123_val_loss": 0.1449, "delta": 0.0011},
+        "trial-065": {"seed42_parent": "trial-053", "seed42_val_loss": 0.0754, "seed123_val_loss": 0.0755, "delta": 0.0001, "note": "essentially reproduces exactly - the noise sample for the round_1 winner's own config"},
+        "trial-066": {"seed42_parent": "trial-054", "seed42_val_loss": 0.0754, "seed123_val_loss": 0.0762, "delta": 0.0008}
       },
-      "manifest_file": null,
-      "notebook_file": null,
-      "note": "User built and launched this batch directly (not generated via build_notebook.py/build_notebook manifest convention used for other rounds) - no manifest file to track here, evaluate straight from the returned log against trial-052/053/054's seed=42 numbers.",
-      "next_step": "Awaiting trial-064/065/066 results (expected around the same time as round_2 part_1). On arrival: compare each to its seed=42 counterpart (trial-052/053/054) to get this phase's noise-floor magnitude, then use that to sanity-check whether round_1's and round_2's rankings are actually distinguishable from noise."
+      "calibrated_noise_floor": "~0.0007-0.0011 (mean 0.00067, max 0.0011 across the 3 seed-pairs), notably smaller than the old esm2_t12_35M_scale_up phase's ~0.003. Provisional (n=3 seed-pairs) but usable: a val_loss delta needs to exceed roughly 0.001 to be trusted as a real effect on this phase, not noise.",
+      "implication": "round_1's trial-053 win over trial-050 (delta=0.0018) is CONFIRMED REAL - well above this floor, and trial-065's near-exact reproduction of trial-053 specifically backs this up. round_2 part_1's margins over trial-053 (trial-058: 0.0005, trial-059: 0.0003, trial-060: 0.0006) are ALL AT OR BELOW this floor - none of them should be trusted as real improvements over trial-053 on their own. Round_2 part_1 essentially found nothing that clears the noise bar; may indicate a plateau around trial-053's config for these regularization/schedule axes at this model/data scale.",
+      "next_step": "Complete. Apply this floor when evaluating round_2 part_2 (trial-061/062/063, pending) and any future round in this phase - a delta must exceed ~0.001 to be treated as a real effect, not noise."
     },
     "esm2_t6_8M": {
       "status": "paused_plateaued",
