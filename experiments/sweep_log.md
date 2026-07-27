@@ -1719,3 +1719,34 @@ val/1 epoch budget) and adds only `--lora-layers-to-transform 18`. Should have e
 memory than trial-067 (fewer layers retain backward-pass activation memory across the checkpointing
 boundaries), so this carries negligible OOM risk, unlike trial-068's combination. Sent as
 `experiments/lora3b_trial069_manual.ipynb`.
+
+### trial-069 result — real but modest
+
+`epoch elapsed=1503.6s` (vs. trial-067's 1705.3s) — **11.8% faster**. Per-example: 5.012s vs. 5.6843s.
+Hub push succeeded. Still **~122x slower per example than `esm2_t12_35M` scale** (down from 138x) —
+restricting LoRA to half the network's depth only recovered a modest fraction of the slowdown.
+
+**Synthesis of both levers tried**: removing `gradient_checkpointing` (trial-068) OOM'd outright, not
+viable at this depth/batch. Restricting LoRA depth by half (trial-069) bought 11.8%. Apparently
+forward-pass compute — unavoidable, runs for all 36 layers regardless of where adapters sit — matters
+more to per-step cost than backward, so cutting backward's scope helps less than the naive estimate
+suggested. Batch size is the one major lever never tried (all three real 3B trials used batch=8);
+trial-069 should have equal-or-lower peak memory than trial-067's 9.5GB, so there's likely real
+headroom a bigger batch could exploit for throughput via better GPU utilization — a different
+mechanism than the compute-bound FLOPs argument.
+
+Presented the full picture to the user rather than continuing to probe unilaterally. **User's
+decision: pivot away from the 3B/LoRA path — set up a full fine-tune of a smaller model instead**
+(`esm2_t33_650M_UR50D`, the largest ESM2 tier that fits full fine-tuning under the 25GB budget per the
+original three-way analysis). This effectively closes out `esm2_t36_3B_lora_scaleup` as the active
+scale-up direction; the LoRA infrastructure (`--use-lora`, `--lora-layers-to-transform`, mixed
+precision, gradient checkpointing) stays in `training_run.py` for potential future use, but the next
+real trial targets full fine-tuning instead.
+
+## New direction: esm2_t33_650M full fine-tune
+
+Verified locally before designing the trial: gradient checkpointing works correctly on the fully-
+unfrozen (non-LoRA) path without needing the `enable_input_require_grads()` hook LoRA required — that
+hook is only necessary when the input to the first checkpointed layer doesn't itself require grad
+(the frozen-backbone-with-trainable-tail scenario); with everything unfrozen, no such boundary
+exists. Confirmed on a tiny model: the earliest layer received a real, nonzero gradient.

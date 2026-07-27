@@ -1,0 +1,20 @@
+
+
+==================== RUNNING trial-069 (throughput calibration: --lora-layers-to-transform 18 ISOLATED (gradient checkpointing restored)) ====================
+
+note: trial-068 combined --no-gradient-checkpointing with --lora-layers-to-transform 18 and OOM'd almost immediately (21.8s wall clock, 21.01GiB/22.03GiB allocated) - confirms gradient checkpointing is not optional at this depth (36 layers) and batch_size=8, it's essential to fit the VRAM budget, not just a nice-to-have (trial-067's 9.5GB peak WAS the checkpointed number, not headroom on top of an already-safe baseline). This trial reverts to trial-067's exact config (gradient_checkpointing back on) and adds ONLY --lora-layers-to-transform 18, isolating that variable cleanly against trial-067's 1705.3s baseline - unlike trial-068, which combined two changes and OOM'd before either could be measured. Should have equal or LOWER peak memory than trial-067 (fewer layers need backward-pass activation memory retained across the checkpointing boundaries), so this combination carries negligible OOM risk.
+[CONFIG] {"device": "cuda", "epochs": 1, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t36_3B_UR50D", "unfreeze_last_n": 2, "max_train_samples": 200, "max_val_samples": 100, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.2, "max_minutes": null, "run_name": "trial-069", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-069", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": true, "use_lora": true, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": 18, "mixed_precision": "bf16", "gradient_checkpointing": true}
+
+[INFO] --lora-layers-to-transform=18: LoRA adapters restricted to layers [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35] - earlier layers skip backward entirely.
+trainable params: 10,486,143 || all params: 2,850,467,487 || trainable%: 0.3679
+[INFO] --use-lora set: --unfreeze-last-n is ignored (LoRA adapters apply per --lora-target-modules across all backbone layers).
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+Epoch 1/1 | train_loss=0.0887 | val_loss=0.0940 | train_acc=0.9703 | val_acc=0.9683 | train_recall=0.0152 | val_recall=0.0183
+[TIMING] epoch 1 elapsed=1503.6s
+[INFO] Pushed final-epoch checkpoint (epoch 1) to kelmoir/cafa6-esm@trial-069
+[SUMMARY] {"run_name": "trial-069", "epochs_completed": 1, "final_train_loss": 0.0886545467376709, "final_val_loss": 0.09403545151536281, "train_accuracy": 0.9703002610966057, "val_accuracy": 0.9683028720626632, "train_recall": 0.015212240628898144, "val_recall": 0.018333522602915764}
+[TIMING] trial-069 total wall clock: 1655.5s
+
+==================== BATCH DONE ====================
+trial-069: completed
