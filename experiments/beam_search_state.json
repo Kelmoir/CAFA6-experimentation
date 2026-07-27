@@ -164,12 +164,21 @@
         "diagnostic_eval_stage2.py": "Generalized to auto-detect model_name/use_lora by reading trial_metrics.json (already pushed alongside every checkpoint by push_checkpoint(), contains the full CLI config) instead of hardcoding MODEL_NAME='facebook/esm2_t12_35M_UR50D' - works unmodified for any future trial's config, LoRA or not."
       },
       "smoke_test": {
-        "status": "written and sent to user, not yet run",
+        "status": "v1 hit a real bug on real hardware (now fixed), v2 sent, awaiting full results",
         "file": "experiments/smoke_test_lora_3b.py (notebook: experiments/smoke_test_lora_3b.ipynb)",
         "why": "Structural correctness was verified locally at tiny (8M) scale, but VRAM usage and real-3B-scale behavior can only be checked on an actual GPU - can't be verified in this sandbox (no GPU passthrough) or against the real 25GB budget without spending it. Loads esm2_t36_3B_UR50D with LoRA (r=16, alpha=32, bf16 frozen base, gradient checkpointing), does one forward+backward at batch=4/seq_len=1024, reports GPU memory allocated/reserved/peak, verifies bias-init + LoRA/classifier gradients + save/reload round-trip, all without needing an HF token (local save/reload only, no Hub push).",
-        "next_step": "Awaiting user to run this on their rented GPU and report back the [TIMING]/[INFO] GPU memory lines. If peak memory fits comfortably under 25GB at batch=4, design the first real trial (config, batch size, epochs, effective data budget given the earlier data-exposure finding); if it's tight, may need a smaller batch + --grad-accum-steps, or --lora-target-modules restricted further."
+        "v1_run_real_numbers": {
+          "trainable_params": "13,435,263 / 2,853,416,607 total (0.47%) - matches expectations for LoRA r=16 on a 3B model",
+          "gpu_memory_after_model_load": "5.73GB allocated, 5.98GB reserved",
+          "gpu_memory_after_forward_backward": "5.85GB allocated, peak=7.48GB (batch=4, seq_len=1024) - well under the 25GB budget, large headroom",
+          "adapter_checkpoint_size": "53.8MB (adapter_model.safetensors + adapter_config.json + README.md)",
+          "torchao_warnings": "harmless - _C_mxfp8/_C_cutlass_90a are Hopper/H100-specific compiled kernels that don't apply to the rented GPU, torchao falls back gracefully",
+          "crash": "RuntimeError: mat1 and mat2 must have the same dtype, but got BFloat16 and Float, on the save/reload round-trip's first inference-only forward pass (out_before = model(...))"
+        },
+        "bug_found_and_fixed": "create_esm's fp32 upcast of the classifier head (added earlier to avoid AdamW updates getting rounded away under a bf16 base with no fp32 master copy) means any forward pass outside an autocast region mismatches against the bf16 backbone's output activations. training_run.py's actual training loop was already correctly wrapped in autocast (that's why the earlier forward+backward test passed), but the smoke test's post-save inference check wasn't - and neither was diagnostic_eval_stage2.py, which would have hit the identical crash evaluating a real LoRA checkpoint later. Reproduced and verified the fix locally on CPU (torch.autocast supports bf16 there too, unlike fp16) before resending: wrapped both inference-only forward passes in autocast in both files, fixed the smoke test's reload to use the same lora_base_dtype as the original (it was defaulting to fp32, wasting ~6GB and giving an unfair comparison), and made diagnostic_eval_stage2.py read mixed_precision from trial_metrics.json alongside model_name/use_lora - confirmed backward compatible against trial-053 (predates the mixed_precision key entirely, .get() defaults handle it). Also added an unconditional `pip install --upgrade torchao` per user report - Colab's pre-installed version was too old for the pre-installed transformers to load a bf16-dtype 3B model.",
+        "next_step": "Awaiting user to re-run v2 and report back full results including the save/reload check. If it completes cleanly with peak memory still well under 25GB (v1 already showed 7.48GB at batch=4, so expect similar), design the first real trial - the huge VRAM headroom (7.48GB used of 25GB budget) means batch size could likely go up substantially from the smoke test's batch=4, or --grad-accum-steps could be dropped since real batch size has more room than this phase's esm2_t12_35M trials ever had."
       },
-      "next_step": "Send smoke test (done). Once results land, design and launch the first real trial - this becomes active_phase once esm2_t12_35M_coarse_go_terms's round_2 part_2 also concludes."
+      "next_step": "v2 smoke test sent after fixing a dtype bug found on the real GPU run. Once full results land, design and launch the first real trial - this becomes active_phase once esm2_t12_35M_coarse_go_terms's round_2 part_2 also concludes."
     },
     "esm2_t6_8M": {
       "status": "paused_plateaued",
