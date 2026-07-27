@@ -1618,3 +1618,30 @@ Config: `esm2_t36_3B_UR50D`, `--use-lora` (r=16/alpha=32/dropout=0.05), `--mixed
 this project's own "re-run from scratch at a new scale" precedent applies here too), `learning_rate`
 left at the existing 2e-4 default (LoRA-specific LR tuning is a separate future axis, not this trial's
 purpose). Sent as `experiments/lora3b_trial067_manual.ipynb`.
+
+### trial-067 result — throughput is the real constraint, not VRAM
+
+Completed cleanly: `[TIMING] epoch 1 elapsed=1705.3s` for 200 train + 100 val examples, Hub push
+succeeded (`kelmoir/cafa6-esm@trial-067` — first real LoRA adapter push, not just a local
+save/reload).
+
+The number that matters: **0.0411s/example at `esm2_t12_35M` scale** (trial-053's average across its
+10 epochs: 575.4s / 14,000 examples) **vs. 5.6843s/example here** (1705.3s / 300 examples) — a **138x
+slowdown per example**, well beyond the ~81x parameter-count ratio (2.85B/35M) alone would predict.
+
+This is the real cost of LoRA that the VRAM numbers didn't show: LoRA solves the *memory* problem
+(only adapters + classifier need gradient/optimizer state) but does nothing for the *compute* problem
+— forward and backward FLOPs still scale with the full frozen 3B backbone regardless of how few
+parameters are actually trainable. At this throughput, a wall-clock budget similar to the 35M sweep's
+~10min/epoch would only afford ~150 examples/epoch — nowhere near the 12,000/epoch used throughout
+the whole current phase. That directly undercuts the original motivation (more data exposure, from
+the ProtBERT comparison) unless something recovers real throughput.
+
+Best lever not yet tested: **`--no-gradient-checkpointing`**. Checkpointing trades compute
+(recomputing forward activations during backward) for memory, and both smoke tests showed only
+~9.5GB peak VRAM against the 22.5GB budget — more than 2x headroom sitting unused. That gap between
+the 81x-expected and 138x-actual slowdown is plausibly checkpointing's recompute overhead (commonly
+20-40% more backward-pass compute) plus other unmeasured factors. Presented three options to the user
+via `AskUserQuestion` rather than picking unilaterally, given the real cost/strategy implications:
+test `--no-gradient-checkpointing`, accept the small-data-budget reality and design around it, or
+reconsider the scale-up direction given the throughput reality.

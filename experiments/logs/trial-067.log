@@ -1,0 +1,19 @@
+
+
+==================== RUNNING trial-067 (esm2_t36_3B_lora_scaleup phase kickoff: timing calibration (not a quality trial)) ====================
+
+note: First real trial for the LoRA/3B scale-up phase. Purpose: get real steady-state per-step timing - the smoke test's single forward+backward (28.1s) included one-time CUDA kernel compilation/warmup overhead and isn't a reliable per-step estimate. This trial's epoch-level [TIMING] line (200 examples / batch=8 = 25 steps) gives real throughput to size max_train_samples/epochs for a properly-budgeted real trial, mirroring this project's own trial-001 precedent from the original esm2_t6_8M phase. Also exercises the full push_checkpoint()->Hub upload path for a LoRA adapter checkpoint for the first time (only locally save/reload-tested so far in the smoke test). batch_size=8 doubles the smoke test's batch=4 while leaving comfortable headroom under both the 15GB tested and 22.5GB target VRAM budgets (smoke test peaked at 9.50GB at batch=4). Hyperparameters otherwise carried forward from this project's own esm2_t12_35M_coarse_go_terms findings (weight_decay=0.2, output_dropout=0.2) as a reasonable starting point - not yet validated at this scale, per the project's own 'don't assume hyperparameter conclusions transfer across model scale' precedent.
+[CONFIG] {"device": "cuda", "epochs": 1, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t36_3B_UR50D", "unfreeze_last_n": 2, "max_train_samples": 200, "max_val_samples": 100, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.2, "max_minutes": null, "run_name": "trial-067", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-067", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": true, "use_lora": true, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "mixed_precision": "bf16", "gradient_checkpointing": true}
+
+trainable params: 13,435,263 || all params: 2,853,416,607 || trainable%: 0.4708
+[INFO] --use-lora set: --unfreeze-last-n is ignored (LoRA adapters apply per --lora-target-modules across all backbone layers).
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+Epoch 1/1 | train_loss=0.0889 | val_loss=0.0939 | train_acc=0.9705 | val_acc=0.9687 | train_recall=0.0153 | val_recall=0.0156
+[TIMING] epoch 1 elapsed=1705.3s
+[INFO] Pushed final-epoch checkpoint (epoch 1) to kelmoir/cafa6-esm@trial-067
+[SUMMARY] {"run_name": "trial-067", "epochs_completed": 1, "final_train_loss": 0.08891012683510781, "final_val_loss": 0.09387949825479434, "train_accuracy": 0.970509138381201, "val_accuracy": 0.9686945169712794, "train_recall": 0.015322307124733925, "val_recall": 0.015583280473947525}
+[TIMING] trial-067 total wall clock: 1896.6s
+
+==================== BATCH DONE ====================
+trial-067: completed
