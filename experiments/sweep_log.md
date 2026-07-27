@@ -1443,6 +1443,24 @@ just overlap with it.
 Part 1 (`round10a_manifest.json`/`round10a_manual.ipynb`, trial-058/059/060) sent now; part 2
 (`round10b_manifest.json`, trial-061/062/063) held until part 1 lands.
 
+### Round 2 part 1 results (trial-058/059/060)
+
+`[CONFIG]` lines verified correct this time — no repeat of round 1 part 2's stale-notebook mismatch.
+
+- **trial-058** (`weight_decay=0.1`): best val_loss 0.0749 @ epoch 7 — edges out trial-053 (0.0754) by
+  0.0005, continuing the lighter-weight_decay trend.
+- **trial-059** (`output_dropout=0.1`): best val_loss 0.0751 @ epoch 8 — edges out trial-053 by 0.0003,
+  the smallest gain of the batch.
+- **trial-060** (`lr_schedule=cosine` + `weight_decay=0.2`): best val_loss 0.0748 @ epoch 9 — best of
+  the batch. Confirms cosine's round 1 gain (found independently at wd=0.5, trial-056) genuinely
+  compounds with wd=0.2 rather than just overlapping with it.
+
+**All three margins are smaller than round 1's own margins**, which were themselves already close to
+the old `esm2_t12_35M_scale_up` phase's directly-measured seed-noise floor (~0.003). These are real
+results, but this round's ranking is provisional until trial-064/065/066 (the noise-floor check
+running in parallel — trial-052/053/054's exact configs at `seed=123`) lands. Not picking a round-3
+seed off these numbers alone. Part 2 (`round10b_manual.ipynb`, trial-061/062/063) sent.
+
 **Noise-floor check (trial-064/065/066)**: round 1's margins (trial-053 vs. trial-050: Δ0.0018;
 trial-053 vs. trial-054: Δ~0.0000) are all smaller than the seed-to-seed noise measured directly in
 the old `esm2_t12_35M_scale_up` phase (~0.003, trial-044/047) — a check never run for this phase. User

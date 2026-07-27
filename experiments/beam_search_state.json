@@ -111,7 +111,7 @@
       "next_step": "round_1 complete. trial-053 (weight_decay=0.2) confirmed as the round winner and promoted to round_2 seed. Round_2 part 1 (trial-058/059/060) sent; part 2 (trial-061/062/063) held until part 1 lands."
     },
     "round_2": {
-      "status": "part 1 sent",
+      "status": "part 1 complete (results provisional, see noise_floor_check below), part 2 sent",
       "seed": "trial-053",
       "part_1": {
         "manifest_file": "experiments/round10a_manifest.json",
@@ -121,11 +121,18 @@
           "trial-058": "regularization: weight_decay=0.1 off trial-053 - only two points (0.5, 0.2) tested on this axis so far, both favoring lighter; tests whether the trend continues",
           "trial-059": "regularization: output_dropout=0.1 off trial-053 - dropout has been left at its inherited 0.2 the whole phase while wd was found too strong at its inherited value; tests the same hypothesis on the other reg knob",
           "trial-060": "lr_schedule=cosine, properly stacked with weight_decay=0.2 this time (round_1's trial-056 tested cosine independently at wd=0.5 due to the notebook mismatch, and it was the best secondary lever found - this closes the loop)"
-        }
+        },
+        "config_check": "CONFIG lines verified correct this time (weight_decay/output_dropout/lr_schedule all matched intent) - no repeat of round_1 part_2's stale-notebook mismatch.",
+        "results": {
+          "trial-058": {"best_val_loss": 0.0749, "best_epoch": 7, "verdict": "edges out trial-053 (0.0754) by 0.0005 - continues the lighter-wd trend"},
+          "trial-059": {"best_val_loss": 0.0751, "best_epoch": 8, "verdict": "edges out trial-053 by 0.0003 - smallest gain of the batch"},
+          "trial-060": {"best_val_loss": 0.0748, "best_epoch": 9, "verdict": "best of the batch - confirms cosine's round_1 gain (found independently at wd=0.5) compounds with wd=0.2 rather than just overlapping"}
+        },
+        "caveat": "All three margins (0.0003-0.0006 over trial-053) are narrower than round_1's own margins, which were themselves already close to the old phase's measured seed-noise floor (~0.003). Treat this ranking as provisional until trial-064/065/066 (noise_floor_check, running in parallel) lands - do not pick a round-3 seed off these numbers alone."
       },
       "part_2": {
         "manifest_file": "experiments/round10b_manifest.json",
-        "notebook_file": "experiments/round10b_manual.ipynb (not yet generated - send after part_1 results land)",
+        "notebook_file": "experiments/round10b_manual.ipynb",
         "queued_experiments": ["trial-061", "trial-062", "trial-063"],
         "queued_experiment_notes": {
           "trial-061": "unfreeze_last_n=2, properly stacked with weight_decay=0.2 (round_1's trial-055 tested it independently at wd=0.5 due to the mismatch, found a mild improvement)",
@@ -133,7 +140,7 @@
           "trial-063": "warmup_steps=300 - fresh axis for this task, no improvement in the old esm2_t12_35M_scale_up phase but that phase's conclusions aren't assumed to transfer"
         }
       },
-      "next_step": "round_2 part 1 (trial-058/059/060) sent. Once it lands, send part 2 (trial-061/062/063). Rank the full 6-trial round against trial-053 and pick the round-3 beam."
+      "next_step": "round_2 part 2 (trial-061/062/063) sent. Once it lands AND trial-064/065/066 (noise_floor_check) lands, rank the full round with the noise floor in hand before picking a round-3 seed - round_2 part_1's margins are too small to trust in isolation."
     },
     "noise_floor_check": {
       "status": "queued by user, running in parallel with round_2 part_1",
