@@ -43,15 +43,24 @@ after every epoch, same as the CLI-driven runs.
 This notebook runs {len(experiments)} experiment(s) sequentially: {', '.join(e['trial_id'] for e in experiments)}.
 """
 
-    module_load_cell = """try:
+    module_load_cell = """# torchao ships pre-installed on Colab but can be too old for the transformers
+# version also pre-installed there - transformers checks it at model-load time for any
+# torch_dtype= load (used by --use-lora), even without quantization. Upgrade
+# unconditionally rather than only on ModuleNotFoundError, since the failure mode is
+# "too old", not "missing" - found the hard way on the esm2_t36_3B_UR50D smoke test.
+!pip install --upgrade torchao
+
+try:
     import torch
     from datasets import load_dataset, load_from_disk
     from huggingface_hub import HfApi, get_token
     from transformers import AutoModelForSequenceClassification, EsmTokenizer
+    import peft
 except ModuleNotFoundError:
     !pip install datasets
     !pip install huggingface_hub
     !pip install transformers
+    !pip install peft
 """
 
     writefile_cell = "%%writefile training_run.py\n" + training_source

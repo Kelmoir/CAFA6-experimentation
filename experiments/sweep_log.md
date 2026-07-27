@@ -1562,3 +1562,59 @@ forward+backward at batch=4/seq_len=1024, and reports GPU memory allocated/reser
 used for local verification) — no HF token needed, doesn't push to the Hub. This isn't yet
 `active_phase` (round 2 part 2 of `esm2_t12_35M_coarse_go_terms` is still in flight); becomes active
 once the smoke test confirms the VRAM budget works and a first real trial is designed.
+
+### Smoke test v1 — real bug found on real hardware
+
+User ran it on a rented GPU. Everything up through the save step worked cleanly on the actual 3B
+model: 13,435,263 / 2,853,416,607 trainable params (0.47%, exactly as expected for LoRA r=16), 5.73GB
+allocated after model load, peak 9.50GB after forward+backward at batch=4/seq_len=1024 — both real
+gradients confirmed, adapter checkpoint saved at 53.8MB. Then crashed on the very next line:
+`RuntimeError: mat1 and mat2 must have the same dtype, but got BFloat16 and Float`, on the first
+inference-only forward pass of the save/reload check.
+
+Root cause: `create_esm`'s fp32 upcast of the classifier head (added to keep AdamW updates from being
+rounded away under a bf16 base with no fp32 master copy) means any forward pass *outside* an autocast
+region now mismatches against the bf16 backbone's output activations. `training_run.py`'s actual
+training loop was already correctly wrapped in autocast — that's why the earlier forward+backward
+test passed — but the smoke test's post-save inference check wasn't, and neither was
+`diagnostic_eval_stage2.py`, which would have hit the identical crash evaluating a real LoRA
+checkpoint later.
+
+Reproduced and verified the fix locally on CPU before resending — `torch.autocast` supports bf16 on
+CPU too, unlike fp16, so this was actually testable without a GPU. Fixed: wrapped both inference-only
+forward passes (smoke test + diagnostic script) in autocast, fixed the smoke test's reload to use the
+same `lora_base_dtype` as the original model (it was defaulting to fp32, wasting ~6GB and making the
+comparison unfair), made `diagnostic_eval_stage2.py` read `mixed_precision` from `trial_metrics.json`
+the same way it already reads `model_name`/`use_lora` (confirmed backward compatible against
+trial-053, whose config predates the key entirely). Also added an unconditional
+`pip install --upgrade torchao` to both the smoke test and `build_notebook.py`'s module-load cell (so
+every future `--use-lora` notebook gets it, not just this one) — Colab's pre-installed `torchao` was
+too old for the pre-installed `transformers` to load a bf16-dtype 3B model.
+
+### Smoke test v2 — passed cleanly end-to-end
+
+Same real 3B model, same batch=4/seq_len=1024, this time on an intentionally smaller 15GB card (the
+planned real GPU is 22.5GB) to stress-test the VRAM margin harder. Peak memory 9.50GB — comfortable
+even on the smaller card. Save/reload round-trip now passes exactly: `atol=0.05, max abs diff=0.00000`
+at full 3B scale. LoRA/PEFT wiring is fully validated end-to-end on real hardware.
+
+One thing the smoke test can't tell us: real per-step training throughput. The single
+forward+backward's 28.1s includes one-time CUDA kernel compilation/warmup that won't repeat in a real
+multi-step loop, so it's not a usable timing estimate.
+
+## trial-067: timing calibration (not a quality trial)
+
+Mirrors this project's own `trial-001` precedent from the original `esm2_t6_8M` phase, which was used
+to size `--max-train-samples` for that phase's later trials. 200 train examples / batch=8 = 25 steps
+in one epoch — enough real (non-warmup) steps to get steady-state throughput once the first step is
+excluded, used to size epochs/`max_train_samples` for a properly-budgeted real trial. Also exercises
+the full `push_checkpoint()` → `HfApi().upload_folder()` Hub path for a LoRA adapter checkpoint for the
+first time (only locally save/reload-tested in the smoke test so far).
+
+Config: `esm2_t36_3B_UR50D`, `--use-lora` (r=16/alpha=32/dropout=0.05), `--mixed-precision bf16`,
+`--gradient-checkpointing`, `batch_size=8` (2x the smoke test's batch=4 — still comfortable given v2's
+9.50GB peak at batch=4), `weight_decay=0.2`/`output_dropout=0.2` carried forward from
+`esm2_t12_35M_coarse_go_terms`'s own findings as a starting point (not yet validated at this scale —
+this project's own "re-run from scratch at a new scale" precedent applies here too), `learning_rate`
+left at the existing 2e-4 default (LoRA-specific LR tuning is a separate future axis, not this trial's
+purpose). Sent as `experiments/lora3b_trial067_manual.ipynb`.

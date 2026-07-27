@@ -1,0 +1,26 @@
+[
+  {
+    "trial_id": "trial-067",
+    "parent": null,
+    "axis": "esm2_t36_3B_lora_scaleup phase kickoff: timing calibration (not a quality trial)",
+    "note": "First real trial for the LoRA/3B scale-up phase. Purpose: get real steady-state per-step timing - the smoke test's single forward+backward (28.1s) included one-time CUDA kernel compilation/warmup overhead and isn't a reliable per-step estimate. This trial's epoch-level [TIMING] line (200 examples / batch=8 = 25 steps) gives real throughput to size max_train_samples/epochs for a properly-budgeted real trial, mirroring this project's own trial-001 precedent from the original esm2_t6_8M phase. Also exercises the full push_checkpoint()->Hub upload path for a LoRA adapter checkpoint for the first time (only locally save/reload-tested so far in the smoke test). batch_size=8 doubles the smoke test's batch=4 while leaving comfortable headroom under both the 15GB tested and 22.5GB target VRAM budgets (smoke test peaked at 9.50GB at batch=4). Hyperparameters otherwise carried forward from this project's own esm2_t12_35M_coarse_go_terms findings (weight_decay=0.2, output_dropout=0.2) as a reasonable starting point - not yet validated at this scale, per the project's own 'don't assume hyperparameter conclusions transfer across model scale' precedent.",
+    "args": [
+      "--model-name", "facebook/esm2_t36_3B_UR50D",
+      "--use-lora",
+      "--lora-r", "16",
+      "--lora-alpha", "32",
+      "--lora-dropout", "0.05",
+      "--mixed-precision", "bf16",
+      "--gradient-checkpointing",
+      "--epochs", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--weight-decay", "0.2",
+      "--grad-clip-norm", "1.0",
+      "--max-train-samples", "200",
+      "--max-val-samples", "100",
+      "--seed", "42"
+    ]
+  }
+]
