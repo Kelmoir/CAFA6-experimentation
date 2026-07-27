@@ -1668,3 +1668,26 @@ trial-067, for a direct epoch-time comparison. VRAM risk noted explicitly: remov
 could increase activation memory substantially, since that's precisely what it trades away for
 compute — if this OOMs, the fallback is restoring checkpointing and/or lowering batch_size. Sent as
 `experiments/lora3b_trial068_manual.ipynb`.
+
+### trial-068 result — the flagged risk materialized
+
+`OutOfMemoryError` after only 21.8s wall clock — failed fast and cheaply, never got past the first
+training step's forward pass: `Tried to allocate 152.00 MiB. GPU 0 has a total capacity of 22.03 GiB
+of which 13.12 MiB is free... 21.01 GiB is allocated by PyTorch`. Model load and bias-init both
+succeeded fine (small footprint); the OOM hit specifically once real forward-pass activation memory
+without checkpointing came into play.
+
+**Gradient checkpointing is not optional at this depth (36 layers) and batch_size=8** — it's
+essential to fit the actual 22.03GB budget, not a nice-to-have sitting on top of an already-safe
+baseline. trial-067's 9.5GB peak *was* the checkpointed number; removing checkpointing more than
+doubled peak usage and then some. This also means trial-068 never actually got to test
+`--lora-layers-to-transform`'s effect — the OOM happened before that variable could show anything, so
+the two changes needed to be un-combined rather than judged together.
+
+## trial-069: isolating --lora-layers-to-transform cleanly
+
+Reverts to trial-067's exact config (`--gradient-checkpointing` back on, same batch=8/200 train/100
+val/1 epoch budget) and adds only `--lora-layers-to-transform 18`. Should have equal or *lower* peak
+memory than trial-067 (fewer layers retain backward-pass activation memory across the checkpointing
+boundaries), so this carries negligible OOM risk, unlike trial-068's combination. Sent as
+`experiments/lora3b_trial069_manual.ipynb`.

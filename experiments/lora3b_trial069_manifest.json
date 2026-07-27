@@ -1,0 +1,27 @@
+[
+  {
+    "trial_id": "trial-069",
+    "parent": "trial-067",
+    "axis": "throughput calibration: --lora-layers-to-transform 18 ISOLATED (gradient checkpointing restored)",
+    "note": "trial-068 combined --no-gradient-checkpointing with --lora-layers-to-transform 18 and OOM'd almost immediately (21.8s wall clock, 21.01GiB/22.03GiB allocated) - confirms gradient checkpointing is not optional at this depth (36 layers) and batch_size=8, it's essential to fit the VRAM budget, not just a nice-to-have (trial-067's 9.5GB peak WAS the checkpointed number, not headroom on top of an already-safe baseline). This trial reverts to trial-067's exact config (gradient_checkpointing back on) and adds ONLY --lora-layers-to-transform 18, isolating that variable cleanly against trial-067's 1705.3s baseline - unlike trial-068, which combined two changes and OOM'd before either could be measured. Should have equal or LOWER peak memory than trial-067 (fewer layers need backward-pass activation memory retained across the checkpointing boundaries), so this combination carries negligible OOM risk.",
+    "args": [
+      "--model-name", "facebook/esm2_t36_3B_UR50D",
+      "--use-lora",
+      "--lora-r", "16",
+      "--lora-alpha", "32",
+      "--lora-dropout", "0.05",
+      "--lora-layers-to-transform", "18",
+      "--mixed-precision", "bf16",
+      "--gradient-checkpointing",
+      "--epochs", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--weight-decay", "0.2",
+      "--grad-clip-norm", "1.0",
+      "--max-train-samples", "200",
+      "--max-val-samples", "100",
+      "--seed", "42"
+    ]
+  }
+]
