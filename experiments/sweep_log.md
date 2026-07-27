@@ -1645,3 +1645,26 @@ the 81x-expected and 138x-actual slowdown is plausibly checkpointing's recompute
 via `AskUserQuestion` rather than picking unilaterally, given the real cost/strategy implications:
 test `--no-gradient-checkpointing`, accept the small-data-budget reality and design around it, or
 reconsider the scale-up direction given the throughput reality.
+
+User picked the checkpointing test, and separately asked whether the frozen backbone could be split
+off entirely — run once with no gradients, only backprop through a trainable tail — noting they'd
+already suspected the current all-layers config ruled this out. Verified directly against a real
+peft 0.19.1 (not assumed): registering forward hooks on each encoder layer and checking
+`requires_grad` on the output showed layers 0-4 all `False` and only the LoRA-restricted layer `True`,
+when `LoraConfig(layers_to_transform=[5])` is used on a 6-layer test model. This confirms the
+mechanism is real and free — no manual graph-splitting code needed, just don't target early layers
+with LoRA and PyTorch's autograd naturally skips their backward pass, since nothing downstream needs
+their gradient. Added `--lora-layers-to-transform N` to `training_run.py`, verified end-to-end
+(forward/backward, save/reload round-trip) locally before use.
+
+## trial-068: combined throughput test (not isolated)
+
+Both changes in one trial, given cost — a 3B trial is expensive enough that isolating each variable
+separately wasn't judged worth the extra spend when both are well-understood in direction: `--no-gradient-checkpointing`
+(both smoke tests showed only ~9.5GB peak VRAM against the 22.5GB budget, so checkpointing's memory
+savings likely aren't needed at batch=8) and `--lora-layers-to-transform 18` (restricts LoRA to the
+last half of the 36 layers). Same batch_size=8 and 200 train/100 val/1 epoch data budget as
+trial-067, for a direct epoch-time comparison. VRAM risk noted explicitly: removing checkpointing
+could increase activation memory substantially, since that's precisely what it trades away for
+compute — if this OOMs, the fallback is restoring checkpointing and/or lowering batch_size. Sent as
+`experiments/lora3b_trial068_manual.ipynb`.

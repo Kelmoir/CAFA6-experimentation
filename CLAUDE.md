@@ -159,7 +159,17 @@ upload path).
   the way the non-LoRA path does. `--mixed-precision {fp16,bf16}` (autocast + `GradScaler` for fp16)
   and `--gradient-checkpointing` (with the peft-required `model.enable_input_require_grads()`) are
   independent flags, useful with or without `--use-lora`, but especially necessary to fit a 3B-scale
-  model in a capped VRAM budget at all.
+  model in a capped VRAM budget at all. **Important cost caveat found via trial-067**: LoRA only
+  removes the frozen backbone's optimizer/gradient *memory* cost, not its forward/backward *compute*
+  cost — per-example wall-clock at `esm2_t36_3B_UR50D` scale was ~138x slower than the
+  `esm2_t12_35M_coarse_go_terms` phase's trials (far more than the ~81x parameter-count ratio alone
+  predicts), so a similar per-trial data budget (12k examples/epoch) isn't affordable at 3B scale.
+  `--lora-layers-to-transform N` (restrict adapters to the last N layers instead of every layer) is a
+  real, verified lever for this: peft's `layers_to_transform` combined with standard PyTorch autograd
+  behavior means the untouched earlier layers' output activations have `requires_grad=False` (verified
+  directly against peft 0.19.1, not assumed), so autograd builds no backward graph for them at all —
+  forward compute still runs for every layer, but backward, typically the more expensive half, only
+  runs for the last N. Trades adaptation breadth for real wall-clock savings.
 - **Preprocessing**: `preprocess_batch` tokenizes with `EsmTokenizer` and multi-hot encodes labels;
   it's applied lazily via `dataset.with_transform(...)` rather than a full `.map()` pass. Sequences
   longer than `max_length` (1024 by default) are truncated at generation time in

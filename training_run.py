@@ -135,6 +135,7 @@ def create_esm(
     lora_target_modules: Optional[List[str]] = None,
     lora_resume_repo_id: Optional[str] = None,
     lora_base_dtype: Optional[torch.dtype] = None,
+    lora_layers_to_transform: Optional[int] = None,
     gradient_checkpointing: bool = False,
 ):
     if id2label is None or label2id is None:
@@ -160,13 +161,36 @@ def create_esm(
         for param in base_model.esm.parameters():
             param.requires_grad = False
         if esm_dropout or attention_dropout:
-            # No "last N unfrozen" boundary applies under LoRA - every layer
-            # participates in the forward/backward graph regardless of which weights
-            # receive gradients, so these are applied uniformly across all layers
-            # rather than only the last unfreeze_last_n.
+            # By default every layer gets a LoRA adapter (no "last N unfrozen"
+            # boundary the way full fine-tuning has), so these apply uniformly across
+            # all layers rather than only the last unfreeze_last_n - unless
+            # lora_layers_to_transform restricts which layers get adapters below, in
+            # which case dropout on the untouched early layers has no effect anyway
+            # (their backward pass is skipped entirely, see below).
             for layer in base_model.esm.encoder.layer:
                 layer.output.dropout.p = esm_dropout
                 layer.attention.output.dropout.p = attention_dropout
+
+        layers_to_transform = None
+        if lora_layers_to_transform is not None:
+            # Restricting which layers get LoRA adapters isn't just about adapter
+            # count - it changes what autograd actually has to compute. Verified
+            # directly (peft 0.19.1): with adapters only on the last N layers, the
+            # earlier layers' output activations have requires_grad=False (since
+            # neither their frozen weights nor their input - unless
+            # enable_input_require_grads() forces it, see gradient_checkpointing
+            # below - require grad), so PyTorch's autograd never builds or traverses
+            # a backward graph for them at all. Forward compute still runs for every
+            # layer (the final classification depends on the full forward pass), but
+            # the backward pass - typically the more expensive half - only runs for
+            # the last N layers. No manual graph-splitting/no_grad wrapping needed;
+            # this is standard autograd behavior once trainable params are absent
+            # from a prefix of the network.
+            num_layers = base_model.esm.config.num_hidden_layers
+            n = min(lora_layers_to_transform, num_layers)
+            layers_to_transform = list(range(num_layers - n, num_layers))
+            print(f"[INFO] --lora-layers-to-transform={lora_layers_to_transform}: LoRA adapters "
+                  f"restricted to layers {layers_to_transform} - earlier layers skip backward entirely.")
 
         lora_config = LoraConfig(
             r=lora_r,
@@ -174,6 +198,7 @@ def create_esm(
             lora_dropout=lora_dropout,
             target_modules=lora_target_modules or ["query", "value"],
             modules_to_save=["classifier"],
+            layers_to_transform=layers_to_transform,
             task_type=TaskType.SEQ_CLS,
         )
         if lora_resume_repo_id:
@@ -484,6 +509,7 @@ def main() -> None:
     parser.add_argument("--lora-alpha", type=int, default=32, help="LoRA scaling factor, typically 2x --lora-r (only used with --use-lora)")
     parser.add_argument("--lora-dropout", type=float, default=0.05, help="Dropout on LoRA adapter layers (only used with --use-lora)")
     parser.add_argument("--lora-target-modules", default=None, help="Comma-separated submodule names to attach LoRA adapters to (default: query,value - the original LoRA paper's minimal config). Only used with --use-lora")
+    parser.add_argument("--lora-layers-to-transform", type=int, default=None, help="Restrict LoRA adapters to only the last N backbone layers, instead of every layer (the default). This isn't just fewer adapters - PyTorch's autograd naturally skips the backward pass entirely for the untouched earlier layers (verified directly: their output activations have requires_grad=False), since no trainable parameter depends on them. Forward compute still runs for every layer, but backward - typically the more expensive half - only runs for the last N. Trades adaptation breadth for real wall-clock savings on large models. Only used with --use-lora")
     parser.add_argument("--mixed-precision", choices=["no", "fp16", "bf16"], default="no", help="Enable autocast mixed-precision training - needed to fit larger models (e.g. via --use-lora) in limited VRAM, and also controls the dtype frozen LoRA base weights are loaded in. bf16 is preferred on Ampere+ GPUs (A10G, L4, A100); fp16 needs GradScaler (handled automatically) and works on older GPUs (T4) too")
     parser.add_argument("--gradient-checkpointing", action=argparse.BooleanOptionalAction, default=False, help="Trade compute for activation memory by recomputing the forward pass during backward - needed to fit larger models/batches in limited VRAM")
     args = parser.parse_args()
@@ -547,6 +573,7 @@ def main() -> None:
         lora_target_modules=args.lora_target_modules.split(",") if args.lora_target_modules else None,
         lora_resume_repo_id=(args.hf_repo_id if (args.resume_from_revision and args.use_lora) else None),
         lora_base_dtype=lora_base_dtype,
+        lora_layers_to_transform=args.lora_layers_to_transform,
         gradient_checkpointing=args.gradient_checkpointing,
     ).to(device)
     # Computed unconditionally (not just on a fresh start) since --pos-weight needs it

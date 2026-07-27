@@ -1,0 +1,26 @@
+[
+  {
+    "trial_id": "trial-068",
+    "parent": "trial-067",
+    "axis": "throughput calibration: --no-gradient-checkpointing + --lora-layers-to-transform 18 (combined, not isolated)",
+    "note": "trial-067 was 138x slower per example than the esm2_t12_35M_coarse_go_terms trials, far beyond the ~81x parameter-count ratio alone. Both smoke tests showed only ~9.5GB peak VRAM against the 22.5GB budget with gradient checkpointing on - more than 2x headroom unused, paid for in recompute overhead. Separately, restricting LoRA adapters to only the last 18 of 36 layers (half) means PyTorch's autograd skips building/traversing a backward graph for the earlier 18 layers entirely (verified directly: their output activations have requires_grad=False with no adapter or enable_input_require_grads() forcing gradient tracking) - forward still runs for every layer, but backward, typically the more expensive half, only runs for the last 18. Combined into one trial rather than tested in isolation, given cost - a 3B trial is expensive enough that testing each lever separately wasn't worth the extra spend given both are well-understood in direction (both should help), only magnitude is unknown. Same batch_size/data budget as trial-067 for a direct, if not perfectly attributable, epoch-time comparison. VRAM risk: removing checkpointing could increase activation memory substantially (checkpointing's whole purpose is trading compute for memory) - if this OOMs, the fallback is restoring checkpointing and/or lowering batch_size.",
+    "args": [
+      "--model-name", "facebook/esm2_t36_3B_UR50D",
+      "--use-lora",
+      "--lora-r", "16",
+      "--lora-alpha", "32",
+      "--lora-dropout", "0.05",
+      "--lora-layers-to-transform", "18",
+      "--mixed-precision", "bf16",
+      "--epochs", "1",
+      "--batch-size", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--weight-decay", "0.2",
+      "--grad-clip-norm", "1.0",
+      "--max-train-samples", "200",
+      "--max-val-samples", "100",
+      "--seed", "42"
+    ]
+  }
+]
