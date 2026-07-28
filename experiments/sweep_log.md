@@ -1907,3 +1907,26 @@ capacity concern already flagged (`--lora-layers-to-transform=10` only touches q
 can't make use of the extra data. A truly controlled (matched-exposure) comparison isn't available
 from trial-072's own epoch checkpoints — smallest granularity is 6000/epoch, already 4.4x
 trial-071's total — and would need a dedicated trial if wanted later.
+
+### trial-071 diagnostic result — real signal, and a genuinely encouraging data-efficiency read
+
+Ran locally on CPU (two failed attempts first: one killed by an accidental double-backgrounding bug,
+one by a 10min timeout too short for a 650M model's CPU inference at the usual 2000-example val set —
+fixed by adding an optional `max-val-samples` CLI arg and rerunning at 200 examples).
+
+**Caveat first**: only 220/383 labels had both classes present in this smaller 200-example sample
+(163 skipped), so these numbers are noisier and not precisely comparable to trial-050/053's
+2000-example figures — directionally trustworthy, not exact.
+
+**Results**: mean AUROC=0.6167, median=0.6498, 76.4% of evaluable labels beat 0.5, pooled
+AUROC=0.9348, best pooled F1=0.5286@threshold=0.24. Real, above-chance ranking signal — confirms the
+raw val_loss HEALTHY read, not a collapsed model. In absolute terms this sits below trial-050/053's
+median AUROC (~0.84-0.85), but that comparison is heavily confounded: trial-071 trained on only 1350
+total example-exposures vs. trial-053's ~120,000 (~89x less data). The genuinely interesting number:
+best F1 (0.5286) already lands close to trial-050/053's mature-phase numbers (0.5727/0.5810) despite
+~89x less data — consistent with the original ProtBERT-comparison hypothesis that a bigger,
+fully-fine-tuned model reaches useful quality with far less data than a smaller, partial-frozen one.
+(Small-sample threshold-sweep F1 is somewhat optimistically biased — encouraging, not precise.)
+
+This is now the quality bar trial-072 needs to clear — and per the data-volume correction already on
+record, needs to clear *considerably* given trial-072's ~35.6x data advantage in about the same time.
