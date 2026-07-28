@@ -9,14 +9,16 @@ from functools import partial
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+import numpy as np
 import torch
 from datasets import load_dataset, load_from_disk
 from huggingface_hub import HfApi, get_token
+from sklearn.metrics import f1_score, roc_auc_score
 from torch.optim import AdamW
 from transformers import AutoModelForSequenceClassification, EsmTokenizer
 
 if "google.colab" in sys.modules:
-    required_packages = ["torch", "transformers", "datasets", "huggingface_hub", "peft"]
+    required_packages = ["torch", "transformers", "datasets", "huggingface_hub", "peft", "scikit-learn"]
     for package in required_packages:
         try:
             __import__(package)
@@ -459,6 +461,120 @@ def push_checkpoint(
     )
 
 
+def run_diagnostic(
+    model,
+    tokenizer: EsmTokenizer,
+    val_dataset,
+    label_names: List[str],
+    device: torch.device,
+    autocast_dtype: Optional[torch.dtype] = None,
+    use_amp: bool = False,
+    max_val_samples: int = 2000,
+    batch_size: int = 16,
+) -> Dict[str, Any]:
+    """Post-hoc AUROC/F1 diagnostic, run against the model already resident in memory
+    (GPU, post-training) rather than reloading a checkpoint from the Hub - originally a
+    separate script (experiments/scripts/diagnostic_eval_stage2.py) meant to be run
+    later, locally; folded in here since re-downloading and reloading a checkpoint just
+    to immediately re-run inference on it is wasted work when the trained model is
+    right there, and running on CPU (the only option for a separate later invocation
+    outside Colab) is dramatically slower than the GPU it just trained on for anything
+    above ~100M params.
+
+    Exists because this task's raw threshold-0.5 accuracy/recall can look collapsed
+    under severe class imbalance (3.58% average positive rate across 383 labels) even
+    when the model has learned real per-label ranking signal - trial-050's false alarm,
+    where val_recall stayed pinned near 3% despite a real, well-ranking model
+    underneath. AUROC is threshold-independent and reveals that signal directly.
+    """
+    eval_dataset = val_dataset
+    if max_val_samples is not None and len(eval_dataset) > max_val_samples:
+        eval_dataset = eval_dataset.select(range(max_val_samples))
+
+    loader = torch.utils.data.DataLoader(
+        eval_dataset,
+        batch_size=batch_size,
+        shuffle=False,
+        collate_fn=partial(data_collate_function, tokenizer=tokenizer),
+    )
+
+    was_training = model.training
+    model.eval()
+    all_probs, all_labels = [], []
+    with torch.inference_mode():
+        for batch in loader:
+            input_ids = batch["input_ids"].to(device)
+            attention_mask = batch["attention_mask"].to(device)
+            with torch.autocast(device_type="cuda", dtype=autocast_dtype, enabled=use_amp):
+                logits = model(input_ids=input_ids, attention_mask=attention_mask).logits
+            all_probs.append(torch.sigmoid(logits.float()).cpu())
+            all_labels.append(batch["labels"])
+    if was_training:
+        model.train()
+
+    probs = torch.cat(all_probs).numpy()
+    labels = torch.cat(all_labels).numpy()
+    preds_at_half = (probs >= 0.5).astype(float)
+
+    per_label_auroc = []
+    for j in range(labels.shape[1]):
+        y_true = labels[:, j]
+        if y_true.min() == y_true.max():
+            continue  # roc_auc_score is undefined for a single-class label
+        per_label_auroc.append(roc_auc_score(y_true, probs[:, j]))
+    per_label_auroc = np.array(per_label_auroc)
+
+    prior = labels.mean()
+    tp = ((preds_at_half == 1) & (labels == 1)).sum()
+    fp = ((preds_at_half == 1) & (labels == 0)).sum()
+    fn = ((preds_at_half == 0) & (labels == 1)).sum()
+    accuracy = (preds_at_half == labels).mean()
+    precision = tp / (tp + fp + 1e-8)
+    recall = tp / (tp + fn + 1e-8)
+    f1 = 2 * precision * recall / (precision + recall + 1e-8)
+    pooled_auroc = roc_auc_score(labels.ravel(), probs.ravel())
+
+    best_f1, best_thresh = 0.0, 0.5
+    for t in np.arange(0.02, 0.51, 0.02):
+        f1_t = f1_score(labels.ravel(), (probs.ravel() >= t).astype(float), zero_division=0)
+        if f1_t > best_f1:
+            best_f1, best_thresh = f1_t, t
+
+    result = {
+        "n_val_examples": int(len(labels)),
+        "n_labels_evaluable": int(len(per_label_auroc)),
+        "n_labels_total": int(labels.shape[1]),
+        "mean_auroc": float(per_label_auroc.mean()) if per_label_auroc.size else None,
+        "median_auroc": float(np.median(per_label_auroc)) if per_label_auroc.size else None,
+        "pooled_auroc": float(pooled_auroc),
+        "accuracy_at_0.5": float(accuracy),
+        "trivial_baseline_accuracy": float(1 - prior),
+        "precision_at_0.5": float(precision),
+        "recall_at_0.5": float(recall),
+        "f1_at_0.5": float(f1),
+        "best_f1": float(best_f1),
+        "best_f1_threshold": float(best_thresh),
+    }
+
+    print("\n" + "=" * 70)
+    print(f"DIAGNOSTIC: {result['n_labels_evaluable']}/{result['n_labels_total']} labels evaluable "
+          f"(both classes present), {result['n_val_examples']} val examples")
+    print("=" * 70)
+    if per_label_auroc.size:
+        print(f"Per-label AUROC: mean={result['mean_auroc']:.4f} median={result['median_auroc']:.4f} "
+              f"min={per_label_auroc.min():.4f} max={per_label_auroc.max():.4f}")
+        print(f"  labels with AUROC > 0.5: {(per_label_auroc > 0.5).sum()}/{len(per_label_auroc)}")
+        print(f"  labels with AUROC > 0.7: {(per_label_auroc > 0.7).sum()}/{len(per_label_auroc)}")
+    else:
+        print("Per-label AUROC: no evaluable labels (every label single-class in this val slice)")
+    print(f"Pooled @ threshold 0.5: accuracy={accuracy:.4f} (trivial baseline={1 - prior:.4f}) "
+          f"precision={precision:.4f} recall={recall:.4f} f1={f1:.4f}")
+    print(f"Pooled AUROC={pooled_auroc:.4f}  Best F1={best_f1:.4f}@threshold={best_thresh:.2f}")
+    print(f"[DIAGNOSTIC] {json.dumps(result, default=str)}")
+
+    return result
+
+
 def load_training_data(data_path: Optional[Path] = None):
     if data_path is not None and data_path.exists():
         return load_from_disk(str(data_path))
@@ -512,6 +628,8 @@ def main() -> None:
     parser.add_argument("--lora-layers-to-transform", type=int, default=None, help="Restrict LoRA adapters to only the last N backbone layers, instead of every layer (the default). This isn't just fewer adapters - PyTorch's autograd naturally skips the backward pass entirely for the untouched earlier layers (verified directly: their output activations have requires_grad=False), since no trainable parameter depends on them. Forward compute still runs for every layer, but backward - typically the more expensive half - only runs for the last N. Trades adaptation breadth for real wall-clock savings on large models. Only used with --use-lora")
     parser.add_argument("--mixed-precision", choices=["no", "fp16", "bf16"], default="no", help="Enable autocast mixed-precision training - needed to fit larger models (e.g. via --use-lora) in limited VRAM, and also controls the dtype frozen LoRA base weights are loaded in. bf16 is preferred on Ampere+ GPUs (A10G, L4, A100); fp16 needs GradScaler (handled automatically) and works on older GPUs (T4) too")
     parser.add_argument("--gradient-checkpointing", action=argparse.BooleanOptionalAction, default=False, help="Trade compute for activation memory by recomputing the forward pass during backward - needed to fit larger models/batches in limited VRAM")
+    parser.add_argument("--run-diagnostic", action=argparse.BooleanOptionalAction, default=False, help="Run the post-training AUROC/F1 diagnostic (see run_diagnostic()) against the in-memory model right after training finishes, instead of needing a separate later script run against a re-downloaded checkpoint")
+    parser.add_argument("--diagnostic-max-val-samples", type=int, default=2000, help="Validation examples to use for --run-diagnostic (independent of --max-val-samples, which controls the training loop's own per-epoch validation pass and may be set much smaller for a quick calibration trial)")
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
@@ -548,6 +666,9 @@ def main() -> None:
     # train stays unsliced here (unlike validation) so each epoch can draw a different
     # --max-train-samples-sized subset below, instead of memorizing the same fixed rows
     # every epoch of a multi-epoch run.
+    full_validation_dataset = processed_dataset["validation"]  # kept unsliced for --run-diagnostic,
+    # independent of --max-val-samples below (the training loop's own per-epoch validation
+    # pass, which a quick calibration trial may cap much smaller than the diagnostic wants)
     if args.max_val_samples is not None:
         processed_dataset["validation"] = processed_dataset["validation"].select(range(min(args.max_val_samples, len(processed_dataset["validation"]))))
 
@@ -831,6 +952,21 @@ def main() -> None:
         "val_recall": validation_metrics["recall"],
     }
     print(f"[SUMMARY] {json.dumps(summary, default=str)}")
+
+    if args.run_diagnostic:
+        print("[INFO] Running post-training AUROC/F1 diagnostic on the in-memory model "
+              "(no Hub reload needed)...")
+        run_diagnostic(
+            model_esm,
+            tokenizer,
+            full_validation_dataset,
+            label_names,
+            device,
+            autocast_dtype=autocast_dtype,
+            use_amp=use_amp,
+            max_val_samples=args.diagnostic_max_val_samples,
+            batch_size=args.batch_size,
+        )
 
     if args.push_to_hub:
         if token:

@@ -41,6 +41,9 @@ Hugging Face token that has write access to `kelmoir/cafa6-esm`, and toggle
 after every epoch, same as the CLI-driven runs.
 
 This notebook runs {len(experiments)} experiment(s) sequentially: {', '.join(e['trial_id'] for e in experiments)}.
+Each run automatically includes the AUROC/F1 diagnostic (`--run-diagnostic`) right after training
+finishes, against the model already in memory - look for the `[DIAGNOSTIC]` line in the output
+alongside `[SUMMARY]`. No separate local re-download/re-run needed.
 
 **The last cell releases the runtime automatically** once the batch finishes (success
 or failure) — use "Run all" rather than stepping through cells by hand, so the
@@ -82,7 +85,7 @@ except ModuleNotFoundError:
         "results = {}",
         "for exp in experiments:",
         "    trial_id = exp['trial_id']",
-        "    args = exp['args'] + ['--run-name', trial_id, '--checkpoint-branch', trial_id, '--quiet']",
+        "    args = exp['args'] + ['--run-name', trial_id, '--checkpoint-branch', trial_id, '--quiet', '--run-diagnostic']",
         "    print(f\"\\n{'=' * 20} RUNNING {trial_id} ({exp.get('axis', '')}) {'=' * 20}\\n\")",
         "    print(f\"note: {exp.get('note', '')}\")",
         "    sys.argv = ['training_run.py'] + args",

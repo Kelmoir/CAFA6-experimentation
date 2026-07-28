@@ -186,6 +186,27 @@ upload path).
 - **Colab bootstrapping**: `training_run.py` detects `google.colab` in `sys.modules` and pip-installs
   missing heavy dependencies at import time — this is intentional for the Colab-first workflow, don't
   "fix" it into a hard requirements dependency.
+- **Post-training diagnostic (`--run-diagnostic`)**: `compute_metrics`'s threshold-0.5 accuracy/recall
+  can look like a collapsed, non-learning model under this task's severe class imbalance (3.58%
+  average positive rate across 383 labels) even when the model has learned real per-label ranking
+  signal — trial-050's false alarm, where `val_recall` stayed pinned near 3% despite a real,
+  well-ranking model underneath (found via a one-off post-hoc AUROC check). `run_diagnostic()` makes
+  that check a built-in, reusable part of `training_run.py` instead: after training finishes, it
+  computes per-label AUROC (threshold-independent — the aggregate is reported as a distribution,
+  mean/median/min/max, not printed 383-wide) plus pooled precision/recall/F1 at threshold 0.5 and a
+  best-F1 threshold sweep, all against the model **already resident in memory** (no Hub
+  re-download/reload). `--diagnostic-max-val-samples` (default 2000) is independent of
+  `--max-val-samples`, which governs the training loop's own per-epoch validation pass and may be set
+  far smaller for a quick calibration trial. `build_notebook.py` appends `--run-diagnostic`
+  automatically to every trial's args, so every future manual-notebook trial gets a `[DIAGNOSTIC]`
+  line for free, on whatever GPU it trained on. `experiments/scripts/diagnostic_eval_stage2.py` still
+  exists as a standalone script, now refactored to call the shared `run_diagnostic()` rather than
+  duplicating the inference/metrics logic — it's for post-hoc re-diagnosis of a checkpoint trained
+  *before* `--run-diagnostic` existed (e.g. trial-071/trial-072), where the model has to be
+  re-downloaded from the Hub. It has no GPU access in this sandbox, so it runs on CPU only — verified
+  directly to be dramatically slow for anything above ~100M params (a single trial-071 diagnostic run,
+  650M params, took most of a working session to finish on CPU) — another reason `--run-diagnostic`
+  running on the GPU that just trained the model is the preferred path going forward.
 
 ## Colab CLI
 
