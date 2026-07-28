@@ -1,0 +1,24 @@
+==================== RUNNING trial-070 (esm2_t33_650M_full_finetune phase kickoff: timing calibration (not a quality trial)) ====================
+
+note: Pivot from esm2_t36_3B_lora_scaleup after two throughput-recovery attempts (removing gradient_checkpointing OOM'd; halving LoRA depth only recovered 11.8%, leaving trial-069 still ~122x slower per example than the esm2_t12_35M phase). esm2_t33_650M_UR50D is the largest ESM2 tier that fits FULL fine-tuning under the 25GB VRAM budget (~10.4GB for weights+grads+optimizer at the standard ~16 bytes/param mixed-precision-AdamW estimate, per the original three-way analysis) - this matches the old ProtBERT notebook's approach (full fine-tune of a big model) more directly than LoRA did, without LoRA's forward-pass-dominated compute ceiling. Uses --unfreeze-last-n 33 (all 33 layers - the non-LoRA path, not --use-lora) so every parameter is trainable, matching 'fully trainable' as requested. Mirrors trial-067's role: 200 train / 100 val examples, 1 epoch, to get real per-example throughput before committing to a properly-budgeted real trial. --gradient-checkpointing kept on as a cautious default given trial-068's OOM lesson (full fine-tuning of 650M params needs real weight+gradient+optimizer memory on top of activations, unlike LoRA's tiny trainable footprint) - verified locally beforehand that checkpointing works correctly on this fully-unfrozen path without needing LoRA's enable_input_require_grads() hook (no frozen boundary exists). weight_decay=0.2/output_dropout=0.2/learning_rate=2e-4 carried forward from esm2_t12_35M_coarse_go_terms's own findings as a starting point, not yet validated at this scale or fine-tuning mode.
+[CONFIG] {"device": "cuda", "epochs": 1, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t33_650M_UR50D", "unfreeze_last_n": 33, "max_train_samples": 200, "max_val_samples": 100, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.2, "max_minutes": null, "run_name": "trial-070", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-070", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": true, "use_lora": false, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": null, "mixed_precision": "bf16", "gradient_checkpointing": true}
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t33_650M_UR50D
+lm_head.* keys UNEXPECTED (base MLM checkpoint has no classifier head - expected)
+classifier.* keys MISSING (freshly initialized for this task - expected)
+
+Model layers: 33, request unfreeze layers: 33
+[INFO] Initialized classifier bias to label priors (383 GO terms)
+[transformers] Caching is incompatible with gradient checkpointing in EsmLayer. Setting `use_cache=False`.
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+
+Epoch 1/1 | train_loss=0.0867 | val_loss=0.0924 | train_acc=0.9713 | val_acc=0.9685 | train_recall=0.0177 | val_recall=0.0149
+[TIMING] epoch 1 elapsed=521.1s
+
+[INFO] Pushed final-epoch checkpoint (epoch 1) to kelmoir/cafa6-esm@trial-070
+[SUMMARY] {"run_name": "trial-070", "epochs_completed": 1, "final_train_loss": 0.08671272918581963, "final_val_loss": 0.09237120701716496, "train_accuracy": 0.9712793733681462, "val_accuracy": 0.9684595300261096, "train_recall": 0.01774071343243122, "val_recall": 0.014914034865796566}
+[TIMING] trial-070 total wall clock: 760.0s
+
+==================== BATCH DONE ====================
+trial-070: completed

@@ -1,0 +1,24 @@
+[
+  {
+    "trial_id": "trial-071",
+    "parent": "trial-070",
+    "axis": "esm2_t33_650M_full_finetune phase: first real quality/health-check trial (not a timing calibration)",
+    "note": "trial-070 measured real throughput: 1.737s/example (521.1s / 300 examples), 42.3x slower than esm2_t12_35M (0.0411s/example) but ~2.9-3.3x FASTER per example than either esm2_t36_3B LoRA attempt (trial-067: 5.6843s/example, trial-069: 5.012s/example) - confirms full fine-tuning a smaller model beats LoRA on a much bigger one for this project's throughput/VRAM budget, validating the pivot. This trial spends that budget on a first real multi-epoch health check (DEAD/OVERFITTING/HEALTHY/UNSTABLE per the project's rubric), not another single-epoch timing probe. Sized to fit a 55-minute Colab session: 3 epochs, 450 train (freshly resampled each epoch, same convention as the esm2_t12_35M phase) / 100 val examples per epoch = 550 examples/epoch * 1.737s/example ~= 955s/epoch * 3 = ~2866s training + ~239s fixed overhead (data/model download + final checkpoint push, measured directly in trial-070) = ~3105s (~52min), under the 55min --max-minutes safety cutoff. learning_rate lowered from the calibration trial's carried-forward 2e-4 to 2e-5 (10x lower): 2e-4 was validated for this project's PARTIAL-freeze/head-tuning regime (esm2_t12_35M_coarse_go_terms phase), but full fine-tuning of every layer in a pretrained transformer conventionally needs a substantially lower LR to avoid destroying pretrained representations early in training - this had been flagged as unvalidated ('not yet addressed') since the pivot decision. weight_decay=0.2/output_dropout=0.2/mixed_precision=bf16/gradient_checkpointing kept identical to trial-070 - only the LR and multi-epoch schedule change, so a DEAD or UNSTABLE verdict here can be attributed cleanly to LR scale rather than a confound.",
+    "args": [
+      "--model-name", "facebook/esm2_t33_650M_UR50D",
+      "--unfreeze-last-n", "33",
+      "--mixed-precision", "bf16",
+      "--gradient-checkpointing",
+      "--epochs", "3",
+      "--batch-size", "8",
+      "--learning-rate", "2e-5",
+      "--output-dropout", "0.2",
+      "--weight-decay", "0.2",
+      "--grad-clip-norm", "1.0",
+      "--max-train-samples", "450",
+      "--max-val-samples", "100",
+      "--max-minutes", "55",
+      "--seed", "42"
+    ]
+  }
+]

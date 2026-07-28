@@ -239,19 +239,34 @@
       "next_step": "Superseded - see esm2_t33_650M_full_finetune below. This phase is paused, not deleted; the LoRA infra it built stays in training_run.py."
     },
     "esm2_t33_650M_full_finetune": {
-      "status": "active_phase candidate - trial-070 (timing calibration) designed and sent",
+      "status": "active_phase - trial-070 (timing calibration) confirmed the pivot; trial-071 (first real quality/health-check trial) designed and sent",
       "started": "2026-07-27",
       "why": "User's direct decision after seeing esm2_t36_3B_lora_scaleup's full throughput picture (trial-067: 138x slower/example than esm2_t12_35M; trial-068: OOM removing checkpointing; trial-069: only +11.8% from halving LoRA depth, still ~122x slower): pivot to full fine-tuning of a smaller model instead of LoRA on a much bigger one. esm2_t33_650M_UR50D is the largest ESM2 tier that fits FULL fine-tuning under the 25GB VRAM budget (~10.4GB for weights+grads+optimizer at the standard ~16 bytes/param mixed-precision-AdamW estimate, from the original three-way analysis that also produced the 3B/LoRA and 35M+more-data options). This is architecturally closer to the old ProtBERT notebook comparison that originally motivated the whole scale-up effort (full fine-tune of a bigger model) than LoRA was, and avoids LoRA's forward-pass-dominated compute ceiling entirely - every parameter is trainable, no frozen backbone to pay a FLOPs tax on without benefit.",
       "verification_before_launch": "Confirmed locally (tiny model) that gradient checkpointing works correctly on the fully-unfrozen (non-LoRA) path without needing LoRA's enable_input_require_grads() hook - that hook is only necessary when the input to the first checkpointed layer doesn't itself require grad (the frozen-backbone-with-trainable-tail scenario); with everything unfrozen, no such boundary exists. The earliest layer received a real, nonzero gradient with checkpointing enabled.",
       "trial_070": {
-        "status": "designed and sent, awaiting results",
+        "status": "complete - throughput result strongly validates the pivot",
         "manifest_file": "experiments/esm650m_trial070_manifest.json",
         "notebook_file": "experiments/esm650m_trial070_manual.ipynb",
         "purpose": "Timing calibration (mirrors trial-067's role for the LoRA phase) - NOT a quality trial. 200 train / 100 val examples, 1 epoch, to get real per-example throughput for this new model/mode before committing to a properly-budgeted real trial.",
         "config": "esm2_t33_650M_UR50D, --unfreeze-last-n 33 (all layers, non-LoRA path - every parameter trainable), --mixed-precision bf16, --gradient-checkpointing (kept on as a cautious default given trial-068's OOM lesson - full fine-tuning needs real weight+gradient+optimizer memory on top of activations, unlike LoRA's tiny trainable footprint), batch_size=8, weight_decay=0.2/output_dropout=0.2/learning_rate=2e-4 carried forward from esm2_t12_35M_coarse_go_terms's own findings as a starting point, not yet validated at this scale or fine-tuning mode.",
-        "next_step": "Awaiting the [TIMING] epoch line. Compare per-example throughput against both esm2_t12_35M (0.0411s/example) and the LoRA/3B attempts (5.01-5.68s/example) to see where full-fine-tune-at-650M lands, then size a properly-budgeted real trial off the real number."
+        "results": {
+          "epoch_elapsed": "521.1s for 200 train + 100 val examples = 1.737s/example",
+          "fixed_overhead": "238.9s (760.0s total wall clock - 521.1s epoch time) for dataset/model download + final checkpoint push (147.4s of that is the shard-writing step alone) - a one-time per-session cost, not per-epoch",
+          "throughput_vs_35M": "1.737s/example vs esm2_t12_35M's 0.0411s/example = 42.3x slower - notably worse than the raw parameter-count ratio alone would suggest (650M/35M ~= 18.6x), plausibly from gradient_checkpointing's recompute overhead (typically +20-40% backward-pass compute) plus 650M's wider hidden dim (1280 vs 480) making per-layer attention/FFN FLOPs scale faster than a pure layer-count comparison implies",
+          "throughput_vs_3B_lora": "1.737s/example is 3.27x FASTER than trial-067's 5.6843s/example (3B, LoRA, full-depth) and 2.89x faster than trial-069's 5.012s/example (3B, LoRA, half-depth) - full fine-tuning fewer total parameters beats LoRA fine-tuning of a much bigger frozen backbone, since LoRA's savings are memory-only and forward/backward FLOPs still scale with the full frozen model regardless of what's trainable",
+          "verdict": "Pivot strongly validated. 42.3x slower than 35M is a real, practical cost (much cheaper data budgets than the 35M phase's 12k/epoch), but a completely different order of problem than 3B/LoRA's 122-138x - this is workable."
+        },
+        "sizing_math_for_trial_071": "55min session budget (3300s) - 238.9s fixed overhead = ~3061s available for training. At 1.737s/example, that's ~1762 example-epochs total. Split across 3 epochs of 450 train (freshly resampled each epoch, matching the esm2_t12_35M phase's convention) + 100 val = 550/epoch -> ~955s/epoch -> ~2866s + 238.9s overhead = ~3105s (~52min), safely under the 55min --max-minutes safety cutoff."
       },
-      "next_step": "trial-070 sent. Once it lands, evaluate throughput and design a properly-budgeted real trial. This becomes active_phase (esm2_t12_35M_coarse_go_terms's regularization search is itself concluded, pending only a confirmation-run decision that doesn't block this)."
+      "trial_071": {
+        "status": "designed and sent, awaiting results",
+        "manifest_file": "experiments/esm650m_trial071_manifest.json",
+        "notebook_file": "experiments/esm650m_trial071_manual.ipynb",
+        "purpose": "First real quality/health-check trial at this scale (not another timing probe) - apply the project's DEAD/OVERFITTING/HEALTHY/UNSTABLE rubric to a genuine multi-epoch run for the first time under full fine-tuning.",
+        "config": "Identical to trial-070 except: --epochs 3 (was 1), --max-train-samples 450 (was 200, freshly resampled per epoch), --max-minutes 55 (new, safety cutoff), and --learning-rate 2e-5 (was 2e-4) - a 10x reduction from the calibration trial's carried-forward value. Rationale for the LR change: 2e-4 was validated in this project's PARTIAL-freeze/head-tuning regime (esm2_t12_35M_coarse_go_terms), but full fine-tuning of every layer of a pretrained transformer conventionally needs a substantially lower LR (standard practice for BERT-family full fine-tunes: ~1e-5 to 5e-5) to avoid destroying pretrained representations early in training - flagged as unaddressed since the pivot decision, now addressed as this trial's one deliberate variable change alongside the epoch/sample scale-up.",
+        "next_step": "Awaiting per-epoch [train_loss/val_loss/train_recall/val_recall] lines. Apply the rubric: DEAD if loss stays flat near the label-prior baseline and recall doesn't move: OVERFITTING if train/val gap widens: HEALTHY if both move down together with recall improving: UNSTABLE if NaN/spikes. A HEALTHY read here would be the first real per-epoch training signal at 650M full fine-tune scale - the next step after that would be sizing an even longer/uncapped run once dead/unstable risk is ruled out."
+      },
+      "next_step": "trial-071 sent. Once it lands, apply the health-check rubric; if HEALTHY, consider whether a coordinate-descent regularization search (mirroring the esm2_t12_35M phase's structure) is warranted at this scale or whether to go straight to a longer confirmation run given the throughput cost of iterating here."
     },
     "esm2_t6_8M": {
       "status": "paused_plateaued",

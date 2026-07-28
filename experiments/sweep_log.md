@@ -1766,3 +1766,48 @@ validated at this scale or fine-tuning mode. Sent as `experiments/esm650m_trial0
 `esm2_t36_3B_lora_scaleup` is now paused (not deleted) — its infrastructure (`--use-lora`,
 `--lora-layers-to-transform`, mixed precision, gradient checkpointing) stays in `training_run.py` for
 potential future use. `active_phase` moves to `esm2_t33_650M_full_finetune`.
+
+### trial-070 result — throughput strongly validates the pivot
+
+`epoch elapsed=521.1s` for 200 train + 100 val examples = **1.737s/example**. Fixed overhead (dataset
++ model download + final checkpoint push, 147.4s of which is the shard-writing step alone) accounts
+for the remaining 238.9s of the 760.0s total wall clock — a one-time per-session cost, not per-epoch.
+
+**vs. `esm2_t12_35M`** (0.0411s/example): 42.3x slower — worse than the raw parameter-count ratio
+alone predicts (650M/35M ≈ 18.6x), plausibly from `gradient_checkpointing`'s recompute overhead
+(typically +20-40% backward-pass compute) plus 650M's wider hidden dimension (1280 vs. 480) making
+per-layer attention/FFN FLOPs scale faster than pure layer-count would suggest.
+
+**vs. the 3B/LoRA attempts**: 1.737s/example is **3.27x faster** than trial-067's 5.6843s/example and
+**2.89x faster** than trial-069's 5.012s/example. Full fine-tuning of fewer total parameters beats
+LoRA fine-tuning of a much bigger frozen backbone here — LoRA's savings are memory-only, and
+forward/backward FLOPs still scale with the full frozen model regardless of what's trainable. This is
+the clearest evidence yet that the pivot was the right call: 42.3x slower than 35M is a real cost
+(nowhere near the 35M phase's 12k-examples/epoch budget), but a completely different order of problem
+than 3B/LoRA's 122-138x.
+
+Two warnings appeared during model load, both benign and not new to this trial: `[transformers]
+Caching is incompatible with gradient checkpointing in EsmLayer. Setting use_cache=False` (KV-cache is
+irrelevant for a sequence-classification model — no generation/decode loop uses it) and an
+`lm_head`-keys-unexpected / `classifier`-keys-missing load report (every trial in this sweep loads an
+MLM-pretrained checkpoint into `AutoModelForSequenceClassification`, which swaps the MLM head for a
+freshly-initialized classification head — expected at every model scale, not 650M-specific).
+
+## trial-071: first real quality/health-check trial
+
+`esm2_t33_650M_full_finetune`'s first genuine multi-epoch run — applying the project's
+DEAD/OVERFITTING/HEALTHY/UNSTABLE rubric for the first time at this scale, not another timing probe.
+Sizing math off trial-070's real throughput: 55min session budget (3300s) − 238.9s fixed overhead ≈
+3061s training budget. 3 epochs × (450 train, freshly resampled each epoch, + 100 val fixed) = 550
+examples/epoch × 1.737s/example ≈ 955s/epoch × 3 ≈ 2866s + overhead ≈ 3105s (~52min), under a new
+`--max-minutes 55` safety cutoff.
+
+One deliberate change beyond scale: `--learning-rate 2e-5`, a 10x reduction from trial-070's
+carried-forward 2e-4. That value was validated in this project's partial-freeze/head-tuning regime
+(`esm2_t12_35M_coarse_go_terms`); full fine-tuning of every layer in a pretrained transformer
+conventionally needs a substantially lower LR (BERT-family full-fine-tune convention: ~1e-5 to 5e-5)
+to avoid destroying pretrained representations early in training — flagged unaddressed since the
+pivot decision, addressed here. `weight_decay=0.2`/`output_dropout=0.2`/`--mixed-precision
+bf16`/`--gradient-checkpointing` held identical to trial-070, so a DEAD or UNSTABLE verdict can be
+attributed cleanly to the LR change rather than a confound. Sent as
+`experiments/esm650m_trial071_manual.ipynb`.
