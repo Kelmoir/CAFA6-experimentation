@@ -1930,3 +1930,25 @@ fully-fine-tuned model reaches useful quality with far less data than a smaller,
 
 This is now the quality bar trial-072 needs to clear — and per the data-volume correction already on
 record, needs to clear *considerably* given trial-072's ~35.6x data advantage in about the same time.
+
+### Correction: the full 2000-example diagnostic finally landed too
+
+Turned out the original 2000-example diagnostic run wasn't killed after all — it was still alive in
+the background and completed independently of the 200-example fallback. Since it matches
+trial-050/051/053's own 2000-example convention exactly, it's the trustworthy number, superseding the
+200-example fallback reported earlier.
+
+**Definitive results**: mean AUROC=0.5855, median=0.6005 (vs. the fallback's 0.6498 — a real
+difference this time, not sample noise, since both now use the same 2000-example size), 362/383
+labels evaluable, 69.6% beat 0.5, pooled AUROC=0.9354, best F1=0.5319@0.24 (barely moved from the
+fallback's 0.5286 — the pooled/F1 numbers were robust to sample size, only the per-label macro AUROC
+was sensitive to it).
+
+Revised read: median AUROC is genuinely, meaningfully lower than trial-050/053's (~0.84-0.85) — a real
+gap now, not an artifact. But best F1 (0.5319) still sits close to trial-050/053's (0.5727/0.5810)
+despite ~89x less data. The gap between "F1 close" and "macro-AUROC far off" suggests the model
+handles the pooled/common-label case well (where F1 concentrates) but hasn't learned the long tail of
+rarer labels nearly as well yet — unsurprising with only 1350 total exposures spread across 383
+labels. Still a data-efficiency point in the full-fine-tune model's favor, just more tempered than the
+smaller sample suggested. This definitive number (median AUROC 0.6005, best F1 0.5319) is trial-072's
+real bar to clear.
