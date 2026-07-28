@@ -2047,3 +2047,34 @@ epoch produced. Verified locally: both LoRA and non-LoRA reload paths reproduce 
 against the pre-save model.
 
 Sent `esm3b_lora_a100_trial073_manual.ipynb` and `esm3b_lora_a100_trial074_manual.ipynb`.
+
+## trial-073 result — decisive: more depth doesn't help, and costs more
+
+No OOM — the memory accounting (batch×adapted-layers roughly constant) held up. The
+auto-appended `--run-diagnostic` gave the AUROC/F1 read for free, right on the GPU, no separate
+diagnostic notebook needed this time — exactly the workflow improvement was for.
+
+**Result: essentially a tie against trial-072 on every quality metric**, at the identical data
+budget (8 epochs, 6000/1000):
+
+| metric | trial-072 (10 layers) | trial-073 (18 layers) | delta |
+|---|---|---|---|
+| median AUROC | 0.8811 | 0.8865 | +0.61% |
+| mean AUROC | 0.8637 | 0.8671 | +0.39% |
+| best F1 | 0.5974 | 0.5972 | -0.05% |
+| pooled AUROC | 0.9635 | 0.9638 | +0.04% |
+| val_loss | 0.0721 | 0.0719 | -0.30% |
+
+Every delta is well under 1% relative — noise-level, not a real quality difference in either
+direction. Meanwhile genuinely more expensive: 0.0659s/example vs. 0.0588s/example (**12.1%
+slower**), 14.8% more total wall clock (66.1min vs. 57.6min) for the same budget.
+
+Honest confound: the forced batch drop (16→8) is entangled with the depth increase (10→18) — can't
+cleanly attribute the null result to depth alone. Doesn't change the practical conclusion: whatever
+the mix of effects, going deeper bought nothing here at a real cost.
+
+**Verdict**: 10 layers isn't just the config that fits comfortably — it already captures
+essentially all the achievable quality at this ~48,000-example budget. No reason to trade
+throughput for depth here. (Open, untested, low-priority caveat: capacity differences sometimes
+only show up with substantially more data — trial-074's much bigger run uses layers=10, not 18, so
+this won't get directly re-tested at a larger budget.)

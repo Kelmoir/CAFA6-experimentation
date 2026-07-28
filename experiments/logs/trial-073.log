@@ -1,0 +1,49 @@
+==================== RUNNING trial-073 (esm2_t36_3B_lora_scaleup: layer-depth test - does going deeper than 10 layers improve quality?) ====================
+
+[CONFIG] {"device": "cuda", "epochs": 8, "batch_size": 8, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t36_3B_UR50D", "unfreeze_last_n": 2, "max_train_samples": 6000, "max_val_samples": 1000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.2, "max_minutes": 150.0, "run_name": "trial-073", "trackio_space_id": null, "checkpoint_mode": "every-epoch", "checkpoint_branch": "trial-073", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": true, "use_lora": true, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": 18, "mixed_precision": "bf16", "gradient_checkpointing": false, "run_diagnostic": true, "diagnostic_max_val_samples": 2000}
+
+[INFO] --lora-layers-to-transform=18: LoRA adapters restricted to layers [18..35] - earlier layers skip backward entirely.
+trainable params: 10,486,143 || all params: 2,850,467,487 || trainable%: 0.3679
+[INFO] Initialized classifier bias to label priors (383 GO terms)
+[INFO] HF token resolved via Colab Secrets
+
+Epoch 1/8 | train_loss=0.0835 | val_loss=0.0779 | train_acc=0.9713 | val_acc=0.9723 | train_recall=0.0298 | val_recall=0.0335
+[TIMING] epoch 1 elapsed=462.2s
+[INFO] Pushed checkpoint for epoch 1 to kelmoir/cafa6-esm@trial-073
+Epoch 2/8 | train_loss=0.0767 | val_loss=0.0751 | train_acc=0.9727 | val_acc=0.9728 | train_recall=0.0458 | val_recall=0.0458
+[TIMING] epoch 2 elapsed=456.6s
+[INFO] Pushed checkpoint for epoch 2 to kelmoir/cafa6-esm@trial-073
+Epoch 3/8 | train_loss=0.0743 | val_loss=0.0742 | train_acc=0.9730 | val_acc=0.9731 | train_recall=0.0573 | val_recall=0.0625
+[TIMING] epoch 3 elapsed=464.4s
+[INFO] Pushed checkpoint for epoch 3 to kelmoir/cafa6-esm@trial-073
+Epoch 4/8 | train_loss=0.0731 | val_loss=0.0731 | train_acc=0.9732 | val_acc=0.9730 | train_recall=0.0665 | val_recall=0.0622
+[TIMING] epoch 4 elapsed=466.0s
+[INFO] Pushed checkpoint for epoch 4 to kelmoir/cafa6-esm@trial-073
+Epoch 5/8 | train_loss=0.0716 | val_loss=0.0726 | train_acc=0.9736 | val_acc=0.9733 | train_recall=0.0736 | val_recall=0.0620
+[TIMING] epoch 5 elapsed=460.8s
+[INFO] Pushed checkpoint for epoch 5 to kelmoir/cafa6-esm@trial-073
+Epoch 6/8 | train_loss=0.0696 | val_loss=0.0730 | train_acc=0.9743 | val_acc=0.9731 | train_recall=0.0765 | val_recall=0.0786
+[TIMING] epoch 6 elapsed=462.2s
+[INFO] Pushed checkpoint for epoch 6 to kelmoir/cafa6-esm@trial-073
+Epoch 7/8 | train_loss=0.0686 | val_loss=0.0720 | train_acc=0.9745 | val_acc=0.9735 | train_recall=0.0854 | val_recall=0.0815
+[TIMING] epoch 7 elapsed=465.4s
+[INFO] Pushed checkpoint for epoch 7 to kelmoir/cafa6-esm@trial-073
+Epoch 8/8 | train_loss=0.0687 | val_loss=0.0719 | train_acc=0.9745 | val_acc=0.9736 | train_recall=0.0914 | val_recall=0.0819
+[TIMING] epoch 8 elapsed=454.8s
+[INFO] Pushed checkpoint for epoch 8 to kelmoir/cafa6-esm@trial-073
+[SUMMARY] {"run_name": "trial-073", "epochs_completed": 8, "final_train_loss": 0.06873917205135027, "final_val_loss": 0.07190278273820877, "train_accuracy": 0.9744521322889469, "val_accuracy": 0.9735509138381201, "train_recall": 0.09135140478610992, "val_recall": 0.08189016580581665, "best_epoch": 8, "best_val_loss": 0.07190278273820877}
+
+[INFO] Running post-training AUROC/F1 diagnostic on the in-memory model (no Hub reload needed)...
+======================================================================
+DIAGNOSTIC: 362/383 labels evaluable (both classes present), 2000 val examples
+======================================================================
+Per-label AUROC: mean=0.8671 median=0.8865 min=0.1386 max=1.0000
+  labels with AUROC > 0.5: 359/362
+  labels with AUROC > 0.7: 343/362
+Pooled @ threshold 0.5: accuracy=0.9735 (trivial baseline=0.9643) precision=0.6903 recall=0.4669 f1=0.5570
+Pooled AUROC=0.9638  Best F1=0.5972@threshold=0.28
+[DIAGNOSTIC] {"n_val_examples": 2000, "n_labels_evaluable": 362, "n_labels_total": 383, "mean_auroc": 0.8670657118407228, "median_auroc": 0.8864762155832174, "pooled_auroc": 0.9638428079579747, "accuracy_at_0.5": 0.9734569190600523, "trivial_baseline_accuracy": 0.9642545580863953, "precision_at_0.5": 0.6903180517302822, "recall_at_0.5": 0.4668931010553059, "f1_at_0.5": 0.5570370322231782, "best_f1": 0.5971598749366823, "best_f1_threshold": 0.28}
+[TIMING] trial-073 total wall clock: 3965.4s
+
+==================== BATCH DONE ====================
+trial-073: completed
