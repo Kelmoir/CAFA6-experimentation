@@ -1,0 +1,28 @@
+==================== RUNNING trial-071 (esm2_t33_650M_full_finetune phase: first real quality/health-check trial (not a timing calibration)) ====================
+
+note: trial-070 measured real throughput: 1.737s/example (521.1s / 300 examples), 42.3x slower than esm2_t12_35M (0.0411s/example) but ~2.9-3.3x FASTER per example than either esm2_t36_3B LoRA attempt (trial-067: 5.6843s/example, trial-069: 5.012s/example) - confirms full fine-tuning a smaller model beats LoRA on a much bigger one for this project's throughput/VRAM budget, validating the pivot. This trial spends that budget on a first real multi-epoch health check (DEAD/OVERFITTING/HEALTHY/UNSTABLE per the project's rubric), not another single-epoch timing probe. Sized to fit a 55-minute Colab session: 3 epochs, 450 train (freshly resampled each epoch) / 100 val examples per epoch. learning_rate lowered from the calibration trial's carried-forward 2e-4 to 2e-5 (10x lower).
+[CONFIG] {"device": "cuda", "epochs": 3, "batch_size": 8, "learning_rate": 2e-05, "max_length": 1024, "model_name": "facebook/esm2_t33_650M_UR50D", "unfreeze_last_n": 33, "max_train_samples": 450, "max_val_samples": 100, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.2, "max_minutes": 55.0, "run_name": "trial-071", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-071", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": true, "use_lora": false, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": null, "mixed_precision": "bf16", "gradient_checkpointing": true}
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t33_650M_UR50D
+lm_head.* keys UNEXPECTED (base MLM checkpoint has no classifier head - expected)
+classifier.* keys MISSING (freshly initialized for this task - expected)
+
+Model layers: 33, request unfreeze layers: 33
+[INFO] Initialized classifier bias to label priors (383 GO terms)
+[transformers] Caching is incompatible with gradient checkpointing in EsmLayer. Setting `use_cache=False`.
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+
+Epoch 1/3 | train_loss=0.0895 | val_loss=0.0918 | train_acc=0.9692 | val_acc=0.9687 | train_recall=0.0181 | val_recall=0.0188
+[TIMING] epoch 1 elapsed=1040.0s
+Epoch 2/3 | train_loss=0.0874 | val_loss=0.0906 | train_acc=0.9706 | val_acc=0.9700 | train_recall=0.0193 | val_recall=0.0200
+[TIMING] epoch 2 elapsed=1020.7s
+Epoch 3/3 | train_loss=0.0866 | val_loss=0.0900 | train_acc=0.9707 | val_acc=0.9698 | train_recall=0.0211 | val_recall=0.0214
+[TIMING] epoch 3 elapsed=1039.3s
+
+[INFO] Pushed final-epoch checkpoint (epoch 3) to kelmoir/cafa6-esm@trial-071
+[SUMMARY] {"run_name": "trial-071", "epochs_completed": 3, "final_train_loss": 0.08660910291629925, "final_val_loss": 0.09001400522314586, "train_accuracy": 0.9707455758630693, "val_accuracy": 0.9698172323759792, "train_recall": 0.02111786976456642, "val_recall": 0.021370746195316315}
+[TIMING] trial-071 total wall clock: 3225.4s
+
+==================== BATCH DONE ====================
+trial-071: completed

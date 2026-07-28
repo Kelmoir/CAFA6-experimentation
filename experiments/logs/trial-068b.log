@@ -1,0 +1,24 @@
+==================== RUNNING trial-068b (throughput calibration: --no-gradient-checkpointing + --lora-layers-to-transform 18 (combined, not isolated), batch size=16) ====================
+[Run by user directly on a rented A100, 5x the $/hr of the 15GB card trial-067/068/069 ran on - not through this session's colab-CLI flow]
+
+[CONFIG] {"device": "cuda", "epochs": 1, "batch_size": 16, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t36_3B_UR50D", "unfreeze_last_n": 2, "max_train_samples": 200, "max_val_samples": 100, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.2, "max_minutes": null, "run_name": "trial-068b", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-068b", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": true, "use_lora": true, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": 10, "mixed_precision": "bf16", "gradient_checkpointing": false}
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t36_3B_UR50D
+lm_head.* keys UNEXPECTED (base MLM checkpoint has no classifier head - expected)
+classifier.* keys MISSING (freshly initialized for this task - expected)
+
+[INFO] --lora-layers-to-transform=10: LoRA adapters restricted to layers [26, 27, 28, 29, 30, 31, 32, 33, 34, 35] - earlier layers skip backward entirely.
+trainable params: 9,175,423 || all params: 2,849,156,767 || trainable%: 0.3220
+[INFO] --use-lora set: --unfreeze-last-n is ignored (LoRA adapters apply per --lora-target-modules across all backbone layers).
+[INFO] Initialized classifier bias to label priors (383 GO terms)
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+
+Epoch 1/1 | train_loss=0.0878 | val_loss=0.0959 | train_acc=0.9705 | val_acc=0.9681 | train_recall=0.0172 | val_recall=0.0207
+[TIMING] epoch 1 elapsed=16.5s
+[INFO] Pushed final-epoch checkpoint (epoch 1) to kelmoir/cafa6-esm@trial-068b
+[SUMMARY] {"run_name": "trial-068b", "epochs_completed": 1, "final_train_loss": 0.0877559889967625, "final_val_loss": 0.09585799915449959, "train_accuracy": 0.9705352480417755, "val_accuracy": 0.9680939947780679, "train_recall": 0.017163386568427086, "val_recall": 0.020700419321656227}
+[TIMING] trial-068b total wall clock: 35.5s
+
+==================== BATCH DONE ====================
+trial-068b: completed

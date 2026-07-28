@@ -1811,3 +1811,52 @@ pivot decision, addressed here. `weight_decay=0.2`/`output_dropout=0.2`/`--mixed
 bf16`/`--gradient-checkpointing` held identical to trial-070, so a DEAD or UNSTABLE verdict can be
 attributed cleanly to the LR change rather than a confound. Sent as
 `experiments/esm650m_trial071_manual.ipynb`.
+
+### trial-071 result — HEALTHY, first real signal at full-fine-tune scale
+
+3 epochs, 450 train (resampled)/100 val, `learning_rate=2e-5`. Train and val loss decrease together
+across all 3 epochs (train: 0.0895→0.0874→0.0866, val: 0.0918→0.0906→0.0900), gap stays small
+(0.0023→0.0032→0.0034), and recall/accuracy climb on both splits together (val_recall
+0.0188→0.0200→0.0214). No dead/overfitting/unstable signature — reads as HEALTHY under the project's
+rubric. The still-low raw recall (2.1%) isn't a red flag on its own: this is the same signature
+trial-050 showed at 35M scale before the AUROC diagnostic proved it was a real, well-ranking model
+underneath a miscalibrated threshold, not a collapse. Running `diagnostic_eval_stage2.py` locally
+(CPU) against this checkpoint for the equivalent read at 650M scale.
+
+Timing: total wall clock 3225.4s vs. the ~3105s sizing estimate (3.9% over, still under the 55min
+`--max-minutes` cap). Per-example throughput this trial: ~1.879s/example (1033.3s avg epoch / 550
+examples), close to trial-070's 1.737s/example — same order of magnitude, minor session variance.
+
+## New A100 finding: trial-068b reopens esm2_t36_3B_lora_scaleup
+
+While trial-071 was in flight, the user independently ran a variant of trial-068 (which had OOM'd on
+the 15GB card) on a rented A100 — 5x the $/hr of the card used for trial-067/068/069 — with
+`batch_size=16` (was 8), `--lora-layers-to-transform 10` (was 18, narrower), same
+`--no-gradient-checkpointing`. User reports `batch_size=32` was still too big on this card, and full
+fine-tuning the 3B model didn't fit at all — this A100/LoRA config is close to the real ceiling here.
+
+**Result: `epoch elapsed=16.5s` for 200 train + 100 val examples = 0.055s/example.** That's:
+- **1.34x slower than `esm2_t12_35M`'s own T4 baseline** (0.0411s/example) — training the *full 2.85B*
+  model via LoRA on an A100 is now within spitting distance of the smallest model's throughput on the
+  weakest GPU in this whole sweep.
+- **103.4x faster than trial-067** (5.6843s/example) and **91.1x faster than trial-069**
+  (5.012s/example) — the throughput ceiling that killed LoRA on T4 turns out to be a T4-specific wall,
+  not a LoRA-specific one.
+- **31.6x faster than trial-070** and **34.2x faster than trial-071's per-epoch average** — this
+  config now beats the parallel `esm2_t33_650M_full_finetune` phase's own numbers by a wide margin.
+
+**Cost-effectiveness** (examples/sec-per-dollar, T4 card = 1x, A100 = 5x): A100/LoRA-3B ≈ 3.64
+examples/sec/$ vs. T4/650M-full-FT ≈ 0.576 examples/sec/$ — the A100 path is **~6.3x more
+cost-effective** despite costing 5x more per hour, because the throughput gain (31.6x) dwarfs the
+price premium (5x). At 0.055s/example, a 14,000-example epoch (matching the `esm2_t12_35M` phase's
+own 12k-train/2k-val convention) takes ~12.8min; 10 such epochs ~2.1 hours — the ProtBERT-comparable
+data exposure that originally motivated this whole scale-up effort is now affordable in real
+Colab/A100 time, not just in theory.
+
+**Caveat**: still only a 200-example/1-epoch timing calibration — says nothing about whether
+`--lora-layers-to-transform=10` (narrower than trial-069's own untested-for-quality 18) has enough
+adaptation capacity for real quality. That question stays open until a real multi-epoch trial runs.
+
+This reopens `esm2_t36_3B_lora_scaleup` as a serious, arguably now-superior alternative to
+`esm2_t33_650M_full_finetune`. Both phases are live candidates — real cost/strategy decision for the
+user on which (or whether both) to keep pushing with a properly-budgeted quality trial.
