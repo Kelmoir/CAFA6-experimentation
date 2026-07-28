@@ -783,6 +783,7 @@ def main() -> None:
     best_checkpoint_dir = Path("models") / run_name / "best_checkpoint"
     best_val_loss = float("inf")
     best_epoch: Optional[int] = None
+    best_metrics: Optional[Dict[str, float]] = None
     start_time = time.time()
 
     use_amp = args.mixed_precision != "no" and device.type == "cuda"
@@ -871,6 +872,15 @@ def main() -> None:
         validation_loss /= max(1, len(validation_dataloader))
         validation_metrics = finalize_metrics(validation_metrics_acc)
 
+        latest_metrics = {
+            "train_loss": train_loss,
+            "val_loss": validation_loss,
+            "train_accuracy": train_metrics["accuracy"],
+            "val_accuracy": validation_metrics["accuracy"],
+            "train_recall": train_metrics["recall"],
+            "val_recall": validation_metrics["recall"],
+        }
+
         if validation_loss < best_val_loss:
             # Tracked unconditionally (not just under --push-to-hub) since it's cheap -
             # a LoRA checkpoint only saves the small adapter (tens of MB), and even a
@@ -881,6 +891,7 @@ def main() -> None:
             # history vs. this trial's single best point).
             best_val_loss = validation_loss
             best_epoch = epoch + 1
+            best_metrics = latest_metrics
             model_esm.save_pretrained(best_checkpoint_dir)
             tokenizer.save_pretrained(best_checkpoint_dir)
 
@@ -904,15 +915,6 @@ def main() -> None:
                     "val_recall": validation_metrics["recall"],
                 }
             )
-
-        latest_metrics = {
-            "train_loss": train_loss,
-            "val_loss": validation_loss,
-            "train_accuracy": train_metrics["accuracy"],
-            "val_accuracy": validation_metrics["accuracy"],
-            "train_recall": train_metrics["recall"],
-            "val_recall": validation_metrics["recall"],
-        }
 
         if args.checkpoint_mode == "every-epoch" and token:
             try:
@@ -971,11 +973,40 @@ def main() -> None:
     }
     print(f"[SUMMARY] {json.dumps(summary, default=str)}")
 
+    # Resolved once, shared by --run-diagnostic and --push-to-hub below - the model we
+    # actually care about reporting/promoting is the BEST epoch, not necessarily
+    # whatever the last epoch happened to be (a real gap found via trial-074: val_loss
+    # bottomed out at epoch 7 then crept back up by epoch 10 from mild overfitting -
+    # model_esm's in-memory weights had moved past the best point by the time this
+    # code runs). Reuses create_esm's existing LoRA-resume code path pointed at a local
+    # directory instead of a Hub revision - transformers/peft's from_pretrained both
+    # accept a local path transparently, same as a Hub repo id.
+    best_model = model_esm
+    if best_epoch is not None and best_epoch != epoch + 1:
+        print(f"[INFO] Using best checkpoint (epoch {best_epoch}, val_loss={best_val_loss:.4f}) "
+              f"for diagnostic/promotion, not the last epoch ({epoch + 1}, val_loss={validation_loss:.4f})")
+        if args.use_lora:
+            best_model = create_esm(
+                model_type=args.model_name,
+                use_lora=True,
+                lora_resume_repo_id=str(best_checkpoint_dir),
+                id2label=id2label,
+                label2id=label2id,
+                lora_base_dtype=lora_base_dtype,
+            ).to(device)
+        else:
+            best_model = AutoModelForSequenceClassification.from_pretrained(
+                str(best_checkpoint_dir),
+                num_labels=len(id2label),
+                id2label=id2label,
+                label2id=label2id,
+                problem_type="multi_label_classification",
+            ).to(device)
+
     if args.run_diagnostic:
-        print("[INFO] Running post-training AUROC/F1 diagnostic on the in-memory model "
-              "(no Hub reload needed)...")
+        print("[INFO] Running post-training AUROC/F1 diagnostic on the best-checkpoint model...")
         run_diagnostic(
-            model_esm,
+            best_model,
             tokenizer,
             full_validation_dataset,
             label_names,
@@ -988,41 +1019,22 @@ def main() -> None:
 
     if args.push_to_hub:
         if token:
-            push_model = model_esm
-            if best_epoch is not None and best_epoch != epoch + 1:
-                # model_esm's in-memory weights have moved past the best point by now
-                # (training kept going after it) - reload from the locally-saved best
-                # checkpoint instead of promoting whatever the last epoch happened to
-                # be. Reuses create_esm's existing LoRA-resume code path pointed at a
-                # local directory instead of a Hub revision - transformers/peft's
-                # from_pretrained both accept a local path transparently, same as a Hub
-                # repo id.
-                print(f"[INFO] Reloading best checkpoint (epoch {best_epoch}, val_loss={best_val_loss:.4f}) "
-                      f"for Hub promotion, not the last epoch ({epoch + 1}, val_loss={validation_loss:.4f})")
-                if args.use_lora:
-                    push_model = create_esm(
-                        model_type=args.model_name,
-                        use_lora=True,
-                        lora_resume_repo_id=str(best_checkpoint_dir),
-                        id2label=id2label,
-                        label2id=label2id,
-                        lora_base_dtype=lora_base_dtype,
-                    ).to(device)
-                else:
-                    push_model = AutoModelForSequenceClassification.from_pretrained(
-                        str(best_checkpoint_dir),
-                        num_labels=len(id2label),
-                        id2label=id2label,
-                        label2id=label2id,
-                        problem_type="multi_label_classification",
-                    ).to(device)
-            commit_message = (
-                f"CAFA6 ESM training run (best epoch {best_epoch}, val_loss={best_val_loss:.4f})"
-                if best_epoch is not None else "CAFA6 ESM training run"
-            )
-            print(f"[INFO] Uploading model to Hugging Face Hub as {args.hf_repo_id}")
-            push_model.push_to_hub(args.hf_repo_id, token=token, commit_message=commit_message)
-            tokenizer.push_to_hub(args.hf_repo_id, token=token, commit_message=commit_message)
+            print(f"[INFO] Uploading best checkpoint to Hugging Face Hub as {args.hf_repo_id}@main")
+            try:
+                push_checkpoint(
+                    best_model,
+                    tokenizer,
+                    repo_id=args.hf_repo_id,
+                    branch="main",
+                    token=token,
+                    epoch=(best_epoch if best_epoch is not None else epoch + 1),
+                    metrics=(best_metrics if best_metrics is not None else latest_metrics),
+                    config=config,
+                    local_dir=best_checkpoint_dir,
+                )
+                print(f"[INFO] Pushed to {args.hf_repo_id}@main")
+            except Exception as exc:  # pragma: no cover - runtime dependency
+                print(f"[WARN] Hub promotion push failed: {exc}")
         else:
             print("[WARN] Hugging Face Hub upload requested but no token was found; skipping upload.")
 
