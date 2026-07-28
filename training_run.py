@@ -780,6 +780,9 @@ def main() -> None:
     token = get_hf_token(args.hf_token_file)
     checkpoint_branch = args.checkpoint_branch or run_name
     checkpoint_dir = Path("models") / run_name / "checkpoint"
+    best_checkpoint_dir = Path("models") / run_name / "best_checkpoint"
+    best_val_loss = float("inf")
+    best_epoch: Optional[int] = None
     start_time = time.time()
 
     use_amp = args.mixed_precision != "no" and device.type == "cuda"
@@ -868,6 +871,19 @@ def main() -> None:
         validation_loss /= max(1, len(validation_dataloader))
         validation_metrics = finalize_metrics(validation_metrics_acc)
 
+        if validation_loss < best_val_loss:
+            # Tracked unconditionally (not just under --push-to-hub) since it's cheap -
+            # a LoRA checkpoint only saves the small adapter (tens of MB), and even a
+            # full-fine-tune save is a normal, standard "best checkpoint" cost, not a
+            # VRAM risk (save_pretrained doesn't require a second live GPU copy of the
+            # model). Local-disk only here, no Hub upload - --checkpoint-mode's
+            # every-epoch/final pushes are a separate, unrelated concern (per-epoch
+            # history vs. this trial's single best point).
+            best_val_loss = validation_loss
+            best_epoch = epoch + 1
+            model_esm.save_pretrained(best_checkpoint_dir)
+            tokenizer.save_pretrained(best_checkpoint_dir)
+
         print(
             f"Epoch {epoch + 1}/{args.start_epoch + args.epochs} | "
             f"train_loss={train_loss:.4f} | val_loss={validation_loss:.4f} | "
@@ -950,6 +966,8 @@ def main() -> None:
         "val_accuracy": validation_metrics["accuracy"],
         "train_recall": train_metrics["recall"],
         "val_recall": validation_metrics["recall"],
+        "best_epoch": best_epoch,
+        "best_val_loss": best_val_loss,
     }
     print(f"[SUMMARY] {json.dumps(summary, default=str)}")
 
@@ -970,9 +988,41 @@ def main() -> None:
 
     if args.push_to_hub:
         if token:
+            push_model = model_esm
+            if best_epoch is not None and best_epoch != epoch + 1:
+                # model_esm's in-memory weights have moved past the best point by now
+                # (training kept going after it) - reload from the locally-saved best
+                # checkpoint instead of promoting whatever the last epoch happened to
+                # be. Reuses create_esm's existing LoRA-resume code path pointed at a
+                # local directory instead of a Hub revision - transformers/peft's
+                # from_pretrained both accept a local path transparently, same as a Hub
+                # repo id.
+                print(f"[INFO] Reloading best checkpoint (epoch {best_epoch}, val_loss={best_val_loss:.4f}) "
+                      f"for Hub promotion, not the last epoch ({epoch + 1}, val_loss={validation_loss:.4f})")
+                if args.use_lora:
+                    push_model = create_esm(
+                        model_type=args.model_name,
+                        use_lora=True,
+                        lora_resume_repo_id=str(best_checkpoint_dir),
+                        id2label=id2label,
+                        label2id=label2id,
+                        lora_base_dtype=lora_base_dtype,
+                    ).to(device)
+                else:
+                    push_model = AutoModelForSequenceClassification.from_pretrained(
+                        str(best_checkpoint_dir),
+                        num_labels=len(id2label),
+                        id2label=id2label,
+                        label2id=label2id,
+                        problem_type="multi_label_classification",
+                    ).to(device)
+            commit_message = (
+                f"CAFA6 ESM training run (best epoch {best_epoch}, val_loss={best_val_loss:.4f})"
+                if best_epoch is not None else "CAFA6 ESM training run"
+            )
             print(f"[INFO] Uploading model to Hugging Face Hub as {args.hf_repo_id}")
-            model_esm.push_to_hub(args.hf_repo_id, token=token, commit_message="CAFA6 ESM training run")
-            tokenizer.push_to_hub(args.hf_repo_id, token=token, commit_message="CAFA6 ESM training run")
+            push_model.push_to_hub(args.hf_repo_id, token=token, commit_message=commit_message)
+            tokenizer.push_to_hub(args.hf_repo_id, token=token, commit_message=commit_message)
         else:
             print("[WARN] Hugging Face Hub upload requested but no token was found; skipping upload.")
 
