@@ -1,0 +1,29 @@
+[
+  {
+    "trial_id": "trial-073",
+    "parent": "trial-072",
+    "axis": "esm2_t36_3B_lora_scaleup: layer-depth test - does going deeper than 10 layers improve quality?",
+    "note": "trial-072 (--lora-layers-to-transform 10, batch=16) decisively resolved the capacity concern raised before it ran and became the sweep's best-ever result (median AUROC 0.8811, best F1 0.5974). Open question left on the table: how much MORE quality would a deeper adapter stack buy, if it fit? This trial tests --lora-layers-to-transform 18 (double the current depth, and the same value trial-069 used for throughput-only testing on the old T4 hardware, never validated for quality) at trial-072's EXACT same data/epoch budget (8 epochs, 6000 train resampled/1000 val) per user direction - stick to that size, since it's affordable and already proven to give plenty of signal, rather than spending extra time/cost on a separate small calibration step first. --batch-size reduced 16->8 to fit the deeper adapter stack in VRAM: rough accounting suggests this should be roughly memory-neutral-to-slightly-cheaper than trial-072's own footprint (retained backward-activation memory approximately scales with batch_size x num_adapted_layers - trial-072's 16x10=160 vs this trial's 8x18=144 - though this is an approximation, not a guarantee, real GPU memory has overhead/fragmentation a simple proportional model doesn't capture). An OOM here would fail fast and cheap (per trial-068's ~21.8s precedent), not deep into a paid multi-hour run, so skipping a separate tiny calibration step carries low risk. If it OOMs: fallback is --batch-size 4, or as a last resort re-enabling --gradient-checkpointing (accepting the throughput cost that was specifically avoided to get trial-068b/trial-072's speed). Everything else (learning_rate=2e-4, weight_decay=0.2, output_dropout=0.2, bf16, no gradient checkpointing, checkpoint-mode every-epoch given real A100 dollar stakes) held identical to trial-072, so any quality delta is attributable to depth (and the forced batch-size change) rather than a confound. Not pushed to the Hub main branch - this is an exploratory comparison, not yet a candidate for promotion.",
+    "args": [
+      "--model-name", "facebook/esm2_t36_3B_UR50D",
+      "--use-lora",
+      "--lora-r", "16",
+      "--lora-alpha", "32",
+      "--lora-dropout", "0.05",
+      "--lora-layers-to-transform", "18",
+      "--mixed-precision", "bf16",
+      "--no-gradient-checkpointing",
+      "--batch-size", "8",
+      "--epochs", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--weight-decay", "0.2",
+      "--grad-clip-norm", "1.0",
+      "--max-train-samples", "6000",
+      "--max-val-samples", "1000",
+      "--max-minutes", "150",
+      "--checkpoint-mode", "every-epoch",
+      "--seed", "42"
+    ]
+  }
+]

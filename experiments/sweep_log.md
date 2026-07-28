@@ -2020,3 +2020,30 @@ abandoned (trial-071 was a real, working HEALTHY result) but is superseded as th
 Open questions for next steps, not yet decided: a longer/larger confirmation run at this config;
 whether `--push-to-hub` promotion criteria are met; whether a wider layer count than 10 (now that
 quality and throughput are both de-risked) could push even further.
+
+## User direction: keep the current config fixed, two follow-up trials
+
+Current config (batch=16/layers=10) stays as the production layout regardless of what a
+deeper-layer test finds — it fits the A100's VRAM barely (batch=32 already OOMs). Two trials
+designed:
+
+**trial-073** (does more LoRA depth help): `--lora-layers-to-transform 18` (double trial-072's 10)
+at trial-072's *exact* data/epoch budget (8 epochs, 6000/1000) — per user direction to stick to that
+trial size rather than a separate small calibration step first, since an OOM fails fast/cheap anyway.
+`--batch-size 8` (halved from 16) to fit the deeper stack; rough accounting (retained
+backward-activation memory ≈ batch_size × adapted_layers: 16×10=160 vs. 8×18=144) suggests this
+should be roughly memory-neutral-to-slightly-cheaper than trial-072, though not a guarantee.
+Exploratory only, no `--push-to-hub`.
+
+**trial-074** (production run): trial-072's exact config, scaled to match "the previous finetune
+attempts" — `esm2_t12_35M_coarse_go_terms`'s own seed_config convention (10 epochs, 12,000
+train/2,000 val). Estimated ~142min at trial-072's real throughput; `--max-minutes 170` for buffer.
+`--push-to-hub` set — this is a real promotion to `kelmoir/cafa6-esm@main`.
+
+**Code change enabling the push-to-hub ask**: `training_run.py` now tracks `best_val_loss`/
+`best_epoch` across the run (unconditionally — cheap, a LoRA save is only tens of MB) and, if the
+best epoch wasn't the last one, reloads and pushes that checkpoint instead of whatever the final
+epoch produced. Verified locally: both LoRA and non-LoRA reload paths reproduce byte-exact logits
+against the pre-save model.
+
+Sent `esm3b_lora_a100_trial073_manual.ipynb` and `esm3b_lora_a100_trial074_manual.ipynb`.

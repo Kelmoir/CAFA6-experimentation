@@ -1,0 +1,30 @@
+[
+  {
+    "trial_id": "trial-074",
+    "parent": "trial-072",
+    "axis": "esm2_t36_3B_lora_scaleup: production run at the proven config, matched to the previous finetune attempts' data/epoch budget, promoted via --push-to-hub",
+    "note": "trial-072's exact proven-fitting config (--lora-layers-to-transform 10, batch_size=16, no gradient checkpointing, bf16, lr=2e-4/wd=0.2/output_dropout=0.2) - already confirmed decisively HEALTHY and the best-quality result across the entire sweep (median AUROC 0.8811, best F1 0.5974, beating even the mature esm2_t12_35M_coarse_go_terms phase's trial-053). This trial keeps that exact config unchanged and scales the data/epoch budget up to match 'the previous finetune attempts' - the esm2_t12_35M_coarse_go_terms phase's own long-standing seed_config convention (epochs=10, max_train_samples=12000 resampled per epoch, max_val_samples=2000), rather than trial-072's smaller 8-epoch/6000-sample health-check budget. Sizing at trial-072's real measured throughput (0.0588s/example): (12000+2000)*0.0588=823.2s/epoch * 10 = 8232s (~137min) + overhead (download, 10x small LoRA-adapter checkpoint pushes) ~= ~142min estimate; --max-minutes 170 gives a generous buffer without capping a legitimately-running full 10-epoch job. --checkpoint-mode every-epoch given real A100 dollar stakes (losing a ~2.5h run to a crash with nothing to resume from would be a real cost). --push-to-hub is set: this promotes to kelmoir/cafa6-esm@main, using the newly-added best-checkpoint logic (training_run.py now tracks best_val_loss/best_epoch across the run and, if the best epoch isn't the last one, reloads and pushes that saved checkpoint instead of whatever the final epoch happened to produce) - directly addressing the user's explicit ask for 'push to hub on the best checkpoint, not just the last one'. --run-diagnostic is auto-appended by build_notebook.py, so the real AUROC/F1 read on this larger run comes for free right after training, on the GPU, no separate diagnostic notebook needed this time.",
+    "args": [
+      "--model-name", "facebook/esm2_t36_3B_UR50D",
+      "--use-lora",
+      "--lora-r", "16",
+      "--lora-alpha", "32",
+      "--lora-dropout", "0.05",
+      "--lora-layers-to-transform", "10",
+      "--mixed-precision", "bf16",
+      "--no-gradient-checkpointing",
+      "--batch-size", "16",
+      "--epochs", "10",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--weight-decay", "0.2",
+      "--grad-clip-norm", "1.0",
+      "--max-train-samples", "12000",
+      "--max-val-samples", "2000",
+      "--max-minutes", "170",
+      "--checkpoint-mode", "every-epoch",
+      "--push-to-hub",
+      "--seed", "42"
+    ]
+  }
+]
