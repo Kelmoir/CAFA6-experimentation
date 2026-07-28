@@ -1890,3 +1890,20 @@ safety cap. Sent as `experiments/esm3b_lora_a100_trial072_manual.ipynb`.
 Directly answers the open question from trial-068b's caveat: does `--lora-layers-to-transform=10`
 (narrower than trial-069's own untested-for-quality 18, and LoRA only touches query/value within
 adapted layers, not full transformer blocks) carry enough adaptation capacity for real learning.
+
+### Correction: trial-072's "fair time comparison" framing was wrong
+
+User caught this immediately: matching wall-clock time between trial-071 and trial-072 does not
+control for quality, because their throughput differs by ~32x. trial-071 sees 3×450=1350 total train
+exposures across its whole run; trial-072 sees 8×6000=48000 — a **35.6x data advantage**, with
+trial-072's first epoch *alone* (6000) already exceeding trial-071's entire 3-epoch total.
+
+Corrected bar: trial-072 beating trial-071 on final loss/quality is not itself informative — with 35x
+more data it should win easily if the config is working. What matters is whether the margin is
+proportionate to that advantage. A merely-tied or marginally-better result despite ~35x more data
+would be a real warning sign, not a "these paths are comparable" result — it would point at the
+capacity concern already flagged (`--lora-layers-to-transform=10` only touches query/value within
+10/36 layers, far less adaptation surface than a full unfreeze) as the likely explanation: the config
+can't make use of the extra data. A truly controlled (matched-exposure) comparison isn't available
+from trial-072's own epoch checkpoints — smallest granularity is 6000/epoch, already 4.4x
+trial-071's total — and would need a dedicated trial if wanted later.
