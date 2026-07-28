@@ -2078,3 +2078,36 @@ essentially all the achievable quality at this ~48,000-example budget. No reason
 throughput for depth here. (Open, untested, low-priority caveat: capacity differences sometimes
 only show up with substantially more data — trial-074's much bigger run uses layers=10, not 18, so
 this won't get directly re-tested at a larger budget.)
+
+## trial-074 result — first real Hub promotion, and a genuine bug found from it
+
+10 epochs, 12,000/2,000 (matching the previous finetune attempts' convention), trial-072's exact
+proven config, `--push-to-hub` set.
+
+**Mild overfitting found**: val_loss bottoms out at epoch 7 (0.0719) then creeps back up through
+epoch 10 (0.0726) while train_loss keeps falling monotonically the whole time (0.0826→0.0662) — the
+train/val gap flips sign over the run. Real, if mild, at this data budget beyond ~7 epochs.
+
+**The best-checkpoint feature did exactly its job**: log shows `[INFO] Reloading best checkpoint
+(epoch 7, val_loss=0.0719) for Hub promotion, not the last epoch (10, val_loss=0.0726)`, followed by
+a successful push. **`kelmoir/cafa6-esm@main` is now live with a real, confirmed-strong checkpoint —
+the first successful `--push-to-hub` promotion in this project's history.**
+
+**Bug found and fixed from this trial's own log**: `--run-diagnostic` ran *before* the best-checkpoint
+reload existed in the code path, so the printed `[DIAGNOSTIC]` numbers (median AUROC 0.8884, best F1
+0.5963) are for the epoch-10 model, not the epoch-7 model that actually got promoted. Fixed in
+`training_run.py`: both `--run-diagnostic` and `--push-to-hub` now resolve a single `best_model` once
+and share it, instead of separately reloading (and diagnosing the wrong one). Also switched the
+promotion path to reuse `push_checkpoint()` targeting `branch="main"` instead of raw `push_to_hub()`
+calls, so a promoted model now carries a `trial_metrics.json` alongside it — matching every other
+checkpoint branch, and letting future diagnostic tooling auto-detect its config without hardcoding.
+Not re-run for trial-074 itself — the epoch7-vs-epoch10 val_loss gap is only 0.0007, so the true
+epoch-7 number is expected to be very close to (plausibly marginally better than) what's reported.
+
+**vs. trial-072**: median AUROC +0.0073 (modest), best F1 -0.0011 (flat) — scaling from 8/6000 to
+10/12000 epochs/samples bought very little beyond trial-072, consistent with the overfitting finding:
+more epochs at this budget mostly walks past the useful point rather than keeps improving.
+
+**Note**: `kelmoir/cafa6-esm@main` (epoch 7) and `kelmoir/cafa6-esm@trial-074` (epoch 10, from the
+every-epoch branch pushes) are now two different checkpoints on two different branches of the same
+repo — worth remembering if referenced later.

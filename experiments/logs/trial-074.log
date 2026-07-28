@@ -1,0 +1,52 @@
+==================== RUNNING trial-074 (esm2_t36_3B_lora_scaleup: production run at the proven config, matched to the previous finetune attempts' data/epoch budget, promoted via --push-to-hub) ====================
+
+[CONFIG] {"device": "cuda", "epochs": 10, "batch_size": 16, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t36_3B_UR50D", "unfreeze_last_n": 2, "max_train_samples": 12000, "max_val_samples": 2000, "push_to_hub": true, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.2, "max_minutes": 170.0, "run_name": "trial-074", "trackio_space_id": null, "checkpoint_mode": "every-epoch", "checkpoint_branch": "trial-074", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": true, "use_lora": true, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": 10, "mixed_precision": "bf16", "gradient_checkpointing": false, "run_diagnostic": true, "diagnostic_max_val_samples": 2000}
+
+[INFO] --lora-layers-to-transform=10: LoRA adapters restricted to layers [26..35]
+trainable params: 9,175,423 || all params: 2,849,156,767 || trainable%: 0.3220
+[INFO] Initialized classifier bias to label priors (383 GO terms)
+[INFO] HF token resolved via Colab Secrets
+
+Epoch 1/10 | train_loss=0.0826 | val_loss=0.0771 | train_acc=0.9715 | val_acc=0.9726 | train_recall=0.0307 | val_recall=0.0396
+[TIMING] epoch 1 elapsed=819.2s
+[INFO] Pushed checkpoint for epoch 1 to kelmoir/cafa6-esm@trial-074
+Epoch 2/10 | train_loss=0.0758 | val_loss=0.0750 | train_acc=0.9728 | val_acc=0.9728 | train_recall=0.0462 | val_recall=0.0531
+[TIMING] epoch 2 elapsed=812.5s
+Epoch 3/10 | train_loss=0.0734 | val_loss=0.0737 | train_acc=0.9733 | val_acc=0.9733 | train_recall=0.0549 | val_recall=0.0485
+[TIMING] epoch 3 elapsed=820.9s
+Epoch 4/10 | train_loss=0.0719 | val_loss=0.0733 | train_acc=0.9735 | val_acc=0.9731 | train_recall=0.0671 | val_recall=0.0580
+[TIMING] epoch 4 elapsed=818.6s
+Epoch 5/10 | train_loss=0.0702 | val_loss=0.0722 | train_acc=0.9740 | val_acc=0.9736 | train_recall=0.0739 | val_recall=0.0652
+[TIMING] epoch 5 elapsed=821.1s
+Epoch 6/10 | train_loss=0.0691 | val_loss=0.0723 | train_acc=0.9743 | val_acc=0.9736 | train_recall=0.0824 | val_recall=0.0636
+[TIMING] epoch 6 elapsed=820.5s
+Epoch 7/10 | train_loss=0.0680 | val_loss=0.0719 | train_acc=0.9746 | val_acc=0.9735 | train_recall=0.0921 | val_recall=0.0802
+[TIMING] epoch 7 elapsed=819.4s
+Epoch 8/10 | train_loss=0.0672 | val_loss=0.0720 | train_acc=0.9748 | val_acc=0.9734 | train_recall=0.0997 | val_recall=0.0883
+[TIMING] epoch 8 elapsed=812.9s
+Epoch 9/10 | train_loss=0.0673 | val_loss=0.0721 | train_acc=0.9747 | val_acc=0.9736 | train_recall=0.1047 | val_recall=0.0744
+[TIMING] epoch 9 elapsed=817.6s
+Epoch 10/10 | train_loss=0.0662 | val_loss=0.0726 | train_acc=0.9750 | val_acc=0.9733 | train_recall=0.1177 | val_recall=0.0907
+[TIMING] epoch 10 elapsed=809.2s
+[INFO] Pushed checkpoint for epoch 10 to kelmoir/cafa6-esm@trial-074
+[SUMMARY] {"run_name": "trial-074", "epochs_completed": 10, "final_train_loss": 0.06619075924654802, "final_val_loss": 0.07260583141446114, "train_accuracy": 0.9749725848563968, "val_accuracy": 0.973280678851175, "train_recall": 0.11772462725639343, "val_recall": 0.0907018855214119, "best_epoch": 7, "best_val_loss": 0.07185048681497574}
+
+[INFO] Running post-training AUROC/F1 diagnostic on the in-memory model (no Hub reload needed)...
+[NOTE: bug found post-hoc - this ran on the epoch-10 model, not the epoch-7 best checkpoint that got promoted below. Fixed in training_run.py for future trials.]
+======================================================================
+DIAGNOSTIC: 362/383 labels evaluable (both classes present), 2000 val examples
+======================================================================
+Per-label AUROC: mean=0.8747 median=0.8884 min=0.3309 max=1.0000
+  labels with AUROC > 0.5: 361/362
+  labels with AUROC > 0.7: 344/362
+Pooled @ threshold 0.5: accuracy=0.9733 (trivial baseline=0.9643) precision=0.6850 recall=0.4677 f1=0.5559
+Pooled AUROC=0.9643  Best F1=0.5963@threshold=0.30
+[DIAGNOSTIC] {"n_val_examples": 2000, "n_labels_evaluable": 362, "n_labels_total": 383, "mean_auroc": 0.8746665895620601, "median_auroc": 0.8884055668857412, "pooled_auroc": 0.9642560596680008, "accuracy_at_0.5": 0.9732832898172323, "trivial_baseline_accuracy": 0.9642545580863953, "precision_at_0.5": 0.6849593495931295, "recall_at_0.5": 0.4676965779188241, "f1_at_0.5": 0.5558521556913213, "best_f1": 0.5963438735177866, "best_f1_threshold": 0.30000000000000004}
+
+[INFO] Reloading best checkpoint (epoch 7, val_loss=0.0719) for Hub promotion, not the last epoch (10, val_loss=0.0726)
+[INFO] Resumed LoRA adapter weights from models/trial-074/best_checkpoint@None
+[INFO] Uploading model to Hugging Face Hub as kelmoir/cafa6-esm
+[TIMING] trial-074 total wall clock: 8514.7s
+
+==================== BATCH DONE ====================
+trial-074: completed
