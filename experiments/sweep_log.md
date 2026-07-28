@@ -1982,3 +1982,41 @@ it, auto-detecting config from `trial_metrics.json`. Deliberately sized for a **
 tier), not another A100 — inference-only for a 3B LoRA checkpoint needs only ~6-10GB VRAM (per the
 original smoke test), no backward pass or training-batch memory at all. Generated and sent
 `experiments/diagnostic_trial072.ipynb`.
+
+## trial-072 diagnostic result — decisive win, new best result across the ENTIRE sweep
+
+Ran on a cheap GPU (not the A100) via `diagnostic_trial072.ipynb`. Results: mean AUROC=0.8637,
+median=0.8811, 358/362 evaluable labels beat 0.5, 344/362 beat 0.7, pooled AUROC=0.9635, best pooled
+F1=0.5974@0.30.
+
+**Clears the corrected bar decisively.** Median AUROC: 0.6005 (trial-071) → 0.8811 (trial-072), a
++0.2806 absolute jump. Read as "skill margin above the 0.5 no-signal baseline" (the fairer lens, since
+AUROC caps at 1.0): trial-071's margin was 0.1005, trial-072's is 0.3811 — a **3.79x increase**, far
+beyond a merely-proportionate or noise-level result. Best F1: 0.5319 → 0.5974 (+12.3% relative). This
+is the opposite of the red-flag scenario flagged before the trial ran: if `--lora-layers-to-transform=10`
+were capacity-starved, ~35.6x more data would produce only a marginal or plateauing improvement.
+Instead the model used the extra data very effectively — **the capacity concern is resolved**: 10
+layers of query/value-only LoRA adapters plus the classifier head is enough for real, substantial
+learning on this task, at least up to a 48,000-example budget.
+
+**Bonus finding, not just a win against trial-071**: trial-072's median AUROC (0.8811) and best F1
+(0.5974) now *exceed* trial-053 — the `esm2_t12_35M_coarse_go_terms` phase's own best-ever, most-mature
+result (0.8545/0.5810, from 10 epochs × 12,000 resampled examples = 120,000 total exposures, behind
+two full beam-search rounds of regularization tuning). trial-072 beats that with under half the total
+training data (48,000 exposures) and zero regularization tuning of its own. **trial-072 is now the
+best-quality checkpoint in this entire sweep, across every phase.**
+
+**Cost honesty check**: this specific comparison (trial-072 vs. trial-053) is a genuine quality win,
+not also a cost win. trial-053: 10 epochs × ~574s/epoch = 95.7min at 1x ($/hr) = 1.59 cost-units.
+trial-072: 57.6min at 5x (A100) = 4.80 cost-units — trial-072 cost ~3x more in dollar-normalized terms
+than trial-053 to produce a better result. The earlier "costs ~5/34 of the alternative" framing was
+specifically about 3B/LoRA-on-A100 vs. 650M-full-finetune-on-T4 (still true, and now reinforced on
+quality too, not just throughput) — it was never a claim that this path beats the mature 35M/T4 phase
+on cost, only that it now demonstrably beats it on quality.
+
+`esm2_t36_3B_lora_scaleup` becomes the sweep's leading direction. `esm2_t33_650M_full_finetune` is not
+abandoned (trial-071 was a real, working HEALTHY result) but is superseded as the active focus.
+
+Open questions for next steps, not yet decided: a longer/larger confirmation run at this config;
+whether `--push-to-hub` promotion criteria are met; whether a wider layer count than 10 (now that
+quality and throughput are both de-risked) could push even further.
