@@ -1,0 +1,46 @@
+==================== RUNNING trial-072 (esm2_t36_3B_lora_scaleup phase, REVIVED on A100: first real quality/health-check trial at this depth-restricted config) ====================
+[Run by user directly on the rented A100]
+
+[CONFIG] {"device": "cuda", "epochs": 8, "batch_size": 16, "learning_rate": 0.0002, "max_length": 1024, "model_name": "facebook/esm2_t36_3B_UR50D", "unfreeze_last_n": 2, "max_train_samples": 6000, "max_val_samples": 1000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.2, "max_minutes": 65.0, "run_name": "trial-072", "trackio_space_id": null, "checkpoint_mode": "every-epoch", "checkpoint_branch": "trial-072", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": true, "use_lora": true, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": 10, "mixed_precision": "bf16", "gradient_checkpointing": false}
+[NOTE] This notebook embedded the pre---run-diagnostic version of training_run.py - no [DIAGNOSTIC] line ran. See experiments/diagnostic_trial072.ipynb for the follow-up.
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t36_3B_UR50D
+lm_head.* keys UNEXPECTED (base MLM checkpoint has no classifier head - expected)
+classifier.* keys MISSING (freshly initialized for this task - expected)
+
+[INFO] --lora-layers-to-transform=10: LoRA adapters restricted to layers [26, 27, 28, 29, 30, 31, 32, 33, 34, 35] - earlier layers skip backward entirely.
+trainable params: 9,175,423 || all params: 2,849,156,767 || trainable%: 0.3220
+[INFO] --use-lora set: --unfreeze-last-n is ignored (LoRA adapters apply per --lora-target-modules across all backbone layers).
+[INFO] Initialized classifier bias to label priors (383 GO terms)
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+
+Epoch 1/8 | train_loss=0.0859 | val_loss=0.0806 | train_acc=0.9709 | val_acc=0.9719 | train_recall=0.0250 | val_recall=0.0281
+[TIMING] epoch 1 elapsed=412.9s
+[INFO] Pushed checkpoint for epoch 1 to kelmoir/cafa6-esm@trial-072
+Epoch 2/8 | train_loss=0.0789 | val_loss=0.0771 | train_acc=0.9723 | val_acc=0.9724 | train_recall=0.0373 | val_recall=0.0376
+[TIMING] epoch 2 elapsed=407.8s
+[INFO] Pushed checkpoint for epoch 2 to kelmoir/cafa6-esm@trial-072
+Epoch 3/8 | train_loss=0.0765 | val_loss=0.0753 | train_acc=0.9727 | val_acc=0.9728 | train_recall=0.0455 | val_recall=0.0398
+[TIMING] epoch 3 elapsed=412.6s
+[INFO] Pushed checkpoint for epoch 3 to kelmoir/cafa6-esm@trial-072
+Epoch 4/8 | train_loss=0.0751 | val_loss=0.0753 | train_acc=0.9728 | val_acc=0.9727 | train_recall=0.0496 | val_recall=0.0443
+[TIMING] epoch 4 elapsed=414.6s
+[INFO] Pushed checkpoint for epoch 4 to kelmoir/cafa6-esm@trial-072
+Epoch 5/8 | train_loss=0.0736 | val_loss=0.0739 | train_acc=0.9733 | val_acc=0.9731 | train_recall=0.0528 | val_recall=0.0561
+[TIMING] epoch 5 elapsed=411.3s
+[INFO] Pushed checkpoint for epoch 5 to kelmoir/cafa6-esm@trial-072
+Epoch 6/8 | train_loss=0.0715 | val_loss=0.0735 | train_acc=0.9738 | val_acc=0.9732 | train_recall=0.0571 | val_recall=0.0637
+[TIMING] epoch 6 elapsed=411.6s
+[INFO] Pushed checkpoint for epoch 6 to kelmoir/cafa6-esm@trial-072
+Epoch 7/8 | train_loss=0.0704 | val_loss=0.0729 | train_acc=0.9742 | val_acc=0.9734 | train_recall=0.0649 | val_recall=0.0633
+[TIMING] epoch 7 elapsed=413.5s
+[INFO] Pushed checkpoint for epoch 7 to kelmoir/cafa6-esm@trial-072
+Epoch 8/8 | train_loss=0.0706 | val_loss=0.0721 | train_acc=0.9740 | val_acc=0.9736 | train_recall=0.0701 | val_recall=0.0667
+[TIMING] epoch 8 elapsed=407.4s
+[INFO] Pushed checkpoint for epoch 8 to kelmoir/cafa6-esm@trial-072
+[SUMMARY] {"run_name": "trial-072", "epochs_completed": 8, "final_train_loss": 0.07056474830706914, "final_val_loss": 0.07212057283946446, "train_accuracy": 0.9740017406440383, "val_accuracy": 0.9736318537859008, "train_recall": 0.07013871520757675, "val_recall": 0.06673333048820496}
+[TIMING] trial-072 total wall clock: 3453.4s
+
+==================== BATCH DONE ====================
+trial-072: completed

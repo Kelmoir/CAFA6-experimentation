@@ -1952,3 +1952,33 @@ rarer labels nearly as well yet — unsurprising with only 1350 total exposures 
 labels. Still a data-efficiency point in the full-fine-tune model's favor, just more tempered than the
 smaller sample suggested. This definitive number (median AUROC 0.6005, best F1 0.5319) is trial-072's
 real bar to clear.
+
+## trial-072 result — HEALTHY on raw metrics, real verdict pending a diagnostic
+
+8 epochs, 6000 train (resampled)/1000 val, trial-068b's exact proven config. Val loss decreases
+essentially monotonically (0.0806→0.0721, one epoch-3/4 tie), train/val gap stays small throughout
+(val often slightly *below* train — no overfitting widening), val_recall climbs 2.4x over the run
+(0.0281→0.0667). Still trending down at epoch 8 — no obvious plateau within this budget, a point in
+favor of `--lora-layers-to-transform=10` not having hit a hard capacity wall yet, though not
+conclusive without a same-data-budget comparison at a wider layer count. Throughput: 0.0588s/example,
+within 7% of trial-068b's 0.055s/example calibration — confirms that number was representative.
+Total wall clock 3453.4s (57.6min), completed all 8 epochs naturally without hitting the 65min cap.
+
+Raw numbers vs. trial-071: val_loss 0.0721 vs. 0.0900 (better), val_recall 0.0667 vs. 0.0214 (~3.1x
+higher) — a real difference, not noise.
+
+**But**: no `[DIAGNOSTIC]` line ran. This notebook was generated before `--run-diagnostic` existed, so
+its embedded `training_run.py` source predates the flag entirely (confirmed — no `run_diagnostic`/
+`diagnostic_max_val_samples` keys in the `[CONFIG]` dict at all). Per this project's own established
+reasoning (trial-050's false alarm), it would be inconsistent to call a final verdict against
+trial-071's real bar (median AUROC 0.6005, best F1 0.5319) using only raw val_loss/recall — that's
+exactly the unreliable proxy the diagnostic exists to correct for on this severely imbalanced task.
+The raw numbers are encouraging and directionally support trial-072 being ahead, but the rigorous call
+needs the diagnostic.
+
+Built `experiments/scripts/build_diagnostic_notebook.py` — generates a standalone, training-free
+notebook that loads any Hub checkpoint by revision and runs `training_run.run_diagnostic()` against
+it, auto-detecting config from `trial_metrics.json`. Deliberately sized for a **cheap GPU** (T4/15GB
+tier), not another A100 — inference-only for a 3B LoRA checkpoint needs only ~6-10GB VRAM (per the
+original smoke test), no backward pass or training-batch memory at all. Generated and sent
+`experiments/diagnostic_trial072.ipynb`.
