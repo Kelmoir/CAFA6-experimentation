@@ -1860,3 +1860,33 @@ adaptation capacity for real quality. That question stays open until a real mult
 This reopens `esm2_t36_3B_lora_scaleup` as a serious, arguably now-superior alternative to
 `esm2_t33_650M_full_finetune`. Both phases are live candidates — real cost/strategy decision for the
 user on which (or whether both) to keep pushing with a properly-budgeted quality trial.
+
+## Decision: commit to esm2_t36_3B_lora_scaleup on A100
+
+User's math: 34x speedup at 5x cost means this path costs ~5/34 of the parallel
+`esm2_t33_650M_full_finetune`/T4 path per unit of progress. Committing to it.
+
+**New infrastructure**: `build_notebook.py`'s generated notebooks now end with a cell that calls
+`google.colab.runtime.unassign()` after the batch loop finishes (success or failure) — the gap
+between "training done" and a human noticing and manually disconnecting is pure wasted cost on a
+rented GPU, and matters more the pricier the hardware gets. Intro markdown updated to say "Run all"
+rather than step through cells by hand, so the release isn't gated on manual interaction. This
+applies to every future notebook, not just this trial's.
+
+## trial-072: first real quality trial at trial-068b's proven config
+
+Uses trial-068b's exact proven-fitting settings (`--lora-layers-to-transform 10`,
+`--no-gradient-checkpointing`, `batch_size=16`, `bf16`) — `batch_size=32` OOM'd and full fine-tuning
+didn't fit at all on this A100, so this is the real operating point. Sized to ~50min (8 epochs, 6000
+train resampled/1000 val) to roughly match trial-071's own time budget on the parallel path, for a
+fair same-time comparison rather than committing to a longer run before any quality signal exists at
+this depth-restricted config. `learning_rate` kept at 2e-4 (LoRA's zero-init adapters don't carry
+full-fine-tuning's early-training risk, so no reason yet to apply the same 10x reduction used for
+`esm2_t33_650M_full_finetune`). `--checkpoint-mode every-epoch` (not this project's usual `final`)
+given real dollar stakes — losing a ~50min A100 run to a crash with no resumable checkpoint is a real
+cost now, not the free-tier "cheap to rerun" case the default was chosen for. `--max-minutes 65`
+safety cap. Sent as `experiments/esm3b_lora_a100_trial072_manual.ipynb`.
+
+Directly answers the open question from trial-068b's caveat: does `--lora-layers-to-transform=10`
+(narrower than trial-069's own untested-for-quality 18, and LoRA only touches query/value within
+adapted layers, not full transformer blocks) carry enough adaptation capacity for real learning.

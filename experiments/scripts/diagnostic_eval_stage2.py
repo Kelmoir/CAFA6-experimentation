@@ -33,7 +33,7 @@ import training_run
 
 CHECKPOINT_REVISION = sys.argv[1] if len(sys.argv) > 1 else "trial-050"
 HF_REPO_ID = "kelmoir/cafa6-esm"
-MAX_VAL_SAMPLES = 2000
+MAX_VAL_SAMPLES = int(sys.argv[2]) if len(sys.argv) > 2 else 2000
 
 # push_checkpoint() (training_run.py) writes trial_metrics.json alongside every
 # checkpoint with the full CLI config for that trial (model_name, use_lora, etc.) - read

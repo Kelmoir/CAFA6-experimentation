@@ -1,0 +1,29 @@
+[
+  {
+    "trial_id": "trial-072",
+    "parent": "trial-068b",
+    "axis": "esm2_t36_3B_lora_scaleup phase, REVIVED on A100: first real quality/health-check trial at this depth-restricted config",
+    "note": "trial-068b (user-run on a rented A100, 5x the $/hr of the T4-class card used earlier) measured 0.055s/example with --lora-layers-to-transform 10/--no-gradient-checkpointing/batch_size=16 - 91-103x faster than every prior T4 LoRA attempt, and cost-effectiveness (throughput gain outstripping the 5x price premium) means this path now costs roughly 5/34 of what a comparable amount of progress costs on the parallel esm2_t33_650M_full_finetune (T4) path. But it was still only a 200-example/1-epoch timing probe, and --lora-layers-to-transform=10 is narrower than trial-069's own untested-for-quality 18 - LoRA only adapts query/value projections within whichever layers it targets (not the full transformer block the way --unfreeze-last-n does), so 10 layers of LoRA carries meaningfully less adaptation capacity than the depth-fraction (10/36~=28%) alone suggests. This trial spends a real but moderate budget (~50min, matching trial-071's own time budget on the parallel 650M path for a fair same-time comparison) to get real per-epoch loss curves at this exact depth-restricted config before committing to a longer, more expensive confirmation run. Uses the exact config trial-068b proved fits (batch_size=16, lora_layers_to_transform=10, no gradient checkpointing - batch_size=32 OOM'd, full fine-tuning didn't fit at all on this A100). learning_rate kept at this project's standing 2e-4 LoRA default (not reduced the way esm2_t33_650M_full_finetune's learning rate was - that reduction was specific to full fine-tuning's convention of needing a much lower LR; LoRA's freshly-initialized, zero-init adapters don't carry the same risk of disturbing pretrained weights early in training, so no evidence yet that 2e-4 is wrong here). --checkpoint-mode every-epoch (not this project's usual --checkpoint-mode final) given the real dollar stakes of A100 rental - losing a ~50min run to a mid-run failure with no checkpoint to resume from is a real cost this time, not the free-tier-Colab 'cheap to rerun' case the default was chosen for. --max-minutes 65 as a safety cap (estimate ~51-55min including overhead) so a hang doesn't burn indefinitely - the notebook's new auto-release-runtime final cell (added specifically for this trial's cost sensitivity) fires regardless of whether this cap is hit or training finishes naturally.",
+    "args": [
+      "--model-name", "facebook/esm2_t36_3B_UR50D",
+      "--use-lora",
+      "--lora-r", "16",
+      "--lora-alpha", "32",
+      "--lora-dropout", "0.05",
+      "--lora-layers-to-transform", "10",
+      "--mixed-precision", "bf16",
+      "--no-gradient-checkpointing",
+      "--batch-size", "16",
+      "--epochs", "8",
+      "--learning-rate", "2e-4",
+      "--output-dropout", "0.2",
+      "--weight-decay", "0.2",
+      "--grad-clip-norm", "1.0",
+      "--max-train-samples", "6000",
+      "--max-val-samples", "1000",
+      "--max-minutes", "65",
+      "--checkpoint-mode", "every-epoch",
+      "--seed", "42"
+    ]
+  }
+]

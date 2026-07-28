@@ -31,9 +31,9 @@ def main() -> None:
 
     intro = f"""# CAFA6 ESM sweep — manual batch run
 
-Generated from `{manifest_path}`. Run cells top to bottom in a Colab GPU runtime
-(**Runtime > Change runtime type > T4 GPU**), then copy the full output of the last
-cell back into the chat.
+Generated from `{manifest_path}`. Run **Runtime > Run all** in a Colab GPU runtime
+(**Runtime > Change runtime type**), then copy the full output of the training cell
+back into the chat.
 
 **Before running**: add an `HF_TOKEN` secret (key icon in the left sidebar) with a
 Hugging Face token that has write access to `kelmoir/cafa6-esm`, and toggle
@@ -41,6 +41,11 @@ Hugging Face token that has write access to `kelmoir/cafa6-esm`, and toggle
 after every epoch, same as the CLI-driven runs.
 
 This notebook runs {len(experiments)} experiment(s) sequentially: {', '.join(e['trial_id'] for e in experiments)}.
+
+**The last cell releases the runtime automatically** once the batch finishes (success
+or failure) — use "Run all" rather than stepping through cells by hand, so the
+disconnect isn't waiting on someone noticing training is done. Rented GPUs charge for
+idle time same as busy time, and that gap is pure waste.
 """
 
     module_load_cell = """# torchao ships pre-installed on Colab but can be too old for the transformers
@@ -97,12 +102,26 @@ except ModuleNotFoundError:
     ]
     runner_source = "\n".join(runner_lines)
 
+    runtime_release_cell = """# Release the runtime the moment the batch is done, regardless of outcome - the gap
+# between "training finished" and a human noticing and manually disconnecting is pure
+# wasted cost on a rented GPU (a T4 vs. an A100 can differ 5x in $/hr), and matters more
+# the more expensive the rented hardware gets. google.colab.runtime.unassign() is the
+# documented way for a notebook to terminate its own runtime/session from inside itself.
+try:
+    from google.colab import runtime
+    print("[INFO] Batch finished - releasing the Colab runtime now.")
+    runtime.unassign()
+except ImportError:
+    print("[INFO] Not running in Colab (or google.colab.runtime unavailable) - skipping runtime release.")
+"""
+
     notebook = {
         "cells": [
             markdown_cell(intro),
             code_cell(module_load_cell),
             code_cell(writefile_cell),
             code_cell(runner_source),
+            code_cell(runtime_release_cell),
         ],
         "metadata": {
             "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
