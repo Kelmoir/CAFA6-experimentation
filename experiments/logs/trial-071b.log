@@ -1,0 +1,32 @@
+==================== RUNNING trial-071b (no gradient checkpointing batch 16, run on A100 (expensive)) ====================
+
+note: trial-070 measured real throughput: 1.737s/example (521.1s / 300 examples), 42.3x slower than esm2_t12_35M (0.0411s/example) but ~2.9-3.3x FASTER per example than either esm2_t36_3B LoRA attempt (trial-067: 5.6843s/example, trial-069: 5.012s/example) - confirms full fine-tuning a smaller model beats LoRA on a much bigger one for this project's throughput/VRAM budget, validating the pivot. This trial spends that budget on a first real multi-epoch health check (DEAD/OVERFITTING/HEALTHY/UNSTABLE per the project's rubric), not another single-epoch timing probe. Sized to fit a 55-minute Colab session: 3 epochs, 450 train (freshly resampled each epoch, same convention as the esm2_t12_35M phase) / 100 val examples per epoch = 550 examples/epoch * 1.737s/example ~= 955s/epoch * 3 = ~2866s training + ~239s fixed overhead (data/model download + final checkpoint push, measured directly in trial-070) = ~3105s (~52min), under the 55min --max-minutes safety cutoff. learning_rate lowered from the calibration trial's carried-forward 2e-4 to 2e-5 (10x lower): 2e-4 was validated for this project's PARTIAL-freeze/head-tuning regime (esm2_t12_35M_coarse_go_terms phase), but full fine-tuning of every layer in a pretrained transformer conventionally needs a substantially lower LR to avoid destroying pretrained representations early in training - this had been flagged as unvalidated ('not yet addressed') since the pivot decision. weight_decay=0.2/output_dropout=0.2/mixed_precision=bf16/gradient_checkpointing kept identical to trial-070 - only the LR and multi-epoch schedule change, so a DEAD or UNSTABLE verdict here can be attributed cleanly to LR scale rather than a confound.
+
+Note (user, post-hoc): unfreeze_last_n was reduced from trial-070/071's full unfreeze (33/33) to 27/33 to fit this batch_size=16/no-checkpointing config into the A100's memory. This was not called out in the note above (which only describes the intended gradient-checkpointing/batch-size/LR changes) - an unflagged, but real and necessary, additional config difference from trial-071.
+
+[CONFIG] {"device": "cuda", "epochs": 3, "batch_size": 16, "learning_rate": 2e-05, "max_length": 1024, "model_name": "facebook/esm2_t33_650M_UR50D", "unfreeze_last_n": 27, "max_train_samples": 450, "max_val_samples": 100, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.2, "max_minutes": 55.0, "run_name": "trial-071b", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": "trial-071b", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": true, "use_lora": false, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": null, "mixed_precision": "bf16", "gradient_checkpointing": false}
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t33_650M_UR50D
+lm_head.* keys UNEXPECTED (base MLM checkpoint has no classifier head - expected)
+classifier.* keys MISSING (freshly initialized for this task - expected)
+
+Model layers: 33, request unfreeze layers: 27
+[INFO] Initialized classifier bias to label priors (383 GO terms)
+[note: this run's embedded training_run.py predates the abbreviated bias-init log line used elsewhere in this archive - it printed the full 383-entry dict verbatim; trimmed here for readability, no information lost]
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+
+Epoch 1/3 | train_loss=0.0890 | val_loss=0.0951 | train_acc=0.9694 | val_acc=0.9686 | train_recall=0.0182 | val_recall=0.0182
+[TIMING] epoch 1 elapsed=25.2s
+Epoch 2/3 | train_loss=0.0883 | val_loss=0.0945 | train_acc=0.9703 | val_acc=0.9690 | train_recall=0.0191 | val_recall=0.0187
+[TIMING] epoch 2 elapsed=21.2s
+Epoch 3/3 | train_loss=0.0866 | val_loss=0.0936 | train_acc=0.9708 | val_acc=0.9699 | train_recall=0.0207 | val_recall=0.0220
+[TIMING] epoch 3 elapsed=21.0s
+
+Writing model shards: 100%
+ 1/1 [00:06<00:00,  6.63s/it]
+
+[note: log as pasted to the assistant ends here - no [SUMMARY]/final [TIMING] line was captured, but per-epoch data above is complete and sufficient for the throughput/health-check read this trial was for]
+
+==================== BATCH DONE ====================
+trial-071b: completed

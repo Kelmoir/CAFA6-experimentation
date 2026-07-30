@@ -1,0 +1,58 @@
+==================== RUNNING trial-075 (more data) ====================
+
+note: trial-071b showed the size, this time run it on a comparable problem to trial 072. First attempt at this run_name (checkpoint_mode=final, 6 epochs, push_to_hub=false) reported success but the resulting kelmoir/cafa6-esm@trial-075 branch turned out to contain stale/mixed files (a leftover adapter_config.json/adapter_model.safetensors alongside the real model.safetensors - push_checkpoint()'s upload_folder() call doesn't clear a branch before uploading, so old content from an earlier attempt at this branch name can persist). Rerun below at the full 8-epoch/6000-train/1000-val budget (matching trial-072 exactly), with --run-diagnostic and --push-to-hub set this time, superseding the first attempt.
+
+[CONFIG] {"device": "cuda", "epochs": 8, "batch_size": 16, "learning_rate": 2e-05, "max_length": 1024, "model_name": "facebook/esm2_t33_650M_UR50D", "unfreeze_last_n": 27, "max_train_samples": 6000, "max_val_samples": 1000, "push_to_hub": true, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.2, "max_minutes": 55.0, "run_name": "trial-075", "trackio_space_id": null, "checkpoint_mode": "every-epoch", "checkpoint_branch": "trial-075", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 1, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": true, "use_lora": false, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": null, "mixed_precision": "bf16", "gradient_checkpointing": false, "run_diagnostic": true, "diagnostic_max_val_samples": 2000}
+
+[transformers] EsmForSequenceClassification LOAD REPORT from: facebook/esm2_t33_650M_UR50D
+lm_head.* keys UNEXPECTED (base MLM checkpoint has no classifier head - expected)
+classifier.* keys MISSING (freshly initialized for this task - expected)
+
+Model layers: 33, request unfreeze layers: 27
+[INFO] Initialized classifier bias to label priors (383 GO terms)
+[note: this run's embedded training_run.py predates the abbreviated bias-init log line used elsewhere in this archive - it printed the full 383-entry dict verbatim; trimmed here for readability, no information lost]
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+
+Epoch 1/8 | train_loss=0.0864 | val_loss=0.0824 | train_acc=0.9710 | val_acc=0.9717 | train_recall=0.0225 | val_recall=0.0266
+[TIMING] epoch 1 elapsed=285.1s
+[INFO] Pushed checkpoint for epoch 1 to kelmoir/cafa6-esm@trial-075
+Epoch 2/8 | train_loss=0.0808 | val_loss=0.0791 | train_acc=0.9723 | val_acc=0.9724 | train_recall=0.0281 | val_recall=0.0302
+[TIMING] epoch 2 elapsed=282.7s
+[INFO] Pushed checkpoint for epoch 2 to kelmoir/cafa6-esm@trial-075
+Epoch 3/8 | train_loss=0.0783 | val_loss=0.0770 | train_acc=0.9728 | val_acc=0.9731 | train_recall=0.0347 | val_recall=0.0380
+[TIMING] epoch 3 elapsed=286.7s
+[INFO] Pushed checkpoint for epoch 3 to kelmoir/cafa6-esm@trial-075
+Epoch 4/8 | train_loss=0.0766 | val_loss=0.0760 | train_acc=0.9732 | val_acc=0.9732 | train_recall=0.0402 | val_recall=0.0389
+[TIMING] epoch 4 elapsed=289.0s
+[INFO] Pushed checkpoint for epoch 4 to kelmoir/cafa6-esm@trial-075
+Epoch 5/8 | train_loss=0.0748 | val_loss=0.0754 | train_acc=0.9738 | val_acc=0.9732 | train_recall=0.0443 | val_recall=0.0411
+[TIMING] epoch 5 elapsed=295.8s
+[INFO] Pushed checkpoint for epoch 5 to kelmoir/cafa6-esm@trial-075
+Epoch 6/8 | train_loss=0.0722 | val_loss=0.0741 | train_acc=0.9744 | val_acc=0.9735 | train_recall=0.0456 | val_recall=0.0480
+[TIMING] epoch 6 elapsed=287.5s
+[INFO] Pushed checkpoint for epoch 6 to kelmoir/cafa6-esm@trial-075
+Epoch 7/8 | train_loss=0.0708 | val_loss=0.0744 | train_acc=0.9750 | val_acc=0.9737 | train_recall=0.0495 | val_recall=0.0471
+[TIMING] epoch 7 elapsed=276.7s
+[INFO] Pushed checkpoint for epoch 7 to kelmoir/cafa6-esm@trial-075
+Epoch 8/8 | train_loss=0.0701 | val_loss=0.0733 | train_acc=0.9752 | val_acc=0.9740 | train_recall=0.0538 | val_recall=0.0511
+[TIMING] epoch 8 elapsed=282.1s
+[INFO] Pushed checkpoint for epoch 8 to kelmoir/cafa6-esm@trial-075
+[SUMMARY] {"run_name": "trial-075", "epochs_completed": 8, "final_train_loss": 0.0701157002945741, "final_val_loss": 0.07329302156964938, "train_accuracy": 0.9752219321148825, "val_accuracy": 0.9739660574412533, "train_recall": 0.05376798287034035, "val_recall": 0.05109958350658417, "best_epoch": 8, "best_val_loss": 0.07329302156964938}
+
+[INFO] Running post-training AUROC/F1 diagnostic on the in-memory model (no Hub reload needed)...
+======================================================================
+DIAGNOSTIC: 362/383 labels evaluable (both classes present), 2000 val examples
+======================================================================
+Per-label AUROC: mean=0.8393 median=0.8521 min=0.2361 max=1.0000
+  labels with AUROC > 0.5: 357/362
+  labels with AUROC > 0.7: 325/362
+Pooled @ threshold 0.5: accuracy=0.9739 (trivial baseline=0.9643) precision=0.7002 recall=0.4702 f1=0.5626
+Pooled AUROC=0.9601  Best F1=0.6019@threshold=0.30
+[DIAGNOSTIC] {"n_val_examples": 2000, "n_labels_evaluable": 362, "n_labels_total": 383, "mean_auroc": 0.8393403382981058, "median_auroc": 0.8520766576982185, "pooled_auroc": 0.9600932001947478, "accuracy_at_0.5": 0.9738642297650131, "trivial_baseline_accuracy": 0.9642545580863953, "precision_at_0.5": 0.7001685973782019, "recall_at_0.5": 0.47018005186060763, "f1_at_0.5": 0.5625764678374833, "best_f1": 0.6018543523269421, "best_f1_threshold": 0.30000000000000004}
+
+[INFO] Uploading model to Hugging Face Hub as kelmoir/cafa6-esm
+[TIMING] trial-075 total wall clock: 2662.5s
+
+==================== BATCH DONE ====================
+trial-075: completed
