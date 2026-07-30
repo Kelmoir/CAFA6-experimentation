@@ -2111,3 +2111,116 @@ more epochs at this budget mostly walks past the useful point rather than keeps 
 **Note**: `kelmoir/cafa6-esm@main` (epoch 7) and `kelmoir/cafa6-esm@trial-074` (epoch 10, from the
 every-epoch branch pushes) are now two different checkpoints on two different branches of the same
 repo — worth remembering if referenced later.
+
+## trial-071b: `esm2_t33_650M_full_finetune` moves to the A100, health-check rerun
+
+User ran this out-of-band on a rented A100 (the same hardware class the `esm2_t36_3B_lora_scaleup`
+phase committed to after trial-068b) to see whether the full-fine-tune 650M path benefits from the
+same hardware jump. Same 3-epoch/450-train/100-val health-check shape as trial-071, with
+`batch_size=16` (was 8) and `--no-gradient-checkpointing` (both affordable now that full fine-tuning
+isn't fighting a T4's VRAM ceiling) and `learning_rate=2e-5` held from trial-071. **Undocumented but
+confirmed-intentional config change**: `--unfreeze-last-n 27` (was 33, i.e. no longer *every* layer)
+— user confirmed post-hoc this was necessary to fit `batch_size=16` + no gradient checkpointing into
+the A100's memory at all, not a deliberate regularization choice. Real config difference from
+trial-071 beyond the intended throughput/LR changes, worth remembering if trial-071b/trial-075 are
+ever compared against trial-070/071 on anything other than throughput.
+
+### trial-071b result — HEALTHY, confirms the config before spending a full 8-epoch budget on it
+
+3 epochs, 450 train (resampled)/100 val. val_loss decreases monotonically every epoch (0.0951 →
+0.0945 → 0.0936), train_loss likewise (0.0890 → 0.0883 → 0.0866), gap stays small and doesn't widen.
+No dead/overfitting/unstable signature — same HEALTHY read as trial-071, now confirmed at the new
+A100/batch=16/no-checkpointing/unfreeze=27 config. Per-epoch elapsed: 25.2s/21.2s/21.0s — no
+`[TIMING] trial-071b total wall clock` line was captured in the pasted log (it ends right after the
+final checkpoint's "Writing model shards" step), but the per-epoch numbers alone are sufficient for
+this trial's health-check purpose. `push_to_hub` was not set (`checkpoint_mode=final`, no Hub
+promotion intended for a calibration trial) — no comparable-to-trial-070 throughput/example figure was
+computed since this trial's purpose was health, not timing.
+
+Cleared the way for trial-075 to spend the full trial-072-matching 8-epoch/6000-train/1000-val budget
+on this config without first burning that budget on an unhealthy run.
+
+## trial-075: `esm2_t33_650M_full_finetune` at trial-072's exact data budget — the real comparison
+
+Same config as trial-071b (`unfreeze_last_n=27`, `batch_size=16`, `--no-gradient-checkpointing`,
+`learning_rate=2e-5`, A100), scaled to trial-072's exact 8-epoch/6000-train(resampled)/1000-val budget
+— the first genuinely apples-to-apples comparison in this whole exploration between the
+`esm2_t33_650M_full_finetune` and `esm2_t36_3B_lora_scaleup` phases: same data volume, same epoch
+count, same GPU class, only the model/fine-tuning-mode differs. `--run-diagnostic` and `--push-to-hub`
+both set this time.
+
+**First attempt at this run_name superseded**: an earlier, incomplete run at this same name reported
+success but left `kelmoir/cafa6-esm@trial-075` with stale/mixed files (a leftover
+`adapter_config.json`/`adapter_model.safetensors` alongside the real `model.safetensors` —
+`push_checkpoint()`'s `upload_folder()` call didn't clear the branch before uploading, so old content
+from an earlier push to that branch name persisted). Rerun in full below.
+
+### trial-075 result — HEALTHY, F1 parity with trial-072 at ~23% less cost, but a real AUROC gap
+
+8 epochs, 6000 train (resampled)/1000 val, `unfreeze_last_n=27`. val_loss decreases essentially
+monotonically (0.0824 → 0.0791 → 0.0770 → 0.0760 → 0.0754 → 0.0741 → 0.0744 → 0.0733, one small
+epoch-6/7 uptick then back down), `best_epoch=8` (the last epoch is also the best one — no overfitting
+within this budget, unlike trial-074's 10-epoch run). Per-epoch elapsed ~276-296s; total wall clock
+2662.5s (44.4min) — noticeably faster than trial-072's 3453.4s (57.6min) for the identical data budget,
+despite full fine-tuning normally being the *slower* path per-example (trial-070 vs. trial-067/069) —
+`unfreeze_last_n=27` (not the full 33) plus `--no-gradient-checkpointing` plus the A100's raw throughput
+narrow that gap enough to actually beat trial-072's wall clock here.
+
+**Diagnostic** (2000 val examples, matching trial-050/053/071/072/073/074's convention): mean
+AUROC=0.8393, median=0.8521, 357/362 evaluable labels beat 0.5, 325/362 beat 0.7, pooled
+AUROC=0.9601, pooled F1@0.5=0.5626, best F1=0.6019@threshold=0.30.
+
+**vs. trial-072** (identical 8-epoch/6000/1000 budget, identical A100 hardware class):
+
+| metric | trial-072 (3B LoRA, 10 layers) | trial-075 (650M full-FT, 27 layers) | delta |
+|---|---|---|---|
+| median AUROC | 0.8811 | 0.8521 | **-3.3%** (real gap) |
+| mean AUROC | 0.8637 | 0.8393 | -2.8% |
+| pooled AUROC | 0.9635 | 0.9601 | -0.4% |
+| best F1 | 0.5974 | 0.6019 | **+0.75%** (trial-075 edges ahead) |
+| val_loss | 0.0721 | 0.0733 | +1.7% (trial-072 slightly better) |
+| wall clock | 3453.4s (57.6min) | 2662.5s (44.4min) | **-22.9%** |
+| cost-units (A100=5x) | 4.80 | 3.70 | **-22.9%** (same ratio — same hardware, only time differs) |
+
+Mixed result, not a clean win either direction: trial-072 has a real, non-trivial macro-AUROC
+advantage (the same metric that drove the "trial-072 beats trial-053" headline finding), while
+trial-075 essentially ties (edges ahead of) trial-072 on best F1 — the metric structurally closer to
+CAFA's own official Fmax scoring (both are best-achievable-threshold F-measures) — at ~23% lower
+dollar-normalized cost for the same data budget on the same GPU class. Given F1 parity/edge plus the
+real cost saving, and that CAFA's actual scoring metric leans closer to F1's shape than to
+macro-AUROC's, trial-075's config was judged the better lean for production, while flagging that
+trial-072 has a real quality edge on macro-AUROC specifically — this is not a decisive win the way
+trial-072-vs-trial-053 was.
+
+### `kelmoir/cafa6-esm@main` corruption discovered, and restored
+
+The completed trial-075 log revealed a further problem: this trial's embedded `training_run.py`
+predated the current `push_checkpoint()`-based promotion path (evidenced by the full 383-entry
+classifier-bias dict being printed verbatim, a tell for an older snapshot — see the archived
+`experiments/logs/trial-075.log` note) and had pushed directly to `main` via a raw, pre-refactor
+`push_to_hub()` call that also lacked `delete_patterns`. This overwrote trial-074's promoted
+`model.safetensors`/`config.json` with trial-075's 650M files, but left trial-074's
+`adapter_config.json`/`adapter_model.safetensors` (3B LoRA, `layers_to_transform: [26..35]`) sitting
+alongside them — `main` ended up describing two different, incompatible base models
+simultaneously. Verified directly via `HfApi().repo_info(..., files_metadata=True)` and content
+inspection of both `config.json` and `adapter_config.json` on `main`.
+
+**Root cause fixed in `training_run.py`**: `push_checkpoint()` now passes `delete_patterns` on every
+`upload_folder()` call — the LoRA-shape files when pushing a non-LoRA checkpoint, or vice versa — so a
+branch can never again accumulate a stale "other shape" of checkpoint underneath a fresh push.
+
+**Hub state repaired**: deleted the stale `adapter_config.json`/`adapter_model.safetensors` from both
+`kelmoir/cafa6-esm@main` and `kelmoir/cafa6-esm@trial-075` (the `trial-075` branch itself carried the
+same leftover, from whatever push history the branch name had before this rerun), then copied
+`trial-075`'s `trial_metrics.json` onto `main` (missing there since the raw pre-refactor push never
+wrote one). Verified `main` and `trial-075` are now file-for-file identical, `main`'s `config.json`
+correctly reports the 650M architecture (33 layers, hidden_size=1280, no LoRA), and its
+`trial_metrics.json` confirms epoch 8/val_loss=0.0733 — the real, intended promoted checkpoint.
+
+**Decision**: given trial-075's F1 parity/edge over trial-072 at ~23% lower cost (see comparison
+above), and per user direction ("Option 1 — restore the HF repo to trial-075"), `main` now holds
+trial-075's 650M full-fine-tune checkpoint rather than trial-074's 3B LoRA checkpoint —
+`esm2_t33_650M_full_finetune` is the production direction as of this trial, superseding
+`esm2_t36_3B_lora_scaleup`'s trial-074 promotion. `esm2_t36_3B_lora_scaleup` is not abandoned (trial-072's
+real macro-AUROC edge is on record, and `kelmoir/cafa6-esm@trial-074` still holds that checkpoint on
+its own branch, now cleaned of the same stale-file issue) but is no longer what `main` represents.
