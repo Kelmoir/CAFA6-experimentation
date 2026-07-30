@@ -449,6 +449,21 @@ def push_checkpoint(
         json.dumps({"epoch": epoch, **metrics, "config": config}, default=str)
     )
 
+    # A branch name can be reused across runs with a different --use-lora setting (e.g.
+    # promoting a LoRA trial to `main` after a previous full-fine-tune trial held that
+    # branch, or vice versa) - upload_folder() only adds/overwrites files present
+    # locally, it doesn't clear the branch first, so the *other* checkpoint shape's
+    # files silently persist alongside the new ones (a real incident: kelmoir/cafa6-esm
+    # @main ended up with both a full model.safetensors from a non-LoRA push and a
+    # stale adapter_config.json/adapter_model.safetensors left over from an earlier
+    # LoRA promotion, describing two different, incompatible base models). Explicitly
+    # deleting the other shape's filenames on every push keeps a branch always
+    # representing exactly one coherent checkpoint.
+    delete_patterns = (
+        ["model.safetensors", "config.json"] if config.get("use_lora")
+        else ["adapter_config.json", "adapter_model.safetensors"]
+    )
+
     api = HfApi()
     api.create_repo(repo_id, repo_type="model", private=True, exist_ok=True, token=token)
     api.create_branch(repo_id, branch=branch, exist_ok=True, token=token)
@@ -458,6 +473,7 @@ def push_checkpoint(
         revision=branch,
         token=token,
         commit_message=f"epoch {epoch}: val_loss={metrics.get('val_loss', float('nan')):.4f}",
+        delete_patterns=delete_patterns,
     )
 
 
