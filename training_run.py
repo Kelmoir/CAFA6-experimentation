@@ -349,6 +349,7 @@ def preprocess_batch(
     label2id: Dict[str, int],
     unique_items: List[str],
     max_length: int = MAX_LENGTH,
+    mask_sparse_negatives_max_total_terms: Optional[int] = None,
 ):
     seq_key = "sequence" if "sequence" in examples else "input_ids"
     if seq_key not in examples:
@@ -408,6 +409,25 @@ def preprocess_batch(
             labels_list.append(labels)
         output_dict["labels"] = labels_list
 
+        if mask_sparse_negatives_max_total_terms is not None and "total_terms" in examples:
+            # GO's Open World Assumption (absence of annotation != absence of function,
+            # see experiments/sweep_log.md's trial-080 investigation): a "negative" label
+            # on a sparsely-annotated protein more likely reflects incomplete
+            # characterization than a confirmed absence, so it gets excluded from the
+            # loss (weight 0) rather than trusted as a hard 0. Positives are always
+            # trusted (weight 1) regardless of total_terms - an asserted positive
+            # annotation doesn't become less true because the rest of the protein is
+            # under-studied; only the interpretation of an absence is in question.
+            raw_total_terms = examples["total_terms"]
+            if not isinstance(raw_total_terms, list):
+                raw_total_terms = [raw_total_terms]
+            loss_mask_list = []
+            for labels, total_terms in zip(labels_list, raw_total_terms):
+                sparse = total_terms <= mask_sparse_negatives_max_total_terms
+                mask = torch.ones_like(labels) if not sparse else (labels == 1.0).float()
+                loss_mask_list.append(mask)
+            output_dict["loss_mask"] = loss_mask_list
+
     if "aspect_labels" in examples:
         # generate_dataset_depth1.py's 3-way [C, F, P] multi-hot column - an optional
         # model INPUT feature for the aspect-conditioning ablation (trial-078), not a
@@ -444,6 +464,10 @@ def data_collate_function(preprocessed_batch: List[Dict[str, Any]], tokenizer: E
     if aspect_input:
         collated_data["aspect_input"] = torch.stack(aspect_input)
 
+    loss_mask = [sample["loss_mask"] for sample in preprocessed_batch if "loss_mask" in sample]
+    if loss_mask:
+        collated_data["loss_mask"] = torch.stack(loss_mask)
+
     return collated_data
 
 
@@ -474,6 +498,19 @@ def finalize_metrics(accumulated: Dict[str, Any]) -> Dict[str, float]:
     accuracy = accumulated["correct"] / max(1, accumulated["total"])
     recall = (accumulated["tp"] / (accumulated["tp"] + accumulated["fn"] + 1e-8)).mean().item()
     return {"accuracy": accuracy, "recall": recall}
+
+
+def compute_loss(criterion, logits: torch.Tensor, labels: torch.Tensor, loss_mask: Optional[torch.Tensor] = None) -> torch.Tensor:
+    """criterion must have reduction="none" whenever loss_mask is used (--mask-sparse-negatives-max-total-terms) -
+    see main()'s criterion construction. Masked-mean over unmasked elements only, so
+    excluded (untrustworthy) negative labels contribute zero gradient rather than being
+    pulled toward any value - both to training and to the validation loss used for
+    best-checkpoint selection, so the two stay consistent with each other.
+    """
+    if loss_mask is None:
+        return criterion(logits, labels)
+    per_element_loss = criterion(logits, labels)
+    return (per_element_loss * loss_mask).sum() / loss_mask.sum().clamp(min=1)
 
 
 def init_trackio_run(run_name: str, space_id: Optional[str] = None, config: Optional[Dict[str, Any]] = None):
@@ -736,6 +773,7 @@ def main() -> None:
     parser.add_argument("--quiet", action=argparse.BooleanOptionalAction, default=False, help="Suppress per-step [STEP] prints (only needed to keep a colab-cli exec websocket alive; noisy for interactive/notebook use)")
     parser.add_argument("--use-lora", action=argparse.BooleanOptionalAction, default=False, help="Fine-tune via LoRA adapters (peft) instead of freeze-mostly/unfreeze-last-n: freezes the entire backbone and trains small low-rank adapters plus the classifier head, letting a much bigger model fit in limited VRAM. --unfreeze-last-n is ignored when this is set")
     parser.add_argument("--use-aspect-input", action=argparse.BooleanOptionalAction, default=False, help="Feed the dataset's ground-truth aspect_labels column (a 3-way [C,F,P] multi-hot, see generate_dataset_depth1.py) into the classifier head as an auxiliary input, concatenated to the pooled ESM sequence representation. Requires a dataset with an aspect_labels column (e.g. kelmoir/cafa6-depth1); not implemented with --use-lora")
+    parser.add_argument("--mask-sparse-negatives-max-total-terms", type=int, default=None, help="Exclude 'negative' (0) labels from the loss for proteins whose total_terms (raw GO annotation count across all aspects, see generate_dataset_aspect.py) is <= this value - an annotation-completeness proxy for GO's Open World Assumption (absence of annotation != absence of function). Positive (1) labels are always trusted regardless of total_terms. Requires a dataset with a total_terms column (e.g. kelmoir/cafa6-aspect); no-op otherwise")
     parser.add_argument("--lora-r", type=int, default=16, help="LoRA rank (only used with --use-lora)")
     parser.add_argument("--lora-alpha", type=int, default=32, help="LoRA scaling factor, typically 2x --lora-r (only used with --use-lora)")
     parser.add_argument("--lora-dropout", type=float, default=0.05, help="Dropout on LoRA adapter layers (only used with --use-lora)")
@@ -770,6 +808,7 @@ def main() -> None:
         max_length=args.max_length,
         unique_items=label_names,
         label2id=label2id,
+        mask_sparse_negatives_max_total_terms=args.mask_sparse_negatives_max_total_terms,
     )
 
     processed_dataset = {
@@ -911,7 +950,8 @@ def main() -> None:
         pos_weight = ratio.pow(args.pos_weight_exponent).to(device)
         print(f"[INFO] Using --pos-weight (exponent={args.pos_weight_exponent}): "
               f"min={pos_weight.min():.2f} median={pos_weight.median():.2f} max={pos_weight.max():.2f}")
-    criterion = torch.nn.BCEWithLogitsLoss(pos_weight=pos_weight)
+    use_loss_mask = args.mask_sparse_negatives_max_total_terms is not None
+    criterion = torch.nn.BCEWithLogitsLoss(pos_weight=pos_weight, reduction="none" if use_loss_mask else "mean")
 
     run_name = args.run_name or f"{args.model_name.split('/')[-1]}-epochs{args.epochs}-bs{args.batch_size}-device{device.type}"
     tracker = init_trackio_run(run_name, space_id=args.trackio_space_id, config=config)
@@ -952,10 +992,11 @@ def main() -> None:
             model_kwargs = {"input_ids": input_ids, "attention_mask": attention_mask}
             if args.use_aspect_input:
                 model_kwargs["aspect_input"] = batch["aspect_input"].to(device)
+            loss_mask = batch["loss_mask"].to(device) if use_loss_mask else None
             with torch.autocast(device_type="cuda", dtype=autocast_dtype, enabled=use_amp):
                 outputs = model_esm(**model_kwargs)
                 logits = outputs.logits
-                loss = criterion(logits, labels)
+                loss = compute_loss(criterion, logits, labels, loss_mask)
             scaled_loss = scaler.scale(loss / args.grad_accum_steps) if use_grad_scaler else (loss / args.grad_accum_steps)
             scaled_loss.backward()
 
@@ -1002,9 +1043,10 @@ def main() -> None:
                 model_kwargs = {"input_ids": input_ids, "attention_mask": attention_mask}
                 if args.use_aspect_input:
                     model_kwargs["aspect_input"] = batch["aspect_input"].to(device)
+                loss_mask = batch["loss_mask"].to(device) if use_loss_mask else None
                 with torch.autocast(device_type="cuda", dtype=autocast_dtype, enabled=use_amp):
                     outputs = model_esm(**model_kwargs)
-                    loss = criterion(outputs.logits, labels)
+                    loss = compute_loss(criterion, outputs.logits, labels, loss_mask)
                 validation_loss += loss.item()
 
                 batch_metrics = compute_metrics(outputs.logits, labels)
