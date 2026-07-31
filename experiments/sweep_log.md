@@ -2542,3 +2542,45 @@ perfect; (2) try one regularization-focused follow-up trial (raise weight_decay/
 ceiling itself can move, not just the epoch at which overfitting sets in; (3) investigate the
 annotation-completeness hypothesis directly before spending more compute, since if true, no amount of
 further tuning fixes it.
+
+### Annotation-completeness hypothesis — investigated directly, confirmed
+
+Per user direction, tested the hypothesis with data already on disk (no new training, no external
+fetches). Two checks:
+
+**Check 1 — review status.** Every one of the 82,404 FASTA headers in `train_sequences.fasta` starts
+with `sp|` (Swiss-Prot, manually reviewed) — zero `tr|` (TrEMBL, unreviewed/automatic) entries, spanning
+well-studied model organisms (human 17,162; mouse 12,510; *Arabidopsis* 11,863; yeast 5,545; rat 4,909;
+fission yeast 4,644; *E. coli* 3,471; fly 3,201; worm 2,540; *M. tuberculosis* 1,530). This actually
+argues *against* the crude "noisy/uncurated corpus" version of the hypothesis — CAFA6's training set
+deliberately excludes the least-characterized tier of UniProt.
+
+**Check 2 — does missing an aspect correlate with sparse annotation overall?** This is the one that
+matters, and it's decisive. For each protein, computed total *raw* (unpropagated) GO term count across
+all three aspects combined, then compared proteins with vs. without each aspect:
+
+| aspect | median terms, proteins WITH it | median terms, proteins WITHOUT it |
+|---|---|---|
+| cellular_component | 5.0 | 2.0 |
+| molecular_function | 6.0 | 2.0 |
+| biological_process | 6.0 | **1.0** |
+
+And more starkly: **63–75% of proteins missing a given aspect have ≤2 total GO terms annotated across
+their entire record** (vs. a full-dataset median of 4). Proteins missing an aspect aren't just missing
+*that* aspect — they're systematically under-annotated everywhere. A genuinely function-less protein
+has no reason to also be sparse in process/location annotations; this pattern is what under-studied
+proteins look like, not what confirmed-absent-function proteins look like. **Confirmed: the hypothesis
+holds.**
+
+**Important corollary, not obvious at first**: this cuts in the model's favor, not against it. If a
+real fraction of "negative" aspect labels are actually unannotated-not-confirmed-absent, then trial-080's
+0.68 AUROC is scored against ground truth that's partly wrong — some of the model's apparent false
+positives are plausibly correct predictions of an aspect Swiss-Prot simply hasn't gotten around to
+annotating. The 0.68 ceiling likely *understates* the real biological signal the model learned; it's a
+measure of agreement with this specific incomplete label set, not a hard ceiling on achievable aspect
+prediction from sequence.
+
+**Practical implication**: regularization tuning (option 2) is now low-value — the bottleneck is label
+noise, not model capacity or overfitting susceptibility, and no amount of weight_decay/dropout tuning
+fixes mislabeled ground truth. Option 1 (use the trial-080 checkpoint as-is for a real, non-oracle
+cascade test) becomes the more sensible next step, with the caveat above in mind.
