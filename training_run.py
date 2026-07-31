@@ -688,14 +688,14 @@ def run_diagnostic(
     return result
 
 
-def load_training_data(data_path: Optional[Path] = None):
+def load_training_data(data_path: Optional[Path] = None, repo_id: str = "kelmoir/CAFA6"):
     if data_path is not None and data_path.exists():
         return load_from_disk(str(data_path))
 
     try:
-        return load_dataset("kelmoir/CAFA6")
+        return load_dataset(repo_id)
     except Exception as exc:  # pragma: no cover - runtime dependency
-        raise RuntimeError(f"Could not load the dataset. Provide a local dataset at {data_path} or ensure the Hugging Face dataset is available. Original error: {exc}") from exc
+        raise RuntimeError(f"Could not load the dataset. Provide a local dataset at {data_path} or ensure the Hugging Face dataset {repo_id} is available. Original error: {exc}") from exc
 
 
 def main() -> None:
@@ -711,6 +711,7 @@ def main() -> None:
     parser.add_argument("--max-val-samples", type=int, default=None)
     parser.add_argument("--push-to-hub", action="store_true", help="Upload the finished model to Hugging Face Hub")
     parser.add_argument("--hf-repo-id", default=HF_REPO_ID, help="Hugging Face Hub repository id, e.g. kelmoir/cafa6-esm")
+    parser.add_argument("--dataset-repo-id", default="kelmoir/CAFA6", help="Hugging Face Hub dataset repository id to fall back to when no local dataset is found at data/cafa-6-protein-function-prediction/dataset (e.g. kelmoir/cafa6-depth1 for the depth-1-only aspect-conditioning ablation)")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--output-dropout", type=float, default=0.2, help="Dropout on the classifier head")
     parser.add_argument("--esm-dropout", type=float, default=0.0, help="Dropout on unfrozen ESM encoder layers")
@@ -755,7 +756,7 @@ def main() -> None:
 
     device = torch.device(args.device)
     data_path = Path("data/cafa-6-protein-function-prediction/dataset")
-    dataset = load_training_data(data_path=data_path)
+    dataset = load_training_data(data_path=data_path, repo_id=args.dataset_repo_id)
 
     dataset_train = dataset["train"]
     label_names = [str(name) for name in dataset_train.features["labels"].feature.names]
