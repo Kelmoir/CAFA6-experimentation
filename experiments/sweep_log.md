@@ -2324,3 +2324,51 @@ ground-truth aspect input helps the classifier, reusing this exact hyperparamete
 (`unfreeze_last_n=27`, `batch_size=16`, `learning_rate=2e-5`, `weight_decay=0.2`,
 `output_dropout=0.2`, `bf16`, `--no-gradient-checkpointing`) as the base — see the
 `esm2_t33_650M_depth1_go_terms` phase below.
+
+## trial-077: depth-1-only GO-term prediction, no aspect input — the aspect-conditioning baseline
+
+New track, per user direction, before fully committing to the sequential-cascade prospect: test how
+well the production 650M full-fine-tune config performs on a much smaller, coarser label space (39
+depth-1 GO terms — `kelmoir/cafa6-depth1`, `generate_dataset_depth1.py` — instead of 383 coarse terms
+across depths 0–2), and specifically how much a ground-truth aspect input helps (trial-078). trial-077
+is the baseline half: exactly trial-075's hyperparameters (`unfreeze_last_n=27`, `learning_rate=2e-5`,
+`weight_decay=0.2`, `output_dropout=0.2`, `bf16`, `--no-gradient-checkpointing`, `checkpoint-mode
+every-epoch`, 8 epochs, 6000 train (resampled)/1000 val, `seed=42`), fresh start from
+`facebook/esm2_t33_650M_UR50D` (not resumed from trial-075/076 — incompatible label space/head shape).
+`--push-to-hub` not set — first exploratory trial in a new direction, not a promotion candidate.
+
+**`--batch-size 16` OOM'd consistently** even with trial-076's `LengthGroupedSampler` fix — a
+different memory source than the batch-composition/padding issue that fix targeted, not yet
+root-caused. Per user direction, switched to `--batch-size 8 --grad-accum-steps 2` (effective batch
+size 16, same optimizer-step granularity), now the standing default for `esm2_t33_650M_UR50D`
+full-fine-tune trials going forward — empirically free in wall-clock per trial-076's own numbers.
+
+### trial-077 result — HEALTHY through epoch 7, a tiny uptick at epoch 8
+
+val_loss: 0.1746 → 0.1683 → 0.1658 → 0.1630 → 0.1617 → 0.1604 → 0.1598 → 0.1607 — monotonically
+decreasing through epoch 7, then a small uptick at epoch 8 (+0.6% relative) while train_loss keeps
+falling smoothly (0.1834 → 0.1433) — a borderline, very mild overfitting signature, much milder than
+trial-074's clear reversal and similar in shape to trial-076's plateau. `best_epoch=7`
+(`best_val_loss=0.1598`); the best-checkpoint-reload feature worked correctly — diagnostic/promotion
+used epoch 7's weights, not epoch 8's. Wall clock 1938.2s (32.3min) — notably faster than trial-075's
+2662.5s (44.4min) on the identical data budget, consistent with the much smaller 39-label classifier
+head needing less compute than the 383-label one (≈2.69 cost-units vs. trial-075's ≈3.70).
+
+**Diagnostic** (2000 val examples, all 39/39 labels evaluable — every depth-1 term is common enough to
+have both classes present in this slice): mean AUROC=0.8140, median=0.8099, min=0.6188, max=0.9937,
+pooled AUROC=0.9454, pooled F1@0.5=0.6118, best F1=0.6448@threshold=0.30.
+
+**Sanity check vs. the 383-term task** (not strictly comparable — different label space entirely, but
+worth noting): median/mean AUROC (0.8099/0.8140) are *lower* than trial-075/076's 383-term numbers
+(0.8521/0.8393 and 0.8604/0.8475) despite this being the smaller, coarser label space — counter to the
+naive "fewer/broader labels should be easier" expectation. Likely explanation: depth-1 terms are
+extremely prevalent by construction (e.g. `GO:0110165` "cellular anatomical structure" at 71.6% base
+rate, `GO:0009987` "cellular process" at 54.5%, `GO:0005488` "binding" at 52.0%, from the printed
+label-prior dict) — broad, near-coin-flip-frequent categories are intrinsically harder to separate via
+AUROC than the 383-term task's mix of narrower, more sequence-distinctive terms. But best F1 is
+notably *higher* here: 0.6448 vs. trial-076's 0.6046 (+6.6% relative) and trial-075's 0.6019 (+7.1%) —
+and threshold-0.5 recall (0.18–0.19) is far above the 383-term task's typical ~5–6%, reflecting
+depth-1's much higher average positive rate making the severe-imbalance problem far less acute.
+
+Awaiting trial-078 (same config plus `--use-aspect-input`) to answer the actual question this track
+exists for: how much a ground-truth aspect input helps depth-1 prediction.
