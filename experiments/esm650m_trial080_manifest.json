@@ -1,0 +1,27 @@
+[
+  {
+    "trial_id": "trial-080",
+    "parent": "trial-079",
+    "axis": "esm2_t33_650M_aspect_prediction: full data/epoch budget (6000 train/8 epochs), same hyperparameters as trial-079 unchanged",
+    "note": "trial-079 (health check, 338 train/epoch, 4 epochs, ~88 total optimizer steps) came back DEAD-adjacent: final val_loss (0.5950) was statistically indistinguishable from the theoretical entropy floor for predicting only the label priors with zero per-example signal (computed precisely: 0.5970), and diagnostic AUROC was near-chance (mean=0.6129, pooled=0.5654, 0/3 labels over 0.7) - the train/val recall=1.0 and ~70% accuracy that looked deceptively perfect were purely an artifact of the classifier-bias-to-label-priors initialization landing above the 0.5 threshold (all 3 aspect labels have priors ~70-73%, so bias=log(p/(1-p)) is positive), not evidence of real learning. Per the sweep's DEAD-response rubric this would normally call for raising LR/unfreeze before judging further - but per user direction, this trial instead jumps straight to the FULL 6000-train/1000-val/8-epoch budget (matching trial-075's own convention) with the LR held at 2e-5, unchanged: the user's judgment is that trial-079's near-chance result was a data-starvation artifact of its tiny per-epoch sample size (338 examples, ~88 total optimizer steps across the whole trial) rather than a genuine LR mismatch, and that an LR retuned specifically for that tiny-data regime likely wouldn't transfer meaningfully to the full-scale run anyway. --checkpoint-mode every-epoch given real A100 dollar stakes at this scale (unlike trial-079's calibration-trial --checkpoint-mode final). --push-to-hub NOT set - first full-scale attempt at a brand-new task whose health check was ambiguous, not yet a promotion candidate. Fresh start from facebook/esm2_t33_650M_UR50D (not resumed - trial-079's checkpoint pushed at final-epoch val_loss essentially equal to the no-signal floor, nothing worth resuming from). --run-diagnostic is auto-appended by build_notebook.py - the AUROC read will be the real signal to judge this trial on, same as trial-079.",
+    "args": [
+      "--model-name", "facebook/esm2_t33_650M_UR50D",
+      "--dataset-repo-id", "kelmoir/cafa6-aspect",
+      "--unfreeze-last-n", "27",
+      "--mixed-precision", "bf16",
+      "--no-gradient-checkpointing",
+      "--batch-size", "8",
+      "--grad-accum-steps", "2",
+      "--epochs", "8",
+      "--learning-rate", "2e-5",
+      "--output-dropout", "0.2",
+      "--weight-decay", "0.2",
+      "--grad-clip-norm", "1.0",
+      "--max-train-samples", "6000",
+      "--max-val-samples", "1000",
+      "--max-minutes", "50",
+      "--checkpoint-mode", "every-epoch",
+      "--seed", "42"
+    ]
+  }
+]

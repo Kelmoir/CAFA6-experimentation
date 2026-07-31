@@ -2434,3 +2434,46 @@ from aspect conditioning suggests a cascade has genuine headroom to exploit, not
 appeal. Open decision: resume the cascade plan given this evidence, run a follow-up trial with
 *predicted* (non-oracle) aspects for a more realistic estimate first, or treat this ablation as its own
 complete deliverable.
+
+Per user direction, before a real cascade can use predicted aspects, we first need a valid model that
+predicts them — trial-078 used the ground-truth oracle input, not a predictor. New phase:
+`esm2_t33_650M_aspect_prediction`, using `kelmoir/cafa6-aspect` (`generate_dataset_aspect.py`, reuses
+the same GO-graph/propagation logic — label space is just the 3 GO namespace roots, F/C/P).
+
+## trial-079: aspect-prediction health check — DEAD, disguised by a misleading recall=1.0
+
+Per the discussion on health-check design for this codebase's per-epoch resampling, this trial takes
+trial-071b (the original health-check trial for this model class) as the base and adapts it: 4 epochs
+instead of 3, with `--max-train-samples` reduced to 338 (`450*3/4=337.5`, rounded up) to hold the
+*total* training-examples budget constant (338×4=1352 vs. trial-071b's 450×3=1350) while spreading it
+across more, smaller resampled draws — more epochs against the same fixed validation set gives more
+independent trend observations than fewer, bigger ones. `--batch-size 8 --grad-accum-steps 2` replaces
+trial-071b's flat `batch_size=16`, carrying forward the standing default from trial-076/077/078's OOM
+lessons. Everything else (`unfreeze_last_n=27`, `learning_rate=2e-5`, `weight_decay=0.2`,
+`output_dropout=0.2`, `bf16`, `--no-gradient-checkpointing`) unchanged from trial-071b.
+`--checkpoint-mode final`, `--push-to-hub` not set — a calibration trial.
+
+**Result looked deceptively perfect, and wasn't.** val_loss: 0.6103 → 0.6067 → 0.6023 → 0.5950 (a small
+but real monotonic decrease), but **train and val recall were pinned at 1.0 every single epoch**, with
+~70% accuracy. All three aspect labels have priors around 70–73% — well above 50% — so the
+classifier-bias-to-priors initialization (`bias = log(p/(1-p))`) starts *positive* for every label,
+meaning every example is predicted "positive" before any training even happens. Recall=1.0 and ~70%
+accuracy are exactly what that starting point alone produces, with or without real learning underneath.
+
+Checked precisely: the theoretical entropy floor for "predict only the label prior, learn zero
+per-example signal" is **0.5970** (`H(0.7003)=0.6106, H(0.7257)=0.5875, H(0.7200)=0.5930`, averaged).
+The actual final val_loss, **0.5950**, is statistically indistinguishable from that floor. The
+diagnostic confirms it: mean AUROC=0.6129, median=0.5932, **pooled AUROC=0.5654** — barely above the
+0.5 chance line, 0/3 labels clear the 0.7 AUROC bar. **Verdict: DEAD**, just disguised — this is the
+mirror image of trial-050's original false alarm (there, severe *negative* imbalance made recall look
+artificially near-zero despite real learning; here, majority-*positive* imbalance makes recall look
+artificially perfect despite near-chance real learning). No code bug — a pure artifact of the
+bias-to-priors trick meeting a >50% base rate, at an extremely small step budget (~88 total optimizer
+steps across all 4 epochs). Wall clock 190.9s.
+
+**Decision**: per the sweep's own rubric, a DEAD verdict normally calls for raising LR/unfreeze before
+judging further. Per user direction, this trial skips that step: the judgment is that trial-079's
+near-chance result was a data-starvation artifact of its tiny 338-example/epoch scale specifically, not
+a real LR mismatch — and that an LR retuned for that tiny-data regime likely wouldn't transfer
+meaningfully to a full-scale run anyway. Proceeding straight to trial-080: the full 6000-train/1000-val/
+8-epoch budget (matching trial-075's own convention), LR held at 2e-5, unchanged.
