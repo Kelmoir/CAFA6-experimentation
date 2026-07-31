@@ -450,15 +450,15 @@ def push_checkpoint(
     )
 
     # A branch name can be reused across runs with a different --use-lora setting (e.g.
-    # promoting a LoRA trial to `main` after a previous full-fine-tune trial held that
-    # branch, or vice versa) - upload_folder() only adds/overwrites files present
-    # locally, it doesn't clear the branch first, so the *other* checkpoint shape's
-    # files silently persist alongside the new ones (a real incident: kelmoir/cafa6-esm
-    # @main ended up with both a full model.safetensors from a non-LoRA push and a
-    # stale adapter_config.json/adapter_model.safetensors left over from an earlier
-    # LoRA promotion, describing two different, incompatible base models). Explicitly
-    # deleting the other shape's filenames on every push keeps a branch always
-    # representing exactly one coherent checkpoint.
+    # promoting a LoRA trial to the main branch after a previous full-fine-tune trial
+    # held that branch, or vice versa) - upload_folder() only adds/overwrites files
+    # present locally, it doesn't clear the branch first, so the *other* checkpoint
+    # shape's files silently persist alongside the new ones (a real incident: the main
+    # branch of kelmoir/cafa6-esm ended up with both a full model.safetensors from a
+    # non-LoRA push and a stale adapter_config.json/adapter_model.safetensors left over
+    # from an earlier LoRA promotion, describing two different, incompatible base
+    # models). Explicitly deleting the other shape's filenames on every push keeps a
+    # branch always representing exactly one coherent checkpoint.
     delete_patterns = (
         ["model.safetensors", "config.json"] if config.get("use_lora")
         else ["adapter_config.json", "adapter_model.safetensors"]
