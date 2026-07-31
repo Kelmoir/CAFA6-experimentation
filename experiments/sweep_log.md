@@ -2372,3 +2372,65 @@ depth-1's much higher average positive rate making the severe-imbalance problem 
 
 Awaiting trial-078 (same config plus `--use-aspect-input`) to answer the actual question this track
 exists for: how much a ground-truth aspect input helps depth-1 prediction.
+
+## trial-078: depth-1-only GO-term prediction, WITH ground-truth aspect input — the answer
+
+Companion to trial-077, identical in every hyperparameter (`unfreeze_last_n=27`, `learning_rate=2e-5`,
+`weight_decay=0.2`, `output_dropout=0.2`, `bf16`, `--no-gradient-checkpointing`, `checkpoint-mode
+every-epoch`, 8 epochs, 6000 train/1000 val, `seed=42`, `--batch-size 8 --grad-accum-steps 2`) except
+this one adds `--use-aspect-input`: the classifier head (`AspectConditionedEsmForSequenceClassification`
+/ `AspectAwareClassificationHead`) concatenates the dataset's ground-truth `aspect_labels` 3-way
+[C,F,P] multi-hot to the pooled CLS-token representation before the dense layer. Deliberately an
+oracle/upper-bound experiment — ground-truth aspects, not predicted ones — meant to measure the
+ceiling of how much knowing the aspect(s) alone would help, before dealing with the messier case of
+predicted aspects in an actual cascaded architecture.
+
+### trial-078 result — a decisive, unambiguous win over trial-077
+
+val_loss: 0.1722 → 0.1654 → 0.1611 → 0.1578 → 0.1548 → 0.1515 → 0.1499 → 0.1501 — same shape as
+trial-077 (monotonic decrease through epoch 7, a noise-level uptick at epoch 8), `best_epoch=7`,
+`best_val_loss=0.1499`. Training dynamics are cleanly comparable between the two trials (same epoch
+pattern, same best_epoch), so the comparison below isn't confounded by different convergence behavior.
+Wall clock 1984.4s (33.1min), ~2.4% slower than trial-077's 1938.2s — consistent with the tiny extra
+compute of concatenating a 3-dim vector in the classifier head, negligible against the 650M backbone.
+
+**Diagnostic** (2000 val examples, 39/39 labels evaluable): mean AUROC=0.8294, median=0.8171,
+min=0.6343, max=0.9890, pooled AUROC=0.9509, pooled F1@0.5=0.6477, best F1=0.6648@threshold=0.34,
+37/39 labels beat AUROC 0.7 (vs. trial-077's 34/39).
+
+**vs. trial-077** (identical everything except the aspect input):
+
+| metric | trial-077 (no aspect) | trial-078 (aspect input) | delta |
+|---|---|---|---|
+| val_loss | 0.1598 | 0.1499 | **-6.16%** (lower is better) |
+| mean AUROC | 0.8140 | 0.8294 | **+1.89%** |
+| median AUROC | 0.8099 | 0.8171 | **+0.90%** |
+| pooled AUROC | 0.9454 | 0.9509 | **+0.58%** |
+| pooled F1@0.5 | 0.6118 | 0.6477 | **+5.85%** |
+| best F1 | 0.6448 | 0.6648 | **+3.10%** |
+| precision@0.5 | 0.6775 | 0.7138 | **+5.36%** |
+| recall@0.5 | 0.5578 | 0.5927 | **+6.26%** |
+| min AUROC | 0.6188 | 0.6343 | improved |
+| labels AUROC>0.7 | 34/39 | 37/39 | improved |
+| cost-units (A100=5x) | 2.692 | 2.756 | +2.38% (negligible) |
+
+**Every single metric tracked improved, none regressed** — a decisive, unambiguous result, unlike every
+other trial-vs-trial comparison in this sweep (trial-072 vs. trial-053, trial-072 vs. trial-075/076),
+which all had a real tradeoff to weigh. Since the ESM backbone's own forward pass is byte-identical
+between the two trials (only the classifier head differs, per the confirmed design), this delta is
+cleanly attributable to the aspect signal itself, not a confound, and it comes at negligible extra cost
+(+2.4% wall clock).
+
+**Important caveat**: this used *ground-truth* aspects — an oracle upper bound, not a deployable
+inference-time setup. The real-world gain from a cascaded architecture (predict aspect first, feed it
+in to refine depth-1 prediction) depends on how accurately a first-stage aspect predictor could do,
+which this trial doesn't measure directly. Aspect (the project's original 3-way C/F/P task) is a much
+easier, coarser prediction problem than depth-1 terms, though, so a real cascade's first stage plausibly
+gets close to this ceiling.
+
+**Implication**: this result meaningfully de-risks the sequential-cascade prospect
+(`experiments/sequential_cascade_plan.md`, currently paused) — a real, consistent, unambiguous gain
+from aspect conditioning suggests a cascade has genuine headroom to exploit, not just theoretical
+appeal. Open decision: resume the cascade plan given this evidence, run a follow-up trial with
+*predicted* (non-oracle) aspects for a more realistic estimate first, or treat this ablation as its own
+complete deliverable.

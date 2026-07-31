@@ -430,7 +430,7 @@
       "next_step": "trial-076 promoted to kelmoir/cafa6-esm@main per user direction - it beat trial-075 on every diagnostic metric, and the cost overtake vs trial-072 was an accepted tradeoff, not a blocker. This phase's config (unfreeze_last_n=27, batch_size=16, lr=2e-5, weight_decay=0.2, output_dropout=0.2, bf16, --no-gradient-checkpointing) is now being reused as-is for a new depth-1-only-GO-term aspect-conditioning experiment pair (trial-077/078, see esm2_t33_650M_depth1_go_terms phase) rather than further continuation trials on the full 383-term label space."
     },
     "esm2_t33_650M_depth1_go_terms": {
-      "status": "trial-077 COMPLETE (HEALTHY/borderline plateau), trial-078 (aspect input) not yet run",
+      "status": "COMPLETE - trial-078 (aspect input) decisively beats trial-077 (no aspect input) on every metric, the cleanest result in the sweep so far. De-risks the sequential-cascade prospect.",
       "why": "Before fully committing to the sequential-cascade prospect (experiments/sequential_cascade_plan.md, paused), user wants to see how well the production config performs on a much smaller, cleaner label space (39 depth-1 GO terms instead of 383 coarse terms across depths 0-2), and specifically how much a ground-truth aspect input helps that task in the ideal/oracle case - a controlled ablation informing whether a future cascade (predict aspect, then feed it in to refine finer-term prediction) is worth the complexity, before dealing with messier real-world aspect prediction.",
       "dataset": "kelmoir/cafa6-depth1 (generate_dataset_depth1.py, reuses generate_dataset.py's GO-graph/propagation logic): label space restricted to depth==1 GO terms only (no depth-0 aspect roots, no depth-2+ terms) - 39 terms (20 molecular_function, 17 biological_process, 2 cellular_component). Each example additionally carries an aspect_labels column: a 3-way [C,F,P] multi-hot derived from the ground-truth true-path ancestor closure, present regardless of experiment (an optional model INPUT feature, not a prediction target). Same seed/shuffle/split as the main kelmoir/cafa6 dataset, so train/val/test protein ID sets match exactly (47817/13484/13478 rows) - only the label/feature schema differs. Verified: only ~29% of proteins have annotations in exactly one aspect, 43.7% span all three simultaneously - confirms aspect_labels needed to be multi-hot, not a single category.",
       "architecture": "Confirmed design (user-selected from 3 options): AspectConditionedEsmForSequenceClassification (training_run.py) subclasses transformers' EsmForSequenceClassification, swapping in AspectAwareClassificationHead which concatenates the aspect_labels multi-hot to the pooled CLS-token representation right before the classifier's dense layer. The ESM backbone's own forward pass is byte-identical between trial-077 (no aspect) and trial-078 (with aspect) - only the classifier head differs - so any quality delta is attributable to the aspect signal alone, not a changed encoder. New --use-aspect-input flag; not implemented with --use-lora (out of scope, raises NotImplementedError). Verified end-to-end (forward+backward pass, correct shapes, missing-aspect_input safety check) against the real dataset before launch; also confirmed the without-aspect-input path and the original 383-term dataset path are both completely unaffected by the change.",
@@ -465,11 +465,37 @@
         "next_step": "Awaiting trial-078 (same config + --use-aspect-input) to answer the actual question this track exists for: how much does a ground-truth aspect input help depth-1 prediction specifically."
       },
       "trial_078": {
-        "status": "LAUNCHED, not yet run (regenerated with batch_size=8/grad-accum-steps=2 after the first attempt OOM'd - see batch_size_standing_default_change)",
+        "status": "COMPLETE - DECISIVE WIN over trial-077, every single metric improved, unlike the mixed comparisons earlier in this sweep",
         "purpose": "Aspect-conditioning arm: identical to trial-077 in every hyperparameter, plus --use-aspect-input - the classifier gets the ground-truth aspect multi-hot as an auxiliary input. Deliberately an oracle/upper-bound experiment (ground-truth, not predicted, aspects) - measures the ceiling of how much the aspect signal alone could help, not a deployable inference-time setup on its own (predicted aspects would need their own accuracy accounting).",
-        "config": "Same as trial-077 plus --use-aspect-input. --push-to-hub NOT set, checkpoints land on kelmoir/cafa6-esm@trial-078 only."
+        "config": "Same as trial-077 plus --use-aspect-input. --push-to-hub NOT set, checkpoints land on kelmoir/cafa6-esm@trial-078 only.",
+        "result": {
+          "val_loss_by_epoch": [0.1722, 0.1654, 0.1611, 0.1578, 0.1548, 0.1515, 0.1499, 0.1501],
+          "train_loss_by_epoch": [0.1832, 0.1672, 0.1607, 0.1562, 0.1494, 0.1436, 0.1376, 0.1331],
+          "best_epoch": 7,
+          "best_val_loss": 0.149923259973526,
+          "verdict": "Same shape as trial-077: monotonic decrease through epoch 7, negligible epoch-8 uptick (0.1499->0.1501, +0.0002 absolute - noise-level), best-checkpoint-reload correctly used epoch 7. Training dynamics are cleanly comparable between the two trials (same epoch pattern, same best_epoch), so the diagnostic comparison below isn't confounded by different convergence behavior.",
+          "wall_clock": "1984.4s (33.1min), ~2.4% slower than trial-077's 1938.2s - consistent with the tiny extra compute of concatenating a 3-dim aspect vector in the classifier head, negligible against the 650M backbone."
+        },
+        "diagnostic_results": {
+          "n_val_examples": 2000,
+          "n_labels_evaluable": "39/39",
+          "mean_auroc": 0.8294087322312839,
+          "median_auroc": 0.8171494697220173,
+          "min_auroc": 0.6343,
+          "max_auroc": 0.9890,
+          "pooled_auroc": 0.9508733166341152,
+          "pooled_f1_at_0.5": 0.6476569358023926,
+          "best_f1": 0.6648136449778901,
+          "best_f1_threshold": 0.34,
+          "labels_auroc_gt_0.7": "37/39 (vs trial-077's 34/39)"
+        },
+        "verdict_vs_trial077": {
+          "comparison_table": "val_loss: 0.1598->0.1499 (-6.16%, lower is better). mean AUROC: 0.8140->0.8294 (+1.89%). median AUROC: 0.8099->0.8171 (+0.90%). pooled AUROC: 0.9454->0.9509 (+0.58%). pooled F1@0.5: 0.6118->0.6477 (+5.85%). best F1: 0.6448->0.6648 (+3.10%). precision@0.5: 0.6775->0.7138 (+5.36%). recall@0.5: 0.5578->0.5927 (+6.26%). min AUROC: 0.6188->0.6343. labels with AUROC>0.7: 34/39->37/39. Cost: 2.692->2.756 cost-units (+2.38%, negligible).",
+          "interpretation": "A DECISIVE, unambiguous win - every single metric tracked (val_loss, all AUROC variants, all F1/precision/recall variants, worst-label AUROC, count of well-performing labels) improved with the aspect input, at negligible extra cost (+2.4% wall clock). Unlike every other trial-vs-trial comparison in this sweep (trial-072 vs trial-075/076, trial-072 vs trial-053), this one has no tradeoff to weigh - the aspect signal helps across the board. Since the ESM backbone's own forward pass is byte-identical between the two trials (only the classifier head differs, per the confirmed design), this delta is cleanly attributable to the aspect signal itself, not a confound. Important caveat: this used GROUND-TRUTH aspects (an oracle upper bound), not predicted ones - the real-world gain from a cascaded architecture (predict aspect first, feed it in) depends on how accurately a first-stage aspect predictor could do, which this trial doesn't measure directly. Aspect (the old 3-way C/F/P task) is a much easier/coarser prediction problem than depth-1 terms though, so a real cascade's first stage plausibly gets close to this ceiling."
+        },
+        "next_step": "This result meaningfully de-risks the sequential-cascade prospect (experiments/sequential_cascade_plan.md, currently paused) - a real, consistent, unambiguous gain from aspect conditioning suggests a cascade has genuine headroom to exploit, not just theoretical appeal. Open decision for the user: (1) resume the sequential-cascade plan given this evidence, (2) run a follow-up trial using PREDICTED (not ground-truth) aspects to get a more realistic, non-oracle estimate of the achievable gain before committing to the cascade, or (3) treat this ablation as complete and move on to other priorities."
       },
-      "next_step": "Awaiting trial-077/078 results from the user's rented A100. Compare diagnostic metrics (median/mean/pooled AUROC, best F1) between the two - a large gap would suggest aspect information is a real bottleneck on this label space (motivating a cascade), a small gap would suggest the backbone already infers aspect well enough from sequence alone that explicit conditioning buys little."
+      "next_step": "COMPLETE. trial-078 (aspect input) decisively beat trial-077 (no aspect input) on every single metric - see trial_078.verdict_vs_trial077. This is the cleanest, least ambiguous result in the entire sweep so far. De-risks the sequential-cascade prospect; awaiting user direction on whether to resume that plan, test with predicted (non-oracle) aspects first, or treat this ablation as its own deliverable."
     },
     "esm2_t6_8M": {
       "status": "paused_plateaued",

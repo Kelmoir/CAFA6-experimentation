@@ -1,0 +1,55 @@
+
+==================== RUNNING trial-078 (esm2_t33_650M_depth1_go_terms: depth-1-only GO-term prediction, WITH ground-truth aspect input to the classifier (the aspect-conditioning half of the ablation, see trial-077)) ====================
+
+note: Companion to trial-077, identical in every hyperparameter (unfreeze_last_n=27, batch_size=16, lr=2e-5, weight_decay=0.2, output_dropout=0.2, bf16, --no-gradient-checkpointing, checkpoint-mode every-epoch, 8 epochs, 6000 train (resampled)/1000 val, seed=42, --dataset-repo-id kelmoir/cafa6-depth1) except this one adds --use-aspect-input: the classifier head (AspectConditionedEsmForSequenceClassification / AspectAwareClassificationHead in training_run.py) concatenates the dataset's ground-truth aspect_labels 3-way [C,F,P] multi-hot to the pooled CLS-token representation before the dense layer, per the user-confirmed design (concatenate to pooled output - isolates the aspect signal cleanly since the ESM backbone's own forward pass is byte-identical to trial-077, only the classifier head differs). This is deliberately an oracle/upper-bound experiment (ground-truth aspects, not predicted ones) - meant to measure how much knowing the aspect(s) alone would help depth-1 prediction, informing whether a future cascaded architecture (predict aspect first, feed it in to refine finer-term prediction) is worth pursuing, before dealing with the 'messier' case of using predicted (not ground-truth) aspects. Fresh start from facebook/esm2_t33_650M_UR50D, same as trial-077 (not resumed from trial-075/076 - incompatible label space/head shape, see trial-077's note). --push-to-hub deliberately NOT set for the same reason as trial-077 - pushes only to kelmoir/cafa6-esm@trial-078. --run-diagnostic is auto-appended by build_notebook.py.
+[CONFIG] {"device": "cuda", "epochs": 8, "batch_size": 8, "learning_rate": 2e-05, "max_length": 1024, "model_name": "facebook/esm2_t33_650M_UR50D", "unfreeze_last_n": 27, "max_train_samples": 6000, "max_val_samples": 1000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "dataset_repo_id": "kelmoir/cafa6-depth1", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.2, "max_minutes": 55.0, "run_name": "trial-078", "trackio_space_id": null, "checkpoint_mode": "every-epoch", "checkpoint_branch": "trial-078", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 2, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": true, "use_lora": false, "use_aspect_input": true, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": null, "mixed_precision": "bf16", "gradient_checkpointing": false, "run_diagnostic": true, "diagnostic_max_val_samples": 2000}
+
+[transformers] AspectConditionedEsmForSequenceClassification LOAD REPORT from: facebook/esm2_t33_650M_UR50D
+classifier.out_proj.bias/out_proj.weight/dense.bias/dense.weight MISSING (freshly initialized for this task - expected)
+
+Model layers: 33, request unfreeze layers: 27
+[INFO] Initialized classifier bias to label priors (39 depth-1 GO terms)
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+
+Epoch 1/8 | train_loss=0.1832 | val_loss=0.1722 | train_acc=0.9249 | val_acc=0.9285 | train_recall=0.0838 | val_recall=0.0943
+[TIMING] epoch 1 elapsed=184.3s
+[INFO] Pushed checkpoint for epoch 1 to kelmoir/cafa6-esm@trial-078
+Epoch 2/8 | train_loss=0.1672 | val_loss=0.1654 | train_acc=0.9312 | val_acc=0.9309 | train_recall=0.1149 | val_recall=0.1309
+[TIMING] epoch 2 elapsed=184.9s
+[INFO] Pushed checkpoint for epoch 2 to kelmoir/cafa6-esm@trial-078
+Epoch 3/8 | train_loss=0.1607 | val_loss=0.1611 | train_acc=0.9343 | val_acc=0.9335 | train_recall=0.1448 | val_recall=0.1430
+[TIMING] epoch 3 elapsed=185.1s
+[INFO] Pushed checkpoint for epoch 3 to kelmoir/cafa6-esm@trial-078
+Epoch 4/8 | train_loss=0.1562 | val_loss=0.1578 | train_acc=0.9362 | val_acc=0.9348 | train_recall=0.1569 | val_recall=0.1415
+[TIMING] epoch 4 elapsed=185.0s
+[INFO] Pushed checkpoint for epoch 4 to kelmoir/cafa6-esm@trial-078
+Epoch 5/8 | train_loss=0.1494 | val_loss=0.1548 | train_acc=0.9395 | val_acc=0.9358 | train_recall=0.1665 | val_recall=0.1698
+[TIMING] epoch 5 elapsed=182.6s
+[INFO] Pushed checkpoint for epoch 5 to kelmoir/cafa6-esm@trial-078
+Epoch 6/8 | train_loss=0.1436 | val_loss=0.1515 | train_acc=0.9425 | val_acc=0.9384 | train_recall=0.1746 | val_recall=0.1695
+[TIMING] epoch 6 elapsed=182.8s
+[INFO] Pushed checkpoint for epoch 6 to kelmoir/cafa6-esm@trial-078
+Epoch 7/8 | train_loss=0.1376 | val_loss=0.1499 | train_acc=0.9457 | val_acc=0.9387 | train_recall=0.1865 | val_recall=0.1815
+[TIMING] epoch 7 elapsed=183.9s
+[INFO] Pushed checkpoint for epoch 7 to kelmoir/cafa6-esm@trial-078
+Epoch 8/8 | train_loss=0.1331 | val_loss=0.1501 | train_acc=0.9479 | val_acc=0.9388 | train_recall=0.1984 | val_recall=0.1955
+[TIMING] epoch 8 elapsed=173.2s
+[INFO] Pushed checkpoint for epoch 8 to kelmoir/cafa6-esm@trial-078
+[SUMMARY] {"run_name": "trial-078", "epochs_completed": 8, "final_train_loss": 0.13305917049944402, "final_val_loss": 0.15005448842048644, "train_accuracy": 0.94791452991453, "val_accuracy": 0.9387692307692308, "train_recall": 0.1984015703201294, "val_recall": 0.19545693695545197, "best_epoch": 7, "best_val_loss": 0.149923259973526}
+[INFO] Using best checkpoint (epoch 7, val_loss=0.1499) for diagnostic/promotion, not the last epoch (8, val_loss=0.1501)
+[INFO] Running post-training AUROC/F1 diagnostic on the best-checkpoint model...
+
+======================================================================
+DIAGNOSTIC: 39/39 labels evaluable (both classes present), 2000 val examples
+======================================================================
+Per-label AUROC: mean=0.8294 median=0.8171 min=0.6343 max=0.9890
+  labels with AUROC > 0.5: 39/39
+  labels with AUROC > 0.7: 37/39
+Pooled @ threshold 0.5: accuracy=0.9387 (trivial baseline=0.9049) precision=0.7138 recall=0.5927 f1=0.6477
+Pooled AUROC=0.9509  Best F1=0.6648@threshold=0.34
+[DIAGNOSTIC] {"n_val_examples": 2000, "n_labels_evaluable": 39, "n_labels_total": 39, "mean_auroc": 0.8294087322312839, "median_auroc": 0.8171494697220173, "pooled_auroc": 0.9508733166341152, "accuracy_at_0.5": 0.9386923076923077, "trivial_baseline_accuracy": 0.904935896396637, "precision_at_0.5": 0.7138216663948127, "recall_at_0.5": 0.5927174645979869, "f1_at_0.5": 0.6476569358023926, "best_f1": 0.6648136449778901, "best_f1_threshold": 0.34}
+[TIMING] trial-078 total wall clock: 1984.4s
+
+==================== BATCH DONE ====================
+trial-078: completed
