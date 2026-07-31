@@ -16,6 +16,7 @@ from huggingface_hub import HfApi, get_token
 from sklearn.metrics import f1_score, roc_auc_score
 from torch.optim import AdamW
 from transformers import AutoModelForSequenceClassification, EsmTokenizer
+from transformers.trainer_pt_utils import LengthGroupedSampler
 
 if "google.colab" in sys.modules:
     required_packages = ["torch", "transformers", "datasets", "huggingface_hub", "peft", "scikit-learn"]
@@ -735,13 +736,35 @@ def main() -> None:
 
     def build_train_dataloader(epoch: int) -> torch.utils.data.DataLoader:
         train_subset = processed_dataset["train"]
+        raw_subset = dataset_train
         if args.max_train_samples is not None:
             n = min(args.max_train_samples, len(train_subset))
             train_subset = train_subset.shuffle(seed=args.seed + epoch).select(range(n))
+            # dataset_train (pre-with_transform) shuffled with the identical seed/length
+            # yields the identical permutation as train_subset above - HF's .shuffle(seed=)
+            # depends only on dataset length and seed, not content - so raw_subset's row
+            # order lines up with train_subset's without needing to touch processed_dataset
+            # itself (which can't be indexed by "sequence": with_transform intercepts
+            # column access too, not just row access, and preprocess_batch's output has no
+            # "sequence" key to give back).
+            raw_subset = raw_subset.shuffle(seed=args.seed + epoch).select(range(n))
+        # Batches assembled from a plain random shuffle can by chance cluster several
+        # near-max-length sequences together, spiking that one batch's padding/activation
+        # memory well above the epoch's typical batch even at a fixed batch_size - this is
+        # what made trial-076 OOM at the exact batch_size=16 trial-075 already ran clean
+        # with, purely from an unlucky per-epoch resample. Grouping same-length sequences
+        # into the same batch (mega-batch sort + shuffle, HF's standard `group_by_length`
+        # technique) removes that variance instead of trading it away for a smaller
+        # batch_size/--grad-accum-steps workaround. It also deliberately runs the batch
+        # containing the single longest sequence first, so a config that still doesn't fit
+        # fails in seconds, not deep into a paid multi-hour run.
+        lengths = [min(len(seq), args.max_length) for seq in raw_subset["sequence"]]
+        length_generator = torch.Generator().manual_seed(args.seed + epoch)
+        sampler = LengthGroupedSampler(batch_size=args.batch_size, lengths=lengths, generator=length_generator)
         return torch.utils.data.DataLoader(
             train_subset,
             batch_size=args.batch_size,
-            shuffle=True,
+            sampler=sampler,
             collate_fn=partial(data_collate_function, tokenizer=tokenizer),
         )
 
