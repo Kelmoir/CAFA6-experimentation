@@ -1,0 +1,27 @@
+[
+  {
+    "trial_id": "trial-079",
+    "parent": "trial-071b",
+    "axis": "esm2_t33_650M_aspect_prediction: health check for the 3-way aspect (C/F/P) classifier a real sequential-cascade first stage would need",
+    "note": "trial-078 showed a decisive win from feeding the GROUND-TRUTH aspect into the depth-1 classifier, but that's an oracle upper bound - a real cascade needs an actual aspect predictor. Per user direction, before committing a full data/epoch budget to that predictor, this trial takes trial-071b (the original health-check trial for this model class: 3 epochs, 450 train (resampled)/100 val, batch_size=16, unfreeze_last_n=27, learning_rate=2e-5, weight_decay=0.2, output_dropout=0.2, bf16, --no-gradient-checkpointing) as the base and adapts it two ways: (1) 4 epochs instead of 3, with --max-train-samples reduced to 338 (450*3/4=337.5, rounded up) to hold the TOTAL training-examples budget constant (338*4=1352 vs the original 450*3=1350) while spreading it across more, smaller resampled draws - per the discussion this trial follows from, more epochs with less data per epoch gives a better health signal in this codebase specifically, because the validation set is fixed (not resampled) every epoch while the training draw is fresh each time (build_train_dataloader reseeds by args.seed+epoch), so more epochs means more independent (train_loss, val_loss) trend observations against the same held-out set rather than relying on fewer, noisier ones; (2) --dataset-repo-id kelmoir/cafa6-aspect (generate_dataset_aspect.py) instead of the depth-1/coarse datasets - label space is just the 3 GO namespace roots (molecular_function/cellular_component/biological_process), a 3-way multi-hot (most proteins have more than one aspect simultaneously - verified: only ~29% of proteins have exactly one, 43.7% have all three). --batch-size 8 --grad-accum-steps 2 (effective batch 16, matching trial-071b's own effective batch size) replaces trial-071b's flat batch_size=16, carrying forward the standing default adopted after trial-076/077/078's OOM lessons rather than reverting to the now-suspect original value. --use-aspect-input NOT set (nonsensical here - aspects are the prediction target this time, not an auxiliary input). --checkpoint-mode final and --push-to-hub NOT set, matching trial-071b's own convention for a calibration trial (purpose is health, not promotion or timing).",
+    "args": [
+      "--model-name", "facebook/esm2_t33_650M_UR50D",
+      "--dataset-repo-id", "kelmoir/cafa6-aspect",
+      "--unfreeze-last-n", "27",
+      "--mixed-precision", "bf16",
+      "--no-gradient-checkpointing",
+      "--batch-size", "8",
+      "--grad-accum-steps", "2",
+      "--epochs", "4",
+      "--learning-rate", "2e-5",
+      "--output-dropout", "0.2",
+      "--weight-decay", "0.2",
+      "--grad-clip-norm", "1.0",
+      "--max-train-samples", "338",
+      "--max-val-samples", "100",
+      "--max-minutes", "20",
+      "--checkpoint-mode", "final",
+      "--seed", "42"
+    ]
+  }
+]
