@@ -2307,3 +2307,20 @@ that it's believed fixed and should run somewhat faster than the `batch=8`/accum
 here; (3) whether the val_loss plateau (epochs 9–12 essentially flat despite train_loss still falling)
 means this checkpoint is near its ceiling for this data budget — further continuation trials may see
 diminishing or negative returns, similar to trial-074's finding, just delayed by a few epochs.
+
+### Decision: promoted to `kelmoir/cafa6-esm@main`
+
+Per user direction ("It costed more, because you continued to Epoch 12. I consider is really
+promising, so we stick to it."), `main` now holds trial-076's checkpoint — `config.json`,
+`model.safetensors`, `tokenizer_config.json`, `trial_metrics.json`, and `vocab.txt` copied from the
+`trial-076` branch onto `main` via `HfApi.upload_file` (no `delete_patterns` needed: identical
+non-LoRA file shape as the branch it replaces). Verified `main` and `trial-076` are file-for-file
+identical post-copy. The cost overtake vs. trial-072 (5.63 vs. 4.80 cost-units) and the val_loss
+plateau are both on record above but didn't change the promotion call — the user weighed the
+consistent diagnostic-metric gains as worth it.
+
+Attention now shifts to a new track: two depth-1-only-GO-term experiments testing how much a
+ground-truth aspect input helps the classifier, reusing this exact hyperparameter config
+(`unfreeze_last_n=27`, `batch_size=16`, `learning_rate=2e-5`, `weight_decay=0.2`,
+`output_dropout=0.2`, `bf16`, `--no-gradient-checkpointing`) as the base — see the
+`esm2_t33_650M_depth1_go_terms` phase below.
