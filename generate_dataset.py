@@ -207,56 +207,61 @@ def create_train_val_split_from_dataset(dataset):
   })
 
 
-data_path = Path("./data/cafa-6-protein-function-prediction")
-for sequence in SeqIO.parse(data_path/"Train/train_sequences.fasta", "fasta"):
-  unique_prot.append(sequence.id.split("|")[1])
-  prot_sequences[sequence.id.split("|")[1]] = str(sequence.seq).upper().replace(r"[UZOB]", "X") # Reading the relevant data, and pre-formatting it for ProtBERT
-train_df = pd.read_csv(data_path/"Train/train_terms.tsv", delimiter="\t")
-obonet_graph = obonet.read_obo(data_path/"Train/go-basic.obo")
+def main():
+  data_path = Path("./data/cafa-6-protein-function-prediction")
+  for sequence in SeqIO.parse(data_path/"Train/train_sequences.fasta", "fasta"):
+    unique_prot.append(sequence.id.split("|")[1])
+    prot_sequences[sequence.id.split("|")[1]] = str(sequence.seq).upper().replace(r"[UZOB]", "X") # Reading the relevant data, and pre-formatting it for ProtBERT
+  train_df = pd.read_csv(data_path/"Train/train_terms.tsv", delimiter="\t")
+  obonet_graph = obonet.read_obo(data_path/"Train/go-basic.obo")
 
-true_path_graph = restrict_to_true_path(obonet_graph)
-depths = compute_depths(true_path_graph)
-propagated_terms = propagate_protein_terms(train_df, true_path_graph)
-coarse_terms = select_coarse_terms(propagated_terms, depths)
-print(f"[INFO] Selected {len(coarse_terms)} coarse GO terms "
-      f"(3 aspect roots + depth<={COARSE_MAX_DEPTH} terms with >={COARSE_MIN_ANNOTATIONS} annotations after propagation)")
+  true_path_graph = restrict_to_true_path(obonet_graph)
+  depths = compute_depths(true_path_graph)
+  propagated_terms = propagate_protein_terms(train_df, true_path_graph)
+  coarse_terms = select_coarse_terms(propagated_terms, depths)
+  print(f"[INFO] Selected {len(coarse_terms)} coarse GO terms "
+        f"(3 aspect roots + depth<={COARSE_MAX_DEPTH} terms with >={COARSE_MIN_ANNOTATIONS} annotations after propagation)")
 
-# generate id2label and label2id datasets for the model to use (now graph-based coarse
-# GO terms instead of just the 3 aspects - the roots above subsume the old aspect task)
-label2id = {term: idx for idx, term in enumerate(sorted(coarse_terms))}
-id2label = {idx: term for term, idx in label2id.items()}
+  # generate id2label and label2id datasets for the model to use (now graph-based coarse
+  # GO terms instead of just the 3 aspects - the roots above subsume the old aspect task)
+  label2id = {term: idx for idx, term in enumerate(sorted(coarse_terms))}
+  id2label = {idx: term for term, idx in label2id.items()}
 
-protein_to_labels = {
-    protein_id: sorted(terms & coarse_terms.keys())
-    for protein_id, terms in propagated_terms.items()
-}
+  protein_to_labels = {
+      protein_id: sorted(terms & coarse_terms.keys())
+      for protein_id, terms in propagated_terms.items()
+  }
 
-# 1. Get unique protein IDs
-unique_protein_ids = list(train_df['EntryID'].unique())
-random.seed(42)
-random.shuffle(unique_protein_ids)
+  # 1. Get unique protein IDs
+  unique_protein_ids = list(train_df['EntryID'].unique())
+  random.seed(42)
+  random.shuffle(unique_protein_ids)
 
-# 2. Split IDs manually (80/20 split)
-test_size = int(len(unique_protein_ids) * 0.18)
-train_val_ids = unique_protein_ids[:-test_size]
-test_ids = unique_protein_ids[-test_size:]
+  # 2. Split IDs manually (80/20 split)
+  test_size = int(len(unique_protein_ids) * 0.18)
+  train_val_ids = unique_protein_ids[:-test_size]
+  test_ids = unique_protein_ids[-test_size:]
 
-# 3. Split Train/Val IDs (80/20 of the 80%)
-val_size = int(len(train_val_ids) * 0.22)
-train_ids = train_val_ids[:-val_size]
-val_ids = train_val_ids[-val_size:]
+  # 3. Split Train/Val IDs (80/20 of the 80%)
+  val_size = int(len(train_val_ids) * 0.22)
+  train_ids = train_val_ids[:-val_size]
+  val_ids = train_val_ids[-val_size:]
 
-print(f"Splitting IDs: Train={len(train_ids)}, Val={len(val_ids)}, Test={len(test_ids)}")
+  print(f"Splitting IDs: Train={len(train_ids)}, Val={len(val_ids)}, Test={len(test_ids)}")
 
-# 4. Generate disjoint datasets
-dataset_dict = datasets.DatasetDict({
-    "train": generate_dataset(train_ids, protein_to_labels, label2id),
-    "validation": generate_dataset(val_ids, protein_to_labels, label2id),
-    "test": generate_dataset(test_ids, protein_to_labels, label2id),
-})
+  # 4. Generate disjoint datasets
+  dataset_dict = datasets.DatasetDict({
+      "train": generate_dataset(train_ids, protein_to_labels, label2id),
+      "validation": generate_dataset(val_ids, protein_to_labels, label2id),
+      "test": generate_dataset(test_ids, protein_to_labels, label2id),
+  })
 
-dataset_dict.save_to_disk(data_path/"dataset")
-export_dependency_graph(obonet_graph, coarse_terms, data_path/"dataset"/"go_dependency_graph.json")
-dataset_dict.push_to_hub("kelmoir/cafa6", private=False)
+  dataset_dict.save_to_disk(data_path/"dataset")
+  export_dependency_graph(obonet_graph, coarse_terms, data_path/"dataset"/"go_dependency_graph.json")
+  dataset_dict.push_to_hub("kelmoir/cafa6", private=False)
 
-print("\nDisjoint datasets created successfully.")
+  print("\nDisjoint datasets created successfully.")
+
+
+if __name__ == "__main__":
+  main()
