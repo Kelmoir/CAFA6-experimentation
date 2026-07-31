@@ -1,0 +1,27 @@
+[
+  {
+    "trial_id": "trial-078",
+    "parent": "trial-077",
+    "axis": "esm2_t33_650M_depth1_go_terms: depth-1-only GO-term prediction, WITH ground-truth aspect input to the classifier (the aspect-conditioning half of the ablation, see trial-077)",
+    "note": "Companion to trial-077, identical in every hyperparameter (unfreeze_last_n=27, batch_size=16, lr=2e-5, weight_decay=0.2, output_dropout=0.2, bf16, --no-gradient-checkpointing, checkpoint-mode every-epoch, 8 epochs, 6000 train (resampled)/1000 val, seed=42, --dataset-repo-id kelmoir/cafa6-depth1) except this one adds --use-aspect-input: the classifier head (AspectConditionedEsmForSequenceClassification / AspectAwareClassificationHead in training_run.py) concatenates the dataset's ground-truth aspect_labels 3-way [C,F,P] multi-hot to the pooled CLS-token representation before the dense layer, per the user-confirmed design (concatenate to pooled output - isolates the aspect signal cleanly since the ESM backbone's own forward pass is byte-identical to trial-077, only the classifier head differs). This is deliberately an oracle/upper-bound experiment (ground-truth aspects, not predicted ones) - meant to measure how much knowing the aspect(s) alone would help depth-1 prediction, informing whether a future cascaded architecture (predict aspect first, feed it in to refine finer-term prediction) is worth pursuing, before dealing with the 'messier' case of using predicted (not ground-truth) aspects. Fresh start from facebook/esm2_t33_650M_UR50D, same as trial-077 (not resumed from trial-075/076 - incompatible label space/head shape, see trial-077's note). --push-to-hub deliberately NOT set for the same reason as trial-077 - pushes only to kelmoir/cafa6-esm@trial-078. --run-diagnostic is auto-appended by build_notebook.py.",
+    "args": [
+      "--model-name", "facebook/esm2_t33_650M_UR50D",
+      "--dataset-repo-id", "kelmoir/cafa6-depth1",
+      "--use-aspect-input",
+      "--unfreeze-last-n", "27",
+      "--mixed-precision", "bf16",
+      "--no-gradient-checkpointing",
+      "--batch-size", "16",
+      "--epochs", "8",
+      "--learning-rate", "2e-5",
+      "--output-dropout", "0.2",
+      "--weight-decay", "0.2",
+      "--grad-clip-norm", "1.0",
+      "--max-train-samples", "6000",
+      "--max-val-samples", "1000",
+      "--max-minutes", "55",
+      "--checkpoint-mode", "every-epoch",
+      "--seed", "42"
+    ]
+  }
+]
