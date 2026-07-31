@@ -2664,3 +2664,48 @@ Sources:
 - [Positive-Unlabeled Learning with Non-Negative Risk Estimator (arXiv)](https://arxiv.org/abs/1703.00593)
 - [Predicting protein functions using positive-unlabeled ranking with ontology-based priors (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11211813/)
 - [AI models collapse when trained on recursively generated data (Nature)](https://www.nature.com/articles/s41586-024-07566-y)
+
+### trial-081 result — a clean NEGATIVE result: masking made AUROC measurably worse
+
+val_loss: 0.3331 → 0.3357 → 0.3289 → **0.3223** → 0.3260 → 0.3413 → 0.3329 → 0.3497 — same overfitting
+*shape* as trial-080 (bottoms at epoch 4, rises after), but the absolute values aren't comparable to
+trial-080's ~0.55 range: masking changes what's being measured (fewer loss terms contribute per batch,
+since roughly a third of the dataset has some negatives excluded entirely), so the lower numbers are a
+measurement-scope artifact, not an improvement — exactly why `run_diagnostic()` was deliberately kept
+unmasked as the honest comparison point. `best_epoch=4`, matching trial-080 exactly.
+
+**Diagnostic** (2000 val examples, all 3/3 labels evaluable): mean AUROC=0.6378, median=0.6247,
+min=0.6103, max=0.6785, pooled AUROC=0.6392, best F1=0.8360@threshold=**0.50** (the untrustworthy
+default, not a tuned value — see below), **0/3 labels clear 0.7 AUROC** (down from trial-080's 1/3).
+
+**vs. trial-080** (identical everything except the masking flag):
+
+| metric | trial-080 (unmasked) | trial-081 (masked) | delta |
+|---|---|---|---|
+| mean AUROC | 0.6872 | 0.6378 | **-7.18%** |
+| median AUROC | 0.6698 | 0.6247 | **-6.74%** |
+| pooled AUROC | 0.6844 | 0.6392 | **-6.60%** |
+| best F1 | 0.8392 | 0.8360 | -0.37% (roughly flat) |
+| precision@0.5 | 0.7541 | 0.7207 | -4.44% |
+| recall@0.5 | 0.9307 | 0.9953 | **+6.95%** (even closer to the ceiling) |
+| best F1 threshold | 0.42 (tuned) | 0.50 (untuned default) | reverted — worse calibration |
+
+**Every AUROC variant got measurably worse, and the model leaned harder into predicting positive, not
+less.** In hindsight this is understandable rather than mysterious: `total_terms<=2` covers roughly a
+third of the *entire* dataset (verified during the investigation: 32.9% of all proteins), so masking
+excluded a large fraction of an already-scarce negative-class training signal — aspects are
+majority-positive (~70–73%) to begin with, and the negative class is the scarcer, more informative
+signal for teaching the model to discriminate at all. Removing a third of it starved exactly the
+contrastive signal AUROC depends on. The threshold is also a *population-level* correlation (63–75% of
+aspect-missing proteins are sparse), not a per-example certainty — the hard binary cutoff discarded
+real, legitimate negatives along with the noisy ones, and here that cost clearly outweighed the
+noise-removal benefit.
+
+**Decision**: trial-080 (unmasked, pooled AUROC 0.6844) remains the better of the two aspect-prediction
+checkpoints. Masking as implemented (hard binary cutoff at `total_terms<=2`) is not recommended going
+forward for this task. If revisited: a gentler threshold (e.g. `total_terms<=1`, removing far fewer
+examples) or soft down-weighting instead of a hard 0/1 mask might avoid over-starving negative signal —
+but given trial-080 is already the working baseline, the more sensible near-term move is proceeding to a
+real (non-oracle) cascade test using trial-080's checkpoint, with the honest caveat that its true AUROC
+ceiling — plausibly understated somewhat by the OWA problem, but evidently not fixable by this
+particular mitigation — sits around 0.68, well below the depth-1/383-term tasks' ~0.95.

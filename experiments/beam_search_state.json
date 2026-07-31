@@ -498,7 +498,7 @@
       "next_step": "COMPLETE. trial-078 (aspect input) decisively beat trial-077 (no aspect input) on every single metric - see trial_078.verdict_vs_trial077. This is the cleanest, least ambiguous result in the entire sweep so far. De-risks the sequential-cascade prospect; awaiting user direction on whether to resume that plan, test with predicted (non-oracle) aspects first, or treat this ablation as its own deliverable."
     },
     "esm2_t33_650M_aspect_prediction": {
-      "status": "trial-080 COMPLETE (real learning, OVERFITS past epoch 4, AUROC ceiling ~0.68). Annotation-completeness hypothesis CONFIRMED with literature support. trial-081 (negative-label masking, the agreed OWA mitigation) LAUNCHED - see pu_learning_discussion for the design space considered and trial_081 for the launched config.",
+      "status": "trial-080 (unmasked, pooled AUROC 0.6844) is the best aspect-prediction checkpoint so far. trial-081 tested the negative-label masking mitigation and got a clean NEGATIVE result (AUROC down 6.6-7.2% relative) - masking starved an already-scarce negative signal more than it removed noise. Not recommended going forward. Next: proceed to a real (non-oracle) cascade test using trial-080's checkpoint, or investigate a gentler masking threshold if pursuing this mitigation further.",
       "why": "Per user direction: trial-078 proved the APPROACH (ground-truth aspect input decisively helps depth-1 prediction) but used an oracle aspect input, not a real predictor. Before testing the sequential-cascade prospect with predicted (non-oracle) aspects, we first need a valid model that predicts the aspects themselves - that's what this phase is for. User explicitly framed this as a genuinely new sub-track, not a continuation of the depth-1 experiments.",
       "dataset": "kelmoir/cafa6-aspect (generate_dataset_aspect.py, reuses generate_dataset.py's GO-graph/propagation logic): label space is just the 3 GO namespace roots (F/C/P), a 3-way multi-hot per protein (most proteins have more than one simultaneously - verified: 29.5%/26.9%/43.7% single/double/triple-aspect in a 2000-row sample, matching the ~29%/27%/44% figures found earlier this session on the full dataset). Same seed/shuffle/split as kelmoir/cafa6 and kelmoir/cafa6-depth1, so protein ID sets match exactly (47817/13485/13479 rows). Pushed and verified live on the Hub via load_dataset('kelmoir/cafa6-aspect').",
       "trial_079": {
@@ -574,11 +574,35 @@
         "decision": "Implemented the simplest, lowest-risk option: masking. Excludes 'negative' labels from the loss (both training and validation-for-best-checkpoint-selection) when the protein's total_terms <= threshold (2, per the investigation), while always trusting positives. Sidesteps needing to estimate pi_p entirely. See trial_081."
       },
       "trial_081": {
-        "status": "LAUNCHED, not yet run",
+        "status": "COMPLETE - NEGATIVE RESULT. Masking made every AUROC variant measurably worse, not better.",
         "purpose": "Tests whether masking untrustworthy negative labels (the agreed OWA mitigation) moves trial-080's AUROC ceiling and/or its overfitting onset - the practical payoff of the whole investigation/literature/PU-learning discussion.",
         "config": "Identical to trial-080 (unfreeze_last_n=27, batch_size=8/grad-accum-steps=2, lr=2e-5, weight_decay=0.2, output_dropout=0.2, bf16, --no-gradient-checkpointing, 8 epochs, 6000 train/1000 val, checkpoint-mode every-epoch, dataset-repo-id kelmoir/cafa6-aspect) plus --mask-sparse-negatives-max-total-terms 2. kelmoir/cafa6-aspect regenerated/repushed with a new total_terms column (raw unpropagated GO term count per protein) to support this. --push-to-hub NOT set.",
         "implementation_notes": "compute_loss() in training_run.py applies the mask identically to training loss and the validation loss used for best-checkpoint selection (so the two stay consistent - a model trained on a masked objective shouldn't be checkpoint-selected against an unmasked one). run_diagnostic() is deliberately left UNMASKED, evaluating against the full original label set exactly as trial-080 did, so the AUROC numbers stay directly comparable between the two trials - only the training objective changed, not the evaluation protocol. Verified directly before launch: masked positions get exactly zero gradient (not a pull toward any value), and the unmasked code path (used by every other trial in this sweep) is bit-identical to plain BCEWithLogitsLoss - full backward compatibility confirmed.",
-        "next_step": "Awaiting results. Compare trial-081's diagnostic AUROC against trial-080's (0.6844 pooled, 0.6872 mean, 0.6698 median) and its val_loss trajectory (does overfitting still onset at epoch 4, or later/not at all now that untrustworthy negatives aren't pulling the model in a wrong direction)."
+        "result": {
+          "val_loss_by_epoch": [0.3331, 0.3357, 0.3289, 0.3223, 0.3260, 0.3413, 0.3329, 0.3497],
+          "train_loss_by_epoch": [0.3573, 0.3227, 0.3216, 0.3148, 0.3016, 0.2888, 0.2781, 0.2628],
+          "best_epoch": 4,
+          "best_val_loss": 0.3222944850921631,
+          "verdict": "Same overfitting SHAPE as trial-080 (bottoms at epoch 4, rises after) - masking didn't change the overfitting onset epoch. Absolute val_loss values are NOT comparable to trial-080's (masking changes the denominator - fewer loss terms contribute per batch, since ~33% of the dataset has some negatives excluded entirely), so the ~0.32 vs ~0.55 gap is a measurement-scope artifact, not a real improvement - this is exactly why run_diagnostic() was kept unmasked as the honest comparison point.",
+          "wall_clock": "1742.6s (29.0min), ~2.42 cost-units - similar order to trial-080 despite fewer effective loss terms (masking zeroes contributions, doesn't skip forward/backward compute)."
+        },
+        "diagnostic_results": {
+          "n_val_examples": 2000,
+          "n_labels_evaluable": "3/3",
+          "mean_auroc": 0.6377992237223731,
+          "median_auroc": 0.6246504720769426,
+          "min_auroc": 0.6103,
+          "max_auroc": 0.6785,
+          "pooled_auroc": 0.639216092091039,
+          "best_f1": 0.8360367402775063,
+          "best_f1_threshold": 0.50,
+          "labels_auroc_gt_0.7": "0/3 (down from trial-080's 1/3)"
+        },
+        "verdict_vs_trial080": {
+          "comparison_table": "mean AUROC: 0.6872->0.6378 (-7.18%). median AUROC: 0.6698->0.6247 (-6.74%). pooled AUROC: 0.6844->0.6392 (-6.60%). best F1: 0.8392->0.8360 (-0.37%, roughly flat). precision@0.5: 0.7541->0.7207 (-4.44%). recall@0.5: 0.9307->0.9953 (+6.95%, even closer to the ceiling). best_f1_threshold reverted from 0.42 (tuned away from default) to exactly 0.50 (untuned default) - a sign of WORSE calibration, not better.",
+          "interpretation": "A real, clean negative result - masking made the model MORE biased toward predicting positive, not less, and every AUROC variant got measurably worse. Root cause (in hindsight, understandable rather than mysterious): total_terms<=2 covers roughly a third of the entire dataset (verified during the investigation: 32.9% of all proteins), so masking excluded a large fraction of an ALREADY-scarce negative-class training signal (aspects are majority-positive, ~70-73%) - in a task where the negative class is already the scarcer, more informative signal for learning discrimination, removing a third of it starved the model of exactly the contrastive signal AUROC depends on. The total_terms<=2 threshold is also a population-level correlation (63-75% of aspect-missing proteins are sparse), not a per-example certainty - the hard binary cutoff discarded real, legitimate negatives along with the noisy ones, and here that cost clearly outweighed the noise-removal benefit."
+        },
+        "next_step": "trial-080 (unmasked, pooled AUROC 0.6844) remains the better of the two aspect-prediction checkpoints. Masking as implemented (hard binary cutoff at total_terms<=2) is not recommended going forward for this task. If revisited: a gentler threshold (e.g. total_terms<=1, removing far fewer examples) or soft down-weighting instead of a hard 0/1 mask might avoid over-starving negative signal - but given trial-080 is already the working baseline and this was the second (already fairly expensive) full-budget attempt at this task, the more sensible near-term move is to proceed to the real (non-oracle) cascade test using trial-080's checkpoint as the aspect predictor, with the honest caveat that its true AUROC ceiling (understated somewhat by OWA per the investigation, but not fixable by this particular mitigation) is around 0.68, well below the depth-1/383-term tasks' ~0.95."
       }
     },
     "esm2_t6_8M": {

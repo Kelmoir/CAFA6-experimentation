@@ -1,0 +1,52 @@
+
+==================== RUNNING trial-081 (esm2_t33_650M_aspect_prediction: same full budget as trial-080, plus --mask-sparse-negatives-max-total-terms 2 (Open World Assumption mitigation)) ====================
+
+note: Identical to trial-080 in every hyperparameter, with one addition: --mask-sparse-negatives-max-total-terms 2. trial-080 (full 6000-train/1000-val/8-epoch budget, no masking) confirmed real learning (AUROC up 12-21% relative over trial-079's health check) but hit a much lower ceiling than every other task in this sweep (pooled AUROC 0.6844 vs ~0.94-0.96 elsewhere) and showed clean, textbook OVERFITTING past epoch 4. Investigation (see experiments/sweep_log.md) confirmed why: proteins missing a given aspect are systematically under-annotated everywhere (63-75% have <=2 total GO terms across their entire record, vs a full-dataset median of 4) - matching GO's own documented 'Open World Assumption'. This trial tests the agreed mitigation: exclude 'negative' aspect labels from the loss (both training and validation-for-best-checkpoint-selection) when the protein's total_terms is <=2. Positive labels are always trusted regardless of total_terms. --run-diagnostic stays deliberately UNMASKED so the two trials' AUROC numbers remain directly comparable. --push-to-hub NOT set. Fresh start from facebook/esm2_t33_650M_UR50D.
+[CONFIG] {"device": "cuda", "epochs": 8, "batch_size": 8, "learning_rate": 2e-05, "max_length": 1024, "model_name": "facebook/esm2_t33_650M_UR50D", "unfreeze_last_n": 27, "max_train_samples": 6000, "max_val_samples": 1000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "dataset_repo_id": "kelmoir/cafa6-aspect", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.2, "max_minutes": 50.0, "run_name": "trial-081", "trackio_space_id": null, "checkpoint_mode": "every-epoch", "checkpoint_branch": "trial-081", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 2, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": true, "use_lora": false, "use_aspect_input": false, "mask_sparse_negatives_max_total_terms": 2, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": null, "mixed_precision": "bf16", "gradient_checkpointing": false, "run_diagnostic": true, "diagnostic_max_val_samples": 2000}
+
+Model layers: 33, request unfreeze layers: 27
+[INFO] Initialized classifier bias to label priors: {'GO:0003674': 0.7003366947174072, 'GO:0005575': 0.7257042527198792, 'GO:0008150': 0.7199949622154236}
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+
+Epoch 1/8 | train_loss=0.3573 | val_loss=0.3331 | train_acc=0.7139 | val_acc=0.7153 | train_recall=0.9998 | val_recall=0.9986
+[TIMING] epoch 1 elapsed=183.5s
+[INFO] Pushed checkpoint for epoch 1 to kelmoir/cafa6-esm@trial-081
+Epoch 2/8 | train_loss=0.3227 | val_loss=0.3357 | train_acc=0.7217 | val_acc=0.7133 | train_recall=0.9989 | val_recall=0.9991
+[TIMING] epoch 2 elapsed=173.5s
+[INFO] Pushed checkpoint for epoch 2 to kelmoir/cafa6-esm@trial-081
+Epoch 3/8 | train_loss=0.3216 | val_loss=0.3289 | train_acc=0.7192 | val_acc=0.7140 | train_recall=0.9991 | val_recall=0.9986
+[TIMING] epoch 3 elapsed=182.1s
+[INFO] Pushed checkpoint for epoch 3 to kelmoir/cafa6-esm@trial-081
+Epoch 4/8 | train_loss=0.3148 | val_loss=0.3223 | train_acc=0.7208 | val_acc=0.7180 | train_recall=0.9957 | val_recall=0.9958
+[TIMING] epoch 4 elapsed=185.6s
+[INFO] Pushed checkpoint for epoch 4 to kelmoir/cafa6-esm@trial-081
+Epoch 5/8 | train_loss=0.3016 | val_loss=0.3260 | train_acc=0.7248 | val_acc=0.7197 | train_recall=0.9928 | val_recall=0.9935
+[TIMING] epoch 5 elapsed=174.9s
+[INFO] Pushed checkpoint for epoch 5 to kelmoir/cafa6-esm@trial-081
+Epoch 6/8 | train_loss=0.2888 | val_loss=0.3413 | train_acc=0.7243 | val_acc=0.7197 | train_recall=0.9919 | val_recall=0.9725
+[TIMING] epoch 6 elapsed=174.7s
+[INFO] Pushed checkpoint for epoch 6 to kelmoir/cafa6-esm@trial-081
+Epoch 7/8 | train_loss=0.2781 | val_loss=0.3329 | train_acc=0.7313 | val_acc=0.7207 | train_recall=0.9892 | val_recall=0.9799
+[TIMING] epoch 7 elapsed=175.4s
+[INFO] Pushed checkpoint for epoch 7 to kelmoir/cafa6-esm@trial-081
+Epoch 8/8 | train_loss=0.2628 | val_loss=0.3497 | train_acc=0.7339 | val_acc=0.7157 | train_recall=0.9851 | val_recall=0.9772
+[TIMING] epoch 8 elapsed=173.2s
+[INFO] Pushed checkpoint for epoch 8 to kelmoir/cafa6-esm@trial-081
+[SUMMARY] {"run_name": "trial-081", "epochs_completed": 8, "final_train_loss": 0.26278369782368344, "final_val_loss": 0.3497386185526848, "train_accuracy": 0.7339444444444444, "val_accuracy": 0.7156666666666667, "train_recall": 0.9851018786430359, "val_recall": 0.9771614074707031, "best_epoch": 4, "best_val_loss": 0.3222944850921631}
+[INFO] Using best checkpoint (epoch 4, val_loss=0.3223) for diagnostic/promotion, not the last epoch (8, val_loss=0.3497)
+[INFO] Running post-training AUROC/F1 diagnostic on the best-checkpoint model...
+
+======================================================================
+DIAGNOSTIC: 3/3 labels evaluable (both classes present), 2000 val examples
+======================================================================
+Per-label AUROC: mean=0.6378 median=0.6247 min=0.6103 max=0.6785
+  labels with AUROC > 0.5: 3/3
+  labels with AUROC > 0.7: 0/3
+Pooled @ threshold 0.5: accuracy=0.7203 (trivial baseline=0.2837) precision=0.7207 recall=0.9953 f1=0.8360
+Pooled AUROC=0.6392  Best F1=0.8360@threshold=0.50
+[DIAGNOSTIC] {"n_val_examples": 2000, "n_labels_evaluable": 3, "n_labels_total": 3, "mean_auroc": 0.6377992237223731, "median_auroc": 0.6246504720769426, "pooled_auroc": 0.639216092091039, "accuracy_at_0.5": 0.7203333333333334, "trivial_baseline_accuracy": 0.2836666703224182, "precision_at_0.5": 0.7206873315351741, "recall_at_0.5": 0.995346672868787, "f1_at_0.5": 0.8360367354039602, "best_f1": 0.8360367402775063, "best_f1_threshold": 0.5}
+[TIMING] trial-081 total wall clock: 1742.6s
+
+==================== BATCH DONE ====================
+trial-081: completed
