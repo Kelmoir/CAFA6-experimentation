@@ -2619,3 +2619,48 @@ the exact problem CAFA's evaluation methodology was built to route around.
 Sources:
 - [Gene Ontology: Pitfalls, Biases, and Remedies (Springer)](https://link.springer.com/protocol/10.1007/978-1-4939-3743-1_14)
 - [GO handbook: Gene Ontology: Pitfalls, Biases, Remedies (arXiv)](https://arxiv.org/pdf/1602.01875)
+
+### Mitigation design discussion, and trial-081
+
+Extended discussion on how to actually *fix* the OWA problem, not just diagnose it. Considered and rejected:
+IEA/automated annotation transfer (BLAST/GOLabeler-style) — inherits its own "propagation bias"
+(electronic annotations over-homogenize functional similarity among homologs, per the same Gaudet &
+Dessimoz source) and would shrink the already-scarce negative class further, since aspects are
+majority-positive to begin with; synthetic training data via PLM masked-residue infilling — doesn't
+touch label *reliability* at all (only adds assumed positives), carries real circularity/model-collapse
+risk from using ESM to generate training data for an ESM classifier (Shumailov et al., *Nature*, 2024:
+"AI models collapse when trained on recursively generated data"), and would amplify rather than correct
+the well-studied-protein bias.
+
+Considered more seriously: **full nnPU** (Kiryo et al. 2017, non-negative PU risk estimator, building on
+Elkan & Noto 2008) — verified the actual formula,
+$\hat{R}_{pu}(g) = \pi_p \hat{R}_p^+(g) - \pi_p \hat{R}_p^-(g) + \hat{R}_u^-(g)$ (clamped at 0), which is
+the mathematically precise answer to "learn from valid data, counterbalance unknowns without a free
+predict-everything-positive collapse" — but it needs a trustworthy true class prior $\pi_p$, which we
+have no good way to estimate (our observed ~70–73% positive rate is itself OWA-contaminated, a floor
+not the true prior). Also checked **PU-GO** (2024), real published work solving exactly this problem for
+GO prediction via a ranking loss + ontology-structure-derived priors — but their own ablation shows only
+modest gains (Fmax +4.7%, AUC +2.1%) for real implementation effort, not proportionate to this project's
+scale right now.
+
+**Decision**: implement the simplest, lowest-risk option — masking. Excludes "negative" labels from the
+loss (both training and the validation loss used for best-checkpoint selection, kept consistent with
+each other) when a protein's `total_terms` (raw, unpropagated GO annotation count across all aspects,
+now a new column in `kelmoir/cafa6-aspect` via `generate_dataset_aspect.py`) is ≤2 — the exact threshold
+identified in the investigation. Positive labels are always trusted regardless. Sidesteps needing to
+estimate $\pi_p$ entirely.
+
+Implemented as `--mask-sparse-negatives-max-total-terms` in `training_run.py`. Verified directly before
+launch: masked positions get exactly zero gradient (not a pull toward any value, confirmed via direct
+backward-pass inspection), and the unmasked code path — used by every other trial in this sweep — is
+bit-identical to plain `BCEWithLogitsLoss`, confirming full backward compatibility.
+
+**trial-081**: identical to trial-080 in every hyperparameter, plus `--mask-sparse-negatives-max-total-terms
+2`. `run_diagnostic()` deliberately stays unmasked (evaluates against the full original label set exactly
+as trial-080 did), so the AUROC numbers remain directly comparable between the two trials — only the
+training objective changes, not the evaluation protocol.
+
+Sources:
+- [Positive-Unlabeled Learning with Non-Negative Risk Estimator (arXiv)](https://arxiv.org/abs/1703.00593)
+- [Predicting protein functions using positive-unlabeled ranking with ontology-based priors (PMC)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11211813/)
+- [AI models collapse when trained on recursively generated data (Nature)](https://www.nature.com/articles/s41586-024-07566-y)

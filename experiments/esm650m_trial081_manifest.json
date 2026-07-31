@@ -1,0 +1,28 @@
+[
+  {
+    "trial_id": "trial-081",
+    "parent": "trial-080",
+    "axis": "esm2_t33_650M_aspect_prediction: same full budget as trial-080, plus --mask-sparse-negatives-max-total-terms 2 (Open World Assumption mitigation)",
+    "note": "Identical to trial-080 in every hyperparameter, with one addition: --mask-sparse-negatives-max-total-terms 2. trial-080 (full 6000-train/1000-val/8-epoch budget, no masking) confirmed real learning (AUROC up 12-21% relative over trial-079's health check) but hit a much lower ceiling than every other task in this sweep (pooled AUROC 0.6844 vs ~0.94-0.96 elsewhere) and showed clean, textbook OVERFITTING past epoch 4. Investigation (see experiments/sweep_log.md) confirmed why: proteins missing a given aspect are systematically under-annotated everywhere (63-75% have <=2 total GO terms across their entire record, vs a full-dataset median of 4) - matching GO's own documented 'Open World Assumption' (Gaudet & Dessimoz, GO Handbook: absence of annotation != absence of function; <1% of experimental GO annotations are curator-confirmed negatives). This trial tests the agreed mitigation: exclude 'negative' aspect labels from the loss (both training and validation-for-best-checkpoint-selection) when the protein's total_terms (generate_dataset_aspect.py, raw unpropagated GO term count across all aspects) is <=2 - the exact threshold identified in the investigation. Positive labels are always trusted regardless of total_terms. This is the simpler, lower-risk alternative to full nnPU-style PU learning discussed and deliberately not pursued (nnPU needs an estimated true class prior we have no trustworthy way to pin down; masking sidesteps that entirely). --run-diagnostic stays deliberately UNMASKED (evaluates against the full original label set, same as trial-080) so the two trials' AUROC numbers remain directly comparable - only the training objective changes, not the evaluation protocol. --push-to-hub NOT set, same reasoning as trial-080. Fresh start from facebook/esm2_t33_650M_UR50D.",
+    "args": [
+      "--model-name", "facebook/esm2_t33_650M_UR50D",
+      "--dataset-repo-id", "kelmoir/cafa6-aspect",
+      "--mask-sparse-negatives-max-total-terms", "2",
+      "--unfreeze-last-n", "27",
+      "--mixed-precision", "bf16",
+      "--no-gradient-checkpointing",
+      "--batch-size", "8",
+      "--grad-accum-steps", "2",
+      "--epochs", "8",
+      "--learning-rate", "2e-5",
+      "--output-dropout", "0.2",
+      "--weight-decay", "0.2",
+      "--grad-clip-norm", "1.0",
+      "--max-train-samples", "6000",
+      "--max-val-samples", "1000",
+      "--max-minutes", "50",
+      "--checkpoint-mode", "every-epoch",
+      "--seed", "42"
+    ]
+  }
+]
