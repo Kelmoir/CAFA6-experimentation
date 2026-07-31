@@ -10,3 +10,6 @@ __pycache__/
 .podman/
 *.token
 *.secret
+
+# Sandbox environment artifact (bind-mounted to /dev/null, not real project config)
+/.mcp.json
