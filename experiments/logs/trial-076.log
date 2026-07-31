@@ -1,0 +1,41 @@
+
+==================== RUNNING trial-076 (esm2_t33_650M_full_finetune: continue training FROM trial-075's checkpoint (--resume-from-revision), same config unchanged - per user direction, trial-075's exact hyperparameters are the valid point to build the next beam-search stage on top of, not a fresh restart at a bigger data/epoch budget) ====================
+
+note: trial-075 (unfreeze_last_n=27, batch_size=8, gradient accumulation=2, lr=2e-5, weight_decay=0.2, output_dropout=0.2, --no-gradient-checkpointing, bf16, A100) ran 8 epochs on 6000 train(resampled)/1000 val and finished HEALTHY - val_loss was still improving at the last epoch (0.0741->0.0733), no overfitting signature within that budget. Rather than restarting cold at a bigger data/epoch budget (trial-074's mirror approach on the LoRA side, which found only mild gains before overfitting past epoch 7), this trial resumes directly from trial-075's own weights via --resume-from-revision trial-075 --start-epoch 8 and trains 4 more epochs (9-12) on freshly-resampled 6000-train/1000-val data (build_train_dataloader seeds by args.seed+epoch, so epochs 9-12 use seeds 50-53, never touching epochs 0-7's seeds 42-49) - every other hyperparameter held byte-for-byte identical to trial-075. This answers the open question in beam_search_state.json's esm2_t33_650M_full_finetune next_step directly: does more training from this exact validated point keep improving, or does it hit the same overfitting wall trial-074 found on the LoRA side? Sized at trial-075's real measured throughput (2662.5s/56000 examples = 0.047545s/example): 4 epochs * 7000 examples/epoch * 0.047545s = ~1331s (~22.2min) + overhead (re-downloading trial-075's 650M checkpoint from the Hub, comparable to a fresh base-model download) -> --max-minutes 45 gives a generous buffer. --checkpoint-mode every-epoch given real A100 dollar stakes. Pushes to its own kelmoir/cafa6-esm@trial-076 branch (build_notebook.py's runner passes --checkpoint-branch trial-076), leaving the currently-promoted trial-075/main checkpoint untouched regardless of outcome. --push-to-hub deliberately NOT set - promote only if this beats trial-075 on best F1/median AUROC. --run-diagnostic is auto-appended by build_notebook.py.
+[CONFIG] {"device": "cuda", "epochs": 4, "batch_size": 8, "learning_rate": 2e-05, "max_length": 1024, "model_name": "facebook/esm2_t33_650M_UR50D", "unfreeze_last_n": 27, "max_train_samples": 6000, "max_val_samples": 1000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.2, "max_minutes": 45.0, "run_name": "trial-076", "trackio_space_id": null, "checkpoint_mode": "every-epoch", "checkpoint_branch": "trial-076", "hf_token_file": null, "resume_from_revision": "trial-075", "start_epoch": 8, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 2, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": true, "use_lora": false, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": null, "mixed_precision": "bf16", "gradient_checkpointing": false, "run_diagnostic": true, "diagnostic_max_val_samples": 2000}
+
+[dataset/model download - see chat transcript for full progress output]
+
+Model layers: 33, request unfreeze layers: 27
+[INFO] Resumed model weights from kelmoir/cafa6-esm@trial-075
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+
+Epoch 9/12 | train_loss=0.0695 | val_loss=0.0730 | train_acc=0.9754 | val_acc=0.9741 | train_recall=0.0562 | val_recall=0.0572
+[TIMING] epoch 9 elapsed=272.6s
+[INFO] Pushed checkpoint for epoch 9 to kelmoir/cafa6-esm@trial-076
+Epoch 10/12 | train_loss=0.0688 | val_loss=0.0726 | train_acc=0.9756 | val_acc=0.9738 | train_recall=0.0609 | val_recall=0.0529
+[TIMING] epoch 10 elapsed=272.1s
+[INFO] Pushed checkpoint for epoch 10 to kelmoir/cafa6-esm@trial-076
+Epoch 11/12 | train_loss=0.0668 | val_loss=0.0727 | train_acc=0.9761 | val_acc=0.9739 | train_recall=0.0636 | val_recall=0.0528
+[TIMING] epoch 11 elapsed=262.7s
+[INFO] Pushed checkpoint for epoch 11 to kelmoir/cafa6-esm@trial-076
+Epoch 12/12 | train_loss=0.0657 | val_loss=0.0726 | train_acc=0.9767 | val_acc=0.9739 | train_recall=0.0673 | val_recall=0.0582
+[TIMING] epoch 12 elapsed=274.6s
+[INFO] Pushed checkpoint for epoch 12 to kelmoir/cafa6-esm@trial-076
+[SUMMARY] {"run_name": "trial-076", "epochs_completed": 12, "final_train_loss": 0.06569691857198874, "final_val_loss": 0.07257112249732017, "train_accuracy": 0.9766692776327242, "val_accuracy": 0.9739451697127938, "train_recall": 0.06732058525085449, "val_recall": 0.058190230280160904, "best_epoch": 12, "best_val_loss": 0.07257112249732017}
+[INFO] Running post-training AUROC/F1 diagnostic on the best-checkpoint model...
+
+======================================================================
+DIAGNOSTIC: 362/383 labels evaluable (both classes present), 2000 val examples
+======================================================================
+Per-label AUROC: mean=0.8475 median=0.8604 min=0.0915 max=1.0000
+  labels with AUROC > 0.5: 357/362
+  labels with AUROC > 0.7: 334/362
+Pooled @ threshold 0.5: accuracy=0.9738 (trivial baseline=0.9643) precision=0.6979 recall=0.4718 f1=0.5630
+Pooled AUROC=0.9618  Best F1=0.6046@threshold=0.28
+[DIAGNOSTIC] {"n_val_examples": 2000, "n_labels_evaluable": 362, "n_labels_total": 383, "mean_auroc": 0.8474930932555996, "median_auroc": 0.8603653943513629, "pooled_auroc": 0.9617763091749764, "accuracy_at_0.5": 0.9738172323759791, "trivial_baseline_accuracy": 0.9642545580863953, "precision_at_0.5": 0.6978767086278579, "recall_at_0.5": 0.47175048391202956, "f1_at_0.5": 0.5629548873200032, "best_f1": 0.604591700846961, "best_f1_threshold": 0.28}
+[TIMING] trial-076 total wall clock: 1391.0s
+
+==================== BATCH DONE ====================
+trial-076: completed

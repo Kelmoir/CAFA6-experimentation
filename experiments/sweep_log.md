@@ -2224,3 +2224,86 @@ trial-075's 650M full-fine-tune checkpoint rather than trial-074's 3B LoRA check
 `esm2_t36_3B_lora_scaleup`'s trial-074 promotion. `esm2_t36_3B_lora_scaleup` is not abandoned (trial-072's
 real macro-AUROC edge is on record, and `kelmoir/cafa6-esm@trial-074` still holds that checkpoint on
 its own branch, now cleaned of the same stale-file issue) but is no longer what `main` represents.
+
+## trial-076: continuing training from trial-075's own checkpoint — a real, modest win, with a cost catch
+
+Per user direction ("the 075 config is the valid one to continue here, as this is a special point"),
+this trial doesn't restart cold at a bigger data/epoch budget the way trial-074 mirrored on the LoRA
+side. Instead it resumes directly from `kelmoir/cafa6-esm@trial-075`'s own weights
+(`--resume-from-revision trial-075 --start-epoch 8`) and trains 4 more epochs (9–12) on
+freshly-resampled 6000-train/1000-val data, every other hyperparameter held identical to trial-075.
+Pushes to its own `trial-076` branch — `main`/`trial-075` untouched regardless of outcome.
+`--push-to-hub` deliberately not set; promotion is a decision for after seeing the result.
+
+**OOM and fix**: the first attempt at this run_name OOM'd at trial-075's exact `batch_size=16`, despite
+trial-075 running clean at that identical setting. Root cause: `build_train_dataloader`'s plain random
+per-epoch shuffle can, by chance, cluster several near-max-length (1024-residue) sequences into one
+batch, spiking that batch's padding/activation memory — a resample-luck factor (each epoch reseeds by
+`args.seed + epoch`), not a real capacity mismatch. trial-075's 8 epochs (seeds 42–49) happened to avoid
+it; trial-076's epochs 9–12 (seeds 50–53) didn't. Fixed in `training_run.py` by switching the train
+dataloader to `transformers`' `LengthGroupedSampler` (the standard `group_by_length` technique:
+mega-batch sort-by-length + shuffle) instead of trading `batch_size` down for `--grad-accum-steps` —
+verified at this trial's exact scale (6000 examples/batch=16): average within-batch length spread drops
+from up to ~1000 tokens under pure random shuffling to ~20 (worst case 58), and the sampler
+deliberately runs the single longest-sequence batch first so a config that still doesn't fit fails in
+seconds, not deep into a paid run. The actual successful run below used the user's own
+`batch_size=8`/`--grad-accum-steps 2` workaround (found independently, before the code fix landed)
+rather than the new fix — both avoid the same OOM; the fix stays in place as the lower-overhead option
+for a future trial at `batch_size=16`.
+
+### trial-076 result — every diagnostic metric improves over trial-075, but val_loss plateaus
+
+Epochs 9–12, val_loss: 0.0730 → 0.0726 → 0.0727 → 0.0726 (0.07257 precisely) — improves epoch 8→9 then
+flattens into a tight band, essentially no further real gain, while train_loss keeps falling
+monotonically (0.0695 → 0.0688 → 0.0668 → 0.0657, ~5.5% relative drop). A real, if small, widening
+train/val gap — milder than trial-074's clear bottom-out-then-rise reversal, more a plateau than an
+overfitting signature. `best_epoch=12` (the last epoch, by a hair over epoch 10's near-identical value).
+Wall clock 1391.0s (23.2min) for the 4 additional epochs — comparable per-epoch throughput to
+trial-075's own 272–296s/epoch despite the smaller `batch_size=8`/grad-accum=2 micro-batching.
+
+**Diagnostic** (2000 val examples): mean AUROC=0.8475, median=0.8604, pooled AUROC=0.9618, pooled
+F1@0.5=0.5630, best F1=0.6046@threshold=0.28.
+
+**vs. trial-075** (same architecture/hardware/data budget, 4 more epochs from trial-075's own weights):
+
+| metric | trial-075 | trial-076 | delta |
+|---|---|---|---|
+| mean AUROC | 0.8393 | 0.8475 | +0.98% |
+| median AUROC | 0.8521 | 0.8604 | +0.97% |
+| pooled AUROC | 0.9601 | 0.9618 | +0.17% |
+| best F1 | 0.6019 | 0.6046 | +0.45% |
+| pooled F1@0.5 | 0.5626 | 0.5630 | +0.06% |
+| val_loss | 0.0733 | 0.0726 | -0.99% (lower is better) |
+
+Every single diagnostic metric improved, none regressed — despite the val_loss curve's plateau shape
+(which on its own might read as "stop here"), the metrics that actually matter (AUROC/F1) kept
+improving through epoch 12, consistent with this project's standing precedent (since trial-050) of
+trusting the diagnostic over raw val_loss under this task's severe class imbalance.
+
+**vs. trial-072** (the cross-phase comparison, still 3B LoRA vs. 650M full-FT):
+
+| metric | trial-072 (3B LoRA) | trial-076 (650M full-FT) | delta | (trial-075's own delta, for reference) |
+|---|---|---|---|---|
+| mean AUROC | 0.8637 | 0.8475 | -1.88% | -2.8% |
+| median AUROC | 0.8811 | 0.8604 | -2.35% | -3.3% |
+| pooled AUROC | 0.9635 | 0.9618 | -0.18% | -0.4% |
+| best F1 | 0.5974 | 0.6046 | **+1.20%** | +0.75% |
+| val_loss | 0.0721 | 0.0726 | +0.65% | +1.7% |
+
+Every metric moves in trial-076's favor relative to trial-072, compared to where trial-075 stood — the
+AUROC gap narrows on all three views, and the F1 edge widens further. An encouraging trend: more
+training keeps closing the gap on both axes at once, not trading one for the other.
+
+**Cost honesty check**: trial-076 alone cost ~1.93 cost-units (A100=5x, 1391.0s) — cheap on its own.
+But trial-076 only exists on top of trial-075's own 3.70 cost-units, so the cumulative cost to reach
+this checkpoint state is 5.63 cost-units — **+17.4% more expensive than trial-072's 4.80**, reversing
+trial-075's own "~23% cheaper" framing against trial-072. The marginal continuation is cheap; the total
+path to this quality level is not.
+
+**Open, pending user decision**: (1) promote trial-076 to `kelmoir/cafa6-esm@main`, superseding
+trial-075 — it dominates trial-075 on every diagnostic metric at modest marginal cost; (2) whether to
+test the `batch_size=16` + `LengthGroupedSampler` fix (no `--grad-accum-steps`) in a future trial, now
+that it's believed fixed and should run somewhat faster than the `batch=8`/accum=2 workaround used
+here; (3) whether the val_loss plateau (epochs 9–12 essentially flat despite train_loss still falling)
+means this checkpoint is near its ceiling for this data budget — further continuation trials may see
+diminishing or negative returns, similar to trial-074's finding, just delayed by a few epochs.

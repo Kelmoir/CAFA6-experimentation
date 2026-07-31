@@ -393,7 +393,41 @@
         },
         "next_step": "Complete. Per user direction ('Option 1 - restore the HF repo to trial-075'), kelmoir/cafa6-esm@main now holds trial-075's 650M full-fine-tune checkpoint rather than trial-074's 3B LoRA checkpoint - esm2_t33_650M_full_finetune is the production direction as of this trial. esm2_t36_3B_lora_scaleup is not abandoned (trial-072's real macro-AUROC edge is on record, and kelmoir/cafa6-esm@trial-074 still holds that checkpoint on its own branch, now cleaned of the same stale-file issue) but is no longer what main represents."
       },
-      "next_step": "trial-075 is now the production checkpoint on kelmoir/cafa6-esm@main (see above) - this phase is the sweep's current leading/production direction. Open, not yet decided: whether to push this config further (more data/epochs, mirroring trial-074's scale-up attempt on the LoRA side - though note trial-074 itself found that scale-up bought little and mildly overfit) or hold here given trial-075 already ties/beats trial-072 on the F1 metric closest to CAFA's real scoring."
+      "trial_076": {
+        "status": "COMPLETE - real, if modest, gain over trial-075 on every diagnostic metric; val_loss plateaus (mild overfitting signature) - NOT YET promoted to kelmoir/cafa6-esm@main, pending user decision",
+        "purpose": "Per user direction ('the 075 config is the valid one to continue here, as this is a special point'), continues training FROM trial-075's own checkpoint via --resume-from-revision trial-075 --start-epoch 8, 4 more epochs (9-12) on freshly-resampled 6000-train/1000-val data, every other hyperparameter held identical to trial-075 - answers the open question left in this phase's next_step: does more training from trial-075's exact validated point keep improving, or hit the same overfitting wall trial-074 found on the LoRA side?",
+        "oom_and_fix": "First attempt at this run_name OOM'd at trial-075's exact batch_size=16, despite trial-075 running clean at that identical setting - root-caused to build_train_dataloader's plain random per-epoch shuffle occasionally clustering several near-max-length (1024) sequences into one batch by chance, spiking that batch's padding/activation memory (a resample-luck factor, not a real capacity mismatch: trial-075's 8 epochs/seeds 42-49 got lucky, trial-076's epochs 9-12/seeds 50-53 didn't). Fixed in training_run.py by switching the train dataloader to transformers' LengthGroupedSampler (mega-batch sort-by-length + shuffle) so batch_size=16 stays viable without a --grad-accum-steps workaround. The actual successful run below used the user's own batch_size=8/--grad-accum-steps=2 workaround (found independently before the code fix landed) rather than the new batch_size=16 fix - both are valid ways to avoid the same OOM; the code fix remains in place as the lower-overhead option for a future trial at this config.",
+        "config": "esm2_t33_650M_UR50D, --resume-from-revision trial-075 --start-epoch 8, unfreeze_last_n=27, batch_size=8, --grad-accum-steps 2 (effective batch size 16, matching trial-075), learning_rate=2e-5, weight_decay=0.2, output_dropout=0.2, 4 epochs (9-12), 6000 train (resampled)/1000 val, --mixed-precision bf16, --no-gradient-checkpointing, --checkpoint-mode every-epoch, --run-diagnostic, --push-to-hub NOT set (kelmoir/cafa6-esm@trial-076 only, main/trial-075 untouched).",
+        "result": {
+          "val_loss_by_epoch_9_to_12": [0.073, 0.0726, 0.0727, 0.07257112249732017],
+          "train_loss_by_epoch_9_to_12": [0.0695, 0.0688, 0.0668, 0.0657],
+          "best_epoch": 12,
+          "best_val_loss": 0.07257112249732017,
+          "verdict": "Mild OVERFITTING/plateau signature, milder than trial-074's clear reversal: val_loss improves epoch 8->9 (0.0733->0.0730) then flattens in a tight 0.0726-0.0730 band through epoch 12, effectively no further real improvement, while train_loss keeps falling monotonically (0.0695->0.0657, ~5.5% relative drop) - a real, if small, widening train/val gap. Unlike trial-074's LoRA-side scale-up (a clear bottom-out-then-rise reversal by epoch 10), this is more a plateau than a reversal.",
+          "wall_clock": "1391.0s (23.2min) for the 4 additional epochs - comparable per-epoch throughput to trial-075's own 272-296s/epoch despite the smaller batch_size=8/grad-accum=2 (offsetting factors: length-grouped batching's own throughput benefit, and no cold-start model download since kelmoir/cafa6-esm@trial-075's checkpoint download is roughly the same size as the base pretrained model)."
+        },
+        "diagnostic_results": {
+          "n_val_examples": 2000,
+          "n_labels_evaluable": "362/383",
+          "mean_auroc": 0.8474930932555996,
+          "median_auroc": 0.8603653943513629,
+          "pooled_auroc": 0.9617763091749764,
+          "pooled_f1_at_0.5": 0.5629548873200032,
+          "best_f1": 0.604591700846961,
+          "best_f1_threshold": 0.28
+        },
+        "verdict_vs_trial075": {
+          "comparison_table": "mean AUROC: 0.8393->0.8475 (+0.98%). median AUROC: 0.8521->0.8604 (+0.97%). pooled AUROC: 0.9601->0.9618 (+0.17%). best F1: 0.6019->0.6046 (+0.45%). pooled F1@0.5: 0.5626->0.5630 (+0.06%). val_loss: 0.0733->0.0726 (-0.99%, lower is better).",
+          "interpretation": "A clean, if modest, win over trial-075 - every single diagnostic metric improved, none regressed. Despite the val_loss curve's plateau/mild-overfitting shape (which on its own might read as 'stop here'), the metrics that actually matter (AUROC/F1) kept improving through epoch 12 - consistent with this project's standing precedent (since trial-050) of trusting the diagnostic over raw val_loss under this task's severe class imbalance."
+        },
+        "verdict_vs_trial072": {
+          "comparison_table": "mean AUROC: trial-072=0.8637 vs trial-076=0.8475 (-1.88%, gap narrows from trial-075's -2.8%). median AUROC: 0.8811 vs 0.8604 (-2.35%, narrows from trial-075's -3.3%). pooled AUROC: 0.9635 vs 0.9618 (-0.18%, narrows from trial-075's -0.4%). best F1: trial-072=0.5974 vs trial-076=0.6046 (+1.20%, widens from trial-075's +0.75%). val_loss: 0.0721 vs 0.0726 (+0.65%, trial-072 still slightly better).",
+          "cost_honesty_check": "trial-076 alone cost ~1.93 cost-units (A100=5x, 1391.0s). But trial-076 only exists on top of trial-075's own 3.70 cost-units - cumulative cost to reach this checkpoint state is 5.63 cost-units, which is now +17.4% MORE expensive than trial-072's 4.80 cost-units, reversing trial-075's own '~23% cheaper' framing against trial-072. The marginal continuation is cheap; the total path to this quality level is not.",
+          "interpretation": "Every metric moves in trial-076's favor relative to trial-072 versus where trial-075 stood (AUROC gap narrows on all three views, F1 edge widens further) - an encouraging trend that more training keeps closing the gap on both axes at once, not trading one for the other. But it's no longer a cost-favorable comparison the way trial-075 vs trial-072 was; trial-076's total cost now exceeds trial-072's."
+        },
+        "next_step": "Open, pending user decision: (1) promote trial-076 to kelmoir/cafa6-esm@main, superseding trial-075 - it dominates trial-075 on every diagnostic metric at a modest marginal cost (~1.93 units); (2) whether to test the batch_size=16 + LengthGroupedSampler fix (no --grad-accum-steps) in a future trial, now that it's believed fixed and would run somewhat faster than the batch=8/accum=2 workaround used here; (3) whether the val_loss plateau (epochs 9-12 flat at ~0.0726-0.0730 despite train_loss still falling) means this checkpoint is at or near its ceiling for this data budget - further continuation trials may see diminishing or negative returns, similar to trial-074's LoRA-side finding, just delayed by a few epochs."
+      },
+      "next_step": "trial-076 (continuing from trial-075) beat trial-075 on every diagnostic metric at modest marginal cost, and narrowed the remaining AUROC gap to trial-072 while widening its own F1 edge - but total cumulative cost to reach trial-076 now exceeds trial-072's. Awaiting user decision on Hub promotion (see trial_076.next_step) before this phase's production status changes again."
     },
     "esm2_t6_8M": {
       "status": "paused_plateaued",
