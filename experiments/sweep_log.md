@@ -2584,3 +2584,38 @@ prediction from sequence.
 noise, not model capacity or overfitting susceptibility, and no amount of weight_decay/dropout tuning
 fixes mislabeled ground truth. Option 1 (use the trial-080 checkpoint as-is for a real, non-oracle
 cascade test) becomes the more sensible next step, with the caveat above in mind.
+
+**Literature check, per user request** — does this match established science, not just an internal
+correlation? Yes, precisely. This is the field's own **"Open World Assumption"** for GO annotations.
+From Gaudet & Dessimoz, *"Gene Ontology: Pitfalls, Biases, Remedies"* (GO Handbook, *Methods in
+Molecular Biology*; also arXiv:1602.01875):
+
+> "The information contained in the GO database... is necessarily incomplete. Thus, absence of evidence
+> of function does not imply absence of function. This is referred to as the Open World Assumption."
+
+A footnote states the mechanism directly — exactly what the sparsity correlation above was picking up
+on:
+
+> "The absence of annotation indicates that no curator has reviewed the literature for this gene
+> product."
+
+And quantifies how rare genuine, curator-confirmed negatives actually are:
+
+> "Currently less than 1% of all experimental annotations are negative ones [NOT-qualified] in
+> UniProt-GOA."
+
+— meaning the overwhelming majority of "0" labels in any GO-derived dataset are absence-of-positive-
+annotation, not confirmed negatives. The same source states the corollary directly, independently
+confirming this project's own reasoning about trial-080's understated AUROC:
+
+> "Overlooking the Open World Assumption can lead to inflated false positive rates in the assessment of
+> gene function prediction tools."
+
+Also relevant precedent: CAFA's own time-delayed evaluation design (scoring predictions against
+annotations that appear *after* a delay, not the current record) exists specifically because current
+negatives can't be trusted as ground truth — this project's trial-080 finding is a direct instance of
+the exact problem CAFA's evaluation methodology was built to route around.
+
+Sources:
+- [Gene Ontology: Pitfalls, Biases, and Remedies (Springer)](https://link.springer.com/protocol/10.1007/978-1-4939-3743-1_14)
+- [GO handbook: Gene Ontology: Pitfalls, Biases, Remedies (arXiv)](https://arxiv.org/pdf/1602.01875)
