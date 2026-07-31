@@ -16,6 +16,8 @@ from huggingface_hub import HfApi, get_token
 from sklearn.metrics import f1_score, roc_auc_score
 from torch.optim import AdamW
 from transformers import AutoModelForSequenceClassification, EsmTokenizer
+from transformers.modeling_outputs import SequenceClassifierOutput
+from transformers.models.esm.modeling_esm import EsmForSequenceClassification
 from transformers.trainer_pt_utils import LengthGroupedSampler
 
 if "google.colab" in sys.modules:
@@ -122,6 +124,72 @@ def get_classifier_bias_param(model) -> torch.nn.Parameter:
     return candidates[0][1]
 
 
+class AspectAwareClassificationHead(torch.nn.Module):
+    """Classifier head for the aspect-conditioning ablation (trial-078 vs trial-077,
+    see experiments/sweep_log.md): identical to transformers' EsmClassificationHead
+    (CLS-token pooling -> dropout -> dense -> tanh -> dropout -> out_proj) except the
+    CLS-token representation is concatenated with a ground-truth aspect multi-hot
+    vector ([C, F, P], see generate_dataset_depth1.py's aspect_labels column) before
+    the dense layer. The ESM backbone's own forward pass is untouched by this - only
+    the classifier head differs from the unconditioned baseline - so any quality delta
+    between the two experiments is attributable to the aspect signal alone, not to a
+    changed encoder.
+    """
+
+    def __init__(self, config, num_aspects: int = 3):
+        super().__init__()
+        self.num_aspects = num_aspects
+        self.dense = torch.nn.Linear(config.hidden_size + num_aspects, config.hidden_size)
+        self.dropout = torch.nn.Dropout(config.hidden_dropout_prob)
+        self.out_proj = torch.nn.Linear(config.hidden_size, config.num_labels)
+
+    def forward(self, features: torch.Tensor, aspect_input: Optional[torch.Tensor] = None, **kwargs) -> torch.Tensor:
+        if aspect_input is None:
+            raise ValueError("AspectAwareClassificationHead requires aspect_input (a batch x num_aspects tensor)")
+        x = features[:, 0, :]  # <s>/CLS token, matching EsmClassificationHead
+        x = self.dropout(x)
+        x = torch.cat([x, aspect_input.to(dtype=x.dtype, device=x.device)], dim=-1)
+        x = self.dense(x)
+        x = torch.tanh(x)
+        x = self.dropout(x)
+        x = self.out_proj(x)
+        return x
+
+
+class AspectConditionedEsmForSequenceClassification(EsmForSequenceClassification):
+    """EsmForSequenceClassification with its classifier head swapped for
+    AspectAwareClassificationHead. Loss is intentionally not computed here (unlike the
+    base class's forward) - training_run.py always computes it externally via its own
+    criterion for every model variant, so this override only needs to produce logits.
+    """
+
+    def __init__(self, config, num_aspects: int = 3):
+        super().__init__(config)
+        self.classifier = AspectAwareClassificationHead(config, num_aspects=num_aspects)
+        # The base __init__'s post_init() already ran (and random-initialized the
+        # original classifier it just got replaced with) before this line, so this
+        # head's freshly-created Linear layers need their own init - mirrors
+        # PreTrainedModel._init_weights' standard scheme (normal_(std=initializer_range),
+        # zeroed bias) rather than leaving them at PyTorch's default Linear init.
+        std = getattr(config, "initializer_range", None) or 0.02
+        with torch.no_grad():
+            for module in self.classifier.modules():
+                if isinstance(module, torch.nn.Linear):
+                    module.weight.normal_(mean=0.0, std=std)
+                    if module.bias is not None:
+                        module.bias.zero_()
+
+    def forward(self, input_ids=None, attention_mask=None, aspect_input=None, **kwargs) -> SequenceClassifierOutput:
+        outputs = self.esm(input_ids, attention_mask=attention_mask, **kwargs)
+        sequence_output = outputs[0]
+        logits = self.classifier(sequence_output, aspect_input=aspect_input)
+        return SequenceClassifierOutput(
+            logits=logits,
+            hidden_states=outputs.hidden_states,
+            attentions=outputs.attentions,
+        )
+
+
 def create_esm(
     unfreeze_last_n: int = 2,
     model_type: str = "facebook/esm2_t30_150M_UR50D",
@@ -140,9 +208,16 @@ def create_esm(
     lora_base_dtype: Optional[torch.dtype] = None,
     lora_layers_to_transform: Optional[int] = None,
     gradient_checkpointing: bool = False,
+    use_aspect_input: bool = False,
 ):
     if id2label is None or label2id is None:
         raise ValueError("id2label and label2id must be provided")
+
+    if use_aspect_input and use_lora:
+        raise NotImplementedError(
+            "--use-aspect-input + --use-lora is not implemented - AspectConditionedEsmForSequenceClassification "
+            "only replaces the plain (non-LoRA) classifier head."
+        )
 
     if use_lora:
         if get_peft_model is None:
@@ -238,7 +313,8 @@ def create_esm(
         set_classifier_dropout(model, output_dropout)
         return model
 
-    model = AutoModelForSequenceClassification.from_pretrained(
+    model_cls = AspectConditionedEsmForSequenceClassification if use_aspect_input else AutoModelForSequenceClassification
+    model = model_cls.from_pretrained(
         model_type,
         num_labels=len(id2label),
         id2label=id2label,
@@ -332,6 +408,18 @@ def preprocess_batch(
             labels_list.append(labels)
         output_dict["labels"] = labels_list
 
+    if "aspect_labels" in examples:
+        # generate_dataset_depth1.py's 3-way [C, F, P] multi-hot column - an optional
+        # model INPUT feature for the aspect-conditioning ablation (trial-078), not a
+        # prediction target. Present regardless of --use-aspect-input whenever the
+        # dataset carries the column, so both the with- and without-aspect experiments
+        # (trial-077/078) share an identical data pipeline up to the flag; the model
+        # simply doesn't consume it unless built with AspectConditionedEsmForSequenceClassification.
+        raw_aspects = examples["aspect_labels"]
+        if not isinstance(raw_aspects, list):
+            raw_aspects = [raw_aspects]
+        output_dict["aspect_input"] = [torch.tensor(a, dtype=torch.float) for a in raw_aspects]
+
     return output_dict
 
 
@@ -351,6 +439,10 @@ def data_collate_function(preprocessed_batch: List[Dict[str, Any]], tokenizer: E
     labels = [sample["labels"] for sample in preprocessed_batch if "labels" in sample]
     if labels:
         collated_data["labels"] = torch.stack(labels)
+
+    aspect_input = [sample["aspect_input"] for sample in preprocessed_batch if "aspect_input" in sample]
+    if aspect_input:
+        collated_data["aspect_input"] = torch.stack(aspect_input)
 
     return collated_data
 
@@ -488,6 +580,7 @@ def run_diagnostic(
     use_amp: bool = False,
     max_val_samples: int = 2000,
     batch_size: int = 16,
+    use_aspect_input: bool = False,
 ) -> Dict[str, Any]:
     """Post-hoc AUROC/F1 diagnostic, run against the model already resident in memory
     (GPU, post-training) rather than reloading a checkpoint from the Hub - originally a
@@ -522,8 +615,11 @@ def run_diagnostic(
         for batch in loader:
             input_ids = batch["input_ids"].to(device)
             attention_mask = batch["attention_mask"].to(device)
+            model_kwargs = {"input_ids": input_ids, "attention_mask": attention_mask}
+            if use_aspect_input:
+                model_kwargs["aspect_input"] = batch["aspect_input"].to(device)
             with torch.autocast(device_type="cuda", dtype=autocast_dtype, enabled=use_amp):
-                logits = model(input_ids=input_ids, attention_mask=attention_mask).logits
+                logits = model(**model_kwargs).logits
             all_probs.append(torch.sigmoid(logits.float()).cpu())
             all_labels.append(batch["labels"])
     if was_training:
@@ -638,6 +734,7 @@ def main() -> None:
     parser.add_argument("--pos-weight-exponent", type=float, default=0.5, help="Compression exponent for --pos-weight: pos_weight = (n_negative/n_positive)**exponent per label. 0.5=sqrt (default; trial-051 used this), 1.0=raw inverse frequency (not recommended - spans ~12,600x on the coarse-GO-term dataset), lower=gentler correction")
     parser.add_argument("--quiet", action=argparse.BooleanOptionalAction, default=False, help="Suppress per-step [STEP] prints (only needed to keep a colab-cli exec websocket alive; noisy for interactive/notebook use)")
     parser.add_argument("--use-lora", action=argparse.BooleanOptionalAction, default=False, help="Fine-tune via LoRA adapters (peft) instead of freeze-mostly/unfreeze-last-n: freezes the entire backbone and trains small low-rank adapters plus the classifier head, letting a much bigger model fit in limited VRAM. --unfreeze-last-n is ignored when this is set")
+    parser.add_argument("--use-aspect-input", action=argparse.BooleanOptionalAction, default=False, help="Feed the dataset's ground-truth aspect_labels column (a 3-way [C,F,P] multi-hot, see generate_dataset_depth1.py) into the classifier head as an auxiliary input, concatenated to the pooled ESM sequence representation. Requires a dataset with an aspect_labels column (e.g. kelmoir/cafa6-depth1); not implemented with --use-lora")
     parser.add_argument("--lora-r", type=int, default=16, help="LoRA rank (only used with --use-lora)")
     parser.add_argument("--lora-alpha", type=int, default=32, help="LoRA scaling factor, typically 2x --lora-r (only used with --use-lora)")
     parser.add_argument("--lora-dropout", type=float, default=0.05, help="Dropout on LoRA adapter layers (only used with --use-lora)")
@@ -713,6 +810,7 @@ def main() -> None:
         lora_base_dtype=lora_base_dtype,
         lora_layers_to_transform=args.lora_layers_to_transform,
         gradient_checkpointing=args.gradient_checkpointing,
+        use_aspect_input=args.use_aspect_input,
     ).to(device)
     # Computed unconditionally (not just on a fresh start) since --pos-weight needs it
     # regardless of whether we're resuming from a checkpoint.
@@ -850,8 +948,11 @@ def main() -> None:
             if args.label_smoothing > 0:
                 labels = labels * (1 - args.label_smoothing) + 0.5 * args.label_smoothing
 
+            model_kwargs = {"input_ids": input_ids, "attention_mask": attention_mask}
+            if args.use_aspect_input:
+                model_kwargs["aspect_input"] = batch["aspect_input"].to(device)
             with torch.autocast(device_type="cuda", dtype=autocast_dtype, enabled=use_amp):
-                outputs = model_esm(input_ids=input_ids, attention_mask=attention_mask)
+                outputs = model_esm(**model_kwargs)
                 logits = outputs.logits
                 loss = criterion(logits, labels)
             scaled_loss = scaler.scale(loss / args.grad_accum_steps) if use_grad_scaler else (loss / args.grad_accum_steps)
@@ -897,8 +998,11 @@ def main() -> None:
                 input_ids = batch["input_ids"].to(device)
                 attention_mask = batch["attention_mask"].to(device)
                 labels = batch["labels"].to(device)
+                model_kwargs = {"input_ids": input_ids, "attention_mask": attention_mask}
+                if args.use_aspect_input:
+                    model_kwargs["aspect_input"] = batch["aspect_input"].to(device)
                 with torch.autocast(device_type="cuda", dtype=autocast_dtype, enabled=use_amp):
-                    outputs = model_esm(input_ids=input_ids, attention_mask=attention_mask)
+                    outputs = model_esm(**model_kwargs)
                     loss = criterion(outputs.logits, labels)
                 validation_loss += loss.item()
 
@@ -1034,7 +1138,8 @@ def main() -> None:
                 lora_base_dtype=lora_base_dtype,
             ).to(device)
         else:
-            best_model = AutoModelForSequenceClassification.from_pretrained(
+            best_model_cls = AspectConditionedEsmForSequenceClassification if args.use_aspect_input else AutoModelForSequenceClassification
+            best_model = best_model_cls.from_pretrained(
                 str(best_checkpoint_dir),
                 num_labels=len(id2label),
                 id2label=id2label,
@@ -1054,6 +1159,7 @@ def main() -> None:
             use_amp=use_amp,
             max_val_samples=args.diagnostic_max_val_samples,
             batch_size=args.batch_size,
+            use_aspect_input=args.use_aspect_input,
         )
 
     if args.push_to_hub:
