@@ -498,7 +498,7 @@
       "next_step": "COMPLETE. trial-078 (aspect input) decisively beat trial-077 (no aspect input) on every single metric - see trial_078.verdict_vs_trial077. This is the cleanest, least ambiguous result in the entire sweep so far. De-risks the sequential-cascade prospect; awaiting user direction on whether to resume that plan, test with predicted (non-oracle) aspects first, or treat this ablation as its own deliverable."
     },
     "esm2_t33_650M_aspect_prediction": {
-      "status": "trial-079 (health check) COMPLETE - DEAD-adjacent, disguised by misleading recall=1.0 (see trial_079.result.verdict). trial-080 (full 6000/8-epoch budget) LAUNCHED per user direction, betting the health check's tiny scale (not the hyperparameters) was the limiting factor.",
+      "status": "trial-080 COMPLETE - real learning confirmed, cleanly OVERFITS past epoch 4, but the achievable AUROC ceiling (~0.68) is far below every other task this sweep has tackled - open decision on how to proceed (see trial_080.next_step)",
       "why": "Per user direction: trial-078 proved the APPROACH (ground-truth aspect input decisively helps depth-1 prediction) but used an oracle aspect input, not a real predictor. Before testing the sequential-cascade prospect with predicted (non-oracle) aspects, we first need a valid model that predicts the aspects themselves - that's what this phase is for. User explicitly framed this as a genuinely new sub-track, not a continuation of the depth-1 experiments.",
       "dataset": "kelmoir/cafa6-aspect (generate_dataset_aspect.py, reuses generate_dataset.py's GO-graph/propagation logic): label space is just the 3 GO namespace roots (F/C/P), a 3-way multi-hot per protein (most proteins have more than one simultaneously - verified: 29.5%/26.9%/43.7% single/double/triple-aspect in a 2000-row sample, matching the ~29%/27%/44% figures found earlier this session on the full dataset). Same seed/shuffle/split as kelmoir/cafa6 and kelmoir/cafa6-depth1, so protein ID sets match exactly (47817/13485/13479 rows). Pushed and verified live on the Hub via load_dataset('kelmoir/cafa6-aspect').",
       "trial_079": {
@@ -527,11 +527,40 @@
         "next_step": "Per user direction, NOT retrying with a higher LR at this tiny scale (the sweep's usual DEAD-response rubric) - user's judgment is that trial-079's near-chance result was a data-starvation artifact of the 338-example/epoch health check specifically, and that an LR retuned for that tiny-data regime likely wouldn't transfer to a full-scale run anyway. Jumping straight to trial-080: full 6000-train/1000-val/8-epoch budget, LR held at 2e-5 unchanged."
       },
       "trial_080": {
-        "status": "LAUNCHED, not yet run",
+        "status": "COMPLETE - real signal confirmed (user's data-starvation theory was right), but the achievable ceiling is much lower than every other task in this sweep, and training clearly OVERFITS past epoch 4",
         "purpose": "Full data/epoch budget for aspect prediction (6000 train/1000 val, 8 epochs), matching trial-075's own convention - tests whether trial-079's near-chance result was genuinely a data-starvation artifact of its tiny health-check scale, or a real problem with this hyperparameter set for the aspect task.",
-        "config": "Identical to trial-079 except --max-train-samples 6000 (was 338), --max-val-samples 1000 (was 100), --epochs 8 (was 4), --checkpoint-mode every-epoch (was final, given real A100 dollar stakes at this scale). LR held at 2e-5, unchanged. --push-to-hub NOT set - first full-scale attempt at a task whose health check was ambiguous, not yet a promotion candidate. Fresh start from facebook/esm2_t33_650M_UR50D (trial-079's checkpoint sits at the no-signal loss floor, nothing worth resuming from)."
+        "config": "Identical to trial-079 except --max-train-samples 6000 (was 338), --max-val-samples 1000 (was 100), --epochs 8 (was 4), --checkpoint-mode every-epoch (was final, given real A100 dollar stakes at this scale). LR held at 2e-5, unchanged. --push-to-hub NOT set. Fresh start from facebook/esm2_t33_650M_UR50D.",
+        "result": {
+          "val_loss_by_epoch": [0.5717, 0.5633, 0.5541, 0.5492, 0.5516, 0.5591, 0.5665, 0.5730],
+          "train_loss_by_epoch": [0.5861, 0.5579, 0.5451, 0.5311, 0.5099, 0.4948, 0.4705, 0.4457],
+          "best_epoch": 4,
+          "best_val_loss": 0.549159057855606,
+          "verdict": "Clear, textbook OVERFITTING - val_loss bottoms out at epoch 4 (0.5492) then rises monotonically through epoch 8 (0.5730, a real +4.3% relative increase), while train_loss keeps falling the entire time (0.5861->0.4457, -24% relative) - a much cleaner/stronger reversal than trial-074's or trial-076's milder patterns. best-checkpoint-reload correctly used epoch 4, not epoch 8.",
+          "wall_clock": "1993.3s (33.2min), ~2.77 cost-units - essentially identical to trial-077/078's cost despite the much smaller 3-label output head, confirming backbone compute dominates regardless of label-space size."
+        },
+        "diagnostic_results": {
+          "n_val_examples": 2000,
+          "n_labels_evaluable": "3/3",
+          "mean_auroc": 0.6871605655785628,
+          "median_auroc": 0.669794470778714,
+          "min_auroc": 0.6625,
+          "max_auroc": 0.7292,
+          "pooled_auroc": 0.6843798853783275,
+          "best_f1": 0.8391594261466963,
+          "labels_auroc_gt_0.7": "1/3 (vs trial-079's 0/3)"
+        },
+        "verdict_vs_trial079": {
+          "comparison": "mean AUROC: 0.6129->0.6872 (+12.12%). median AUROC: 0.5932->0.6698 (+12.90%). pooled AUROC: 0.5654->0.6844 (+21.03%). best F1: 0.8350->0.8392 (+0.50%, essentially unchanged).",
+          "interpretation": "The user's judgment was correct: trial-079's near-chance result WAS largely a data-starvation artifact of its tiny 338-example/epoch scale - real per-label ranking signal emerged with the full data budget (AUROC up 12-21% relative across all three variants). This confirms the LR-raise retry would have been the wrong next step; more data was the actual fix."
+        },
+        "verdict_vs_other_tasks": {
+          "comparison": "pooled AUROC 0.6844 here vs ~0.94-0.96 for the depth-1 task (trial-077/078) and ~0.96 for the 383-term coarse task (trial-075/076) - a dramatic gap, not just a modest one. Even at trial-080's OWN best epoch, only 1/3 labels clear 0.7 AUROC (min=0.6625, max=0.7292) - genuinely weak discriminative power in absolute terms, not just 'lower than the others but still good'.",
+          "hypothesis": "Aspect-level GO annotations (molecular_function/biological_process/cellular_component) are the broadest, most universal categories in the ontology - nearly every protein plausibly has some function, participates in some process, and is located somewhere in the cell. A missing aspect annotation for a given protein more plausibly reflects INCOMPLETE experimental characterization (the protein hasn't been studied for that aspect yet) than a genuine biological absence, unlike finer/deeper GO terms where presence/absence is more likely to reflect real biology. If true, this caps the achievable AUROC for this specific label definition regardless of model capacity or training budget - the 'negative' class here may be substantially noisy/incomplete ground truth, not a learnable target. Not verified directly (would need to cross-reference annotation evidence codes/dates), but a plausible explanation for why the broadest possible label space performs the worst of every label granularity this sweep has tried.",
+          "f1_caveat": "best_f1=0.8392 and pooled F1@0.5=0.8332 look superficially strong but are barely above the trivial 'always predict positive' baseline (computed precisely: F1=0.8345 for a classifier that predicts positive for every example at this task's ~71.6% pooled positive rate) - confirms F1/accuracy remain the wrong metrics to judge this task by, exactly as flagged before this trial ran. AUROC is the only credible signal here."
+        },
+        "next_step": "Open decision for the user: (1) accept AUROC~0.68 (epoch 4's checkpoint) as this task's practical ceiling and use it as-is for a real (non-oracle) cascade test - the honest expectation is a real cascade's gain will be much smaller than trial-078's oracle-input ceiling, since the first-stage predictor itself is far from perfect; (2) try one regularization-focused follow-up trial (per the sweep's OVERFITTING-response rubric: raise weight_decay/dropout, lower --unfreeze-last-n or LR - one axis at a time) to see if the ceiling itself can move, not just the epoch at which overfitting sets in; (3) investigate the annotation-completeness hypothesis directly before spending more compute, since if true, no amount of further tuning fixes it."
       },
-      "next_step": "Awaiting trial-080 results. The diagnostic AUROC (not accuracy/recall/F1 at threshold 0.5, which are all misleadingly inflated by this task's >50% base rate per label) is the number to judge this trial on - same lesson trial-079 just re-confirmed."
+      "next_step": "trial-080 confirms real learning happened (AUROC up 12-21% relative over trial-079) and the training dynamics are healthy-shaped (clean overfitting past a clear best epoch, correctly caught by best-checkpoint-reload) - but the achievable ceiling (~0.68 pooled AUROC) is far below every other task this sweep has tackled, likely reflecting annotation incompleteness in the broadest GO categories rather than a model/hyperparameter problem. Awaiting user direction on whether to push further on this config, accept the ceiling and move to a real (non-oracle) cascade test, or investigate the annotation-noise hypothesis first."
     },
     "esm2_t6_8M": {
       "status": "paused_plateaued",

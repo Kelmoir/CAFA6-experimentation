@@ -1,0 +1,52 @@
+
+==================== RUNNING trial-080 (esm2_t33_650M_aspect_prediction: full data/epoch budget (6000 train/8 epochs), same hyperparameters as trial-079 unchanged) ====================
+
+note: trial-079 (health check, 338 train/epoch, 4 epochs, ~88 total optimizer steps) came back DEAD-adjacent. Per user direction, this trial jumps straight to the FULL 6000-train/1000-val/8-epoch budget (matching trial-075's own convention) with the LR held at 2e-5, unchanged. --checkpoint-mode every-epoch given real A100 dollar stakes at this scale. --push-to-hub NOT set - first full-scale attempt at a brand-new task whose health check was ambiguous, not yet a promotion candidate. Fresh start from facebook/esm2_t33_650M_UR50D.
+[CONFIG] {"device": "cuda", "epochs": 8, "batch_size": 8, "learning_rate": 2e-05, "max_length": 1024, "model_name": "facebook/esm2_t33_650M_UR50D", "unfreeze_last_n": 27, "max_train_samples": 6000, "max_val_samples": 1000, "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "dataset_repo_id": "kelmoir/cafa6-aspect", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.0, "attention_dropout": 0.0, "grad_clip_norm": 1.0, "weight_decay": 0.2, "max_minutes": 50.0, "run_name": "trial-080", "trackio_space_id": null, "checkpoint_mode": "every-epoch", "checkpoint_branch": "trial-080", "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "decouple_bias_wd": false, "grad_accum_steps": 2, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": true, "use_lora": false, "use_aspect_input": false, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": null, "mixed_precision": "bf16", "gradient_checkpointing": false, "run_diagnostic": true, "diagnostic_max_val_samples": 2000}
+
+Model layers: 33, request unfreeze layers: 27
+[INFO] Initialized classifier bias to label priors: {'GO:0003674': 0.7003366947174072, 'GO:0005575': 0.7257042527198792, 'GO:0008150': 0.7199949622154236}
+[INFO] trackio is not installed; skipping experiment tracking.
+[INFO] HF token resolved via Colab Secrets
+
+Epoch 1/8 | train_loss=0.5861 | val_loss=0.5717 | train_acc=0.7144 | val_acc=0.7210 | train_recall=0.9909 | val_recall=0.9767
+[TIMING] epoch 1 elapsed=184.6s
+[INFO] Pushed checkpoint for epoch 1 to kelmoir/cafa6-esm@trial-080
+Epoch 2/8 | train_loss=0.5579 | val_loss=0.5633 | train_acc=0.7308 | val_acc=0.7153 | train_recall=0.9761 | val_recall=0.9575
+[TIMING] epoch 2 elapsed=184.4s
+[INFO] Pushed checkpoint for epoch 2 to kelmoir/cafa6-esm@trial-080
+Epoch 3/8 | train_loss=0.5451 | val_loss=0.5541 | train_acc=0.7382 | val_acc=0.7267 | train_recall=0.9517 | val_recall=0.9329
+[TIMING] epoch 3 elapsed=185.6s
+[INFO] Pushed checkpoint for epoch 3 to kelmoir/cafa6-esm@trial-080
+Epoch 4/8 | train_loss=0.5311 | val_loss=0.5492 | train_acc=0.7444 | val_acc=0.7320 | train_recall=0.9463 | val_recall=0.9325
+[TIMING] epoch 4 elapsed=184.6s
+[INFO] Pushed checkpoint for epoch 4 to kelmoir/cafa6-esm@trial-080
+Epoch 5/8 | train_loss=0.5099 | val_loss=0.5516 | train_acc=0.7596 | val_acc=0.7310 | train_recall=0.9362 | val_recall=0.9359
+[TIMING] epoch 5 elapsed=174.7s
+[INFO] Pushed checkpoint for epoch 5 to kelmoir/cafa6-esm@trial-080
+Epoch 6/8 | train_loss=0.4948 | val_loss=0.5591 | train_acc=0.7677 | val_acc=0.7207 | train_recall=0.9267 | val_recall=0.8857
+[TIMING] epoch 6 elapsed=175.5s
+[INFO] Pushed checkpoint for epoch 6 to kelmoir/cafa6-esm@trial-080
+Epoch 7/8 | train_loss=0.4705 | val_loss=0.5665 | train_acc=0.7864 | val_acc=0.7207 | train_recall=0.9211 | val_recall=0.8873
+[TIMING] epoch 7 elapsed=176.0s
+[INFO] Pushed checkpoint for epoch 7 to kelmoir/cafa6-esm@trial-080
+Epoch 8/8 | train_loss=0.4457 | val_loss=0.5730 | train_acc=0.8039 | val_acc=0.7223 | train_recall=0.9250 | val_recall=0.9156
+[TIMING] epoch 8 elapsed=174.3s
+[INFO] Pushed checkpoint for epoch 8 to kelmoir/cafa6-esm@trial-080
+[SUMMARY] {"run_name": "trial-080", "epochs_completed": 8, "final_train_loss": 0.4457197799285253, "final_val_loss": 0.5729931411743164, "train_accuracy": 0.8038888888888889, "val_accuracy": 0.7223333333333334, "train_recall": 0.9249643683433533, "val_recall": 0.9155787825584412, "best_epoch": 4, "best_val_loss": 0.549159057855606}
+[INFO] Using best checkpoint (epoch 4, val_loss=0.5492) for diagnostic/promotion, not the last epoch (8, val_loss=0.5730)
+[INFO] Running post-training AUROC/F1 diagnostic on the best-checkpoint model...
+
+======================================================================
+DIAGNOSTIC: 3/3 labels evaluable (both classes present), 2000 val examples
+======================================================================
+Per-label AUROC: mean=0.6872 median=0.6698 min=0.6625 max=0.7292
+  labels with AUROC > 0.5: 3/3
+  labels with AUROC > 0.7: 1/3
+Pooled @ threshold 0.5: accuracy=0.7330 (trivial baseline=0.2837) precision=0.7541 recall=0.9307 f1=0.8332
+Pooled AUROC=0.6844  Best F1=0.8392@threshold=0.42
+[DIAGNOSTIC] {"n_val_examples": 2000, "n_labels_evaluable": 3, "n_labels_total": 3, "mean_auroc": 0.6871605655785628, "median_auroc": 0.669794470778714, "pooled_auroc": 0.6843798853783275, "accuracy_at_0.5": 0.733, "trivial_baseline_accuracy": 0.2836666703224182, "precision_at_0.5": 0.7541478129699205, "recall_at_0.5": 0.930665425777267, "f1_at_0.5": 0.8331597534368183, "best_f1": 0.8391594261466963, "best_f1_threshold": 0.42000000000000004}
+[TIMING] trial-080 total wall clock: 1993.3s
+
+==================== BATCH DONE ====================
+trial-080: completed

@@ -2477,3 +2477,68 @@ near-chance result was a data-starvation artifact of its tiny 338-example/epoch 
 a real LR mismatch — and that an LR retuned for that tiny-data regime likely wouldn't transfer
 meaningfully to a full-scale run anyway. Proceeding straight to trial-080: the full 6000-train/1000-val/
 8-epoch budget (matching trial-075's own convention), LR held at 2e-5, unchanged.
+
+## trial-080: full aspect-prediction budget — real signal, but a much lower ceiling than every other task
+
+Full 6000-train/1000-val/8-epoch budget, LR held at 2e-5 unchanged from trial-079, everything else
+identical except `--checkpoint-mode every-epoch` (real A100 dollar stakes at this scale, vs. trial-079's
+calibration-trial `final`). `--push-to-hub` not set.
+
+### trial-080 result — clean OVERFITTING past epoch 4, and a genuinely weaker ceiling
+
+val_loss: 0.5717 → 0.5633 → 0.5541 → **0.5492** → 0.5516 → 0.5591 → 0.5665 → 0.5730 — bottoms out at
+epoch 4, then rises monotonically the rest of the way (+4.3% relative by epoch 8), while train_loss
+keeps falling the entire time (0.5861 → 0.4457, -24% relative). This is a much cleaner, stronger
+overfitting reversal than trial-074's or trial-076's milder patterns — textbook OVERFITTING per the
+sweep's own rubric. `best_epoch=4`; the best-checkpoint-reload correctly used it, not epoch 8. Wall
+clock 1993.3s (33.2min), ~2.77 cost-units — essentially identical to trial-077/078's cost despite the
+much smaller 3-label output head, confirming backbone compute dominates regardless of label-space size.
+
+**Diagnostic** (2000 val examples, all 3/3 labels evaluable): mean AUROC=0.6872, median=0.6698,
+min=0.6625, max=0.7292, pooled AUROC=0.6844, best F1=0.8392@threshold=0.42, only **1/3 labels clear 0.7
+AUROC** (vs. trial-079's 0/3).
+
+**vs. trial-079** (same task, full budget instead of the tiny health-check scale):
+
+| metric | trial-079 (health check) | trial-080 (full budget) | delta |
+|---|---|---|---|
+| mean AUROC | 0.6129 | 0.6872 | **+12.12%** |
+| median AUROC | 0.5932 | 0.6698 | **+12.90%** |
+| pooled AUROC | 0.5654 | 0.6844 | **+21.03%** |
+| best F1 | 0.8350 | 0.8392 | +0.50% (essentially unchanged) |
+
+**The user's judgment was right**: trial-079's near-chance result was largely a data-starvation
+artifact of its tiny 338-example/epoch scale, not a real LR mismatch — real per-label ranking signal
+emerged with the full data budget, confirming the LR-raise retry would have been the wrong next step.
+
+**But the achievable ceiling here is far below every other task this sweep has tackled**: pooled AUROC
+0.6844 vs. ~0.94–0.96 for the depth-1 task (trial-077/078) and ~0.96 for the 383-term coarse task
+(trial-075/076) — not a modest gap, a dramatic one. Even at trial-080's own best epoch, only 1/3 labels
+clear 0.7 AUROC — genuinely weak discriminative power in absolute terms, not just "lower than the
+others but still fine."
+
+**Hypothesis for why**: aspect-level GO annotations (molecular_function/biological_process/
+cellular_component) are the broadest, most universal categories in the ontology — nearly every protein
+plausibly has *some* function, participates in *some* process, and is located *somewhere* in the cell.
+A missing aspect annotation for a given protein more plausibly reflects incomplete experimental
+characterization (not yet studied for that aspect) than a genuine biological absence, unlike finer/
+deeper GO terms where presence/absence more likely reflects real biology. If true, this caps the
+achievable AUROC for this specific label definition regardless of model capacity or training budget —
+the "negative" class here may be substantially noisy/incomplete ground truth, not a cleanly learnable
+target. Not verified directly (would need to cross-reference annotation evidence codes/dates against
+the raw data), but a plausible explanation for why the broadest possible label space performs the worst
+of every label granularity this sweep has tried.
+
+**F1 caveat, again**: `best_f1=0.8392` and pooled F1@0.5=0.8332 look superficially strong but are
+barely above the trivial "always predict positive" baseline — computed precisely, a classifier that
+predicts positive for every example at this task's ~71.6% pooled positive rate gets F1=0.8345. AUROC
+remains the only credible signal for this task, exactly as flagged before this trial ran.
+
+**Open decision**: (1) accept AUROC≈0.68 (epoch 4's checkpoint) as this task's practical ceiling and use
+it as-is for a real (non-oracle) cascade test — the honest expectation is a real cascade's gain will be
+much smaller than trial-078's oracle-input ceiling, since the first-stage predictor itself is far from
+perfect; (2) try one regularization-focused follow-up trial (raise weight_decay/dropout, lower
+`--unfreeze-last-n` or LR — one axis at a time, per the OVERFITTING-response rubric) to see if the
+ceiling itself can move, not just the epoch at which overfitting sets in; (3) investigate the
+annotation-completeness hypothesis directly before spending more compute, since if true, no amount of
+further tuning fixes it.
