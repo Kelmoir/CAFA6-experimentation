@@ -1,6 +1,8 @@
 /data/exports/*
 /env/*
 /data/cafa-6-protein-function-prediction/*
+/data/uniprot/*
+/data/go_mappings/*
 __pycache__/
 /.vscode/*
 /models/*

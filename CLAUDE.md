@@ -104,6 +104,23 @@ upload path).
   (`DatasetDict.save_to_disk`), also the default local path `training_run.py` looks for before
   falling back to `load_dataset("kelmoir/CAFA6")` from the Hub.
 - `data/exports/` — ad hoc exports produced from the notebooks (git-ignored).
+- `data/uniprot/uniprot_sprot.dat.gz` — bulk Swiss-Prot flat-file dump (git-ignored, ~700MB),
+  fetched once via `experiments/scripts/fetch_uniprot_positional_features.py` for the positional
+  molecular_function sub-project (localizing GO MF terms to sequence spans within the
+  `experiments/positional_mf_*` working set — a side experiment, not part of the main
+  dataset/training pipeline above). Streamed record-by-record with `Bio.SwissProt.parse()`, never
+  fully decompressed to disk/memory at once, re-parsed locally (no re-download) whenever the
+  extraction script's captured fields change.
+- `data/go_mappings/{prosite2go,pfam2go,interpro2go}.txt` — GO Consortium's bulk `*2go` cross-
+  reference tables (git-ignored, one `curl` each from
+  `https://current.geneontology.org/ontology/external2go/<name>`; unreachable via `WebFetch`,
+  403s there for unclear reasons — plain `curl` works). Used by
+  `experiments/scripts/build_positional_mf_links.py` to map a DOMAIN feature's bridged
+  PROSITE/Pfam/InterPro accession to a candidate GO term. Note the accession-system mismatch this
+  cost real debugging time to find: `prosite2go` keys on `PS#####` pattern/profile accessions
+  only, never the `PRU#####` ProRule IDs UniProt's DOMAIN `evidence` qualifier carries — the
+  correct `PS#####` accession lives in the separate `record.cross_references` entries instead
+  (captured as `domain_xrefs` by the fetch script).
 - `models/` — used transiently by `push_checkpoint()` as a local staging dir (`models/<run_name>/checkpoint`)
   before uploading to the Hub; not git-ignored in `.gitignore` today despite being treated as such —
   on a Colab VM this never touches the local sandbox host anyway, so it doesn't matter in practice.
