@@ -1,0 +1,4452 @@
+{
+  "GO:0000146": {
+    "name": "microfilament motor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR036114"
+    ],
+    "text_patterns": []
+  },
+  "GO:0000149": {
+    "name": "SNARE binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR037741",
+      "InterPro:IPR045242",
+      "InterPro:IPR000727",
+      "Pfam:PF05739"
+    ],
+    "text_patterns": []
+  },
+  "GO:0000175": {
+    "name": "3'-5'-RNA exonuclease activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050180",
+      "InterPro:IPR050590"
+    ],
+    "text_patterns": []
+  },
+  "GO:0000217": {
+    "name": "DNA secondary structure binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR052003"
+    ],
+    "text_patterns": []
+  },
+  "GO:0000287": {
+    "name": "magnesium ion binding",
+    "ligands": [
+      "Mg(2+)"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0000340": {
+    "name": "RNA 7-methylguanosine cap binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "7-methylguanosine cap"
+    ]
+  },
+  "GO:0000400": {
+    "name": "four-way junction DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR017114"
+    ],
+    "text_patterns": []
+  },
+  "GO:0000976": {
+    "name": "transcription cis-regulatory region binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR004827",
+      "InterPro:IPR057310"
+    ],
+    "text_patterns": []
+  },
+  "GO:0000977": {
+    "name": "RNA polymerase II transcription regulatory region sequence-specific DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR019391",
+      "InterPro:IPR040126",
+      "InterPro:IPR004827"
+    ],
+    "text_patterns": []
+  },
+  "GO:0000978": {
+    "name": "RNA polymerase II cis-regulatory region sequence-specific DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR019739",
+      "InterPro:IPR019548",
+      "InterPro:IPR017995",
+      "InterPro:IPR004827",
+      "InterPro:IPR044101",
+      "InterPro:IPR050140",
+      "InterPro:IPR057310"
+    ],
+    "text_patterns": []
+  },
+  "GO:0000981": {
+    "name": "DNA-binding transcription factor activity, RNA polymerase II-specific",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR002100",
+      "InterPro:IPR004827",
+      "InterPro:IPR044101",
+      "InterPro:IPR050140"
+    ],
+    "text_patterns": []
+  },
+  "GO:0000987": {
+    "name": "cis-regulatory region sequence-specific DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR002100"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001222": {
+    "name": "transcription corepressor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR057310"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001223": {
+    "name": "transcription coactivator binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR003079"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001227": {
+    "name": "DNA-binding transcription repressor activity, RNA polymerase II-specific",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR022582",
+      "InterPro:IPR048387",
+      "InterPro:IPR050370",
+      "InterPro:IPR044101"
+    ],
+    "text_patterns": [
+      "snag domain"
+    ]
+  },
+  "GO:0001228": {
+    "name": "DNA-binding transcription activator activity, RNA polymerase II-specific",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR002100",
+      "InterPro:IPR004827",
+      "InterPro:IPR050140"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001540": {
+    "name": "amyloid-beta binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR033874"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001618": {
+    "name": "virus receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR052659",
+      "InterPro:IPR002000"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001634": {
+    "name": "pituitary adenylate cyclase-activating polypeptide receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "pacap"
+    ]
+  },
+  "GO:0001664": {
+    "name": "G protein-coupled receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000698"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001784": {
+    "name": "phosphotyrosine residue binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR043539"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001786": {
+    "name": "phosphatidylserine binding",
+    "ligands": [
+      "a 1,2-diacyl-sn-glycero-3-phospho-L-serine"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0001848": {
+    "name": "complement binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR056949",
+      "InterPro:IPR018363",
+      "Pfam:PF25152"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001851": {
+    "name": "complement component C3b binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000436",
+      "Pfam:PF00084",
+      "InterPro:IPR051277"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001855": {
+    "name": "complement component C4b binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000436",
+      "Pfam:PF00084",
+      "InterPro:IPR051277"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001861": {
+    "name": "complement component C4b receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000436",
+      "Pfam:PF00084",
+      "InterPro:IPR051277"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001875": {
+    "name": "lipopolysaccharide immune receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR015510"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001883": {
+    "name": "purine nucleoside binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001365"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001965": {
+    "name": "G-protein alpha-subunit binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001632"
+    ],
+    "text_patterns": []
+  },
+  "GO:0001972": {
+    "name": "retinoic acid binding",
+    "ligands": [
+      "9-cis-retinoate",
+      "all-trans-retinoate"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0002112": {
+    "name": "interleukin-33 receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR053902",
+      "Pfam:PF15095"
+    ],
+    "text_patterns": []
+  },
+  "GO:0003677": {
+    "name": "DNA binding",
+    "ligands": [],
+    "feature_types": [
+      "DNA_BIND"
+    ],
+    "domain_accessions": [
+      "InterPro:IPR011598",
+      "InterPro:IPR050359",
+      "InterPro:IPR013854",
+      "InterPro:IPR057258"
+    ],
+    "text_patterns": [
+      "basic motif"
+    ]
+  },
+  "GO:0003682": {
+    "name": "chromatin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR019739",
+      "InterPro:IPR019548",
+      "InterPro:IPR017995",
+      "InterPro:IPR004827"
+    ],
+    "text_patterns": []
+  },
+  "GO:0003684": {
+    "name": "damaged DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR009071",
+      "InterPro:IPR050342",
+      "Pfam:PF00505",
+      "InterPro:IPR005122",
+      "InterPro:IPR057258"
+    ],
+    "text_patterns": []
+  },
+  "GO:0003688": {
+    "name": "DNA replication origin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050311"
+    ],
+    "text_patterns": []
+  },
+  "GO:0003690": {
+    "name": "double-stranded DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR009071",
+      "InterPro:IPR050342",
+      "Pfam:PF00505",
+      "InterPro:IPR044866",
+      "InterPro:IPR025856",
+      "InterPro:IPR004827"
+    ],
+    "text_patterns": []
+  },
+  "GO:0003692": {
+    "name": "left-handed Z-DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR042371"
+    ],
+    "text_patterns": [
+      "interaction with z-dna"
+    ]
+  },
+  "GO:0003697": {
+    "name": "single-stranded DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "ss dna-binding",
+      "single-stranded dna",
+      "ssdna"
+    ]
+  },
+  "GO:0003700": {
+    "name": "DNA-binding transcription factor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR017930",
+      "InterPro:IPR001005",
+      "PROSITE:PS51294",
+      "InterPro:IPR056436",
+      "InterPro:IPR050453",
+      "InterPro:IPR050717",
+      "InterPro:IPR050394",
+      "InterPro:IPR022106",
+      "InterPro:IPR050460",
+      "Pfam:PF12360",
+      "InterPro:IPR033348",
+      "InterPro:IPR050933",
+      "InterPro:IPR046333",
+      "InterPro:IPR044869",
+      "InterPro:IPR050370",
+      "InterPro:IPR017114",
+      "InterPro:IPR022067",
+      "InterPro:IPR019391",
+      "InterPro:IPR040126",
+      "InterPro:IPR050140"
+    ],
+    "text_patterns": []
+  },
+  "GO:0003713": {
+    "name": "transcription coactivator activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR007576",
+      "InterPro:IPR039546"
+    ],
+    "text_patterns": []
+  },
+  "GO:0003714": {
+    "name": "transcription corepressor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR026052",
+      "InterPro:IPR007576"
+    ],
+    "text_patterns": []
+  },
+  "GO:0003720": {
+    "name": "telomerase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR012960"
+    ],
+    "text_patterns": []
+  },
+  "GO:0003723": {
+    "name": "RNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR026795"
+    ],
+    "text_patterns": []
+  },
+  "GO:0003724": {
+    "name": "RNA helicase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050474"
+    ],
+    "text_patterns": []
+  },
+  "GO:0003725": {
+    "name": "double-stranded RNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR041015"
+    ],
+    "text_patterns": [
+      "interaction with dsrna"
+    ]
+  },
+  "GO:0003727": {
+    "name": "single-stranded RNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "single-stranded rna",
+      "ssrna"
+    ]
+  },
+  "GO:0003729": {
+    "name": "mRNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR004044"
+    ],
+    "text_patterns": []
+  },
+  "GO:0003779": {
+    "name": "actin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR036872",
+      "InterPro:IPR015505"
+    ],
+    "text_patterns": [
+      "actin-binding",
+      "interaction with actin"
+    ]
+  },
+  "GO:0003785": {
+    "name": "actin monomer binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR015505"
+    ],
+    "text_patterns": []
+  },
+  "GO:0003823": {
+    "name": "antigen binding",
+    "ligands": [
+      "a peptide antigen"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0003887": {
+    "name": "DNA-directed DNA polymerase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "dna polymerase activity"
+    ]
+  },
+  "GO:0003906": {
+    "name": "DNA-(apurinic or apyrimidinic site) endonuclease activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR057258"
+    ],
+    "text_patterns": []
+  },
+  "GO:0003924": {
+    "name": "GTPase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "PROSITE:PS51419"
+    ],
+    "text_patterns": [
+      "g1 motif",
+      "g2 motif",
+      "g3 motif",
+      "g4 motif",
+      "g5 motif"
+    ]
+  },
+  "GO:0003925": {
+    "name": "G protein activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "PROSITE:PS51419",
+      "PROSITE:PS51420",
+      "PROSITE:PS51417"
+    ],
+    "text_patterns": [
+      "g1 motif",
+      "g2 motif",
+      "g3 motif",
+      "g4 motif",
+      "g5 motif"
+    ]
+  },
+  "GO:0004051": {
+    "name": "arachidonate 5-lipoxygenase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000907"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004052": {
+    "name": "arachidonate 12(S)-lipoxygenase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000907"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004115": {
+    "name": "3',5'-cyclic-AMP phosphodiesterase activity",
+    "ligands": [
+      "3',5'-cyclic AMP"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0004167": {
+    "name": "dopachrome isomerase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001398",
+      "Pfam:PF01187",
+      "PROSITE:PS01158",
+      "InterPro:IPR014347"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004175": {
+    "name": "endopeptidase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "PROSITE:PS00142",
+      "InterPro:IPR034182",
+      "InterPro:IPR033874"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004197": {
+    "name": "cysteine-type endopeptidase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050185",
+      "InterPro:IPR028889"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004301": {
+    "name": "epoxide hydrolase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "epoxide hydrolase"
+    ]
+  },
+  "GO:0004336": {
+    "name": "galactosylceramidase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001139"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004340": {
+    "name": "glucokinase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001312"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004385": {
+    "name": "GMP kinase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR008144"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004386": {
+    "name": "helicase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050699",
+      "InterPro:IPR022192"
+    ],
+    "text_patterns": [
+      "dead box",
+      "helicase activity",
+      "deah box"
+    ]
+  },
+  "GO:0004519": {
+    "name": "endonuclease activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "endoribonuclease"
+    ]
+  },
+  "GO:0004520": {
+    "name": "DNA endonuclease activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR057258"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004601": {
+    "name": "peroxidase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "cysteine sulfenic acid"
+    ]
+  },
+  "GO:0004602": {
+    "name": "glutathione peroxidase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000889"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004620": {
+    "name": "phospholipase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR051496",
+      "InterPro:IPR007053",
+      "Pfam:PF04970"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004623": {
+    "name": "phospholipase A2 activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR016035"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004673": {
+    "name": "protein histidine kinase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "phosphohistidine intermediate"
+    ]
+  },
+  "GO:0004674": {
+    "name": "protein serine/threonine kinase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050494",
+      "InterPro:IPR051334",
+      "InterPro:IPR050117",
+      "InterPro:IPR050235",
+      "InterPro:IPR033701",
+      "InterPro:IPR033695"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004691": {
+    "name": "cAMP-dependent protein kinase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR044109"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004693": {
+    "name": "cyclin-dependent protein serine/threonine kinase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050108"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004712": {
+    "name": "protein serine/threonine/tyrosine kinase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "txy"
+    ]
+  },
+  "GO:0004713": {
+    "name": "protein tyrosine kinase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050494"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004721": {
+    "name": "phosphoprotein phosphatase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR044506"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004722": {
+    "name": "protein serine/threonine phosphatase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR044506"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004725": {
+    "name": "protein tyrosine phosphatase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "phosphocysteine intermediate"
+    ]
+  },
+  "GO:0004726": {
+    "name": "non-membrane spanning protein tyrosine phosphatase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR051985"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004842": {
+    "name": "ubiquitin-protein transferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR048335",
+      "InterPro:IPR001841"
+    ],
+    "text_patterns": [
+      "glycyl thioester"
+    ]
+  },
+  "GO:0004844": {
+    "name": "uracil DNA N-glycosylase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR005122"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004857": {
+    "name": "enzyme inhibitor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR051226"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004862": {
+    "name": "cAMP-dependent protein kinase inhibitor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR012198"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004866": {
+    "name": "endopeptidase inhibitor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR046350",
+      "PROSITE:PS00287"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004869": {
+    "name": "cysteine-type endopeptidase inhibitor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001370",
+      "InterPro:IPR050784",
+      "Pfam:PF00653"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004877": {
+    "name": "complement component C3b receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000436",
+      "Pfam:PF00084",
+      "InterPro:IPR051277"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004879": {
+    "name": "nuclear receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001723",
+      "InterPro:IPR033348"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004888": {
+    "name": "transmembrane signaling receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR041015"
+    ],
+    "text_patterns": []
+  },
+  "GO:0004896": {
+    "name": "cytokine receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "wsxws motif"
+    ]
+  },
+  "GO:0004915": {
+    "name": "interleukin-6 receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "Pfam:PF09240"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005005": {
+    "name": "transmembrane-ephrin receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001090",
+      "InterPro:IPR016257"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005031": {
+    "name": "tumor necrosis factor receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001368"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005041": {
+    "name": "low-density lipoprotein particle receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000033",
+      "Pfam:PF00058"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005055": {
+    "name": "laminin receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR027468",
+      "InterPro:IPR041631"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005068": {
+    "name": "transmembrane receptor protein tyrosine kinase adaptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR043539"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005096": {
+    "name": "GTPase activator activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR027819",
+      "InterPro:IPR008936"
+    ],
+    "text_patterns": [
+      "arginine finger"
+    ]
+  },
+  "GO:0005102": {
+    "name": "signaling receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "interaction with transmembrane receptors"
+    ]
+  },
+  "GO:0005105": {
+    "name": "type 1 fibroblast growth factor receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR002209"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005109": {
+    "name": "frizzled binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR003351",
+      "InterPro:IPR024580",
+      "Pfam:PF02377",
+      "InterPro:IPR043158",
+      "PROSITE:PS00246",
+      "InterPro:IPR017049"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005111": {
+    "name": "type 2 fibroblast growth factor receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR002209"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005113": {
+    "name": "patched binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050387",
+      "InterPro:IPR003586",
+      "InterPro:IPR003587"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005119": {
+    "name": "smoothened binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR004766"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005125": {
+    "name": "cytokine activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR021184",
+      "PROSITE:PS00251",
+      "InterPro:IPR001398",
+      "Pfam:PF01187",
+      "PROSITE:PS01158",
+      "InterPro:IPR029034"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005141": {
+    "name": "interleukin-10 receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR020443",
+      "Pfam:PF00726"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005148": {
+    "name": "prolactin receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001400"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005158": {
+    "name": "insulin receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR022353",
+      "PROSITE:PS00262"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005159": {
+    "name": "insulin-like growth factor receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR002404"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005161": {
+    "name": "platelet-derived growth factor receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR027290"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005166": {
+    "name": "neurotrophin p75 receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR020408",
+      "InterPro:IPR019846"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005176": {
+    "name": "ErbB-2 class receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR002154",
+      "Pfam:PF02158"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005178": {
+    "name": "integrin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000585",
+      "Pfam:PF00045",
+      "InterPro:IPR035692",
+      "InterPro:IPR041784",
+      "InterPro:IPR049385"
+    ],
+    "text_patterns": [
+      "cell attachment site",
+      "interaction with integrin",
+      "integrin interaction",
+      "integrin-binding motif"
+    ]
+  },
+  "GO:0005198": {
+    "name": "structural molecule activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR002181",
+      "Pfam:PF00147",
+      "InterPro:IPR041573",
+      "InterPro:IPR035915"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005200": {
+    "name": "structural constituent of cytoskeleton",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR004000",
+      "Pfam:PF00022",
+      "InterPro:IPR051165",
+      "InterPro:IPR039008",
+      "Pfam:PF00038",
+      "InterPro:IPR018039"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005201": {
+    "name": "extracellular matrix structural constituent",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR002181",
+      "Pfam:PF00147"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005251": {
+    "name": "delayed rectifier potassium channel activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR004048"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005315": {
+    "name": "phosphate transmembrane transporter activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050186",
+      "InterPro:IPR004853",
+      "Pfam:PF03151"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005372": {
+    "name": "water transmembrane transporter activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR023271",
+      "InterPro:IPR034294",
+      "PROSITE:PS00221"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005384": {
+    "name": "manganese ion transmembrane transporter activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "coupling of manganese to calcium transport"
+    ]
+  },
+  "GO:0005436": {
+    "name": "sodium:phosphate symporter activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050382"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005506": {
+    "name": "iron ion binding",
+    "ligands": [
+      "Fe cation"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0005507": {
+    "name": "copper ion binding",
+    "ligands": [
+      "Cu(2+)",
+      "Cu(+)",
+      "Cu cation"
+    ],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR020949",
+      "Pfam:PF03991",
+      "InterPro:IPR000006"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005509": {
+    "name": "calcium ion binding",
+    "ligands": [
+      "Ca(2+)"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0005516": {
+    "name": "calmodulin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "PROSITE:PS50096"
+    ],
+    "text_patterns": [
+      "calmodulin"
+    ]
+  },
+  "GO:0005518": {
+    "name": "collagen binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR014788",
+      "InterPro:IPR000585"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005524": {
+    "name": "ATP binding",
+    "ligands": [
+      "ATP"
+    ],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR004000",
+      "Pfam:PF00022",
+      "InterPro:IPR005467"
+    ],
+    "text_patterns": [
+      "g-loop"
+    ]
+  },
+  "GO:0005525": {
+    "name": "GTP binding",
+    "ligands": [
+      "GTP"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0005536": {
+    "name": "D-glucose binding",
+    "ligands": [
+      "D-glucose"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0005537": {
+    "name": "D-mannose binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001480"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005539": {
+    "name": "glycosaminoglycan binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000762"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005543": {
+    "name": "phospholipid binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000008",
+      "Pfam:PF00168",
+      "InterPro:IPR027267",
+      "InterPro:IPR006020",
+      "Pfam:PF00640"
+    ],
+    "text_patterns": [
+      "phospholipid binding"
+    ]
+  },
+  "GO:0005546": {
+    "name": "phosphatidylinositol-4,5-bisphosphate binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR031313",
+      "InterPro:IPR037741",
+      "InterPro:IPR049780"
+    ],
+    "text_patterns": []
+  },
+  "GO:0005547": {
+    "name": "phosphatidylinositol-3,4,5-trisphosphate binding",
+    "ligands": [
+      "a 1,2-diacyl-sn-glycero-3-phospho-(1D-myo-inositol-3,4,5-trisphosphate)"
+    ],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR031313",
+      "InterPro:IPR039026"
+    ],
+    "text_patterns": [
+      "phosphatidylinositol-phosphate binding"
+    ]
+  },
+  "GO:0008013": {
+    "name": "beta-catenin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR014936",
+      "Pfam:PF08833",
+      "InterPro:IPR017300"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008017": {
+    "name": "microtubule binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR034085",
+      "InterPro:IPR024395",
+      "Pfam:PF12348"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008046": {
+    "name": "axon guidance receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR056754",
+      "InterPro:IPR021012",
+      "InterPro:IPR001090",
+      "InterPro:IPR016257"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008066": {
+    "name": "glutamate receptor activity",
+    "ligands": [
+      "L-glutamate"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0008083": {
+    "name": "growth factor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR008996",
+      "InterPro:IPR002154",
+      "Pfam:PF02158",
+      "InterPro:IPR030474"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008092": {
+    "name": "cytoskeletal protein binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR051165"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008094": {
+    "name": "ATP-dependent activity, acting on DNA",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR038718",
+      "InterPro:IPR049730"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008139": {
+    "name": "nuclear localization sequence binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR058584"
+    ],
+    "text_patterns": [
+      "nls binding site"
+    ]
+  },
+  "GO:0008142": {
+    "name": "oxysterol binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR041771",
+      "InterPro:IPR003079"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008186": {
+    "name": "ATP-dependent activity, acting on RNA",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR046330"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008198": {
+    "name": "ferrous iron binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR016357"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008201": {
+    "name": "heparin binding",
+    "ligands": [
+      "heparin"
+    ],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000762"
+    ],
+    "text_patterns": [
+      "heparin-binding",
+      "heparin binding"
+    ]
+  },
+  "GO:0008233": {
+    "name": "peptidase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001818"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008270": {
+    "name": "zinc ion binding",
+    "ligands": [
+      "Zn(2+)"
+    ],
+    "feature_types": [
+      "ZN_FING"
+    ],
+    "domain_accessions": [
+      "InterPro:IPR000006"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008289": {
+    "name": "lipid binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR008914"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008301": {
+    "name": "DNA binding, bending",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR009071",
+      "InterPro:IPR050342",
+      "Pfam:PF00505"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008422": {
+    "name": "beta-glucosidase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001139"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008432": {
+    "name": "JUN kinase binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "jnk-binding domain"
+    ]
+  },
+  "GO:0008528": {
+    "name": "G protein-coupled peptide receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050332"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008559": {
+    "name": "ABC-type xenobiotic transporter activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR056227"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008656": {
+    "name": "cysteine-type endopeptidase activator activity involved in apoptotic process",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR056259"
+    ],
+    "text_patterns": []
+  },
+  "GO:0008865": {
+    "name": "fructokinase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001312"
+    ],
+    "text_patterns": []
+  },
+  "GO:0009378": {
+    "name": "four-way junction helicase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR032284"
+    ],
+    "text_patterns": []
+  },
+  "GO:0010181": {
+    "name": "FMN binding",
+    "ligands": [
+      "FMN"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0015020": {
+    "name": "glucuronosyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050271",
+      "PROSITE:PS00375"
+    ],
+    "text_patterns": []
+  },
+  "GO:0015026": {
+    "name": "coreceptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR058899",
+      "InterPro:IPR013517",
+      "InterPro:IPR032695",
+      "Pfam:PF01839",
+      "InterPro:IPR017049"
+    ],
+    "text_patterns": []
+  },
+  "GO:0015120": {
+    "name": "phosphoglycerate transmembrane transporter activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050186",
+      "InterPro:IPR004853",
+      "Pfam:PF03151"
+    ],
+    "text_patterns": []
+  },
+  "GO:0015180": {
+    "name": "L-alanine transmembrane transporter activity",
+    "ligands": [
+      "L-alanine"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0015183": {
+    "name": "L-aspartate transmembrane transporter activity",
+    "ligands": [
+      "L-aspartate"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0015250": {
+    "name": "water channel activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR023271",
+      "InterPro:IPR034294",
+      "PROSITE:PS00221"
+    ],
+    "text_patterns": []
+  },
+  "GO:0015297": {
+    "name": "antiporter activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050186",
+      "InterPro:IPR004853",
+      "Pfam:PF03151"
+    ],
+    "text_patterns": []
+  },
+  "GO:0015431": {
+    "name": "ABC-type glutathione S-conjugate transporter activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR056227"
+    ],
+    "text_patterns": []
+  },
+  "GO:0015485": {
+    "name": "cholesterol binding",
+    "ligands": [
+      "cholesterol"
+    ],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000731"
+    ],
+    "text_patterns": [
+      "crac motif",
+      "carc motif"
+    ]
+  },
+  "GO:0016015": {
+    "name": "morphogen activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR029034",
+      "InterPro:IPR050387",
+      "InterPro:IPR003586",
+      "InterPro:IPR003587"
+    ],
+    "text_patterns": []
+  },
+  "GO:0016018": {
+    "name": "cyclosporin A binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR029000"
+    ],
+    "text_patterns": []
+  },
+  "GO:0016019": {
+    "name": "peptidoglycan immune receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR015510"
+    ],
+    "text_patterns": []
+  },
+  "GO:0016174": {
+    "name": "NAD(P)H oxidase H2O2-forming activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050540"
+    ],
+    "text_patterns": []
+  },
+  "GO:0016208": {
+    "name": "AMP binding",
+    "ligands": [
+      "AMP"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0016301": {
+    "name": "kinase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050117",
+      "InterPro:IPR000719"
+    ],
+    "text_patterns": []
+  },
+  "GO:0016407": {
+    "name": "acetyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR010303"
+    ],
+    "text_patterns": []
+  },
+  "GO:0016410": {
+    "name": "N-acyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR051496",
+      "InterPro:IPR007053",
+      "Pfam:PF04970"
+    ],
+    "text_patterns": [
+      "acyl-thioester intermediate"
+    ]
+  },
+  "GO:0016411": {
+    "name": "acylglycerol O-acyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR016035"
+    ],
+    "text_patterns": []
+  },
+  "GO:0016538": {
+    "name": "cyclin-dependent protein serine/threonine kinase regulator activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR039361",
+      "InterPro:IPR013763",
+      "Pfam:PF00134"
+    ],
+    "text_patterns": []
+  },
+  "GO:0016594": {
+    "name": "glycine binding",
+    "ligands": [
+      "glycine"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0016597": {
+    "name": "amino acid binding",
+    "ligands": [
+      "an L-alpha-amino acid"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0016709": {
+    "name": "oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, NAD(P)H as one donor, and incorporation of one atom of oxygen",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050540"
+    ],
+    "text_patterns": []
+  },
+  "GO:0016746": {
+    "name": "acyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR010303"
+    ],
+    "text_patterns": []
+  },
+  "GO:0016787": {
+    "name": "hydrolase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR004000",
+      "Pfam:PF00022",
+      "InterPro:IPR000907"
+    ],
+    "text_patterns": []
+  },
+  "GO:0016791": {
+    "name": "phosphatase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "phosphatase"
+    ]
+  },
+  "GO:0016881": {
+    "name": "acid-amino acid ligase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR004993"
+    ],
+    "text_patterns": []
+  },
+  "GO:0016887": {
+    "name": "ATP hydrolysis activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR003593",
+      "InterPro:IPR038718",
+      "InterPro:IPR049730",
+      "InterPro:IPR046330",
+      "InterPro:IPR050474"
+    ],
+    "text_patterns": [
+      "aspartylphosphate intermediate"
+    ]
+  },
+  "GO:0016922": {
+    "name": "nuclear receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "lxxll",
+      "cornr box"
+    ]
+  },
+  "GO:0017020": {
+    "name": "myosin phosphatase regulator activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR051226"
+    ],
+    "text_patterns": []
+  },
+  "GO:0017022": {
+    "name": "myosin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR004000",
+      "Pfam:PF00022"
+    ],
+    "text_patterns": []
+  },
+  "GO:0017046": {
+    "name": "peptide hormone binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR051193",
+      "InterPro:IPR001224"
+    ],
+    "text_patterns": []
+  },
+  "GO:0017069": {
+    "name": "snRNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "snrna"
+    ]
+  },
+  "GO:0017081": {
+    "name": "chloride channel regulator activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR017300"
+    ],
+    "text_patterns": []
+  },
+  "GO:0017124": {
+    "name": "SH3 domain binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR043539"
+    ],
+    "text_patterns": [
+      "sh3-binding"
+    ]
+  },
+  "GO:0017134": {
+    "name": "fibroblast growth factor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR016248"
+    ],
+    "text_patterns": []
+  },
+  "GO:0017147": {
+    "name": "Wnt-protein binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR015526"
+    ],
+    "text_patterns": []
+  },
+  "GO:0017171": {
+    "name": "serine hydrolase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "acyl-ester intermediate"
+    ]
+  },
+  "GO:0019001": {
+    "name": "guanyl nucleotide binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "PROSITE:PS51419"
+    ],
+    "text_patterns": []
+  },
+  "GO:0019003": {
+    "name": "GDP binding",
+    "ligands": [
+      "GDP"
+    ],
+    "feature_types": [],
+    "domain_accessions": [
+      "PROSITE:PS51419",
+      "PROSITE:PS51420",
+      "PROSITE:PS51417"
+    ],
+    "text_patterns": [
+      "g1 motif",
+      "g2 motif",
+      "g3 motif",
+      "g4 motif",
+      "g5 motif"
+    ]
+  },
+  "GO:0019213": {
+    "name": "deacetylase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000286"
+    ],
+    "text_patterns": []
+  },
+  "GO:0019237": {
+    "name": "centromeric DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR025856"
+    ],
+    "text_patterns": []
+  },
+  "GO:0019770": {
+    "name": "IgG receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050488"
+    ],
+    "text_patterns": []
+  },
+  "GO:0019772": {
+    "name": "low-affinity IgG receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050488"
+    ],
+    "text_patterns": []
+  },
+  "GO:0019787": {
+    "name": "ubiquitin-like protein transferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR044066"
+    ],
+    "text_patterns": []
+  },
+  "GO:0019864": {
+    "name": "IgG binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050488"
+    ],
+    "text_patterns": []
+  },
+  "GO:0019894": {
+    "name": "kinesin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "kinesin-binding domain"
+    ]
+  },
+  "GO:0019900": {
+    "name": "kinase binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "interaction with raf1"
+    ]
+  },
+  "GO:0019901": {
+    "name": "protein kinase binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "interaction with raf1"
+    ]
+  },
+  "GO:0019902": {
+    "name": "phosphatase binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "rfxv"
+    ]
+  },
+  "GO:0019905": {
+    "name": "syntaxin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR037741"
+    ],
+    "text_patterns": [
+      "syntaxin"
+    ]
+  },
+  "GO:0019962": {
+    "name": "type I interferon binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "Pfam:PF09294"
+    ],
+    "text_patterns": []
+  },
+  "GO:0019981": {
+    "name": "interleukin-6 binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "Pfam:PF09240"
+    ],
+    "text_patterns": []
+  },
+  "GO:0020037": {
+    "name": "heme binding",
+    "ligands": [
+      "heme b",
+      "heme"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0022851": {
+    "name": "GABA-gated chloride ion channel activity",
+    "ligands": [
+      "4-aminobutanoate"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0030145": {
+    "name": "manganese ion binding",
+    "ligands": [
+      "Mn(2+)"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0030165": {
+    "name": "PDZ domain binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR017300"
+    ],
+    "text_patterns": [
+      "interaction with the pdz domain"
+    ]
+  },
+  "GO:0030169": {
+    "name": "low-density lipoprotein particle binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000033",
+      "Pfam:PF00058",
+      "InterPro:IPR041254",
+      "InterPro:IPR041052",
+      "InterPro:IPR041051"
+    ],
+    "text_patterns": []
+  },
+  "GO:0030229": {
+    "name": "very-low-density lipoprotein particle receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000033",
+      "Pfam:PF00058"
+    ],
+    "text_patterns": []
+  },
+  "GO:0030276": {
+    "name": "clathrin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR037741",
+      "InterPro:IPR050384"
+    ],
+    "text_patterns": []
+  },
+  "GO:0030296": {
+    "name": "protein tyrosine kinase activator activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR002154",
+      "Pfam:PF02158"
+    ],
+    "text_patterns": []
+  },
+  "GO:0030297": {
+    "name": "transmembrane receptor protein tyrosine kinase activator activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR002154",
+      "Pfam:PF02158"
+    ],
+    "text_patterns": []
+  },
+  "GO:0030371": {
+    "name": "translation repressor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "yxxxxlphi"
+    ]
+  },
+  "GO:0030414": {
+    "name": "peptidase inhibitor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR046350",
+      "PROSITE:PS00287"
+    ],
+    "text_patterns": []
+  },
+  "GO:0030506": {
+    "name": "ankyrin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "interaction with ank"
+    ]
+  },
+  "GO:0030507": {
+    "name": "spectrin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR051165"
+    ],
+    "text_patterns": []
+  },
+  "GO:0030552": {
+    "name": "cAMP binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR055272",
+      "Pfam:PF04831",
+      "InterPro:IPR000595"
+    ],
+    "text_patterns": []
+  },
+  "GO:0030619": {
+    "name": "U1 snRNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "u1 snrna"
+    ]
+  },
+  "GO:0030621": {
+    "name": "U4 snRNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "u4 snrna"
+    ]
+  },
+  "GO:0030622": {
+    "name": "U4atac snRNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "interaction with u4atac snrna"
+    ]
+  },
+  "GO:0030674": {
+    "name": "protein-macromolecule adaptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR026200",
+      "InterPro:IPR049342",
+      "InterPro:IPR013134"
+    ],
+    "text_patterns": []
+  },
+  "GO:0030742": {
+    "name": "GTP-dependent protein binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR003578"
+    ],
+    "text_patterns": []
+  },
+  "GO:0030881": {
+    "name": "beta-2-microglobulin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR003597",
+      "Pfam:PF07654"
+    ],
+    "text_patterns": []
+  },
+  "GO:0030911": {
+    "name": "TPR domain binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "tpr repeat-binding"
+    ]
+  },
+  "GO:0030955": {
+    "name": "potassium ion binding",
+    "ligands": [
+      "K(+)"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0030971": {
+    "name": "receptor tyrosine kinase binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR002154",
+      "Pfam:PF02158"
+    ],
+    "text_patterns": []
+  },
+  "GO:0030983": {
+    "name": "mismatched DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR005122"
+    ],
+    "text_patterns": []
+  },
+  "GO:0031267": {
+    "name": "small GTPase binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR027819",
+      "InterPro:IPR003123",
+      "InterPro:IPR008936",
+      "InterPro:IPR035899"
+    ],
+    "text_patterns": [
+      "interaction with rab"
+    ]
+  },
+  "GO:0031402": {
+    "name": "sodium ion binding",
+    "ligands": [
+      "Na(+)"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0031404": {
+    "name": "chloride ion binding",
+    "ligands": [
+      "chloride"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0031418": {
+    "name": "L-ascorbic acid binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR024548"
+    ],
+    "text_patterns": []
+  },
+  "GO:0031490": {
+    "name": "chromatin DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR007604",
+      "InterPro:IPR057520",
+      "InterPro:IPR057310"
+    ],
+    "text_patterns": []
+  },
+  "GO:0031491": {
+    "name": "nucleosome binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR043151"
+    ],
+    "text_patterns": []
+  },
+  "GO:0031624": {
+    "name": "ubiquitin conjugating enzyme binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR052297"
+    ],
+    "text_patterns": []
+  },
+  "GO:0031625": {
+    "name": "ubiquitin protein ligase binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "dlg motif",
+      "etge motif",
+      "interaction with btrc"
+    ]
+  },
+  "GO:0031698": {
+    "name": "beta-2 adrenergic receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR017300"
+    ],
+    "text_patterns": []
+  },
+  "GO:0031737": {
+    "name": "CX3C chemokine receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR034127"
+    ],
+    "text_patterns": []
+  },
+  "GO:0031748": {
+    "name": "D1 dopamine receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000929"
+    ],
+    "text_patterns": []
+  },
+  "GO:0031799": {
+    "name": "type 2 metabotropic glutamate receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR017300"
+    ],
+    "text_patterns": []
+  },
+  "GO:0031800": {
+    "name": "type 3 metabotropic glutamate receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR017300"
+    ],
+    "text_patterns": []
+  },
+  "GO:0031894": {
+    "name": "V1A vasopressin receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001224"
+    ],
+    "text_patterns": []
+  },
+  "GO:0032090": {
+    "name": "Pyrin domain binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR004020",
+      "Pfam:PF02758"
+    ],
+    "text_patterns": []
+  },
+  "GO:0032357": {
+    "name": "oxidized purine DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR057258"
+    ],
+    "text_patterns": []
+  },
+  "GO:0032358": {
+    "name": "oxidized pyrimidine DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR057258"
+    ],
+    "text_patterns": []
+  },
+  "GO:0032813": {
+    "name": "tumor necrosis factor receptor superfamily binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR006052"
+    ],
+    "text_patterns": []
+  },
+  "GO:0032934": {
+    "name": "sterol binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000648"
+    ],
+    "text_patterns": []
+  },
+  "GO:0033328": {
+    "name": "peroxisome membrane targeting sequence binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR038322"
+    ],
+    "text_patterns": []
+  },
+  "GO:0033558": {
+    "name": "protein lysine deacetylase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000286"
+    ],
+    "text_patterns": []
+  },
+  "GO:0034056": {
+    "name": "estrogen response element binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR024736",
+      "Pfam:PF12743"
+    ],
+    "text_patterns": []
+  },
+  "GO:0034185": {
+    "name": "apolipoprotein binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR041254",
+      "InterPro:IPR041052",
+      "InterPro:IPR041051"
+    ],
+    "text_patterns": []
+  },
+  "GO:0034189": {
+    "name": "very-low-density lipoprotein particle binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR041254",
+      "InterPro:IPR041052",
+      "InterPro:IPR041051"
+    ],
+    "text_patterns": []
+  },
+  "GO:0034190": {
+    "name": "apolipoprotein receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR041254",
+      "InterPro:IPR041052",
+      "InterPro:IPR041051"
+    ],
+    "text_patterns": []
+  },
+  "GO:0034236": {
+    "name": "protein kinase A catalytic subunit binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR012198"
+    ],
+    "text_patterns": [
+      "pki motif"
+    ]
+  },
+  "GO:0034450": {
+    "name": "ubiquitin-ubiquitin ligase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR048335"
+    ],
+    "text_patterns": []
+  },
+  "GO:0034513": {
+    "name": "box H/ACA snoRNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR012960"
+    ],
+    "text_patterns": []
+  },
+  "GO:0034617": {
+    "name": "tetrahydrobiopterin binding",
+    "ligands": [
+      "(6R)-L-erythro-5,6,7,8-tetrahydrobiopterin"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0034618": {
+    "name": "arginine binding",
+    "ligands": [
+      "arginine"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0034986": {
+    "name": "iron chaperone activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR016357"
+    ],
+    "text_patterns": []
+  },
+  "GO:0035035": {
+    "name": "histone acetyltransferase binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR007576"
+    ],
+    "text_patterns": []
+  },
+  "GO:0035091": {
+    "name": "phosphatidylinositol binding",
+    "ligands": [
+      "1,2-dioctanoyl-sn-glycero-3-phospho-(1D-myo-inositol-4,5-bisphosphate)"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "pip2"
+    ]
+  },
+  "GO:0035243": {
+    "name": "protein-arginine omega-N symmetric methyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR035075",
+      "Pfam:PF05185"
+    ],
+    "text_patterns": []
+  },
+  "GO:0035250": {
+    "name": "UDP-galactosyltransferase activity",
+    "ligands": [
+      "UDP-alpha-D-galactose"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0035373": {
+    "name": "chondroitin sulfate proteoglycan binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "chondroitin sulfate binding",
+      "chondroitin sulfate a binding"
+    ]
+  },
+  "GO:0035374": {
+    "name": "chondroitin sulfate binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "chondroitin sulfate binding",
+      "chondroitin sulfate a binding"
+    ]
+  },
+  "GO:0035591": {
+    "name": "signaling adaptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR049342",
+      "InterPro:IPR042141",
+      "InterPro:IPR003134",
+      "InterPro:IPR048561",
+      "InterPro:IPR001158"
+    ],
+    "text_patterns": []
+  },
+  "GO:0035605": {
+    "name": "peptidyl-cysteine S-nitrosylase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050607"
+    ],
+    "text_patterns": []
+  },
+  "GO:0035925": {
+    "name": "mRNA 3'-UTR AU-rich region binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "are binding"
+    ]
+  },
+  "GO:0036105": {
+    "name": "peroxisome membrane class-1 targeting sequence binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR038322"
+    ],
+    "text_patterns": []
+  },
+  "GO:0036403": {
+    "name": "arachidonate 8(S)-lipoxygenase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000907"
+    ],
+    "text_patterns": []
+  },
+  "GO:0036524": {
+    "name": "protein deglycase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR006287"
+    ],
+    "text_patterns": []
+  },
+  "GO:0038023": {
+    "name": "signaling receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR013517",
+      "InterPro:IPR032695",
+      "Pfam:PF01839",
+      "InterPro:IPR041015",
+      "InterPro:IPR051116"
+    ],
+    "text_patterns": []
+  },
+  "GO:0038024": {
+    "name": "cargo receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050310",
+      "Pfam:PF15902",
+      "InterPro:IPR045214"
+    ],
+    "text_patterns": []
+  },
+  "GO:0038187": {
+    "name": "pattern recognition receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR041015"
+    ],
+    "text_patterns": []
+  },
+  "GO:0042054": {
+    "name": "histone methyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR035075",
+      "Pfam:PF05185"
+    ],
+    "text_patterns": []
+  },
+  "GO:0042056": {
+    "name": "chemoattractant activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001398",
+      "Pfam:PF01187",
+      "PROSITE:PS01158",
+      "InterPro:IPR020408",
+      "InterPro:IPR019846"
+    ],
+    "text_patterns": []
+  },
+  "GO:0042169": {
+    "name": "SH2 domain binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR041784",
+      "InterPro:IPR049385"
+    ],
+    "text_patterns": [
+      "yxxm motif"
+    ]
+  },
+  "GO:0042171": {
+    "name": "lysophosphatidic acid acyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR016035"
+    ],
+    "text_patterns": []
+  },
+  "GO:0042277": {
+    "name": "peptide binding",
+    "ligands": [
+      "a peptide"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0042392": {
+    "name": "sphingosine-1-phosphate phosphatase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000326"
+    ],
+    "text_patterns": []
+  },
+  "GO:0042393": {
+    "name": "histone binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000953",
+      "Pfam:PF00385"
+    ],
+    "text_patterns": []
+  },
+  "GO:0042497": {
+    "name": "triacyl lipopeptide binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "interaction with bacterial lipopeptide"
+    ]
+  },
+  "GO:0042562": {
+    "name": "hormone binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR024736",
+      "Pfam:PF12743"
+    ],
+    "text_patterns": []
+  },
+  "GO:0042610": {
+    "name": "CD8 receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR003597",
+      "Pfam:PF07654"
+    ],
+    "text_patterns": []
+  },
+  "GO:0042802": {
+    "name": "identical protein binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "self-association"
+    ]
+  },
+  "GO:0042803": {
+    "name": "protein homodimerization activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR016670",
+      "InterPro:IPR052659",
+      "InterPro:IPR004953",
+      "InterPro:IPR016248",
+      "InterPro:IPR027290"
+    ],
+    "text_patterns": []
+  },
+  "GO:0042834": {
+    "name": "peptidoglycan binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR015510"
+    ],
+    "text_patterns": []
+  },
+  "GO:0042903": {
+    "name": "tubulin deacetylase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000286"
+    ],
+    "text_patterns": []
+  },
+  "GO:0043021": {
+    "name": "ribonucleoprotein complex binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR027105"
+    ],
+    "text_patterns": []
+  },
+  "GO:0043022": {
+    "name": "ribosome binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR026795"
+    ],
+    "text_patterns": []
+  },
+  "GO:0043027": {
+    "name": "cysteine-type endopeptidase inhibitor activity involved in apoptotic process",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001370",
+      "InterPro:IPR050784",
+      "Pfam:PF00653"
+    ],
+    "text_patterns": []
+  },
+  "GO:0043125": {
+    "name": "ErbB-3 class receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR002154",
+      "Pfam:PF02158"
+    ],
+    "text_patterns": []
+  },
+  "GO:0043130": {
+    "name": "ubiquitin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR003903"
+    ],
+    "text_patterns": [
+      "interaction with ubiquitin",
+      "ubiquitin binding"
+    ]
+  },
+  "GO:0043138": {
+    "name": "3'-5' DNA helicase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050474"
+    ],
+    "text_patterns": []
+  },
+  "GO:0043139": {
+    "name": "5'-3' DNA helicase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001945"
+    ],
+    "text_patterns": []
+  },
+  "GO:0043236": {
+    "name": "laminin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR027468",
+      "InterPro:IPR041631",
+      "InterPro:IPR044156",
+      "InterPro:IPR014788"
+    ],
+    "text_patterns": [
+      "laminin recognition"
+    ]
+  },
+  "GO:0043295": {
+    "name": "glutathione binding",
+    "ligands": [
+      "glutathione"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0043325": {
+    "name": "phosphatidylinositol-3,4-bisphosphate binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR031313",
+      "InterPro:IPR039026"
+    ],
+    "text_patterns": []
+  },
+  "GO:0043425": {
+    "name": "bHLH transcription factor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050933"
+    ],
+    "text_patterns": []
+  },
+  "GO:0043495": {
+    "name": "membrane-membrane adaptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR013923",
+      "InterPro:IPR017300"
+    ],
+    "text_patterns": []
+  },
+  "GO:0043515": {
+    "name": "kinetochore binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "kinetochore-binding domain"
+    ]
+  },
+  "GO:0043522": {
+    "name": "leucine zipper domain binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR016670"
+    ],
+    "text_patterns": []
+  },
+  "GO:0043531": {
+    "name": "ADP binding",
+    "ligands": [
+      "ADP"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0043539": {
+    "name": "protein serine/threonine kinase activator activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR036915"
+    ],
+    "text_patterns": [
+      "interaction with gsk3b"
+    ]
+  },
+  "GO:0043548": {
+    "name": "phosphatidylinositol 3-kinase binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "phosphoinositide-3 kinase binding",
+      "yxxm motif"
+    ]
+  },
+  "GO:0043565": {
+    "name": "sequence-specific DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR011598",
+      "InterPro:IPR050359",
+      "InterPro:IPR056436",
+      "InterPro:IPR050717",
+      "InterPro:IPR013854",
+      "InterPro:IPR007604",
+      "InterPro:IPR057520",
+      "InterPro:IPR004827",
+      "InterPro:IPR050140"
+    ],
+    "text_patterns": []
+  },
+  "GO:0044020": {
+    "name": "histone H4R3 methyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR035075",
+      "Pfam:PF05185"
+    ],
+    "text_patterns": []
+  },
+  "GO:0044183": {
+    "name": "protein folding chaperone",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001436",
+      "InterPro:IPR013126"
+    ],
+    "text_patterns": []
+  },
+  "GO:0044378": {
+    "name": "non-sequence-specific DNA binding, bending",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR009071",
+      "InterPro:IPR050342",
+      "Pfam:PF00505"
+    ],
+    "text_patterns": []
+  },
+  "GO:0044547": {
+    "name": "DNA topoisomerase binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR032284"
+    ],
+    "text_patterns": []
+  },
+  "GO:0044548": {
+    "name": "S100 protein binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "s100a10-binding"
+    ]
+  },
+  "GO:0045159": {
+    "name": "myosin II binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR017300"
+    ],
+    "text_patterns": []
+  },
+  "GO:0045545": {
+    "name": "syndecan binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000762"
+    ],
+    "text_patterns": []
+  },
+  "GO:0046332": {
+    "name": "SMAD binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR007576"
+    ],
+    "text_patterns": [
+      "interaction with smad"
+    ]
+  },
+  "GO:0046527": {
+    "name": "glucosyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001139"
+    ],
+    "text_patterns": []
+  },
+  "GO:0046870": {
+    "name": "cadmium ion binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000006"
+    ],
+    "text_patterns": []
+  },
+  "GO:0046872": {
+    "name": "metal ion binding",
+    "ligands": [
+      "a divalent metal cation"
+    ],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001781",
+      "Pfam:PF00412"
+    ],
+    "text_patterns": []
+  },
+  "GO:0046936": {
+    "name": "2'-deoxyadenosine deaminase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001365"
+    ],
+    "text_patterns": []
+  },
+  "GO:0046983": {
+    "name": "protein dimerization activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000098"
+    ],
+    "text_patterns": [
+      "leucine-zipper"
+    ]
+  },
+  "GO:0047066": {
+    "name": "phospholipid-hydroperoxide glutathione peroxidase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000889"
+    ],
+    "text_patterns": []
+  },
+  "GO:0048018": {
+    "name": "receptor ligand activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR021184",
+      "PROSITE:PS00251",
+      "InterPro:IPR051713",
+      "InterPro:IPR002154",
+      "Pfam:PF02158",
+      "InterPro:IPR031328",
+      "InterPro:IPR029034",
+      "InterPro:IPR052659",
+      "InterPro:IPR013768",
+      "InterPro:IPR048679",
+      "InterPro:IPR043158",
+      "PROSITE:PS00246"
+    ],
+    "text_patterns": []
+  },
+  "GO:0048030": {
+    "name": "disaccharide binding",
+    "ligands": [
+      "a beta-D-galactoside"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0048185": {
+    "name": "activin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR058899"
+    ],
+    "text_patterns": []
+  },
+  "GO:0048407": {
+    "name": "platelet-derived growth factor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR027290"
+    ],
+    "text_patterns": []
+  },
+  "GO:0050178": {
+    "name": "phenylpyruvate tautomerase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001398",
+      "Pfam:PF01187",
+      "PROSITE:PS01158",
+      "InterPro:IPR014347"
+    ],
+    "text_patterns": []
+  },
+  "GO:0050295": {
+    "name": "steryl-beta-glucosidase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001139"
+    ],
+    "text_patterns": []
+  },
+  "GO:0050431": {
+    "name": "transforming growth factor beta binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR058899"
+    ],
+    "text_patterns": []
+  },
+  "GO:0050660": {
+    "name": "flavin adenine dinucleotide binding",
+    "ligands": [
+      "FAD"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0050661": {
+    "name": "NADP binding",
+    "ligands": [
+      "NADP(+)"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0050693": {
+    "name": "LBD domain binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR007576"
+    ],
+    "text_patterns": []
+  },
+  "GO:0050699": {
+    "name": "WW domain binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "py-motif",
+      "recruits ww domain-containing"
+    ]
+  },
+  "GO:0050750": {
+    "name": "low-density lipoprotein particle receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR041254",
+      "InterPro:IPR041052",
+      "InterPro:IPR041051"
+    ],
+    "text_patterns": []
+  },
+  "GO:0050780": {
+    "name": "dopamine receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR017300"
+    ],
+    "text_patterns": []
+  },
+  "GO:0050815": {
+    "name": "phosphoserine residue binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000308",
+      "Pfam:PF00244"
+    ],
+    "text_patterns": [
+      "interaction with phosphoserine"
+    ]
+  },
+  "GO:0050839": {
+    "name": "cell adhesion molecule binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR013517",
+      "InterPro:IPR032695",
+      "Pfam:PF01839",
+      "InterPro:IPR052659",
+      "InterPro:IPR002126"
+    ],
+    "text_patterns": []
+  },
+  "GO:0050840": {
+    "name": "extracellular matrix binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR013517",
+      "InterPro:IPR032695",
+      "Pfam:PF01839"
+    ],
+    "text_patterns": []
+  },
+  "GO:0051010": {
+    "name": "microtubule plus-end binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "microtubule tip localization signal"
+    ]
+  },
+  "GO:0051015": {
+    "name": "actin filament binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR029006",
+      "InterPro:IPR015505",
+      "InterPro:IPR047290",
+      "InterPro:IPR047291",
+      "InterPro:IPR011259",
+      "InterPro:IPR003134",
+      "InterPro:IPR001715"
+    ],
+    "text_patterns": []
+  },
+  "GO:0051019": {
+    "name": "mitogen-activated protein kinase binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "interaction with raf1"
+    ]
+  },
+  "GO:0051022": {
+    "name": "Rho GDP-dissociation inhibitor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "PROSITE:PS51420"
+    ],
+    "text_patterns": []
+  },
+  "GO:0051059": {
+    "name": "NF-kappaB binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "activation of nf-kappa-b"
+    ]
+  },
+  "GO:0051082": {
+    "name": "unfolded protein binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR027409",
+      "InterPro:IPR027413",
+      "InterPro:IPR027410",
+      "InterPro:IPR001436",
+      "InterPro:IPR013126"
+    ],
+    "text_patterns": []
+  },
+  "GO:0051087": {
+    "name": "protein-folding chaperone binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR027409",
+      "InterPro:IPR027413",
+      "InterPro:IPR027410"
+    ],
+    "text_patterns": []
+  },
+  "GO:0051287": {
+    "name": "NAD binding",
+    "ligands": [
+      "NAD(+)"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0051378": {
+    "name": "serotonin binding",
+    "ligands": [
+      "serotonin"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0051400": {
+    "name": "BH domain binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR046371"
+    ],
+    "text_patterns": []
+  },
+  "GO:0051434": {
+    "name": "BH3 domain binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR046371"
+    ],
+    "text_patterns": []
+  },
+  "GO:0051539": {
+    "name": "4 iron, 4 sulfur cluster binding",
+    "ligands": [
+      "[4Fe-4S] cluster"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0051787": {
+    "name": "misfolded protein binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR013126"
+    ],
+    "text_patterns": []
+  },
+  "GO:0051920": {
+    "name": "peroxiredoxin activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR006287"
+    ],
+    "text_patterns": []
+  },
+  "GO:0060001": {
+    "name": "minus-end directed microfilament motor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR036114"
+    ],
+    "text_patterns": []
+  },
+  "GO:0060090": {
+    "name": "molecular adaptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR026200",
+      "InterPro:IPR018361",
+      "InterPro:IPR000698",
+      "InterPro:IPR001158"
+    ],
+    "text_patterns": []
+  },
+  "GO:0061575": {
+    "name": "cyclin-dependent protein serine/threonine kinase activator activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR036915"
+    ],
+    "text_patterns": []
+  },
+  "GO:0061608": {
+    "name": "nuclear import signal receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR058584"
+    ],
+    "text_patterns": []
+  },
+  "GO:0061629": {
+    "name": "RNA polymerase II-specific DNA-binding transcription factor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR026052",
+      "InterPro:IPR007576"
+    ],
+    "text_patterns": []
+  },
+  "GO:0061630": {
+    "name": "ubiquitin protein ligase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR039503",
+      "InterPro:IPR042056",
+      "InterPro:IPR045840",
+      "InterPro:IPR001841",
+      "InterPro:IPR052297"
+    ],
+    "text_patterns": []
+  },
+  "GO:0061631": {
+    "name": "ubiquitin conjugating enzyme activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000608",
+      "Pfam:PF00179"
+    ],
+    "text_patterns": []
+  },
+  "GO:0061733": {
+    "name": "protein-lysine-acetyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050603",
+      "InterPro:IPR010303"
+    ],
+    "text_patterns": []
+  },
+  "GO:0061891": {
+    "name": "calcium ion sensor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR037741"
+    ],
+    "text_patterns": []
+  },
+  "GO:0061920": {
+    "name": "protein propionyltransferase activity",
+    "ligands": [
+      "propanoyl-CoA"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0062037": {
+    "name": "D-loop DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR052003"
+    ],
+    "text_patterns": []
+  },
+  "GO:0062072": {
+    "name": "histone H3K9me2/3 reader activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR051219"
+    ],
+    "text_patterns": []
+  },
+  "GO:0062239": {
+    "name": "heterochromatin-nuclear membrane anchor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR025856"
+    ],
+    "text_patterns": []
+  },
+  "GO:0070016": {
+    "name": "armadillo repeat domain binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR014936"
+    ],
+    "text_patterns": []
+  },
+  "GO:0070034": {
+    "name": "telomerase RNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR012960"
+    ],
+    "text_patterns": []
+  },
+  "GO:0070181": {
+    "name": "small ribosomal subunit rRNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR057258"
+    ],
+    "text_patterns": []
+  },
+  "GO:0070273": {
+    "name": "phosphatidylinositol-4-phosphate binding",
+    "ligands": [
+      "a 1,2-diacyl-sn-glycero-3-phospho-(1D-myo-inositol 4-phosphate)"
+    ],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR049780"
+    ],
+    "text_patterns": []
+  },
+  "GO:0070300": {
+    "name": "phosphatidic acid binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR031313"
+    ],
+    "text_patterns": []
+  },
+  "GO:0070326": {
+    "name": "very-low-density lipoprotein particle receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR041254",
+      "InterPro:IPR041052",
+      "InterPro:IPR041051"
+    ],
+    "text_patterns": []
+  },
+  "GO:0070566": {
+    "name": "adenylyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR004993"
+    ],
+    "text_patterns": []
+  },
+  "GO:0070679": {
+    "name": "inositol 1,4,5 trisphosphate binding",
+    "ligands": [
+      "1D-myo-inositol 1,4,5-trisphosphate"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0070728": {
+    "name": "L-leucine binding",
+    "ligands": [
+      "L-leucine"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0070840": {
+    "name": "dynein complex binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR052386"
+    ],
+    "text_patterns": []
+  },
+  "GO:0070851": {
+    "name": "growth factor receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR017300"
+    ],
+    "text_patterns": []
+  },
+  "GO:0070888": {
+    "name": "E-box binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050527",
+      "InterPro:IPR050359",
+      "InterPro:IPR050283",
+      "InterPro:IPR057310"
+    ],
+    "text_patterns": []
+  },
+  "GO:0070905": {
+    "name": "serine binding",
+    "ligands": [
+      "D-serine"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0070990": {
+    "name": "snRNP binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR027105"
+    ],
+    "text_patterns": []
+  },
+  "GO:0071253": {
+    "name": "connexin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR018361"
+    ],
+    "text_patterns": []
+  },
+  "GO:0071813": {
+    "name": "lipoprotein particle binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000033",
+      "Pfam:PF00058"
+    ],
+    "text_patterns": []
+  },
+  "GO:0080025": {
+    "name": "phosphatidylinositol-3,5-bisphosphate binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR031313"
+    ],
+    "text_patterns": [
+      "phosphatidylinositol-phosphate binding"
+    ]
+  },
+  "GO:0080123": {
+    "name": "jasmonoyl-L-amino acid ligase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR004993"
+    ],
+    "text_patterns": []
+  },
+  "GO:0089720": {
+    "name": "caspase binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001370",
+      "InterPro:IPR050784",
+      "Pfam:PF00653"
+    ],
+    "text_patterns": []
+  },
+  "GO:0097020": {
+    "name": "COPII receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR045214"
+    ],
+    "text_patterns": []
+  },
+  "GO:0097100": {
+    "name": "supercoiled DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR009071",
+      "InterPro:IPR050342",
+      "Pfam:PF00505",
+      "InterPro:IPR057258"
+    ],
+    "text_patterns": []
+  },
+  "GO:0097108": {
+    "name": "hedgehog family protein binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR004766"
+    ],
+    "text_patterns": []
+  },
+  "GO:0097109": {
+    "name": "neuroligin family protein binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "nlgn"
+    ]
+  },
+  "GO:0097177": {
+    "name": "mitochondrial ribosome binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR028055"
+    ],
+    "text_patterns": []
+  },
+  "GO:0098531": {
+    "name": "ligand-modulated transcription factor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR003079"
+    ],
+    "text_patterns": []
+  },
+  "GO:0098631": {
+    "name": "cell adhesion mediator activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "adhesion motif"
+    ]
+  },
+  "GO:0098882": {
+    "name": "structural constituent of presynaptic active zone",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR052098"
+    ],
+    "text_patterns": []
+  },
+  "GO:0099103": {
+    "name": "channel activator activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR017300"
+    ],
+    "text_patterns": []
+  },
+  "GO:0099130": {
+    "name": "estrogen binding",
+    "ligands": [
+      "17beta-estradiol"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:0101005": {
+    "name": "deubiquitinase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001394"
+    ],
+    "text_patterns": []
+  },
+  "GO:0106006": {
+    "name": "cytoskeletal protein-membrane anchor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000299",
+      "Pfam:PF00373"
+    ],
+    "text_patterns": []
+  },
+  "GO:0106235": {
+    "name": "ceramide-1-phosphate phosphatase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000326"
+    ],
+    "text_patterns": []
+  },
+  "GO:0106310": {
+    "name": "protein serine kinase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050494",
+      "InterPro:IPR050117",
+      "InterPro:IPR050108",
+      "InterPro:IPR050235"
+    ],
+    "text_patterns": []
+  },
+  "GO:0120015": {
+    "name": "sterol transfer activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000648"
+    ],
+    "text_patterns": []
+  },
+  "GO:0120501": {
+    "name": "F-actin monooxygenase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050540"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140078": {
+    "name": "class I DNA-(apurinic or apyrimidinic site) endonuclease activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR057258"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140297": {
+    "name": "DNA-binding transcription factor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050140"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140311": {
+    "name": "protein sequestering activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000308",
+      "Pfam:PF00244"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140318": {
+    "name": "protein transporter activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050310",
+      "Pfam:PF15902"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140375": {
+    "name": "immune receptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050488"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140416": {
+    "name": "transcription regulator inhibitor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR026052"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140449": {
+    "name": "centromere-nuclear envelope anchor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR025856"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140523": {
+    "name": "GTPase-dependent fusogenic activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR022812",
+      "InterPro:IPR045063",
+      "Pfam:PF00350"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140537": {
+    "name": "transcription regulator activator activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR014887"
+    ],
+    "text_patterns": [
+      "transcriptional transactivation activity"
+    ]
+  },
+  "GO:0140545": {
+    "name": "ATP-dependent protein disaggregase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR013126"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140566": {
+    "name": "histone reader activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR018359",
+      "PROSITE:PS00633",
+      "InterPro:IPR039546"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140658": {
+    "name": "ATP-dependent chromatin remodeler activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR038718",
+      "InterPro:IPR049730"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140853": {
+    "name": "cholesterol-protein transferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR050387",
+      "InterPro:IPR003586",
+      "InterPro:IPR003587"
+    ],
+    "text_patterns": [
+      "cholesterol transfer"
+    ]
+  },
+  "GO:0140863": {
+    "name": "histone H2AK127 ubiquitin ligase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR039503"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140864": {
+    "name": "histone H2AK129 ubiquitin ligase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR039503"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140912": {
+    "name": "membrane destabilizing activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "plasma membrane rupture"
+    ]
+  },
+  "GO:0140938": {
+    "name": "histone H3 methyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR035075",
+      "Pfam:PF05185"
+    ],
+    "text_patterns": []
+  },
+  "GO:0140983": {
+    "name": "calcium:manganese antiporter activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "coupling of manganese to calcium transport"
+    ]
+  },
+  "GO:0141221": {
+    "name": "histone deacetylase activity, hydrolytic mechanism",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": [
+      "histone deacetylase"
+    ]
+  },
+  "GO:0160123": {
+    "name": "structural constituent of nuclear lamina",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR001322",
+      "Pfam:PF00932"
+    ],
+    "text_patterns": []
+  },
+  "GO:0160185": {
+    "name": "phospholipase C activator activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR027290"
+    ],
+    "text_patterns": []
+  },
+  "GO:0180020": {
+    "name": "membrane bending activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR022812",
+      "InterPro:IPR045063",
+      "Pfam:PF00350",
+      "InterPro:IPR005024"
+    ],
+    "text_patterns": []
+  },
+  "GO:0180021": {
+    "name": "U6 snRNA 2'-O-ribose methyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000692"
+    ],
+    "text_patterns": []
+  },
+  "GO:1901612": {
+    "name": "cardiolipin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR045817"
+    ],
+    "text_patterns": []
+  },
+  "GO:1902098": {
+    "name": "calcitriol binding",
+    "ligands": [
+      "calcitriol"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:1902122": {
+    "name": "chenodeoxycholic acid binding",
+    "ligands": [
+      "chenodeoxycholate"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:1904047": {
+    "name": "S-adenosyl-L-methionine binding",
+    "ligands": [
+      "S-adenosyl-L-methionine"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:1904399": {
+    "name": "heparan sulfate binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000762"
+    ],
+    "text_patterns": []
+  },
+  "GO:1904931": {
+    "name": "MCM complex binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR027925",
+      "InterPro:IPR033762"
+    ],
+    "text_patterns": []
+  },
+  "GO:1905030": {
+    "name": "voltage-gated monoatomic ion channel activity involved in regulation of postsynaptic membrane potential",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR004048"
+    ],
+    "text_patterns": []
+  },
+  "GO:1905502": {
+    "name": "acetyl-CoA binding",
+    "ligands": [
+      "acetyl-CoA"
+    ],
+    "feature_types": [],
+    "domain_accessions": [],
+    "text_patterns": []
+  },
+  "GO:1990247": {
+    "name": "N6-methyladenosine-containing RNA reader activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR045168"
+    ],
+    "text_patterns": []
+  },
+  "GO:1990259": {
+    "name": "histone H2AQ104 methyltransferase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR000692"
+    ],
+    "text_patterns": []
+  },
+  "GO:1990422": {
+    "name": "glyoxalase (glycolic acid-forming) activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR006287"
+    ],
+    "text_patterns": []
+  },
+  "GO:1990459": {
+    "name": "transferrin receptor binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR016357"
+    ],
+    "text_patterns": []
+  },
+  "GO:1990756": {
+    "name": "ubiquitin-like ligase-substrate adaptor activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR028410",
+      "InterPro:IPR001496"
+    ],
+    "text_patterns": []
+  },
+  "GO:1990833": {
+    "name": "clathrin-uncoating ATPase activity",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR013126"
+    ],
+    "text_patterns": []
+  },
+  "GO:1990837": {
+    "name": "sequence-specific double-stranded DNA binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR017995"
+    ],
+    "text_patterns": []
+  },
+  "GO:1990841": {
+    "name": "promoter-specific chromatin binding",
+    "ligands": [],
+    "feature_types": [],
+    "domain_accessions": [
+      "InterPro:IPR017995"
+    ],
+    "text_patterns": []
+  }
+}

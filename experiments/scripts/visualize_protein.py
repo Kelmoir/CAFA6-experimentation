@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import build_positional_mf_links as bml
 
 GO_OBO_PATH = Path("data/cafa-6-protein-function-prediction/Train/go-basic.obo")
-CONSUMED_FEATURE_TYPES = {"BINDING", "DNA_BIND", "DOMAIN"}
+CONSUMED_FEATURE_TYPES = {"BINDING", "DNA_BIND", "DOMAIN"} | bml.TEXT_TIER_FEATURE_TYPES
 
 
 def load_go_names(obo_path):
@@ -42,8 +42,8 @@ def load_go_names(obo_path):
   return names
 
 
-def build_report(accession, record, mappings, ancestors_with_depth, go_names):
-  result = bml.link_protein(accession, record, mappings, ancestors_with_depth, verbose=True)
+def build_report(accession, record, mappings, ancestors_with_depth, localization_dict, go_names):
+  result = bml.link_protein(accession, record, mappings, ancestors_with_depth, localization_dict, verbose=True)
   candidates = result["all_candidates"]
   real_terms = {t["go_id"]: t for t in record["go_terms"] if t["aspect"] == "F"}
   unlocalized = set(result["unlocalized_real_mf_terms"])
@@ -69,7 +69,7 @@ def build_report(accession, record, mappings, ancestors_with_depth, go_names):
     if f["type"] != "BINDING":
       continue
     ligand = f["qualifiers"].get("ligand") or f["qualifiers"].get("ligand_id") or "?"
-    go_id = bml.LIGAND_TO_GO.get(ligand)
+    go_id = localization_dict["ligand_to_go"].get(ligand)
     if go_id is None:
       binding_rows.append((f"{f['start']}-{f['end']}", ligand, "-", "no dictionary entry for this ligand"))
       continue
@@ -79,7 +79,7 @@ def build_report(accession, record, mappings, ancestors_with_depth, go_names):
                           match_text(cand["match"]) if cand else "not confirmed"))
 
   dna_rows = []
-  dna_go_id = bml.FEATURE_TYPE_TO_GO.get("DNA_BIND")
+  dna_go_id = localization_dict["feature_type_to_go"].get("DNA_BIND")
   for f in record["features"]:
     if f["type"] != "DNA_BIND":
       continue
@@ -94,7 +94,8 @@ def build_report(accession, record, mappings, ancestors_with_depth, go_names):
   ]
 
   domain_xrefs = record.get("domain_xrefs", [])
-  acc_go = bml.collect_domain_accession_candidates(domain_xrefs, mappings)
+  acc_go = bml.collect_domain_accession_candidates(
+      domain_xrefs, mappings, localization_dict["domain_accession_to_go"])
   domain_xref_rows = []
   for xref in domain_xrefs:
     db, acc, desc = xref["db"], xref["accession"], xref["description"]
@@ -108,11 +109,27 @@ def build_report(accession, record, mappings, ancestors_with_depth, go_names):
       bridge = "bridged to a DOMAIN note"
     elif any(c["source"] == "domain_fallback_union" for c in matching):
       bridge = "fallback union (no note bridged)"
+    elif any(c["source"] == "domain_whole_protein_fallback" for c in matching):
+      bridge = "whole-protein fallback (no DOMAIN feature at all)"
     else:
       bridge = "no candidate generated"
     go_labels = ", ".join(label(g) for g in sorted(go_ids))
     statuses = "; ".join(f"{label(c['go_id'])}: {match_text(c['match'])}" for c in matching)
     domain_xref_rows.append((db, acc, desc, go_labels, bridge, statuses))
+
+  text_rows = []
+  for f in record["features"]:
+    if f["type"] not in bml.TEXT_TIER_FEATURE_TYPES:
+      continue
+    note = f["qualifiers"].get("note", "")
+    matches = [c for c in candidates if c["source"] == "text_pattern"
+               and c["start"] == f["start"] and c["end"] == f["end"]]
+    if not matches:
+      text_rows.append((f["type"], f"{f['start']}-{f['end']}", note, "-", "no text pattern matched"))
+    else:
+      for c in matches:
+        text_rows.append((f["type"], f"{f['start']}-{f['end']}", note,
+                           f'"{c["xref"]}" -> {label(c["go_id"])}', match_text(c["match"])))
 
   other_rows = [
       (f["type"], f"{f['start']}-{f['end']}", f["qualifiers"].get("note", "") or json.dumps(f["qualifiers"]))
@@ -139,6 +156,7 @@ def build_report(accession, record, mappings, ancestors_with_depth, go_names):
       "dna_rows": dna_rows,
       "domain_feature_rows": domain_feature_rows,
       "domain_xref_rows": domain_xref_rows,
+      "text_rows": text_rows,
       "other_rows": other_rows,
       "localized_rows": localized_rows,
       "unlocalized_rows": unlocalized_rows,
@@ -178,9 +196,13 @@ def to_markdown(d):
   table(["DB", "Accession", "Description", "Candidate GO ids", "Bridge status", "Per-candidate outcome"],
         d["domain_xref_rows"])
 
+  lines.append(f"### Text-tier features: ACT_SITE / SITE / MOTIF / REGION (n={len(d['text_rows'])})\n")
+  lines.append("_Note matched by substring against the dictionary's text_patterns._\n")
+  table(["Type", "Span", "Note", "Matched pattern -> GO", "Status"], d["text_rows"])
+
   lines.append(f"### Other feature types not yet linked by the pipeline (n={len(d['other_rows'])})\n")
-  lines.append("_ACT_SITE / SITE / METAL / CA_BIND / NP_BIND / ZN_FING / MOTIF / REGION are extracted but not "
-               "consumed by any tier yet (a known escalation gap, not a bug)._\n")
+  lines.append("_METAL / CA_BIND / NP_BIND / ZN_FING are extracted but not consumed by any tier yet "
+               "(a known escalation gap, not a bug)._\n")
   table(["Type", "Span", "Note/qualifiers"], d["other_rows"])
 
   lines.append("## Confirmed localized links (what got selected)\n")
@@ -228,9 +250,12 @@ def to_html(d):
       f"<p>Cross-references offered for DOMAIN bridging (n={len(d['domain_xref_rows'])}):</p>",
       table(["DB", "Accession", "Description", "Candidate GO ids", "Bridge status", "Per-candidate outcome"],
             d["domain_xref_rows"]),
+      f"<h3>Text-tier features: ACT_SITE / SITE / MOTIF / REGION (n={len(d['text_rows'])})</h3>",
+      "<p><em>Note matched by substring against the dictionary's text_patterns.</em></p>",
+      table(["Type", "Span", "Note", "Matched pattern -> GO", "Status"], d["text_rows"]),
       f"<h3>Other feature types not yet linked by the pipeline (n={len(d['other_rows'])})</h3>",
-      "<p><em>ACT_SITE / SITE / METAL / CA_BIND / NP_BIND / ZN_FING / MOTIF / REGION are extracted but not "
-      "consumed by any tier yet (a known escalation gap, not a bug).</em></p>",
+      "<p><em>METAL / CA_BIND / NP_BIND / ZN_FING are extracted but not consumed by any tier yet "
+      "(a known escalation gap, not a bug).</em></p>",
       table(["Type", "Span", "Note/qualifiers"], d["other_rows"]),
       "<h2>Confirmed localized links (what got selected)</h2>",
       table(["GO ID", "Span", "Source", "Table agreement", "Matched real term", "Match"], d["localized_rows"],
@@ -276,10 +301,12 @@ def main():
   if args.out_dir and not args.accessions:
     parser.error("--out-dir requires at least one accession")
 
-  print("Loading raw features, GO mappings, ancestor graph, and GO term names...", file=sys.stderr)
+  print("Loading raw features, GO mappings, ancestor graph, localization dictionary, and GO term names...",
+        file=sys.stderr)
   raw_features = json.loads(bml.RAW_FEATURES_PATH.read_text())
   mappings = bml.load_mappings()
   ancestors_with_depth = bml.build_ancestor_lookup(bml.GO_GRAPH_PATH)
+  localization_dict = bml.load_localization_dictionary(bml.LOCALIZATION_DICT_PATH)
   go_names = load_go_names(GO_OBO_PATH)
   print(f"Ready: {len(raw_features)} proteins available.\n", file=sys.stderr)
 
@@ -289,7 +316,7 @@ def main():
       resolved = resolved.upper()
     if resolved not in raw_features:
       return None, f"not found in the {len(raw_features)}-protein working set (experiments/positional_mf_raw_features.json)"
-    data = build_report(resolved, raw_features[resolved], mappings, ancestors_with_depth, go_names)
+    data = build_report(resolved, raw_features[resolved], mappings, ancestors_with_depth, localization_dict, go_names)
     return data, None
 
   if args.html:

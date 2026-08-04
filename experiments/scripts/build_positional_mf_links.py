@@ -5,25 +5,45 @@ candidate-generation pass over experiments/positional_mf_raw_features.json, foll
 automatic verification pass that only keeps a candidate if it agrees - under GO's true-path
 ancestor closure, not exact-ID equality - with a GO term the protein is *already* annotated
 with. Nothing here invents a GO term a protein isn't already labeled with; it only tries to
-find *where in the sequence* an already-real annotation comes from.
+find *where in the sequence* an already-real annotation comes from. This is also what makes it
+safe to grow the trigger dictionary (below) somewhat liberally: a bad/overbroad trigger just
+fails to confirm on proteins that don't already carry the real annotation, rather than
+introducing a false one.
+
+All trigger data - ligand names, feature types, domain accession overrides, and free-text
+note patterns - lives in experiments/positional_mf_localization_dictionary.json, keyed by GO
+id (see load_localization_dictionary), not hardcoded here. That file is meant to be grown over
+time: run this script, inspect experiments/positional_mf_gaps.json (written by main() below -
+per protein, whatever raw annotations produced no candidate at all, plus whatever real MF terms
+still have no confirmed span), spot-check a sample of gap proteins by hand, add new trigger
+entries for whatever you can confirm, and re-run. The goal is for that loop to do almost all of
+the annotation work algorithmically, with manual review only occasionally topping up the
+dictionary rather than annotating proteins one at a time.
 
 Tiers:
-  - BINDING features: ligand name -> GO term via a small hand-built dictionary (LIGAND_TO_GO),
-    covering the ~30 ligand names that make up ~85% of all BINDING instances in the set. No
-    bridging needed - the feature already carries its own span.
-  - DNA_BIND features: feature type directly implies GO:0003677 (DNA binding). No lookup table.
+  - BINDING features: ligand name -> GO term via dictionary["*"]["ligands"]. No bridging needed
+    - the feature already carries its own span.
+  - Structural feature types (currently just DNA_BIND -> GO:0003677 DNA binding): feature type
+    directly implies a GO term via dictionary["*"]["feature_types"]. No lookup table.
+  - Text-tier features (ACT_SITE/SITE/MOTIF/REGION): free-text `note` qualifier matched by
+    substring against dictionary["*"]["text_patterns"] (e.g. a MOTIF noted "SH3-binding" directly
+    implies GO:0017124 SH3 domain binding). Starts empty; populated via the gap-review loop.
   - DOMAIN features: bridged to a PROSITE/Pfam/InterPro accession (captured separately in
     domain_xrefs, since UniProt doesn't attach these directly to the DOMAIN feature) via
     note-text/description token overlap, then looked up in the GO Consortium's prosite2go/
-    pfam2go/interpro2go tables. Verified directly against Q13444/ADAM17: the bridge is not
-    perfect (it can miss the exact accession that has the real mapping, e.g. it missed
+    pfam2go/interpro2go tables, plus any dictionary["*"]["domain_accessions"] overrides for
+    accessions the bulk tables don't cover. Verified directly against Q13444/ADAM17: the bridge
+    is not perfect (it can miss the exact accession that has the real mapping, e.g. it missed
     Pfam:PF01421 for the "Peptidase M12B" domain note) - so any accession's GO candidates that
     never bridge to a specific domain fall back to being assigned to the union of all DOMAIN
     spans in that protein (domain_fallback_union), rather than silently discarded or guessed at.
 
 A candidate is "confirmed" only if it survives the ancestor-closure check against the protein's
 real (aspect=F) GO annotations. Real MF terms that never get a confirmed positional match are
-kept in unlocalized_real_mf_terms - a weak whole-protein positive, not dropped.
+kept in unlocalized_real_mf_terms - a weak whole-protein positive, not dropped. Raw annotations
+(a ligand, domain accession, or note) that never even produced a candidate - no dictionary entry
+covers them at all - are tracked separately as uncovered_raw_annotations, the raw material for
+the gap-review loop.
 """
 import json
 import random
@@ -34,60 +54,50 @@ from pathlib import Path
 RAW_FEATURES_PATH = Path("experiments/positional_mf_raw_features.json")
 GO_GRAPH_PATH = Path("data/cafa-6-protein-function-prediction/dataset/go_dependency_graph.json")
 GO_MAPPINGS_DIR = Path("data/go_mappings")
+LOCALIZATION_DICT_PATH = Path("experiments/positional_mf_localization_dictionary.json")
 OUTPUT_PATH = Path("experiments/positional_mf_links.json")
+GAPS_PATH = Path("experiments/positional_mf_gaps.json")
 SPOTCHECK_PATH = Path("experiments/positional_mf_spotcheck_sample.json")
 
 TRUE_PATH_RELATIONSHIPS = {"is_a", "part_of"}
 SEED = 42
 
-# Ligand name -> GO molecular_function term. Hand-built from the ~30 ligand names that cover
-# ~85% of all BINDING feature instances across the 5000-protein set; every ID below was looked
-# up by exact `name:` match against go-basic.obo, not recalled from memory. Deliberately omits
-# vague/non-specific ligand strings ("substrate", "a divalent metal cation") that don't map to
-# one real GO term, and a couple of names with no matching GO term at all ("3',5'-cyclic AMP",
-# "UDP").
-LIGAND_TO_GO = {
-    "Ca(2+)": "GO:0005509",
-    "Zn(2+)": "GO:0008270",
-    "ATP": "GO:0005524",
-    "GTP": "GO:0005525",
-    "Mg(2+)": "GO:0000287",
-    "GDP": "GO:0019003",
-    "ADP": "GO:0043531",
-    "FAD": "GO:0050660",
-    "NAD(+)": "GO:0051287",
-    "NADP(+)": "GO:0050661",
-    "Mn(2+)": "GO:0030145",
-    "Na(+)": "GO:0031402",
-    "S-adenosyl-L-methionine": "GO:1904047",
-    "FMN": "GO:0010181",
-    "AMP": "GO:0016208",
-    "Fe cation": "GO:0005506",
-    "acetyl-CoA": "GO:1905502",
-    "K(+)": "GO:0030955",
-    "chloride": "GO:0031404",
-    "Cu(2+)": "GO:0005507",
-    "Cu(+)": "GO:0005507",
-    "Cu cation": "GO:0005507",
-    "D-glucose": "GO:0005536",
-    "1D-myo-inositol 1,4,5-trisphosphate": "GO:0070679",
-    "heme b": "GO:0020037",
-    "heme": "GO:0020037",
-    "(6R)-L-erythro-5,6,7,8-tetrahydrobiopterin": "GO:0034617",
-    "a peptide antigen": "GO:0003823",
-}
-
-# Feature type -> GO term, for the one case (so far) where the UniProt feature category itself
-# already identifies the molecular function with no lookup table needed.
-FEATURE_TYPE_TO_GO = {
-    "DNA_BIND": "GO:0003677",
-}
+# Feature types whose free-text `note` qualifier is matched against the dictionary's
+# text_patterns (Tier 3). Excludes BINDING/DNA_BIND/DOMAIN, which have their own tiers above.
+TEXT_TIER_FEATURE_TYPES = {"ACT_SITE", "SITE", "MOTIF", "REGION"}
 
 MAPPING_FILES = {
     "PROSITE": GO_MAPPINGS_DIR / "prosite2go.txt",
     "Pfam": GO_MAPPINGS_DIR / "pfam2go.txt",
     "InterPro": GO_MAPPINGS_DIR / "interpro2go.txt",
 }
+
+
+def load_localization_dictionary(path):
+  """Loads the GO-id-keyed trigger dictionary and flattens it into the four lookup structures
+  link_protein actually needs: ligand name -> GO id, feature type -> GO id, "DB:ACCESSION" ->
+  set(GO id) (domain overrides), and a list of (lowercased text pattern, GO id) pairs.
+  """
+  raw = json.loads(path.read_text())
+  ligand_to_go = {}
+  feature_type_to_go = {}
+  domain_accession_to_go = defaultdict(set)
+  text_patterns = []
+  for go_id, entry in raw.items():
+    for ligand in entry.get("ligands", []):
+      ligand_to_go[ligand] = go_id
+    for ftype in entry.get("feature_types", []):
+      feature_type_to_go[ftype] = go_id
+    for acc in entry.get("domain_accessions", []):
+      domain_accession_to_go[acc].add(go_id)
+    for pattern in entry.get("text_patterns", []):
+      text_patterns.append((pattern.lower(), go_id))
+  return {
+      "ligand_to_go": ligand_to_go,
+      "feature_type_to_go": feature_type_to_go,
+      "domain_accession_to_go": dict(domain_accession_to_go),
+      "text_patterns": text_patterns,
+  }
 
 
 def normalize(text):
@@ -179,39 +189,66 @@ def match_against_real(go_id, real_terms, ancestors_with_depth):
   return best
 
 
-def collect_domain_accession_candidates(domain_xrefs, mappings):
-  """(db, accession, description) -> set(GO ids), for every cross-ref with a *2go mapping."""
+def collect_domain_accession_candidates(domain_xrefs, mappings, overrides=None):
+  """(db, accession, description) -> set(GO ids), for every cross-ref with a *2go mapping
+  and/or a dictionary domain_accessions override (merged - either source alone is enough)."""
+  overrides = overrides or {}
   acc_go = {}
   for xref in domain_xrefs:
     db, acc, desc = xref["db"], xref["accession"], xref["description"]
-    go_ids = mappings.get(db, {}).get(acc)
+    go_ids = set(mappings.get(db, {}).get(acc, ())) | set(overrides.get(f"{db}:{acc}", ()))
     if go_ids:
       acc_go[(db, acc, desc)] = go_ids
   return acc_go
 
 
-def link_protein(accession, record, mappings, ancestors_with_depth, verbose=False):
+def link_protein(accession, record, mappings, ancestors_with_depth, localization_dict, verbose=False):
   """verbose=True additionally returns every raw candidate (confirmed or not) as
   all_candidates, for the visualizer (experiments/scripts/visualize_protein.py) to show what
   the databanks offered vs. what got selected. Bulk pipeline runs (main(), below) never pass
   verbose=True, so their output is unaffected.
+
+  uncovered_raw_annotations (always populated, not just under verbose) lists every raw
+  annotation - a BINDING ligand, a DOMAIN accession, or a text-tier feature's note - that
+  produced *no* candidate at all because no dictionary entry covers it. This is the raw
+  material for experiments/positional_mf_gaps.json (see main()).
   """
   real_mf_terms = {t["go_id"] for t in record["go_terms"] if t["aspect"] == "F"}
   features = record["features"]
   domain_features = [f for f in features if f["type"] == "DOMAIN"]
 
   raw_candidates = []  # (start, end, go_id, source, xref_key or None)
+  uncovered_raw = []
 
   for f in features:
     if f["type"] == "BINDING":
       ligand = f["qualifiers"].get("ligand") or f["qualifiers"].get("ligand_id")
-      go_id = LIGAND_TO_GO.get(ligand)
+      go_id = localization_dict["ligand_to_go"].get(ligand)
       if go_id:
         raw_candidates.append((f["start"], f["end"], go_id, "binding_ligand", None))
-    elif f["type"] in FEATURE_TYPE_TO_GO:
-      raw_candidates.append((f["start"], f["end"], FEATURE_TYPE_TO_GO[f["type"]], "feature_type", None))
+      else:
+        uncovered_raw.append({"kind": "ligand", "value": ligand, "start": f["start"], "end": f["end"]})
+    elif f["type"] in localization_dict["feature_type_to_go"]:
+      go_id = localization_dict["feature_type_to_go"][f["type"]]
+      raw_candidates.append((f["start"], f["end"], go_id, "feature_type", None))
+    elif f["type"] in TEXT_TIER_FEATURE_TYPES:
+      note = (f["qualifiers"].get("note") or "").lower()
+      matched = False
+      for pattern, go_id in localization_dict["text_patterns"]:
+        if pattern in note:
+          raw_candidates.append((f["start"], f["end"], go_id, "text_pattern", pattern))
+          matched = True
+      if not matched and note:
+        uncovered_raw.append({"kind": "text", "feature_type": f["type"],
+                               "note": f["qualifiers"].get("note"), "start": f["start"], "end": f["end"]})
 
-  acc_go = collect_domain_accession_candidates(record.get("domain_xrefs", []), mappings)
+  acc_go = collect_domain_accession_candidates(
+      record.get("domain_xrefs", []), mappings, localization_dict["domain_accession_to_go"])
+  for xref in record.get("domain_xrefs", []):
+    key = (xref["db"], xref["accession"], xref["description"])
+    if key not in acc_go:
+      uncovered_raw.append({"kind": "domain_accession", "db": xref["db"], "accession": xref["accession"],
+                             "description": xref["description"]})
   if domain_features and acc_go:
     bridged_keys = set()
     for f in domain_features:
@@ -233,6 +270,17 @@ def link_protein(accession, record, mappings, ancestors_with_depth, verbose=Fals
       for go_id in go_ids:
         for f in domain_features:
           raw_candidates.append((f["start"], f["end"], go_id, "domain_fallback_union", f"{key[0]}:{acc}"))
+  elif acc_go:
+    # No curated DOMAIN feature span exists at all - common for proteins that only got an
+    # automatic InterPro/Pfam family assignment without a UniProt-curated domain boundary
+    # (e.g. short single-domain proteins like actin or FGF family members). Without this,
+    # every acc_go candidate here - including any dictionary domain_accessions override -
+    # would have nowhere to attach and would silently vanish. The whole-protein span is the
+    # coarsest possible placement, but it's still more honest than dropping the candidate.
+    for key, go_ids in acc_go.items():
+      _, acc, desc = key
+      for go_id in go_ids:
+        raw_candidates.append((0, record["sequence_length"], go_id, "domain_whole_protein_fallback", f"{key[0]}:{acc}"))
 
   # Table-agreement count: how many of the 3 tables independently produced this GO id anywhere
   # in this protein's domain cross-references (protein-level signal, not per-span).
@@ -266,7 +314,11 @@ def link_protein(accession, record, mappings, ancestors_with_depth, verbose=Fals
   covered_real_terms = {l["matched_real_term"] for l in localized}
   unlocalized = sorted(real_mf_terms - covered_real_terms)
 
-  result = {"localized": localized, "unlocalized_real_mf_terms": unlocalized}
+  result = {
+      "localized": localized,
+      "unlocalized_real_mf_terms": unlocalized,
+      "uncovered_raw_annotations": uncovered_raw,
+  }
   if verbose:
     result["all_candidates"] = [
         {
@@ -340,13 +392,27 @@ def main():
   raw_features = json.loads(RAW_FEATURES_PATH.read_text())
   mappings = load_mappings()
   ancestors_with_depth = build_ancestor_lookup(GO_GRAPH_PATH)
+  localization_dict = load_localization_dictionary(LOCALIZATION_DICT_PATH)
 
   results = {}
+  gaps = {}
   for accession, record in raw_features.items():
-    results[accession] = link_protein(accession, record, mappings, ancestors_with_depth)
+    r = link_protein(accession, record, mappings, ancestors_with_depth, localization_dict)
+    results[accession] = {"localized": r["localized"], "unlocalized_real_mf_terms": r["unlocalized_real_mf_terms"]}
+    # Only proteins with *something* left to review go in the gap report - most proteins are
+    # either fully covered or have no candidate-worthy raw material at all, and including those
+    # would just be noise for the manual gap-review loop this file is written for.
+    if r["uncovered_raw_annotations"] or r["unlocalized_real_mf_terms"]:
+      gaps[accession] = {
+          "uncovered_raw_annotations": r["uncovered_raw_annotations"],
+          "unlocalized_real_mf_terms": r["unlocalized_real_mf_terms"],
+      }
 
   OUTPUT_PATH.write_text(json.dumps(results, indent=2))
   print(f"Wrote {len(results)} protein link records -> {OUTPUT_PATH}")
+
+  GAPS_PATH.write_text(json.dumps(gaps, indent=2))
+  print(f"Wrote gap report ({len(gaps)}/{len(results)} proteins with something unresolved) -> {GAPS_PATH}")
 
   print_aggregate_stats(results)
   write_spotcheck_sample(results, raw_features)
