@@ -190,7 +190,12 @@ def collect_domain_accession_candidates(domain_xrefs, mappings):
   return acc_go
 
 
-def link_protein(accession, record, mappings, ancestors_with_depth):
+def link_protein(accession, record, mappings, ancestors_with_depth, verbose=False):
+  """verbose=True additionally returns every raw candidate (confirmed or not) as
+  all_candidates, for the visualizer (experiments/scripts/visualize_protein.py) to show what
+  the databanks offered vs. what got selected. Bulk pipeline runs (main(), below) never pass
+  verbose=True, so their output is unaffected.
+  """
   real_mf_terms = {t["go_id"] for t in record["go_terms"] if t["aspect"] == "F"}
   features = record["features"]
   domain_features = [f for f in features if f["type"] == "DOMAIN"]
@@ -261,7 +266,21 @@ def link_protein(accession, record, mappings, ancestors_with_depth):
   covered_real_terms = {l["matched_real_term"] for l in localized}
   unlocalized = sorted(real_mf_terms - covered_real_terms)
 
-  return {"localized": localized, "unlocalized_real_mf_terms": unlocalized}
+  result = {"localized": localized, "unlocalized_real_mf_terms": unlocalized}
+  if verbose:
+    result["all_candidates"] = [
+        {
+            "go_id": go_id,
+            "start": start,
+            "end": end,
+            "source": source,
+            "xref": xref_key,
+            "table_agreement": len(term_to_dbs.get(go_id, ())) or None,
+            "match": match_against_real(go_id, real_mf_terms, ancestors_with_depth),
+        }
+        for start, end, go_id, source, xref_key in raw_candidates
+    ]
+  return result
 
 
 def print_aggregate_stats(results):
