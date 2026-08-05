@@ -8,10 +8,16 @@ not the rate-limited REST API, so a single ~700MB download satisfies "one reques
 than thousands of per-protein queries. Cached locally and idempotent (re-running skips the
 download if already present). The dump is then streamed record-by-record via
 Bio.SwissProt.parse() directly from the gzip stream - the ~3-4GB decompressed content is
-never held in memory at once, only the ~5000 target proteins' records are kept, everything
-else is discarded as it streams past. Confirmed reachable (HTTP 200, Content-Length
-699031150 bytes) and confirmed the flat-file feature/cross_references shape matches what's
-needed via a single small test record (P04637), not assumed from docs.
+never held in memory at once, only the target proteins' records are kept, everything else is
+discarded as it streams past. Confirmed reachable (HTTP 200, Content-Length 699031150 bytes)
+and confirmed the flat-file feature/cross_references shape matches what's needed via a single
+small test record (P04637), not assumed from docs.
+
+Target set is now every protein in train_terms.tsv (~82k), not just the top-5000-by-annotation
+subset the task originally started with - Swiss-Prot only holds reviewed entries, so a
+meaningful fraction of the ~82k CAFA6 train accessions (which also draw from TrEMBL) won't be
+found in this dump; extract_for_proteins() reports how many via its own [warning] line rather
+than treating misses as an error, same as before.
 
 NOT run automatically - triggers a real ~700MB network transfer, left for explicit approval.
 """
@@ -24,7 +30,7 @@ from Bio import SwissProt
 UNIPROT_DUMP_URL = ("https://ftp.uniprot.org/pub/databases/uniprot/current_release/"
                      "knowledgebase/complete/uniprot_sprot.dat.gz")
 LOCAL_DUMP_PATH = Path("data/uniprot/uniprot_sprot.dat.gz")
-SELECTION_PATH = Path("experiments/positional_mf_well_known_proteins.json")
+SELECTION_PATH = Path("experiments/positional_mf_protein_split.json")
 OUTPUT_PATH = Path("experiments/positional_mf_raw_features.json")
 
 # First-pass candidate list of feature types that plausibly localize a molecular_function
@@ -70,11 +76,17 @@ def extract_for_proteins(dump_path: Path, target_accessions: set) -> dict:
         continue
       remaining.discard(accession)
 
+      # A feature's start/end can be Bio.SeqFeature.UnknownPosition (flat file uses "?") rather
+      # than a real coordinate - rare enough that the original 5000 best-annotated proteins
+      # never hit it, but real across the full ~82k set. Un-placeable features are dropped
+      # rather than coerced to a guessed coordinate - this pipeline only ever links a real
+      # annotation to a real span, never invents one.
       features = [
           {"type": f.type, "start": int(f.location.start), "end": int(f.location.end),
            "qualifiers": dict(f.qualifiers)}
           for f in record.features
           if f.type in MF_RELEVANT_FEATURE_TYPES
+          and isinstance(f.location.start, int) and isinstance(f.location.end, int)
       ]
       go_terms = [
           {"go_id": xref[1], "aspect": xref[2].split(":")[0], "name": xref[2].split(":", 1)[1],
