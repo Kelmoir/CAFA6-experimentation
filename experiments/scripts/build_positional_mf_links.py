@@ -175,7 +175,11 @@ def match_against_real(go_id, real_terms, ancestors_with_depth):
     return go_id, 0
   cand_ancestors, cand_depths = ancestors_with_depth(go_id)
   best = None
-  for real_id in real_terms:
+  # real_terms is a set - iterate in a fixed order so a hop-distance tie always resolves to the
+  # same real_id regardless of Python's per-process hash randomization (verified directly: two
+  # back-to-back runs with an unchanged dictionary produced different aggregate coverage counts
+  # before this fix, purely from set-iteration order flipping which tied real_id won).
+  for real_id in sorted(real_terms):
     if real_id in cand_ancestors:
       hop = cand_depths[real_id]
       if best is None or hop < best[1]:
