@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0001091",
+  "name": "RNA polymerase II general transcription initiation factor binding",
+  "def": "Binding to a basal RNA polymerase II transcription factor, any of the factors involved in formation of the preinitiation complex (PIC) by RNA polymerase II and defined as a basal or general transcription factor.",
+  "n_proteins_total": 20,
+  "sampled_accessions": [
+    "P19091",
+    "P21675",
+    "P35269"
+  ],
+  "assigned_accessions": [
+    "P19091",
+    "P21675",
+    "P35269"
+  ]
+}

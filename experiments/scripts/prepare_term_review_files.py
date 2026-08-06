@@ -13,9 +13,18 @@ definition text can be long) and simpler to hand to subagents -- each subagent s
 assigned protein, but all of them read the same file, so there's a single source of truth per term
 rather than N near-duplicate files differing only in which protein section matters.
 
+Fixed budget: a term is sampled once, gets exactly min(3, num proteins carrying it) proteins, and
+is reviewed exactly once. There is no retry/carry-over mechanism -- once a term's directory exists
+under experiments/llm_term_review/, it's permanently out of scope for future rounds (see
+plan_review_round.py), whether or not that single pass reached merge agreement. This replaced an
+earlier design that kept feeding one more witness per round into an unresolved term (up to 10
+sampled proteins) -- reasonable for chasing a real signal, but most of the terms it kept retrying
+turned out to have no positional evidence to find at all (NONE verdicts) or kept re-surfacing the
+same already-rejected generic signal, so the extra rounds weren't earning their cost.
+
 Output: experiments/llm_term_review/<go_id>/review.md plus a companion _meta.json manifest
-recording the term, its definition, the full sampled accession list, and which accessions have
-been assigned to a review run so far.
+recording the term, its definition, and the sampled accession list (== assigned_accessions,
+since the full sample is reviewed in one pass now).
 """
 import json
 import random
@@ -28,7 +37,7 @@ VISITED_PATH = Path("experiments/positional_mf_visited_terms.json")
 GO_OBO_PATH = Path("data/cafa-6-protein-function-prediction/Train/go-basic.obo")
 OUT_ROOT = Path("experiments/llm_term_review")
 SEED = 42
-MAX_PROTEINS = 10
+MAX_PROTEINS = 3
 
 
 def load_go_term_info():
