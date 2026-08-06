@@ -13,3 +13,8 @@ verdict: UNCERTAIN
 feature: BINDING 433-434
 reasoning: Heme-dependent P450 enzymes catalyze sterol desaturation, but heme binding is generic across P450 family and doesn't distinguish C-22 sterol desaturase specifically.
 ---
+## O64698 GO:0000249
+verdict: UNCERTAIN
+feature: BINDING 438-439
+reasoning: Heme binding is essential for P450-catalyzed sterol desaturation but is generic to all P450 enzymes; no more specific features available to explain sterol-desaturase specificity.
+---

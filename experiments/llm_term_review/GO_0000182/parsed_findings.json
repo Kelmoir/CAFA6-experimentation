@@ -19,6 +19,16 @@
       "signal_kind": "text",
       "signal_value": "C4-type",
       "reasoning": "C4-type zinc finger is a classical DNA-binding motif; the structured zinc coordination domain provides the structural basis for sequence-specific rDNA binding."
+    },
+    {
+      "accession": "Q02874",
+      "go_id": "GO:0000182",
+      "feature_type": "DOMAIN",
+      "start": 1,
+      "end": 117,
+      "signal_kind": "text",
+      "signal_value": "Histone H2A",
+      "reasoning": "Histone H2A domains directly bind DNA within chromatin; H2A variants like macro-H2A localize to and regulate rDNA transcription."
     }
   ],
   "uncertain": [

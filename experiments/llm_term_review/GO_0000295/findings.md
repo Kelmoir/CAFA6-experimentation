@@ -13,3 +13,8 @@ verdict: LIKELY
 feature: BINDING 234-235
 reasoning: The protein binds ADP (adenine nucleotide) at position 234-235, directly demonstrating substrate recognition essential for adenine nucleotide transporter activity as defined in the GO term.
 ---
+## Q06497 GO:0000295
+verdict: NONE
+feature: NONE 0-0
+reasoning: Protein has no annotated positional features on record despite carrying the adenine nucleotide transporter term; domain families (Peroxisomal_Ade_carrier, MCP) provide indirect support but lack specific structural evidence.
+---

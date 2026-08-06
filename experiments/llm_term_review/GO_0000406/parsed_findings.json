@@ -21,6 +21,16 @@
       "signal_kind": "ligand",
       "signal_value": "ATP",
       "reasoning": "ATP binding at this site is part of the MutS nucleotide-binding domain, which is structurally coupled to DNA junction recognition in mismatch repair proteins, but no explicit DNA-binding feature is annotated for this protein."
+    },
+    {
+      "accession": "P25847",
+      "go_id": "GO:0000406",
+      "feature_type": "REGION",
+      "start": 850,
+      "end": 964,
+      "signal_kind": "text",
+      "signal_value": "Interaction with MSH6",
+      "reasoning": "MSH2-MSH6 heterodimers bind DNA junctions during mismatch repair; this region enables the essential MSH6 interaction, but unlike P25336/P26359 lacks explicit mispair-binding domain annotation."
     }
   ],
   "issues": [

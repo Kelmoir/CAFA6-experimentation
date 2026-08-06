@@ -1,6 +1,17 @@
 {
   "resolved": [],
-  "uncertain": [],
+  "uncertain": [
+    {
+      "accession": "O94529",
+      "go_id": "GO:0000511",
+      "feature_type": "REGION",
+      "start": 459,
+      "end": 512,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The protein's domain composition (SSRP1/POB3, FACT-related) indicates histone chaperone function; the C-terminal disordered region may facilitate H2A-H2B interaction, though the annotation lacks explicit confirmation."
+    }
+  ],
   "issues": [
     {
       "accession": "O59797",

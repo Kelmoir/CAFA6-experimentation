@@ -51,7 +51,7 @@
  "GO:0000095": {
   "n_resolved": 0,
   "n_uncertain": 0,
-  "n_issues": 5,
+  "n_issues": 6,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [],
@@ -81,6 +81,11 @@
     "accession": "Q5U680",
     "reason": "none_verdict",
     "reasoning": "No annotated positional features with coordinates are available for this protein. Domain cross-references (MCP, MCP_transmembrane) suggest transmembrane transporter function but lack position information required for the analysis."
+   },
+   {
+    "accession": "Q70HW3",
+    "reason": "none_verdict",
+    "reasoning": "No positional features annotated for this protein; only domain cross-references (MCP_transmembrane, Mito_carr) without specific coordinates are available."
    }
   ]
  },
@@ -131,7 +136,7 @@
   "issues": []
  },
  "GO:0000182": {
-  "n_resolved": 2,
+  "n_resolved": 3,
   "n_uncertain": 2,
   "n_issues": 1,
   "merged": [],
@@ -151,6 +156,14 @@
     "value": "C4-type",
     "accessions": [
      "P32914"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Histone H2A",
+    "accessions": [
+     "Q02874"
     ]
    }
   ],
@@ -186,7 +199,7 @@
  },
  "GO:0000249": {
   "n_resolved": 2,
-  "n_uncertain": 1,
+  "n_uncertain": 2,
   "n_issues": 0,
   "merged": [],
   "unmerged_agreements": [
@@ -212,6 +225,16 @@
     "signal_kind": "ligand",
     "signal_value": "heme",
     "reasoning": "Heme-dependent P450 enzymes catalyze sterol desaturation, but heme binding is generic across P450 family and doesn't distinguish C-22 sterol desaturase specifically."
+   },
+   {
+    "accession": "O64698",
+    "go_id": "GO:0000249",
+    "feature_type": "BINDING",
+    "start": 438,
+    "end": 439,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "Heme binding is essential for P450-catalyzed sterol desaturation but is generic to all P450 enzymes; no more specific features available to explain sterol-desaturase specificity."
    }
   ],
   "issues": []
@@ -238,7 +261,7 @@
  "GO:0000295": {
   "n_resolved": 2,
   "n_uncertain": 0,
-  "n_issues": 1,
+  "n_issues": 2,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [
@@ -265,13 +288,18 @@
     "accession": "O43808",
     "reason": "none_verdict",
     "reasoning": "No positional features annotate adenine nucleotide binding or transmembrane transport activity; annotations only describe peroxisomal targeting and localization, not the transfer mechanism required by the GO term."
+   },
+   {
+    "accession": "Q06497",
+    "reason": "none_verdict",
+    "reasoning": "Protein has no annotated positional features on record despite carrying the adenine nucleotide transporter term; domain families (Peroxisomal_Ade_carrier, MCP) provide indirect support but lack specific structural evidence."
    }
   ]
  },
  "GO:0000298": {
   "n_resolved": 3,
   "n_uncertain": 0,
-  "n_issues": 0,
+  "n_issues": 1,
   "merged": [],
   "unmerged_agreements": [
    {
@@ -296,7 +324,13 @@
    }
   ],
   "uncertain": [],
-  "issues": []
+  "issues": [
+   {
+    "accession": "P40152",
+    "reason": "none_verdict",
+    "reasoning": "P40152 has no positional features on record (no domains, motifs, or binding sites with coordinates), despite carrying an Ap4A_hydrolase domain cross-reference. Without annotated positional features to match against the endopolyphosphatase function, structural evidence cannot be established."
+   }
+  ]
  },
  "GO:0000341": {
   "n_resolved": 0,
@@ -322,7 +356,8 @@
     "reason": "none_verdict",
     "reasoning": "No MF-relevant positional features are annotated for this protein; only domain cross-references to eIF4E family are present, insufficient to localize the function."
    }
-  ]
+  ],
+  "exhausted": true
  },
  "GO:0000384": {
   "n_resolved": 0,
@@ -373,7 +408,7 @@
  },
  "GO:0000406": {
   "n_resolved": 1,
-  "n_uncertain": 1,
+  "n_uncertain": 2,
   "n_issues": 1,
   "merged": [],
   "unmerged_agreements": [],
@@ -397,6 +432,16 @@
     "signal_kind": "ligand",
     "signal_value": "ATP",
     "reasoning": "ATP binding at this site is part of the MutS nucleotide-binding domain, which is structurally coupled to DNA junction recognition in mismatch repair proteins, but no explicit DNA-binding feature is annotated for this protein."
+   },
+   {
+    "accession": "P25847",
+    "go_id": "GO:0000406",
+    "feature_type": "REGION",
+    "start": 850,
+    "end": 964,
+    "signal_kind": "text",
+    "signal_value": "Interaction with MSH6",
+    "reasoning": "MSH2-MSH6 heterodimers bind DNA junctions during mismatch repair; this region enables the essential MSH6 interaction, but unlike P25336/P26359 lacks explicit mispair-binding domain annotation."
    }
   ],
   "issues": [
@@ -409,12 +454,23 @@
  },
  "GO:0000510": {
   "n_resolved": 0,
-  "n_uncertain": 0,
+  "n_uncertain": 1,
   "n_issues": 2,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [],
-  "uncertain": [],
+  "uncertain": [
+   {
+    "accession": "O74515",
+    "go_id": "GO:0000510",
+    "feature_type": "REGION",
+    "start": 156,
+    "end": 262,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The C-terminal disordered region plausibly mediates H3-H4 histone binding/interaction, as disordered regions commonly facilitate such protein-protein interactions in histone chaperones."
+   }
+  ],
   "issues": [
    {
     "accession": "O13985",
@@ -432,12 +488,23 @@
  },
  "GO:0000511": {
   "n_resolved": 0,
-  "n_uncertain": 0,
+  "n_uncertain": 1,
   "n_issues": 2,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [],
-  "uncertain": [],
+  "uncertain": [
+   {
+    "accession": "O94529",
+    "go_id": "GO:0000511",
+    "feature_type": "REGION",
+    "start": 459,
+    "end": 512,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The protein's domain composition (SSRP1/POB3, FACT-related) indicates histone chaperone function; the C-terminal disordered region may facilitate H2A-H2B interaction, though the annotation lacks explicit confirmation."
+   }
+  ],
   "issues": [
    {
     "accession": "O59797",
@@ -453,7 +520,7 @@
  },
  "GO:0000701": {
   "n_resolved": 0,
-  "n_uncertain": 2,
+  "n_uncertain": 3,
   "n_issues": 0,
   "merged": [],
   "unmerged_agreements": [],
@@ -478,8 +545,37 @@
     "signal_kind": "feature_type_only",
     "signal_value": null,
     "reasoning": "DNA binding is necessary for glycosylase activity, but P12004 lacks the characteristic catalytic signatures (active sites, cofactors, catalytic residues) of known DNA N-glycosylases."
+   },
+   {
+    "accession": "P17918",
+    "go_id": "GO:0000701",
+    "feature_type": "DNA_BIND",
+    "start": 60,
+    "end": 80,
+    "signal_kind": "feature_type_only",
+    "signal_value": null,
+    "reasoning": "P17918 is PCNA, a DNA clamp protein that binds DNA and enables glycosylase function, but does not directly catalyze the N-glycosidic bond cleavage; the DNA_BIND domain is structural basis for its accessory role in the pathway, not the catalytic mechanism itself."
    }
   ],
+  "issues": []
+ },
+ "GO:0000830": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Polyphosphoinositide-binding domain",
+    "accessions": [
+     "Q06685"
+    ]
+   }
+  ],
+  "uncertain": [],
   "issues": []
  }
 }

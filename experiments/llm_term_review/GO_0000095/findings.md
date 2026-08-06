@@ -23,3 +23,8 @@ verdict: NONE
 feature: NONE 0-0
 reasoning: No annotated positional features with coordinates are available for this protein. Domain cross-references (MCP, MCP_transmembrane) suggest transmembrane transporter function but lack position information required for the analysis.
 ---
+## Q70HW3 GO:0000095
+verdict: NONE
+feature: NONE 0-0
+reasoning: No positional features annotated for this protein; only domain cross-references (MCP_transmembrane, Mito_carr) without specific coordinates are available.
+---

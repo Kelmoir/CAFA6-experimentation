@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0000830",
+  "name": "inositol hexakisphosphate 4-kinase activity",
+  "def": "Catalysis of the reaction: ATP + 1D-myo-inositol hexakisphosphate = ADP + 4-diphospho-1D-myo-inositol (1,2,3,5,6)pentakisphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q06685"
+  ],
+  "assigned_accessions": [
+    "Q06685"
+  ]
+}

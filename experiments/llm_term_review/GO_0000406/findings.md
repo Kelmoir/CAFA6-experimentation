@@ -13,3 +13,8 @@ verdict: LIKELY
 feature: REGION 125-256
 reasoning: The mispair-binding domain directly explains the ability to bind DNA junctions containing mismatches, which are the structural features present at double-strand/single-strand DNA junctions that mismatch repair proteins recognize.
 ---
+## P25847 GO:0000406
+verdict: UNCERTAIN
+feature: REGION 850-964
+reasoning: MSH2-MSH6 heterodimers bind DNA junctions during mismatch repair; this region enables the essential MSH6 interaction, but unlike P25336/P26359 lacks explicit mispair-binding domain annotation.
+---

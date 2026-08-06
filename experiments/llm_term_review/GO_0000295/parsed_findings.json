@@ -27,6 +27,11 @@
       "accession": "O43808",
       "reason": "none_verdict",
       "reasoning": "No positional features annotate adenine nucleotide binding or transmembrane transport activity; annotations only describe peroxisomal targeting and localization, not the transfer mechanism required by the GO term."
+    },
+    {
+      "accession": "Q06497",
+      "reason": "none_verdict",
+      "reasoning": "Protein has no annotated positional features on record despite carrying the adenine nucleotide transporter term; domain families (Peroxisomal_Ade_carrier, MCP) provide indirect support but lack specific structural evidence."
     }
   ]
 }

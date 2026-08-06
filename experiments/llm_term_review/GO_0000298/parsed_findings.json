@@ -32,5 +32,11 @@
     }
   ],
   "uncertain": [],
-  "issues": []
+  "issues": [
+    {
+      "accession": "P40152",
+      "reason": "none_verdict",
+      "reasoning": "P40152 has no positional features on record (no domains, motifs, or binding sites with coordinates), despite carrying an Ap4A_hydrolase domain cross-reference. Without annotated positional features to match against the endopolyphosphatase function, structural evidence cannot be established."
+    }
+  ]
 }

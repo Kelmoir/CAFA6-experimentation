@@ -13,3 +13,8 @@ verdict: LIKELY
 feature: ACT_SITE 67-68
 reasoning: The proton acceptor residue at position 67-68 is the specific catalytic mechanism underlying hydrolysis activity in Nudix hydrolases; more specific and directly explanatory than the generic domain.
 ---
+## P40152 GO:0000298
+verdict: NONE
+feature: NONE 0-0
+reasoning: P40152 has no positional features on record (no domains, motifs, or binding sites with coordinates), despite carrying an Ap4A_hydrolase domain cross-reference. Without annotated positional features to match against the endopolyphosphatase function, structural evidence cannot be established.
+---

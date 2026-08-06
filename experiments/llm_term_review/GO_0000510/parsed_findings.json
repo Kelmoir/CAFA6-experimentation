@@ -1,6 +1,17 @@
 {
   "resolved": [],
-  "uncertain": [],
+  "uncertain": [
+    {
+      "accession": "O74515",
+      "go_id": "GO:0000510",
+      "feature_type": "REGION",
+      "start": 156,
+      "end": 262,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The C-terminal disordered region plausibly mediates H3-H4 histone binding/interaction, as disordered regions commonly facilitate such protein-protein interactions in histone chaperones."
+    }
+  ],
   "issues": [
     {
       "accession": "O13985",

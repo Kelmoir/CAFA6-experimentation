@@ -8,3 +8,8 @@ verdict: UNCERTAIN
 feature: NONE 0-0
 reasoning: No positional features on record, but domain annotations (Histone-bd_RBBP4-like_N, CAF1C_H4-bd, WD40 repeats) strongly suggest histone-binding capacity despite lack of positional detail.
 ---
+## O74515 GO:0000510
+verdict: UNCERTAIN
+feature: REGION 156-262
+reasoning: The C-terminal disordered region plausibly mediates H3-H4 histone binding/interaction, as disordered regions commonly facilitate such protein-protein interactions in histone chaperones.
+---

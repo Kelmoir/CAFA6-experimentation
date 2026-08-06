@@ -23,3 +23,8 @@ verdict: NONE
 feature: NONE 0-0
 reasoning: P47035 carries only disordered region annotations with no qualifiers or structural features suggesting DNA-binding capability; no positional evidence explains the rDNA binding term.
 ---
+## Q02874 GO:0000182
+verdict: LIKELY
+feature: DOMAIN 1-117
+reasoning: Histone H2A domains directly bind DNA within chromatin; H2A variants like macro-H2A localize to and regulate rDNA transcription.
+---

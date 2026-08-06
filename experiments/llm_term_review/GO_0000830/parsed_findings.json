@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q06685",
+      "go_id": "GO:0000830",
+      "feature_type": "REGION",
+      "start": 529,
+      "end": 597,
+      "signal_kind": "text",
+      "signal_value": "Polyphosphoinositide-binding domain",
+      "reasoning": "The polyphosphoinositide-binding domain directly recognizes and binds inositol hexakisphosphate (IP6), the substrate of this kinase, making it the structural basis for substrate specificity in this catalytic function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
