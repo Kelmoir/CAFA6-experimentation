@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "O14561",
+      "go_id": "GO:0000035",
+      "feature_type": "DOMAIN",
+      "start": 76,
+      "end": 152,
+      "signal_kind": "text",
+      "signal_value": "Carrier",
+      "reasoning": "ACP domain with phosphopantetheine attachment site provides the structural basis for acyl group binding via thioester bond formation."
+    },
+    {
+      "accession": "O80800",
+      "go_id": "GO:0000035",
+      "feature_type": "DOMAIN",
+      "start": 47,
+      "end": 123,
+      "signal_kind": "text",
+      "signal_value": "Carrier",
+      "reasoning": "Acyl Carrier Protein domain with phosphopantetheine binding sites; the phosphopantetheine prosthetic group is the canonical acyl-carrying cofactor in ACPs."
+    },
+    {
+      "accession": "P0A6A8",
+      "go_id": "GO:0000035",
+      "feature_type": "DOMAIN",
+      "start": 1,
+      "end": 77,
+      "signal_kind": "text",
+      "signal_value": "Carrier",
+      "reasoning": "ACP (Acyl Carrier Protein) domain with phosphopantetheine cofactor directly binds and carries acyl groups during fatty acid/polyketide synthesis."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

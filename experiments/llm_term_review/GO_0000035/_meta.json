@@ -1,0 +1,23 @@
+{
+  "go_id": "GO:0000035",
+  "name": "acyl binding",
+  "def": "Binding to an acyl group, any group formally derived by removal of the hydroxyl group from the acid function of a carboxylic acid.",
+  "n_proteins_total": 16,
+  "sampled_accessions": [
+    "O14561",
+    "O80800",
+    "P0A6A8",
+    "P32463",
+    "P53665",
+    "P9WQF1",
+    "P9WQF3",
+    "Q94519",
+    "Q9CR21",
+    "Q9FGJ4"
+  ],
+  "assigned_accessions": [
+    "O14561",
+    "O80800",
+    "P0A6A8"
+  ]
+}

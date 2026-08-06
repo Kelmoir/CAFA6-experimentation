@@ -1,0 +1,49 @@
+{
+ "GO:0000035": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "PROSITE:PS50075"
+    ],
+    "accessions": [
+     "O14561",
+     "O80800",
+     "P0A6A8"
+    ],
+    "note": "resolved from DOMAIN note 'Carrier'"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0000156": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "PROSITE:PS50110",
+     "Pfam:PF00072"
+    ],
+    "accessions": [
+     "P0AE88",
+     "P0AFB8",
+     "P23620"
+    ],
+    "note": "resolved from DOMAIN note 'Response regulatory'"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ }
+}

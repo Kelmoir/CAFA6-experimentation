@@ -20,6 +20,15 @@
    "nucleophile; for lactase activity"
   ]
  },
+ "GO:0000035": {
+  "name": "acyl binding",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "PROSITE:PS50075"
+  ],
+  "text_patterns": []
+ },
  "GO:0000048": {
   "name": "peptidyltransferase activity",
   "ligands": [],
@@ -78,6 +87,16 @@
    "InterPro:IPR045242",
    "InterPro:IPR000727",
    "Pfam:PF05739"
+  ],
+  "text_patterns": []
+ },
+ "GO:0000156": {
+  "name": "phosphorelay response regulator activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "PROSITE:PS50110",
+   "Pfam:PF00072"
   ],
   "text_patterns": []
  },
