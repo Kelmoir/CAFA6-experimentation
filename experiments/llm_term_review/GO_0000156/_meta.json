@@ -1,0 +1,23 @@
+{
+  "go_id": "GO:0000156",
+  "name": "phosphorelay response regulator activity",
+  "def": "Responds to a phosphorelay sensor to initiate a change in cell state or activity. The activity of the response regulator is regulated by transfer of a phosphate from a histidine residue in the sensor, to an aspartate residue in the response regulator. Many but not all response regulators act as transcriptional regulators to elicit a response.",
+  "n_proteins_total": 88,
+  "sampled_accessions": [
+    "P0AE88",
+    "P0AFB8",
+    "P23620",
+    "P23890",
+    "P30843",
+    "Q8L9Y3",
+    "Q9HWA4",
+    "Q9I4F9",
+    "Q9LZJ8",
+    "Q9SHC2"
+  ],
+  "assigned_accessions": [
+    "P0AE88",
+    "P0AFB8",
+    "P23620"
+  ]
+}
