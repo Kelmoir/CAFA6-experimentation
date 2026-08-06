@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P22192",
+      "go_id": "GO:0000182",
+      "feature_type": "DOMAIN",
+      "start": 138,
+      "end": 262,
+      "signal_kind": "text",
+      "signal_value": "RNase III",
+      "reasoning": "RNase III domains are involved in ribosomal RNA processing and biogenesis, providing a plausible structural basis for the protein's rDNA binding function."
+    },
+    {
+      "accession": "P32914",
+      "go_id": "GO:0000182",
+      "feature_type": "ZN_FING",
+      "start": 6,
+      "end": 27,
+      "signal_kind": "text",
+      "signal_value": "C4-type",
+      "reasoning": "C4-type zinc finger is a classical DNA-binding motif; the structured zinc coordination domain provides the structural basis for sequence-specific rDNA binding."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "O23215",
+      "go_id": "GO:0000182",
+      "feature_type": "ZN_FING",
+      "start": 0,
+      "end": 33,
+      "signal_kind": "text",
+      "signal_value": "TFIIB-type",
+      "reasoning": "The TFIIB-type zinc finger is a canonical DNA-binding motif; however, TFIIB typically associates with RNA Polymerase II, not the Polymerase I that transcribes rDNA, making the connection plausible but not definitively explained by the annotations."
+    }
+  ],
+  "issues": []
+}

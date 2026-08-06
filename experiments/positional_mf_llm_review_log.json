@@ -1,4 +1,29 @@
 {
+ "GO:0000031": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Nucleophile",
+    "accessions": [
+     "P54070"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P87207",
+    "reason": "none_verdict",
+    "reasoning": "This protein carries no MF-relevant positional features on record; only domain cross-references are available, which cannot serve as specific feature coordinates."
+   }
+  ]
+ },
  "GO:0000035": {
   "n_resolved": 3,
   "n_uncertain": 0,
@@ -22,6 +47,53 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0000095": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O94344",
+    "reason": "none_verdict",
+    "reasoning": "No positional features are annotated for this protein; while MCP/Mito_carr/SOLCAR cross-references suggest a mitochondrial transporter, there is no localized structural feature with coordinates to explain the SAM transporter activity."
+   },
+   {
+    "accession": "P38921",
+    "reason": "none_verdict",
+    "reasoning": "P38921 has no MF-relevant positional features on record; only domain cross-references without coordinates are available."
+   },
+   {
+    "accession": "Q08986",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated positional feature is a disordered region (0-31), which cannot structurally explain transmembrane transporter activity; the domain cross-references suggest AA-permease/transporter domains, but these lack positional coordinates in the annotated features."
+   }
+  ]
+ },
+ "GO:0000100": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q47689",
+    "reason": "none_verdict",
+    "reasoning": "Q47689 has no MF-relevant positional features on record; only domain cross-references without coordinates are available."
+   },
+   {
+    "accession": "Q12372",
+    "reason": "none_verdict",
+    "reasoning": "No MF-relevant positional features are annotated for this protein; only domain cross-references (AA-permease, APC_YAT) are available without position data."
+   }
+  ]
+ },
  "GO:0000156": {
   "n_resolved": 3,
   "n_uncertain": 0,
@@ -44,6 +116,44 @@
   "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [],
+  "issues": []
+ },
+ "GO:0000182": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "RNase III",
+    "accessions": [
+     "P22192"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ZN_FING",
+    "value": "C4-type",
+    "accessions": [
+     "P32914"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "O23215",
+    "go_id": "GO:0000182",
+    "feature_type": "ZN_FING",
+    "start": 0,
+    "end": 33,
+    "signal_kind": "text",
+    "signal_value": "TFIIB-type",
+    "reasoning": "The TFIIB-type zinc finger is a canonical DNA-binding motif; however, TFIIB typically associates with RNA Polymerase II, not the Polymerase I that transcribes rDNA, making the connection plausible but not definitively explained by the annotations."
+   }
+  ],
   "issues": []
  }
 }

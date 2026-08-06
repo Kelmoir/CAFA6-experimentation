@@ -1,0 +1,15 @@
+## O23215 GO:0000182
+verdict: UNCERTAIN
+feature: ZN_FING 0-33
+reasoning: The TFIIB-type zinc finger is a canonical DNA-binding motif; however, TFIIB typically associates with RNA Polymerase II, not the Polymerase I that transcribes rDNA, making the connection plausible but not definitively explained by the annotations.
+---
+## P22192 GO:0000182
+verdict: LIKELY
+feature: DOMAIN 138-262
+reasoning: RNase III domains are involved in ribosomal RNA processing and biogenesis, providing a plausible structural basis for the protein's rDNA binding function.
+---
+## P32914 GO:0000182
+verdict: LIKELY
+feature: ZN_FING 6-27
+reasoning: C4-type zinc finger is a classical DNA-binding motif; the structured zinc coordination domain provides the structural basis for sequence-specific rDNA binding.
+---

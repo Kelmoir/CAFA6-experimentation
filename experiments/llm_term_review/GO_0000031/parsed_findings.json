@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P54070",
+      "go_id": "GO:0000031",
+      "feature_type": "ACT_SITE",
+      "start": 333,
+      "end": 334,
+      "signal_kind": "text",
+      "signal_value": "Nucleophile",
+      "reasoning": "The nucleophile residue at the active site is the direct catalytic participant in transferase reactions, attacking the GDP-mannose donor to transfer the mannosyl group; consistent with domain annotations (Glyco_trans_15, Nucleotide-diphossugar_trans) identifying this as a sugar transferase."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P87207",
+      "reason": "none_verdict",
+      "reasoning": "This protein carries no MF-relevant positional features on record; only domain cross-references are available, which cannot serve as specific feature coordinates."
+    }
+  ]
+}

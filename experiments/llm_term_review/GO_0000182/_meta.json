@@ -1,0 +1,23 @@
+{
+  "go_id": "GO:0000182",
+  "name": "rDNA binding",
+  "def": "Binding to a DNA sequence encoding a ribosomal RNA.",
+  "n_proteins_total": 34,
+  "sampled_accessions": [
+    "O23215",
+    "P22192",
+    "P32914",
+    "P36070",
+    "P47035",
+    "Q02874",
+    "Q02983",
+    "Q8BMQ3",
+    "Q9H2G4",
+    "Q9XVS4"
+  ],
+  "assigned_accessions": [
+    "O23215",
+    "P22192",
+    "P32914"
+  ]
+}
