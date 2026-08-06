@@ -13,3 +13,8 @@ verdict: LIKELY
 feature: ZN_FING 6-27
 reasoning: C4-type zinc finger is a classical DNA-binding motif; the structured zinc coordination domain provides the structural basis for sequence-specific rDNA binding.
 ---
+## P36070 GO:0000182
+verdict: UNCERTAIN
+feature: REGION 262-305
+reasoning: RRN3 is a known rDNA transcription initiation factor, but the only positional feature is a disordered region, which is not a typical structured DNA-binding domain.
+---

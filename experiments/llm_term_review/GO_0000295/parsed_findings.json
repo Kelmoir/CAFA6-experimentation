@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P05141",
+      "go_id": "GO:0000295",
+      "feature_type": "MOTIF",
+      "start": 234,
+      "end": 240,
+      "signal_kind": "text",
+      "signal_value": "Nucleotide carrier signature motif",
+      "reasoning": "The nucleotide carrier signature motif at 234-240 is the canonical structural determinant of adenine nucleotide transporter function, with nearby ADP binding sites directly demonstrating substrate specificity."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O43808",
+      "reason": "none_verdict",
+      "reasoning": "No positional features annotate adenine nucleotide binding or transmembrane transport activity; annotations only describe peroxisomal targeting and localization, not the transfer mechanism required by the GO term."
+    }
+  ]
+}

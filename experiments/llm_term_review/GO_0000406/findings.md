@@ -1,0 +1,10 @@
+## O74773 GO:0000406
+verdict: UNCERTAIN
+feature: BINDING 720-728
+reasoning: ATP binding at this site is part of the MutS nucleotide-binding domain, which is structurally coupled to DNA junction recognition in mismatch repair proteins, but no explicit DNA-binding feature is annotated for this protein.
+---
+## O74986 GO:0000406
+verdict: NONE
+feature: NONE 0-0
+reasoning: The only positioned feature is a disordered region (53-108), which lacks the structured character necessary for DNA junction binding. Domain references suggest DNA processing involvement but lack specific coordinates.
+---

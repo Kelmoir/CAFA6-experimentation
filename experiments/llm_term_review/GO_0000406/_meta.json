@@ -1,0 +1,17 @@
+{
+  "go_id": "GO:0000406",
+  "name": "double-strand/single-strand DNA junction binding",
+  "def": "Binding to a DNA segment that contains double-stranded DNA flanked by a region of single-stranded DNA.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "O74773",
+    "O74986",
+    "P25336",
+    "P25847",
+    "P26359"
+  ],
+  "assigned_accessions": [
+    "O74773",
+    "O74986"
+  ]
+}

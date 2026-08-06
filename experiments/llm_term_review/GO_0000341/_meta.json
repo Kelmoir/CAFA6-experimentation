@@ -1,0 +1,15 @@
+{
+  "go_id": "GO:0000341",
+  "name": "RNA trimethylguanosine cap binding",
+  "def": "Binding to the trimethylguanosine (m(3)(2,2,7)-GTP) group located at the 5' end of some RNA molecules. Such trimethylated cap structures, generally produced by posttranscriptional modification of a 7-methylguanosine cap, are often found on snRNAs and snoRNAs transcribed by RNA polymerase II, but have also be found on snRNAs transcribed by RNA polymerase III. They have also been found on a subset of the mRNA population in some species, e.g. C. elegans.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O45551",
+    "P56570",
+    "Q21693"
+  ],
+  "assigned_accessions": [
+    "O45551",
+    "P56570"
+  ]
+}

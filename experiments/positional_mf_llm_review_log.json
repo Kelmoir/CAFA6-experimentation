@@ -22,7 +22,8 @@
     "reason": "none_verdict",
     "reasoning": "This protein carries no MF-relevant positional features on record; only domain cross-references are available, which cannot serve as specific feature coordinates."
    }
-  ]
+  ],
+  "exhausted": true
  },
  "GO:0000035": {
   "n_resolved": 3,
@@ -50,7 +51,7 @@
  "GO:0000095": {
   "n_resolved": 0,
   "n_uncertain": 0,
-  "n_issues": 3,
+  "n_issues": 4,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [],
@@ -70,6 +71,11 @@
     "accession": "Q08986",
     "reason": "none_verdict",
     "reasoning": "The only annotated positional feature is a disordered region (0-31), which cannot structurally explain transmembrane transporter activity; the domain cross-references suggest AA-permease/transporter domains, but these lack positional coordinates in the annotated features."
+   },
+   {
+    "accession": "Q4V9P0",
+    "reason": "none_verdict",
+    "reasoning": "No MF-relevant positional features are annotated for this protein; domain cross-references (MCP, Mito_carr) suggest transporter function but lack specific structural basis."
    }
   ]
  },
@@ -92,7 +98,8 @@
     "reason": "none_verdict",
     "reasoning": "No MF-relevant positional features are annotated for this protein; only domain cross-references (AA-permease, APC_YAT) are available without position data."
    }
-  ]
+  ],
+  "exhausted": true
  },
  "GO:0000156": {
   "n_resolved": 3,
@@ -120,7 +127,7 @@
  },
  "GO:0000182": {
   "n_resolved": 2,
-  "n_uncertain": 1,
+  "n_uncertain": 2,
   "n_issues": 0,
   "merged": [],
   "unmerged_agreements": [],
@@ -152,8 +159,198 @@
     "signal_kind": "text",
     "signal_value": "TFIIB-type",
     "reasoning": "The TFIIB-type zinc finger is a canonical DNA-binding motif; however, TFIIB typically associates with RNA Polymerase II, not the Polymerase I that transcribes rDNA, making the connection plausible but not definitively explained by the annotations."
+   },
+   {
+    "accession": "P36070",
+    "go_id": "GO:0000182",
+    "feature_type": "REGION",
+    "start": 262,
+    "end": 305,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "RRN3 is a known rDNA transcription initiation factor, but the only positional feature is a disordered region, which is not a typical structured DNA-binding domain."
    }
   ],
   "issues": []
+ },
+ "GO:0000249": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "G1UB11",
+     "O13820"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0000268": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "lvxef motif",
+    "accessions": [
+     "O09012",
+     "P50542"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0000295": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Nucleotide carrier signature motif",
+    "accessions": [
+     "P05141"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O43808",
+    "reason": "none_verdict",
+    "reasoning": "No positional features annotate adenine nucleotide binding or transmembrane transport activity; annotations only describe peroxisomal targeting and localization, not the transfer mechanism required by the GO term."
+   }
+  ]
+ },
+ "GO:0000298": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Nudix hydrolase",
+    "accessions": [
+     "A0A024RBG1",
+     "O95989"
+    ],
+    "reason": "resolved to ['InterPro:IPR000086', 'InterPro:IPR015797', 'InterPro:IPR020084', 'InterPro:IPR047198', 'PROSITE:PS00893', 'PROSITE:PS51462', 'Pfam:PF00293'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000086': 122, 'InterPro:IPR015797': 129, 'InterPro:IPR020084': 68, 'InterPro:IPR047198': 17, 'PROSITE:PS00893': 68, 'PROSITE:PS51462': 122, 'Pfam:PF00293': 105})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0000341": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O45551",
+    "reason": "none_verdict",
+    "reasoning": "No positional features are recorded for this protein, preventing pinpointing to a specific sequence region. While the eIF4E domain membership is consistent with cap-binding biochemically, there are no documented structural features or sites to explain the trimethylguanosine cap binding annotation."
+   },
+   {
+    "accession": "P56570",
+    "reason": "none_verdict",
+    "reasoning": "This protein has no positional features on record, only domain cross-references to eIF4E-related families. Without exact sequence coordinates for an annotated feature, no plausible structural basis for the GO term can be identified."
+   }
+  ]
+ },
+ "GO:0000384": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P23394",
+    "go_id": "GO:0000384",
+    "feature_type": "MOTIF",
+    "start": 340,
+    "end": 344,
+    "signal_kind": "text",
+    "signal_value": "DEAD box",
+    "reasoning": "DEAD-box helicases are known spliceosomal components involved in catalytic activation, but the helicase function supports rather than directly catalyzes the transesterification reaction described in the GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P53854",
+    "reason": "none_verdict",
+    "reasoning": "The only positionally-annotated feature is a disordered region (98-179), which does not plausibly explain catalytic transesterification activity. While domain cross-references (CWC25_splicing_factor) indicate splicing involvement, no positional feature directly accounts for the molecular function."
+   }
+  ]
+ },
+ "GO:0000386": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "cchc-type",
+    "accessions": [
+     "O23174",
+     "O95391"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0000406": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "O74773",
+    "go_id": "GO:0000406",
+    "feature_type": "BINDING",
+    "start": 720,
+    "end": 728,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "ATP binding at this site is part of the MutS nucleotide-binding domain, which is structurally coupled to DNA junction recognition in mismatch repair proteins, but no explicit DNA-binding feature is annotated for this protein."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "O74986",
+    "reason": "none_verdict",
+    "reasoning": "The only positioned feature is a disordered region (53-108), which lacks the structured character necessary for DNA junction binding. Domain references suggest DNA processing involvement but lack specific coordinates."
+   }
+  ]
  }
 }

@@ -1,0 +1,22 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P23394",
+      "go_id": "GO:0000384",
+      "feature_type": "MOTIF",
+      "start": 340,
+      "end": 344,
+      "signal_kind": "text",
+      "signal_value": "DEAD box",
+      "reasoning": "DEAD-box helicases are known spliceosomal components involved in catalytic activation, but the helicase function supports rather than directly catalyzes the transesterification reaction described in the GO term."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P53854",
+      "reason": "none_verdict",
+      "reasoning": "The only positionally-annotated feature is a disordered region (98-179), which does not plausibly explain catalytic transesterification activity. While domain cross-references (CWC25_splicing_factor) indicate splicing involvement, no positional feature directly accounts for the molecular function."
+    }
+  ]
+}

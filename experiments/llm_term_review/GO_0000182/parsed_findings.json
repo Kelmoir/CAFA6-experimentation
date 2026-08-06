@@ -31,6 +31,16 @@
       "signal_kind": "text",
       "signal_value": "TFIIB-type",
       "reasoning": "The TFIIB-type zinc finger is a canonical DNA-binding motif; however, TFIIB typically associates with RNA Polymerase II, not the Polymerase I that transcribes rDNA, making the connection plausible but not definitively explained by the annotations."
+    },
+    {
+      "accession": "P36070",
+      "go_id": "GO:0000182",
+      "feature_type": "REGION",
+      "start": 262,
+      "end": 305,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "RRN3 is a known rDNA transcription initiation factor, but the only positional feature is a disordered region, which is not a typical structured DNA-binding domain."
     }
   ],
   "issues": []

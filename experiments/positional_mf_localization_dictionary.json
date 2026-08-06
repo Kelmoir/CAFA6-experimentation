@@ -192,6 +192,13 @@
    "histidine box-2"
   ]
  },
+ "GO:0000249": {
+  "name": "C-22 sterol desaturase (NADPH) activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": []
+ },
  "GO:0000253": {
   "name": "3-beta-hydroxysteroid 3-dehydrogenase (NADP+) activity",
   "ligands": [],
@@ -212,11 +219,27 @@
    "histidine box-2"
   ]
  },
+ "GO:0000268": {
+  "name": "peroxisome targeting sequence binding",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "lvxef motif"
+  ]
+ },
  "GO:0000287": {
   "name": "magnesium ion binding",
   "ligands": [
    "Mg(2+)"
   ],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": []
+ },
+ "GO:0000298": {
+  "name": "endopolyphosphatase activity",
+  "ligands": [],
   "feature_types": [],
   "domain_accessions": [],
   "text_patterns": []
@@ -242,6 +265,15 @@
   ],
   "text_patterns": [
    "7-methylguanosine cap"
+  ]
+ },
+ "GO:0000386": {
+  "name": "second spliceosomal transesterification activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "cchc-type"
   ]
  },
  "GO:0000400": {

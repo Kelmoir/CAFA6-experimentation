@@ -29,23 +29,69 @@ docstring):
     term, so the bulk-table bridge alone would never have found this regardless of dictionary size.
   - signal_kind == "feature_type_only" (no ligand/note qualifier at all) -> logged as unmergeable;
     there's no generalizable value to add, whatever the feature type.
+
+Two safety filters from term_gap_autolink.py apply here too, and are just as necessary for
+LLM-sourced signals as for string-recurrence-sourced ones -- subagent agreement establishes that a
+signal is *real*, not that it's *specific enough to generalize*. Caught concretely, not just in
+theory: round 3 had 2/2 agents agree a DOMAIN noted "Nudix hydrolase" explains GO:0000298
+(endopolyphosphatase activity) -- true as far as it goes, but NUDIX hydrolase is a broad catalytic
+superfamily (8-oxo-dGTPases, mRNA decapping enzymes, ADP-ribose pyrophosphatases, and more, not
+just polyphosphatases), and its bridged accessions turned out to sit on 68-129 proteins dataset-wide
+-- far past term_gap_autolink's own NARROW_DOMAIN_THRESHOLD=15 cutoff for "specific enough to trust
+as this term's own marker" rather than "generic fold this term's family happens to share":
+  - domain_accessions: only accessions with dataset-wide frequency <= NARROW_DOMAIN_THRESHOLD are
+    kept from a bridged set; if every bridged accession is too generic, the group logs as
+    unmergeable rather than silently degrading to whatever's narrowest.
+  - ligands: GENERIC_LIGANDS (heme, ATP, common ions, ...) are excluded regardless of agreement --
+    also caught concretely, not just in theory: round 3 also had 2/2 agents agree on "heme" for
+    GO:0000249 (a real cofactor for that P450 enzyme), but heme already triggers GO:0020037 (heme
+    binding) elsewhere in the dictionary -- ligand_to_go in build_positional_mf_links.py is a plain
+    dict keyed by ligand name, so a second GO id claiming the same ligand string doesn't add a
+    second trigger, it silently overwrites the first in whichever order the dictionary happens to
+    sort. A cross-dictionary collision check backs this up independent of the generic-ligand list,
+    in case a future non-generic ligand still collides with a different GO term's existing claim.
 """
 import json
 import re
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 RAW_FEATURES_PATH = Path("experiments/positional_mf_raw_features.json")
 DICT_PATH = Path("experiments/positional_mf_localization_dictionary.json")
 LOG_PATH = Path("experiments/positional_mf_llm_review_log.json")
 AGREEMENT_THRESHOLD = 2
+NARROW_DOMAIN_THRESHOLD = 15
+GENERIC_LIGANDS = {
+    "atp", "gtp", "adp", "gdp", "amp", "substrate", "product", "water", "nadh", "nad+", "nadph",
+    "nadp+", "fad", "fmn", "coenzyme a", "pyridoxal 5'-phosphate", "heme", "heme b", "dna", "rna",
+}
+GENERIC_LIGAND_PREFIXES = ("a divalent", "an ", "a ")
 
 
 def normalize(text):
   if not text:
     return set()
   return set(re.split(r"[\s\-_,]+", text.lower())) - {""}
+
+
+def is_generic_ligand(lig):
+  low = lig.lower().strip()
+  if low in GENERIC_LIGANDS:
+    return True
+  if low.endswith(")") and "(" in low and len(low) <= 10:
+    return True  # bare ion, e.g. "Zn(2+)"
+  if low.startswith(GENERIC_LIGAND_PREFIXES):
+    return True
+  return False
+
+
+def build_domain_freq(raw_features):
+  freq = Counter()
+  for rec in raw_features.values():
+    seen = {f"{d['db']}:{d['accession']}" for d in rec.get("domain_xrefs", [])}
+    freq.update(seen)
+  return freq
 
 
 def resolve_domain_accessions(raw_features, accessions, note):
@@ -80,6 +126,8 @@ def main():
   log = json.load(open(LOG_PATH)) if LOG_PATH.exists() else {}
   meta_path = term_dir / "_meta.json"
   go_name = json.loads(meta_path.read_text())["name"] if meta_path.exists() else "?"
+  domain_freq = build_domain_freq(raw_features)
+  existing_ligands = {lig: g for g, e in dictionary.items() for lig in e.get("ligands", [])}
 
   resolved = findings.get("resolved", [])
   groups = defaultdict(list)  # (kind, feature_type, normalized_value) -> [entry, ...]
@@ -105,8 +153,22 @@ def main():
 
     original_value = entries[0]["signal_value"]
     if kind == "ligand":
+      if is_generic_ligand(original_value):
+        unmerged_agreements.append({
+            "kind": kind, "feature_type": ftype, "value": original_value, "accessions": accessions,
+            "reason": "generic ligand -- shared cofactor across too many unrelated functions to "
+                      "trust as this term's own marker"})
+        continue
+      claimed_by = existing_ligands.get(original_value)
+      if claimed_by and claimed_by != go_id:
+        unmerged_agreements.append({
+            "kind": kind, "feature_type": ftype, "value": original_value, "accessions": accessions,
+            "reason": f"ligand already claimed by {claimed_by} elsewhere in the dictionary -- "
+                      "ligand_to_go is a plain dict, a second claim would silently overwrite it"})
+        continue
       if original_value not in entry["ligands"]:
         entry["ligands"].append(original_value)
+        existing_ligands[original_value] = go_id
       merged.append({"field": "ligands", "value": original_value, "accessions": accessions})
     elif kind == "text" and ftype != "DOMAIN":
       if norm_value not in entry["text_patterns"]:
@@ -114,16 +176,27 @@ def main():
       merged.append({"field": "text_patterns", "value": norm_value, "accessions": accessions})
     elif kind == "text" and ftype == "DOMAIN":
       bridged = resolve_domain_accessions(raw_features, accessions, original_value)
+      narrow = [a for a in bridged if domain_freq.get(a, 999999) <= NARROW_DOMAIN_THRESHOLD]
       if not bridged:
         unmerged_agreements.append({
             "kind": kind, "feature_type": ftype, "value": original_value, "accessions": accessions,
             "reason": "agreed but the note text didn't token-overlap any corroborating protein's "
                       "domain_xrefs descriptions -- couldn't resolve to a specific accession"})
         continue
-      added = [a for a in bridged if a not in entry["domain_accessions"]]
+      if not narrow:
+        unmerged_agreements.append({
+            "kind": kind, "feature_type": ftype, "value": original_value, "accessions": accessions,
+            "reason": f"resolved to {bridged}, but every accession has dataset-wide frequency > "
+                      f"{NARROW_DOMAIN_THRESHOLD} -- too generic a fold to trust as this term's "
+                      "own marker (frequencies: "
+                      f"{ {a: domain_freq.get(a, 0) for a in bridged} })"})
+        continue
+      added = [a for a in narrow if a not in entry["domain_accessions"]]
       entry["domain_accessions"].extend(added)
-      merged.append({"field": "domain_accessions", "value": bridged, "accessions": accessions,
-                      "note": f"resolved from DOMAIN note {original_value!r}"})
+      merged.append({"field": "domain_accessions", "value": narrow, "accessions": accessions,
+                      "note": f"resolved from DOMAIN note {original_value!r}"
+                              + (f" ({len(bridged) - len(narrow)} bridged accession(s) dropped "
+                                 "for being too generic)" if len(narrow) < len(bridged) else "")})
 
   if merged:
     dictionary[go_id] = entry

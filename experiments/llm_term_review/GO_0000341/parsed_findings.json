@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O45551",
+      "reason": "none_verdict",
+      "reasoning": "No positional features are recorded for this protein, preventing pinpointing to a specific sequence region. While the eIF4E domain membership is consistent with cap-binding biochemically, there are no documented structural features or sites to explain the trimethylguanosine cap binding annotation."
+    },
+    {
+      "accession": "P56570",
+      "reason": "none_verdict",
+      "reasoning": "This protein has no positional features on record, only domain cross-references to eIF4E-related families. Without exact sequence coordinates for an annotated feature, no plausible structural basis for the GO term can be identified."
+    }
+  ]
+}

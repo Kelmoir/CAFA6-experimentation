@@ -1,0 +1,10 @@
+## A0A024RBG1 GO:0000298
+verdict: LIKELY
+feature: DOMAIN 17-145
+reasoning: The Nudix hydrolase domain is the catalytic fold responsible for phosphatase activity in this protein family; combined with the Nudix box motif and active site, it provides the structural basis for endopolyphosphatase activity.
+---
+## O95989 GO:0000298
+verdict: LIKELY
+feature: DOMAIN 16-142
+reasoning: The Nudix hydrolase domain is a well-characterized phosphohydrolase that catalyzes polyphosphate hydrolysis, directly explaining the endopolyphosphatase activity. The domain contains the catalytic machinery (Nudix box motif, active site) needed for oligophosphate production.
+---

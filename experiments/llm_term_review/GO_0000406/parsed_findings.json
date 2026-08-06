@@ -1,0 +1,22 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "O74773",
+      "go_id": "GO:0000406",
+      "feature_type": "BINDING",
+      "start": 720,
+      "end": 728,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "ATP binding at this site is part of the MutS nucleotide-binding domain, which is structurally coupled to DNA junction recognition in mismatch repair proteins, but no explicit DNA-binding feature is annotated for this protein."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "O74986",
+      "reason": "none_verdict",
+      "reasoning": "The only positioned feature is a disordered region (53-108), which lacks the structured character necessary for DNA junction binding. Domain references suggest DNA processing involvement but lack specific coordinates."
+    }
+  ]
+}

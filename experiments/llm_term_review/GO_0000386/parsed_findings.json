@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "O23174",
+      "go_id": "GO:0000386",
+      "feature_type": "ZN_FING",
+      "start": 95,
+      "end": 109,
+      "signal_kind": "text",
+      "signal_value": "CCHC-type",
+      "reasoning": "CCHC-type zinc fingers in spliceosomal proteins provide RNA binding and metal coordination for catalysis; this domain likely enables the transesterification reaction characteristic of second-step splicing."
+    },
+    {
+      "accession": "O95391",
+      "go_id": "GO:0000386",
+      "feature_type": "ZN_FING",
+      "start": 117,
+      "end": 135,
+      "signal_kind": "text",
+      "signal_value": "CCHC-type",
+      "reasoning": "CCHC-type zinc finger likely mediates RNA binding or protein-protein interactions within the spliceosomal catalytic core to facilitate the second transesterification step."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
