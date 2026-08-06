@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O59797",
+      "reason": "none_verdict",
+      "reasoning": "While O59797 belongs to the NAP family (known histone chaperones), no annotated positional feature explicitly indicates H2A-H2B histone interaction; all positional features are only marked as disordered regions without functional annotation."
+    },
+    {
+      "accession": "O94267",
+      "reason": "none_verdict",
+      "reasoning": "The annotated positional features (two disordered regions at 442-515 and 929-1019) lack explicit functional annotation for histone binding or chaperone activity. While domain cross-references identify this as SPT16, a known histone chaperone, the positional annotations provide no specific evidence for H2A-H2B complex interaction."
+    }
+  ]
+}

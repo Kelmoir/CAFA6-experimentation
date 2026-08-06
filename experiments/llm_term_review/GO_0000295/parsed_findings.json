@@ -9,6 +9,16 @@
       "signal_kind": "text",
       "signal_value": "Nucleotide carrier signature motif",
       "reasoning": "The nucleotide carrier signature motif at 234-240 is the canonical structural determinant of adenine nucleotide transporter function, with nearby ADP binding sites directly demonstrating substrate specificity."
+    },
+    {
+      "accession": "P51881",
+      "go_id": "GO:0000295",
+      "feature_type": "BINDING",
+      "start": 234,
+      "end": 235,
+      "signal_kind": "ligand",
+      "signal_value": "ADP",
+      "reasoning": "The protein binds ADP (adenine nucleotide) at position 234-235, directly demonstrating substrate recognition essential for adenine nucleotide transporter activity as defined in the GO term."
     }
   ],
   "uncertain": [],

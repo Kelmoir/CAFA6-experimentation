@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P04961",
+      "go_id": "GO:0000701",
+      "feature_type": "DNA_BIND",
+      "start": 60,
+      "end": 80,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "DNA binding is necessary for base excision repair, though PCNA itself is a processivity factor rather than the direct N-glycosylase enzyme."
+    },
+    {
+      "accession": "P12004",
+      "go_id": "GO:0000701",
+      "feature_type": "DNA_BIND",
+      "start": 60,
+      "end": 80,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "DNA binding is necessary for glycosylase activity, but P12004 lacks the characteristic catalytic signatures (active sites, cofactors, catalytic residues) of known DNA N-glycosylases."
+    }
+  ],
+  "issues": []
+}

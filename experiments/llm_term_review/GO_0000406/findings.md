@@ -8,3 +8,8 @@ verdict: NONE
 feature: NONE 0-0
 reasoning: The only positioned feature is a disordered region (53-108), which lacks the structured character necessary for DNA junction binding. Domain references suggest DNA processing involvement but lack specific coordinates.
 ---
+## P25336 GO:0000406
+verdict: LIKELY
+feature: REGION 125-256
+reasoning: The mispair-binding domain directly explains the ability to bind DNA junctions containing mismatches, which are the structural features present at double-strand/single-strand DNA junctions that mismatch repair proteins recognize.
+---

@@ -11,6 +11,11 @@
       "accession": "P56570",
       "reason": "none_verdict",
       "reasoning": "This protein has no positional features on record, only domain cross-references to eIF4E-related families. Without exact sequence coordinates for an annotated feature, no plausible structural basis for the GO term can be identified."
+    },
+    {
+      "accession": "Q21693",
+      "reason": "none_verdict",
+      "reasoning": "No MF-relevant positional features are annotated for this protein; only domain cross-references to eIF4E family are present, insufficient to localize the function."
     }
   ]
 }

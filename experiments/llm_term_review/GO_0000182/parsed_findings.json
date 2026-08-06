@@ -43,5 +43,11 @@
       "reasoning": "RRN3 is a known rDNA transcription initiation factor, but the only positional feature is a disordered region, which is not a typical structured DNA-binding domain."
     }
   ],
-  "issues": []
+  "issues": [
+    {
+      "accession": "P47035",
+      "reason": "none_verdict",
+      "reasoning": "P47035 carries only disordered region annotations with no qualifiers or structural features suggesting DNA-binding capability; no positional evidence explains the rDNA binding term."
+    }
+  ]
 }

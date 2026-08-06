@@ -19,6 +19,16 @@
       "signal_kind": "text",
       "signal_value": "Nudix hydrolase",
       "reasoning": "The Nudix hydrolase domain is a well-characterized phosphohydrolase that catalyzes polyphosphate hydrolysis, directly explaining the endopolyphosphatase activity. The domain contains the catalytic machinery (Nudix box motif, active site) needed for oligophosphate production."
+    },
+    {
+      "accession": "P0C027",
+      "go_id": "GO:0000298",
+      "feature_type": "ACT_SITE",
+      "start": 67,
+      "end": 68,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The proton acceptor residue at position 67-68 is the specific catalytic mechanism underlying hydrolysis activity in Nudix hydrolases; more specific and directly explanatory than the generic domain."
     }
   ],
   "uncertain": [],

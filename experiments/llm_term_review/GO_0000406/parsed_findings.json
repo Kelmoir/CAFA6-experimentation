@@ -1,5 +1,16 @@
 {
-  "resolved": [],
+  "resolved": [
+    {
+      "accession": "P25336",
+      "go_id": "GO:0000406",
+      "feature_type": "REGION",
+      "start": 125,
+      "end": 256,
+      "signal_kind": "text",
+      "signal_value": "Mispair-binding domain",
+      "reasoning": "The mispair-binding domain directly explains the ability to bind DNA junctions containing mismatches, which are the structural features present at double-strand/single-strand DNA junctions that mismatch repair proteins recognize."
+    }
+  ],
   "uncertain": [
     {
       "accession": "O74773",

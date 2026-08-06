@@ -1,0 +1,22 @@
+{
+  "go_id": "GO:0000510",
+  "name": "H3-H4 histone complex chaperone activity",
+  "def": "A histone chaperone that carries a H3-H4 histone complex.",
+  "n_proteins_total": 13,
+  "sampled_accessions": [
+    "O13985",
+    "O14021",
+    "O74515",
+    "O94714",
+    "P13382",
+    "P40377",
+    "P47110",
+    "Q09915",
+    "Q9P7T4",
+    "Q9Y825"
+  ],
+  "assigned_accessions": [
+    "O13985",
+    "O14021"
+  ]
+}

@@ -8,3 +8,8 @@ verdict: NONE
 feature: NONE 0-0
 reasoning: No positional features annotate adenine nucleotide binding or transmembrane transport activity; annotations only describe peroxisomal targeting and localization, not the transfer mechanism required by the GO term.
 ---
+## P51881 GO:0000295
+verdict: LIKELY
+feature: BINDING 234-235
+reasoning: The protein binds ADP (adenine nucleotide) at position 234-235, directly demonstrating substrate recognition essential for adenine nucleotide transporter activity as defined in the GO term.
+---

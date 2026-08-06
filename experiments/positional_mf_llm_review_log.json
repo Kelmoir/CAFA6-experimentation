@@ -51,7 +51,7 @@
  "GO:0000095": {
   "n_resolved": 0,
   "n_uncertain": 0,
-  "n_issues": 4,
+  "n_issues": 5,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [],
@@ -76,6 +76,11 @@
     "accession": "Q4V9P0",
     "reason": "none_verdict",
     "reasoning": "No MF-relevant positional features are annotated for this protein; domain cross-references (MCP, Mito_carr) suggest transporter function but lack specific structural basis."
+   },
+   {
+    "accession": "Q5U680",
+    "reason": "none_verdict",
+    "reasoning": "No annotated positional features with coordinates are available for this protein. Domain cross-references (MCP, MCP_transmembrane) suggest transmembrane transporter function but lack position information required for the analysis."
    }
   ]
  },
@@ -128,7 +133,7 @@
  "GO:0000182": {
   "n_resolved": 2,
   "n_uncertain": 2,
-  "n_issues": 0,
+  "n_issues": 1,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [
@@ -171,11 +176,17 @@
     "reasoning": "RRN3 is a known rDNA transcription initiation factor, but the only positional feature is a disordered region, which is not a typical structured DNA-binding domain."
    }
   ],
-  "issues": []
+  "issues": [
+   {
+    "accession": "P47035",
+    "reason": "none_verdict",
+    "reasoning": "P47035 carries only disordered region annotations with no qualifiers or structural features suggesting DNA-binding capability; no positional evidence explains the rDNA binding term."
+   }
+  ]
  },
  "GO:0000249": {
   "n_resolved": 2,
-  "n_uncertain": 0,
+  "n_uncertain": 1,
   "n_issues": 0,
   "merged": [],
   "unmerged_agreements": [
@@ -191,7 +202,18 @@
    }
   ],
   "unconfirmed_singletons": [],
-  "uncertain": [],
+  "uncertain": [
+   {
+    "accession": "O64697",
+    "go_id": "GO:0000249",
+    "feature_type": "BINDING",
+    "start": 433,
+    "end": 434,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "Heme-dependent P450 enzymes catalyze sterol desaturation, but heme binding is generic across P450 family and doesn't distinguish C-22 sterol desaturase specifically."
+   }
+  ],
   "issues": []
  },
  "GO:0000268": {
@@ -214,7 +236,7 @@
   "issues": []
  },
  "GO:0000295": {
-  "n_resolved": 1,
+  "n_resolved": 2,
   "n_uncertain": 0,
   "n_issues": 1,
   "merged": [],
@@ -226,6 +248,14 @@
     "value": "Nucleotide carrier signature motif",
     "accessions": [
      "P05141"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ADP",
+    "accessions": [
+     "P51881"
     ]
    }
   ],
@@ -239,7 +269,7 @@
   ]
  },
  "GO:0000298": {
-  "n_resolved": 2,
+  "n_resolved": 3,
   "n_uncertain": 0,
   "n_issues": 0,
   "merged": [],
@@ -255,14 +285,23 @@
     "reason": "resolved to ['InterPro:IPR000086', 'InterPro:IPR015797', 'InterPro:IPR020084', 'InterPro:IPR047198', 'PROSITE:PS00893', 'PROSITE:PS51462', 'Pfam:PF00293'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000086': 122, 'InterPro:IPR015797': 129, 'InterPro:IPR020084': 68, 'InterPro:IPR047198': 17, 'PROSITE:PS00893': 68, 'PROSITE:PS51462': 122, 'Pfam:PF00293': 105})"
    }
   ],
-  "unconfirmed_singletons": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "P0C027"
+    ]
+   }
+  ],
   "uncertain": [],
   "issues": []
  },
  "GO:0000341": {
   "n_resolved": 0,
   "n_uncertain": 0,
-  "n_issues": 2,
+  "n_issues": 3,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [],
@@ -277,6 +316,11 @@
     "accession": "P56570",
     "reason": "none_verdict",
     "reasoning": "This protein has no positional features on record, only domain cross-references to eIF4E-related families. Without exact sequence coordinates for an annotated feature, no plausible structural basis for the GO term can be identified."
+   },
+   {
+    "accession": "Q21693",
+    "reason": "none_verdict",
+    "reasoning": "No MF-relevant positional features are annotated for this protein; only domain cross-references to eIF4E family are present, insufficient to localize the function."
    }
   ]
  },
@@ -305,7 +349,8 @@
     "reason": "none_verdict",
     "reasoning": "The only positionally-annotated feature is a disordered region (98-179), which does not plausibly explain catalytic transesterification activity. While domain cross-references (CWC25_splicing_factor) indicate splicing involvement, no positional feature directly accounts for the molecular function."
    }
-  ]
+  ],
+  "exhausted": true
  },
  "GO:0000386": {
   "n_resolved": 2,
@@ -327,12 +372,21 @@
   "issues": []
  },
  "GO:0000406": {
-  "n_resolved": 0,
+  "n_resolved": 1,
   "n_uncertain": 1,
   "n_issues": 1,
   "merged": [],
   "unmerged_agreements": [],
-  "unconfirmed_singletons": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Mispair-binding domain",
+    "accessions": [
+     "P25336"
+    ]
+   }
+  ],
   "uncertain": [
    {
     "accession": "O74773",
@@ -352,5 +406,80 @@
     "reasoning": "The only positioned feature is a disordered region (53-108), which lacks the structured character necessary for DNA junction binding. Domain references suggest DNA processing involvement but lack specific coordinates."
    }
   ]
+ },
+ "GO:0000510": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O13985",
+    "reason": "none_verdict",
+    "reasoning": "Only annotated positional features are disordered regions (238-261, 458-512), which cannot explain histone chaperone activity; functional domains (WD40, CAF1B-HIR1) lack position coordinates."
+   },
+   {
+    "accession": "O14021",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for O14021 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "No positional features on record, but domain annotations (Histone-bd_RBBP4-like_N, CAF1C_H4-bd, WD40 repeats) strongly suggest histone-binding capacity despite lack of positional detail."
+   }
+  ]
+ },
+ "GO:0000511": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O59797",
+    "reason": "none_verdict",
+    "reasoning": "While O59797 belongs to the NAP family (known histone chaperones), no annotated positional feature explicitly indicates H2A-H2B histone interaction; all positional features are only marked as disordered regions without functional annotation."
+   },
+   {
+    "accession": "O94267",
+    "reason": "none_verdict",
+    "reasoning": "The annotated positional features (two disordered regions at 442-515 and 929-1019) lack explicit functional annotation for histone binding or chaperone activity. While domain cross-references identify this as SPT16, a known histone chaperone, the positional annotations provide no specific evidence for H2A-H2B complex interaction."
+   }
+  ]
+ },
+ "GO:0000701": {
+  "n_resolved": 0,
+  "n_uncertain": 2,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P04961",
+    "go_id": "GO:0000701",
+    "feature_type": "DNA_BIND",
+    "start": 60,
+    "end": 80,
+    "signal_kind": "feature_type_only",
+    "signal_value": null,
+    "reasoning": "DNA binding is necessary for base excision repair, though PCNA itself is a processivity factor rather than the direct N-glycosylase enzyme."
+   },
+   {
+    "accession": "P12004",
+    "go_id": "GO:0000701",
+    "feature_type": "DNA_BIND",
+    "start": 60,
+    "end": 80,
+    "signal_kind": "feature_type_only",
+    "signal_value": null,
+    "reasoning": "DNA binding is necessary for glycosylase activity, but P12004 lacks the characteristic catalytic signatures (active sites, cofactors, catalytic residues) of known DNA N-glycosylases."
+   }
+  ],
+  "issues": []
  }
 }

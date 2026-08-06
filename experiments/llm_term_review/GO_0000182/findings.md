@@ -18,3 +18,8 @@ verdict: UNCERTAIN
 feature: REGION 262-305
 reasoning: RRN3 is a known rDNA transcription initiation factor, but the only positional feature is a disordered region, which is not a typical structured DNA-binding domain.
 ---
+## P47035 GO:0000182
+verdict: NONE
+feature: NONE 0-0
+reasoning: P47035 carries only disordered region annotations with no qualifiers or structural features suggesting DNA-binding capability; no positional evidence explains the rDNA binding term.
+---

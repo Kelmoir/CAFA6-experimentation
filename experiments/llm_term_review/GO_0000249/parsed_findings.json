@@ -21,6 +21,17 @@
       "reasoning": "Cytochrome P450 enzymes catalyze sterol desaturation reactions; the heme iron binding site at 460-461 is the catalytic center enabling this oxidative activity."
     }
   ],
-  "uncertain": [],
+  "uncertain": [
+    {
+      "accession": "O64697",
+      "go_id": "GO:0000249",
+      "feature_type": "BINDING",
+      "start": 433,
+      "end": 434,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "Heme-dependent P450 enzymes catalyze sterol desaturation, but heme binding is generic across P450 family and doesn't distinguish C-22 sterol desaturase specifically."
+    }
+  ],
   "issues": []
 }

@@ -8,3 +8,8 @@ verdict: NONE
 feature: NONE 0-0
 reasoning: This protein has no positional features on record, only domain cross-references to eIF4E-related families. Without exact sequence coordinates for an annotated feature, no plausible structural basis for the GO term can be identified.
 ---
+## Q21693 GO:0000341
+verdict: NONE
+feature: NONE 0-0
+reasoning: No MF-relevant positional features are annotated for this protein; only domain cross-references to eIF4E family are present, insufficient to localize the function.
+---

@@ -18,3 +18,8 @@ verdict: NONE
 feature: NONE 0-0
 reasoning: No MF-relevant positional features are annotated for this protein; domain cross-references (MCP, Mito_carr) suggest transporter function but lack specific structural basis.
 ---
+## Q5U680 GO:0000095
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated positional features with coordinates are available for this protein. Domain cross-references (MCP, MCP_transmembrane) suggest transmembrane transporter function but lack position information required for the analysis.
+---
