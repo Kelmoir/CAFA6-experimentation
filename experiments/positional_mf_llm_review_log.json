@@ -577,5 +577,248 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0000831": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q8BWD2",
+     "Q96PC2"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Polyphosphoinositide-binding domain",
+    "accessions": [
+     "Q06685"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0000992": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A6X980",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature is a disordered region, which provides no structural basis for sequence-specific DNA binding. The GO term likely derives from the protein's TFIIIC domain composition, but these are not positionally annotated."
+   },
+   {
+    "accession": "O14229",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features (REGION 393-416 and 436-456, both disordered) do not explain sequence-specific DNA binding; the actual explanatory domains (HTH and TFIIIC-Tfc1/Sfc1) are in cross-references but lack sequence positions."
+   }
+  ]
+ },
+ "GO:0001016": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P99029",
+    "reason": "none_verdict",
+    "reasoning": "Thioredoxins are redox-active enzymes; none of the annotated features (redox domain, peroxisomal targeting, active site) provide structural basis for RNA polymerase III transcription factor DNA binding."
+   },
+   {
+    "accession": "P13393",
+    "reason": "none_verdict",
+    "reasoning": "Only annotated feature is REGION 20-61 (disordered), which cannot explain sequence-specific DNA binding. Domain cross-references (TBP, TFIID) are relevant but lack coordinates."
+   },
+   {
+    "accession": "Q9R063",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features (thioredoxin domain, peroxisomal targeting motif, redox active site) are all involved in redox catalysis, not transcription regulation or DNA binding."
+   }
+  ]
+ },
+ "GO:0001052": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SJ50",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature is a generic disordered region (37-67) with no specific functional annotation. The relevant MTERF domain (known to interact with PEP) lacks positional coordinates in the annotated features."
+   }
+  ]
+ },
+ "GO:0001067": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "dna-binding",
+    "accessions": [
+     "Q6MZP7",
+     "Q9H165",
+     "Q9QYE3"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0001068": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR034167",
+     "InterPro:IPR034894",
+     "InterPro:IPR051186"
+    ],
+    "accessions": [
+     "P38996",
+     "P53617"
+    ],
+    "note": "resolved from DOMAIN note 'RRM' (3 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0001070": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P60723",
+    "go_id": "GO:0001070",
+    "feature_type": "REGION",
+    "start": 43,
+    "end": 71,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "Disordered regions can mediate RNA binding, but ribosomal uL4 proteins are atypical transcription regulators; no strong evidence for this GO term."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0001073": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AFW0",
+    "reason": "none_verdict",
+    "reasoning": "This protein has no annotated positional features (domains, motifs, regions, or sites) with specific coordinates. While domain cross-references suggest transcription antitermination activity, they lack positional information needed to explain the structural basis for this GO term."
+   },
+   {
+    "accession": "P23615",
+    "reason": "none_verdict",
+    "reasoning": "The positioned features (SH2 domain, disordered region, NLS motifs) do not explain DNA-binding function. The genuine DNA-binding domains (HTH) are mentioned only in unpositioned cross-references."
+   },
+   {
+    "accession": "Q3MNT0",
+    "reason": "none_verdict",
+    "reasoning": "Neither annotated feature explains DNA binding or transcription antitermination. SH2 domain (1208-1303) mediates protein-protein interaction, not DNA binding; disordered region (0-209) lacks specific function. Cross-references suggest HTH DNA-binding domains, but these lack explicit positional annotations."
+   }
+  ]
+ },
+ "GO:0001091": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Zn(2+)",
+    "accessions": [
+     "P35269"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Bromo 1",
+    "accessions": [
+     "P21675"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P19091",
+    "go_id": "GO:0001091",
+    "feature_type": "SITE",
+    "start": 699,
+    "end": 700,
+    "signal_kind": "text",
+    "signal_value": "Interaction with coactivator LXXL and FXXFY motifs",
+    "reasoning": "Coactivator binding sites with LXXL and FXXFY motifs are where nuclear receptors recruit transcriptional machinery including general transcription factors; this is the structural basis for GTF interaction."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0001095": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P19659",
+    "go_id": "GO:0001095",
+    "feature_type": "REGION",
+    "start": 24,
+    "end": 49,
+    "signal_kind": "text",
+    "signal_value": "Interaction with GCN4",
+    "reasoning": "The Interaction with GCN4 region and the protein's Med15/KIX coactivator domains indicate this is a Mediator component; this transcription factor-binding region plausibly participates in TFIIE complex interactions during preinitiation complex formation, though direct TFIIE binding is not explicitly confirmed."
+   }
+  ],
+  "issues": []
  }
 }

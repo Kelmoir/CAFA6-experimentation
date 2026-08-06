@@ -773,6 +773,26 @@
    "required for interaction with kpnb1 and eea1"
   ]
  },
+ "GO:0001067": {
+  "name": "transcription regulatory region nucleic acid binding",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "dna-binding"
+  ]
+ },
+ "GO:0001068": {
+  "name": "transcription regulatory region RNA binding",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR034167",
+   "InterPro:IPR034894",
+   "InterPro:IPR051186"
+  ],
+  "text_patterns": []
+ },
  "GO:0001069": {
   "name": "regulatory region RNA binding",
   "ligands": [],

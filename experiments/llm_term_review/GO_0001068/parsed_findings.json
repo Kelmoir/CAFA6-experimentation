@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "P38996",
+      "go_id": "GO:0001068",
+      "feature_type": "DOMAIN",
+      "start": 329,
+      "end": 401,
+      "signal_kind": "text",
+      "signal_value": "RRM",
+      "reasoning": "The RRM domain is a canonical RNA-binding domain, and the Nab3_RRM cross-reference identifies this protein as a transcriptional regulator; the RRM's RNA-binding function directly explains the transcription regulatory region RNA binding phenotype."
+    },
+    {
+      "accession": "P53617",
+      "go_id": "GO:0001068",
+      "feature_type": "DOMAIN",
+      "start": 338,
+      "end": 409,
+      "signal_kind": "text",
+      "signal_value": "RRM",
+      "reasoning": "RRM (RNA Recognition Motif) is a canonical RNA-binding domain; cross-reference to Nrd1/Seb1_RRM points to transcriptional regulatory function, directly matching the GO term's requirement for RNA binding in transcriptional regulation."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

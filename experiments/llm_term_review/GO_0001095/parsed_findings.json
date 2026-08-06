@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P19659",
+      "go_id": "GO:0001095",
+      "feature_type": "REGION",
+      "start": 24,
+      "end": 49,
+      "signal_kind": "text",
+      "signal_value": "Interaction with GCN4",
+      "reasoning": "The Interaction with GCN4 region and the protein's Med15/KIX coactivator domains indicate this is a Mediator component; this transcription factor-binding region plausibly participates in TFIIE complex interactions during preinitiation complex formation, though direct TFIIE binding is not explicitly confirmed."
+    }
+  ],
+  "issues": []
+}
