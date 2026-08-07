@@ -3099,6 +3099,98 @@
    }
   ]
  },
+ "GO:0004875": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O75388",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for O75388 do not provide any specific structural or functional basis that plausibly explains its role in complement receptor activity, as no positional feature is present."
+   },
+   {
+    "accession": "O88536",
+    "reason": "unresolved_pointer",
+    "detail": "no matching DOMAIN/FAMILY 105-106 on record for O88536 -- pointer didn't resolve",
+    "reported_feature": "DOMAIN/FAMILY 105-106",
+    "reasoning": "The domain/family cross-references for GPCR_Rhodpsn and 7tm_1 suggest that the protein functions as a GPCR, which is consistent with the definition of complement receptor activity."
+   },
+   {
+    "accession": "P25089",
+    "reason": "none_verdict",
+    "reasoning": "The generic \"Disordered\" note does not provide a specific structural or functional basis for complement receptor activity and is not distinctive to this GO term."
+   }
+  ]
+ },
+ "GO:0004897": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P26992",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P26992 do not provide a specific structural or functional basis that directly explains the molecular function of \"ciliary neurotrophic factor receptor activity.\""
+   },
+   {
+    "accession": "P40189",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features provide a specific structural or functional basis for the \"ciliary neurotrophic factor receptor activity\" GO term, as they are either generic or not directly related to signal transduction."
+   },
+   {
+    "accession": "Q00560",
+    "reason": "unresolved_pointer",
+    "detail": "no matching TYPE 1-250 on record for Q00560 -- pointer didn't resolve",
+    "reported_feature": "TYPE 1-250",
+    "reasoning": "The presence of an Ig-like fold is a structural feature often associated with receptors involved in signal transduction, but without direct evidence confirming this specific function for protein Q00560, the connection remains uncertain."
+   }
+  ]
+ },
+ "GO:0004905": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Mediates interaction with STAT2 (and required for the recruitment of USP18)",
+    "accessions": [
+     "O35664"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P33896",
+    "go_id": "GO:0004905",
+    "feature_type": "REGION",
+    "start": 482,
+    "end": 492,
+    "signal_kind": "text",
+    "signal_value": "Important for interaction with TYK2",
+    "reasoning": "The region noted for interaction with TYK2 could be relevant to the type I interferon receptor activity, but without more specific information about the protein's role in the signaling pathway, it is uncertain which feature most plausibly explains the GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P17181",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
+   }
+  ]
+ },
  "GO:0004933": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -3292,6 +3384,24 @@
     "accession": "P54191",
     "reason": "none_verdict",
     "reasoning": "The absence of any annotated positional feature that could directly explain the molecular function \"phenylalkylamine binding\" makes it impossible to confidently assign a specific structural/functional basis to this GO term for P54191."
+   }
+  ]
+ },
+ "GO:0008169": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8IZ69",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q8IZ69 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The annotated features for Q8IZ69 do not provide a distinctive structural or functional basis that uniquely explains the molecular function of C-methyltransferase activity. While some features are relevant to the protein's structure, they are generic and could be found in other proteins with similar domains. Thus, there is no clear evidence that these features directly account for the specific fun"
    }
   ]
  }
