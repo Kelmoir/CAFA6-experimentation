@@ -67,12 +67,27 @@ GENERIC_LIGANDS = {
     "nadp+", "fad", "fmn", "coenzyme a", "pyridoxal 5'-phosphate", "heme", "heme b", "dna", "rna",
 }
 GENERIC_LIGAND_PREFIXES = ("a divalent", "an ", "a ")
+GENERIC_TEXT_NOTES = {"disordered", "cleavage", "n-acetylmethionine", "phosphoserine", "phosphothreonine"}
 
 
 def normalize(text):
   if not text:
     return set()
   return set(re.split(r"[\s\-_,]+", text.lower())) - {""}
+
+
+def is_specific_text(norm_value):
+  """Mirrors term_gap_autolink.py's is_specific_text: a text_pattern needs to be a real phrase
+  (>=10 chars, contains a space or hyphen), not a single bare word -- otherwise it risks becoming
+  a global substring trigger (link_protein matches text_patterns via `pattern in note`, checked
+  against every ACT_SITE/SITE/MOTIF/REGION/ZN_FING note in the dataset). Missing from this script
+  until a real near-miss surfaced it: two unrelated pseudouridine synthases both had an ACT_SITE
+  note that was just the bare word "Nucleophile" -- a catalytic-residue label generic enough to
+  appear on countless unrelated hydrolase/transferase active sites, not specific to either protein's
+  actual GO term. 2/2 agreement alone doesn't make a single generic word safe to generalize."""
+  if norm_value in GENERIC_TEXT_NOTES:
+    return False
+  return len(norm_value) >= 10 and (" " in norm_value or "-" in norm_value)
 
 
 def is_generic_ligand(lig):
@@ -171,6 +186,12 @@ def main():
         existing_ligands[original_value] = go_id
       merged.append({"field": "ligands", "value": original_value, "accessions": accessions})
     elif kind == "text" and ftype != "DOMAIN":
+      if not is_specific_text(norm_value):
+        unmerged_agreements.append({
+            "kind": kind, "feature_type": ftype, "value": norm_value, "accessions": accessions,
+            "reason": "agreed, but the note is too short/generic a phrase (or a known-generic "
+                      "catalytic-residue label) to trust as a global substring trigger for this term"})
+        continue
       if norm_value not in entry["text_patterns"]:
         entry["text_patterns"].append(norm_value)
       merged.append({"field": "text_patterns", "value": norm_value, "accessions": accessions})
