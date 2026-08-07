@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0004933",
+  "name": "mating-type a-factor pheromone receptor activity",
+  "def": "Combining with the mating-type a-factor pheromone to initiate a change in cell activity.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P06783"
+  ],
+  "assigned_accessions": [
+    "P06783"
+  ]
+}

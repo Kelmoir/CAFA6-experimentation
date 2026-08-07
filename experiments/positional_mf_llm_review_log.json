@@ -1976,6 +1976,118 @@
    }
   ]
  },
+ "GO:0004013": {
+  "n_resolved": 0,
+  "n_uncertain": 3,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "O13639",
+    "go_id": "GO:0004013",
+    "feature_type": "BINDING",
+    "start": 55,
+    "end": 56,
+    "signal_kind": "ligand",
+    "signal_value": "substrate",
+    "reasoning": "The binding of the substrate (adenosylhomocysteine) is a generic feature that many enzymes share and does not uniquely explain the specific molecular function of adenosylhomocysteinase activity."
+   },
+   {
+    "accession": "P39954",
+    "go_id": "GO:0004013",
+    "feature_type": "BINDING",
+    "start": 57,
+    "end": 58,
+    "signal_kind": "ligand",
+    "signal_value": "substrate",
+    "reasoning": "The binding of substrate (S-adenosyl-L-homocysteine) to the enzyme is a generic feature shared by many adenosylhomocysteinase-like enzymes, and it does not uniquely explain the specific molecular function of this GO term."
+   },
+   {
+    "accession": "P83783",
+    "go_id": "GO:0004013",
+    "feature_type": "BINDING",
+    "start": 58,
+    "end": 59,
+    "signal_kind": "ligand",
+    "signal_value": "substrate",
+    "reasoning": "The binding of substrate (S-adenosyl-L-homocysteine) to the enzyme's active site is a generic feature that many enzymes with similar catalytic functions possess, and it does not uniquely explain the specific molecular function of adenosylhomocysteinase activity."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0004015": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Participates in the substrate recognition with KAPA and in a stacking interaction with the adenine ring of SAM",
+    "accessions": [
+     "P9WQ81"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O82521",
+    "reason": "none_verdict",
+    "reasoning": "The binding of pyridoxal 5'-phosphate at position 114-116 is a generic cofactor-binding site shared by many transaminases, not distinctive to the specific GO term \"adenosylmethionine-8-amino-7-oxononanoate transaminase activity.\""
+   },
+   {
+    "accession": "P50277",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P50277 are too generic to provide a specific explanation for the molecular function of the GO term, and no single feature is distinctive enough to account for it."
+   }
+  ]
+ },
+ "GO:0004017": {
+  "n_resolved": 0,
+  "n_uncertain": 3,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "A0A3Q0KGQ7",
+    "go_id": "GO:0004017",
+    "feature_type": "BINDING",
+    "start": 28,
+    "end": 34,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The presence of a binding site for ATP does not specifically explain the catalytic activity of AMP kinase, as many enzymes in this family also bind ATP. Thus, the binding site is generic and not distinctive to the GO term."
+   },
+   {
+    "accession": "P34346",
+    "go_id": "GO:0004017",
+    "feature_type": "BINDING",
+    "start": 35,
+    "end": 41,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The binding of ATP to a specific region (35-41) supports the enzyme's role in catalyzing the reaction involving ATP, but it does not uniquely identify the molecular function \"AMP kinase activity\" for this protein."
+   },
+   {
+    "accession": "Q8IB06",
+    "go_id": "GO:0004017",
+    "feature_type": "BINDING",
+    "start": 38,
+    "end": 44,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The binding site for ATP (BINDING 38-44) is consistent with the enzyme's interaction with its substrate, but without evidence of a catalytic domain or structural feature that directly enables the reaction, it does not plausibly explain the molecular function."
+   }
+  ],
+  "issues": []
+ },
  "GO:0004039": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -2013,5 +2125,21 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0004933": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P06783",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P06783 directly explains the molecular function of GO:0004933, which refers to receptor activity. The features are structural and generic, not distinctive to this specific function."
+   }
+  ]
  }
 }

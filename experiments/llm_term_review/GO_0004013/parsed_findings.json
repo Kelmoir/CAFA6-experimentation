@@ -1,0 +1,36 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "O13639",
+      "go_id": "GO:0004013",
+      "feature_type": "BINDING",
+      "start": 55,
+      "end": 56,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding of the substrate (adenosylhomocysteine) is a generic feature that many enzymes share and does not uniquely explain the specific molecular function of adenosylhomocysteinase activity."
+    },
+    {
+      "accession": "P39954",
+      "go_id": "GO:0004013",
+      "feature_type": "BINDING",
+      "start": 57,
+      "end": 58,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding of substrate (S-adenosyl-L-homocysteine) to the enzyme is a generic feature shared by many adenosylhomocysteinase-like enzymes, and it does not uniquely explain the specific molecular function of this GO term."
+    },
+    {
+      "accession": "P83783",
+      "go_id": "GO:0004013",
+      "feature_type": "BINDING",
+      "start": 58,
+      "end": 59,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding of substrate (S-adenosyl-L-homocysteine) to the enzyme's active site is a generic feature that many enzymes with similar catalytic functions possess, and it does not uniquely explain the specific molecular function of adenosylhomocysteinase activity."
+    }
+  ],
+  "issues": []
+}
