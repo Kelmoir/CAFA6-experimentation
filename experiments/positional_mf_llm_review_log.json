@@ -4786,6 +4786,99 @@
    }
   ]
  },
+ "GO:0005501": {
+  "n_resolved": 1,
+  "n_uncertain": 2,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "all-trans-retinoate",
+    "accessions": [
+     "P62965"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P09455",
+    "go_id": "GO:0005501",
+    "feature_type": "BINDING",
+    "start": 40,
+    "end": 41,
+    "signal_kind": "ligand",
+    "signal_value": "all-trans-retinol",
+    "reasoning": "The presence of multiple binding sites with all-trans-retinol suggests interaction with retinoids, but without more distinctive structural or functional evidence, the connection remains uncertain."
+   },
+   {
+    "accession": "Q00915",
+    "go_id": "GO:0005501",
+    "feature_type": "BINDING",
+    "start": 40,
+    "end": 41,
+    "signal_kind": "ligand",
+    "signal_value": "all-trans-retinol",
+    "reasoning": "The multiple binding sites for all-trans-retinol suggest that the protein has a structural feature capable of interacting with retinoids, but these features are generic and do not provide a clear basis for the specific molecular function described by the GO term \"retinoid binding.\""
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P82980",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature in P82980's annotated features directly explains the molecular function \"retinoid binding,\" and the domain/family cross-references do not provide enough specificity to confirm this."
+   },
+   {
+    "accession": "Q9XSM0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides specific evidence for the molecular function of retinoid binding in Q9XSM0, and the available features are generic or unrelated to the term's definition."
+   }
+  ]
+ },
+ "GO:0005503": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "F1MWM0",
+    "go_id": "GO:0005503",
+    "feature_type": "BINDING",
+    "start": 335,
+    "end": 336,
+    "signal_kind": "ligand",
+    "signal_value": "Mg(2+)",
+    "reasoning": "(no reasoning extracted from model response)"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P08319",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
+   },
+   {
+    "accession": "P78363",
+    "reason": "none_verdict",
+    "reasoning": "There are no positional features in the annotated data for P78363 that specifically mention all-trans retinal binding, and the available binding events involve other ligands such as ATP and N-all-trans-retinylidenephosphatidylethanolamine. Therefore, no feature directly supports the molecular function of \"all-trans retinal binding.\""
+   },
+   {
+    "accession": "Q4G0S4",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide a specific or distinctive indication of why Q4G0S4 binds all-trans retinal, and the presence of generic features like heme binding suggests that this annotation is not diagnostic for the given GO term."
+   },
+   {
+    "accession": "Q9QYY9",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature in the annotated features directly explains the specific molecular function of \"all-trans retinal binding,\" as the ligand-binding sites are generic and not unique to this function."
+   }
+  ]
+ },
  "GO:0008012": {
   "n_resolved": 0,
   "n_uncertain": 0,
