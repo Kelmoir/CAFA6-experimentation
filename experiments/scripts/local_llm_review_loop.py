@@ -53,12 +53,12 @@ GENERIC_CAUTION = (
 
 SYSTEM_PROMPT = (
     "You are reviewing structural/functional annotation evidence for a molecular-function GO term "
-    "prediction task (CAFA6 protein function prediction challenge). You will be shown a Markdown "
-    "digest for one GO term (its definition, followed by a section per protein that really carries "
-    "the term) and told which ONE protein you are responsible for. Decide which ONE annotated "
-    "feature (by type + exact coordinates, copied verbatim) most plausibly explains why that protein "
-    "carries the term -- i.e. which feature is the structural/functional basis for that molecular "
-    "function. If nothing plausibly explains it, say so honestly; do not force a match.\n\n"
+    "prediction task (CAFA6 protein function prediction challenge). You will be shown one GO term's "
+    "definition and the annotated features for ONE specific protein already known to carry that "
+    "term. Decide which ONE annotated feature (by type + exact coordinates, copied verbatim) most "
+    "plausibly explains why that protein carries the term -- i.e. which feature is the "
+    "structural/functional basis for that molecular function. If nothing plausibly explains it, say "
+    "so honestly; do not force a match.\n\n"
     + GENERIC_CAUTION
     + "\n\nRespond with EXACTLY three lines, nothing else, no markdown formatting, no extra "
     "commentary before or after:\n"
@@ -125,12 +125,30 @@ def parse_response(text):
   return verdict, ftype, start, end, reasoning, truncated
 
 
+def extract_protein_section(review_text, accession):
+  """Pull just the term header + this one protein's section out of a combined multi-protein
+  review.md, instead of embedding the whole file. The combined-file format exists so Claude
+  subagents reading the same term share one file, but a local model gets a fresh, isolated HTTP
+  call per protein with no cross-call caching -- so every OTHER protein's section in the prompt is
+  pure clutter: wasted context, slower generation, and (per the user's own testing motivation for
+  trying a smaller non-reasoning model) a real risk of the model latching onto the wrong protein's
+  features instead of the assigned one."""
+  header_match = re.search(r"^(.*?)\n---\n", review_text, re.DOTALL)
+  header = (header_match.group(1) if header_match else review_text.split("## Protein")[0]).strip()
+  section_match = re.search(
+      rf"## Protein {re.escape(accession)}\n(.*?)(?=\n## Protein |\Z)", review_text, re.DOTALL)
+  if section_match:
+    section = f"## Protein {accession}\n{section_match.group(1).strip()}"
+  else:
+    section = f"(protein {accession} section not found in review.md -- this is a bug, please report)"
+  return f"{header}\n\n{section}"
+
+
 def build_prompt(go_id, accession, review_text, chain_of_thought):
+  trimmed = extract_protein_section(review_text, accession)
   return (
-      f"Here is the review file for {go_id}:\n\n"
-      f"--- BEGIN REVIEW FILE ---\n{review_text}\n--- END REVIEW FILE ---\n\n"
-      f"Your assigned protein is {accession}. Find its \"## Protein {accession}\" section above "
-      f"and focus only on that section (ignore the other proteins' sections).\n {chain_of_thought}"
+      f"GO term and protein evidence for {go_id}, protein {accession}:\n\n"
+      f"--- BEGIN EVIDENCE ---\n{trimmed}\n--- END EVIDENCE ---\n {chain_of_thought}"
   )
 
 
