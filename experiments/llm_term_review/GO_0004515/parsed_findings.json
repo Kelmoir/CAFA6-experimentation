@@ -1,0 +1,27 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q0HA29",
+      "go_id": "GO:0004515",
+      "feature_type": "BINDING",
+      "start": 15,
+      "end": 16,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The repeated binding of NAD(+), particularly at multiple positions, is consistent with the enzyme's role but lacks specificity to explain why Q0HA29 carries this GO term."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P00519",
+      "reason": "none_verdict",
+      "reasoning": "(no reasoning extracted from model response)"
+    },
+    {
+      "accession": "Q8BNJ3",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly explain why Q8BNJ3 carries the molecular function described by GO:0004515."
+    }
+  ]
+}

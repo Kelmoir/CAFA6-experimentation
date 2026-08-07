@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0004515",
+  "name": "nicotinate-nucleotide adenylyltransferase activity",
+  "def": "Catalysis of the reaction: nicotinate beta-D-ribonucleotide + ATP + H+ = deamido-NAD+ + diphosphate.",
+  "n_proteins_total": 14,
+  "sampled_accessions": [
+    "P00519",
+    "Q0HA29",
+    "Q8BNJ3"
+  ],
+  "assigned_accessions": [
+    "P00519",
+    "Q0HA29",
+    "Q8BNJ3"
+  ]
+}

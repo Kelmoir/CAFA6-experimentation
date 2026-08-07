@@ -1,0 +1,13 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P14142",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for P14142 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The annotated features do not provide a clear, distinctive positional or structural element that directly explains the specific molecular function of GO:0005360."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P52045",
+      "go_id": "GO:0004492",
+      "feature_type": "BINDING",
+      "start": 63,
+      "end": 68,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The generic nature of the substrate-binding sites suggests they are not distinctive to the specific molecular function described by the GO term, making it unlikely that this feature provides a unique explanation for why P52045 carries the term."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q9D9V3",
+      "reason": "none_verdict",
+      "reasoning": "The absence of any annotated positional features in Q9D9V3 that are specific to the activity described by GO:0004492 suggests that no such feature can plausibly explain why this protein carries the term."
+    },
+    {
+      "accession": "Q9NTX5",
+      "reason": "none_verdict",
+      "reasoning": "The lack of any MF-relevant positional features in Q9NTX5 and the fact that its domain cross-references are broad and not specific to the reaction catalyzed by this protein suggest that no annotated feature directly explains why it carries the GO term 0004492."
+    }
+  ]
+}
