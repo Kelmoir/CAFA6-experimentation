@@ -51,32 +51,59 @@ GENERIC_CAUTION = (
     "say so, rather than claim confidence in something that won't hold up anyway."
 )
 
-SYSTEM_PROMPT = (
+TASK_DESCRIPTION = (
     "You are reviewing structural/functional annotation evidence for a molecular-function GO term "
     "prediction task (CAFA6 protein function prediction challenge). You will be shown one GO term's "
     "definition and the annotated features for ONE specific protein already known to carry that "
     "term. Decide which ONE annotated feature (by type + exact coordinates, copied verbatim) most "
     "plausibly explains why that protein carries the term -- i.e. which feature is the "
     "structural/functional basis for that molecular function. If nothing plausibly explains it, say "
-    "so honestly; do not force a match.\n\n"
-    + GENERIC_CAUTION
-    + "\n\nRespond with EXACTLY three lines, nothing else, no markdown formatting, no extra "
-    "commentary before or after:\n"
+    "so honestly; do not force a match."
+)
+
+ANSWER_FORMAT = (
     "VERDICT: LIKELY or UNCERTAIN or NONE\n"
     "FEATURE: <TYPE> <START>-<END>  (use NONE 0-0 if verdict is NONE)\n"
     "REASONING: <one sentence, plain text>\n\n"
-    "The (TYPE, START, END) you report MUST exactly match one of the feature lines in your assigned "
-    "protein's section verbatim (identical type string, identical integers) -- it will be looked up "
-    "by exact match and discarded if it doesn't match, so don't paraphrase or round coordinates."
+    "The (TYPE, START, END) you report MUST exactly match one of the feature lines in the protein's "
+    "section verbatim (identical type string, identical integers) -- it will be looked up by exact "
+    "match and discarded if it doesn't match, so don't paraphrase or round coordinates."
 )
 
 
-def call_local_llm(host, model, prompt, max_tokens, timeout=120):
+def build_system_prompt(chain_of_thought):
+  """Two genuinely different instruction shapes, not one prompt with a bolted-on CoT phrase --
+  demanding "exactly three lines, no commentary" while also asking a model to "think step by step"
+  is self-contradicting, and forcing a weaker/non-reasoning model straight into a terse structured
+  answer with no scratch space produces worse judgments than letting it reason in free text first.
+  With chain_of_thought set: reasoning is expected and explicitly unbounded in length, ending with
+  the strict three-line block as the LAST thing in the response (parse_response finds the last
+  match of each field, so however much reasoning precedes it doesn't matter). Without it: same
+  terse contract as before, for models that already reason internally (e.g. via their own <think>
+  block) or where speed matters more than a visible reasoning trace."""
+  if chain_of_thought:
+    return (
+        TASK_DESCRIPTION + "\n\n" + GENERIC_CAUTION + "\n\n"
+        + chain_of_thought.rstrip(". ") + ". Work through your reasoning in plain text first: "
+        "consider each candidate feature against the GO term's definition and the genericity "
+        "caution above before settling on an answer. There is no length limit on this reasoning -- "
+        "take as much space as you need to think it through properly.\n\n"
+        "Once you've decided, finish your response with EXACTLY these three lines, in this exact "
+        "format, as the very last thing you write (nothing after them):\n" + ANSWER_FORMAT
+    )
+  return (
+      TASK_DESCRIPTION + "\n\n" + GENERIC_CAUTION
+      + "\n\nRespond with EXACTLY three lines, nothing else, no markdown formatting, no extra "
+      "commentary before or after:\n" + ANSWER_FORMAT
+  )
+
+
+def call_local_llm(host, model, system_prompt, prompt, max_tokens, timeout=120):
   url = host.rstrip("/") + "/v1/chat/completions"
   payload = {
       "model": model,
       "messages": [
-          {"role": "system", "content": SYSTEM_PROMPT},
+          {"role": "system", "content": system_prompt},
           {"role": "user", "content": prompt},
       ],
       "temperature": 0.2,
@@ -101,16 +128,25 @@ def discover_model(host, timeout=10):
   return models[0]["id"]
 
 
+def _last_match(pattern, text, flags=0):
+  matches = list(re.finditer(pattern, text, flags))
+  return matches[-1] if matches else None
+
+
 def parse_response(text):
   """Lenient extraction -- local models don't always follow formatting instructions exactly.
+  Uses the LAST match of each field, not the first: with chain-of-thought enabled the model's
+  reasoning text can easily mention "verdict" or reference the answer format conceptually before
+  it actually commits to one, so searching from the front risks grabbing a stray earlier mention
+  instead of the real final answer.
   Returns a 6th element, `truncated`, so callers can warn: if VERDICT/FEATURE never appeared, the
   likeliest cause is the response got cut off by max_tokens before reaching them (e.g. a
-  reasoning-style model spending its whole budget on a <think> preamble), not a genuinely malformed
-  answer -- worth surfacing distinctly rather than silently recording a NONE verdict that looks the
-  same as a real one."""
-  v = re.search(r"VERDICT:\s*(LIKELY|UNCERTAIN|NONE)", text, re.I)
-  f = re.search(r"FEATURE:\s*(\S+)\s+(\d+)\s*-\s*(\d+)", text)
-  r = re.search(r"REASONING:\s*(.+)", text)
+  reasoning-style model spending its whole budget on a <think> preamble, or CoT reasoning that ran
+  out of room before reaching the final block), not a genuinely malformed answer -- worth surfacing
+  distinctly rather than silently recording a NONE verdict that looks the same as a real one."""
+  v = _last_match(r"VERDICT:\s*(LIKELY|UNCERTAIN|NONE)", text, re.I)
+  f = _last_match(r"FEATURE:\s*(\S+)\s+(\d+)\s*-\s*(\d+)", text)
+  r = _last_match(r"REASONING:\s*(.+)", text)
   truncated = v is None and f is None
   verdict = v.group(1).upper() if v else "NONE"
   if f:
@@ -144,11 +180,13 @@ def extract_protein_section(review_text, accession):
   return f"{header}\n\n{section}"
 
 
-def build_prompt(go_id, accession, review_text, chain_of_thought):
+def build_prompt(go_id, accession, review_text):
+  """The chain-of-thought instruction (if any) lives entirely in the system prompt now -- no need
+  to repeat it here, and repeating it in both places risks the two copies drifting or conflicting."""
   trimmed = extract_protein_section(review_text, accession)
   return (
       f"GO term and protein evidence for {go_id}, protein {accession}:\n\n"
-      f"--- BEGIN EVIDENCE ---\n{trimmed}\n--- END EVIDENCE ---\n {chain_of_thought}"
+      f"--- BEGIN EVIDENCE ---\n{trimmed}\n--- END EVIDENCE ---"
   )
 
 
@@ -162,7 +200,7 @@ def plan_round():
   return json.loads(manifest_path.read_text())
 
 
-def process_round(host, model, manifest, request_timeout, delay, max_tokens, chain_of_thought):
+def process_round(host, model, manifest, request_timeout, delay, max_tokens, system_prompt):
   new_terms = manifest.get("new_terms", {})
   touched = []
   for go_id, accessions in new_terms.items():
@@ -170,9 +208,9 @@ def process_round(host, model, manifest, request_timeout, delay, max_tokens, cha
     review_text = (term_dir / "review.md").read_text()
     findings_path = term_dir / "findings.md"
     for accession in accessions:
-      prompt = build_prompt(go_id, accession, review_text, chain_of_thought=chain_of_thought)
+      prompt = build_prompt(go_id, accession, review_text)
       try:
-        raw = call_local_llm(host, model, prompt, max_tokens, timeout=request_timeout)
+        raw = call_local_llm(host, model, system_prompt, prompt, max_tokens, timeout=request_timeout)
       except (urllib.error.URLError, TimeoutError, OSError) as e:
         print(f"  ! {go_id} {accession}: request failed ({e}), logging as NONE and continuing")
         raw = "VERDICT: NONE\nFEATURE: NONE 0-0\nREASONING: local model request failed"
@@ -235,19 +273,25 @@ def main():
   ap.add_argument("--rounds", type=int, default=10)
   ap.add_argument("--request-timeout", type=int, default=180, help="Seconds per completion call")
   ap.add_argument("--delay", type=float, default=0.0, help="Seconds to sleep between calls")
-  ap.add_argument("--chain-of-thought", type=str, default = "", 
-                  help="If desired, add an chain-of-thought prompte here"
-                        "Recommended for non-reasoning-models."
-                        "Example: 'Let's think step by step'")
-  ap.add_argument("--max-tokens", type=int, default=800,
+  ap.add_argument("--chain-of-thought", type=str, default="",
+                   help="Enables free-text reasoning before the answer -- recommended for "
+                        "non-reasoning/smaller models, which judge more accurately with room to "
+                        "think than when forced straight into the terse VERDICT/FEATURE/REASONING "
+                        "format. Leave unset for models that already reason internally (e.g. via "
+                        "their own <think> block) or when speed matters more than accuracy. "
+                        "Example: --chain-of-thought \"Let's think step by step.\"")
+  ap.add_argument("--max-tokens", type=int, default=1536,
                    help="Generation budget per protein. Raise this (not an LM Studio setting -- "
                         "it's a per-request parameter this script sends) if responses come back "
-                        "truncated; reasoning-style models can spend hundreds of tokens on a "
-                        "<think> preamble before ever reaching VERDICT/FEATURE/REASONING.")
+                        "truncated. Needs real headroom whenever --chain-of-thought is set: a full "
+                        "reasoning trace plus the final answer easily runs past 1000 tokens, and a "
+                        "reasoning-style model's own <think> preamble adds even more on top.")
   args = ap.parse_args()
 
   model = args.model or discover_model(args.host)
-  print(f"Using model: {model} @ {args.host}")
+  system_prompt = build_system_prompt(args.chain_of_thought)
+  print(f"Using model: {model} @ {args.host}"
+        + (" (chain-of-thought enabled)" if args.chain_of_thought else ""))
 
   for round_n in range(1, args.rounds + 1):
     print(f"\n=== Round {round_n}/{args.rounds} ===")
@@ -257,7 +301,7 @@ def main():
       print("No more terms fit the budget (backlog may be exhausted). Stopping.")
       break
     touched = process_round(args.host, model, manifest, args.request_timeout, args.delay,
-                             args.max_tokens, args.chain_of_thought)
+                             args.max_tokens, system_prompt)
     merged_terms = merge_round(touched)
     run([sys.executable, str(SCRIPTS / "build_positional_mf_links.py")])
     commit_round(round_n, merged_terms, total_agents)
