@@ -1,0 +1,27 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "E1B7R9",
+      "go_id": "GO:0002046",
+      "feature_type": "REGION",
+      "start": 23,
+      "end": 54,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "Disordered regions can mediate protein-protein interactions and the protein's rod/cone-specific domain context is relevant to photoreceptor biology where opsins function, but disordered regions are generic and present in many unrelated proteins."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P36576",
+      "reason": "none_verdict",
+      "reasoning": "This protein has no annotated positional features (REGION/DOMAIN/SITE with coordinates); only domain cross-references without position data are present."
+    },
+    {
+      "accession": "Q8IY31",
+      "reason": "none_verdict",
+      "reasoning": "The only positional feature (REGION 69-132) describes IFT57-binding, not opsin-binding; while IFT20 traffics opsin via intraflagellar transport, the annotated feature does not plausibly account for opsin-binding activity."
+    }
+  ]
+}

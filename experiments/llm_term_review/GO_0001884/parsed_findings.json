@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P0ABF6",
+      "go_id": "GO:0001884",
+      "feature_type": "BINDING",
+      "start": 88,
+      "end": 91,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The substrate binding site of this CMP/dCMP deaminase is biochemically consistent with pyrimidine nucleoside binding (enzyme's natural substrate is structurally similar to target nucleosides), but the annotation lacks explicit specificity\u2014labeled only as \"substrate\" without naming the pyrimidine."
+    }
+  ],
+  "issues": []
+}

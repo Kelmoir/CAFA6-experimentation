@@ -1481,5 +1481,162 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0001884": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P0ABF6",
+    "go_id": "GO:0001884",
+    "feature_type": "BINDING",
+    "start": 88,
+    "end": 91,
+    "signal_kind": "ligand",
+    "signal_value": "substrate",
+    "reasoning": "The substrate binding site of this CMP/dCMP deaminase is biochemically consistent with pyrimidine nucleoside binding (enzyme's natural substrate is structurally similar to target nucleosides), but the annotation lacks explicit specificity\u2014labeled only as \"substrate\" without naming the pyrimidine."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0002046": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "E1B7R9",
+    "go_id": "GO:0002046",
+    "feature_type": "REGION",
+    "start": 23,
+    "end": 54,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "Disordered regions can mediate protein-protein interactions and the protein's rod/cone-specific domain context is relevant to photoreceptor biology where opsins function, but disordered regions are generic and present in many unrelated proteins."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P36576",
+    "reason": "none_verdict",
+    "reasoning": "This protein has no annotated positional features (REGION/DOMAIN/SITE with coordinates); only domain cross-references without position data are present."
+   },
+   {
+    "accession": "Q8IY31",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature (REGION 69-132) describes IFT57-binding, not opsin-binding; while IFT20 traffics opsin via intraflagellar transport, the annotated feature does not plausibly account for opsin-binding activity."
+   }
+  ]
+ },
+ "GO:0002057": {
+  "n_resolved": 0,
+  "n_uncertain": 2,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P0ACP7",
+    "go_id": "GO:0002057",
+    "feature_type": "BINDING",
+    "start": 189,
+    "end": 190,
+    "signal_kind": "ligand",
+    "signal_value": "hypoxanthine",
+    "reasoning": "This protein is a PurR-family repressor with documented hypoxanthine binding sites and a SITE annotation noting \"6-oxopurine corepressor specificity,\" suggesting capacity to bind guanine. However, experimental evidence explicitly documents only hypoxanthine, not guanine, and these purines are chemically distinct."
+   },
+   {
+    "accession": "Q9W719",
+    "go_id": "GO:0002057",
+    "feature_type": "BINDING",
+    "start": 133,
+    "end": 142,
+    "signal_kind": "ligand",
+    "signal_value": "GMP",
+    "reasoning": "HGPRT catalyzes guanine-to-GMP conversion; this protein has a substantial GMP-binding pocket at 133-142, but explicit annotations show GMP (product) binding, not free guanine (substrate) binding."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0002059": {
+  "n_resolved": 0,
+  "n_uncertain": 2,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q63150",
+    "go_id": "GO:0002059",
+    "feature_type": "BINDING",
+    "start": 163,
+    "end": 164,
+    "signal_kind": "ligand",
+    "signal_value": "substrate",
+    "reasoning": "Substrate binding site positioned at predicted active site among metal cofactors; plausible for pyrimidine substrates but lacks thymine-specific sequence markers to distinguish from broader pyrimidine recognition in the hydantoinase family."
+   },
+   {
+    "accession": "Q9EQF5",
+    "go_id": "GO:0002059",
+    "feature_type": "BINDING",
+    "start": 163,
+    "end": 164,
+    "signal_kind": "ligand",
+    "signal_value": "substrate",
+    "reasoning": "Substrate binding sites are plausible in this dihydropyrimidinase-family enzyme that processes pyrimidines, but the generic \"substrate\" label provides no specificity for thymine versus broader pyrimidine substrate recognition shared across this hydrolase family."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0002948": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q58428",
+    "go_id": "GO:0002948",
+    "feature_type": "DOMAIN",
+    "start": 494,
+    "end": 569,
+    "signal_kind": "text",
+    "signal_value": "PUA",
+    "reasoning": "The PUA domain is found in archaeosine transglycosylases and the protein's InterPro identifiers (IPR053418, IPR050076) confirm archaeosine synthase classification, but PUA is a generic RNA-binding domain across multiple tRNA-modifying enzyme families, limiting specificity for this exact function."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0002952": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P64461",
+    "go_id": "GO:0002952",
+    "feature_type": "DOMAIN",
+    "start": 1,
+    "end": 91,
+    "signal_kind": "text",
+    "signal_value": "ABM",
+    "reasoning": "The ABM domain cross-references (particularly IPR050744 and IPR033672) point directly to LsrG/AI-2-isomerase, which matches the GO term precisely; however, the annotated feature itself is only labeled \"ABM\" without explicit functional notes, and this fold is shared across multiple function families."
+   }
+  ],
+  "issues": []
  }
 }

@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P0ACP7",
+      "go_id": "GO:0002057",
+      "feature_type": "BINDING",
+      "start": 189,
+      "end": 190,
+      "signal_kind": "ligand",
+      "signal_value": "hypoxanthine",
+      "reasoning": "This protein is a PurR-family repressor with documented hypoxanthine binding sites and a SITE annotation noting \"6-oxopurine corepressor specificity,\" suggesting capacity to bind guanine. However, experimental evidence explicitly documents only hypoxanthine, not guanine, and these purines are chemically distinct."
+    },
+    {
+      "accession": "Q9W719",
+      "go_id": "GO:0002057",
+      "feature_type": "BINDING",
+      "start": 133,
+      "end": 142,
+      "signal_kind": "ligand",
+      "signal_value": "GMP",
+      "reasoning": "HGPRT catalyzes guanine-to-GMP conversion; this protein has a substantial GMP-binding pocket at 133-142, but explicit annotations show GMP (product) binding, not free guanine (substrate) binding."
+    }
+  ],
+  "issues": []
+}
