@@ -14,10 +14,8 @@
     },
     {
       "accession": "Q00560",
-      "reason": "unresolved_pointer",
-      "detail": "no matching TYPE 1-250 on record for Q00560 -- pointer didn't resolve",
-      "reported_feature": "TYPE 1-250",
-      "reasoning": "The presence of an Ig-like fold is a structural feature often associated with receptors involved in signal transduction, but without direct evidence confirming this specific function for protein Q00560, the connection remains uncertain."
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide a distinctive structural or functional basis that uniquely explains the molecular function of ciliary neurotrophic factor receptor activity."
     }
   ]
 }

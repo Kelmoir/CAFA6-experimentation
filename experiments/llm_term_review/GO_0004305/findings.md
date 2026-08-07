@@ -10,6 +10,6 @@ reasoning: The absence of any MF-relevant positional features on record for P465
 ---
 ## Q01134 GO:0004305
 verdict: UNCERTAIN
-feature: NONE 0-0
-reasoning: The annotated features for protein Q01134 are consistent with its role in ethanolamine kinase activity but do not uniquely or plausibly explain why it carries that specific molecular function.
+feature: BINDING 112-119
+reasoning: The binding of ATP at this position is consistent with the enzyme's function, but it does not directly explain why the protein carries the specific molecular function of ethanolamine kinase activity.
 ---

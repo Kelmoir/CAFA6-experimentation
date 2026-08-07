@@ -19,16 +19,18 @@
       "signal_kind": "ligand",
       "signal_value": "GTP",
       "reasoning": "The presence of GTP as a ligand in this binding site directly supports the catalytic activity described by GO:0003935."
+    },
+    {
+      "accession": "P47924",
+      "go_id": "GO:0003935",
+      "feature_type": "ACT_SITE",
+      "start": 456,
+      "end": 457,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor; for GTP cyclohydrolase activity",
+      "reasoning": "The \"ACT_SITE\" annotation at positions 456-457 explicitly labels the site as a \"Proton acceptor,\" which is a key feature of GTP cyclohydrolase II activity, directly supporting the molecular function."
     }
   ],
   "uncertain": [],
-  "issues": [
-    {
-      "accession": "P47924",
-      "reason": "unresolved_pointer",
-      "detail": "no matching BINDING 328-543 on record for P47924 -- pointer didn't resolve",
-      "reported_feature": "BINDING 328-543",
-      "reasoning": "The annotation explicitly references the enzyme class and activity, aligning precisely with the GO term definition."
-    }
-  ]
+  "issues": []
 }

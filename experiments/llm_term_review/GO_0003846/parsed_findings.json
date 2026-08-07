@@ -25,10 +25,8 @@
   "issues": [
     {
       "accession": "Q91ZV4",
-      "reason": "unresolved_pointer",
-      "detail": "no matching NONE 0-0 on record for Q91ZV4 -- pointer didn't resolve",
-      "reported_feature": "NONE 0-0",
-      "reasoning": "This domain ID refers to a structural motif found in many unrelated enzymes, so it lacks specificity for this particular GO annotation."
+      "reason": "none_verdict",
+      "reasoning": "The protein Q91ZV4 has no annotated features (positional or otherwise) that directly explain the specific molecular function \"2-acylglycerol O-acyltransferase activity.\""
     }
   ]
 }

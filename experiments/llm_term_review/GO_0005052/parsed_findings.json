@@ -20,10 +20,8 @@
     },
     {
       "accession": "Q9FMA3",
-      "reason": "unresolved_pointer",
-      "detail": "no matching NONE 0-0 on record for Q9FMA3 -- pointer didn't resolve",
-      "reported_feature": "NONE 0-0",
-      "reasoning": "The annotated features do not provide a distinctive or specific explanation for the molecular function of \"peroxisome matrix targeting signal-1 binding,\" as they are generic and shared by many proteins."
+      "reason": "none_verdict",
+      "reasoning": "(no reasoning extracted from model response)"
     }
   ]
 }

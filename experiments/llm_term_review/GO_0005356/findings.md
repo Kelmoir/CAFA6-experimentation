@@ -10,6 +10,6 @@ reasoning: The presence of multiple binding sites for beta-D-glucose does not un
 ---
 ## Q9Y2W3 GO:0005356
 verdict: UNCERTAIN
-feature: NONE 0-0
-reasoning: The domain/family cross-references indicate that Q9Y2W3 is a member of the MFS family, which includes proteins involved in membrane transport. However, these are generic indicators and do not specifically explain why this protein carries the function "D-glucose:proton symporter activity."
+feature: REGION 293-339
+reasoning: The presence of a disordered region in Q9Y2W3 does not directly account for the specific molecular function of D-glucose:proton symporter activity, as disordered regions are not distinctive to this function.
 ---

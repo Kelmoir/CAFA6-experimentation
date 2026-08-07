@@ -25,10 +25,8 @@
   "issues": [
     {
       "accession": "Q9LX33",
-      "reason": "unresolved_pointer",
-      "detail": "no matching NONE 0-0 on record for Q9LX33 -- pointer didn't resolve",
-      "reported_feature": "NONE 0-0",
-      "reasoning": "The presence of domain cross-references indicating prenyl transferase activity supports the plausibility of the enzyme carrying the specified molecular function, even though no positional feature is explicitly noted."
+      "reason": "none_verdict",
+      "reasoning": "The lack of any annotated positional features in Q9LX33 suggests that there is no specific structural element directly responsible for the CAAX-protein geranylgeranyltransferase activity, making it impossible to determine with certainty."
     }
   ]
 }

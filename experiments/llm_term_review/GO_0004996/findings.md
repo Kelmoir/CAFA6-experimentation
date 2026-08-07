@@ -1,15 +1,15 @@
 ## P16473 GO:0004996
-verdict: LIKELY
-feature: NONE 0-0
-reasoning: The domain/family cross-reference "TSH_rcpt" (from InterPro) is directly related to thyroid-stimulating hormone receptor activity and provides a strong, specific basis for the molecular function.
----
-## P47750 GO:0004996
-verdict: LIKELY
-feature: NONE 0-0
-reasoning: The "TSH_rcpt" domain in P47750 is directly related to thyroid-stimulating hormone receptor activity, making it the most plausible explanation for why this protein carries the GO term.
----
-## Q06710 GO:0004996
 verdict: UNCERTAIN
 feature: NONE 0-0
-reasoning: The provided annotated features do not specifically or plausibly explain why protein Q06710 carries the GO term "thyroid-stimulating hormone receptor activity." While the Homeodomain-like_sf domain is relevant to transcription factor activity, it is not directly tied to TSH binding or signaling. The other features are either generic (e.g., DNA-binding regions, subdomains) or disordered regions, wh
+reasoning: The annotated feature "MOTIF 761-764" with a note indicating PDZ-binding is not specific enough to explain the molecular function of thyroid-stimulating hormone receptor activity. No positional feature directly correlates with the binding site for TSH or the signaling pathways involved, making it insufficient to confidently assign the GO term to this protein.
+---
+## P47750 GO:0004996
+verdict: UNCERTAIN
+feature: MOTIF 761-764
+reasoning: The presence of a PDZ-binding motif does not specifically explain the molecular function of initiating cell activity through TSH binding, as PDZ domains are common in many proteins and not diagnostic for this particular function.
+---
+## Q06710 GO:0004996
+verdict: NONE
+feature: NONE 0-0
+reasoning: (no reasoning extracted from model response)
 ---

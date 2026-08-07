@@ -1,6 +1,17 @@
 {
   "resolved": [],
-  "uncertain": [],
+  "uncertain": [
+    {
+      "accession": "Q06815",
+      "go_id": "GO:0005048",
+      "feature_type": "DOMAIN",
+      "start": 60,
+      "end": 230,
+      "signal_kind": "text",
+      "signal_value": "MRH",
+      "reasoning": "The \"MRH\" note in the domain suggests a potential involvement in signal sequence recognition, but without direct evidence linking this domain to the specific molecular function of \"signal sequence binding,\" the connection remains uncertain."
+    }
+  ],
   "issues": [
     {
       "accession": "P0AGA2",
@@ -11,13 +22,6 @@
       "accession": "P40890",
       "reason": "none_verdict",
       "reasoning": "(no reasoning extracted from model response)"
-    },
-    {
-      "accession": "Q06815",
-      "reason": "unresolved_pointer",
-      "detail": "no matching NONE 0-0 on record for Q06815 -- pointer didn't resolve",
-      "reported_feature": "NONE 0-0",
-      "reasoning": "The annotated features do not provide a distinctive or plausibly explanatory structural/functional basis for the \"signal sequence binding\" GO term."
     }
   ]
 }

@@ -9,7 +9,7 @@ feature: NONE 0-0
 reasoning: response truncated/malformed before VERDICT or FEATURE appeared -- raise --max-tokens
 ---
 ## Q99MN1 GO:0003877
-verdict: LIKELY
+verdict: NONE
 feature: NONE 0-0
-reasoning: The protein carries a feature directly linked to ATP-dependent nucleotide transfer, consistent with the GO term's definition and the presence of multiple ATP-binding annotations across related domains.
+reasoning: The annotated features for Q99MN1 do not provide a distinctive structural or functional basis for the molecular function of ATP:ADP adenylyltransferase activity.
 ---

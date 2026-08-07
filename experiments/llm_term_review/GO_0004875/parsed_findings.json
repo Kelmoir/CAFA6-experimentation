@@ -8,16 +8,14 @@
       "reasoning": "The annotated features for O75388 do not provide any specific structural or functional basis that plausibly explains its role in complement receptor activity, as no positional feature is present."
     },
     {
-      "accession": "O88536",
-      "reason": "unresolved_pointer",
-      "detail": "no matching DOMAIN/FAMILY 105-106 on record for O88536 -- pointer didn't resolve",
-      "reported_feature": "DOMAIN/FAMILY 105-106",
-      "reasoning": "The domain/family cross-references for GPCR_Rhodpsn and 7tm_1 suggest that the protein functions as a GPCR, which is consistent with the definition of complement receptor activity."
-    },
-    {
       "accession": "P25089",
       "reason": "none_verdict",
       "reasoning": "The generic \"Disordered\" note does not provide a specific structural or functional basis for complement receptor activity and is not distinctive to this GO term."
+    },
+    {
+      "accession": "O88536",
+      "reason": "none_verdict",
+      "reasoning": "(no reasoning extracted from model response)"
     }
   ]
 }

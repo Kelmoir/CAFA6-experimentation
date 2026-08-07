@@ -1,8 +1,3 @@
-## P47924 GO:0003935
-verdict: LIKELY
-feature: BINDING 328-543
-reasoning: The annotation explicitly references the enzyme class and activity, aligning precisely with the GO term definition.
----
 ## Q946J8 GO:0003935
 verdict: LIKELY
 feature: DOMAIN 107-167
@@ -12,4 +7,9 @@ reasoning: Domain annotations with PRUSITE rules align with the structural rearr
 verdict: LIKELY
 feature: BINDING 267-272
 reasoning: The presence of GTP as a ligand in this binding site directly supports the catalytic activity described by GO:0003935.
+---
+## P47924 GO:0003935
+verdict: LIKELY
+feature: ACT_SITE 456-457
+reasoning: The "ACT_SITE" annotation at positions 456-457 explicitly labels the site as a "Proton acceptor," which is a key feature of GTP cyclohydrolase II activity, directly supporting the molecular function.
 ---

@@ -9,7 +9,7 @@ feature: BINDING 218-221
 reasoning: Multiple binding sites for geranylgeranyl diphosphate suggest the structural capability to perform the catalytic activity described by the GO term.
 ---
 ## Q9LX33 GO:0004662
-verdict: LIKELY
+verdict: NONE
 feature: NONE 0-0
-reasoning: The presence of domain cross-references indicating prenyl transferase activity supports the plausibility of the enzyme carrying the specified molecular function, even though no positional feature is explicitly noted.
+reasoning: The lack of any annotated positional features in Q9LX33 suggests that there is no specific structural element directly responsible for the CAAX-protein geranylgeranyltransferase activity, making it impossible to determine with certainty.
 ---

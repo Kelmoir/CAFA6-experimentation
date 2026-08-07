@@ -20,10 +20,8 @@
     },
     {
       "accession": "Q99MN1",
-      "reason": "unresolved_pointer",
-      "detail": "no matching NONE 0-0 on record for Q99MN1 -- pointer didn't resolve",
-      "reported_feature": "NONE 0-0",
-      "reasoning": "The protein carries a feature directly linked to ATP-dependent nucleotide transfer, consistent with the GO term's definition and the presence of multiple ATP-binding annotations across related domains."
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q99MN1 do not provide a distinctive structural or functional basis for the molecular function of ATP:ADP adenylyltransferase activity."
     }
   ]
 }

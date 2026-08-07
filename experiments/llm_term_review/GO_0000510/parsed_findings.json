@@ -21,9 +21,9 @@
     {
       "accession": "O14021",
       "reason": "unresolved_pointer",
-      "detail": "no matching NONE 0-0 on record for O14021 -- pointer didn't resolve",
-      "reported_feature": "NONE 0-0",
-      "reasoning": "No positional features on record, but domain annotations (Histone-bd_RBBP4-like_N, CAF1C_H4-bd, WD40 repeats) strongly suggest histone-binding capacity despite lack of positional detail."
+      "detail": "no matching WD40_repeat_dom_sf 19-119 on record for O14021 -- pointer didn't resolve",
+      "reported_feature": "WD40_repeat_dom_sf 19-119",
+      "reasoning": "The WD40 repeat domain is a structural motif often found in proteins involved in chromatin regulation, and its presence in O14021 suggests a potential role in histone complex chaperone activity. However, without positional evidence confirming the exact region's involvement, this remains an uncertain explanation for the GO term."
     }
   ]
 }

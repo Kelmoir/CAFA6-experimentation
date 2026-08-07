@@ -1,5 +1,16 @@
 {
-  "resolved": [],
+  "resolved": [
+    {
+      "accession": "O93344",
+      "go_id": "GO:0004745",
+      "feature_type": "BINDING",
+      "start": 183,
+      "end": 186,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The multiple binding sites for NAD+ (as indicated by the \"BINDING\" annotations) are directly related to the enzymatic activity described by GO:0004745 and are not generic features shared by unrelated proteins."
+    }
+  ],
   "uncertain": [
     {
       "accession": "P07327",
@@ -13,13 +24,6 @@
     }
   ],
   "issues": [
-    {
-      "accession": "O93344",
-      "reason": "unresolved_pointer",
-      "detail": "no matching NONE 0-0 on record for O93344 -- pointer didn't resolve",
-      "reported_feature": "NONE 0-0",
-      "reasoning": "The annotated features are consistent with the enzyme's function but are not distinctive enough to explain the specific molecular function of GO:0004745."
-    },
     {
       "accession": "Q8N3Y7",
       "reason": "none_verdict",

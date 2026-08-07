@@ -480,9 +480,9 @@
    {
     "accession": "O14021",
     "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for O14021 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "No positional features on record, but domain annotations (Histone-bd_RBBP4-like_N, CAF1C_H4-bd, WD40 repeats) strongly suggest histone-binding capacity despite lack of positional detail."
+    "detail": "no matching WD40_repeat_dom_sf 19-119 on record for O14021 -- pointer didn't resolve",
+    "reported_feature": "WD40_repeat_dom_sf 19-119",
+    "reasoning": "The WD40 repeat domain is a structural motif often found in proteins involved in chromatin regulation, and its presence in O14021 suggests a potential role in histone complex chaperone activity. However, without positional evidence confirming the exact region's involvement, this remains an uncertain explanation for the GO term."
    }
   ]
  },
@@ -1842,10 +1842,8 @@
   "issues": [
    {
     "accession": "Q91ZV4",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for Q91ZV4 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "This domain ID refers to a structural motif found in many unrelated enzymes, so it lacks specificity for this particular GO annotation."
+    "reason": "none_verdict",
+    "reasoning": "The protein Q91ZV4 has no annotated features (positional or otherwise) that directly explain the specific molecular function \"2-acylglycerol O-acyltransferase activity.\""
    }
   ]
  },
@@ -1909,10 +1907,8 @@
    },
    {
     "accession": "Q99MN1",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for Q99MN1 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The protein carries a feature directly linked to ATP-dependent nucleotide transfer, consistent with the GO term's definition and the presence of multiple ATP-binding annotations across related domains."
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q99MN1 do not provide a distinctive structural or functional basis for the molecular function of ATP:ADP adenylyltransferase activity."
    }
   ]
  },
@@ -1942,9 +1938,9 @@
   ]
  },
  "GO:0003935": {
-  "n_resolved": 2,
+  "n_resolved": 3,
   "n_uncertain": 0,
-  "n_issues": 1,
+  "n_issues": 0,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [
@@ -1963,18 +1959,18 @@
     "accessions": [
      "Q9US41"
     ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor; for GTP cyclohydrolase activity",
+    "accessions": [
+     "P47924"
+    ]
    }
   ],
   "uncertain": [],
-  "issues": [
-   {
-    "accession": "P47924",
-    "reason": "unresolved_pointer",
-    "detail": "no matching BINDING 328-543 on record for P47924 -- pointer didn't resolve",
-    "reported_feature": "BINDING 328-543",
-    "reasoning": "The annotation explicitly references the enzyme class and activity, aligning precisely with the GO term definition."
-   }
-  ]
+  "issues": []
  },
  "GO:0004013": {
   "n_resolved": 0,
@@ -2103,16 +2099,14 @@
     "reasoning": "The absence of any annotated positional feature for P24298 makes it impossible to determine whether the protein carries the specific molecular function described by the GO term."
    },
    {
-    "accession": "P25409",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for P25409 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The presence of the \"ALAT1/2-like\" domain suggests that the enzyme is related to aminotransferases, which are involved in amino acid metabolism and thus plausibly explain the given GO term."
-   },
-   {
     "accession": "Q9LR30",
     "reason": "none_verdict",
     "reasoning": "The annotated features for Q9LR30 do not include any specific catalytic domain or motif that directly explains the molecular function of L-alanine:2-oxoglutarate aminotransferase activity. The presence of a peroxisomal targeting signal is generic and does not provide evidence for the enzyme's function, while the domain/family cross-references refer to broader structural similarities rather than th"
+   },
+   {
+    "accession": "P25409",
+    "reason": "none_verdict",
+    "reasoning": "The protein P25409 lacks any MF-relevant positional features that could plausibly explain why it carries the GO term \"L-alanine:2-oxoglutarate aminotransferase activity.\" While domain/family cross-references suggest a potential relationship to this function, they do not provide direct evidence of the specific activity. Therefore, no positional feature can be confidently identified as the basis for"
    }
   ]
  },
@@ -2342,8 +2336,8 @@
  },
  "GO:0004305": {
   "n_resolved": 0,
-  "n_uncertain": 1,
-  "n_issues": 2,
+  "n_uncertain": 2,
+  "n_issues": 1,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [],
@@ -2357,6 +2351,16 @@
     "signal_kind": "ligand",
     "signal_value": "ATP",
     "reasoning": "The multiple ATP-binding regions in P35790 are consistent with its role as an ethanolamine kinase but do not provide unique structural/functional evidence that distinguishes it from other kinases, making the explanation for the GO term uncertain."
+   },
+   {
+    "accession": "Q01134",
+    "go_id": "GO:0004305",
+    "feature_type": "BINDING",
+    "start": 112,
+    "end": 119,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The binding of ATP at this position is consistent with the enzyme's function, but it does not directly explain why the protein carries the specific molecular function of ethanolamine kinase activity."
    }
   ],
   "issues": [
@@ -2364,13 +2368,6 @@
     "accession": "P46559",
     "reason": "none_verdict",
     "reasoning": "The absence of any MF-relevant positional features on record for P46559 means there is no direct structural/functional basis provided for the annotation of \"ethanolamine kinase activity.\""
-   },
-   {
-    "accession": "Q01134",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for Q01134 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The annotated features for protein Q01134 are consistent with its role in ethanolamine kinase activity but do not uniquely or plausibly explain why it carries that specific molecular function."
    }
   ]
  },
@@ -2586,12 +2583,21 @@
   ]
  },
  "GO:0004609": {
-  "n_resolved": 0,
+  "n_resolved": 1,
   "n_uncertain": 0,
-  "n_issues": 3,
+  "n_issues": 2,
   "merged": [],
   "unmerged_agreements": [],
-  "unconfirmed_singletons": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Charge relay system; for autoendoproteolytic cleavage activity",
+    "accessions": [
+     "Q84V22"
+    ]
+   }
+  ],
   "uncertain": [],
   "issues": [
    {
@@ -2603,13 +2609,6 @@
     "accession": "P17174",
     "reason": "none_verdict",
     "reasoning": "The presence of L-aspartate binding in multiple positions does not directly explain the enzymatic activity of phosphatidylserine decarboxylase, as this cofactor is common across many enzymes and does not uniquely identify the specific function described by GO:0004609."
-   },
-   {
-    "accession": "Q84V22",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for Q84V22 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The specific feature involving the Schiff-base intermediate with substrate via pyruvic acid is not distinctive to Q84V22 and could be found in other proteins with similar annotations for decarboxylase activity."
    }
   ]
  },
@@ -2733,10 +2732,8 @@
   "issues": [
    {
     "accession": "Q9LX33",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for Q9LX33 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The presence of domain cross-references indicating prenyl transferase activity supports the plausibility of the enzyme carrying the specified molecular function, even though no positional feature is explicitly noted."
+    "reason": "none_verdict",
+    "reasoning": "The lack of any annotated positional features in Q9LX33 suggests that there is no specific structural element directly responsible for the CAAX-protein geranylgeranyltransferase activity, making it impossible to determine with certainty."
    }
   ]
  },
@@ -2834,12 +2831,21 @@
   "issues": []
  },
  "GO:0004745": {
-  "n_resolved": 0,
+  "n_resolved": 1,
   "n_uncertain": 1,
-  "n_issues": 2,
+  "n_issues": 1,
   "merged": [],
   "unmerged_agreements": [],
-  "unconfirmed_singletons": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "O93344"
+    ]
+   }
+  ],
   "uncertain": [
    {
     "accession": "P07327",
@@ -2853,13 +2859,6 @@
    }
   ],
   "issues": [
-   {
-    "accession": "O93344",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for O93344 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The annotated features are consistent with the enzyme's function but are not distinctive enough to explain the specific molecular function of GO:0004745."
-   },
    {
     "accession": "Q8N3Y7",
     "reason": "none_verdict",
@@ -2945,16 +2944,14 @@
     "reasoning": "The annotated features for P34896 primarily indicate ligand-binding sites, which are generic and not distinctive enough to explain the specific molecular function \"threonine aldolase activity.\""
    },
    {
-    "accession": "P37303",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for P37303 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The domain/family cross-references indicate that the protein is related to the enzyme family that catalyzes threonine aldolase activity, suggesting a plausible structural basis for this function."
-   },
-   {
     "accession": "P50431",
     "reason": "none_verdict",
     "reasoning": "The annotated features for P50431 indicate multiple ligand-binding sites, but none specifically mention L-threonine binding, which is essential for the enzyme's activity. Thus, no single feature directly explains the molecular function of threonine aldolase activity."
+   },
+   {
+    "accession": "P37303",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any MF-relevant positional features in the annotated data for P37303 means there is no direct structural/functional basis to confirm that the protein carries the GO term \"threonine aldolase activity\" as a real annotation."
    }
   ]
  },
@@ -3030,10 +3027,8 @@
   "issues": [
    {
     "accession": "Q8W4F3",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for Q8W4F3 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The PROSITE fold \"aa-trna-ligase_i\" is specifically associated with tRNA ligase activity and is more indicative of the molecular function than generic binding sites."
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q8W4F3 do not include any positional feature that specifically identifies the catalytic domain or structural basis for glutamine-tRNA ligase activity. All binding regions are generic and shared by many enzymes, and no disordered region or domain-specific motif is provided that would explain the molecular function in a specific way. Therefore, there is no evidence to supp"
    }
   ]
  },
@@ -3114,16 +3109,14 @@
     "reasoning": "The annotated features for O75388 do not provide any specific structural or functional basis that plausibly explains its role in complement receptor activity, as no positional feature is present."
    },
    {
-    "accession": "O88536",
-    "reason": "unresolved_pointer",
-    "detail": "no matching DOMAIN/FAMILY 105-106 on record for O88536 -- pointer didn't resolve",
-    "reported_feature": "DOMAIN/FAMILY 105-106",
-    "reasoning": "The domain/family cross-references for GPCR_Rhodpsn and 7tm_1 suggest that the protein functions as a GPCR, which is consistent with the definition of complement receptor activity."
-   },
-   {
     "accession": "P25089",
     "reason": "none_verdict",
     "reasoning": "The generic \"Disordered\" note does not provide a specific structural or functional basis for complement receptor activity and is not distinctive to this GO term."
+   },
+   {
+    "accession": "O88536",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
    }
   ]
  },
@@ -3148,10 +3141,8 @@
    },
    {
     "accession": "Q00560",
-    "reason": "unresolved_pointer",
-    "detail": "no matching TYPE 1-250 on record for Q00560 -- pointer didn't resolve",
-    "reported_feature": "TYPE 1-250",
-    "reasoning": "The presence of an Ig-like fold is a structural feature often associated with receptors involved in signal transduction, but without direct evidence confirming this specific function for protein Q00560, the connection remains uncertain."
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide a distinctive structural or functional basis that uniquely explains the molecular function of ciliary neurotrophic factor receptor activity."
    }
   ]
  },
@@ -3363,33 +3354,35 @@
  },
  "GO:0004996": {
   "n_resolved": 0,
-  "n_uncertain": 0,
-  "n_issues": 3,
+  "n_uncertain": 1,
+  "n_issues": 2,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [],
-  "uncertain": [],
+  "uncertain": [
+   {
+    "accession": "P47750",
+    "go_id": "GO:0004996",
+    "feature_type": "MOTIF",
+    "start": 761,
+    "end": 764,
+    "signal_kind": "text",
+    "signal_value": "PDZ-binding",
+    "reasoning": "The presence of a PDZ-binding motif does not specifically explain the molecular function of initiating cell activity through TSH binding, as PDZ domains are common in many proteins and not diagnostic for this particular function."
+   }
+  ],
   "issues": [
    {
     "accession": "P16473",
     "reason": "unresolved_pointer",
     "detail": "no matching NONE 0-0 on record for P16473 -- pointer didn't resolve",
     "reported_feature": "NONE 0-0",
-    "reasoning": "The domain/family cross-reference \"TSH_rcpt\" (from InterPro) is directly related to thyroid-stimulating hormone receptor activity and provides a strong, specific basis for the molecular function."
-   },
-   {
-    "accession": "P47750",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for P47750 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The \"TSH_rcpt\" domain in P47750 is directly related to thyroid-stimulating hormone receptor activity, making it the most plausible explanation for why this protein carries the GO term."
+    "reasoning": "The annotated feature \"MOTIF 761-764\" with a note indicating PDZ-binding is not specific enough to explain the molecular function of thyroid-stimulating hormone receptor activity. No positional feature directly correlates with the binding site for TSH or the signaling pathways involved, making it insufficient to confidently assign the GO term to this protein."
    },
    {
     "accession": "Q06710",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for Q06710 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The provided annotated features do not specifically or plausibly explain why protein Q06710 carries the GO term \"thyroid-stimulating hormone receptor activity.\" While the Homeodomain-like_sf domain is relevant to transcription factor activity, it is not directly tied to TSH binding or signaling. The other features are either generic (e.g., DNA-binding regions, subdomains) or disordered regions, wh"
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
    }
   ]
  },
@@ -3427,12 +3420,23 @@
  },
  "GO:0005048": {
   "n_resolved": 0,
-  "n_uncertain": 0,
-  "n_issues": 3,
+  "n_uncertain": 1,
+  "n_issues": 2,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [],
-  "uncertain": [],
+  "uncertain": [
+   {
+    "accession": "Q06815",
+    "go_id": "GO:0005048",
+    "feature_type": "DOMAIN",
+    "start": 60,
+    "end": 230,
+    "signal_kind": "text",
+    "signal_value": "MRH",
+    "reasoning": "The \"MRH\" note in the domain suggests a potential involvement in signal sequence recognition, but without direct evidence linking this domain to the specific molecular function of \"signal sequence binding,\" the connection remains uncertain."
+   }
+  ],
   "issues": [
    {
     "accession": "P0AGA2",
@@ -3443,13 +3447,6 @@
     "accession": "P40890",
     "reason": "none_verdict",
     "reasoning": "(no reasoning extracted from model response)"
-   },
-   {
-    "accession": "Q06815",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for Q06815 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The annotated features do not provide a distinctive or plausibly explanatory structural/functional basis for the \"signal sequence binding\" GO term."
    }
   ]
  },
@@ -3480,10 +3477,8 @@
    },
    {
     "accession": "Q9FMA3",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for Q9FMA3 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The annotated features do not provide a distinctive or specific explanation for the molecular function of \"peroxisome matrix targeting signal-1 binding,\" as they are generic and shared by many proteins."
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
    }
   ]
  },
@@ -3683,13 +3678,6 @@
   "uncertain": [],
   "issues": [
    {
-    "accession": "P10145",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for P10145 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The annotated cleavage sites do not directly explain the molecular function of binding to an interleukin-8 receptor. While the InterPro and Pfam annotations suggest chemokine-related domains, these are generic features shared by many proteins and do not specifically account for the binding activity in this context."
-   },
-   {
     "accession": "P19874",
     "reason": "none_verdict",
     "reasoning": "The absence of any specific positional or structural feature in the annotated data for P19874 makes it impossible to identify a plausible explanation for why it carries the molecular function \"interleukin-8 receptor binding.\""
@@ -3698,6 +3686,13 @@
     "accession": "P79255",
     "reason": "none_verdict",
     "reasoning": "The absence of any annotated positional features for P79255 that directly relate to IL-8 receptor binding makes it impossible to determine a specific structural/functional basis for the GO term."
+   },
+   {
+    "accession": "P10145",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for P10145 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The domain/family cross-references suggest that P10145 belongs to a class of chemokine-like proteins, which are known to bind to various receptors, including the interleukin-8 receptor. However, these cross-references do not provide specific structural features or residues that directly explain the molecular function \"interleukin-8 receptor binding.\" Therefore, the evidence is insufficient to dete"
    }
   ]
  },
@@ -3773,10 +3768,8 @@
    },
    {
     "accession": "Q3LHH8",
-    "reason": "unresolved_pointer",
-    "detail": "no matching note 66-67 on record for Q3LHH8 -- pointer didn't resolve",
-    "reported_feature": "note 66-67",
-    "reasoning": "The annotated feature is generic and does not provide a specific structural or functional basis that distinguishes Q3LHH8 from other proteins carrying the \"pheromone activity\" GO term."
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
    }
   ]
  },
@@ -3814,9 +3807,9 @@
   ]
  },
  "GO:0005298": {
-  "n_resolved": 1,
+  "n_resolved": 2,
   "n_uncertain": 0,
-  "n_issues": 2,
+  "n_issues": 1,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [
@@ -3827,17 +3820,18 @@
     "accessions": [
      "Q96QD8"
     ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Involved in high-affinity binding for sodium and proline",
+    "accessions": [
+     "P10502"
+    ]
    }
   ],
   "uncertain": [],
   "issues": [
-   {
-    "accession": "P10502",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for P10502 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The generic nature of the note suggests it could apply to many proteins involved in similar transport processes, making it insufficient to definitively explain the specific molecular function of the GO term."
-   },
    {
     "accession": "Q9JM15",
     "reason": "none_verdict",
@@ -3975,16 +3969,16 @@
   ],
   "issues": [
    {
+    "accession": "Q9P3U6",
+    "reason": "none_verdict",
+    "reasoning": "The annotated feature \"REGION 481-557\" with the note \"Disordered\" does not provide specific evidence for the molecular function \"carbohydrate:proton symporter activity.\" Disordered regions are common in many proteins and do not necessarily indicate a functional role in proton transport. Therefore, there is no plausible explanation from the given features that directly accounts for the GO term."
+   },
+   {
     "accession": "P47185",
     "reason": "unresolved_pointer",
     "detail": "no matching NONE 0-0 on record for P47185 -- pointer didn't resolve",
     "reported_feature": "NONE 0-0",
-    "reasoning": "The domain/family cross-references for P47185 suggest a potential association with MFS and sugar transporters, but none of them specifically explain the molecular function \"carbohydrate:proton symporter activity\" in a way that is distinctive to this GO term."
-   },
-   {
-    "accession": "Q9P3U6",
-    "reason": "none_verdict",
-    "reasoning": "The annotated feature \"REGION 481-557\" with the note \"Disordered\" does not provide specific evidence for the molecular function \"carbohydrate:proton symporter activity.\" Disordered regions are common in many proteins and do not necessarily indicate a functional role in proton transport. Therefore, there is no plausible explanation from the given features that directly accounts for the GO term."
+    "reasoning": "The annotated features do not provide any positional evidence directly indicating the presence of a proton symporter domain or related structure, making it uncertain whether the GO term is being used as a generic label."
    }
   ]
  },
@@ -4035,27 +4029,36 @@
     "reasoning": "The annotated features for P13181 do not provide a specific structural or functional basis that directly accounts for the molecular function of \"galactose transmembrane transporter activity.\""
    },
    {
-    "accession": "P42833",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for P42833 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The annotated features do not provide a clear, specific positional feature that directly explains the molecular function of galactose transmembrane transporter activity. While the protein is associated with domains and families related to sugar transporters, this does not confirm the presence of a unique structural element or residue that is diagnostic for the GO term."
-   },
-   {
     "accession": "Q8VZ80",
     "reason": "none_verdict",
     "reasoning": "The annotated features for Q8VZ80 do not provide a clear structural or functional basis for the GO term \"galactose transmembrane transporter activity.\" While the protein's domain and family cross-references suggest it is related to MFS domains involved in sugar transport, the disordered regions alone are not sufficient to explain the specific molecular function."
+   },
+   {
+    "accession": "P42833",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any MFS-specific or sugar transporter-related positional features in P42833 indicates that there is no direct evidence pointing to its role as a galactose transmembrane transporter."
    }
   ]
  },
  "GO:0005356": {
   "n_resolved": 0,
-  "n_uncertain": 0,
-  "n_issues": 3,
+  "n_uncertain": 1,
+  "n_issues": 2,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [],
-  "uncertain": [],
+  "uncertain": [
+   {
+    "accession": "Q9Y2W3",
+    "go_id": "GO:0005356",
+    "feature_type": "REGION",
+    "start": 293,
+    "end": 339,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The presence of a disordered region in Q9Y2W3 does not directly account for the specific molecular function of D-glucose:proton symporter activity, as disordered regions are not distinctive to this function."
+   }
+  ],
   "issues": [
    {
     "accession": "P58355",
@@ -4066,33 +4069,29 @@
     "accession": "Q9LT15",
     "reason": "none_verdict",
     "reasoning": "The presence of multiple binding sites for beta-D-glucose does not uniquely support the specific molecular function of \"D-glucose:proton symporter activity\" and is therefore not a distinctive feature."
-   },
-   {
-    "accession": "Q9Y2W3",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for Q9Y2W3 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The domain/family cross-references indicate that Q9Y2W3 is a member of the MFS family, which includes proteins involved in membrane transport. However, these are generic indicators and do not specifically explain why this protein carries the function \"D-glucose:proton symporter activity.\""
    }
   ]
  },
  "GO:0005360": {
   "n_resolved": 0,
-  "n_uncertain": 0,
-  "n_issues": 1,
+  "n_uncertain": 1,
+  "n_issues": 0,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [],
-  "uncertain": [],
-  "issues": [
+  "uncertain": [
    {
     "accession": "P14142",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for P14142 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The annotated features do not provide a clear, distinctive positional or structural element that directly explains the specific molecular function of GO:0005360."
+    "go_id": "GO:0005360",
+    "feature_type": "BINDING",
+    "start": 176,
+    "end": 177,
+    "signal_kind": "ligand",
+    "signal_value": "D-glucose",
+    "reasoning": "(no reasoning extracted from model response)"
    }
-  ]
+  ],
+  "issues": []
  },
  "GO:0005416": {
   "n_resolved": 0,
@@ -4181,21 +4180,24 @@
  },
  "GO:0008169": {
   "n_resolved": 0,
-  "n_uncertain": 0,
-  "n_issues": 1,
+  "n_uncertain": 1,
+  "n_issues": 0,
   "merged": [],
   "unmerged_agreements": [],
   "unconfirmed_singletons": [],
-  "uncertain": [],
-  "issues": [
+  "uncertain": [
    {
     "accession": "Q8IZ69",
-    "reason": "unresolved_pointer",
-    "detail": "no matching NONE 0-0 on record for Q8IZ69 -- pointer didn't resolve",
-    "reported_feature": "NONE 0-0",
-    "reasoning": "The annotated features for Q8IZ69 do not provide a distinctive structural or functional basis that uniquely explains the molecular function of C-methyltransferase activity. While some features are relevant to the protein's structure, they are generic and could be found in other proteins with similar domains. Thus, there is no clear evidence that these features directly account for the specific fun"
+    "go_id": "GO:0008169",
+    "feature_type": "BINDING",
+    "start": 410,
+    "end": 411,
+    "signal_kind": "ligand",
+    "signal_value": "S-adenosyl-L-methionine",
+    "reasoning": "The \"BINDING\" feature with coordinates and ligand information suggests the protein interacts with S-adenosyl-L-methionine, a methyl donor, but does not directly explain why it carries the specific molecular function of C-methyltransferase activity."
    }
-  ]
+  ],
+  "issues": []
  },
  "GO:0008172": {
   "n_resolved": 0,

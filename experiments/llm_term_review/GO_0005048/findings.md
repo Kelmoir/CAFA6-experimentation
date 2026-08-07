@@ -10,6 +10,6 @@ reasoning: (no reasoning extracted from model response)
 ---
 ## Q06815 GO:0005048
 verdict: UNCERTAIN
-feature: NONE 0-0
-reasoning: The annotated features do not provide a distinctive or plausibly explanatory structural/functional basis for the "signal sequence binding" GO term.
+feature: DOMAIN 60-230
+reasoning: The "MRH" note in the domain suggests a potential involvement in signal sequence recognition, but without direct evidence linking this domain to the specific molecular function of "signal sequence binding," the connection remains uncertain.
 ---

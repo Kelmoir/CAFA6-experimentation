@@ -1,6 +1,17 @@
 {
   "resolved": [],
-  "uncertain": [],
+  "uncertain": [
+    {
+      "accession": "Q9Y2W3",
+      "go_id": "GO:0005356",
+      "feature_type": "REGION",
+      "start": 293,
+      "end": 339,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The presence of a disordered region in Q9Y2W3 does not directly account for the specific molecular function of D-glucose:proton symporter activity, as disordered regions are not distinctive to this function."
+    }
+  ],
   "issues": [
     {
       "accession": "P58355",
@@ -11,13 +22,6 @@
       "accession": "Q9LT15",
       "reason": "none_verdict",
       "reasoning": "The presence of multiple binding sites for beta-D-glucose does not uniquely support the specific molecular function of \"D-glucose:proton symporter activity\" and is therefore not a distinctive feature."
-    },
-    {
-      "accession": "Q9Y2W3",
-      "reason": "unresolved_pointer",
-      "detail": "no matching NONE 0-0 on record for Q9Y2W3 -- pointer didn't resolve",
-      "reported_feature": "NONE 0-0",
-      "reasoning": "The domain/family cross-references indicate that Q9Y2W3 is a member of the MFS family, which includes proteins involved in membrane transport. However, these are generic indicators and do not specifically explain why this protein carries the function \"D-glucose:proton symporter activity.\""
     }
   ]
 }

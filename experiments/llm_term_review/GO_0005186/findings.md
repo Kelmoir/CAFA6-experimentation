@@ -9,7 +9,7 @@ feature: TYPE 0-0
 reasoning: The absence of any MF-relevant positional features in P11588's annotated data means there is no plausible explanation for why it carries the "pheromone activity" GO term.
 ---
 ## Q3LHH8 GO:0005186
-verdict: UNCERTAIN
-feature: note 66-67
-reasoning: The annotated feature is generic and does not provide a specific structural or functional basis that distinguishes Q3LHH8 from other proteins carrying the "pheromone activity" GO term.
+verdict: NONE
+feature: NONE 0-0
+reasoning: (no reasoning extracted from model response)
 ---

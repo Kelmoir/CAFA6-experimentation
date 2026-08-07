@@ -14,10 +14,8 @@
     },
     {
       "accession": "Q3LHH8",
-      "reason": "unresolved_pointer",
-      "detail": "no matching note 66-67 on record for Q3LHH8 -- pointer didn't resolve",
-      "reported_feature": "note 66-67",
-      "reasoning": "The annotated feature is generic and does not provide a specific structural or functional basis that distinguishes Q3LHH8 from other proteins carrying the \"pheromone activity\" GO term."
+      "reason": "none_verdict",
+      "reasoning": "(no reasoning extracted from model response)"
     }
   ]
 }
