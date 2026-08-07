@@ -3273,6 +3273,36 @@
    }
   ]
  },
+ "GO:0004925": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fibronectin type-III 2",
+    "accessions": [
+     "P05710"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q08501",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly or specifically explain the molecular function of \"prolactin receptor activity\" for protein Q08501."
+   },
+   {
+    "accession": "Q8K4B4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q8K4B4 provides a specific structural or functional explanation for \"prolactin receptor activity,\" which is a molecular function that requires more targeted evidence."
+   }
+  ]
+ },
  "GO:0004933": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -3302,6 +3332,64 @@
     "accession": "D6VTK4",
     "reason": "none_verdict",
     "reasoning": "(no reasoning extracted from model response)"
+   }
+  ]
+ },
+ "GO:0004955": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P37231",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
+   },
+   {
+    "accession": "Q8R0S9",
+    "reason": "none_verdict",
+    "reasoning": "The lack of any MFS-specific positional feature in Q8R0S9 means that there is no direct structural or functional evidence to support the assignment of \"prostaglandin receptor activity\" as its molecular function."
+   },
+   {
+    "accession": "Q9R261",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9R261 do not include any distinctive structural or functional elements that would plausibly explain why it carries the molecular function \"prostaglandin receptor activity.\""
+   }
+  ]
+ },
+ "GO:0004996": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P16473",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for P16473 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The domain/family cross-reference \"TSH_rcpt\" (from InterPro) is directly related to thyroid-stimulating hormone receptor activity and provides a strong, specific basis for the molecular function."
+   },
+   {
+    "accession": "P47750",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for P47750 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The \"TSH_rcpt\" domain in P47750 is directly related to thyroid-stimulating hormone receptor activity, making it the most plausible explanation for why this protein carries the GO term."
+   },
+   {
+    "accession": "Q06710",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q06710 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The provided annotated features do not specifically or plausibly explain why protein Q06710 carries the GO term \"thyroid-stimulating hormone receptor activity.\" While the Homeodomain-like_sf domain is relevant to transcription factor activity, it is not directly tied to TSH binding or signaling. The other features are either generic (e.g., DNA-binding regions, subdomains) or disordered regions, wh"
    }
   ]
  },
@@ -3506,6 +3594,25 @@
     "reasoning": "The binding of substrate (specifically S-adenosyl-L-methionine) to the protein is a generic feature shared by many enzymes and does not directly explain why this particular protein carries the term \"S-methyltransferase activity.\""
    }
   ],
+  "issues": []
+ },
+ "GO:0008196": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Critical for endocytosis",
+    "accessions": [
+     "P98163"
+    ]
+   }
+  ],
+  "uncertain": [],
   "issues": []
  }
 }

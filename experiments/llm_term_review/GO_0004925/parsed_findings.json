@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "P05710",
+      "go_id": "GO:0004925",
+      "feature_type": "DOMAIN",
+      "start": 123,
+      "end": 224,
+      "signal_kind": "text",
+      "signal_value": "Fibronectin type-III 2",
+      "reasoning": "The \"Growth/epo_recpt_lig-bind\" domain (INTERPRO:IPR015152) is specific to the function of a receptor and directly relates to ligand binding, which is essential for initiating signal transduction."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q08501",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly or specifically explain the molecular function of \"prolactin receptor activity\" for protein Q08501."
+    },
+    {
+      "accession": "Q8K4B4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q8K4B4 provides a specific structural or functional explanation for \"prolactin receptor activity,\" which is a molecular function that requires more targeted evidence."
+    }
+  ]
+}

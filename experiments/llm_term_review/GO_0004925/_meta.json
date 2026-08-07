@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0004925",
+  "name": "prolactin receptor activity",
+  "def": "Combining with prolactin and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "P05710",
+    "Q08501",
+    "Q8K4B4"
+  ],
+  "assigned_accessions": [
+    "P05710",
+    "Q08501",
+    "Q8K4B4"
+  ]
+}
