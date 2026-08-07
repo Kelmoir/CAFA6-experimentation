@@ -4879,6 +4879,102 @@
    }
   ]
  },
+ "GO:0005527": {
+  "n_resolved": 1,
+  "n_uncertain": 3,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PPIase FKBP-type",
+    "accessions": [
+     "Q06205"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P20081",
+    "go_id": "GO:0005527",
+    "feature_type": "DOMAIN",
+    "start": 25,
+    "end": 114,
+    "signal_kind": "text",
+    "signal_value": "PPIase FKBP-type",
+    "reasoning": "The domain \"FKBP-type PPIase\" is associated with FKBP proteins, which are known to bind macrolides, but no positional feature explicitly states that this protein binds macrolides. Thus, the annotation remains uncertain."
+   },
+   {
+    "accession": "P28870",
+    "go_id": "GO:0005527",
+    "feature_type": "DOMAIN",
+    "start": 22,
+    "end": 122,
+    "signal_kind": "text",
+    "signal_value": "PPIase FKBP-type",
+    "reasoning": "(no reasoning extracted from model response)"
+   },
+   {
+    "accession": "P62942",
+    "go_id": "GO:0005527",
+    "feature_type": "DOMAIN",
+    "start": 19,
+    "end": 108,
+    "signal_kind": "text",
+    "signal_value": "PPIase FKBP-type",
+    "reasoning": "The annotated feature for P62942 does not specifically indicate macrolide binding and is shared by many other proteins, making it insufficient to explain the GO term with confidence."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P38911",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
+   }
+  ]
+ },
+ "GO:0005542": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "dUMP",
+    "accessions": [
+     "P04818"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A6H5Y3",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for A6H5Y3 do not include a specific binding site for folic acid or its derivatives, and the domains mentioned are related to other cofactors rather than folic acid. Thus, there is no plausible explanation for why this protein carries the GO term \"folic acid binding\" based on the provided evidence."
+   },
+   {
+    "accession": "P00375",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
+   },
+   {
+    "accession": "P0ABQ4",
+    "reason": "none_verdict",
+    "reasoning": "response ended (finish_reason=stop) without VERDICT/FEATURE -- raw text saved to experiments/llm_term_review/GO_0005542/raw_debug.log, inspect for format drift"
+   },
+   {
+    "accession": "Q9D110",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
+   }
+  ]
+ },
  "GO:0008012": {
   "n_resolved": 0,
   "n_uncertain": 0,

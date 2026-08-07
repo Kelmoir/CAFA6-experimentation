@@ -1,0 +1,20 @@
+{
+  "go_id": "GO:0005542",
+  "name": "folic acid binding",
+  "def": "Binding to folic acid, pteroylglutamic acid. Folic acid is widely distributed as a member of the vitamin B complex and is essential for the synthesis of purine and pyrimidines.",
+  "n_proteins_total": 42,
+  "sampled_accessions": [
+    "A6H5Y3",
+    "P00375",
+    "P04818",
+    "P0ABQ4",
+    "Q9D110"
+  ],
+  "assigned_accessions": [
+    "A6H5Y3",
+    "P00375",
+    "P04818",
+    "P0ABQ4",
+    "Q9D110"
+  ]
+}
