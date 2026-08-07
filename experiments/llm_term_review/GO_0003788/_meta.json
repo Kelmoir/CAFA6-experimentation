@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0003788",
+  "name": "actin monomer sequestering activity",
+  "def": "Binding to an actin monomer to prevent it from interacting with other partners or to inhibit its localization to the area of the cell or complex where it is active.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P20065",
+    "P62328",
+    "P62329"
+  ],
+  "assigned_accessions": [
+    "P20065",
+    "P62328",
+    "P62329"
+  ]
+}

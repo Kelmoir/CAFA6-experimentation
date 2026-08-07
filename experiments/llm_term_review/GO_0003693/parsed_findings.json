@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q7M3K2",
+      "go_id": "GO:0003693",
+      "feature_type": "ZN_FING",
+      "start": 0,
+      "end": 77,
+      "signal_kind": "text",
+      "signal_value": "THAP-type",
+      "reasoning": "The THAP-type zinc finger domain is a DNA-binding module specifically used by P-element transposases to recognize and bind their target P-element DNA sequences; this domain directly mediates the molecular function of P-element binding."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

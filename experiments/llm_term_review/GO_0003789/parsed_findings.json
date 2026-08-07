@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O15902",
+      "go_id": "GO:0003789",
+      "feature_type": "DOMAIN",
+      "start": 3,
+      "end": 118,
+      "signal_kind": "text",
+      "signal_value": "ADF-H",
+      "reasoning": "The ADF-H domain (Actin-Depolymerizing Factor Homology) is the well-characterized catalytic domain defining ADF/cofilin proteins, whose function IS actin filament severing. This protein's ADF-H domain spans positions 3-118 and directly accounts for the annotated GO term."
+    },
+    {
+      "accession": "P78929",
+      "go_id": "GO:0003789",
+      "feature_type": "DOMAIN",
+      "start": 4,
+      "end": 135,
+      "signal_kind": "text",
+      "signal_value": "ADF-H",
+      "reasoning": "The ADF-H domain is the canonical, specific catalytic/binding domain of ADF/cofilin proteins, whose defining function is actin filament severing and depolymerization\u2014a direct, well-characterized structural basis for this GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P10733",
+      "reason": "none_verdict",
+      "reasoning": "The annotated BINDING site for PIP2 is a regulatory modulator of actin-severing, not the structural basis for the function; the actual actin-binding/severing domain lacks positional coordinates."
+    }
+  ]
+}

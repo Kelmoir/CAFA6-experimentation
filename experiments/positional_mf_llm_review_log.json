@@ -1597,6 +1597,43 @@
   ],
   "issues": []
  },
+ "GO:0002153": {
+  "n_resolved": 0,
+  "n_uncertain": 2,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9WU56",
+    "go_id": "GO:0002153",
+    "feature_type": "ACT_SITE",
+    "start": 141,
+    "end": 142,
+    "signal_kind": "text",
+    "signal_value": "Nucleophile",
+    "reasoning": "Q9WU56 is a pseudouridine synthase that generically binds and modifies RNA, consistent with potential SRA binding. However, the only annotated feature is a \"Nucleophile\" active site\u2014an extremely generic catalytic descriptor used across unrelated enzyme families that does not specifically explain SRA-RNA binding rather than any other RNA substrate."
+   },
+   {
+    "accession": "Q9Y606",
+    "go_id": "GO:0002153",
+    "feature_type": "ACT_SITE",
+    "start": 145,
+    "end": 146,
+    "signal_kind": "text",
+    "signal_value": "Nucleophile",
+    "reasoning": "As a pseudouridine synthase, Q9Y606 plausibly binds RNA substrates including SRA; however, the \"Nucleophile\" active-site descriptor is generic across many enzyme families and does not specifically identify SRA-RNA binding versus other RNA substrates this enzyme could modify."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P63058",
+    "reason": "none_verdict",
+    "reasoning": "P63058 is a nuclear hormone receptor with annotated DNA-binding and ligand-binding domains for thyroid hormone, but no RNA-binding motifs or domains. The GO term requires RNA binding (SRA), which has no structural basis in the annotated features."
+   }
+  ]
+ },
  "GO:0002948": {
   "n_resolved": 0,
   "n_uncertain": 1,
@@ -1638,5 +1675,92 @@
    }
   ],
   "issues": []
+ },
+ "GO:0003693": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ZN_FING",
+    "value": "THAP-type",
+    "accessions": [
+     "Q7M3K2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0003788": {
+  "n_resolved": 0,
+  "n_uncertain": 3,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P20065",
+    "go_id": "GO:0003788",
+    "feature_type": "REGION",
+    "start": 0,
+    "end": 50,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "P20065 is a beta-thymosin family member, and thymosin beta-4 proteins are known actin-sequestering molecules that function through intrinsic disorder, though the feature annotation alone lacks specific mention of the actin-binding mechanism."
+   },
+   {
+    "accession": "P62328",
+    "go_id": "GO:0003788",
+    "feature_type": "REGION",
+    "start": 0,
+    "end": 44,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "Beta-thymosin proteins sequester actin via their disordered structure, and the REGION 0-44 Disordered annotation captures this property; however, without explicit actin-binding specification, a bare \"Disordered\" label remains generic across many proteins."
+   },
+   {
+    "accession": "P62329",
+    "go_id": "GO:0003788",
+    "feature_type": "REGION",
+    "start": 0,
+    "end": 44,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "Beta-thymosins function as actin-sequestering proteins through their unstructured nature, and this protein's disordered region is mechanistically relevant; however, the generic \"Disordered\" label lacks explicit actin-binding annotation and is too common across unrelated proteins to be definitively diagnostic on its own."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0003789": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ADF-H",
+    "accessions": [
+     "O15902",
+     "P78929"
+    ],
+    "reason": "resolved to ['InterPro:IPR002108', 'InterPro:IPR029006', 'PROSITE:PS51263', 'Pfam:PF00241'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR002108': 64, 'InterPro:IPR029006': 131, 'PROSITE:PS51263': 64, 'Pfam:PF00241': 64})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P10733",
+    "reason": "none_verdict",
+    "reasoning": "The annotated BINDING site for PIP2 is a regulatory modulator of actin-severing, not the structural basis for the function; the actual actin-binding/severing domain lacks positional coordinates."
+   }
+  ]
  }
 }

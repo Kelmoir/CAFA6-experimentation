@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9WU56",
+      "go_id": "GO:0002153",
+      "feature_type": "ACT_SITE",
+      "start": 141,
+      "end": 142,
+      "signal_kind": "text",
+      "signal_value": "Nucleophile",
+      "reasoning": "Q9WU56 is a pseudouridine synthase that generically binds and modifies RNA, consistent with potential SRA binding. However, the only annotated feature is a \"Nucleophile\" active site\u2014an extremely generic catalytic descriptor used across unrelated enzyme families that does not specifically explain SRA-RNA binding rather than any other RNA substrate."
+    },
+    {
+      "accession": "Q9Y606",
+      "go_id": "GO:0002153",
+      "feature_type": "ACT_SITE",
+      "start": 145,
+      "end": 146,
+      "signal_kind": "text",
+      "signal_value": "Nucleophile",
+      "reasoning": "As a pseudouridine synthase, Q9Y606 plausibly binds RNA substrates including SRA; however, the \"Nucleophile\" active-site descriptor is generic across many enzyme families and does not specifically identify SRA-RNA binding versus other RNA substrates this enzyme could modify."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P63058",
+      "reason": "none_verdict",
+      "reasoning": "P63058 is a nuclear hormone receptor with annotated DNA-binding and ligand-binding domains for thyroid hormone, but no RNA-binding motifs or domains. The GO term requires RNA binding (SRA), which has no structural basis in the annotated features."
+    }
+  ]
+}
