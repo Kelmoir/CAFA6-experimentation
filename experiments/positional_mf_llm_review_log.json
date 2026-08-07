@@ -2679,6 +2679,104 @@
    }
   ]
  },
+ "GO:0004661": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q8BUY9",
+    "go_id": "GO:0004661",
+    "feature_type": "BINDING",
+    "start": 218,
+    "end": 221,
+    "signal_kind": "ligand",
+    "signal_value": "geranylgeranyl diphosphate",
+    "reasoning": "The binding of geranylgeranyl diphosphate is consistent with the function of geranylgeranyltransferases, but it is not distinctive enough to explain the molecular function with certainty."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q9LX33",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9LX33 do not include any MF-relevant positional information that could plausibly explain why it carries the GO term 0004661."
+   },
+   {
+    "accession": "Q9Y765",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9Y765 do not include any MF-relevant positional data that could plausibly explain the specific molecular function of GO:0004661. While domain classifications suggest a related enzymatic role, they are not distinctive enough to directly account for the defined function."
+   }
+  ]
+ },
+ "GO:0004662": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "geranylgeranyl diphosphate",
+    "accessions": [
+     "O80642",
+     "Q5EAD5"
+    ],
+    "reason": "ligand already claimed by GO:0019840 elsewhere in the dictionary -- ligand_to_go is a plain dict, a second claim would silently overwrite it"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LX33",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q9LX33 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The presence of domain cross-references indicating prenyl transferase activity supports the plausibility of the enzyme carrying the specified molecular function, even though no positional feature is explicitly noted."
+   }
+  ]
+ },
+ "GO:0004663": {
+  "n_resolved": 0,
+  "n_uncertain": 2,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P20133",
+    "go_id": "GO:0004663",
+    "feature_type": "BINDING",
+    "start": 182,
+    "end": 185,
+    "signal_kind": "ligand",
+    "signal_value": "geranylgeranyl diphosphate",
+    "reasoning": "The multiple binding sites for geranylgeranyl diphosphate suggest enzymatic activity but do not provide a specific structural basis for the molecular function as defined by the GO term."
+   },
+   {
+    "accession": "Q84J75",
+    "go_id": "GO:0004663",
+    "feature_type": "BINDING",
+    "start": 183,
+    "end": 186,
+    "signal_kind": "ligand",
+    "signal_value": "geranylgeranyl diphosphate",
+    "reasoning": "The presence of multiple binding sites for geranylgeranyl diphosphate does not uniquely identify the enzymatic activity described by GO:0004663, and Zn(2+) binding is a generic feature found in many proteins with catalytic roles."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q61239",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region in Q61239 does not provide specific evidence for the enzymatic activity of Rab geranylgeranyltransferase, as many proteins with similar domain cross-references may have disordered regions without being directly involved in this particular function."
+   }
+  ]
+ },
  "GO:0004734": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -2829,5 +2927,21 @@
    }
   ],
   "issues": []
+ },
+ "GO:0008012": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q26416",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any MF-relevant positional feature and the lack of specificity in the domain/family cross-references make it impossible to determine a plausible structural/functional basis for the GO term."
+   }
+  ]
  }
 }

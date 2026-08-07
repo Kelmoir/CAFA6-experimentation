@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q26416",
+      "reason": "none_verdict",
+      "reasoning": "The absence of any MF-relevant positional feature and the lack of specificity in the domain/family cross-references make it impossible to determine a plausible structural/functional basis for the GO term."
+    }
+  ]
+}

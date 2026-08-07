@@ -1,0 +1,34 @@
+{
+  "resolved": [
+    {
+      "accession": "O80642",
+      "go_id": "GO:0004662",
+      "feature_type": "BINDING",
+      "start": 231,
+      "end": 234,
+      "signal_kind": "ligand",
+      "signal_value": "geranylgeranyl diphosphate",
+      "reasoning": "The binding site for geranylgeranyl diphosphate (BINDING 231-234) directly supports the catalytic activity described in the GO term, making it a plausible structural/functional basis for the molecular function."
+    },
+    {
+      "accession": "Q5EAD5",
+      "go_id": "GO:0004662",
+      "feature_type": "BINDING",
+      "start": 218,
+      "end": 221,
+      "signal_kind": "ligand",
+      "signal_value": "geranylgeranyl diphosphate",
+      "reasoning": "Multiple binding sites for geranylgeranyl diphosphate suggest the structural capability to perform the catalytic activity described by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9LX33",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for Q9LX33 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The presence of domain cross-references indicating prenyl transferase activity supports the plausibility of the enzyme carrying the specified molecular function, even though no positional feature is explicitly noted."
+    }
+  ]
+}
