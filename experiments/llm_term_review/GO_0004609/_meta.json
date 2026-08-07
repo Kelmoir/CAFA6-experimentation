@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0004609",
+  "name": "phosphatidylserine decarboxylase activity",
+  "def": "Catalysis of the reaction: H+ + phosphatidyl-L-serine = CO2 + phosphatidylethanolamine.",
+  "n_proteins_total": 21,
+  "sampled_accessions": [
+    "P13221",
+    "P17174",
+    "Q84V22"
+  ],
+  "assigned_accessions": [
+    "P13221",
+    "P17174",
+    "Q84V22"
+  ]
+}

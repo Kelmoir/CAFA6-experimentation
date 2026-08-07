@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0004656",
+  "name": "procollagen-proline 4-dioxygenase activity",
+  "def": "Catalysis of the reaction: procollagen L-proline + 2-oxoglutarate + O2 = procollagen trans-4-hydroxy-L-proline + succinate + CO2.",
+  "n_proteins_total": 23,
+  "sampled_accessions": [
+    "F4JAU3",
+    "F4JZ24",
+    "Q9LN20"
+  ],
+  "assigned_accessions": [
+    "F4JAU3",
+    "F4JZ24",
+    "Q9LN20"
+  ]
+}

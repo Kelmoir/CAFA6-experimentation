@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0004660",
+  "name": "protein farnesyltransferase activity",
+  "def": "Catalysis of the reaction: L-cysteinyl-[protein] + (2E,6E)-farnesyl diphosphate = S-(2E,6E)-farnesyl-L-cysteinyl-[protein] + diphosphate.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "O60052",
+    "P49354",
+    "Q9Y765"
+  ],
+  "assigned_accessions": [
+    "O60052",
+    "P49354",
+    "Q9Y765"
+  ]
+}

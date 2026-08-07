@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0005416",
+  "name": "amino acid:monoatomic cation symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: amino acid(out) + cation(out) = amino acid(in) + cation(in).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9W4C5"
+  ],
+  "assigned_accessions": [
+    "Q9W4C5"
+  ]
+}
