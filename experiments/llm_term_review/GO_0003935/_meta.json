@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0003935",
+  "name": "GTP cyclohydrolase II activity",
+  "def": "Catalysis of the reaction: GTP + 4 H2O = 2,5-diamino-6-hydroxy-4-(5-phosphoribosylamino)-pyrimidine + formate + 3 H+ + 2 phosphate.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "P47924",
+    "Q946J8",
+    "Q9US41"
+  ],
+  "assigned_accessions": [
+    "P47924",
+    "Q946J8",
+    "Q9US41"
+  ]
+}

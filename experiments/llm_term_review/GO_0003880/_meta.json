@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0003880",
+  "name": "protein C-terminal carboxyl O-methyltransferase activity",
+  "def": "Catalysis of the transfer of a methyl group to the oxygen atom of a carboxyl group at the C-terminal of a protein.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O60725",
+    "Q9UIC8"
+  ],
+  "assigned_accessions": [
+    "O60725",
+    "Q9UIC8"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9VSL3",
+      "go_id": "GO:0004734",
+      "feature_type": "DOMAIN",
+      "start": 19,
+      "end": 102,
+      "signal_kind": "text",
+      "signal_value": "GST N-terminal",
+      "reasoning": "The GST domain is directly associated with glutathione conjugation and fits the catalytic context of the GO term; it is distinctive enough to plausibly support this assignment despite some generic elements in the profile."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

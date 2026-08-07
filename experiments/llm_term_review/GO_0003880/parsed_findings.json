@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "O60725",
+      "go_id": "GO:0003880",
+      "feature_type": "BINDING",
+      "start": 189,
+      "end": 190,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The repeated presence of SAM as the ligand strongly supports the molecular function of catalyzing methyl group transfer to the carboxyl terminus, making this the most plausible explanation."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9UIC8",
+      "reason": "none_verdict",
+      "reasoning": "response truncated/malformed before VERDICT or FEATURE appeared -- raise --max-tokens"
+    }
+  ]
+}

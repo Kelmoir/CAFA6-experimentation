@@ -1883,5 +1883,135 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0003877": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P37879"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5XIM7",
+    "reason": "none_verdict",
+    "reasoning": "response truncated/malformed before VERDICT or FEATURE appeared -- raise --max-tokens"
+   },
+   {
+    "accession": "Q99MN1",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q99MN1 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The protein carries a feature directly linked to ATP-dependent nucleotide transfer, consistent with the GO term's definition and the presence of multiple ATP-binding annotations across related domains."
+   }
+  ]
+ },
+ "GO:0003880": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "O60725"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UIC8",
+    "reason": "none_verdict",
+    "reasoning": "response truncated/malformed before VERDICT or FEATURE appeared -- raise --max-tokens"
+   }
+  ]
+ },
+ "GO:0003935": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Chromo 1",
+    "accessions": [
+     "Q946J8"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "GTP",
+    "accessions": [
+     "Q9US41"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P47924",
+    "reason": "unresolved_pointer",
+    "detail": "no matching BINDING 328-543 on record for P47924 -- pointer didn't resolve",
+    "reported_feature": "BINDING 328-543",
+    "reasoning": "The annotation explicitly references the enzyme class and activity, aligning precisely with the GO term definition."
+   }
+  ]
+ },
+ "GO:0004039": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ATP-grasp",
+    "accessions": [
+     "P32528"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0004734": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "GST N-terminal",
+    "accessions": [
+     "Q9VSL3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

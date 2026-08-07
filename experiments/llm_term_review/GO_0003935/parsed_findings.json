@@ -1,0 +1,34 @@
+{
+  "resolved": [
+    {
+      "accession": "Q946J8",
+      "go_id": "GO:0003935",
+      "feature_type": "DOMAIN",
+      "start": 107,
+      "end": 167,
+      "signal_kind": "text",
+      "signal_value": "Chromo 1",
+      "reasoning": "Domain annotations with PRUSITE rules align with the structural rearrangements needed for GTPase activity, supporting a role in catalysis beyond a simple cofactor binding site."
+    },
+    {
+      "accession": "Q9US41",
+      "go_id": "GO:0003935",
+      "feature_type": "BINDING",
+      "start": 267,
+      "end": 272,
+      "signal_kind": "ligand",
+      "signal_value": "GTP",
+      "reasoning": "The presence of GTP as a ligand in this binding site directly supports the catalytic activity described by GO:0003935."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P47924",
+      "reason": "unresolved_pointer",
+      "detail": "no matching BINDING 328-543 on record for P47924 -- pointer didn't resolve",
+      "reported_feature": "BINDING 328-543",
+      "reasoning": "The annotation explicitly references the enzyme class and activity, aligning precisely with the GO term definition."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "resolved": [
+    {
+      "accession": "P37879",
+      "go_id": "GO:0003877",
+      "feature_type": "BINDING",
+      "start": 322,
+      "end": 325,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The presence of ATP as a ligand in this binding event, coupled with its consistent annotation across multiple positions, most plausibly supports the functional interpretation of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q5XIM7",
+      "reason": "none_verdict",
+      "reasoning": "response truncated/malformed before VERDICT or FEATURE appeared -- raise --max-tokens"
+    },
+    {
+      "accession": "Q99MN1",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for Q99MN1 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The protein carries a feature directly linked to ATP-dependent nucleotide transfer, consistent with the GO term's definition and the presence of multiple ATP-binding annotations across related domains."
+    }
+  ]
+}
