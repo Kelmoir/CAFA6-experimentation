@@ -1,0 +1,23 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P58355",
+      "reason": "none_verdict",
+      "reasoning": "There is no annotated feature in P58355 that directly explains the molecular function of D-glucose:proton symporter activity, as the domain classifications are too generic and do not provide a specific structural or functional basis for this function."
+    },
+    {
+      "accession": "Q9LT15",
+      "reason": "none_verdict",
+      "reasoning": "The presence of multiple binding sites for beta-D-glucose does not uniquely support the specific molecular function of \"D-glucose:proton symporter activity\" and is therefore not a distinctive feature."
+    },
+    {
+      "accession": "Q9Y2W3",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for Q9Y2W3 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The domain/family cross-references indicate that Q9Y2W3 is a member of the MFS family, which includes proteins involved in membrane transport. However, these are generic indicators and do not specifically explain why this protein carries the function \"D-glucose:proton symporter activity.\""
+    }
+  ]
+}

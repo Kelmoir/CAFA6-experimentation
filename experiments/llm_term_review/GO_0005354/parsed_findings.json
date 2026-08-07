@@ -1,0 +1,23 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P13181",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for P13181 do not provide a specific structural or functional basis that directly accounts for the molecular function of \"galactose transmembrane transporter activity.\""
+    },
+    {
+      "accession": "P42833",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for P42833 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The annotated features do not provide a clear, specific positional feature that directly explains the molecular function of galactose transmembrane transporter activity. While the protein is associated with domains and families related to sugar transporters, this does not confirm the presence of a unique structural element or residue that is diagnostic for the GO term."
+    },
+    {
+      "accession": "Q8VZ80",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q8VZ80 do not provide a clear structural or functional basis for the GO term \"galactose transmembrane transporter activity.\" While the protein's domain and family cross-references suggest it is related to MFS domains involved in sugar transport, the disordered regions alone are not sufficient to explain the specific molecular function."
+    }
+  ]
+}

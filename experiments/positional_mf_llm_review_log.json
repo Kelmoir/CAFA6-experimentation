@@ -3988,6 +3988,94 @@
    }
   ]
  },
+ "GO:0005352": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P38156",
+    "go_id": "GO:0005352",
+    "feature_type": "REGION",
+    "start": 0,
+    "end": 48,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The presence of disordered regions does not specifically account for the proton symporter activity of alpha-glucosides, as disordered regions can be involved in various transport functions and are not diagnostic for this particular molecular function."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "N1PA11",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for N1PA11 do not provide direct evidence about the molecular function of alpha-glucoside:proton symporter activity. Disordered regions and domain/family cross-references are generic signals that apply to many proteins and do not specifically explain this GO term."
+   },
+   {
+    "accession": "P53048",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P53048 do not provide a specific structural or functional basis that directly explains the alpha-glucoside:proton symporter activity. Disordered regions and domain cross-references are too generic to be definitive evidence for this particular molecular function."
+   }
+  ]
+ },
+ "GO:0005354": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P13181",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P13181 do not provide a specific structural or functional basis that directly accounts for the molecular function of \"galactose transmembrane transporter activity.\""
+   },
+   {
+    "accession": "P42833",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for P42833 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The annotated features do not provide a clear, specific positional feature that directly explains the molecular function of galactose transmembrane transporter activity. While the protein is associated with domains and families related to sugar transporters, this does not confirm the presence of a unique structural element or residue that is diagnostic for the GO term."
+   },
+   {
+    "accession": "Q8VZ80",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q8VZ80 do not provide a clear structural or functional basis for the GO term \"galactose transmembrane transporter activity.\" While the protein's domain and family cross-references suggest it is related to MFS domains involved in sugar transport, the disordered regions alone are not sufficient to explain the specific molecular function."
+   }
+  ]
+ },
+ "GO:0005356": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P58355",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature in P58355 that directly explains the molecular function of D-glucose:proton symporter activity, as the domain classifications are too generic and do not provide a specific structural or functional basis for this function."
+   },
+   {
+    "accession": "Q9LT15",
+    "reason": "none_verdict",
+    "reasoning": "The presence of multiple binding sites for beta-D-glucose does not uniquely support the specific molecular function of \"D-glucose:proton symporter activity\" and is therefore not a distinctive feature."
+   },
+   {
+    "accession": "Q9Y2W3",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q9Y2W3 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The domain/family cross-references indicate that Q9Y2W3 is a member of the MFS family, which includes proteins involved in membrane transport. However, these are generic indicators and do not specifically explain why this protein carries the function \"D-glucose:proton symporter activity.\""
+   }
+  ]
+ },
  "GO:0005360": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -4250,5 +4338,26 @@
     "reasoning": "The protein P37677 lacks any MF-relevant positional features and its domain/family cross-references are too generic to directly explain the specific molecular function of L-xylulokinase activity."
    }
   ]
+ },
+ "GO:0008748": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P77258",
+    "go_id": "GO:0008748",
+    "feature_type": "BINDING",
+    "start": 100,
+    "end": 101,
+    "signal_kind": "ligand",
+    "signal_value": "FMN",
+    "reasoning": "The multiple FMN-binding sites suggest functional relevance but do not directly explain the specific molecular function of N-ethylmaleimide reductase activity."
+   }
+  ],
+  "issues": []
  }
 }
