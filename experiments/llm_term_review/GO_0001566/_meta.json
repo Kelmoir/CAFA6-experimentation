@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0001566",
+  "name": "non-kinase phorbol ester receptor activity",
+  "def": "Combining with a phorbol ester and transmitting the signal by a mechanism independent of kinase activity.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q8K0T7",
+    "Q9Z1N9"
+  ],
+  "assigned_accessions": [
+    "Q8K0T7",
+    "Q9Z1N9"
+  ]
+}

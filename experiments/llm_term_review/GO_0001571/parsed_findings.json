@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q91V87",
+      "go_id": "GO:0001571",
+      "feature_type": "DOMAIN",
+      "start": 24,
+      "end": 111,
+      "signal_kind": "text",
+      "signal_value": "Ig-like C2-type 1",
+      "reasoning": "The Ig-like C2-type domain is the characterized FGF ligand-binding region in fibroblast growth factor receptors; this protein's FGFRL classification confirms membership in the FGF receptor family."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

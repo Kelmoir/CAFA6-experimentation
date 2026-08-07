@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "P47898",
+      "go_id": "GO:0001586",
+      "feature_type": "BINDING",
+      "start": 120,
+      "end": 121,
+      "signal_kind": "ligand",
+      "signal_value": "serotonin",
+      "reasoning": "Serotonin-binding site with strong experimental evidence (PDB structures); serotonin binding is the core requirement of the GO term definition, and is ligand-specific to serotonin receptors, not a generic cofactor."
+    },
+    {
+      "accession": "P28565",
+      "go_id": "GO:0001586",
+      "feature_type": "BINDING",
+      "start": 114,
+      "end": 115,
+      "signal_kind": "ligand",
+      "signal_value": "serotonin",
+      "reasoning": "Serotonin binding sites directly demonstrate the specific ligand-recognition activity central to the GO term definition; serotonin is a distinctive, non-generic ligand that specifically distinguishes this molecular function from other receptor activities."
+    },
+    {
+      "accession": "Q61224",
+      "go_id": "GO:0001586",
+      "feature_type": "BINDING",
+      "start": 114,
+      "end": 115,
+      "signal_kind": "ligand",
+      "signal_value": "serotonin",
+      "reasoning": "Serotonin binding is specific to serotonin receptors (not a generic cofactor) and is explicitly mentioned in the GO term definition as \"combining with serotonin\"; this is the most diagnostic feature distinguishing this molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

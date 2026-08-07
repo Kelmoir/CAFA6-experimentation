@@ -64,7 +64,15 @@ SEED = 42
 
 # Feature types whose free-text `note` qualifier is matched against the dictionary's
 # text_patterns (Tier 3). Excludes BINDING/DNA_BIND/DOMAIN, which have their own tiers above.
-TEXT_TIER_FEATURE_TYPES = {"ACT_SITE", "SITE", "MOTIF", "REGION"}
+# ZN_FING added after a real miss: an LLM review round merged a "phorbol-ester/dag-type" pattern
+# from a ZN_FING note (a real, corroborated, non-generic signal -- two independent proteins agreed
+# on it) but confirmed-coverage for that term stayed at 0/2, because ZN_FING wasn't in this set and
+# link_protein's per-feature loop silently skips any feature type outside BINDING/feature_type_to_go
+# /TEXT_TIER_FEATURE_TYPES -- exactly the same class of bug DOMAIN notes hit earlier (see
+# merge_llm_findings.py's module docstring), just for a feature type with no existing tier to
+# reroute to instead. METAL/CA_BIND/NP_BIND are plausibly in the same boat (unaudited, no concrete
+# failing case yet) -- not added speculatively, only fixed once a real miss surfaces one.
+TEXT_TIER_FEATURE_TYPES = {"ACT_SITE", "SITE", "MOTIF", "REGION", "ZN_FING"}
 
 MAPPING_FILES = {
     "PROSITE": GO_MAPPINGS_DIR / "prosite2go.txt",
@@ -232,10 +240,20 @@ def link_protein(accession, record, mappings, ancestors_with_depth, localization
         raw_candidates.append((f["start"], f["end"], go_id, "binding_ligand", None))
       else:
         uncovered_raw.append({"kind": "ligand", "value": ligand, "start": f["start"], "end": f["end"]})
-    elif f["type"] in localization_dict["feature_type_to_go"]:
+      continue
+
+    # feature_type_to_go and text-pattern matching are independent checks, not mutually exclusive
+    # -- a feature type can carry both a broad, type-implied GO term (e.g. any ZN_FING structurally
+    # binds zinc) and a specific, note-implied one (e.g. this particular ZN_FING's "Phorbol-ester/
+    # DAG-type" note). An earlier elif-chain here made them mutually exclusive: found via a real LLM
+    # review merge (a "phorbol-ester/dag-type" text_pattern, corroborated by 2 independent proteins)
+    # that produced zero confirmed coverage, because ZN_FING was already in feature_type_to_go
+    # (zinc ion binding) and the elif always took that branch first, so the text-pattern branch for
+    # ZN_FING was unreachable regardless of dictionary content.
+    if f["type"] in localization_dict["feature_type_to_go"]:
       go_id = localization_dict["feature_type_to_go"][f["type"]]
       raw_candidates.append((f["start"], f["end"], go_id, "feature_type", None))
-    elif f["type"] in TEXT_TIER_FEATURE_TYPES:
+    if f["type"] in TEXT_TIER_FEATURE_TYPES:
       note = (f["qualifiers"].get("note") or "").lower()
       matched = False
       for pattern, go_id in localization_dict["text_patterns"]:

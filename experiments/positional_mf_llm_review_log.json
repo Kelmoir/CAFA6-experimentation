@@ -1130,5 +1130,125 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0001537": {
+  "n_resolved": 0,
+  "n_uncertain": 3,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q8BQ86",
+    "go_id": "GO:0001537",
+    "feature_type": "BINDING",
+    "start": 190,
+    "end": 197,
+    "signal_kind": "ligand",
+    "signal_value": "3'-phosphoadenylyl sulfate",
+    "reasoning": "PAPS binding is essential for sulfotransferase activity and explicitly mentioned in the GO term definition, but PAPS-binding capacity is shared by all sulfotransferases regardless of substrate specificity and does not explain selectivity for dermatan."
+   },
+   {
+    "accession": "Q76EC5",
+    "go_id": "GO:0001537",
+    "feature_type": "BINDING",
+    "start": 189,
+    "end": 196,
+    "signal_kind": "ligand",
+    "signal_value": "3'-phosphoadenylyl sulfate",
+    "reasoning": "PAPS binding is necessary for sulfotransferase catalysis, but this cofactor-binding site is generic across essentially all sulfotransferases and doesn't explain the substrate specificity for dermatan that defines this GO term."
+   },
+   {
+    "accession": "Q8NCH0",
+    "go_id": "GO:0001537",
+    "feature_type": "BINDING",
+    "start": 154,
+    "end": 161,
+    "signal_kind": "ligand",
+    "signal_value": "3'-phosphoadenylyl sulfate",
+    "reasoning": "PAPS cofactor binding is necessary but generic across sulfotransferases; substrate specificity appears to derive from the carbohydrate-sulfotransferase domain rather than positional features alone."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0001566": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "phorbol-ester/dag-type",
+    "accessions": [
+     "Q8K0T7",
+     "Q9Z1N9"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0001571": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like C2-type 1",
+    "accessions": [
+     "Q91V87"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0001586": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "serotonin",
+    "accessions": [
+     "P28565",
+     "P47898",
+     "Q61224"
+    ],
+    "reason": "ligand already claimed by GO:0051378 elsewhere in the dictionary -- ligand_to_go is a plain dict, a second claim would silently overwrite it"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0001847": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Required for response to bacterial lipopolysaccharide (LPS)",
+    "accessions": [
+     "P08571"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }
