@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q07892",
+      "reason": "none_verdict",
+      "reasoning": "The absence of any MF-relevant positional features in the protein's annotation prevents us from identifying a specific structural or functional basis for the \"eclosion hormone activity\" GO term."
+    }
+  ]
+}

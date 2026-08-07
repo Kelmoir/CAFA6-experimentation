@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P24815",
+      "go_id": "GO:0004769",
+      "feature_type": "BINDING",
+      "start": 9,
+      "end": 15,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The multiple binding sites for NADP(+) do not directly confirm the structural basis for steroid Delta-isomerase activity, and their presence is generic across many proteins."
+    },
+    {
+      "accession": "P70245",
+      "go_id": "GO:0004769",
+      "feature_type": "DOMAIN",
+      "start": 60,
+      "end": 204,
+      "signal_kind": "text",
+      "signal_value": "EXPERA",
+      "reasoning": "The \"EXPERA\" domain note is generic and does not specifically indicate the molecular function of steroid Delta-isomerase activity."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P22071",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide a specific structural or functional basis that directly explains the \"steroid Delta-isomerase activity\" GO term, as they are generic and would apply to many unrelated proteins."
+    }
+  ]
+}
