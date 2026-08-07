@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0001532",
+  "name": "interleukin-21 receptor activity",
+  "def": "Combining with interleukin-21 and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9HBE5"
+  ],
+  "assigned_accessions": [
+    "Q9HBE5"
+  ]
+}

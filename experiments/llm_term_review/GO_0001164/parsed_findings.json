@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P25977",
+      "go_id": "GO:0001164",
+      "feature_type": "DNA_BIND",
+      "start": 111,
+      "end": 180,
+      "signal_kind": "text",
+      "signal_value": "HMG box 1",
+      "reasoning": "P25977 is annotated as UBF1 (via InterPro:IPR051762), the canonical RNA Polymerase I promoter recognition factor. Its HMG box domains are the DNA-binding modules that recognize the CORE element and UCE, the exact regulatory sequences specified by GO:0001164."
+    },
+    {
+      "accession": "P53360",
+      "go_id": "GO:0001164",
+      "feature_type": "BINDING",
+      "start": 145,
+      "end": 146,
+      "signal_kind": "ligand",
+      "signal_value": "DNA",
+      "reasoning": "P53360 is a TATA-binding protein (TBP), the core component of RNA Polymerase I transcription machinery that specifically recognizes and binds the CORE element of the promoter. This DNA-binding residue is part of the functional DNA-binding surface that mediates sequence-specific recognition of the RNA Pol I core promoter."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q6PDZ2",
+      "reason": "none_verdict",
+      "reasoning": "No positional DNA-binding features are annotated; only disordered regions are marked. Despite TAF1C domain references suggesting transcription factor involvement, the absence of any DNA_BIND or BINDING features makes it impossible to identify a structural basis for this GO term."
+    }
+  ]
+}

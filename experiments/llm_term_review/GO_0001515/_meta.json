@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0001515",
+  "name": "opioid peptide activity",
+  "def": "Naturally occurring peptide that is an opioid (any non-alkaloid having an opiate-like effect that can be reversed by naloxone or other recognized morphine antagonist). These include Leu- and Met-enkephalin, dynorphin and neoendorphin, alpha, beta, gamma and delta endorphins formed from beta-lipotropin, various pronase-resistant peptides such as beta casamorphin, and other peptides whose opiate-like action seems to be indirect.",
+  "n_proteins_total": 14,
+  "sampled_accessions": [
+    "P04094",
+    "P05421",
+    "P84814"
+  ],
+  "assigned_accessions": [
+    "P04094",
+    "P05421",
+    "P84814"
+  ]
+}

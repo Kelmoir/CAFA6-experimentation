@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "Q7TSG2",
+      "go_id": "GO:0001096",
+      "feature_type": "DOMAIN",
+      "start": 177,
+      "end": 341,
+      "signal_kind": "text",
+      "signal_value": "FCP1 homology",
+      "reasoning": "FCP1 (Phosphatase FCP1) is known to interact directly with TFIIF complex factors during transcription preinitiation; the FCP1 homology domain is the structural basis for this interaction."
+    },
+    {
+      "accession": "Q9Y5B0",
+      "go_id": "GO:0001096",
+      "feature_type": "DOMAIN",
+      "start": 177,
+      "end": 344,
+      "signal_kind": "text",
+      "signal_value": "FCP1 homology",
+      "reasoning": "FCP1 homology domain is a direct TFIIF-complex binding partner; FCP1 dephosphorylates TFIIF components during preinitiation complex formation and RNA polymerase II regulation."
+    },
+    {
+      "accession": "Q9SU25",
+      "go_id": "GO:0001096",
+      "feature_type": "REGION",
+      "start": 465,
+      "end": 543,
+      "signal_kind": "text",
+      "signal_value": "Required for CPL3 and CPL4 binding",
+      "reasoning": "This region is required for CPL3 and CPL4 binding, which are FCP1-like factors of the TFIIF complex; the protein's TFIIF-alpha and TFIIF-interaction domains confirm this is a TFIIF complex component."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -820,5 +820,315 @@
    }
   ],
   "issues": []
+ },
+ "GO:0001096": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR011947",
+     "InterPro:IPR015388",
+     "InterPro:IPR039189",
+     "InterPro:IPR058785",
+     "Pfam:PF09309",
+     "Pfam:PF26077"
+    ],
+    "accessions": [
+     "Q7TSG2",
+     "Q9Y5B0"
+    ],
+    "note": "resolved from DOMAIN note 'FCP1 homology' (2 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Required for CPL3 and CPL4 binding",
+    "accessions": [
+     "Q9SU25"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0001139": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ZN_FING",
+    "value": "TFIIB-type",
+    "accessions": [
+     "P29055"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P07273",
+    "go_id": "GO:0001139",
+    "feature_type": "DOMAIN",
+    "start": 147,
+    "end": 264,
+    "signal_kind": "text",
+    "signal_value": "TFIIS central",
+    "reasoning": "TFIIS central domain is the documented RNA polymerase II binding interface; however, TFIIS is primarily an elongation factor rather than a classical recruiting factor for Pol II complex assembly."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P32569",
+    "reason": "none_verdict",
+    "reasoning": "P32569's annotated features are only two disordered regions; the Med17 domain explaining Pol II recruitment appears only in cross-references without positional evidence."
+   }
+  ]
+ },
+ "GO:0001155": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "cchc noa-type",
+    "accessions": [
+     "Q8K3K8",
+     "Q8R5M4"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0001164": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DNA_BIND",
+    "value": "HMG box 1",
+    "accessions": [
+     "P25977"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "DNA",
+    "accessions": [
+     "P53360"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6PDZ2",
+    "reason": "none_verdict",
+    "reasoning": "No positional DNA-binding features are annotated; only disordered regions are marked. Despite TAF1C domain references suggesting transcription factor involvement, the absence of any DNA_BIND or BINDING features makes it impossible to identify a structural basis for this GO term."
+   }
+  ]
+ },
+ "GO:0001179": {
+  "n_resolved": 0,
+  "n_uncertain": 2,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P27692",
+    "go_id": "GO:0001179",
+    "feature_type": "DOMAIN",
+    "start": 381,
+    "end": 508,
+    "signal_kind": "text",
+    "signal_value": "KOW 1",
+    "reasoning": "The KOW1 domain is a protein-protein interaction module in SPT5; while SPT5 is primarily an RNA pol II factor, its KOW domains are the likely structural basis for binding to transcription factors including pol I initiation factors."
+   },
+   {
+    "accession": "P36070",
+    "go_id": "GO:0001179",
+    "feature_type": "REGION",
+    "start": 262,
+    "end": 305,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "Disordered regions can mediate flexible protein-protein interactions; this region may contribute to binding RNA polymerase I factors characteristic of RRN3 proteins, though no specific binding domain is annotated."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P32786",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region is too generic to explain specific transcription factor binding; the GO term is better explained by the RRN6-like domain identity (from cross-references) which lacks position coordinates."
+   }
+  ]
+ },
+ "GO:0001181": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Interaction with POLR1F",
+    "accessions": [
+     "B2RS91"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Histone acetyltransferase (HAT)",
+    "accessions": [
+     "Q80UV9"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q08747",
+    "go_id": "GO:0001181",
+    "feature_type": "DOMAIN",
+    "start": 118,
+    "end": 195,
+    "signal_kind": "text",
+    "signal_value": "SWIB/MDM2",
+    "reasoning": "The SWIB/MDM2 domain is found in chromatin remodeling complexes involved in transcriptional regulation and potentially transcription initiation, but is not specifically characterized as a Pol I factor."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0001409": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transmembrane type-1 1",
+    "accessions": [
+     "O15439"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q9ESQ7",
+    "go_id": "GO:0001409",
+    "feature_type": "DOMAIN",
+    "start": 136,
+    "end": 331,
+    "signal_kind": "text",
+    "signal_value": "SEC7",
+    "reasoning": "SEC7 is a guanine nucleotide exchange factor involved in GTP/GDP cycling on Arf proteins, but GEF activity (catalyzing nucleotide exchange) differs mechanistically from transmembrane transport; the domain is nucleotide-relevant but not a direct transporter."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P38988",
+    "reason": "none_verdict",
+    "reasoning": "P38988 has no positional features annotated (no DOMAIN, BINDING, or other features with coordinates on record), only domain family cross-references suggesting it is a GTP/GDP carrier. Cannot identify a specific positional feature to explain the GO term."
+   }
+  ]
+ },
+ "GO:0001515": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Cleavage; by CTSL",
+    "accessions": [
+     "P04094"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P05421",
+    "reason": "none_verdict",
+    "reasoning": "Only annotated feature is a disordered region (23-198) with no functional annotation; domain references point to antimicrobial/protease function, inconsistent with opioid peptide activity."
+   },
+   {
+    "accession": "P84814",
+    "reason": "none_verdict",
+    "reasoning": "The protein is 9 amino acids long with no annotated positional features or domain cross-references in UniProt; while the small size is consistent with opioid peptides like enkephalins, there is no structural annotation to support this assignment."
+   }
+  ]
+ },
+ "GO:0001530": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P25786",
+    "reason": "none_verdict",
+    "reasoning": "Proteasome alpha subunit with only a generic disordered region annotated; proteasomal domains indicate proteolytic function, not lipopolysaccharide binding."
+   },
+   {
+    "accession": "Q01514",
+    "reason": "none_verdict",
+    "reasoning": "Q01514 is a guanylate-binding protein with GTPase domain and GDP/Mg2+ binding sites; no annotated features describe or suggest lipopolysaccharide binding."
+   },
+   {
+    "accession": "Q8VYC2",
+    "reason": "none_verdict",
+    "reasoning": "No positional features recorded; domain annotations (BPI/LBP, Lipid-bd serum glycop) suggest LPS binding but lack positional evidence."
+   }
+  ]
+ },
+ "GO:0001532": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Box 1 motif",
+    "accessions": [
+     "Q9HBE5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

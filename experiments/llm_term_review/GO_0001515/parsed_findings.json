@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "P04094",
+      "go_id": "GO:0001515",
+      "feature_type": "SITE",
+      "start": 110,
+      "end": 112,
+      "signal_kind": "text",
+      "signal_value": "Cleavage; by CTSL",
+      "reasoning": "P04094 is an opioid precursor protein (confirmed by IPR006024 Opioid_neupept, IPR000703 Proenkephalin_A domains); the CTSL cleavage sites represent the proteolytic processing mechanism that generates active opioid peptides from this precursor."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P05421",
+      "reason": "none_verdict",
+      "reasoning": "Only annotated feature is a disordered region (23-198) with no functional annotation; domain references point to antimicrobial/protease function, inconsistent with opioid peptide activity."
+    },
+    {
+      "accession": "P84814",
+      "reason": "none_verdict",
+      "reasoning": "The protein is 9 amino acids long with no annotated positional features or domain cross-references in UniProt; while the small size is consistent with opioid peptides like enkephalins, there is no structural annotation to support this assignment."
+    }
+  ]
+}

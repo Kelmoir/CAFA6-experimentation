@@ -856,6 +856,20 @@
   ],
   "text_patterns": []
  },
+ "GO:0001096": {
+  "name": "TFIIF-class transcription factor complex binding",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR011947",
+   "InterPro:IPR015388",
+   "InterPro:IPR039189",
+   "InterPro:IPR058785",
+   "Pfam:PF09309",
+   "Pfam:PF26077"
+  ],
+  "text_patterns": []
+ },
  "GO:0001097": {
   "name": "TFIIH-class transcription factor complex binding",
   "ligands": [],
@@ -898,6 +912,15 @@
    "PROSITE:PS52088"
   ],
   "text_patterns": []
+ },
+ "GO:0001155": {
+  "name": "TFIIIA-class transcription factor binding",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "cchc noa-type"
+  ]
  },
  "GO:0001156": {
   "name": "TFIIIC-class transcription factor complex binding",

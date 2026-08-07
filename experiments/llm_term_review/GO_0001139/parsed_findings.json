@@ -1,0 +1,33 @@
+{
+  "resolved": [
+    {
+      "accession": "P29055",
+      "go_id": "GO:0001139",
+      "feature_type": "ZN_FING",
+      "start": 19,
+      "end": 53,
+      "signal_kind": "text",
+      "signal_value": "TFIIB-type",
+      "reasoning": "TFIIB's zinc finger domain is the structural basis for DNA binding and positioning RNA Pol II on promoters to recruit and coordinate the preinitiation complex."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P07273",
+      "go_id": "GO:0001139",
+      "feature_type": "DOMAIN",
+      "start": 147,
+      "end": 264,
+      "signal_kind": "text",
+      "signal_value": "TFIIS central",
+      "reasoning": "TFIIS central domain is the documented RNA polymerase II binding interface; however, TFIIS is primarily an elongation factor rather than a classical recruiting factor for Pol II complex assembly."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P32569",
+      "reason": "none_verdict",
+      "reasoning": "P32569's annotated features are only two disordered regions; the Med17 domain explaining Pol II recruitment appears only in cross-references without positional evidence."
+    }
+  ]
+}

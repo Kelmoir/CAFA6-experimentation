@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0001530",
+  "name": "lipopolysaccharide binding",
+  "def": "Binding to a lipopolysaccharide.",
+  "n_proteins_total": 121,
+  "sampled_accessions": [
+    "P25786",
+    "Q01514",
+    "Q8VYC2"
+  ],
+  "assigned_accessions": [
+    "P25786",
+    "Q01514",
+    "Q8VYC2"
+  ]
+}
