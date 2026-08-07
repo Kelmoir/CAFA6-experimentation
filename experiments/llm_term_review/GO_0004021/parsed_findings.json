@@ -1,0 +1,23 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P24298",
+      "reason": "none_verdict",
+      "reasoning": "The absence of any annotated positional feature for P24298 makes it impossible to determine whether the protein carries the specific molecular function described by the GO term."
+    },
+    {
+      "accession": "P25409",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for P25409 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The presence of the \"ALAT1/2-like\" domain suggests that the enzyme is related to aminotransferases, which are involved in amino acid metabolism and thus plausibly explain the given GO term."
+    },
+    {
+      "accession": "Q9LR30",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q9LR30 do not include any specific catalytic domain or motif that directly explains the molecular function of L-alanine:2-oxoglutarate aminotransferase activity. The presence of a peroxisomal targeting signal is generic and does not provide evidence for the enzyme's function, while the domain/family cross-references refer to broader structural similarities rather than th"
+    }
+  ]
+}

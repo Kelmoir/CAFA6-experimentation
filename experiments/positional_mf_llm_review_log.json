@@ -2088,6 +2088,107 @@
   ],
   "issues": []
  },
+ "GO:0004021": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P24298",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any annotated positional feature for P24298 makes it impossible to determine whether the protein carries the specific molecular function described by the GO term."
+   },
+   {
+    "accession": "P25409",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for P25409 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The presence of the \"ALAT1/2-like\" domain suggests that the enzyme is related to aminotransferases, which are involved in amino acid metabolism and thus plausibly explain the given GO term."
+   },
+   {
+    "accession": "Q9LR30",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9LR30 do not include any specific catalytic domain or motif that directly explains the molecular function of L-alanine:2-oxoglutarate aminotransferase activity. The presence of a peroxisomal targeting signal is generic and does not provide evidence for the enzyme's function, while the domain/family cross-references refer to broader structural similarities rather than th"
+   }
+  ]
+ },
+ "GO:0004030": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Essential for catalytic activity",
+    "accessions": [
+     "P28037"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P08157",
+    "go_id": "GO:0004030",
+    "feature_type": "SITE",
+    "start": 164,
+    "end": 165,
+    "signal_kind": "text",
+    "signal_value": "Transition state stabilizer",
+    "reasoning": "The generic note \"Transition state stabilizer\" is common in many enzymes and does not specifically explain why P08157 carries the GO term for aldehyde dehydrogenase activity."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q80VQ0",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
+   }
+  ]
+ },
+ "GO:0004035": {
+  "n_resolved": 0,
+  "n_uncertain": 2,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P00634",
+    "go_id": "GO:0004035",
+    "feature_type": "BINDING",
+    "start": 72,
+    "end": 73,
+    "signal_kind": "ligand",
+    "signal_value": "Mg(2+)",
+    "reasoning": "The multiple instances of ligand binding with different metal ions (Mg(2+) and Zn(2+)) are relevant to the broader class of alkaline phosphatases, but they do not specifically account for the defined molecular function of \"alkaline phosphatase activity\" as it pertains to this particular protein."
+   },
+   {
+    "accession": "Q29486",
+    "go_id": "GO:0004035",
+    "feature_type": "BINDING",
+    "start": 109,
+    "end": 110,
+    "signal_kind": "ligand",
+    "signal_value": "Zn(2+)",
+    "reasoning": "The presence of a phosphoserine intermediate at position 109-110 is relevant to the function of alkaline phosphatase, as it indicates the enzyme's ability to catalyze the reaction involving phosphate monoesters. However, this feature does not directly explain why the protein carries the term \"alkaline phosphatase activity\" in a way that is distinctive to this GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P11491",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein P11491 do not provide any specific evidence that directly explains why it carries the molecular function \"alkaline phosphatase activity.\""
+   }
+  ]
+ },
  "GO:0004039": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -2139,6 +2240,22 @@
     "accession": "P06783",
     "reason": "none_verdict",
     "reasoning": "No annotated feature in P06783 directly explains the molecular function of GO:0004933, which refers to receptor activity. The features are structural and generic, not distinctive to this specific function."
+   }
+  ]
+ },
+ "GO:0004934": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "D6VTK4",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
    }
   ]
  }

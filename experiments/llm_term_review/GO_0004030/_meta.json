@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0004030",
+  "name": "aldehyde dehydrogenase [NAD(P)+] activity",
+  "def": "Catalysis of the reaction: an aldehyde + NAD(P)+ + H2O = an acid + NAD(P)H + H+.",
+  "n_proteins_total": 19,
+  "sampled_accessions": [
+    "P08157",
+    "P28037",
+    "Q80VQ0"
+  ],
+  "assigned_accessions": [
+    "P08157",
+    "P28037",
+    "Q80VQ0"
+  ]
+}
