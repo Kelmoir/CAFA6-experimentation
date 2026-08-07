@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P37677",
+      "reason": "none_verdict",
+      "reasoning": "The protein P37677 lacks any MF-relevant positional features and its domain/family cross-references are too generic to directly explain the specific molecular function of L-xylulokinase activity."
+    }
+  ]
+}

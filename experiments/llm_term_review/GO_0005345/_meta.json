@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0005345",
+  "name": "purine nucleobase transmembrane transporter activity",
+  "def": "Enables the transfer of purine nucleobases, one of the two classes of nitrogen-containing ring compounds found in DNA and RNA, from one side of a membrane to the other.",
+  "n_proteins_total": 32,
+  "sampled_accessions": [
+    "Q2V3H2",
+    "Q8RY83",
+    "Q9FZ96"
+  ],
+  "assigned_accessions": [
+    "Q2V3H2",
+    "Q8RY83",
+    "Q9FZ96"
+  ]
+}

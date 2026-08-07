@@ -3892,6 +3892,102 @@
    }
   ]
  },
+ "GO:0005345": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9FZ96",
+    "go_id": "GO:0005345",
+    "feature_type": "DOMAIN",
+    "start": 34,
+    "end": 158,
+    "signal_kind": "text",
+    "signal_value": "EamA",
+    "reasoning": "The domain \"EamA\" is not distinctive to the GO term \"purine nucleobase transmembrane transporter activity\" and may be found in many unrelated proteins, making it an insufficient explanation for the specific function."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q2V3H2",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q2V3H2 lacks any annotated positional features that could plausibly explain its role as a purine nucleobase transmembrane transporter. The domain/family cross-references provided are generic and do not provide distinctive evidence for the specific molecular function described by GO:0005345."
+   },
+   {
+    "accession": "Q8RY83",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q8RY83 lacks any annotated positional features that could directly explain its molecular function as a purine nucleobase transmembrane transporter. While domain/family cross-references suggest potential relevance, they do not provide specific evidence of the function itself. Therefore, the GO term cannot be confidently attributed to this protein based on the available data."
+   }
+  ]
+ },
+ "GO:0005347": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transmembrane type-1",
+    "accessions": [
+     "Q9HUG8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A2CEQ0",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features provide a specific structural or functional basis for the molecular function of ATP transmembrane transporter activity."
+   },
+   {
+    "accession": "Q6KCM7",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features provide a specific structural or functional basis that uniquely explains the molecular function of ATP transmembrane transporter activity."
+   }
+  ]
+ },
+ "GO:0005351": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P40886",
+    "go_id": "GO:0005351",
+    "feature_type": "REGION",
+    "start": 0,
+    "end": 38,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The disordered region is a generic feature that does not specifically explain the molecular function of carbohydrate:proton symporter activity."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P47185",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for P47185 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The domain/family cross-references for P47185 suggest a potential association with MFS and sugar transporters, but none of them specifically explain the molecular function \"carbohydrate:proton symporter activity\" in a way that is distinctive to this GO term."
+   },
+   {
+    "accession": "Q9P3U6",
+    "reason": "none_verdict",
+    "reasoning": "The annotated feature \"REGION 481-557\" with the note \"Disordered\" does not provide specific evidence for the molecular function \"carbohydrate:proton symporter activity.\" Disordered regions are common in many proteins and do not necessarily indicate a functional role in proton transport. Therefore, there is no plausible explanation from the given features that directly accounts for the GO term."
+   }
+  ]
+ },
  "GO:0005360": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -4138,5 +4234,21 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0008744": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P37677",
+    "reason": "none_verdict",
+    "reasoning": "The protein P37677 lacks any MF-relevant positional features and its domain/family cross-references are too generic to directly explain the specific molecular function of L-xylulokinase activity."
+   }
+  ]
  }
 }
