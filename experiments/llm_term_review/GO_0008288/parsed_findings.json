@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P13368",
+      "go_id": "GO:0008288",
+      "feature_type": "BINDING",
+      "start": 2241,
+      "end": 2242,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP at coordinates 2241-2242 directly supports the catalytic activity described in the GO term, making it a strong candidate for explaining why the protein carries that function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -3487,6 +3487,32 @@
    }
   ]
  },
+ "GO:0005115": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P22725",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any MF-relevant positional features in the annotated data for P22725 makes it impossible to determine the structural basis for its association with receptor tyrosine kinase-like orphan receptors."
+   },
+   {
+    "accession": "P41221",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any annotated positional feature (MF-relevant) in P41221 suggests that there is no specific structural or functional basis that directly explains its association with the GO term \"receptor tyrosine kinase-like orphan receptor binding.\""
+   },
+   {
+    "accession": "Q9QXQ7",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any annotated positional feature for Q9QXQ7 makes it impossible to determine the structural/functional basis for its association with the Ror receptor, as the term is not explained by generic signals or shared features."
+   }
+  ]
+ },
  "GO:0005122": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -3505,6 +3531,63 @@
     "accession": "Q24155",
     "reason": "none_verdict",
     "reasoning": "The protein lacks any annotated positional features that could plausibly explain its \"torso binding\" function, and no domain/family cross-reference directly supports this specific molecular function."
+   }
+  ]
+ },
+ "GO:0005137": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a 1,2-diacyl-sn-glycero-3-phospho-(1D-myo-inositol-4,5-bisphosphate)",
+    "accessions": [
+     "O00560",
+     "O08992"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P05113",
+    "reason": "none_verdict",
+    "reasoning": "The \"Not glycosylated\" note is too generic to plausibly explain why P05113 binds to the interleukin-5 receptor. No other annotated feature directly relates to the binding specificity of the cytokine receptor."
+   }
+  ]
+ },
+ "GO:0005139": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Inserts into a conserved IL7R hydrophobic pocket, important for IL7R-binding",
+    "accessions": [
+     "Q9JIE6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P56478",
+    "reason": "none_verdict",
+    "reasoning": "The protein P56478 lacks any annotated MF-relevant positional features, making it impossible to determine a specific structural/functional basis for the \"interleukin-7 receptor binding\" GO term."
+   },
+   {
+    "accession": "Q969D9",
+    "reason": "none_verdict",
+    "reasoning": "The lack of any MF-relevant positional features in Q969D9 means there is no structural basis to explain why it carries the \"interleukin-7 receptor binding\" GO term."
    }
   ]
  },
@@ -3724,5 +3807,24 @@
     "reasoning": "The protein A1ZAX0 lacks any annotated positional features that could directly explain its molecular function of \"allatostatin receptor activity,\" and the domain/family cross-references are generic and not distinctive to this GO term."
    }
   ]
+ },
+ "GO:0008288": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P13368"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

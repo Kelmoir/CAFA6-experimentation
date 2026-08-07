@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O00560",
+      "go_id": "GO:0005137",
+      "feature_type": "BINDING",
+      "start": 214,
+      "end": 215,
+      "signal_kind": "ligand",
+      "signal_value": "a 1,2-diacyl-sn-glycero-3-phospho-(1D-myo-inositol-4,5-bisphosphate)",
+      "reasoning": "The specific ligand-binding site directly indicates the ability to bind an interleukin-5 receptor, which matches the definition of the GO term. This feature is distinctive and provides a clear structural basis for the molecular function."
+    },
+    {
+      "accession": "O08992",
+      "go_id": "GO:0005137",
+      "feature_type": "BINDING",
+      "start": 250,
+      "end": 252,
+      "signal_kind": "ligand",
+      "signal_value": "a 1,2-diacyl-sn-glycero-3-phospho-(1D-myo-inositol-4,5-bisphosphate)",
+      "reasoning": "The binding region explicitly mentions a ligand that matches the definition of \"interleukin-5 receptor binding,\" making it a plausible explanation for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P05113",
+      "reason": "none_verdict",
+      "reasoning": "The \"Not glycosylated\" note is too generic to plausibly explain why P05113 binds to the interleukin-5 receptor. No other annotated feature directly relates to the binding specificity of the cytokine receptor."
+    }
+  ]
+}

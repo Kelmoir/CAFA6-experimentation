@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0005137",
+  "name": "interleukin-5 receptor binding",
+  "def": "Binding to an interleukin-5 receptor.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "O00560",
+    "O08992",
+    "P05113"
+  ],
+  "assigned_accessions": [
+    "O00560",
+    "O08992",
+    "P05113"
+  ]
+}

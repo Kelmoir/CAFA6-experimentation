@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0005139",
+  "name": "interleukin-7 receptor binding",
+  "def": "Binding to an interleukin-7 receptor.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P56478",
+    "Q969D9",
+    "Q9JIE6"
+  ],
+  "assigned_accessions": [
+    "P56478",
+    "Q969D9",
+    "Q9JIE6"
+  ]
+}
