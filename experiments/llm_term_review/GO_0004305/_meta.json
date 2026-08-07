@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0004305",
+  "name": "ethanolamine kinase activity",
+  "def": "Catalysis of the reaction: ATP + ethanolamine = ADP + 2 H+ + phosphoethanolamine.",
+  "n_proteins_total": 17,
+  "sampled_accessions": [
+    "P35790",
+    "P46559",
+    "Q01134"
+  ],
+  "assigned_accessions": [
+    "P35790",
+    "P46559",
+    "Q01134"
+  ]
+}

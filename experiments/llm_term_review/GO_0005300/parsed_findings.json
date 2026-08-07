@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P38967",
+      "go_id": "GO:0005300",
+      "feature_type": "REGION",
+      "start": 30,
+      "end": 53,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The disordered region (REGION 30-53) could potentially be involved in the flexibility needed for tryptophan transport, but it is a generic signal and not distinctive to this specific molecular function."
+    }
+  ],
+  "issues": []
+}

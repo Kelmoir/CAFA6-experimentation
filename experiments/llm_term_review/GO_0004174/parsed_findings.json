@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q11190",
+      "go_id": "GO:0004174",
+      "feature_type": "DOMAIN",
+      "start": 556,
+      "end": 586,
+      "signal_kind": "text",
+      "signal_value": "4Fe-4S ferredoxin-type",
+      "reasoning": "The 4Fe-4S ferredoxin-type domain is a distinctive structural feature that directly supports the function of electron-transfer dehydrogenase activity, which is the molecular function defined for GO:0004174."
+    },
+    {
+      "accession": "Q6UPE1",
+      "go_id": "GO:0004174",
+      "feature_type": "BINDING",
+      "start": 77,
+      "end": 78,
+      "signal_kind": "ligand",
+      "signal_value": "FAD",
+      "reasoning": "The repeated binding of FAD across multiple positions suggests that FAD is a critical cofactor for the enzyme's function in electron transfer, which aligns with the definition of the GO term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q16134",
+      "go_id": "GO:0004174",
+      "feature_type": "DOMAIN",
+      "start": 576,
+      "end": 606,
+      "signal_kind": "text",
+      "signal_value": "4Fe-4S ferredoxin-type",
+      "reasoning": "The presence of a \"4Fe-4S ferredoxin-type\" domain in this protein is relevant to its function as an electron-transferring flavoprotein dehydrogenase, but it is not distinctive enough to explain the specific molecular function with certainty."
+    }
+  ],
+  "issues": []
+}

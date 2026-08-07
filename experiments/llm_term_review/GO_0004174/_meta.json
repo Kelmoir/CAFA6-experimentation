@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0004174",
+  "name": "electron-transferring-flavoprotein dehydrogenase activity",
+  "def": "Catalysis of the reaction: a ubiquinone + reduced [electron-transfer flavoprotein] = a ubiquinol + H+ + oxidized [electron-transfer flavoprotein].",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "Q11190",
+    "Q16134",
+    "Q6UPE1"
+  ],
+  "assigned_accessions": [
+    "Q11190",
+    "Q16134",
+    "Q6UPE1"
+  ]
+}

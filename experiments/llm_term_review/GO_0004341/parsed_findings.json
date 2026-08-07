@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P56553",
+      "reason": "none_verdict",
+      "reasoning": "The absence of any specific positional feature in the annotated features for P56553 means there is no direct structural/functional basis to explain why this protein carries the \"gluconolactonase activity\" GO term."
+    },
+    {
+      "accession": "Q15493",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features provide a distinctive structural or functional basis for the specific molecular function of gluconolactonase activity."
+    },
+    {
+      "accession": "Q64374",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features for protein Q64374 specifically or plausibly explain why it carries the molecular function \"gluconolactonase activity.\" The features are generic and do not provide a distinctive basis for this particular function."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0004341",
+  "name": "gluconolactonase activity",
+  "def": "Catalysis of the reaction: D-glucono-1,5-lactone + H2O = D-gluconate.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P56553",
+    "Q15493",
+    "Q64374"
+  ],
+  "assigned_accessions": [
+    "P56553",
+    "Q15493",
+    "Q64374"
+  ]
+}
