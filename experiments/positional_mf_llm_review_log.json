@@ -4357,6 +4357,42 @@
    }
   ]
  },
+ "GO:0005415": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 5,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O00337",
+    "reason": "none_verdict",
+    "reasoning": "The protein O00337 lacks any MF-relevant positional features, and its domain/family cross-references do not specifically indicate sodium symporter activity. Therefore, there is no plausible explanation for the GO term based on the available evidence."
+   },
+   {
+    "accession": "O43868",
+    "reason": "none_verdict",
+    "reasoning": "The available annotated features for O43868 do not provide any positional evidence that directly explains its role in nucleoside:sodium symporter activity."
+   },
+   {
+    "accession": "O88627",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature is provided that specifically accounts for the molecular function of nucleoside:sodium symporter activity, and all domain/family cross-references are generic and not distinctive to this GO term."
+   },
+   {
+    "accession": "Q62773",
+    "reason": "none_verdict",
+    "reasoning": "The only available annotated feature for Q62773 is a disordered region, which is generic and does not provide specific insight into the nucleoside:sodium symporter activity. No positional feature directly indicates the presence of a transporter domain, making it impossible to determine the exact structural basis for this molecular function with certainty."
+   },
+   {
+    "accession": "Q9HAS3",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature provided for Q9HAS3 is a disordered region in position 0-78, which is a generic signal and does not provide specific structural or functional evidence for the molecular function of \"nucleoside:sodium symporter activity.\""
+   }
+  ]
+ },
  "GO:0005416": {
   "n_resolved": 0,
   "n_uncertain": 1,
@@ -4377,6 +4413,42 @@
    }
   ],
   "issues": []
+ },
+ "GO:0005457": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 5,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q84L08",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
+   },
+   {
+    "accession": "Q8BLX4",
+    "reason": "none_verdict",
+    "reasoning": "The lack of any annotated features (by type + exact coordinates) that are directly related to the specific molecular function of GDP-fucose transmembrane transporter activity for protein Q8BLX4 means there is no positional feature that can plausibly explain why this protein carries the term."
+   },
+   {
+    "accession": "Q96A29",
+    "reason": "none_verdict",
+    "reasoning": "No annotated positional feature exists for Q96A29 that directly explains the molecular function of GDP-fucose transmembrane transporter activity."
+   },
+   {
+    "accession": "Q9SRE4",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9SRE4 has no MF-relevant positional features recorded, and the available domain/family cross-references do not provide a specific explanation for why it carries the GO term \"GDP-fucose transmembrane transporter activity.\" Thus, there is no clear structural/functional basis to support this annotation."
+   },
+   {
+    "accession": "Q9W429",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and distinctive explanation for the molecular function of \"GDP-fucose transmembrane transporter activity\" in this protein."
+   }
+  ]
  },
  "GO:0005488": {
   "n_resolved": 0,
