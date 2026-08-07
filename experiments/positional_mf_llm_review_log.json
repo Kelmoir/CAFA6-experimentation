@@ -3780,6 +3780,71 @@
    }
   ]
  },
+ "GO:0005250": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Selectivity filter",
+    "accessions": [
+     "Q9Z0V1"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "K(+)",
+    "accessions": [
+     "Q9Z0V2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9JM59",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9JM59 do not provide a unique structural or functional basis that directly explains the specific molecular function of \"A-type (transient outward) potassium channel activity.\""
+   }
+  ]
+ },
+ "GO:0005298": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Na(+)",
+    "accessions": [
+     "Q96QD8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P10502",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for P10502 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The generic nature of the note suggests it could apply to many proteins involved in similar transport processes, making it insufficient to definitively explain the specific molecular function of the GO term."
+   },
+   {
+    "accession": "Q9JM15",
+    "reason": "none_verdict",
+    "reasoning": "The protein lacks any annotated positional features that could plausibly explain its role in proline:sodium symporter activity, and the available domain/family cross-references are too generic to provide a specific explanation."
+   }
+  ]
+ },
  "GO:0005300": {
   "n_resolved": 0,
   "n_uncertain": 1,
@@ -3800,6 +3865,32 @@
    }
   ],
   "issues": []
+ },
+ "GO:0005310": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q03028",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q03028 lacks any annotated MF-relevant positional features that could plausibly explain its role in dicarboxylic acid transmembrane transporter activity, and the available domain/family cross-references do not specifically indicate this function."
+   },
+   {
+    "accession": "Q06143",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any annotated positional feature that specifically indicates a transmembrane transporter domain or other structure associated with dicarboxylic acid transport makes it impossible to determine a plausible structural/functional basis for the GO term."
+   },
+   {
+    "accession": "Q99297",
+    "reason": "none_verdict",
+    "reasoning": "The protein lacks any annotated positional features that specifically indicate the presence of a transmembrane domain or similar structure required for dicarboxylic acid transport, making it impossible to plausibly explain the GO term with the given evidence."
+   }
+  ]
  },
  "GO:0005360": {
   "n_resolved": 0,
@@ -4028,5 +4119,24 @@
     "reasoning": "The protein Q14728 lacks any annotated positional features that could plausibly explain the specific molecular function of tetracycline transmembrane transporter activity."
    }
   ]
+ },
+ "GO:0008675": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Plays a major role in determining the stereoselectivity",
+    "accessions": [
+     "P0A955"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

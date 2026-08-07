@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008675",
+  "name": "2-dehydro-3-deoxy-phosphogluconate aldolase activity",
+  "def": "Catalysis of the reaction: 2-dehydro-3-deoxy-D-gluconate 6-phosphate = pyruvate + D-glyceraldehyde 3-phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0A955"
+  ],
+  "assigned_accessions": [
+    "P0A955"
+  ]
+}

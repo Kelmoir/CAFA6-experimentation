@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0005250",
+  "name": "A-type (transient outward) potassium channel activity",
+  "def": "Enables the transmembrane transfer of a potassium ion by an outwardly-rectifying voltage-gated channel that produces a transient outward current upon a step change in membrane potential.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "Q9JM59",
+    "Q9Z0V1",
+    "Q9Z0V2"
+  ],
+  "assigned_accessions": [
+    "Q9JM59",
+    "Q9Z0V1",
+    "Q9Z0V2"
+  ]
+}

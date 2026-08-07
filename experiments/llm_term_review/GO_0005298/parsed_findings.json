@@ -1,0 +1,29 @@
+{
+  "resolved": [
+    {
+      "accession": "Q96QD8",
+      "go_id": "GO:0005298",
+      "feature_type": "BINDING",
+      "start": 81,
+      "end": 82,
+      "signal_kind": "ligand",
+      "signal_value": "Na(+)",
+      "reasoning": "The binding site for Na(+) directly supports the function of transporting sodium ions, which is central to the molecular function described in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P10502",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for P10502 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The generic nature of the note suggests it could apply to many proteins involved in similar transport processes, making it insufficient to definitively explain the specific molecular function of the GO term."
+    },
+    {
+      "accession": "Q9JM15",
+      "reason": "none_verdict",
+      "reasoning": "The protein lacks any annotated positional features that could plausibly explain its role in proline:sodium symporter activity, and the available domain/family cross-references are too generic to provide a specific explanation."
+    }
+  ]
+}
