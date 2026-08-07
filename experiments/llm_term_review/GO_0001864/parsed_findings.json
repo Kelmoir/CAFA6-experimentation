@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P86693",
+      "go_id": "GO:0001864",
+      "feature_type": "DOMAIN",
+      "start": 5,
+      "end": 36,
+      "signal_kind": "text",
+      "signal_value": "Pentraxin (PTX)",
+      "reasoning": "Protein P86693 carries an explicit pentraxin domain spanning nearly its entire sequence, directly matching the GO term's functional basis\u2014pentraxin-containing proteins are the structural/binding participants in pentraxin-mediated interactions."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

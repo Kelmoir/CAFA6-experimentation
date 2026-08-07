@@ -1321,6 +1321,108 @@
    }
   ]
  },
+ "GO:0001648": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "cleavage; by trypsin",
+    "accessions": [
+     "P55086",
+     "Q63645"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Cleavage; by thrombin",
+    "accessions": [
+     "O08675"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0001653": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Small peptide recognition",
+    "accessions": [
+     "C0LGR3"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q3E880",
+    "go_id": "GO:0001653",
+    "feature_type": "REGION",
+    "start": 81,
+    "end": 116,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The protein's only annotated feature is a disordered region, which is generic and found across many unrelated proteins; while disorder can enable ligand binding, this feature alone does not specifically support peptide receptor activity and lacks distinctive structural basis."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P18910",
+    "reason": "none_verdict",
+    "reasoning": "This protein is a natriuretic peptide receptor (InterPro IPR001828, Pfam:PF01094) yet the extracellular peptide-binding domain lacks positional coordinates. The annotated features (kinase domain, guanylate cyclase domain, chloride binding) represent generic signaling machinery, not the peptide-binding determinant."
+   }
+  ]
+ },
+ "GO:0001791": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "C1q",
+    "accessions": [
+     "P02746"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Mediates immunoglobulin Fc fragment-binding",
+    "accessions": [
+     "Q2TB54"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "A1KXC4",
+    "go_id": "GO:0001791",
+    "feature_type": "DOMAIN",
+    "start": 23,
+    "end": 121,
+    "signal_kind": "text",
+    "signal_value": "Ig-like",
+    "reasoning": "The Ig-like V-type domain could mediate IgM binding in a CD300 family receptor context, but Ig-like folds are too generic and widely distributed to provide confident diagnostic evidence for IgM-specific binding."
+   }
+  ],
+  "issues": []
+ },
  "GO:0001792": {
   "n_resolved": 2,
   "n_uncertain": 0,
@@ -1355,6 +1457,25 @@
     "value": "Required for response to bacterial lipopolysaccharide (LPS)",
     "accessions": [
      "P08571"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0001864": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Pentraxin (PTX)",
+    "accessions": [
+     "P86693"
     ]
    }
   ],

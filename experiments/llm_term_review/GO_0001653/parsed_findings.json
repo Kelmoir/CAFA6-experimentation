@@ -1,0 +1,33 @@
+{
+  "resolved": [
+    {
+      "accession": "C0LGR3",
+      "go_id": "GO:0001653",
+      "feature_type": "MOTIF",
+      "start": 172,
+      "end": 174,
+      "signal_kind": "text",
+      "signal_value": "Small peptide recognition",
+      "reasoning": "Small peptide recognition motif with direct experimental evidence from PDB structures and peer-reviewed publication, specifically matching the GO term's definition of peptide receptor activity."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q3E880",
+      "go_id": "GO:0001653",
+      "feature_type": "REGION",
+      "start": 81,
+      "end": 116,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The protein's only annotated feature is a disordered region, which is generic and found across many unrelated proteins; while disorder can enable ligand binding, this feature alone does not specifically support peptide receptor activity and lacks distinctive structural basis."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P18910",
+      "reason": "none_verdict",
+      "reasoning": "This protein is a natriuretic peptide receptor (InterPro IPR001828, Pfam:PF01094) yet the extracellular peptide-binding domain lacks positional coordinates. The annotated features (kinase domain, guanylate cyclase domain, chloride binding) represent generic signaling machinery, not the peptide-binding determinant."
+    }
+  ]
+}

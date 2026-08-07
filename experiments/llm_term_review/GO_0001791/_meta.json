@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0001791",
+  "name": "IgM binding",
+  "def": "Binding to an immunoglobulin of the IgM isotype.",
+  "n_proteins_total": 16,
+  "sampled_accessions": [
+    "A1KXC4",
+    "P02746",
+    "Q2TB54"
+  ],
+  "assigned_accessions": [
+    "A1KXC4",
+    "P02746",
+    "Q2TB54"
+  ]
+}
