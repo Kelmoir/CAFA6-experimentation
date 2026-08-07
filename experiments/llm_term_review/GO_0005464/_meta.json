@@ -1,0 +1,20 @@
+{
+  "go_id": "GO:0005464",
+  "name": "UDP-xylose transmembrane transporter activity",
+  "def": "Enables the transfer of UDP-xylose from one side of a membrane to the other. UDP-xylose is a substance composed of xylose in glycosidic linkage with uridine diphosphate.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "F4IHS9",
+    "O74750",
+    "Q8CIA5",
+    "Q9FG70",
+    "Q9W429"
+  ],
+  "assigned_accessions": [
+    "F4IHS9",
+    "O74750",
+    "Q8CIA5",
+    "Q9FG70",
+    "Q9W429"
+  ]
+}
