@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P40689",
+      "reason": "none_verdict",
+      "reasoning": "There are no annotated positional features for P40689 that plausibly explain why it carries the GO term \"torso binding.\""
+    },
+    {
+      "accession": "Q24155",
+      "reason": "none_verdict",
+      "reasoning": "The protein lacks any annotated positional features that could plausibly explain its \"torso binding\" function, and no domain/family cross-reference directly supports this specific molecular function."
+    }
+  ]
+}

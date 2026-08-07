@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8WTP8",
+      "go_id": "GO:0004529",
+      "feature_type": "DOMAIN",
+      "start": 109,
+      "end": 266,
+      "signal_kind": "text",
+      "signal_value": "Exonuclease",
+      "reasoning": "The exonuclease domain in Q8WTP8 directly supports the molecular function of DNA exonuclease activity, making it a plausible and specific explanation for why the protein carries that term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P08466",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature is distinctive to the molecular function of DNA exonuclease activity and could be shared by many unrelated proteins."
+    },
+    {
+      "accession": "Q58719",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features provide a distinctive explanation for the molecular function of DNA exonuclease activity in this specific protein."
+    }
+  ]
+}

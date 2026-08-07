@@ -2491,6 +2491,100 @@
    }
   ]
  },
+ "GO:0004529": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Exonuclease",
+    "accessions": [
+     "Q8WTP8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P08466",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature is distinctive to the molecular function of DNA exonuclease activity and could be shared by many unrelated proteins."
+   },
+   {
+    "accession": "Q58719",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features provide a distinctive explanation for the molecular function of DNA exonuclease activity in this specific protein."
+   }
+  ]
+ },
+ "GO:0004552": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P46415",
+    "go_id": "GO:0004552",
+    "feature_type": "BINDING",
+    "start": 47,
+    "end": 48,
+    "signal_kind": "ligand",
+    "signal_value": "Zn(2+)",
+    "reasoning": "The presence of Zn(2+) binding is a generic feature observed in many enzymes and does not uniquely explain the specific molecular function of octanol dehydrogenase."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P00330",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
+   }
+  ]
+ },
+ "GO:0004603": {
+  "n_resolved": 0,
+  "n_uncertain": 2,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "A0A5F8AH41",
+    "go_id": "GO:0004603",
+    "feature_type": "BINDING",
+    "start": 34,
+    "end": 35,
+    "signal_kind": "ligand",
+    "signal_value": "S-adenosyl-L-methionine",
+    "reasoning": "The multiple binding sites for S-adenosyl-L-methionine do not uniquely identify the protein as an N-methyltransferase, making it insufficient to explain the specific molecular function."
+   },
+   {
+    "accession": "P11086",
+    "go_id": "GO:0004603",
+    "feature_type": "BINDING",
+    "start": 34,
+    "end": 35,
+    "signal_kind": "ligand",
+    "signal_value": "S-adenosyl-L-methionine",
+    "reasoning": "(no reasoning extracted from model response)"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P10937",
+    "reason": "none_verdict",
+    "reasoning": "response ended (finish_reason=stop) without VERDICT/FEATURE -- raw text saved to experiments/llm_term_review/GO_0004603/raw_debug.log, inspect for format drift"
+   }
+  ]
+ },
  "GO:0004734": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -2539,6 +2633,27 @@
     "accession": "D6VTK4",
     "reason": "none_verdict",
     "reasoning": "(no reasoning extracted from model response)"
+   }
+  ]
+ },
+ "GO:0005122": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P40689",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated positional features for P40689 that plausibly explain why it carries the GO term \"torso binding.\""
+   },
+   {
+    "accession": "Q24155",
+    "reason": "none_verdict",
+    "reasoning": "The protein lacks any annotated positional features that could plausibly explain its \"torso binding\" function, and no domain/family cross-reference directly supports this specific molecular function."
    }
   ]
  },
