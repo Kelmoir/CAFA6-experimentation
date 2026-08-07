@@ -70,26 +70,39 @@ ANSWER_FORMAT = (
     "match and discarded if it doesn't match, so don't paraphrase or round coordinates."
 )
 
+COT_ANSWER_FORMAT = (
+    "THINKING: <work through it here -- consider each candidate feature against the GO term's "
+    "definition and the genericity caution above, compare it to the alternatives, and only then "
+    "settle on an answer. Can span as many lines as you need; there is no length limit.>\n"
+    "VERDICT: LIKELY or UNCERTAIN or NONE\n"
+    "FEATURE: <TYPE> <START>-<END>  (use NONE 0-0 if verdict is NONE)\n"
+    "REASONING: <one sentence, plain text, summarizing the conclusion your THINKING reached>\n\n"
+    "The (TYPE, START, END) you report MUST exactly match one of the feature lines in the protein's "
+    "section verbatim (identical type string, identical integers) -- it will be looked up by exact "
+    "match and discarded if it doesn't match, so don't paraphrase or round coordinates."
+)
+
 
 def build_system_prompt(chain_of_thought):
   """Two genuinely different instruction shapes, not one prompt with a bolted-on CoT phrase --
   demanding "exactly three lines, no commentary" while also asking a model to "think step by step"
   is self-contradicting, and forcing a weaker/non-reasoning model straight into a terse structured
   answer with no scratch space produces worse judgments than letting it reason in free text first.
-  With chain_of_thought set: reasoning is expected and explicitly unbounded in length, ending with
-  the strict three-line block as the LAST thing in the response (parse_response finds the last
-  match of each field, so however much reasoning precedes it doesn't matter). Without it: same
-  terse contract as before, for models that already reason internally (e.g. via their own <think>
-  block) or where speed matters more than a visible reasoning trace."""
+  With chain_of_thought set: reasoning is scaffolded directly into the answer format itself, via a
+  leading THINKING field, rather than left to a free-form "reason before you answer" instruction --
+  a prior version of this prompt used the free-form instruction and testing showed models tend to
+  skip straight to the terse answer anyway unless the output schema itself demands the reasoning
+  field. VERDICT/FEATURE/REASONING still come after THINKING, in that order, as the LAST thing in
+  the response (parse_response finds the last match of each field, so however long THINKING runs,
+  the real answer is still found correctly). Without chain_of_thought: same terse contract as
+  before, for models that already reason internally (e.g. via their own <think> block) or where
+  speed matters more than a visible reasoning trace."""
   if chain_of_thought:
     return (
         TASK_DESCRIPTION + "\n\n" + GENERIC_CAUTION + "\n\n"
-        + chain_of_thought.rstrip(". ") + ". Work through your reasoning in plain text first: "
-        "consider each candidate feature against the GO term's definition and the genericity "
-        "caution above before settling on an answer. There is no length limit on this reasoning -- "
-        "take as much space as you need to think it through properly.\n\n"
-        "Once you've decided, finish your response with EXACTLY these three lines, in this exact "
-        "format, as the very last thing you write (nothing after them):\n" + ANSWER_FORMAT
+        + chain_of_thought.rstrip(". ") + " Respond using EXACTLY this format, in this order, "
+        "starting with THINKING (nothing before it) and ending with REASONING (nothing after it):\n"
+        + COT_ANSWER_FORMAT
     )
   return (
       TASK_DESCRIPTION + "\n\n" + GENERIC_CAUTION
