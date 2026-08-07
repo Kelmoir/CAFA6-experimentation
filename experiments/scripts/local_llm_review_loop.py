@@ -19,10 +19,12 @@ Usage:
   python3 experiments/scripts/local_llm_review_loop.py --host http://192.168.1.122:1234 --rounds 10
 
 Each round: plan (agent-budget-capped term/protein selection) -> one HTTP completion per assigned
-protein -> parse + merge every touched term -> rebuild links -> git commit -> short report (which
-GO terms merged). Safe to Ctrl-C between rounds; each round's git commit is a checkpoint, and
-plan_review_round.py never revisits an already-started term, so re-running this script later just
-continues where it left off.
+protein -> parse each touched term -> retry any accession whose response was genuinely invalid
+(unresolved pointer, malformed verdict, wrong go_id -- not a decisive NONE, that's a real answer)
+once, re-parse if anything was retried -> merge -> rebuild links -> git commit -> short report
+(which GO terms merged). Safe to Ctrl-C between rounds; each round's git commit is a checkpoint,
+and plan_review_round.py never revisits an already-started term, so re-running this script later
+just continues where it left off.
 """
 import argparse
 import json
@@ -61,10 +63,22 @@ TASK_DESCRIPTION = (
     "so honestly; do not force a match."
 )
 
+FEATURE_SOURCE_WARNING = (
+    "FEATURE must be copied verbatim from a line under \"Annotated features (position, type, "
+    "qualifiers)\" -- e.g. the TYPE and the two integers of a line shaped like \"- DOMAIN 19-119\". "
+    "It must NEVER come from the separate \"Domain/family cross-references (no position...)\" list "
+    "further down: those are InterPro/Pfam/PROSITE accessions (like \"InterPro:IPR000276\" or "
+    "\"Pfam:PF00001\") that carry no coordinates at all -- they exist only as background context to "
+    "help you identify what a domain is, not as something you can report as a FEATURE. If the only "
+    "evidence you find convincing lives in that cross-reference list, that means no *positional* "
+    "feature explains this term -- say so (UNCERTAIN or NONE), don't invent coordinates for it."
+)
+
 ANSWER_FORMAT = (
     "VERDICT: LIKELY or UNCERTAIN or NONE\n"
     "FEATURE: <TYPE> <START>-<END>  (use NONE 0-0 if verdict is NONE)\n"
     "REASONING: <one sentence, plain text>\n\n"
+    + FEATURE_SOURCE_WARNING + "\n\n"
     "The (TYPE, START, END) you report MUST exactly match one of the feature lines in the protein's "
     "section verbatim (identical type string, identical integers) -- it will be looked up by exact "
     "match and discarded if it doesn't match, so don't paraphrase or round coordinates."
@@ -77,6 +91,7 @@ COT_ANSWER_FORMAT = (
     "VERDICT: LIKELY or UNCERTAIN or NONE\n"
     "FEATURE: <TYPE> <START>-<END>  (use NONE 0-0 if verdict is NONE)\n"
     "REASONING: <one sentence, plain text, summarizing the conclusion your THINKING reached>\n\n"
+    + FEATURE_SOURCE_WARNING + "\n\n"
     "The (TYPE, START, END) you report MUST exactly match one of the feature lines in the protein's "
     "section verbatim (identical type string, identical integers) -- it will be looked up by exact "
     "match and discarded if it doesn't match, so don't paraphrase or round coordinates."
@@ -220,6 +235,47 @@ def plan_round():
   return json.loads(manifest_path.read_text())
 
 
+RETRYABLE_ISSUE_REASONS = {"unresolved_pointer", "invalid_verdict", "go_id_mismatch"}
+
+
+def review_protein(host, model, system_prompt, go_id, accession, review_text, term_dir,
+                    findings_path, request_timeout, max_tokens):
+  """One LLM call for one (go_id, accession), appended to findings.md as a block. Shared by
+  process_round (first pass) and retry_issues (second-chance pass on invalid responses) so both
+  go through the exact same call/parse/debug-log/append logic."""
+  prompt = build_prompt(go_id, accession, review_text)
+  finish_reason = None
+  try:
+    raw, finish_reason = call_local_llm(
+        host, model, system_prompt, prompt, max_tokens, timeout=request_timeout)
+  except (urllib.error.URLError, TimeoutError, OSError) as e:
+    print(f"  ! {go_id} {accession}: request failed ({e}), logging as NONE and continuing")
+    raw = "VERDICT: NONE\nFEATURE: NONE 0-0\nREASONING: local model request failed"
+  verdict, ftype, start, end, reasoning, unparsed = parse_response(raw)
+  if unparsed:
+    debug_path = term_dir / "raw_debug.log"
+    with open(debug_path, "a") as dbg:
+      dbg.write(f"=== {accession} {go_id} (finish_reason={finish_reason}) ===\n{raw}\n\n")
+    if finish_reason == "length":
+      reasoning = (f"hit max_tokens ({max_tokens}) before VERDICT/FEATURE appeared -- "
+                   f"raw text saved to {debug_path}")
+    else:
+      reasoning = (f"response ended (finish_reason={finish_reason}) without VERDICT/FEATURE -- "
+                   f"raw text saved to {debug_path}, inspect for format drift")
+    print(f"  ! {go_id} {accession}: unparsed response (finish_reason={finish_reason}, "
+          f"{len(raw)} chars) -- raw text saved to {debug_path}")
+  block = (
+      f"## {accession} {go_id}\n"
+      f"verdict: {verdict}\n"
+      f"feature: {ftype} {start}-{end}\n"
+      f"reasoning: {reasoning}\n"
+      f"---\n"
+  )
+  with open(findings_path, "a") as fh:
+    fh.write(block)
+  print(f"  {go_id} {accession}: {verdict} ({ftype} {start}-{end})")
+
+
 def process_round(host, model, manifest, request_timeout, delay, max_tokens, system_prompt):
   new_terms = manifest.get("new_terms", {})
   touched = []
@@ -228,47 +284,52 @@ def process_round(host, model, manifest, request_timeout, delay, max_tokens, sys
     review_text = (term_dir / "review.md").read_text()
     findings_path = term_dir / "findings.md"
     for accession in accessions:
-      prompt = build_prompt(go_id, accession, review_text)
-      finish_reason = None
-      try:
-        raw, finish_reason = call_local_llm(
-            host, model, system_prompt, prompt, max_tokens, timeout=request_timeout)
-      except (urllib.error.URLError, TimeoutError, OSError) as e:
-        print(f"  ! {go_id} {accession}: request failed ({e}), logging as NONE and continuing")
-        raw = "VERDICT: NONE\nFEATURE: NONE 0-0\nREASONING: local model request failed"
-      verdict, ftype, start, end, reasoning, unparsed = parse_response(raw)
-      if unparsed:
-        debug_path = term_dir / "raw_debug.log"
-        with open(debug_path, "a") as dbg:
-          dbg.write(f"=== {accession} {go_id} (finish_reason={finish_reason}) ===\n{raw}\n\n")
-        if finish_reason == "length":
-          reasoning = (f"hit max_tokens ({max_tokens}) before VERDICT/FEATURE appeared -- "
-                       f"raw text saved to {debug_path}")
-        else:
-          reasoning = (f"response ended (finish_reason={finish_reason}) without VERDICT/FEATURE -- "
-                       f"raw text saved to {debug_path}, inspect for format drift")
-        print(f"  ! {go_id} {accession}: unparsed response (finish_reason={finish_reason}, "
-              f"{len(raw)} chars) -- raw text saved to {debug_path}")
-      block = (
-          f"## {accession} {go_id}\n"
-          f"verdict: {verdict}\n"
-          f"feature: {ftype} {start}-{end}\n"
-          f"reasoning: {reasoning}\n"
-          f"---\n"
-      )
-      with open(findings_path, "a") as fh:
-        fh.write(block)
-      print(f"  {go_id} {accession}: {verdict} ({ftype} {start}-{end})")
+      review_protein(host, model, system_prompt, go_id, accession, review_text, term_dir,
+                      findings_path, request_timeout, max_tokens)
       if delay:
         time.sleep(delay)
     touched.append(go_id)
   return touched
 
 
-def merge_round(touched):
+def retry_issues(host, model, system_prompt, go_id, request_timeout, max_tokens):
+  """Give a term's genuinely invalid responses (not decisive NONE verdicts -- those are real
+  answers, not garbled ones) one extra shot. Reads the issues parse_llm_findings.py just logged,
+  strips each retryable accession's block out of findings.md so it isn't double-counted, and
+  re-queries it fresh. Returns how many accessions were retried, so the caller knows whether a
+  re-parse is worthwhile."""
+  term_dir = ROOT / go_id.replace(":", "_")
+  parsed_path = term_dir / "parsed_findings.json"
+  if not parsed_path.exists():
+    return 0
+  parsed = json.loads(parsed_path.read_text())
+  to_retry = sorted({i["accession"] for i in parsed.get("issues", [])
+                      if i.get("reason") in RETRYABLE_ISSUE_REASONS})
+  if not to_retry:
+    return 0
+
+  findings_path = term_dir / "findings.md"
+  text = findings_path.read_text()
+  for acc in to_retry:
+    text = re.sub(
+        rf"## {re.escape(acc)} {re.escape(go_id)}\n.*?\n---\n", "", text, count=1, flags=re.DOTALL)
+  findings_path.write_text(text)
+
+  review_text = (term_dir / "review.md").read_text()
+  for acc in to_retry:
+    print(f"  retrying {go_id} {acc} (previously invalid)")
+    review_protein(host, model, system_prompt, go_id, acc, review_text, term_dir,
+                    findings_path, request_timeout, max_tokens)
+  return len(to_retry)
+
+
+def merge_round(touched, host, model, system_prompt, request_timeout, max_tokens):
   merged_terms = []
   for go_id in touched:
     run([sys.executable, str(SCRIPTS / "parse_llm_findings.py"), go_id])
+    n_retried = retry_issues(host, model, system_prompt, go_id, request_timeout, max_tokens)
+    if n_retried:
+      run([sys.executable, str(SCRIPTS / "parse_llm_findings.py"), go_id])
     result = subprocess.run(
         [sys.executable, str(SCRIPTS / "merge_llm_findings.py"), go_id],
         check=True, capture_output=True, text=True)
@@ -333,7 +394,8 @@ def main():
       break
     touched = process_round(args.host, model, manifest, args.request_timeout, args.delay,
                              args.max_tokens, system_prompt)
-    merged_terms = merge_round(touched)
+    merged_terms = merge_round(touched, args.host, model, system_prompt, args.request_timeout,
+                                args.max_tokens)
     run([sys.executable, str(SCRIPTS / "build_positional_mf_links.py")])
     commit_round(round_n, merged_terms, total_agents)
     print(f"Round {round_n} done. Merged: {', '.join(merged_terms) if merged_terms else 'none'}")
