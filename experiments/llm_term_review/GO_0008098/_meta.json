@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008098",
+  "name": "5S rRNA primary transcript binding",
+  "def": "Binding to an unprocessed 5S ribosomal RNA transcript.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P40796"
+  ],
+  "assigned_accessions": [
+    "P40796"
+  ]
+}

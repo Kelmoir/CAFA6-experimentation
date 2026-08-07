@@ -2904,6 +2904,101 @@
    }
   ]
  },
+ "GO:0004782": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q64611",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any annotated positional feature (MF-relevant) for protein Q64611 makes it impossible to identify a specific structural or functional basis that directly explains why it carries the GO term \"sulfinoalanine decarboxylase activity.\""
+   },
+   {
+    "accession": "Q6ZQY3",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q6ZQY3 do not include any positional information that would directly explain the molecular function of sulfinoalanine decarboxylase activity. While domain and family cross-references suggest the protein is related to this type of enzyme, they are not specific to the function in question."
+   },
+   {
+    "accession": "Q9DBE0",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any MF-relevant positional features and the broad classification of the protein within a larger enzyme family make it impossible to determine a specific structural or functional basis for the \"sulfinoalanine decarboxylase activity\" term."
+   }
+  ]
+ },
+ "GO:0004793": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P34896",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P34896 primarily indicate ligand-binding sites, which are generic and not distinctive enough to explain the specific molecular function \"threonine aldolase activity.\""
+   },
+   {
+    "accession": "P37303",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for P37303 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The domain/family cross-references indicate that the protein is related to the enzyme family that catalyzes threonine aldolase activity, suggesting a plausible structural basis for this function."
+   },
+   {
+    "accession": "P50431",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P50431 indicate multiple ligand-binding sites, but none specifically mention L-threonine binding, which is essential for the enzyme's activity. Thus, no single feature directly explains the molecular function of threonine aldolase activity."
+   }
+  ]
+ },
+ "GO:0004796": {
+  "n_resolved": 0,
+  "n_uncertain": 3,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P24557",
+    "go_id": "GO:0004796",
+    "feature_type": "BINDING",
+    "start": 478,
+    "end": 479,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "The binding of heme to P24557 is a generic cofactor interaction that is common across many enzymes, particularly in the cytochrome P450 family. This feature does not specifically account for the molecular function of thromboxane-A synthase activity and thus provides no distinctive basis for the GO term prediction."
+   },
+   {
+    "accession": "P36423",
+    "go_id": "GO:0004796",
+    "feature_type": "BINDING",
+    "start": 478,
+    "end": 479,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "The binding of heme at position 478-479 is a generic signal that may be shared by many unrelated proteins, and it does not provide a distinctive basis for the molecular function described in the GO term."
+   },
+   {
+    "accession": "P49430",
+    "go_id": "GO:0004796",
+    "feature_type": "BINDING",
+    "start": 478,
+    "end": 479,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "The presence of heme-binding sites does not uniquely explain the catalytic function of thromboxane-A synthase activity, as many cytochrome P450 enzymes have similar cofactor-binding features. Thus, the feature is not distinctive enough to plausibly account for the molecular function."
+   }
+  ],
+  "issues": []
+ },
  "GO:0004933": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -3065,6 +3160,22 @@
     "accession": "Q07892",
     "reason": "none_verdict",
     "reasoning": "The absence of any MF-relevant positional features in the protein's annotation prevents us from identifying a specific structural or functional basis for the \"eclosion hormone activity\" GO term."
+   }
+  ]
+ },
+ "GO:0008098": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P40796",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P40796 do not provide a specific structural basis that directly explains binding to an unprocessed 5S rRNA transcript. These features are generic and shared by many proteins, making it unlikely that any one of them is distinctive enough to explain the specific molecular function."
    }
   ]
  }

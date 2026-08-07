@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0004793",
+  "name": "threonine aldolase activity",
+  "def": "Catalysis of the reaction: L-threonine = glycine + acetaldehyde.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P34896",
+    "P37303",
+    "P50431"
+  ],
+  "assigned_accessions": [
+    "P34896",
+    "P37303",
+    "P50431"
+  ]
+}

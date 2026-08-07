@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P40796",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for P40796 do not provide a specific structural basis that directly explains binding to an unprocessed 5S rRNA transcript. These features are generic and shared by many proteins, making it unlikely that any one of them is distinctive enough to explain the specific molecular function."
+    }
+  ]
+}
