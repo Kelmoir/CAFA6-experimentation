@@ -1,0 +1,23 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A8R0V4",
+      "reason": "none_verdict",
+      "reasoning": "The protein A8R0V4 has no MF-relevant positional features that directly explain its involvement in pheromone activity, and the domain cross-references are not specific enough to confirm this molecular function."
+    },
+    {
+      "accession": "P11588",
+      "reason": "none_verdict",
+      "reasoning": "The absence of any MF-relevant positional features in P11588's annotated data means there is no plausible explanation for why it carries the \"pheromone activity\" GO term."
+    },
+    {
+      "accession": "Q3LHH8",
+      "reason": "unresolved_pointer",
+      "detail": "no matching note 66-67 on record for Q3LHH8 -- pointer didn't resolve",
+      "reported_feature": "note 66-67",
+      "reasoning": "The annotated feature is generic and does not provide a specific structural or functional basis that distinguishes Q3LHH8 from other proteins carrying the \"pheromone activity\" GO term."
+    }
+  ]
+}

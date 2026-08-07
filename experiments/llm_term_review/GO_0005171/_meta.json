@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0005171",
+  "name": "hepatocyte growth factor receptor binding",
+  "def": "Binding to an hepatocyte growth factor receptor.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q8BZM1",
+    "Q92990",
+    "Q9NQ30"
+  ],
+  "assigned_accessions": [
+    "Q8BZM1",
+    "Q92990",
+    "Q9NQ30"
+  ]
+}

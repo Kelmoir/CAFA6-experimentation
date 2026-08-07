@@ -1,0 +1,27 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9NQ30",
+      "go_id": "GO:0005171",
+      "feature_type": "DOMAIN",
+      "start": 23,
+      "end": 102,
+      "signal_kind": "text",
+      "signal_value": "IGFBP N-terminal",
+      "reasoning": "The domain's note and cross-references suggest a structural similarity to the IGFBP family, which includes growth factor receptors, but no explicit positional feature directly explains the binding activity with the hepatocyte growth factor receptor."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q8BZM1",
+      "reason": "none_verdict",
+      "reasoning": "(no reasoning extracted from model response)"
+    },
+    {
+      "accession": "Q92990",
+      "reason": "none_verdict",
+      "reasoning": "(no reasoning extracted from model response)"
+    }
+  ]
+}

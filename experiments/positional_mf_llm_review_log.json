@@ -3673,6 +3673,34 @@
    }
   ]
  },
+ "GO:0005153": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P10145",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for P10145 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The annotated cleavage sites do not directly explain the molecular function of binding to an interleukin-8 receptor. While the InterPro and Pfam annotations suggest chemokine-related domains, these are generic features shared by many proteins and do not specifically account for the binding activity in this context."
+   },
+   {
+    "accession": "P19874",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any specific positional or structural feature in the annotated data for P19874 makes it impossible to identify a plausible explanation for why it carries the molecular function \"interleukin-8 receptor binding.\""
+   },
+   {
+    "accession": "P79255",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any annotated positional features for P79255 that directly relate to IL-8 receptor binding makes it impossible to determine a specific structural/functional basis for the GO term."
+   }
+  ]
+ },
  "GO:0005170": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -3691,6 +3719,66 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0005171": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9NQ30",
+    "go_id": "GO:0005171",
+    "feature_type": "DOMAIN",
+    "start": 23,
+    "end": 102,
+    "signal_kind": "text",
+    "signal_value": "IGFBP N-terminal",
+    "reasoning": "The domain's note and cross-references suggest a structural similarity to the IGFBP family, which includes growth factor receptors, but no explicit positional feature directly explains the binding activity with the hepatocyte growth factor receptor."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q8BZM1",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
+   },
+   {
+    "accession": "Q92990",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
+   }
+  ]
+ },
+ "GO:0005186": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A8R0V4",
+    "reason": "none_verdict",
+    "reasoning": "The protein A8R0V4 has no MF-relevant positional features that directly explain its involvement in pheromone activity, and the domain cross-references are not specific enough to confirm this molecular function."
+   },
+   {
+    "accession": "P11588",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any MF-relevant positional features in P11588's annotated data means there is no plausible explanation for why it carries the \"pheromone activity\" GO term."
+   },
+   {
+    "accession": "Q3LHH8",
+    "reason": "unresolved_pointer",
+    "detail": "no matching note 66-67 on record for Q3LHH8 -- pointer didn't resolve",
+    "reported_feature": "note 66-67",
+    "reasoning": "The annotated feature is generic and does not provide a specific structural or functional basis that distinguishes Q3LHH8 from other proteins carrying the \"pheromone activity\" GO term."
+   }
+  ]
  },
  "GO:0005300": {
   "n_resolved": 0,
@@ -3922,6 +4010,22 @@
     "accession": "P17050",
     "reason": "none_verdict",
     "reasoning": "The annotated features for P17050 are generic and do not specifically account for the molecular function of alpha-N-acetylgalactosaminidase activity."
+   }
+  ]
+ },
+ "GO:0008493": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q14728",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q14728 lacks any annotated positional features that could plausibly explain the specific molecular function of tetracycline transmembrane transporter activity."
    }
   ]
  }

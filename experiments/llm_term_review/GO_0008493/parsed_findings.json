@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q14728",
+      "reason": "none_verdict",
+      "reasoning": "The protein Q14728 lacks any annotated positional features that could plausibly explain the specific molecular function of tetracycline transmembrane transporter activity."
+    }
+  ]
+}
