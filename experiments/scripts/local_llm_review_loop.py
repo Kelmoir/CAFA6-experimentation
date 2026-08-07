@@ -112,6 +112,11 @@ def build_system_prompt(chain_of_thought):
 
 
 def call_local_llm(host, model, system_prompt, prompt, max_tokens, timeout=120):
+  """Returns (content, finish_reason). finish_reason is the OpenAI-compatible API's own account of
+  why generation stopped ("stop" = model concluded normally, "length" = it hit max_tokens mid-
+  generation) -- authoritative, unlike guessing from the absence of expected fields in the text,
+  which can't tell a genuine token-budget cutoff apart from a model that finished normally but
+  didn't follow the requested format."""
   url = host.rstrip("/") + "/v1/chat/completions"
   payload = {
       "model": model,
@@ -127,7 +132,8 @@ def call_local_llm(host, model, system_prompt, prompt, max_tokens, timeout=120):
       headers={"Content-Type": "application/json", "Authorization": "Bearer lm-studio"})
   with urllib.request.urlopen(req, timeout=timeout) as resp:
     body = json.loads(resp.read().decode())
-  return body["choices"][0]["message"]["content"]
+  choice = body["choices"][0]
+  return choice["message"]["content"], choice.get("finish_reason")
 
 
 def discover_model(host, timeout=10):
@@ -152,26 +158,27 @@ def parse_response(text):
   reasoning text can easily mention "verdict" or reference the answer format conceptually before
   it actually commits to one, so searching from the front risks grabbing a stray earlier mention
   instead of the real final answer.
-  Returns a 6th element, `truncated`, so callers can warn: if VERDICT/FEATURE never appeared, the
-  likeliest cause is the response got cut off by max_tokens before reaching them (e.g. a
-  reasoning-style model spending its whole budget on a <think> preamble, or CoT reasoning that ran
-  out of room before reaching the final block), not a genuinely malformed answer -- worth surfacing
-  distinctly rather than silently recording a NONE verdict that looks the same as a real one."""
+  Returns a 6th element, `unparsed`, so callers can warn: True means neither VERDICT nor FEATURE
+  appeared anywhere in the text. This function has no access to the API's finish_reason, so it
+  can't tell WHY on its own (genuine max_tokens cutoff vs. a normally-finished response that just
+  didn't follow the requested format) -- callers that have finish_reason should use it to give a
+  precise diagnosis instead of guessing; this function's own fallback reasoning text is
+  deliberately neutral about the cause."""
   v = _last_match(r"VERDICT:\s*(LIKELY|UNCERTAIN|NONE)", text, re.I)
   f = _last_match(r"FEATURE:\s*(\S+)\s+(\d+)\s*-\s*(\d+)", text)
   r = _last_match(r"REASONING:\s*(.+)", text)
-  truncated = v is None and f is None
+  unparsed = v is None and f is None
   verdict = v.group(1).upper() if v else "NONE"
   if f:
     ftype, start, end = f.group(1), f.group(2), f.group(3)
   else:
     ftype, start, end = "NONE", "0", "0"
-  if truncated:
-    reasoning = "response truncated/malformed before VERDICT or FEATURE appeared -- raise --max-tokens"
+  if unparsed:
+    reasoning = "no VERDICT or FEATURE found anywhere in the response text"
   else:
     reasoning = r.group(1).strip() if r else "(no reasoning extracted from model response)"
   reasoning = reasoning.split("\n")[0][:400]  # keep it single-line, bounded
-  return verdict, ftype, start, end, reasoning, truncated
+  return verdict, ftype, start, end, reasoning, unparsed
 
 
 def extract_protein_section(review_text, accession):
@@ -222,15 +229,26 @@ def process_round(host, model, manifest, request_timeout, delay, max_tokens, sys
     findings_path = term_dir / "findings.md"
     for accession in accessions:
       prompt = build_prompt(go_id, accession, review_text)
+      finish_reason = None
       try:
-        raw = call_local_llm(host, model, system_prompt, prompt, max_tokens, timeout=request_timeout)
+        raw, finish_reason = call_local_llm(
+            host, model, system_prompt, prompt, max_tokens, timeout=request_timeout)
       except (urllib.error.URLError, TimeoutError, OSError) as e:
         print(f"  ! {go_id} {accession}: request failed ({e}), logging as NONE and continuing")
         raw = "VERDICT: NONE\nFEATURE: NONE 0-0\nREASONING: local model request failed"
-      verdict, ftype, start, end, reasoning, truncated = parse_response(raw)
-      if truncated:
-        print(f"  ! {go_id} {accession}: response looked truncated ({len(raw)} chars, "
-              f"no VERDICT/FEATURE found) -- consider raising --max-tokens (currently {max_tokens})")
+      verdict, ftype, start, end, reasoning, unparsed = parse_response(raw)
+      if unparsed:
+        debug_path = term_dir / "raw_debug.log"
+        with open(debug_path, "a") as dbg:
+          dbg.write(f"=== {accession} {go_id} (finish_reason={finish_reason}) ===\n{raw}\n\n")
+        if finish_reason == "length":
+          reasoning = (f"hit max_tokens ({max_tokens}) before VERDICT/FEATURE appeared -- "
+                       f"raw text saved to {debug_path}")
+        else:
+          reasoning = (f"response ended (finish_reason={finish_reason}) without VERDICT/FEATURE -- "
+                       f"raw text saved to {debug_path}, inspect for format drift")
+        print(f"  ! {go_id} {accession}: unparsed response (finish_reason={finish_reason}, "
+              f"{len(raw)} chars) -- raw text saved to {debug_path}")
       block = (
           f"## {accession} {go_id}\n"
           f"verdict: {verdict}\n"
