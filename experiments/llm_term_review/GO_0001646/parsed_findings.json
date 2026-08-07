@@ -1,0 +1,27 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P13773",
+      "go_id": "GO:0001646",
+      "feature_type": "REGION",
+      "start": 338,
+      "end": 392,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The C-terminal disordered region may function as an intracellular signaling tail typical of GPCRs, but the specific structural basis for cAMP binding and recognition is not positionally annotated, limiting confidence."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q54U75",
+      "reason": "none_verdict",
+      "reasoning": "This protein has no MF-relevant positional features on record; domain cross-references alone (lacking position/context) cannot account for the specific cAMP-receptor molecular function."
+    },
+    {
+      "accession": "Q9TX43",
+      "reason": "none_verdict",
+      "reasoning": "The protein's cAMP receptor function is explained by its domain composition (GPCR_cAMP, GCR1-cAMP_receptor), not by the annotated disordered regions, which are too generic to account for this specific molecular function."
+    }
+  ]
+}

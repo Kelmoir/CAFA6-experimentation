@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "P01833",
+      "go_id": "GO:0001792",
+      "feature_type": "DOMAIN",
+      "start": 18,
+      "end": 120,
+      "signal_kind": "text",
+      "signal_value": "Ig-like V-type 1; required for binding to polymeric IgA and IgM",
+      "reasoning": "The domain explicitly notes it is \"required for binding to polymeric IgA and IgM\", directly accounting for the receptor's combinatorial activity with polymeric immunoglobulins of these isotypes as defined in the GO term."
+    },
+    {
+      "accession": "P15083",
+      "go_id": "GO:0001792",
+      "feature_type": "DOMAIN",
+      "start": 20,
+      "end": 126,
+      "signal_kind": "text",
+      "signal_value": "Ig-like V-type 1; required for binding to polymeric IgA and IgM",
+      "reasoning": "This domain is explicitly annotated as \"required for binding to polymeric IgA and IgM\", directly matching the GO term's definition which specifies combining with polymeric IgA/IgM via the Fc region."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

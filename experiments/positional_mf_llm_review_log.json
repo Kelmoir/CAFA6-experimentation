@@ -1232,6 +1232,116 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0001621": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ADP",
+    "accessions": [
+     "P49651"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P59902",
+    "go_id": "GO:0001621",
+    "feature_type": "BINDING",
+    "start": 282,
+    "end": 287,
+    "signal_kind": "ligand",
+    "signal_value": "ADP",
+    "reasoning": "ADP-binding sites match the GO term's ligand requirement but ADP binding is generic across many proteins; the P2Y1 receptor domain annotation provides the specific diagnostic evidence for this ADP-GPCR subtype but lacks positional coordinates."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q9CPV9",
+    "reason": "none_verdict",
+    "reasoning": "ADP binding is necessary but generic across many proteins; the G-protein-coupled receptor/7TM structure (evident from domain cross-references but lacking positional annotation) is required to specialize this to the ADP-specific receptor activity."
+   }
+  ]
+ },
+ "GO:0001637": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O35786",
+    "reason": "none_verdict",
+    "reasoning": "This protein has no annotated positional features on record; while domain cross-references identify GPCR/G-protein-receptor patterns, no specific structural feature can explain the chemoattractant-binding molecular function."
+   },
+   {
+    "accession": "P13773",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features are generic disordered regions; the GPCR architecture explaining chemoattractant receptor function is documented only as structural domains in cross-references, not as positional annotated features."
+   }
+  ]
+ },
+ "GO:0001646": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P13773",
+    "go_id": "GO:0001646",
+    "feature_type": "REGION",
+    "start": 338,
+    "end": 392,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The C-terminal disordered region may function as an intracellular signaling tail typical of GPCRs, but the specific structural basis for cAMP binding and recognition is not positionally annotated, limiting confidence."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q54U75",
+    "reason": "none_verdict",
+    "reasoning": "This protein has no MF-relevant positional features on record; domain cross-references alone (lacking position/context) cannot account for the specific cAMP-receptor molecular function."
+   },
+   {
+    "accession": "Q9TX43",
+    "reason": "none_verdict",
+    "reasoning": "The protein's cAMP receptor function is explained by its domain composition (GPCR_cAMP, GCR1-cAMP_receptor), not by the annotated disordered regions, which are too generic to account for this specific molecular function."
+   }
+  ]
+ },
+ "GO:0001792": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like V-type 1; required for binding to polymeric IgA and IgM",
+    "accessions": [
+     "P01833",
+     "P15083"
+    ],
+    "reason": "resolved to ['InterPro:IPR003599', 'InterPro:IPR007110', 'InterPro:IPR013106', 'InterPro:IPR013783', 'InterPro:IPR036179', 'PROSITE:PS50835', 'Pfam:PF07686'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR003599': 910, 'InterPro:IPR007110': 1106, 'InterPro:IPR013106': 416, 'InterPro:IPR013783': 1901, 'InterPro:IPR036179': 1187, 'PROSITE:PS50835': 1101, 'Pfam:PF07686': 360})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
  "GO:0001847": {
   "n_resolved": 1,
   "n_uncertain": 0,
