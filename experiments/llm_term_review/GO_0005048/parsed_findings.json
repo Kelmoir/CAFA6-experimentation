@@ -1,0 +1,23 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0AGA2",
+      "reason": "none_verdict",
+      "reasoning": "The absence of any annotated positional features and the presence of generic domain-based annotations make it impossible to determine a specific structural/functional basis for the GO term \"signal sequence binding\" in this case."
+    },
+    {
+      "accession": "P40890",
+      "reason": "none_verdict",
+      "reasoning": "(no reasoning extracted from model response)"
+    },
+    {
+      "accession": "Q06815",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for Q06815 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The annotated features do not provide a distinctive or plausibly explanatory structural/functional basis for the \"signal sequence binding\" GO term."
+    }
+  ]
+}

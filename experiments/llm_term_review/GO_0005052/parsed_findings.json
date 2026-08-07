@@ -1,0 +1,29 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P35056",
+      "go_id": "GO:0005052",
+      "feature_type": "MOTIF",
+      "start": 203,
+      "end": 208,
+      "signal_kind": "text",
+      "signal_value": "WxxxF/Y motif 2",
+      "reasoning": "The WxxxF/Y motif is a known feature of TPR domains, which are involved in peroxisomal targeting, but the specific motif (203-208) does not directly explain why P35056 carries the GO term \"peroxisome matrix targeting signal-1 binding\" as a real annotation."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P33292",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly or plausibly explain the specific molecular function of \"peroxisome matrix targeting signal-1 binding\" for protein P33292."
+    },
+    {
+      "accession": "Q9FMA3",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for Q9FMA3 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The annotated features do not provide a distinctive or specific explanation for the molecular function of \"peroxisome matrix targeting signal-1 binding,\" as they are generic and shared by many proteins."
+    }
+  ]
+}

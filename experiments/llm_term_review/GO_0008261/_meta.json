@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008261",
+  "name": "allatostatin receptor activity",
+  "def": "Combining with allatostatin to initiate a change in cell activity.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A1ZAX0"
+  ],
+  "assigned_accessions": [
+    "A1ZAX0"
+  ]
+}

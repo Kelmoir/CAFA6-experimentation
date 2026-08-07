@@ -3393,6 +3393,100 @@
    }
   ]
  },
+ "GO:0005047": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9U5L1",
+    "go_id": "GO:0005047",
+    "feature_type": "BINDING",
+    "start": 401,
+    "end": 409,
+    "signal_kind": "ligand",
+    "signal_value": "GTP",
+    "reasoning": "The GTP-binding domain (BINDING 401-409) is generic and could be found in many proteins, so it does not specifically explain the binding to a signal recognition particle."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "O76094",
+    "reason": "none_verdict",
+    "reasoning": "No single annotated feature provides a clear, specific explanation for why this protein carries the molecular function \"signal recognition particle binding.\" The features are more generic and do not directly indicate the unique role of the protein in SRP binding."
+   },
+   {
+    "accession": "Q6NTF9",
+    "reason": "none_verdict",
+    "reasoning": "The annotated disordered regions do not provide a specific structural or functional basis for the molecular function of \"signal recognition particle binding.\""
+   }
+  ]
+ },
+ "GO:0005048": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AGA2",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any annotated positional features and the presence of generic domain-based annotations make it impossible to determine a specific structural/functional basis for the GO term \"signal sequence binding\" in this case."
+   },
+   {
+    "accession": "P40890",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
+   },
+   {
+    "accession": "Q06815",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q06815 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The annotated features do not provide a distinctive or plausibly explanatory structural/functional basis for the \"signal sequence binding\" GO term."
+   }
+  ]
+ },
+ "GO:0005052": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P35056",
+    "go_id": "GO:0005052",
+    "feature_type": "MOTIF",
+    "start": 203,
+    "end": 208,
+    "signal_kind": "text",
+    "signal_value": "WxxxF/Y motif 2",
+    "reasoning": "The WxxxF/Y motif is a known feature of TPR domains, which are involved in peroxisomal targeting, but the specific motif (203-208) does not directly explain why P35056 carries the GO term \"peroxisome matrix targeting signal-1 binding\" as a real annotation."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P33292",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly or plausibly explain the specific molecular function of \"peroxisome matrix targeting signal-1 binding\" for protein P33292."
+   },
+   {
+    "accession": "Q9FMA3",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q9FMA3 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The annotated features do not provide a distinctive or specific explanation for the molecular function of \"peroxisome matrix targeting signal-1 binding,\" as they are generic and shared by many proteins."
+   }
+  ]
+ },
  "GO:0005122": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -3614,5 +3708,21 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0008261": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A1ZAX0",
+    "reason": "none_verdict",
+    "reasoning": "The protein A1ZAX0 lacks any annotated positional features that could directly explain its molecular function of \"allatostatin receptor activity,\" and the domain/family cross-references are generic and not distinctive to this GO term."
+   }
+  ]
  }
 }

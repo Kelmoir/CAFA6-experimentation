@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0005047",
+  "name": "signal recognition particle binding",
+  "def": "Binding to a signal recognition particle.",
+  "n_proteins_total": 34,
+  "sampled_accessions": [
+    "O76094",
+    "Q6NTF9",
+    "Q9U5L1"
+  ],
+  "assigned_accessions": [
+    "O76094",
+    "Q6NTF9",
+    "Q9U5L1"
+  ]
+}

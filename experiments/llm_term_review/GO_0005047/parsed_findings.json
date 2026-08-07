@@ -1,0 +1,27 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9U5L1",
+      "go_id": "GO:0005047",
+      "feature_type": "BINDING",
+      "start": 401,
+      "end": 409,
+      "signal_kind": "ligand",
+      "signal_value": "GTP",
+      "reasoning": "The GTP-binding domain (BINDING 401-409) is generic and could be found in many proteins, so it does not specifically explain the binding to a signal recognition particle."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "O76094",
+      "reason": "none_verdict",
+      "reasoning": "No single annotated feature provides a clear, specific explanation for why this protein carries the molecular function \"signal recognition particle binding.\" The features are more generic and do not directly indicate the unique role of the protein in SRP binding."
+    },
+    {
+      "accession": "Q6NTF9",
+      "reason": "none_verdict",
+      "reasoning": "The annotated disordered regions do not provide a specific structural or functional basis for the molecular function of \"signal recognition particle binding.\""
+    }
+  ]
+}
