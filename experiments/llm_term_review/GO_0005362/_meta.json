@@ -1,0 +1,20 @@
+{
+  "go_id": "GO:0005362",
+  "name": "low-affinity D-glucose:sodium symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: D-glucose(out) + Na+(out) = D-glucose(in) + Na+(in). In low-affinity transport the transporter is able to bind the solute only if it is present at very high concentrations.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "D3ZIS0",
+    "P31636",
+    "P31639",
+    "Q2M3M2",
+    "Q91ZP4"
+  ],
+  "assigned_accessions": [
+    "D3ZIS0",
+    "P31636",
+    "P31639",
+    "Q2M3M2",
+    "Q91ZP4"
+  ]
+}

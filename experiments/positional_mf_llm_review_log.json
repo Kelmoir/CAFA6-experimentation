@@ -4072,6 +4072,27 @@
    }
   ]
  },
+ "GO:0005358": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q94AZ2",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q94AZ2 lacks any annotated positional feature that directly explains the molecular function of \"high-affinity D-glucose:proton symporter activity,\" and no specific domain or fold is uniquely associated with this function."
+   },
+   {
+    "accession": "Q9P3U6",
+    "reason": "none_verdict",
+    "reasoning": "The presence of a disordered region does not provide a clear structural/functional basis for the specific molecular function of high-affinity D-glucose:proton symporter activity."
+   }
+  ]
+ },
  "GO:0005360": {
   "n_resolved": 0,
   "n_uncertain": 1,
@@ -4092,6 +4113,74 @@
    }
   ],
   "issues": []
+ },
+ "GO:0005362": {
+  "n_resolved": 0,
+  "n_uncertain": 2,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P31639",
+    "go_id": "GO:0005362",
+    "feature_type": "BINDING",
+    "start": 72,
+    "end": 73,
+    "signal_kind": "ligand",
+    "signal_value": "Na(+)",
+    "reasoning": "(no reasoning extracted from model response)"
+   },
+   {
+    "accession": "Q2M3M2",
+    "go_id": "GO:0005362",
+    "feature_type": "REGION",
+    "start": 578,
+    "end": 614,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The \"Disordered\" note for the region 578-614 does not directly explain why Q2M3M2 carries the molecular function of low-affinity D-glucose:sodium symporter activity, as disordered regions are common in many proteins and do not necessarily indicate low-affinity transport."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "D3ZIS0",
+    "reason": "none_verdict",
+    "reasoning": "(no reasoning extracted from model response)"
+   },
+   {
+    "accession": "P31636",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P31636 do not include any positional features that are specific to the low-affinity D-glucose:sodium symporter activity, and the domain/family cross-references are too generic to provide a meaningful explanation for this particular molecular function."
+   },
+   {
+    "accession": "Q91ZP4",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q91ZP4 has no annotated positional features that could explain its low-affinity D-glucose:sodium symporter activity, and the domain/family cross-references do not provide specific coordinates. Therefore, there is no plausible structural/functional basis to assign this GO term to the protein based on the available evidence."
+   }
+  ]
+ },
+ "GO:0005371": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P38152",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, position-specific explanation for the molecular function described in the GO term."
+   },
+   {
+    "accession": "Q9JHY2",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any MF-relevant positional features in Q9JHY2 and the lack of a specific domain reference that directly supports the GO term's definition make it impossible to determine a plausible structural/functional basis for the term."
+   }
+  ]
  },
  "GO:0005416": {
   "n_resolved": 0,
@@ -4361,5 +4450,21 @@
    }
   ],
   "issues": []
+ },
+ "GO:0008755": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "G3XCW3",
+    "reason": "none_verdict",
+    "reasoning": "The protein G3XCW3 has no annotated positional features related to molecular function, and no domain/family cross-references are provided. Therefore, there is no evidence to plausibly assign the GO term \"O antigen polymerase activity\" to this protein."
+   }
+  ]
  }
 }
