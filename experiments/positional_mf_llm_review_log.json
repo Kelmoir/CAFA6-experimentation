@@ -4450,6 +4450,84 @@
    }
   ]
  },
+ "GO:0005459": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 5,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O77592",
+    "reason": "none_verdict",
+    "reasoning": "The protein O77592 has no MF-relevant positional features recorded, so it is not possible to determine which annotated feature most plausibly explains the molecular function of UDP-galactose transmembrane transporter activity."
+   },
+   {
+    "accession": "P78381",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains why P78381 carries the molecular function \"UDP-galactose transmembrane transporter activity.\" The disordered region and ER retention motif are generic features that would apply to many proteins, not specific to this function."
+   },
+   {
+    "accession": "Q94B65",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any MF-relevant positional features in the annotated data for Q94B65 makes it impossible to determine a specific structural basis for the molecular function described by GO:0005459."
+   },
+   {
+    "accession": "Q9LPU2",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature is available to explain the specific molecular function of \"UDP-galactose transmembrane transporter activity\" for Q9LPU2."
+   },
+   {
+    "accession": "Q9M9S6",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature provided does not specifically explain the molecular function of UDP-galactose transmembrane transporter activity, as di-lysine motifs are generic and shared by many unrelated proteins."
+   }
+  ]
+ },
+ "GO:0005460": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9SFE9",
+    "go_id": "GO:0005460",
+    "feature_type": "DOMAIN",
+    "start": 32,
+    "end": 152,
+    "signal_kind": "text",
+    "signal_value": "EamA",
+    "reasoning": "The domain \"EamA\" is not directly linked to the molecular function of UDP-glucose transmembrane transporter activity, and the cross-references provided are too generic to explain why this specific protein carries the term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q5M8T2",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature provided for Q5M8T2 is a disordered region, which is not distinctive to the molecular function of UDP-glucose transport and does not provide a clear basis for explaining why this protein carries the term."
+   },
+   {
+    "accession": "Q94B65",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q94B65 lacks any MF-relevant positional features, and the available domain/family cross-references are generic and do not provide specific structural evidence for the molecular function described by GO:0005460."
+   },
+   {
+    "accession": "Q9C521",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9C521 lacks any MF-relevant positional features that could plausibly explain why it carries the GO term \"UDP-glucose transmembrane transporter activity.\""
+   },
+   {
+    "accession": "Q9SRE4",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9SRE4 lacks any MF-relevant positional features that could plausibly explain its function, and the available domain/family cross-references do not provide a specific basis for asserting the GO term. Therefore, no feature can be confidently identified as explaining this molecular function."
+   }
+  ]
+ },
  "GO:0005488": {
   "n_resolved": 0,
   "n_uncertain": 1,
