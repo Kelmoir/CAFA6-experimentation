@@ -13,7 +13,7 @@ definition text can be long) and simpler to hand to subagents -- each subagent s
 assigned protein, but all of them read the same file, so there's a single source of truth per term
 rather than N near-duplicate files differing only in which protein section matters.
 
-Fixed budget: a term is sampled once, gets exactly min(3, num proteins carrying it) proteins, and
+Fixed budget: a term is sampled once, gets exactly min(5, num proteins carrying it) proteins, and
 is reviewed exactly once. There is no retry/carry-over mechanism -- once a term's directory exists
 under experiments/llm_term_review/, it's permanently out of scope for future rounds (see
 plan_review_round.py), whether or not that single pass reached merge agreement. This replaced an
@@ -37,7 +37,7 @@ VISITED_PATH = Path("experiments/positional_mf_visited_terms.json")
 GO_OBO_PATH = Path("data/cafa-6-protein-function-prediction/Train/go-basic.obo")
 OUT_ROOT = Path("experiments/llm_term_review")
 SEED = 42
-MAX_PROTEINS = 3
+MAX_PROTEINS = 5
 
 
 def load_go_term_info():
