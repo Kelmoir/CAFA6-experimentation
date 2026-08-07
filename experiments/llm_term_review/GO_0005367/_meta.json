@@ -1,0 +1,20 @@
+{
+  "go_id": "GO:0005367",
+  "name": "myo-inositol:sodium symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: myo-inositol(out) + Na+(out) = myo-inositol(in) + Na+(in).",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P11170",
+    "P13866",
+    "P31637",
+    "P53794",
+    "Q9JKZ2"
+  ],
+  "assigned_accessions": [
+    "P11170",
+    "P13866",
+    "P31637",
+    "P53794",
+    "Q9JKZ2"
+  ]
+}

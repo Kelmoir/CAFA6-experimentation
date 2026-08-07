@@ -1,0 +1,37 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P02943",
+      "go_id": "GO:0005363",
+      "feature_type": "SITE",
+      "start": 30,
+      "end": 31,
+      "signal_kind": "text",
+      "signal_value": "Greasy slide, important in sugar transport",
+      "reasoning": "(no reasoning extracted from model response)"
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P0CD99",
+      "reason": "none_verdict",
+      "reasoning": "The protein P0CD99 lacks any MF-relevant positional features that could plausibly explain the specific molecular function of \"maltose transmembrane transporter activity.\""
+    },
+    {
+      "accession": "P0CE00",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature in the annotated features of P0CE00 provides a specific explanation for the molecular function \"maltose transmembrane transporter activity,\" as the only available feature is a disordered region with no functional annotation."
+    },
+    {
+      "accession": "P19642",
+      "reason": "none_verdict",
+      "reasoning": "(no reasoning extracted from model response)"
+    },
+    {
+      "accession": "Q9LF50",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly supports the molecular function of maltose transmembrane transporter activity in Q9LF50."
+    }
+  ]
+}
