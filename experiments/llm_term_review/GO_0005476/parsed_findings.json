@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O43772",
+      "reason": "none_verdict",
+      "reasoning": "The protein O43772 lacks any annotated positional feature that directly explains the molecular function of \"carnitine:O-acyl-L-carnitine antiporter activity.\""
+    },
+    {
+      "accession": "P97521",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P97521 provides a clear, distinctive indication of antiporter activity, making it impossible to confidently assign the GO term based on structural/functional evidence."
+    },
+    {
+      "accession": "Q12289",
+      "reason": "none_verdict",
+      "reasoning": "(no reasoning extracted from model response)"
+    },
+    {
+      "accession": "Q9Z2Z6",
+      "reason": "none_verdict",
+      "reasoning": "The protein Q9Z2Z6 lacks any annotated positional features that specifically explain its involvement in carnitine:O-acyl-L-carnitine antiporter activity, making it impossible to determine the molecular function with certainty based on the given evidence."
+    }
+  ]
+}
