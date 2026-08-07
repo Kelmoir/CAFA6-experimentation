@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0004050",
+  "name": "apyrase activity",
+  "def": "Catalysis of the reaction: a ribonucleoside 5'-triphosphate + 2 H2O = a ribonucleoside 5'-phosphate + 2 phosphate. This reaction consists of two distinct successive phosphate-releasing steps, with NDPs as intermediates. Apyrases are active against both di- and triphosphate nucleotides (NDPs and NTPs) and hydrolyze NTPs to nucleotide monophosphates (NMPs).",
+  "n_proteins_total": 23,
+  "sampled_accessions": [
+    "P55772",
+    "Q9USP2",
+    "Q9Y5L3"
+  ],
+  "assigned_accessions": [
+    "P55772",
+    "Q9USP2",
+    "Q9Y5L3"
+  ]
+}

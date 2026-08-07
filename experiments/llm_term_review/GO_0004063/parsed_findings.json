@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P27169",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly or plausibly explain the specific molecular function of aryl dialkyl phosphate hydrolysis, as they are either generic (e.g., Ca(2+) binding) or unrelated to the reaction mechanism."
+    },
+    {
+      "accession": "P55159",
+      "reason": "none_verdict",
+      "reasoning": "The presence of multiple Ca(2+)-binding sites in P55159 does not uniquely identify it for the specific molecular function of \"aryldialkylphosphatase activity,\" as this cofactor is common across many enzymes. Thus, no single annotated feature plausibly explains the GO term for this protein."
+    },
+    {
+      "accession": "Q68FP2",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features specifically account for the enzymatic function of aryl dialkylphosphatase activity, and the presence of Ca(2+) in multiple binding sites is a generic feature that does not distinguish this protein from others with similar annotations."
+    }
+  ]
+}

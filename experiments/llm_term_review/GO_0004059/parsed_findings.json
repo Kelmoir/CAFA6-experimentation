@@ -1,0 +1,33 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9C666",
+      "go_id": "GO:0004059",
+      "feature_type": "BINDING",
+      "start": 171,
+      "end": 172,
+      "signal_kind": "ligand",
+      "signal_value": "acetyl-CoA",
+      "reasoning": "The binding of acetyl-CoA at position 171-172 directly supports the enzymatic activity described in the GO term, which is a key requirement for the reaction catalyzed by aralkylamine N-acetyltransferase."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q6Z1Y6",
+      "go_id": "GO:0004059",
+      "feature_type": "DOMAIN",
+      "start": 54,
+      "end": 195,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The domain note for \"N-acetyltransferase\" is generic and does not specifically account for the molecular function of aralkylamine N-acetyltransferase activity."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P79774",
+      "reason": "none_verdict",
+      "reasoning": "The domain note \"N-acetyltransferase\" is generic and could apply to many enzymes, not specifically explaining why this protein carries the given GO term."
+    }
+  ]
+}

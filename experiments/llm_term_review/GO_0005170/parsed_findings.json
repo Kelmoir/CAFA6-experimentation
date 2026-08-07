@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P52803",
+      "go_id": "GO:0005170",
+      "feature_type": "DOMAIN",
+      "start": 28,
+      "end": 162,
+      "signal_kind": "text",
+      "signal_value": "Ephrin RBD",
+      "reasoning": "The annotated \"Ephrin RBD\" domain directly supports the molecular function of binding to a neurotrophin TRKC receptor, making it a strong and specific explanation for the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,27 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9USP2",
+      "go_id": "GO:0004050",
+      "feature_type": "ACT_SITE",
+      "start": 144,
+      "end": 145,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The generic \"Proton acceptor\" note at position 144-145 is not distinctive enough to specifically account for the apyrase activity defined by GO:0004050."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P55772",
+      "reason": "none_verdict",
+      "reasoning": "(no reasoning extracted from model response)"
+    },
+    {
+      "accession": "Q9Y5L3",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide a unique or distinctive explanation for the molecular function of apyrase activity, as they are generic signals common to many enzymes involved in nucleotide metabolism."
+    }
+  ]
+}
