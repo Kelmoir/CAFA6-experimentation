@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0004918",
+  "name": "interleukin-8 receptor activity",
+  "def": "Combining with interleukin-8 and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P25024",
+    "P35343",
+    "P35407"
+  ],
+  "assigned_accessions": [
+    "P25024",
+    "P35343",
+    "P35407"
+  ]
+}
