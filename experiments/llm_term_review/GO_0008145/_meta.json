@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008145",
+  "name": "phenylalkylamine binding",
+  "def": "Binding to phenylalkylamine or one of its derivatives.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P54191"
+  ],
+  "assigned_accessions": [
+    "P54191"
+  ]
+}

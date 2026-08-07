@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0004852",
+  "name": "uroporphyrinogen-III synthase activity",
+  "def": "Catalysis of the reaction: hydroxymethylbilane = H2O + uroporphyrinogen III.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "O48721",
+    "P19356",
+    "P22907"
+  ],
+  "assigned_accessions": [
+    "O48721",
+    "P19356",
+    "P22907"
+  ]
+}

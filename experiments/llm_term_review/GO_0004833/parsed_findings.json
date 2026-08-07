@@ -1,0 +1,33 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9ERD9",
+      "go_id": "GO:0004833",
+      "feature_type": "BINDING",
+      "start": 349,
+      "end": 350,
+      "signal_kind": "ligand",
+      "signal_value": "heme b",
+      "reasoning": "The binding of heme b (a cofactor essential for the enzyme's function) and the note that this residue is proximal are more specific to the catalytic activity of tryptophan 2,3-dioxygenase than the generic disordered region."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P47125",
+      "go_id": "GO:0004833",
+      "feature_type": "BINDING",
+      "start": 330,
+      "end": 331,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding of heme at position 330-331 does not directly explain the specific molecular function of tryptophan 2,3-dioxygenase activity, as this function is more likely related to catalytic residues rather than cofactor binding."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P14902",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for protein P14902 do not provide a clear structural or functional basis for the specific molecular function of tryptophan 2,3-dioxygenase activity."
+    }
+  ]
+}

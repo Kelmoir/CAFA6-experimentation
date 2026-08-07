@@ -1,0 +1,35 @@
+{
+  "resolved": [
+    {
+      "accession": "P13188",
+      "go_id": "GO:0004819",
+      "feature_type": "BINDING",
+      "start": 258,
+      "end": 261,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The specific binding of ATP to the protein, which is a critical component of the reaction catalyzed by glutamine-tRNA ligase activity, directly supports the molecular function and is not generic."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q8BML9",
+      "go_id": "GO:0004819",
+      "feature_type": "BINDING",
+      "start": 270,
+      "end": 273,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The multiple binding sites for ATP and L-glutamine suggest relevance to the GO term, but these are generic features that would be expected in many proteins with similar functions."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q8W4F3",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for Q8W4F3 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The PROSITE fold \"aa-trna-ligase_i\" is specifically associated with tRNA ligase activity and is more indicative of the molecular function than generic binding sites."
+    }
+  ]
+}

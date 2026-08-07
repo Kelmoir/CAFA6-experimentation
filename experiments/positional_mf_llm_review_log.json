@@ -2999,6 +2999,106 @@
   ],
   "issues": []
  },
+ "GO:0004819": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P13188"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q8BML9",
+    "go_id": "GO:0004819",
+    "feature_type": "BINDING",
+    "start": 270,
+    "end": 273,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The multiple binding sites for ATP and L-glutamine suggest relevance to the GO term, but these are generic features that would be expected in many proteins with similar functions."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q8W4F3",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q8W4F3 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The PROSITE fold \"aa-trna-ligase_i\" is specifically associated with tRNA ligase activity and is more indicative of the molecular function than generic binding sites."
+   }
+  ]
+ },
+ "GO:0004833": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme b",
+    "accessions": [
+     "Q9ERD9"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P47125",
+    "go_id": "GO:0004833",
+    "feature_type": "BINDING",
+    "start": 330,
+    "end": 331,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "The binding of heme at position 330-331 does not directly explain the specific molecular function of tryptophan 2,3-dioxygenase activity, as this function is more likely related to catalytic residues rather than cofactor binding."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P14902",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein P14902 do not provide a clear structural or functional basis for the specific molecular function of tryptophan 2,3-dioxygenase activity."
+   }
+  ]
+ },
+ "GO:0004852": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O48721",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any MF-relevant positional features and the broad association of the GO term with heme biosynthesis pathways suggest that the protein's annotation for this term is not explained by a specific structural feature."
+   },
+   {
+    "accession": "P19356",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P19356 do not provide any direct evidence or specificity that would explain why it carries the GO term \"uroporphyrinogen-III synthase activity.\""
+   },
+   {
+    "accession": "P22907",
+    "reason": "none_verdict",
+    "reasoning": "The protein P22907 lacks any MF-relevant positional features that could plausibly explain the molecular function of uroporphyrinogen-III synthase activity."
+   }
+  ]
+ },
  "GO:0004933": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -3176,6 +3276,22 @@
     "accession": "P40796",
     "reason": "none_verdict",
     "reasoning": "The annotated features for P40796 do not provide a specific structural basis that directly explains binding to an unprocessed 5S rRNA transcript. These features are generic and shared by many proteins, making it unlikely that any one of them is distinctive enough to explain the specific molecular function."
+   }
+  ]
+ },
+ "GO:0008145": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P54191",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any annotated positional feature that could directly explain the molecular function \"phenylalkylamine binding\" makes it impossible to confidently assign a specific structural/functional basis to this GO term for P54191."
    }
   ]
  }
