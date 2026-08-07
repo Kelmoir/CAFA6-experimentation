@@ -3591,6 +3591,88 @@
    }
   ]
  },
+ "GO:0005150": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "C2",
+    "accessions": [
+     "A2RUW1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P25086",
+    "reason": "none_verdict",
+    "reasoning": "The protein P25086 has no annotated positional features that directly support the molecular function of \"Binding to a Type I interleukin-1 receptor,\" and the available annotations are domain/family-related rather than functional. Thus, there is no plausible explanation for why this protein carries the given GO term."
+   },
+   {
+    "accession": "Q9QZ06",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9QZ06 do not provide sufficient specificity or distinctiveness to explain the molecular function of binding to a Type I interleukin-1 receptor."
+   }
+  ]
+ },
+ "GO:0005151": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P18510",
+    "reason": "none_verdict",
+    "reasoning": "The protein lacks any annotated positional or structural features that would plausibly explain why it binds to a Type II interleukin-1 receptor."
+   },
+   {
+    "accession": "P25085",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P25085 do not provide any structural or positional evidence that would plausibly explain why it carries the GO term \"Binding to a Type II interleukin-1 receptor.\""
+   },
+   {
+    "accession": "Q9NZ08",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features provide a clear structural or functional basis for the given GO term."
+   }
+  ]
+ },
+ "GO:0005152": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P25085",
+    "reason": "none_verdict",
+    "reasoning": "The protein P25085 lacks any annotated positional features that would plausibly explain its molecular function of interleukin-1 receptor antagonist activity, and the domain/family cross-references do not provide sufficient specificity for this particular function."
+   },
+   {
+    "accession": "P25086",
+    "reason": "none_verdict",
+    "reasoning": "The protein P25086 lacks any annotated positional features that directly explain its molecular function, making it impossible to identify a specific structural basis for \"interleukin-1 receptor antagonist activity.\""
+   },
+   {
+    "accession": "Q92626",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain why this protein carries the molecular function \"interleukin-1 receptor antagonist activity.\" The features are either generic or related to structural folds and proteolytic activities rather than the specific function."
+   }
+  ]
+ },
  "GO:0005170": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -3826,5 +3908,21 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0008456": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P17050",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P17050 are generic and do not specifically account for the molecular function of alpha-N-acetylgalactosaminidase activity."
+   }
+  ]
  }
 }
