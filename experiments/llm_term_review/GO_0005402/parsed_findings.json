@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0AC96",
+      "reason": "none_verdict",
+      "reasoning": "The lack of any MF-relevant positional features in P0AC96 means there is no direct structural evidence to support the assertion that it carries the \"carbohydrate:monoatomic cation symporter activity\" molecular function."
+    },
+    {
+      "accession": "Q91ZP4",
+      "reason": "none_verdict",
+      "reasoning": "The protein Q91ZP4 lacks any annotated positional feature that directly explains the \"carbohydrate:monoatomic cation symporter activity\" GO term, and its domain/family cross-references are too generic to be specific enough to account for this function."
+    }
+  ]
+}

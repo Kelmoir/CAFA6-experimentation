@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P32718",
+      "go_id": "GO:0008787",
+      "feature_type": "BINDING",
+      "start": 9,
+      "end": 17,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP at position 9-17 is a necessary step for catalysis, but it is not distinctive enough to explain the specific molecular function of \"D-allose kinase activity\" due to shared cofactor-binding motifs across many proteins."
+    }
+  ],
+  "issues": []
+}

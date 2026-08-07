@@ -4280,6 +4280,83 @@
    }
   ]
  },
+ "GO:0005402": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AC96",
+    "reason": "none_verdict",
+    "reasoning": "The lack of any MF-relevant positional features in P0AC96 means there is no direct structural evidence to support the assertion that it carries the \"carbohydrate:monoatomic cation symporter activity\" molecular function."
+   },
+   {
+    "accession": "Q91ZP4",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q91ZP4 lacks any annotated positional feature that directly explains the \"carbohydrate:monoatomic cation symporter activity\" GO term, and its domain/family cross-references are too generic to be specific enough to account for this function."
+   }
+  ]
+ },
+ "GO:0005412": {
+  "n_resolved": 1,
+  "n_uncertain": 3,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Implicated in sodium coupling",
+    "accessions": [
+     "P13866"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P53790",
+    "go_id": "GO:0005412",
+    "feature_type": "SITE",
+    "start": 459,
+    "end": 460,
+    "signal_kind": "text",
+    "signal_value": "Involved in sugar-binding/transport and inhibitor binding",
+    "reasoning": "The \"SITE 459-460\" note suggests involvement in sugar-binding/transport and inhibitor binding, which could be relevant to the function of D-glucose:sodium symporter activity. However, it is not specific enough or distinctive enough to directly explain why this protein carries the term with certainty."
+   },
+   {
+    "accession": "Q8C3K6",
+    "go_id": "GO:0005412",
+    "feature_type": "BINDING",
+    "start": 456,
+    "end": 457,
+    "signal_kind": "ligand",
+    "signal_value": "D-glucose",
+    "reasoning": "The binding site for D-glucose does not uniquely account for the full molecular function of D-glucose:sodium symporter activity, as this function also involves sodium coupling. Therefore, the feature is not sufficient to explain the GO term with certainty."
+   },
+   {
+    "accession": "Q9JKZ2",
+    "go_id": "GO:0005412",
+    "feature_type": "SITE",
+    "start": 23,
+    "end": 24,
+    "signal_kind": "text",
+    "signal_value": "Implicated in sodium coupling",
+    "reasoning": "(no reasoning extracted from model response)"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q9ET37",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region is a generic feature that does not provide specific structural or functional evidence for the D-glucose:sodium symporter activity."
+   }
+  ]
+ },
  "GO:0005416": {
   "n_resolved": 0,
   "n_uncertain": 1,
@@ -4300,6 +4377,33 @@
    }
   ],
   "issues": []
+ },
+ "GO:0005488": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q08652",
+    "go_id": "GO:0005488",
+    "feature_type": "BINDING",
+    "start": 40,
+    "end": 41,
+    "signal_kind": "ligand",
+    "signal_value": "all-trans-retinol",
+    "reasoning": "The presence of two binding sites for all-trans-retinol does not uniquely explain the molecular function of \"binding\" for this protein, as similar interactions can occur in unrelated proteins."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P12710",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any MF-relevant positional features and the presence of generic domain/family cross-references indicate that the binding molecular function for protein P12710 cannot be plausibly explained by any specific structural feature."
+   }
+  ]
  },
  "GO:0008012": {
   "n_resolved": 0,
@@ -4564,5 +4668,26 @@
     "reasoning": "The protein G3XCW3 has no annotated positional features related to molecular function, and no domain/family cross-references are provided. Therefore, there is no evidence to plausibly assign the GO term \"O antigen polymerase activity\" to this protein."
    }
   ]
+ },
+ "GO:0008787": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P32718",
+    "go_id": "GO:0008787",
+    "feature_type": "BINDING",
+    "start": 9,
+    "end": 17,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The binding of ATP at position 9-17 is a necessary step for catalysis, but it is not distinctive enough to explain the specific molecular function of \"D-allose kinase activity\" due to shared cofactor-binding motifs across many proteins."
+   }
+  ],
+  "issues": []
  }
 }

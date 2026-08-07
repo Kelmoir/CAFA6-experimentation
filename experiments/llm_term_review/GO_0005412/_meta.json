@@ -1,0 +1,20 @@
+{
+  "go_id": "GO:0005412",
+  "name": "D-glucose:sodium symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: D-glucose(out) + Na+(out) = D-glucose(in) + Na+(in).",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "P13866",
+    "P53790",
+    "Q8C3K6",
+    "Q9ET37",
+    "Q9JKZ2"
+  ],
+  "assigned_accessions": [
+    "P13866",
+    "P53790",
+    "Q8C3K6",
+    "Q9ET37",
+    "Q9JKZ2"
+  ]
+}
