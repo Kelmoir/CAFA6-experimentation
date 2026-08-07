@@ -125,12 +125,12 @@ def parse_response(text):
   return verdict, ftype, start, end, reasoning, truncated
 
 
-def build_prompt(go_id, accession, review_text):
+def build_prompt(go_id, accession, review_text, chain_of_thought):
   return (
       f"Here is the review file for {go_id}:\n\n"
       f"--- BEGIN REVIEW FILE ---\n{review_text}\n--- END REVIEW FILE ---\n\n"
       f"Your assigned protein is {accession}. Find its \"## Protein {accession}\" section above "
-      f"and focus only on that section (ignore the other proteins' sections)."
+      f"and focus only on that section (ignore the other proteins' sections).\n {chain_of_thought}"
   )
 
 
@@ -144,7 +144,7 @@ def plan_round():
   return json.loads(manifest_path.read_text())
 
 
-def process_round(host, model, manifest, request_timeout, delay, max_tokens):
+def process_round(host, model, manifest, request_timeout, delay, max_tokens, chain_of_thought):
   new_terms = manifest.get("new_terms", {})
   touched = []
   for go_id, accessions in new_terms.items():
@@ -152,7 +152,7 @@ def process_round(host, model, manifest, request_timeout, delay, max_tokens):
     review_text = (term_dir / "review.md").read_text()
     findings_path = term_dir / "findings.md"
     for accession in accessions:
-      prompt = build_prompt(go_id, accession, review_text)
+      prompt = build_prompt(go_id, accession, review_text, chain_of_thought=chain_of_thought)
       try:
         raw = call_local_llm(host, model, prompt, max_tokens, timeout=request_timeout)
       except (urllib.error.URLError, TimeoutError, OSError) as e:
@@ -217,6 +217,10 @@ def main():
   ap.add_argument("--rounds", type=int, default=10)
   ap.add_argument("--request-timeout", type=int, default=180, help="Seconds per completion call")
   ap.add_argument("--delay", type=float, default=0.0, help="Seconds to sleep between calls")
+  ap.add_argument("--chain-of-thought", type=str, default = "", 
+                  help="If desired, add an chain-of-thought prompte here"
+                        "Recommended for non-reasoning-models."
+                        "Example: 'Let's think step by step'")
   ap.add_argument("--max-tokens", type=int, default=800,
                    help="Generation budget per protein. Raise this (not an LM Studio setting -- "
                         "it's a per-request parameter this script sends) if responses come back "
@@ -235,7 +239,7 @@ def main():
       print("No more terms fit the budget (backlog may be exhausted). Stopping.")
       break
     touched = process_round(args.host, model, manifest, args.request_timeout, args.delay,
-                             args.max_tokens)
+                             args.max_tokens, args.chain_of_thought)
     merged_terms = merge_round(touched)
     run([sys.executable, str(SCRIPTS / "build_positional_mf_links.py")])
     commit_round(round_n, merged_terms, total_agents)
