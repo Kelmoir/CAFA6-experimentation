@@ -71,7 +71,7 @@ SYSTEM_PROMPT = (
 )
 
 
-def call_local_llm(host, model, prompt, timeout=120):
+def call_local_llm(host, model, prompt, max_tokens, timeout=120):
   url = host.rstrip("/") + "/v1/chat/completions"
   payload = {
       "model": model,
@@ -80,7 +80,7 @@ def call_local_llm(host, model, prompt, timeout=120):
           {"role": "user", "content": prompt},
       ],
       "temperature": 0.2,
-      "max_tokens": 300,
+      "max_tokens": max_tokens,
   }
   req = urllib.request.Request(
       url, data=json.dumps(payload).encode(), method="POST",
@@ -102,18 +102,27 @@ def discover_model(host, timeout=10):
 
 
 def parse_response(text):
-  """Lenient extraction -- local models don't always follow formatting instructions exactly."""
+  """Lenient extraction -- local models don't always follow formatting instructions exactly.
+  Returns a 6th element, `truncated`, so callers can warn: if VERDICT/FEATURE never appeared, the
+  likeliest cause is the response got cut off by max_tokens before reaching them (e.g. a
+  reasoning-style model spending its whole budget on a <think> preamble), not a genuinely malformed
+  answer -- worth surfacing distinctly rather than silently recording a NONE verdict that looks the
+  same as a real one."""
   v = re.search(r"VERDICT:\s*(LIKELY|UNCERTAIN|NONE)", text, re.I)
   f = re.search(r"FEATURE:\s*(\S+)\s+(\d+)\s*-\s*(\d+)", text)
   r = re.search(r"REASONING:\s*(.+)", text)
+  truncated = v is None and f is None
   verdict = v.group(1).upper() if v else "NONE"
   if f:
     ftype, start, end = f.group(1), f.group(2), f.group(3)
   else:
     ftype, start, end = "NONE", "0", "0"
-  reasoning = r.group(1).strip() if r else "(no reasoning extracted from model response)"
+  if truncated:
+    reasoning = "response truncated/malformed before VERDICT or FEATURE appeared -- raise --max-tokens"
+  else:
+    reasoning = r.group(1).strip() if r else "(no reasoning extracted from model response)"
   reasoning = reasoning.split("\n")[0][:400]  # keep it single-line, bounded
-  return verdict, ftype, start, end, reasoning
+  return verdict, ftype, start, end, reasoning, truncated
 
 
 def build_prompt(go_id, accession, review_text):
@@ -135,7 +144,7 @@ def plan_round():
   return json.loads(manifest_path.read_text())
 
 
-def process_round(host, model, manifest, request_timeout, delay):
+def process_round(host, model, manifest, request_timeout, delay, max_tokens):
   new_terms = manifest.get("new_terms", {})
   touched = []
   for go_id, accessions in new_terms.items():
@@ -145,11 +154,14 @@ def process_round(host, model, manifest, request_timeout, delay):
     for accession in accessions:
       prompt = build_prompt(go_id, accession, review_text)
       try:
-        raw = call_local_llm(host, model, prompt, timeout=request_timeout)
+        raw = call_local_llm(host, model, prompt, max_tokens, timeout=request_timeout)
       except (urllib.error.URLError, TimeoutError, OSError) as e:
         print(f"  ! {go_id} {accession}: request failed ({e}), logging as NONE and continuing")
         raw = "VERDICT: NONE\nFEATURE: NONE 0-0\nREASONING: local model request failed"
-      verdict, ftype, start, end, reasoning = parse_response(raw)
+      verdict, ftype, start, end, reasoning, truncated = parse_response(raw)
+      if truncated:
+        print(f"  ! {go_id} {accession}: response looked truncated ({len(raw)} chars, "
+              f"no VERDICT/FEATURE found) -- consider raising --max-tokens (currently {max_tokens})")
       block = (
           f"## {accession} {go_id}\n"
           f"verdict: {verdict}\n"
@@ -205,6 +217,11 @@ def main():
   ap.add_argument("--rounds", type=int, default=10)
   ap.add_argument("--request-timeout", type=int, default=180, help="Seconds per completion call")
   ap.add_argument("--delay", type=float, default=0.0, help="Seconds to sleep between calls")
+  ap.add_argument("--max-tokens", type=int, default=800,
+                   help="Generation budget per protein. Raise this (not an LM Studio setting -- "
+                        "it's a per-request parameter this script sends) if responses come back "
+                        "truncated; reasoning-style models can spend hundreds of tokens on a "
+                        "<think> preamble before ever reaching VERDICT/FEATURE/REASONING.")
   args = ap.parse_args()
 
   model = args.model or discover_model(args.host)
@@ -217,7 +234,8 @@ def main():
     if total_agents == 0:
       print("No more terms fit the budget (backlog may be exhausted). Stopping.")
       break
-    touched = process_round(args.host, model, manifest, args.request_timeout, args.delay)
+    touched = process_round(args.host, model, manifest, args.request_timeout, args.delay,
+                             args.max_tokens)
     merged_terms = merge_round(touched)
     run([sys.executable, str(SCRIPTS / "build_positional_mf_links.py")])
     commit_round(round_n, merged_terms, total_agents)
