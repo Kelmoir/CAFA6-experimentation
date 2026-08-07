@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0003854",
+  "name": "3-beta-hydroxy-Delta5-steroid dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: a 3-beta-hydroxy-Delta(5)-steroid + NAD+ = a 3-oxo-Delta(5)-steroid + NADH + H+. Also acts on on 3-beta-hydroxypregn-5-en-20-one to form progesterone.",
+  "n_proteins_total": 14,
+  "sampled_accessions": [
+    "P24815",
+    "Q62878",
+    "Q9H2F3"
+  ],
+  "assigned_accessions": [
+    "P24815",
+    "Q62878",
+    "Q9H2F3"
+  ]
+}

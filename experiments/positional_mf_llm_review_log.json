@@ -1762,5 +1762,126 @@
     "reasoning": "The annotated BINDING site for PIP2 is a regulatory modulator of actin-severing, not the structural basis for the function; the actual actin-binding/severing domain lacks positional coordinates."
    }
   ]
+ },
+ "GO:0003823": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like",
+    "accessions": [
+     "P01704"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like 1",
+    "accessions": [
+     "P01871"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Cleavage; by C1S, MASP2 and GZMK",
+    "accessions": [
+     "P08649"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0003832": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9W369",
+    "reason": "none_verdict",
+    "reasoning": "The cleavage annotation is too generic and unrelated to the defined enzymatic activity for this GO term."
+   }
+  ]
+ },
+ "GO:0003846": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "HXXXXD motif",
+    "accessions": [
+     "Q92604"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "an acyl-CoA",
+    "accessions": [
+     "Q9ERM3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q91ZV4",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q91ZV4 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "This domain ID refers to a structural motif found in many unrelated enzymes, so it lacks specificity for this particular GO annotation."
+   }
+  ]
+ },
+ "GO:0003854": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "P24815"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "Q62878"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "Q9H2F3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

@@ -1,0 +1,34 @@
+{
+  "resolved": [
+    {
+      "accession": "Q92604",
+      "go_id": "GO:0003846",
+      "feature_type": "MOTIF",
+      "start": 100,
+      "end": 106,
+      "signal_kind": "text",
+      "signal_value": "HXXXXD motif",
+      "reasoning": "Multiple domain annotations point to acyltransferase activity, reinforcing the relevance of motif-based features for this GO term."
+    },
+    {
+      "accession": "Q9ERM3",
+      "go_id": "GO:0003846",
+      "feature_type": "BINDING",
+      "start": 400,
+      "end": 401,
+      "signal_kind": "ligand",
+      "signal_value": "an acyl-CoA",
+      "reasoning": "No single feature was found that uniquely and distinctly explains the GO term beyond generic catalytic motifs, and the evidence leans toward shared biochemical roles rather than specificity."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q91ZV4",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for Q91ZV4 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "This domain ID refers to a structural motif found in many unrelated enzymes, so it lacks specificity for this particular GO annotation."
+    }
+  ]
+}
