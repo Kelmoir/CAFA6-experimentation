@@ -53,6 +53,24 @@ GENERIC_CAUTION = (
     "say so, rather than claim confidence in something that won't hold up anyway."
 )
 
+VERDICT_CALIBRATION = (
+    "Calibration -- LIKELY means \"this is my best, most specific candidate\", not \"this is "
+    "proven\". The GO annotation itself is asserted without residue-level proof; your job is "
+    "plausibility, the same bar the task description already sets, not certainty. Mark LIKELY "
+    "whenever a feature's own qualifier (a ligand name, domain family, or note) directly names or "
+    "is mechanistically specific to the exact reaction/process in the GO term's own definition -- "
+    "do this even if you can't be 100% sure, as long as it clears the genericity bar above and is "
+    "your best candidate. For example: a DOMAIN noted \"Kinase, catalytic\" against a specific "
+    "kinase-activity GO term is specific enough on its own -- mark LIKELY. A BINDING site for a "
+    "common cofactor like ATP, shared across thousands of unrelated enzymes, is not -- that's the "
+    "UNCERTAIN/NONE case. Reserve UNCERTAIN for when you are genuinely torn between two comparably "
+    "plausible candidate features, not merely because you can't prove the one candidate you have. "
+    "Reserve NONE for when every candidate is generic/non-diagnostic. Do not downgrade a specific, "
+    "well-matched feature to UNCERTAIN or NONE just to be safe: a downstream step already requires "
+    "two independently-reviewed proteins to converge before anything is trusted, so one confident, "
+    "correct LIKELY costs nothing -- an unwarranted hedge just throws away a real signal."
+)
+
 TASK_DESCRIPTION = (
     "You are reviewing structural/functional annotation evidence for a molecular-function GO term "
     "prediction task (CAFA6 protein function prediction challenge). You will be shown one GO term's "
@@ -86,8 +104,11 @@ ANSWER_FORMAT = (
 
 COT_ANSWER_FORMAT = (
     "THINKING: <work through it here -- consider each candidate feature against the GO term's "
-    "definition and the genericity caution above, compare it to the alternatives, and only then "
-    "settle on an answer. Can span as many lines as you need; there is no length limit.>\n"
+    "definition and the genericity/calibration guidance above, compare it to the alternatives. End "
+    "THINKING with one explicit sentence naming your single best candidate feature (or stating "
+    "there is none) and saying plainly whether it specifically matches the GO term's own chemistry "
+    "-- only THEN settle on an answer below. Can span as many lines as you need; there is no length "
+    "limit.>\n"
     "VERDICT: LIKELY or UNCERTAIN or NONE\n"
     "FEATURE: <TYPE> <START>-<END>  (use NONE 0-0 if verdict is NONE)\n"
     "REASONING: <one sentence, plain text, summarizing the conclusion your THINKING reached>\n\n"
@@ -114,13 +135,13 @@ def build_system_prompt(chain_of_thought):
   speed matters more than a visible reasoning trace."""
   if chain_of_thought:
     return (
-        TASK_DESCRIPTION + "\n\n" + GENERIC_CAUTION + "\n\n"
-        + chain_of_thought.rstrip(". ") + " Respond using EXACTLY this format, in this order, "
+        TASK_DESCRIPTION + "\n\n" + GENERIC_CAUTION + "\n\n" + VERDICT_CALIBRATION + "\n\n"
+        + chain_of_thought.rstrip(". ") + ". Respond using EXACTLY this format, in this order, "
         "starting with THINKING (nothing before it) and ending with REASONING (nothing after it):\n"
         + COT_ANSWER_FORMAT
     )
   return (
-      TASK_DESCRIPTION + "\n\n" + GENERIC_CAUTION
+      TASK_DESCRIPTION + "\n\n" + GENERIC_CAUTION + "\n\n" + VERDICT_CALIBRATION
       + "\n\nRespond with EXACTLY three lines, nothing else, no markdown formatting, no extra "
       "commentary before or after:\n" + ANSWER_FORMAT
   )
