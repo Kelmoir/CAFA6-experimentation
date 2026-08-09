@@ -71,6 +71,21 @@ VERDICT_CALIBRATION = (
     "correct LIKELY costs nothing -- an unwarranted hedge just throws away a real signal."
 )
 
+DEFINITION_FOCUS_WARNING = (
+    "Definition focus -- some GO definitions contain a secondary or qualifying clause (e.g. \"many "
+    "but not all X act as Y\", \"which may also...\") describing a downstream consequence that "
+    "applies to only SOME proteins carrying the term, not the defining chemistry itself. Anchor "
+    "your judgment on the definition's PRIMARY stated reaction or mechanism (usually the main "
+    "clause -- what binds what, what is transferred to what, what bond is formed or broken), not "
+    "on whichever feature happens to echo a word from a secondary clause. Concretely: a GO term "
+    "about receiving a phosphoryl transfer is about the receiving domain, even if the definition "
+    "also notes that some carriers of the term go on to regulate transcription -- a separate DNA-"
+    "binding domain in the same protein explains that secondary, optional consequence, not the "
+    "phosphorelay-receiving activity the term actually defines. When a protein has multiple "
+    "candidate domains, prefer whichever one implements the definition's primary reaction over one "
+    "that merely resembles a word from a secondary clause."
+)
+
 TASK_DESCRIPTION = (
     "You are reviewing structural/functional annotation evidence for a molecular-function GO term "
     "prediction task (CAFA6 protein function prediction challenge). You will be shown one GO term's "
@@ -136,12 +151,14 @@ def build_system_prompt(chain_of_thought):
   if chain_of_thought:
     return (
         TASK_DESCRIPTION + "\n\n" + GENERIC_CAUTION + "\n\n" + VERDICT_CALIBRATION + "\n\n"
+        + DEFINITION_FOCUS_WARNING + "\n\n"
         + chain_of_thought.rstrip(". ") + ". Respond using EXACTLY this format, in this order, "
         "starting with THINKING (nothing before it) and ending with REASONING (nothing after it):\n"
         + COT_ANSWER_FORMAT
     )
   return (
-      TASK_DESCRIPTION + "\n\n" + GENERIC_CAUTION + "\n\n" + VERDICT_CALIBRATION
+      TASK_DESCRIPTION + "\n\n" + GENERIC_CAUTION + "\n\n" + VERDICT_CALIBRATION + "\n\n"
+      + DEFINITION_FOCUS_WARNING
       + "\n\nRespond with EXACTLY three lines, nothing else, no markdown formatting, no extra "
       "commentary before or after:\n" + ANSWER_FORMAT
   )
