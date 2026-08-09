@@ -39,37 +39,15 @@ from pathlib import Path
 ROOT = Path("experiments/llm_term_review")
 SCRIPTS = Path("experiments/scripts")
 
-GENERIC_CAUTION = (
-    "General caution -- generic signals: many proteins carry real but non-diagnostic biochemical "
-    "machinery: common cofactor-binding sites (ATP/GTP/ADP/GDP/AMP/NAD(P)H/heme/common metal ions), "
-    "broad structural folds or catalytic domains shared across dozens of unrelated protein families, "
-    "generic catalytic-residue labels (e.g. a bare \"Nucleophile\"/\"Proton acceptor\" note used across "
-    "countless unrelated enzyme families), or disordered regions. These are real features but they "
-    "explain routine biochemistry, not this SPECIFIC molecular function. Before marking LIKELY, ask: "
-    "is this feature actually distinctive to this GO term, or would many unrelated proteins/functions "
-    "also have it? A downstream script independently rejects overly generic signals (common cofactors, "
-    "domains shared by >15 proteins dataset-wide, single generic words) even if you mark them LIKELY -- "
-    "so if the only candidate is generic, it's more useful and honest to mark UNCERTAIN (or NONE) and "
-    "say so, rather than claim confidence in something that won't hold up anyway."
+THINKING_INSTRUCTIONS = (
+    "In the THINKING Block: Follow the following steps:\n"
+    "- Print The GG-Term and its description\n"
+    "- for each likely bindsing site:\n"
+    "  - Compare the binding site description/Textag ainst the Go-term description\n"
+    "  - Rate its likelyness on a scale of 1 .. 10\n"
+    "- When done, pick the most likely candidate and go forwards with VERDICT, FEATURE,  REASONING.\n"
 )
 
-VERDICT_CALIBRATION = (
-    "Calibration -- LIKELY means \"this is my best, most specific candidate\", not \"this is "
-    "proven\". The GO annotation itself is asserted without residue-level proof; your job is "
-    "plausibility, the same bar the task description already sets, not certainty. Mark LIKELY "
-    "whenever a feature's own qualifier (a ligand name, domain family, or note) directly names or "
-    "is mechanistically specific to the exact reaction/process in the GO term's own definition -- "
-    "do this even if you can't be 100% sure, as long as it clears the genericity bar above and is "
-    "your best candidate. For example: a DOMAIN noted \"Kinase, catalytic\" against a specific "
-    "kinase-activity GO term is specific enough on its own -- mark LIKELY. A BINDING site for a "
-    "common cofactor like ATP, shared across thousands of unrelated enzymes, is not -- that's the "
-    "UNCERTAIN/NONE case. Reserve UNCERTAIN for when you are genuinely torn between two comparably "
-    "plausible candidate features, not merely because you can't prove the one candidate you have. "
-    "Reserve NONE for when every candidate is generic/non-diagnostic. Do not downgrade a specific, "
-    "well-matched feature to UNCERTAIN or NONE just to be safe: a downstream step already requires "
-    "two independently-reviewed proteins to converge before anything is trusted, so one confident, "
-    "correct LIKELY costs nothing -- an unwarranted hedge just throws away a real signal."
-)
 
 DEFINITION_FOCUS_WARNING = (
     "Definition focus -- some GO definitions contain a secondary or qualifying clause (e.g. \"many "
@@ -150,14 +128,14 @@ def build_system_prompt(chain_of_thought):
   speed matters more than a visible reasoning trace."""
   if chain_of_thought:
     return (
-        TASK_DESCRIPTION + "\n\n" + GENERIC_CAUTION + "\n\n" + VERDICT_CALIBRATION + "\n\n"
+        TASK_DESCRIPTION + "\n\n" + THINKING_INSTRUCTIONS "\n\n"
         + DEFINITION_FOCUS_WARNING + "\n\n"
         + chain_of_thought.rstrip(". ") + ". Respond using EXACTLY this format, in this order, "
         "starting with THINKING (nothing before it) and ending with REASONING (nothing after it):\n"
         + COT_ANSWER_FORMAT
     )
   return (
-      TASK_DESCRIPTION + "\n\n" + GENERIC_CAUTION + "\n\n" + VERDICT_CALIBRATION + "\n\n"
+      TASK_DESCRIPTION + "\n\n"
       + DEFINITION_FOCUS_WARNING
       + "\n\nRespond with EXACTLY three lines, nothing else, no markdown formatting, no extra "
       "commentary before or after:\n" + ANSWER_FORMAT
