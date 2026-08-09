@@ -1,0 +1,40 @@
+{
+  "description": "Trusted ground-truth eval set for grading the local model's judgment quality, distilled from Haiku-era merges and independently verified by an Opus audit (see git commit history around 1ad76d2). Of the original 10 Haiku merges, only these 2 held up as biologically sound and specific enough to trust as a general rule -- the other 8 were REJECTED (wrong mechanism, or generic text_pattern signal) or QUESTIONABLE (right idea, real specificity leak) on closer inspection, several resting on circular ortholog-pair agreement now blocked by independent_accessions() in merge_llm_findings.py. Do not add more terms to this file without the same level of independent verification -- that's the whole point of it being small.",
+  "terms": {
+    "GO:0000035": {
+      "name": "acyl binding",
+      "definition": "Binding to an acyl group, any group formally derived by removal of the hydroxyl group from the acid function of a carboxylic acid.",
+      "expected_signal": {
+        "field": "domain_accessions",
+        "value": [
+          "PROSITE:PS50075"
+        ],
+        "note": "resolved from DOMAIN note 'Carrier'"
+      },
+      "proteins": [
+        "O14561",
+        "O80800",
+        "P0A6A8"
+      ],
+      "opus_verdict": "CONFIRMED"
+    },
+    "GO:0000156": {
+      "name": "phosphorelay response regulator activity",
+      "definition": "Responds to a phosphorelay sensor to initiate a change in cell state or activity. The activity of the response regulator is regulated by transfer of a phosphate from a histidine residue in the sensor, to an aspartate residue in the response regulator. Many but not all response regulators act as transcriptional regulators to elicit a response.",
+      "expected_signal": {
+        "field": "domain_accessions",
+        "value": [
+          "PROSITE:PS50110",
+          "Pfam:PF00072"
+        ],
+        "note": "resolved from DOMAIN note 'Response regulatory'"
+      },
+      "proteins": [
+        "P0AE88",
+        "P0AFB8",
+        "P23620"
+      ],
+      "opus_verdict": "CONFIRMED"
+    }
+  }
+}
