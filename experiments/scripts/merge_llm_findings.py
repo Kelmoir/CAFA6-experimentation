@@ -101,6 +101,33 @@ def is_generic_ligand(lig):
   return False
 
 
+def get_evidence(raw_features, acc, ftype, start, end):
+  rec = raw_features.get(acc, {})
+  for f in rec.get("features", []):
+    if f["type"] == ftype and f["start"] == start and f["end"] == end:
+      return f.get("qualifiers", {}).get("evidence", "")
+  return ""
+
+
+def independent_accessions(raw_features, entries):
+  """Accessions in an agreeing group whose evidence isn't itself just an inference from another
+  member of the SAME group -- e.g. two ortholog records where one's feature is annotated
+  'ECO:0000250|UniProtKB:<the other accession>' (curated by similarity, not independently observed
+  in that protein). Caught concretely by an Opus audit of round-1 Haiku merges: GO:0000268,
+  GO:0001067, GO:0001096, GO:0001155, and GO:0001648 all rested on exactly 2 contributing
+  accessions where one's annotation cited the other's UniProtKB accession as its evidence source --
+  the AGREEMENT_THRESHOLD=2 gate was satisfied by one real witness counted twice, not two
+  independent ones. A 3+-accession group survives fine as long as enough OTHER members are
+  independently evidenced; this only screens out groups that don't actually have 2 real sources."""
+  accs = {e["accession"] for e in entries}
+  derivative = set()
+  for e in entries:
+    ev = get_evidence(raw_features, e["accession"], e["feature_type"], e["start"], e["end"])
+    if any(f"UniProtKB:{other}" in ev for other in accs if other != e["accession"]):
+      derivative.add(e["accession"])
+  return accs - derivative
+
+
 def build_domain_freq(raw_features):
   freq = Counter()
   for rec in raw_features.values():
@@ -164,6 +191,17 @@ def main():
       unconfirmed_singletons.append({
           "kind": kind, "feature_type": ftype, "value": entries[0]["signal_value"],
           "accessions": accessions})
+      continue
+    indep = independent_accessions(raw_features, entries)
+    if len(indep) < AGREEMENT_THRESHOLD:
+      unmerged_agreements.append({
+          "kind": kind, "feature_type": ftype, "value": entries[0]["signal_value"],
+          "accessions": accessions,
+          "reason": f"circular agreement -- only {len(indep)} of {len(accessions)} contributing "
+                    "accession(s) have evidence independent of another accession in this same "
+                    "group (e.g. an ortholog pair where one's annotation cites "
+                    "'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a "
+                    "second independent witness)"})
       continue
 
     original_value = entries[0]["signal_value"]
