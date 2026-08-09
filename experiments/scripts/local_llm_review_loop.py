@@ -128,7 +128,7 @@ def build_system_prompt(chain_of_thought):
   speed matters more than a visible reasoning trace."""
   if chain_of_thought:
     return (
-        TASK_DESCRIPTION + "\n\n" + THINKING_INSTRUCTIONS "\n\n"
+        TASK_DESCRIPTION + "\n\n" + THINKING_INSTRUCTIONS + "\n\n"
         + DEFINITION_FOCUS_WARNING + "\n\n"
         + chain_of_thought.rstrip(". ") + ". Respond using EXACTLY this format, in this order, "
         "starting with THINKING (nothing before it) and ending with REASONING (nothing after it):\n"
