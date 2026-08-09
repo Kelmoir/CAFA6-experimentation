@@ -173,6 +173,12 @@ def parse_response(text):
   reasoning text can easily mention "verdict" or reference the answer format conceptually before
   it actually commits to one, so searching from the front risks grabbing a stray earlier mention
   instead of the real final answer.
+  All three field labels are matched case-insensitively (re.I) -- an eval run against bonsai-8b
+  showed VERDICT/FEATURE landing fine but REASONING coming back empty on 3 of 6 responses, and
+  VERDICT was the only one of the three with re.I originally; a model that's inconsistent about
+  label casing (e.g. "Reasoning:" instead of "REASONING:") would silently lose just that one field
+  under the old case-sensitive regex, without ever showing up as a fully `unparsed` response since
+  VERDICT/FEATURE still matched.
   Returns a 6th element, `unparsed`, so callers can warn: True means neither VERDICT nor FEATURE
   appeared anywhere in the text. This function has no access to the API's finish_reason, so it
   can't tell WHY on its own (genuine max_tokens cutoff vs. a normally-finished response that just
@@ -180,20 +186,21 @@ def parse_response(text):
   precise diagnosis instead of guessing; this function's own fallback reasoning text is
   deliberately neutral about the cause."""
   v = _last_match(r"VERDICT:\s*(LIKELY|UNCERTAIN|NONE)", text, re.I)
-  f = _last_match(r"FEATURE:\s*(\S+)\s+(\d+)\s*-\s*(\d+)", text)
-  r = _last_match(r"REASONING:\s*(.+)", text)
+  f = _last_match(r"FEATURE:\s*(\S+)\s+(\d+)\s*-\s*(\d+)", text, re.I)
+  r = _last_match(r"REASONING:\s*(.+)", text, re.I)
   unparsed = v is None and f is None
   verdict = v.group(1).upper() if v else "NONE"
   if f:
     ftype, start, end = f.group(1), f.group(2), f.group(3)
   else:
     ftype, start, end = "NONE", "0", "0"
+  reasoning_missing = not unparsed and r is None
   if unparsed:
     reasoning = "no VERDICT or FEATURE found anywhere in the response text"
   else:
     reasoning = r.group(1).strip() if r else "(no reasoning extracted from model response)"
   reasoning = reasoning.split("\n")[0][:400]  # keep it single-line, bounded
-  return verdict, ftype, start, end, reasoning, unparsed
+  return verdict, ftype, start, end, reasoning, unparsed, reasoning_missing
 
 
 def extract_protein_section(review_text, accession):
@@ -253,11 +260,12 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
   except (urllib.error.URLError, TimeoutError, OSError) as e:
     print(f"  ! {go_id} {accession}: request failed ({e}), logging as NONE and continuing")
     raw = "VERDICT: NONE\nFEATURE: NONE 0-0\nREASONING: local model request failed"
-  verdict, ftype, start, end, reasoning, unparsed = parse_response(raw)
-  if unparsed:
+  verdict, ftype, start, end, reasoning, unparsed, reasoning_missing = parse_response(raw)
+  if unparsed or reasoning_missing:
     debug_path = term_dir / "raw_debug.log"
     with open(debug_path, "a") as dbg:
       dbg.write(f"=== {accession} {go_id} (finish_reason={finish_reason}) ===\n{raw}\n\n")
+  if unparsed:
     if finish_reason == "length":
       reasoning = (f"hit max_tokens ({max_tokens}) before VERDICT/FEATURE appeared -- "
                    f"raw text saved to {debug_path}")
@@ -266,6 +274,10 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
                    f"raw text saved to {debug_path}, inspect for format drift")
     print(f"  ! {go_id} {accession}: unparsed response (finish_reason={finish_reason}, "
           f"{len(raw)} chars) -- raw text saved to {debug_path}")
+  elif reasoning_missing:
+    reasoning = f"VERDICT/FEATURE parsed but no REASONING found -- raw text saved to {debug_path}"
+    print(f"  ! {go_id} {accession}: REASONING missing from an otherwise-parsed response -- "
+          f"raw text saved to {debug_path}")
   block = (
       f"## {accession} {go_id}\n"
       f"verdict: {verdict}\n"
