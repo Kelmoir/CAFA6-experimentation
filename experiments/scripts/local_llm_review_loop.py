@@ -242,7 +242,9 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
                     findings_path, request_timeout, max_tokens):
   """One LLM call for one (go_id, accession), appended to findings.md as a block. Shared by
   process_round (first pass) and retry_issues (second-chance pass on invalid responses) so both
-  go through the exact same call/parse/debug-log/append logic."""
+  go through the exact same call/parse/debug-log/append logic. Returns (verdict, ftype, start,
+  end, reasoning, unparsed) too, for callers (e.g. an eval harness comparing against known-good
+  ground truth) that need the parsed result without re-reading findings.md back."""
   prompt = build_prompt(go_id, accession, review_text)
   finish_reason = None
   try:
@@ -274,6 +276,7 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
   with open(findings_path, "a") as fh:
     fh.write(block)
   print(f"  {go_id} {accession}: {verdict} ({ftype} {start}-{end})")
+  return verdict, ftype, start, end, reasoning, unparsed
 
 
 def process_round(host, model, manifest, request_timeout, delay, max_tokens, system_prompt):
