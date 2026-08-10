@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0005170",
+  "name": "neurotrophin TRKC receptor binding",
+  "def": "Binding to a neurotrophin TRKC receptor.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P52803"
+  ],
+  "assigned_accessions": [
+    "P52803"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O35664",
+      "go_id": "GO:0004905",
+      "feature_type": "REGION",
+      "start": 420,
+      "end": 444,
+      "signal_kind": "text",
+      "signal_value": "Mediates interaction with STAT2 (and required for the recruitment of USP18)",
+      "reasoning": "The annotation of a region mediating interaction with STAT2 and required for USP18 recruitment directly supports the function of type I interferon receptor activity, aligning with the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "P48551",
+      "go_id": "GO:0004905",
+      "feature_type": "REGION",
+      "start": 417,
+      "end": 444,
+      "signal_kind": "text",
+      "signal_value": "Mediates interaction with STAT2 (and required for the recruitment of USP18)",
+      "reasoning": "The \"REGION 417-444\" feature directly matches the primary reaction of GO:0004905 by describing the protein's role in mediating interaction with STAT2, a critical component of the type I interferon signaling pathway. This specific functional domain is mechanistically relevant to the defined chemistry of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "K7NAJ3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the primary reaction of receiving a phosphoryl transfer from an interferon as defined by GO:0004905."
+    },
+    {
+      "accession": "P17181",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides direct evidence that P17181 carries the molecular function defined by GO:0004905, which is the receiving activity of type I interferons. The domains are part of a structural fold and do not directly support the defined chemistry."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0004905",
+  "name": "type I interferon receptor activity",
+  "def": "Combining with a type I interferon and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity. Type I interferons include the interferon-alpha, beta, delta, epsilon, zeta, kappa, tau, and omega gene families.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "K7NAJ3",
+    "O35664",
+    "P17181",
+    "P48551"
+  ],
+  "assigned_accessions": [
+    "K7NAJ3",
+    "O35664",
+    "P17181",
+    "P48551"
+  ]
+}

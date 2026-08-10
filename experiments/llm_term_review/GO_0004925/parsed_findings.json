@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "P16471",
+      "go_id": "GO:0004925",
+      "feature_type": "DOMAIN",
+      "start": 26,
+      "end": 128,
+      "signal_kind": "text",
+      "signal_value": "Fibronectin type-III 1",
+      "reasoning": "The DOMAIN 26-128 annotation (Fibronectin type-III 1) is most plausibly linked to the \"prolactin receptor activity\" GO term because it is part of the fibronectin type-III domain family, which is known to be involved in ligand binding and signal transduction \u2014 directly supporting the primary reaction described in the GO definition."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q04594",
+      "go_id": "GO:0004925",
+      "feature_type": "MOTIF",
+      "start": 418,
+      "end": 423,
+      "signal_kind": "text",
+      "signal_value": "WSXWS motif",
+      "reasoning": "The WSXWS motif is commonly associated with fibronectin type-III domains and may be involved in ligand binding or structural stability, but it does not directly explain the function of receiving a phosphoryl transfer as defined by the GO term. No other feature provides a stronger match to the primary reaction described in the GO term's definition."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q5VWK5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the primary reaction described in the GO term's definition, which involves signal transduction through hormone receptor activity."
+    },
+    {
+      "accession": "Q8K4B4",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features for Q8K4B4 directly explain the primary reaction of the GO term \"prolactin receptor activity,\" which involves signal transduction across the membrane. The domains are associated with fibronectin type-III folds, not with prolactin binding or signal transduction."
+    }
+  ]
+}
