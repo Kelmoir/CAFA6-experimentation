@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0002153",
+  "name": "steroid receptor RNA activator RNA binding",
+  "def": "Binding to a steroid receptor RNA activator RNA (SRA). SRA enhances steroid hormone receptor transcriptional activity as an RNA transcript by an indirect mechanism that does not involve SRA-steroid receptor binding.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P63058",
+    "P63059",
+    "Q9HD15",
+    "Q9Y606"
+  ],
+  "assigned_accessions": [
+    "P63058",
+    "P63059",
+    "Q9HD15",
+    "Q9Y606"
+  ]
+}

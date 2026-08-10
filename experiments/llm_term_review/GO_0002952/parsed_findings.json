@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P64461",
+      "go_id": "GO:0002952",
+      "feature_type": "DOMAIN",
+      "start": 1,
+      "end": 91,
+      "signal_kind": "text",
+      "signal_value": "ABM",
+      "reasoning": "The \"DOMAIN 1-91\" with the note \"ABM\" directly aligns with the enzymatic activity defined by the GO term, which involves catalyzing a specific phosphoryl transfer reaction. This feature is the most plausible explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

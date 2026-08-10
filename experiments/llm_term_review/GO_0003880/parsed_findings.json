@@ -1,0 +1,22 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "O60725",
+      "go_id": "GO:0003880",
+      "feature_type": "BINDING",
+      "start": 246,
+      "end": 247,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site with substrate (BINDING 246-247) is the only one that directly references a substrate, which aligns with the GO term's definition of catalyzing methyl transfer to a carboxyl group. However, since this feature does not describe the catalytic mechanism or domain structure, it only partially matches the primary reaction and thus does not provide a strong explanation for why the prote"
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q9UIC8",
+      "reason": "none_verdict",
+      "reasoning": "VERDICT/FEATURE parsed but no REASONING found -- raw text saved to experiments/llm_term_review/GO_0003880/raw_debug.log"
+    }
+  ]
+}

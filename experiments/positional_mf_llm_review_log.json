@@ -1561,6 +1561,41 @@
    }
   ]
  },
+ "GO:0002153": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Zn(2+)",
+    "accessions": [
+     "P63058"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P63059",
+    "reason": "none_verdict",
+    "reasoning": "The binding site at position 52-53 involves Zn(2+), which is likely a component of the steroid receptor RNA activator (SRA) and directly supports the function of binding an SRA, aligning with the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "Q9HD15",
+    "reason": "none_verdict",
+    "reasoning": "The GO term describes an RNA-binding function that enhances transcriptional activity through an indirect mechanism. No positional feature in Q9HD15 provides evidence of this specific RNA-binding activity or the mechanism described in the definition, making it impossible to determine a strong match for the defined chemistry."
+   },
+   {
+    "accession": "Q9Y606",
+    "reason": "none_verdict",
+    "reasoning": "The \"ACT_SITE\" feature indicates a nucleophilic activity site, which is generic and could apply to many proteins, but it does not specifically explain the molecular function defined by GO:0002153."
+   }
+  ]
+ },
  "GO:0002948": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -1574,6 +1609,191 @@
     "accession": "Q58428",
     "reason": "none_verdict",
     "reasoning": "The \"DOMAIN 494-569\" with a note indicating \"PUA\" directly matches the defined reaction mechanism of archaeosine synthase activity, making it the most plausible explanation for why this protein carries the GO term."
+   }
+  ]
+ },
+ "GO:0002952": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABM",
+    "accessions": [
+     "P64461"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0003693": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q7M3K2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong, specific match to the primary reaction of GO:0003693 \u2014 binding to a P-element in Drosophila transposons. The highest-scoring features are associated with transcriptional regulation and Zn finger domains, which do not directly explain the defined chemistry of the term."
+   }
+  ]
+ },
+ "GO:0003788": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ADF-H 1",
+    "accessions": [
+     "O94399"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P62326",
+    "reason": "none_verdict",
+    "reasoning": "The defined function of \"actin monomer sequestering activity\" is about binding to an actin monomer and preventing it from interacting with other partners or inhibiting its localization. However, the only annotated feature for P62326 is a region marked as disordered, which does not provide any structural or functional evidence that directly supports the defined reaction of this GO term. Thus, no po"
+   },
+   {
+    "accession": "P62328",
+    "reason": "none_verdict",
+    "reasoning": "The positional feature \"REGION 0-44\" does not provide a strong match for the GO term's primary reaction of binding to actin monomers. No other positional feature is present, and the domain/family cross-references point to beta-thymosin-related functions rather than actin sequestration. Therefore, there is no plausible structural/functional annotation that directly explains why this protein carries"
+   },
+   {
+    "accession": "P62329",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature available for protein P62329 is a region that is disordered. This does not provide any direct evidence about the protein's ability to sequester actin monomers or prevent their interactions, which are the primary actions defined by GO:0003788. Therefore, no positional feature can be identified as plausibly explaining why this protein carries the term."
+   }
+  ]
+ },
+ "GO:0003789": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ADF-H",
+    "accessions": [
+     "O15902"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P10733",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for the ligand is the most plausible candidate for explaining why this protein carries the term \"actin filament severing activity,\" as it directly relates to the initial step of binding an actin subunit. However, since it only describes a part of the function (binding), and not the full mechanism of promoting dissociation and filament severing, it does not specifically match the G"
+   },
+   {
+    "accession": "P78929",
+    "reason": "none_verdict",
+    "reasoning": "The DOMAIN annotation with coordinates 4-135 directly corresponds to the defined function of the protein, which is actin filament severing activity. This domain is known to be involved in the described mechanism, making it a strong and specific match to the GO term's primary reaction."
+   }
+  ]
+ },
+ "GO:0003823": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P27512",
+    "go_id": "GO:0003823",
+    "feature_type": "REGION",
+    "start": 227,
+    "end": 251,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The annotated feature describes a disordered region, which could potentially be involved in antigen binding, but it does not specifically or mechanistically explain why the protein carries the \"antigen binding\" GO term. No positional feature directly matches the primary reaction of the GO term, and the feature is too generic to be a strong match."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P01029",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features for protein P01029 directly or specifically explain why it carries the GO term \"antigen binding\" as a defined molecular function. The highest score (5) is based on the fact that none of the features clearly align with the primary reaction described in the GO definition."
+   },
+   {
+    "accession": "P01766",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the binding activity of antigen as defined by the GO term, so there is no specific explanation for why this protein carries the term."
+   },
+   {
+    "accession": "P06240",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features specifically or strongly explain the molecular function of antigen binding as defined by GO:0003823."
+   }
+  ]
+ },
+ "GO:0003832": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9W369",
+    "go_id": "GO:0003832",
+    "feature_type": "SITE",
+    "start": 120,
+    "end": 122,
+    "signal_kind": "text",
+    "signal_value": "Cleavage; by autolysis",
+    "reasoning": "The SITE annotation indicates a cleavage site, which could be related to the enzyme's activity but does not directly explain why the protein carries the term \"beta-alanyl-dopamine hydrolase activity.\" The domain/family cross-references are more general and do not provide specific evidence for this function."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0003880": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "O60725",
+    "go_id": "GO:0003880",
+    "feature_type": "BINDING",
+    "start": 246,
+    "end": 247,
+    "signal_kind": "ligand",
+    "signal_value": "substrate",
+    "reasoning": "The binding site with substrate (BINDING 246-247) is the only one that directly references a substrate, which aligns with the GO term's definition of catalyzing methyl transfer to a carboxyl group. However, since this feature does not describe the catalytic mechanism or domain structure, it only partially matches the primary reaction and thus does not provide a strong explanation for why the prote"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q9UIC8",
+    "reason": "none_verdict",
+    "reasoning": "VERDICT/FEATURE parsed but no REASONING found -- raw text saved to experiments/llm_term_review/GO_0003880/raw_debug.log"
    }
   ]
  }

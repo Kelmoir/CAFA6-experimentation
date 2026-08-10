@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0003823",
+  "name": "antigen binding",
+  "def": "Binding to an antigen, any substance which is capable of inducing a specific immune response and of reacting with the products of that response, the specific antibody or specifically sensitized T-lymphocytes, or both. Binding may counteract the biological activity of the antigen. Antigen binding by an MHC protein complex allows the antigen to be displayed to a T cell or NK cell.",
+  "n_proteins_total": 123,
+  "sampled_accessions": [
+    "P01029",
+    "P01766",
+    "P06240",
+    "P27512"
+  ],
+  "assigned_accessions": [
+    "P01029",
+    "P01766",
+    "P06240",
+    "P27512"
+  ]
+}
