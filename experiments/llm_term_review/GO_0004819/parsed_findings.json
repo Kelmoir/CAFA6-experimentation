@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9Y7Y8",
+      "go_id": "GO:0004819",
+      "feature_type": "BINDING",
+      "start": 301,
+      "end": 302,
+      "signal_kind": "ligand",
+      "signal_value": "L-glutamine",
+      "reasoning": "The binding site for L-glutamine (BINDING 301-302) directly supports the primary reaction of the GO term, which involves the catalysis of the reaction with L-glutamine as a substrate."
+    },
+    {
+      "accession": "Q8BMJ2",
+      "go_id": "GO:0004819",
+      "feature_type": "BINDING",
+      "start": 720,
+      "end": 721,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP (a phosphate donor) directly supports the core reaction mechanism of glutamine-tRNA ligase activity, which involves the transfer of a phosphate group from ATP to L-glutamine. This feature most plausibly explains why Q8BMJ2 carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P13188",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the primary reaction defined by the GO term, which involves catalyzing the formation of L-glutaminyl-tRNA(Gln) from ATP and L-glutamine."
+    },
+    {
+      "accession": "Q8W4F3",
+      "reason": "none_verdict",
+      "reasoning": "There is no annotated feature that directly matches the primary reaction of the GO term \"glutamine-tRNA ligase activity\" (ATP + L-glutamine + tRNA(Gln) = AMP + diphosphate + L-glutaminyl-tRNA(Gln)). The binding sites and regions listed for Q8W4F3 are necessary for the function but do not explain the *why* behind the term."
+    }
+  ]
+}

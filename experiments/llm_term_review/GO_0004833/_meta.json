@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0004833",
+  "name": "tryptophan 2,3-dioxygenase activity",
+  "def": "Catalysis of the reaction: L-tryptophan + O2 = N-formyl-L-kynurenine.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "P20351",
+    "P28776",
+    "Q6ZQW0",
+    "Q9ERD9"
+  ],
+  "assigned_accessions": [
+    "P20351",
+    "P28776",
+    "Q6ZQW0",
+    "Q9ERD9"
+  ]
+}

@@ -3019,6 +3019,75 @@
    }
   ]
  },
+ "GO:0004819": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "L-glutamine",
+    "accessions": [
+     "Q9Y7Y8"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q8BMJ2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P13188",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the primary reaction defined by the GO term, which involves catalyzing the formation of L-glutaminyl-tRNA(Gln) from ATP and L-glutamine."
+   },
+   {
+    "accession": "Q8W4F3",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature that directly matches the primary reaction of the GO term \"glutamine-tRNA ligase activity\" (ATP + L-glutamine + tRNA(Gln) = AMP + diphosphate + L-glutaminyl-tRNA(Gln)). The binding sites and regions listed for Q8W4F3 are necessary for the function but do not explain the *why* behind the term."
+   }
+  ]
+ },
+ "GO:0004833": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P20351",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P20351 directly corresponds to the primary reaction mechanism of the GO term \"tryptophan 2,3-dioxygenase activity,\" which is the catalysis of L-tryptophan with molecular oxygen. The binding sites and domain information provided are not sufficient to establish a strong match for this specific function."
+   },
+   {
+    "accession": "P28776",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the primary reaction of the enzyme as defined by the GO term."
+   },
+   {
+    "accession": "Q6ZQW0",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for heme is consistent with the function of tryptophan 2,3-dioxygenase but does not directly explain the chemistry of the defined reaction. No other positional feature provides a more specific match to the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "Q9ERD9",
+    "reason": "none_verdict",
+    "reasoning": "There is no single annotated feature in Q9ERD9 that directly explains why it carries the GO term \"tryptophan 2,3-dioxygenase activity,\" as the defined chemistry involves catalyzing a specific reaction with L-tryptophan and O2, which is not directly supported by any of the provided positional features."
+   }
+  ]
+ },
  "GO:0004847": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -3037,6 +3106,114 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0004852": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O48721",
+    "reason": "none_verdict",
+    "reasoning": "The protein O48721 has no annotated positional features that directly explain the molecular function defined by GO:0004852."
+   },
+   {
+    "accession": "P10746",
+    "reason": "none_verdict",
+    "reasoning": "No annotated positional feature for P10746 provides a direct explanation for why it carries the GO term \"uroporphyrinogen-III synthase activity.\" The domain/family cross-references are relevant to the broader category of heme biosynthesis but do not specifically account for the defined reaction mechanism."
+   },
+   {
+    "accession": "P51163",
+    "reason": "none_verdict",
+    "reasoning": "The protein has no annotated positional features that could plausibly explain the GO term's defined chemistry."
+   },
+   {
+    "accession": "P87214",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" annotation for P87214 does not provide any evidence that directly supports the enzymatic activity defined by GO:0004852. No other positional feature is given, and the provided note about disorderedness does not imply a functional role in the reaction described. Thus, no annotated feature plausibly explains why this protein carries the term."
+   }
+  ]
+ },
+ "GO:0004875": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O88536",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein O88536 do not provide any evidence that directly explains why it carries the molecular function \"complement receptor activity\" as defined by GO:0004875. None of the binding sites or regions are specifically tied to the described signal transmission mechanism, and no domain is explicitly mentioned in the annotated features."
+   },
+   {
+    "accession": "P25090",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P25090 directly supports the primary reaction of complement receptor activity as defined by the GO term."
+   },
+   {
+    "accession": "P33766",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" feature (334-364) is generic and could apply to many proteins, but it does not specifically explain why this protein carries the GO term \"complement receptor activity.\" No binding site or domain annotation directly supports the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "O35786",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated positional features for this protein that directly explain why it carries the GO term \"complement receptor activity.\" The definition focuses on the primary reaction of receiving a signal from one side of the membrane to the other, which is not supported by any of the available annotations."
+   }
+  ]
+ },
+ "GO:0004897": {
+  "n_resolved": 1,
+  "n_uncertain": 2,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like C2-type",
+    "accessions": [
+     "Q08406"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P40189",
+    "go_id": "GO:0004897",
+    "feature_type": "REGION",
+    "start": 659,
+    "end": 681,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The \"REGION\" feature at position 659-681 with a note indicating it is disordered could plausibly be involved in the signal transmission mechanism described by the GO term, but there is no direct evidence that this region is specifically responsible for the defined function."
+   },
+   {
+    "accession": "P40190",
+    "go_id": "GO:0004897",
+    "feature_type": "MOTIF",
+    "start": 308,
+    "end": 313,
+    "signal_kind": "text",
+    "signal_value": "WSXWS motif",
+    "reasoning": "The WSXWS motif is a known structural element associated with ligand binding and may be involved in the signaling process described by the GO term, but it does not directly specify the mechanism of signal transmission or the interaction with CNTF. Therefore, it is not a strong match for the primary reaction defined by the GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P26992",
+    "reason": "none_verdict",
+    "reasoning": "There is no single annotated feature for protein P26992 that directly matches the primary reaction described in the GO term's definition. The features provided are more related to structural characteristics or domains rather than the specific signal transduction mechanism associated with the molecular function."
+   }
+  ]
  },
  "GO:0004933": {
   "n_resolved": 1,
