@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0005052",
+  "name": "peroxisome matrix targeting signal-1 binding",
+  "def": "Binding to a type 1 peroxisome targeting signal, a tripeptide with the consensus sequence (S/A/C)-(K/R/H)-L.",
+  "n_proteins_total": 16,
+  "sampled_accessions": [
+    "O09012",
+    "Q04364",
+    "Q8IYB4",
+    "Q9FMA3"
+  ],
+  "assigned_accessions": [
+    "O09012",
+    "Q04364",
+    "Q8IYB4",
+    "Q9FMA3"
+  ]
+}

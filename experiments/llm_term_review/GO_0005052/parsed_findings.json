@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q04364",
+      "go_id": "GO:0005052",
+      "feature_type": "MOTIF",
+      "start": 90,
+      "end": 95,
+      "signal_kind": "text",
+      "signal_value": "WxxxF motif",
+      "reasoning": "The WxxxF motif in the MOTIF 90-95 region directly corresponds to the defined mechanism of binding a type 1 peroxisome targeting signal, which is the primary reaction described in the GO term's definition. This provides a strong match and explains why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O09012",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly explain the primary reaction of binding a type 1 peroxisome targeting signal. The only feature related to redox sensing does not provide a strong match for the defined function of the GO term."
+    },
+    {
+      "accession": "Q8IYB4",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION\" type with coordinates 0-20 indicates a disordered region, but this does not directly explain why Q8IYB4 carries the GO term \"peroxisome matrix targeting signal-1 binding.\" No positional feature has been confirmed to account for the defined chemistry or mechanism of binding a peroxisome targeting signal."
+    },
+    {
+      "accession": "Q9FMA3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9FMA3 directly matches the GO term's primary reaction of binding a type 1 peroxisome targeting signal. All features are either structural or motifs that do not provide evidence of this specific biochemical activity."
+    }
+  ]
+}

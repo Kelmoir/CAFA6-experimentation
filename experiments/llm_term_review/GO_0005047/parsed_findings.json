@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O80842",
+      "reason": "none_verdict",
+      "reasoning": "The GO term defines a primary reaction of binding to a signal recognition particle, but none of the annotated features for O80842 provide a strong, specific match to this definition. While the protein has multiple GTP-binding sites, these do not directly imply the function of binding to a signal recognition particle. Thus, no single feature can be confidently identified as the structural/functiona"
+    },
+    {
+      "accession": "P49458",
+      "reason": "none_verdict",
+      "reasoning": "The protein P49458 has no MF-relevant positional features annotated, so there is no evidence to determine which specific structural or functional element accounts for its association with the \"signal recognition particle binding\" GO term."
+    },
+    {
+      "accession": "Q12743",
+      "reason": "none_verdict",
+      "reasoning": "The defined function of the GO term \"signal recognition particle binding\" is not explained by any of the annotated features for the protein Q12743. No positional feature directly states that the protein binds to a signal recognition particle, and the domain/family cross-references refer to known domains rather than the specific function described. Therefore, there is no evidence to confirm that th"
+    },
+    {
+      "accession": "Q93561",
+      "reason": "none_verdict",
+      "reasoning": "The protein Q93561 has an annotated feature in the REGION 217-245 that is noted as Disordered, but this does not provide a specific explanation for why it binds to a signal recognition particle. No other positional features are provided for this protein, and the domain/family cross-references do not directly relate to the binding activity described in the GO term. Therefore, there is no single ann"
+    }
+  ]
+}

@@ -3427,6 +3427,177 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0004955": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P37231",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly or specifically describe the binding of a prostaglandin to the receptor domain, which is the primary reaction defined by the GO term \"prostaglandin receptor activity.\""
+   },
+   {
+    "accession": "Q8R0S9",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q8R0S9 lacks any annotated positional features that specifically describe the binding of prostaglandin to a receptor or the subsequent change in cell activity, making it impossible to identify a plausible explanation for the GO term."
+   },
+   {
+    "accession": "Q9R261",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature is annotated for Q9R261, and all available features point to GPCR-related domains rather than directly explaining the \"prostaglandin receptor activity\" function as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0004996": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DNA_BIND",
+    "value": "Paired",
+    "accessions": [
+     "Q06710"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "PDZ-binding",
+    "accessions": [
+     "P21463"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P47750",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the defined chemistry of the GO term, which focuses on the *reaction* of combining with thyroid-stimulating hormone rather than the *binding* mechanism."
+   },
+   {
+    "accession": "Q6QMG1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the GO term's primary reaction of hormone binding and initiating cell activity."
+   }
+  ]
+ },
+ "GO:0005047": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O80842",
+    "reason": "none_verdict",
+    "reasoning": "The GO term defines a primary reaction of binding to a signal recognition particle, but none of the annotated features for O80842 provide a strong, specific match to this definition. While the protein has multiple GTP-binding sites, these do not directly imply the function of binding to a signal recognition particle. Thus, no single feature can be confidently identified as the structural/functiona"
+   },
+   {
+    "accession": "P49458",
+    "reason": "none_verdict",
+    "reasoning": "The protein P49458 has no MF-relevant positional features annotated, so there is no evidence to determine which specific structural or functional element accounts for its association with the \"signal recognition particle binding\" GO term."
+   },
+   {
+    "accession": "Q12743",
+    "reason": "none_verdict",
+    "reasoning": "The defined function of the GO term \"signal recognition particle binding\" is not explained by any of the annotated features for the protein Q12743. No positional feature directly states that the protein binds to a signal recognition particle, and the domain/family cross-references refer to known domains rather than the specific function described. Therefore, there is no evidence to confirm that th"
+   },
+   {
+    "accession": "Q93561",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q93561 has an annotated feature in the REGION 217-245 that is noted as Disordered, but this does not provide a specific explanation for why it binds to a signal recognition particle. No other positional features are provided for this protein, and the domain/family cross-references do not directly relate to the binding activity described in the GO term. Therefore, there is no single ann"
+   }
+  ]
+ },
+ "GO:0005048": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "MRH",
+    "accessions": [
+     "Q06815"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P53953",
+    "go_id": "GO:0005048",
+    "feature_type": "REGION",
+    "start": 163,
+    "end": 189,
+    "signal_kind": "text",
+    "signal_value": "Zinc finger-like",
+    "reasoning": "The \"REGION 163-189\" with the note \"Zinc finger-like\" is the most plausible candidate, but it only provides a general description without specific evidence of signal sequence binding. The \"REGION 299-326\" with the note \"Disordered\" does not match the primary reaction. Therefore, the evidence is insufficient to confirm the GO term's definition with certainty."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P0AGA2",
+    "reason": "none_verdict",
+    "reasoning": "No positional features were annotated for this protein, and the domain/family cross-references do not provide specific evidence about the binding activity described in the GO term's definition. Therefore, there is no feature that can be identified as explaining why the protein carries the term \"signal sequence binding.\""
+   },
+   {
+    "accession": "P69853",
+    "reason": "none_verdict",
+    "reasoning": "The protein P69853 has no annotated positional features that directly explain the molecular function of \"signal sequence binding,\" and the domain/family cross-references do not provide a specific domain or region that is strongly associated with this function. Therefore, there is no evidence to confirm which one of the annotated features (by type + exact coordinates) most plausibly explains why th"
+   }
+  ]
+ },
+ "GO:0005052": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "WxxxF motif",
+    "accessions": [
+     "Q04364"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O09012",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain the primary reaction of binding a type 1 peroxisome targeting signal. The only feature related to redox sensing does not provide a strong match for the defined function of the GO term."
+   },
+   {
+    "accession": "Q8IYB4",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" type with coordinates 0-20 indicates a disordered region, but this does not directly explain why Q8IYB4 carries the GO term \"peroxisome matrix targeting signal-1 binding.\" No positional feature has been confirmed to account for the defined chemistry or mechanism of binding a peroxisome targeting signal."
+   },
+   {
+    "accession": "Q9FMA3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9FMA3 directly matches the GO term's primary reaction of binding a type 1 peroxisome targeting signal. All features are either structural or motifs that do not provide evidence of this specific biochemical activity."
+   }
+  ]
+ },
  "GO:0005170": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -3442,5 +3613,24 @@
     "reasoning": "The DOMAIN annotation for this protein is associated with \"Ephrin RBD,\" which is a domain known to interact with Ephrins, not neurotrophins. Therefore, it does not directly explain the molecular function of binding to a neurotrophin TRKC receptor."
    }
   ]
+ },
+ "GO:0005214": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Chitin-binding type-2 1",
+    "accessions": [
+     "Q9VMM6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

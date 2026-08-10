@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P37231",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly or specifically describe the binding of a prostaglandin to the receptor domain, which is the primary reaction defined by the GO term \"prostaglandin receptor activity.\""
+    },
+    {
+      "accession": "Q8R0S9",
+      "reason": "none_verdict",
+      "reasoning": "The protein Q8R0S9 lacks any annotated positional features that specifically describe the binding of prostaglandin to a receptor or the subsequent change in cell activity, making it impossible to identify a plausible explanation for the GO term."
+    },
+    {
+      "accession": "Q9R261",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature is annotated for Q9R261, and all available features point to GPCR-related domains rather than directly explaining the \"prostaglandin receptor activity\" function as defined by the GO term."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9VMM6",
+      "go_id": "GO:0005214",
+      "feature_type": "DOMAIN",
+      "start": 21,
+      "end": 80,
+      "signal_kind": "text",
+      "signal_value": "Chitin-binding type-2 1",
+      "reasoning": "The chitin-binding type-2 domain directly contributes to the structural integrity of a chitin-based cuticle by binding to chitin, aligning with the primary reaction implied in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0004955",
+  "name": "prostaglandin receptor activity",
+  "def": "Combining with a prostaglandin (PG) to initiate a change in cell activity.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P37231",
+    "Q8R0S9",
+    "Q9R261"
+  ],
+  "assigned_accessions": [
+    "P37231",
+    "Q8R0S9",
+    "Q9R261"
+  ]
+}
