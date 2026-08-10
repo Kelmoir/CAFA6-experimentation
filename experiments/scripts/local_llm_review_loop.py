@@ -87,13 +87,20 @@ TASK_DESCRIPTION = (
 
 FEATURE_SOURCE_WARNING = (
     "FEATURE must be copied verbatim from a line under \"Annotated features (position, type, "
-    "qualifiers)\" -- e.g. the TYPE and the two integers of a line shaped like \"- DOMAIN 19-119\". "
-    "It must NEVER come from the separate \"Domain/family cross-references (no position...)\" list "
-    "further down: those are InterPro/Pfam/PROSITE accessions (like \"InterPro:IPR000276\" or "
-    "\"Pfam:PF00001\") that carry no coordinates at all -- they exist only as background context to "
-    "help you identify what a domain is, not as something you can report as a FEATURE. If the only "
-    "evidence you find convincing lives in that cross-reference list, that means no *positional* "
-    "feature explains this term -- say so (UNCERTAIN or NONE), don't invent coordinates for it."
+    "qualifiers)\" -- the exact TYPE string and the exact two integers of one of those lines. Never "
+    "make up a span or reuse a number from anywhere else, including any example number written "
+    "elsewhere in this prompt -- an example is illustrating the FORMAT, not a real coordinate for "
+    "this protein. It must NEVER come from the separate \"Domain/family cross-references (no "
+    "position...)\" list further down: those are InterPro/Pfam/PROSITE accessions (like "
+    "\"InterPro:IPR000276\" or \"Pfam:PF00001\") that carry no coordinates at all -- they exist only "
+    "as background context to help you identify what a domain is, not as something you can report "
+    "as a FEATURE. This holds even when that cross-reference list strongly suggests a specific, "
+    "well-known domain family (e.g. \"MFS_dom\" for a sugar transporter) and the protein's own "
+    "Annotated features section has nothing that actually matches it (empty, or only a generic/"
+    "irrelevant type like a Disordered REGION): don't invent a plausible-looking span for a domain "
+    "family just because the cross-reference list names one. If the only evidence you find "
+    "convincing lives in that cross-reference list, or the Annotated features section is empty, "
+    "that means no *positional* feature explains this term -- say so (UNCERTAIN or NONE)."
 )
 
 ANSWER_FORMAT = (
@@ -260,6 +267,8 @@ def extract_protein_section(review_text, accession):
   return f"{header}\n\n{section}"
 
 
+NO_FEATURES_MARKER = "(none -- this protein has no MF-relevant positional features on record)"
+
 CROSSREF_FEATURE_RE = r"FEATURE:\s*(InterPro|Pfam|PROSITE)\s*:?\s*([A-Za-z0-9_.]+)"
 
 
@@ -298,13 +307,12 @@ def resolve_crossref_feature(protein_section, raw_text):
   return candidates[0] if len(candidates) == 1 else None
 
 
-def build_prompt(go_id, accession, review_text):
+def build_prompt(go_id, accession, protein_section):
   """The chain-of-thought instruction (if any) lives entirely in the system prompt now -- no need
   to repeat it here, and repeating it in both places risks the two copies drifting or conflicting."""
-  trimmed = extract_protein_section(review_text, accession)
   return (
       f"GO term and protein evidence for {go_id}, protein {accession}:\n\n"
-      f"--- BEGIN EVIDENCE ---\n{trimmed}\n--- END EVIDENCE ---"
+      f"--- BEGIN EVIDENCE ---\n{protein_section}\n--- END EVIDENCE ---"
   )
 
 
@@ -332,8 +340,33 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
   FEATURE didn't parse to a real position -- see that function's docstring. This happens here,
   not in parse_response, because resolution needs the protein's own review-text section (to look
   up the cross-reference's description and the candidate DOMAIN notes), which parse_response
-  deliberately doesn't have access to."""
-  prompt = build_prompt(go_id, accession, review_text)
+  deliberately doesn't have access to.
+  Short-circuits to a deterministic NONE, with no LLM call at all, when the protein has zero
+  annotated positional features on record (NO_FEATURES_MARKER). Found necessary against real
+  output: a protein with no real feature but a suggestive cross-reference-only domain family (e.g.
+  "MFS_dom") got LIKELY verdicts hallucinating a "DOMAIN 19-119" span that doesn't exist anywhere
+  on that protein's record -- and did it for multiple different proteins reviewed under the same
+  term, which looked like independent corroborating agreement but was really the same prompt
+  eliciting the same fabrication (traced to FEATURE_SOURCE_WARNING's own now-fixed illustrative
+  example, which used that exact "19-119" span). Skipping the call entirely when there is
+  categorically nothing to point at removes this failure mode by construction rather than hoping
+  the prompt is followed, and saves a request besides."""
+  protein_section = extract_protein_section(review_text, accession)
+  if NO_FEATURES_MARKER in protein_section:
+    verdict, ftype, start, end = "NONE", "NONE", "0", "0"
+    reasoning = "protein has zero annotated positional features on record -- nothing to point at"
+    block = (
+        f"## {accession} {go_id}\n"
+        f"verdict: {verdict}\n"
+        f"feature: {ftype} {start}-{end}\n"
+        f"reasoning: {reasoning}\n"
+        f"---\n"
+    )
+    with open(findings_path, "a") as fh:
+      fh.write(block)
+    print(f"  {go_id} {accession}: NONE (no annotated features on record, skipped LLM call)")
+    return verdict, ftype, start, end, reasoning, False
+  prompt = build_prompt(go_id, accession, protein_section)
   finish_reason = None
   try:
     raw, finish_reason = call_local_llm(
@@ -345,7 +378,6 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
   debug_path = term_dir / "raw_debug.log"
   auto_resolved = False
   if verdict in ("LIKELY", "UNCERTAIN") and ftype == "NONE" and start == "0" and end == "0":
-    protein_section = extract_protein_section(review_text, accession)
     resolved = resolve_crossref_feature(protein_section, raw)
     if resolved:
       ftype, start, end = resolved
