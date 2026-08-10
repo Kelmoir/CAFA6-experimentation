@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P34455",
+      "go_id": "GO:0003994",
+      "feature_type": "BINDING",
+      "start": 663,
+      "end": 665,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site labeled as \"substrate\" directly corresponds to the enzyme's role in catalyzing the reaction described by the GO term, making it the most plausible explanation for why P34455 carries this annotation."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P75764",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear structural or functional explanation for the defined chemistry of aconitate hydratase activity."
+    },
+    {
+      "accession": "Q99798",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q99798 directly matches the chemistry and mechanism described in the GO term's definition. The only structural features provided are generic or disordered regions, which do not explain the specific reaction of aconitate hydratase activity."
+    },
+    {
+      "accession": "Q4WLN1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q4WLN1 directly matches the primary reaction of the GO term \"aconitate hydratase activity,\" which involves the interconversion of citrate and isocitrate via a labile intermediate. The binding sites with substrate ligands are generic and could apply to many proteins, not specifically explaining the defined chemistry of the GO term."
+    }
+  ]
+}

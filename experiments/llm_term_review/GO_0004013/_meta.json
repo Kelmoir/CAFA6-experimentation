@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0004013",
+  "name": "adenosylhomocysteinase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-homocysteine + H2O = adenosine + L-homocysteine.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "P10819",
+    "P23526",
+    "P9WGV3",
+    "Q27580"
+  ],
+  "assigned_accessions": [
+    "P10819",
+    "P23526",
+    "P9WGV3",
+    "Q27580"
+  ]
+}

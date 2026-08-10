@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P07170",
+      "go_id": "GO:0004017",
+      "feature_type": "BINDING",
+      "start": 133,
+      "end": 134,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to the domain at position 133-134 is directly relevant to the catalytic activity described by the GO term, which involves the transfer of a phosphate group from ATP to AMP. This binding site is likely the site where the reaction occurs, making it the most plausible explanation for why the protein carries the GO term."
+    },
+    {
+      "accession": "P12753",
+      "go_id": "GO:0004017",
+      "feature_type": "DOMAIN",
+      "start": 639,
+      "end": 741,
+      "signal_kind": "text",
+      "signal_value": "Zinc-hook",
+      "reasoning": "The domain \"Zinc-hook\" (DOMAIN 639-741) directly matches the structural feature required for catalyzing the reaction ATP + AMP = 2 ADP, making it the most plausible explanation for the GO term \"AMP kinase activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q08480",
+      "reason": "none_verdict",
+      "reasoning": "There is no single annotated feature that strongly and specifically matches the GO term's primary reaction of catalyzing ATP + AMP = 2 ADP. All binding sites for ATP and AMP are relevant but do not directly explain the enzyme's function in this specific way."
+    },
+    {
+      "accession": "Q96MA6",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly supports the primary reaction of AMP kinase activity (phosphoryl transfer), so there is no specific feature that can be identified as explaining the GO term."
+    }
+  ]
+}

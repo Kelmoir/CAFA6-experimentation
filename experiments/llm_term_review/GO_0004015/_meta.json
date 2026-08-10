@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0004015",
+  "name": "adenosylmethionine-8-amino-7-oxononanoate transaminase activity",
+  "def": "Catalysis of the reaction: 8-amino-7-oxononanoate + S-adenosyl-L-methionine(1+) = 7,8-diaminononanoate + S-adenosyl-4-methylthio-2-oxobutanoate.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "B0F481",
+    "D6R3B6",
+    "P9WQ81",
+    "Q94CE5"
+  ],
+  "assigned_accessions": [
+    "B0F481",
+    "D6R3B6",
+    "P9WQ81",
+    "Q94CE5"
+  ]
+}

@@ -1985,5 +1985,193 @@
     "reasoning": "The defined molecular function of NADH dehydrogenase activity involves catalyzing a redox reaction, but none of the positional features provided explicitly describe this mechanism. While FAD and NAD(+)-binding sites are necessary for the protein's function, they do not directly explain why it carries the term \"NADH dehydrogenase activity.\""
    }
   ]
+ },
+ "GO:0003987": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "CoA",
+    "accessions": [
+     "P52910"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P78773",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P78773 directly matches the primary reaction of catalyzing the acetate-CoA ligase activity as defined by GO:0003987."
+   },
+   {
+    "accession": "Q14DH7",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein Q14DH7 only describe ligand binding sites (CoA and ATP) without providing any structural or functional evidence that directly explains the GO term's defined chemistry. Therefore, there is no single annotated feature that plausibly accounts for the molecular function of this GO term."
+   },
+   {
+    "accession": "Q9LPK6",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q9LPK6 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The \"AMP-binding_C\" domain type directly aligns with the catalytic mechanism of acetate-CoA ligase activity by implying a domain capable of interacting with AMP, which is a key intermediate in the reaction. This provides a strong structural basis for the GO term's definition."
+   }
+  ]
+ },
+ "GO:0003994": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "P34455"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P75764",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional explanation for the defined chemistry of aconitate hydratase activity."
+   },
+   {
+    "accession": "Q99798",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q99798 directly matches the chemistry and mechanism described in the GO term's definition. The only structural features provided are generic or disordered regions, which do not explain the specific reaction of aconitate hydratase activity."
+   },
+   {
+    "accession": "Q4WLN1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q4WLN1 directly matches the primary reaction of the GO term \"aconitate hydratase activity,\" which involves the interconversion of citrate and isocitrate via a labile intermediate. The binding sites with substrate ligands are generic and could apply to many proteins, not specifically explaining the defined chemistry of the GO term."
+   }
+  ]
+ },
+ "GO:0004013": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P10819",
+     "P9WGV3"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P23526",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly match the GO term's definition by specifying the enzyme's role in catalyzing the reaction. The features only indicate the presence of substrates or cofactors, not the mechanism of the reaction itself."
+   },
+   {
+    "accession": "Q27580",
+    "reason": "none_verdict",
+    "reasoning": "hit max_tokens (2400) before VERDICT/FEATURE appeared -- raw text saved to experiments/llm_term_review/GO_0004013/raw_debug.log"
+   }
+  ]
+ },
+ "GO:0004015": {
+  "n_resolved": 1,
+  "n_uncertain": 2,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "P9WQ81"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "B0F481",
+    "go_id": "GO:0004015",
+    "feature_type": "SITE",
+    "start": 347,
+    "end": 348,
+    "signal_kind": "text",
+    "signal_value": "Participates in the substrate recognition with KAPA and in a stacking interaction with the adenine ring of SAM",
+    "reasoning": "The site annotation suggests involvement in substrate recognition, which could be part of the catalytic mechanism for methyl transfer. However, it does not directly describe the specific reaction or the enzyme's function as defined by GO:0004015."
+   },
+   {
+    "accession": "Q94CE5",
+    "go_id": "GO:0004015",
+    "feature_type": "BINDING",
+    "start": 190,
+    "end": 191,
+    "signal_kind": "ligand",
+    "signal_value": "substrate",
+    "reasoning": "The binding of substrate is a generic feature that could apply to many enzymes, and it does not specifically explain the transamination reaction mechanism described in the GO term's definition."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "D6R3B6",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for D6R3B6 only indicate binding sites for pyridoxal 5'-phosphate but do not provide evidence that the protein catalyzes the specific transamination reaction defined by GO:0004015. Thus, no positional feature plausibly explains why this protein carries the term."
+   }
+  ]
+ },
+ "GO:0004017": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P07170"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Zinc-hook",
+    "accessions": [
+     "P12753"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q08480",
+    "reason": "none_verdict",
+    "reasoning": "There is no single annotated feature that strongly and specifically matches the GO term's primary reaction of catalyzing ATP + AMP = 2 ADP. All binding sites for ATP and AMP are relevant but do not directly explain the enzyme's function in this specific way."
+   },
+   {
+    "accession": "Q96MA6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly supports the primary reaction of AMP kinase activity (phosphoryl transfer), so there is no specific feature that can be identified as explaining the GO term."
+   }
+  ]
  }
 }
