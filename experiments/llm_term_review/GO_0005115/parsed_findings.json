@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P22725",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature has been annotated for this protein, so it is not possible to determine which domain or region is responsible for the binding activity described in the GO term."
+    },
+    {
+      "accession": "P41221",
+      "reason": "none_verdict",
+      "reasoning": "The protein has domain/family cross-references related to Wnt signaling, which are plausible but not definitive evidence for the function of binding to a receptor tyrosine kinase-like orphan receptor. Since no positional feature is annotated, we cannot determine the exact location or mechanism of binding with certainty."
+    },
+    {
+      "accession": "Q9QXQ7",
+      "reason": "none_verdict",
+      "reasoning": "There are no annotated positional features for this protein that directly describe binding to a receptor tyrosine kinase-like orphan receptor (Ror), so we cannot determine whether it carries the term based on structural evidence."
+    }
+  ]
+}

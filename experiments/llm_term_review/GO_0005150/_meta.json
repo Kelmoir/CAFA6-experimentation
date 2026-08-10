@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0005150",
+  "name": "interleukin-1, type I receptor binding",
+  "def": "Binding to a Type I interleukin-1 receptor.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "A2RUW1",
+    "P18510",
+    "P25086",
+    "Q9H0E2"
+  ],
+  "assigned_accessions": [
+    "A2RUW1",
+    "P18510",
+    "P25086",
+    "Q9H0E2"
+  ]
+}

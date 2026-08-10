@@ -3598,6 +3598,161 @@
    }
   ]
  },
+ "GO:0005115": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P22725",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature has been annotated for this protein, so it is not possible to determine which domain or region is responsible for the binding activity described in the GO term."
+   },
+   {
+    "accession": "P41221",
+    "reason": "none_verdict",
+    "reasoning": "The protein has domain/family cross-references related to Wnt signaling, which are plausible but not definitive evidence for the function of binding to a receptor tyrosine kinase-like orphan receptor. Since no positional feature is annotated, we cannot determine the exact location or mechanism of binding with certainty."
+   },
+   {
+    "accession": "Q9QXQ7",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated positional features for this protein that directly describe binding to a receptor tyrosine kinase-like orphan receptor (Ror), so we cannot determine whether it carries the term based on structural evidence."
+   }
+  ]
+ },
+ "GO:0005122": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P40689",
+    "reason": "none_verdict",
+    "reasoning": "The protein has no annotated features that provide positional evidence explaining its \"torso binding\" function."
+   },
+   {
+    "accession": "Q24155",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q24155 has no annotated positional features that directly explain its \"torso binding\" function. While domain/family cross-references suggest it may be a receptor tyrosine kinase, these do not provide the specific structural or functional basis for the defined molecular function. Therefore, there is no positional feature that plausibly explains why this protein carries the term \"torso b"
+   }
+  ]
+ },
+ "GO:0005137": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a 1,2-diacyl-sn-glycero-3-phospho-(1D-myo-inositol-4,5-bisphosphate)",
+    "accessions": [
+     "O00560"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Not glycosylated",
+    "accessions": [
+     "P05113"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P04401",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature from the protein's section provides positional evidence for the \"interleukin-5 receptor binding\" GO term. The only way to confirm this is through UniProt's cross-references, which are not included in the given evidence."
+   },
+   {
+    "accession": "Q08125",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated positional features for this protein that could plausibly explain why it carries the \"interleukin-5 receptor binding\" GO term."
+   }
+  ]
+ },
+ "GO:0005139": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Inserts into a conserved IL7R hydrophobic pocket, important for IL7R-binding",
+    "accessions": [
+     "Q9JIE6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P10168",
+    "reason": "none_verdict",
+    "reasoning": "The protein has no annotated positional features that describe binding to an interleukin-7 receptor, so there is no evidence to confirm the molecular function."
+   },
+   {
+    "accession": "P56478",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated positional features for this protein that could plausibly explain why it carries the \"interleukin-7 receptor binding\" GO term."
+   },
+   {
+    "accession": "Q969D9",
+    "reason": "none_verdict",
+    "reasoning": "No positional features were annotated for this protein, and the only available evidence is a domain/family cross-reference that does not provide direct positional evidence for the defined molecular function."
+   }
+  ]
+ },
+ "GO:0005150": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "C2",
+    "accessions": [
+     "A2RUW1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P18510",
+    "reason": "none_verdict",
+    "reasoning": "The protein P18510 has no annotated positional features that directly indicate binding to a Type I interleukin-1 receptor, and while it is related to IL-1 family members, this relationship does not provide sufficient evidence to confirm the GO term as an actual annotation for this protein."
+   },
+   {
+    "accession": "P25086",
+    "reason": "none_verdict",
+    "reasoning": "The protein P25086 has no annotated positional features that directly explain its association with the molecular function of \"Binding to a Type I interleukin-1 receptor.\" While domain/family cross-references suggest relevance, they do not provide a specific structural/functional basis for the GO term. Thus, there is no strong evidence to determine which feature explains this term."
+   },
+   {
+    "accession": "Q9H0E2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of \"Binding to a Type I interleukin-1 receptor\" and provides a strong mechanistic basis for the molecular function."
+   }
+  ]
+ },
  "GO:0005170": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -3611,6 +3766,36 @@
     "accession": "P52803",
     "reason": "none_verdict",
     "reasoning": "The DOMAIN annotation for this protein is associated with \"Ephrin RBD,\" which is a domain known to interact with Ephrins, not neurotrophins. Therefore, it does not directly explain the molecular function of binding to a neurotrophin TRKC receptor."
+   }
+  ]
+ },
+ "GO:0005171": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Alpha-helical region with structural similarity to HEAT repeats",
+    "accessions": [
+     "Q8BZM1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q92990",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide a clear explanation for the molecular function defined by the GO term \"hepatocyte growth factor receptor binding.\""
+   },
+   {
+    "accession": "Q9NQ30",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9NQ30 does not have any annotated features that specifically explain why it carries the molecular function of \"hepatocyte growth factor receptor binding.\""
    }
   ]
  },
