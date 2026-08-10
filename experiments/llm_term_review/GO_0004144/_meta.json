@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0004144",
+  "name": "diacylglycerol O-acyltransferase activity",
+  "def": "Catalysis of the reaction: acyl-CoA + 1,2-diacylglycerol = CoA + triacylglycerol.",
+  "n_proteins_total": 56,
+  "sampled_accessions": [
+    "K7K424",
+    "P9WKC3",
+    "P9WQP1",
+    "Q9ERM3"
+  ],
+  "assigned_accessions": [
+    "K7K424",
+    "P9WKC3",
+    "P9WQP1",
+    "Q9ERM3"
+  ]
+}

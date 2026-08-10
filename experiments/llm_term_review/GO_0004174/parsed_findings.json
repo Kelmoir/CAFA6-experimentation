@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q11190",
+      "go_id": "GO:0004174",
+      "feature_type": "DOMAIN",
+      "start": 556,
+      "end": 586,
+      "signal_kind": "text",
+      "signal_value": "4Fe-4S ferredoxin-type",
+      "reasoning": "The DOMAIN 556-586 with the note \"4Fe-4S ferredoxin-type\" directly supports the primary reaction of the GO term, which involves electron transfer catalyzed by a flavoprotein. This domain is specifically involved in the function described by the GO term and provides a strong match to its definition."
+    },
+    {
+      "accession": "Q921G7",
+      "go_id": "GO:0004174",
+      "feature_type": "BINDING",
+      "start": 303,
+      "end": 304,
+      "signal_kind": "ligand",
+      "signal_value": "a ubiquinone",
+      "reasoning": "The binding of a ubiquinone to the protein is directly aligned with the primary reaction described in the GO term's definition, making it the most plausible explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9BRQ8",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature in Q9BRQ8's annotated data directly matches the primary reaction mechanism described for GO:0004174, which involves electron transfer between a flavoprotein and ubiquinone."
+    },
+    {
+      "accession": "Q8BUE4",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

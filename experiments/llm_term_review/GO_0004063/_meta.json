@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0004063",
+  "name": "aryldialkylphosphatase activity",
+  "def": "Catalysis of the reaction: aryl dialkyl phosphate + H2O = dialkyl phosphate + an aryl alcohol.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "P27169",
+    "P27170",
+    "P55159",
+    "Q62087"
+  ],
+  "assigned_accessions": [
+    "P27169",
+    "P27170",
+    "P55159",
+    "Q62087"
+  ]
+}

@@ -1,0 +1,274 @@
+=== Q8BUE4 GO:0004174 (finish_reason=length) ===
+THINKING:  
+GO term ID: 0004174  
+Name: electron-transferring-flavoprotein dehydrogenase activity  
+Definition: Catalysis of the reaction: a ubiquinone + reduced [electron-transfer flavoprotein] = a ubiquinol + H+ + oxidized [electron-transfer flavoprotein].  
+
+Candidate annotated features for this protein:  
+- BINDING 20-21  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 21-22  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 40-41  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 41-42  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 42-43  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 48-49  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 81-82  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 110-111  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 117-118  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 119-120  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 151-152  
+    ligand: NAD(+), ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 152-153  
+    ligand: NAD(+), ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 155-156  
+    ligand: 6-hydroxy-FAD, ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 155-156  
+    ligand: NAD(+), ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 180-181  
+    ligand: NAD(+), ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 207-208  
+    ligand: NAD(+), ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 208-209  
+    ligand: NAD(+), ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 249-250  
+    ligand: 6-hydroxy-FAD, ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 284-285  
+    ligand: 6-hydroxy-FAD, ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 292-293  
+    ligand: 6-hydroxy-FAD, ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 292-293  
+    ligand: NAD(+), ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 294-295  
+    ligand: 6-hydroxy-FAD, ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 295-296  
+    ligand: 6-hydroxy-FAD, ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- SITE 173-174  
+    note: 4-hydroxy-2-nonenal adduction  
+    evidence: ECO:0000269|PubMed:26689472  
+- SITE 186-187  
+    note: 4-hydroxy-2-nonenal adduction  
+    evidence: ECO:0000269|PubMed:26689472  
+
+For each candidate feature, we compare its type and qualifier text against the GO term's Definition (which focuses on the reaction catalysis), anchoring on the primary stated reaction or mechanism. We rate how specifically it matches that primary reaction on a scale of 1 to 10.  
+
+- **BINDING 20-21**: The ligand is 6-hydroxy-FAD, which is consistent with the reaction in the GO term. However, this binding site is not directly involved in the catalytic mechanism described in the definition. Score: 5  
+- **BINDING 21-22**: Same as above, but the binding site is also not directly involved in the catalytic mechanism. Score: 5  
+- **BINDING 40-41**: The ligand is 6-hydroxy-FAD, which is consistent with the reaction. However, this binding site is not directly involved in the catalytic mechanism. Score: 5  
+- **BINDING 41-42**: Same as above. Score: 5  
+- **BINDING 42-43**: Same as above. Score: 5  
+- **BINDING 48-49**: The ligand is 6-hydroxy-FAD, which is consistent with the reaction. However, this binding site is not directly involved in the catalytic mechanism. Score: 5  
+- **BINDING 81-82**: Same as above. Score: 5  
+- **BINDING 110-111**: The ligand is 6-hydroxy-FAD, which is consistent with the reaction. However, this binding site is not directly involved in the catalytic mechanism. Score: 5  
+- **BINDING 117-118**: Same as above. Score: 5  
+- **BINDING 119-120**: Same as above. Score: 5  
+- **BINDING 151-152**: The ligand is NAD(+), which is consistent with the reaction. However, this binding site is not directly involved in the catalytic mechanism. Score: 5  
+- **BINDING 152-153**: Same as above. Score: 5  
+- **BINDING 155-156**: The ligand is 6-hydroxy-FAD, which is consistent with the reaction. However, this binding site is not directly involved in the catalytic mechanism. Score: 5  
+- **BINDING 155-156**: Same as above. Score: 5  
+- **BINDING 180-181**: The ligand is NAD(+), which is consistent with the reaction. However, this binding site is not directly involved in the catalytic mechanism. Score: 5  
+- **BINDING 207-208**: The ligand is NAD(+), which is consistent with the reaction. However, this binding site is not directly involved in the catalytic mechanism. Score: 5  
+- **BINDING 208-209**: Same as above. Score: 5  
+- **BINDING 249-250**: The ligand is 6-hydroxy-FAD, which is consistent with the reaction. However, this binding site is not directly involved in the catalytic mechanism. Score: 5  
+- **BINDING 284-285**: Same as above. Score: 5  
+- **BINDING 292
+
+=== Q8BUE4 GO:0004174 (finish_reason=length) ===
+THINKING:  
+GO term ID: 0004174  
+Name: electron-transferring-flavoprotein dehydrogenase activity  
+Definition: Catalysis of the reaction: a ubiquinone + reduced [electron-transfer flavoprotein] = a ubiquinol + H+ + oxidized [electron-transfer flavoprotein].  
+
+Candidate annotated features for this protein:  
+- BINDING 20-21  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 21-22  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 40-41  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 41-42  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 42-43  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 48-49  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 81-82  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 110-111  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 117-118  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 119-120  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470  
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 151-152  
+    ligand: NAD(+)
+    ligand_id: ChEBI:CHEBI:57540
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 152-153  
+    ligand: NAD(+)
+    ligand_id: ChEBI:CHEBI:57540
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 155-156  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 155-156  
+    ligand: NAD(+)
+    ligand_id: ChEBI:CHEBI:57540
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 180-181  
+    ligand: NAD(+)
+    ligand_id: ChEBI:CHEBI:57540
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 207-208  
+    ligand: NAD(+)
+    ligand_id: ChEBI:CHEBI:57540
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 208-209  
+    ligand: NAD(+)
+    ligand_id: ChEBI:CHEBI:57540
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 249-250  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 284-285  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 292-293  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 292-293  
+    ligand: NAD(+)
+    ligand_id: ChEBI:CHEBI:57540
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 294-295  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- BINDING 295-296  
+    ligand: 6-hydroxy-FAD  
+    ligand_id: ChEBI:CHEBI:60470
+    evidence: ECO:0000250|UniProtKB:Q9BRQ8  
+- SITE 173-174  
+    note: 4-hydroxy-2-nonenal adduction  
+    evidence: ECO:0000269|PubMed:26689472  
+- SITE 186-187  
+    note: 4-hydroxy-2-nonenal adduction  
+    evidence: ECO:0000269|PubMed:26689472  
+
+For each candidate feature, I will now compare its type and qualifier text against the GO term's Definition, focusing on the PRIMARY stated reaction or mechanism.  
+
+1. **BINDING 20-21**  
+    - Type: BINDING  
+    - Qualifier: ligand: 6-hydroxy-FAD  
+    - Comparison to Definition: The definition mentions a reaction involving a ubiquinone and reduced [electron-transfer flavoprotein], which is the main mechanism. This binding site for 6-hydroxy-FAD is directly involved in this reaction.  
+    - Score: 9  
+
+2. **BINDING 21-22**  
+    - Type: BINDING  
+    - Qualifier: ligand: 6-hydroxy-FAD  
+    - Comparison to Definition: This binding site for 6-hydroxy-FAD is part of the reaction mechanism described in the definition. It is not a secondary consequence but directly involved in the catalytic activity.  
+    - Score: 8  
+
+3. **BINDING 40-41**  
+    - Type: BINDING  
+    - Qualifier: ligand: 6-hydroxy-FAD  
+    - Comparison to Definition: This binding site for 6-hydroxy-FAD is part of the reaction mechanism described in the definition. It is not a secondary consequence but directly involved in the catalytic activity.  
+    - Score: 7  
+
+4. **BINDING 41-42**  
+    - Type: BINDING  
+    - Qualifier: ligand: 6-hydroxy-FAD  
+    - Comparison to Definition: This binding site for 6-hydroxy-FAD is part of the reaction mechanism described in the definition. It is not a secondary consequence but directly involved in the catalytic activity.  
+    - Score: 7  
+
+5. **BINDING 42-43**  
+    - Type: BINDING  
+    - Qualifier: ligand: 6-hydroxy-FAD  
+    - Comparison to Definition: This binding site for 6-hydroxy-FAD is part of the reaction mechanism described in the definition. It is not a secondary consequence but directly involved in the catalytic activity.  
+    - Score: 7  
+
+6. **BINDING 48-49**  
+    - Type: BINDING  
+    - Qualifier: ligand: 6-hydroxy-FAD  
+    - Comparison to Definition: This binding site for 6-hydroxy-FAD is part of the reaction mechanism described in the definition. It is not a secondary consequence but directly involved in the catalytic activity.  
+    - Score: 7  
+
+7. **BINDING 81-82**  
+    - Type: BINDING  
+    - Qualifier: ligand: 6-hydroxy-FAD  
+    - Comparison to Definition: This binding site for 6-hydroxy-FAD is part of the reaction mechanism described in the definition. It is not a secondary consequence but directly involved in the catalytic activity.  
+    - Score: 7  
+
+8. **BINDING 110-111**  
+    - Type: BINDING  
+    - Qualifier: ligand: 6-hydroxy-FAD  
+    - Comparison to Definition: This binding site for 6-hydroxy-FAD is part of the reaction mechanism described in the definition. It is not a secondary consequence but directly involved in the catalytic activity.  
+    - Score: 7  
+
+9. **
+

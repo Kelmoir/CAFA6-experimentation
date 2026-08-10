@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "Q06592",
+      "go_id": "GO:0004059",
+      "feature_type": "DOMAIN",
+      "start": 8,
+      "end": 156,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The domain feature (8-156) labeled as \"N-acetyltransferase\" directly matches the primary reaction of the GO term, indicating that the protein has the structural and functional capacity to catalyze the transfer of an acetyl group from acetyl-CoA to an aralkylamine."
+    },
+    {
+      "accession": "Q7X9V3",
+      "go_id": "GO:0004059",
+      "feature_type": "BINDING",
+      "start": 237,
+      "end": 238,
+      "signal_kind": "ligand",
+      "signal_value": "acetyl-CoA",
+      "reasoning": "The binding site for acetyl-CoA in the region 237-238 directly supports the catalytic reaction described in the definition of the GO term, making it the most plausible explanation."
+    },
+    {
+      "accession": "Q94521",
+      "go_id": "GO:0004059",
+      "feature_type": "DOMAIN",
+      "start": 180,
+      "end": 254,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The DOMAIN annotation directly corresponds to the N-acetyltransferase activity defined by GO:0004059, indicating that the protein carries the necessary structural feature for catalyzing the acetyl transfer reaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q5KQI6",
+      "reason": "none_verdict",
+      "reasoning": "There is no positional feature that provides a clear mechanistic basis for the GO term's definition, and the domain annotation is generic."
+    }
+  ]
+}

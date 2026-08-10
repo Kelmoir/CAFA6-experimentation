@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0004123",
+  "name": "cystathionine gamma-lyase activity",
+  "def": "Catalysis of the reaction: L-cystathionine + H2O = 2-oxobutanoate + L-cysteine + NH4+.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "P00935",
+    "P18757",
+    "P32929",
+    "Q8VCN5"
+  ],
+  "assigned_accessions": [
+    "P00935",
+    "P18757",
+    "P32929",
+    "Q8VCN5"
+  ]
+}

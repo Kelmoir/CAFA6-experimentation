@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9ERM3",
+      "go_id": "GO:0004144",
+      "feature_type": "REGION",
+      "start": 139,
+      "end": 498,
+      "signal_kind": "text",
+      "signal_value": "MBOAT fold",
+      "reasoning": "The \"MBOAT fold\" (REGION 139-498) is a structural motif that is characteristic of enzymes involved in acyl transfer reactions, which directly aligns with the GO term's definition of catalyzing the reaction between acyl-CoA and diacylglycerol. This feature provides a strong match to the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P9WKC3",
+      "reason": "none_verdict",
+      "reasoning": "No single annotated feature provides a clear explanation for the specific activity of diacylglycerol O-acyltransferase as defined by the GO term, and all proteins carrying this term are known to carry it as an assertion."
+    },
+    {
+      "accession": "P9WQP1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P9WQP1 directly describes the specific acyl transfer reaction defined by GO:0004144, so there is no single feature that plausibly explains why the protein carries this term."
+    },
+    {
+      "accession": "K7K424",
+      "reason": "none_verdict",
+      "reasoning": "The protein K7K424 has no annotated positional features that directly explain the \"diacylglycerol O-acyltransferase activity\" GO term. While it is known to belong to the DAGAT family, there is no evidence of a specific domain or structural feature within the protein that matches the primary reaction defined by the GO term."
+    }
+  ]
+}

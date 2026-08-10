@@ -2173,5 +2173,176 @@
     "reasoning": "No annotated feature directly supports the primary reaction of AMP kinase activity (phosphoryl transfer), so there is no specific feature that can be identified as explaining the GO term."
    }
   ]
+ },
+ "GO:0004059": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "N-acetyltransferase",
+    "accessions": [
+     "Q06592",
+     "Q94521"
+    ],
+    "reason": "agreed but the note text didn't token-overlap any corroborating protein's domain_xrefs descriptions -- couldn't resolve to a specific accession"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "acetyl-CoA",
+    "accessions": [
+     "Q7X9V3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5KQI6",
+    "reason": "none_verdict",
+    "reasoning": "There is no positional feature that provides a clear mechanistic basis for the GO term's definition, and the domain annotation is generic."
+   }
+  ]
+ },
+ "GO:0004063": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P27169",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P27169 provides a clear structural/functional basis for the GO term's defined reaction mechanism."
+   },
+   {
+    "accession": "P27170",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature that could plausibly relate to the phosphorelay activity of the enzyme is the ACT_SITE region, which may be involved in proton transfer during catalysis. However, this feature does not directly explain the phosphorelay mechanism described in the GO term's definition, and no other feature provides a more specific or relevant explanation."
+   },
+   {
+    "accession": "P55159",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly or specifically explain the phosphorelay function of the enzyme as defined by the GO term."
+   },
+   {
+    "accession": "Q62087",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's data directly matches the primary reaction of the GO term, which involves phosphorelay."
+   }
+  ]
+ },
+ "GO:0004123": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P18757",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the catalytic mechanism of cystathionine gamma-lyase activity as defined by the GO term."
+   },
+   {
+    "accession": "P32929",
+    "reason": "none_verdict",
+    "reasoning": "The annotated feature \"BINDING 61-62\" with the ligand \"substrate\" does not directly explain why the protein carries the GO term \"cystathionine gamma-lyase activity.\" It only indicates a binding site for the substrate, not the catalytic mechanism or active site required to perform the defined reaction."
+   },
+   {
+    "accession": "Q8VCN5",
+    "reason": "none_verdict",
+    "reasoning": "The GO term describes a specific enzymatic reaction, but the annotated features for Q8VCN5 only indicate binding sites for substrates and do not provide any evidence of the enzyme's active site or catalytic mechanism. Thus, there is no positional feature that plausibly explains why this protein carries the given GO term."
+   },
+   {
+    "accession": "P00935",
+    "reason": "none_verdict",
+    "reasoning": "The protein has no annotated positional features (DOMAIN, ACT_SITE, DNA_BIND, MOTIF, REGION) that directly explain the thio lyase activity defined by the GO term. While domain/family cross-references suggest the possibility of a thio lyase-related domain, they do not provide any positional evidence to confirm this function. Without such evidence, we cannot assign the GO term to this protein with c"
+   }
+  ]
+ },
+ "GO:0004144": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "MBOAT fold",
+    "accessions": [
+     "Q9ERM3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WKC3",
+    "reason": "none_verdict",
+    "reasoning": "No single annotated feature provides a clear explanation for the specific activity of diacylglycerol O-acyltransferase as defined by the GO term, and all proteins carrying this term are known to carry it as an assertion."
+   },
+   {
+    "accession": "P9WQP1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P9WQP1 directly describes the specific acyl transfer reaction defined by GO:0004144, so there is no single feature that plausibly explains why the protein carries this term."
+   },
+   {
+    "accession": "K7K424",
+    "reason": "none_verdict",
+    "reasoning": "The protein K7K424 has no annotated positional features that directly explain the \"diacylglycerol O-acyltransferase activity\" GO term. While it is known to belong to the DAGAT family, there is no evidence of a specific domain or structural feature within the protein that matches the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0004174": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "4Fe-4S ferredoxin-type",
+    "accessions": [
+     "Q11190"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a ubiquinone",
+    "accessions": [
+     "Q921G7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9BRQ8",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature in Q9BRQ8's annotated data directly matches the primary reaction mechanism described for GO:0004174, which involves electron transfer between a flavoprotein and ubiquinone."
+   },
+   {
+    "accession": "Q8BUE4",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
  }
 }

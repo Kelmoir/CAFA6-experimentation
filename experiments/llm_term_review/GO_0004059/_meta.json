@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0004059",
+  "name": "aralkylamine N-acetyltransferase activity",
+  "def": "Catalysis of the reaction: acetyl-CoA + an aralkylamine = CoA + an N-acetylaralkylamine.",
+  "n_proteins_total": 16,
+  "sampled_accessions": [
+    "Q06592",
+    "Q5KQI6",
+    "Q7X9V3",
+    "Q94521"
+  ],
+  "assigned_accessions": [
+    "Q06592",
+    "Q5KQI6",
+    "Q7X9V3",
+    "Q94521"
+  ]
+}

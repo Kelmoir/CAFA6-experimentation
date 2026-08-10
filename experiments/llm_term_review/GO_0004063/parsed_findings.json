@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P27169",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P27169 provides a clear structural/functional basis for the GO term's defined reaction mechanism."
+    },
+    {
+      "accession": "P27170",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature that could plausibly relate to the phosphorelay activity of the enzyme is the ACT_SITE region, which may be involved in proton transfer during catalysis. However, this feature does not directly explain the phosphorelay mechanism described in the GO term's definition, and no other feature provides a more specific or relevant explanation."
+    },
+    {
+      "accession": "P55159",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly or specifically explain the phosphorelay function of the enzyme as defined by the GO term."
+    },
+    {
+      "accession": "Q62087",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's data directly matches the primary reaction of the GO term, which involves phosphorelay."
+    }
+  ]
+}
