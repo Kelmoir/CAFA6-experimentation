@@ -119,7 +119,7 @@ COT_ANSWER_FORMAT = (
     "The (TYPE, START, END) you report MUST exactly match one of the feature lines in the protein's "
     "section verbatim (identical type string, identical integers) -- it will be looked up by exact "
     "match and discarded if it doesn't match, so don't paraphrase or round coordinates.\n"
-    "Once again, all of the four output qualifiers THINKING: VERDICT: FEATURE: REASONING:"
+    "Once again, all of the four output qualifiers THINKING: VERDICT: FEATURE: REASONING: "
     "must be used in this order!"
 )
 
