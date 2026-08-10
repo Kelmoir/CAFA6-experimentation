@@ -219,15 +219,6 @@
    "histidine box-2"
   ]
  },
- "GO:0000268": {
-  "name": "peroxisome targeting sequence binding",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "lvxef motif"
-  ]
- },
  "GO:0000287": {
   "name": "magnesium ion binding",
   "ligands": [
@@ -265,15 +256,6 @@
   ],
   "text_patterns": [
    "7-methylguanosine cap"
-  ]
- },
- "GO:0000386": {
-  "name": "second spliceosomal transesterification activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "cchc-type"
   ]
  },
  "GO:0000400": {
@@ -773,26 +755,6 @@
    "required for interaction with kpnb1 and eea1"
   ]
  },
- "GO:0001067": {
-  "name": "transcription regulatory region nucleic acid binding",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "dna-binding"
-  ]
- },
- "GO:0001068": {
-  "name": "transcription regulatory region RNA binding",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [
-   "InterPro:IPR034167",
-   "InterPro:IPR034894",
-   "InterPro:IPR051186"
-  ],
-  "text_patterns": []
- },
  "GO:0001069": {
   "name": "regulatory region RNA binding",
   "ligands": [],
@@ -856,20 +818,6 @@
   ],
   "text_patterns": []
  },
- "GO:0001096": {
-  "name": "TFIIF-class transcription factor complex binding",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [
-   "InterPro:IPR011947",
-   "InterPro:IPR015388",
-   "InterPro:IPR039189",
-   "InterPro:IPR058785",
-   "Pfam:PF09309",
-   "Pfam:PF26077"
-  ],
-  "text_patterns": []
- },
  "GO:0001097": {
   "name": "TFIIH-class transcription factor complex binding",
   "ligands": [],
@@ -912,15 +860,6 @@
    "PROSITE:PS52088"
   ],
   "text_patterns": []
- },
- "GO:0001155": {
-  "name": "TFIIIA-class transcription factor binding",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "cchc noa-type"
-  ]
  },
  "GO:0001156": {
   "name": "TFIIIC-class transcription factor complex binding",
@@ -1088,15 +1027,6 @@
    "arginine finger; crucial for gtp hydrolysis by stabilizing the transition state"
   ]
  },
- "GO:0001566": {
-  "name": "non-kinase phorbol ester receptor activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "phorbol-ester/dag-type"
-  ]
- },
  "GO:0001567": {
   "name": "cholesterol 25-hydroxylase activity",
   "ligands": [],
@@ -1243,15 +1173,6 @@
    "InterPro:IPR001256"
   ],
   "text_patterns": []
- },
- "GO:0001648": {
-  "name": "proteinase-activated receptor activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "cleavage; by trypsin"
-  ]
  },
  "GO:0001664": {
   "name": "G protein-coupled receptor binding",

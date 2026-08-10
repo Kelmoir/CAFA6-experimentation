@@ -2,8 +2,11 @@
 MAX_AGENTS_PER_ROUND subagents total.
 
 Each round fills an agent budget (not a term count) with brand-new (never-touched) no_signal
-terms: for each candidate term, sample up to MAX_PROTEINS (5, see prepare_term_review_files.py)
-proteins, and only commit to the term if its sample fits in whatever budget remains. A term that
+terms: for each candidate term, sample up to MAX_PROTEINS (4, see prepare_term_review_files.py)
+proteins, and only commit to the term if its sample fits in whatever budget remains. Budget is
+sized at MAX_PROTEINS_PER_TERM * 5 so a typical round (terms with a full 4-protein sample) lands
+on 5 terms; terms with fewer than 4 carriers let extra terms slip into the same round, since this
+is a budget cap, not a hard term-count target. A term that
 doesn't fit is left untouched (no directory created) and reconsidered fresh next round -- terms
 are never partially reviewed. There is no retry/carry-over: once a term has a directory under
 experiments/llm_term_review/, next_new_terms() skips it forever, regardless of whether that single
@@ -23,8 +26,8 @@ from pathlib import Path
 ROOT = Path("experiments/llm_term_review")
 VISITED_PATH = Path("experiments/positional_mf_visited_terms.json")
 RAW_FEATURES_PATH = Path("experiments/positional_mf_raw_features.json")
-MAX_AGENTS_PER_ROUND = 10
-MAX_PROTEINS_PER_TERM = 5
+MAX_PROTEINS_PER_TERM = 4
+MAX_AGENTS_PER_ROUND = MAX_PROTEINS_PER_TERM * 5
 
 
 def already_started():
