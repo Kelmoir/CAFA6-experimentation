@@ -2657,6 +2657,181 @@
    }
   ]
  },
+ "GO:0004660": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "(2E,6E)-farnesyl diphosphate",
+    "accessions": [
+     "O13782",
+     "P49356"
+    ],
+    "reason": "circular agreement -- only 1 of 2 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LX33",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9LX33 has no MF-relevant positional features on record, and the domain/family cross-references do not provide any explicit positional evidence that directly explains the GO term's defined chemistry."
+   },
+   {
+    "accession": "Q04631",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves catalyzing the transfer of a farnesyl group. The available features only suggest broader prenylation-related functions without specifying the enzyme's role in this particular reaction."
+   }
+  ]
+ },
+ "GO:0004661": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P29702",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the defined chemistry of \"protein geranylgeranyltransferase activity\" (GO:0004661). The only evidence is a disordered region, which does not directly explain the function."
+   },
+   {
+    "accession": "P53610",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the covalent addition of a geranylgeranyl group via thioether linkages to a C-terminal cysteine residue, which is the primary reaction defined by GO:0004661."
+   },
+   {
+    "accession": "Q04631",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature for protein Q04631 that directly explains the catalytic activity described in the GO term's definition."
+   },
+   {
+    "accession": "Q9LX33",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9LX33 has no annotated positional features that could plausibly explain the \"geranylgeranyltransferase activity\" GO term, as the term defines a specific catalytic function not directly supported by any of the domain/family cross-references."
+   }
+  ]
+ },
+ "GO:0004662": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "geranylgeranyl diphosphate",
+    "accessions": [
+     "Q5EAD5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P18898",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the catalytic activity of forming a thioether linkage between geranylgeranyl diphosphate and protein-cysteine."
+   },
+   {
+    "accession": "P53610",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, and all features are either generic or only loosely related to the specific chemistry described."
+   },
+   {
+    "accession": "Q8BUY9",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide any positional evidence that specifically explains the CAAX-protein geranylgeranyltransferase activity as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0004663": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "geranylgeranyl diphosphate",
+    "accessions": [
+     "Q08603",
+     "Q84J75"
+    ],
+    "reason": "ligand already claimed by GO:0019840 elsewhere in the dictionary -- ligand_to_go is a plain dict, a second claim would silently overwrite it"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P20133",
+    "go_id": "GO:0004663",
+    "feature_type": "BINDING",
+    "start": 182,
+    "end": 185,
+    "signal_kind": "ligand",
+    "signal_value": "geranylgeranyl diphosphate",
+    "reasoning": "The binding site for geranylgeranyl diphosphate is directly related to the enzyme's function as a geranylgeranyltransferase, but without explicit mention of thioether linkage formation or C-1 atom interaction in the annotation, it remains uncertain which binding site most plausibly accounts for the GO term's primary reaction."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q9LHL5",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9LHL5 do not provide any direct evidence about the structural or functional basis for the Rab geranylgeranyltransferase activity. While the protein binds geranylgeranyl diphosphate and Zn(2+), these interactions are not specific to the mechanism of forming thioether linkages, which is the primary reaction defined by GO:0004663. Therefore, there is no annotated feature t"
+   }
+  ]
+ },
+ "GO:0004711": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR016238"
+    ],
+    "accessions": [
+     "P67999",
+     "Q12706"
+    ],
+    "note": "resolved from DOMAIN note 'Protein kinase' (9 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P18654"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Protein kinase 1",
+    "accessions": [
+     "Q15418"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
  "GO:0004734": {
   "n_resolved": 1,
   "n_uncertain": 0,

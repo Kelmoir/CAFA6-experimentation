@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0004661",
+  "name": "protein geranylgeranyltransferase activity",
+  "def": "Catalysis of the covalent addition of a geranylgeranyl (20-carbon isoprenoid) group via thioether linkages to a cysteine residue at or near the C terminus of a protein.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "P29702",
+    "P53610",
+    "Q04631",
+    "Q9LX33"
+  ],
+  "assigned_accessions": [
+    "P29702",
+    "P53610",
+    "Q04631",
+    "Q9LX33"
+  ]
+}

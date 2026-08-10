@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0004662",
+  "name": "CAAX-protein geranylgeranyltransferase activity",
+  "def": "Catalysis of the reaction: geranylgeranyl diphosphate + protein-cysteine = S-geranylgeranyl-protein + diphosphate. This reaction is the formation of a thioether linkage between the C-1 atom of the geranylgeranyl group and a cysteine residue fourth from the C-terminus of the protein. The protein substrates have the C-terminal sequence CA1A2X, where the terminal residue, X, is preferably leucine and A2 should not be aromatic. Known substrates include most g-subunits of heterotrimeric G proteins and Ras-related GTPases such as members of the Ras and Rac/Rho families.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "P18898",
+    "P53610",
+    "Q5EAD5",
+    "Q8BUY9"
+  ],
+  "assigned_accessions": [
+    "P18898",
+    "P53610",
+    "Q5EAD5",
+    "Q8BUY9"
+  ]
+}

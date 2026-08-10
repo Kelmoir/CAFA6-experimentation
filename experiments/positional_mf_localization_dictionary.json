@@ -3424,6 +3424,15 @@
   ],
   "text_patterns": []
  },
+ "GO:0004711": {
+  "name": "ribosomal protein S6 kinase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR016238"
+  ],
+  "text_patterns": []
+ },
  "GO:0004712": {
   "name": "protein serine/threonine/tyrosine kinase activity",
   "ligands": [],

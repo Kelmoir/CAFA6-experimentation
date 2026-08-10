@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q5EAD5",
+      "go_id": "GO:0004662",
+      "feature_type": "BINDING",
+      "start": 218,
+      "end": 221,
+      "signal_kind": "ligand",
+      "signal_value": "geranylgeranyl diphosphate",
+      "reasoning": "The binding site at position 218-221 with geranylgeranyl diphosphate directly supports the GO term's definition by being involved in the catalytic reaction of transferring a geranylgeranyl group to a protein-cysteine residue. This is a strong match to the primary reaction described in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P18898",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains the catalytic activity of forming a thioether linkage between geranylgeranyl diphosphate and protein-cysteine."
+    },
+    {
+      "accession": "P53610",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term, and all features are either generic or only loosely related to the specific chemistry described."
+    },
+    {
+      "accession": "Q8BUY9",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide any positional evidence that specifically explains the CAAX-protein geranylgeranyltransferase activity as defined by the GO term."
+    }
+  ]
+}

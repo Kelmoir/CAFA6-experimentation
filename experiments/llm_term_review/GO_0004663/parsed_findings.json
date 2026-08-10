@@ -1,0 +1,43 @@
+{
+  "resolved": [
+    {
+      "accession": "Q08603",
+      "go_id": "GO:0004663",
+      "feature_type": "BINDING",
+      "start": 240,
+      "end": 244,
+      "signal_kind": "ligand",
+      "signal_value": "geranylgeranyl diphosphate",
+      "reasoning": "The binding feature at position 240-244 involves geranylgeranyl diphosphate, which matches the primary reaction of the GO term by directly participating in the formation of thioether linkages between the C-1 atom of the geranylgeranyl groups and two cysteine residues within the terminal sequence motifs."
+    },
+    {
+      "accession": "Q84J75",
+      "go_id": "GO:0004663",
+      "feature_type": "BINDING",
+      "start": 183,
+      "end": 186,
+      "signal_kind": "ligand",
+      "signal_value": "geranylgeranyl diphosphate",
+      "reasoning": "The binding site at position 183-186 directly interacts with the substrate (geranylgeranyl diphosphate) involved in the reaction defined by the GO term, making it the most plausible feature that explains the molecular function."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P20133",
+      "go_id": "GO:0004663",
+      "feature_type": "BINDING",
+      "start": 182,
+      "end": 185,
+      "signal_kind": "ligand",
+      "signal_value": "geranylgeranyl diphosphate",
+      "reasoning": "The binding site for geranylgeranyl diphosphate is directly related to the enzyme's function as a geranylgeranyltransferase, but without explicit mention of thioether linkage formation or C-1 atom interaction in the annotation, it remains uncertain which binding site most plausibly accounts for the GO term's primary reaction."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q9LHL5",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q9LHL5 do not provide any direct evidence about the structural or functional basis for the Rab geranylgeranyltransferase activity. While the protein binds geranylgeranyl diphosphate and Zn(2+), these interactions are not specific to the mechanism of forming thioether linkages, which is the primary reaction defined by GO:0004663. Therefore, there is no annotated feature t"
+    }
+  ]
+}

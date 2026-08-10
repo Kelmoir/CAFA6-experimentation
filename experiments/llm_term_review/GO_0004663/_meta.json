@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0004663",
+  "name": "Rab geranylgeranyltransferase activity",
+  "def": "Catalysis of the reaction: 2 geranylgeranyl diphosphate + protein-cysteine = 2 S-geranylgeranyl-protein + 2 diphosphate. This reaction is the formation of two thioether linkages between the C-1 atom of the geranylgeranyl groups and two cysteine residues within the terminal sequence motifs XXCC, XCXC or CCXX. Known substrates include Ras-related GTPases of a single family and the Rab family.",
+  "n_proteins_total": 20,
+  "sampled_accessions": [
+    "P20133",
+    "Q08603",
+    "Q84J75",
+    "Q9LHL5"
+  ],
+  "assigned_accessions": [
+    "P20133",
+    "Q08603",
+    "Q84J75",
+    "Q9LHL5"
+  ]
+}
