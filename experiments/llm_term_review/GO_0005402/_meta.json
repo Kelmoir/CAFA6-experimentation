@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0005402",
+  "name": "carbohydrate:monoatomic cation symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: sugar(out) + cation(out) = sugar(in) + cation(in).",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P0AC96",
+    "Q91ZP4"
+  ],
+  "assigned_accessions": [
+    "P0AC96",
+    "Q91ZP4"
+  ]
+}

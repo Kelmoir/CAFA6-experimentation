@@ -4145,6 +4145,77 @@
    }
   ]
  },
+ "GO:0005363": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PTS EIIC type-1",
+    "accessions": [
+     "P19642"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P02943",
+    "reason": "none_verdict",
+    "reasoning": "The defined molecular function for GO:0005363 is the transfer of maltose across a membrane, which is not directly explained by any of the annotated features provided. While some sites are noted as being important in sugar transport, none provide a direct structural or functional basis that matches the chemistry of maltose transmembrane activity."
+   },
+   {
+    "accession": "P0CD99",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P0CE00",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature provided for P0CE00 is a \"REGION\" spanning from 581 to 602 aa, which is noted as \"Disordered.\" This does not provide any direct evidence of the transport activity described in the GO term. While the domain/family cross-references suggest that P0CE00 may be related to maltose transporters, they do not directly explain why the protein carries this specific molecular funct"
+   }
+  ]
+ },
+ "GO:0005367": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "implicated in sodium coupling",
+    "accessions": [
+     "P13866",
+     "P31637"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P11170",
+    "go_id": "GO:0005367",
+    "feature_type": "SITE",
+    "start": 42,
+    "end": 43,
+    "signal_kind": "text",
+    "signal_value": "Implicated in sodium coupling",
+    "reasoning": "The site is implicated in sodium coupling, which could be a secondary consequence of the antiport activity described by the GO term. However, since the definition does not explicitly state that sodium coupling is the mechanism for solute transfer, this feature only loosely matches the primary reaction."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P53794",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the molecular function defined by GO:0005367. The available features only indicate involvement in sodium coupling, not the specific mechanism of solute transfer described in the definition."
+   }
+  ]
+ },
  "GO:0005371": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -4161,6 +4232,125 @@
    },
    {
     "accession": "Q9JHY2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0005402": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AC96",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q91ZP4",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0005412": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "D-glucose",
+    "accessions": [
+     "Q8C3K6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "D3ZIS0",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature has been confirmed to explain the molecular function defined by the GO term (GO:0005412), which involves the transfer of D-glucose and sodium ions across a membrane. The domain/family cross-references suggest involvement in this function, but they are not positional features. Therefore, there is no single annotated feature that directly explains the GO term's primary reaction"
+   },
+   {
+    "accession": "Q923I7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the GO term's primary reaction or mechanism of D-glucose:sodium symporter activity."
+   },
+   {
+    "accession": "Q9ET37",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the \"Annotated features\" section provides a direct explanation for the molecular function defined by GO:0005412. The only positional feature is a Disordered region, which does not support the primary reaction of D-glucose:sodium symporter activity."
+   }
+  ]
+ },
+ "GO:0005415": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O43868",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section directly matches the defined mechanism of nucleoside:sodium symporter activity. The only positional feature is a disordered region, which is generic and does not specifically explain the function described by the GO term."
+   },
+   {
+    "accession": "O88627",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q62773",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a specific explanation for the primary reaction described in the GO term, which involves nucleoside and sodium ion transport across a membrane."
+   },
+   {
+    "accession": "Q9HAS3",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature in Q9HAS3's Annotated features section provides a clear, specific explanation for why it carries the molecular function \"nucleoside:sodium symporter activity.\" The only evidence is generic and does not directly match the defined chemistry of the GO term."
+   }
+  ]
+ },
+ "GO:0005416": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9W4C5",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION 0-38\" span does not specifically match the GO term's definition in terms of the primary reaction (transfer of amino acids and monoatomic cations across a membrane). It is more generic and could apply to any protein with a disordered region, not necessarily one that performs this specific transport activity."
+   }
+  ]
+ },
+ "GO:0008012": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q26416",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }

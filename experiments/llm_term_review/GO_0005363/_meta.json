@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0005363",
+  "name": "maltose transmembrane transporter activity",
+  "def": "Enables the transfer of maltose from one side of a membrane to the other. Maltose is the disaccharide 4-O-alpha-D-glucopyranosyl-D-glucopyranose, an intermediate in the enzymatic breakdown of glycogen and starch.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P02943",
+    "P0CD99",
+    "P0CE00",
+    "P19642"
+  ],
+  "assigned_accessions": [
+    "P02943",
+    "P0CD99",
+    "P0CE00",
+    "P19642"
+  ]
+}

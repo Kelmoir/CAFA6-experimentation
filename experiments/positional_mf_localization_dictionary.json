@@ -5002,6 +5002,15 @@
   ],
   "text_patterns": []
  },
+ "GO:0005367": {
+  "name": "myo-inositol:sodium symporter activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "implicated in sodium coupling"
+  ]
+ },
  "GO:0005372": {
   "name": "water transmembrane transporter activity",
   "ligands": [],

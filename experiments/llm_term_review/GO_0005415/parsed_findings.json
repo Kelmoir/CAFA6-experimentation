@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O43868",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section directly matches the defined mechanism of nucleoside:sodium symporter activity. The only positional feature is a disordered region, which is generic and does not specifically explain the function described by the GO term."
+    },
+    {
+      "accession": "O88627",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q62773",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a specific explanation for the primary reaction described in the GO term, which involves nucleoside and sodium ion transport across a membrane."
+    },
+    {
+      "accession": "Q9HAS3",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature in Q9HAS3's Annotated features section provides a clear, specific explanation for why it carries the molecular function \"nucleoside:sodium symporter activity.\" The only evidence is generic and does not directly match the defined chemistry of the GO term."
+    }
+  ]
+}
