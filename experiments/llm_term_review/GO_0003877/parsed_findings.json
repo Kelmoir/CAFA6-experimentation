@@ -1,0 +1,43 @@
+{
+  "resolved": [
+    {
+      "accession": "P9WMK9",
+      "go_id": "GO:0003877",
+      "feature_type": "DOMAIN",
+      "start": 56,
+      "end": 166,
+      "signal_kind": "text",
+      "signal_value": "HIT",
+      "reasoning": "The DOMAIN 56-166 annotation, which is associated with the HIT-like domain, most plausibly explains why P9WMK9 carries the GO term \"ATP:ADP adenylyltransferase activity.\" This domain is directly linked to the catalytic function described in the GO definition."
+    },
+    {
+      "accession": "Q15046",
+      "go_id": "GO:0003877",
+      "feature_type": "BINDING",
+      "start": 322,
+      "end": 325,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site at positions 322-325 with ATP is directly relevant to the GO term's definition, which involves the catalysis of the reaction where ATP donates a phosphate group to ADP. This specific binding supports the enzyme's function as an adenylyltransferase."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q99MN1",
+      "go_id": "GO:0003877",
+      "feature_type": "BINDING",
+      "start": 320,
+      "end": 323,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP (BINDING 320-323) is directly relevant to the GO term's primary reaction, but it only shows the presence of ATP binding without explaining the mechanism of the phosphate transfer. This makes it a plausible candidate, but not definitive."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q5XIM7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q5XIM7 directly matches the primary reaction mechanism of the GO term \"ATP:ADP adenylyltransferase activity,\" which involves the transfer of a phosphate group from ATP to ADP. All binding sites are generic and do not provide specific evidence for this particular enzymatic function."
+    }
+  ]
+}

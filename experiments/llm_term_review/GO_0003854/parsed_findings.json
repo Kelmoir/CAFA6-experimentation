@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P27364",
+      "go_id": "GO:0003854",
+      "feature_type": "BINDING",
+      "start": 9,
+      "end": 15,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The binding of NADP(+) at position 9-15 directly matches the primary reaction described in the GO term's definition, which involves catalyzing the transfer of a phosphoryl group from NAD+ to a steroid substrate. This is the most specific and relevant feature for explaining the molecular function."
+    },
+    {
+      "accession": "Q15738",
+      "go_id": "GO:0003854",
+      "feature_type": "BINDING",
+      "start": 175,
+      "end": 176,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The BINDING feature directly supports the primary reaction of catalyzing the phosphoryl transfer between the steroid and NAD+, which is the core function defined for the GO term."
+    },
+    {
+      "accession": "Q9H2F3",
+      "go_id": "GO:0003854",
+      "feature_type": "ACT_SITE",
+      "start": 158,
+      "end": 159,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The ACT SITE annotation at position 158-159 explicitly identifies the site where the proton is accepted during the catalytic reaction, directly aligning with the primary mechanism described in the GO term's definition. This provides a strong and specific match to the defined molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P24815",
+      "reason": "none_verdict",
+      "reasoning": "The defined reaction for the GO term involves a specific transfer of a proton and reduction of NAD+, which is not directly explained by any of the positional features provided for P24815."
+    }
+  ]
+}

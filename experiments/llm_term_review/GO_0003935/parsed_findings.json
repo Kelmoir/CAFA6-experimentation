@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P38066",
+      "reason": "none_verdict",
+      "reasoning": "The binding site at position 142-147 for GTP, marked as a catalytic site, directly supports the definition of \"GTP cyclohydrolase II activity\" by indicating the protein's role in catalyzing the reaction involving GTP."
+    },
+    {
+      "accession": "P9WHF1",
+      "reason": "none_verdict",
+      "reasoning": "hit max_tokens (2400) before VERDICT/FEATURE appeared -- raw text saved to experiments/llm_term_review/GO_0003935/raw_debug.log"
+    },
+    {
+      "accession": "Q9P7M9",
+      "reason": "none_verdict",
+      "reasoning": "No positional features were annotated for the protein Q9P7M9, making it impossible to determine which specific domain or region is responsible for the GO term \"GTP cyclohydrolase II activity.\""
+    },
+    {
+      "accession": "Q9US41",
+      "reason": "none_verdict",
+      "reasoning": "The binding site for GTP (ligand: GTP; ligand_id: ChEBI:CHEBI:37565) directly supports the catalytic reaction defined by the GO term, making it the most specific and relevant feature."
+    }
+  ]
+}

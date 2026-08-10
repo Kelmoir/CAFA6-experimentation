@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0003846",
+  "name": "2-acylglycerol O-acyltransferase activity",
+  "def": "Catalysis of the reaction: acyl-CoA + 2-acylglycerol = CoA + diacylglycerol.",
+  "n_proteins_total": 20,
+  "sampled_accessions": [
+    "O74850",
+    "Q6E213",
+    "Q91YX5",
+    "Q9ERM3"
+  ],
+  "assigned_accessions": [
+    "O74850",
+    "Q6E213",
+    "Q91YX5",
+    "Q9ERM3"
+  ]
+}

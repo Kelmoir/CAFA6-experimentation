@@ -1770,6 +1770,129 @@
   ],
   "issues": []
  },
+ "GO:0003846": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "HXXXXD motif",
+    "accessions": [
+     "Q91YX5"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "an acyl-CoA",
+    "accessions": [
+     "Q9ERM3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O74850",
+    "reason": "none_verdict",
+    "reasoning": "The protein O74850 has no MF-relevant positional features annotated, and the only evidence for its function is a domain/family cross-reference. While this cross-reference strongly suggests that the DAGAT domain is involved in the acyl transfer reaction described by GO:0003846, it does not provide any specific coordinates or positional details about the domain within the protein sequence. Therefore"
+   },
+   {
+    "accession": "Q6E213",
+    "reason": "none_verdict",
+    "reasoning": "The \"DAGAT\" domain (InterPro:IPR007130 and Pfam:PF03982) directly supports the catalytic activity described in GO:0003846, which involves transferring an acyl group from acyl-CoA to 2-acylglycerol. This domain is mechanistically specific to the reaction defined by the GO term, making it a strong candidate for explaining why the protein carries this annotation."
+   }
+  ]
+ },
+ "GO:0003854": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "P27364"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "Q15738"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "Q9H2F3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P24815",
+    "reason": "none_verdict",
+    "reasoning": "The defined reaction for the GO term involves a specific transfer of a proton and reduction of NAD+, which is not directly explained by any of the positional features provided for P24815."
+   }
+  ]
+ },
+ "GO:0003877": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "HIT",
+    "accessions": [
+     "P9WMK9"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q15046"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q99MN1",
+    "go_id": "GO:0003877",
+    "feature_type": "BINDING",
+    "start": 320,
+    "end": 323,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The binding site for ATP (BINDING 320-323) is directly relevant to the GO term's primary reaction, but it only shows the presence of ATP binding without explaining the mechanism of the phosphate transfer. This makes it a plausible candidate, but not definitive."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q5XIM7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q5XIM7 directly matches the primary reaction mechanism of the GO term \"ATP:ADP adenylyltransferase activity,\" which involves the transfer of a phosphate group from ATP to ADP. All binding sites are generic and do not provide specific evidence for this particular enzymatic function."
+   }
+  ]
+ },
  "GO:0003880": {
   "n_resolved": 0,
   "n_uncertain": 1,
@@ -1794,6 +1917,72 @@
     "accession": "Q9UIC8",
     "reason": "none_verdict",
     "reasoning": "VERDICT/FEATURE parsed but no REASONING found -- raw text saved to experiments/llm_term_review/GO_0003880/raw_debug.log"
+   }
+  ]
+ },
+ "GO:0003935": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P38066",
+    "reason": "none_verdict",
+    "reasoning": "The binding site at position 142-147 for GTP, marked as a catalytic site, directly supports the definition of \"GTP cyclohydrolase II activity\" by indicating the protein's role in catalyzing the reaction involving GTP."
+   },
+   {
+    "accession": "P9WHF1",
+    "reason": "none_verdict",
+    "reasoning": "hit max_tokens (2400) before VERDICT/FEATURE appeared -- raw text saved to experiments/llm_term_review/GO_0003935/raw_debug.log"
+   },
+   {
+    "accession": "Q9P7M9",
+    "reason": "none_verdict",
+    "reasoning": "No positional features were annotated for the protein Q9P7M9, making it impossible to determine which specific domain or region is responsible for the GO term \"GTP cyclohydrolase II activity.\""
+   },
+   {
+    "accession": "Q9US41",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for GTP (ligand: GTP; ligand_id: ChEBI:CHEBI:37565) directly supports the catalytic reaction defined by the GO term, making it the most specific and relevant feature."
+   }
+  ]
+ },
+ "GO:0003954": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "4Fe-4S ferredoxin-type 1",
+    "accessions": [
+     "Q8K3J1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "G3XD94",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide a strong or specific explanation for why G3XD94 carries the GO term \"NADH dehydrogenase activity,\" as they only describe binding events or activity sites without specifying the catalytic mechanism."
+   },
+   {
+    "accession": "P0C327",
+    "reason": "none_verdict",
+    "reasoning": "The protein has no annotated positional features for molecular function, so we cannot determine which specific structural element explains the GO term's defined chemistry."
+   },
+   {
+    "accession": "Q9Z0X1",
+    "reason": "none_verdict",
+    "reasoning": "The defined molecular function of NADH dehydrogenase activity involves catalyzing a redox reaction, but none of the positional features provided explicitly describe this mechanism. While FAD and NAD(+)-binding sites are necessary for the protein's function, they do not directly explain why it carries the term \"NADH dehydrogenase activity.\""
    }
   ]
  }

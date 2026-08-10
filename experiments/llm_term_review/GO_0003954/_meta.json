@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0003954",
+  "name": "NADH dehydrogenase activity",
+  "def": "Catalysis of the reaction: NADH + H+ + acceptor = NAD+ + reduced acceptor.",
+  "n_proteins_total": 44,
+  "sampled_accessions": [
+    "G3XD94",
+    "P0C327",
+    "Q8K3J1",
+    "Q9Z0X1"
+  ],
+  "assigned_accessions": [
+    "G3XD94",
+    "P0C327",
+    "Q8K3J1",
+    "Q9Z0X1"
+  ]
+}

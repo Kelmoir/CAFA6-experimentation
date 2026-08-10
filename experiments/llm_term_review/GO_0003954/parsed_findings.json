@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8K3J1",
+      "go_id": "GO:0003954",
+      "feature_type": "DOMAIN",
+      "start": 103,
+      "end": 133,
+      "signal_kind": "text",
+      "signal_value": "4Fe-4S ferredoxin-type 1",
+      "reasoning": "The DOMAIN 103-133 feature is a 4Fe-4S ferredoxin-type 1 domain, which is directly associated with the redox reaction mechanism described by the GO term \"NADH dehydrogenase activity.\" This domain type is known to participate in electron transfer and can accept electrons or protons, making it a strong match to the primary reaction of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "G3XD94",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide a strong or specific explanation for why G3XD94 carries the GO term \"NADH dehydrogenase activity,\" as they only describe binding events or activity sites without specifying the catalytic mechanism."
+    },
+    {
+      "accession": "P0C327",
+      "reason": "none_verdict",
+      "reasoning": "The protein has no annotated positional features for molecular function, so we cannot determine which specific structural element explains the GO term's defined chemistry."
+    },
+    {
+      "accession": "Q9Z0X1",
+      "reason": "none_verdict",
+      "reasoning": "The defined molecular function of NADH dehydrogenase activity involves catalyzing a redox reaction, but none of the positional features provided explicitly describe this mechanism. While FAD and NAD(+)-binding sites are necessary for the protein's function, they do not directly explain why it carries the term \"NADH dehydrogenase activity.\""
+    }
+  ]
+}
