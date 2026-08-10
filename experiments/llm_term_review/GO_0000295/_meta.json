@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0000295",
+  "name": "adenine nucleotide transmembrane transporter activity",
+  "def": "Enables the transfer of adenine nucleotides (AMP, ADP, and ATP) from one side of a membrane to the other.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "O43808",
+    "Q6NUK1",
+    "Q84MA8",
+    "Q9BV35"
+  ],
+  "assigned_accessions": [
+    "O43808",
+    "Q6NUK1",
+    "Q84MA8",
+    "Q9BV35"
+  ]
+}

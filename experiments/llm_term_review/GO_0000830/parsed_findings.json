@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q06685",
+      "go_id": "GO:0000830",
+      "feature_type": "REGION",
+      "start": 529,
+      "end": 597,
+      "signal_kind": "text",
+      "signal_value": "Polyphosphoinositide-binding domain",
+      "reasoning": "The \"polyphosphoinositide-binding domain\" (REGION 529-597) is a candidate feature that may be relevant to the overall function of the protein, but it does not directly explain the specific chemical reaction defined by the GO term's definition. The other binding regions are more generic and do not provide enough evidence to specifically link them to the phosphoryl transfer activity described in the"
+    }
+  ],
+  "issues": []
+}

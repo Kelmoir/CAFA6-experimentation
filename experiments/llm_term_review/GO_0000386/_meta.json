@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0000386",
+  "name": "second spliceosomal transesterification activity",
+  "def": "Catalysis of the second transesterification reaction of spliceosomal mRNA splicing. Ligation of the two exons occurs via a transesterification reaction where the free 3'-hydroxyl group of the 5' exon is the nucleophile attacking the 3' splice site. Non-expressed sequences are now detached from the exons. In cis splicing, the intron is in a lariat structure.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O23174",
+    "O95391",
+    "Q9SHY8",
+    "Q9Y7Y2"
+  ],
+  "assigned_accessions": [
+    "O23174",
+    "O95391",
+    "Q9SHY8",
+    "Q9Y7Y2"
+  ]
+}

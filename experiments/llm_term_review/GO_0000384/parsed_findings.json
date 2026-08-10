@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P23394",
+      "go_id": "GO:0000384",
+      "feature_type": "MOTIF",
+      "start": 340,
+      "end": 344,
+      "signal_kind": "text",
+      "signal_value": "DEAD box",
+      "reasoning": "The DEAD box motif directly supports the ATP hydrolysis activity required for catalyzing the first transesterification reaction in spliceosomal mRNA splicing. This matches the primary reaction described in the GO term's definition, making it a strong candidate."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P53854",
+      "reason": "none_verdict",
+      "reasoning": "The annotated feature \"REGION 98-179\" does not provide any direct evidence about the structural or functional basis of the GO term \"first spliceosomal transesterification activity.\" It only indicates that the region is disordered, which is a general characteristic and does not explain why this protein carries the term."
+    }
+  ]
+}

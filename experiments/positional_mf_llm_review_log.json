@@ -219,5 +219,192 @@
     "reasoning": "No annotated feature provides positional evidence that directly matches the primary reaction of binding to a peroxisomal targeting sequence, which is the core mechanism defined by GO:0000268."
    }
   ]
+ },
+ "GO:0000295": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O43808",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the molecular mechanism of adenine nucleotide transmembrane transporter activity \u2014 only localization signals are provided."
+   },
+   {
+    "accession": "Q6NUK1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the molecular function of adenine nucleotide transmembrane transporter activity as clearly as the binding sites for Ca(2+). The presence of multiple Ca(2+) binding sites across different regions suggests a regulatory role rather than the direct transport mechanism."
+   },
+   {
+    "accession": "Q84MA8",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature is annotated for this protein, and the domain/family cross-references do not specifically explain the defined function of adenine nucleotide transmembrane transporter activity."
+   },
+   {
+    "accession": "Q9BV35",
+    "reason": "none_verdict",
+    "reasoning": "The only binding site that directly relates to the function of transporting adenine nucleotides through a transmembrane domain is **BINDING 100-101** (ligand: Ca(2+)), but this binding site is for Ca(2+), not the actual nucleotides being transported. Therefore, there is no positional feature that specifically matches the GO term's own chemistry."
+   }
+  ]
+ },
+ "GO:0000298": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Nudix hydrolase",
+    "accessions": [
+     "Q566C7",
+     "Q8R2U6"
+    ],
+    "reason": "resolved to ['InterPro:IPR000086', 'InterPro:IPR015797', 'InterPro:IPR020084', 'InterPro:IPR047198', 'PROSITE:PS00893', 'PROSITE:PS51462', 'Pfam:PF00293'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000086': 122, 'InterPro:IPR015797': 129, 'InterPro:IPR020084': 68, 'InterPro:IPR047198': 17, 'PROSITE:PS00893': 68, 'PROSITE:PS51462': 122, 'Pfam:PF00293': 105})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O95989",
+    "reason": "none_verdict",
+    "reasoning": "The \"DOMAIN\" annotation for O95989 indicates the presence of a Nudix hydrolase domain, which is structurally and functionally related to endopolyphosphatases. This domain directly supports the catalytic reaction defined by the GO term, making it the most plausible explanation for why the protein carries the term."
+   },
+   {
+    "accession": "Q04119",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature in the annotated features of Q04119 directly explains the catalytic reaction of endopolyphosphatase activity as defined by GO:0000298, making it impossible to determine a plausible structural/functional basis for the term."
+   }
+  ]
+ },
+ "GO:0000341": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O45551",
+    "reason": "none_verdict",
+    "reasoning": "No annotated positional feature in the provided data specifically explains the molecular function of RNA trimethylguanosine cap binding. The available domain/family cross-references suggest a general involvement in RNA processing but do not directly account for the defined function."
+   },
+   {
+    "accession": "P56570",
+    "reason": "none_verdict",
+    "reasoning": "There is no positional feature annotated for P56570 that directly explains the binding to m(3)(2,2,7)-GTP as defined by GO:0000341. The domain/family cross-references are generic and do not provide any evidence of this specific function."
+   },
+   {
+    "accession": "Q21693",
+    "reason": "none_verdict",
+    "reasoning": "The protein has no annotated positional features that could plausibly explain why it carries the molecular function of RNA trimethylguanosine cap binding."
+   }
+  ]
+ },
+ "GO:0000384": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "DEAD box",
+    "accessions": [
+     "P23394"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P53854",
+    "reason": "none_verdict",
+    "reasoning": "The annotated feature \"REGION 98-179\" does not provide any direct evidence about the structural or functional basis of the GO term \"first spliceosomal transesterification activity.\" It only indicates that the region is disordered, which is a general characteristic and does not explain why this protein carries the term."
+   }
+  ]
+ },
+ "GO:0000386": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O23174",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly or specifically explain the catalytic activity described in the GO definition for O23174."
+   },
+   {
+    "accession": "O95391",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct structural or functional explanation for the GO term \"second spliceosomal transesterification activity.\" The primary reaction described in the definition involves catalytic activity and ligation of exons, but none of the features provided explicitly support this mechanism."
+   },
+   {
+    "accession": "Q9SHY8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong or specific explanation for the catalytic activity described by the GO term \"second spliceosomal transesterification activity.\""
+   },
+   {
+    "accession": "Q9Y7Y2",
+    "reason": "none_verdict",
+    "reasoning": "There is no single annotated feature (by type + exact coordinates) that directly matches the primary reaction mechanism of catalyzing the second transesterification reaction in spliceosomal mRNA splicing as described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0000830": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q06685",
+    "go_id": "GO:0000830",
+    "feature_type": "REGION",
+    "start": 529,
+    "end": 597,
+    "signal_kind": "text",
+    "signal_value": "Polyphosphoinositide-binding domain",
+    "reasoning": "The \"polyphosphoinositide-binding domain\" (REGION 529-597) is a candidate feature that may be relevant to the overall function of the protein, but it does not directly explain the specific chemical reaction defined by the GO term's definition. The other binding regions are more generic and do not provide enough evidence to specifically link them to the phosphoryl transfer activity described in the"
+   }
+  ],
+  "issues": []
+ },
+ "GO:0000992": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A6X980",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" type with coordinates does not specifically indicate the cis-regulatory DNA binding activity described in the GO term. No other positional feature is provided to directly support this molecular function, and the annotation is generic rather than mechanistically specific to the defined chemistry of the GO term."
+   },
+   {
+    "accession": "O14229",
+    "reason": "none_verdict",
+    "reasoning": "There are no positional features (like a domain or region) in the annotated features of O14229 that directly support the binding activity described in GO:0000992. The only evidence for this function is the cross-references to transcription factor-related domains, which do not provide any positional data. Therefore, no single annotated feature plausibly explains why O14229 carries the term GO:00009"
+   }
+  ]
  }
 }

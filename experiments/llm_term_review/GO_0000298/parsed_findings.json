@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q566C7",
+      "go_id": "GO:0000298",
+      "feature_type": "DOMAIN",
+      "start": 16,
+      "end": 142,
+      "signal_kind": "text",
+      "signal_value": "Nudix hydrolase",
+      "reasoning": "The DOMAIN 16-142 annotation for Q566C7 is directly related to Nudix hydrolase activity, which matches the primary reaction of endopolyphosphatase activity described in the GO term's definition."
+    },
+    {
+      "accession": "Q8R2U6",
+      "go_id": "GO:0000298",
+      "feature_type": "DOMAIN",
+      "start": 16,
+      "end": 143,
+      "signal_kind": "text",
+      "signal_value": "Nudix hydrolase",
+      "reasoning": "The domain \"Nudix hydrolase\" (16-143) directly matches the primary reaction of the GO term \"endopolyphosphatase activity,\" which involves hydrolysis of polyphosphate. This is a strong and specific match to the defined chemistry of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O95989",
+      "reason": "none_verdict",
+      "reasoning": "The \"DOMAIN\" annotation for O95989 indicates the presence of a Nudix hydrolase domain, which is structurally and functionally related to endopolyphosphatases. This domain directly supports the catalytic reaction defined by the GO term, making it the most plausible explanation for why the protein carries the term."
+    },
+    {
+      "accession": "Q04119",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature in the annotated features of Q04119 directly explains the catalytic reaction of endopolyphosphatase activity as defined by GO:0000298, making it impossible to determine a plausible structural/functional basis for the term."
+    }
+  ]
+}

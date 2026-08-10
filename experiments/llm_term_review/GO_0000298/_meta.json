@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0000298",
+  "name": "endopolyphosphatase activity",
+  "def": "Catalysis of the reaction: polyphosphate + n H2O = (n+1) oligophosphate. The product contains 4 or 5 phosphate residues.",
+  "n_proteins_total": 16,
+  "sampled_accessions": [
+    "O95989",
+    "Q04119",
+    "Q566C7",
+    "Q8R2U6"
+  ],
+  "assigned_accessions": [
+    "O95989",
+    "Q04119",
+    "Q566C7",
+    "Q8R2U6"
+  ]
+}

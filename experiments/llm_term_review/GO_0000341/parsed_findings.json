@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O45551",
+      "reason": "none_verdict",
+      "reasoning": "No annotated positional feature in the provided data specifically explains the molecular function of RNA trimethylguanosine cap binding. The available domain/family cross-references suggest a general involvement in RNA processing but do not directly account for the defined function."
+    },
+    {
+      "accession": "P56570",
+      "reason": "none_verdict",
+      "reasoning": "There is no positional feature annotated for P56570 that directly explains the binding to m(3)(2,2,7)-GTP as defined by GO:0000341. The domain/family cross-references are generic and do not provide any evidence of this specific function."
+    },
+    {
+      "accession": "Q21693",
+      "reason": "none_verdict",
+      "reasoning": "The protein has no annotated positional features that could plausibly explain why it carries the molecular function of RNA trimethylguanosine cap binding."
+    }
+  ]
+}

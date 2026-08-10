@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0000384",
+  "name": "first spliceosomal transesterification activity",
+  "def": "Catalysis of the first transesterification reaction of spliceosomal mRNA splicing. The intron branch site adenosine is the nucleophile attacking the 5' splice site, resulting in cleavage at this position. In cis splicing, this is the step that forms a lariat structure of the intron RNA, while it is still joined to the 3' exon.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P23394",
+    "P53854"
+  ],
+  "assigned_accessions": [
+    "P23394",
+    "P53854"
+  ]
+}
