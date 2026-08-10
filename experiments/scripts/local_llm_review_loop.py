@@ -248,6 +248,44 @@ def extract_protein_section(review_text, accession):
   return f"{header}\n\n{section}"
 
 
+CROSSREF_FEATURE_RE = r"FEATURE:\s*(InterPro|Pfam|PROSITE)\s*:?\s*([A-Za-z0-9_.]+)"
+
+
+def _tokens(text):
+  """Mirrors merge_llm_findings.py's normalize() -- same token-overlap test as that script's
+  resolve_domain_accessions, just run in the opposite direction below (cross-reference description
+  -> DOMAIN note, instead of DOMAIN note -> cross-reference description)."""
+  return set(re.split(r"[\s\-_,]+", text.lower())) - {""}
+
+
+def resolve_crossref_feature(protein_section, raw_text):
+  """Despite FEATURE_SOURCE_WARNING, the model sometimes still names a cross-reference accession
+  (e.g. "FEATURE: InterPro:IPR009081") instead of a real position -- exactly the failure mode that
+  warning exists to prevent. Rather than discard that finding as unresolved, try to recover the
+  real DOMAIN feature it's actually pointing at: look the accession up in this protein's own
+  "Domain/family cross-references" list to get its short description, then token-overlap that
+  description against every DOMAIN feature's note. Only resolves when EXACTLY ONE DOMAIN feature
+  matches -- an accession that's ambiguous (matches 0 or >1 DOMAIN notes) falls through to the
+  normal unresolved-pointer/retry path instead of guessing. Returns (ftype, start, end) or None."""
+  m = _last_match(CROSSREF_FEATURE_RE, raw_text, re.I)
+  if not m:
+    return None
+  db, acc = m.group(1), m.group(2)
+  xref = re.search(rf"-\s*{re.escape(db)}:{re.escape(acc)}\s*--\s*(.+)", protein_section, re.I)
+  if not xref:
+    return None
+  desc_tokens = _tokens(xref.group(1))
+  if not desc_tokens:
+    return None
+  candidates = []
+  for feat in re.finditer(r"-\s*DOMAIN\s+(\d+)-(\d+)\n((?:    .+\n)*)", protein_section):
+    start, end, quals = feat.groups()
+    note = re.search(r"note:\s*(.+)", quals, re.I)
+    if note and desc_tokens & _tokens(note.group(1)):
+      candidates.append(("DOMAIN", start, end))
+  return candidates[0] if len(candidates) == 1 else None
+
+
 def build_prompt(go_id, accession, review_text):
   """The chain-of-thought instruction (if any) lives entirely in the system prompt now -- no need
   to repeat it here, and repeating it in both places risks the two copies drifting or conflicting."""
@@ -277,7 +315,12 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
   process_round (first pass) and retry_issues (second-chance pass on invalid responses) so both
   go through the exact same call/parse/debug-log/append logic. Returns (verdict, ftype, start,
   end, reasoning, unparsed) too, for callers (e.g. an eval harness comparing against known-good
-  ground truth) that need the parsed result without re-reading findings.md back."""
+  ground truth) that need the parsed result without re-reading findings.md back.
+  Also runs resolve_crossref_feature() as a fallback whenever the model committed to a verdict but
+  FEATURE didn't parse to a real position -- see that function's docstring. This happens here,
+  not in parse_response, because resolution needs the protein's own review-text section (to look
+  up the cross-reference's description and the candidate DOMAIN notes), which parse_response
+  deliberately doesn't have access to."""
   prompt = build_prompt(go_id, accession, review_text)
   finish_reason = None
   try:
@@ -287,11 +330,23 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
     print(f"  ! {go_id} {accession}: request failed ({e}), logging as NONE and continuing")
     raw = "VERDICT: NONE\nFEATURE: NONE 0-0\nREASONING: local model request failed"
   verdict, ftype, start, end, reasoning, unparsed, reasoning_missing = parse_response(raw)
-  if unparsed or reasoning_missing:
-    debug_path = term_dir / "raw_debug.log"
+  debug_path = term_dir / "raw_debug.log"
+  auto_resolved = False
+  if verdict != "NONE" and ftype == "NONE" and start == "0" and end == "0":
+    protein_section = extract_protein_section(review_text, accession)
+    resolved = resolve_crossref_feature(protein_section, raw)
+    if resolved:
+      ftype, start, end = resolved
+      auto_resolved = True
+      reasoning = f"[auto-resolved from cross-reference accession] {reasoning}"
+      print(f"  {go_id} {accession}: auto-resolved cross-reference FEATURE to {ftype} {start}-{end}")
+  if unparsed or reasoning_missing or auto_resolved:
     with open(debug_path, "a") as dbg:
-      dbg.write(f"=== {accession} {go_id} (finish_reason={finish_reason}) ===\n{raw}\n\n")
-  if unparsed:
+      tag = "auto-resolved cross-ref" if auto_resolved else f"finish_reason={finish_reason}"
+      dbg.write(f"=== {accession} {go_id} ({tag}) ===\n{raw}\n\n")
+  if auto_resolved:
+    pass
+  elif unparsed:
     if finish_reason == "length":
       reasoning = (f"hit max_tokens ({max_tokens}) before VERDICT/FEATURE appeared -- "
                    f"raw text saved to {debug_path}")
