@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0000511",
+  "name": "H2A-H2B histone complex chaperone activity",
+  "def": "A histone chaperone that carries a H2A-H2B histone complex.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "O59797",
+    "P78920",
+    "Q10239",
+    "Q5AAI8"
+  ],
+  "assigned_accessions": [
+    "O59797",
+    "P78920",
+    "Q10239",
+    "Q5AAI8"
+  ]
+}

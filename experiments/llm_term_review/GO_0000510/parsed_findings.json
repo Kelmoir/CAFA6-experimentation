@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O94714",
+      "go_id": "GO:0000510",
+      "feature_type": "REGION",
+      "start": 339,
+      "end": 406,
+      "signal_kind": "text",
+      "signal_value": "Important for interaction with histones",
+      "reasoning": "The feature \"Important for interaction with histones\" (REGION 339-406) most plausibly explains why the protein carries the GO term \"H3-H4 histone complex chaperone activity,\" as it suggests a functional role directly related to the chaperone activity of the H3-H4 complex. This feature is more specific than generic disordered regions and aligns with the primary reaction implied by the GO definition"
+    },
+    {
+      "accession": "Q09915",
+      "go_id": "GO:0000510",
+      "feature_type": "DOMAIN",
+      "start": 1049,
+      "end": 1118,
+      "signal_kind": "text",
+      "signal_value": "S1 motif",
+      "reasoning": "The DOMAIN 1049-1118 with the S1 motif directly supports the function of carrying an H3-H4 histone complex, which is the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O13985",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for protein O13985 do not provide any evidence that directly explains why it carries the molecular function defined by GO:0000510."
+    },
+    {
+      "accession": "Q1MTN9",
+      "reason": "none_verdict",
+      "reasoning": "The region 324-396 directly interacts with histones H3 and H4, which are core components of the H3-H4 histone complex. This interaction is a strong match to the primary reaction implied by the GO term's definition, making it the most plausible explanation for why the protein carries the term."
+    }
+  ]
+}

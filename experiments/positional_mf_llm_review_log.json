@@ -365,6 +365,152 @@
    }
   ]
  },
+ "GO:0000406": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Interaction with MSH6",
+    "accessions": [
+     "P25847"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O74773",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein that could be related to DNA binding is the one with ligand: ATP, but it does not directly explain why this protein carries the GO term \"double-strand/single-strand DNA junction binding.\" No positional feature has been confirmed to account for the defined chemistry of the GO term."
+   },
+   {
+    "accession": "O74986",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" annotation at position 53-108 is generic and does not provide evidence that this protein binds to a DNA segment with double-stranded DNA flanked by single-stranded DNA. No other annotated feature directly supports the molecular function defined in GO:0000406."
+   },
+   {
+    "accession": "P25336",
+    "reason": "none_verdict",
+    "reasoning": "The PIP box motif is a structural feature that is directly associated with DNA mismatch repair processes, which include binding to DNA junctions. This matches the primary reaction of the GO term, making it the most plausible explanation for why the protein carries this term."
+   }
+  ]
+ },
+ "GO:0000510": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Important for interaction with histones",
+    "accessions": [
+     "O94714"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "S1 motif",
+    "accessions": [
+     "Q09915"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O13985",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein O13985 do not provide any evidence that directly explains why it carries the molecular function defined by GO:0000510."
+   },
+   {
+    "accession": "Q1MTN9",
+    "reason": "none_verdict",
+    "reasoning": "The region 324-396 directly interacts with histones H3 and H4, which are core components of the H3-H4 histone complex. This interaction is a strong match to the primary reaction implied by the GO term's definition, making it the most plausible explanation for why the protein carries the term."
+   }
+  ]
+ },
+ "GO:0000511": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O59797",
+    "reason": "none_verdict",
+    "reasoning": "response ended (finish_reason=stop) without VERDICT/FEATURE -- raw text saved to experiments/llm_term_review/GO_0000511/raw_debug.log, inspect for format drift"
+   },
+   {
+    "accession": "P78920",
+    "reason": "none_verdict",
+    "reasoning": "The GO term defines a protein's function in carrying a H2A-H2B histone complex, but no annotated feature for P78920 provides direct evidence of this activity. The only features are disordered regions, which do not explain the molecular function described by the GO term."
+   },
+   {
+    "accession": "Q10239",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for why Q10239 carries the \"Histone chaperone activity\" GO term, as the definition focuses on the primary function of carrying the H2A-H2B complex, which is not directly supported by any positional or domain annotation."
+   },
+   {
+    "accession": "Q5AAI8",
+    "reason": "none_verdict",
+    "reasoning": "response ended (finish_reason=stop) without VERDICT/FEATURE -- raw text saved to experiments/llm_term_review/GO_0000511/raw_debug.log, inspect for format drift"
+   }
+  ]
+ },
+ "GO:0000701": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "DNA_BIND",
+    "accessions": [
+     "P04961"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "HhH",
+    "accessions": [
+     "P9WQ09"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Nudix hydrolase",
+    "accessions": [
+     "Q99P21"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P12004",
+    "reason": "none_verdict",
+    "reasoning": "The DNA_BIND feature does not specifically match the primary reaction of purine-specific mismatch base pair DNA N-glycosylase activity, as it is generic and could apply to many proteins involved in DNA repair, not just those with this specific function."
+   }
+  ]
+ },
  "GO:0000830": {
   "n_resolved": 0,
   "n_uncertain": 1,
@@ -386,6 +532,36 @@
   ],
   "issues": []
  },
+ "GO:0000831": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Polyphosphoinositide-binding domain",
+    "accessions": [
+     "Q06685"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8BWD2",
+    "reason": "none_verdict",
+    "reasoning": "The binding event described by the annotated feature \"BINDING 205-214\" is consistent with the enzyme's function of catalyzing the reaction, but it does not specifically explain why the protein carries the term. No other positional features are provided that directly describe the phosphoryl transfer mechanism or the active site responsible for this activity. Thus, the feature does not strongly matc"
+   },
+   {
+    "accession": "Q96PC2",
+    "reason": "none_verdict",
+    "reasoning": "The binding of the substrate (1D-myo-inositol hexakisphosphate) to the enzyme's active site is a plausible explanation for its catalytic activity, as this directly relates to the defined reaction mechanism. However, since no positional feature has been confirmed to explain the chemistry specifically, the verdict remains UNCERTAIN."
+   }
+  ]
+ },
  "GO:0000992": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -404,6 +580,22 @@
     "accession": "O14229",
     "reason": "none_verdict",
     "reasoning": "There are no positional features (like a domain or region) in the annotated features of O14229 that directly support the binding activity described in GO:0000992. The only evidence for this function is the cross-references to transcription factor-related domains, which do not provide any positional data. Therefore, no single annotated feature plausibly explains why O14229 carries the term GO:00009"
+   }
+  ]
+ },
+ "GO:0001052": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SJ50",
+    "reason": "none_verdict",
+    "reasoning": "The REGION 37-67 feature, marked as Disordered, could plausibly account for the binding activity of the bacterial-type plastid PEP RNA polymerase core enzyme to the protein Q9SJ50. While it does not explicitly state the binding mechanism, it is a plausible candidate given the defined function of binding. This feature matches the GO term's primary reaction (binding) with a score of 7, making it a l"
    }
   ]
  }

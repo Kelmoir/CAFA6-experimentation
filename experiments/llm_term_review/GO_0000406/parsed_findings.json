@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P25847",
+      "go_id": "GO:0000406",
+      "feature_type": "REGION",
+      "start": 850,
+      "end": 964,
+      "signal_kind": "text",
+      "signal_value": "Interaction with MSH6",
+      "reasoning": "The \"REGION\" feature spans the entire sequence length of the protein and could plausibly explain why it carries the GO term by suggesting that the protein has a region where DNA binding occurs, which aligns with the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O74773",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for this protein that could be related to DNA binding is the one with ligand: ATP, but it does not directly explain why this protein carries the GO term \"double-strand/single-strand DNA junction binding.\" No positional feature has been confirmed to account for the defined chemistry of the GO term."
+    },
+    {
+      "accession": "O74986",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION\" annotation at position 53-108 is generic and does not provide evidence that this protein binds to a DNA segment with double-stranded DNA flanked by single-stranded DNA. No other annotated feature directly supports the molecular function defined in GO:0000406."
+    },
+    {
+      "accession": "P25336",
+      "reason": "none_verdict",
+      "reasoning": "The PIP box motif is a structural feature that is directly associated with DNA mismatch repair processes, which include binding to DNA junctions. This matches the primary reaction of the GO term, making it the most plausible explanation for why the protein carries this term."
+    }
+  ]
+}

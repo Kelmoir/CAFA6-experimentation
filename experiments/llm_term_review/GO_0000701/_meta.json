@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0000701",
+  "name": "purine-specific mismatch base pair DNA N-glycosylase activity",
+  "def": "Catalysis of the removal of purines present in mismatches, especially opposite oxidized purines, by cleaving the N-C1' glycosidic bond between the target damaged DNA base and the deoxyribose sugar. The reaction releases a free base and leaves an apurinic (AP) site.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "P04961",
+    "P12004",
+    "P9WQ09",
+    "Q99P21"
+  ],
+  "assigned_accessions": [
+    "P04961",
+    "P12004",
+    "P9WQ09",
+    "Q99P21"
+  ]
+}

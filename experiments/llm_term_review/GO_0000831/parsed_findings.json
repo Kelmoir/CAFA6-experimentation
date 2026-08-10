@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q06685",
+      "go_id": "GO:0000831",
+      "feature_type": "REGION",
+      "start": 529,
+      "end": 597,
+      "signal_kind": "text",
+      "signal_value": "Polyphosphoinositide-binding domain",
+      "reasoning": "The region labeled as a polyphosphoinositide-binding domain directly supports the enzyme's function of catalyzing the reaction with inositol hexakisphosphate, making it the most plausible structural feature explaining the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8BWD2",
+      "reason": "none_verdict",
+      "reasoning": "The binding event described by the annotated feature \"BINDING 205-214\" is consistent with the enzyme's function of catalyzing the reaction, but it does not specifically explain why the protein carries the term. No other positional features are provided that directly describe the phosphoryl transfer mechanism or the active site responsible for this activity. Thus, the feature does not strongly matc"
+    },
+    {
+      "accession": "Q96PC2",
+      "reason": "none_verdict",
+      "reasoning": "The binding of the substrate (1D-myo-inositol hexakisphosphate) to the enzyme's active site is a plausible explanation for its catalytic activity, as this directly relates to the defined reaction mechanism. However, since no positional feature has been confirmed to explain the chemistry specifically, the verdict remains UNCERTAIN."
+    }
+  ]
+}
