@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "D3ZIS0",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for D3ZIS0 is a disordered region, which does not provide any direct evidence or explanation for the defined molecular function of low-affinity D-glucose:sodium symporter activity."
+    },
+    {
+      "accession": "P31636",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P31639",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for P31639 only describe the binding of Na(+), but the GO term's definition focuses on the transfer of solutes across membranes, not the binding itself. No candidate feature specifically matches the GO term's own chemistry or primary reaction."
+    },
+    {
+      "accession": "Q91ZP4",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

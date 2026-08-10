@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0005356",
+  "name": "D-glucose:proton symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: D-glucose + H+ = D-glucose + H+. Symporter activity enables the active transport of a solute across a membrane by a mechanism whereby two or more species are transported together in the same direction in a tightly coupled process not directly linked to a form of energy other than chemiosmotic energy.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P58355",
+    "Q8BIV7",
+    "Q9LT15",
+    "Q9UMX9"
+  ],
+  "assigned_accessions": [
+    "P58355",
+    "Q8BIV7",
+    "Q9LT15",
+    "Q9UMX9"
+  ]
+}

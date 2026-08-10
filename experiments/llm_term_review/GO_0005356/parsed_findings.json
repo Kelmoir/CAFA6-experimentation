@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P58355",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION\" span with coordinates 274-299 describes a disordered region of the protein, but it does not provide any evidence about the specific function of active transport or symporter activity described in the GO term's definition. Therefore, it does not specifically explain why the protein carries this GO term."
+    },
+    {
+      "accession": "Q8BIV7",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9LT15",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q9LT15 provides a clear structural or functional basis for the GO term \"D-glucose:proton symporter activity,\" as all features are generic and do not indicate active transport or coupling with protons."
+    },
+    {
+      "accession": "Q9UMX9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

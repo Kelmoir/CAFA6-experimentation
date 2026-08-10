@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P11170",
+      "go_id": "GO:0005354",
+      "feature_type": "SITE",
+      "start": 459,
+      "end": 460,
+      "signal_kind": "text",
+      "signal_value": "Involved in sugar-binding/transport and inhibitor binding",
+      "reasoning": "The feature \"SITE 459-460\" is most plausibly aligned with the primary reaction described in the GO term's definition, which involves the transport of galactose across a membrane. This site is directly involved in sugar-binding/transport and inhibitor binding, making it a strong candidate for explaining the molecular function associated with the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P12336",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for P12336 provides a strong match to the primary reaction described in the GO definition for \"galactose transmembrane transporter activity.\""
+    },
+    {
+      "accession": "P40885",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for why P40885 carries the GO term \"galactose transmembrane transporter activity.\" The domain/family cross-references suggest it belongs to a sugar transporter family, but they do not specify the mechanism of galactose transport. Therefore, no positional feature can be identified as directly explaining this molecular function."
+    },
+    {
+      "accession": "Q8VZ80",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

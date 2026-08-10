@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q94AZ2",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9P3U6",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION\" span (481-557) is marked as \"Disordered,\" which may suggest structural flexibility, but it does not directly or specifically explain the mechanism of high-affinity D-glucose:proton symporter activity. No other positional feature in the Annotated features section provides a stronger match to the primary reaction described by the GO term."
+    }
+  ]
+}

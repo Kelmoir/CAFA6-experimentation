@@ -3984,5 +3984,186 @@
     "reasoning": "The INTERPRO:IPR004841 domain (AA-permease/SLC12A_dom) is directly associated with the high-affinity transfer of L-tryptophan across a membrane, which matches the GO term's definition. This feature provides a strong and specific match to the primary reaction described in the GO term's definition."
    }
   ]
+ },
+ "GO:0005352": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "N1PA11",
+    "reason": "none_verdict",
+    "reasoning": "The disordered regions in N1PA11 do not provide any specific evidence for the proton symporter activity described by GO:0005352. They are generic structural features and do not directly account for the defined chemical reaction or mechanism of the term."
+   },
+   {
+    "accession": "P38156",
+    "reason": "none_verdict",
+    "reasoning": "The defined function of alpha-glucoside:proton symporter activity involves the transfer of solutes and protons across a membrane, which is not explained by any of the annotated features provided for this protein. The only evidence available is that certain regions are disordered, which does not provide a strong basis to infer the function."
+   },
+   {
+    "accession": "P53048",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P53048 matches the primary reaction of alpha-glucoside:proton symporter activity, which involves the transfer of solutes and protons across a membrane. The only features available are disordered regions, which do not provide the necessary structural or functional evidence to support the defined chemistry."
+   }
+  ]
+ },
+ "GO:0005354": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Involved in sugar-binding/transport and inhibitor binding",
+    "accessions": [
+     "P11170"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P12336",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P12336 provides a strong match to the primary reaction described in the GO definition for \"galactose transmembrane transporter activity.\""
+   },
+   {
+    "accession": "P40885",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for why P40885 carries the GO term \"galactose transmembrane transporter activity.\" The domain/family cross-references suggest it belongs to a sugar transporter family, but they do not specify the mechanism of galactose transport. Therefore, no positional feature can be identified as directly explaining this molecular function."
+   },
+   {
+    "accession": "Q8VZ80",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0005356": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P58355",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" span with coordinates 274-299 describes a disordered region of the protein, but it does not provide any evidence about the specific function of active transport or symporter activity described in the GO term's definition. Therefore, it does not specifically explain why the protein carries this GO term."
+   },
+   {
+    "accession": "Q8BIV7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9LT15",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9LT15 provides a clear structural or functional basis for the GO term \"D-glucose:proton symporter activity,\" as all features are generic and do not indicate active transport or coupling with protons."
+   },
+   {
+    "accession": "Q9UMX9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0005358": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q94AZ2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9P3U6",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" span (481-557) is marked as \"Disordered,\" which may suggest structural flexibility, but it does not directly or specifically explain the mechanism of high-affinity D-glucose:proton symporter activity. No other positional feature in the Annotated features section provides a stronger match to the primary reaction described by the GO term."
+   }
+  ]
+ },
+ "GO:0005360": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P14142",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the primary reaction of the GO term, which is the active transport of glucose and protons across a membrane in response to insulin. The binding sites for D-glucose are relevant but not sufficient to establish this function as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0005362": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "D3ZIS0",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for D3ZIS0 is a disordered region, which does not provide any direct evidence or explanation for the defined molecular function of low-affinity D-glucose:sodium symporter activity."
+   },
+   {
+    "accession": "P31636",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P31639",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P31639 only describe the binding of Na(+), but the GO term's definition focuses on the transfer of solutes across membranes, not the binding itself. No candidate feature specifically matches the GO term's own chemistry or primary reaction."
+   },
+   {
+    "accession": "Q91ZP4",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0005371": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P38152",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9JHY2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0005371",
+  "name": "tricarboxylate secondary active transmembrane transporter activity",
+  "def": "Enables the transfer of tricarboxylate from one side of a membrane to the other, up its concentration gradient. The transporter binds the solute and undergoes a series of conformational changes. Transport works equally well in either direction and is driven by a chemiosmotic source of energy. Secondary active transporters include symporters and antiporters.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P38152",
+    "Q9JHY2"
+  ],
+  "assigned_accessions": [
+    "P38152",
+    "Q9JHY2"
+  ]
+}
