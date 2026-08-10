@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P19659",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features provide a clear and specific explanation for the defined function of binding to an RNA polymerase II transcription factor in the TFIIE complex."
+    }
+  ]
+}

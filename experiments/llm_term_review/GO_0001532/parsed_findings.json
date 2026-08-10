@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9HBE5",
+      "reason": "none_verdict",
+      "reasoning": "hit max_tokens (2400) before VERDICT/FEATURE appeared -- raw text saved to experiments/llm_term_review/GO_0001532/raw_debug.log"
+    }
+  ]
+}

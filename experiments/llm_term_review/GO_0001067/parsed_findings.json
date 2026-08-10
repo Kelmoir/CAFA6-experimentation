@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q6MZP7",
+      "go_id": "GO:0001067",
+      "feature_type": "SITE",
+      "start": 535,
+      "end": 536,
+      "signal_kind": "text",
+      "signal_value": "Critical for interaction with target DNA",
+      "reasoning": "The site's annotation as \"Critical for interaction with target DNA\" most directly and specifically aligns with the primary reaction described in the GO term's definition, which is binding to a nucleic acid region that regulates a nucleic acid-based process."
+    },
+    {
+      "accession": "Q9H165",
+      "go_id": "GO:0001067",
+      "feature_type": "REGION",
+      "start": 736,
+      "end": 835,
+      "signal_kind": "text",
+      "signal_value": "DNA-binding",
+      "reasoning": "The explicit note that this region is \"DNA-binding\" directly supports the definition's focus on binding to a nucleic acid region, which is central to the molecular function of transcription regulation."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9QYE3",
+      "reason": "none_verdict",
+      "reasoning": "hit max_tokens (2400) before VERDICT/FEATURE appeared -- raw text saved to experiments/llm_term_review/GO_0001067/raw_debug.log"
+    }
+  ]
+}

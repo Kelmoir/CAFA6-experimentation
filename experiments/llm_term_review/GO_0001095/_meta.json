@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0001095",
+  "name": "TFIIE-class transcription factor complex binding",
+  "def": "Binding to a general RNA polymerase II transcription factor belonging to the TFIIE complex, one of the factors involved in formation of the preinitiation complex (PIC) by RNA polymerase II.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P19659"
+  ],
+  "assigned_accessions": [
+    "P19659"
+  ]
+}
