@@ -1,0 +1,23 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P52045",
+      "reason": "none_verdict",
+      "reasoning": "The binding site for \"substrate\" does not provide structural or functional evidence that directly explains the enzyme's catalytic activity or the specific chemistry described in the GO definition."
+    },
+    {
+      "accession": "Q9NTX5",
+      "reason": "none_verdict",
+      "reasoning": "There are no annotated positional features for Q9NTX5 that directly explain the catalytic activity of methyl/ethyl malonyl-CoA decarboxylase, as the definition focuses on the reaction itself rather than a specific structural element."
+    },
+    {
+      "accession": "Q9D9V3",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for Q9D9V3 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "Pfam:PF00378 (ECH_1) is directly associated with the enzyme's function as defined by the GO term, making it the most plausible explanation for why the protein carries this annotation."
+    }
+  ]
+}

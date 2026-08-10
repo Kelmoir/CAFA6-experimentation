@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P00519",
+      "go_id": "GO:0004515",
+      "feature_type": "BINDING",
+      "start": 247,
+      "end": 256,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP (ligand: ATP) directly supports the primary reaction of the GO term, which involves catalyzing a phosphoryl transfer with ATP. This specific feature is more likely to explain why the protein carries the term than other generic features like SH2 or F-actin-binding."
+    },
+    {
+      "accession": "P53204",
+      "go_id": "GO:0004515",
+      "feature_type": "BINDING",
+      "start": 166,
+      "end": 167,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding site at position 166-167 directly involves NAD(+), which is a critical ligand in the reaction defined by the GO term, making it the most plausible explanation for why the protein carries that term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q06178",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically indicates the adenylyltransferase activity defined by the GO term. All features are related to ligand binding rather than the catalytic mechanism itself."
+    },
+    {
+      "accession": "Q0HA29",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct indication of the enzyme's role in catalyzing the phosphoryl transfer from ATP to nicotinate nucleotide as defined by GO:0004515."
+    }
+  ]
+}

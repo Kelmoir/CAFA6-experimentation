@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0004445",
+  "name": "inositol-polyphosphate 5-phosphatase activity",
+  "def": "Catalysis of the reactions: D-myo-inositol 1,4,5-trisphosphate + H2O = myo-inositol 1,4-bisphosphate + phosphate, and 1D-myo-inositol 1,3,4,5-tetrakisphosphate + H2O = 1D-myo-inositol 1,3,4-trisphosphate + phosphate.",
+  "n_proteins_total": 27,
+  "sampled_accessions": [
+    "Q17848",
+    "Q2I6J1",
+    "Q8K337",
+    "Q9JMC1"
+  ],
+  "assigned_accessions": [
+    "Q17848",
+    "Q2I6J1",
+    "Q8K337",
+    "Q9JMC1"
+  ]
+}

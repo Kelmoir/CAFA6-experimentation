@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "Q17848",
+      "go_id": "GO:0004445",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 409,
+      "signal_kind": "text",
+      "signal_value": "5-PPase",
+      "reasoning": "The DOMAIN annotation explicitly matches the enzymatic activity defined by the GO term, making it the most plausible explanation for why the protein carries the term."
+    },
+    {
+      "accession": "Q2I6J1",
+      "go_id": "GO:0004445",
+      "feature_type": "DOMAIN",
+      "start": 402,
+      "end": 716,
+      "signal_kind": "text",
+      "signal_value": "5-PPase",
+      "reasoning": "The DOMAIN 402-716 with the note \"5-PPase\" directly matches the primary reaction of the GO term, which involves catalyzing the removal of phosphate from inositol polyphosphates. This provides a strong and specific match to the defined chemistry of the GO term."
+    },
+    {
+      "accession": "Q8K337",
+      "go_id": "GO:0004445",
+      "feature_type": "DOMAIN",
+      "start": 339,
+      "end": 643,
+      "signal_kind": "text",
+      "signal_value": "5-PPase",
+      "reasoning": "The \"5-PPase\" domain is directly associated with the 5-phosphatase activity described in the GO term's definition, making it the most plausible explanation for why this protein carries the term."
+    },
+    {
+      "accession": "Q9JMC1",
+      "go_id": "GO:0004445",
+      "feature_type": "DOMAIN",
+      "start": 412,
+      "end": 730,
+      "signal_kind": "text",
+      "signal_value": "5-PPase",
+      "reasoning": "The domain \"DOMAIN 412-730\" with the note \"5-PPase\" directly corresponds to the catalytic function of removing phosphate groups from inositol polyphosphates, which is the primary reaction defined by the GO term. This provides a strong match for the molecular function being predicted."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -2344,5 +2344,179 @@
     "detail": "UNPARSED"
    }
   ]
+ },
+ "GO:0004305": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O54783",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated features for the protein O54783 that directly explain the molecular function of ethanolamine kinase activity, as the defined reaction involves a phosphate transfer from ATP to ethanolamine, which is not indicated by any binding site or domain annotation."
+   },
+   {
+    "accession": "O81024",
+    "reason": "none_verdict",
+    "reasoning": "The binding site at 92-93 is the most plausible candidate for the ethanolamine kinase activity, as it directly involves ATP, which is a key substrate in this reaction. However, without domain structure or sequence motif evidence that specifically supports the catalytic function of this protein, we cannot confirm it with certainty."
+   },
+   {
+    "accession": "Q10276",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated positional features for protein Q10276 that directly explain the GO term \"ethanolamine kinase activity.\" The available domain/family cross-references suggest a choline kinase-related function, but they do not specifically confirm the defined reaction in the GO term."
+   },
+   {
+    "accession": "Q9M9H6",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for ATP is consistent with the function of ethanolamine kinase activity, but it does not specifically describe the mechanism of phosphoryl transfer or the enzyme's role in this reaction. Therefore, it does not directly explain why the protein carries the term."
+   }
+  ]
+ },
+ "GO:0004341": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton donor/acceptor",
+    "accessions": [
+     "Q64374"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P56553",
+    "reason": "none_verdict",
+    "reasoning": "The protein P56553 has no annotated features that directly relate to gluconolactonase activity, and without positional evidence, it is not possible to determine which domain or region is responsible for the function."
+   },
+   {
+    "accession": "Q03336",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, specific explanation for the catalytic reaction defined by the GO term \"gluconolactonase activity.\""
+   },
+   {
+    "accession": "Q15493",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature that specifically matches the GO term's own chemistry, as all features are either about binding substrates or divalent metal cations, which do not directly explain the catalytic mechanism of converting D-glucono-1,5-lactone to D-gluconate."
+   }
+  ]
+ },
+ "GO:0004445": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "5-PPase",
+    "accessions": [
+     "Q17848",
+     "Q2I6J1",
+     "Q8K337",
+     "Q9JMC1"
+    ],
+    "reason": "resolved to ['PROSITE:PS52082'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'PROSITE:PS52082': 56})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0004492": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P52045",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for \"substrate\" does not provide structural or functional evidence that directly explains the enzyme's catalytic activity or the specific chemistry described in the GO definition."
+   },
+   {
+    "accession": "Q9NTX5",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated positional features for Q9NTX5 that directly explain the catalytic activity of methyl/ethyl malonyl-CoA decarboxylase, as the definition focuses on the reaction itself rather than a specific structural element."
+   },
+   {
+    "accession": "Q9D9V3",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q9D9V3 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "Pfam:PF00378 (ECH_1) is directly associated with the enzyme's function as defined by the GO term, making it the most plausible explanation for why the protein carries this annotation."
+   }
+  ]
+ },
+ "GO:0004515": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P00519"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P53204"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q06178",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically indicates the adenylyltransferase activity defined by the GO term. All features are related to ligand binding rather than the catalytic mechanism itself."
+   },
+   {
+    "accession": "Q0HA29",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct indication of the enzyme's role in catalyzing the phosphoryl transfer from ATP to nicotinate nucleotide as defined by GO:0004515."
+   }
+  ]
+ },
+ "GO:0004734": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "glutathione",
+    "accessions": [
+     "Q9VSL3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }
