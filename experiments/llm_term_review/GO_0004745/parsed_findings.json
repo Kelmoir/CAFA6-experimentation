@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "P41682",
+      "go_id": "GO:0004745",
+      "feature_type": "BINDING",
+      "start": 198,
+      "end": 204,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD+ at this position is directly involved in the catalytic reaction described in the GO term, making it a strong candidate for explaining why the protein carries the term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P50170",
+      "go_id": "GO:0004745",
+      "feature_type": "ACT_SITE",
+      "start": 175,
+      "end": 176,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The ACT_SITE feature indicates a proton acceptor, which is relevant to the enzyme's activity in this context. However, since no single feature fully captures the defined reaction mechanism of GO:0004745, the match remains uncertain."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "O75911",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for this protein do not provide a strong match to the primary reaction or mechanism of the GO term \"all-trans-retinol dehydrogenase (NAD+) activity.\" Neither the ACT_SITE nor BINDING feature directly explains why the protein carries that specific molecular function."
+    },
+    {
+      "accession": "Q64563",
+      "reason": "none_verdict",
+      "reasoning": "No single annotated feature provides a clear and specific explanation for the molecular function defined by GO:0004745."
+    }
+  ]
+}

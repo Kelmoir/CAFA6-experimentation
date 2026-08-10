@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "D6VTK4",
+      "go_id": "GO:0004934",
+      "feature_type": "REGION",
+      "start": 378,
+      "end": 406,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The disordered region in D6VTK4 is most plausibly linked to the receptor's ability to bind and initiate a cellular response, which aligns with the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

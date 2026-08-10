@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0AGF6",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for P0AGF6 are all \"BINDING\" sites with ligand AMP, which do not provide any evidence of threonine aldolase activity. The GO definition focuses on the catalytic reaction rather than binding interactions, and none of the features directly support this primary reaction."
+    },
+    {
+      "accession": "Q8RXU4",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature is annotated for the protein Q8RXU4, and the only evidence available is domain/family cross-references, which do not provide specific coordinates to identify the exact region responsible for threonine aldolase activity."
+    },
+    {
+      "accession": "Q9FPH3",
+      "reason": "none_verdict",
+      "reasoning": "Since the protein Q9FPH3 has no annotated positional features and all relevant evidence lies in domain/family cross-references, there is no specific structural/functional annotation that directly explains why it carries the GO term \"threonine aldolase activity.\""
+    },
+    {
+      "accession": "P34896",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

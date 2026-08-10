@@ -2851,6 +2851,174 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0004745": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P41682"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P50170",
+    "go_id": "GO:0004745",
+    "feature_type": "ACT_SITE",
+    "start": 175,
+    "end": 176,
+    "signal_kind": "text",
+    "signal_value": "Proton acceptor",
+    "reasoning": "The ACT_SITE feature indicates a proton acceptor, which is relevant to the enzyme's activity in this context. However, since no single feature fully captures the defined reaction mechanism of GO:0004745, the match remains uncertain."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "O75911",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for this protein do not provide a strong match to the primary reaction or mechanism of the GO term \"all-trans-retinol dehydrogenase (NAD+) activity.\" Neither the ACT_SITE nor BINDING feature directly explains why the protein carries that specific molecular function."
+   },
+   {
+    "accession": "Q64563",
+    "reason": "none_verdict",
+    "reasoning": "No single annotated feature provides a clear and specific explanation for the molecular function defined by GO:0004745."
+   }
+  ]
+ },
+ "GO:0004769": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "EXPERA",
+    "accessions": [
+     "Q9JJ46"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P13745",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide a clear structural/functional basis for the primary reaction of the GO term \"steroid Delta-isomerase activity.\" While the GST domains and glutathione binding sites are relevant to the protein's overall function, they do not specifically explain the isomerization mechanism or the stereochemical conversion described in the definition."
+   },
+   {
+    "accession": "P26150",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the isomerization reaction described by the GO term \"steroid Delta-isomerase activity.\" The available features only indicate the presence of a proton acceptor and NAD(+) binding site, which are not sufficient to explain the specific chemistry of the GO term."
+   },
+   {
+    "accession": "Q61694",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the catalysis of the specific steroid isomerization reaction defined by GO:0004769, and all features are generic or only echo a word from a secondary clause."
+   }
+  ]
+ },
+ "GO:0004782": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6ZQY3",
+    "reason": "none_verdict",
+    "reasoning": "The protein has no annotated positional features that directly explain the molecular function of \"sulfinoalanine decarboxylase activity.\" While domain/family cross-references suggest the presence of relevant cofactor-binding or catalytic domains, they do not provide positional evidence to confirm which specific domain is responsible for the term. Therefore, there is no positional feature that can"
+   },
+   {
+    "accession": "Q9DBE0",
+    "reason": "none_verdict",
+    "reasoning": "Since no positional features are annotated for this protein and the domain/family cross-references do not directly confirm the molecular function of sulfinoalanine decarboxylase activity, there is no evidence to determine which specific structural element explains the term."
+   },
+   {
+    "accession": "Q64611",
+    "reason": "none_verdict",
+    "reasoning": "Since no positional features are annotated for this protein, there is no direct evidence to determine which specific structural feature explains the \"sulfinoalanine decarboxylase activity\" term. The domain/family cross-references suggest a possible functional context, but without any explicit positional annotation, we cannot confirm a single feature that directly accounts for the GO term's definit"
+   }
+  ]
+ },
+ "GO:0004793": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AGF6",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P0AGF6 are all \"BINDING\" sites with ligand AMP, which do not provide any evidence of threonine aldolase activity. The GO definition focuses on the catalytic reaction rather than binding interactions, and none of the features directly support this primary reaction."
+   },
+   {
+    "accession": "Q8RXU4",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature is annotated for the protein Q8RXU4, and the only evidence available is domain/family cross-references, which do not provide specific coordinates to identify the exact region responsible for threonine aldolase activity."
+   },
+   {
+    "accession": "Q9FPH3",
+    "reason": "none_verdict",
+    "reasoning": "Since the protein Q9FPH3 has no annotated positional features and all relevant evidence lies in domain/family cross-references, there is no specific structural/functional annotation that directly explains why it carries the GO term \"threonine aldolase activity.\""
+   },
+   {
+    "accession": "P34896",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0004796": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "Q96SQ9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P24557",
+    "reason": "none_verdict",
+    "reasoning": "There is no positional feature provided for protein P24557 that directly explains its catalytic activity as defined by GO:0004796. The only available positional annotation refers to a ligand-binding site, which does not provide evidence for the specific function of thromboxane-A synthase activity."
+   },
+   {
+    "accession": "P36423",
+    "reason": "none_verdict",
+    "reasoning": "The \"BINDING\" feature at position 478-479 for P36423 is the only one that could be interpreted as a potential explanation for the GO term's definition, but it does not strongly match the primary reaction described in the GO term."
+   },
+   {
+    "accession": "P49430",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain the primary reaction of thromboxane-A synthase activity (catalyzing the conversion of prostaglandin H(2) to thromboxane A(2)). The binding site feature is about interaction with a ligand, not the catalytic mechanism."
+   }
+  ]
+ },
  "GO:0004847": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -2883,6 +3051,25 @@
     "value": "Hydrophilic",
     "accessions": [
      "P06783"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0004934": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Disordered",
+    "accessions": [
+     "D6VTK4"
     ]
    }
   ],

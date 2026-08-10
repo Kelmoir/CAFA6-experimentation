@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0004796",
+  "name": "thromboxane-A synthase activity",
+  "def": "Catalysis of the reaction: prostaglandin H(2) = thromboxane A(2).",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P24557",
+    "P36423",
+    "P49430",
+    "Q96SQ9"
+  ],
+  "assigned_accessions": [
+    "P24557",
+    "P36423",
+    "P49430",
+    "Q96SQ9"
+  ]
+}
