@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q3LHH8",
+      "go_id": "GO:0005186",
+      "feature_type": "SITE",
+      "start": 66,
+      "end": 67,
+      "signal_kind": "text",
+      "signal_value": "Required for activity",
+      "reasoning": "The site annotation indicates that the protein has a region essential for pheromone activity, which directly supports the definition's primary reaction of receptor activation."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P11588",
+      "reason": "none_verdict",
+      "reasoning": "Since no positional features (like domains or active sites) are annotated for this protein, it is not possible to determine which feature plausibly accounts for the \"pheromone activity\" GO term. Therefore, the verdict is NONE."
+    },
+    {
+      "accession": "A8R0V4",
+      "reason": "none_verdict",
+      "reasoning": "The protein A8R0V4 has no annotated positional features related to molecular function, and its domain/family cross-references do not provide evidence of G-protein-coupled receptor activity or pheromone binding. Therefore, there is no single feature that plausibly explains the GO term \"pheromone activity.\""
+    }
+  ]
+}

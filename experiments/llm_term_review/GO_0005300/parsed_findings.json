@@ -1,0 +1,13 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P38967",
+      "reason": "unresolved_pointer",
+      "detail": "no matching DOMAIN 30-53 on record for P38967 -- pointer didn't resolve",
+      "reported_feature": "DOMAIN 30-53",
+      "reasoning": "The INTERPRO:IPR004841 domain (AA-permease/SLC12A_dom) is directly associated with the high-affinity transfer of L-tryptophan across a membrane, which matches the GO term's definition. This feature provides a strong and specific match to the primary reaction described in the GO term's definition."
+    }
+  ]
+}

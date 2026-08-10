@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9UK17",
+      "go_id": "GO:0005250",
+      "feature_type": "MOTIF",
+      "start": 366,
+      "end": 372,
+      "signal_kind": "text",
+      "signal_value": "Selectivity filter",
+      "reasoning": "The MOTIF 366-372 is directly related to the selectivity filter in voltage-gated potassium channels, which supports the transmembrane transfer of potassium ions as described in the GO term's definition. This motif is a strong match for the primary reaction of the term."
+    },
+    {
+      "accession": "Q9Z0V1",
+      "go_id": "GO:0005250",
+      "feature_type": "MOTIF",
+      "start": 366,
+      "end": 372,
+      "signal_kind": "text",
+      "signal_value": "Selectivity filter",
+      "reasoning": "The selectivity filter motif directly supports the transmembrane transfer of potassium ions and the production of transient outward currents, which are the primary reactions defined for the A-type (transient outward) potassium channel activity."
+    },
+    {
+      "accession": "Q9Z0V2",
+      "go_id": "GO:0005250",
+      "feature_type": "MOTIF",
+      "start": 369,
+      "end": 375,
+      "signal_kind": "text",
+      "signal_value": "Selectivity filter",
+      "reasoning": "The selectivity filter motif (MOTIF 369-375) directly relates to the ion selectivity mechanism of potassium channels, which is central to the function described by the GO term. This feature most plausibly explains why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9JM59",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the transmembrane transfer of a potassium ion, which is the primary reaction defined for the GO term. The only relevant information is the interaction with KCND2, which is a secondary consequence rather than the defining mechanism."
+    }
+  ]
+}

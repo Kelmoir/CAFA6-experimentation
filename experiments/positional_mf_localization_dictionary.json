@@ -4781,6 +4781,15 @@
    "selectivity filter part_1"
   ]
  },
+ "GO:0005250": {
+  "name": "A-type (transient outward) potassium channel activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "selectivity filter"
+  ]
+ },
  "GO:0005251": {
   "name": "delayed rectifier potassium channel activity",
   "ligands": [],

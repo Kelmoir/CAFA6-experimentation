@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P18510",
+      "reason": "none_verdict",
+      "reasoning": "There are no annotated positional features for protein P18510 that can be used to determine why it carries the GO term \"Binding to a Type II interleukin-1 receptor.\""
+    },
+    {
+      "accession": "P25085",
+      "reason": "none_verdict",
+      "reasoning": "There is no positional feature for P25085 that directly matches the primary reaction of the GO term \"Binding to a Type II interleukin-1 receptor.\""
+    },
+    {
+      "accession": "P25086",
+      "reason": "none_verdict",
+      "reasoning": "The protein P25086 has no annotated features that directly relate to the binding activity of a Type II interleukin-1 receptor. Without positional evidence or domain-specific annotations that confirm the binding mechanism, it is not possible to determine which feature plausibly explains the GO term."
+    },
+    {
+      "accession": "Q9NZ08",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's section provides a clear structural or functional basis for the GO term \"Binding to a Type II interleukin-1 receptor.\""
+    }
+  ]
+}

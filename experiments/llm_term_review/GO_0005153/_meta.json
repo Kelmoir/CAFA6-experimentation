@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0005153",
+  "name": "interleukin-8 receptor binding",
+  "def": "Binding to an interleukin-8 receptor.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P10145",
+    "P19874",
+    "P54577",
+    "P79255"
+  ],
+  "assigned_accessions": [
+    "P10145",
+    "P19874",
+    "P54577",
+    "P79255"
+  ]
+}
