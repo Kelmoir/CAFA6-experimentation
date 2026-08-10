@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "O08675",
+      "go_id": "GO:0001648",
+      "feature_type": "SITE",
+      "start": 36,
+      "end": 38,
+      "signal_kind": "text",
+      "signal_value": "Cleavage; by thrombin",
+      "reasoning": "The cleavage event by thrombin, directly indicated by the SITE 36-38 annotation, matches the primary reaction described in the GO term's definition, which is the activation of a G protein-coupled receptor through serine protease cleavage."
+    },
+    {
+      "accession": "P55086",
+      "go_id": "GO:0001648",
+      "feature_type": "SITE",
+      "start": 37,
+      "end": 39,
+      "signal_kind": "text",
+      "signal_value": "Cleavage; by trypsin",
+      "reasoning": "The SITE annotation directly addresses the proteolytic cleavage mechanism described in the GO term's primary reaction, making it a strong match."
+    },
+    {
+      "accession": "Q63645",
+      "go_id": "GO:0001648",
+      "feature_type": "SITE",
+      "start": 35,
+      "end": 37,
+      "signal_kind": "text",
+      "signal_value": "Cleavage; by trypsin",
+      "reasoning": "The SITE annotation directly reflects the cleavage event described in the GO definition, which is the primary mechanism of activation for this receptor activity."
+    },
+    {
+      "accession": "Q920E1",
+      "go_id": "GO:0001648",
+      "feature_type": "SITE",
+      "start": 36,
+      "end": 38,
+      "signal_kind": "text",
+      "signal_value": "Cleavage; by thrombin",
+      "reasoning": "The SITE 36-38 annotation explicitly describes cleavage by thrombin, which directly corresponds to the defined mechanism of activation by serine protease in the GO definition. This provides a strong match to the primary reaction described in the term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

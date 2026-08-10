@@ -1,0 +1,20 @@
+## P13773 GO:0001646
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature (by type + exact coordinates) directly describes a domain involved in cAMP binding and signal transduction, which are the primary reaction mechanism of the GO term. The disordered regions do not provide structural evidence for this function, and the domain/family cross-references refer to broader GPCR families rather than a specific domain that matches the defined chemistry of
+---
+## P35352 GO:0001646
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature provides a direct structural or functional basis for the primary reaction of cAMP receptor activity as defined by the GO term.
+---
+## Q9TX43 GO:0001646
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature provides a clear structural or functional basis for the defined molecular function of "cAMP receptor activity" as specified in the GO term.
+---
+## Q54U75 GO:0001646
+verdict: NONE
+feature: NONE 0-0
+reasoning: Since the protein has no MF-relevant positional features annotated, we cannot determine which specific domain is responsible for the "cAMP receptor activity" function. The GO term's primary reaction involves binding cAMP and transmitting signals across membranes, but without any positional evidence to anchor this function, we cannot confidently assign a specific feature as the structural/functiona
+---

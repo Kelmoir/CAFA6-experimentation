@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0001792",
+  "name": "polymeric immunoglobulin receptor activity",
+  "def": "Combining with a J-chain-containing polymeric immunoglobulin of the IgA or IgM isotypes via the Fc region, and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P01833",
+    "P15083"
+  ],
+  "assigned_accessions": [
+    "P01833",
+    "P15083"
+  ]
+}

@@ -1175,5 +1175,183 @@
     "reasoning": "No annotated feature provides a direct structural or functional basis for the defined molecular function of GO:0001571."
    }
   ]
+ },
+ "GO:0001586": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "NPxxY motif; important for ligand-induced conformation changes and signaling",
+    "accessions": [
+     "P28221"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "DRY motif; important for ligand-induced conformation changes and signaling",
+    "accessions": [
+     "P28222"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "serotonin",
+    "accessions": [
+     "P35365"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P28286",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature provided for this protein is a disordered region (REGION 308-336), which does not provide evidence for the defined function of Gi/o-coupled serotonin receptor activity. No other annotated feature matches the primary reaction described in the GO term's definition, and no coordinates are provided to support a specific domain or structural element that would directly expla"
+   }
+  ]
+ },
+ "GO:0001621": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9CPV9",
+    "go_id": "GO:0001621",
+    "feature_type": "BINDING",
+    "start": 98,
+    "end": 99,
+    "signal_kind": "ligand",
+    "signal_value": "ADP",
+    "reasoning": "The binding site for ADP is a direct match to the GO term's description of combining with ADP, but it does not provide evidence for the G-protein activation mechanism or GDP/GTP exchange, which are central to the definition."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P59902",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for this protein only indicate ADP binding sites without any evidence of G-protein activation or GDP/GTP exchange, which are the primary mechanisms defined by the GO term. Thus, no single feature plausibly explains why this protein carries the term."
+   },
+   {
+    "accession": "Q9EPX4",
+    "reason": "none_verdict",
+    "reasoning": "The defined function of the protein (G protein-coupled ADP receptor activity) requires a binding site that directly activates a G-protein and transmits a signal across the membrane, but none of the annotated features provide such evidence."
+   },
+   {
+    "accession": "Q9ERK9",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature has been annotated for Q9ERK9, so it cannot be used to explain the molecular function defined by the GO term."
+   }
+  ]
+ },
+ "GO:0001637": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P13773",
+    "reason": "none_verdict",
+    "reasoning": "The defined molecular function of GO:0001637 involves a specific biochemical mechanism (G-protein activation and GDP-GTP exchange), which is not explained by any of the annotated features provided for this protein. None of the features directly account for the primary reaction or mechanism described in the definition, making it impossible to determine with certainty why this protein carries the te"
+   },
+   {
+    "accession": "O35786",
+    "reason": "none_verdict",
+    "reasoning": "The protein O35786 has no annotated features that are positional, so there is no evidence to determine which specific domain or structural feature is responsible for the defined reaction of GO:0001637."
+   }
+  ]
+ },
+ "GO:0001646": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P13773",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature (by type + exact coordinates) directly describes a domain involved in cAMP binding and signal transduction, which are the primary reaction mechanism of the GO term. The disordered regions do not provide structural evidence for this function, and the domain/family cross-references refer to broader GPCR families rather than a specific domain that matches the defined chemistry of"
+   },
+   {
+    "accession": "P35352",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct structural or functional basis for the primary reaction of cAMP receptor activity as defined by the GO term."
+   },
+   {
+    "accession": "Q9TX43",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the defined molecular function of \"cAMP receptor activity\" as specified in the GO term."
+   },
+   {
+    "accession": "Q54U75",
+    "reason": "none_verdict",
+    "reasoning": "Since the protein has no MF-relevant positional features annotated, we cannot determine which specific domain is responsible for the \"cAMP receptor activity\" function. The GO term's primary reaction involves binding cAMP and transmitting signals across membranes, but without any positional evidence to anchor this function, we cannot confidently assign a specific feature as the structural/functiona"
+   }
+  ]
+ },
+ "GO:0001648": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "cleavage; by thrombin",
+    "accessions": [
+     "O08675",
+     "Q920E1"
+    ]
+   },
+   {
+    "field": "text_patterns",
+    "value": "cleavage; by trypsin",
+    "accessions": [
+     "P55086",
+     "Q63645"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0001792": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like V-type 1; required for binding to polymeric IgA and IgM",
+    "accessions": [
+     "P01833",
+     "P15083"
+    ],
+    "reason": "circular agreement -- only 1 of 2 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
  }
 }

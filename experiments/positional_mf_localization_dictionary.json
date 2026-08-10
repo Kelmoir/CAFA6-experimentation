@@ -1194,6 +1194,16 @@
   ],
   "text_patterns": []
  },
+ "GO:0001648": {
+  "name": "proteinase-activated receptor activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "cleavage; by thrombin",
+   "cleavage; by trypsin"
+  ]
+ },
  "GO:0001664": {
   "name": "G protein-coupled receptor binding",
   "ligands": [],

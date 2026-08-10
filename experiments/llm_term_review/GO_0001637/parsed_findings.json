@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P13773",
+      "reason": "none_verdict",
+      "reasoning": "The defined molecular function of GO:0001637 involves a specific biochemical mechanism (G-protein activation and GDP-GTP exchange), which is not explained by any of the annotated features provided for this protein. None of the features directly account for the primary reaction or mechanism described in the definition, making it impossible to determine with certainty why this protein carries the te"
+    },
+    {
+      "accession": "O35786",
+      "reason": "none_verdict",
+      "reasoning": "The protein O35786 has no annotated features that are positional, so there is no evidence to determine which specific domain or structural feature is responsible for the defined reaction of GO:0001637."
+    }
+  ]
+}

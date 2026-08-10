@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "P01833",
+      "go_id": "GO:0001792",
+      "feature_type": "DOMAIN",
+      "start": 18,
+      "end": 120,
+      "signal_kind": "text",
+      "signal_value": "Ig-like V-type 1; required for binding to polymeric IgA and IgM",
+      "reasoning": "The \"Ig-like V-type\" domain (18-120) directly implements the primary reaction of the GO term by enabling binding to polymeric IgA and IgM, which is essential for initiating a change in cell activity. This specific structural feature aligns with the function described in the GO term's definition."
+    },
+    {
+      "accession": "P15083",
+      "go_id": "GO:0001792",
+      "feature_type": "DOMAIN",
+      "start": 20,
+      "end": 126,
+      "signal_kind": "text",
+      "signal_value": "Ig-like V-type 1; required for binding to polymeric IgA and IgM",
+      "reasoning": "The DOMAIN 20-126 feature explicitly states that it is an \"Ig-like V-type 1\" domain required for binding to polymeric IgA and IgM, which directly aligns with the primary reaction described in the GO term's definition. This provides a strong mechanistic basis for the molecular function of the protein."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
