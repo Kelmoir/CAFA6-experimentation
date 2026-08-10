@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0001409",
+  "name": "guanine nucleotide transmembrane transporter activity",
+  "def": "Enables the transfer of guanine nucleotides (GMP, GDP, and GTP) from one side of a membrane to the other.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "F1M3J4",
+    "P38988",
+    "Q84MA8",
+    "Q8VCL5"
+  ],
+  "assigned_accessions": [
+    "F1M3J4",
+    "P38988",
+    "Q84MA8",
+    "Q8VCL5"
+  ]
+}

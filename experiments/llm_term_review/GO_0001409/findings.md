@@ -1,0 +1,20 @@
+## F1M3J4 GO:0001409
+verdict: NONE
+feature: NONE 0-0
+reasoning: None of the annotated features specifically explain the core mechanism of transferring guanine nucleotides as defined by GO:0001409. The binding sites for ATP or Mg(2+) are secondary to the primary function, and no domain explicitly states the transport activity.
+---
+## Q84MA8 GO:0001409
+verdict: NONE
+feature: DOMAIN 1-530
+reasoning: The absence of any positional features for this protein means we cannot directly link a specific segment of the sequence to the function described in GO:0001409. However, the "Azg-like" domain (InterPro:IPR045018) is known to be associated with nucleotide transporters, which aligns with the definition of guanine nucleotide transmembrane transporter activity. While this domain provides a plausible 
+---
+## P38988 GO:0001409
+verdict: NONE
+feature: DOMAIN 19-119
+reasoning: The "Mito_GTP/GDP_Carrier" domain directly corresponds to the function of transferring guanine nucleotides across membranes, which matches the primary reaction described in the GO term's definition. This domain is specifically associated with mitochondrial GTP and GDP transport, making it a strong candidate for explaining the molecular function.
+---
+## Q8VCL5 GO:0001409
+verdict: NONE
+feature: REGION 0-26
+reasoning: The feature "REGION 0-26" (note: Disordered, evidence: ECO:0000256|SAM:MobiDB-lite) does not directly explain the molecular function of guanine nucleotide transmembrane transporter activity. While disordered regions can be involved in various transport processes, this feature is too generic to be a strong match for the defined chemistry of the GO term.
+---

@@ -1,0 +1,37 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q8NCH0",
+      "go_id": "GO:0001537",
+      "feature_type": "BINDING",
+      "start": 154,
+      "end": 161,
+      "signal_kind": "ligand",
+      "signal_value": "3'-phosphoadenylyl sulfate",
+      "reasoning": "The binding of 3'-phosphoadenylyl sulfate at position 154-161 is a necessary step in the catalytic process, but it does not explicitly confirm that the protein is involved in the transfer of a phosphate group from this substrate to dermatan. This feature is relevant but not sufficient to fully explain the GO term's definition."
+    },
+    {
+      "accession": "Q9NPF2",
+      "go_id": "GO:0001537",
+      "feature_type": "BINDING",
+      "start": 123,
+      "end": 130,
+      "signal_kind": "ligand",
+      "signal_value": "3'-phosphoadenylyl sulfate",
+      "reasoning": "The binding event at 123-130 could be the site where the phosphate group is transferred, but the annotation only specifies a ligand and not the active site or the mechanism of the reaction itself. Therefore, it does not specifically match the GO term's primary reaction as defined."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q8BQ86",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear structural or functional basis for the primary reaction described in the GO term's definition, which involves catalyzing the transfer of a phosphate group from 3'-phosphoadenylyl sulfate to dermatan."
+    },
+    {
+      "accession": "Q8NET6",
+      "reason": "none_verdict",
+      "reasoning": "The binding regions for the substrate (3'-phosphoadenylyl sulfate) are directly related to the enzyme's activity, but they do not fully capture the catalytic mechanism described in the GO term."
+    }
+  ]
+}

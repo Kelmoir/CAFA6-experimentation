@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0001537",
+  "name": "dermatan 4-sulfotransferase activity",
+  "def": "Catalysis of the reaction: n 3'-phosphoadenylyl sulfate + dermatan = n adenosine 3',5'-bisphosphate + dermatan 4'-sulfate + n H+.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "Q8BQ86",
+    "Q8NCH0",
+    "Q8NET6",
+    "Q9NPF2"
+  ],
+  "assigned_accessions": [
+    "Q8BQ86",
+    "Q8NCH0",
+    "Q8NET6",
+    "Q9NPF2"
+  ]
+}

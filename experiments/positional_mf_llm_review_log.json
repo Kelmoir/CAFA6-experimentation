@@ -952,6 +952,137 @@
    }
   ]
  },
+ "GO:0001181": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O59719",
+    "reason": "none_verdict",
+    "reasoning": "The protein O59719 has no positional features that directly explain the molecular function defined by GO:0001181. While domain/family cross-references are relevant, they do not provide a positional feature that can be used to assert the function with certainty. Therefore, the verdict is NONE."
+   },
+   {
+    "accession": "P25977",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P25977 directly explains the primary reaction of the GO term, which is about transcription initiation and start site selection. The features are either DNA-binding domains or disordered regions, which do not align with the defined chemistry of the molecular function."
+   },
+   {
+    "accession": "Q6PDZ2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q6PDZ2 provides a clear and specific explanation for why it carries the GO term \"RNA polymerase I general transcription initiation factor activity.\""
+   },
+   {
+    "accession": "Q80UV9",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly or specifically explain the molecular function defined by GO:0001181."
+   }
+  ]
+ },
+ "GO:0001409": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "F1M3J4",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features specifically explain the core mechanism of transferring guanine nucleotides as defined by GO:0001409. The binding sites for ATP or Mg(2+) are secondary to the primary function, and no domain explicitly states the transport activity."
+   },
+   {
+    "accession": "Q84MA8",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any positional features for this protein means we cannot directly link a specific segment of the sequence to the function described in GO:0001409. However, the \"Azg-like\" domain (InterPro:IPR045018) is known to be associated with nucleotide transporters, which aligns with the definition of guanine nucleotide transmembrane transporter activity. While this domain provides a plausible"
+   },
+   {
+    "accession": "P38988",
+    "reason": "none_verdict",
+    "reasoning": "The \"Mito_GTP/GDP_Carrier\" domain directly corresponds to the function of transferring guanine nucleotides across membranes, which matches the primary reaction described in the GO term's definition. This domain is specifically associated with mitochondrial GTP and GDP transport, making it a strong candidate for explaining the molecular function."
+   },
+   {
+    "accession": "Q8VCL5",
+    "reason": "none_verdict",
+    "reasoning": "The feature \"REGION 0-26\" (note: Disordered, evidence: ECO:0000256|SAM:MobiDB-lite) does not directly explain the molecular function of guanine nucleotide transmembrane transporter activity. While disordered regions can be involved in various transport processes, this feature is too generic to be a strong match for the defined chemistry of the GO term."
+   }
+  ]
+ },
+ "GO:0001515": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P05421",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature provided for protein P05421 is a disordered region, which does not directly explain why the protein carries the \"opoid peptide activity\" GO term. No other positional feature is given, and the domain/family cross-references do not provide a clear explanation of the defined function."
+   },
+   {
+    "accession": "P22005",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P22005 do not provide a specific structural or functional basis for the GO term \"opioid peptide activity,\" as none of them directly address the primary reaction or mechanism described in the definition."
+   },
+   {
+    "accession": "Q13519",
+    "reason": "none_verdict",
+    "reasoning": "No positional features are annotated for this protein, so there is no evidence to determine which specific domain or structural feature accounts for the \"opoid peptide activity\" molecular function."
+   },
+   {
+    "accession": "Q64387",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's data directly corresponds to the defined chemistry of opioid peptide activity, and all features are either generic (like disordered regions) or do not implement the primary reaction described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0001530": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Gla",
+    "accessions": [
+     "P00734"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Binds lipopolysaccharide",
+    "accessions": [
+     "P12813"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P02931",
+    "reason": "none_verdict",
+    "reasoning": "The \"Gram-neg_bact_OMP\" domain is most plausibly associated with lipopolysaccharide binding, as it is a known structural and functional element in Gram-negative bacterial outer membrane proteins involved in lipid transport. This domain directly supports the function described by the GO term."
+   },
+   {
+    "accession": "Q6AXU0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, specific explanation for why the protein carries the GO term \"lipopolysaccharide binding.\" The features are all related to structural domains but do not directly account for the function of binding to lipopolysaccharide."
+   }
+  ]
+ },
  "GO:0001532": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -965,6 +1096,48 @@
     "accession": "Q9HBE5",
     "reason": "none_verdict",
     "reasoning": "hit max_tokens (2400) before VERDICT/FEATURE appeared -- raw text saved to experiments/llm_term_review/GO_0001532/raw_debug.log"
+   }
+  ]
+ },
+ "GO:0001537": {
+  "n_resolved": 0,
+  "n_uncertain": 2,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q8NCH0",
+    "go_id": "GO:0001537",
+    "feature_type": "BINDING",
+    "start": 154,
+    "end": 161,
+    "signal_kind": "ligand",
+    "signal_value": "3'-phosphoadenylyl sulfate",
+    "reasoning": "The binding of 3'-phosphoadenylyl sulfate at position 154-161 is a necessary step in the catalytic process, but it does not explicitly confirm that the protein is involved in the transfer of a phosphate group from this substrate to dermatan. This feature is relevant but not sufficient to fully explain the GO term's definition."
+   },
+   {
+    "accession": "Q9NPF2",
+    "go_id": "GO:0001537",
+    "feature_type": "BINDING",
+    "start": 123,
+    "end": 130,
+    "signal_kind": "ligand",
+    "signal_value": "3'-phosphoadenylyl sulfate",
+    "reasoning": "The binding event at 123-130 could be the site where the phosphate group is transferred, but the annotation only specifies a ligand and not the active site or the mechanism of the reaction itself. Therefore, it does not specifically match the GO term's primary reaction as defined."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q8BQ86",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the primary reaction described in the GO term's definition, which involves catalyzing the transfer of a phosphate group from 3'-phosphoadenylyl sulfate to dermatan."
+   },
+   {
+    "accession": "Q8NET6",
+    "reason": "none_verdict",
+    "reasoning": "The binding regions for the substrate (3'-phosphoadenylyl sulfate) are directly related to the enzyme's activity, but they do not fully capture the catalytic mechanism described in the GO term."
    }
   ]
  },
