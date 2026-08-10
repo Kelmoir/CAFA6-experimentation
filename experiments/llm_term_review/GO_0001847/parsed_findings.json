@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P08571",
+      "go_id": "GO:0001847",
+      "feature_type": "REGION",
+      "start": 289,
+      "end": 375,
+      "signal_kind": "text",
+      "signal_value": "Required for response to bacterial lipopolysaccharide (LPS)",
+      "reasoning": "The region from position 289-375 is explicitly linked to the function of responding to bacterial lipopolysaccharide (LPS), which directly supports the primary reaction described in the GO term's definition \u2014 combining with an opsonin and initiating a change in cell activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

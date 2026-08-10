@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P0ABF6",
+      "go_id": "GO:0001884",
+      "feature_type": "DOMAIN",
+      "start": 47,
+      "end": 168,
+      "signal_kind": "text",
+      "signal_value": "CMP/dCMP-type deaminase 1",
+      "reasoning": "The DOMAIN features (47-168 and 185-294) are associated with CMP/dCMP-type deaminase activity, which directly corresponds to the chemistry described in the GO term's definition of pyrimidine nucleoside binding."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

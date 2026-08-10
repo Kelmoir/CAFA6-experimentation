@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q63150",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide any direct evidence of thymine binding to the protein, and none of them specifically describe the interaction with thymine as required by the GO term's definition."
+    },
+    {
+      "accession": "Q9EQF5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the protein's ability to bind thymine, as all binding features are for Zn(2+) or substrate rather than thymine. The absence of a domain or structural feature that specifically recognizes thymine makes it impossible to determine which annotation most plausibly explains the GO term."
+    }
+  ]
+}

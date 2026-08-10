@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O60667",
+      "go_id": "GO:0001791",
+      "feature_type": "DOMAIN",
+      "start": 22,
+      "end": 123,
+      "signal_kind": "text",
+      "signal_value": "Ig-like",
+      "reasoning": "The \"Ig-like\" domain in the protein directly supports the defined molecular function of IgM binding, making it the most plausible explanation."
+    },
+    {
+      "accession": "P31720",
+      "go_id": "GO:0001791",
+      "feature_type": "DOMAIN",
+      "start": 109,
+      "end": 245,
+      "signal_kind": "text",
+      "signal_value": "C1q",
+      "reasoning": "The DOMAIN 109-245 with note \"C1q\" directly supports the function of IgM binding by being associated with C1q, a protein known for its role in immune responses and complement activation."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P14106",
+      "reason": "none_verdict",
+      "reasoning": "The C1q domain in P14106 does not directly explain why it carries the \"IgM binding\" GO term, as the primary reaction involves immunoglobulin interaction rather than complement system activity. No positional feature matches the chemistry defined by the GO term."
+    },
+    {
+      "accession": "P31721",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear structural or functional basis for the GO term \"IgM binding\" as defined."
+    }
+  ]
+}

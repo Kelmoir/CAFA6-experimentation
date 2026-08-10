@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0001653",
+  "name": "peptide receptor activity",
+  "def": "Combining with an extracellular or intracellular peptide to initiate a change in cell activity.",
+  "n_proteins_total": 61,
+  "sampled_accessions": [
+    "B1Q257",
+    "O82318",
+    "P25931",
+    "Q9VZW5"
+  ],
+  "assigned_accessions": [
+    "B1Q257",
+    "O82318",
+    "P25931",
+    "Q9VZW5"
+  ]
+}

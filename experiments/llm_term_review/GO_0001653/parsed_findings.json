@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O82318",
+      "go_id": "GO:0001653",
+      "feature_type": "MOTIF",
+      "start": 220,
+      "end": 226,
+      "signal_kind": "text",
+      "signal_value": "CLE45 peptide binding",
+      "reasoning": "The motif 220-226 is specifically associated with CLE45 peptide binding, which directly supports the primary reaction of the GO term \"peptide receptor activity\" by initiating a change in cell activity through peptide interaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "B1Q257",
+      "reason": "none_verdict",
+      "reasoning": "VERDICT/FEATURE parsed but no REASONING found -- raw text saved to experiments/llm_term_review/GO_0001653/raw_debug.log"
+    },
+    {
+      "accession": "P25931",
+      "reason": "none_verdict",
+      "reasoning": "The protein P25931 has no annotated positional features (domain, region, etc.) that describe the binding of a peptide to initiate a change in cell activity, which is the primary reaction defined by the GO term \"peptide receptor activity.\" Therefore, it does not plausibly carry this GO term based on the available evidence."
+    },
+    {
+      "accession": "Q9VZW5",
+      "reason": "none_verdict",
+      "reasoning": "There is no positional feature or domain-specific annotation that directly supports the molecular function of \"peptide receptor activity\" (GO:0001653) for protein Q9VZW5. The available cross-references suggest a GPCR-like function, but they do not provide evidence of peptide binding or cellular response initiation. Therefore, the verdict is NONE."
+    }
+  ]
+}

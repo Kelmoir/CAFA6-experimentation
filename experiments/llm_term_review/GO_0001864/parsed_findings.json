@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P86693",
+      "go_id": "GO:0001864",
+      "feature_type": "DOMAIN",
+      "start": 5,
+      "end": 36,
+      "signal_kind": "text",
+      "signal_value": "Pentraxin (PTX)",
+      "reasoning": "The DOMAIN 5-36 feature directly corresponds to the binding activity defined by GO:0001864, making it the most plausible explanation for why this protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

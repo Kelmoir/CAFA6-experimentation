@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0001847",
+  "name": "opsonin receptor activity",
+  "def": "Combining with an opsonin and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P08571"
+  ],
+  "assigned_accessions": [
+    "P08571"
+  ]
+}

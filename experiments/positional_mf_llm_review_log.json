@@ -1333,6 +1333,79 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0001653": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "CLE45 peptide binding",
+    "accessions": [
+     "O82318"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B1Q257",
+    "reason": "none_verdict",
+    "reasoning": "VERDICT/FEATURE parsed but no REASONING found -- raw text saved to experiments/llm_term_review/GO_0001653/raw_debug.log"
+   },
+   {
+    "accession": "P25931",
+    "reason": "none_verdict",
+    "reasoning": "The protein P25931 has no annotated positional features (domain, region, etc.) that describe the binding of a peptide to initiate a change in cell activity, which is the primary reaction defined by the GO term \"peptide receptor activity.\" Therefore, it does not plausibly carry this GO term based on the available evidence."
+   },
+   {
+    "accession": "Q9VZW5",
+    "reason": "none_verdict",
+    "reasoning": "There is no positional feature or domain-specific annotation that directly supports the molecular function of \"peptide receptor activity\" (GO:0001653) for protein Q9VZW5. The available cross-references suggest a GPCR-like function, but they do not provide evidence of peptide binding or cellular response initiation. Therefore, the verdict is NONE."
+   }
+  ]
+ },
+ "GO:0001791": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like",
+    "accessions": [
+     "O60667"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "C1q",
+    "accessions": [
+     "P31720"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P14106",
+    "reason": "none_verdict",
+    "reasoning": "The C1q domain in P14106 does not directly explain why it carries the \"IgM binding\" GO term, as the primary reaction involves immunoglobulin interaction rather than complement system activity. No positional feature matches the chemistry defined by the GO term."
+   },
+   {
+    "accession": "P31721",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the GO term \"IgM binding\" as defined."
+   }
+  ]
+ },
  "GO:0001792": {
   "n_resolved": 2,
   "n_uncertain": 0,
@@ -1353,5 +1426,155 @@
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0001847": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Required for response to bacterial lipopolysaccharide (LPS)",
+    "accessions": [
+     "P08571"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0001864": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Pentraxin (PTX)",
+    "accessions": [
+     "P86693"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0001884": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "CMP/dCMP-type deaminase 1",
+    "accessions": [
+     "P0ABF6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0002046": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Plays an important role in the conformation switch to the active conformation",
+    "accessions": [
+     "P02699"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "E1B7R9",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature provided for E1B7R9 is a disordered region (23-54), which does not specifically match the defined chemistry of opsin binding. No other annotated features are available, and the disordered region alone lacks sufficient specificity to explain why the protein carries this GO term."
+   },
+   {
+    "accession": "P10523",
+    "reason": "none_verdict",
+    "reasoning": "There is no positional feature in P10523 that plausibly explains why it carries the GO term \"opsin binding.\" The domain/family cross-references point to arrestins, not opsin-binding proteins."
+   },
+   {
+    "accession": "Q61025",
+    "reason": "none_verdict",
+    "reasoning": "The region annotation does not provide enough specificity to explain why this protein binds to an opsin, as it only mentions \"IFT57-binding\" without specifying the interaction with an opsin. No positional feature has been confirmed to explain the GO term's primary reaction."
+   }
+  ]
+ },
+ "GO:0002057": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0ACP7",
+    "reason": "none_verdict",
+    "reasoning": "The SITE annotation refers to a determinant of specificity for 6-oxopurine corepressors, but it does not directly explain why P0ACP7 carries the \"guanine binding\" term. No annotated feature specifically matches the chemistry of guanine binding as defined by GO:0002057."
+   },
+   {
+    "accession": "Q9W719",
+    "reason": "none_verdict",
+    "reasoning": "The feature \"BINDING 68-69\" with GMP suggests a specific binding site for guanine, which could plausibly explain why the protein carries the GO term \"Binding to guanine.\" However, since this feature only describes the ligand and not the domain or mechanism responsible for the function, it does not specifically match the primary reaction of the GO term."
+   }
+  ]
+ },
+ "GO:0002059": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q63150",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide any direct evidence of thymine binding to the protein, and none of them specifically describe the interaction with thymine as required by the GO term's definition."
+   },
+   {
+    "accession": "Q9EQF5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the protein's ability to bind thymine, as all binding features are for Zn(2+) or substrate rather than thymine. The absence of a domain or structural feature that specifically recognizes thymine makes it impossible to determine which annotation most plausibly explains the GO term."
+   }
+  ]
+ },
+ "GO:0002948": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q58428",
+    "reason": "none_verdict",
+    "reasoning": "The \"DOMAIN 494-569\" with a note indicating \"PUA\" directly matches the defined reaction mechanism of archaeosine synthase activity, making it the most plausible explanation for why this protein carries the GO term."
+   }
+  ]
  }
 }
