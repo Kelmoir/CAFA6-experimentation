@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0004847",
+  "name": "urea carboxylase activity",
+  "def": "Catalysis of the reaction: ATP + bicarbonate + urea = ADP + 2 H+ + phosphate + urea-1-carboxylate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P32528"
+  ],
+  "assigned_accessions": [
+    "P32528"
+  ]
+}

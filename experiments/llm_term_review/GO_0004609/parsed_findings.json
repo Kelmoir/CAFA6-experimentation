@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "A4GNA8",
+      "go_id": "GO:0004609",
+      "feature_type": "SITE",
+      "start": 584,
+      "end": 586,
+      "signal_kind": "text",
+      "signal_value": "Cleavage (non-hydrolytic); by autocatalysis",
+      "reasoning": "The site 584-586 is associated with non-hydrolytic cleavage by autocatalysis, which could be a mechanism involved in the catalytic reaction of phosphatidylserine decarboxylase activity. This feature directly relates to the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q84V22",
+      "go_id": "GO:0004609",
+      "feature_type": "ACT_SITE",
+      "start": 407,
+      "end": 408,
+      "signal_kind": "text",
+      "signal_value": "Charge relay system; for autoendoproteolytic cleavage activity",
+      "reasoning": "The ACT_SITE 407-408 feature with the note \"Schiff-base intermediate with substrate; via pyruvic acid; for decarboxylase activity\" directly matches the defined reaction of phosphatidylserine decarboxylase activity, providing a strong and specific explanation."
+    },
+    {
+      "accession": "F4KAK5",
+      "go_id": "GO:0004609",
+      "feature_type": "DOMAIN",
+      "start": 19,
+      "end": 146,
+      "signal_kind": "text",
+      "signal_value": "C2",
+      "reasoning": "The C2 domain (DOMAIN 19-146) is directly associated with phosphatidylserine metabolism, which matches the primary reaction of the GO term \"phosphatidylserine decarboxylase activity.\" This domain is likely responsible for the enzyme's catalytic function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P9WHQ5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear match to the GO term's primary chemical mechanism, which is the conversion of phosphatidyl-L-serine to phosphatidylethanolamine."
+    }
+  ]
+}

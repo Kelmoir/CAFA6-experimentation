@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P32528",
+      "go_id": "GO:0004847",
+      "feature_type": "BINDING",
+      "start": 121,
+      "end": 129,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP (ligand: ATP) directly matches the primary reaction of the GO term, which involves catalyzing the reaction with ATP as a substrate. This provides a strong and specific match to the defined chemistry of urea carboxylase activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

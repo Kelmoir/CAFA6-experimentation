@@ -1,0 +1,6 @@
+=== Q9ZW86 GO:0004656 (VERDICT missing) ===
+THINKING: The GO term is "procollagen-proline 4-dioxygenase activity" (GO:0004656), which defines the catalytic reaction of procollagen L-proline with 2-oxoglutarate and molecular oxygen to form trans-4-hydroxy-L-proline, succinate, and CO2. The primary reaction involves the enzyme's domain receiving a proton and oxidizing proline. The protein Q9ZW86 is annotated with multiple binding sites for Fe²⁺ and 2-oxoglutarate, as well as a domain that is an oxoglu/Fe-dep dioxygenase. These features suggest the presence of an active site capable of catalyzing the described reaction. However, none of these features directly state the enzyme's role in the specific reaction defined by the GO term. The binding sites for ligands are generic and do not specify the mechanism of action. The domain type is a general classification rather than a direct match to the defined chemistry. Therefore, no single annotated feature clearly explains why this protein carries the GO term.
+
+FEATURE: DOMAIN 161-279  
+REASONING: The domain type "Fe2OG dioxygenase" directly matches the enzyme's role in catalyzing the reaction described by the GO term, which involves Fe²⁺ and 2-oxoglutarate. This is a strong match to the primary reaction mechanism of the GO term.
+

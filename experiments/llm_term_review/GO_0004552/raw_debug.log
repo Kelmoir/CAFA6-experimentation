@@ -1,0 +1,116 @@
+=== P00330 GO:0004552 (finish_reason=length) ===
+THINKING:  
+GO term ID: 0004552  
+GO term name: octanol dehydrogenase (NAD+) activity  
+GO term definition: Catalysis of the reaction: 1-octanol + NAD+ = 1-octanal + H+ + NADH.  
+
+Candidate annotated features for this protein:  
+- BINDING 43-44  
+    ligand: Zn(2+)  
+    ligand_id: ChEBI:CHEBI:29105  
+    ligand_label: 1  
+    ligand_note: catalytic  
+    evidence: ECO:0000269|PubMed:25157460,ECO:0000269|PubMed:26743849, ECO:0007744|PDB:4W6Z,ECO:0007744|PDB:5ENV  
+- BINDING 44-45  
+    ligand: NAD(+)  
+    ligand_id: ChEBI:CHEBI:57540  
+    ligand_label: 1  
+    evidence: ECO:0000269|PubMed:26743849,ECO:0007744|PDB:5ENV  
+- BINDING 45-46  
+    ligand: NAD(+)  
+    ligand_id: ChEBI:CHEBI:57540  
+    ligand_label: 1  
+    evidence: ECO:0000269|PubMed:26743849,ECO:0007744|PDB:5ENV  
+- BINDING 48-49  
+    ligand: NAD(+)  
+    ligand_id: ChEBI:CHEBI:57540  
+    ligand_label: 1  
+    evidence: ECO:0000269|PubMed:26743849,ECO:0007744|PDB:5ENV  
+- BINDING 66-67  
+    ligand: Zn(2+)  
+    ligand_id: ChEBI:CHEBI:29105  
+    ligand_label: 1  
+    ligand_note: catalytic  
+    evidence: ECO:0000269|PubMed:25157460,ECO:0000269|PubMed:26743849, ECO:0007744|PDB:4W6Z,ECO:0007744|PDB:5ENV  
+- BINDING 67-68  
+    ligand: Zn(2+)  
+    ligand_id: ChEBI:CHEBI:29105  
+    ligand_label: 1  
+    ligand_note: catalytic  
+    note: in the open conformation  
+    evidence: ECO:0000269|PubMed:25157460,ECO:0000269|PubMed:26743849, ECO:0007744|PDB:4W6Z,ECO:0007744|PDB:5ENV  
+- BINDING 97-98  
+    ligand: Zn(2+)  
+    ligand_id: ChEBI:CHEBI:29105  
+    ligand_label: 2  
+    evidence: ECO:0000269|PubMed:25157460,ECO:0000269|PubMed:26743849, ECO:0007744|PDB:4W6Z,ECO:0007744|PDB:5ENV  
+- BINDING 100-101  
+    ligand: Zn(2+)  
+    ligand_id: ChEBI:CHEBI:29105  
+    ligand_label: 2  
+    evidence: ECO:0000269|PubMed:25157460,ECO:0000269|PubMed:26743849, ECO:0007744|PDB:4W6Z,ECO:0007744|PDB:5ENV  
+- BINDING 103-104  
+    ligand: Zn(2+)  
+    ligand_id: ChEBI:CHEBI:29105  
+    ligand_label: 2  
+    evidence: ECO:0000269|PubMed:25157460,ECO:0000269|PubMed:26743849, ECO:0007744|PDB:4W6Z,ECO:0007744|PDB:5ENV  
+- BINDING 111-112  
+    ligand: Zn(2+)  
+    ligand_id: ChEBI:CHEBI:29105  
+    ligand_label: 2  
+    evidence: ECO:0000269|PubMed:25157460,ECO:0000269|PubMed:26743849, ECO:0007744|PDB:4W6Z,ECO:0007744|PDB:5ENV  
+- BINDING 153-154  
+    ligand: Zn(2+)  
+    ligand_id: ChEBI:CHEBI:29105  
+    ligand_label: 1  
+    ligand_note: catalytic  
+    evidence: ECO:0000269|PubMed:25157460,ECO:0000269|PubMed:26743849, ECO:0007744|PDB:4W6Z,ECO:0007744|PDB:5ENV  
+- BINDING 180-181  
+    ligand: NAD(+)  
+    ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000269|PubMed:26743849,ECO:0007744|PDB:5ENV  
+- BINDING 181-182  
+    ligand: NAD(+)  
+    ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000269|PubMed:26743849,ECO:0007744|PDB:5ENV  
+- BINDING 182-183  
+    ligand: NAD(+)  
+    ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000269|PubMed:26743849,ECO:0007744|PDB:5ENV  
+- BINDING 201-202  
+    ligand: NAD(+)  
+    ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000269|PubMed:26743849,ECO:0007744|PDB:5ENV  
+- BINDING 206-207  
+    ligand: NAD(+)  
+    ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000269|PubMed:26743849,ECO:0007744|PDB:5ENV  
+- BINDING 221-222  
+    ligand: NAD(+)  
+    ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000269|PubMed:26743849,ECO:0007744|PDB:5ENV  
+- BINDING 268-269  
+    ligand: NAD(+)  
+    ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000269|PubMed:26743849,ECO:0007744|PDB:5ENV  
+- BINDING 270-271  
+    ligand: NAD(+)  
+    ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000269|PubMed:26743849,ECO:0007744|PDB:5ENV  
+- BINDING 293-294  
+    ligand: NAD(+)  
+    ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000269|PubMed:26743849,ECO:0007744|PDB:5ENV  
+- BINDING 295-296  
+    ligand: NAD(+)  
+    ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000269|PubMed:26743849,ECO:0007744|PDB:5ENV  
+- BINDING 340-341  
+    ligand: NAD(+)  
+    ligand_id: ChEBI:CHEBI:57540  
+    evidence: ECO:0000269|PubMed:26743849,ECO:0007744|PDB:5ENV  
+
+For each candidate feature, I will now evaluate how well it matches the GO term's primary reaction. The definition states that the protein catalyzes the reaction between 1-octanol and NAD+ to produce 1-octanal, H+, and NADH. This is a specific enzymatic activity involving a redox reaction.  
+
+- **BINDING 43-44** involves Zn(2+) as a ligand
+

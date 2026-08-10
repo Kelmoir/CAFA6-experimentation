@@ -2500,6 +2500,163 @@
    }
   ]
  },
+ "GO:0004529": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Exonuclease",
+    "accessions": [
+     "Q8WTP8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AG76",
+    "reason": "none_verdict",
+    "reasoning": "Since no positional features are explicitly annotated for this protein, it is not possible to determine which specific domain or structural element accounts for the DNA exonuclease activity. Therefore, the verdict is NONE."
+   },
+   {
+    "accession": "Q58719",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data directly describes the enzymatic mechanism of DNA exonuclease activity, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "P08466",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P08466 do not provide any positional evidence that directly explains the molecular function defined by GO:0004529, which involves catalyzing the sequential cleavage of mononucleotides from a DNA molecule."
+   }
+  ]
+ },
+ "GO:0004552": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P46415",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly indicates the enzyme's ability to receive a phosphoryl group from NAD+, which is the primary reaction defined by the GO term. The only relevant domain/family cross-references are about ADH and NAD(P)-binding domains, which are more general and do not specifically account for this function."
+   },
+   {
+    "accession": "P00330",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature describes the mechanism of transferring a phosphoryl group from NAD+ to an alcohol, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0004603": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "A0A5F8AH41",
+     "P10938"
+    ],
+    "reason": "ligand already claimed by GO:1904047 elsewhere in the dictionary -- ligand_to_go is a plain dict, a second claim would silently overwrite it"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P11086",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct structural or functional basis for the catalytic activity defined in the GO term's primary reaction."
+   },
+   {
+    "accession": "P40935",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P40935 do not provide a clear mechanistic explanation for the catalytic reaction defined by GO:0004603, and no positional feature directly matches the primary reaction described in the term's definition."
+   }
+  ]
+ },
+ "GO:0004609": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Cleavage (non-hydrolytic); by autocatalysis",
+    "accessions": [
+     "A4GNA8"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Charge relay system; for autoendoproteolytic cleavage activity",
+    "accessions": [
+     "Q84V22"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "C2",
+    "accessions": [
+     "F4KAK5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WHQ5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear match to the GO term's primary chemical mechanism, which is the conversion of phosphatidyl-L-serine to phosphatidylethanolamine."
+   }
+  ]
+ },
+ "GO:0004656": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fe2OG dioxygenase",
+    "accessions": [
+     "F4JAU3",
+     "F4JZ24",
+     "O15460"
+    ],
+    "reason": "resolved to ['InterPro:IPR005123', 'InterPro:IPR044862', 'PROSITE:PS51471'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR005123': 159, 'InterPro:IPR044862': 42, 'PROSITE:PS51471': 159})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9ZW86",
+    "reason": "none_verdict",
+    "reasoning": "The domain annotation \"Fe2OG dioxygenase\" aligns with the enzyme's function but does not describe the specific reaction mechanism. No positional feature directly states the reaction or active site involved, so it does not strongly explain why Q9ZW86 carries this GO term."
+   }
+  ]
+ },
  "GO:0004734": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -2513,6 +2670,44 @@
     "value": "glutathione",
     "accessions": [
      "Q9VSL3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0004847": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P32528"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0004933": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Hydrophilic",
+    "accessions": [
+     "P06783"
     ]
    }
   ],

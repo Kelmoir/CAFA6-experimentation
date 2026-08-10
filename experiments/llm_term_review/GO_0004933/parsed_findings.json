@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P06783",
+      "go_id": "GO:0004933",
+      "feature_type": "REGION",
+      "start": 299,
+      "end": 470,
+      "signal_kind": "text",
+      "signal_value": "Hydrophilic",
+      "reasoning": "The hydrophilic region in the protein is most plausibly associated with the binding activity required for the GO term, which involves combining with the mating-type a-factor pheromone to initiate a change in cell activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

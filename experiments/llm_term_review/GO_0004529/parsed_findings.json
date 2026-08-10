@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8WTP8",
+      "go_id": "GO:0004529",
+      "feature_type": "DOMAIN",
+      "start": 109,
+      "end": 266,
+      "signal_kind": "text",
+      "signal_value": "Exonuclease",
+      "reasoning": "The \"Exonuclease\" domain in Q8WTP8 directly corresponds to the defined function of DNA exonuclease activity, making it a strong match for the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0AG76",
+      "reason": "none_verdict",
+      "reasoning": "Since no positional features are explicitly annotated for this protein, it is not possible to determine which specific domain or structural element accounts for the DNA exonuclease activity. Therefore, the verdict is NONE."
+    },
+    {
+      "accession": "Q58719",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided data directly describes the enzymatic mechanism of DNA exonuclease activity, which is the primary reaction defined by the GO term."
+    },
+    {
+      "accession": "P08466",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for P08466 do not provide any positional evidence that directly explains the molecular function defined by GO:0004529, which involves catalyzing the sequential cleavage of mononucleotides from a DNA molecule."
+    }
+  ]
+}
