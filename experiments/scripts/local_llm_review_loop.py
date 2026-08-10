@@ -210,12 +210,22 @@ def parse_response(text):
   can't tell WHY on its own (genuine max_tokens cutoff vs. a normally-finished response that just
   didn't follow the requested format) -- callers that have finish_reason should use it to give a
   precise diagnosis instead of guessing; this function's own fallback reasoning text is
-  deliberately neutral about the cause."""
+  deliberately neutral about the cause.
+  Whenever no valid VERDICT: line was found at all (regardless of whether FEATURE happened to
+  parse), the verdict is reported as the sentinel "UNPARSED", NOT "NONE" -- these look the same to
+  a human skimming findings.md but are not the same thing downstream: parse_llm_findings.py buckets
+  a genuine "NONE" as a decisive, real answer (issue reason none_verdict, deliberately excluded
+  from RETRYABLE_ISSUE_REASONS -- retrying a real answer would be wrong), whereas any other
+  unrecognized verdict string buckets as invalid_verdict, which IS retryable. Using "NONE" as the
+  no-VERDICT fallback (an earlier version of this function did) meant a response that never
+  produced a valid VERDICT silently masqueraded as a deliberate NONE and could never be retried,
+  even though its raw text was already being saved to raw_debug.log the whole time -- logged for
+  human diagnosis, but invisible to the automatic retry pass."""
   v = _last_match(r"VERDICT:\s*(LIKELY|UNCERTAIN|NONE)", text, re.I)
   f = _last_match(r"FEATURE:\s*(\S+)\s+(\d+)\s*-\s*(\d+)", text, re.I)
   r = _last_match(r"REASONING:\s*(.+)", text, re.I)
   unparsed = v is None and f is None
-  verdict = v.group(1).upper() if v else "NONE"
+  verdict = v.group(1).upper() if v else "UNPARSED"
   if f:
     ftype, start, end = f.group(1), f.group(2), f.group(3)
   else:
@@ -332,7 +342,7 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
   verdict, ftype, start, end, reasoning, unparsed, reasoning_missing = parse_response(raw)
   debug_path = term_dir / "raw_debug.log"
   auto_resolved = False
-  if verdict != "NONE" and ftype == "NONE" and start == "0" and end == "0":
+  if verdict in ("LIKELY", "UNCERTAIN") and ftype == "NONE" and start == "0" and end == "0":
     protein_section = extract_protein_section(review_text, accession)
     resolved = resolve_crossref_feature(protein_section, raw)
     if resolved:
@@ -340,9 +350,16 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
       auto_resolved = True
       reasoning = f"[auto-resolved from cross-reference accession] {reasoning}"
       print(f"  {go_id} {accession}: auto-resolved cross-reference FEATURE to {ftype} {start}-{end}")
-  if unparsed or reasoning_missing or auto_resolved:
+  if verdict == "UNPARSED" or reasoning_missing or auto_resolved:
     with open(debug_path, "a") as dbg:
-      tag = "auto-resolved cross-ref" if auto_resolved else f"finish_reason={finish_reason}"
+      if auto_resolved:
+        tag = "auto-resolved cross-ref"
+      elif unparsed:
+        tag = f"finish_reason={finish_reason}"
+      elif verdict == "UNPARSED":
+        tag = "VERDICT missing"
+      else:
+        tag = "reasoning missing"
       dbg.write(f"=== {accession} {go_id} ({tag}) ===\n{raw}\n\n")
   if auto_resolved:
     pass
@@ -355,6 +372,10 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
                    f"raw text saved to {debug_path}, inspect for format drift")
     print(f"  ! {go_id} {accession}: unparsed response (finish_reason={finish_reason}, "
           f"{len(raw)} chars) -- raw text saved to {debug_path}")
+  elif verdict == "UNPARSED":
+    reasoning = f"FEATURE parsed but no valid VERDICT found -- raw text saved to {debug_path}"
+    print(f"  ! {go_id} {accession}: VERDICT missing from an otherwise-parsed response -- "
+          f"raw text saved to {debug_path}")
   elif reasoning_missing:
     reasoning = f"VERDICT/FEATURE parsed but no REASONING found -- raw text saved to {debug_path}"
     print(f"  ! {go_id} {accession}: REASONING missing from an otherwise-parsed response -- "
