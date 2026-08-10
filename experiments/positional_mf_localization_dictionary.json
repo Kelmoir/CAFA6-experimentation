@@ -1038,6 +1038,15 @@
    "arginine finger; crucial for gtp hydrolysis by stabilizing the transition state"
   ]
  },
+ "GO:0001566": {
+  "name": "non-kinase phorbol ester receptor activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "phorbol-ester/dag-type"
+  ]
+ },
  "GO:0001567": {
   "name": "cholesterol 25-hydroxylase activity",
   "ligands": [],

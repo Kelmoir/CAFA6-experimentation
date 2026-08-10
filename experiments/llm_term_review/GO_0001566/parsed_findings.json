@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8K0T7",
+      "go_id": "GO:0001566",
+      "feature_type": "ZN_FING",
+      "start": 1092,
+      "end": 1143,
+      "signal_kind": "text",
+      "signal_value": "Phorbol-ester/DAG-type",
+      "reasoning": "The ZN_FING domain with ligand specificity for Ca(2+) directly matches the phorbol ester receptor activity described in the GO term's definition, making it the most plausible explanation."
+    },
+    {
+      "accession": "Q9Z1N9",
+      "go_id": "GO:0001566",
+      "feature_type": "ZN_FING",
+      "start": 488,
+      "end": 539,
+      "signal_kind": "text",
+      "signal_value": "Phorbol-ester/DAG-type",
+      "reasoning": "The ZN_FING domain is specifically noted for interacting with phorbol esters and DAGs, which are known to be involved in signaling pathways. This feature directly relates to the ability of the protein to receive a phosphoryl transfer from phorbol esters, making it the most plausible explanation for the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

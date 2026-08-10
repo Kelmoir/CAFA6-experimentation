@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q3USZ2",
+      "go_id": "GO:0001164",
+      "feature_type": "DNA_BIND",
+      "start": 100,
+      "end": 169,
+      "signal_kind": "text",
+      "signal_value": "HMG box 1",
+      "reasoning": "The DNA_BIND 100-169 feature directly corresponds to the primary reaction of the GO term \u2014 binding to a specific regulatory region (the CORE element), and it is associated with an HMG box domain, which is known for its DNA-binding activity. This provides a strong match to the defined chemistry of the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O94332",
+      "reason": "none_verdict",
+      "reasoning": "The \"RNA_pol_I-specific_init_factor\" domain from InterPro:IPR053029 is most plausibly linked to the GO term's primary reaction of binding to a regulatory region in the RNA polymerase I transcription machinery. This domain directly relates to the function described in the GO term, making it the best candidate for explaining why the protein carries this annotation."
+    },
+    {
+      "accession": "P25976",
+      "reason": "none_verdict",
+      "reasoning": "The highest-scoring features are all HMG box domains involved in DNA binding, but none directly explain the specific chemistry described in the GO term's definition."
+    },
+    {
+      "accession": "P40992",
+      "reason": "none_verdict",
+      "reasoning": "There is no single annotated feature that directly matches the primary reaction of the GO term \"RNA polymerase I core promoter sequence-specific DNA binding.\" The features provided are either structural domains or zinc-binding sites, which do not specifically explain the defined function."
+    }
+  ]
+}

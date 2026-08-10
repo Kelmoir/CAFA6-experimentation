@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0001179",
+  "name": "RNA polymerase I general transcription initiation factor binding",
+  "def": "Binding to an RNA polymerase I transcription factor, a protein required to initiate or regulate transcription by RNA polymerase I.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "O43133",
+    "P13393",
+    "Q5ALX3",
+    "Q8K202"
+  ],
+  "assigned_accessions": [
+    "O43133",
+    "P13393",
+    "Q5ALX3",
+    "Q8K202"
+  ]
+}

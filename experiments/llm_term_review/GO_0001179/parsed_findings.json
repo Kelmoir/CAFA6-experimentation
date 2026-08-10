@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O43133",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for this protein is a disordered region, which does not provide a specific explanation for why it carries the GO term \"RNA polymerase I general transcription initiation factor binding.\" No positional feature has been confirmed to account for the primary reaction or mechanism described in the GO definition."
+    },
+    {
+      "accession": "P13393",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly explain why the protein carries the GO term \"RNA polymerase I general transcription initiation factor binding.\" The only candidate feature that could be related to the function is the **REGION 20-61** (note: Disordered), but it does not provide a strong match."
+    },
+    {
+      "accession": "Q5ALX3",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q5ALX3 do not provide any evidence that directly supports the binding activity described in the GO term. There are no positional features indicating a domain involved in RNA polymerase I transcription factor interaction, which is the primary reaction of the term. Therefore, there is no plausible explanation for why this protein carries the term based on the given evidenc"
+    },
+    {
+      "accession": "Q8K202",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for Q8K202 is a REGION that is marked as disordered, but this does not provide evidence of the protein's ability to bind an RNA polymerase I transcription factor. No other positional feature is listed, and the definition focuses on the binding activity rather than structural organization. Thus, no feature plausibly explains why Q8K202 carries the GO term."
+    }
+  ]
+}

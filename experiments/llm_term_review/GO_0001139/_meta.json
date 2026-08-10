@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0001139",
+  "name": "RNA polymerase II complex recruiting activity",
+  "def": "Binding to an RNA polymerase II (Pol II) complex, typically composed of twelve subunits, and with another protein, macromolecule, or complex, permitting those molecules to function in a coordinated way in order to facilitate the aggregation, arrangement and bonding together of proteins on an RNA polymerase II promoter DNA to form the transcriptional preinitiation complex (PIC), the formation of which is a prerequisite for transcription by RNA polymerase.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P07273",
+    "P29055",
+    "P32569"
+  ],
+  "assigned_accessions": [
+    "P07273",
+    "P29055",
+    "P32569"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "P29055",
+      "go_id": "GO:0001139",
+      "feature_type": "ZN_FING",
+      "start": 19,
+      "end": 53,
+      "signal_kind": "text",
+      "signal_value": "TFIIB-type",
+      "reasoning": "The ZN_FING domain (19-53) is TFIIB-type and directly related to the recruitment of the RNA polymerase II complex to the promoter DNA, which matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P07273",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide any direct evidence of the primary reaction described in the GO term, which is binding to an RNA polymerase II complex to facilitate PIC formation. None of the features explicitly state this mechanism or function."
+    },
+    {
+      "accession": "P32569",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for protein P32569 provides a clear structural or functional basis that matches the primary reaction of the GO term \"RNA polymerase II complex recruiting activity.\" The defined function involves binding to Pol II and facilitating PIC formation, which is not directly supported by any positional feature in this protein's annotation."
+    }
+  ]
+}

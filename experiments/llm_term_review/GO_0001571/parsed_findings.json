@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q91V87",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct structural or functional basis for the defined molecular function of GO:0001571."
+    }
+  ]
+}

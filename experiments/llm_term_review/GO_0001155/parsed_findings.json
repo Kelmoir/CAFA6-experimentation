@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8R5M4",
+      "go_id": "GO:0001155",
+      "feature_type": "MOTIF",
+      "start": 186,
+      "end": 192,
+      "signal_kind": "text",
+      "signal_value": "LIR",
+      "reasoning": "The LIR motif in the 186-192 region of Q8R5M4 is a plausible explanation for the defined function of binding to an RNA polymerase III transcription factor, as LIR motifs are known to be involved in interactions with transcription factors and other proteins."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q8K3K8",
+      "go_id": "GO:0001155",
+      "feature_type": "ZN_FING",
+      "start": 553,
+      "end": 584,
+      "signal_kind": "text",
+      "signal_value": "CCHC NOA-type",
+      "reasoning": "The ZN_FING domain is a plausible structural feature for a function related to transcription factor binding, but it does not specifically confirm the exact mechanism described in the GO term's definition. Other features either describe disordered regions or interactions with different proteins, which are not directly relevant to the primary reaction of the GO term."
+    }
+  ],
+  "issues": []
+}

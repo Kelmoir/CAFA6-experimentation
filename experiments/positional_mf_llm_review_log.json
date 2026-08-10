@@ -789,6 +789,169 @@
    }
   ]
  },
+ "GO:0001096": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9SU25",
+    "go_id": "GO:0001096",
+    "feature_type": "REGION",
+    "start": 465,
+    "end": 543,
+    "signal_kind": "text",
+    "signal_value": "Required for CPL3 and CPL4 binding",
+    "reasoning": "The region 465-543 is noted as required for binding to CPL3 and CPL4, which could support the assertion that the protein carries the GO term \"TFIIF-class transcription factor complex binding.\" However, this feature does not directly explain why the protein binds to RNA polymerase II, which is the primary reaction described in the GO term's definition. Thus, it provides a plausible but not definiti"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "O94416",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the defined chemistry of the GO term."
+   },
+   {
+    "accession": "P41895",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and specific explanation for the primary reaction described in the GO term's definition. All available features are generic and do not directly support the function defined by GO:0001096."
+   },
+   {
+    "accession": "Q6AY96",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" with coordinates \"176-448\" does not specifically explain why Q6AY96 carries the GO term \"GO:0001096,\" as it refers to a disordered region rather than the binding activity or role in forming the PIC. No positional feature directly supports the primary reaction described in the GO definition."
+   }
+  ]
+ },
+ "GO:0001139": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ZN_FING",
+    "value": "TFIIB-type",
+    "accessions": [
+     "P29055"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P07273",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide any direct evidence of the primary reaction described in the GO term, which is binding to an RNA polymerase II complex to facilitate PIC formation. None of the features explicitly state this mechanism or function."
+   },
+   {
+    "accession": "P32569",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein P32569 provides a clear structural or functional basis that matches the primary reaction of the GO term \"RNA polymerase II complex recruiting activity.\" The defined function involves binding to Pol II and facilitating PIC formation, which is not directly supported by any positional feature in this protein's annotation."
+   }
+  ]
+ },
+ "GO:0001155": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "LIR",
+    "accessions": [
+     "Q8R5M4"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q8K3K8",
+    "go_id": "GO:0001155",
+    "feature_type": "ZN_FING",
+    "start": 553,
+    "end": 584,
+    "signal_kind": "text",
+    "signal_value": "CCHC NOA-type",
+    "reasoning": "The ZN_FING domain is a plausible structural feature for a function related to transcription factor binding, but it does not specifically confirm the exact mechanism described in the GO term's definition. Other features either describe disordered regions or interactions with different proteins, which are not directly relevant to the primary reaction of the GO term."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0001164": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DNA_BIND",
+    "value": "HMG box 1",
+    "accessions": [
+     "Q3USZ2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O94332",
+    "reason": "none_verdict",
+    "reasoning": "The \"RNA_pol_I-specific_init_factor\" domain from InterPro:IPR053029 is most plausibly linked to the GO term's primary reaction of binding to a regulatory region in the RNA polymerase I transcription machinery. This domain directly relates to the function described in the GO term, making it the best candidate for explaining why the protein carries this annotation."
+   },
+   {
+    "accession": "P25976",
+    "reason": "none_verdict",
+    "reasoning": "The highest-scoring features are all HMG box domains involved in DNA binding, but none directly explain the specific chemistry described in the GO term's definition."
+   },
+   {
+    "accession": "P40992",
+    "reason": "none_verdict",
+    "reasoning": "There is no single annotated feature that directly matches the primary reaction of the GO term \"RNA polymerase I core promoter sequence-specific DNA binding.\" The features provided are either structural domains or zinc-binding sites, which do not specifically explain the defined function."
+   }
+  ]
+ },
+ "GO:0001179": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O43133",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein is a disordered region, which does not provide a specific explanation for why it carries the GO term \"RNA polymerase I general transcription initiation factor binding.\" No positional feature has been confirmed to account for the primary reaction or mechanism described in the GO definition."
+   },
+   {
+    "accession": "P13393",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain why the protein carries the GO term \"RNA polymerase I general transcription initiation factor binding.\" The only candidate feature that could be related to the function is the **REGION 20-61** (note: Disordered), but it does not provide a strong match."
+   },
+   {
+    "accession": "Q5ALX3",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q5ALX3 do not provide any evidence that directly supports the binding activity described in the GO term. There are no positional features indicating a domain involved in RNA polymerase I transcription factor interaction, which is the primary reaction of the term. Therefore, there is no plausible explanation for why this protein carries the term based on the given evidenc"
+   },
+   {
+    "accession": "Q8K202",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q8K202 is a REGION that is marked as disordered, but this does not provide evidence of the protein's ability to bind an RNA polymerase I transcription factor. No other positional feature is listed, and the definition focuses on the binding activity rather than structural organization. Thus, no feature plausibly explains why Q8K202 carries the GO term."
+   }
+  ]
+ },
  "GO:0001532": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -802,6 +965,41 @@
     "accession": "Q9HBE5",
     "reason": "none_verdict",
     "reasoning": "hit max_tokens (2400) before VERDICT/FEATURE appeared -- raw text saved to experiments/llm_term_review/GO_0001532/raw_debug.log"
+   }
+  ]
+ },
+ "GO:0001566": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "phorbol-ester/dag-type",
+    "accessions": [
+     "Q8K0T7",
+     "Q9Z1N9"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0001571": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q91V87",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct structural or functional basis for the defined molecular function of GO:0001571."
    }
   ]
  }
