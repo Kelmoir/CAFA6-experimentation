@@ -40,12 +40,23 @@ ROOT = Path("experiments/llm_term_review")
 SCRIPTS = Path("experiments/scripts")
 
 THINKING_INSTRUCTIONS = (
-    "In the THINKING Block: Follow the following steps:\n"
-    "- Print The GG-Term and its description\n"
-    "- for each likely bindsing site:\n"
-    "  - Compare the binding site description/Textag ainst the Go-term description\n"
-    "  - Rate its likelyness on a scale of 1 .. 10\n"
-    "- When done, pick the most likely candidate and go forwards with VERDICT, FEATURE,  REASONING.\n"
+    "In the THINKING block, follow these steps in order:\n"
+    "- Restate the GO term's id, name, and Definition in your own words.\n"
+    "- List every candidate annotated feature for this protein -- not just binding sites: DOMAIN, "
+    "ACT_SITE, DNA_BIND, MOTIF, REGION, and any other annotated type are all candidates, exactly as "
+    "diverse as the feature types actually listed under \"Annotated features\" for this protein.\n"
+    "- For each candidate feature, in turn:\n"
+    "  - Compare its type and qualifier text against the GO term's Definition, anchoring on the "
+    "Definition's PRIMARY stated reaction or mechanism (see the definition-focus note below -- a "
+    "candidate that only echoes a word from a secondary/qualifying clause does not count as a "
+    "strong match).\n"
+    "  - Rate how specifically it matches that primary reaction, on a scale of 1 (generic, could "
+    "belong to almost any protein) to 10 (names or is mechanistically specific to this exact GO "
+    "term).\n"
+    "- When every candidate has been rated, use the highest score to decide: 7-10 -> LIKELY, a "
+    "genuine near-tie between two comparably-plausible candidates -> UNCERTAIN, everything else (no "
+    "candidates, or all candidates generic/low-scoring) -> NONE. Then proceed to VERDICT, FEATURE, "
+    "REASONING below.\n"
 )
 
 
@@ -96,12 +107,11 @@ ANSWER_FORMAT = (
 )
 
 COT_ANSWER_FORMAT = (
-    "THINKING: <work through it here -- consider each candidate feature against the GO term's "
-    "definition and the genericity/calibration guidance above, compare it to the alternatives. End "
-    "THINKING with one explicit sentence naming your single best candidate feature (or stating "
-    "there is none) and saying plainly whether it specifically matches the GO term's own chemistry "
-    "-- only THEN settle on an answer below. Can span as many lines as you need; there is no length "
-    "limit.>\n"
+    "THINKING: <follow the numbered steps given above -- list and rate every candidate feature in "
+    "turn, then state your best candidate. End THINKING with one explicit sentence naming your "
+    "single best candidate feature (or stating there is none) and saying plainly whether it "
+    "specifically matches the GO term's own chemistry -- only THEN settle on an answer below. Can "
+    "span as many lines as you need; there is no length limit.>\n"
     "VERDICT: LIKELY or UNCERTAIN or NONE\n"
     "FEATURE: <TYPE> <START>-<END>  (use NONE 0-0 if verdict is NONE)\n"
     "REASONING: <one sentence, plain text, summarizing the conclusion your THINKING reached>\n\n"
