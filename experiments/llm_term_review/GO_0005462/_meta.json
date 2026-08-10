@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0005462",
+  "name": "UDP-N-acetylglucosamine transmembrane transporter activity",
+  "def": "Enables the transfer of a UDP-N-acetylglucosamine from one side of a membrane to the other. N-acetylglucosamine is a substance composed of N-acetylglucosamine, a common structural unit of oligosaccharides, in glycosidic linkage with uridine diphosphate.",
+  "n_proteins_total": 14,
+  "sampled_accessions": [
+    "O16658",
+    "O74750",
+    "Q18779",
+    "Q9NTN3"
+  ],
+  "assigned_accessions": [
+    "O16658",
+    "O74750",
+    "Q18779",
+    "Q9NTN3"
+  ]
+}

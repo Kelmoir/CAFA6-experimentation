@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9SFE9",
+      "go_id": "GO:0005459",
+      "feature_type": "DOMAIN",
+      "start": 32,
+      "end": 152,
+      "signal_kind": "text",
+      "signal_value": "EamA",
+      "reasoning": "The presence of a TPT transporter domain in Q9SFE9 directly supports the mechanism described in the definition of GO:0005459, which involves the transfer of UDP-galactose across membranes. This feature most plausibly explains why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P78381",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for P78381 provides a direct explanation for the defined molecular function of UDP-galactose transmembrane transporter activity."
+    },
+    {
+      "accession": "Q94B65",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9M9S6",
+      "reason": "none_verdict",
+      "reasoning": "The di-lysine motif is not directly tied to the defined mechanism of UDP-galactose transmembrane transport, and no other annotated feature provides a strong match to the primary reaction described in the GO term's definition."
+    }
+  ]
+}

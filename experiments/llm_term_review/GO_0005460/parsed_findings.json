@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q12520",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q5M8T2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong match to the primary reaction of UDP-glucose transmembrane transporter activity, which involves the transfer of UDP-glucose across a membrane. The only feature found is a disordered region with no direct relevance to the defined function."
+    },
+    {
+      "accession": "Q5W7C1",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8WZJ9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

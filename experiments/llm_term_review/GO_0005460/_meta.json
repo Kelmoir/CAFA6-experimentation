@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0005460",
+  "name": "UDP-glucose transmembrane transporter activity",
+  "def": "Enables the transfer of a UDP-glucose from one side of a membrane to the other. UDP-glucose is a substance composed of glucose in glycosidic linkage with uridine diphosphate.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "Q12520",
+    "Q5M8T2",
+    "Q5W7C1",
+    "Q8WZJ9"
+  ],
+  "assigned_accessions": [
+    "Q12520",
+    "Q5M8T2",
+    "Q5W7C1",
+    "Q8WZJ9"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O16658",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "O74750",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q18779",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9NTN3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature (by type + exact coordinates) specifically matches the primary reaction of transferring UDP-N-acetylglucosamine across membranes. The only relevant features are domain families, which do not provide positional evidence for this function."
+    }
+  ]
+}

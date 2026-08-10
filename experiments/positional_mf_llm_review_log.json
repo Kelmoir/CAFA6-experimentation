@@ -4340,6 +4340,165 @@
    }
   ]
  },
+ "GO:0005457": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q84L08",
+    "reason": "none_verdict",
+    "reasoning": "The \"Disordered REGION\" spans the potential flexible segment of the protein, which could be involved in the dynamic movement of GDP-fucose across the membrane. However, it does not directly confirm the presence of a transmembrane transporter activity domain, and thus cannot be considered a strong match for the GO term's primary reaction."
+   },
+   {
+    "accession": "Q8BLX4",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9UUI8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically describes the mechanism of GDP-fucose transmembrane transport, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "Q9VHT4",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0005459": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "EamA",
+    "accessions": [
+     "Q9SFE9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P78381",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P78381 provides a direct explanation for the defined molecular function of UDP-galactose transmembrane transporter activity."
+   },
+   {
+    "accession": "Q94B65",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9M9S6",
+    "reason": "none_verdict",
+    "reasoning": "The di-lysine motif is not directly tied to the defined mechanism of UDP-galactose transmembrane transport, and no other annotated feature provides a strong match to the primary reaction described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0005460": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q12520",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q5M8T2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the primary reaction of UDP-glucose transmembrane transporter activity, which involves the transfer of UDP-glucose across a membrane. The only feature found is a disordered region with no direct relevance to the defined function."
+   },
+   {
+    "accession": "Q5W7C1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8WZJ9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0005461": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A2AKQ0",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein is a disordered region, which does not provide any specific structural or functional basis that directly explains the molecular function of UDP-glucuronate transmembrane transporter activity. No positional feature has been confirmed to explain *why* the protein carries this GO term."
+   },
+   {
+    "accession": "Q18779",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q76EJ3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q95YI5",
+    "reason": "none_verdict",
+    "reasoning": "The defined function of UDP-glucuronate transmembrane transporter activity involves the movement of substrates across a membrane, which is not explained by the generic REGION annotation. No other feature provides positional evidence that directly supports this primary reaction."
+   }
+  ]
+ },
+ "GO:0005462": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O16658",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O74750",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q18779",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9NTN3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature (by type + exact coordinates) specifically matches the primary reaction of transferring UDP-N-acetylglucosamine across membranes. The only relevant features are domain families, which do not provide positional evidence for this function."
+   }
+  ]
+ },
  "GO:0008012": {
   "n_resolved": 0,
   "n_uncertain": 0,

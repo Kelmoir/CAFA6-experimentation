@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q84L08",
+      "reason": "none_verdict",
+      "reasoning": "The \"Disordered REGION\" spans the potential flexible segment of the protein, which could be involved in the dynamic movement of GDP-fucose across the membrane. However, it does not directly confirm the presence of a transmembrane transporter activity domain, and thus cannot be considered a strong match for the GO term's primary reaction."
+    },
+    {
+      "accession": "Q8BLX4",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9UUI8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically describes the mechanism of GDP-fucose transmembrane transport, which is the primary reaction defined by the GO term."
+    },
+    {
+      "accession": "Q9VHT4",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}
