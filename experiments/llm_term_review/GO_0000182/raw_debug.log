@@ -1,0 +1,5 @@
+=== Q02983 GO:0000182 (finish_reason=stop) ===
+THINKING: The GO term is "rDNA binding" with the definition "Binding to a DNA sequence encoding a ribosomal RNA." This primary reaction involves the protein interacting with a specific DNA sequence that encodes ribosomal RNA. The annotated features for this protein include a region from 300-344 marked as disordered, which may suggest structural flexibility relevant to DNA binding. However, no positional feature explicitly states the domain's role in rDNA binding or the mechanism of DNA interaction. The only other evidence is a domain/family cross-reference to "Rrn5," which is not directly tied to the defined function of rDNA binding. Given this, there are no strong positional features that directly explain why this protein carries the term "rDNA binding."  
+VERDICT: NONE  
+FEATURE: NONE 0-0
+

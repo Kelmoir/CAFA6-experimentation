@@ -1,4 +1,29 @@
 {
+ "GO:0000031": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Nucleophile",
+    "accessions": [
+     "P54070"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P87207",
+    "reason": "none_verdict",
+    "reasoning": "The protein has no annotated positional features, and the domain/family cross-references do not provide specific coordinates to explain the molecular function of GO:0000031. Therefore, there is no strong evidence to assign a feature that directly matches the defined reaction mechanism."
+   }
+  ]
+ },
  "GO:0000035": {
   "n_resolved": 3,
   "n_uncertain": 0,
@@ -21,6 +46,58 @@
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0000095": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q08986",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature in the protein's data that directly explains why it carries the GO term \"S-adenosyl-L-methionine transmembrane transporter activity.\" The definition focuses on the transfer of S-adenosylmethionine across a membrane, but none of the positional features provided describe this mechanism."
+   },
+   {
+    "accession": "Q94AG6",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q94AG6 has no annotated positional features that directly explain the molecular function defined by GO:0000095."
+   },
+   {
+    "accession": "P38921",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature has been confirmed to explain the molecular function defined by GO:0000095 for this protein."
+   },
+   {
+    "accession": "Q5U680",
+    "reason": "none_verdict",
+    "reasoning": "The \"MCP_transmembrane\" domain in this protein is most plausibly responsible for enabling the transfer of S-adenosylmethionine across a membrane, which matches the primary reaction described in the GO term. This domain is specifically associated with transmembrane transport activity, making it the strongest candidate to explain the molecular function."
+   }
+  ]
+ },
+ "GO:0000100": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q47689",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q47689 has no annotated positional features that directly explain its ability to transfer S-methylmethionine across a membrane. While domain/family cross-references suggest it may be an amino acid permease, there is no evidence of the specific function defined by GO:0000100. Thus, the verdict is uncertain."
+   },
+   {
+    "accession": "Q12372",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q12372 has no MF-relevant positional features annotated, and the domain/family cross-references do not provide a specific explanation for the defined function of \"S-methylmethionine transmembrane transporter activity.\" Thus, there is no evidence to determine which feature explains the GO term's primary reaction."
+   }
+  ]
  },
  "GO:0000156": {
   "n_resolved": 3,
@@ -45,5 +122,102 @@
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0000182": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q01954",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the molecular function of \"rDNA binding\" as defined by the GO term. The presence of multiple ZN_FING domains is a general indicator of DNA-binding activity, but none of them specifically match the definition of rDNA binding."
+   },
+   {
+    "accession": "Q02983",
+    "reason": "none_verdict",
+    "reasoning": "VERDICT/FEATURE parsed but no REASONING found -- raw text saved to experiments/llm_term_review/GO_0000182/raw_debug.log"
+   },
+   {
+    "accession": "Q5T5X7",
+    "reason": "none_verdict",
+    "reasoning": "The nuclear localization signal (MOTIF 55-58) is a separate functional domain and does not directly explain the rDNA binding activity. No other annotated feature provides evidence for the primary reaction of binding to an rDNA sequence, making it impossible to determine a plausible explanation for the GO term."
+   },
+   {
+    "accession": "Q9H2G4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides evidence that Q9H2G4 carries the GO term \"rDNA binding\" as a defined molecular function. The disordered regions do not indicate a specific domain or mechanism for rDNA binding, and no cross-references to domains or families directly support this function."
+   }
+  ]
+ },
+ "GO:0000249": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O13820",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in O13820 specifically matches the chemistry of introducing a double bond between C-22 and C-23 carbons as defined by GO:0000249. The only feature provided is for heme binding, which is not sufficient to explain the primary reaction of the term."
+   },
+   {
+    "accession": "O64697",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct structural/functional basis for the GO term's primary reaction of introducing a double bond in sterols."
+   },
+   {
+    "accession": "P54781",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for P54781 is \"BINDING 475-476\" with heme, which is a cofactor often involved in oxygen-dependent reactions. However, this binding site does not directly explain the specific chemistry of introducing a double bond into sterols as defined by GO:0000249. No positional feature provides a strong match to the primary reaction of the term."
+   },
+   {
+    "accession": "Q9ZV28",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9ZV28 directly matches the primary reaction of introducing a double bond between C-22 and C-23 carbons, which is the core molecular function defined by GO:0000249."
+   }
+  ]
+ },
+ "GO:0000268": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Targeting to peroxisomes",
+    "accessions": [
+     "Q9D0K1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P50542",
+    "reason": "none_verdict",
+    "reasoning": "The defined chemistry for the GO term \"peroxisome targeting sequence binding\" involves binding to a peroxisomal targeting sequence, which is not directly explained by any of the annotated features for this protein. None of the features match the primary reaction or mechanism of the GO term."
+   },
+   {
+    "accession": "Q2M2R8",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q2M2R8 do not provide any evidence that directly explains why it carries the GO term \"peroxisome targeting sequence binding.\" No positional feature has been confirmed to be specifically associated with this molecular function."
+   },
+   {
+    "accession": "Q8IYB4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides positional evidence that directly matches the primary reaction of binding to a peroxisomal targeting sequence, which is the core mechanism defined by GO:0000268."
+   }
+  ]
  }
 }

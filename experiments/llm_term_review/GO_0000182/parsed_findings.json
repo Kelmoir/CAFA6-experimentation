@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q01954",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains the molecular function of \"rDNA binding\" as defined by the GO term. The presence of multiple ZN_FING domains is a general indicator of DNA-binding activity, but none of them specifically match the definition of rDNA binding."
+    },
+    {
+      "accession": "Q02983",
+      "reason": "none_verdict",
+      "reasoning": "VERDICT/FEATURE parsed but no REASONING found -- raw text saved to experiments/llm_term_review/GO_0000182/raw_debug.log"
+    },
+    {
+      "accession": "Q5T5X7",
+      "reason": "none_verdict",
+      "reasoning": "The nuclear localization signal (MOTIF 55-58) is a separate functional domain and does not directly explain the rDNA binding activity. No other annotated feature provides evidence for the primary reaction of binding to an rDNA sequence, making it impossible to determine a plausible explanation for the GO term."
+    },
+    {
+      "accession": "Q9H2G4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides evidence that Q9H2G4 carries the GO term \"rDNA binding\" as a defined molecular function. The disordered regions do not indicate a specific domain or mechanism for rDNA binding, and no cross-references to domains or families directly support this function."
+    }
+  ]
+}

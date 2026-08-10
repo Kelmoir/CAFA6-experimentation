@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9D0K1",
+      "go_id": "GO:0000268",
+      "feature_type": "REGION",
+      "start": 146,
+      "end": 235,
+      "signal_kind": "text",
+      "signal_value": "Targeting to peroxisomes",
+      "reasoning": "The region annotation directly corresponds to the primary reaction of the GO term by indicating that the protein targets peroxisomes, which aligns with the description of binding to a peroxisomal targeting sequence."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P50542",
+      "reason": "none_verdict",
+      "reasoning": "The defined chemistry for the GO term \"peroxisome targeting sequence binding\" involves binding to a peroxisomal targeting sequence, which is not directly explained by any of the annotated features for this protein. None of the features match the primary reaction or mechanism of the GO term."
+    },
+    {
+      "accession": "Q2M2R8",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q2M2R8 do not provide any evidence that directly explains why it carries the GO term \"peroxisome targeting sequence binding.\" No positional feature has been confirmed to be specifically associated with this molecular function."
+    },
+    {
+      "accession": "Q8IYB4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides positional evidence that directly matches the primary reaction of binding to a peroxisomal targeting sequence, which is the core mechanism defined by GO:0000268."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q08986",
+      "reason": "none_verdict",
+      "reasoning": "There is no annotated feature in the protein's data that directly explains why it carries the GO term \"S-adenosyl-L-methionine transmembrane transporter activity.\" The definition focuses on the transfer of S-adenosylmethionine across a membrane, but none of the positional features provided describe this mechanism."
+    },
+    {
+      "accession": "Q94AG6",
+      "reason": "none_verdict",
+      "reasoning": "The protein Q94AG6 has no annotated positional features that directly explain the molecular function defined by GO:0000095."
+    },
+    {
+      "accession": "P38921",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature has been confirmed to explain the molecular function defined by GO:0000095 for this protein."
+    },
+    {
+      "accession": "Q5U680",
+      "reason": "none_verdict",
+      "reasoning": "The \"MCP_transmembrane\" domain in this protein is most plausibly responsible for enabling the transfer of S-adenosylmethionine across a membrane, which matches the primary reaction described in the GO term. This domain is specifically associated with transmembrane transport activity, making it the strongest candidate to explain the molecular function."
+    }
+  ]
+}

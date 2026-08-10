@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0000268",
+  "name": "peroxisome targeting sequence binding",
+  "def": "Binding to a peroxisomal targeting sequence, a sequence of amino acids within a protein that acts as a signal for the localization of a protein into the peroxisome.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "P50542",
+    "Q2M2R8",
+    "Q8IYB4",
+    "Q9D0K1"
+  ],
+  "assigned_accessions": [
+    "P50542",
+    "Q2M2R8",
+    "Q8IYB4",
+    "Q9D0K1"
+  ]
+}

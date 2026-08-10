@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0000095",
+  "name": "S-adenosyl-L-methionine transmembrane transporter activity",
+  "def": "Enables the transfer of S-adenosylmethionine from one side of a membrane to the other. S-adenosylmethionine is S-(5'-adenosyl)-L-methionine, an important intermediate in one-carbon metabolism.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "P38921",
+    "Q08986",
+    "Q5U680",
+    "Q94AG6"
+  ],
+  "assigned_accessions": [
+    "P38921",
+    "Q08986",
+    "Q5U680",
+    "Q94AG6"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0000100",
+  "name": "S-methylmethionine transmembrane transporter activity",
+  "def": "Enables the transfer of S-methylmethionine from one side of a membrane to the other.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q12372",
+    "Q47689"
+  ],
+  "assigned_accessions": [
+    "Q12372",
+    "Q47689"
+  ]
+}
