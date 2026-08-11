@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O35874",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains the molecular function of transferring L-threonine across a membrane, as all features describe binding sites for other ligands rather than the specific reaction defined by the GO term."
+    },
+    {
+      "accession": "P0AAD8",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P0AGE4",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P43007",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of enabling L-threonine transmembrane transport, and all features are either generic or only loosely related to the function."
+    }
+  ]
+}

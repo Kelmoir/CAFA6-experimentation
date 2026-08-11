@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O43808",
+      "go_id": "GO:0015217",
+      "feature_type": "MOTIF",
+      "start": 189,
+      "end": 199,
+      "signal_kind": "text",
+      "signal_value": "Peroxisome localization signal",
+      "reasoning": "The motif 189-199 is explicitly labeled as a \"Peroxisome localization signal,\" which directly aligns with the GO term's definition of enabling ADP transport across membranes, making it the most plausible explanation for why O43808 carries this term."
+    },
+    {
+      "accession": "O70579",
+      "go_id": "GO:0015217",
+      "feature_type": "MOTIF",
+      "start": 189,
+      "end": 199,
+      "signal_kind": "text",
+      "signal_value": "Peroxisome localization signal",
+      "reasoning": "The MOTIF 189-199 is explicitly labeled as a \"Peroxisome localization signal,\" which directly supports the protein's role in peroxisomal targeting, a necessary condition for its function as an ADP transmembrane transporter. This feature most plausibly explains why the protein carries the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "B6ZJZ9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q0P483",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

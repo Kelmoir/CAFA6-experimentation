@@ -8552,6 +8552,146 @@
    }
   ]
  },
+ "GO:0015193": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q8BHK3",
+    "go_id": "GO:0015193",
+    "feature_type": "REGION",
+    "start": 0,
+    "end": 46,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The disordered region does not directly explain the ability of Q8BHK3 to transfer L-proline across a membrane, as the function is defined by the transport activity rather than the structural state of a domain."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P28573",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P94392",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8VDB9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015195": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O35874",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the molecular function of transferring L-threonine across a membrane, as all features describe binding sites for other ligands rather than the specific reaction defined by the GO term."
+   },
+   {
+    "accession": "P0AAD8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P0AGE4",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P43007",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of enabling L-threonine transmembrane transport, and all features are either generic or only loosely related to the function."
+   }
+  ]
+ },
+ "GO:0015200": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q41951",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction or mechanism of methylammonium transmembrane transporter activity."
+   },
+   {
+    "accession": "Q9P7F3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9QUT0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9US00",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015204": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Selectivity filter",
+    "accessions": [
+     "Q8R2N1"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q13336",
+    "go_id": "GO:0015204",
+    "feature_type": "SITE",
+    "start": 338,
+    "end": 339,
+    "signal_kind": "text",
+    "signal_value": "Important for channel permeability",
+    "reasoning": "While the site is noted for channel permeability, it does not specifically account for the urea transmembrane transporter activity as defined by the GO term. The definition focuses on the transfer mechanism rather than a specific site, making this feature only loosely related and thus insufficient to explain the primary reaction with high confidence."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "O82598",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in O82598 specifically matches the primary reaction described in the GO term's definition for urea transmembrane transporter activity."
+   },
+   {
+    "accession": "Q8II36",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q8II36 provides a direct explanation for the molecular function \"urea transmembrane transporter activity.\" The only features are related to glycerol binding, which is unrelated to urea transport."
+   }
+  ]
+ },
  "GO:0015215": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -8568,6 +8708,38 @@
    },
    {
     "accession": "Q8TFH2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015217": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Peroxisome localization signal",
+    "accessions": [
+     "O43808",
+     "O70579"
+    ],
+    "reason": "circular agreement -- only 1 of 2 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B6ZJZ9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q0P483",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }

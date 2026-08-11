@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8R2N1",
+      "go_id": "GO:0015204",
+      "feature_type": "SITE",
+      "start": 62,
+      "end": 63,
+      "signal_kind": "text",
+      "signal_value": "Selectivity filter",
+      "reasoning": "The site annotation for \"selectivity filter\" is directly related to the function of urea transporters, which involves the transfer of urea across a membrane. This feature most plausibly explains why Q8R2N1 carries the GO term \"urea transmembrane transporter activity.\""
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q13336",
+      "go_id": "GO:0015204",
+      "feature_type": "SITE",
+      "start": 338,
+      "end": 339,
+      "signal_kind": "text",
+      "signal_value": "Important for channel permeability",
+      "reasoning": "While the site is noted for channel permeability, it does not specifically account for the urea transmembrane transporter activity as defined by the GO term. The definition focuses on the transfer mechanism rather than a specific site, making this feature only loosely related and thus insufficient to explain the primary reaction with high confidence."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "O82598",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in O82598 specifically matches the primary reaction described in the GO term's definition for urea transmembrane transporter activity."
+    },
+    {
+      "accession": "Q8II36",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q8II36 provides a direct explanation for the molecular function \"urea transmembrane transporter activity.\" The only features are related to glycerol binding, which is unrelated to urea transport."
+    }
+  ]
+}

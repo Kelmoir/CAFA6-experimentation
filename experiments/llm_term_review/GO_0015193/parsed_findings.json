@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q8BHK3",
+      "go_id": "GO:0015193",
+      "feature_type": "REGION",
+      "start": 0,
+      "end": 46,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The disordered region does not directly explain the ability of Q8BHK3 to transfer L-proline across a membrane, as the function is defined by the transport activity rather than the structural state of a domain."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P28573",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P94392",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8VDB9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}
