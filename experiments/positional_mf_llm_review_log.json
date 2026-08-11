@@ -7797,5 +7797,234 @@
     "reasoning": "The \"ACT_SITE\" spans do not directly describe the catalytic reaction or the specific chemistry of coenzyme A diphosphatase activity, and therefore do not provide a strong match to the GO term's primary reaction."
    }
   ]
+ },
+ "GO:0015036": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR050553"
+    ],
+    "accessions": [
+     "P29445",
+     "P35160"
+    ],
+    "note": "resolved from DOMAIN note 'Thioredoxin' (7 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Contributes to redox potential value",
+    "accessions": [
+     "P22217"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9ESY9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015043": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "Q9SPB1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0015046": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9HTK9",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain the chemistry of the reaction catalyzed by rubredoxin-NADP+ reductase activity. The only evidence provided is about FAD binding sites, which are relevant for the function but not the mechanism itself."
+   }
+  ]
+ },
+ "GO:0015083": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q9FNU2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6ZG85",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides direct evidence for the molecular function of \"aluminum ion transmembrane transporter activity\" as defined. The domain/family cross-references suggest the protein belongs to a family involved in ion transport, but they do not specify the exact function or provide positional evidence that directly supports the GO term's definition."
+   }
+  ]
+ },
+ "GO:0015089": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9STG2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear explanation for the molecular function defined by GO:0015089. The only available feature is a Disordered region, which does not directly relate to copper ion transport activity."
+   }
+  ]
+ },
+ "GO:0015091": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter",
+    "accessions": [
+     "P07821"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0015092": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Fe(III)-coprogen",
+    "accessions": [
+     "P16869"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0015105": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q06598",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8VZW1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8VZW1 specifically matches the chemistry of arsenite transmembrane transporter activity as defined by GO:0015105. The only relevant features are nucleotide-binding motifs, which are secondary to the primary reaction described in the term's definition."
+   },
+   {
+    "accession": "Q8LFP7",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q9SV84",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9SV84 specifically matches the defined chemistry of arsenite transmembrane transporter activity. The available features are generic motifs and domain/family cross-references that do not directly explain the mechanism of arsenite transport."
+   }
+  ]
+ },
+ "GO:0015115": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6Z2T3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction of silicate transmembrane transporter activity, as both MOTIFS are generic and could apply to many proteins with similar structural features."
+   }
+  ]
+ },
+ "GO:0015117": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q06143",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9FY68",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9SB52",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9SJY5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }

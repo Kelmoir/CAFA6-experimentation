@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015117",
+  "name": "thiosulfate transmembrane transporter activity",
+  "def": "Enables the transfer of thiosulfate ions, HS2O3(1-), from one side of a membrane to the other.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "Q06143",
+    "Q9FY68",
+    "Q9SB52",
+    "Q9SJY5"
+  ],
+  "assigned_accessions": [
+    "Q06143",
+    "Q9FY68",
+    "Q9SB52",
+    "Q9SJY5"
+  ]
+}

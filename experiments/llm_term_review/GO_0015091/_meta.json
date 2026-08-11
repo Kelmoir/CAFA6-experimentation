@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015091",
+  "name": "ferric iron transmembrane transporter activity",
+  "def": "Enables the transfer of ferric iron (Fe(III) or Fe3+) ions from one side of a membrane to the other.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P07821"
+  ],
+  "assigned_accessions": [
+    "P07821"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015105",
+  "name": "arsenite transmembrane transporter activity",
+  "def": "Enables the transfer of arsenite from one side of a membrane to the other.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "Q06598",
+    "Q8LFP7",
+    "Q8VZW1",
+    "Q9SV84"
+  ],
+  "assigned_accessions": [
+    "Q06598",
+    "Q8LFP7",
+    "Q8VZW1",
+    "Q9SV84"
+  ]
+}

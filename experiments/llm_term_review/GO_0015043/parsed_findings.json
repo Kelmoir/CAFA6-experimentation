@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9SPB1",
+      "go_id": "GO:0015043",
+      "feature_type": "ACT_SITE",
+      "start": 478,
+      "end": 479,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The \"ACT_SITE\" feature with coordinates 478-479 explicitly states that the site acts as a proton acceptor, which directly matches the GO term's definition of catalyzing the reaction involving proton transfer. This is a strong match to the primary reaction mechanism described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

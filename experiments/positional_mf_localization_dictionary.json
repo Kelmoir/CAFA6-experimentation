@@ -7481,6 +7481,15 @@
   ],
   "text_patterns": []
  },
+ "GO:0015036": {
+  "name": "disulfide oxidoreductase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR050553"
+  ],
+  "text_patterns": []
+ },
  "GO:0015038": {
   "name": "glutathione disulfide oxidoreductase activity",
   "ligands": [],

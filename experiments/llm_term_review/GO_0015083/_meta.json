@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0015083",
+  "name": "aluminum ion transmembrane transporter activity",
+  "def": "Enables the transfer of aluminum (Al) ions from one side of a membrane to the other.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q6ZG85",
+    "Q9FNU2"
+  ],
+  "assigned_accessions": [
+    "Q6ZG85",
+    "Q9FNU2"
+  ]
+}

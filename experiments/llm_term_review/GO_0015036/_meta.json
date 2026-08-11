@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015036",
+  "name": "disulfide oxidoreductase activity",
+  "def": "Catalysis of the reaction: substrate with reduced sulfide groups = substrate with oxidized disulfide bonds.",
+  "n_proteins_total": 40,
+  "sampled_accessions": [
+    "P22217",
+    "P29445",
+    "P35160",
+    "Q9ESY9"
+  ],
+  "assigned_accessions": [
+    "P22217",
+    "P29445",
+    "P35160",
+    "Q9ESY9"
+  ]
+}

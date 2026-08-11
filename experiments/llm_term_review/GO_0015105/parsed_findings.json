@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q06598",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8VZW1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q8VZW1 specifically matches the chemistry of arsenite transmembrane transporter activity as defined by GO:0015105. The only relevant features are nucleotide-binding motifs, which are secondary to the primary reaction described in the term's definition."
+    },
+    {
+      "accession": "Q8LFP7",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q9SV84",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9SV84 specifically matches the defined chemistry of arsenite transmembrane transporter activity. The available features are generic motifs and domain/family cross-references that do not directly explain the mechanism of arsenite transport."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015092",
+  "name": "high-affinity ferric iron transmembrane transporter activity",
+  "def": "Enables the transfer of ferric iron (Fe(III) or Fe3+) ions from one side of a membrane to the other. In high-affinity transport the transporter is able to bind the solute even if it is only present at very low concentrations.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P16869"
+  ],
+  "assigned_accessions": [
+    "P16869"
+  ]
+}

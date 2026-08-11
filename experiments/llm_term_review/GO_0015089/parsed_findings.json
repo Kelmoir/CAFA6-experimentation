@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9STG2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear explanation for the molecular function defined by GO:0015089. The only available feature is a Disordered region, which does not directly relate to copper ion transport activity."
+    }
+  ]
+}

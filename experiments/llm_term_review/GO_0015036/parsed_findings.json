@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P22217",
+      "go_id": "GO:0015036",
+      "feature_type": "SITE",
+      "start": 30,
+      "end": 31,
+      "signal_kind": "text",
+      "signal_value": "Contributes to redox potential value",
+      "reasoning": "The \"SITE 30-31\" annotation explicitly contributes to the redox potential value, which directly matches the primary reaction mechanism of the GO term \"disulfide oxidoreductase activity.\" This feature provides a strong and specific match to the defined chemistry of the term."
+    },
+    {
+      "accession": "P29445",
+      "go_id": "GO:0015036",
+      "feature_type": "DOMAIN",
+      "start": 1,
+      "end": 105,
+      "signal_kind": "text",
+      "signal_value": "Thioredoxin",
+      "reasoning": "The DOMAIN 1-105 feature directly references a domain family (Thioredoxin) known to catalyze disulfide oxidoreductase activity, which matches the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "P35160",
+      "go_id": "GO:0015036",
+      "feature_type": "DOMAIN",
+      "start": 35,
+      "end": 174,
+      "signal_kind": "text",
+      "signal_value": "Thioredoxin",
+      "reasoning": "The \"Thioredoxin\" note in the DOMAIN 35-174 annotated feature directly aligns with the catalytic activity defined in the GO term, making it the most specific and plausible explanation for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9ESY9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

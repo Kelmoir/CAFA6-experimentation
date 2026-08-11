@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015089",
+  "name": "high-affinity copper ion transmembrane transporter activity",
+  "def": "Enables the transfer of a copper ions (Cu2+) from one side of a membrane to the other. In high-affinity transport the transporter is able to bind the solute even if it is only present at very low concentrations.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9STG2"
+  ],
+  "assigned_accessions": [
+    "Q9STG2"
+  ]
+}

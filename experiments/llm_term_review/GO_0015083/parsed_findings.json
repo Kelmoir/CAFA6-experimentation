@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9FNU2",
+      "go_id": "GO:0015083",
+      "feature_type": "BINDING",
+      "start": 414,
+      "end": 422,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to the transporter domain (BINDING 414-422) is a plausible explanation for why Q9FNU2 carries the GO term \"aluminum ion transmembrane transporter activity,\" as ATP is a common cofactor for many transporters, including those that transfer aluminum ions across membranes."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q6ZG85",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides direct evidence for the molecular function of \"aluminum ion transmembrane transporter activity\" as defined. The domain/family cross-references suggest the protein belongs to a family involved in ion transport, but they do not specify the exact function or provide positional evidence that directly supports the GO term's definition."
+    }
+  ]
+}

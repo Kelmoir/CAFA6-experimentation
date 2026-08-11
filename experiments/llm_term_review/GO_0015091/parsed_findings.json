@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P07821",
+      "go_id": "GO:0015091",
+      "feature_type": "DOMAIN",
+      "start": 11,
+      "end": 248,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter",
+      "reasoning": "The DOMAIN annotation clearly identifies the protein as an ABC transporter, which is mechanistically consistent with the GO term's definition of enabling the transfer of ferric iron ions across a membrane. This feature directly supports the primary reaction described in the GO term's definition and provides a strong match to the molecular function being predicted."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

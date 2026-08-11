@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015043",
+  "name": "leghemoglobin reductase [NAD(P)H] activity",
+  "def": "Catalysis of the reaction: 2 Fe(III)-[leghemoglobin] + NAD(P)H = 2 Fe(II)-[leghemoglobin] + NAD(P)+ + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SPB1"
+  ],
+  "assigned_accessions": [
+    "Q9SPB1"
+  ]
+}
