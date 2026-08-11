@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9Z0Z5",
+      "go_id": "GO:0015141",
+      "feature_type": "MOTIF",
+      "start": 142,
+      "end": 145,
+      "signal_kind": "text",
+      "signal_value": "SNT motif 1",
+      "reasoning": "The presence of the SNT motif (MOTIF 142-145) is strongly associated with the transport activity of succinate, which matches the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q67BT3",
+      "go_id": "GO:0015141",
+      "feature_type": "MOTIF",
+      "start": 139,
+      "end": 142,
+      "signal_kind": "text",
+      "signal_value": "SNT motif",
+      "reasoning": "The SNT motif (MOTIF 139-142) is a structural feature associated with sodium-dependent transporters, which aligns with the primary reaction of transferring succinate across a membrane as defined by GO:0015141."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q03064",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the primary reaction of transferring succinate across a membrane, and all features are either generic or unrelated to the specific function described in the GO term."
+    },
+    {
+      "accession": "Q13183",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's \"Annotated features\" section provides a direct explanation for the molecular function defined by GO:0015141, which involves the transfer of succinate across membranes."
+    }
+  ]
+}

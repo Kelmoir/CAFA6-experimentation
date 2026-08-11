@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P11170",
+      "go_id": "GO:0015146",
+      "feature_type": "BINDING",
+      "start": 456,
+      "end": 457,
+      "signal_kind": "ligand",
+      "signal_value": "D-glucose",
+      "reasoning": "The binding feature at position 456-457 directly involves D-glucose, a pentose sugar, and is positioned in a way that could be part of the active site responsible for transporting it across the membrane, which aligns with the primary reaction described by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P53794",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the primary reaction of pentose transmembrane transporter activity. The only relevant domain information is from cross-references, which refer to solute transporters rather than the specific function defined by GO:0015146."
+    },
+    {
+      "accession": "P23585",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction of transferring pentose sugars across a membrane as defined by GO:0015146. All features are either generic or not directly specific to this function."
+    },
+    {
+      "accession": "P32467",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION\" span from 0-56 with a note that it is \"Disordered\" does not provide positional evidence for the specific function defined by GO:0015146, which involves the transfer of pentose sugars across a membrane. This feature is generic and does not directly explain the mechanism of the term."
+    }
+  ]
+}

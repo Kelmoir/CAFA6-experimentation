@@ -1,0 +1,6 @@
+=== Q67BT3 GO:0015141 (VERDICT missing) ===
+THINKING: The GO term "GO:0015141" is defined as "succinate transmembrane transporter activity," which involves the transfer of succinate across a membrane. This primary reaction is about the movement of succinate, not about binding or other secondary functions. The protein Q67BT3 has several annotated features, including motifs and binding sites for Na(+). However, none of these features directly describe the mechanism of transferring succinate across a membrane. The presence of multiple Na(+)-binding sites suggests that the protein may be involved in ion transport, but this does not specifically explain the activity of transferring succinate. Therefore, no single annotated feature clearly explains the primary reaction defined by the GO term.
+
+FEATURE: MOTIF 139-142  
+REASONING: The SNT motif (MOTIF 139-142) is associated with sodium-dependent transporters, which aligns with the general function of a succinate transmembrane transporter. While this motif does not directly specify the transfer of succinate, it provides a plausible structural basis for ion transport activity, which could be part of the overall mechanism involved in transferring succinate across membranes. This feature is more specific than generic binding sites and has a higher match score compared to other features.
+

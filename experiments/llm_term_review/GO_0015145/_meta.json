@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015145",
+  "name": "monosaccharide transmembrane transporter activity",
+  "def": "Enables the transfer of a monosaccharide from one side of a membrane to the other.",
+  "n_proteins_total": 13,
+  "sampled_accessions": [
+    "O65413",
+    "Q07647",
+    "Q9FMX3",
+    "Q9SBA7"
+  ],
+  "assigned_accessions": [
+    "O65413",
+    "Q07647",
+    "Q9FMX3",
+    "Q9SBA7"
+  ]
+}

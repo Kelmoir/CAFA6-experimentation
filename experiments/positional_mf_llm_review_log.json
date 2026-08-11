@@ -8185,6 +8185,179 @@
    }
   ]
  },
+ "GO:0015140": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P50537",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides evidence for the specific function of transferring malate across a membrane as defined by GO:0015140."
+   },
+   {
+    "accession": "Q8LG88",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9SB52",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9SJY5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015141": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "SNT motif 1",
+    "accessions": [
+     "Q9Z0Z5"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "SNT motif",
+    "accessions": [
+     "Q67BT3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q03064",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the primary reaction of transferring succinate across a membrane, and all features are either generic or unrelated to the specific function described in the GO term."
+   },
+   {
+    "accession": "Q13183",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's \"Annotated features\" section provides a direct explanation for the molecular function defined by GO:0015141, which involves the transfer of succinate across membranes."
+   }
+  ]
+ },
+ "GO:0015144": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "O70127"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transmembrane type-1 1",
+    "accessions": [
+     "Q9QY30"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AEX9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P37674",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015145": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O65413",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q07647",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein Q07647 directly explains the primary reaction or mechanism described in the GO term's definition."
+   },
+   {
+    "accession": "Q9FMX3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9SBA7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015146": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "D-glucose",
+    "accessions": [
+     "P11170"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P53794",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the primary reaction of pentose transmembrane transporter activity. The only relevant domain information is from cross-references, which refer to solute transporters rather than the specific function defined by GO:0015146."
+   },
+   {
+    "accession": "P23585",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction of transferring pentose sugars across a membrane as defined by GO:0015146. All features are either generic or not directly specific to this function."
+   },
+   {
+    "accession": "P32467",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" span from 0-56 with a note that it is \"Disordered\" does not provide positional evidence for the specific function defined by GO:0015146, which involves the transfer of pentose sugars across a membrane. This feature is generic and does not directly explain the mechanism of the term."
+   }
+  ]
+ },
  "GO:0015148": {
   "n_resolved": 0,
   "n_uncertain": 0,
