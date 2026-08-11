@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0031728",
+  "name": "CCR3 chemokine receptor binding",
+  "def": "Binding to a CCR3 chemokine receptor.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "P51671",
+    "Q8BP47",
+    "Q9JKC0",
+    "Q9Y4X3"
+  ],
+  "assigned_accessions": [
+    "P51671",
+    "Q8BP47",
+    "Q9JKC0",
+    "Q9Y4X3"
+  ]
+}

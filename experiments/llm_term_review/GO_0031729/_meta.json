@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0031729",
+  "name": "CCR4 chemokine receptor binding",
+  "def": "Binding to a CCR4 chemokine receptor.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P13501",
+    "Q9ERE0",
+    "Q9WUZ6"
+  ],
+  "assigned_accessions": [
+    "P13501",
+    "Q9ERE0",
+    "Q9WUZ6"
+  ]
+}

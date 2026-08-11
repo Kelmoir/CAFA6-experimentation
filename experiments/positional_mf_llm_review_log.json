@@ -14983,6 +14983,168 @@
    }
   ]
  },
+ "GO:0031690": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O35658",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly supports the primary reaction of adrenergic receptor binding, which is the interaction with an adrenergic receptor. The only relevant note (\"Interaction with MAVS\") is a secondary consequence and does not explain the term's core function."
+   },
+   {
+    "accession": "Q07021",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q07021 does not have any annotated feature that directly matches the primary reaction of \"Binding to an adrenergic receptor.\" Therefore, it is not possible to determine a specific feature that explains this GO term with the given evidence."
+   },
+   {
+    "accession": "Q3T0B6",
+    "reason": "none_verdict",
+    "reasoning": "The region 72-90 is noted as \"C1q binding,\" which could be a plausible explanation for why the protein carries the adrenergic receptor binding term, but it does not directly match the primary reaction of binding to an adrenergic receptor."
+   },
+   {
+    "accession": "Q9MZE0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the adrenergic receptor binding function as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0031716": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P01257",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the defined chemistry of \"calcitonin receptor binding,\" which is about interacting with a calcitonin receptor. The only evidence points to disordered regions, not functional domains."
+   },
+   {
+    "accession": "P01263",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for P01263 is a disordered region in the C-terminal portion of the protein, which could potentially be involved in binding interactions. However, this feature does not directly or specifically explain why the protein carries the GO term \"calcitonin receptor binding\" as a defined function. No other positional features are provided that clearly align with the primary react"
+   },
+   {
+    "accession": "P10092",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P70160",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides positional evidence for the specific molecular function of \"calcitonin receptor binding\" as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0031722": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme b",
+    "accessions": [
+     "P02088",
+     "P02089",
+     "P02091"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0031724": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O43927",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O55038",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0031728": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P51671",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9JKC0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature with exact coordinates provides a strong match to the primary reaction of GO:0031728, which is binding to a CCR3 chemokine receptor. The only positional feature provided is \"REGION 95-119\" with a note that it is disordered, which does not explain why the protein carries this term."
+   },
+   {
+    "accession": "Q9Y4X3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8BP47",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8BP47 explicitly matches the primary reaction of \"Binding to a CCR3 chemokine receptor.\" The only feature provided is a disordered region, which is generic and could apply to many proteins, not specifically tied to the chemistry of binding to CCR3."
+   }
+  ]
+ },
+ "GO:0031729": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P13501",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the binding to a CCR4 chemokine receptor as defined by the GO term. The only positional feature indicates cleavage activity, which is not directly related to the defined function of binding."
+   },
+   {
+    "accession": "Q9ERE0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9WUZ6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0031774": {
   "n_resolved": 0,
   "n_uncertain": 1,

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0031724",
+  "name": "CXCR5 chemokine receptor binding",
+  "def": "Binding to a CXCR5 chemokine receptor.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O43927",
+    "O55038"
+  ],
+  "assigned_accessions": [
+    "O43927",
+    "O55038"
+  ]
+}

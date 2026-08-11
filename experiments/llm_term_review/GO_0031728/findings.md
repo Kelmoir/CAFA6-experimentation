@@ -1,0 +1,20 @@
+## P51671 GO:0031728
+verdict: NONE
+feature: NONE 0-0
+reasoning: protein has zero annotated positional features on record -- nothing to point at
+---
+## Q9JKC0 GO:0031728
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature with exact coordinates provides a strong match to the primary reaction of GO:0031728, which is binding to a CCR3 chemokine receptor. The only positional feature provided is "REGION 95-119" with a note that it is disordered, which does not explain why the protein carries this term.
+---
+## Q9Y4X3 GO:0031728
+verdict: NONE
+feature: NONE 0-0
+reasoning: protein has zero annotated positional features on record -- nothing to point at
+---
+## Q8BP47 GO:0031728
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature in Q8BP47 explicitly matches the primary reaction of "Binding to a CCR3 chemokine receptor." The only feature provided is a disordered region, which is generic and could apply to many proteins, not specifically tied to the chemistry of binding to CCR3.
+---

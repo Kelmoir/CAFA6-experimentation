@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0031716",
+  "name": "calcitonin receptor binding",
+  "def": "Binding to a calcitonin receptor.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P01257",
+    "P01263",
+    "P10092",
+    "P70160"
+  ],
+  "assigned_accessions": [
+    "P01257",
+    "P01263",
+    "P10092",
+    "P70160"
+  ]
+}

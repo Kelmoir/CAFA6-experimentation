@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0031722",
+  "name": "hemoglobin beta binding",
+  "def": "Binding to a hemoglobin beta chain.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P02088",
+    "P02089",
+    "P02091"
+  ],
+  "assigned_accessions": [
+    "P02088",
+    "P02089",
+    "P02091"
+  ]
+}

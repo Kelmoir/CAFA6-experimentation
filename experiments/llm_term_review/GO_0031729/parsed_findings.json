@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P13501",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the binding to a CCR4 chemokine receptor as defined by the GO term. The only positional feature indicates cleavage activity, which is not directly related to the defined function of binding."
+    },
+    {
+      "accession": "Q9ERE0",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9WUZ6",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}
