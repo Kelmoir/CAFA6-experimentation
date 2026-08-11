@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P21549",
+      "go_id": "GO:0008483",
+      "feature_type": "BINDING",
+      "start": 359,
+      "end": 360,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The \"BINDING 359-360\" feature with the qualifier \"ligand: substrate\" directly supports the GO term's definition by indicating that the protein interacts with its substrate in a binding context, which is central to the transaminase activity mechanism."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O74542",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q06402",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features only describe substrate binding and do not provide any evidence of the amino group transfer reaction that defines transaminase activity. Therefore, no single annotated feature can be said to plausibly explain why this protein carries the term."
+    },
+    {
+      "accession": "Q9US34",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

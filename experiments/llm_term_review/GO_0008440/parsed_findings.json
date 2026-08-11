@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q12494",
+      "go_id": "GO:0008440",
+      "feature_type": "BINDING",
+      "start": 771,
+      "end": 780,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding of the substrate (inositol-1,4,5-trisphosphate) to the enzyme's active site is a direct and specific match to the GO term's defined chemistry. This feature provides the structural/functional basis for the enzyme's activity as described in the definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P17105",
+      "reason": "none_verdict",
+      "reasoning": "No single annotated feature in P17105 directly matches the chemistry of the inositol-1,4,5-trisphosphate 3-kinase reaction. While ATP binding sites are present, they do not specifically account for the enzyme's catalytic activity as defined by the GO term. The presence of multiple binding sites and a disordered region suggests functional versatility but does not provide a strong match to the prima"
+    },
+    {
+      "accession": "Q7TS72",
+      "reason": "none_verdict",
+      "reasoning": "The binding site for a substrate is relevant to the reaction described by GO:0008440, but it does not directly explain why the protein carries the term. No other feature provides a strong match to the primary reaction of the enzyme."
+    },
+    {
+      "accession": "Q9FLT2",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

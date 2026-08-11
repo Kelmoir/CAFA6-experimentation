@@ -5769,6 +5769,72 @@
    }
   ]
  },
+ "GO:0008430": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P17563",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P23764",
+    "reason": "none_verdict",
+    "reasoning": "The \"ACT_SITE\" annotation indicates where an enzyme acts, but it does not provide evidence for the specific molecular function of \"selenium binding.\" No other positional feature is present in the annotated features section for this protein that directly supports the defined chemistry of selenium binding."
+   },
+   {
+    "accession": "P49908",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a clear structural or functional basis for the \"selenium binding\" GO term, and the domain/family cross-references do not include positional annotations that would directly support this function."
+   },
+   {
+    "accession": "Q92813",
+    "reason": "none_verdict",
+    "reasoning": "The ACT_SITE annotation at position 132-133 refers to an enzyme's active site, which is unrelated to selenium binding. No other annotated feature directly supports the definition of \"selenium binding\" in any meaningful way."
+   }
+  ]
+ },
+ "GO:0008440": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q12494"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P17105",
+    "reason": "none_verdict",
+    "reasoning": "No single annotated feature in P17105 directly matches the chemistry of the inositol-1,4,5-trisphosphate 3-kinase reaction. While ATP binding sites are present, they do not specifically account for the enzyme's catalytic activity as defined by the GO term. The presence of multiple binding sites and a disordered region suggests functional versatility but does not provide a strong match to the prima"
+   },
+   {
+    "accession": "Q7TS72",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for a substrate is relevant to the reaction described by GO:0008440, but it does not directly explain why the protein carries the term. No other feature provides a strong match to the primary reaction of the enzyme."
+   },
+   {
+    "accession": "Q9FLT2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0008456": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -5785,6 +5851,84 @@
    }
   ]
  },
+ "GO:0008483": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "P21549"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O74542",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q06402",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features only describe substrate binding and do not provide any evidence of the amino group transfer reaction that defines transaminase activity. Therefore, no single annotated feature can be said to plausibly explain why this protein carries the term."
+   },
+   {
+    "accession": "Q9US34",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0008486": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Nudix hydrolase",
+    "accessions": [
+     "O95989"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Nudix box",
+    "accessions": [
+     "P0C027"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "1D-myo-inositol hexakisphosphate",
+    "accessions": [
+     "Q99321"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q9JI46"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
  "GO:0008493": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -5798,6 +5942,38 @@
     "accession": "Q14728",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0008503": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "4-aminobutanoate",
+    "accessions": [
+     "P23576",
+     "Q16445"
+    ],
+    "reason": "ligand already claimed by GO:0022851 elsewhere in the dictionary -- ligand_to_go is a plain dict, a second claim would silently overwrite it"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P18507",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide sufficient evidence to specifically explain why the protein carries the \"benzodiazepine receptor activity\" GO term."
+   },
+   {
+    "accession": "P34903",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data directly explains the primary reaction of benzodiazepine receptor activity, which involves drug binding and its effect on cell activity."
    }
   ]
  },

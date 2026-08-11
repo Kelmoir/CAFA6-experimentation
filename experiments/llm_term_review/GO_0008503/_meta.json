@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008503",
+  "name": "benzodiazepine receptor activity",
+  "def": "Combining with benzodiazepines, a class of drugs with hypnotic, anxiolytic, anticonvulsive, amnestic and myorelaxant properties, to initiate a change in cell activity.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "P18507",
+    "P23576",
+    "P34903",
+    "Q16445"
+  ],
+  "assigned_accessions": [
+    "P18507",
+    "P23576",
+    "P34903",
+    "Q16445"
+  ]
+}

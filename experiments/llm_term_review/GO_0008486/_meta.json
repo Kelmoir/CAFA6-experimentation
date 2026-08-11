@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008486",
+  "name": "diphosphoinositol-polyphosphate diphosphatase activity",
+  "def": "Catalysis of the reaction: diphospho-1D-myo-inositol polyphosphate + H2O = 1D-myo-inositol polyphosphate + phosphate.",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "O95989",
+    "P0C027",
+    "Q99321",
+    "Q9JI46"
+  ],
+  "assigned_accessions": [
+    "O95989",
+    "P0C027",
+    "Q99321",
+    "Q9JI46"
+  ]
+}

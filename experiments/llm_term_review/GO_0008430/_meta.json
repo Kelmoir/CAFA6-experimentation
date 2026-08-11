@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008430",
+  "name": "selenium binding",
+  "def": "Binding to a selenium (Se) ion.",
+  "n_proteins_total": 28,
+  "sampled_accessions": [
+    "P17563",
+    "P23764",
+    "P49908",
+    "Q92813"
+  ],
+  "assigned_accessions": [
+    "P17563",
+    "P23764",
+    "P49908",
+    "Q92813"
+  ]
+}

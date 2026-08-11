@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008483",
+  "name": "transaminase activity",
+  "def": "Catalysis of the transfer of an amino group to an acceptor, usually a 2-oxo acid.",
+  "n_proteins_total": 68,
+  "sampled_accessions": [
+    "O74542",
+    "P21549",
+    "Q06402",
+    "Q9US34"
+  ],
+  "assigned_accessions": [
+    "O74542",
+    "P21549",
+    "Q06402",
+    "Q9US34"
+  ]
+}

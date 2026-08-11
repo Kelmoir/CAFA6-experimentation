@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008440",
+  "name": "inositol-1,4,5-trisphosphate 3-kinase activity",
+  "def": "Catalysis of the reaction: 1D-myo-inositol 1,4,5-trisphosphate + ATP = 1D-myo-inositol 1,3,4,5-tetrakisphosphate + ADP + H+.",
+  "n_proteins_total": 16,
+  "sampled_accessions": [
+    "P17105",
+    "Q12494",
+    "Q7TS72",
+    "Q9FLT2"
+  ],
+  "assigned_accessions": [
+    "P17105",
+    "Q12494",
+    "Q7TS72",
+    "Q9FLT2"
+  ]
+}

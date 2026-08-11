@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P23576",
+      "go_id": "GO:0008503",
+      "feature_type": "BINDING",
+      "start": 93,
+      "end": 94,
+      "signal_kind": "ligand",
+      "signal_value": "4-aminobutanoate",
+      "reasoning": "The binding site at 93-94 for 4-aminobutanoate is directly related to the mechanism described in the GO term's definition, which involves interaction with benzodiazepines to initiate a change in cell activity. This feature provides strong evidence for the function of the protein as a benzodiazepine receptor."
+    },
+    {
+      "accession": "Q16445",
+      "go_id": "GO:0008503",
+      "feature_type": "BINDING",
+      "start": 83,
+      "end": 84,
+      "signal_kind": "ligand",
+      "signal_value": "4-aminobutanoate",
+      "reasoning": "The \"BINDING 83-84\" feature directly matches the primary reaction of the GO term, which is the interaction with a benzodiazepine-like ligand to initiate a change in cell activity. This provides a strong mechanistic basis for the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P18507",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide sufficient evidence to specifically explain why the protein carries the \"benzodiazepine receptor activity\" GO term."
+    },
+    {
+      "accession": "P34903",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided data directly explains the primary reaction of benzodiazepine receptor activity, which involves drug binding and its effect on cell activity."
+    }
+  ]
+}

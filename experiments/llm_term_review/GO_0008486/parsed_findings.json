@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "O95989",
+      "go_id": "GO:0008486",
+      "feature_type": "DOMAIN",
+      "start": 16,
+      "end": 142,
+      "signal_kind": "text",
+      "signal_value": "Nudix hydrolase",
+      "reasoning": "The \"DOMAIN\" annotation (16-142) is strongly associated with Nudix hydrolase, which is known to catalyze hydrolytic reactions, aligning with the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "P0C027",
+      "go_id": "GO:0008486",
+      "feature_type": "MOTIF",
+      "start": 49,
+      "end": 71,
+      "signal_kind": "text",
+      "signal_value": "Nudix box",
+      "reasoning": "The Nudix box motif is a conserved structural feature found in diphosphoinositol-polyphosphate diphosphatases and is directly linked to their catalytic activity, which matches the primary reaction of the GO term."
+    },
+    {
+      "accession": "Q99321",
+      "go_id": "GO:0008486",
+      "feature_type": "BINDING",
+      "start": 31,
+      "end": 32,
+      "signal_kind": "ligand",
+      "signal_value": "1D-myo-inositol hexakisphosphate",
+      "reasoning": "The binding site at 31-32 directly interacts with the substrate of the reaction described in the GO term's definition, which is the primary mechanism for catalyzing the hydrolysis of diphospho-1D-myo-inositol polyphosphate. This specific binding event is strongly aligned with the enzyme's function as defined by the GO term."
+    },
+    {
+      "accession": "Q9JI46",
+      "go_id": "GO:0008486",
+      "feature_type": "BINDING",
+      "start": 9,
+      "end": 10,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site for the substrate (ligand: substrate) directly supports the catalytic activity of diphosphoinositol-polyphosphate diphosphatase, which involves removing phosphate groups from substrates. This feature most plausibly explains why the protein carries the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
