@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015371",
+  "name": "galactose:sodium symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: galactose(out) + Na+(out) = glucose(in) + Na+(in).",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P11170",
+    "P13866",
+    "P53790",
+    "Q8C3K6"
+  ],
+  "assigned_accessions": [
+    "P11170",
+    "P13866",
+    "P53790",
+    "Q8C3K6"
+  ]
+}

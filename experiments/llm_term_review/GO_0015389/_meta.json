@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015389",
+  "name": "pyrimidine- and adenosine-specific:sodium symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: (pyrimidine nucleoside or adenosine)(out) + Na+(out) = (pyrimidine nucleoside or adenosine)(in) + Na+(in).",
+  "n_proteins_total": 14,
+  "sampled_accessions": [
+    "O43868",
+    "O88627",
+    "Q62674",
+    "Q9JIM1"
+  ],
+  "assigned_accessions": [
+    "O43868",
+    "O88627",
+    "Q62674",
+    "Q9JIM1"
+  ]
+}

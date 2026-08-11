@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015378",
+  "name": "sodium:chloride symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: Na+(out) + Cl-(out) = Na+(in) + Cl-(in).",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P23978",
+    "P30531",
+    "P55017",
+    "P55018"
+  ],
+  "assigned_accessions": [
+    "P23978",
+    "P30531",
+    "P55017",
+    "P55018"
+  ]
+}

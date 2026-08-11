@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0015374",
+  "name": "neutral, basic amino acid:sodium:chloride symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: neutral/basic amino acid(out) + Na+(out) + Cl-(out) = neutral/basic amino acid(in) + Na+(in) + Cl-(in).",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q9JMA9",
+    "Q9UN76"
+  ],
+  "assigned_accessions": [
+    "Q9JMA9",
+    "Q9UN76"
+  ]
+}

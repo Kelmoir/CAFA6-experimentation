@@ -9288,6 +9288,137 @@
    }
   ]
  },
+ "GO:0015371": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Implicated in sodium coupling",
+    "accessions": [
+     "P11170"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q8C3K6",
+    "go_id": "GO:0015371",
+    "feature_type": "SITE",
+    "start": 459,
+    "end": 460,
+    "signal_kind": "text",
+    "signal_value": "Involved in sugar-binding/transport and inhibitor binding",
+    "reasoning": "The feature \"SITE 459-460\" suggests involvement in sugar-binding/transport and inhibitor binding, which aligns with the primary reaction of the GO term (galactose and sodium ion transfer). However, it does not explicitly state that the protein is a galactose:sodium symporter. Thus, while it provides a plausible explanation, it does not definitively match the GO term's own chemistry."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P13866",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly explains the defined reaction of galactose:sodium symporter activity, which involves the transfer of galactose and sodium ions across a membrane."
+   },
+   {
+    "accession": "P53790",
+    "reason": "none_verdict",
+    "reasoning": "The highest-scoring candidate, SITE 459-460, only partially matches the primary reaction of the GO term and includes a secondary consequence, making it insufficient to explain why P53790 carries this term. No other annotated feature directly accounts for the defined chemistry of galactose:sodium symporter activity."
+   }
+  ]
+ },
+ "GO:0015373": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q63008",
+    "reason": "none_verdict",
+    "reasoning": "The defined reaction for the GO term involves sodium ion transfer across a membrane, but none of the annotated features directly support this mechanism. While several binding sites are present for Na(+), they do not provide enough specificity to confirm that the protein carries the term as a real, asserted annotation based on its own structural/functional evidence."
+   },
+   {
+    "accession": "Q92911",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q92911 does not have any annotated feature that specifically describes the structural or functional basis for the sodium symporter activity defined by GO:0015373."
+   },
+   {
+    "accession": "Q99PN0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear positional basis for the defined reaction of monoatomic anion:sodium symporter activity."
+   },
+   {
+    "accession": "Q9BZW2",
+    "reason": "none_verdict",
+    "reasoning": "There is no single annotated feature in the protein's data that directly supports the primary reaction of the GO term, which is the transfer of a solute or solutes across a membrane with sodium ions moving"
+   }
+  ]
+ },
+ "GO:0015374": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9JMA9",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q9JMA9 is a disordered region, which does not directly explain why it carries the GO term \"neutral, basic amino acid:sodium:chloride symporter activity.\" No other features are provided that match the primary reaction of the GO term."
+   },
+   {
+    "accession": "Q9UN76",
+    "reason": "none_verdict",
+    "reasoning": "The only available positional feature for Q9UN76 is a Disordered region (621-642), which does not provide any direct evidence of the sodium-chloride symporter activity described by GO:0015374. No other annotated feature directly matches the primary reaction mechanism of this term."
+   }
+  ]
+ },
+ "GO:0015378": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Disordered",
+    "accessions": [
+     "P30531"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Scissor helix",
+    "accessions": [
+     "P55017"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P23978",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P23978 directly matches the primary reaction of the GO term \"sodium:chloride symporter activity,\" which involves the transfer of Na+ and Cl- across a membrane."
+   },
+   {
+    "accession": "P55018",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction or mechanism of the sodium-chloride symporter activity as defined in the GO term."
+   }
+  ]
+ },
  "GO:0015387": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -9303,5 +9434,75 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0015389": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Essential for nucleobase transport",
+    "accessions": [
+     "Q9JIM1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O43868",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the defined reaction of pyrimidine and adenosine-specific sodium symporter activity."
+   },
+   {
+    "accession": "O88627",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q62674",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015399": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FN04",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015437": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P60752"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

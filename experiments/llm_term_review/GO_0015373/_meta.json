@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015373",
+  "name": "monoatomic anion:sodium symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: monoatomic anion(out) + Na+(out) = monoatomic anion(in) + Na+(in).",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "Q63008",
+    "Q92911",
+    "Q99PN0",
+    "Q9BZW2"
+  ],
+  "assigned_accessions": [
+    "Q63008",
+    "Q92911",
+    "Q99PN0",
+    "Q9BZW2"
+  ]
+}

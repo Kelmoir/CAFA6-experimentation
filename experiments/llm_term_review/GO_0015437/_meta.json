@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015437",
+  "name": "lipopolysaccharide floppase activity",
+  "def": "Enables the transfer of a lipopolysaccharide from the cytosolic to the exoplasmic leaflet of a membrane, using energy from the hydrolysis of ATP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P60752"
+  ],
+  "assigned_accessions": [
+    "P60752"
+  ]
+}

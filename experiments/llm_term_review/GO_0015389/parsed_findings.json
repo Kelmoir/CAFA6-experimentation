@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9JIM1",
+      "go_id": "GO:0015389",
+      "feature_type": "SITE",
+      "start": 417,
+      "end": 418,
+      "signal_kind": "text",
+      "signal_value": "Essential for nucleobase transport",
+      "reasoning": "The \"SITE 417-418\" with the qualifier \"Essential for nucleobase transport\" most plausibly explains why Q9JIM1 carries the GO term \"pyrimidine- and adenosine-specific:sodium symporter activity,\" as it directly relates to the primary reaction of transferring nucleosides in exchange for sodium ions."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O43868",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear structural or functional basis for the defined reaction of pyrimidine and adenosine-specific sodium symporter activity."
+    },
+    {
+      "accession": "O88627",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q62674",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

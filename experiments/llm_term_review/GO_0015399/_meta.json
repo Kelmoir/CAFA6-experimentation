@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015399",
+  "name": "primary active transmembrane transporter activity",
+  "def": "Enables the transfer of a solute from one side of a membrane to the other, up the solute's concentration gradient, by binding the solute and undergoing a series of conformational changes. Transport works equally well in either direction and is powered by a primary energy source. Primary energy sources known to be coupled to transport are chemical such as ATP hydrolysis, redox energy and photon energy.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FN04"
+  ],
+  "assigned_accessions": [
+    "Q9FN04"
+  ]
+}

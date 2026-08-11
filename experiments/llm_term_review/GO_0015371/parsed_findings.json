@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "P11170",
+      "go_id": "GO:0015371",
+      "feature_type": "SITE",
+      "start": 42,
+      "end": 43,
+      "signal_kind": "text",
+      "signal_value": "Implicated in sodium coupling",
+      "reasoning": "The Site 42-43 annotation is most plausibly linked to the primary reaction of the GO term (galactose:sodium symporter activity), as it directly involves sodium coupling, a key mechanism in this transport function."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q8C3K6",
+      "go_id": "GO:0015371",
+      "feature_type": "SITE",
+      "start": 459,
+      "end": 460,
+      "signal_kind": "text",
+      "signal_value": "Involved in sugar-binding/transport and inhibitor binding",
+      "reasoning": "The feature \"SITE 459-460\" suggests involvement in sugar-binding/transport and inhibitor binding, which aligns with the primary reaction of the GO term (galactose and sodium ion transfer). However, it does not explicitly state that the protein is a galactose:sodium symporter. Thus, while it provides a plausible explanation, it does not definitively match the GO term's own chemistry."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P13866",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly explains the defined reaction of galactose:sodium symporter activity, which involves the transfer of galactose and sodium ions across a membrane."
+    },
+    {
+      "accession": "P53790",
+      "reason": "none_verdict",
+      "reasoning": "The highest-scoring candidate, SITE 459-460, only partially matches the primary reaction of the GO term and includes a secondary consequence, making it insufficient to explain why P53790 carries this term. No other annotated feature directly accounts for the defined chemistry of galactose:sodium symporter activity."
+    }
+  ]
+}

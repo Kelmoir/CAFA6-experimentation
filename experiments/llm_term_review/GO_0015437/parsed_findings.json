@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P60752",
+      "go_id": "GO:0015437",
+      "feature_type": "BINDING",
+      "start": 375,
+      "end": 383,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The BINDING feature with ATP as the ligand most plausibly explains why P60752 carries the \"lipopolysaccharide floppase activity\" GO term, as it directly relates to the energy source required for the function described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,10 @@
+## Q9JMA9 GO:0015374
+verdict: NONE
+feature: REGION 617-638
+reasoning: The only annotated feature for Q9JMA9 is a disordered region, which does not directly explain why it carries the GO term "neutral, basic amino acid:sodium:chloride symporter activity." No other features are provided that match the primary reaction of the GO term.
+---
+## Q9UN76 GO:0015374
+verdict: NONE
+feature: REGION 621-642
+reasoning: The only available positional feature for Q9UN76 is a Disordered region (621-642), which does not provide any direct evidence of the sodium-chloride symporter activity described by GO:0015374. No other annotated feature directly matches the primary reaction mechanism of this term.
+---
