@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015612",
+  "name": "ABC-type L-arabinose transporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: ATP + H2O + L-arabinose(out) = ADP + phosphate + L-arabinose(in).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AAF3"
+  ],
+  "assigned_accessions": [
+    "P0AAF3"
+  ]
+}

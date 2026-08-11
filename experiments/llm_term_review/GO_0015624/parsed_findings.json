@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P23878",
+      "go_id": "GO:0015624",
+      "feature_type": "DOMAIN",
+      "start": 7,
+      "end": 244,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter",
+      "reasoning": "The DOMAIN feature directly indicates that the protein is an ABC transporter, which is the primary structural basis for ATP-dependent solute transport as defined by the GO term. This matches the primary reaction mechanism of the GO term more specifically than the BINDING feature does."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

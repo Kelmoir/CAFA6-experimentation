@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015638",
+  "name": "microcin transmembrane transporter activity",
+  "def": "Enables the transfer of a microcin from one side of a membrane to the other.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AFY6"
+  ],
+  "assigned_accessions": [
+    "P0AFY6"
+  ]
+}

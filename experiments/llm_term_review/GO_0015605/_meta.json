@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015605",
+  "name": "organophosphate ester transmembrane transporter activity",
+  "def": "Enables the transfer of organophosphate esters from one side of a membrane to the other. Organophosphate esters are small organic molecules containing phosphate ester bonds.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q61285"
+  ],
+  "assigned_accessions": [
+    "Q61285"
+  ]
+}

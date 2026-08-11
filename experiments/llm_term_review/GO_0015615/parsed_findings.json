@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P32721",
+      "go_id": "GO:0015615",
+      "feature_type": "DOMAIN",
+      "start": 5,
+      "end": 245,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter 1",
+      "reasoning": "The DOMAIN 5-245 annotation directly corresponds to the primary reaction mechanism of the GO term, indicating that this domain is responsible for the ABC-type D-allose transporter activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

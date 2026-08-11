@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015615",
+  "name": "ABC-type D-allose transporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: ATP + H2O + D-allose(out) = ADP + phosphate + D-allose(in).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P32721"
+  ],
+  "assigned_accessions": [
+    "P32721"
+  ]
+}

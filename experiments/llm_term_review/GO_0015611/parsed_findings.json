@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P04983",
+      "go_id": "GO:0015611",
+      "feature_type": "DOMAIN",
+      "start": 4,
+      "end": 241,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter 1",
+      "reasoning": "The DOMAIN 4-241 annotation directly matches the primary reaction of the GO term by specifying that the protein is an ABC transporter, which is essential for D-ribose transport as described in the definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9HT73",
+      "go_id": "GO:0015633",
+      "feature_type": "DOMAIN",
+      "start": 5,
+      "end": 221,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter",
+      "reasoning": "The explicit annotation of the \"ABC transporter\" domain in position 5-221 directly aligns with the definition of GO:0015633, which describes the transfer of Zn\u00b2\u207a across a membrane using ATP. This provides a strong and specific structural/functional basis for the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

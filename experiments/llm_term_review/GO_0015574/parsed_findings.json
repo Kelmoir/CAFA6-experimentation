@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P36672",
+      "go_id": "GO:0015574",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 89,
+      "signal_kind": "text",
+      "signal_value": "PTS EIIB type-1",
+      "reasoning": "The PTS EIIB domain (DOMAIN 0-89) is directly associated with the function of enabling the transfer of trehalose across a membrane, which matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A9ZSY2",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P53048",
+      "reason": "none_verdict",
+      "reasoning": "The defined molecular function for the GO term \"trehalose transmembrane transporter activity\" is about enabling the transfer of trehalose across a membrane. However, none of the annotated features for P53048 directly indicate this primary reaction. While domain/family cross-references suggest the presence of MFS domains, these are not positional features and do not specifically explain the functio"
+    },
+    {
+      "accession": "P76042",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

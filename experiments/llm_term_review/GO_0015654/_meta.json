@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0015654",
+  "name": "tellurite transmembrane transporter activity",
+  "def": "Enables the transfer of tellurite from one side of a membrane to the other. Tellurite is a salt of tellurous acid or an oxide of tellurium which occurs sparingly in tufts of white or yellowish crystals.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P0AFJ7",
+    "P32705"
+  ],
+  "assigned_accessions": [
+    "P0AFJ7",
+    "P32705"
+  ]
+}

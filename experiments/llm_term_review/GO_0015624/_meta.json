@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015624",
+  "name": "ABC-type ferric-enterobactin transporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: ATP + H2O + ferric-enterobactin(out) = ADP + phosphate + ferric-enterobactin(in).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P23878"
+  ],
+  "assigned_accessions": [
+    "P23878"
+  ]
+}

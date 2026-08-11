@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015633",
+  "name": "ABC-type zinc transporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: ATP + H2O + Zn2+(out) = ADP + phosphate + Zn2+(in).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9HT73"
+  ],
+  "assigned_accessions": [
+    "Q9HT73"
+  ]
+}

@@ -9923,6 +9923,41 @@
    }
   ]
  },
+ "GO:0015574": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PTS EIIB type-1",
+    "accessions": [
+     "P36672"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A9ZSY2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P53048",
+    "reason": "none_verdict",
+    "reasoning": "The defined molecular function for the GO term \"trehalose transmembrane transporter activity\" is about enabling the transfer of trehalose across a membrane. However, none of the annotated features for P53048 directly indicate this primary reaction. While domain/family cross-references suggest the presence of MFS domains, these are not positional features and do not specifically explain the functio"
+   },
+   {
+    "accession": "P76042",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0015575": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -9936,6 +9971,239 @@
     "accession": "Q8VZ80",
     "reason": "none_verdict",
     "reasoning": "No annotated feature provides a clear structural or functional basis for the defined reaction of mannitol transport. The disordered regions do not directly support the GO term's primary function."
+   }
+  ]
+ },
+ "GO:0015576": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8VZ80",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides direct evidence for the defined molecular function of transferring sorbitol across a membrane."
+   }
+  ]
+ },
+ "GO:0015578": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P38695",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P38695's positional data directly explains the primary reaction of mannose transmembrane transporter activity, which involves the transfer of mannose across a membrane. The presence of multiple domain/family cross-references does not provide a specific positional feature that matches the defined chemistry of the GO term."
+   },
+   {
+    "accession": "P39924",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for P39924 that could plausibly explain the GO term \"mannose transmembrane transporter activity\" is the \"REGION\" described as \"Disordered\" (position 529-551). However, since this region is disordered and no other feature directly describes the transport activity, we cannot confirm it with certainty."
+   },
+   {
+    "accession": "Q9LT15",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the function of the mannose transmembrane transporter activity as defined by the GO term."
+   },
+   {
+    "accession": "P53631",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the primary reaction of the GO term \"mannose transmembrane transporter activity\" with positional evidence."
+   }
+  ]
+ },
+ "GO:0015605": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transmembrane type-1",
+    "accessions": [
+     "Q61285"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0015611": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter 1",
+    "accessions": [
+     "P04983"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0015612": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter 1",
+    "accessions": [
+     "P0AAF3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0015615": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter 1",
+    "accessions": [
+     "P32721"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0015624": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter",
+    "accessions": [
+     "P23878"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0015625": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter",
+    "accessions": [
+     "P07821"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0015633": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter",
+    "accessions": [
+     "Q9HT73"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0015638": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AFY6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015654": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AFJ7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P32705",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015665": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P53389",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
  }

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P0AAF3",
+      "go_id": "GO:0015612",
+      "feature_type": "DOMAIN",
+      "start": 7,
+      "end": 243,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter 1",
+      "reasoning": "The DOMAIN 7-243 annotation specifically corresponds to \"ABC transporter 1,\" which aligns with the defined function of transferring L-arabinose using ATP, making it the most plausible explanation for the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

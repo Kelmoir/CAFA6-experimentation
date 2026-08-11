@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015625",
+  "name": "ABC-type ferric hydroxamate transporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: ATP + H2O + ferric-hydroxamate(out) = ADP + phosphate + ferric-hydroxamate(in).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P07821"
+  ],
+  "assigned_accessions": [
+    "P07821"
+  ]
+}

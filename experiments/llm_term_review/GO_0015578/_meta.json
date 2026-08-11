@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015578",
+  "name": "mannose transmembrane transporter activity",
+  "def": "Enables the transfer of mannose from one side of a membrane to the other. Mannose is the aldohexose manno-hexose, the C-2 epimer of glucose. The D-(+)-form is widely distributed in mannans and hemicelluloses and is of major importance in the core oligosaccharide of N-linked oligosaccharides of glycoproteins.",
+  "n_proteins_total": 16,
+  "sampled_accessions": [
+    "P38695",
+    "P39924",
+    "P53631",
+    "Q9LT15"
+  ],
+  "assigned_accessions": [
+    "P38695",
+    "P39924",
+    "P53631",
+    "Q9LT15"
+  ]
+}

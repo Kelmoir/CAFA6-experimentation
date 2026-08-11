@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015574",
+  "name": "trehalose transmembrane transporter activity",
+  "def": "Enables the transfer of trehalose from one side of a membrane to the other. Trehalose is the disaccharide alpha-D-glucopyranosyl-alpha-D-glucopyranoside that acts of a reserve carbohydrate in certain fungi, algae and lichens.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "A9ZSY2",
+    "P36672",
+    "P53048",
+    "P76042"
+  ],
+  "assigned_accessions": [
+    "A9ZSY2",
+    "P36672",
+    "P53048",
+    "P76042"
+  ]
+}

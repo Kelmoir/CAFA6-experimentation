@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015576",
+  "name": "sorbitol transmembrane transporter activity",
+  "def": "Enables the transfer of sorbitol from one side of a membrane to the other. Sorbitol, also known as glucitol, is the hexitol derived by the reduction of the aldehyde group of glucose.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8VZ80"
+  ],
+  "assigned_accessions": [
+    "Q8VZ80"
+  ]
+}

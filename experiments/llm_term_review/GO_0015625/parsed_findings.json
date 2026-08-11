@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P07821",
+      "go_id": "GO:0015625",
+      "feature_type": "DOMAIN",
+      "start": 11,
+      "end": 248,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter",
+      "reasoning": "The \"DOMAIN\" feature (11-248) is directly related to the class of proteins that perform ATP-dependent transport, which matches the definition of the GO term. This provides a strong and specific match to the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

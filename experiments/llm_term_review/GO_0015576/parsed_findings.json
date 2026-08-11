@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8VZ80",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides direct evidence for the defined molecular function of transferring sorbitol across a membrane."
+    }
+  ]
+}

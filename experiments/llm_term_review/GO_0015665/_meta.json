@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015665",
+  "name": "alcohol transmembrane transporter activity",
+  "def": "Enables the transfer of an alcohol from one side of a membrane to the other. An alcohol is any carbon compound that contains a hydroxyl group.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P53389"
+  ],
+  "assigned_accessions": [
+    "P53389"
+  ]
+}

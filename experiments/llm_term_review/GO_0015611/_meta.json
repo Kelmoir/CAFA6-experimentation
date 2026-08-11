@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015611",
+  "name": "ABC-type D-ribose transporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: ATP + H2O + D-ribose(out) = ADP + phosphate + D-ribose(in).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P04983"
+  ],
+  "assigned_accessions": [
+    "P04983"
+  ]
+}
