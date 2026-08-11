@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0030293",
+  "name": "transmembrane receptor protein tyrosine kinase inhibitor activity",
+  "def": "Binds to and stops, prevents or reduces the activity of a transmembrane receptor protein tyrosine kinase.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "B2RU80",
+    "P23467",
+    "Q8NHJ6"
+  ],
+  "assigned_accessions": [
+    "B2RU80",
+    "P23467",
+    "Q8NHJ6"
+  ]
+}

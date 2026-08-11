@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9NTI7",
+      "go_id": "GO:0030291",
+      "feature_type": "REGION",
+      "start": 136,
+      "end": 180,
+      "signal_kind": "text",
+      "signal_value": "Inka box",
+      "reasoning": "The \"Inka box\" region in Q9NTI7 is most plausibly associated with the function of inhibiting a serine/threonine kinase, as it corresponds to a known domain involved in enzyme regulation and signal transduction."
+    },
+    {
+      "accession": "Q9QXV8",
+      "go_id": "GO:0030291",
+      "feature_type": "DOMAIN",
+      "start": 176,
+      "end": 291,
+      "signal_kind": "text",
+      "signal_value": "SPR",
+      "reasoning": "The DOMAIN 176-291 feature with the \"SPR\" note directly matches the primary reaction of the GO term by indicating that the protein carries a domain associated with serine/threonine kinase inhibition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P09211",
+      "reason": "none_verdict",
+      "reasoning": "The domain \"GST N-terminal\" is associated with glutathione metabolism but does not directly explain why the protein has the function described by GO:0030291, which focuses on inhibiting serine/threonine kinase activity. No other annotated feature provides a stronger match to the primary reaction of this GO term."
+    },
+    {
+      "accession": "P23298",
+      "reason": "none_verdict",
+      "reasoning": "The binding of ATP to the protein is consistent with its role as a serine/threonine kinase inhibitor, but no annotated feature directly supports the inhibitory mechanism described in the GO term's definition."
+    }
+  ]
+}

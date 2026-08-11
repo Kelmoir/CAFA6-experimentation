@@ -13558,6 +13558,44 @@
    }
   ]
  },
+ "GO:0030228": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SSD",
+    "accessions": [
+     "P18502"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Endocytosis signal",
+    "accessions": [
+     "P98165"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P56480",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature explicitly states that P56480 carries the molecular function of \"lipoprotein particle receptor activity,\" which is defined by its ability to combine with and deliver a lipoprotein particle into the cell via endocytosis. The only plausible match is the presence of multiple binding sites, but these do not directly explain the function as defined."
+   },
+   {
+    "accession": "Q8VBT6",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q8VBT6 does not have any annotated features that specifically match the primary reaction described in the definition of the GO term \"lipoprotein particle receptor activity.\" All the annotated features are regions marked as disordered, which do not provide structural evidence for the function defined by the GO term. Therefore, there is no single annotated feature that can be confidently"
+   }
+  ]
+ },
  "GO:0030233": {
   "n_resolved": 0,
   "n_uncertain": 1,
@@ -13578,5 +13616,153 @@
    }
   ],
   "issues": []
+ },
+ "GO:0030249": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q8VBV8",
+    "go_id": "GO:0030249",
+    "feature_type": "BINDING",
+    "start": 65,
+    "end": 66,
+    "signal_kind": "ligand",
+    "signal_value": "Ca(2+)",
+    "reasoning": "The binding of Ca(2+) to specific regions (BINDING 65-66) could be a plausible mechanism for regulating guanylate cyclase activity, as calcium is a known cofactor for this enzyme. However, the annotated features do not explicitly state that these regions are involved in guanylate cyclase regulation, making the match only indirect and speculative."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P28902",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P43080",
+    "reason": "none_verdict",
+    "reasoning": "The defined molecular function for the GO term \"guanylate cyclase regulator activity\" is to modulate guanylate cyclase activity, but none of the annotated features directly explain this mechanism. All features are either generic (like EF-hand domains) or only echo words from secondary clauses, such as Ca\u00b2\u207a binding sites. Therefore, there is no plausible explanation for why this protein carries the"
+   },
+   {
+    "accession": "P43081",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction or mechanism of modulating guanylate cyclase activity as described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0030280": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "IF rod",
+    "accessions": [
+     "O76013",
+     "Q6KB66",
+     "Q99456"
+    ],
+    "reason": "resolved to ['InterPro:IPR018039', 'InterPro:IPR039008', 'PROSITE:PS00226', 'PROSITE:PS51842'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR018039': 152, 'InterPro:IPR039008': 178, 'PROSITE:PS00226': 152, 'PROSITE:PS51842': 178})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Coil 1A",
+    "accessions": [
+     "Q86Y46"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0030291": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Inka box",
+    "accessions": [
+     "Q9NTI7"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SPR",
+    "accessions": [
+     "Q9QXV8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P09211",
+    "reason": "none_verdict",
+    "reasoning": "The domain \"GST N-terminal\" is associated with glutathione metabolism but does not directly explain why the protein has the function described by GO:0030291, which focuses on inhibiting serine/threonine kinase activity. No other annotated feature provides a stronger match to the primary reaction of this GO term."
+   },
+   {
+    "accession": "P23298",
+    "reason": "none_verdict",
+    "reasoning": "The binding of ATP to the protein is consistent with its role as a serine/threonine kinase inhibitor, but no annotated feature directly supports the inhibitory mechanism described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0030293": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B2RU80",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction or mechanism of the GO term \"transmembrane receptor protein tyrosine kinase inhibitor activity.\""
+   },
+   {
+    "accession": "P23467",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features specifically explain the molecular function of inhibiting transmembrane receptor protein tyrosine kinase activity as defined in the GO term. The domain spans refer to structural organization, not functional inhibition."
+   },
+   {
+    "accession": "Q8NHJ6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8NHJ6 specifically matches the primary reaction described by GO:0030293, which involves binding to and inhibiting a transmembrane receptor protein tyrosine kinase."
+   }
+  ]
+ },
+ "GO:0030603": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q05957",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the enzymatic reaction or active site architecture required for oxaloacetase activity. The binding sites are associated with Mg(2+), which is a cofactor, but this does not explain the term's own chemistry."
+   }
+  ]
  }
 }

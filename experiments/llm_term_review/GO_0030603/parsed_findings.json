@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q05957",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the enzymatic reaction or active site architecture required for oxaloacetase activity. The binding sites are associated with Mg(2+), which is a cofactor, but this does not explain the term's own chemistry."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0030291",
+  "name": "protein serine/threonine kinase inhibitor activity",
+  "def": "Binds to and stops, prevents or reduces the activity of a protein serine/threonine kinase.",
+  "n_proteins_total": 76,
+  "sampled_accessions": [
+    "P09211",
+    "P23298",
+    "Q9NTI7",
+    "Q9QXV8"
+  ],
+  "assigned_accessions": [
+    "P09211",
+    "P23298",
+    "Q9NTI7",
+    "Q9QXV8"
+  ]
+}

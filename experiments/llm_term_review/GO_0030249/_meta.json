@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0030249",
+  "name": "guanylate cyclase regulator activity",
+  "def": "Modulates the activity of guanylate cyclase.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P28902",
+    "P43080",
+    "P43081",
+    "Q8VBV8"
+  ],
+  "assigned_accessions": [
+    "P28902",
+    "P43080",
+    "P43081",
+    "Q8VBV8"
+  ]
+}

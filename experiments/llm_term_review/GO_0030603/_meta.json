@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0030603",
+  "name": "oxaloacetase activity",
+  "def": "Catalysis of the reaction: H2O + oxaloacetate = acetate + H+ + oxalate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q05957"
+  ],
+  "assigned_accessions": [
+    "Q05957"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q8VBV8",
+      "go_id": "GO:0030249",
+      "feature_type": "BINDING",
+      "start": 65,
+      "end": 66,
+      "signal_kind": "ligand",
+      "signal_value": "Ca(2+)",
+      "reasoning": "The binding of Ca(2+) to specific regions (BINDING 65-66) could be a plausible mechanism for regulating guanylate cyclase activity, as calcium is a known cofactor for this enzyme. However, the annotated features do not explicitly state that these regions are involved in guanylate cyclase regulation, making the match only indirect and speculative."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P28902",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P43080",
+      "reason": "none_verdict",
+      "reasoning": "The defined molecular function for the GO term \"guanylate cyclase regulator activity\" is to modulate guanylate cyclase activity, but none of the annotated features directly explain this mechanism. All features are either generic (like EF-hand domains) or only echo words from secondary clauses, such as Ca\u00b2\u207a binding sites. Therefore, there is no plausible explanation for why this protein carries the"
+    },
+    {
+      "accession": "P43081",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction or mechanism of modulating guanylate cyclase activity as described in the GO term's definition."
+    }
+  ]
+}

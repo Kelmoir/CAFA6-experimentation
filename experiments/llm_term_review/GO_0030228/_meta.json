@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0030228",
+  "name": "lipoprotein particle receptor activity",
+  "def": "Combining with a lipoprotein particle and delivering the lipoprotein particle into the cell via endocytosis. A lipoprotein particle, also known as a lipoprotein, is a clathrate complex consisting of a lipid enwrapped in a protein host without covalent binding in such a way that the complex has a hydrophilic outer surface consisting of all the protein and the polar ends of any phospholipids.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "P18502",
+    "P56480",
+    "P98165",
+    "Q8VBT6"
+  ],
+  "assigned_accessions": [
+    "P18502",
+    "P56480",
+    "P98165",
+    "Q8VBT6"
+  ]
+}

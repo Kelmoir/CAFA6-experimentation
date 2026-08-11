@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0030280",
+  "name": "structural constituent of skin epidermis",
+  "def": "The action of a molecule that contributes to the structural integrity of an epidermal cutaneous structure.",
+  "n_proteins_total": 107,
+  "sampled_accessions": [
+    "O76013",
+    "Q6KB66",
+    "Q86Y46",
+    "Q99456"
+  ],
+  "assigned_accessions": [
+    "O76013",
+    "Q6KB66",
+    "Q86Y46",
+    "Q99456"
+  ]
+}
