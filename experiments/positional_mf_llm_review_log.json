@@ -16808,6 +16808,37 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0033142": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q90955",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein Q90955 do not provide any positional evidence that directly explains why it carries the molecular function \"nuclear progesterone receptor binding.\""
+   },
+   {
+    "accession": "Q96PN7",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain the binding to a nuclear progesterone receptor, and the \"DNA_BIND\" region is not specific to this function."
+   },
+   {
+    "accession": "Q9R144",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9R144 does not have any annotated feature that directly matches the primary reaction of the GO term \"nuclear progesterone receptor binding.\""
+   },
+   {
+    "accession": "P11501",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein P11501 specifically matches the primary reaction of \"Binding to a nuclear progesterone receptor,\" as all features are either about structural properties or ligand binding, not the actual function of the GO term."
+   }
+  ]
+ },
  "GO:0033219": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -16844,5 +16875,151 @@
     "reasoning": "No annotated feature provides a clear structural or functional basis for the protein carrying the GO term \"GO:0033222\" as defined."
    }
   ]
+ },
+ "GO:0033265": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9GZV3",
+    "go_id": "GO:0033265",
+    "feature_type": "MOTIF",
+    "start": 526,
+    "end": 532,
+    "signal_kind": "text",
+    "signal_value": "Dileucine-like motif",
+    "reasoning": "The MOTIF feature is more likely to be related to choline transport and thus could plausibly explain why Q9GZV3 carries the GO term \"choline binding,\" but it does not directly confirm this primary reaction."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P06276",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the primary reaction or mechanism of the GO term \"choline binding,\" which involves direct binding to choline."
+   },
+   {
+    "accession": "Q01134",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction or mechanism of \"choline binding\" as defined. The closest is a binding site for phosphocholine, which is chemically similar but not identical to choline."
+   },
+   {
+    "accession": "Q8BGY9",
+    "reason": "none_verdict",
+    "reasoning": "The region spans the entire sequence length of the protein and is noted to mediate interaction with SEC14L1, but it does not directly indicate choline binding activity. No annotated feature specifically matches the chemistry of choline binding as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0033293": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0A0R4IM31",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P0AD14",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P0AD14 specifically matches the defined reaction of binding monocarboxylic acids, and all features are generic or not directly related to this function."
+   }
+  ]
+ },
+ "GO:0033549": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Tyrosine-protein phosphatase",
+    "accessions": [
+     "P51452",
+     "Q84JU4",
+     "Q9QYJ7",
+     "Q9UII6"
+    ],
+    "reason": "resolved to ['InterPro:IPR000340', 'InterPro:IPR020422', 'InterPro:IPR029021', 'PROSITE:PS00383', 'PROSITE:PS50054', 'PROSITE:PS50056'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000340': 98, 'InterPro:IPR020422': 126, 'InterPro:IPR029021': 317, 'PROSITE:PS00383': 224, 'PROSITE:PS50054': 127, 'PROSITE:PS50056': 255})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0033612": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "SCOOP motif",
+    "accessions": [
+     "O04468"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Protein kinase",
+    "accessions": [
+     "O49545"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8S8N0",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region in Q8S8N0 does not specifically match the defined chemistry of receptor serine/threonine kinase binding, as it lacks domain-specific information and is generic in nature."
+   },
+   {
+    "accession": "Q8S8N2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0033703": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton donor",
+    "accessions": [
+     "Q04828"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "Q9BTZ2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0033703",
+  "name": "3-beta-hydroxy-5-beta-steroid dehydrogenase (NADP+) activity",
+  "def": "Catalysis of the reaction: 3-beta-hydroxy-5-beta-pregnane-20-one + NADP+ = 5-beta-pregnan-3,20-dione + H+ + NADPH.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q04828",
+    "Q9BTZ2"
+  ],
+  "assigned_accessions": [
+    "Q04828",
+    "Q9BTZ2"
+  ]
+}

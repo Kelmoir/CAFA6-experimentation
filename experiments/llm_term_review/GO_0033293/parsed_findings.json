@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A0A0R4IM31",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P0AD14",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P0AD14 specifically matches the defined reaction of binding monocarboxylic acids, and all features are generic or not directly related to this function."
+    }
+  ]
+}

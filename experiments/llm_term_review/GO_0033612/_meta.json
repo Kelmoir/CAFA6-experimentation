@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0033612",
+  "name": "receptor serine/threonine kinase binding",
+  "def": "Binding to a receptor that possesses protein serine/threonine kinase activity.",
+  "n_proteins_total": 86,
+  "sampled_accessions": [
+    "O04468",
+    "O49545",
+    "Q8S8N0",
+    "Q8S8N2"
+  ],
+  "assigned_accessions": [
+    "O04468",
+    "O49545",
+    "Q8S8N0",
+    "Q8S8N2"
+  ]
+}

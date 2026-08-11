@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0033293",
+  "name": "monocarboxylic acid binding",
+  "def": "Binding to a monocarboxylic acid, any organic acid containing one carboxyl (COOH) group or anion (COO-).",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "A0A0R4IM31",
+    "P0AD14"
+  ],
+  "assigned_accessions": [
+    "A0A0R4IM31",
+    "P0AD14"
+  ]
+}

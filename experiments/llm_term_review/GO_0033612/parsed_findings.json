@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O04468",
+      "go_id": "GO:0033612",
+      "feature_type": "MOTIF",
+      "start": 44,
+      "end": 58,
+      "signal_kind": "text",
+      "signal_value": "SCOOP motif",
+      "reasoning": "The SCOOP motif is a structural feature that directly supports the function of binding to receptor serine/threonine kinases, which aligns with the GO term's definition."
+    },
+    {
+      "accession": "O49545",
+      "go_id": "GO:0033612",
+      "feature_type": "DOMAIN",
+      "start": 693,
+      "end": 971,
+      "signal_kind": "text",
+      "signal_value": "Protein kinase",
+      "reasoning": "The DOMAIN 693-971 with note \"Protein kinase\" directly relates to the enzyme activity of a serine/threonine kinase, which supports the function of binding to such a receptor. This matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8S8N0",
+      "reason": "none_verdict",
+      "reasoning": "The disordered region in Q8S8N0 does not specifically match the defined chemistry of receptor serine/threonine kinase binding, as it lacks domain-specific information and is generic in nature."
+    },
+    {
+      "accession": "Q8S8N2",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

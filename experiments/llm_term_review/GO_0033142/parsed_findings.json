@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q90955",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for protein Q90955 do not provide any positional evidence that directly explains why it carries the molecular function \"nuclear progesterone receptor binding.\""
+    },
+    {
+      "accession": "Q96PN7",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly explain the binding to a nuclear progesterone receptor, and the \"DNA_BIND\" region is not specific to this function."
+    },
+    {
+      "accession": "Q9R144",
+      "reason": "none_verdict",
+      "reasoning": "The protein Q9R144 does not have any annotated feature that directly matches the primary reaction of the GO term \"nuclear progesterone receptor binding.\""
+    },
+    {
+      "accession": "P11501",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for protein P11501 specifically matches the primary reaction of \"Binding to a nuclear progesterone receptor,\" as all features are either about structural properties or ligand binding, not the actual function of the GO term."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0033549",
+  "name": "MAP kinase phosphatase activity",
+  "def": "Catalysis of the reaction: a phosphorylated MAP kinase + H2O = a MAP kinase + phosphate.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "P51452",
+    "Q84JU4",
+    "Q9QYJ7",
+    "Q9UII6"
+  ],
+  "assigned_accessions": [
+    "P51452",
+    "Q84JU4",
+    "Q9QYJ7",
+    "Q9UII6"
+  ]
+}

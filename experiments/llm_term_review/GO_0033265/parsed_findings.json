@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9GZV3",
+      "go_id": "GO:0033265",
+      "feature_type": "MOTIF",
+      "start": 526,
+      "end": 532,
+      "signal_kind": "text",
+      "signal_value": "Dileucine-like motif",
+      "reasoning": "The MOTIF feature is more likely to be related to choline transport and thus could plausibly explain why Q9GZV3 carries the GO term \"choline binding,\" but it does not directly confirm this primary reaction."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P06276",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong match to the primary reaction or mechanism of the GO term \"choline binding,\" which involves direct binding to choline."
+    },
+    {
+      "accession": "Q01134",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction or mechanism of \"choline binding\" as defined. The closest is a binding site for phosphocholine, which is chemically similar but not identical to choline."
+    },
+    {
+      "accession": "Q8BGY9",
+      "reason": "none_verdict",
+      "reasoning": "The region spans the entire sequence length of the protein and is noted to mediate interaction with SEC14L1, but it does not directly indicate choline binding activity. No annotated feature specifically matches the chemistry of choline binding as defined by the GO term."
+    }
+  ]
+}

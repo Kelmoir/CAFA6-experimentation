@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "Q04828",
+      "go_id": "GO:0033703",
+      "feature_type": "ACT_SITE",
+      "start": 54,
+      "end": 55,
+      "signal_kind": "text",
+      "signal_value": "Proton donor",
+      "reasoning": "The \"ACT_SITE\" at position 54-55 is directly related to the reaction mechanism of the enzyme, as it indicates that this site is a proton donor, which matches the primary reaction described in the GO term. This feature provides a clear structural basis for the molecular function defined by the GO term."
+    },
+    {
+      "accession": "Q9BTZ2",
+      "go_id": "GO:0033703",
+      "feature_type": "BINDING",
+      "start": 35,
+      "end": 60,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The binding of NADP+ to the enzyme is a direct and essential part of the reaction it catalyzes, making this feature the most plausible explanation for why the protein carries the given GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,10 @@
+=== P51452 GO:0033549 (VERDICT missing) ===
+THINKING: The GO term is "MAP kinase phosphatase activity" (GO:0033549), which defines the catalytic reaction of a phosphorylated MAP kinase + H2O = a MAP kinase + phosphate. This indicates that the protein carries a domain or structural feature capable of dephosphorylating MAP kinases. The annotated features for this protein include a DOMAIN (27-179) and an ACT_SITE (123-124). 
+
+The DOMAIN annotation is associated with "Tyrosine-protein phosphatase" and provides evidence from PROSITE-ProRule:PRU00160, which likely refers to the domain's function in catalyzing dephosphorylation. The ACT_SITE annotation notes a "Phosphocysteine intermediate," which may be relevant to the mechanism of action but does not directly explain why the protein carries the term.
+
+The DOMAIN annotation is more specific and directly relates to the enzymatic activity described in the GO definition. It provides a clear structural basis for the phosphatase function, making it a stronger candidate than the ACT_SITE annotation, which only describes an intermediate involved in the reaction but does not explain the enzyme's presence or function.
+
+FEATURE: DOMAIN 27-179  
+REASONING: The DOMAIN annotation (27-179) is directly related to the enzymatic activity of MAP kinase phosphatase, as it specifies the domain type associated with tyrosine-protein phosphatase, which matches the primary reaction described in the GO term. This provides a clear structural/functional basis for why the protein carries the term.
+

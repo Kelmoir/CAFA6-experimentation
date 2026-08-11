@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0033142",
+  "name": "nuclear progesterone receptor binding",
+  "def": "Binding to a nuclear progesterone receptor.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P11501",
+    "Q90955",
+    "Q96PN7",
+    "Q9R144"
+  ],
+  "assigned_accessions": [
+    "P11501",
+    "Q90955",
+    "Q96PN7",
+    "Q9R144"
+  ]
+}
