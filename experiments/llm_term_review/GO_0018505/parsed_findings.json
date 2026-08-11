@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "P07943",
+      "go_id": "GO:0018505",
+      "feature_type": "SITE",
+      "start": 298,
+      "end": 299,
+      "signal_kind": "text",
+      "signal_value": "Redox-sensitive site",
+      "reasoning": "The site note indicating that the redox-sensitive site is present directly supports the function of transferring hydrogen atoms in a redox reaction, which matches the primary chemistry defined by the GO term."
+    },
+    {
+      "accession": "P45376",
+      "go_id": "GO:0018505",
+      "feature_type": "SITE",
+      "start": 298,
+      "end": 299,
+      "signal_kind": "text",
+      "signal_value": "Redox-sensitive site",
+      "reasoning": "The \"Redox-sensitive site\" annotation directly relates to the enzyme's redox activity, which is central to its function as described by the GO term. This feature provides a plausible explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

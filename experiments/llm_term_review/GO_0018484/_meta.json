@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0018484",
+  "name": "4-hydroxybenzaldehyde dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: 4-hydroxybenzaldehyde + NAD+ + H2O = 4-hydroxybenzoate + NADH + H+.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q04458",
+    "Q1K615"
+  ],
+  "assigned_accessions": [
+    "Q04458",
+    "Q1K615"
+  ]
+}

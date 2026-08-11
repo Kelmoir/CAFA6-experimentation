@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0018505",
+  "name": "cis-1,2-dihydro-1,2-dihydroxynaphthalene dehydrogenase activity",
+  "def": "Catalysis of the reaction: cis-1,2-dihydronaphthalene-1,2-diol + NAD+ = naphthalene-1,2-diol + NADH + H+.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P07943",
+    "P45376"
+  ],
+  "assigned_accessions": [
+    "P07943",
+    "P45376"
+  ]
+}

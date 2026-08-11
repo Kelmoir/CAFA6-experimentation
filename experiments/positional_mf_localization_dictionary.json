@@ -10410,6 +10410,15 @@
    "proton acceptor"
   ]
  },
+ "GO:0018505": {
+  "name": "cis-1,2-dihydro-1,2-dihydroxynaphthalene dehydrogenase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "redox-sensitive site"
+  ]
+ },
  "GO:0018549": {
   "name": "methanethiol oxidase activity",
   "ligands": [],

@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P43353",
+      "go_id": "GO:0018477",
+      "feature_type": "BINDING",
+      "start": 187,
+      "end": 193,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NADP+ is central to the reaction catalyzed by benzaldehyde dehydrogenase, making this feature a strong match for the defined molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q80VQ0",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction mechanism described in the GO term's definition, so there is no specific feature that can be identified as explaining the molecular function."
+    }
+  ]
+}

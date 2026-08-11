@@ -11924,5 +11924,220 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0018458": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5C9I9",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features for Q5C9I9 specifically explain the primary reaction of isopiperitenol dehydrogenase activity, which involves hydrogen transfer from the substrate to NAD+."
+   }
+  ]
+ },
+ "GO:0018459": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5C9I9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q5C9I9 provides a clear and specific explanation for why it carries the GO term \"carveol dehydrogenase activity,\" as all features are generic or only loosely related to the reaction mechanism."
+   }
+  ]
+ },
+ "GO:0018477": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P43353"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q80VQ0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism described in the GO term's definition, so there is no specific feature that can be identified as explaining the molecular function."
+   }
+  ]
+ },
+ "GO:0018479": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P13601",
+     "P47739",
+     "P48644"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   },
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "Q80VQ0"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0018484": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "Q1K615"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q04458",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly matches the primary reaction mechanism of the GO term, so no specific feature can be identified as explaining why the protein carries this term."
+   }
+  ]
+ },
+ "GO:0018488": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "2Fe-2S ferredoxin-type",
+    "accessions": [
+     "Q7G191"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0018505": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "redox-sensitive site",
+    "accessions": [
+     "P07943",
+     "P45376"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0018601": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "P05182",
+     "Q05421"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P05181",
+    "go_id": "GO:0018601",
+    "feature_type": "BINDING",
+    "start": 436,
+    "end": 437,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "The binding of heme (Fe) to the protein is a plausible explanation for its monooxygenase activity, as heme is a common cofactor in such enzymes. However, since the GO term's definition focuses on the specific reaction mechanism rather than just the presence of a cofactor, the feature does not directly explain the chemistry of the defined reaction. Thus, the match is uncertain."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0018675": {
+  "n_resolved": 3,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "P0DO35",
+     "P0DO41",
+     "Q9XHE8"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P0DO39",
+    "go_id": "GO:0018675",
+    "feature_type": "BINDING",
+    "start": 434,
+    "end": 435,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "The \"BINDING\" feature (434-435) with heme as the ligand is more directly related to the enzyme's function than the disordered region, but it does not fully explain the catalytic mechanism of oxygen transfer."
+   }
+  ],
+  "issues": []
  }
 }

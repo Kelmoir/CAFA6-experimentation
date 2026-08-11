@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0018488",
+  "name": "aryl-aldehyde oxidase activity",
+  "def": "Catalysis of the reaction: an aromatic aldehyde + O2 + H2O = an aromatic acid + hydrogen peroxide.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q7G191"
+  ],
+  "assigned_accessions": [
+    "Q7G191"
+  ]
+}

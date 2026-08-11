@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q7G191",
+      "go_id": "GO:0018488",
+      "feature_type": "DOMAIN",
+      "start": 3,
+      "end": 91,
+      "signal_kind": "text",
+      "signal_value": "2Fe-2S ferredoxin-type",
+      "reasoning": "The \"2Fe-2S ferredoxin-type\" domain is more plausibly associated with the redox chemistry described in the GO term's primary reaction, making it a strong candidate for explaining why this protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

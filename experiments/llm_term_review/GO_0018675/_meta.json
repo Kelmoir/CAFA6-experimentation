@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0018675",
+  "name": "(S)-limonene 6-monooxygenase activity",
+  "def": "Catalysis of the reaction: (4S)-limonene + O2 + reduced [NADPH--hemoprotein reductase] = (1S,5R)-carveol + H+ + H2O + oxidized [NADPH--hemoprotein reductase].",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "P0DO35",
+    "P0DO39",
+    "P0DO41",
+    "Q9XHE8"
+  ],
+  "assigned_accessions": [
+    "P0DO35",
+    "P0DO39",
+    "P0DO41",
+    "Q9XHE8"
+  ]
+}

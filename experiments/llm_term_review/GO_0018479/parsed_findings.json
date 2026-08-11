@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "P13601",
+      "go_id": "GO:0018479",
+      "feature_type": "BINDING",
+      "start": 245,
+      "end": 251,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The BINDING feature at position 245-251 directly matches the primary reaction of the GO term, which involves NAD+ as a cofactor, making it the most plausible explanation for why the protein carries this function."
+    },
+    {
+      "accession": "P47739",
+      "go_id": "GO:0018479",
+      "feature_type": "BINDING",
+      "start": 187,
+      "end": 193,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The \"BINDING\" feature at position 187-193 directly supports the molecular function of benzaldehyde dehydrogenase (NAD+) activity by indicating the enzyme's interaction with NAD+, which is a key component in the reaction it catalyzes."
+    },
+    {
+      "accession": "P48644",
+      "go_id": "GO:0018479",
+      "feature_type": "BINDING",
+      "start": 166,
+      "end": 170,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding site for NAD+ directly supports the enzyme's ability to accept this cofactor in its catalytic reaction, which is the primary mechanism defined by the GO term."
+    },
+    {
+      "accession": "Q80VQ0",
+      "go_id": "GO:0018479",
+      "feature_type": "ACT_SITE",
+      "start": 209,
+      "end": 210,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The ACT_SITE annotation for Q80VQ0 (position 209-210) is most plausibly the structural/functional basis for the GO term \"benzaldehyde dehydrogenase (NAD+) activity,\" as it indicates the site where substrates or cofactors bind, which is essential for the enzyme's function in catalyzing the reaction defined by the GO term. This annotation directly supports the primary reaction mechanism described in"
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

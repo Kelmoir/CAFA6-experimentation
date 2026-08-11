@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0018459",
+  "name": "carveol dehydrogenase activity",
+  "def": "Catalysis of the reaction: (1S,5R)-carveol + NADP+ = (R)-carvone + H+ + NADPH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q5C9I9"
+  ],
+  "assigned_accessions": [
+    "Q5C9I9"
+  ]
+}
