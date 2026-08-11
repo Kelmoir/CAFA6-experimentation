@@ -1,0 +1,43 @@
+{
+  "resolved": [
+    {
+      "accession": "P48644",
+      "go_id": "GO:0019145",
+      "feature_type": "BINDING",
+      "start": 166,
+      "end": 170,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding site for NAD+ (166-170) most directly matches the primary reaction of the GO term, which involves catalyzing the transfer of a phosphoryl group from NAD+. This specific interaction is essential for the enzyme's function as described in the definition."
+    },
+    {
+      "accession": "Q9STS1",
+      "go_id": "GO:0019145",
+      "feature_type": "BINDING",
+      "start": 237,
+      "end": 245,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD+ to the enzyme's active site directly supports the catalytic reaction described in the GO term, making it a strong match."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "A0A0E3T552",
+      "go_id": "GO:0019145",
+      "feature_type": "SITE",
+      "start": 161,
+      "end": 162,
+      "signal_kind": "text",
+      "signal_value": "Transition state stabilizer",
+      "reasoning": "The \"SITE 161-162\" feature suggests that the protein has a site involved in stabilizing transition states, which could be relevant to its function. However, it does not directly specify the enzyme's catalytic activity as defined by the GO term, making it an uncertain match."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q8VWZ1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the given list directly matches the primary reaction described in the GO term's definition."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "A0A1L8HU22",
+      "go_id": "GO:0019104",
+      "feature_type": "ZN_FING",
+      "start": 526,
+      "end": 570,
+      "signal_kind": "text",
+      "signal_value": "GRF-type 1",
+      "reasoning": "The GRF-type 1 domain (ZN_FING 526-570) is most directly associated with glycosylase and lyase activities, which are the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "P78549",
+      "go_id": "GO:0019104",
+      "feature_type": "ACT_SITE",
+      "start": 211,
+      "end": 212,
+      "signal_kind": "text",
+      "signal_value": "Nucleophile; for N-glycosylase activity",
+      "reasoning": "The ACT_SITE annotation at position 211-212 directly supports the definition's focus on the nucleophilic action in the reaction, which is central to the enzyme's function. This feature most plausibly explains why the protein carries the GO term \"DNA N-glycosylase activity.\""
+    },
+    {
+      "accession": "Q0IGK1",
+      "go_id": "GO:0019104",
+      "feature_type": "ACT_SITE",
+      "start": 428,
+      "end": 429,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The ACT_SITE annotation directly indicates the location where DNA N-glycosylase catalyzes the removal of damaged bases, aligning with the primary reaction described in the GO term's definition. This provides a strong match to the molecular function being annotated."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8LK56",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly supports the definition of \"DNA N-glycosylase activity\" for Q8LK56, as it lacks a defined domain structure or catalytic site evidence."
+    }
+  ]
+}

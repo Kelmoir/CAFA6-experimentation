@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0019161",
+  "name": "diamine transaminase activity",
+  "def": "Catalysis of the reaction: an alpha,omega-diamine + 2-oxoglutarate = an omega-aminoaldehyde + L-glutamate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P42588"
+  ],
+  "assigned_accessions": [
+    "P42588"
+  ]
+}

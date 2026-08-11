@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019145",
+  "name": "aminobutyraldehyde dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: 4-aminobutanal + NAD+ + H2O = 4-aminobutanoate + NADH + 2 H+.",
+  "n_proteins_total": 23,
+  "sampled_accessions": [
+    "A0A0E3T552",
+    "P48644",
+    "Q8VWZ1",
+    "Q9STS1"
+  ],
+  "assigned_accessions": [
+    "A0A0E3T552",
+    "P48644",
+    "Q8VWZ1",
+    "Q9STS1"
+  ]
+}

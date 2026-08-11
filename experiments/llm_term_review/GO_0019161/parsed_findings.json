@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P42588",
+      "go_id": "GO:0019161",
+      "feature_type": "BINDING",
+      "start": 149,
+      "end": 151,
+      "signal_kind": "ligand",
+      "signal_value": "pyridoxal 5'-phosphate",
+      "reasoning": "The binding site for pyridoxal 5'-phosphate directly supports the catalytic reaction of diamine transaminase activity by providing the coenzyme required for amino group transfer, which is the primary mechanism defined in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0019159",
+  "name": "nicotinamide-nucleotide amidase activity",
+  "def": "Catalysis of the reaction: beta-nicotinamide D-ribonucleotide + H2O = beta-nicotinate D-ribonucleotide + NH3.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0A6G3"
+  ],
+  "assigned_accessions": [
+    "P0A6G3"
+  ]
+}

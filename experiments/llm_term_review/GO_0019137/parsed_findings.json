@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9SR37",
+      "go_id": "GO:0019137",
+      "feature_type": "ACT_SITE",
+      "start": 202,
+      "end": 203,
+      "signal_kind": "text",
+      "signal_value": "Proton donor",
+      "reasoning": "The \"ACT_SITE\" feature at position 202-203 indicates that the protein acts as a proton donor, which is a key component of the catalytic mechanism for thioglucosidase activity. This directly supports the primary reaction described in the GO term's definition, making it a strong match."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P37702",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term \"thioglucosidase activity,\" which involves the hydrolysis of a thioglucoside by water to produce a thiol and a sugar. All features are generic and do not provide a strong mechanistic match to the defined chemistry."
+    },
+    {
+      "accession": "Q8GRX1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains why Q8GRX1 carries the term \"thioglucosidase activity,\" as it only describes substrate binding, not the catalytic reaction itself."
+    },
+    {
+      "accession": "Q9C8K1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the catalytic activity defined by the GO term, as all features are binding sites for beta-D-glucoside rather than indicating the specific hydrolytic mechanism."
+    }
+  ]
+}

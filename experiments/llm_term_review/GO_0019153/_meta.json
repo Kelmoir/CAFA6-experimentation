@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019153",
+  "name": "protein-disulfide reductase (glutathione) activity",
+  "def": "Catalysis of the reaction: 2 glutathione + protein-disulfide = glutathione disulfide+ protein-dithiol.",
+  "n_proteins_total": 14,
+  "sampled_accessions": [
+    "P40557",
+    "Q498E0",
+    "Q9DC23",
+    "Q9QUH0"
+  ],
+  "assigned_accessions": [
+    "P40557",
+    "Q498E0",
+    "Q9DC23",
+    "Q9QUH0"
+  ]
+}

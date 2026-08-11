@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0019149",
+  "name": "3-chloro-D-alanine dehydrochlorinase activity",
+  "def": "Catalysis of the reaction: 3-chloro-D-alanine + H2O = pyruvate + chloride + NH3.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P76316"
+  ],
+  "assigned_accessions": [
+    "P76316"
+  ]
+}

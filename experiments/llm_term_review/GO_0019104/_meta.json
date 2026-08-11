@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019104",
+  "name": "DNA N-glycosylase activity",
+  "def": "Catalysis of the removal of damaged bases by cleaving the N-C1' glycosidic bond between the target damaged DNA base and the deoxyribose sugar. The reaction releases a free base and leaves an apurinic/apyrimidinic (AP) site.",
+  "n_proteins_total": 36,
+  "sampled_accessions": [
+    "A0A1L8HU22",
+    "P78549",
+    "Q0IGK1",
+    "Q8LK56"
+  ],
+  "assigned_accessions": [
+    "A0A1L8HU22",
+    "P78549",
+    "Q0IGK1",
+    "Q8LK56"
+  ]
+}

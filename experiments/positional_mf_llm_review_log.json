@@ -12371,5 +12371,225 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0019104": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "Q0IGK1"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ZN_FING",
+    "value": "GRF-type 1",
+    "accessions": [
+     "A0A1L8HU22"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Nucleophile; for N-glycosylase activity",
+    "accessions": [
+     "P78549"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8LK56",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly supports the definition of \"DNA N-glycosylase activity\" for Q8LK56, as it lacks a defined domain structure or catalytic site evidence."
+   }
+  ]
+ },
+ "GO:0019137": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton donor",
+    "accessions": [
+     "Q9SR37"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P37702",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term \"thioglucosidase activity,\" which involves the hydrolysis of a thioglucoside by water to produce a thiol and a sugar. All features are generic and do not provide a strong mechanistic match to the defined chemistry."
+   },
+   {
+    "accession": "Q8GRX1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains why Q8GRX1 carries the term \"thioglucosidase activity,\" as it only describes substrate binding, not the catalytic reaction itself."
+   },
+   {
+    "accession": "Q9C8K1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the catalytic activity defined by the GO term, as all features are binding sites for beta-D-glucoside rather than indicating the specific hydrolytic mechanism."
+   }
+  ]
+ },
+ "GO:0019145": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P48644",
+     "Q9STS1"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "A0A0E3T552",
+    "go_id": "GO:0019145",
+    "feature_type": "SITE",
+    "start": 161,
+    "end": 162,
+    "signal_kind": "text",
+    "signal_value": "Transition state stabilizer",
+    "reasoning": "The \"SITE 161-162\" feature suggests that the protein has a site involved in stabilizing transition states, which could be relevant to its function. However, it does not directly specify the enzyme's catalytic activity as defined by the GO term, making it an uncertain match."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q8VWZ1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the given list directly matches the primary reaction described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0019147": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P0A9S5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0019149": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P76316",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0019153": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Glutaredoxin",
+    "accessions": [
+     "Q9QUH0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P40557",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the specific reaction mechanism described in the GO term, only the presence of thioredoxin domains."
+   },
+   {
+    "accession": "Q498E0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly matches the molecular function defined by GO:0019153, which involves the catalytic reduction of protein disulfides using glutathione. The only relevant feature is a structural motif that affects localization and secretion, not the actual enzymatic activity."
+   },
+   {
+    "accession": "Q9DC23",
+    "reason": "none_verdict",
+    "reasoning": "The defined reaction for the GO term \"protein-disulfide reductase (glutathione) activity\" involves the conversion of glutathione and protein-disulfide into glutathione disulfide and protein-dithiol, which is not directly explained by any of the annotated features for this protein. All candidate features are either more general or only reflect secondary consequences of the protein's function. There"
+   }
+  ]
+ },
+ "GO:0019159": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0A6G3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0019161": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "pyridoxal 5'-phosphate",
+    "accessions": [
+     "P42588"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

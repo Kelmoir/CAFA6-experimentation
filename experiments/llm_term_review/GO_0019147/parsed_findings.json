@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P0A9S5",
+      "go_id": "GO:0019147",
+      "feature_type": "BINDING",
+      "start": 36,
+      "end": 37,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD+ to the enzyme's active site is a strong indicator of its dehydrogenase activity, which matches the primary reaction of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

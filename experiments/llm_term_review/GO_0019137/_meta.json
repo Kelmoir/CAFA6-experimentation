@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019137",
+  "name": "thioglucosidase activity",
+  "def": "Catalysis of the reaction: a thioglucoside + H2O = a thiol + a sugar.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "P37702",
+    "Q8GRX1",
+    "Q9C8K1",
+    "Q9SR37"
+  ],
+  "assigned_accessions": [
+    "P37702",
+    "Q8GRX1",
+    "Q9C8K1",
+    "Q9SR37"
+  ]
+}
