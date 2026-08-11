@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0008226",
+  "name": "tyramine receptor activity",
+  "def": "Combining with the biogenic amine tyramine to initiate a change in cell activity. Tyramine is a sympathomimetic amine derived from tyrosine with an action resembling that of epinephrine.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "G3M4F8",
+    "O02213",
+    "Q24563"
+  ],
+  "assigned_accessions": [
+    "G3M4F8",
+    "O02213",
+    "Q24563"
+  ]
+}

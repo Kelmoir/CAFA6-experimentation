@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008235",
+  "name": "metalloexopeptidase activity",
+  "def": "Catalysis of the hydrolysis of a peptide bond not more than three residues from the N- or C-terminus of a polypeptide chain by a mechanism in which water acts as a nucleophile, one or two metal ions hold the water molecule in place, and charged amino acid side chains are ligands for the metal ions.",
+  "n_proteins_total": 37,
+  "sampled_accessions": [
+    "P15034",
+    "Q2U1F3",
+    "Q6TEC1",
+    "Q6UB28"
+  ],
+  "assigned_accessions": [
+    "P15034",
+    "Q2U1F3",
+    "Q6TEC1",
+    "Q6UB28"
+  ]
+}

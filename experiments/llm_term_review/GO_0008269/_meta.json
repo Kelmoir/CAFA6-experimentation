@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008269",
+  "name": "JAK pathway signal transduction adaptor activity",
+  "def": "The binding activity of a molecule that brings together two molecules of the JAK signal transduction pathway, permitting them to function in a coordinated way.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O14508",
+    "P17181",
+    "P33896",
+    "P48551"
+  ],
+  "assigned_accessions": [
+    "O14508",
+    "P17181",
+    "P33896",
+    "P48551"
+  ]
+}

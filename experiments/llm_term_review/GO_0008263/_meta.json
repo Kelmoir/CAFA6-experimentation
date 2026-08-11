@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008263",
+  "name": "pyrimidine-specific mismatch base pair DNA N-glycosylase activity",
+  "def": "Catalysis of the removal of mismatched pyrimidine bases in DNA. Enzymes with this activity recognize and remove pyrimidines present in mismatches by cleaving the N-C1' glycosidic bond between the target damaged DNA base and the deoxyribose sugar. The reaction releases a free base and leaves an apyrimidinic (AP) site.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "O59825",
+    "O95243",
+    "P0A9H1",
+    "Q9Z2D7"
+  ],
+  "assigned_accessions": [
+    "O59825",
+    "O95243",
+    "P0A9H1",
+    "Q9Z2D7"
+  ]
+}

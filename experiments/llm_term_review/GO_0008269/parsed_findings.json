@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O14508",
+      "go_id": "GO:0008269",
+      "feature_type": "DOMAIN",
+      "start": 47,
+      "end": 156,
+      "signal_kind": "text",
+      "signal_value": "SH2",
+      "reasoning": "The SH2 domain (DOMAIN 47-156) directly supports the binding activity of the JAK pathway adaptor, which is the primary reaction defined by the GO term's definition. This feature is specific and mechanistically relevant to the function described in the GO term."
+    },
+    {
+      "accession": "P48551",
+      "go_id": "GO:0008269",
+      "feature_type": "REGION",
+      "start": 417,
+      "end": 444,
+      "signal_kind": "text",
+      "signal_value": "Mediates interaction with STAT2 (and required for the recruitment of USP18)",
+      "reasoning": "The \"REGION 417-444\" feature directly mediates interaction with STAT2 and is required for the recruitment of USP18, both of which are components of the JAK pathway. This provides a strong match to the primary reaction described in the GO term, making it the most plausible explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P17181",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P17181 specifically matches the primary reaction of the JAK pathway signal transduction adaptor activity as defined by GO:0008269."
+    },
+    {
+      "accession": "P33896",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

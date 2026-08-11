@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008242",
+  "name": "omega peptidase activity",
+  "def": "Catalysis of the cleavage of non-standard peptide bonds releasing substituted amino acids such as pyroglutamate or cleave isopeptide bonds, such as many deubiquitinating enzymes.",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "O65355",
+    "P38149",
+    "P93164",
+    "Q9SYL6"
+  ],
+  "assigned_accessions": [
+    "O65355",
+    "P38149",
+    "P93164",
+    "Q9SYL6"
+  ]
+}

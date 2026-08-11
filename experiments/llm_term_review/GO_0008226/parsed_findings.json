@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "G3M4F8",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "O02213",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q24563",
+      "reason": "none_verdict",
+      "reasoning": "The disordered region (REGION 325-387) could be part of a GPCR structure, which is relevant to tyramine binding and signaling. However, it does not directly explain why the protein carries the term \"tyramine receptor activity\" as defined by the GO term's primary reaction. No other annotated feature provides a clear match to the defined chemistry or mechanism of this GO term."
+    }
+  ]
+}

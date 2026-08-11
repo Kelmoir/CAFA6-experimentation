@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O95243",
+      "go_id": "GO:0008263",
+      "feature_type": "DOMAIN",
+      "start": 75,
+      "end": 148,
+      "signal_kind": "text",
+      "signal_value": "MBD",
+      "reasoning": "The DOMAIN 75-148 annotation directly matches the primary reaction of the GO term, which is the catalytic removal of mismatched pyrimidines from DNA. This domain is specifically associated with the MBD (Mismatch Base Pair DNA N-glycosylase) activity and provides strong evidence for why the protein carries this GO term."
+    },
+    {
+      "accession": "Q9Z2D7",
+      "go_id": "GO:0008263",
+      "feature_type": "DOMAIN",
+      "start": 62,
+      "end": 135,
+      "signal_kind": "text",
+      "signal_value": "MBD",
+      "reasoning": "The presence of an MBD domain (62-135) directly aligns with the function described in the GO term, which involves the removal of mismatched pyrimidine bases from DNA. This provides a strong and specific match to the primary reaction of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O59825",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature (by type + exact coordinates) provides a clear structural or functional basis for the GO term's primary reaction of catalyzing the removal of mismatched pyrimidine bases from DNA."
+    },
+    {
+      "accession": "P0A9H1",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}
