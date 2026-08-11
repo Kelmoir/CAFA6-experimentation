@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0017018",
+  "name": "myosin phosphatase activity",
+  "def": "Catalysis of the reaction: phosphomyosin + H2O = myosin + phosphate.",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "P13533",
+    "P13535",
+    "P62140",
+    "Q54QR9"
+  ],
+  "assigned_accessions": [
+    "P13533",
+    "P13535",
+    "P62140",
+    "Q54QR9"
+  ]
+}

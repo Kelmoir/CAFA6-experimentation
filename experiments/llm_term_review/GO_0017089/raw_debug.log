@@ -1,0 +1,16 @@
+=== Q9NZD2 GO:0017089 (VERDICT missing) ===
+THINKING: The GO term "glycolipid transfer activity" (GO:0017089) refers to the removal of a glycolipid from a membrane or monolayer lipid particle, followed by its transport through the aqueous phase while protected in a hydrophobic pocket, and finally delivery to an acceptor membrane or lipid particle. This process involves a specific structural feature that enables the protein to both bind and transfer glycolipids.
+
+The annotated features for protein Q9NZD2 include three instances of the "BINDING" type with identical ligand information: beta-D-galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-N-[(9Z)-octadecenoyl]-sphing-4-enine. These binding sites are located at positions 47-55, 139-140, and 206-207.
+
+Each of these binding sites is associated with the same ligand and has the same evidence references, suggesting that they are likely redundant or functionally similar. However, none of these binding sites directly indicate a structural feature that would enable the protein to remove a glycolipid from a membrane, transport it through an aqueous phase, and deliver it to an acceptor membrane or lipid particle.
+
+The only domain/family cross-reference provided is "GLTP_sf" (InterPro:IPR036497), which refers to the "sphingolipid transporter" family. This domain type is relevant to glycolipid transport but does not directly explain the specific mechanism of removing a glycolipid from a membrane and transporting it.
+
+The only candidate feature that could plausibly explain this GO term is the "BINDING" feature at position 47-55, as it involves the interaction with a glycolipid. However, since this binding site does not provide evidence of the transport mechanism or the hydrophobic pocket, it does not strongly match the primary reaction described in the GO term's definition.
+
+The highest score for matching the primary reaction is 3 (a generic match), as none of the features directly indicate the specific structural/functional basis for glycolipid transfer activity. Therefore, the verdict is NONE.
+
+FEATURE: BINDING 47-55
+REASONING: The binding site at position 47-55 involves interaction with a glycolipid, which is relevant to the GO term's definition of removing a glycolipid from a membrane. However, since this binding site does not provide evidence of the transport mechanism or the hydrophobic pocket, it does not strongly match the primary reaction described in the GO term's definition.
+

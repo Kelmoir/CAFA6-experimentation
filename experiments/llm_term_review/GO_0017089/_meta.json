@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0017089",
+  "name": "glycolipid transfer activity",
+  "def": "Removes a glycolipid from a membrane or a monolayer lipid particle, transports it through the aqueous phase while protected in a hydrophobic pocket, and brings it to an acceptor membrane or lipid particle. A glycolipid is a compound usually containing 1-4 linked monosaccharide residues joined by a glycosyl linkage to a lipid.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "B0BNM9",
+    "D2KC46",
+    "P0ADV1",
+    "Q9NZD2"
+  ],
+  "assigned_accessions": [
+    "B0BNM9",
+    "D2KC46",
+    "P0ADV1",
+    "Q9NZD2"
+  ]
+}

@@ -11527,6 +11527,141 @@
    }
   ]
  },
+ "GO:0016972": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P27882",
+    "reason": "none_verdict",
+    "reasoning": "The domain annotation \"ERV/ALR sulfhydryl oxidase\" is not positioned within the protein's sequence and does not directly support the thiol oxidase activity defined by the GO term. No other annotated feature provides a clear structural or functional basis for this specific molecular function."
+   },
+   {
+    "accession": "Q8R180",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature in the protein's Annotated features section that directly matches the primary reaction of thiol oxidase activity. The domain/family cross-references point to Ero1-related domains, which are not confirmed by positional annotations for this specific protein."
+   },
+   {
+    "accession": "Q8R2E9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8R2E9 directly matches the primary reaction of the GO term \"thiol oxidase activity,\" which is catalyzing the specific redox reaction involving thiol substrates and oxygen. The FAD-binding sites are unrelated to the thiol oxidase domain or its function."
+   },
+   {
+    "accession": "Q8R4A1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q8R4A1 directly matches the primary reaction of thiol oxidase activity as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0016989": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Inhibits SigH sigma factor activity",
+    "accessions": [
+     "P9WJ69"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P23485",
+    "go_id": "GO:0016989",
+    "feature_type": "MOTIF",
+    "start": 78,
+    "end": 80,
+    "signal_kind": "text",
+    "signal_value": "Internal twin-arginine motif; allows for targeting to the inner membrane via the Tat system",
+    "reasoning": "The annotated feature \"MOTIF 78-80\" is a structural motif that allows targeting to the inner membrane via the Tat system, which does not directly explain why this protein acts as an antagonist of a sigma factor. While it may be relevant to the protein's overall function or localization, it does not provide a strong match to the GO term's primary reaction of inhibiting sigma factor transcriptional"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P0AEM4",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated features for P0AEM4 that directly explain the molecular function of sigma factor antagonist activity as defined by GO:0016989. The only evidence provided is a disordered region, which does not provide sufficient specificity to account for the primary reaction described in the term's definition."
+   },
+   {
+    "accession": "P0AFX4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data directly describes the mechanism of binding to a sigma factor or inhibiting its transcriptional activity. The only evidence is interactions with RpoD, which does not explain the molecular function of \"sigma factor antagonist activity\" specifically."
+   }
+  ]
+ },
+ "GO:0017018": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Myosin motor",
+    "accessions": [
+     "P13533",
+     "P13535"
+    ],
+    "reason": "resolved to ['InterPro:IPR001609', 'InterPro:IPR002928', 'InterPro:IPR004009', 'InterPro:IPR008989', 'InterPro:IPR036961', 'PROSITE:PS51456', 'Pfam:PF00063', 'Pfam:PF01576', 'Pfam:PF02736'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR001609': 156, 'InterPro:IPR002928': 56, 'InterPro:IPR004009': 83, 'InterPro:IPR008989': 50, 'InterPro:IPR036961': 347, 'PROSITE:PS51456': 156, 'Pfam:PF00063': 156, 'Pfam:PF01576': 56, 'Pfam:PF02736': 58})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P62140",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term \"myosin phosphatase activity\" (GO:0017018), which involves catalyzing the removal of a phosphate group from phosphomyosin. The \"BINDING\" features refer to Mn(2+) as a ligand, but this is more likely a regulatory function rather than the actual enzymatic activity."
+   },
+   {
+    "accession": "Q54QR9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0017060": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "G5EDR5",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide strong or specific evidence that directly explains the molecular function of the GO term, as they only suggest potential involvement in substrate binding without specifying the reaction mechanism."
+   },
+   {
+    "accession": "G5EE06",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "G5EFP5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q11128",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0017084": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -11540,6 +11675,41 @@
     "accession": "P54887",
     "reason": "none_verdict",
     "reasoning": "No annotated feature directly supports the phosphorelay mechanism described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0017089": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Glycolipid transfer protein homology domain",
+    "accessions": [
+     "D2KC46"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B0BNM9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein B0BNM9 directly matches the primary reaction of GO:0017089, which involves the removal and transport of a glycolipid. The only relevant domain family (GLTP) is not an annotated feature for this protein."
+   },
+   {
+    "accession": "P0ADV1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the primary reaction or mechanism of glycolipid transfer activity as defined by GO:0017089. The only candidate feature is generic and does not explain the specific function described in the GO term."
+   },
+   {
+    "accession": "Q9NZD2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of glycolipid transfer as defined in the GO term's primary clause."
    }
   ]
  }

@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P13533",
+      "go_id": "GO:0017018",
+      "feature_type": "DOMAIN",
+      "start": 84,
+      "end": 780,
+      "signal_kind": "text",
+      "signal_value": "Myosin motor",
+      "reasoning": "The DOMAIN 84-780 feature, which is noted as a Myosin motor domain, directly relates to the catalytic function of myosin phosphatase, making it the most plausible explanation for why this protein carries the term."
+    },
+    {
+      "accession": "P13535",
+      "go_id": "GO:0017018",
+      "feature_type": "DOMAIN",
+      "start": 87,
+      "end": 781,
+      "signal_kind": "text",
+      "signal_value": "Myosin motor",
+      "reasoning": "The DOMAIN 87-781 (Myosin motor) is directly related to the catalytic mechanism of myosin motors, which are often involved in phosphatase activity. This domain strongly matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P62140",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term \"myosin phosphatase activity\" (GO:0017018), which involves catalyzing the removal of a phosphate group from phosphomyosin. The \"BINDING\" features refer to Mn(2+) as a ligand, but this is more likely a regulatory function rather than the actual enzymatic activity."
+    },
+    {
+      "accession": "Q54QR9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

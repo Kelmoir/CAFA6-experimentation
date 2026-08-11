@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016972",
+  "name": "thiol oxidase activity",
+  "def": "Catalysis of the reaction: 2 R'C(R)SH + O2 = R'C(R)S-S(R)CR' + 2 H2O2.",
+  "n_proteins_total": 17,
+  "sampled_accessions": [
+    "P27882",
+    "Q8R180",
+    "Q8R2E9",
+    "Q8R4A1"
+  ],
+  "assigned_accessions": [
+    "P27882",
+    "Q8R180",
+    "Q8R2E9",
+    "Q8R4A1"
+  ]
+}

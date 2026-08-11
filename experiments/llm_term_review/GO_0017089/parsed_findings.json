@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "D2KC46",
+      "go_id": "GO:0017089",
+      "feature_type": "REGION",
+      "start": 309,
+      "end": 519,
+      "signal_kind": "text",
+      "signal_value": "Glycolipid transfer protein homology domain",
+      "reasoning": "The region 309-519 is explicitly named as a glycolipid transfer protein homology domain, which directly matches the definition of the GO term \"glycolipid transfer activity\" and provides strong evidence for its function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "B0BNM9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for protein B0BNM9 directly matches the primary reaction of GO:0017089, which involves the removal and transport of a glycolipid. The only relevant domain family (GLTP) is not an annotated feature for this protein."
+    },
+    {
+      "accession": "P0ADV1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong match to the primary reaction or mechanism of glycolipid transfer activity as defined by GO:0017089. The only candidate feature is generic and does not explain the specific function described in the GO term."
+    },
+    {
+      "accession": "Q9NZD2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of glycolipid transfer as defined in the GO term's primary clause."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0017060",
+  "name": "3-galactosyl-N-acetylglucosaminide 4-alpha-L-fucosyltransferase activity",
+  "def": "Catalysis of the reaction: GDP-L-fucose + beta-D-galactosyl-(1,3)-N-acetyl-D-glucosaminyl-R = GDP + beta-D-galactosyl-(1,3)-[alpha-L-fucosyl-(1,4)]-N-acetyl-D-glucosaminyl-R.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "G5EDR5",
+    "G5EE06",
+    "G5EFP5",
+    "Q11128"
+  ],
+  "assigned_accessions": [
+    "G5EDR5",
+    "G5EE06",
+    "G5EFP5",
+    "Q11128"
+  ]
+}

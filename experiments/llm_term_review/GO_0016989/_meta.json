@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016989",
+  "name": "sigma factor antagonist activity",
+  "def": "The function of binding to a sigma factor and stopping, preventing or reducing the rate of its transcriptional activity.",
+  "n_proteins_total": 17,
+  "sampled_accessions": [
+    "P0AEM4",
+    "P0AFX4",
+    "P23485",
+    "P9WJ69"
+  ],
+  "assigned_accessions": [
+    "P0AEM4",
+    "P0AFX4",
+    "P23485",
+    "P9WJ69"
+  ]
+}
