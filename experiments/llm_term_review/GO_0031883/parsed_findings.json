@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8VCD6",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for Q8VCD6 is a disordered region (REGION 193-254), which does not provide any direct evidence about the mechanism of binding to a taste receptor. Since no positional feature matches the defined chemistry of the GO term, there is no plausible explanation for why this protein carries the term."
+    },
+    {
+      "accession": "Q9BRK0",
+      "reason": "none_verdict",
+      "reasoning": "The disordered region in position 164-252 of Q9BRK0 does not specifically implement the primary reaction of the \"taste receptor binding\" GO term, which is defined as \"Binding to a taste receptor.\" No other annotated feature provides a clear mechanistic or structural basis for this function."
+    }
+  ]
+}

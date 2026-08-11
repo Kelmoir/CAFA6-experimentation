@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0031870",
+  "name": "thromboxane A2 receptor binding",
+  "def": "Binding to a thromboxane A2 receptor.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q68CZ1",
+    "Q8CG73"
+  ],
+  "assigned_accessions": [
+    "Q68CZ1",
+    "Q8CG73"
+  ]
+}

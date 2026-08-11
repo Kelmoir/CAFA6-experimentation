@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0031883",
+  "name": "taste receptor binding",
+  "def": "Binding to a taste receptor.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q8VCD6",
+    "Q9BRK0"
+  ],
+  "assigned_accessions": [
+    "Q8VCD6",
+    "Q9BRK0"
+  ]
+}

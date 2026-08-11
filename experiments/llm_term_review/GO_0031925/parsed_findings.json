@@ -1,0 +1,18 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O74899",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P33532",
+      "reason": "unresolved_pointer",
+      "detail": "no matching INTERPRO:IPR036259 0-100 on record for P33532 -- pointer didn't resolve",
+      "reported_feature": "INTERPRO:IPR036259 0-100",
+      "reasoning": "The feature \"InterPro:IPR036259 -- MFS_trans_sf\" directly relates to the defined function of pyridoxal transmembrane activity by specifying a domain associated with transmembrane transporter activities, which is a strong match to the primary reaction described in the GO term's definition."
+    }
+  ]
+}

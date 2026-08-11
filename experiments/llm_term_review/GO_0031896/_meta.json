@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0031896",
+  "name": "V2 vasopressin receptor binding",
+  "def": "Binding to a V2 vasopressin receptor.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P01186",
+    "P29066",
+    "Q8BWG8"
+  ],
+  "assigned_accessions": [
+    "P01186",
+    "P29066",
+    "Q8BWG8"
+  ]
+}

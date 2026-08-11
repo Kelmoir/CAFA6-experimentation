@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O74899",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P33532",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for P33532 is a \"REGION\" span (0-53) with a note that it is Disordered. This feature does not directly explain the GO term's primary reaction of pyridoxamine transmembrane transporter activity, as it refers to structural organization rather than functional mechanism. No other annotated features are present, and the region span is generic and could apply to many proteins."
+    }
+  ]
+}

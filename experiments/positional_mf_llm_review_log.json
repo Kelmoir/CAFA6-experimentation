@@ -15497,6 +15497,37 @@
    }
   ]
  },
+ "GO:0031855": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P01175",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features indicate binding to Cu(2+), not oxytocin receptors, so no positional feature explains why it carries the term \"oxytocin receptor binding.\""
+   },
+   {
+    "accession": "P01178",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P01178 only describe ligand binding activity without specifying the receptor type, so no feature directly explains why the protein carries the GO term \"oxytocin receptor binding.\""
+   },
+   {
+    "accession": "P01179",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature in the protein's data that specifically explains why it carries the GO term \"oxytocin receptor binding,\" as all binding features are for Cu(2+), not oxytocin."
+   },
+   {
+    "accession": "P35454",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list describes binding to an oxytocin receptor, only binding to a general ligand. Therefore, no single feature plausibly explains why this protein carries the GO term \"oxytocin receptor binding.\""
+   }
+  ]
+ },
  "GO:0031858": {
   "n_resolved": 2,
   "n_uncertain": 0,
@@ -15515,6 +15546,173 @@
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0031859": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P29067",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P29067 directly explains why it carries the molecular function of \"platelet activating factor receptor binding.\" The features are generic and do not provide a specific basis for this function."
+   },
+   {
+    "accession": "P85005",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q91YI4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q91YI4's list describes the specific binding activity to a platelet-activating factor receptor, which is the primary reaction defined by the GO term. Therefore, there is no strong evidence that explains why this protein carries the term."
+   }
+  ]
+ },
+ "GO:0031870": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q68CZ1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the GO term's definition of \"Binding to a thromboxane A2 receptor\" with sufficient specificity. The closest candidate is a C2 domain, but it does not explicitly state or imply binding to this receptor."
+   },
+   {
+    "accession": "Q8CG73",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list provides a clear and specific explanation for why it carries the \"thromboxane A2 receptor binding\" GO term, as the primary reaction of the term is not directly reflected in any of the given features."
+   }
+  ]
+ },
+ "GO:0031883": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8VCD6",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q8VCD6 is a disordered region (REGION 193-254), which does not provide any direct evidence about the mechanism of binding to a taste receptor. Since no positional feature matches the defined chemistry of the GO term, there is no plausible explanation for why this protein carries the term."
+   },
+   {
+    "accession": "Q9BRK0",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region in position 164-252 of Q9BRK0 does not specifically implement the primary reaction of the \"taste receptor binding\" GO term, which is defined as \"Binding to a taste receptor.\" No other annotated feature provides a clear mechanistic or structural basis for this function."
+   }
+  ]
+ },
+ "GO:0031896": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q8BWG8",
+    "go_id": "GO:0031896",
+    "feature_type": "BINDING",
+    "start": 249,
+    "end": 250,
+    "signal_kind": "ligand",
+    "signal_value": "1D-myo-inositol hexakisphosphate",
+    "reasoning": "The \"BINDING\" feature with the ligand \"1D-myo-inositol hexakisphosphate\" is the only one that directly relates to the defined chemistry of the GO term, but it does not specify the receptor type or provide a direct explanation for why the protein carries the term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P01186",
+    "reason": "none_verdict",
+    "reasoning": "The SITE 31-32 feature is noted as important for agonist activity on V1aR/AVPR1A, which could be related to V2 vasopressin receptor binding. However, it does not directly confirm the function of binding to a V2 vasopressin receptor. The other features are more general and do not specifically address the mechanism of binding to a V2 vasopressin receptor. Therefore, there is no annotated feature tha"
+   },
+   {
+    "accession": "P29066",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides evidence of binding to a V2 vasopressin receptor, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0031925": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O74899",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P33532",
+    "reason": "unresolved_pointer",
+    "detail": "no matching INTERPRO:IPR036259 0-100 on record for P33532 -- pointer didn't resolve",
+    "reported_feature": "INTERPRO:IPR036259 0-100",
+    "reasoning": "The feature \"InterPro:IPR036259 -- MFS_trans_sf\" directly relates to the defined function of pyridoxal transmembrane activity by specifying a domain associated with transmembrane transporter activities, which is a strong match to the primary reaction described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0031927": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O74899",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P33532",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for P33532 is a \"REGION\" span (0-53) with a note that it is Disordered. This feature does not directly explain the GO term's primary reaction of pyridoxamine transmembrane transporter activity, as it refers to structural organization rather than functional mechanism. No other annotated features are present, and the region span is generic and could apply to many proteins."
+   }
+  ]
+ },
+ "GO:0031928": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O74899",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P33532",
+    "reason": "unresolved_pointer",
+    "detail": "no matching MFS 317-348 on record for P33532 -- pointer didn't resolve",
+    "reported_feature": "MFS 317-348",
+    "reasoning": "The \"MFS\" domain (InterPro:IPR036259) is directly associated with transmembrane transporter activity, which matches the primary reaction described in the GO term's definition. This domain provides a strong structural basis for the observed function of P33532."
+   }
+  ]
  },
  "GO:0031955": {
   "n_resolved": 0,

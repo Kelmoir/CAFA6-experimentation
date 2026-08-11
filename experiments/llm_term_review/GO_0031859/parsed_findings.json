@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P29067",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P29067 directly explains why it carries the molecular function of \"platelet activating factor receptor binding.\" The features are generic and do not provide a specific basis for this function."
+    },
+    {
+      "accession": "P85005",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q91YI4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q91YI4's list describes the specific binding activity to a platelet-activating factor receptor, which is the primary reaction defined by the GO term. Therefore, there is no strong evidence that explains why this protein carries the term."
+    }
+  ]
+}

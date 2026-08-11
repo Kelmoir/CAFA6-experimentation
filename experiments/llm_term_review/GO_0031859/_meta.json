@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0031859",
+  "name": "platelet activating factor receptor binding",
+  "def": "Binding to a platelet activating factor receptor.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P29067",
+    "P85005",
+    "Q91YI4"
+  ],
+  "assigned_accessions": [
+    "P29067",
+    "P85005",
+    "Q91YI4"
+  ]
+}

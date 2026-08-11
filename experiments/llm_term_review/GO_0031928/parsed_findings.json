@@ -1,0 +1,18 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O74899",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P33532",
+      "reason": "unresolved_pointer",
+      "detail": "no matching MFS 317-348 on record for P33532 -- pointer didn't resolve",
+      "reported_feature": "MFS 317-348",
+      "reasoning": "The \"MFS\" domain (InterPro:IPR036259) is directly associated with transmembrane transporter activity, which matches the primary reaction described in the GO term's definition. This domain provides a strong structural basis for the observed function of P33532."
+    }
+  ]
+}
