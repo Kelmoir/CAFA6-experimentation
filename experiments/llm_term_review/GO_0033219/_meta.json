@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033219",
+  "name": "urea binding",
+  "def": "Binding to urea, a water-soluble carboxamide with the structure H2N-CO-NH2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "F4KD71"
+  ],
+  "assigned_accessions": [
+    "F4KD71"
+  ]
+}

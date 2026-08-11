@@ -16641,6 +16641,135 @@
   ],
   "issues": []
  },
+ "GO:0032794": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "GTP",
+    "accessions": [
+     "P18872",
+     "P40792"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P07437",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P07437 specifically matches the primary reaction of \"binding to a GTPase activating protein,\" which is not clearly defined in the given evidence. The only relevant binding sites involve GTP and Mg(2+), not a GAP."
+   },
+   {
+    "accession": "P62881",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0032841": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P25117",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P30988",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q60755",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P32214",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for P32214 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The \"GPCR_2_calcitonin_rcpt\" domain directly matches the primary reaction described in the GO term's definition, which is binding to calcitonin. This feature provides a strong and specific match to the molecular function being predicted."
+   }
+  ]
+ },
+ "GO:0032931": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR016849",
+     "InterPro:IPR051236",
+     "PROSITE:PS51728",
+     "Pfam:PF08214"
+    ],
+    "accessions": [
+     "Q07794",
+     "Q5AAJ8",
+     "Q9Y7Y5"
+    ],
+    "note": "resolved from DOMAIN note 'Rtt109-type HAT'"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "D3G9N3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in D3G9N3 specifically matches the primary reaction of histone H3K56 acetylation, which involves the transfer of an acetyl group to lysine at position 56. The binding sites for acetyl-CoA are generic and do not provide evidence for the specific enzyme activity defined by GO:0032931."
+   }
+  ]
+ },
+ "GO:0032935": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PH",
+    "accessions": [
+     "Q91XL9",
+     "Q9BXW6"
+    ],
+    "reason": "resolved to ['InterPro:IPR001849', 'InterPro:IPR011993', 'PROSITE:PS50003'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR001849': 661, 'InterPro:IPR011993': 1139, 'PROSITE:PS50003': 605})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P09527",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction of the GO term \"sterol sensor activity,\" which involves binding to and responding to changes in sterol levels through conformational change. All features either only echo a secondary clause or are unrelated to the defined chemistry."
+   },
+   {
+    "accession": "Q8NBW4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction of \"sterol sensor activity\" as defined by the GO term."
+   }
+  ]
+ },
  "GO:0032942": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -16659,5 +16788,61 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0033040": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Ca(2+)",
+    "accessions": [
+     "Q9P0L9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0033219": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "F4KD71",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0033222": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P32037",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data directly supports the molecular function defined by GO:0033222, which is the specific binding of D- or L-enantiomers of xylose. The available features are either unrelated (e.g., binding to D-glucose) or only hint at broader sugar recognition capabilities without confirming the precise enantioselectivity described in the definition."
+   },
+   {
+    "accession": "Q07647",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the protein carrying the GO term \"GO:0033222\" as defined."
+   }
+  ]
  }
 }

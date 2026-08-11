@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9P0L9",
+      "go_id": "GO:0033040",
+      "feature_type": "BINDING",
+      "start": 369,
+      "end": 370,
+      "signal_kind": "ligand",
+      "signal_value": "Ca(2+)",
+      "reasoning": "The binding site for Ca(2+) (ligand: Ca(2+), ligand_id: ChEBI:CHEBI:29108, ligand_note: allosteric activator) directly matches the primary reaction of \"combining with soluble sour compounds to initiate a change in cell activity\" as defined by the GO term. This binding site is specifically involved in the interaction that leads to the receptor's activity, making it the most plausible explanation fo"
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

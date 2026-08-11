@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P18872",
+      "go_id": "GO:0032794",
+      "feature_type": "BINDING",
+      "start": 42,
+      "end": 43,
+      "signal_kind": "ligand",
+      "signal_value": "GTP",
+      "reasoning": "The binding of GTP to the protein directly matches the definition of the GO term, which involves binding to a GTPase activating protein."
+    },
+    {
+      "accession": "P40792",
+      "go_id": "GO:0032794",
+      "feature_type": "BINDING",
+      "start": 11,
+      "end": 12,
+      "signal_kind": "ligand",
+      "signal_value": "GTP",
+      "reasoning": "The binding site involving GTP directly matches the defined reaction of \"Binding to a GTPase activating protein,\" making it the most plausible explanation for why this protein carries that GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P07437",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P07437 specifically matches the primary reaction of \"binding to a GTPase activating protein,\" which is not clearly defined in the given evidence. The only relevant binding sites involve GTP and Mg(2+), not a GAP."
+    },
+    {
+      "accession": "P62881",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

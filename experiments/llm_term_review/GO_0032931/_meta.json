@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0032931",
+  "name": "histone H3K56 acetyltransferase activity",
+  "def": "Catalysis of the reaction: acetyl-CoA + histone H3 L-lysine (position 56) = CoA + histone H3 N6-acetyl-L-lysine (position 56).",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "D3G9N3",
+    "Q07794",
+    "Q5AAJ8",
+    "Q9Y7Y5"
+  ],
+  "assigned_accessions": [
+    "D3G9N3",
+    "Q07794",
+    "Q5AAJ8",
+    "Q9Y7Y5"
+  ]
+}

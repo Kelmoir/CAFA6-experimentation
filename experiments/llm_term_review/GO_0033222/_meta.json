@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0033222",
+  "name": "xylose binding",
+  "def": "Binding to the D- or L-enantiomer of xylose.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P32037",
+    "Q07647"
+  ],
+  "assigned_accessions": [
+    "P32037",
+    "Q07647"
+  ]
+}

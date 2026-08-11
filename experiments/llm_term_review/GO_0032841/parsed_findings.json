@@ -1,0 +1,28 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P25117",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P30988",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q60755",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P32214",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for P32214 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The \"GPCR_2_calcitonin_rcpt\" domain directly matches the primary reaction described in the GO term's definition, which is binding to calcitonin. This feature provides a strong and specific match to the molecular function being predicted."
+    }
+  ]
+}

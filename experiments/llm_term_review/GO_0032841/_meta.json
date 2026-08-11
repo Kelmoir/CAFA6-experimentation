@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0032841",
+  "name": "calcitonin binding",
+  "def": "Binding to calcitonin, a peptide hormone responsible for reducing serum calcium levels by inhibiting osteoclastic bone reabsorption and promoting renal calcium excretion. It is synthesized and released by the C cells of the thyroid.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P25117",
+    "P30988",
+    "P32214",
+    "Q60755"
+  ],
+  "assigned_accessions": [
+    "P25117",
+    "P30988",
+    "P32214",
+    "Q60755"
+  ]
+}

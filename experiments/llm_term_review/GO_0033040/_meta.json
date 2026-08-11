@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033040",
+  "name": "sour taste receptor activity",
+  "def": "Combining with soluble sour compounds to initiate a change in cell activity. These receptors are responsible for the sense of sour taste.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9P0L9"
+  ],
+  "assigned_accessions": [
+    "Q9P0L9"
+  ]
+}

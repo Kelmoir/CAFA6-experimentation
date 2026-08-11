@@ -14452,6 +14452,18 @@
    "histidine box-2"
   ]
  },
+ "GO:0032931": {
+  "name": "histone H3K56 acetyltransferase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR016849",
+   "InterPro:IPR051236",
+   "PROSITE:PS51728",
+   "Pfam:PF08214"
+  ],
+  "text_patterns": []
+ },
  "GO:0032934": {
   "name": "sterol binding",
   "ligands": [],

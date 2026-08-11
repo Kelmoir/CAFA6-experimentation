@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q91XL9",
+      "go_id": "GO:0032935",
+      "feature_type": "DOMAIN",
+      "start": 234,
+      "end": 334,
+      "signal_kind": "text",
+      "signal_value": "PH",
+      "reasoning": "The presence of a PH-like domain in Q91XL9 most plausibly explains its role as a sterol sensor, as it directly relates to the primary reaction of binding to and responding to sterols."
+    },
+    {
+      "accession": "Q9BXW6",
+      "go_id": "GO:0032935",
+      "feature_type": "DOMAIN",
+      "start": 234,
+      "end": 334,
+      "signal_kind": "text",
+      "signal_value": "PH",
+      "reasoning": "The \"PH\" domain in the DOMAIN 234-334 is directly associated with sterol-sensing activity, making it the most plausible explanation for the GO term \"sterol sensor activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P09527",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction of the GO term \"sterol sensor activity,\" which involves binding to and responding to changes in sterol levels through conformational change. All features either only echo a secondary clause or are unrelated to the defined chemistry."
+    },
+    {
+      "accession": "Q8NBW4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction of \"sterol sensor activity\" as defined by the GO term."
+    }
+  ]
+}

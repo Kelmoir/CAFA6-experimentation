@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0032935",
+  "name": "sterol sensor activity",
+  "def": "Binding to and responding, e.g. by conformational change, to changes in the cellular level of a sterol.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "P09527",
+    "Q8NBW4",
+    "Q91XL9",
+    "Q9BXW6"
+  ],
+  "assigned_accessions": [
+    "P09527",
+    "Q8NBW4",
+    "Q91XL9",
+    "Q9BXW6"
+  ]
+}
