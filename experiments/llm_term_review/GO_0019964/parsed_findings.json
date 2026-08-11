@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9Y2M5",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for this protein do not provide any strong evidence that directly explains why it carries the molecular function defined by GO:0019964, which is about binding to type II interferon."
+    }
+  ]
+}

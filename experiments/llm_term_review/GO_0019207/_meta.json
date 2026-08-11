@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019207",
+  "name": "kinase regulator activity",
+  "def": "Modulates the activity of a kinase, an enzyme which catalyzes of the transfer of a phosphate group, usually from ATP, to a substrate molecule.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "O49686",
+    "P34760",
+    "Q5PPI3",
+    "Q62924"
+  ],
+  "assigned_accessions": [
+    "O49686",
+    "P34760",
+    "Q5PPI3",
+    "Q62924"
+  ]
+}

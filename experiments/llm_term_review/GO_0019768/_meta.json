@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0019768",
+  "name": "high-affinity IgE receptor activity",
+  "def": "Combining with high affinity with an immunoglobulin of the IgE isotype via the Fc region, and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P12319",
+    "P12371",
+    "P20489"
+  ],
+  "assigned_accessions": [
+    "P12319",
+    "P12371",
+    "P20489"
+  ]
+}

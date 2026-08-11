@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0019202",
+  "name": "amino acid kinase activity",
+  "def": "Catalysis of the transfer of a phosphate group, usually from ATP, to an amino acid substrate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A2RU49"
+  ],
+  "assigned_accessions": [
+    "A2RU49"
+  ]
+}

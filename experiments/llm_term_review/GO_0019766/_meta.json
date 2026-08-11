@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0019766",
+  "name": "IgA receptor activity",
+  "def": "Combining with an immunoglobulin of an IgA isotype via the Fc region, and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P24071"
+  ],
+  "assigned_accessions": [
+    "P24071"
+  ]
+}

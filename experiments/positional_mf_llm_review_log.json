@@ -12591,5 +12591,219 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0019172": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O16228",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly explains the catalytic activity of methylglyoxal to D-lactate as defined by GO:0019172. The ACT_SITE regions are generic and not specific to this function."
+   },
+   {
+    "accession": "P90994",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain why P90994 carries the \"glyoxalase III activity\" term, as the definition focuses on the reaction rather than a specific domain structure. The ACT_SITE regions are generic and do not provide a strong match to the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "Q5AF03",
+    "reason": "none_verdict",
+    "reasoning": "The GO term \"glyoxalase III activity\" defines a specific enzymatic reaction, but none of the annotated features for protein Q5AF03 provide direct evidence about the catalytic mechanism or domain responsible for that reaction. All ACT_SITE spans are generic and do not specifically explain why this protein carries the term."
+   },
+   {
+    "accession": "Q9M8R4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9M8R4 specifically matches the primary reaction mechanism of glyoxalase III activity. The act sites are generic and not specific to this enzyme's function."
+   }
+  ]
+ },
+ "GO:0019178": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "NADP phosphatase",
+    "accessions": [
+     "Q58327"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Mg(2+)",
+    "accessions": [
+     "Q9UK39"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A8JQX3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a strong match to the primary reaction of NADP phosphatase activity (catalyzing H2O + NADP+ = NAD+ + phosphate). The binding sites are generic and do not indicate a specific domain or mechanism for this function."
+   },
+   {
+    "accession": "O35710",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and direct explanation for the \"NADP phosphatase activity\" GO term based on the given evidence."
+   }
+  ]
+ },
+ "GO:0019202": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A2RU49",
+    "reason": "none_verdict",
+    "reasoning": "The ACT_SITE annotation indicates a proton acceptor, which is not directly related to the catalytic transfer of a phosphate group. No other annotated feature describes the enzyme's ability to catalyze phosphorylation of an amino acid substrate, making it impossible to determine a strong match for the GO term's primary chemistry."
+   }
+  ]
+ },
+ "GO:0019207": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Interaction with GSK3B and acts as a GSK3B inhibitor",
+    "accessions": [
+     "Q5PPI3"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "PKA-RII binding region",
+    "accessions": [
+     "Q62924"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O49686",
+    "reason": "none_verdict",
+    "reasoning": "The highest score of 4 corresponds to the SITE annotation involving interactions with PP2Cs, but this does not directly explain why the protein carries the GO term \"GO:0019207\" (kinase regulator activity), as it is more related to phosphatase regulation than kinase activation. No other feature provides a clear and specific match for the primary reaction of receiving a phosphoryl group."
+   },
+   {
+    "accession": "P34760",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly matches the primary reaction or mechanism described in the GO term's definition. The closest match is a binding site for substrates, but this does not specifically explain why the protein carries the \"kinase regulator activity\" term."
+   }
+  ]
+ },
+ "GO:0019766": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P24071",
+    "go_id": "GO:0019766",
+    "feature_type": "DOMAIN",
+    "start": 41,
+    "end": 107,
+    "signal_kind": "text",
+    "signal_value": "Ig-like C2-type 1",
+    "reasoning": "The presence of an Ig-like C2-type domain (DOMAIN 41-107) is structurally related to immunoglobulin receptors, which could support binding to an IgA molecule. However, it does not directly confirm the specific function of \"IgA receptor activity\" as defined by the GO term's primary reaction, which involves signal transduction across the membrane."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0019768": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like 1",
+    "accessions": [
+     "P12319",
+     "P12371"
+    ],
+    "reason": "resolved to ['InterPro:IPR003598', 'InterPro:IPR003599', 'InterPro:IPR007110', 'InterPro:IPR013783', 'InterPro:IPR036179', 'InterPro:IPR050488', 'PROSITE:PS50835', 'Pfam:PF13895', 'Pfam:PF13927'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR003598': 568, 'InterPro:IPR003599': 910, 'InterPro:IPR007110': 1106, 'InterPro:IPR013783': 1901, 'InterPro:IPR036179': 1187, 'InterPro:IPR050488': 34, 'PROSITE:PS50835': 1101, 'Pfam:PF13895': 129, 'Pfam:PF13927': 337})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P20489",
+    "reason": "none_verdict",
+    "reasoning": "The absence of any specific Fc region-related domain or binding site in the annotated features suggests that there is no positional evidence to directly explain the molecular function defined by GO:0019768."
+   }
+  ]
+ },
+ "GO:0019769": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P06734",
+    "go_id": "GO:0019769",
+    "feature_type": "BINDING",
+    "start": 248,
+    "end": 249,
+    "signal_kind": "ligand",
+    "signal_value": "Ca(2+)",
+    "reasoning": "The binding sites for Ca(2+) are spread across multiple regions and do not directly explain the low-affinity IgE receptor activity as defined by the GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P20693",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain the molecular function of low-affinity IgE receptor activity as defined by the GO term, and all candidate features are either generic or do not specifically reference the Fc region or signal transduction in this context."
+   }
+  ]
+ },
+ "GO:0019964": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9Y2M5",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for this protein do not provide any strong evidence that directly explains why it carries the molecular function defined by GO:0019964, which is about binding to type II interferon."
+   }
+  ]
  }
 }

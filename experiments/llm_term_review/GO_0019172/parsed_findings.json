@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O16228",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly explains the catalytic activity of methylglyoxal to D-lactate as defined by GO:0019172. The ACT_SITE regions are generic and not specific to this function."
+    },
+    {
+      "accession": "P90994",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly explain why P90994 carries the \"glyoxalase III activity\" term, as the definition focuses on the reaction rather than a specific domain structure. The ACT_SITE regions are generic and do not provide a strong match to the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q5AF03",
+      "reason": "none_verdict",
+      "reasoning": "The GO term \"glyoxalase III activity\" defines a specific enzymatic reaction, but none of the annotated features for protein Q5AF03 provide direct evidence about the catalytic mechanism or domain responsible for that reaction. All ACT_SITE spans are generic and do not specifically explain why this protein carries the term."
+    },
+    {
+      "accession": "Q9M8R4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9M8R4 specifically matches the primary reaction mechanism of glyoxalase III activity. The act sites are generic and not specific to this enzyme's function."
+    }
+  ]
+}

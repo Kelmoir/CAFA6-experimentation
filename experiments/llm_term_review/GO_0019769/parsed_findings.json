@@ -1,0 +1,22 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P06734",
+      "go_id": "GO:0019769",
+      "feature_type": "BINDING",
+      "start": 248,
+      "end": 249,
+      "signal_kind": "ligand",
+      "signal_value": "Ca(2+)",
+      "reasoning": "The binding sites for Ca(2+) are spread across multiple regions and do not directly explain the low-affinity IgE receptor activity as defined by the GO term."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P20693",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly explain the molecular function of low-affinity IgE receptor activity as defined by the GO term, and all candidate features are either generic or do not specifically reference the Fc region or signal transduction in this context."
+    }
+  ]
+}

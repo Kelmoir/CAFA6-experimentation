@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q5PPI3",
+      "go_id": "GO:0019207",
+      "feature_type": "REGION",
+      "start": 114,
+      "end": 139,
+      "signal_kind": "text",
+      "signal_value": "Interaction with GSK3B and acts as a GSK3B inhibitor",
+      "reasoning": "The \"REGION 114-139\" annotation most plausibly explains the GO term \"kinase regulator activity\" by indicating interaction with GSK3B and acting as a GSK3B inhibitor, which directly relates to modulating kinase activity through phosphorylation or dephosphorylation."
+    },
+    {
+      "accession": "Q62924",
+      "go_id": "GO:0019207",
+      "feature_type": "REGION",
+      "start": 904,
+      "end": 918,
+      "signal_kind": "text",
+      "signal_value": "PKA-RII binding region",
+      "reasoning": "The \"PKA-RII binding region\" directly aligns with the primary reaction of the GO term, which involves modulating kinase activity. This feature is more specific and mechanistically relevant than generic disordered regions, making it a strong candidate for explaining the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O49686",
+      "reason": "none_verdict",
+      "reasoning": "The highest score of 4 corresponds to the SITE annotation involving interactions with PP2Cs, but this does not directly explain why the protein carries the GO term \"GO:0019207\" (kinase regulator activity), as it is more related to phosphatase regulation than kinase activation. No other feature provides a clear and specific match for the primary reaction of receiving a phosphoryl group."
+    },
+    {
+      "accession": "P34760",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided list directly matches the primary reaction or mechanism described in the GO term's definition. The closest match is a binding site for substrates, but this does not specifically explain why the protein carries the \"kinase regulator activity\" term."
+    }
+  ]
+}

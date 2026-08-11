@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0019964",
+  "name": "type II interferon binding",
+  "def": "Binding to type II interferon, also known as interferon-gamma.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9Y2M5"
+  ],
+  "assigned_accessions": [
+    "Q9Y2M5"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q58327",
+      "go_id": "GO:0019178",
+      "feature_type": "REGION",
+      "start": 0,
+      "end": 297,
+      "signal_kind": "text",
+      "signal_value": "NADP phosphatase",
+      "reasoning": "The explicit labeling of the region as \"NADP phosphatase\" directly matches the GO term's definition, making it the most plausible explanation for why the protein carries this molecular function."
+    },
+    {
+      "accession": "Q9UK39",
+      "go_id": "GO:0019178",
+      "feature_type": "BINDING",
+      "start": 194,
+      "end": 195,
+      "signal_kind": "ligand",
+      "signal_value": "Mg(2+)",
+      "reasoning": "The binding site at positions 194-195 with \"substrate\" as the ligand directly supports the GO term's definition of NADP phosphatase activity, which involves catalyzing the reaction where a phosphate group is transferred from NADP+ to a substrate. This feature most plausibly explains why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A8JQX3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section provides a strong match to the primary reaction of NADP phosphatase activity (catalyzing H2O + NADP+ = NAD+ + phosphate). The binding sites are generic and do not indicate a specific domain or mechanism for this function."
+    },
+    {
+      "accession": "O35710",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear and direct explanation for the \"NADP phosphatase activity\" GO term based on the given evidence."
+    }
+  ]
+}

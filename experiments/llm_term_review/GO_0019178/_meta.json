@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019178",
+  "name": "NADP phosphatase activity",
+  "def": "Catalysis of the reaction: H2O + NADP+ = NAD+ + phosphate.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "A8JQX3",
+    "O35710",
+    "Q58327",
+    "Q9UK39"
+  ],
+  "assigned_accessions": [
+    "A8JQX3",
+    "O35710",
+    "Q58327",
+    "Q9UK39"
+  ]
+}
