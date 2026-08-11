@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8RXD9",
+      "go_id": "GO:0010297",
+      "feature_type": "DOMAIN",
+      "start": 12,
+      "end": 122,
+      "signal_kind": "text",
+      "signal_value": "CBM20 1",
+      "reasoning": "The \"DOMAIN 12-122\" annotation directly corresponds to the CBM20 domain, which is known for binding heteropolysaccharides. This matches the primary reaction of the GO term with high specificity."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O48707",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for this protein specifically explains the molecular function of heteropolysaccharide binding."
+    },
+    {
+      "accession": "Q9SA52",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

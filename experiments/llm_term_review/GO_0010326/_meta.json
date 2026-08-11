@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0010326",
+  "name": "methionine-oxo-acid transaminase activity",
+  "def": "Catalysis of the reaction: a 2-oxocarboxylate + L-methionine = 4-methylsulfanyl-2-oxobutanoate + an L-alpha-amino acid.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "P47176",
+    "Q9C969",
+    "Q9LPM9",
+    "Q9M401"
+  ],
+  "assigned_accessions": [
+    "P47176",
+    "Q9C969",
+    "Q9LPM9",
+    "Q9M401"
+  ]
+}

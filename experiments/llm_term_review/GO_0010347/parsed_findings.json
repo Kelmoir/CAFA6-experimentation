@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q6NPM8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q6NPM8 provides a clear and specific explanation of the phosphatase activity defined by GO:0010347."
+    },
+    {
+      "accession": "Q9M8S8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear and specific explanation for why the protein carries the GO term \"L-galactose-1-phosphate phosphatase activity.\" The available features only indicate substrate and cofactor interactions, not the catalytic mechanism defined by the GO term."
+    }
+  ]
+}

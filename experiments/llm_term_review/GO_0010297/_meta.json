@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0010297",
+  "name": "heteropolysaccharide binding",
+  "def": "Binding to a heteropolysaccharide, a glycan composed of more than one type of monosaccharide residue.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O48707",
+    "Q8RXD9",
+    "Q9SA52"
+  ],
+  "assigned_accessions": [
+    "O48707",
+    "Q8RXD9",
+    "Q9SA52"
+  ]
+}

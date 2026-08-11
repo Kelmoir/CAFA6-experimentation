@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0010307",
+  "name": "acetylglutamate kinase regulator activity",
+  "def": "Binds to and modulates the activity of acetylglutamate kinase.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9ZST4"
+  ],
+  "assigned_accessions": [
+    "Q9ZST4"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0010313",
+  "name": "phytochrome binding",
+  "def": "Binding to a phytochrome.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q8GXX7",
+    "Q8GZM7",
+    "Q9FNP4"
+  ],
+  "assigned_accessions": [
+    "Q8GXX7",
+    "Q8GZM7",
+    "Q9FNP4"
+  ]
+}

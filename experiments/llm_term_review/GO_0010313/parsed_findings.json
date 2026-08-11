@@ -1,0 +1,33 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8GZM7",
+      "go_id": "GO:0010313",
+      "feature_type": "SITE",
+      "start": 46,
+      "end": 47,
+      "signal_kind": "text",
+      "signal_value": "Pfr PHYB binding",
+      "reasoning": "The explicit mention of Pfr PHYB binding in the site annotation directly supports the GO term's definition of \"phytochrome binding,\" making it the most plausible explanation for why the protein carries that term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q8GXX7",
+      "go_id": "GO:0010313",
+      "feature_type": "ZN_FING",
+      "start": 39,
+      "end": 68,
+      "signal_kind": "text",
+      "signal_value": "C3H1-type 1",
+      "reasoning": "The ZN_FING domain spans positions 39-68 and is associated with C3H1-type 1, which is a type of DNA-binding domain. While the GO term \"phytochrome binding\" does not specify a particular mechanism or chemistry related to phytochrome interaction, the presence of ZN_FING domains in Q8GXX7 suggests that it may have the capability to bind to phytochromes. However, this is not explicitly stated in the e"
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q9FNP4",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for Q9FNP4 is a disordered region, which does not provide sufficient evidence to support the association with the molecular function defined by GO:0010313."
+    }
+  ]
+}

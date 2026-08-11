@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0010327",
+  "name": "acetyl CoA:(Z)-3-hexen-1-ol acetyltransferase activity",
+  "def": "Catalysis of the reaction: acetyl-CoA + (Z)-3-hexen-1-ol = CoA + (Z)-3-hexen-1-yl acetate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SRQ2"
+  ],
+  "assigned_accessions": [
+    "Q9SRQ2"
+  ]
+}

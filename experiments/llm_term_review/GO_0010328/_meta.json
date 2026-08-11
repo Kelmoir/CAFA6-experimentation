@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0010328",
+  "name": "auxin influx transmembrane transporter activity",
+  "def": "Enables the transfer of auxin, from one side of a membrane to the other, into a cell.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "Q9CA25",
+    "Q9FWX8",
+    "Q9LFB2",
+    "Q9M0M2"
+  ],
+  "assigned_accessions": [
+    "Q9CA25",
+    "Q9FWX8",
+    "Q9LFB2",
+    "Q9M0M2"
+  ]
+}

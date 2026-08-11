@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9C969",
+      "go_id": "GO:0010326",
+      "feature_type": "BINDING",
+      "start": 63,
+      "end": 64,
+      "signal_kind": "ligand",
+      "signal_value": "pyridoxal 5'-phosphate",
+      "reasoning": "The binding of pyridoxal 5'-phosphate at position 63-64 directly relates to the enzymatic activity described in the GO term, which involves transaminase activity. This specific cofactor binding is a strong match to the primary reaction mechanism of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P47176",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9LPM9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9M401",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

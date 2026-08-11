@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0010298",
+  "name": "dihydrocamalexic acid decarboxylase activity",
+  "def": "Catalysis of the reaction: dihydrocamalexic acid = camalexin + CO2 + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LW27"
+  ],
+  "assigned_accessions": [
+    "Q9LW27"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0010347",
+  "name": "L-galactose-1-phosphate phosphatase activity",
+  "def": "Catalysis of the reaction: L-galactose-1-phosphate + H2O = L-galactose + phosphate.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q6NPM8",
+    "Q9M8S8"
+  ],
+  "assigned_accessions": [
+    "Q6NPM8",
+    "Q9M8S8"
+  ]
+}

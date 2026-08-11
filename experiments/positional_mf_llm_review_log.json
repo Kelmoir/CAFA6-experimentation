@@ -7340,5 +7340,228 @@
    }
   ],
   "issues": []
+ },
+ "GO:0010297": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "CBM20 1",
+    "accessions": [
+     "Q8RXD9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O48707",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for this protein specifically explains the molecular function of heteropolysaccharide binding."
+   },
+   {
+    "accession": "Q9SA52",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0010298": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LW27",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0010307": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9ZST4",
+    "go_id": "GO:0010307",
+    "feature_type": "BINDING",
+    "start": 107,
+    "end": 112,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The binding of ATP to Q9ZST4 is directly related to the definition of the GO term, but none of the annotated features explicitly state that this binding modulates the activity of acetylglutamate kinase. Thus, while the binding feature is relevant, it does not strongly explain the molecular function as defined by the GO term."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0010313": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Pfr PHYB binding",
+    "accessions": [
+     "Q8GZM7"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q8GXX7",
+    "go_id": "GO:0010313",
+    "feature_type": "ZN_FING",
+    "start": 39,
+    "end": 68,
+    "signal_kind": "text",
+    "signal_value": "C3H1-type 1",
+    "reasoning": "The ZN_FING domain spans positions 39-68 and is associated with C3H1-type 1, which is a type of DNA-binding domain. While the GO term \"phytochrome binding\" does not specify a particular mechanism or chemistry related to phytochrome interaction, the presence of ZN_FING domains in Q8GXX7 suggests that it may have the capability to bind to phytochromes. However, this is not explicitly stated in the e"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q9FNP4",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q9FNP4 is a disordered region, which does not provide sufficient evidence to support the association with the molecular function defined by GO:0010313."
+   }
+  ]
+ },
+ "GO:0010326": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "pyridoxal 5'-phosphate",
+    "accessions": [
+     "Q9C969"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P47176",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9LPM9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9M401",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0010327": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SRQ2",
+    "reason": "none_verdict",
+    "reasoning": "The domain/family cross-references suggest the presence of a catalytic domain or transferase family, which could plausibly enable acetyl transfer activity. However, these are not positional features and do not directly explain why Q9SRQ2 carries the GO term. Since no positional feature matches the definition's primary reaction, the verdict is NONE."
+   }
+  ]
+ },
+ "GO:0010328": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q9FWX8",
+     "Q9M0M2"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9CA25",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9LFB2",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q9LFB2 is a Disordered region, which does not provide any structural or functional basis for the defined mechanism of auxin influx. No positional feature has been confirmed to explain why this protein carries the GO term."
+   }
+  ]
+ },
+ "GO:0010347": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6NPM8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q6NPM8 provides a clear and specific explanation of the phosphatase activity defined by GO:0010347."
+   },
+   {
+    "accession": "Q9M8S8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and specific explanation for why the protein carries the GO term \"L-galactose-1-phosphate phosphatase activity.\" The available features only indicate substrate and cofactor interactions, not the catalytic mechanism defined by the GO term."
+   }
+  ]
+ },
+ "GO:0010356": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q1ACB3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }

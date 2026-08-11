@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9ZST4",
+      "go_id": "GO:0010307",
+      "feature_type": "BINDING",
+      "start": 107,
+      "end": 112,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to Q9ZST4 is directly related to the definition of the GO term, but none of the annotated features explicitly state that this binding modulates the activity of acetylglutamate kinase. Thus, while the binding feature is relevant, it does not strongly explain the molecular function as defined by the GO term."
+    }
+  ],
+  "issues": []
+}
