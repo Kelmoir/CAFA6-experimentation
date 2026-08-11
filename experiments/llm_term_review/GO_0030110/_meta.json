@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0030110",
+  "name": "HLA-C specific inhibitory MHC class I receptor activity",
+  "def": "Combining with a MHC class I molecule of the HLA-C subclass to mediate signaling that inhibits activation of a lymphocyte.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q14953"
+  ],
+  "assigned_accessions": [
+    "Q14953"
+  ]
+}

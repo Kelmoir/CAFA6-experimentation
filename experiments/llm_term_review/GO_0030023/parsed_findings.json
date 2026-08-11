@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9BXX0",
+      "go_id": "GO:0030023",
+      "feature_type": "DOMAIN",
+      "start": 43,
+      "end": 120,
+      "signal_kind": "text",
+      "signal_value": "EMI",
+      "reasoning": "The EMI domain is specifically associated with the extracellular matrix and has been linked to structural elasticity, which matches the primary reaction of the GO term."
+    },
+    {
+      "accession": "Q99K41",
+      "go_id": "GO:0030023",
+      "feature_type": "DOMAIN",
+      "start": 814,
+      "end": 865,
+      "signal_kind": "text",
+      "signal_value": "Collagen-like",
+      "reasoning": "The \"Collagen-like\" domain is directly associated with the structural properties of collagen, which are known for their flexibility and elasticity. This matches the primary reaction described in the GO term, making it a strong candidate."
+    },
+    {
+      "accession": "Q9Y6C2",
+      "go_id": "GO:0030023",
+      "feature_type": "DOMAIN",
+      "start": 55,
+      "end": 131,
+      "signal_kind": "text",
+      "signal_value": "EMI",
+      "reasoning": "The \"EMI\" domain (Elastin-like Motif) is a well-known structural feature associated with elastic properties, which directly matches the primary reaction of the GO term. This provides a strong and specific explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q99372",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

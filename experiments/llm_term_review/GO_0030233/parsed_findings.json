@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9HC21",
+      "go_id": "GO:0030233",
+      "feature_type": "MOTIF",
+      "start": 240,
+      "end": 246,
+      "signal_kind": "text",
+      "signal_value": "Substrate recognition",
+      "reasoning": "The MOTIF 240-246 is associated with substrate recognition, which is a plausible explanation for the transporter activity defined by GO:0030233. However, it does not fully capture the specificity of the transport mechanism described in the GO term's definition, making the match only moderately strong and thus uncertain."
+    }
+  ],
+  "issues": []
+}

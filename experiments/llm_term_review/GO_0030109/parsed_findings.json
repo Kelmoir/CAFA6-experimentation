@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "P43629",
+      "go_id": "GO:0030109",
+      "feature_type": "DOMAIN",
+      "start": 41,
+      "end": 102,
+      "signal_kind": "text",
+      "signal_value": "Ig-like C2-type 1",
+      "reasoning": "The \"Ig-like C2-type 1\" domain matches the primary reaction of the GO term by indicating a specific structural feature that is known to be involved in immune receptor activity, particularly in MHC class I signaling."
+    },
+    {
+      "accession": "P97484",
+      "go_id": "GO:0030109",
+      "feature_type": "MOTIF",
+      "start": 710,
+      "end": 716,
+      "signal_kind": "text",
+      "signal_value": "ITIM motif 1",
+      "reasoning": "The presence of an ITIM motif in the protein's sequence directly supports the function of inhibiting lymphocyte activation through interaction with an MHC class I molecule, which is the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q8NHL6",
+      "go_id": "GO:0030109",
+      "feature_type": "MOTIF",
+      "start": 530,
+      "end": 536,
+      "signal_kind": "text",
+      "signal_value": "ITIM motif 1",
+      "reasoning": "The presence of an ITIM motif in the protein is a strong indication that it can mediate inhibitory signaling through tyrosine phosphorylation, which matches the defined reaction of HLA-B specific inhibitory MHC class I receptor activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

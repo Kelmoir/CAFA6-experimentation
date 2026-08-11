@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q07954",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction described in the GO term's definition, which involves combining with an apolipoprotein to initiate a change in cell activity."
+    }
+  ]
+}

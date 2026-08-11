@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q02505",
+      "go_id": "GO:0030197",
+      "feature_type": "REGION",
+      "start": 1892,
+      "end": 2446,
+      "signal_kind": "text",
+      "signal_value": "32 X approximate tandem repeats, Ser/Thr-rich",
+      "reasoning": "The \"REGION\" span \"1892-2446\" with the note about Ser/Thr-rich and tandem repeats provides a plausible structural basis for the GO term's definition, suggesting that this region is involved in the lubricant activity of the protein."
+    },
+    {
+      "accession": "Q99102",
+      "go_id": "GO:0030197",
+      "feature_type": "DOMAIN",
+      "start": 4552,
+      "end": 4668,
+      "signal_kind": "text",
+      "signal_value": "AMOP",
+      "reasoning": "The AMOP domain is specifically linked to mucin proteins, which are known to be involved in extracellular matrix functions and lubrication, directly supporting the definition of a lubricant for an extracellular matrix."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P02808",
+      "reason": "none_verdict",
+      "reasoning": "The only plausible candidate that could be related to the function is the hydrophobic region, but it does not directly explain the lubricant activity described in the GO term. No feature matches the primary reaction of acting as a lubricant for an extracellular matrix."
+    },
+    {
+      "accession": "Q685J3",
+      "reason": "none_verdict",
+      "reasoning": "The highest-scoring candidate (DOMAIN 4130-4170) is not directly linked to the *lubricant activity* of the protein as defined in the GO term. It is more likely associated with cell signaling or structural roles rather than lubrication, and no other feature provides a stronger match to the primary reaction of the GO term."
+    }
+  ]
+}

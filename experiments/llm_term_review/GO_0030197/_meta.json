@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0030197",
+  "name": "extracellular matrix constituent, lubricant activity",
+  "def": "Functions as a lubricant for an extracellular matrix, such as a mucous membrane.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P02808",
+    "Q02505",
+    "Q685J3",
+    "Q99102"
+  ],
+  "assigned_accessions": [
+    "P02808",
+    "Q02505",
+    "Q685J3",
+    "Q99102"
+  ]
+}

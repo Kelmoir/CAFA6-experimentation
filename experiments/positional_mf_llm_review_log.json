@@ -13368,5 +13368,215 @@
     "reasoning": "The \"DOMAIN\" annotation with coordinates 27-66 for P51884 is the only positional feature provided, and it refers to a Leu-rich repeat domain. While Leu-rich repeats are commonly associated with proteoglycans and structural roles in the extracellular matrix, the specific domain type or its role in compression resistance is not explicitly stated in the annotation. This makes it a weak match to the G"
    }
   ]
+ },
+ "GO:0030023": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "EMI",
+    "accessions": [
+     "Q9BXX0",
+     "Q9Y6C2"
+    ],
+    "reason": "resolved to ['InterPro:IPR011489', 'PROSITE:PS51041', 'Pfam:PF07546'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR011489': 34, 'PROSITE:PS51041': 34, 'Pfam:PF07546': 17})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Collagen-like",
+    "accessions": [
+     "Q99K41"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q99372",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0030107": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "itim motif 1",
+    "accessions": [
+     "P97484",
+     "Q8NHL6"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0030108": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O46427",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in O46427's list matches the primary reaction described in the definition of GO:0030108, which involves binding to an HLA-A molecule and activating a lymphocyte. The ACT_SITE features are generic and do not provide evidence for this specific molecular function."
+   },
+   {
+    "accession": "O54707",
+    "reason": "none_verdict",
+    "reasoning": "The C-type lectin domain type is associated with MHC class I receptor activity, but it does not directly specify the mechanism of activating a lymphocyte through HLA-A binding. Therefore, no annotated feature provides a strong match to the GO term's primary reaction."
+   },
+   {
+    "accession": "P00786",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for this protein directly matches the primary reaction described in the GO definition for the term \"HLA-A specific activating MHC class I receptor activity.\""
+   },
+   {
+    "accession": "P09668",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list matches the primary reaction of the GO term, which involves binding to HLA-A and activating a lymphocyte. The ACT_SITE annotations are generic and do not provide enough specificity to explain the defined molecular function."
+   }
+  ]
+ },
+ "GO:0030109": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "itim motif 1",
+    "accessions": [
+     "P97484",
+     "Q8NHL6"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like C2-type 1",
+    "accessions": [
+     "P43629"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0030110": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q14953",
+    "go_id": "GO:0030110",
+    "feature_type": "DOMAIN",
+    "start": 41,
+    "end": 107,
+    "signal_kind": "text",
+    "signal_value": "Ig-like C2-type 1",
+    "reasoning": "The Ig-like C2-type 1 domain in Q14953 is structurally relevant to MHC class I receptor activity, but it does not explicitly state that the protein is an HLA-C specific inhibitory MHC class I receptor activity. While it could be part of such a receptor, there is no direct evidence linking this domain to the defined function in the annotated features."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0030197": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "32 X approximate tandem repeats, Ser/Thr-rich",
+    "accessions": [
+     "Q02505"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "AMOP",
+    "accessions": [
+     "Q99102"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P02808",
+    "reason": "none_verdict",
+    "reasoning": "The only plausible candidate that could be related to the function is the hydrophobic region, but it does not directly explain the lubricant activity described in the GO term. No feature matches the primary reaction of acting as a lubricant for an extracellular matrix."
+   },
+   {
+    "accession": "Q685J3",
+    "reason": "none_verdict",
+    "reasoning": "The highest-scoring candidate (DOMAIN 4130-4170) is not directly linked to the *lubricant activity* of the protein as defined in the GO term. It is more likely associated with cell signaling or structural roles rather than lubrication, and no other feature provides a stronger match to the primary reaction of the GO term."
+   }
+  ]
+ },
+ "GO:0030226": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q07954",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction described in the GO term's definition, which involves combining with an apolipoprotein to initiate a change in cell activity."
+   }
+  ]
+ },
+ "GO:0030233": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9HC21",
+    "go_id": "GO:0030233",
+    "feature_type": "MOTIF",
+    "start": 240,
+    "end": 246,
+    "signal_kind": "text",
+    "signal_value": "Substrate recognition",
+    "reasoning": "The MOTIF 240-246 is associated with substrate recognition, which is a plausible explanation for the transporter activity defined by GO:0030233. However, it does not fully capture the specificity of the transport mechanism described in the GO term's definition, making the match only moderately strong and thus uncertain."
+   }
+  ],
+  "issues": []
  }
 }

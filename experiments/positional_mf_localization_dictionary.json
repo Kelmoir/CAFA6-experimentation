@@ -11381,6 +11381,24 @@
   ],
   "text_patterns": []
  },
+ "GO:0030107": {
+  "name": "HLA-A specific inhibitory MHC class I receptor activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "itim motif 1"
+  ]
+ },
+ "GO:0030109": {
+  "name": "HLA-B specific inhibitory MHC class I receptor activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "itim motif 1"
+  ]
+ },
  "GO:0030145": {
   "name": "manganese ion binding",
   "ligands": [

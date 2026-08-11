@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "P97484",
+      "go_id": "GO:0030107",
+      "feature_type": "MOTIF",
+      "start": 710,
+      "end": 716,
+      "signal_kind": "text",
+      "signal_value": "ITIM motif 1",
+      "reasoning": "The ITIM motif is directly associated with inhibitory signaling in immunoglobulin-like domains, which aligns with the primary reaction described in the GO term's definition of inhibiting lymphocyte activation through an HLA-A MHC class I molecule."
+    },
+    {
+      "accession": "Q8NHL6",
+      "go_id": "GO:0030107",
+      "feature_type": "MOTIF",
+      "start": 530,
+      "end": 536,
+      "signal_kind": "text",
+      "signal_value": "ITIM motif 1",
+      "reasoning": "The ITIM motif is a known component of immune receptor signaling and could be involved in the defined chemistry of HLA-A specific inhibitory MHC class I receptor activity, making it a plausible explanation for why Q8NHL6 carries this GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

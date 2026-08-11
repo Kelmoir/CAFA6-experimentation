@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0030023",
+  "name": "extracellular matrix constituent conferring elasticity",
+  "def": "A component of the extracellular matrix that enables the matrix to recoil after transient stretching.",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "Q99372",
+    "Q99K41",
+    "Q9BXX0",
+    "Q9Y6C2"
+  ],
+  "assigned_accessions": [
+    "Q99372",
+    "Q99K41",
+    "Q9BXX0",
+    "Q9Y6C2"
+  ]
+}

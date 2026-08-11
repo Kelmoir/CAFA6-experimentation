@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0030233",
+  "name": "deoxynucleotide transmembrane transporter activity",
+  "def": "Catalyzes transport of all four deoxy (d) NDPs, and, less efficiently, the corresponding dNTPs, in exchange for dNDPs, ADP, or ATP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9HC21"
+  ],
+  "assigned_accessions": [
+    "Q9HC21"
+  ]
+}

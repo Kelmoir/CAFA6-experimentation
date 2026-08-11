@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0030226",
+  "name": "apolipoprotein receptor activity",
+  "def": "Combining with an apolipoprotein to initiate a change in cell activity.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q07954"
+  ],
+  "assigned_accessions": [
+    "Q07954"
+  ]
+}
