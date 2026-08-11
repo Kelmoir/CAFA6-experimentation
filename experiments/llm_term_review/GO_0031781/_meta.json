@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0031781",
+  "name": "type 3 melanocortin receptor binding",
+  "def": "Binding to a type 3 melanocortin receptor.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "D3Z1Q2",
+    "F8W4H9",
+    "P01194",
+    "P0DM64"
+  ],
+  "assigned_accessions": [
+    "D3Z1Q2",
+    "F8W4H9",
+    "P01194",
+    "P0DM64"
+  ]
+}

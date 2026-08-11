@@ -15145,6 +15145,68 @@
    }
   ]
  },
+ "GO:0031731": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P46156",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P97884",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q6QLR1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q6QLR2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0031770": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P01286",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P09916",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P16043",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P63292",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0031774": {
   "n_resolved": 0,
   "n_uncertain": 1,
@@ -15166,6 +15228,68 @@
   ],
   "issues": []
  },
+ "GO:0031781": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "D3Z1Q2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides direct evidence of the protein's ability to bind to a type 3 melanocortin receptor, which is the primary reaction defined by the GO term. The domain/family cross-references suggest involvement in melanocortin receptor signaling but do not directly explain the binding activity."
+   },
+   {
+    "accession": "F8W4H9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P01194",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P01194 specifically matches the primary reaction of binding to a type 3 melanocortin receptor. The disordered regions are not functional domains and do not provide a strong match for the defined function."
+   },
+   {
+    "accession": "P0DM64",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0031782": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P01193",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the positional data provides direct evidence that P01193 binds to a type 4 melanocortin receptor, which is the primary reaction defined by the GO term. The domain/family cross-references suggest potential associations with melanocortin receptors and ACTH but do not directly explain the binding activity."
+   },
+   {
+    "accession": "P01194",
+    "reason": "none_verdict",
+    "reasoning": "The protein P01194 does not have any annotated positional feature that directly explains its ability to bind to a type 4 melanocortin receptor. The available features are disordered regions, and the domain/family cross-references do not provide evidence of binding activity or structural compatibility with the receptor. Thus, there is no plausible explanation for the GO term within the given eviden"
+   },
+   {
+    "accession": "Q96G30",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P01189",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly or specifically explains why P01189 carries the term \"type 4 melanocortin receptor binding.\""
+   }
+  ]
+ },
  "GO:0031788": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -15179,6 +15303,44 @@
     "accession": "P12872",
     "reason": "none_verdict",
     "reasoning": "The REGION 38-72 span is marked as Disordered, but it does not provide any evidence that this region is involved in binding to a motilin receptor. No other positional feature directly matches the primary reaction of the GO term, which is about binding to a motilin receptor. Thus, there is no plausible explanation for why P12872 carries the GO term \"motilin receptor binding\" based on its annotated"
+   }
+  ]
+ },
+ "GO:0031802": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "GTP",
+    "accessions": [
+     "Q08877"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "WH1",
+    "accessions": [
+     "Q9Z2Y3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P04273",
+    "reason": "none_verdict",
+    "reasoning": "The only binding site that explicitly mentions interaction with GRB2, ERI3, and SYN1 is in the region 60-61, but it does not specify binding to a type 5 metabotropic glutamate receptor. Therefore, no positional feature directly matches the primary reaction of the GO term."
+   },
+   {
+    "accession": "Q60613",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features do not provide any evidence that directly explains why it carries the molecular function \"type 5 metabotropic glutamate receptor binding.\" All features describe interactions with adenosine or disordered regions, which are unrelated to the defined mechanism of binding to a type 5 metabotropic glutamate receptor."
    }
   ]
  }

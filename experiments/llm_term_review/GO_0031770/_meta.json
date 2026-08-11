@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0031770",
+  "name": "growth hormone-releasing hormone receptor binding",
+  "def": "Binding to a growth hormone-releasing hormone receptor.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P01286",
+    "P09916",
+    "P16043",
+    "P63292"
+  ],
+  "assigned_accessions": [
+    "P01286",
+    "P09916",
+    "P16043",
+    "P63292"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0031802",
+  "name": "type 5 metabotropic glutamate receptor binding",
+  "def": "Binding to a type 5 metabotropic glutamate receptor.",
+  "n_proteins_total": 17,
+  "sampled_accessions": [
+    "P04273",
+    "Q08877",
+    "Q60613",
+    "Q9Z2Y3"
+  ],
+  "assigned_accessions": [
+    "P04273",
+    "Q08877",
+    "Q60613",
+    "Q9Z2Y3"
+  ]
+}

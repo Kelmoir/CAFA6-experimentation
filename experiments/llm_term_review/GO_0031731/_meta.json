@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0031731",
+  "name": "CCR6 chemokine receptor binding",
+  "def": "Binding to a CCR6 chemokine receptor.",
+  "n_proteins_total": 27,
+  "sampled_accessions": [
+    "P46156",
+    "P97884",
+    "Q6QLR1",
+    "Q6QLR2"
+  ],
+  "assigned_accessions": [
+    "P46156",
+    "P97884",
+    "Q6QLR1",
+    "Q6QLR2"
+  ]
+}

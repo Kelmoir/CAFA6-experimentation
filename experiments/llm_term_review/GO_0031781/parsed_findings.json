@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "D3Z1Q2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides direct evidence of the protein's ability to bind to a type 3 melanocortin receptor, which is the primary reaction defined by the GO term. The domain/family cross-references suggest involvement in melanocortin receptor signaling but do not directly explain the binding activity."
+    },
+    {
+      "accession": "F8W4H9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P01194",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P01194 specifically matches the primary reaction of binding to a type 3 melanocortin receptor. The disordered regions are not functional domains and do not provide a strong match for the defined function."
+    },
+    {
+      "accession": "P0DM64",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q08877",
+      "go_id": "GO:0031802",
+      "feature_type": "BINDING",
+      "start": 37,
+      "end": 46,
+      "signal_kind": "ligand",
+      "signal_value": "GTP",
+      "reasoning": "The binding site for GTP (a ligand) directly supports the molecular function of binding to a type 5 metabotropic glutamate receptor, making it the most plausible explanation for why the protein carries this GO term."
+    },
+    {
+      "accession": "Q9Z2Y3",
+      "go_id": "GO:0031802",
+      "feature_type": "DOMAIN",
+      "start": 1,
+      "end": 110,
+      "signal_kind": "text",
+      "signal_value": "WH1",
+      "reasoning": "The \"WH1\" note in the DOMAIN span (1-110) most plausibly explains why Q9Z2Y3 carries the GO term \"type 5 metabotropic glutamate receptor binding,\" as it directly relates to the primary reaction of binding to a type 5 metabotropic glutamate receptor."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P04273",
+      "reason": "none_verdict",
+      "reasoning": "The only binding site that explicitly mentions interaction with GRB2, ERI3, and SYN1 is in the region 60-61, but it does not specify binding to a type 5 metabotropic glutamate receptor. Therefore, no positional feature directly matches the primary reaction of the GO term."
+    },
+    {
+      "accession": "Q60613",
+      "reason": "none_verdict",
+      "reasoning": "The protein's annotated features do not provide any evidence that directly explains why it carries the molecular function \"type 5 metabotropic glutamate receptor binding.\" All features describe interactions with adenosine or disordered regions, which are unrelated to the defined mechanism of binding to a type 5 metabotropic glutamate receptor."
+    }
+  ]
+}

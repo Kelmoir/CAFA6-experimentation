@@ -1,0 +1,10 @@
+=== P01189 GO:0031782 (VERDICT missing) ===
+THINKING: The GO term is "type 4 melanocortin receptor binding" (GO:0031782), which defines the primary function of the protein as binding to a type 4 melanocortin receptor. The protein P01189 has no positional features listed in its Annotated features section, and all the annotated features are regions marked as disordered. There is no evidence provided that any of these regions directly correspond to the binding site for the type 4 melanocortin receptor.
+
+The only candidate feature is a "REGION" with coordinates 87-175, which is noted as disordered. This region could potentially be involved in receptor binding, but without more specific information or evidence pointing to it being the actual binding site, we cannot confirm that this region is the structural basis for the GO term.
+
+The highest score for a match would be 1, as no feature directly matches the primary reaction of the GO term. Therefore, the verdict is NONE.
+
+FEATURE: REGION 87-175  
+REASONING: The protein P01189 has no positional features that specifically account for the binding to a type 4 melanocortin receptor, and the only region listed is disordered with no evidence of being a binding site. Thus, there is no feature that directly matches the primary reaction of the GO term.
+
