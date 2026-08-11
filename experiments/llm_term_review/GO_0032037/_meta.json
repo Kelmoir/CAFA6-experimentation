@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0032037",
+  "name": "myosin I heavy chain binding",
+  "def": "Binding to a heavy chain of a myosin I complex.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P26199",
+    "P26200",
+    "Q557J6"
+  ],
+  "assigned_accessions": [
+    "P26199",
+    "P26200",
+    "Q557J6"
+  ]
+}

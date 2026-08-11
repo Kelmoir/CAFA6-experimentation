@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P23909",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the defined chemistry of binding to a double-stranded DNA region containing an A/C mispair."
+    }
+  ]
+}

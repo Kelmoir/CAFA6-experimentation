@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0032135",
+  "name": "DNA insertion or deletion binding",
+  "def": "Binding to a double-stranded DNA region containing an insertion or a deletion.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P0CF88",
+    "P25336"
+  ],
+  "assigned_accessions": [
+    "P0CF88",
+    "P25336"
+  ]
+}

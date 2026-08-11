@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0032038",
+  "name": "myosin II heavy chain binding",
+  "def": "Binding to a heavy chain of a myosin II complex.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "P12829",
+    "Q05080",
+    "Q06580",
+    "Q12280"
+  ],
+  "assigned_accessions": [
+    "P12829",
+    "Q05080",
+    "Q06580",
+    "Q12280"
+  ]
+}

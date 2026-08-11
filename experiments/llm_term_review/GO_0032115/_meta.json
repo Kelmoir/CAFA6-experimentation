@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0032115",
+  "name": "sorbose reductase activity",
+  "def": "Catalysis of the reaction: D-glucitol + NADP+ = L-sorbose + H+ + NADPH. The reaction may occur, to a minor extent, in the reverse direction.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P87219"
+  ],
+  "assigned_accessions": [
+    "P87219"
+  ]
+}

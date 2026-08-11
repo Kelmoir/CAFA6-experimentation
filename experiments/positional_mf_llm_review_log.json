@@ -15964,5 +15964,209 @@
     "reasoning": "The protein P53890 has no annotated positional feature that directly matches the primary reaction described in the GO term \"myosin II tail binding,\" which involves binding to the tail region of a myosin II heavy chain. Therefore, there is no plausible explanation for why this protein carries the term based on its structural features."
    }
   ]
+ },
+ "GO:0032037": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ADF-H",
+    "accessions": [
+     "Q557J6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P26199",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P26200",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0032038": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q05080",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of \"myosin II heavy chain binding\" as defined by the GO term. The F-BAR domain and disordered region are relevant to the structure of the protein but do not specifically explain the function of binding to a myosin II heavy chain."
+   },
+   {
+    "accession": "Q06580",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the GO term's primary reaction or mechanism of binding to the heavy chain of a myosin II complex, so there is no single feature that can be identified as the most plausible explanation for this molecular function."
+   },
+   {
+    "accession": "Q12280",
+    "reason": "none_verdict",
+    "reasoning": "The annotated feature does not specifically explain the binding to a heavy chain of a myosin II complex; it only echoes a word from a secondary clause."
+   },
+   {
+    "accession": "P12829",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features do not provide any positional evidence that directly explains why it binds to a myosin II heavy chain."
+   }
+  ]
+ },
+ "GO:0032067": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P15006",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P24202",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for P24202 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The \"Mrr-like_N_dom\" domain is directly associated with methyl restriction endonucleases, which are known to perform type IV site-specific deoxyribonuclease activity. This domain matches the primary reaction described in the GO definition, making it a strong candidate for explaining why P24202 carries the term \"type IV site-specific deoxyribonuclease activity.\""
+   }
+  ]
+ },
+ "GO:0032089": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "B30.2/SPRY",
+    "accessions": [
+     "Q99PP9"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "FIIND",
+    "accessions": [
+     "Q9Y2G2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O95361",
+    "reason": "none_verdict",
+    "reasoning": "The protein O95361 does not carry any annotated feature that directly matches the primary reaction of the GO term (binding to a NACHT domain). All features are either generic or associated with different ligands, making it impossible to determine why this protein carries the term."
+   }
+  ]
+ },
+ "GO:0032093": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SAM",
+    "accessions": [
+     "D3YXJ0",
+     "P23561",
+     "Q86XP1"
+    ],
+    "reason": "resolved to ['InterPro:IPR001660', 'PROSITE:PS50105', 'Pfam:PF07647'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR001660': 222, 'PROSITE:PS50105': 183, 'Pfam:PF07647': 91})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P16621",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for this protein directly matches the primary reaction of \"binding to a SAM domain\" described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0032115": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P87219",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the catalytic activity of sorbose reductase, which is defined by its reaction with D-glucitol and NADP+. The features are about binding sites and proton donation, not the enzyme's mechanism of action."
+   }
+  ]
+ },
+ "GO:0032135": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Integrase catalytic",
+    "accessions": [
+     "P0CF88"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "PIP box",
+    "accessions": [
+     "P25336"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0032136": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P23909",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the defined chemistry of binding to a double-stranded DNA region containing an A/C mispair."
+   }
+  ]
  }
 }

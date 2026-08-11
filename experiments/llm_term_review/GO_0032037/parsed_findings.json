@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q557J6",
+      "go_id": "GO:0032037",
+      "feature_type": "DOMAIN",
+      "start": 2,
+      "end": 131,
+      "signal_kind": "text",
+      "signal_value": "ADF-H",
+      "reasoning": "The DOMAIN 2-131 annotation with \"ADF-H\" is the most plausible explanation for why Q557J6 carries the GO term \"myosin I heavy chain binding,\" as ADF-H is a known domain involved in actin-binding and regulation, which aligns with myosin function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P26199",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P26200",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

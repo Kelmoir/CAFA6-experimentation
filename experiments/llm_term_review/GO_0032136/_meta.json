@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0032136",
+  "name": "adenine/cytosine mispair binding",
+  "def": "Binding to a double-stranded DNA region containing an A/C mispair.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P23909"
+  ],
+  "assigned_accessions": [
+    "P23909"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0032067",
+  "name": "type IV site-specific deoxyribonuclease activity",
+  "def": "Catalysis of the endonucleolytic cleavage of DNA in a site specific manner. Cleavage is dependent on the presence of a specific recognition site in the DNA which must be modified (e.g. methylated, hydroxymethylated, glucosyl-hydroxymethylated).",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P15006",
+    "P24202"
+  ],
+  "assigned_accessions": [
+    "P15006",
+    "P24202"
+  ]
+}

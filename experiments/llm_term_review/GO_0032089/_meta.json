@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0032089",
+  "name": "NACHT domain binding",
+  "def": "Binding to a NACHT (NAIP, CIITA, HET-E and TP1) domain. The NACHT domain consists of seven distinct conserved motifs, including an ATP/GTPase specific P-loop, a Mg2+-binding site and five more specific motifs.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O95361",
+    "Q99PP9",
+    "Q9Y2G2"
+  ],
+  "assigned_accessions": [
+    "O95361",
+    "Q99PP9",
+    "Q9Y2G2"
+  ]
+}

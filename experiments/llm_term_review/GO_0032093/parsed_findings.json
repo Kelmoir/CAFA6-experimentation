@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "D3YXJ0",
+      "go_id": "GO:0032093",
+      "feature_type": "DOMAIN",
+      "start": 1142,
+      "end": 1206,
+      "signal_kind": "text",
+      "signal_value": "SAM",
+      "reasoning": "The DOMAIN 1142-1206 (SAM) feature directly matches the GO term's definition by indicating the protein binds to a SAM domain, which is the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "P23561",
+      "go_id": "GO:0032093",
+      "feature_type": "DOMAIN",
+      "start": 19,
+      "end": 84,
+      "signal_kind": "text",
+      "signal_value": "SAM",
+      "reasoning": "The \"DOMAIN 19-84\" feature directly corresponds to the \"SAM\" domain mentioned in the definition of the GO term, indicating that this protein has a structural element capable of binding to SAM domains, which is the primary reaction implied by the GO term."
+    },
+    {
+      "accession": "Q86XP1",
+      "go_id": "GO:0032093",
+      "feature_type": "DOMAIN",
+      "start": 1150,
+      "end": 1214,
+      "signal_kind": "text",
+      "signal_value": "SAM",
+      "reasoning": "The domain 1150-1214 is explicitly annotated as \"SAM,\" which directly aligns with the GO term's definition of binding to a SAM domain, making it the most plausible explanation for why this protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P16621",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for this protein directly matches the primary reaction of \"binding to a SAM domain\" described in the GO term's definition."
+    }
+  ]
+}

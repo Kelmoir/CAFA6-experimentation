@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q99PP9",
+      "go_id": "GO:0032089",
+      "feature_type": "DOMAIN",
+      "start": 346,
+      "end": 545,
+      "signal_kind": "text",
+      "signal_value": "B30.2/SPRY",
+      "reasoning": "The DOMAIN 346-545 annotation as \"B30.2/SPRY\" directly aligns with the definition of the GO term, which involves binding to a NACHT domain. This provides a strong and specific match to the primary reaction described in the definition."
+    },
+    {
+      "accession": "Q9Y2G2",
+      "go_id": "GO:0032089",
+      "feature_type": "DOMAIN",
+      "start": 160,
+      "end": 446,
+      "signal_kind": "text",
+      "signal_value": "FIIND",
+      "reasoning": "The DOMAIN 160-446 (FIIND) directly matches the primary reaction of binding to an NACHT domain, which is a key aspect of the GO term's definition. This feature provides a strong and specific match to the molecular function being described."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O95361",
+      "reason": "none_verdict",
+      "reasoning": "The protein O95361 does not carry any annotated feature that directly matches the primary reaction of the GO term (binding to a NACHT domain). All features are either generic or associated with different ligands, making it impossible to determine why this protein carries the term."
+    }
+  ]
+}
