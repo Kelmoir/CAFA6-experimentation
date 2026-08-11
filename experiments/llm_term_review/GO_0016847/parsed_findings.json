@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9M2Y8",
+      "go_id": "GO:0016847",
+      "feature_type": "BINDING",
+      "start": 46,
+      "end": 47,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site at positions 46-47 is associated with the substrate, which directly supports the catalytic activity described by GO:0016847. This feature most plausibly explains why Q9M2Y8 carries the term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q9S9U6",
+      "go_id": "GO:0016847",
+      "feature_type": "BINDING",
+      "start": 44,
+      "end": 45,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding of a substrate to the enzyme could plausibly explain its function in catalyzing the methyl transfer reaction, but the evidence is too generic to confirm that this specific binding site is directly involved in the enzymatic activity."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q43309",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature (by type + exact coordinates) specifically matches the primary reaction of the GO term, and the domain/family cross-references do not provide a direct explanation for the enzyme's function."
+    },
+    {
+      "accession": "Q9SAR0",
+      "reason": "none_verdict",
+      "reasoning": "The protein Q9SAR0 does not have any annotated features that directly explain why it carries the molecular function defined by GO:0016847."
+    }
+  ]
+}

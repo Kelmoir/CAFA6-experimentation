@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q10588",
+      "go_id": "GO:0016849",
+      "feature_type": "BINDING",
+      "start": 171,
+      "end": 172,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The highest score (8) is achieved by the BINDING 171-172 feature with ligand NAD(+), but since the GO term's definition emphasizes the mechanism of phosphorus-oxygen bond cleavage rather than just the binding, and no specific domain type is mentioned in the Annotated features, we cannot definitively say which one is the best match."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P28907",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature in the annotated features of P28907 specifically matches the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "P56528",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P56528's Annotated features section directly matches the defined chemistry of the phosphorus-oxygen lyase activity. The only available features refer to enzyme activity sites, not the mechanism of bond cleavage or addition."
+    },
+    {
+      "accession": "Q9MZ03",
+      "reason": "none_verdict",
+      "reasoning": "The defined molecular function of the GO term 0016849 involves a specific phosphorus-oxygen bond cleavage mechanism, which is not supported by any of the annotated features for protein Q9MZ03. The available features are generic and do not directly explain the chemistry of the GO term."
+    }
+  ]
+}

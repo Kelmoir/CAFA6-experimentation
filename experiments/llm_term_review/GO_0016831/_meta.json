@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016831",
+  "name": "carboxy-lyase activity",
+  "def": "Catalysis of the nonhydrolytic addition or removal of a carboxyl group to or from a compound.",
+  "n_proteins_total": 29,
+  "sampled_accessions": [
+    "P18486",
+    "Q03034",
+    "Q6ZJK7",
+    "Q9M0G4"
+  ],
+  "assigned_accessions": [
+    "P18486",
+    "Q03034",
+    "Q6ZJK7",
+    "Q9M0G4"
+  ]
+}

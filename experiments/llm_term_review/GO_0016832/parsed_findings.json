@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P08203",
+      "go_id": "GO:0016832",
+      "feature_type": "BINDING",
+      "start": 94,
+      "end": 95,
+      "signal_kind": "ligand",
+      "signal_value": "Zn(2+)",
+      "reasoning": "The binding of Zn(2+) and substrate at positions 94-95 is directly related to the catalytic activity described in the definition, which involves cleaving a C-C bond in a molecule with hydroxyl and carbonyl groups. This specific interaction supports the enzyme's role in aldehyde-lyase activity."
+    },
+    {
+      "accession": "P19669",
+      "go_id": "GO:0016832",
+      "feature_type": "ACT_SITE",
+      "start": 83,
+      "end": 84,
+      "signal_kind": "text",
+      "signal_value": "Nucleophile; Schiff-base intermediate with substrate",
+      "reasoning": "The \"ACT_SITE 83-84\" feature with the note that it is a nucleophile and involved in a Schiff-base intermediate directly matches the primary reaction mechanism described for aldehyde-lyase activity, making it the most plausible explanation."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P50431",
+      "reason": "none_verdict",
+      "reasoning": "The \"BINDING\" region at position 140-141 with (6S)-5-formyl-5,6,7,8-tetrahydrofolate is not specific enough to directly explain the aldehyde-lyase activity described by GO:0016832. While this binding site is relevant to one-carbon metabolism and could be part of a larger mechanism, it does not provide direct evidence for the cleavage of a C-C bond in a molecule with hydroxyl and carbonyl groups."
+    },
+    {
+      "accession": "A6Y9S5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature from the given list provides a clear and specific explanation of the aldehyde-lyase activity defined by GO:0016832."
+    }
+  ]
+}

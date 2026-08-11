@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016849",
+  "name": "phosphorus-oxygen lyase activity",
+  "def": "Catalysis of the cleavage of a phosphorus-oxygen bond by other means than by hydrolysis or oxidation, or conversely adding a group to a double bond.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P28907",
+    "P56528",
+    "Q10588",
+    "Q9MZ03"
+  ],
+  "assigned_accessions": [
+    "P28907",
+    "P56528",
+    "Q10588",
+    "Q9MZ03"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0016803",
+  "name": "ether hydrolase activity",
+  "def": "Catalysis of the hydrolysis of an ether bond, -O-.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P76535",
+    "P77455",
+    "Q8N661"
+  ],
+  "assigned_accessions": [
+    "P76535",
+    "P77455",
+    "Q8N661"
+  ]
+}

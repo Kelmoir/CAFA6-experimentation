@@ -11130,6 +11130,36 @@
    }
   ]
  },
+ "GO:0016803": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "MaoC-like",
+    "accessions": [
+     "P77455"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P76535",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly corresponds to the primary reaction of catalyzing ether bond hydrolysis, which is the defining chemistry of the GO term. The available features are either generic or only echo secondary clauses."
+   },
+   {
+    "accession": "Q8N661",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0016823": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -11154,5 +11184,175 @@
     "reasoning": "None of the annotated features for P9WNH5 specifically explain the phosphoryl transfer mechanism described in the GO term's definition. The highest score (5) is assigned to a site that may be relevant to catalytic activity, but it does not directly account for the chemistry of hydrolase activity on acid carbon-carbon bonds in ketonic substances."
    }
   ]
+ },
+ "GO:0016831": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "pyridoxal 5'-phosphate",
+    "accessions": [
+     "Q6ZJK7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P18486",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly matches the primary reaction described in the GO term's definition, so it cannot be used to plausibly explain why the protein carries that term."
+   },
+   {
+    "accession": "Q03034",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q03034 directly supports the catalytic activity defined by GO:0016831."
+   },
+   {
+    "accession": "Q9M0G4",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature for Q9M0G4 that directly matches the primary reaction of the GO term \"carboxy-lyase activity,\" which involves catalyzing the nonhydrolytic addition or removal of a carboxyl group. The binding sites and disordered region do not provide sufficient evidence to support this molecular function."
+   }
+  ]
+ },
+ "GO:0016832": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Zn(2+)",
+    "accessions": [
+     "P08203"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Nucleophile; Schiff-base intermediate with substrate",
+    "accessions": [
+     "P19669"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P50431",
+    "reason": "none_verdict",
+    "reasoning": "The \"BINDING\" region at position 140-141 with (6S)-5-formyl-5,6,7,8-tetrahydrofolate is not specific enough to directly explain the aldehyde-lyase activity described by GO:0016832. While this binding site is relevant to one-carbon metabolism and could be part of a larger mechanism, it does not provide direct evidence for the cleavage of a C-C bond in a molecule with hydroxyl and carbonyl groups."
+   },
+   {
+    "accession": "A6Y9S5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature from the given list provides a clear and specific explanation of the aldehyde-lyase activity defined by GO:0016832."
+   }
+  ]
+ },
+ "GO:0016847": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q9M2Y8"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q9S9U6",
+    "go_id": "GO:0016847",
+    "feature_type": "BINDING",
+    "start": 44,
+    "end": 45,
+    "signal_kind": "ligand",
+    "signal_value": "substrate",
+    "reasoning": "The binding of a substrate to the enzyme could plausibly explain its function in catalyzing the methyl transfer reaction, but the evidence is too generic to confirm that this specific binding site is directly involved in the enzymatic activity."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q43309",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature (by type + exact coordinates) specifically matches the primary reaction of the GO term, and the domain/family cross-references do not provide a direct explanation for the enzyme's function."
+   },
+   {
+    "accession": "Q9SAR0",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9SAR0 does not have any annotated features that directly explain why it carries the molecular function defined by GO:0016847."
+   }
+  ]
+ },
+ "GO:0016849": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q10588",
+    "go_id": "GO:0016849",
+    "feature_type": "BINDING",
+    "start": 171,
+    "end": 172,
+    "signal_kind": "ligand",
+    "signal_value": "NAD(+)",
+    "reasoning": "The highest score (8) is achieved by the BINDING 171-172 feature with ligand NAD(+), but since the GO term's definition emphasizes the mechanism of phosphorus-oxygen bond cleavage rather than just the binding, and no specific domain type is mentioned in the Annotated features, we cannot definitively say which one is the best match."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P28907",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature in the annotated features of P28907 specifically matches the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "P56528",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P56528's Annotated features section directly matches the defined chemistry of the phosphorus-oxygen lyase activity. The only available features refer to enzyme activity sites, not the mechanism of bond cleavage or addition."
+   },
+   {
+    "accession": "Q9MZ03",
+    "reason": "none_verdict",
+    "reasoning": "The defined molecular function of the GO term 0016849 involves a specific phosphorus-oxygen bond cleavage mechanism, which is not supported by any of the annotated features for protein Q9MZ03. The available features are generic and do not directly explain the chemistry of the GO term."
+   }
+  ]
+ },
+ "GO:0016875": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Could have a critical role in the catalytic mechanism",
+    "accessions": [
+     "P9WPF9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "P77455",
+      "go_id": "GO:0016803",
+      "feature_type": "DOMAIN",
+      "start": 536,
+      "end": 648,
+      "signal_kind": "text",
+      "signal_value": "MaoC-like",
+      "reasoning": "The \"MaoC-like\" domain in the protein directly corresponds to the defined chemistry of ether hydrolase activity, providing a strong mechanistic explanation for the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P76535",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided list directly corresponds to the primary reaction of catalyzing ether bond hydrolysis, which is the defining chemistry of the GO term. The available features are either generic or only echo secondary clauses."
+    },
+    {
+      "accession": "Q8N661",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q6ZJK7",
+      "go_id": "GO:0016831",
+      "feature_type": "BINDING",
+      "start": 174,
+      "end": 175,
+      "signal_kind": "ligand",
+      "signal_value": "pyridoxal 5'-phosphate",
+      "reasoning": "The binding of pyridoxal 5'-phosphate to the enzyme at position 174-175 directly supports the catalytic mechanism described in the GO term, making it the most plausible explanation for why the protein carries the \"carboxy-lyase activity\" annotation."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P18486",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided list directly matches the primary reaction described in the GO term's definition, so it cannot be used to plausibly explain why the protein carries that term."
+    },
+    {
+      "accession": "Q03034",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q03034 directly supports the catalytic activity defined by GO:0016831."
+    },
+    {
+      "accession": "Q9M0G4",
+      "reason": "none_verdict",
+      "reasoning": "There is no annotated feature for Q9M0G4 that directly matches the primary reaction of the GO term \"carboxy-lyase activity,\" which involves catalyzing the nonhydrolytic addition or removal of a carboxyl group. The binding sites and disordered region do not provide sufficient evidence to support this molecular function."
+    }
+  ]
+}
