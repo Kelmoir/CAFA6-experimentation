@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P85101",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for P85101 specifically matches the chemistry defined by the \"RNA glycosylase activity\" GO term."
+    },
+    {
+      "accession": "Q84K35",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q84K35 provides a clear and specific explanation for the molecular function defined by GO:0030597, which involves catalyzing the hydrolysis of N-glycosidic bonds in RNA."
+    }
+  ]
+}

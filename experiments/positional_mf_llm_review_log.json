@@ -13932,6 +13932,43 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0030515": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9UTE3",
+    "go_id": "GO:0030515",
+    "feature_type": "DOMAIN",
+    "start": 405,
+    "end": 478,
+    "signal_kind": "text",
+    "signal_value": "RRM",
+    "reasoning": "The highest score for the feature type \"DOMAIN\" with coordinates \"405-478\" is 4, which suggests a possible connection to RNA-binding activity, but it does not specifically confirm binding to snoRNA. Since no positional feature directly matches the GO term's definition and the domain is more broadly associated with RNA-binding, the match remains uncertain."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q12220",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the GO term's primary reaction of \"Binding to a small nucleolar RNA,\" and all features either refer to broader domains or secondary consequences rather than the specific chemistry defined by the GO term."
+   },
+   {
+    "accession": "Q1MTS0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the primary reaction of \"Binding to a small nucleolar RNA,\" and all features are disordered regions that do not directly indicate the protein's ability to bind snoRNAs."
+   },
+   {
+    "accession": "Q9BRJ7",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9BRJ7 do not provide any evidence that directly explains the molecular function of \"snoRNA binding.\" No positional feature matches the primary reaction described in the GO term's definition."
+   }
+  ]
+ },
  "GO:0030519": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -13953,6 +13990,95 @@
    }
   ]
  },
+ "GO:0030551": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PPIase FKBP-type",
+    "accessions": [
+     "P97534"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P13233",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide sufficient specificity to directly explain the molecular function defined by GO:0030551, which is about binding to a cyclic nucleotide with a particular phosphate linkage."
+   },
+   {
+    "accession": "P16330",
+    "reason": "none_verdict",
+    "reasoning": "The defined chemistry for \"cyclic nucleotide binding\" involves a specific recognition mechanism for cyclic nucleotides, which is not directly explained by any of the annotated features provided. While the protein's domain/family cross-references suggest it might be related to cyclic nucleotide-binding enzymes, there is no positional feature that clearly identifies this function."
+   },
+   {
+    "accession": "Q9Z2I2",
+    "reason": "none_verdict",
+    "reasoning": "The domain annotation for Q9Z2I2 does not specifically mention cyclic nucleotide binding, and it is associated with PPIase activity rather than the defined chemistry of cyclic nucleotide recognition."
+   }
+  ]
+ },
+ "GO:0030554": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P10760"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P08799"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P50247",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P50247 directly matches the primary reaction of adenyl nucleotide binding as defined by the GO term, and no positional feature has been confirmed to explain this function."
+   }
+  ]
+ },
+ "GO:0030597": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P85101",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P85101 specifically matches the chemistry defined by the \"RNA glycosylase activity\" GO term."
+   },
+   {
+    "accession": "Q84K35",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q84K35 provides a clear and specific explanation for the molecular function defined by GO:0030597, which involves catalyzing the hydrolysis of N-glycosidic bonds in RNA."
+   }
+  ]
+ },
  "GO:0030603": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -13968,5 +14094,94 @@
     "reasoning": "No annotated feature directly describes the enzymatic reaction or active site architecture required for oxaloacetase activity. The binding sites are associated with Mg(2+), which is a cofactor, but this does not explain the term's own chemistry."
    }
   ]
+ },
+ "GO:0030613": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Phosphoserine intermediate",
+    "accessions": [
+     "P00634"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0030620": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "NTF2",
+    "accessions": [
+     "Q99257"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q15393",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly states that Q15393 binds to a U2 snRNA. The interactions with SF3B1 and SF3B5 are noted, but they do not explain the molecular function of binding to U2 snRNA. Therefore, there is no positional feature that plausibly explains why this protein carries the term \"U2 snRNA binding.\""
+   },
+   {
+    "accession": "Q921M3",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for this protein do not provide any specific or mechanistically relevant evidence that directly explains why it carries the molecular function defined by GO:0030620, which is binding to a U2 small nuclear RNA (U2 snRNA)."
+   },
+   {
+    "accession": "P30822",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P30822 specifically states that it binds to a U2 snRNA, which is the primary reaction defined by GO:0030620."
+   }
+  ]
+ },
+ "GO:0030732": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LTB2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0030753": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "bergaptol",
+    "accessions": [
+     "A0A4P8DY91"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

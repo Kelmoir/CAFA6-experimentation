@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0030597",
+  "name": "RNA glycosylase activity",
+  "def": "Catalysis of the hydrolysis of N-glycosidic bonds in an RNA molecule.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P85101",
+    "Q84K35"
+  ],
+  "assigned_accessions": [
+    "P85101",
+    "Q84K35"
+  ]
+}

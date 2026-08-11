@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q99257",
+      "go_id": "GO:0030620",
+      "feature_type": "DOMAIN",
+      "start": 279,
+      "end": 467,
+      "signal_kind": "text",
+      "signal_value": "NTF2",
+      "reasoning": "The DOMAIN 279-467 with note \"NTF2\" directly matches the GO term's definition of binding to a U2 snRNA, indicating that this domain is the structural basis for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q15393",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly states that Q15393 binds to a U2 snRNA. The interactions with SF3B1 and SF3B5 are noted, but they do not explain the molecular function of binding to U2 snRNA. Therefore, there is no positional feature that plausibly explains why this protein carries the term \"U2 snRNA binding.\""
+    },
+    {
+      "accession": "Q921M3",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for this protein do not provide any specific or mechanistically relevant evidence that directly explains why it carries the molecular function defined by GO:0030620, which is binding to a U2 small nuclear RNA (U2 snRNA)."
+    },
+    {
+      "accession": "P30822",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P30822 specifically states that it binds to a U2 snRNA, which is the primary reaction defined by GO:0030620."
+    }
+  ]
+}

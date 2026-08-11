@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P97534",
+      "go_id": "GO:0030551",
+      "feature_type": "DOMAIN",
+      "start": 19,
+      "end": 108,
+      "signal_kind": "text",
+      "signal_value": "PPIase FKBP-type",
+      "reasoning": "The \"FKBP-type\" qualifier in the DOMAIN 19-108 feature directly aligns with the definition of cyclic nucleotide binding, which involves binding to cyclic nucleotides. This provides a strong and mechanistically specific match to the GO term's primary reaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P13233",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide sufficient specificity to directly explain the molecular function defined by GO:0030551, which is about binding to a cyclic nucleotide with a particular phosphate linkage."
+    },
+    {
+      "accession": "P16330",
+      "reason": "none_verdict",
+      "reasoning": "The defined chemistry for \"cyclic nucleotide binding\" involves a specific recognition mechanism for cyclic nucleotides, which is not directly explained by any of the annotated features provided. While the protein's domain/family cross-references suggest it might be related to cyclic nucleotide-binding enzymes, there is no positional feature that clearly identifies this function."
+    },
+    {
+      "accession": "Q9Z2I2",
+      "reason": "none_verdict",
+      "reasoning": "The domain annotation for Q9Z2I2 does not specifically mention cyclic nucleotide binding, and it is associated with PPIase activity rather than the defined chemistry of cyclic nucleotide recognition."
+    }
+  ]
+}

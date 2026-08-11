@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0030732",
+  "name": "methionine S-methyltransferase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-methionine + L-methionine = S-adenosyl-L-homocysteine + S-methyl-L-methionine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LTB2"
+  ],
+  "assigned_accessions": [
+    "Q9LTB2"
+  ]
+}

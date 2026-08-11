@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0030551",
+  "name": "cyclic nucleotide binding",
+  "def": "Binding to a cyclic nucleotide, a nucleotide in which the phosphate group is in diester linkage to two positions on the sugar residue.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P13233",
+    "P16330",
+    "P97534",
+    "Q9Z2I2"
+  ],
+  "assigned_accessions": [
+    "P13233",
+    "P16330",
+    "P97534",
+    "Q9Z2I2"
+  ]
+}

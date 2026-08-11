@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0030613",
+  "name": "oxidoreductase activity, acting on phosphorus or arsenic in donors",
+  "def": "Catalysis of an oxidation-reduction (redox) reaction in which a phosphorus- or arsenic-containing group acts as a hydrogen or electron donor and reduces a hydrogen or electron acceptor.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P00634"
+  ],
+  "assigned_accessions": [
+    "P00634"
+  ]
+}

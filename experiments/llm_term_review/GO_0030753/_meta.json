@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0030753",
+  "name": "8-hydroxyfuranocoumarin 8-O-methyltransferase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-methionine + xanthotoxol = S-adenosyl-L-homocysteine + xanthotoxin. Xanthotoxol is also known as 8-hydroxyfuranocoumarin and xanthotoxin as 8-methoxyfuranocoumarin.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A0A4P8DY91"
+  ],
+  "assigned_accessions": [
+    "A0A4P8DY91"
+  ]
+}

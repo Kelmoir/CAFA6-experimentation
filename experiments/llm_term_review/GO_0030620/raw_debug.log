@@ -1,0 +1,21 @@
+=== P30822 GO:0030620 (VERDICT missing) ===
+THINKING:  
+GO:0030620, "U2 snRNA binding," refers to the specific ability of a protein to bind to a U2 small nuclear RNA (U2 snRNA). This is a direct molecular function involving RNA recognition and interaction.  
+
+The annotated features for P30822 include:  
+- DOMAIN 33-100 with note: "Importin N-terminal" and evidence: "ECO:0000255|PROSITE-ProRule:PRU00115"  
+- Domain/family cross-references such as "InterPro:IPR011989 -- ARM-like," "InterPro:IPR016024 -- ARM-type_fold," "InterPro:IPR041123 -- CRM1_repeat," and others.  
+- Pfam entries including "PF08767 -- CRM1_C" and "PF08389 -- Xpo1."  
+- PROSITE entry "PS50166 -- IMPORTIN_B_NT."  
+
+The primary reaction or mechanism for this GO term is the binding of a U2 snRNA to the protein. The candidate features must directly support this function, not just echo words from secondary clauses.  
+
+The only feature that directly relates to RNA binding and is likely to be part of the protein's function in this context is the "DOMAIN 33-100" with note: "Importin N-terminal." This domain is known to be involved in RNA transport and binding, which aligns with the GO term's definition.  
+
+The other features either refer to different domains (e.g., CRM1-related, XPO1-related) or are not directly tied to U2 snRNA binding. The PROSITE entry "PS50166 -- IMPORTIN_B_NT" is also relevant but does not provide a positional feature for the domain itself.  
+
+The "DOMAIN 33-100" with note: "Importin N-terminal" most plausibly explains why P30822 carries the GO term "U2 snRNA binding." It directly relates to RNA binding and is part of the protein's known function in this context.  
+
+FEATURE: DOMAIN 33-100  
+REASONING: The "DOMAIN 33-100" with note: "Importin N-terminal" most plausibly explains why P30822 carries the GO term "U2 snRNA binding," as it directly relates to RNA binding and is part of the protein's known function in this context.
+

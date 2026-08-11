@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "A0A4P8DY91",
+      "go_id": "GO:0030753",
+      "feature_type": "BINDING",
+      "start": 269,
+      "end": 270,
+      "signal_kind": "ligand",
+      "signal_value": "bergaptol",
+      "reasoning": "The binding site at position 269-270 with bergaptol is directly involved in the catalytic reaction of the enzyme, making it a strong match to the defined molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0030620",
+  "name": "U2 snRNA binding",
+  "def": "Binding to a U2 small nuclear RNA (U2 snRNA).",
+  "n_proteins_total": 42,
+  "sampled_accessions": [
+    "P30822",
+    "Q15393",
+    "Q921M3",
+    "Q99257"
+  ],
+  "assigned_accessions": [
+    "P30822",
+    "Q15393",
+    "Q921M3",
+    "Q99257"
+  ]
+}

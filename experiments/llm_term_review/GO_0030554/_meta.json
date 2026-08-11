@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0030554",
+  "name": "adenyl nucleotide binding",
+  "def": "Binding to an adenyl nucleotide, an adenosine esterified with (ortho)phosphate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P08799",
+    "P10760",
+    "P50247"
+  ],
+  "assigned_accessions": [
+    "P08799",
+    "P10760",
+    "P50247"
+  ]
+}
