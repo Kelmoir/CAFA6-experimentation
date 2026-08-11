@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q58542",
+      "go_id": "GO:0015446",
+      "feature_type": "BINDING",
+      "start": 32,
+      "end": 40,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP directly supports the reaction mechanism described in the GO term's definition, making it the most plausible explanation for why the protein carries this molecular function."
+    },
+    {
+      "accession": "Q9C8G9",
+      "go_id": "GO:0015446",
+      "feature_type": "BINDING",
+      "start": 648,
+      "end": 656,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP at position 648-656 directly supports the primary reaction of the GO term, which involves ATP as an energy source for transporting arsenite across a membrane. This specific feature strongly matches the defined chemistry of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9S7Z3",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q9S7Z3 do not provide a strong or specific explanation for the molecular function defined by GO:0015446."
+    }
+  ]
+}

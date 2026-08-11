@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0015446",
+  "name": "ATPase-coupled arsenite transmembrane transporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: ATP + H2O + arsenite(in) = ADP + phosphate + arsenite(out).",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q58542",
+    "Q9C8G9",
+    "Q9S7Z3"
+  ],
+  "assigned_accessions": [
+    "Q58542",
+    "Q9C8G9",
+    "Q9S7Z3"
+  ]
+}

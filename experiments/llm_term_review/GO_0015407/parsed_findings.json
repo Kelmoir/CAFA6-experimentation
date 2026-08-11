@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P04983",
+      "go_id": "GO:0015407",
+      "feature_type": "DOMAIN",
+      "start": 4,
+      "end": 241,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter 1",
+      "reasoning": "The DOMAIN 4-241 is explicitly associated with ABC transporter activity, which matches the primary reaction mechanism described in the GO definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P02924",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for P02924 that could plausibly explain the molecular function of ABC-type monosaccharide transporter activity is the site (86-87), but it does not directly confirm the binding site or mechanism, and thus does not specifically match the GO term's own chemistry."
+    }
+  ]
+}

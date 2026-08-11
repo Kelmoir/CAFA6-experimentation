@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0AGF4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for P0AGF4 directly describes the molecular function of D-xylose:proton symporter activity as defined in the GO term."
+    }
+  ]
+}

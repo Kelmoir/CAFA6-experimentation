@@ -8587,6 +8587,16 @@
   ],
   "text_patterns": []
  },
+ "GO:0015439": {
+  "name": "ABC-type heme transporter activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR014216",
+   "InterPro:IPR014223"
+  ],
+  "text_patterns": []
+ },
  "GO:0015459": {
   "name": "potassium channel regulator activity",
   "ligands": [],

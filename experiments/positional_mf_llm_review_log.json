@@ -9486,6 +9486,104 @@
    }
   ]
  },
+ "GO:0015407": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter 1",
+    "accessions": [
+     "P04983"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P02924",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for P02924 that could plausibly explain the molecular function of ABC-type monosaccharide transporter activity is the site (86-87), but it does not directly confirm the binding site or mechanism, and thus does not specifically match the GO term's own chemistry."
+   }
+  ]
+ },
+ "GO:0015411": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q924A5",
+    "go_id": "GO:0015411",
+    "feature_type": "REGION",
+    "start": 0,
+    "end": 32,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The \"REGION 0-32\" span is marked as disordered and could be involved in structural flexibility, which might be relevant to the conformational changes required for taurine transport. However, it does not directly or specifically explain the defined reaction mechanism of the GO term, making it a weak match."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q47538",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated features for the protein Q47538 are generic in nature and do not provide a specific explanation of the taurine transport activity. Therefore, there is no single feature that most plausibly explains why this protein carries the GO term."
+   },
+   {
+    "accession": "Q8K4D3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature (by type + exact coordinates) provides a clear and specific explanation for the defined reaction or mechanism of GO:0015411 in Q8K4D3, which is about taurine transport activity. The only positional annotation is generic and does not directly relate to the function."
+   },
+   {
+    "accession": "Q7Z2H8",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" from 0-32 is generic and does not provide any specific mechanistic insight into the defined reaction of taurine transport, making it an unlikely explanation for why Q7Z2H8 carries this GO term."
+   }
+  ]
+ },
+ "GO:0015417": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transmembrane type-1",
+    "accessions": [
+     "P0AFL1",
+     "P31135"
+    ],
+    "reason": "resolved to ['PROSITE:PS50928', 'Pfam:PF00528'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'PROSITE:PS50928': 54, 'Pfam:PF00528': 54})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "4-aspartylphosphate intermediate",
+    "accessions": [
+     "Q9CTG6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9NQ11",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism of ATP-driven polyamine transport as defined for GO:0015417."
+   }
+  ]
+ },
  "GO:0015437": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -9504,5 +9602,113 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0015439": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR014216",
+     "InterPro:IPR014223"
+    ],
+    "accessions": [
+     "G5EFD4",
+     "P23886",
+     "P29018"
+    ],
+    "note": "resolved from DOMAIN note 'ABC transmembrane type-1' (8 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Required for ATPase activity",
+    "accessions": [
+     "Q9NP58"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0015446": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q58542",
+     "Q9C8G9"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9S7Z3",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9S7Z3 do not provide a strong or specific explanation for the molecular function defined by GO:0015446."
+   }
+  ]
+ },
+ "GO:0015483": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P10384",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015518": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P11551",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides direct evidence about the proton symporter activity defined by GO:0015518. The only features are generic and do not specify the reaction mechanism or chemistry of the term."
+   }
+  ]
+ },
+ "GO:0015519": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AGF4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P0AGF4 directly describes the molecular function of D-xylose:proton symporter activity as defined in the GO term."
+   }
+  ]
  }
 }

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0015407",
+  "name": "ABC-type monosaccharide transporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: ATP + H2O + monosaccharide(out) = ADP + phosphate + monosaccharide(in). Ribose, xylose, arabinose, galactose and methylgalactoside are imported.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P02924",
+    "P04983"
+  ],
+  "assigned_accessions": [
+    "P02924",
+    "P04983"
+  ]
+}

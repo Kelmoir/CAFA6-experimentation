@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015483",
+  "name": "long-chain fatty acid transporting porin activity",
+  "def": "Enables the transfer of a long-chain fatty acid from one side of a membrane to the other. A long-chain fatty acid has an aliphatic tail containing 13 to 22 carbons. This transporter is a porin and so enables the energy independent passage of substances, sized less than 1000 Da, across a membrane. The transmembrane portions of porins consist exclusively of beta-strands which form a beta-barrel. They are found in the outer membranes of Gram-negative bacteria, mitochondria, plastids and possibly acid-fast Gram-positive bacteria.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P10384"
+  ],
+  "assigned_accessions": [
+    "P10384"
+  ]
+}

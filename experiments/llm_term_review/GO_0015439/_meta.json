@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015439",
+  "name": "ABC-type heme transporter activity",
+  "def": "Catalysis of the reaction: ATP + H2O + heme(in) = ADP + phosphate + heme(out).",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "G5EFD4",
+    "P23886",
+    "P29018",
+    "Q9NP58"
+  ],
+  "assigned_accessions": [
+    "G5EFD4",
+    "P23886",
+    "P29018",
+    "Q9NP58"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P0AFL1",
+      "go_id": "GO:0015417",
+      "feature_type": "DOMAIN",
+      "start": 64,
+      "end": 260,
+      "signal_kind": "text",
+      "signal_value": "ABC transmembrane type-1",
+      "reasoning": "The DOMAIN span (64-260) is explicitly noted as an ABC transmembrane type-1 domain, which directly aligns with the defined function of catalyzing ATP-dependent polyamine transport. This provides a strong structural basis for the GO term and is more specific than generic annotations like \"MetI-like\" or \"Bact_Polyamine_Transport.\""
+    },
+    {
+      "accession": "P31135",
+      "go_id": "GO:0015417",
+      "feature_type": "DOMAIN",
+      "start": 98,
+      "end": 305,
+      "signal_kind": "text",
+      "signal_value": "ABC transmembrane type-1",
+      "reasoning": "The DOMAIN 98-305 with the qualifier \"ABC transmembrane type-1\" directly matches the primary reaction of the GO term by indicating the structural basis for polyamine transport activity."
+    },
+    {
+      "accession": "Q9CTG6",
+      "go_id": "GO:0015417",
+      "feature_type": "ACT_SITE",
+      "start": 507,
+      "end": 508,
+      "signal_kind": "text",
+      "signal_value": "4-aspartylphosphate intermediate",
+      "reasoning": "The ACT_SITE feature at position 507-508 is directly related to the ATP binding site, which is a key component of ABC-type transporters involved in catalyzing the reaction described by the GO term. This matches the primary reaction of the GO term more specifically than any other annotated feature."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9NQ11",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction mechanism of ATP-driven polyamine transport as defined for GO:0015417."
+    }
+  ]
+}

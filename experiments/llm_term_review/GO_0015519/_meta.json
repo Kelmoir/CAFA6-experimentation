@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015519",
+  "name": "D-xylose:proton symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: D-xylose(out) + H+(out) = D-xylose(in) + H+(in).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AGF4"
+  ],
+  "assigned_accessions": [
+    "P0AGF4"
+  ]
+}
