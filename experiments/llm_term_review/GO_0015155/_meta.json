@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015155",
+  "name": "lactose transmembrane transporter activity",
+  "def": "Enables the transfer of lactose from one side of a membrane to the other. Lactose is a disaccharide 4-O-beta-D-galactopyranosyl-D-glucose, and constitutes roughly 5% of the milk in almost all mammals.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WHY3"
+  ],
+  "assigned_accessions": [
+    "P9WHY3"
+  ]
+}

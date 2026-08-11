@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "B8K1W2",
+      "go_id": "GO:0015126",
+      "feature_type": "BINDING",
+      "start": 454,
+      "end": 462,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP at position 454-462 is a direct and specific feature that supports the function of B8K1W2 as a canalicular bile acid transmembrane transporter, aligning with the GO term's primary reaction of ATP-dependent transport."
+    },
+    {
+      "accession": "O70127",
+      "go_id": "GO:0015126",
+      "feature_type": "DOMAIN",
+      "start": 419,
+      "end": 656,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter 1",
+      "reasoning": "The DOMAIN 419-656 annotation for protein O70127 indicates it is an ABC transporter, which directly aligns with the primary reaction described in the GO term's definition of \"canalicular bile acid transmembrane transporter activity.\" This feature most plausibly explains why the protein carries the term."
+    },
+    {
+      "accession": "O95342",
+      "go_id": "GO:0015126",
+      "feature_type": "DOMAIN",
+      "start": 419,
+      "end": 656,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter 1",
+      "reasoning": "The domain \"ABC transporter 1\" is directly associated with the ABC transporter family, which includes proteins that move substances across membranes, and it aligns with the defined activity of moving bile acids out of hepatocytes into the bile canaliculus."
+    },
+    {
+      "accession": "Q9N0V3",
+      "go_id": "GO:0015126",
+      "feature_type": "DOMAIN",
+      "start": 61,
+      "end": 385,
+      "signal_kind": "text",
+      "signal_value": "ABC transmembrane type-1 1",
+      "reasoning": "The DOMAIN 61-385 annotation is directly associated with ABC transmembrane transporters, which are known to move bile acids out of hepatocytes, matching the primary function described in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

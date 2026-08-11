@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015135",
+  "name": "glucuronate transmembrane transporter activity",
+  "def": "Enables the transfer of glucuronate from one side of a membrane to the other. Glucuronate is the uronic acid formally derived from glucose by oxidation of the hydroxymethylene group at C-6 to a carboxyl group.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9NRA2"
+  ],
+  "assigned_accessions": [
+    "Q9NRA2"
+  ]
+}

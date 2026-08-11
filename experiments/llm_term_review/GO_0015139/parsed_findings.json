@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q4U2R8",
+      "go_id": "GO:0015139",
+      "feature_type": "SITE",
+      "start": 229,
+      "end": 230,
+      "signal_kind": "text",
+      "signal_value": "Important for interaction with cidofovir",
+      "reasoning": "The \"SITE\" annotations at positions 229-230 and 437-438 are directly related to the function of transferring alpha-ketoglutarate across a membrane, as they are important for interaction with compounds that may be involved in this process."
+    },
+    {
+      "accession": "Q9Z0Z5",
+      "go_id": "GO:0015139",
+      "feature_type": "BINDING",
+      "start": 143,
+      "end": 144,
+      "signal_kind": "ligand",
+      "signal_value": "succinate",
+      "reasoning": "The binding site for succinate (a metabolite involved in transamination reactions) directly supports the primary reaction of the GO term, which is the transfer of alpha-ketoglutarate across a membrane. This feature most plausibly explains why Q9Z0Z5 carries the term \"alpha-ketoglutarate transmembrane transporter activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9ES88",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly explain the primary reaction of alpha-ketoglutarate transmembrane transporter activity (GO:0015139). The only plausible explanation is that the protein's structure allows it to perform this transport function, but no positional feature has been confirmed."
+    },
+    {
+      "accession": "Q9Y694",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction or mechanism described in the GO term's definition for alpha-ketoglutarate transmembrane transporter activity. The only features provided are generic and not specific to the defined function."
+    }
+  ]
+}

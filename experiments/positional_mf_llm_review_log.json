@@ -8026,5 +8026,200 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0015125": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Kazal-like",
+    "accessions": [
+     "Q9JJL3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B8K1W2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in B8K1W2 provides a clear and specific explanation for the primary reaction defined by GO:0015125, which is the transfer of bile acids across a membrane."
+   },
+   {
+    "accession": "P02930",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature (by type + exact coordinates) provides a strong match to the primary reaction of GO:0015125, which is the transfer of bile acid across a membrane."
+   },
+   {
+    "accession": "P76399",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015126": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter 1",
+    "accessions": [
+     "O70127",
+     "O95342"
+    ],
+    "reason": "resolved to ['InterPro:IPR003439', 'InterPro:IPR017871', 'InterPro:IPR039421', 'PROSITE:PS00211', 'PROSITE:PS50893', 'PROSITE:PS50929', 'Pfam:PF00005', 'Pfam:PF00664'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR003439': 443, 'InterPro:IPR017871': 397, 'InterPro:IPR039421': 93, 'PROSITE:PS00211': 401, 'PROSITE:PS50893': 443, 'PROSITE:PS50929': 184, 'Pfam:PF00005': 442, 'Pfam:PF00664': 162})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "B8K1W2"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transmembrane type-1 1",
+    "accessions": [
+     "Q9N0V3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0015131": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q06143",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9FY68",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9SJY5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9UTN1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015135": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9NRA2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list provides a clear, specific explanation for the primary reaction of \"glucuronate transmembrane transporter activity\" as defined by GO:0015135."
+   }
+  ]
+ },
+ "GO:0015139": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Important for interaction with cidofovir",
+    "accessions": [
+     "Q4U2R8"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "succinate",
+    "accessions": [
+     "Q9Z0Z5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9ES88",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain the primary reaction of alpha-ketoglutarate transmembrane transporter activity (GO:0015139). The only plausible explanation is that the protein's structure allows it to perform this transport function, but no positional feature has been confirmed."
+   },
+   {
+    "accession": "Q9Y694",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction or mechanism described in the GO term's definition for alpha-ketoglutarate transmembrane transporter activity. The only features provided are generic and not specific to the defined function."
+   }
+  ]
+ },
+ "GO:0015148": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P37388",
+    "reason": "none_verdict",
+    "reasoning": "The given annotated features for P37388 do not provide a strong, specific match to the primary reaction of the GO term \"D-xylose transmembrane transporter activity.\" While the protein is classified as an ABC transporter and ATP is involved in its function, these features do not directly explain why it carries this specific molecular function."
+   },
+   {
+    "accession": "Q8VZ80",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves transferring D-xylose across a membrane. The disordered regions and domain/family cross-references are too generic to explain this specific molecular function."
+   }
+  ]
+ },
+ "GO:0015155": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WHY3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015125",
+  "name": "bile acid transmembrane transporter activity",
+  "def": "Enables the transfer of bile acid from one side of a membrane to the other. Bile acids are any of a group of steroid carboxylic acids occurring in bile, where they are present as the sodium salts of their amides with glycine or taurine.",
+  "n_proteins_total": 52,
+  "sampled_accessions": [
+    "B8K1W2",
+    "P02930",
+    "P76399",
+    "Q9JJL3"
+  ],
+  "assigned_accessions": [
+    "B8K1W2",
+    "P02930",
+    "P76399",
+    "Q9JJL3"
+  ]
+}

@@ -1,0 +1,19 @@
+=== Q9N0V3 GO:0015126 (VERDICT missing) ===
+THINKING: The GO term "canalicular bile acid transmembrane transporter activity" (GO:0015126) refers to the directed movement of bile acids and bile salts out of a hepatocyte into the bile canaliculus. This is a functional annotation indicating the protein's role in transporting these molecules across membranes. The primary reaction involves the binding and transport of bile acids, which are steroid carboxylic acids present as sodium salts in bile.
+
+The annotated features for protein Q9N0V3 include several domains and regions that may be relevant to its function. These include:
+
+- DOMAIN 61-385 (ABC transmembrane type-1 1)
+- DOMAIN 419-656 (ABC transporter 1)
+- DOMAIN 754-1043 (ABC transmembrane type-1 2)
+- DOMAIN 1077-1316 (ABC transporter 2)
+- REGION 650-672 (Interaction with HAX1)
+- REGION 658-735 (Disordered)
+- BINDING 454-462 (ligand: ATP)
+- BINDING 1112-1120 (ligand: ATP)
+
+Each of these features has been evaluated for its relevance to the primary reaction described in the GO term's definition. The highest score is determined based on how specifically each feature matches the defined chemistry.
+
+FEATURE: DOMAIN 61-385
+REASONING: This domain is classified as an ABC transmembrane type-1 1, which aligns with the function of a bile acid transporter. The presence of this domain in the protein Q9N0V3 provides structural evidence for its role in transporting bile acids across membranes, matching the primary reaction described in the GO term's definition.
+

@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9JJL3",
+      "go_id": "GO:0015125",
+      "feature_type": "DOMAIN",
+      "start": 447,
+      "end": 505,
+      "signal_kind": "text",
+      "signal_value": "Kazal-like",
+      "reasoning": "The DOMAIN 447-505 with the note \"Kazal-like\" directly supports the function of bile acid transport by providing a structural basis for substrate recognition and binding, which matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "B8K1W2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in B8K1W2 provides a clear and specific explanation for the primary reaction defined by GO:0015125, which is the transfer of bile acids across a membrane."
+    },
+    {
+      "accession": "P02930",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature (by type + exact coordinates) provides a strong match to the primary reaction of GO:0015125, which is the transfer of bile acid across a membrane."
+    },
+    {
+      "accession": "P76399",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

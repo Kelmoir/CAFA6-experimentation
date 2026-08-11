@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015139",
+  "name": "alpha-ketoglutarate transmembrane transporter activity",
+  "def": "Enables the transfer of alpha-ketoglutarate from one side of a membrane to the other. Alpha-ketoglutarate (or oxoglutarate) is a compound with important roles in carbohydrate and amino acid metabolism, especially in transamination reactions and as a component of the TCA cycle.",
+  "n_proteins_total": 22,
+  "sampled_accessions": [
+    "Q4U2R8",
+    "Q9ES88",
+    "Q9Y694",
+    "Q9Z0Z5"
+  ],
+  "assigned_accessions": [
+    "Q4U2R8",
+    "Q9ES88",
+    "Q9Y694",
+    "Q9Z0Z5"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0015148",
+  "name": "D-xylose transmembrane transporter activity",
+  "def": "Enables the transfer of D-xylose from one side of a membrane to the other. D-xylose (the naturally occurring enantiomer is always D-) is a constituent of plant polysaccharides.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P37388",
+    "Q8VZ80"
+  ],
+  "assigned_accessions": [
+    "P37388",
+    "Q8VZ80"
+  ]
+}

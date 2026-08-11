@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015131",
+  "name": "oxaloacetate transmembrane transporter activity",
+  "def": "Enables the transfer of oxaloacetate, the anion of oxobutanedioic acid, from one side of a membrane to the other.",
+  "n_proteins_total": 17,
+  "sampled_accessions": [
+    "Q06143",
+    "Q9FY68",
+    "Q9SJY5",
+    "Q9UTN1"
+  ],
+  "assigned_accessions": [
+    "Q06143",
+    "Q9FY68",
+    "Q9SJY5",
+    "Q9UTN1"
+  ]
+}

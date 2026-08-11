@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9NRA2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list provides a clear, specific explanation for the primary reaction of \"glucuronate transmembrane transporter activity\" as defined by GO:0015135."
+    }
+  ]
+}
