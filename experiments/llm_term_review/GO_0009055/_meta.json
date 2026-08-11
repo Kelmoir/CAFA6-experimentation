@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0009055",
+  "name": "electron transfer activity",
+  "def": "A molecular function representing the directed movement of electrons from one molecular entity to another, typically mediated by electron carriers or acceptors, resulting in the transfer of energy and/or the reduction-oxidation (redox) transformation of chemical species. This activity is fundamental to various biological processes, including cellular respiration and photosynthesis, as well as numerous enzymatic reactions involved in metabolic pathways.",
+  "n_proteins_total": 388,
+  "sampled_accessions": [
+    "P21913",
+    "P27788",
+    "P56761",
+    "Q96316"
+  ],
+  "assigned_accessions": [
+    "P21913",
+    "P27788",
+    "P56761",
+    "Q96316"
+  ]
+}

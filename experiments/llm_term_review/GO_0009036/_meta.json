@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0009036",
+  "name": "type II site-specific deoxyribonuclease activity",
+  "def": "Catalysis of the endonucleolytic cleavage of DNA to give specific double-stranded fragments with terminal 5'-phosphates and 3' hydroxyls. Cleavage is dependent on the presence in the DNA of a specific recognition site; cleavage occurs at or very near this recognition site.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O00370"
+  ],
+  "assigned_accessions": [
+    "O00370"
+  ]
+}

@@ -6815,6 +6815,37 @@
    }
   ]
  },
+ "GO:0009003": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P10507",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide any evidence that directly supports the molecular function defined by GO:0009003."
+   },
+   {
+    "accession": "Q4W6B5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for the protein Q4W6B5 matches the primary reaction described in the GO term's definition, which is catalysis of signal peptide cleavage. All features are generic and do not provide a specific explanation for this function."
+   },
+   {
+    "accession": "Q8H0W1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's positional data directly matches the definition of \"obsolete signal peptidase activity,\" which involves the catalytic cleavage of a signal peptide. The available features are either generic or do not indicate the presence of a signal peptidase domain, making it impossible to determine with certainty that this protein carries the term as defined."
+   },
+   {
+    "accession": "Q9BY50",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's data directly matches the primary reaction of the GO term \"obsolete signal peptidase activity,\" which is the catalysis of signal peptide cleavage. The features provided are related to charge relay systems and structural elements, but none explain the specific enzymatic activity described by the GO term."
+   }
+  ]
+ },
  "GO:0009016": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -6849,6 +6880,177 @@
     "accession": "P76251",
     "reason": "invalid_verdict",
     "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0009036": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Endonuclease activity",
+    "accessions": [
+     "O00370"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0009055": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "[2Fe-2S] cluster",
+    "accessions": [
+     "P21913"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Phytocyanin",
+    "accessions": [
+     "Q96316"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P56761",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P56761 directly describes the molecular function of electron transfer activity as defined for GO:0009055."
+   },
+   {
+    "accession": "P27788",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0009374": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Biotin carboxylation",
+    "accessions": [
+     "E9Q4Z2",
+     "P52873"
+    ],
+    "reason": "resolved to ['InterPro:IPR000089', 'InterPro:IPR001882', 'InterPro:IPR005482', 'InterPro:IPR011764', 'PROSITE:PS00188', 'Pfam:PF00289', 'Pfam:PF00364', 'Pfam:PF02785'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000089': 82, 'InterPro:IPR001882': 31, 'InterPro:IPR005482': 33, 'InterPro:IPR011764': 33, 'PROSITE:PS00188': 31, 'Pfam:PF00289': 33, 'Pfam:PF00364': 68, 'Pfam:PF02785': 33})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "biotin",
+    "accessions": [
+     "P05165"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "I6YFP0",
+    "reason": "none_verdict",
+    "reasoning": "No single annotated feature provides a strong match to the GO term's primary reaction of biotin binding, as all features only indicate the presence of biotin in binding sites without specifying the domain or mechanism involved."
+   }
+  ]
+ },
+ "GO:0009384": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ADP",
+    "accessions": [
+     "Q7TQ49"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "an N-acyl-D-mannosamine",
+    "accessions": [
+     "Q91WG8"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q9UJ70"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9QZ08",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature describes the enzyme's catalytic activity for the reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0009673": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UP79",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly or specifically explains the molecular function defined by GO:0009673."
+   },
+   {
+    "accession": "Q38954",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature (by type + exact coordinates) specifically matches the GO term's primary reaction of enabling phosphate transfer with low affinity. The domain/family cross-references suggest the presence of a functional phosphotransporter domain, but they do not provide positional evidence that directly explains the mechanism described in the GO definition."
+   }
+  ]
+ },
+ "GO:0009674": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9M7K4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the primary reaction of the defined GO term, as the only candidate is a Disordered region with no evidence of ion transport activity."
    }
   ]
  }

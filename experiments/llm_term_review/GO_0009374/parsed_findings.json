@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "E9Q4Z2",
+      "go_id": "GO:0009374",
+      "feature_type": "DOMAIN",
+      "start": 248,
+      "end": 751,
+      "signal_kind": "text",
+      "signal_value": "Biotin carboxylation",
+      "reasoning": "The domain 248-751 is explicitly noted as \"Biotin carboxylation\" and has direct evidence for biotin binding in the protein's annotated features, which strongly matches the primary reaction of the GO term."
+    },
+    {
+      "accession": "P05165",
+      "go_id": "GO:0009374",
+      "feature_type": "BINDING",
+      "start": 408,
+      "end": 409,
+      "signal_kind": "ligand",
+      "signal_value": "biotin",
+      "reasoning": "The binding site at position 408\u2013409 explicitly mentions biotin, directly aligning with the primary reaction of the GO term \"biotin binding.\" This provides the most specific and direct evidence for the function defined by the GO term."
+    },
+    {
+      "accession": "P52873",
+      "go_id": "GO:0009374",
+      "feature_type": "DOMAIN",
+      "start": 35,
+      "end": 486,
+      "signal_kind": "text",
+      "signal_value": "Biotin carboxylation",
+      "reasoning": "The DOMAIN 35-486 is explicitly noted as \"Biotin carboxylation,\" which directly matches the primary reaction of the GO term \"biotin binding\" (binding to biotin in enzymatic beta-carboxylation reactions). This provides a strong and specific match."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "I6YFP0",
+      "reason": "none_verdict",
+      "reasoning": "No single annotated feature provides a strong match to the GO term's primary reaction of biotin binding, as all features only indicate the presence of biotin in binding sites without specifying the domain or mechanism involved."
+    }
+  ]
+}

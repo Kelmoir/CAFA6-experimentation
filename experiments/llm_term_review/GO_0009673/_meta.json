@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0009673",
+  "name": "low-affinity phosphate transmembrane transporter activity",
+  "def": "Enables the transfer of phosphate from one side of a membrane to the other. In low-affinity transport the transporter is able to bind the solute only if it is present at very high concentrations.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q38954",
+    "Q9UP79"
+  ],
+  "assigned_accessions": [
+    "Q38954",
+    "Q9UP79"
+  ]
+}

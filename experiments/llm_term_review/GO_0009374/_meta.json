@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0009374",
+  "name": "biotin binding",
+  "def": "Binding to biotin (cis-tetrahydro-2-oxothieno(3,4-d)imidazoline-4-valeric acid), the (+) enantiomer of which is very widely distributed in cells and serves as a carrier in a number of enzymatic beta-carboxylation reactions.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "E9Q4Z2",
+    "I6YFP0",
+    "P05165",
+    "P52873"
+  ],
+  "assigned_accessions": [
+    "E9Q4Z2",
+    "I6YFP0",
+    "P05165",
+    "P52873"
+  ]
+}

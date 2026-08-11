@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "Q7TQ49",
+      "go_id": "GO:0009384",
+      "feature_type": "BINDING",
+      "start": 416,
+      "end": 417,
+      "signal_kind": "ligand",
+      "signal_value": "ADP",
+      "reasoning": "The binding site where the enzyme binds an N-acyl-D-mannosamine 6-phosphate directly corresponds to the primary reaction of the GO term, which is the catalysis of ATP + N-acyl-D-mannosamine = ADP + N-acyl-D-mannosamine 6-phosphate. This binding site is most specific and relevant to the function defined by the GO term."
+    },
+    {
+      "accession": "Q91WG8",
+      "go_id": "GO:0009384",
+      "feature_type": "BINDING",
+      "start": 516,
+      "end": 517,
+      "signal_kind": "ligand",
+      "signal_value": "an N-acyl-D-mannosamine",
+      "reasoning": "The binding site at 516-517 involves the substrates of the reaction defined by GO:0009384, making it the most plausible explanation for the molecular function."
+    },
+    {
+      "accession": "Q9UJ70",
+      "go_id": "GO:0009384",
+      "feature_type": "BINDING",
+      "start": 12,
+      "end": 13,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to the enzyme's active site is a direct and specific feature that aligns with the GO term's definition, which centers on catalyzing the transfer of a phosphate group from ATP to N-acyl-D-mannosamine."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9QZ08",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature describes the enzyme's catalytic activity for the reaction defined by the GO term."
+    }
+  ]
+}

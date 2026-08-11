@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0009384",
+  "name": "N-acylmannosamine kinase activity",
+  "def": "Catalysis of the reaction: ATP + N-acyl-D-mannosamine = ADP + N-acyl-D-mannosamine 6-phosphate.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "Q7TQ49",
+    "Q91WG8",
+    "Q9QZ08",
+    "Q9UJ70"
+  ],
+  "assigned_accessions": [
+    "Q7TQ49",
+    "Q91WG8",
+    "Q9QZ08",
+    "Q9UJ70"
+  ]
+}

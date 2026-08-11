@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0009003",
+  "name": "obsolete signal peptidase activity",
+  "def": "OBSOLETE. Catalysis of the cleavage of a signal peptide from a protein precursor.",
+  "n_proteins_total": 26,
+  "sampled_accessions": [
+    "P10507",
+    "Q4W6B5",
+    "Q8H0W1",
+    "Q9BY50"
+  ],
+  "assigned_accessions": [
+    "P10507",
+    "Q4W6B5",
+    "Q8H0W1",
+    "Q9BY50"
+  ]
+}

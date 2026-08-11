@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P21913",
+      "go_id": "GO:0009055",
+      "feature_type": "BINDING",
+      "start": 94,
+      "end": 95,
+      "signal_kind": "ligand",
+      "signal_value": "[2Fe-2S] cluster",
+      "reasoning": "The binding of the [2Fe-2S] cluster to the protein is directly linked to the mechanism of electron transfer activity, as this cluster is a known electron carrier involved in redox reactions."
+    },
+    {
+      "accession": "Q96316",
+      "go_id": "GO:0009055",
+      "feature_type": "DOMAIN",
+      "start": 21,
+      "end": 120,
+      "signal_kind": "text",
+      "signal_value": "Phytocyanin",
+      "reasoning": "The DOMAIN feature (21-120) with the note \"Phytocyanin\" directly corresponds to the defined function of electron transfer activity, as Phytocyanin is a known electron carrier involved in photosynthesis. This matches the primary reaction described in the GO definition more specifically than any other annotated feature."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P56761",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P56761 directly describes the molecular function of electron transfer activity as defined for GO:0009055."
+    },
+    {
+      "accession": "P27788",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

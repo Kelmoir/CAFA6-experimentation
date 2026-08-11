@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "O00370",
+      "go_id": "GO:0009036",
+      "feature_type": "REGION",
+      "start": 0,
+      "end": 239,
+      "signal_kind": "text",
+      "signal_value": "Endonuclease activity",
+      "reasoning": "The \"Endonuclease activity\" annotation in the specified region directly matches the primary reaction described in the definition of GO:0009036, which involves the endonucleolytic cleavage of DNA. This provides a strong and specific match to the molecular function being predicted."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

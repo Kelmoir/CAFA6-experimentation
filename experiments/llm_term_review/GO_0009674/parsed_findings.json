@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9M7K4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong match to the primary reaction of the defined GO term, as the only candidate is a Disordered region with no evidence of ion transport activity."
+    }
+  ]
+}
