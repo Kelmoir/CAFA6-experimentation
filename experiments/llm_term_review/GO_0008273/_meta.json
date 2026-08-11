@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008273",
+  "name": "calcium, potassium:sodium antiporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: Ca2+(in) + K+(in) + Na+(out) = Ca2+(out) + K+(out) + Na+(in).",
+  "n_proteins_total": 18,
+  "sampled_accessions": [
+    "O60721",
+    "Q28139",
+    "Q8NFF2",
+    "Q9IAL8"
+  ],
+  "assigned_accessions": [
+    "O60721",
+    "Q28139",
+    "Q8NFF2",
+    "Q9IAL8"
+  ]
+}

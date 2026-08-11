@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008330",
+  "name": "protein tyrosine/threonine phosphatase activity",
+  "def": "Catalysis of the reactions: protein threonine phosphate + H2O = protein threonine + phosphate; and protein tyrosine phosphate + H2O = protein tyrosine + phosphate.",
+  "n_proteins_total": 24,
+  "sampled_accessions": [
+    "Q64346",
+    "Q9DBB1",
+    "Q9ESS0",
+    "Q9VVW5"
+  ],
+  "assigned_accessions": [
+    "Q64346",
+    "Q9DBB1",
+    "Q9ESS0",
+    "Q9VVW5"
+  ]
+}

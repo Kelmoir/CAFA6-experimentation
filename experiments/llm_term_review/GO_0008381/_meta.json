@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008381",
+  "name": "mechanosensitive monoatomic ion channel activity",
+  "def": "Enables the transmembrane transfer of an monoatomic ion by a channel that opens in response to a mechanical stress.",
+  "n_proteins_total": 47,
+  "sampled_accessions": [
+    "F1QZE9",
+    "P0AEB5",
+    "Q8TDI7",
+    "Q9C8G5"
+  ],
+  "assigned_accessions": [
+    "F1QZE9",
+    "P0AEB5",
+    "Q8TDI7",
+    "Q9C8G5"
+  ]
+}

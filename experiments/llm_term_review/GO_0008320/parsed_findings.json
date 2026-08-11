@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O13656",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P38377",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q19967",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q94EH2",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature in the annotated features of Q94EH2 matches the primary reaction of the GO term \"protein transmembrane transporter activity,\" which involves the transfer of a protein across a membrane. The only relevant domain/family cross-references do not provide positional evidence, and no other annotated feature directly supports the defined function."
+    }
+  ]
+}

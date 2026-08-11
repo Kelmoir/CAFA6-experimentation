@@ -5449,5 +5449,185 @@
     "detail": "UNPARSED"
    }
   ]
+ },
+ "GO:0008273": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O60721",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list provides a direct explanation for the antiporter activity described by GO:0008273. The only evidence available is that the protein has disordered regions, which are not specific to the function of an ion transporter."
+   },
+   {
+    "accession": "Q9IAL8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and specific explanation for the defined reaction mechanism of the GO term."
+   },
+   {
+    "accession": "Q28139",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the mechanism of calcium, potassium:sodium antiporter activity as defined by the GO term, and all features are either generic or not positioned in a way that would explain the function."
+   },
+   {
+    "accession": "Q8NFF2",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q8NFF2 is a \"REGION\" span (357-410) marked as Disordered, which does not provide any positional evidence directly supporting the defined reaction mechanism of calcium, potassium:sodium antiporter activity. Therefore, there is no strong match between the annotated feature and the GO term's primary chemistry."
+   }
+  ]
+ },
+ "GO:0008288": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P13368",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for this protein do not provide any positional evidence that specifically explains why it carries the GO term \"boss receptor activity.\" While there are binding sites associated with ATP, these are generic and not unique to the term's definition. No feature directly matches the primary reaction of catalyzing the ATP transfer described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0008320": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O13656",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P38377",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q19967",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q94EH2",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature in the annotated features of Q94EH2 matches the primary reaction of the GO term \"protein transmembrane transporter activity,\" which involves the transfer of a protein across a membrane. The only relevant domain/family cross-references do not provide positional evidence, and no other annotated feature directly supports the defined function."
+   }
+  ]
+ },
+ "GO:0008330": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Tyrosine-protein phosphatase",
+    "accessions": [
+     "Q64346",
+     "Q9DBB1",
+     "Q9ESS0",
+     "Q9VVW5"
+    ],
+    "reason": "resolved to ['InterPro:IPR000340', 'InterPro:IPR020422', 'InterPro:IPR029021', 'PROSITE:PS00383', 'PROSITE:PS50054', 'PROSITE:PS50056'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000340': 98, 'InterPro:IPR020422': 126, 'InterPro:IPR029021': 317, 'PROSITE:PS00383': 224, 'PROSITE:PS50054': 127, 'PROSITE:PS50056': 255})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0008381": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "F1QZE9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and specific explanation for the defined molecular function of \"mechanosensitive monoatomic ion channel activity.\""
+   },
+   {
+    "accession": "P0AEB5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8TDI7",
+    "reason": "none_verdict",
+    "reasoning": "There are no positional features that directly indicate the presence of a mechanosensitive monoatomic ion channel activity in Q8TDI7, and the disordered regions do not provide enough specificity to explain the defined function of the GO term."
+   },
+   {
+    "accession": "Q9C8G5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0008456": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P17050",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the enzymatic mechanism of hydrolysis as defined by GO:0008456."
+   }
+  ]
+ },
+ "GO:0008493": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q14728",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0008675": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0A955",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the defined reaction of the enzyme, indicating that the molecular function cannot be determined from the given evidence."
+   }
+  ]
  }
 }

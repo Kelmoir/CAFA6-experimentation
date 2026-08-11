@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P17050",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains the enzymatic mechanism of hydrolysis as defined by GO:0008456."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "F1QZE9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear and specific explanation for the defined molecular function of \"mechanosensitive monoatomic ion channel activity.\""
+    },
+    {
+      "accession": "P0AEB5",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8TDI7",
+      "reason": "none_verdict",
+      "reasoning": "There are no positional features that directly indicate the presence of a mechanosensitive monoatomic ion channel activity in Q8TDI7, and the disordered regions do not provide enough specificity to explain the defined function of the GO term."
+    },
+    {
+      "accession": "Q9C8G5",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

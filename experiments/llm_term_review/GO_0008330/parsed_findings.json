@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "Q64346",
+      "go_id": "GO:0008330",
+      "feature_type": "DOMAIN",
+      "start": 205,
+      "end": 349,
+      "signal_kind": "text",
+      "signal_value": "Tyrosine-protein phosphatase",
+      "reasoning": "The \"Tyrosine-protein phosphatase\" domain directly matches the primary reaction described in the GO term, which involves catalyzing the removal of phosphate groups from tyrosine residues."
+    },
+    {
+      "accession": "Q9DBB1",
+      "go_id": "GO:0008330",
+      "feature_type": "DOMAIN",
+      "start": 205,
+      "end": 349,
+      "signal_kind": "text",
+      "signal_value": "Tyrosine-protein phosphatase",
+      "reasoning": "The \"DOMAIN 205-349\" with the qualifier \"Tyrosine-protein phosphatase\" directly matches the primary reaction of the GO term, which involves catalyzing the removal of phosphate groups from tyrosine and threonine residues. This provides a strong and specific explanation for why the protein carries the term."
+    },
+    {
+      "accession": "Q9ESS0",
+      "go_id": "GO:0008330",
+      "feature_type": "DOMAIN",
+      "start": 321,
+      "end": 465,
+      "signal_kind": "text",
+      "signal_value": "Tyrosine-protein phosphatase",
+      "reasoning": "The DOMAIN 321-465 annotation explicitly refers to \"Tyrosine-protein phosphatase,\" directly aligning with the primary reaction of the GO term, which involves the dephosphorylation of tyrosine residues. This provides a strong and specific match to the defined chemistry of the molecular function."
+    },
+    {
+      "accession": "Q9VVW5",
+      "go_id": "GO:0008330",
+      "feature_type": "DOMAIN",
+      "start": 213,
+      "end": 358,
+      "signal_kind": "text",
+      "signal_value": "Tyrosine-protein phosphatase",
+      "reasoning": "The DOMAIN 213-358 annotation specifically refers to \"Tyrosine-protein phosphatase,\" which directly matches the primary reaction mechanism of the GO term, making it the most plausible explanation for why the protein carries this molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

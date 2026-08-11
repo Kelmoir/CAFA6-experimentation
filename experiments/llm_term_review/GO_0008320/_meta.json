@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008320",
+  "name": "protein transmembrane transporter activity",
+  "def": "Enables the transfer of a protein from one side of a membrane to the other.",
+  "n_proteins_total": 130,
+  "sampled_accessions": [
+    "O13656",
+    "P38377",
+    "Q19967",
+    "Q94EH2"
+  ],
+  "assigned_accessions": [
+    "O13656",
+    "P38377",
+    "Q19967",
+    "Q94EH2"
+  ]
+}
