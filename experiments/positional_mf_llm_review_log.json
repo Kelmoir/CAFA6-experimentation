@@ -7563,5 +7563,239 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0010357": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q1ACB3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0010437": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6QT07",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q6QT07 directly matches the primary reaction described in GO:0010437. The presence of Fe cation binding sites is a general characteristic, not a specific structural or functional basis for the defined carotenoid cleavage activity."
+   },
+   {
+    "accession": "Q9BYV7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9BYV7 provides a strong match to the primary reaction of catalyzing oxidative cleavage of carotenoids at the (9, 10) and/or (9', 10') double bond. The binding sites are about ligands rather than the active site involved in the reaction."
+   },
+   {
+    "accession": "Q99NF1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q99NF1 specifically matches the primary reaction of catalyzing oxidative cleavage at the (9, 10) and/or (9', 10') double bond in carotenoids. The binding sites are associated with a ligand rather than the substrate being cleaved."
+   }
+  ]
+ },
+ "GO:0010471": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Tele-GMP-histidine intermediate",
+    "accessions": [
+     "Q8RWE8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0010472": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Tele-GMP-histidine intermediate",
+    "accessions": [
+     "Q8RWE8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0010473": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8RWE8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and specific explanation for the chemical reaction defined by the GO term. The only candidate feature (ACT_SITE) is too generic and does not directly account for the enzyme's function as described."
+   }
+  ]
+ },
+ "GO:0010491": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9C5I1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0010542": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9M1E2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0010844": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "bZIP",
+    "accessions": [
+     "P52890"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q09926",
+    "go_id": "GO:0010844",
+    "feature_type": "REGION",
+    "start": 51,
+    "end": 66,
+    "signal_kind": "text",
+    "signal_value": "Leucine-zipper",
+    "reasoning": "The leucine zipper motif in the specified region is a structural feature often associated with DNA-binding proteins, but it does not directly explain why this protein binds to a genomic region that promotes recombination. While it could be plausibly linked to the function, there is no direct evidence provided in the annotated features that confirms this specific mechanism."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q96EQ9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of promoting recombination through genomic binding as specified in the GO term's definition."
+   },
+   {
+    "accession": "Q9NQV7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains why the protein carries the GO term \"recombination hotspot binding\" with a strong match to its primary reaction of binding to a genomic region which promotes recombination."
+   }
+  ]
+ },
+ "GO:0010854": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "G-alpha",
+    "accessions": [
+     "Q6R0H7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B2RSH2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section directly explains why B2RSH2 carries the molecular function \"adenylate cyclase regulator activity.\""
+   },
+   {
+    "accession": "P34907",
+    "reason": "none_verdict",
+    "reasoning": "The only available positional feature for P34907 is a Disordered region span from 337-375, which does not provide any direct evidence about the protein's ability to bind or modulate adenylate cyclase activity. This feature does not match the primary reaction described in the GO term's definition, which involves binding and regulation of adenylate cyclase."
+   }
+  ]
+ },
+ "GO:0010945": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "P59266",
+     "Q06676"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Nudix hydrolase",
+    "accessions": [
+     "Q12524"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8N6M3",
+    "reason": "none_verdict",
+    "reasoning": "The \"ACT_SITE\" spans do not directly describe the catalytic reaction or the specific chemistry of coenzyme A diphosphatase activity, and therefore do not provide a strong match to the GO term's primary reaction."
+   }
+  ]
  }
 }

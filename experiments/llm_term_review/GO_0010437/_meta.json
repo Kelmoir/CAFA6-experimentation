@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0010437",
+  "name": "9,10 (9', 10')-carotenoid-cleaving dioxygenase activity",
+  "def": "Catalysis of the oxidative cleavage of carotenoids at the (9, 10) and/or (9', 10') double bond.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q6QT07",
+    "Q99NF1",
+    "Q9BYV7"
+  ],
+  "assigned_accessions": [
+    "Q6QT07",
+    "Q99NF1",
+    "Q9BYV7"
+  ]
+}

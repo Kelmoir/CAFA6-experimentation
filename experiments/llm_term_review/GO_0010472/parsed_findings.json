@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8RWE8",
+      "go_id": "GO:0010472",
+      "feature_type": "ACT_SITE",
+      "start": 237,
+      "end": 238,
+      "signal_kind": "text",
+      "signal_value": "Tele-GMP-histidine intermediate",
+      "reasoning": "The ACT_SITE feature directly relates to the enzyme's catalytic activity as described in the GO term's definition, providing evidence that the protein has a site where this reaction occurs. This matches the primary reaction mechanism of the GO term with high specificity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

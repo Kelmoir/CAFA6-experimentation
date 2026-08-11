@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0010945",
+  "name": "coenzyme A diphosphatase activity",
+  "def": "Catalysis of the reaction: an acyl-coenzyme A or its derivatives + H2O = adenosine 3',5'-bisphosphate + an acyl-4'-phosphopantetheine + 2 H+. This reaction can also use coenzyme A as a substrate.",
+  "n_proteins_total": 24,
+  "sampled_accessions": [
+    "P59266",
+    "Q06676",
+    "Q12524",
+    "Q8N6M3"
+  ],
+  "assigned_accessions": [
+    "P59266",
+    "Q06676",
+    "Q12524",
+    "Q8N6M3"
+  ]
+}

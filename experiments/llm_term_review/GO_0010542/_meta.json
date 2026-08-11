@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0010542",
+  "name": "nitrate efflux transmembrane transporter activity",
+  "def": "Enables the transfer of nitrate from the inside of the cell to the outside of the cell across a membrane.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9M1E2"
+  ],
+  "assigned_accessions": [
+    "Q9M1E2"
+  ]
+}

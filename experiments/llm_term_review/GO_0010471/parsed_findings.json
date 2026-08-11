@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8RWE8",
+      "go_id": "GO:0010471",
+      "feature_type": "ACT_SITE",
+      "start": 237,
+      "end": 238,
+      "signal_kind": "text",
+      "signal_value": "Tele-GMP-histidine intermediate",
+      "reasoning": "The ACT_SITE annotation at positions 237-238 directly relates to the biochemical step described in the GO term's definition, which involves the transfer of a guanyl group. This feature is the most plausible explanation for why Q8RWE8 carries the GO term \"GDP-galactose:mannose-1-phosphate guanylyltransferase activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

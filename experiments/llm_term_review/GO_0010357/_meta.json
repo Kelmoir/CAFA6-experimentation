@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0010357",
+  "name": "homogentisate solanesyltransferase activity",
+  "def": "Catalysis of the reaction: all-trans-nonaprenyl diphosphate + H+ + homogentisate = 2-methyl-6-all-trans-nonaprenylbenzene-1,4-diol + CO2 + diphosphate. 2-methyl-6-solanyl-1,4-benzoquinonone is also known as 2-methyl-6-solanesylplastoquinol and all-trans-nonaprenyl diphosphate as solanesyl diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q1ACB3"
+  ],
+  "assigned_accessions": [
+    "Q1ACB3"
+  ]
+}

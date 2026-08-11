@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0010471",
+  "name": "GDP-galactose:mannose-1-phosphate guanylyltransferase activity",
+  "def": "Catalysis of the reaction: GDP-beta-L-galactose + alpha-D-mannose 1-phosphate = GDP-alpha-D-mannose + beta-L-galactose-1-phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8RWE8"
+  ],
+  "assigned_accessions": [
+    "Q8RWE8"
+  ]
+}

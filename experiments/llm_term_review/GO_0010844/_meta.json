@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0010844",
+  "name": "recombination hotspot binding",
+  "def": "Binding to a genomic region which promotes recombination.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P52890",
+    "Q09926",
+    "Q96EQ9",
+    "Q9NQV7"
+  ],
+  "assigned_accessions": [
+    "P52890",
+    "Q09926",
+    "Q96EQ9",
+    "Q9NQV7"
+  ]
+}

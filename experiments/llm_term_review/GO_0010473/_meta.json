@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0010473",
+  "name": "GDP-galactose:myoinositol-1-phosphate guanylyltransferase activity",
+  "def": "Catalysis of the reaction: GDP-L-galactose + myo-inositol 1-phosphate = alpha-L-galactose-1-phosphate + GDP-myoinositol.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8RWE8"
+  ],
+  "assigned_accessions": [
+    "Q8RWE8"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "P52890",
+      "go_id": "GO:0010844",
+      "feature_type": "DOMAIN",
+      "start": 471,
+      "end": 535,
+      "signal_kind": "text",
+      "signal_value": "bZIP",
+      "reasoning": "The DOMAIN 471-535 with the qualifier \"bZIP\" directly relates to DNA-binding activity, which is a key component of the GO term's definition. This feature provides a strong match to the primary reaction of binding to genomic regions that promote recombination."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q09926",
+      "go_id": "GO:0010844",
+      "feature_type": "REGION",
+      "start": 51,
+      "end": 66,
+      "signal_kind": "text",
+      "signal_value": "Leucine-zipper",
+      "reasoning": "The leucine zipper motif in the specified region is a structural feature often associated with DNA-binding proteins, but it does not directly explain why this protein binds to a genomic region that promotes recombination. While it could be plausibly linked to the function, there is no direct evidence provided in the annotated features that confirms this specific mechanism."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q96EQ9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of promoting recombination through genomic binding as specified in the GO term's definition."
+    },
+    {
+      "accession": "Q9NQV7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains why the protein carries the GO term \"recombination hotspot binding\" with a strong match to its primary reaction of binding to a genomic region which promotes recombination."
+    }
+  ]
+}
