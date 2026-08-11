@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q3TCT4",
+      "go_id": "GO:0017111",
+      "feature_type": "BINDING",
+      "start": 91,
+      "end": 92,
+      "signal_kind": "ligand",
+      "signal_value": "GTP",
+      "reasoning": "The binding of GTP to the protein's domain at position 91-92 directly supports the catalytic activity described in the GO term, which involves the removal of a phosphate group from ribonucleoside triphosphates. This is a strong match to the primary reaction of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P49961",
+      "reason": "none_verdict",
+      "reasoning": "No single annotated feature directly matches the primary reaction of ribonucleoside triphosphate phosphatase activity as defined by GO:0017111, and all features are either generic or not specific enough to confirm the function."
+    },
+    {
+      "accession": "Q08211",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of the GO term \"ribonucleoside triphosphate phosphatase activity.\" The only binding site feature that could be loosely related is \"BINDING 410-419\" with ATP, but it does not specifically explain why the enzyme carries this function."
+    },
+    {
+      "accession": "Q8TGH6",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of ribonucleoside triphosphate phosphatase activity. The only relevant feature (ACT_SITE) only partially supports the reaction mechanism and does not specifically account for the enzyme's function as defined by the GO term."
+    }
+  ]
+}

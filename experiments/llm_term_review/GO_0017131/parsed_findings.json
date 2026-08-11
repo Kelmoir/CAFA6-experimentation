@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q91903",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q91903 specifically describes binding to a U-rich sequence or cytoplasmic polyadenylylation, which are the primary reactions defined by the GO term."
+    }
+  ]
+}

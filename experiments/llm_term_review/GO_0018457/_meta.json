@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0018457",
+  "name": "perillyl-alcohol dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: NAD+ + perillyl alcohol = H+ + NADH + perillyl aldehyde.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A0A2I7G3B3"
+  ],
+  "assigned_accessions": [
+    "A0A2I7G3B3"
+  ]
+}

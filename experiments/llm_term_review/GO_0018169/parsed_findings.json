@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0C0U4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided data directly explains the posttranslational transfer of glutamic acid residues to ribosomal protein S6 as specified by the GO term's definition."
+    }
+  ]
+}

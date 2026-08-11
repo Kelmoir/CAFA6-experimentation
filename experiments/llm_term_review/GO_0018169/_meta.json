@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0018169",
+  "name": "ribosomal S6-glutamic acid ligase activity",
+  "def": "Catalysis of the posttranslational transfer of one or more glutamic acid residues to the C-terminus of ribosomal protein S6.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0C0U4"
+  ],
+  "assigned_accessions": [
+    "P0C0U4"
+  ]
+}

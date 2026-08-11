@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0017103",
+  "name": "UTP:galactose-1-phosphate uridylyltransferase activity",
+  "def": "Catalysis of the reaction: alpha-D-galactose 1-phosphate + UTP = diphosphate + UDP-D-galactose.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9C5I1"
+  ],
+  "assigned_accessions": [
+    "Q9C5I1"
+  ]
+}

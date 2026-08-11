@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0017129",
+  "name": "triglyceride binding",
+  "def": "Binding to a triester of glycerol.",
+  "n_proteins_total": 14,
+  "sampled_accessions": [
+    "A5D6W6",
+    "Q52KL1",
+    "Q96NZ9",
+    "Q9WU74"
+  ],
+  "assigned_accessions": [
+    "A5D6W6",
+    "Q52KL1",
+    "Q96NZ9",
+    "Q9WU74"
+  ]
+}

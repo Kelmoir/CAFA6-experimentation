@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "O35795",
+      "go_id": "GO:0017110",
+      "feature_type": "BINDING",
+      "start": 47,
+      "end": 48,
+      "signal_kind": "ligand",
+      "signal_value": "ADP",
+      "reasoning": "The binding site 47-48 is associated with ADP, AMP, ATP, GTP, phosphate, and UTP, all of which are nucleoside diphosphates or their monophosphate forms. These ligands directly support the reaction mechanism described in the GO term's definition, making this feature a strong candidate for explaining the molecular function."
+    },
+    {
+      "accession": "O80612",
+      "go_id": "GO:0017110",
+      "feature_type": "ACT_SITE",
+      "start": 211,
+      "end": 212,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The ACT_SITE annotation at position 211-212 indicates a proton acceptor site, which is directly relevant to the catalytic mechanism of nucleoside diphosphate phosphatase activity. This feature most plausibly explains why the protein carries the GO term."
+    },
+    {
+      "accession": "Q8BFW6",
+      "go_id": "GO:0017110",
+      "feature_type": "BINDING",
+      "start": 64,
+      "end": 65,
+      "signal_kind": "ligand",
+      "signal_value": "ADP",
+      "reasoning": "The binding site at position 64-65 involves a ligand (ADP, AMP, ATP, GTP, phosphate, UTP) directly involved in the reaction mechanism described by the GO term, making it the most plausible explanation for why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P55772",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for protein P55772 directly describes the catalytic mechanism of removing a phosphate group from a nucleoside diphosphate, which is the primary reaction defined by GO:0017110."
+    }
+  ]
+}

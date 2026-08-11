@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0017096",
+  "name": "acetylserotonin O-methyltransferase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-methionine + N-acetylserotonin = S-adenosyl-L-homocysteine + melatonin. Melatonin is also known as N-acetyl-5-methoxytryptamine.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "Q06509",
+    "Q6EPG8",
+    "Q6ZD89",
+    "Q9FK25"
+  ],
+  "assigned_accessions": [
+    "Q06509",
+    "Q6EPG8",
+    "Q6ZD89",
+    "Q9FK25"
+  ]
+}

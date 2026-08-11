@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0017110",
+  "name": "nucleoside diphosphate phosphatase activity",
+  "def": "Catalysis of the reaction: a nucleoside diphosphate + H2O = a nucleoside monophosphate + phosphate.",
+  "n_proteins_total": 25,
+  "sampled_accessions": [
+    "O35795",
+    "O80612",
+    "P55772",
+    "Q8BFW6"
+  ],
+  "assigned_accessions": [
+    "O35795",
+    "O80612",
+    "P55772",
+    "Q8BFW6"
+  ]
+}

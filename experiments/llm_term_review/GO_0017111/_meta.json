@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0017111",
+  "name": "ribonucleoside triphosphate phosphatase activity",
+  "def": "Catalysis of the reaction: a ribonucleoside triphosphate + H2O = a ribonucleoside diphosphate + H+ + phosphate.",
+  "n_proteins_total": 46,
+  "sampled_accessions": [
+    "P49961",
+    "Q08211",
+    "Q3TCT4",
+    "Q8TGH6"
+  ],
+  "assigned_accessions": [
+    "P49961",
+    "Q08211",
+    "Q3TCT4",
+    "Q8TGH6"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "A5D6W6",
+      "go_id": "GO:0017129",
+      "feature_type": "ACT_SITE",
+      "start": 185,
+      "end": 186,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The ACT_SITE 185-186 feature is directly associated with the \"FIT\" domain family, which is known for binding to triesters, matching the primary reaction of the GO term."
+    },
+    {
+      "accession": "Q9WU74",
+      "go_id": "GO:0017129",
+      "feature_type": "DOMAIN",
+      "start": 88,
+      "end": 181,
+      "signal_kind": "text",
+      "signal_value": "Ig-like V-type",
+      "reasoning": "The DOMAIN span (88-181) with the note \"Ig-like V-type\" directly supports the primary reaction of triglyceride binding by indicating a structural motif associated with lipid recognition, which aligns with the definition of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q52KL1",
+      "reason": "none_verdict",
+      "reasoning": "The ACT_SITE annotation does not specifically match the GO term's definition of \"triglyceride binding\" and is generic in nature, indicating that it does not provide a strong basis for explaining why Q52KL1 carries this molecular function."
+    },
+    {
+      "accession": "Q96NZ9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides direct evidence of triglyceride binding activity for Q96NZ9, and the only positional feature is generic and not specific to the function."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "A0A2I7G3B3",
+      "go_id": "GO:0018457",
+      "feature_type": "BINDING",
+      "start": 202,
+      "end": 208,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD(+) in the specified region directly supports the catalytic reaction defined by the GO term, making it the most plausible explanation for why this protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -11712,5 +11712,217 @@
     "reasoning": "No annotated feature directly matches the primary reaction of glycolipid transfer as defined in the GO term's primary clause."
    }
   ]
+ },
+ "GO:0017096": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "Q06509"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6EPG8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism described for the GO term \"acetylserotonin O-methyltransferase activity\" (GO:0017096). The features provided are either generic or only loosely related to the specific chemical reaction involved."
+   },
+   {
+    "accession": "Q6ZD89",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism of the GO term, and none of the features provide a strong enough match to be considered as the structural/functional basis for the molecular function."
+   },
+   {
+    "accession": "Q9FK25",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9FK25 do not provide a clear explanation for why it carries the GO term GO:0017096. While the enzyme's role in catalyzing the reaction involving S-adenosyl-L-homocysteine is implied, there is no direct evidence that the protein's structure or function is specifically tied to this molecular function."
+   }
+  ]
+ },
+ "GO:0017103": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9C5I1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0017110": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ADP",
+    "accessions": [
+     "O35795",
+     "Q8BFW6"
+    ],
+    "reason": "circular agreement -- only 1 of 2 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "O80612"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P55772",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein P55772 directly describes the catalytic mechanism of removing a phosphate group from a nucleoside diphosphate, which is the primary reaction defined by GO:0017110."
+   }
+  ]
+ },
+ "GO:0017111": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "GTP",
+    "accessions": [
+     "Q3TCT4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P49961",
+    "reason": "none_verdict",
+    "reasoning": "No single annotated feature directly matches the primary reaction of ribonucleoside triphosphate phosphatase activity as defined by GO:0017111, and all features are either generic or not specific enough to confirm the function."
+   },
+   {
+    "accession": "Q08211",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of the GO term \"ribonucleoside triphosphate phosphatase activity.\" The only binding site feature that could be loosely related is \"BINDING 410-419\" with ATP, but it does not specifically explain why the enzyme carries this function."
+   },
+   {
+    "accession": "Q8TGH6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of ribonucleoside triphosphate phosphatase activity. The only relevant feature (ACT_SITE) only partially supports the reaction mechanism and does not specifically account for the enzyme's function as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0017129": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "A5D6W6"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like V-type",
+    "accessions": [
+     "Q9WU74"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q52KL1",
+    "reason": "none_verdict",
+    "reasoning": "The ACT_SITE annotation does not specifically match the GO term's definition of \"triglyceride binding\" and is generic in nature, indicating that it does not provide a strong basis for explaining why Q52KL1 carries this molecular function."
+   },
+   {
+    "accession": "Q96NZ9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides direct evidence of triglyceride binding activity for Q96NZ9, and the only positional feature is generic and not specific to the function."
+   }
+  ]
+ },
+ "GO:0017131": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q91903",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q91903 specifically describes binding to a U-rich sequence or cytoplasmic polyadenylylation, which are the primary reactions defined by the GO term."
+   }
+  ]
+ },
+ "GO:0018169": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0C0U4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data directly explains the posttranslational transfer of glutamic acid residues to ribosomal protein S6 as specified by the GO term's definition."
+   }
+  ]
+ },
+ "GO:0018457": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "A0A2I7G3B3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }
