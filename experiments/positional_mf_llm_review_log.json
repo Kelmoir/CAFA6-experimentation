@@ -6400,6 +6400,32 @@
    }
   ]
  },
+ "GO:0008811": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P01574",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P01575",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P70499",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0008820": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -6418,6 +6444,228 @@
     "accession": "Q58517",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0008829": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "CMP/dCMP-type deaminase 1",
+    "accessions": [
+     "Q9HC16"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P28248",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of catalyzing the dCTP + H2O = dUTP + NH3 reaction, and all features are generic binding sites rather than specific domains or active sites involved in this mechanism."
+   },
+   {
+    "accession": "P9WP17",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction mechanism of dCTP deaminase activity as defined in the GO term."
+   }
+  ]
+ },
+ "GO:0008832": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "HD",
+    "accessions": [
+     "Q502K2"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "dGTP",
+    "accessions": [
+     "Q60710"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9Y3Z3",
+    "reason": "none_verdict",
+    "reasoning": "local model request failed"
+   },
+   {
+    "accession": "Q6INN8",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0008833": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0A6C1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, and the domain/family cross-references do not provide a specific explanation for the molecular function."
+   }
+  ]
+ },
+ "GO:0008847": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P21338",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a specific explanation for the molecular function defined by GO:0008847, as all features only indicate the site of action without detailing the enzymatic mechanism."
+   }
+  ]
+ },
+ "GO:0008873": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton donor",
+    "accessions": [
+     "P37666"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0008874": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "P0A9P9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0008913": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "HXXXXD motif",
+    "accessions": [
+     "P0ACV0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0008919": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "UDP",
+    "accessions": [
+     "P27129"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P25740",
+    "reason": "none_verdict",
+    "reasoning": "The only evidence provided for the protein P25740 is binding sites for UDP-alpha-D-glucose, which are generic and do not directly explain why it carries the GO term \"lipopolysaccharide glucosyltransferase I activity.\" No positional feature has been confirmed to account for the enzyme's catalytic activity."
+   }
+  ]
+ },
+ "GO:0008928": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Tele-GMP-histidine intermediate",
+    "accessions": [
+     "Q8RWE8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0009016": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P18335",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly matches the primary reaction of the GO term \"succinyldiaminopimelate transaminase activity\" (GO:0009016), which involves a specific cofactor and substrate. The features only echo words from secondary clauses or are not relevant to the defined chemistry."
+   },
+   {
+    "accession": "P9WPZ5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P9WPZ5 specifically describes the transamination reaction mechanism or the enzyme's activity as defined by GO:0009016. The binding sites are generic and could apply to many enzymes, not uniquely explaining this particular function."
    }
   ]
  }

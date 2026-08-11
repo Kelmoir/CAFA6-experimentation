@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q502K2",
+      "go_id": "GO:0008832",
+      "feature_type": "DOMAIN",
+      "start": 142,
+      "end": 296,
+      "signal_kind": "text",
+      "signal_value": "HD",
+      "reasoning": "The HD domain is a homology domain commonly found in enzymes that catalyze reactions involving nucleotides, which aligns with the primary reaction of dGTPase activity. This domain provides a structural basis for the enzyme's function."
+    },
+    {
+      "accession": "Q60710",
+      "go_id": "GO:0008832",
+      "feature_type": "BINDING",
+      "start": 181,
+      "end": 182,
+      "signal_kind": "ligand",
+      "signal_value": "dGTP",
+      "reasoning": "The binding of dGTP as a substrate directly supports the catalytic reaction defined by the GO term, making this feature the most plausible explanation for why the protein carries the term \"dGTPase activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9Y3Z3",
+      "reason": "none_verdict",
+      "reasoning": "local model request failed"
+    },
+    {
+      "accession": "Q6INN8",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

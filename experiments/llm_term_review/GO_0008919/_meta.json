@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0008919",
+  "name": "lipopolysaccharide glucosyltransferase I activity",
+  "def": "Catalysis of the reaction: UDP-glucose + lipopolysaccharide = UDP + D-glucosyl-lipopolysaccharide.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P25740",
+    "P27129"
+  ],
+  "assigned_accessions": [
+    "P25740",
+    "P27129"
+  ]
+}

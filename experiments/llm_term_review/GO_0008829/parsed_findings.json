@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9HC16",
+      "go_id": "GO:0008829",
+      "feature_type": "DOMAIN",
+      "start": 28,
+      "end": 138,
+      "signal_kind": "text",
+      "signal_value": "CMP/dCMP-type deaminase 1",
+      "reasoning": "The DOMAIN 28-138 is directly associated with CMP/dCMP-type deaminase activity, matching the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P28248",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of catalyzing the dCTP + H2O = dUTP + NH3 reaction, and all features are generic binding sites rather than specific domains or active sites involved in this mechanism."
+    },
+    {
+      "accession": "P9WP17",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction mechanism of dCTP deaminase activity as defined in the GO term."
+    }
+  ]
+}

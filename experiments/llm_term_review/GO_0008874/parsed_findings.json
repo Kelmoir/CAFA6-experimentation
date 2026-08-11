@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P0A9P9",
+      "go_id": "GO:0008874",
+      "feature_type": "ACT_SITE",
+      "start": 157,
+      "end": 158,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The ACT_SITE annotation at position 157-158 directly corresponds to the proton acceptor role described in the GO term's definition, which is central to the catalytic mechanism of gluconate 5-dehydrogenase. This feature most plausibly explains why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0009016",
+  "name": "succinyldiaminopimelate transaminase activity",
+  "def": "Catalysis of the reaction: 2-oxoglutarate + N-succinyl-LL-2,6-diaminopimelate = L-2-succinylamino-6-oxopimelate + L-glutamate.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P18335",
+    "P9WPZ5"
+  ],
+  "assigned_accessions": [
+    "P18335",
+    "P9WPZ5"
+  ]
+}

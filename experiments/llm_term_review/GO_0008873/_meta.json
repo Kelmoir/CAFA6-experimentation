@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008873",
+  "name": "gluconate 2-dehydrogenase activity",
+  "def": "Catalysis of the reaction: D-gluconate + NADP+ = 2-dehydro-D-gluconate + NADPH + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P37666"
+  ],
+  "assigned_accessions": [
+    "P37666"
+  ]
+}

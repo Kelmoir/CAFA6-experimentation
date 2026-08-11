@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008913",
+  "name": "Kdo2-lipid IVA acyltransferase activity",
+  "def": "Catalysis of the reaction: a fatty acyl-[ACP] + an alpha-Kdo-(2->4)-alpha-Kdo-(2->6)-lipid IVA = an alpha-Kdo-(2->4)-alpha-Kdo-(2->6)-(acyl)-lipid IVA + holo-[ACP].",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0ACV0"
+  ],
+  "assigned_accessions": [
+    "P0ACV0"
+  ]
+}

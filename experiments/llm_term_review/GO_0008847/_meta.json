@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008847",
+  "name": "Enterobacter ribonuclease activity",
+  "def": "Catalysis of the endonucleolytic cleavage to 3'-phosphomononucleotides and 3'-phosphooligonucleotides with 2',3'-cyclic phosphate intermediates.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P21338"
+  ],
+  "assigned_accessions": [
+    "P21338"
+  ]
+}

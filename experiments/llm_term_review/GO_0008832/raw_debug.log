@@ -1,0 +1,272 @@
+=== Q6INN8 GO:0008832 (finish_reason=length) ===
+THINKING:  
+GO term ID: 0008832  
+Name: dGTPase activity  
+Definition: Catalysis of the reaction: dGTP + H2O = 2'-deoxyguanosine + 2 H+ + triphosphate.  
+
+Candidate annotated features for protein Q6INN8:  
+- DOMAIN 43-107  
+    note: SAM  
+    evidence: ECO:0000255|PROSITE-ProRule:PRU00184  
+- DOMAIN 160-321  
+    note: HD  
+    evidence: ECO:0000255|PROSITE-ProRule:PRU01175  
+- REGION 0-22  
+    note: Disordered  
+    evidence: ECO:0000256|SAM:MobiDB-lite  
+- ACT_SITE 229-230  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 112-113  
+    ligand: GTP  
+    ligand_id: ChEBI:CHEBI:37565  
+    ligand_note: allosteric activator; ligand shared between 3 neighboring subunits of the tetramer  
+    note: in chain B  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 113-114  
+    ligand: GTP  
+    ligand_id: ChEBI:CHEBI:37565  
+    ligand_note: allosteric activator; ligand shared between 3 neighboring subunits of the tetramer  
+    note: in chain B  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 115-116  
+    ligand: dGTP  
+    ligand_id: ChEBI:CHEBI:61429  
+    ligand_note: allosteric activator; ligand shared between 3 neighboring subunits of the tetramer  
+    note: in chain B  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 133-134  
+    ligand: GTP  
+    ligand_id: ChEBI:CHEBI:37565  
+    ligand_note: allosteric activator; ligand shared between 3 neighboring subunits of the tetramer  
+    note: in chain B  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 138-139  
+    ligand: GTP  
+    ligand_id: ChEBI:CHEBI:37565  
+    ligand_note: allosteric activator; ligand shared between 3 neighboring subunits of the tetramer  
+    note: in chain B  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 141-142  
+    ligand: GTP  
+    ligand_id: ChEBI:CHEBI:37565  
+    ligand_note: allosteric activator; ligand shared between 3 neighboring subunits of the tetramer  
+    note: in chain B  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 145-146  
+    ligand: dATP  
+    ligand_id: ChEBI:CHEBI:61404  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 145-146  
+    ligand: dCTP  
+    ligand_id: ChEBI:CHEBI:61481  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 145-146  
+    ligand: dGTP  
+    ligand_id: ChEBI:CHEBI:61429  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 145-146  
+    ligand: dTTP  
+    ligand_id: ChEBI:CHEBI:37568  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 146-147  
+    ligand: dGTP  
+    ligand_id: ChEBI:CHEBI:61429  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 152-153  
+    ligand: dGTP  
+    ligand_id: ChEBI:CHEBI:61429  
+    ligand_label: 2  
+    ligand_note: allosteric activator; ligand shared between 3 neighboring subunits of the tetramer  
+    note: in chain C  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 160-161  
+    ligand: dATP  
+    ligand_id: ChEBI:CHEBI:61404  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 160-161  
+    ligand: dCTP  
+    ligand_id: ChEBI:CHEBI:61481  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 160-161  
+    ligand: dGTP  
+    ligand_id: ChEBI:CHEBI:61429  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 160-161  
+    ligand: dTTP  
+    ligand_id: ChEBI:CHEBI:37568  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 202-203  
+    ligand: Mn(2+)  
+    ligand_id: ChEBI:CHEBI:29035  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 203-204  
+    ligand: Mn(2+)  
+    ligand_id: ChEBI:CHEBI:29035  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 206-207  
+    ligand: dATP  
+    ligand_id: ChEBI:CHEBI:61404  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 206-207  
+    ligand: dCTP  
+    ligand_id: ChEBI:CHEBI:61481  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO
+
+=== Q6INN8 GO:0008832 (finish_reason=length) ===
+THINKING:  
+GO term ID: 0008832  
+Name: dGTPase activity  
+Definition: Catalysis of the reaction: dGTP + H2O = 2'-deoxyguanosine + 2 H+ + triphosphate.  
+
+Candidate annotated features for protein Q6INN8:  
+- DOMAIN 43-107  
+    note: SAM  
+    evidence: ECO:0000255|PROSITE-ProRule:PRU00184  
+- DOMAIN 160-321  
+    note: HD  
+    evidence: ECO:0000255|PROSITE-ProRule:PRU01175  
+- REGION 0-22  
+    note: Disordered  
+    evidence: ECO:0000256|SAM:MobiDB-lite  
+- ACT_SITE 229-230  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 112-113  
+    ligand: GTP  
+    ligand_id: ChEBI:CHEBI:37565  
+    ligand_note: allosteric activator; ligand shared between 3 neighboring subunits of the tetramer  
+    note: in chain B  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 113-114  
+    ligand: GTP  
+    ligand_id: ChEBI:CHEBI:37565  
+    ligand_note: allosteric activator; ligand shared between 3 neighboring subunits of the tetramer  
+    note: in chain B  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 115-116  
+    ligand: dGTP  
+    ligand_id: ChEBI:CHEBI:61429  
+    ligand_note: allosteric activator; ligand shared between 3 neighboring subunits of the tetramer  
+    note: in chain B  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 133-134  
+    ligand: GTP  
+    ligand_id: ChEBI:CHEBI:37565  
+    ligand_note: allosteric activator; ligand shared between 3 neighboring subunits of the tetramer  
+    note: in chain B  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 138-139  
+    ligand: GTP  
+    ligand_id: ChEBI:CHEBI:37565  
+    ligand_note: allosteric activator; ligand shared between 3 neighboring subunits of the tetramer  
+    note: in chain B  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 141-142  
+    ligand: GTP  
+    ligand_id: ChEBI:CHEBI:37565  
+    ligand_note: allosteric activator; ligand shared between 3 neighboring subunits of the tetramer  
+    note: in chain B  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 145-146  
+    ligand: dATP  
+    ligand_id: ChEBI:CHEBI:61404  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 145-146  
+    ligand: dCTP  
+    ligand_id: ChEBI:CHEBI:61481  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 145-146  
+    ligand: dGTP  
+    ligand_id: ChEBI:CHEBI:61429  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 145-146  
+    ligand: dTTP  
+    ligand_id: ChEBI:CHEBI:37568  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 146-147  
+    ligand: dGTP  
+    ligand_id: ChEBI:CHEBI:61429  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 152-153  
+    ligand: dGTP  
+    ligand_id: ChEBI:CHEBI:61429  
+    ligand_label: 2  
+    ligand_note: allosteric activator; ligand shared between 3 neighboring subunits of the tetramer  
+    note: in chain C  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 160-161  
+    ligand: dATP  
+    ligand_id: ChEBI:CHEBI:61404  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 160-161  
+    ligand: dCTP  
+    ligand_id: ChEBI:CHEBI:61481  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 160-161  
+    ligand: dGTP  
+    ligand_id: ChEBI:CHEBI:61429  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 160-161  
+    ligand: dTTP  
+    ligand_id: ChEBI:CHEBI:37568  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 202-203  
+    ligand: Mn(2+)  
+    ligand_id: ChEBI:CHEBI:29035  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 203-204  
+    ligand: Mn(2+)  
+    ligand_id: ChEBI:CHEBI:29035  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 206-207  
+    ligand: dATP  
+    ligand_id: ChEBI:CHEBI:61404  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO:0000250|UniProtKB:Q9Y3Z3  
+- BINDING 206-207  
+    ligand: dCTP  
+    ligand_id: ChEBI:CHEBI:61481  
+    ligand_label: 1  
+    ligand_note: substrate  
+    evidence: ECO
+

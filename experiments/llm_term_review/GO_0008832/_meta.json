@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008832",
+  "name": "dGTPase activity",
+  "def": "Catalysis of the reaction: dGTP + H2O = 2'-deoxyguanosine + 2 H+ + triphosphate.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "Q502K2",
+    "Q60710",
+    "Q6INN8",
+    "Q9Y3Z3"
+  ],
+  "assigned_accessions": [
+    "Q502K2",
+    "Q60710",
+    "Q6INN8",
+    "Q9Y3Z3"
+  ]
+}

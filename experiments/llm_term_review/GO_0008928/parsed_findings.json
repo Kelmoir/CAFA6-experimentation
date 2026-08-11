@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8RWE8",
+      "go_id": "GO:0008928",
+      "feature_type": "ACT_SITE",
+      "start": 237,
+      "end": 238,
+      "signal_kind": "text",
+      "signal_value": "Tele-GMP-histidine intermediate",
+      "reasoning": "The ACT_SITE span directly anchors to the enzyme's active site, which is where the reaction catalyzed by the GO term occurs, making it a strong match to the primary defined chemistry of the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

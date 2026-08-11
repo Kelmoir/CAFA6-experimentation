@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0008811",
+  "name": "chloramphenicol O-acetyltransferase activity",
+  "def": "Catalysis of the reaction: chloramphenicol + acetyl-CoA = chloramphenicol 3-acetate + CoA.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P01574",
+    "P01575",
+    "P70499"
+  ],
+  "assigned_accessions": [
+    "P01574",
+    "P01575",
+    "P70499"
+  ]
+}

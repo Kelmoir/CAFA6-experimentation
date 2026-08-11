@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0008829",
+  "name": "dCTP deaminase activity",
+  "def": "Catalysis of the reaction: dCTP + H2O = dUTP + NH3.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P28248",
+    "P9WP17",
+    "Q9HC16"
+  ],
+  "assigned_accessions": [
+    "P28248",
+    "P9WP17",
+    "Q9HC16"
+  ]
+}

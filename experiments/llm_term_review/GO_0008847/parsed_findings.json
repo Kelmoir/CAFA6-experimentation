@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P21338",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a specific explanation for the molecular function defined by GO:0008847, as all features only indicate the site of action without detailing the enzymatic mechanism."
+    }
+  ]
+}

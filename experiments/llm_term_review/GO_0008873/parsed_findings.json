@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P37666",
+      "go_id": "GO:0008873",
+      "feature_type": "ACT_SITE",
+      "start": 284,
+      "end": 285,
+      "signal_kind": "text",
+      "signal_value": "Proton donor",
+      "reasoning": "The ACT_SITE span at position 284-285 indicates that the protein is a proton donor, which directly aligns with the hydride transfer mechanism described in the GO term's definition. This feature provides a strong and specific match to the primary reaction of gluconate 2-dehydrogenase activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

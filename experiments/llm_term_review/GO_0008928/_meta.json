@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008928",
+  "name": "mannose-1-phosphate guanylyltransferase (GDP) activity",
+  "def": "Catalysis of the reaction: alpha-D-mannose 1-phosphate + GDP + H+ = GDP-alpha-D-mannose + phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8RWE8"
+  ],
+  "assigned_accessions": [
+    "Q8RWE8"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0A6C1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term, and the domain/family cross-references do not provide a specific explanation for the molecular function."
+    }
+  ]
+}

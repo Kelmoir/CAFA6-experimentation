@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008833",
+  "name": "deoxyribonuclease IV (phage-T4-induced) activity",
+  "def": "Catalysis of the endonucleolytic cleavage to 5'-phosphooligonucleotide end-products.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0A6C1"
+  ],
+  "assigned_accessions": [
+    "P0A6C1"
+  ]
+}
