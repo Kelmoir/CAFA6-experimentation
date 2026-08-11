@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "F2YTN5",
+      "go_id": "GO:0030757",
+      "feature_type": "BINDING",
+      "start": 220,
+      "end": 221,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The BINDING feature directly references the S-adenosyl-L-methionine ligand, which is essential for the methyl transfer reaction defined by GO:0030757. This provides a strong match to the primary reaction mechanism of the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

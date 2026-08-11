@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0030848",
+  "name": "threo-3-hydroxyaspartate ammonia-lyase activity",
+  "def": "Catalysis of the reaction: (3S)-3-hydroxy-L-aspartate = NH4 + oxaloacetate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P36007"
+  ],
+  "assigned_accessions": [
+    "P36007"
+  ]
+}

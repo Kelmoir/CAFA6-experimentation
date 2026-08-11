@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q6VMW0",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section provides a clear, specific explanation for why it carries the GO term \"8-hydroxyquercitin 8-O-methyltransferase activity.\" All binding sites are generic and do not indicate the active site where the reaction occurs."
+    }
+  ]
+}

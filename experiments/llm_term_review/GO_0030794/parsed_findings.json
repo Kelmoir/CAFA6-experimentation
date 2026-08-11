@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q7XB08",
+      "go_id": "GO:0030794",
+      "feature_type": "ACT_SITE",
+      "start": 325,
+      "end": 326,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The \"ACT_SITE\" feature at position 325-326 directly matches the primary reaction of the GO term, which involves catalyzing the methyl transfer between S-adenosyl-L-methionine and (S)-coclaurine. This is a strong match to the defined chemistry of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

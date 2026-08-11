@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "I3V6A7",
+      "go_id": "GO:0030777",
+      "feature_type": "BINDING",
+      "start": 206,
+      "end": 207,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding site for S-adenosyl-L-methionine (a methyl donor) directly supports the catalytic mechanism described in the GO term's definition, which involves the transfer of a methyl group. This is a strong match to the primary reaction stated in the definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

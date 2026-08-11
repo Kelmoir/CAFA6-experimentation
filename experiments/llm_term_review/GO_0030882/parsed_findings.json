@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P11609",
+      "go_id": "GO:0030882",
+      "feature_type": "BINDING",
+      "start": 97,
+      "end": 98,
+      "signal_kind": "ligand",
+      "signal_value": "a D-galactosylceramide",
+      "reasoning": "The binding region with coordinates 97-98 directly involves a ligand (D-galactosylceramide) that is a lipid antigen, which matches the primary reaction of the GO term \"lipid antigen binding.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9VQ62",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P11610",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P15813",
+      "reason": "none_verdict",
+      "reasoning": "The \"BINDING\" feature at 97-98 with the ligand D-galactosylceramide directly matches the primary reaction of \"Binding to a lipid antigen,\" but it does not provide structural evidence that the protein has the ability to bind a lipid antigen. Therefore, it is not a strong match for the GO term \"lipid antigen binding.\""
+    }
+  ]
+}

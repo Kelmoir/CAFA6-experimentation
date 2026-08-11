@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0030766",
+  "name": "11-O-demethyl-17-O-deacetylvindoline O-methyltransferase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-methionine + 11-O-demethyl-17-O-deacetylvindoline = S-adenosyl-L-homocysteine + 17-O-deacetylvindoline.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "B0EXJ8"
+  ],
+  "assigned_accessions": [
+    "B0EXJ8"
+  ]
+}

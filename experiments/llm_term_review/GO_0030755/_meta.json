@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0030755",
+  "name": "quercetin 3-O-methyltransferase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-methionine + 3,5,7,3',4'-pentahydroxyflavone = S-adenosyl-L-homocysteine + 3-methoxy-5,7,3',4'-tetrahydroxy-flavone.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "A0A3Q7HYF0",
+    "P59049",
+    "Q42653",
+    "Q9FK25"
+  ],
+  "assigned_accessions": [
+    "A0A3Q7HYF0",
+    "P59049",
+    "Q42653",
+    "Q9FK25"
+  ]
+}

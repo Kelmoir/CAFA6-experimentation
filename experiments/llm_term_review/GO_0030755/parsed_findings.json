@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "A0A3Q7HYF0",
+      "go_id": "GO:0030755",
+      "feature_type": "BINDING",
+      "start": 228,
+      "end": 229,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The BINDING feature directly specifies the ligand (S-adenosyl-L-methionine) involved in the reaction defined by GO:0030755, making it the most plausible explanation for why the protein carries this molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P59049",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for P59049 specifically describes the catalytic mechanism of quercetin 3-O-methyltransferase activity as defined by the GO term."
+    },
+    {
+      "accession": "Q42653",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided list directly or specifically matches the primary reaction mechanism of the GO term \"quercetin 3-O-methyltransferase activity,\" which involves catalyzing a methylation transfer."
+    },
+    {
+      "accession": "Q9FK25",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9FK25 specifically matches the primary reaction of GO:0030755, which involves catalysis rather than mere binding."
+    }
+  ]
+}

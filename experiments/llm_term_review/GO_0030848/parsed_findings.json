@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P36007",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which is catalyzing the conversion of (3S)-3-hydroxy-L-aspartate into NH4+ and oxaloacetate. The binding sites for pyridoxal 5'-phosphate are associated with the enzyme's function but do not specifically explain the defined chemistry."
+    }
+  ]
+}

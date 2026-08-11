@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "A0AA51VIL7",
+      "go_id": "GO:0030738",
+      "feature_type": "BINDING",
+      "start": 230,
+      "end": 231,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-homocysteine",
+      "reasoning": "The binding site for S-adenosyl-L-methionine (BINDING 230-231) directly involves the methyl donor in the reaction defined by GO:0030738, making it the most plausible explanation for why this protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A0AA51VIL5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly describes the catalytic mechanism of the reaction defined by the GO term. The features only indicate substrate binding, which is consistent with the enzyme's function but does not provide the structural/functional basis for the term itself."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9SAR5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of chloroplast targeting sequence binding as defined by the GO term."
+    }
+  ]
+}

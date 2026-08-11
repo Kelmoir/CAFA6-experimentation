@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0030941",
+  "name": "chloroplast targeting sequence binding",
+  "def": "Binding to a chloroplast targeting sequence, a specific peptide sequence that acts as a signal to localize the protein within the chloroplast.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SAR5"
+  ],
+  "assigned_accessions": [
+    "Q9SAR5"
+  ]
+}

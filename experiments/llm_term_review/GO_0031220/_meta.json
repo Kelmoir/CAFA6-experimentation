@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0031220",
+  "name": "maltodextrin phosphorylase activity",
+  "def": "Catalysis of the reaction: alpha-maltotetraose + phosphate = alpha-D-glucose 1-phosphate + alpha-maltotriose.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P00490"
+  ],
+  "assigned_accessions": [
+    "P00490"
+  ]
+}

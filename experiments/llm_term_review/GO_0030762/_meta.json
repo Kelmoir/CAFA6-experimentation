@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0030762",
+  "name": "tetrahydrocolumbamine 2-O-methyltransferase activity",
+  "def": "Catalysis of the reaction: (S)-tetrahydrocolumbamine + S-adenosyl-L-methionine(1+) = S-adenosyl-L-homocysteine + H+ + tetrahydropalmatine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "I3V6A7"
+  ],
+  "assigned_accessions": [
+    "I3V6A7"
+  ]
+}

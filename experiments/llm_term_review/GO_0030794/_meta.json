@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0030794",
+  "name": "(S)-coclaurine-N-methyltransferase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-methionine + (S)-coclaurine = S-adenosyl-L-homocysteine + (S)-N-methylcoclaurine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q7XB08"
+  ],
+  "assigned_accessions": [
+    "Q7XB08"
+  ]
+}

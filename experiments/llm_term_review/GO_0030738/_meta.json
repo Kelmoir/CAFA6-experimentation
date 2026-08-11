@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0030738",
+  "name": "tyramine N-methyltransferase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-methionine + tyramine = N-methyltyramine + S-adenosyl-L-homocysteine + H+.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "A0AA51VIL5",
+    "A0AA51VIL7"
+  ],
+  "assigned_accessions": [
+    "A0AA51VIL5",
+    "A0AA51VIL7"
+  ]
+}

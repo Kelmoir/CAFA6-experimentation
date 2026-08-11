@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0030760",
+  "name": "pyridine N-methyltransferase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-methionine(1+) + pyridine = N-methylpyridinium + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P40261"
+  ],
+  "assigned_accessions": [
+    "P40261"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0030777",
+  "name": "(S)-scoulerine 9-O-methyltransferase activity",
+  "def": "Catalysis of the reaction: (S)-scoulerine + S-adenosyl-L-methionine(1+) = (S)-tetrahydrocolumbamine + S-adenosyl-L-homocysteine + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "I3V6A7"
+  ],
+  "assigned_accessions": [
+    "I3V6A7"
+  ]
+}

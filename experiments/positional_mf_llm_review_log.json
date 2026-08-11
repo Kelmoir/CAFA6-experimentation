@@ -14165,6 +14165,31 @@
    }
   ]
  },
+ "GO:0030738": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-homocysteine",
+    "accessions": [
+     "A0AA51VIL7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0AA51VIL5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly describes the catalytic mechanism of the reaction defined by the GO term. The features only indicate substrate binding, which is consistent with the enzyme's function but does not provide the structural/functional basis for the term itself."
+   }
+  ]
+ },
  "GO:0030753": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -14183,5 +14208,247 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0030755": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "A0A3Q7HYF0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P59049",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P59049 specifically describes the catalytic mechanism of quercetin 3-O-methyltransferase activity as defined by the GO term."
+   },
+   {
+    "accession": "Q42653",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly or specifically matches the primary reaction mechanism of the GO term \"quercetin 3-O-methyltransferase activity,\" which involves catalyzing a methylation transfer."
+   },
+   {
+    "accession": "Q9FK25",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9FK25 specifically matches the primary reaction of GO:0030755, which involves catalysis rather than mere binding."
+   }
+  ]
+ },
+ "GO:0030757": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "F2YTN5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0030760": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P40261",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the GO term's primary reaction mechanism of catalyzing the methyl transfer between AdoMet and pyridine. The binding sites for AdoMet are generic and do not imply the enzyme's function as a methyltransferase."
+   }
+  ]
+ },
+ "GO:0030761": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6VMW0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a clear, specific explanation for why it carries the GO term \"8-hydroxyquercitin 8-O-methyltransferase activity.\" All binding sites are generic and do not indicate the active site where the reaction occurs."
+   }
+  ]
+ },
+ "GO:0030762": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "I3V6A7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0030766": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B0EXJ8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in B0EXJ8 specifically matches the primary reaction of the GO term, which involves catalyzing a methyl transfer from S-adenosyl-L-methionine to 11-O-demethyl-17-O-deacetylvindoline. All binding sites for S-adenosyl-L-methionine are generic and do not provide mechanistic insight into the enzyme's function beyond ligand recognition."
+   }
+  ]
+ },
+ "GO:0030777": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "I3V6A7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0030794": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "Q7XB08"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0030848": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P36007",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which is catalyzing the conversion of (3S)-3-hydroxy-L-aspartate into NH4+ and oxaloacetate. The binding sites for pyridoxal 5'-phosphate are associated with the enzyme's function but do not specifically explain the defined chemistry."
+   }
+  ]
+ },
+ "GO:0030882": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a D-galactosylceramide",
+    "accessions": [
+     "P11609"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9VQ62",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P11610",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P15813",
+    "reason": "none_verdict",
+    "reasoning": "The \"BINDING\" feature at 97-98 with the ligand D-galactosylceramide directly matches the primary reaction of \"Binding to a lipid antigen,\" but it does not provide structural evidence that the protein has the ability to bind a lipid antigen. Therefore, it is not a strong match for the GO term \"lipid antigen binding.\""
+   }
+  ]
+ },
+ "GO:0030941": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SAR5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of chloroplast targeting sequence binding as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0031220": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P00490",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }
