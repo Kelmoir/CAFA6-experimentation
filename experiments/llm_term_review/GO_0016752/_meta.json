@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0016752",
+  "name": "sinapoyltransferase activity",
+  "def": "Catalysis of the transfer of a sinapoyl group to an acceptor molecule.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8VZU3"
+  ],
+  "assigned_accessions": [
+    "Q8VZU3"
+  ]
+}

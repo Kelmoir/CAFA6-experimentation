@@ -10575,6 +10575,152 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0016464": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "D8WUA4",
+     "F4J3N2",
+     "P56786",
+     "Q41062"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0016501": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P35396",
+    "go_id": "GO:0016501",
+    "feature_type": "DOMAIN",
+    "start": 209,
+    "end": 438,
+    "signal_kind": "text",
+    "signal_value": "NR LBD",
+    "reasoning": "The \"DOMAIN\" feature is most likely to account for the function of the protein in relation to the defined chemistry, but it does not directly explain the primary reaction of combining with prostacyclin."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P43119",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction or mechanism described in the GO term's definition, which is about interacting with prostacyclin to initiate a change in cell activity. The only candidate feature (a disordered region) does not provide evidence of this specific function."
+   },
+   {
+    "accession": "P43252",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, positional explanation for the primary reaction defined by the GO term \"prostagynin receptor activity.\""
+   }
+  ]
+ },
+ "GO:0016505": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "MARVEL",
+    "accessions": [
+     "P21145"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P00786",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, specific explanation for the primary reaction of the GO term \"peptidase activator activity involved in apoptotic process.\" The only candidate features are generic ACT_SITE spans that do not directly indicate peptidase activation."
+   },
+   {
+    "accession": "P97821",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically explains why P97821 carries the GO term \"peptidase activator activity involved in apoptotic process\" \u2014 none of the features directly indicate the mechanism of peptidase activation in apoptosis."
+   },
+   {
+    "accession": "Q9EPB4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the peptidase activator activity described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0016517": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P42701",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly describes the function of interleukin-12 receptor activity, which is a molecular-function annotation rather than a structural one. The protein's Annotated features section contains domains and motifs that are part of the fibronectin family but do not provide evidence for the specific function defined by GO:0016517."
+   },
+   {
+    "accession": "Q60837",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain the primary reaction of interleukin-12 receptor activity as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0016670": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q9HEY7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O59924",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the redox reaction mechanism or the transfer of electrons from a sulfur donor to oxygen, which are the primary reactions defined by GO:0016670."
+   },
+   {
+    "accession": "P00445",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a clear and specific explanation for the GO term's primary reaction of catalyzing an oxidation-reduction reaction involving sulfur-containing groups as donors and oxygen as acceptor."
+   },
+   {
+    "accession": "Q6FWL5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q6FWL5 provides a clear, specific match to the primary reaction of GO:0016670, which involves catalyzing an oxidation-reduction reaction where sulfur donates electrons to oxygen. The available features are either unrelated or only loosely associated with this mechanism."
+   }
+  ]
+ },
  "GO:0016675": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -10588,6 +10734,59 @@
     "accession": "P76342",
     "reason": "none_verdict",
     "reasoning": "No annotated feature describes the redox mechanism or the heme group's role as an electron donor. The domain/family cross-references suggest involvement in molybdenum-dependent oxidoreductase activity, but they do not provide positional evidence for the specific chemistry described in the GO term."
+   }
+  ]
+ },
+ "GO:0016703": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "O77206",
+    "go_id": "GO:0016703",
+    "feature_type": "REGION",
+    "start": 113,
+    "end": 465,
+    "signal_kind": "text",
+    "signal_value": "Luciferase 1",
+    "reasoning": "The \"REGION\" span 113-465 is associated with Luciferase 1, which catalyzes an oxidation-reduction reaction. While this supports the general function of oxidoreductases, it does not directly explain the specific mechanism of oxygen incorporation into the donor as defined by GO:0016703. Thus, it provides a plausible but not definitive explanation for the term."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0016742": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WKZ3",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P9WKZ3 indicate ligand binding sites but do not provide evidence of a domain or structural element specifically responsible for catalyzing hydroxymethyl- or formyl group transfers as defined by GO:0016742. Thus, no single feature directly explains the molecular function described by the GO term."
+   }
+  ]
+ },
+ "GO:0016752": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8VZU3",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q8VZU3 has no annotated feature that directly matches the GO term's definition of catalyzing sinapoyl group transfer. None of the features indicate a specific mechanism or domain involved in this activity, making it impossible to determine with certainty why the protein carries the term."
    }
   ]
  }

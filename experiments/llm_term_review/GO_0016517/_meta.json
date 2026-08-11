@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0016517",
+  "name": "interleukin-12 receptor activity",
+  "def": "Combining with interleukin-12 and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P42701",
+    "Q60837"
+  ],
+  "assigned_accessions": [
+    "P42701",
+    "Q60837"
+  ]
+}

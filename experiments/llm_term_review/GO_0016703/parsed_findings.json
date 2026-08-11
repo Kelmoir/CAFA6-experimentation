@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "O77206",
+      "go_id": "GO:0016703",
+      "feature_type": "REGION",
+      "start": 113,
+      "end": 465,
+      "signal_kind": "text",
+      "signal_value": "Luciferase 1",
+      "reasoning": "The \"REGION\" span 113-465 is associated with Luciferase 1, which catalyzes an oxidation-reduction reaction. While this supports the general function of oxidoreductases, it does not directly explain the specific mechanism of oxygen incorporation into the donor as defined by GO:0016703. Thus, it provides a plausible but not definitive explanation for the term."
+    }
+  ],
+  "issues": []
+}

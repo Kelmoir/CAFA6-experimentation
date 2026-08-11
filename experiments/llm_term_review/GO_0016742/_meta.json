@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0016742",
+  "name": "hydroxymethyl-, formyl- and related transferase activity",
+  "def": "Catalysis of the transfer of a hydroxymethyl- or formyl group from one compound (donor) to another (acceptor).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WKZ3"
+  ],
+  "assigned_accessions": [
+    "P9WKZ3"
+  ]
+}

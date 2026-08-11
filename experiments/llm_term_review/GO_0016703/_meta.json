@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0016703",
+  "name": "oxidoreductase activity, acting on single donors with incorporation of molecular oxygen, incorporation of one atom of oxygen (internal monooxygenases or internal mixed function oxidases)",
+  "def": "Catalysis of an oxidation-reduction (redox) reaction in which hydrogen or electrons are transferred from one donor, and one oxygen atom is incorporated into a donor.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O77206"
+  ],
+  "assigned_accessions": [
+    "O77206"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P35396",
+      "go_id": "GO:0016501",
+      "feature_type": "DOMAIN",
+      "start": 209,
+      "end": 438,
+      "signal_kind": "text",
+      "signal_value": "NR LBD",
+      "reasoning": "The \"DOMAIN\" feature is most likely to account for the function of the protein in relation to the defined chemistry, but it does not directly explain the primary reaction of combining with prostacyclin."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P43119",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction or mechanism described in the GO term's definition, which is about interacting with prostacyclin to initiate a change in cell activity. The only candidate feature (a disordered region) does not provide evidence of this specific function."
+    },
+    {
+      "accession": "P43252",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear, positional explanation for the primary reaction defined by the GO term \"prostagynin receptor activity.\""
+    }
+  ]
+}

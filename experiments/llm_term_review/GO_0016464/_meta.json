@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016464",
+  "name": "chloroplast protein-transporting ATPase activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: ATP + H2O = ADP + phosphate; drives the transport of proteins into the chloroplast stroma.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "D8WUA4",
+    "F4J3N2",
+    "P56786",
+    "Q41062"
+  ],
+  "assigned_accessions": [
+    "D8WUA4",
+    "F4J3N2",
+    "P56786",
+    "Q41062"
+  ]
+}

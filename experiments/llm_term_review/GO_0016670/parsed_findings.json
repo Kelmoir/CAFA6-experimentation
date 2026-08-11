@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9HEY7",
+      "go_id": "GO:0016670",
+      "feature_type": "BINDING",
+      "start": 143,
+      "end": 144,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding of substrate at position 143-144 directly relates to the redox reaction mechanism described in the GO term, where oxygen is reduced as an acceptor. This specific feature most plausibly explains why Q9HEY7 carries the molecular function of oxidoreductase activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O59924",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the redox reaction mechanism or the transfer of electrons from a sulfur donor to oxygen, which are the primary reactions defined by GO:0016670."
+    },
+    {
+      "accession": "P00445",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section provides a clear and specific explanation for the GO term's primary reaction of catalyzing an oxidation-reduction reaction involving sulfur-containing groups as donors and oxygen as acceptor."
+    },
+    {
+      "accession": "Q6FWL5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q6FWL5 provides a clear, specific match to the primary reaction of GO:0016670, which involves catalyzing an oxidation-reduction reaction where sulfur donates electrons to oxygen. The available features are either unrelated or only loosely associated with this mechanism."
+    }
+  ]
+}

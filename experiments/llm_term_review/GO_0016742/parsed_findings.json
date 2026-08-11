@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P9WKZ3",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for P9WKZ3 indicate ligand binding sites but do not provide evidence of a domain or structural element specifically responsible for catalyzing hydroxymethyl- or formyl group transfers as defined by GO:0016742. Thus, no single feature directly explains the molecular function described by the GO term."
+    }
+  ]
+}
