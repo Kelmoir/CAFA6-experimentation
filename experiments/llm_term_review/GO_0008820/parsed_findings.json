@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0AE76",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction mechanism of the GO term, which involves the transfer of a phosphate group from GTP to adenosylcobinamide phosphate. The \"BINDING\" features are generic and do not provide enough specificity to account for this defined activity."
+    },
+    {
+      "accession": "Q58517",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

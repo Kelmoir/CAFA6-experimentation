@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008807",
+  "name": "carboxyvinyl-carboxyphosphonate phosphorylmutase activity",
+  "def": "Catalysis of the reaction: 1-carboxyvinyl carboxyphosphonate = 3-(hydrohydroxyphosphoryl)pyruvate + CO2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O49290"
+  ],
+  "assigned_accessions": [
+    "O49290"
+  ]
+}

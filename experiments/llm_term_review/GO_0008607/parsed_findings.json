@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q91WG5",
+      "go_id": "GO:0008607",
+      "feature_type": "BINDING",
+      "start": 313,
+      "end": 319,
+      "signal_kind": "ligand",
+      "signal_value": "ADP",
+      "reasoning": "The binding site for AMP directly supports the modulation of phosphorylase kinase activity as defined by GO:0008607, making it the most plausible structural/functional basis for this molecular function."
+    },
+    {
+      "accession": "Q9UGJ0",
+      "go_id": "GO:0008607",
+      "feature_type": "DOMAIN",
+      "start": 274,
+      "end": 335,
+      "signal_kind": "text",
+      "signal_value": "CBS 1",
+      "reasoning": "The DOMAIN 274-335 (CBS 1) is directly associated with the CBS family, which is known to regulate phosphorylase kinase activity through its interaction with the enzyme. This matches the primary reaction of modulating the enzyme's activity as defined by GO:0008607."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9CZX0",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for protein Q9CZX0 directly matches the primary reaction of modulating phosphorylase kinase activity, which is the core definition of the GO term. The binding sites and domain regions are more likely associated with other functions rather than the specific enzymatic activity described by the GO term."
+    }
+  ]
+}

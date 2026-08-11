@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P39377",
+      "go_id": "GO:0008798",
+      "feature_type": "BINDING",
+      "start": 161,
+      "end": 162,
+      "signal_kind": "ligand",
+      "signal_value": "Zn(2+)",
+      "reasoning": "The binding site with coordinates 161-162, where Zn(2+) is catalytically involved, directly supports the enzymatic activity described in the GO term's definition. This feature most plausibly explains why the protein carries the term \"beta-aspartyl-peptidase activity.\""
+    },
+    {
+      "accession": "Q8GXG1",
+      "go_id": "GO:0008798",
+      "feature_type": "SITE",
+      "start": 193,
+      "end": 195,
+      "signal_kind": "text",
+      "signal_value": "Cleavage; by autolysis",
+      "reasoning": "The SITE feature at positions 193-195 most plausibly explains the GO term \"beta-aspartyl-peptidase activity\" because it directly relates to the cleavage mechanism described in the definition, which involves the catalysis of a beta-linked aspartic residue from the N-terminus."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q7L266",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the specific mechanism of beta-aspartyl-peptidase activity, and all features are either generic or only indirectly related to the defined reaction."
+    },
+    {
+      "accession": "Q8VI04",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the GO term's definition in terms of the primary reaction mechanism, so no specific feature can be identified as explaining why Q8VI04 carries the term."
+    }
+  ]
+}

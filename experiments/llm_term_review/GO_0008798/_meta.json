@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008798",
+  "name": "beta-aspartyl-peptidase activity",
+  "def": "Catalysis of the cleavage of a beta-linked aspartic residue from the N-terminus of a polypeptide.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "P39377",
+    "Q7L266",
+    "Q8GXG1",
+    "Q8VI04"
+  ],
+  "assigned_accessions": [
+    "P39377",
+    "Q7L266",
+    "Q8GXG1",
+    "Q8VI04"
+  ]
+}

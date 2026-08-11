@@ -6162,6 +6162,39 @@
    }
   ]
  },
+ "GO:0008607": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ADP",
+    "accessions": [
+     "Q91WG5"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "CBS 1",
+    "accessions": [
+     "Q9UGJ0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9CZX0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein Q9CZX0 directly matches the primary reaction of modulating phosphorylase kinase activity, which is the core definition of the GO term. The binding sites and domain regions are more likely associated with other functions rather than the specific enzymatic activity described by the GO term."
+   }
+  ]
+ },
  "GO:0008675": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -6175,6 +6208,216 @@
     "accession": "P0A955",
     "reason": "none_verdict",
     "reasoning": "No annotated feature provides a strong match to the defined reaction of the enzyme, indicating that the molecular function cannot be determined from the given evidence."
+   }
+  ]
+ },
+ "GO:0008709": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "O08756",
+     "O70351"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "glycochenodeoxycholate",
+    "accessions": [
+     "P0AET8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q99714",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list matches the primary reaction defined by the GO term, which is catalyzing the conversion of cholate to -3alpha,12-alpha-dihydroxy-7-oxo--5beta-cholanate with NAD+ as a reactant."
+   }
+  ]
+ },
+ "GO:0008744": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P37677",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0008748": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "FMN",
+    "accessions": [
+     "P77258"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0008755": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "G3XCW3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0008787": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P32718",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for why the protein carries the \"D-allose kinase activity\" GO term, as it only indicates ATP binding. The domain/family cross-references suggest a possible structural context but do not directly account for the defined function."
+   }
+  ]
+ },
+ "GO:0008790": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P69922",
+    "reason": "none_verdict",
+    "reasoning": "The defined molecular function of \"arabinose isomerase activity\" involves catalyzing the conversion of D-arabinose to D-ribulose, which is a specific chemical reaction. However, none of the annotated features for protein P69922 directly support this primary reaction with high specificity. All features either relate to proton acceptor activity or binding to Mn(2+), which are secondary consequences"
+   }
+  ]
+ },
+ "GO:0008798": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Zn(2+)",
+    "accessions": [
+     "P39377"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Cleavage; by autolysis",
+    "accessions": [
+     "Q8GXG1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q7L266",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the specific mechanism of beta-aspartyl-peptidase activity, and all features are either generic or only indirectly related to the defined reaction."
+   },
+   {
+    "accession": "Q8VI04",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the GO term's definition in terms of the primary reaction mechanism, so no specific feature can be identified as explaining why Q8VI04 carries the term."
+   }
+  ]
+ },
+ "GO:0008807": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O49290",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0008809": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P31551",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for this protein do not provide a clear structural/functional basis that directly explains why it carries the GO term \"carnitine racemase activity.\" The defined chemistry is about catalyzing the racemization of carnitine, but none of the features explicitly describe this reaction or its mechanism."
+   }
+  ]
+ },
+ "GO:0008820": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AE76",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism of the GO term, which involves the transfer of a phosphate group from GTP to adenosylcobinamide phosphate. The \"BINDING\" features are generic and do not provide enough specificity to account for this defined activity."
+   },
+   {
+    "accession": "Q58517",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
  }

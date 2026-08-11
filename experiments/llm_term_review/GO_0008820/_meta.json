@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0008820",
+  "name": "cobinamide phosphate guanylyltransferase activity",
+  "def": "Catalysis of the reaction: adenosylcobinamide phosphate + GTP + 2 H+ = adenosylcobinamide-GDP + diphosphate.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P0AE76",
+    "Q58517"
+  ],
+  "assigned_accessions": [
+    "P0AE76",
+    "Q58517"
+  ]
+}

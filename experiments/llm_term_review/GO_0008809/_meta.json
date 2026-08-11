@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008809",
+  "name": "carnitine racemase activity",
+  "def": "Catalysis of the reaction: D-carnitine = L-carnitine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P31551"
+  ],
+  "assigned_accessions": [
+    "P31551"
+  ]
+}

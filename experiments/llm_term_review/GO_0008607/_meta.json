@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0008607",
+  "name": "phosphorylase kinase regulator activity",
+  "def": "Modulation of the activity of the enzyme phosphorylase kinase.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q91WG5",
+    "Q9CZX0",
+    "Q9UGJ0"
+  ],
+  "assigned_accessions": [
+    "Q91WG5",
+    "Q9CZX0",
+    "Q9UGJ0"
+  ]
+}

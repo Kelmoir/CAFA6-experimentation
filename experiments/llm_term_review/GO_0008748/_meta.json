@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008748",
+  "name": "N-ethylmaleimide reductase activity",
+  "def": "Catalysis of the reaction: N-ethylmaleimide + NADPH + 2 H+ = N-ethylsuccinimide + NADP+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P77258"
+  ],
+  "assigned_accessions": [
+    "P77258"
+  ]
+}
