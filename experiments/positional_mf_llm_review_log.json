@@ -8379,6 +8379,71 @@
    }
   ]
  },
+ "GO:0015151": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "D-glucose",
+    "accessions": [
+     "P11170"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0CE00",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION 581-602\" with a note that it is \"Disordered\" does not specifically explain why the protein carries the GO term \"alpha-glucoside transmembrane transporter activity.\" No other positional feature directly matches the defined chemistry of the GO term, and the only match is generic and low in specificity."
+   },
+   {
+    "accession": "P31639",
+    "reason": "none_verdict",
+    "reasoning": "The provided annotated features do not include any positional feature that directly explains the molecular function defined by GO:0015151. The \"SSF\" motif is a structural feature, but it does not specifically indicate alpha-glucoside transport activity. Therefore, there is no evidence to confirm that this protein carries the term as a real, asserted annotation."
+   },
+   {
+    "accession": "P53792",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides direct evidence for the defined reaction of alpha-glucoside transmembrane transport, only supporting general function."
+   }
+  ]
+ },
+ "GO:0015152": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "EamA",
+    "accessions": [
+     "Q94B38",
+     "Q9M5A9"
+    ],
+    "reason": "agreed but the note text didn't token-overlap any corroborating protein's domain_xrefs descriptions -- couldn't resolve to a specific accession"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "alpha-D-glucose 6-phosphate",
+    "accessions": [
+     "O43826"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
  "GO:0015155": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -8390,6 +8455,119 @@
   "issues": [
    {
     "accession": "P9WHY3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015164": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transmembrane type-1 1",
+    "accessions": [
+     "O15438"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B2RX12",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for B2RX12 directly matches the primary reaction or mechanism described in the GO term's definition. The only plausible explanation would be if one of the domains or regions was specifically associated with glucuronoside transport, but no such evidence is present in the annotated features."
+   },
+   {
+    "accession": "O88563",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and specific explanation of the molecular function defined by GO:0015164."
+   }
+  ]
+ },
+ "GO:0015185": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P30531",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct structural or functional basis for the GO term's primary reaction of enabling GABA transfer across a membrane."
+   },
+   {
+    "accession": "Q9H598",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature for Q9H598 is a disordered region (82-107), which does not directly explain the *transport activity* of the protein as defined by GO:0015185. No other positional feature has been confirmed to account for this molecular function."
+   },
+   {
+    "accession": "Q9NSD5",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain the mechanism of GABA transmembrane transport as defined by GO:0015185. The only feature that could be relevant is a disordered region, but it does not provide a strong match to the primary reaction described in the definition."
+   },
+   {
+    "accession": "Q9ZU50",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015187": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P28571",
+    "reason": "none_verdict",
+    "reasoning": "The region 680-692 is essential for interaction with EXOC1, but it does not directly explain why the protein can transfer glycine across a membrane. No annotated feature provides a strong match to the primary reaction of the GO term."
+   },
+   {
+    "accession": "Q91XD8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "A2VCW5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the core chemical activity described in the GO definition, which is the transfer of glycine across a membrane. The only relevant feature (SITE 470-471) is related to regulation rather than the actual function of the term."
+   },
+   {
+    "accession": "Q9H598",
+    "reason": "none_verdict",
+    "reasoning": "There is no positional feature that directly explains the molecular function of glycine transmembrane transporter activity as defined by GO:0015187. The only positional feature is marked as Disordered, which does not provide a strong match to the primary reaction or mechanism described in the definition."
+   }
+  ]
+ },
+ "GO:0015215": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q12251",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8TFH2",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }

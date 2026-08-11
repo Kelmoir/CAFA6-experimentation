@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015151",
+  "name": "alpha-glucoside transmembrane transporter activity",
+  "def": "Enables the transfer of alpha-glucosides from one side of a membrane to the other. Alpha-glucosides are glycosides in which the sugar group is a glucose residue, and the anomeric carbon of the bond is in an alpha configuration.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "P0CE00",
+    "P11170",
+    "P31639",
+    "P53792"
+  ],
+  "assigned_accessions": [
+    "P0CE00",
+    "P11170",
+    "P31639",
+    "P53792"
+  ]
+}

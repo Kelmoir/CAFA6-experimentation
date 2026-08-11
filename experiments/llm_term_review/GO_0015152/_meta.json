@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0015152",
+  "name": "glucose-6-phosphate transmembrane transporter activity",
+  "def": "Enables the transfer of glucose-6-phosphate from one side of a membrane to the other. Glucose-6-phosphate is a monophosphorylated derivative of glucose with the phosphate group attached to C-6.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O43826",
+    "Q94B38",
+    "Q9M5A9"
+  ],
+  "assigned_accessions": [
+    "O43826",
+    "Q94B38",
+    "Q9M5A9"
+  ]
+}

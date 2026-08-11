@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "O43826",
+      "go_id": "GO:0015152",
+      "feature_type": "BINDING",
+      "start": 20,
+      "end": 21,
+      "signal_kind": "ligand",
+      "signal_value": "alpha-D-glucose 6-phosphate",
+      "reasoning": "The binding of alpha-D-glucose 6-phosphate at position 20-21 in the protein directly matches the primary reaction described in the GO term's definition, which is the transfer of glucose-6-phosphate across a membrane. This provides strong evidence that the protein carries this molecular function."
+    },
+    {
+      "accession": "Q94B38",
+      "go_id": "GO:0015152",
+      "feature_type": "DOMAIN",
+      "start": 112,
+      "end": 231,
+      "signal_kind": "text",
+      "signal_value": "EamA",
+      "reasoning": "The DOMAIN 112-231 feature directly corresponds to the enzyme activity of a glucose-6-phosphate transmembrane transporter and matches the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q9M5A9",
+      "go_id": "GO:0015152",
+      "feature_type": "DOMAIN",
+      "start": 111,
+      "end": 229,
+      "signal_kind": "text",
+      "signal_value": "EamA",
+      "reasoning": "The \"DOMAIN\" feature with coordinates 111-229 directly corresponds to the defined function of the GO term, which is the transfer of glucose-6-phosphate across a membrane. This matches the primary reaction described in the definition and provides a strong basis for the annotation."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

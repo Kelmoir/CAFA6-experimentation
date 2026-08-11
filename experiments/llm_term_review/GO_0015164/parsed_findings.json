@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "O15438",
+      "go_id": "GO:0015164",
+      "feature_type": "DOMAIN",
+      "start": 310,
+      "end": 594,
+      "signal_kind": "text",
+      "signal_value": "ABC transmembrane type-1 1",
+      "reasoning": "The DOMAIN 310-594 with the note \"ABC transmembrane type-1 1\" most directly matches the primary reaction of enabling the transfer of glucuronosides across a membrane, as described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "B2RX12",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for B2RX12 directly matches the primary reaction or mechanism described in the GO term's definition. The only plausible explanation would be if one of the domains or regions was specifically associated with glucuronoside transport, but no such evidence is present in the annotated features."
+    },
+    {
+      "accession": "O88563",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear and specific explanation of the molecular function defined by GO:0015164."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0015215",
+  "name": "nucleotide transmembrane transporter activity",
+  "def": "Enables the transfer of a nucleotide, any compound consisting of a nucleoside that is esterified with (ortho)phosphate, from one side of a membrane to the other.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q12251",
+    "Q8TFH2"
+  ],
+  "assigned_accessions": [
+    "Q12251",
+    "Q8TFH2"
+  ]
+}

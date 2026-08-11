@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0015164",
+  "name": "glucuronoside transmembrane transporter activity",
+  "def": "Enables the transfer of a glucuronosides from one side of a membrane to the other. Glucuronosides are any compound formed by combination of glycosidic linkage of a hydroxy compound (e.g. an alcohol or a saccharide) with the anomeric carbon atom of glucuronate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "B2RX12",
+    "O15438",
+    "O88563"
+  ],
+  "assigned_accessions": [
+    "B2RX12",
+    "O15438",
+    "O88563"
+  ]
+}
