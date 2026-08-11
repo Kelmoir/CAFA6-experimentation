@@ -9096,5 +9096,212 @@
     "reasoning": "The domain InterPro:IPR036259 (MFS_trans_sf) directly matches the mechanism described in the GO term's definition, which involves secondary active transport using a chemiosmotic source of energy. This feature is specifically associated with MFS family members involved in transmembrane transport and provides a strong match to the primary reaction of the GO term."
    }
   ]
+ },
+ "GO:0015292": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "selectivity filter",
+    "accessions": [
+     "A1CWT6",
+     "Q7S4I4"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q3UMR5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q3UMR5 directly matches the primary reaction or mechanism defined for the GO term \"uniporter activity\" (GO:0015292). The features are either generic structural elements or specific regulatory interactions, but none provide a clear explanation of why this protein carries the term as a real annotation."
+   },
+   {
+    "accession": "Q6ZSM3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015311": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q62666",
+    "go_id": "GO:0015311",
+    "feature_type": "SITE",
+    "start": 192,
+    "end": 193,
+    "signal_kind": "text",
+    "signal_value": "Important for transporter activity",
+    "reasoning": "The site's note supports the presence of a transporter domain or function, which could be involved in the H+ and monoamine transfer described by the GO term. However, it does not explicitly state the reaction mechanism, so it does not strongly match the primary chemistry of the GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q01818",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q27963",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features do not provide any specific evidence for the transport mechanism described in the GO term's definition."
+   },
+   {
+    "accession": "Q8BRU6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8BRU6 specifically matches the primary reaction of H+ and monoamine transfer defined by GO:0015311. The binding sites are for serotonin, not for protons or monoamines, and no domain/family cross-reference directly supports the function described by the GO term."
+   }
+  ]
+ },
+ "GO:0015312": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "D3Z5L6",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region at position 0-27 does not provide any evidence of polyamine:proton antiporter activity as defined by the GO term, which involves a specific reaction mechanism. No other annotated feature directly supports this primary reaction."
+   },
+   {
+    "accession": "D4A9K4",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature for D4A9K4 is a \"REGION\" span (0-26) with a note that it is \"Disordered,\" which does not provide sufficient evidence to strongly associate the protein with the defined reaction of GO:0015312. No other annotated features are present, and the domain/family cross-references do not directly confirm the presence of a specific domain or region involved in this transport activ"
+   },
+   {
+    "accession": "Q6NT16",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the specific molecular function defined by the GO term."
+   }
+  ]
+ },
+ "GO:0015315": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P08194",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015327": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UPY5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's section specifically matches the GO term's primary reaction mechanism of cystine:glutamate antiport. The binding sites for L-glutamate are generic and do not imply an antiporter domain or the specific exchange activity defined by the GO term."
+   },
+   {
+    "accession": "Q9WTR6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9WTR6 provides a direct explanation for the antiporter activity defined by GO:0015327."
+   }
+  ]
+ },
+ "GO:0015341": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Cd(2+)",
+    "accessions": [
+     "P69380"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0015360": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AC98",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015367": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P97700",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q02978",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9CR62",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015387": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P63183",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }

@@ -8340,6 +8340,15 @@
   ],
   "text_patterns": []
  },
+ "GO:0015292": {
+  "name": "uniporter activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "selectivity filter"
+  ]
+ },
  "GO:0015295": {
   "name": "solute:proton symporter activity",
   "ligands": [],

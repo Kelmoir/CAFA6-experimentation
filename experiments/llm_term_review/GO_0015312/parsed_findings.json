@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "D3Z5L6",
+      "reason": "none_verdict",
+      "reasoning": "The disordered region at position 0-27 does not provide any evidence of polyamine:proton antiporter activity as defined by the GO term, which involves a specific reaction mechanism. No other annotated feature directly supports this primary reaction."
+    },
+    {
+      "accession": "D4A9K4",
+      "reason": "none_verdict",
+      "reasoning": "The only positional feature for D4A9K4 is a \"REGION\" span (0-26) with a note that it is \"Disordered,\" which does not provide sufficient evidence to strongly associate the protein with the defined reaction of GO:0015312. No other annotated features are present, and the domain/family cross-references do not directly confirm the presence of a specific domain or region involved in this transport activ"
+    },
+    {
+      "accession": "Q6NT16",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the specific molecular function defined by the GO term."
+    }
+  ]
+}

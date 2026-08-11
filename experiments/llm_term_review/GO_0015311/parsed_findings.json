@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q62666",
+      "go_id": "GO:0015311",
+      "feature_type": "SITE",
+      "start": 192,
+      "end": 193,
+      "signal_kind": "text",
+      "signal_value": "Important for transporter activity",
+      "reasoning": "The site's note supports the presence of a transporter domain or function, which could be involved in the H+ and monoamine transfer described by the GO term. However, it does not explicitly state the reaction mechanism, so it does not strongly match the primary chemistry of the GO term."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q01818",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q27963",
+      "reason": "none_verdict",
+      "reasoning": "The protein's annotated features do not provide any specific evidence for the transport mechanism described in the GO term's definition."
+    },
+    {
+      "accession": "Q8BRU6",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q8BRU6 specifically matches the primary reaction of H+ and monoamine transfer defined by GO:0015311. The binding sites are for serotonin, not for protons or monoamines, and no domain/family cross-reference directly supports the function described by the GO term."
+    }
+  ]
+}

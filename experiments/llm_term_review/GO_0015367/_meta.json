@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0015367",
+  "name": "oxoglutarate:malate antiporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: oxoglutarate(out) + malate(in) = oxoglutarate(in) + malate(out).",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P97700",
+    "Q02978",
+    "Q9CR62"
+  ],
+  "assigned_accessions": [
+    "P97700",
+    "Q02978",
+    "Q9CR62"
+  ]
+}

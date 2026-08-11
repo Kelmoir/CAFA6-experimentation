@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015292",
+  "name": "uniporter activity",
+  "def": "Catalysis of the transport of a single molecular species across a membrane; transport is independent of the movement of any other molecular species.",
+  "n_proteins_total": 21,
+  "sampled_accessions": [
+    "A1CWT6",
+    "Q3UMR5",
+    "Q6ZSM3",
+    "Q7S4I4"
+  ],
+  "assigned_accessions": [
+    "A1CWT6",
+    "Q3UMR5",
+    "Q6ZSM3",
+    "Q7S4I4"
+  ]
+}

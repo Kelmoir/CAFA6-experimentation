@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P69380",
+      "go_id": "GO:0015341",
+      "feature_type": "BINDING",
+      "start": 44,
+      "end": 45,
+      "signal_kind": "ligand",
+      "signal_value": "Cd(2+)",
+      "reasoning": "The binding site at 44-45 directly involves zinc, which is the key component of the defined reaction, making it the most plausible explanation for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

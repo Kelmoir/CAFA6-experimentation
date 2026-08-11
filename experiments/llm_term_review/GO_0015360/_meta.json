@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015360",
+  "name": "acetate:proton symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: acetate(out) + H+(out) = acetate(in) + H+(in).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AC98"
+  ],
+  "assigned_accessions": [
+    "P0AC98"
+  ]
+}

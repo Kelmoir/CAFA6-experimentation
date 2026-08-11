@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "A1CWT6",
+      "go_id": "GO:0015292",
+      "feature_type": "MOTIF",
+      "start": 367,
+      "end": 376,
+      "signal_kind": "text",
+      "signal_value": "Selectivity filter",
+      "reasoning": "The \"MOTIF 367-376\" with a \"selectivity filter\" qualifier directly matches the primary reaction of catalyzing transport of a single molecular species, which is the core mechanism defined by the GO term."
+    },
+    {
+      "accession": "Q7S4I4",
+      "go_id": "GO:0015292",
+      "feature_type": "MOTIF",
+      "start": 353,
+      "end": 362,
+      "signal_kind": "text",
+      "signal_value": "Selectivity filter",
+      "reasoning": "The \"Selectivity filter\" motif directly matches the mechanism of transport described in the GO term's definition, which involves the selective movement of a single molecular species across a membrane."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q3UMR5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q3UMR5 directly matches the primary reaction or mechanism defined for the GO term \"uniporter activity\" (GO:0015292). The features are either generic structural elements or specific regulatory interactions, but none provide a clear explanation of why this protein carries the term as a real annotation."
+    },
+    {
+      "accession": "Q6ZSM3",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

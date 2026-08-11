@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015341",
+  "name": "zinc efflux antiporter activity",
+  "def": "Enables the transfer of a zinc ion or zinc ions from the inside of the cell to the outside of the cell across a membrane according to the reaction H+(out) + Zn2+(in) = H+(in) + Zn2+(out). The activity is driven by proton motive force.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P69380"
+  ],
+  "assigned_accessions": [
+    "P69380"
+  ]
+}

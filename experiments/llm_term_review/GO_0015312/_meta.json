@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0015312",
+  "name": "polyamine:proton antiporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: H+(out) + polyamine(in) = H+(in) + polyamine(out).",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "D3Z5L6",
+    "D4A9K4",
+    "Q6NT16"
+  ],
+  "assigned_accessions": [
+    "D3Z5L6",
+    "D4A9K4",
+    "Q6NT16"
+  ]
+}
