@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033809",
+  "name": "anthocyanin 6''-O-malonyltransferase activity",
+  "def": "Catalysis of the reaction: malonyl-CoA + an anthocyanidin 3-O-beta-D-glucoside = CoA + an anthocyanidin 3-O-(6-O-malonyl-beta-D-glucoside).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8GSN8"
+  ],
+  "assigned_accessions": [
+    "Q8GSN8"
+  ]
+}

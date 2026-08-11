@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033812",
+  "name": "3-oxoadipyl-CoA thiolase activity",
+  "def": "Catalysis of the reaction: succinyl-CoA + acetyl-CoA = CoA + 3-oxoadipyl-CoA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0C7L2"
+  ],
+  "assigned_accessions": [
+    "P0C7L2"
+  ]
+}

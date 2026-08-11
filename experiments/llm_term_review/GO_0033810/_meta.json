@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033810",
+  "name": "anthocyanin 5-O-glucoside 6'''-O-malonyltransferase activity",
+  "def": "Catalysis of the reaction: malonyl-CoA + pelargonidin 3-O-(6-caffeoyl-beta-D-glucoside) 5-O-beta-D-glucoside = CoA + 4'''-demalonylsalvianin.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8W1W9"
+  ],
+  "assigned_accessions": [
+    "Q8W1W9"
+  ]
+}

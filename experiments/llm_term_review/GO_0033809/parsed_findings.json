@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8GSN8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section matches the defined chemistry of the GO term, which involves a specific acyl transfer reaction. The only domain mentioned is general and not directly tied to the function."
+    }
+  ]
+}

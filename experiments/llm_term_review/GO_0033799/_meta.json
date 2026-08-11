@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0033799",
+  "name": "myricetin 3'-O-methyltransferase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-methionine + myricetin = S-adenosyl-L-homocysteine + laricitrin.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "A0A088MF62",
+    "F2YTN4",
+    "Q8GSN1",
+    "Q9FK25"
+  ],
+  "assigned_accessions": [
+    "A0A088MF62",
+    "F2YTN4",
+    "Q8GSN1",
+    "Q9FK25"
+  ]
+}

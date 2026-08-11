@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0033823",
+  "name": "procollagen glucosyltransferase activity",
+  "def": "Catalysis of the reaction: UDP-glucose + 5-(D-galactosyloxy)-L-lysine-procollagen = UDP + 1,2-D-glucosyl-5-D-(galactosyloxy)-L-lysine-procollagen.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "Q20679",
+    "Q5U367",
+    "Q9R0E1",
+    "Q9VTH0"
+  ],
+  "assigned_accessions": [
+    "Q20679",
+    "Q5U367",
+    "Q9R0E1",
+    "Q9VTH0"
+  ]
+}

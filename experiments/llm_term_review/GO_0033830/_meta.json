@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033830",
+  "name": "Skp1-protein-hydroxyproline N-acetylglucosaminyltransferase activity",
+  "def": "Catalysis of the reaction: UDP-N-acetylglucosamine + Skp1-protein-hydroxyproline = UDP + Skp1-protein-O-(N-acetyl-D-glucosaminyl)hydroxyproline.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8T1C6"
+  ],
+  "assigned_accessions": [
+    "Q8T1C6"
+  ]
+}

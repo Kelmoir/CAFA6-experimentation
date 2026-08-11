@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0033798",
+  "name": "thyroxine 5-deiodinase activity",
+  "def": "Catalysis of the reaction: 3,3',5'-triiodo-L-thyronine + iodide + acceptor + H+ = L-thyroxine + acceptor-H2.",
+  "n_proteins_total": 17,
+  "sampled_accessions": [
+    "A4GT88",
+    "P49898",
+    "P49899",
+    "Q6QN11"
+  ],
+  "assigned_accessions": [
+    "A4GT88",
+    "P49898",
+    "P49899",
+    "Q6QN11"
+  ]
+}

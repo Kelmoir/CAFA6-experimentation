@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0033783",
+  "name": "25-hydroxycholesterol 7-alpha-hydroxylase activity",
+  "def": "Catalysis of the reactions: 25-hydroxycholesterol + O2 + reduced [NADPH--hemoprotein reductase] = 7alpha,25-dihydroxycholesterol + H+ + H2O + oxidized [NADPH--hemoprotein reductase]. Also converts (25R)-cholest-5-ene-3beta,26-diol to (25R)-cholest-5-en-3beta,7alpha,26-triol.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O75881",
+    "Q60991",
+    "Q63688"
+  ],
+  "assigned_accessions": [
+    "O75881",
+    "Q60991",
+    "Q63688"
+  ]
+}

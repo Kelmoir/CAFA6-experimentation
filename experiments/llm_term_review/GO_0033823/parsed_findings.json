@@ -1,0 +1,43 @@
+{
+  "resolved": [
+    {
+      "accession": "Q20679",
+      "go_id": "GO:0033823",
+      "feature_type": "BINDING",
+      "start": 241,
+      "end": 242,
+      "signal_kind": "ligand",
+      "signal_value": "Mn(2+)",
+      "reasoning": "The binding site for UDP (ligand: UDP) directly matches the primary reaction of the GO term, which involves the catalysis of a glucosyl transfer reaction. This specific binding site is most plausibly responsible for the enzyme's function as described by the GO definition."
+    },
+    {
+      "accession": "Q9R0E1",
+      "go_id": "GO:0033823",
+      "feature_type": "BINDING",
+      "start": 258,
+      "end": 262,
+      "signal_kind": "ligand",
+      "signal_value": "UDP",
+      "reasoning": "The binding site involving UDP (ligand: UDP) directly supports the catalytic activity described in the GO term's definition, making it the most plausible explanation for why the protein carries this term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q5U367",
+      "go_id": "GO:0033823",
+      "feature_type": "BINDING",
+      "start": 46,
+      "end": 49,
+      "signal_kind": "ligand",
+      "signal_value": "UDP",
+      "reasoning": "The binding of UDP is directly related to the reaction mechanism described in the GO term, but it's a general binding site rather than one that specifically supports the defined reaction."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q9VTH0",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features provide a strong match to the primary reaction defined by the GO term \"procollagen glucosyltransferase activity.\""
+    }
+  ]
+}

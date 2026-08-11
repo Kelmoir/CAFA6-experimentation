@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q8T1C6",
+      "go_id": "GO:0033830",
+      "feature_type": "BINDING",
+      "start": 101,
+      "end": 102,
+      "signal_kind": "ligand",
+      "signal_value": "Mg(2+)",
+      "reasoning": "The Mg(2+) binding sites are related to catalytic activity but do not directly specify the reaction mechanism defined by GO:0033830."
+    }
+  ],
+  "issues": []
+}

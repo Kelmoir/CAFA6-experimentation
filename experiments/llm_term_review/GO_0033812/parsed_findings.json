@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0C7L2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct and specific explanation for the catalytic reaction defined by the GO term \"3-oxoadipyl-CoA thiolase activity.\""
+    }
+  ]
+}

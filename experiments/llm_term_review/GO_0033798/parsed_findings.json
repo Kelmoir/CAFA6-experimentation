@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A4GT88",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature has been confirmed to explain the molecular function of thyroxine 5-deiodinase activity in protein A4GT88."
+    },
+    {
+      "accession": "P49898",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P49898 provides a clear and specific explanation of why it carries the molecular function \"thyroxine 5-deiodinase activity\" based on the primary reaction defined by the GO term."
+    },
+    {
+      "accession": "P49899",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides positional evidence for the specific chemistry of the thyroxine 5-deiodinase reaction as defined by the GO term."
+    },
+    {
+      "accession": "Q6QN11",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation of the catalytic mechanism or reaction specific to thyroxine 5-deiodinase activity. The \"ACT_SITE\" annotation is relevant to enzyme function but does not directly account for the defined chemistry of this GO term."
+    }
+  ]
+}

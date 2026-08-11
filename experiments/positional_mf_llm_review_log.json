@@ -17251,6 +17251,32 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0033783": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O75881",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct structural or functional explanation for the enzymatic activity described in GO:0033783."
+   },
+   {
+    "accession": "Q60991",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein Q60991 specifically matches the primary reaction of the GO term GO:0033783, which involves the catalytic activity of a 7-alpha-hydroxylase. The only relevant feature is BINDING 446-447, which describes ligand binding rather than the enzymatic mechanism itself."
+   },
+   {
+    "accession": "Q63688",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for protein Q63688 is a binding site for heme, which does not directly explain the specific activity of 25-hydroxycholesterol hydroxylase. No other positional feature is present in the Annotated features section for this protein, and no domain/family cross-reference provides a clear explanation for the GO term's defined function."
+   }
+  ]
+ },
  "GO:0033784": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -17266,5 +17292,200 @@
     "reasoning": "No annotated feature provides a direct explanation for the molecular function defined by GO:0033784. The presence of an FMO-like domain is inferred from cross-references, but it is not confirmed in the Annotated features section. Therefore, there is no positional feature that can be definitively linked to this GO term based on the provided evidence."
    }
   ]
+ },
+ "GO:0033793": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FRX6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction or mechanism described in the GO term's definition for \"aureusidin synthase activity,\" which involves 3-hydroxylation and oxidative cyclization."
+   }
+  ]
+ },
+ "GO:0033798": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A4GT88",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature has been confirmed to explain the molecular function of thyroxine 5-deiodinase activity in protein A4GT88."
+   },
+   {
+    "accession": "P49898",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P49898 provides a clear and specific explanation of why it carries the molecular function \"thyroxine 5-deiodinase activity\" based on the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "P49899",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides positional evidence for the specific chemistry of the thyroxine 5-deiodinase reaction as defined by the GO term."
+   },
+   {
+    "accession": "Q6QN11",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation of the catalytic mechanism or reaction specific to thyroxine 5-deiodinase activity. The \"ACT_SITE\" annotation is relevant to enzyme function but does not directly account for the defined chemistry of this GO term."
+   }
+  ]
+ },
+ "GO:0033799": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "A0A088MF62"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "F2YTN4",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for F2YTN4 do not provide a strong match to the primary reaction described in the definition of GO:0033799. Neither ACT_SITE nor BINDING directly explains the methyl transfer mechanism, which is central to the term's definition."
+   },
+   {
+    "accession": "Q8GSN1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction of myricetin 3'-O-methyltransferase activity, as all features only indicate binding rather than catalytic activity."
+   },
+   {
+    "accession": "Q9FK25",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically describes the catalytic mechanism of S-adenosyl-L-methionine transferring a methyl group to myricetin, which is the primary reaction defined by GO:0033799."
+   }
+  ]
+ },
+ "GO:0033809": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8GSN8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section matches the defined chemistry of the GO term, which involves a specific acyl transfer reaction. The only domain mentioned is general and not directly tied to the function."
+   }
+  ]
+ },
+ "GO:0033810": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8W1W9",
+    "reason": "none_verdict",
+    "reasoning": "The ACT_SITE annotations for Q8W1W9 are generic and do not provide specific evidence for the enzyme's ability to catalyze the transfer of a malonyl group as defined by GO:0033810. No other annotated feature in the protein's data directly supports this primary reaction mechanism, making it impossible to determine a strong match."
+   }
+  ]
+ },
+ "GO:0033812": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0C7L2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct and specific explanation for the catalytic reaction defined by the GO term \"3-oxoadipyl-CoA thiolase activity.\""
+   }
+  ]
+ },
+ "GO:0033823": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Mn(2+)",
+    "accessions": [
+     "Q20679"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "UDP",
+    "accessions": [
+     "Q9R0E1"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q5U367",
+    "go_id": "GO:0033823",
+    "feature_type": "BINDING",
+    "start": 46,
+    "end": 49,
+    "signal_kind": "ligand",
+    "signal_value": "UDP",
+    "reasoning": "The binding of UDP is directly related to the reaction mechanism described in the GO term, but it's a general binding site rather than one that specifically supports the defined reaction."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q9VTH0",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features provide a strong match to the primary reaction defined by the GO term \"procollagen glucosyltransferase activity.\""
+   }
+  ]
+ },
+ "GO:0033830": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q8T1C6",
+    "go_id": "GO:0033830",
+    "feature_type": "BINDING",
+    "start": 101,
+    "end": 102,
+    "signal_kind": "ligand",
+    "signal_value": "Mg(2+)",
+    "reasoning": "The Mg(2+) binding sites are related to catalytic activity but do not directly specify the reaction mechanism defined by GO:0033830."
+   }
+  ],
+  "issues": []
  }
 }
