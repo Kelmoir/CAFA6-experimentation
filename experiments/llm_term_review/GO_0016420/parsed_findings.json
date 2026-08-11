@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q589Y0",
+      "go_id": "GO:0016420",
+      "feature_type": "BINDING",
+      "start": 253,
+      "end": 254,
+      "signal_kind": "ligand",
+      "signal_value": "malonyl-CoA",
+      "reasoning": "The binding of malonyl-CoA to the enzyme directly supports the catalytic transfer of a malonyl group, which is the primary reaction defined by the GO term. This feature most plausibly explains why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

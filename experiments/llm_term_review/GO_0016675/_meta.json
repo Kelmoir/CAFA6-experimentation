@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0016675",
+  "name": "oxidoreductase activity, acting on a heme group of donors",
+  "def": "Catalysis of an oxidation-reduction (redox) reaction in which a heme group acts as a hydrogen or electron donor and reduces a hydrogen or electron acceptor.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P76342"
+  ],
+  "assigned_accessions": [
+    "P76342"
+  ]
+}

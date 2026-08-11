@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0016250",
+  "name": "N-sulfoglucosamine sulfohydrolase activity",
+  "def": "Catalysis of the reaction: N-sulfo-D-glucosamine + H2O = D-glucosamine + sulfate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P51688"
+  ],
+  "assigned_accessions": [
+    "P51688"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P76342",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature describes the redox mechanism or the heme group's role as an electron donor. The domain/family cross-references suggest involvement in molybdenum-dependent oxidoreductase activity, but they do not provide positional evidence for the specific chemistry described in the GO term."
+    }
+  ]
+}

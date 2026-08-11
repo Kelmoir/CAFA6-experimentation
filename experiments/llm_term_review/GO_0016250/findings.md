@@ -1,0 +1,5 @@
+## P51688 GO:0016250
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature for P51688 directly matches the primary reaction mechanism defined by GO:0016250, which involves catalyzing the hydrolysis of N-sulfo-D-glucosamine to produce D-glucosamine and sulfate. The available features are more about ligand recognition rather than the specific enzymatic activity described in the GO term.
+---

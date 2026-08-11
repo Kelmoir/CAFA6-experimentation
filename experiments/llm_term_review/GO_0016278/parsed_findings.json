@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9NRG4",
+      "go_id": "GO:0016278",
+      "feature_type": "DOMAIN",
+      "start": 6,
+      "end": 241,
+      "signal_kind": "text",
+      "signal_value": "SET",
+      "reasoning": "The DOMAIN 6-241 annotation, which is associated with SET domains, directly supports the lysine N-methyltransferase activity by indicating a structural feature capable of receiving methyl groups from S-adenosyl-L-methionine."
+    },
+    {
+      "accession": "Q8NE22",
+      "go_id": "GO:0016278",
+      "feature_type": "DOMAIN",
+      "start": 121,
+      "end": 295,
+      "signal_kind": "text",
+      "signal_value": "SET",
+      "reasoning": "The DOMAIN span (121-295) with the note \"SET\" directly matches the enzymatic activity described in the GO term, indicating that this domain is responsible for the methyl transfer reaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A8MUP2",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9NQR1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear, mechanistically specific explanation for why Q9NQR1 carries the molecular function of lysine N-methyltransferase activity. The binding sites are generic and do not directly indicate the enzyme's catalytic role."
+    }
+  ]
+}

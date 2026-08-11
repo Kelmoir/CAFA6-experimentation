@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "B1Q005",
+      "reason": "none_verdict",
+      "reasoning": "The ACT_SITE regions at 306-307 and 337-338 are the most plausible candidates for explaining the serine O-acyltransferase activity of B1Q005, as they correspond to the positions where substrates bind and catalysis occurs. However, these features are generic and do not provide specific evidence about the enzyme's structure or mechanism that would strongly support the GO term's definition. Therefore"
+    },
+    {
+      "accession": "B1Q006",
+      "reason": "none_verdict",
+      "reasoning": "The ACT_SITE spans are associated with the enzyme's active site, which is where the acyl transfer reaction occurs. However, these features do not directly specify the particular chemistry or mechanism of the serine O-acyltransferase activity, and thus they do not strongly explain why this protein carries the GO term."
+    },
+    {
+      "accession": "H6U1I8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in H6U1I8 specifically matches the chemistry of serine O-acyltransferase activity as defined by GO:0016412."
+    },
+    {
+      "accession": "P0C7A3",
+      "reason": "none_verdict",
+      "reasoning": "The ACT_SITE annotation at position 306-307 is the only positional feature provided for P0C7A3, but it does not directly indicate the presence of an active site capable of catalyzing the specific acyl transfer reaction defined by GO:0016412. While this could be a plausible candidate, there is no explicit evidence linking this site to the function described in the GO term."
+    }
+  ]
+}

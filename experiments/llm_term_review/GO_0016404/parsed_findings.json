@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P15428",
+      "go_id": "GO:0016404",
+      "feature_type": "BINDING",
+      "start": 150,
+      "end": 155,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD+ at multiple positions (150-155) directly supports the enzyme's role in catalyzing the redox reaction described in the GO term's definition, making it a strong match for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q3T0C2",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide positional evidence that directly explains the molecular function of the GO term \"15-hydroxyprostaglandin dehydrogenase (NAD+) activity.\" While multiple binding sites for NAD+ are present, they do not indicate the mechanism of proton transfer or the specific coenzyme activity described in the definition. Therefore, there is no positional feature that plausibly"
+    },
+    {
+      "accession": "Q8VCC1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q8VCC1 provides a direct explanation for the enzyme's catalytic activity as defined by GO:0016404, which involves dehydrogenase function."
+    },
+    {
+      "accession": "O08699",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

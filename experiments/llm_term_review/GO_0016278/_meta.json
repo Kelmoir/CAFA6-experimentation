@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016278",
+  "name": "lysine N-methyltransferase activity",
+  "def": "Catalysis of the transfer of a methyl group from S-adenosyl-L-methionine to the epsilon-amino group of a lysine residue.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "A8MUP2",
+    "Q8NE22",
+    "Q9NQR1",
+    "Q9NRG4"
+  ],
+  "assigned_accessions": [
+    "A8MUP2",
+    "Q8NE22",
+    "Q9NQR1",
+    "Q9NRG4"
+  ]
+}

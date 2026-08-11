@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016247",
+  "name": "channel regulator activity",
+  "def": "Binds to and modulates the activity of a channel. A channel catalyzes energy-independent facilitated diffusion, mediated by passage of a solute through a transmembrane aqueous pore or channel.",
+  "n_proteins_total": 28,
+  "sampled_accessions": [
+    "Q71RJ2",
+    "Q8VHW8",
+    "Q9UF02",
+    "Q9Y698"
+  ],
+  "assigned_accessions": [
+    "Q71RJ2",
+    "Q8VHW8",
+    "Q9UF02",
+    "Q9Y698"
+  ]
+}

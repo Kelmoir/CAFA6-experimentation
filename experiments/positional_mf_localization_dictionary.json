@@ -9149,6 +9149,15 @@
   ],
   "text_patterns": []
  },
+ "GO:0016278": {
+  "name": "lysine N-methyltransferase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR044419"
+  ],
+  "text_patterns": []
+ },
  "GO:0016279": {
   "name": "protein-lysine N-methyltransferase activity",
   "ligands": [],

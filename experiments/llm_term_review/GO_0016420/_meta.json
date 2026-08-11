@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0016420",
+  "name": "malonyltransferase activity",
+  "def": "Catalysis of the transfer of a malonyl (HOOC-CH2-CO-) group to an acceptor molecule.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q589Y0"
+  ],
+  "assigned_accessions": [
+    "Q589Y0"
+  ]
+}
