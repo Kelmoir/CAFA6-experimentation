@@ -1,0 +1,5 @@
+## P12872 GO:0031788
+verdict: NONE
+feature: REGION 38-72
+reasoning: The REGION 38-72 span is marked as Disordered, but it does not provide any evidence that this region is involved in binding to a motilin receptor. No other positional feature directly matches the primary reaction of the GO term, which is about binding to a motilin receptor. Thus, there is no plausible explanation for why P12872 carries the GO term "motilin receptor binding" based on its annotated 
+---

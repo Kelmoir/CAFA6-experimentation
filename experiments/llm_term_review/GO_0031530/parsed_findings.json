@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q28588",
+      "go_id": "GO:0031530",
+      "feature_type": "SITE",
+      "start": 2,
+      "end": 3,
+      "signal_kind": "text",
+      "signal_value": "Appears to be essential for biological activity",
+      "reasoning": "The \"SITE 2-3\" annotation is explicitly noted as essential for biological activity, which aligns with the defined function of binding to a GnRH receptor. This provides a direct and plausible explanation for why the protein carries this molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P01148",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for this protein directly matches the primary reaction of the GO term, which is binding to a GnRH receptor."
+    },
+    {
+      "accession": "P07490",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P07490 specifically matches the primary reaction of the GO term \"gonadotropin-releasing hormone receptor binding,\" which involves direct GnRH receptor interaction. The available features are related to cleavage and biological activity, not receptor binding."
+    },
+    {
+      "accession": "P37042",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

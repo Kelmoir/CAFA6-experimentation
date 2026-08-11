@@ -14810,6 +14810,41 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0031530": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Appears to be essential for biological activity",
+    "accessions": [
+     "Q28588"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P01148",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for this protein directly matches the primary reaction of the GO term, which is binding to a GnRH receptor."
+   },
+   {
+    "accession": "P07490",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P07490 specifically matches the primary reaction of the GO term \"gonadotropin-releasing hormone receptor binding,\" which involves direct GnRH receptor interaction. The available features are related to cleavage and biological activity, not receptor binding."
+   },
+   {
+    "accession": "P37042",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0031544": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -14828,6 +14863,125 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0031628": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P01210",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein P01210 provides evidence that directly supports the primary reaction of \"Binding to an opioid receptor\" as defined by the GO term."
+   },
+   {
+    "accession": "P01213",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P06300",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains why P06300 carries the GO term \"opoid receptor binding\" as a defined molecular function. The only plausible explanation would be the presence of an opioid receptor-binding domain, but this is not explicitly stated in the Annotated features section for this protein."
+   },
+   {
+    "accession": "P22005",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly supports the primary reaction of \"binding to an opioid receptor\" as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0031682": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O14775",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P18851",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P36408",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P62882",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0031685": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P35123",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features for P35123 directly explain why the protein carries the GO term \"adenosine receptor binding,\" as none of them are specifically associated with adenosine receptor interaction."
+   },
+   {
+    "accession": "Q13107",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of \"adenosine receptor binding\" as defined by the GO term."
+   },
+   {
+    "accession": "Q9NZK5",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature in the protein's section that directly supports the molecular function of adenosine receptor binding."
+   }
+  ]
+ },
+ "GO:0031687": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "F1LQY6",
+    "reason": "none_verdict",
+    "reasoning": "The protein F1LQY6 has no annotated feature that specifically matches the primary reaction of binding to an A2A adenosine receptor. All features relate to interactions with Ca(2+), which are secondary consequences rather than the defined chemistry of the GO term. Thus, there is no single annotated feature that plausibly explains why this protein carries the term \"A2A adenosine receptor binding.\""
+   },
+   {
+    "accession": "Q3UVX5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided evidence for Q3UVX5 specifically describes binding to an A2A adenosine receptor, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "Q9JHB5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9JHB5 specifically matches the primary reaction of binding to an A2A adenosine receptor."
+   },
+   {
+    "accession": "Q9QZE7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9QZE7 provides a clear structural or functional basis for the defined molecular function of \"A2A adenosine receptor binding.\""
+   }
+  ]
  },
  "GO:0031774": {
   "n_resolved": 0,
@@ -14849,5 +15003,21 @@
    }
   ],
   "issues": []
+ },
+ "GO:0031788": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P12872",
+    "reason": "none_verdict",
+    "reasoning": "The REGION 38-72 span is marked as Disordered, but it does not provide any evidence that this region is involved in binding to a motilin receptor. No other positional feature directly matches the primary reaction of the GO term, which is about binding to a motilin receptor. Thus, there is no plausible explanation for why P12872 carries the GO term \"motilin receptor binding\" based on its annotated"
+   }
+  ]
  }
 }

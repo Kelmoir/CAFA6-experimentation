@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0031628",
+  "name": "opioid receptor binding",
+  "def": "Binding to an opioid receptor.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "P01210",
+    "P01213",
+    "P06300",
+    "P22005"
+  ],
+  "assigned_accessions": [
+    "P01210",
+    "P01213",
+    "P06300",
+    "P22005"
+  ]
+}

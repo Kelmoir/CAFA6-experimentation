@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0031685",
+  "name": "adenosine receptor binding",
+  "def": "Binding to an adenosine receptor.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P35123",
+    "Q13107",
+    "Q9NZK5"
+  ],
+  "assigned_accessions": [
+    "P35123",
+    "Q13107",
+    "Q9NZK5"
+  ]
+}

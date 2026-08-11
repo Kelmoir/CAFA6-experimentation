@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0031682",
+  "name": "G-protein gamma-subunit binding",
+  "def": "Binding to a G-protein gamma subunit.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "O14775",
+    "P18851",
+    "P36408",
+    "P62882"
+  ],
+  "assigned_accessions": [
+    "O14775",
+    "P18851",
+    "P36408",
+    "P62882"
+  ]
+}

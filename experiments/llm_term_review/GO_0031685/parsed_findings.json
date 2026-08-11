@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P35123",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features for P35123 directly explain why the protein carries the GO term \"adenosine receptor binding,\" as none of them are specifically associated with adenosine receptor interaction."
+    },
+    {
+      "accession": "Q13107",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of \"adenosine receptor binding\" as defined by the GO term."
+    },
+    {
+      "accession": "Q9NZK5",
+      "reason": "none_verdict",
+      "reasoning": "There is no annotated feature in the protein's section that directly supports the molecular function of adenosine receptor binding."
+    }
+  ]
+}

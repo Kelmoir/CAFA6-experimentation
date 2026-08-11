@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P01210",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for protein P01210 provides evidence that directly supports the primary reaction of \"Binding to an opioid receptor\" as defined by the GO term."
+    },
+    {
+      "accession": "P01213",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P06300",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains why P06300 carries the GO term \"opoid receptor binding\" as a defined molecular function. The only plausible explanation would be the presence of an opioid receptor-binding domain, but this is not explicitly stated in the Annotated features section for this protein."
+    },
+    {
+      "accession": "P22005",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly supports the primary reaction of \"binding to an opioid receptor\" as defined by the GO term."
+    }
+  ]
+}
