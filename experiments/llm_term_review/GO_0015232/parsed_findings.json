@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P0AAG0",
+      "go_id": "GO:0015232",
+      "feature_type": "DOMAIN",
+      "start": 3,
+      "end": 254,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter",
+      "reasoning": "The DOMAIN feature explicitly matches the primary reaction of transferring heme across a membrane, which is the defining activity of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O75027",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the *transfer of heme* across a membrane, which is the primary reaction defined by the GO term. The presence of ABC transporter domains and binding sites for other molecules does not provide sufficient evidence to conclude that this protein carries the term as a real, asserted annotation based on its own structural/functional features."
+    },
+    {
+      "accession": "Q05B81",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q05B81 directly explains the primary reaction or mechanism of \"heme transmembrane transporter activity,\" which is about transferring heme across a membrane. The binding sites are related to proton transport, not heme transport."
+    },
+    {
+      "accession": "Q91X72",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features provide a direct explanation for the defined chemistry of the GO term \"heme transmembrane transporter activity.\""
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015231",
+  "name": "5-formyltetrahydrofolate transmembrane transporter activity",
+  "def": "Enables the transfer of 5-formyltetrahydrofolate, the formylated derivative of tetrahydrofolate, from one side of a membrane to the other.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SKZ5"
+  ],
+  "assigned_accessions": [
+    "Q9SKZ5"
+  ]
+}

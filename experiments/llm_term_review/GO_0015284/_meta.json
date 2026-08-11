@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0015284",
+  "name": "fructose uniporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: fructose(out) = fructose(in).",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q84WN3",
+    "Q9JIF3"
+  ],
+  "assigned_accessions": [
+    "Q84WN3",
+    "Q9JIF3"
+  ]
+}

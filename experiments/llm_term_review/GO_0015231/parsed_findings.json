@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9SKZ5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9SKZ5's positional data matches the primary reaction of GO:0015231, which is the transport activity of 5-formyltetrahydrofolate across membranes."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015228",
+  "name": "coenzyme A transmembrane transporter activity",
+  "def": "Enables the transfer of coenzyme A from one side of a membrane to the other. Coenzyme A, 3'-phosphoadenosine-(5')diphospho(4')pantatheine, is an acyl carrier in many acylation and acyl-transfer reactions in which the intermediate is a thiol ester.",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "F4JU70",
+    "O70579",
+    "Q0P483",
+    "Q8C0K5"
+  ],
+  "assigned_accessions": [
+    "F4JU70",
+    "O70579",
+    "Q0P483",
+    "Q8C0K5"
+  ]
+}

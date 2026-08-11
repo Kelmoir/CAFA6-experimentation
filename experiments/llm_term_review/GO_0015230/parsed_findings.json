@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P39719",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear and specific explanation for the molecular function defined by the GO term. The only candidate feature is a generic region, which does not strongly align with the primary reaction of FAD transport."
+    },
+    {
+      "accession": "P40464",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q6IZB5",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q7XA87",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

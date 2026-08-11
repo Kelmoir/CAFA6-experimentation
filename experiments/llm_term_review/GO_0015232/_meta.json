@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015232",
+  "name": "heme transmembrane transporter activity",
+  "def": "Enables the transfer of heme from one side of a membrane to the other.",
+  "n_proteins_total": 36,
+  "sampled_accessions": [
+    "O75027",
+    "P0AAG0",
+    "Q05B81",
+    "Q91X72"
+  ],
+  "assigned_accessions": [
+    "O75027",
+    "P0AAG0",
+    "Q05B81",
+    "Q91X72"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "F4JU70",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "O70579",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in O70579 specifically describes the core reaction of coenzyme A transmembrane transporter activity as defined by GO:0015228. All features are related to peroxisomal targeting and interaction with PEX19, which are secondary consequences rather than the primary function."
+    },
+    {
+      "accession": "Q0P483",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8C0K5",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

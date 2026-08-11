@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015230",
+  "name": "FAD transmembrane transporter activity",
+  "def": "Enables the directed movement of flavin-adenine dinucleotide (FAD) from one side of a membrane to the other. FAD forms the coenzyme of the prosthetic group of various flavoprotein oxidoreductase enzymes, in which it functions as an electron acceptor by being reversibly converted to its reduced form.",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "P39719",
+    "P40464",
+    "Q6IZB5",
+    "Q7XA87"
+  ],
+  "assigned_accessions": [
+    "P39719",
+    "P40464",
+    "Q6IZB5",
+    "Q7XA87"
+  ]
+}

@@ -8744,5 +8744,186 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0015221": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0ADV9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015227": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P97521",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q27257",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9VM51",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9Z2Z6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015228": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "F4JU70",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O70579",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in O70579 specifically describes the core reaction of coenzyme A transmembrane transporter activity as defined by GO:0015228. All features are related to peroxisomal targeting and interaction with PEX19, which are secondary consequences rather than the primary function."
+   },
+   {
+    "accession": "Q0P483",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8C0K5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015230": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P39719",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and specific explanation for the molecular function defined by the GO term. The only candidate feature is a generic region, which does not strongly align with the primary reaction of FAD transport."
+   },
+   {
+    "accession": "P40464",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q6IZB5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q7XA87",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015231": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SKZ5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9SKZ5's positional data matches the primary reaction of GO:0015231, which is the transport activity of 5-formyltetrahydrofolate across membranes."
+   }
+  ]
+ },
+ "GO:0015232": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter",
+    "accessions": [
+     "P0AAG0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O75027",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the *transfer of heme* across a membrane, which is the primary reaction defined by the GO term. The presence of ABC transporter domains and binding sites for other molecules does not provide sufficient evidence to conclude that this protein carries the term as a real, asserted annotation based on its own structural/functional features."
+   },
+   {
+    "accession": "Q05B81",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q05B81 directly explains the primary reaction or mechanism of \"heme transmembrane transporter activity,\" which is about transferring heme across a membrane. The binding sites are related to proton transport, not heme transport."
+   },
+   {
+    "accession": "Q91X72",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features provide a direct explanation for the defined chemistry of the GO term \"heme transmembrane transporter activity.\""
+   }
+  ]
+ },
+ "GO:0015284": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q84WN3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct match to the primary reaction mechanism of fructose uniporter activity as defined by the GO term."
+   },
+   {
+    "accession": "Q9JIF3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides specific evidence of the fructose uniporter activity mechanism, only generic binding sites for D-glucose."
+   }
+  ]
  }
 }

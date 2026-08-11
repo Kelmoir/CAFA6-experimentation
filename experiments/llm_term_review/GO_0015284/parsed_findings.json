@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q84WN3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct match to the primary reaction mechanism of fructose uniporter activity as defined by the GO term."
+    },
+    {
+      "accession": "Q9JIF3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides specific evidence of the fructose uniporter activity mechanism, only generic binding sites for D-glucose."
+    }
+  ]
+}
