@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0009027",
+  "name": "tartrate dehydrogenase activity",
+  "def": "Catalysis of the reaction: tartrate + NAD+ = oxaloglycolate + NADH + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P76251"
+  ],
+  "assigned_accessions": [
+    "P76251"
+  ]
+}

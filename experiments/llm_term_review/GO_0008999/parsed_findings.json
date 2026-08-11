@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P07347",
+      "go_id": "GO:0008999",
+      "feature_type": "DOMAIN",
+      "start": 34,
+      "end": 195,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The DOMAIN 34-195 with note: \"N-acetyltransferase\" directly matches the defined reaction of acyl transfer, which is the primary mechanism for the GO term \"protein-N-terminal-alanine acetyltransferase activity.\""
+    },
+    {
+      "accession": "P0A944",
+      "go_id": "GO:0008999",
+      "feature_type": "BINDING",
+      "start": 68,
+      "end": 71,
+      "signal_kind": "ligand",
+      "signal_value": "acetyl-CoA",
+      "reasoning": "The binding site for acetyl-CoA at positions 68-71 is directly involved in the catalytic reaction described by the GO term, making it the most plausible explanation for why this protein carries the term."
+    },
+    {
+      "accession": "P41227",
+      "go_id": "GO:0008999",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 152,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The DOMAIN feature (0-152) directly corresponds to the N-acetyltransferase activity defined by the GO term, making it the most plausible explanation for why the protein carries that term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P9WJM7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P9WJM7's list directly matches the primary reaction of the GO term 0008999, which involves acetyl transfer to an N-terminal residue. The binding sites for ligands are present but do not specifically indicate the acyltransferase activity defined by the GO term."
+    }
+  ]
+}

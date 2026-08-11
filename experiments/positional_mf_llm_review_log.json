@@ -6648,6 +6648,173 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0008938": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "I1M2U5",
+     "Q6K9X3",
+     "Q9SCP7"
+    ],
+    "reason": "ligand already claimed by GO:1904047 elsewhere in the dictionary -- ligand_to_go is a plain dict, a second claim would silently overwrite it"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0008941": {
+  "n_resolved": 3,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "influences the redox potential of the prosthetic heme and fad groups",
+    "accessions": [
+     "P24232",
+     "P39676"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Involved in heme-bound ligand stabilization and O-O bond activation",
+    "accessions": [
+     "Q9URY5"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q9UAG7",
+    "go_id": "GO:0008941",
+    "feature_type": "SITE",
+    "start": 82,
+    "end": 83,
+    "signal_kind": "text",
+    "signal_value": "Influences the redox potential of the prosthetic heme and FAD groups",
+    "reasoning": "The site \"Influences the redox potential of the prosthetic heme and FAD groups\" is the most relevant to the GO term's primary reaction, but it does not directly describe the specific catalytic reaction of forming nitrate from NO and O2. Therefore, the feature does not specifically match the GO term's own chemistry."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0008948": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "proton donor",
+    "accessions": [
+     "P13697",
+     "Q8BMF3"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "P0A955"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P76558",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature that could plausibly explain the molecular function of oxaloacetate decarboxylase activity is the \"Proton donor\" active site. However, this feature does not directly specify the reaction mechanism or the specific enzyme involved in catalyzing the reaction, making it a weak match to the GO term's definition. Therefore, there is no single annotated feature that specificall"
+   }
+  ]
+ },
+ "GO:0008957": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P11884",
+     "P47738"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Transition state stabilizer",
+    "accessions": [
+     "C7A2A0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P80668",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation of the defined reaction mechanism for GO:0008957; all features are either generic or only describe ligand binding, not the catalytic activity itself."
+   }
+  ]
+ },
+ "GO:0008999": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "N-acetyltransferase",
+    "accessions": [
+     "P07347",
+     "P41227"
+    ],
+    "reason": "agreed but the note text didn't token-overlap any corroborating protein's domain_xrefs descriptions -- couldn't resolve to a specific accession"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "acetyl-CoA",
+    "accessions": [
+     "P0A944"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WJM7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P9WJM7's list directly matches the primary reaction of the GO term 0008999, which involves acetyl transfer to an N-terminal residue. The binding sites for ligands are present but do not specifically indicate the acyltransferase activity defined by the GO term."
+   }
+  ]
+ },
  "GO:0009016": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -6666,6 +6833,22 @@
     "accession": "P9WPZ5",
     "reason": "none_verdict",
     "reasoning": "No annotated feature in P9WPZ5 specifically describes the transamination reaction mechanism or the enzyme's activity as defined by GO:0009016. The binding sites are generic and could apply to many enzymes, not uniquely explaining this particular function."
+   }
+  ]
+ },
+ "GO:0009027": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P76251",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
    }
   ]
  }

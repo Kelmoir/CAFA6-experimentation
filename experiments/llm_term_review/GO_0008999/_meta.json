@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008999",
+  "name": "protein-N-terminal-alanine acetyltransferase activity",
+  "def": "Catalysis of the reaction: acetyl-CoA + N-terminal L-alanyl-[protein] = CoA + H+ + N-terminal N(alpha)-acetyl-L-alanyl-[protein].",
+  "n_proteins_total": 14,
+  "sampled_accessions": [
+    "P07347",
+    "P0A944",
+    "P41227",
+    "P9WJM7"
+  ],
+  "assigned_accessions": [
+    "P07347",
+    "P0A944",
+    "P41227",
+    "P9WJM7"
+  ]
+}

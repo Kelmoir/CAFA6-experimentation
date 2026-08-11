@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "C7A2A0",
+      "go_id": "GO:0008957",
+      "feature_type": "SITE",
+      "start": 201,
+      "end": 202,
+      "signal_kind": "text",
+      "signal_value": "Transition state stabilizer",
+      "reasoning": "The \"Site 201-202\" annotation with the note \"Transition state stabilizer\" directly relates to the mechanism of the reaction described in the GO term's definition, making it a strong candidate for explaining why the protein carries this molecular function."
+    },
+    {
+      "accession": "P11884",
+      "go_id": "GO:0008957",
+      "feature_type": "BINDING",
+      "start": 263,
+      "end": 269,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The BINDING feature at position 263-269 directly supports the primary reaction of phenylacetaldehyde dehydrogenase (NAD+) activity by involving the binding of NAD+, which is essential for the catalytic process. This specific annotation aligns with the GO term's defined chemistry, making it a strong match."
+    },
+    {
+      "accession": "P47738",
+      "go_id": "GO:0008957",
+      "feature_type": "BINDING",
+      "start": 263,
+      "end": 269,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD+ to the enzyme directly supports the catalytic activity described by the GO term, making it the most plausible explanation for why the protein carries that term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P80668",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation of the defined reaction mechanism for GO:0008957; all features are either generic or only describe ligand binding, not the catalytic activity itself."
+    }
+  ]
+}

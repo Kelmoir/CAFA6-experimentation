@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008957",
+  "name": "phenylacetaldehyde dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: 2-phenylacetaldehyde + H2O + NAD+ = 2-phenylacetate + 2 H+ + NADH.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "C7A2A0",
+    "P11884",
+    "P47738",
+    "P80668"
+  ],
+  "assigned_accessions": [
+    "C7A2A0",
+    "P11884",
+    "P47738",
+    "P80668"
+  ]
+}

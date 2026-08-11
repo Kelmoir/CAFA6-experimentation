@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008948",
+  "name": "oxaloacetate decarboxylase activity",
+  "def": "Catalysis of the reaction: H+ + oxaloacetate = CO2 + pyruvate.",
+  "n_proteins_total": 25,
+  "sampled_accessions": [
+    "P0A955",
+    "P13697",
+    "P76558",
+    "Q8BMF3"
+  ],
+  "assigned_accessions": [
+    "P0A955",
+    "P13697",
+    "P76558",
+    "Q8BMF3"
+  ]
+}

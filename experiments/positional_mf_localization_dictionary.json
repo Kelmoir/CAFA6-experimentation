@@ -6793,6 +6793,24 @@
    "interaction with gabarap"
   ]
  },
+ "GO:0008941": {
+  "name": "nitric oxide dioxygenase NAD(P)H activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "influences the redox potential of the prosthetic heme and fad groups"
+  ]
+ },
+ "GO:0008948": {
+  "name": "oxaloacetate decarboxylase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "proton donor"
+  ]
+ },
  "GO:0008970": {
   "name": "phospholipase A1 activity",
   "ligands": [],

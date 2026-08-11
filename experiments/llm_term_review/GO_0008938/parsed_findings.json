@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "I1M2U5",
+      "go_id": "GO:0008938",
+      "feature_type": "BINDING",
+      "start": 221,
+      "end": 222,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding feature (BINDING 221-222) directly involves the substrate S-adenosyl-L-methionine, which is essential for the reaction defined by GO:0008938. This matches the primary reaction mechanism described in the definition, making it the most plausible explanation for why this protein carries the term."
+    },
+    {
+      "accession": "Q6K9X3",
+      "go_id": "GO:0008938",
+      "feature_type": "BINDING",
+      "start": 231,
+      "end": 232,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The BINDING feature at position 231-232 directly supports the primary reaction of the GO term, which is the catalysis of the methyl transfer from S-adenosyl-L-methionine to nicotinate. This binding is essential for the enzyme's activity and thus most plausibly explains why the protein carries this term."
+    },
+    {
+      "accession": "Q9SCP7",
+      "go_id": "GO:0008938",
+      "feature_type": "BINDING",
+      "start": 225,
+      "end": 226,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The BINDING feature at position 225-226 directly matches the primary reaction of the GO term by involving the ligand S-adenosyl-L-methionine in the catalytic process, which is the core chemical mechanism defined by the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

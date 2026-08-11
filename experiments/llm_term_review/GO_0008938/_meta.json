@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0008938",
+  "name": "nicotinate N-methyltransferase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-methionine(1+) + nicotinate = N-methylnicotinate + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "I1M2U5",
+    "Q6K9X3",
+    "Q9SCP7"
+  ],
+  "assigned_accessions": [
+    "I1M2U5",
+    "Q6K9X3",
+    "Q9SCP7"
+  ]
+}
