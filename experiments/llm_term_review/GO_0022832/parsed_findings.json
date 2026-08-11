@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "D3Z291",
+      "reason": "none_verdict",
+      "reasoning": "The \"disordered\" region (323-348) may be relevant to the structural flexibility required for the voltage-gated channel activity, but it does not directly describe the mechanism of transmembrane solute transfer. Therefore, it does not specifically match the GO term's primary reaction or mechanism."
+    },
+    {
+      "accession": "O57474",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for O57474 is a disordered region, which does not directly explain the function of enabling solute transmembrane transfer through a voltage-dependent mechanism. No positional feature matches the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "P22152",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9ULQ1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation of the defined chemistry of enabling transmembrane transport through a voltage-dependent mechanism, which is the primary reaction described in the GO term."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0022840",
+  "name": "leak channel activity",
+  "def": "Enables the transport of a solute across a membrane via a narrow pore channel that is open even in an unstimulated or 'resting' state.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "P60570",
+    "Q02094",
+    "Q8IZF0",
+    "Q9JIP4"
+  ],
+  "assigned_accessions": [
+    "P60570",
+    "Q02094",
+    "Q8IZF0",
+    "Q9JIP4"
+  ]
+}

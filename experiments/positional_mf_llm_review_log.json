@@ -13167,6 +13167,37 @@
    }
   ]
  },
+ "GO:0022832": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "D3Z291",
+    "reason": "none_verdict",
+    "reasoning": "The \"disordered\" region (323-348) may be relevant to the structural flexibility required for the voltage-gated channel activity, but it does not directly describe the mechanism of transmembrane solute transfer. Therefore, it does not specifically match the GO term's primary reaction or mechanism."
+   },
+   {
+    "accession": "O57474",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for O57474 is a disordered region, which does not directly explain the function of enabling solute transmembrane transfer through a voltage-dependent mechanism. No positional feature matches the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "P22152",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9ULQ1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation of the defined chemistry of enabling transmembrane transport through a voltage-dependent mechanism, which is the primary reaction described in the GO term."
+   }
+  ]
+ },
  "GO:0022836": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -13185,6 +13216,74 @@
    }
   ]
  },
+ "GO:0022840": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Disordered",
+    "accessions": [
+     "P60570"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q02094",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9JIP4",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature provided for Q9JIP4 matches the primary reaction of enabling solute transport via a leak channel. The domain/family cross-references suggest the protein may be related to leak channels, but they are not positional features that explain the function."
+   },
+   {
+    "accession": "Q8IZF0",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature in the annotated features of Q8IZF0 specifically matches the primary reaction or mechanism described in the GO term's definition. The domain/family cross-references suggest a possible involvement in leak channels, but they are not positional features and do not directly explain why the protein carries this GO term."
+   }
+  ]
+ },
+ "GO:0022858": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P31641",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's data directly describes the core function of transferring alanine across a membrane, which is the primary reaction defined by GO:0022858."
+   },
+   {
+    "accession": "P31643",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the defined reaction of transferring alanine across a membrane."
+   },
+   {
+    "accession": "Q7Z2H8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides direct evidence of the transmembrane transporter activity defined by GO:0022858. The only domain-related cross-references are generic and do not specify a particular transmembrane structure or function in Q7Z2H8."
+   },
+   {
+    "accession": "Q8K4D3",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q8K4D3 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The Pfam:PF01490 motif is specifically associated with alanine transporters and directly matches the defined function of \"alanine transmembrane transporter activity,\" making it a strong and specific match."
+   }
+  ]
+ },
  "GO:0022893": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -13198,6 +13297,75 @@
     "accession": "P38085",
     "reason": "none_verdict",
     "reasoning": "No annotated feature provides a specific explanation for the catalysis of low-affinity transfer of L-tryptophan across a membrane, which is the primary reaction described by the GO term."
+   }
+  ]
+ },
+ "GO:0023026": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like C1-type",
+    "accessions": [
+     "P01887",
+     "P01909"
+    ],
+    "reason": "resolved to ['InterPro:IPR003597', 'InterPro:IPR007110', 'InterPro:IPR011162', 'InterPro:IPR013783', 'InterPro:IPR036179', 'PROSITE:PS00290', 'PROSITE:PS50835', 'Pfam:PF07654'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR003597': 144, 'InterPro:IPR007110': 1106, 'InterPro:IPR011162': 102, 'InterPro:IPR013783': 1901, 'InterPro:IPR036179': 1187, 'PROSITE:PS00290': 140, 'PROSITE:PS50835': 1101, 'Pfam:PF07654': 142})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P01910",
+    "go_id": "GO:0023026",
+    "feature_type": "DOMAIN",
+    "start": 113,
+    "end": 206,
+    "signal_kind": "text",
+    "signal_value": "Ig-like C1-type",
+    "reasoning": "The \"Ig-like C1-type\" domain in P01910 is structurally related to immunoglobulin domains, which are known to be involved in antigen recognition and binding. However, it does not directly describe the specific molecular function of binding to a class II MHC ligand, so it is not a perfect match."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P01730",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of binding to a class II major histocompatibility complex as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0030021": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O55189",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for O55189 do not provide any evidence that directly explains why it carries the GO term \"extracellular matrix structural constituent conferring compression resistance.\" No positional feature matches the primary reaction or mechanism described in the GO definition, which is about enabling the extracellular matrix to resist compressive forces."
+   },
+   {
+    "accession": "P07585",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P13727",
+    "reason": "none_verdict",
+    "reasoning": "The DOMAIN feature is associated with C-type lectin activity, which may be part of a larger structural role in the extracellular matrix. However, it does not specifically or strongly explain the primary reaction of resisting compressive forces as defined by the GO term."
+   },
+   {
+    "accession": "P51884",
+    "reason": "none_verdict",
+    "reasoning": "The \"DOMAIN\" annotation with coordinates 27-66 for P51884 is the only positional feature provided, and it refers to a Leu-rich repeat domain. While Leu-rich repeats are commonly associated with proteoglycans and structural roles in the extracellular matrix, the specific domain type or its role in compression resistance is not explicitly stated in the annotation. This makes it a weak match to the G"
    }
   ]
  }

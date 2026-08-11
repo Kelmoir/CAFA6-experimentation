@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P60570",
+      "go_id": "GO:0022840",
+      "feature_type": "REGION",
+      "start": 406,
+      "end": 426,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The disordered region (REGION 406-426) is most plausibly linked to the function of enabling solute transport through a pore channel, as it could provide the structural flexibility necessary for forming and maintaining the pore. This feature directly supports the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q02094",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9JIP4",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature provided for Q9JIP4 matches the primary reaction of enabling solute transport via a leak channel. The domain/family cross-references suggest the protein may be related to leak channels, but they are not positional features that explain the function."
+    },
+    {
+      "accession": "Q8IZF0",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature in the annotated features of Q8IZF0 specifically matches the primary reaction or mechanism described in the GO term's definition. The domain/family cross-references suggest a possible involvement in leak channels, but they are not positional features and do not directly explain why the protein carries this GO term."
+    }
+  ]
+}

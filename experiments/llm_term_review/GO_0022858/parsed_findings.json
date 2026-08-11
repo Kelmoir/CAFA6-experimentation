@@ -1,0 +1,28 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P31641",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's data directly describes the core function of transferring alanine across a membrane, which is the primary reaction defined by GO:0022858."
+    },
+    {
+      "accession": "P31643",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the defined reaction of transferring alanine across a membrane."
+    },
+    {
+      "accession": "Q7Z2H8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides direct evidence of the transmembrane transporter activity defined by GO:0022858. The only domain-related cross-references are generic and do not specify a particular transmembrane structure or function in Q7Z2H8."
+    },
+    {
+      "accession": "Q8K4D3",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for Q8K4D3 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The Pfam:PF01490 motif is specifically associated with alanine transporters and directly matches the defined function of \"alanine transmembrane transporter activity,\" making it a strong and specific match."
+    }
+  ]
+}

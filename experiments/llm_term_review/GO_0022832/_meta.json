@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0022832",
+  "name": "voltage-gated channel activity",
+  "def": "Enables the transmembrane transfer of a solute by a channel whose open state is dependent on the voltage across the membrane in which it is embedded.",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "D3Z291",
+    "O57474",
+    "P22152",
+    "Q9ULQ1"
+  ],
+  "assigned_accessions": [
+    "D3Z291",
+    "O57474",
+    "P22152",
+    "Q9ULQ1"
+  ]
+}

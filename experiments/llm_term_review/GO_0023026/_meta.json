@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0023026",
+  "name": "MHC class II protein complex binding",
+  "def": "Binding to a class II major histocompatibility complex.",
+  "n_proteins_total": 43,
+  "sampled_accessions": [
+    "P01730",
+    "P01887",
+    "P01909",
+    "P01910"
+  ],
+  "assigned_accessions": [
+    "P01730",
+    "P01887",
+    "P01909",
+    "P01910"
+  ]
+}

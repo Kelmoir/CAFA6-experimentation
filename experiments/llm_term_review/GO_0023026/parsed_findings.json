@@ -1,0 +1,43 @@
+{
+  "resolved": [
+    {
+      "accession": "P01887",
+      "go_id": "GO:0023026",
+      "feature_type": "DOMAIN",
+      "start": 24,
+      "end": 114,
+      "signal_kind": "text",
+      "signal_value": "Ig-like C1-type",
+      "reasoning": "The DOMAIN annotation (24-114) with the note \"Ig-like C1-type\" provides structural evidence that supports the protein's involvement in immune recognition, which is consistent with the GO term \"MHC class II protein complex binding.\" While it does not explicitly state the binding activity, it is more specific than generic domain references and aligns with the primary reaction implied by the definiti"
+    },
+    {
+      "accession": "P01909",
+      "go_id": "GO:0023026",
+      "feature_type": "DOMAIN",
+      "start": 111,
+      "end": 204,
+      "signal_kind": "text",
+      "signal_value": "Ig-like C1-type",
+      "reasoning": "The \"Ig-like C1-type\" domain in the 111-204 region of P01909 directly matches the primary reaction of binding to a class II major histocompatibility complex, which is the defining chemistry of the GO term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P01910",
+      "go_id": "GO:0023026",
+      "feature_type": "DOMAIN",
+      "start": 113,
+      "end": 206,
+      "signal_kind": "text",
+      "signal_value": "Ig-like C1-type",
+      "reasoning": "The \"Ig-like C1-type\" domain in P01910 is structurally related to immunoglobulin domains, which are known to be involved in antigen recognition and binding. However, it does not directly describe the specific molecular function of binding to a class II MHC ligand, so it is not a perfect match."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P01730",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of binding to a class II major histocompatibility complex as defined by the GO term."
+    }
+  ]
+}
