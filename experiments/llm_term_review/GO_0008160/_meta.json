@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008160",
+  "name": "protein tyrosine phosphatase activator activity",
+  "def": "Binds to and increases the activity of a phosphotyrosine phosphatase, an enzyme which catalyzes of the removal of a phosphate group from a tyrosyl phenolic group of a protein.",
+  "n_proteins_total": 16,
+  "sampled_accessions": [
+    "P15473",
+    "Q15257",
+    "Q9ERB4",
+    "Q9ULF5"
+  ],
+  "assigned_accessions": [
+    "P15473",
+    "Q15257",
+    "Q9ERB4",
+    "Q9ULF5"
+  ]
+}

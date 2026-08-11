@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P86547",
+      "go_id": "GO:0008147",
+      "feature_type": "DOMAIN",
+      "start": 45,
+      "end": 92,
+      "signal_kind": "text",
+      "signal_value": "Gla",
+      "reasoning": "The \"DOMAIN 45-92\" with the note \"Gla\" is the most plausible candidate for explaining why P86547 carries the GO term \"structural constituent of bone,\" as it could be part of a domain involved in bone-related functions."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P04640",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly supports the primary reaction of contributing to bone's structural integrity as defined by the GO term."
+    },
+    {
+      "accession": "P83238",
+      "reason": "none_verdict",
+      "reasoning": "The protein P83238 has multiple binding sites for Ca(2+), which suggests a role in calcium regulation, but no annotated feature directly supports the primary reaction of contributing to the structural integrity of bone as defined by GO:0008147."
+    },
+    {
+      "accession": "Q800Y1",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

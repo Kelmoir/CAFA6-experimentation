@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008147",
+  "name": "structural constituent of bone",
+  "def": "The action of a molecule that contributes to the structural integrity of bone.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "P04640",
+    "P83238",
+    "P86547",
+    "Q800Y1"
+  ],
+  "assigned_accessions": [
+    "P04640",
+    "P83238",
+    "P86547",
+    "Q800Y1"
+  ]
+}

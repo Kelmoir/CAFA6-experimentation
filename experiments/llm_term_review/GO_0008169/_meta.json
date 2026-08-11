@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008169",
+  "name": "C-methyltransferase activity",
+  "def": "Catalysis of the transfer of a methyl group to the carbon atom of an acceptor molecule.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8IZ69"
+  ],
+  "assigned_accessions": [
+    "Q8IZ69"
+  ]
+}

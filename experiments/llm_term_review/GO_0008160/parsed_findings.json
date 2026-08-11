@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P15473",
+      "go_id": "GO:0008160",
+      "feature_type": "DOMAIN",
+      "start": 35,
+      "end": 119,
+      "signal_kind": "text",
+      "signal_value": "IGFBP N-terminal",
+      "reasoning": "The \"IGFBP N-terminal\" domain in P15473 is most plausibly associated with the function of increasing phosphotyrosine phosphatase activity, as it directly relates to the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q15257",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for this protein do not provide any specific evidence that directly explains why it carries the GO term \"protein tyrosine phosphatase activator activity.\" All features are either generic binding events or refer to disordered regions, which do not align with the primary reaction of increasing phosphotyrosine phosphatase activity."
+    },
+    {
+      "accession": "Q9ERB4",
+      "reason": "none_verdict",
+      "reasoning": "The highest-scoring candidate (DOMAIN 2468-2505) is associated with EGF-like proteins and includes a calcium-binding site, but it does not directly explain why the protein carries the GO term \"protein tyrosine phosphatase activator activity.\" No other annotated feature provides a clear structural or functional basis for this term."
+    },
+    {
+      "accession": "Q9ULF5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q9ULF5 provides a strong match to the primary reaction described in the definition of GO:0008160, which involves binding and increasing the activity of a phosphotyrosine phosphatase. The disordered regions do not offer structural evidence of this function."
+    }
+  ]
+}

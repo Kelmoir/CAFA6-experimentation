@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P98163",
+      "go_id": "GO:0008196",
+      "feature_type": "SITE",
+      "start": 1836,
+      "end": 1837,
+      "signal_kind": "text",
+      "signal_value": "Critical for endocytosis",
+      "reasoning": "The \"SITE\" annotation at position 1836-1837 directly supports the primary reaction of delivering vitellogenin via endocytosis, which is the core function defined for GO:0008196."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

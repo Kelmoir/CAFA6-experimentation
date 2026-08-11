@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008187",
+  "name": "poly-pyrimidine tract binding",
+  "def": "Binding to a stretch of pyrimidines (cytosine or uracil) in an RNA molecule.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "P26368",
+    "P90978",
+    "Q03267",
+    "Q9VAW5"
+  ],
+  "assigned_accessions": [
+    "P26368",
+    "P90978",
+    "Q03267",
+    "Q9VAW5"
+  ]
+}

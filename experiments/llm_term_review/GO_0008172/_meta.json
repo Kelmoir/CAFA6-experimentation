@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008172",
+  "name": "S-methyltransferase activity",
+  "def": "Catalysis of the transfer of a methyl group to the sulfur atom of an acceptor molecule.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P46597"
+  ],
+  "assigned_accessions": [
+    "P46597"
+  ]
+}

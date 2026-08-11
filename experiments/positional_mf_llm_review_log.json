@@ -5056,5 +5056,211 @@
     "reasoning": "No annotated feature in the provided data directly matches the primary reaction mechanism of NADH dehydrogenase (ubiquinone) activity, which involves electron transfer from NADH to ubiquinone. The presence of multiple binding sites for [4Fe-4S] does not imply that this protein is specifically involved in the defined enzymatic function."
    }
   ]
+ },
+ "GO:0008145": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P54191",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0008147": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Gla",
+    "accessions": [
+     "P86547"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P04640",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly supports the primary reaction of contributing to bone's structural integrity as defined by the GO term."
+   },
+   {
+    "accession": "P83238",
+    "reason": "none_verdict",
+    "reasoning": "The protein P83238 has multiple binding sites for Ca(2+), which suggests a role in calcium regulation, but no annotated feature directly supports the primary reaction of contributing to the structural integrity of bone as defined by GO:0008147."
+   },
+   {
+    "accession": "Q800Y1",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0008160": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "IGFBP N-terminal",
+    "accessions": [
+     "P15473"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q15257",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for this protein do not provide any specific evidence that directly explains why it carries the GO term \"protein tyrosine phosphatase activator activity.\" All features are either generic binding events or refer to disordered regions, which do not align with the primary reaction of increasing phosphotyrosine phosphatase activity."
+   },
+   {
+    "accession": "Q9ERB4",
+    "reason": "none_verdict",
+    "reasoning": "The highest-scoring candidate (DOMAIN 2468-2505) is associated with EGF-like proteins and includes a calcium-binding site, but it does not directly explain why the protein carries the GO term \"protein tyrosine phosphatase activator activity.\" No other annotated feature provides a clear structural or functional basis for this term."
+   },
+   {
+    "accession": "Q9ULF5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9ULF5 provides a strong match to the primary reaction described in the definition of GO:0008160, which involves binding and increasing the activity of a phosphotyrosine phosphatase. The disordered regions do not offer structural evidence of this function."
+   }
+  ]
+ },
+ "GO:0008169": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "Q8IZ69"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0008172": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "P46597"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0008187": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "RRM 1",
+    "accessions": [
+     "P26368",
+     "P90978"
+    ],
+    "reason": "resolved to ['InterPro:IPR000504', 'PROSITE:PS50102', 'Pfam:PF00076'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000504': 810, 'PROSITE:PS50102': 794, 'Pfam:PF00076': 726})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q03267",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein Q03267 specifically matches the primary reaction or mechanism of \"poly-pyrimidine tract binding\" as defined by GO:0008187. All features either refer to different types of binding (DNA, protein-protein) or are generic without specifying the pyrimidine tract recognition activity."
+   },
+   {
+    "accession": "Q9VAW5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct structural or functional explanation for the defined reaction of \"poly-pyrimidine tract binding\" in this protein."
+   }
+  ]
+ },
+ "GO:0008188": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "D4A4Q2",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for D4A4Q2 is a \"REGION\" spanning from 304 to 326 aa, which is marked as \"Disordered.\" This does not provide any evidence about the protein's ability to bind neuropeptides or initiate a change in cell activity. Since no other features are present and the only feature is generic and not specific to the GO term's definition, there is no plausible explanation for why D4A4Q2"
+   },
+   {
+    "accession": "P21729",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P56481",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P56481's list provides a direct explanation for the defined reaction of \"neuropeptide receptor activity\" as described by GO:0008188."
+   },
+   {
+    "accession": "Q80UC8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0008196": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Critical for endocytosis",
+    "accessions": [
+     "P98163"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P46597",
+      "go_id": "GO:0008172",
+      "feature_type": "BINDING",
+      "start": 255,
+      "end": 256,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site with \"substrate\" as a ligand directly matches the primary reaction of the S-methyltransferase activity, which involves transferring a methyl group to an acceptor molecule."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
