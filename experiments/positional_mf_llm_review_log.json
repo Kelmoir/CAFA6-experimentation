@@ -4830,6 +4830,37 @@
    }
   ]
  },
+ "GO:0005550": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0A0R4IM31",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P11588",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9EPB8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9EQ47",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0008012": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -4862,6 +4893,44 @@
    }
   ]
  },
+ "GO:0008048": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Ca(2+)",
+    "accessions": [
+     "P43081"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "EF-hand 1",
+    "accessions": [
+     "Q8BNY6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O95843",
+    "reason": "none_verdict",
+    "reasoning": "No single annotated feature provides a clear explanation for the primary reaction of increasing guanylate cyclase activity in response to calcium concentration changes."
+   },
+   {
+    "accession": "P35243",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain why the protein carries the GO term \"calcium sensitive guanylate cyclase activator activity.\" The definition focuses on the mechanism of increasing activity in response to calcium, which is not explained by any of the binding sites or other features."
+   }
+  ]
+ },
  "GO:0008098": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -4880,5 +4949,112 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0008109": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O95395",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P97402",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q5JCT0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9P109",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0008126": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Acyl-ester intermediate",
+    "accessions": [
+     "P08171"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P08910",
+    "go_id": "GO:0008126",
+    "feature_type": "ACT_SITE",
+    "start": 206,
+    "end": 207,
+    "signal_kind": "text",
+    "signal_value": "Nucleophile",
+    "reasoning": "The ACT SITE 206-207 annotation indicates a nucleophile, which is consistent with the hydrolysis reaction described in the GO term's definition. However, this feature does not specifically explain the chemistry of acetylesterase activity and is more general in its description."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q54H38",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q54H38 specifically matches the primary reaction mechanism of acetylesterase activity, which involves catalyzing an esterification reaction. The \"ACT_SITE\" annotations refer to a charge relay system, not the enzyme's active site for this specific function."
+   },
+   {
+    "accession": "Q9STM6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section directly explains why it carries the GO term \"acetylesterase activity\" \u2014 the evidence is too generic or indirect."
+   }
+  ]
+ },
+ "GO:0008137": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "[4Fe-4S] cluster",
+    "accessions": [
+     "Q8K3J1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P18930",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q42599",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction of NADH dehydrogenase (ubiquinone) activity as defined by the GO term, which involves catalyzing the transfer of electrons from NADH to ubiquinone with proton translocation. The binding sites for the [4Fe-4S] cluster are generic and do not provide a mechanistically specific explanation for the defined reaction."
+   },
+   {
+    "accession": "Q93873",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data directly matches the primary reaction mechanism of NADH dehydrogenase (ubiquinone) activity, which involves electron transfer from NADH to ubiquinone. The presence of multiple binding sites for [4Fe-4S] does not imply that this protein is specifically involved in the defined enzymatic function."
+   }
+  ]
  }
 }

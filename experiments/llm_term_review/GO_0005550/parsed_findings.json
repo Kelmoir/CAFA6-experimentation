@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A0A0R4IM31",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P11588",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9EPB8",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9EQ47",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

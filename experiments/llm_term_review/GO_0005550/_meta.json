@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0005550",
+  "name": "pheromone binding",
+  "def": "Binding to a pheromone, a substance, or characteristic mixture of substances, that is secreted and released by an organism and detected by a second organism of the same or a closely related species, in which it causes a specific reaction, such as a definite behavioral reaction or a developmental process.",
+  "n_proteins_total": 30,
+  "sampled_accessions": [
+    "A0A0R4IM31",
+    "P11588",
+    "Q9EPB8",
+    "Q9EQ47"
+  ],
+  "assigned_accessions": [
+    "A0A0R4IM31",
+    "P11588",
+    "Q9EPB8",
+    "Q9EQ47"
+  ]
+}

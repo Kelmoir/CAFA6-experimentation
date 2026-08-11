@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P43081",
+      "go_id": "GO:0008048",
+      "feature_type": "BINDING",
+      "start": 63,
+      "end": 64,
+      "signal_kind": "ligand",
+      "signal_value": "Ca(2+)",
+      "reasoning": "The binding site at position 63-64 directly interacts with Ca(2+), which is the primary stimulus for increasing guanylate cyclase activity, matching the GO term's definition specifically."
+    },
+    {
+      "accession": "Q8BNY6",
+      "go_id": "GO:0008048",
+      "feature_type": "DOMAIN",
+      "start": 23,
+      "end": 59,
+      "signal_kind": "text",
+      "signal_value": "EF-hand 1",
+      "reasoning": "The EF-hand domain in position 23-59 is directly involved in calcium binding, which is essential for the function described by GO:0008048. This matches the primary reaction of increasing guanylate cyclase activity in response to a change in calcium ion concentration."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O95843",
+      "reason": "none_verdict",
+      "reasoning": "No single annotated feature provides a clear explanation for the primary reaction of increasing guanylate cyclase activity in response to calcium concentration changes."
+    },
+    {
+      "accession": "P35243",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly explain why the protein carries the GO term \"calcium sensitive guanylate cyclase activator activity.\" The definition focuses on the mechanism of increasing activity in response to calcium, which is not explained by any of the binding sites or other features."
+    }
+  ]
+}

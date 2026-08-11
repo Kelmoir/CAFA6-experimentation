@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008137",
+  "name": "NADH dehydrogenase (ubiquinone) activity",
+  "def": "Catalysis of the reaction: NADH + ubiquinone + 5 H+(in) = NAD+ + ubiquinol + 4 H+(out).",
+  "n_proteins_total": 176,
+  "sampled_accessions": [
+    "P18930",
+    "Q42599",
+    "Q8K3J1",
+    "Q93873"
+  ],
+  "assigned_accessions": [
+    "P18930",
+    "Q42599",
+    "Q8K3J1",
+    "Q93873"
+  ]
+}

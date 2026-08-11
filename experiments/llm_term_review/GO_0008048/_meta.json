@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008048",
+  "name": "calcium sensitive guanylate cyclase activator activity",
+  "def": "Binds to and increases the activity of guanylate cyclase in response to a change in calcium ion concentration.",
+  "n_proteins_total": 14,
+  "sampled_accessions": [
+    "O95843",
+    "P35243",
+    "P43081",
+    "Q8BNY6"
+  ],
+  "assigned_accessions": [
+    "O95843",
+    "P35243",
+    "P43081",
+    "Q8BNY6"
+  ]
+}

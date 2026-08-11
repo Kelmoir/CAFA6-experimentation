@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008126",
+  "name": "acetylesterase activity",
+  "def": "Catalysis of the reaction: an acetic ester + H2O = an alcohol + acetate.",
+  "n_proteins_total": 27,
+  "sampled_accessions": [
+    "P08171",
+    "P08910",
+    "Q54H38",
+    "Q9STM6"
+  ],
+  "assigned_accessions": [
+    "P08171",
+    "P08910",
+    "Q54H38",
+    "Q9STM6"
+  ]
+}

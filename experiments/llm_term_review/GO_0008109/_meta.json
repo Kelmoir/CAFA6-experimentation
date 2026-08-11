@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008109",
+  "name": "N-acetyllactosaminide beta-1,6-N-acetylglucosaminyltransferase activity",
+  "def": "Catalysis of the reaction: UDP-N-acetyl-D-glucosamine + beta-D-galactosyl-1,4-N-acetyl-D-glucosaminyl-R = UDP + N-acetyl-beta-D-glucosaminyl-1,6-beta-D-galactosyl-1,4-N-acetyl-D-glucosaminyl-R.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "O95395",
+    "P97402",
+    "Q5JCT0",
+    "Q9P109"
+  ],
+  "assigned_accessions": [
+    "O95395",
+    "P97402",
+    "Q5JCT0",
+    "Q9P109"
+  ]
+}
