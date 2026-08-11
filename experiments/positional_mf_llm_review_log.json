@@ -11336,6 +11336,37 @@
    }
   ]
  },
+ "GO:0016859": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WPB1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P9WPB1 specifically matches the primary reaction of the cis-trans isomerase activity GO term, which involves interconverting cis and trans isomers. The ligand annotations are generic and do not directly explain the catalytic mechanism described in the GO definition."
+   },
+   {
+    "accession": "Q13526",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature in the given evidence for protein Q13526 that directly or specifically matches the primary reaction mechanism of the GO term \"cis-trans isomerase activity.\""
+   },
+   {
+    "accession": "Q5F3C1",
+    "reason": "none_verdict",
+    "reasoning": "The motif \"Histidine box-1\" is associated with the broader category of isomerase activity but does not specifically explain the cis-trans isomerization reaction described by the GO term's definition. No other annotated feature provides a more direct explanation of the defined chemistry."
+   },
+   {
+    "accession": "Q9QUR7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9QUR7 matches the primary reaction of cis-trans isomerase activity as defined by the GO term."
+   }
+  ]
+ },
  "GO:0016875": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -11354,5 +11385,162 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0016896": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "RNB",
+    "accessions": [
+     "P21499"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Nudix hydrolase",
+    "accessions": [
+     "Q8IU60"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0A8V0",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for this protein do not provide any evidence that directly matches the primary reaction of the GO term \"RNA exonuclease activity, producing 5'-phosphomonoesters.\" All features describe binding sites for Zn(2+) and are catalytic, but they do not explain the enzyme's mechanism of removing nucleotides from RNA ends to produce phosphomonoesters."
+   }
+  ]
+ },
+ "GO:0016905": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Catalytic",
+    "accessions": [
+     "P42527"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Alpha-type protein kinase",
+    "accessions": [
+     "Q54DK4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q54SF9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the catalytic activity of ATP transfer to myosin-heavy-chain, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "Q869N2",
+    "reason": "none_verdict",
+    "reasoning": "The given protein's annotated features do not provide any specific evidence that directly explains why it carries the GO term \"myosin heavy chain kinase activity.\" While ATP binding is relevant, no domain or region explicitly describes the phosphoryl transfer mechanism."
+   }
+  ]
+ },
+ "GO:0016907": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "P-X-P-P motif",
+    "accessions": [
+     "Q9ERZ4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P20309",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves acetylcholine binding and G-protein activation. The available features are either generic or describe secondary consequences rather than the core mechanism of the term."
+   },
+   {
+    "accession": "P32211",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for P32211 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The Pfam:PF00001 motif is associated with GPCRs and could plausibly explain the function of the protein, but there is no positional evidence that confirms this specific feature is responsible for the GO term's defined chemistry."
+   },
+   {
+    "accession": "Q920H4",
+    "reason": "unresolved_pointer",
+    "detail": "no matching INTERPRO:IPR0017452 264-290 on record for Q920H4 -- pointer didn't resolve",
+    "reported_feature": "INTERPRO:IPR0017452 264-290",
+    "reasoning": "The \"GPCR_Rhodpsn_7TM\" domain (InterPro:IPR0017452) is specifically associated with the seven-transmembrane structure of GPCRs, which matches the primary reaction described in the GO term. This provides a strong and specific match to the function of acetylcholine receptor activity."
+   }
+  ]
+ },
+ "GO:0016941": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P17342",
+    "reason": "none_verdict",
+    "reasoning": "The binding site at position 105-106 is annotated for chloride, which is not the ligand described in the GO term's definition. Hence, this feature does not specifically explain why the protein carries the GO term \"natriuretic peptide receptor activity.\""
+   },
+   {
+    "accession": "P41740",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P70180",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the GO term's primary reaction of binding to a natriuretic peptide and transmitting a signal. All binding sites are for chloride, not natriuretic peptides, so there is no strong match with the GO term's own chemistry."
+   },
+   {
+    "accession": "P16066",
+    "reason": "none_verdict",
+    "reasoning": "The domain \"DOMAIN 527-805\" is associated with \"Protein kinase,\" which could be relevant to signal transduction, but it does not directly explain the ability to bind natriuretic peptides or initiate a change in cell activity through such binding. No other annotated feature provides evidence for the primary reaction described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0017084": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P54887",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly supports the phosphorelay mechanism described in the GO term's definition."
+   }
+  ]
  }
 }

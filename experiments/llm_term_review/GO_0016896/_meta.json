@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0016896",
+  "name": "RNA exonuclease activity, producing 5'-phosphomonoesters",
+  "def": "Catalysis of the hydrolysis of ester linkages within ribonucleic acids by removing nucleotide residues from the 3' or 5' end to yield 5' phosphomonoesters.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P0A8V0",
+    "P21499",
+    "Q8IU60"
+  ],
+  "assigned_accessions": [
+    "P0A8V0",
+    "P21499",
+    "Q8IU60"
+  ]
+}

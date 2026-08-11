@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P42527",
+      "go_id": "GO:0016905",
+      "feature_type": "REGION",
+      "start": 551,
+      "end": 852,
+      "signal_kind": "text",
+      "signal_value": "Catalytic",
+      "reasoning": "The \"Catalytic\" region (551-852) directly matches the primary reaction of transferring a phosphoryl group from ATP to myosin heavy chain, which is the core mechanism defined by GO:0016905. This feature provides a strong and specific match to the term's chemistry."
+    },
+    {
+      "accession": "Q54DK4",
+      "go_id": "GO:0016905",
+      "feature_type": "DOMAIN",
+      "start": 989,
+      "end": 1194,
+      "signal_kind": "text",
+      "signal_value": "Alpha-type protein kinase",
+      "reasoning": "The Alpha-type protein kinase domain directly matches the catalytic activity of the myosin heavy chain kinase, as it is involved in ATP-dependent phosphorylation reactions."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q54SF9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the catalytic activity of ATP transfer to myosin-heavy-chain, which is the primary reaction defined by the GO term."
+    },
+    {
+      "accession": "Q869N2",
+      "reason": "none_verdict",
+      "reasoning": "The given protein's annotated features do not provide any specific evidence that directly explains why it carries the GO term \"myosin heavy chain kinase activity.\" While ATP binding is relevant, no domain or region explicitly describes the phosphoryl transfer mechanism."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016905",
+  "name": "myosin heavy chain kinase activity",
+  "def": "Catalysis of the reaction: ATP + myosin-heavy-chain = ADP + myosin-heavy-chain phosphate.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P42527",
+    "Q54DK4",
+    "Q54SF9",
+    "Q869N2"
+  ],
+  "assigned_accessions": [
+    "P42527",
+    "Q54DK4",
+    "Q54SF9",
+    "Q869N2"
+  ]
+}

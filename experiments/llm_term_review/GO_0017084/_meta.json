@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0017084",
+  "name": "delta1-pyrroline-5-carboxylate synthetase activity",
+  "def": "Catalysis of the reaction: ATP + H+ + L-glutamate + NADPH = ADP + L-glutamate 5-semialdehyde + NADP+ + phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P54887"
+  ],
+  "assigned_accessions": [
+    "P54887"
+  ]
+}

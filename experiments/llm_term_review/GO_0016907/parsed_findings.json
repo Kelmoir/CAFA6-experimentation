@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9ERZ4",
+      "go_id": "GO:0016907",
+      "feature_type": "MOTIF",
+      "start": 306,
+      "end": 310,
+      "signal_kind": "text",
+      "signal_value": "P-X-P-P motif",
+      "reasoning": "The P-X-P-P motif directly matches the defined mechanism of G protein-coupled receptor activity, which involves acetylcholine binding and G-protein activation. This feature provides a strong, specific match to the GO term's primary reaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P20309",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves acetylcholine binding and G-protein activation. The available features are either generic or describe secondary consequences rather than the core mechanism of the term."
+    },
+    {
+      "accession": "P32211",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for P32211 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The Pfam:PF00001 motif is associated with GPCRs and could plausibly explain the function of the protein, but there is no positional evidence that confirms this specific feature is responsible for the GO term's defined chemistry."
+    },
+    {
+      "accession": "Q920H4",
+      "reason": "unresolved_pointer",
+      "detail": "no matching INTERPRO:IPR0017452 264-290 on record for Q920H4 -- pointer didn't resolve",
+      "reported_feature": "INTERPRO:IPR0017452 264-290",
+      "reasoning": "The \"GPCR_Rhodpsn_7TM\" domain (InterPro:IPR0017452) is specifically associated with the seven-transmembrane structure of GPCRs, which matches the primary reaction described in the GO term. This provides a strong and specific match to the function of acetylcholine receptor activity."
+    }
+  ]
+}

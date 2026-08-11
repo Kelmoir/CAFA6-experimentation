@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P54887",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly supports the phosphorelay mechanism described in the GO term's definition."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016859",
+  "name": "cis-trans isomerase activity",
+  "def": "Catalysis of a reaction that interconverts cis and trans isomers. Atoms or groups are termed cis or trans to one another when they lie respectively on the same or on opposite sides of a reference plane identifiable as common among stereoisomers.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P9WPB1",
+    "Q13526",
+    "Q5F3C1",
+    "Q9QUR7"
+  ],
+  "assigned_accessions": [
+    "P9WPB1",
+    "Q13526",
+    "Q5F3C1",
+    "Q9QUR7"
+  ]
+}
