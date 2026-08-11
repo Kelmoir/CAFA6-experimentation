@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0015495",
+  "name": "gamma-aminobutyric acid:proton symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: gamma-aminobutyric acid(out) + H+(out) = gamma-aminobutyric acid(in) + H+(in).",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P32837",
+    "Q9H598",
+    "Q9VA73"
+  ],
+  "assigned_accessions": [
+    "P32837",
+    "Q9H598",
+    "Q9VA73"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015553",
+  "name": "xanthosine transmembrane transporter activity",
+  "def": "Enables the transfer of xanthosine, xanthine riboside, from one side of a membrane to the other.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P45562"
+  ],
+  "assigned_accessions": [
+    "P45562"
+  ]
+}

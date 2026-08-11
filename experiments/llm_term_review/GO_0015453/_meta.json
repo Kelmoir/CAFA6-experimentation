@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015453",
+  "name": "oxidoreduction-driven active transmembrane transporter activity",
+  "def": "Primary active transport of a solute across a membrane, driven by exothermic flow of electrons from a reduced substrate to an oxidized substrate. Primary active transport is catalysis of the transport of a solute across a membrane, up the solute's concentration gradient, by binding the solute and undergoing a series of conformational changes. Transport works equally well in either direction and is driven by a primary energy source.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P0ABI8",
+    "P0ABJ1",
+    "P0ABJ3",
+    "P0ABJ6"
+  ],
+  "assigned_accessions": [
+    "P0ABI8",
+    "P0ABJ1",
+    "P0ABJ3",
+    "P0ABJ6"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P0AE06",
+      "go_id": "GO:0015567",
+      "feature_type": "REGION",
+      "start": 312,
+      "end": 397,
+      "signal_kind": "text",
+      "signal_value": "Required for growth on efflux drugs",
+      "reasoning": "The highest-scoring feature (REGION 312-397) is not directly tied to the primary reaction of alkane transmembrane transporter activity, as it is noted to be required for growth on efflux drugs rather than explaining the actual transport mechanism. Therefore, while this region may be part of a related system, it does not specifically explain why P0AE06 carries the GO term \"alkane transmembrane tran"
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P31224",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains the molecular function defined by the GO term \"alkane transmembrane transporter activity.\" The binding site for deoxycholate is not specific to alkanes and does not provide a clear mechanism for alkane transport."
+    }
+  ]
+}

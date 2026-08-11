@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015527",
+  "name": "glycerol-phosphate:phosphate antiporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: glycerol phosphate(out) + phosphate(in) = glycerol phosphate(in) + phosphate(out).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P08194"
+  ],
+  "assigned_accessions": [
+    "P08194"
+  ]
+}

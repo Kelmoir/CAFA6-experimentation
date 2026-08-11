@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8VZ80",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear structural or functional basis for the defined reaction of mannitol transport. The disordered regions do not directly support the GO term's primary function."
+    }
+  ]
+}

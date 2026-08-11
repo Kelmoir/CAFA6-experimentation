@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9VA73",
+      "go_id": "GO:0015495",
+      "feature_type": "REGION",
+      "start": 335,
+      "end": 627,
+      "signal_kind": "text",
+      "signal_value": "Carrier domain",
+      "reasoning": "The \"Carrier domain\" annotation directly matches the defined reaction of transferring gamma-aminobutyric acid and protons across a membrane, making it the most plausible structural/functional basis for the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P32837",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9H598",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q9H598 provides a clear structural or functional basis that directly explains the defined reaction of transferring gamma-aminobutyric acid and protons across a membrane. The only features provided are generic and do not align with the primary mechanism described in the GO term's definition."
+    }
+  ]
+}

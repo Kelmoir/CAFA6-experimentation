@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015575",
+  "name": "mannitol transmembrane transporter activity",
+  "def": "Enables the transfer of mannitol from one side of a membrane to the other. Mannitol is the alditol derived from D-mannose by reduction of the aldehyde group.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8VZ80"
+  ],
+  "assigned_accessions": [
+    "Q8VZ80"
+  ]
+}

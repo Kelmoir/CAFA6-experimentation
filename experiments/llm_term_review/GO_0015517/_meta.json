@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015517",
+  "name": "galactose:proton symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: galactose(out) + H+(out) = galactose(in) + H+(in).",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P0AEP1",
+    "P11551",
+    "Q8K4S3",
+    "Q9Y2W3"
+  ],
+  "assigned_accessions": [
+    "P0AEP1",
+    "P11551",
+    "Q8K4S3",
+    "Q9Y2W3"
+  ]
+}

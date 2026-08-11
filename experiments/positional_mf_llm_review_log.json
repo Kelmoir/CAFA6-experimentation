@@ -9663,6 +9663,41 @@
    }
   ]
  },
+ "GO:0015453": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ubiquinone-8",
+    "accessions": [
+     "P0ABI8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0ABJ1",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for P0ABJ1 is a generic region span with no specific functional annotation, making it unable to explain the GO term's primary reaction of active transmembrane transport driven by electron flow."
+   },
+   {
+    "accession": "P0ABJ3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P0ABJ6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0015483": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -9676,6 +9711,67 @@
     "accession": "P10384",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015495": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Carrier domain",
+    "accessions": [
+     "Q9VA73"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P32837",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9H598",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9H598 provides a clear structural or functional basis that directly explains the defined reaction of transferring gamma-aminobutyric acid and protons across a membrane. The only features provided are generic and do not align with the primary mechanism described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0015517": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AEP1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P11551",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature with a specified type and exact coordinates matches the primary reaction described in the GO term's definition, so it is not possible to determine which one of the features plausibly explains why P11551 carries the term."
+   },
+   {
+    "accession": "Q8K4S3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9Y2W3",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9Y2W3 has no positional features explicitly annotated that directly explain the \"galactose:proton symporter activity\" GO term. While domain/family cross-references suggest involvement in transport processes, they do not provide a specific positional feature that matches the defined chemistry of the GO term. Therefore, there is no single annotated feature that can be confidently identi"
    }
   ]
  },
@@ -9708,6 +9804,138 @@
     "accession": "P0AGF4",
     "reason": "none_verdict",
     "reasoning": "No annotated feature for P0AGF4 directly describes the molecular function of D-xylose:proton symporter activity as defined in the GO term."
+   }
+  ]
+ },
+ "GO:0015527": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P08194",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015528": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Substrate binding and proton translocation",
+    "accessions": [
+     "P02920"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q47142",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015530": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P76350",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015553": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P45562",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015567": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P0AE06",
+    "go_id": "GO:0015567",
+    "feature_type": "REGION",
+    "start": 312,
+    "end": 397,
+    "signal_kind": "text",
+    "signal_value": "Required for growth on efflux drugs",
+    "reasoning": "The highest-scoring feature (REGION 312-397) is not directly tied to the primary reaction of alkane transmembrane transporter activity, as it is noted to be required for growth on efflux drugs rather than explaining the actual transport mechanism. Therefore, while this region may be part of a related system, it does not specifically explain why P0AE06 carries the GO term \"alkane transmembrane tran"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P31224",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the molecular function defined by the GO term \"alkane transmembrane transporter activity.\" The binding site for deoxycholate is not specific to alkanes and does not provide a clear mechanism for alkane transport."
+   }
+  ]
+ },
+ "GO:0015568": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P39344",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015575": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8VZ80",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the defined reaction of mannitol transport. The disordered regions do not directly support the GO term's primary function."
    }
   ]
  }

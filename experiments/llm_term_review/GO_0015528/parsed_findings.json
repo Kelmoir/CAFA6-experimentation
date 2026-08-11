@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P02920",
+      "go_id": "GO:0015528",
+      "feature_type": "SITE",
+      "start": 268,
+      "end": 269,
+      "signal_kind": "text",
+      "signal_value": "Substrate binding and proton translocation",
+      "reasoning": "The feature SITE 268-269 directly mentions both substrate binding and proton translocation, which are the primary components of the lactose:proton symporter activity defined in the GO term. This strong match to the primary reaction makes it the most plausible explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q47142",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

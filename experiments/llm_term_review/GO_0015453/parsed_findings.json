@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P0ABI8",
+      "go_id": "GO:0015453",
+      "feature_type": "BINDING",
+      "start": 70,
+      "end": 71,
+      "signal_kind": "ligand",
+      "signal_value": "ubiquinone-8",
+      "reasoning": "The binding of ubiquinone-8 at positions 70-71 directly relates to the core reaction described in the GO term's definition, which involves electron transfer and active transport. This feature is the most plausible explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0ABJ1",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for P0ABJ1 is a generic region span with no specific functional annotation, making it unable to explain the GO term's primary reaction of active transmembrane transport driven by electron flow."
+    },
+    {
+      "accession": "P0ABJ3",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P0ABJ6",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

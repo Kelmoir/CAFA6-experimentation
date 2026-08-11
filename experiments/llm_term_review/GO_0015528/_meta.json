@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0015528",
+  "name": "lactose:proton symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: lactose(out) + H+(out) = lactose(in) + H+(in).",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P02920",
+    "Q47142"
+  ],
+  "assigned_accessions": [
+    "P02920",
+    "Q47142"
+  ]
+}

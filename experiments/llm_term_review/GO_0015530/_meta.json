@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015530",
+  "name": "shikimate transmembrane transporter activity",
+  "def": "Enables the transfer of shikimate from one side of a membrane to the other. Shikimate is an important intermediate in the biosynthesis of aromatic amino acids.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P76350"
+  ],
+  "assigned_accessions": [
+    "P76350"
+  ]
+}

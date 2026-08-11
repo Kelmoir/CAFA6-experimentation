@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0015568",
+  "name": "L-idonate transmembrane transporter activity",
+  "def": "Enables the transfer of L-idonate from one side of a membrane to the other. L-idonate is an aldonic acid derived from L-idose, an aldohexose which is epimeric with D-glucose.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P39344"
+  ],
+  "assigned_accessions": [
+    "P39344"
+  ]
+}
