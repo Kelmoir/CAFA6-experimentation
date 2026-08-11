@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016780",
+  "name": "phosphotransferase activity, for other substituted phosphate groups",
+  "def": "Catalysis of the transfer of a substituted phosphate group, other than diphosphate or nucleotidyl residues, from one compound (donor) to a another (acceptor).",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "O75072",
+    "P0AC78",
+    "P76090",
+    "P76226"
+  ],
+  "assigned_accessions": [
+    "O75072",
+    "P0AC78",
+    "P76090",
+    "P76226"
+  ]
+}

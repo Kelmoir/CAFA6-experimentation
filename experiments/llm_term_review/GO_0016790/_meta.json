@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016790",
+  "name": "thiolester hydrolase activity",
+  "def": "Catalysis of the reaction: RCO-SR' + H2O = RCOOH + HSR'. This reaction is the hydrolysis of a thiolester bond, an ester formed from a carboxylic acid and a thiol (i.e., RCO-SR'), such as that found in acetyl-coenzyme A.",
+  "n_proteins_total": 13,
+  "sampled_accessions": [
+    "P75736",
+    "Q9EQ20",
+    "Q9VKH6",
+    "Q9Y7C9"
+  ],
+  "assigned_accessions": [
+    "P75736",
+    "Q9EQ20",
+    "Q9VKH6",
+    "Q9Y7C9"
+  ]
+}

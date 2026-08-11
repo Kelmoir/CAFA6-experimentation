@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016763",
+  "name": "pentosyltransferase activity",
+  "def": "Catalysis of the transfer of a pentosyl group from one compound (donor) to another (acceptor).",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "P23796",
+    "P27008",
+    "P46022",
+    "Q10181"
+  ],
+  "assigned_accessions": [
+    "P23796",
+    "P27008",
+    "P46022",
+    "Q10181"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P9WMX7",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P9WMY3",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q7S0S2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q7S0S2 matches the chemistry of hexosyltransferase activity as defined by GO:0016758."
+    },
+    {
+      "accession": "P9WLV5",
+      "reason": "unresolved_pointer",
+      "detail": "no matching PFAM:PF00535 321-346 on record for P9WLV5 -- pointer didn't resolve",
+      "reported_feature": "PFAM:PF00535 321-346",
+      "reasoning": "The Pfam:PF00535 domain family is associated with glycosyltransferases, which are enzymes that transfer sugar moieties, aligning with the definition of hexosyltransferase activity. However, it does not explicitly confirm the transfer of a hexosyl group, only a broader class of sugar transfer activities."
+    }
+  ]
+}

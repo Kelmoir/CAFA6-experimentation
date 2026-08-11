@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P77455",
+      "go_id": "GO:0016823",
+      "feature_type": "DOMAIN",
+      "start": 536,
+      "end": 648,
+      "signal_kind": "text",
+      "signal_value": "MaoC-like",
+      "reasoning": "The \"MaoC-like\" domain is structurally and functionally related to enzymes that perform hydrolase activity on acid carbon-carbon bonds, which directly matches the primary reaction of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P9WNH5",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features for P9WNH5 specifically explain the phosphoryl transfer mechanism described in the GO term's definition. The highest score (5) is assigned to a site that may be relevant to catalytic activity, but it does not directly account for the chemistry of hydrolase activity on acid carbon-carbon bonds in ketonic substances."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0016778",
+  "name": "diphosphotransferase activity",
+  "def": "Catalysis of the transfer of a diphosphate group from one compound (donor) to a another (acceptor).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0A7B1"
+  ],
+  "assigned_accessions": [
+    "P0A7B1"
+  ]
+}

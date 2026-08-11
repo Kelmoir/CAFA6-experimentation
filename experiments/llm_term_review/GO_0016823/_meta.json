@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0016823",
+  "name": "hydrolase activity, acting on acid carbon-carbon bonds, in ketonic substances",
+  "def": "Catalysis of the hydrolysis of any acid carbon-carbon bond in a ketonic substance, a substance containing a keto (C=O) group.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P77455",
+    "P9WNH5"
+  ],
+  "assigned_accessions": [
+    "P77455",
+    "P9WNH5"
+  ]
+}

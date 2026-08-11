@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P9WMN7",
+      "go_id": "GO:0016782",
+      "feature_type": "DOMAIN",
+      "start": 299,
+      "end": 390,
+      "signal_kind": "text",
+      "signal_value": "Rhodanese",
+      "reasoning": "The DOMAIN 299-390 annotation for P9WMN7 is most plausibly related to the GO term \"transferase activity, transferring sulphur-containing groups\" because it corresponds to the Rhodanese domain, which is known to catalyze sulfur transfer. This directly matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

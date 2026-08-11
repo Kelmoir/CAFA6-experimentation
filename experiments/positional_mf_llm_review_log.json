@@ -10958,5 +10958,201 @@
     "reasoning": "There are no annotated features for Q8RUW5 that directly explain the molecular function defined by GO:0016754, which involves a specific chemical reaction. The ACT_SITE annotations only indicate where the activity occurs, not why the protein carries this term."
    }
   ]
+ },
+ "GO:0016758": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WMX7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P9WMY3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q7S0S2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q7S0S2 matches the chemistry of hexosyltransferase activity as defined by GO:0016758."
+   },
+   {
+    "accession": "P9WLV5",
+    "reason": "unresolved_pointer",
+    "detail": "no matching PFAM:PF00535 321-346 on record for P9WLV5 -- pointer didn't resolve",
+    "reported_feature": "PFAM:PF00535 321-346",
+    "reasoning": "The Pfam:PF00535 domain family is associated with glycosyltransferases, which are enzymes that transfer sugar moieties, aligning with the definition of hexosyltransferase activity. However, it does not explicitly confirm the transfer of a hexosyl group, only a broader class of sugar transfer activities."
+   }
+  ]
+ },
+ "GO:0016763": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P27008",
+    "go_id": "GO:0016763",
+    "feature_type": "BINDING",
+    "start": 295,
+    "end": 296,
+    "signal_kind": "ligand",
+    "signal_value": "Zn(2+)",
+    "reasoning": "The binding site for Zn(2+) with ligand label 3 could plausibly explain why the protein carries the GO term \"pentosyltransferase activity,\" but it's not explicitly stated that this binding site is responsible for pentosyl transfer. Other features are either generic or unrelated to the primary reaction."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P23796",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P46022",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q10181",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0016778": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P0A7B1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0016780": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O75072",
+    "reason": "none_verdict",
+    "reasoning": "The protein O75072 has no annotated feature that directly matches the chemistry of phosphotransferase activity as defined by GO:0016780."
+   },
+   {
+    "accession": "P0AC78",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly describes the catalytic transfer of a substituted phosphate group as defined by GO:0016780. The only domain family associated with this function is not explicitly listed as an annotated feature for P0AC78, and the positional features provided are about substrate orientation rather than the actual phosphotransferase activity."
+   },
+   {
+    "accession": "P76090",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P76226",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0016782": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Rhodanese",
+    "accessions": [
+     "P9WMN7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0016790": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "nucleophile",
+    "accessions": [
+     "Q9EQ20",
+     "Q9VKH6"
+    ],
+    "reason": "agreed, but the note is too short/generic a phrase (or a known-generic catalytic-residue label) to trust as a global substring trigger for this term"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P75736",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature in P75736 that directly supports or explains the thiolester hydrolase activity defined by GO:0016790. The ACT_SITE annotations are related to substrate binding, not catalytic activity, and the domain/family cross-references do not specifically identify a thiolester hydrolase function. Therefore, no feature provides a plausible explanation for this GO term."
+   },
+   {
+    "accession": "Q9Y7C9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list provides a clear, specific explanation for why it carries the GO term \"thiolester hydrolase activity.\" The ACT_SITE regions are associated with a different function (charge relay system), and the domain/family cross-references do not directly relate to thiolester hydrolysis. Therefore, there is no plausible feature that explains this GO term for Q9Y7C9."
+   }
+  ]
+ },
+ "GO:0016823": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "MaoC-like",
+    "accessions": [
+     "P77455"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WNH5",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features for P9WNH5 specifically explain the phosphoryl transfer mechanism described in the GO term's definition. The highest score (5) is assigned to a site that may be relevant to catalytic activity, but it does not directly account for the chemistry of hydrolase activity on acid carbon-carbon bonds in ketonic substances."
+   }
+  ]
  }
 }

@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P27008",
+      "go_id": "GO:0016763",
+      "feature_type": "BINDING",
+      "start": 295,
+      "end": 296,
+      "signal_kind": "ligand",
+      "signal_value": "Zn(2+)",
+      "reasoning": "The binding site for Zn(2+) with ligand label 3 could plausibly explain why the protein carries the GO term \"pentosyltransferase activity,\" but it's not explicitly stated that this binding site is responsible for pentosyl transfer. Other features are either generic or unrelated to the primary reaction."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P23796",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P46022",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q10181",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

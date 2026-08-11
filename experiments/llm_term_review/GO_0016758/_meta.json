@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016758",
+  "name": "hexosyltransferase activity",
+  "def": "Catalysis of the transfer of a hexosyl group from one compound (donor) to another (acceptor).",
+  "n_proteins_total": 34,
+  "sampled_accessions": [
+    "P9WLV5",
+    "P9WMX7",
+    "P9WMY3",
+    "Q7S0S2"
+  ],
+  "assigned_accessions": [
+    "P9WLV5",
+    "P9WMX7",
+    "P9WMY3",
+    "Q7S0S2"
+  ]
+}

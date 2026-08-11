@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0016782",
+  "name": "transferase activity, transferring sulphur-containing groups",
+  "def": "Catalysis of the transfer of a sulfur-containing group from one compound (donor) to another (acceptor).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WMN7"
+  ],
+  "assigned_accessions": [
+    "P9WMN7"
+  ]
+}
