@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033759",
+  "name": "flavone synthase activity",
+  "def": "Catalysis of the reaction: a flavanone + 2-oxoglutarate + O2 = a flavone + succinate + CO2 + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FLV0"
+  ],
+  "assigned_accessions": [
+    "Q9FLV0"
+  ]
+}

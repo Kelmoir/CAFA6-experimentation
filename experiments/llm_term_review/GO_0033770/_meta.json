@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0033770",
+  "name": "2-hydroxyisoflavanone synthase activity",
+  "def": "Catalysis of the reactions: liquiritigenin + O2 + [reduced NADPH--hemoprotein reductase] = 2,4',7-trihydroxyisoflavanone + H2O + [oxidized NADPH--hemoprotein reductase] and (2S)-naringenin + O2 + [reduced NADPH--hemoprotein reductase] = 2,4',5,7-tetrahydroxyisoflavanone + H2O + [oxidized NADPH--hemoprotein reductase].",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q9SWR5",
+    "Q9SXS3"
+  ],
+  "assigned_accessions": [
+    "Q9SWR5",
+    "Q9SXS3"
+  ]
+}

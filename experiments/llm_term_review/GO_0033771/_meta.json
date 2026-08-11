@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0033771",
+  "name": "flavanone 2-hydroxylase activity",
+  "def": "Catalysis of the reaction: a flavanone + O2 + reduced [NADPH--hemoprotein reductase] = a 2-hydroxyflavanone + H+ + H2O + oxidized [NADPH--hemoprotein reductase].",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P93149",
+    "Q5VRI5"
+  ],
+  "assigned_accessions": [
+    "P93149",
+    "Q5VRI5"
+  ]
+}

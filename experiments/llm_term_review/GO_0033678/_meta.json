@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0033678",
+  "name": "5'-3' DNA/RNA helicase activity",
+  "def": "Unwinding of a DNA/RNA duplex in the 5' to 3' direction, driven by ATP hydrolysis.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "Q00416",
+    "Q92355",
+    "Q9H611",
+    "Q9UUA2"
+  ],
+  "assigned_accessions": [
+    "Q00416",
+    "Q92355",
+    "Q9H611",
+    "Q9UUA2"
+  ]
+}

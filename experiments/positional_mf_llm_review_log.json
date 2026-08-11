@@ -16995,6 +16995,44 @@
    }
   ]
  },
+ "GO:0033678": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR024481",
+     "InterPro:IPR044340"
+    ],
+    "accessions": [
+     "Q00416",
+     "Q92355"
+    ],
+    "note": "resolved from DOMAIN note 'UPF1-type SF1B helicase ATP-binding' (2 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q9H611"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UUA2",
+    "reason": "none_verdict",
+    "reasoning": "The GO term describes a specific biochemical function (unwinding DNA/RNA in the 5' to 3' direction driven by ATP hydrolysis), and none of the annotated features for Q9UUA2 directly explain this mechanism. While one feature indicates an ATP-binding site, it does not provide evidence that the protein performs helicase activity. Therefore, no annotated feature provides a strong explanation for the GO"
+   }
+  ]
+ },
  "GO:0033703": {
   "n_resolved": 2,
   "n_uncertain": 0,
@@ -17021,5 +17059,212 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0033705": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "Q9HTB6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0033729": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5FB34",
+    "reason": "none_verdict",
+    "reasoning": "The protein's binding sites for NADP(+) do not provide a specific structural or functional basis for the defined reaction in the GO term. No domain or positional feature directly matches the chemistry of catalyzing this reduction reaction, which is the primary focus of the GO term."
+   },
+   {
+    "accession": "Q9SEV0",
+    "reason": "none_verdict",
+    "reasoning": "The defined reaction of anthocyanidin reductase involves a specific transfer of a reducing equivalent, which is not directly explained by any of the annotated features for Q9SEV0."
+   }
+  ]
+ },
+ "GO:0033754": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme b",
+    "accessions": [
+     "P14902",
+     "P28776"
+    ],
+    "reason": "circular agreement -- only 1 of 2 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P47125",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P47125 directly describes the catalytic reaction defined by the GO term, so no single feature can be identified as the most plausible explanation for why the protein carries the term."
+   },
+   {
+    "accession": "Q6ZQW0",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q6ZQW0 has a heme-binding site but no evidence of catalytic activity or substrate specificity that directly matches the defined reaction mechanism for the GO term. Therefore, it does not specifically explain why this protein carries the term."
+   }
+  ]
+ },
+ "GO:0033756": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9GV45",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0033759": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fe2OG dioxygenase",
+    "accessions": [
+     "Q9FLV0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0033760": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Fe cation",
+    "accessions": [
+     "Q40062"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0033770": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SWR5",
+    "reason": "none_verdict",
+    "reasoning": "The defined chemical reaction of 2-hydroxyisoflavanone synthase activity involves the oxidation of substrates and the transfer of a hydrogen atom, which is not directly explained by any of the annotated features for Q9SWR5. While the protein has a heme-binding site, this does not imply that it catalyzes the specific reaction defined by the GO term. Thus, no annotated feature provides a strong expl"
+   },
+   {
+    "accession": "Q9SXS3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9SXS3 directly matches the primary reaction mechanism of GO:0033770, which involves the catalytic transfer of hydroxyl groups from substrates to products."
+   }
+  ]
+ },
+ "GO:0033771": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "P93149"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5VRI5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's positional data directly matches the chemistry of the reaction defined by the GO term \"flavanone 2-hydroxylase activity.\" The only relevant positional feature is a heme binding site, which does not explain the specific hydroxylation mechanism."
+   }
+  ]
+ },
+ "GO:0033776": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Transition state stabilizer",
+    "accessions": [
+     "P9WNF9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0033784": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8MP06",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the molecular function defined by GO:0033784. The presence of an FMO-like domain is inferred from cross-references, but it is not confirmed in the Annotated features section. Therefore, there is no positional feature that can be definitively linked to this GO term based on the provided evidence."
+   }
+  ]
  }
 }

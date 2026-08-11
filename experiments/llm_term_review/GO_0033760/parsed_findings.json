@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q40062",
+      "go_id": "GO:0033760",
+      "feature_type": "BINDING",
+      "start": 264,
+      "end": 265,
+      "signal_kind": "ligand",
+      "signal_value": "Fe cation",
+      "reasoning": "The binding of \"2-oxoglutarate\" at position 264-265 directly supports the reaction mechanism described in the GO term, making it the most plausible explanation for why the protein carries this molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

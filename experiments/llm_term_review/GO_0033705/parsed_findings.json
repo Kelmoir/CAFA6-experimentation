@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9HTB6",
+      "go_id": "GO:0033705",
+      "feature_type": "BINDING",
+      "start": 12,
+      "end": 14,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The binding of NADP+ at position 12-14 directly supports the catalytic reaction mechanism described by GO:0033705, making it a strong and specific match for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P93149",
+      "go_id": "GO:0033771",
+      "feature_type": "BINDING",
+      "start": 447,
+      "end": 448,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding site for heme (447-448) directly supports the catalytic function of converting flavanones to 2-hydroxyflavanones, aligning with the GO term's primary reaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q5VRI5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's positional data directly matches the chemistry of the reaction defined by the GO term \"flavanone 2-hydroxylase activity.\" The only relevant positional feature is a heme binding site, which does not explain the specific hydroxylation mechanism."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033760",
+  "name": "2'-deoxymugineic-acid 2'-dioxygenase activity",
+  "def": "Catalysis of the reaction: 2'-deoxymugineate + 2-oxoglutarate + O2 = CO2 + H+ + mugineate + succinate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q40062"
+  ],
+  "assigned_accessions": [
+    "Q40062"
+  ]
+}

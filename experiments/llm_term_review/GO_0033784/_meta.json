@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033784",
+  "name": "senecionine N-oxygenase activity",
+  "def": "Catalysis of the reaction: H+ + NADPH + O2 + senecionine = H2O + NADP+ + senecionine N-oxide.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8MP06"
+  ],
+  "assigned_accessions": [
+    "Q8MP06"
+  ]
+}

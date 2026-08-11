@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0033754",
+  "name": "indoleamine 2,3-dioxygenase activity",
+  "def": "Catalysis of the reaction: tryptophan + O2 = N-formylkynurenine. The product of the reaction depends on the substrate; D-tryptophan produces N-formyl-D-kynurenine, and L-tryptophan produces N-formyl-L-kynurenine.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P14902",
+    "P28776",
+    "P47125",
+    "Q6ZQW0"
+  ],
+  "assigned_accessions": [
+    "P14902",
+    "P28776",
+    "P47125",
+    "Q6ZQW0"
+  ]
+}

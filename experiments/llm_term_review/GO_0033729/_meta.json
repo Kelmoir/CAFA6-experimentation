@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0033729",
+  "name": "anthocyanidin reductase activity",
+  "def": "Catalysis of the reaction: a flavan-3-ol + 2 NAD(P)+ = an anthocyanidin + 2 NAD(P)H + H+.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q5FB34",
+    "Q9SEV0"
+  ],
+  "assigned_accessions": [
+    "Q5FB34",
+    "Q9SEV0"
+  ]
+}

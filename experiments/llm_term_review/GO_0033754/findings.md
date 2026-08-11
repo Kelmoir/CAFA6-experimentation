@@ -1,0 +1,20 @@
+## P14902 GO:0033754
+verdict: LIKELY
+feature: BINDING 345-346
+reasoning: The binding site for heme b at position 345-346 directly supports the enzymatic activity described by GO:0033754, which involves catalyzing the reaction of tryptophan with molecular oxygen. This feature is specifically relevant to the function defined by the GO term.
+---
+## P28776 GO:0033754
+verdict: LIKELY
+feature: BINDING 349-350
+reasoning: The "BINDING" feature at position 349-350 directly supports the enzymatic activity of indoleamine 2,3-dioxygenase by indicating the presence of a heme b binding site, which is essential for catalysis. This matches the primary reaction described in the GO definition.
+---
+## P47125 GO:0033754
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature in P47125 directly describes the catalytic reaction defined by the GO term, so no single feature can be identified as the most plausible explanation for why the protein carries the term.
+---
+## Q6ZQW0 GO:0033754
+verdict: NONE
+feature: NONE 0-0
+reasoning: The protein Q6ZQW0 has a heme-binding site but no evidence of catalytic activity or substrate specificity that directly matches the defined reaction mechanism for the GO term. Therefore, it does not specifically explain why this protein carries the term.
+---

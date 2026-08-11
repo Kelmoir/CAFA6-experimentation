@@ -14706,6 +14706,16 @@
   ],
   "text_patterns": []
  },
+ "GO:0033678": {
+  "name": "5'-3' DNA/RNA helicase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR024481",
+   "InterPro:IPR044340"
+  ],
+  "text_patterns": []
+ },
  "GO:0033691": {
   "name": "sialic acid binding",
   "ligands": [],

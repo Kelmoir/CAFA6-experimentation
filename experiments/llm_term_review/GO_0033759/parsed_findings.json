@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9FLV0",
+      "go_id": "GO:0033759",
+      "feature_type": "DOMAIN",
+      "start": 187,
+      "end": 288,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The DOMAIN 187-288 feature is specifically associated with Fe2OG dioxygenase activity, which matches the primary reaction of the GO term \"flavone synthase activity\" by directly supporting the enzyme's function in catalyzing the described reaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

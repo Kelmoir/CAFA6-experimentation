@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q5FB34",
+      "reason": "none_verdict",
+      "reasoning": "The protein's binding sites for NADP(+) do not provide a specific structural or functional basis for the defined reaction in the GO term. No domain or positional feature directly matches the chemistry of catalyzing this reduction reaction, which is the primary focus of the GO term."
+    },
+    {
+      "accession": "Q9SEV0",
+      "reason": "none_verdict",
+      "reasoning": "The defined reaction of anthocyanidin reductase involves a specific transfer of a reducing equivalent, which is not directly explained by any of the annotated features for Q9SEV0."
+    }
+  ]
+}

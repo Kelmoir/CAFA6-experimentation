@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033756",
+  "name": "Oplophorus-luciferin 2-monooxygenase activity",
+  "def": "Catalysis of the reaction: Oplophorus luciferin + O2 = oxidized Oplophorus luciferin + CO2 + hnu.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9GV45"
+  ],
+  "assigned_accessions": [
+    "Q9GV45"
+  ]
+}
