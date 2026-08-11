@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9LK64",
+      "go_id": "GO:0010290",
+      "feature_type": "DOMAIN",
+      "start": 639,
+      "end": 863,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter 1",
+      "reasoning": "The domain labeled as \"ABC transporter 1\" directly matches the primary reaction of the GO term, which involves directed movement of chlorophyll catabolites across a membrane. This specific domain is more likely to implement the function defined by the GO term than generic binding sites for ATP."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

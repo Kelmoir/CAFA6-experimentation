@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0009702",
+  "name": "L-arabinokinase activity",
+  "def": "Catalysis of the reaction: L-arabinose + ATP = beta-L-arabinose 1-phosphate + ADP + 2 H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O23461"
+  ],
+  "assigned_accessions": [
+    "O23461"
+  ]
+}

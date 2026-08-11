@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "F4JQH3",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features specifically describe the mechanism or specificity of binding to N-1-naphthylphthalamic acid, which is the primary reaction defined by the GO term. Therefore, no feature can be identified as a strong match to the GO term's own chemistry."
+    },
+    {
+      "accession": "Q8VZH2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly or specifically describes the binding of N-1-naphthylphthalamic acid, which is the primary reaction defined by the GO term."
+    }
+  ]
+}

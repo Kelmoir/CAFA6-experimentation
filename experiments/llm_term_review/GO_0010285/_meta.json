@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0010285",
+  "name": "L,L-diaminopimelate aminotransferase activity",
+  "def": "Catalysis of the reaction: 2-oxoglutarate + LL-2,6-diaminopimelate = (S)-2,3,4,5-tetrahydrodipicolinate + L-glutamate + H2O + H+.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q58786",
+    "Q93ZN9"
+  ],
+  "assigned_accessions": [
+    "Q58786",
+    "Q93ZN9"
+  ]
+}

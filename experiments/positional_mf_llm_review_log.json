@@ -7053,5 +7053,292 @@
     "reasoning": "No annotated feature provides a strong match to the primary reaction of the defined GO term, as the only candidate is a Disordered region with no evidence of ion transport activity."
    }
   ]
+ },
+ "GO:0009675": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0A6J3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0009702": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O23461",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly matches the primary reaction of the GO term \"L-arabinokinase activity,\" which involves the transfer of a phosphoryl group from ATP to L-arabinose."
+   }
+  ]
+ },
+ "GO:0009784": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Histidine kinase",
+    "accessions": [
+     "Q54U87"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0009815": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fe2OG dioxygenase",
+    "accessions": [
+     "O65378",
+     "Q76NT9"
+    ],
+    "reason": "resolved to ['InterPro:IPR005123', 'InterPro:IPR044861', 'PROSITE:PS51471'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR005123': 159, 'InterPro:IPR044861': 90, 'PROSITE:PS51471': 159})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Fe cation",
+    "accessions": [
+     "Q9ZUN4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q06588",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature describes the specific oxidation reaction or byproduct production of 1-aminocyclopropane-1-carboxylate, which is the primary focus of the GO term."
+   }
+  ]
+ },
+ "GO:0009885": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Histidine kinase",
+    "accessions": [
+     "Q9C5U0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0009940": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P93026",
+    "reason": "none_verdict",
+    "reasoning": "The highest scoring candidate, DOMAIN 511-554 with a calcium-binding motif, does not directly explain the binding to an amino terminal propeptide or the transport mechanism described in the GO term's definition. Therefore, there is no single annotated feature that plausibly accounts for this GO term's primary reaction."
+   }
+  ]
+ },
+ "GO:0009978": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme b",
+    "accessions": [
+     "Q96242"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0010013": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "F4JQH3",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features specifically describe the mechanism or specificity of binding to N-1-naphthylphthalamic acid, which is the primary reaction defined by the GO term. Therefore, no feature can be identified as a strong match to the GO term's own chemistry."
+   },
+   {
+    "accession": "Q8VZH2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly or specifically describes the binding of N-1-naphthylphthalamic acid, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0010176": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8VWJ1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0010180": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SAV1",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features provide a strong match to the primary reaction or mechanism described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0010210": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P54968",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly supports the catalytic reaction defined by the GO term \"IAA-Phe conjugate hydrolase activity.\" The presence of Mn(2+) binding sites does not imply a specific hydrolase domain or activity."
+   }
+  ]
+ },
+ "GO:0010211": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P54968",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct structural or functional basis for the IAA-Leu conjugate hydrolase activity defined by GO:0010211."
+   }
+  ]
+ },
+ "GO:0010285": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q58786",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain why protein Q58786 carries the GO term \"L,L-diaminopimelate aminotransferase activity\" \u2014 they only describe the ligands involved in the reaction."
+   },
+   {
+    "accession": "Q93ZN9",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q93ZN9 is involved in the reaction defined by GO:0010285, but no annotated feature directly supports the catalytic activity or the specific molecular function described in the definition."
+   }
+  ]
+ },
+ "GO:0010290": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter 1",
+    "accessions": [
+     "Q9LK64"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0010293": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q7G9P4",
+    "go_id": "GO:0010293",
+    "feature_type": "BINDING",
+    "start": 39,
+    "end": 40,
+    "signal_kind": "ligand",
+    "signal_value": "[2Fe-2S] cluster",
+    "reasoning": "The binding site at 39-40 is associated with a [2Fe-2S] cluster, which may be involved in the reaction mechanism of abscisic aldehyde oxidase activity. However, this feature does not directly explain the specific reaction described in the GO term's definition, making it a plausible but not definitive match."
+   }
+  ],
+  "issues": []
  }
 }

@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q58786",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly explain why protein Q58786 carries the GO term \"L,L-diaminopimelate aminotransferase activity\" \u2014 they only describe the ligands involved in the reaction."
+    },
+    {
+      "accession": "Q93ZN9",
+      "reason": "none_verdict",
+      "reasoning": "The protein Q93ZN9 is involved in the reaction defined by GO:0010285, but no annotated feature directly supports the catalytic activity or the specific molecular function described in the definition."
+    }
+  ]
+}

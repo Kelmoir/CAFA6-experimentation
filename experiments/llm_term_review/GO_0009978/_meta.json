@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0009978",
+  "name": "allene oxide synthase activity",
+  "def": "Catalysis of the reaction: 13(S)-hydroperoxylinolenate = 12,13(S)-epoxylinolenate + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q96242"
+  ],
+  "assigned_accessions": [
+    "Q96242"
+  ]
+}

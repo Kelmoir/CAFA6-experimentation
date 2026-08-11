@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0010180",
+  "name": "thioglucosidase binding",
+  "def": "Binding to a thioglucosidase enzyme.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SAV1"
+  ],
+  "assigned_accessions": [
+    "Q9SAV1"
+  ]
+}

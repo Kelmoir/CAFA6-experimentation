@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0010013",
+  "name": "N-1-naphthylphthalamic acid binding",
+  "def": "Binding to N-1-naphthylphthalamic acid, an auxin transport inhibitor.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "F4JQH3",
+    "Q8VZH2"
+  ],
+  "assigned_accessions": [
+    "F4JQH3",
+    "Q8VZH2"
+  ]
+}

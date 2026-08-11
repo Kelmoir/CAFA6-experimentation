@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0010211",
+  "name": "IAA-Leu conjugate hydrolase activity",
+  "def": "Catalysis of the reaction: indole-3-acetyl-leucine + H2O = indole-3-acetate + L-leucine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P54968"
+  ],
+  "assigned_accessions": [
+    "P54968"
+  ]
+}

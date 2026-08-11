@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0010293",
+  "name": "abscisic aldehyde oxidase activity",
+  "def": "Catalysis of the reaction: a 2-cis-(+)-abscisic aldehyde + H2O + O2 = 2-cis-(+)-abscisate + H+ + H2O2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q7G9P4"
+  ],
+  "assigned_accessions": [
+    "Q7G9P4"
+  ]
+}

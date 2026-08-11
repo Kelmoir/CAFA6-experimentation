@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9SAV1",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features provide a strong match to the primary reaction or mechanism described in the GO term's definition."
+    }
+  ]
+}

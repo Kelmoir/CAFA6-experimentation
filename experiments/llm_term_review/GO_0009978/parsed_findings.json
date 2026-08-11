@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q96242",
+      "go_id": "GO:0009978",
+      "feature_type": "BINDING",
+      "start": 470,
+      "end": 471,
+      "signal_kind": "ligand",
+      "signal_value": "heme b",
+      "reasoning": "The binding of heme b and iron at this site with axial orientation is directly related to the catalytic activity of allene oxide synthase, which matches the primary reaction mechanism described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

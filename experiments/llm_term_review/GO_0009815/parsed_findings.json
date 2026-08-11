@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "O65378",
+      "go_id": "GO:0009815",
+      "feature_type": "DOMAIN",
+      "start": 154,
+      "end": 256,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The domain is explicitly associated with an enzyme that catalyzes a specific oxidation reaction, directly matching the primary mechanism described in the GO term's definition."
+    },
+    {
+      "accession": "Q76NT9",
+      "go_id": "GO:0009815",
+      "feature_type": "DOMAIN",
+      "start": 176,
+      "end": 307,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The DOMAIN annotation (176-307) directly corresponds to the enzyme's classification as a Fe2OG dioxygenase, which is central to the reaction mechanism described by GO:0009815. This feature provides a strong match to the chemistry defined by the GO term, making it the most plausible explanation for why the protein carries this term."
+    },
+    {
+      "accession": "Q9ZUN4",
+      "go_id": "GO:0009815",
+      "feature_type": "BINDING",
+      "start": 181,
+      "end": 182,
+      "signal_kind": "ligand",
+      "signal_value": "Fe cation",
+      "reasoning": "The binding of Fe cation at position 181-182 directly supports the catalytic activity of the enzyme by providing the necessary cofactor for the oxidation reaction, which is the primary mechanism defined by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q06588",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature describes the specific oxidation reaction or byproduct production of 1-aminocyclopropane-1-carboxylate, which is the primary focus of the GO term."
+    }
+  ]
+}

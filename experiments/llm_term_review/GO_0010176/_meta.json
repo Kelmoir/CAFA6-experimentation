@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0010176",
+  "name": "homogentisate phytyltransferase activity",
+  "def": "Catalysis of the reaction: homogentisate + phytyl diphosphate + H+ = 2-methyl-6-phytyl-1,4-benzoquinone + CO2 + diphosphate. 2-methyl-6-phytyl-1,4-benzoquinone is also known as 2-methyl-6-phytylplastoquinol.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8VWJ1"
+  ],
+  "assigned_accessions": [
+    "Q8VWJ1"
+  ]
+}

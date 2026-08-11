@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0009940",
+  "name": "amino-terminal vacuolar sorting propeptide binding",
+  "def": "Binding to an amino terminal propeptide, which functions as a sorting signal to sort away the soluble vacuolar protein from Golgi to lytic vacuole via clathrin-coated vesicles.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P93026"
+  ],
+  "assigned_accessions": [
+    "P93026"
+  ]
+}

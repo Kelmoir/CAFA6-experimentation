@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0010210",
+  "name": "IAA-Phe conjugate hydrolase activity",
+  "def": "Catalysis of the reaction: indole-3-acetyl-phenylalanine + H2O = indole-3-acetate + phenylalanine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P54968"
+  ],
+  "assigned_accessions": [
+    "P54968"
+  ]
+}

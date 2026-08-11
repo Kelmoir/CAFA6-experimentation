@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0009815",
+  "name": "1-aminocyclopropane-1-carboxylate oxidase activity",
+  "def": "Catalysis of the reaction: 1-aminocyclopropane-1-carboxylate + L-ascorbate + O2 = CO2 + dehydroascorbate + ethylene + 2 H2O + hydrogen cyanide. Ethene is also known as ethylene.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "O65378",
+    "Q06588",
+    "Q76NT9",
+    "Q9ZUN4"
+  ],
+  "assigned_accessions": [
+    "O65378",
+    "Q06588",
+    "Q76NT9",
+    "Q9ZUN4"
+  ]
+}

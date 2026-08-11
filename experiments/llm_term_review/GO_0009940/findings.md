@@ -1,0 +1,5 @@
+## P93026 GO:0009940
+verdict: NONE
+feature: DOMAIN 511-554
+reasoning: The highest scoring candidate, DOMAIN 511-554 with a calcium-binding motif, does not directly explain the binding to an amino terminal propeptide or the transport mechanism described in the GO term's definition. Therefore, there is no single annotated feature that plausibly accounts for this GO term's primary reaction.
+---

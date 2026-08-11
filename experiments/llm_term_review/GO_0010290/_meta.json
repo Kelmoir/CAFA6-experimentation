@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0010290",
+  "name": "chlorophyll catabolite transmembrane transporter activity",
+  "def": "Enables the directed movement of chlorophyll catabolites such as non-fluorescent chlorophyll catabolites (NCCs), from one side of a membrane to the other.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LK64"
+  ],
+  "assigned_accessions": [
+    "Q9LK64"
+  ]
+}

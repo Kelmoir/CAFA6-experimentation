@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P54968",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct structural or functional basis for the IAA-Leu conjugate hydrolase activity defined by GO:0010211."
+    }
+  ]
+}

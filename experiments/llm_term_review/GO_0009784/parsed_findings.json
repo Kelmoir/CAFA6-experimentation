@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q54U87",
+      "go_id": "GO:0009784",
+      "feature_type": "DOMAIN",
+      "start": 1392,
+      "end": 1620,
+      "signal_kind": "text",
+      "signal_value": "Histidine kinase",
+      "reasoning": "The \"Histidine kinase\" domain directly matches the primary reaction of the GO term, indicating that the protein has the necessary structural and functional elements to catalyze the phosphate transfer described."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
