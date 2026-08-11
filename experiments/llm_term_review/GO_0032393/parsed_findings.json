@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8NHL6",
+      "go_id": "GO:0032393",
+      "feature_type": "MOTIF",
+      "start": 530,
+      "end": 536,
+      "signal_kind": "text",
+      "signal_value": "ITIM motif 1",
+      "reasoning": "The ITIM motif (MOTIF 530-536) is directly associated with the function of MHC class I receptors, which involves binding to an MHC class I protein complex and initiating a change in cellular activity. This matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q8CBH5",
+      "go_id": "GO:0032393",
+      "feature_type": "REGION",
+      "start": 27,
+      "end": 47,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The \"REGION\" (27-47) marked as \"Disordered\" could be involved in interactions with an MHC class I complex, but this evidence is not specific enough to confirm the GO term's primary reaction. No other annotated feature directly indicates the function of combining with an MHC class I protein complex to initiate a change in cellular activity."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P97484",
+      "reason": "none_verdict",
+      "reasoning": "The ITIM motif is involved in immune signaling and may be part of a receptor complex that interacts with MHC class I molecules, but it does not directly indicate the function of combining with an MHC class I protein complex to initiate a change in cellular activity."
+    },
+    {
+      "accession": "O88875",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

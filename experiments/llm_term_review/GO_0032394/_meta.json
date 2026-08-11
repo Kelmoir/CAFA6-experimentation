@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0032394",
+  "name": "MHC class Ib receptor activity",
+  "def": "Combining with an MHC class Ib protein complex and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity. Class Ib here refers to non-classical class I molecules, such as those of the CD1 or HLA-E gene families.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "O70215",
+    "O88875",
+    "O95971",
+    "Q99706"
+  ],
+  "assigned_accessions": [
+    "O70215",
+    "O88875",
+    "O95971",
+    "Q99706"
+  ]
+}

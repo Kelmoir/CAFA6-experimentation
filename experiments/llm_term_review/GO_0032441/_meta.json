@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0032441",
+  "name": "pheophorbide a oxygenase activity",
+  "def": "Catalysis of the reaction: pheophorbide a + reduced ferredoxin + 2 O2 = red chlorophyll catabolite + oxidized ferredoxin + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FYC2"
+  ],
+  "assigned_accessions": [
+    "Q9FYC2"
+  ]
+}

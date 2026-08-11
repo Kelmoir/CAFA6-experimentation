@@ -16377,6 +16377,126 @@
    }
   ]
  },
+ "GO:0032296": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "RNase III",
+    "accessions": [
+     "P22192"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "RNase H type-1",
+    "accessions": [
+     "P9WLH5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q08I43",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct structural or functional basis for the specific activity of \"double-stranded RNA-specific ribonuclease\" as defined by the GO term. While Mg(2+) binding is relevant to the catalytic mechanism, it does not directly explain the specificity to double-stranded RNA."
+   }
+  ]
+ },
+ "GO:0032393": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "ITIM motif 1",
+    "accessions": [
+     "Q8NHL6"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q8CBH5",
+    "go_id": "GO:0032393",
+    "feature_type": "REGION",
+    "start": 27,
+    "end": 47,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The \"REGION\" (27-47) marked as \"Disordered\" could be involved in interactions with an MHC class I complex, but this evidence is not specific enough to confirm the GO term's primary reaction. No other annotated feature directly indicates the function of combining with an MHC class I protein complex to initiate a change in cellular activity."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P97484",
+    "reason": "none_verdict",
+    "reasoning": "The ITIM motif is involved in immune signaling and may be part of a receptor complex that interacts with MHC class I molecules, but it does not directly indicate the function of combining with an MHC class I protein complex to initiate a change in cellular activity."
+   },
+   {
+    "accession": "O88875",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0032394": {
+  "n_resolved": 3,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "C-type lectin",
+    "accessions": [
+     "O70215"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like V-type",
+    "accessions": [
+     "O95971"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like C2-type 1",
+    "accessions": [
+     "Q99706"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "O88875",
+    "go_id": "GO:0032394",
+    "feature_type": "DOMAIN",
+    "start": 27,
+    "end": 136,
+    "signal_kind": "text",
+    "signal_value": "Ig-like V-type",
+    "reasoning": "The \"DOMAIN 27-136\" with \"Ig-like V-type\" is the only annotated feature that could plausibly be associated with the function of an MHC class Ib receptor, but it does not directly explain the primary reaction described in the GO term's definition."
+   }
+  ],
+  "issues": []
+ },
  "GO:0032399": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -16408,5 +16528,136 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0032441": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "[2Fe-2S] cluster",
+    "accessions": [
+     "Q9FYC2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0032555": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P04633",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein P04633 do not provide any evidence that directly explains why it carries the GO term \"purine ribonucleotide binding.\" The only relevant feature is a binding site, but it is associated with fatty acids, not purines. Therefore, there is no plausible explanation within the given data."
+   },
+   {
+    "accession": "P12242",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P12242 specifically matches the primary reaction of \"binding to a purine ribonucleotide,\" which is the core definition of the GO term. The ligands described are fatty acids, not nucleotides, and the domain/family cross-references do not directly support the binding activity defined by the GO term."
+   },
+   {
+    "accession": "P25874",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for this protein matches the primary reaction of \"purine ribonucleotide binding,\" which involves binding to a specific class of molecules. The available features refer to fatty acid binding, not purine ribonucleotide binding."
+   }
+  ]
+ },
+ "GO:0032557": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "UTP",
+    "accessions": [
+     "Q91ZJ5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0032558": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q91XB0",
+    "go_id": "GO:0032558",
+    "feature_type": "BINDING",
+    "start": 19,
+    "end": 20,
+    "signal_kind": "ligand",
+    "signal_value": "Mg(2+)",
+    "reasoning": "The highest score (7) is achieved by the binding of Mg(2+) in the region 19-20, which is a ligand for the term. However, this feature does not directly explain the binding to adenyl deoxyribonucleotide, as it refers to a general ligand rather than the specific substrate defined by the GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q9NSU2",
+    "reason": "none_verdict",
+    "reasoning": "The highest-scoring binding sites do not directly match the primary reaction of binding to an adenyl deoxyribonucleotide as described in the GO term's definition. No positional feature has been confirmed to explain why this protein carries the term."
+   }
+  ]
+ },
+ "GO:0032577": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9V6G5",
+    "go_id": "GO:0032577",
+    "feature_type": "MOTIF",
+    "start": 187,
+    "end": 193,
+    "signal_kind": "text",
+    "signal_value": "HXXXXD motif",
+    "reasoning": "The HXXXXD motif in the 187-193 region is characteristic of acyltransferases, which could plausibly be involved in the O-linoleoyl transfer activity described by GO:0032577. However, this motif alone does not confirm the specific enzymatic function without positional evidence pointing to a domain that directly implements it."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0032942": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "EXKPK motif",
+    "accessions": [
+     "Q93YN9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

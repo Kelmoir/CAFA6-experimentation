@@ -1,0 +1,15 @@
+## P22192 GO:0032296
+verdict: LIKELY
+feature: DOMAIN 138-262
+reasoning: The DOMAIN 138-262 with note: RNase III directly matches the GO term's definition of catalyzing phosphodiester bond hydrolysis in double-stranded RNA molecules, indicating a strong and specific match to the primary reaction described.
+---
+## P9WLH5 GO:0032296
+verdict: LIKELY
+feature: DOMAIN 0-139
+reasoning: The DOMAIN feature (0-139) with the note "RNase H type-1" directly matches the primary reaction of the GO term, which is catalysis of the hydrolysis of phosphodiester bonds in double-stranded RNA. This provides a strong and specific explanation for why P9WLH5 carries the term.
+---
+## Q08I43 GO:0032296
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature provides a direct structural or functional basis for the specific activity of "double-stranded RNA-specific ribonuclease" as defined by the GO term. While Mg(2+) binding is relevant to the catalytic mechanism, it does not directly explain the specificity to double-stranded RNA.
+---

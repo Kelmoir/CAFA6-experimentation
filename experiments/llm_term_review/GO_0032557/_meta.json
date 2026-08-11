@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0032557",
+  "name": "pyrimidine ribonucleotide binding",
+  "def": "Binding to a pyrimidine ribonucleotide, any compound consisting of a pyrimidine ribonucleoside that is esterified with (ortho)phosphate or an oligophosphate at any hydroxyl group on the ribose moiety.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q91ZJ5"
+  ],
+  "assigned_accessions": [
+    "Q91ZJ5"
+  ]
+}

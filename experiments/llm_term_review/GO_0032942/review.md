@@ -1,0 +1,89 @@
+# Positional-MF review: GO:0032942
+
+Name: inositol-1,4,5,6-tetrakisphosphate 2-kinase activity
+Definition: Catalysis of the reaction: 1D-myo-inositol 1,4,5,6-tetrakisphosphate + ATP = 1D-myo-inositol 1,2,4,5,6-pentakisphosphate + ADP + H+.
+
+Every protein below carries the term above as a real, asserted annotation (from UniProt's GO cross-references) but no positional feature has yet been confirmed to explain *why*. For your assigned protein (given separately in your task instructions), judge which annotated feature, if any, plausibly accounts for this GO term.
+
+---
+
+## Protein Q93YN9
+Sequence length: 451 aa
+
+Annotated features (position, type, qualifiers):
+- MOTIF 165-170
+    note: EXKPK motif
+- BINDING 18-22
+    ligand: ATP
+    ligand_id: ChEBI:CHEBI:30616
+    evidence: ECO:0000305|PubMed:20453199,ECO:0000305|PubMed:22745128
+- BINDING 39-40
+    ligand: ATP
+    ligand_id: ChEBI:CHEBI:30616
+    evidence: ECO:0000305|PubMed:20453199,ECO:0000305|PubMed:22745128
+- BINDING 44-45
+    ligand: substrate
+    evidence: ECO:0000305|PubMed:20453199,ECO:0000305|PubMed:22362712, ECO:0000305|PubMed:22684075,ECO:0000305|PubMed:22745128
+- BINDING 129-130
+    ligand: substrate
+    evidence: ECO:0000305|PubMed:20453199,ECO:0000305|PubMed:22362712, ECO:0000305|PubMed:22684075,ECO:0000305|PubMed:22745128
+- BINDING 146-149
+    ligand: ATP
+    ligand_id: ChEBI:CHEBI:30616
+    evidence: ECO:0000305|PubMed:20453199,ECO:0000305|PubMed:22745128
+- BINDING 165-168
+    ligand: ATP
+    ligand_id: ChEBI:CHEBI:30616
+    evidence: ECO:0000305|PubMed:20453199,ECO:0000305|PubMed:22745128
+- BINDING 169-170
+    ligand: substrate
+    evidence: ECO:0000305|PubMed:20453199,ECO:0000305|PubMed:22362712, ECO:0000305|PubMed:22684075,ECO:0000305|PubMed:22745128
+- BINDING 199-200
+    ligand: substrate
+    evidence: ECO:0000305|PubMed:20453199,ECO:0000305|PubMed:22362712, ECO:0000305|PubMed:22684075,ECO:0000305|PubMed:22745128
+- BINDING 237-238
+    ligand: substrate
+    evidence: ECO:0000305|PubMed:20453199,ECO:0000305|PubMed:22362712, ECO:0000305|PubMed:22684075,ECO:0000305|PubMed:22745128
+- BINDING 240-241
+    ligand: ATP
+    ligand_id: ChEBI:CHEBI:30616
+    evidence: ECO:0000305|PubMed:22745128
+- BINDING 319-320
+    ligand: Zn(2+)
+    ligand_id: ChEBI:CHEBI:29105
+    evidence: ECO:0007744|PDB:2XAL, ECO:0007744|PDB:2XAM,ECO:0007744|PDB:2XAN, ECO:0007744|PDB:2XAO,ECO:0007744|PDB:2XAR, ECO:0007744|PDB:3UDT,ECO:0007744|PDB:3UDZ, ECO:0007744|PDB:4AQK,ECO:0007744|PDB:4AXC, ECO:0007744|PDB:4AXD,ECO:0007744|PDB:4AXE, ECO:0007744|PDB:4AXF,ECO:0007744|PDB:4LV7
+- BINDING 329-330
+    ligand: Zn(2+)
+    ligand_id: ChEBI:CHEBI:29105
+    evidence: ECO:0007744|PDB:2XAL, ECO:0007744|PDB:2XAM,ECO:0007744|PDB:2XAN, ECO:0007744|PDB:2XAO,ECO:0007744|PDB:2XAR, ECO:0007744|PDB:3UDT,ECO:0007744|PDB:3UDZ, ECO:0007744|PDB:4AQK,ECO:0007744|PDB:4AXC, ECO:0007744|PDB:4AXD,ECO:0007744|PDB:4AXE, ECO:0007744|PDB:4AXF,ECO:0007744|PDB:4LV7
+- BINDING 332-333
+    ligand: Zn(2+)
+    ligand_id: ChEBI:CHEBI:29105
+    evidence: ECO:0007744|PDB:2XAL, ECO:0007744|PDB:2XAM,ECO:0007744|PDB:2XAN, ECO:0007744|PDB:2XAO,ECO:0007744|PDB:2XAR, ECO:0007744|PDB:3UDT,ECO:0007744|PDB:4AQK, ECO:0007744|PDB:4AXC,ECO:0007744|PDB:4AXD, ECO:0007744|PDB:4AXE,ECO:0007744|PDB:4AXF, ECO:0007744|PDB:4LV7
+- BINDING 345-346
+    ligand: Zn(2+)
+    ligand_id: ChEBI:CHEBI:29105
+    evidence: ECO:0007744|PDB:2XAL, ECO:0007744|PDB:2XAM,ECO:0007744|PDB:2XAN, ECO:0007744|PDB:2XAO,ECO:0007744|PDB:2XAR, ECO:0007744|PDB:3UDT,ECO:0007744|PDB:3UDZ, ECO:0007744|PDB:4AQK,ECO:0007744|PDB:4AXC, ECO:0007744|PDB:4AXD,ECO:0007744|PDB:4AXE, ECO:0007744|PDB:4AXF,ECO:0007744|PDB:4LV7
+- BINDING 367-368
+    ligand: substrate
+    evidence: ECO:0000305|PubMed:20453199,ECO:0000305|PubMed:22362712, ECO:0000305|PubMed:22684075,ECO:0000305|PubMed:22745128
+- BINDING 406-407
+    ligand: ATP
+    ligand_id: ChEBI:CHEBI:30616
+    evidence: ECO:0000305|PubMed:20453199,ECO:0000305|PubMed:22745128
+- BINDING 410-411
+    ligand: substrate
+    evidence: ECO:0000305|PubMed:20453199,ECO:0000305|PubMed:22362712, ECO:0000305|PubMed:22684075,ECO:0000305|PubMed:22745128
+- BINDING 414-415
+    ligand: substrate
+    evidence: ECO:0000305|PubMed:20453199,ECO:0000305|PubMed:22362712, ECO:0000305|PubMed:22684075,ECO:0000305|PubMed:22745128
+- BINDING 418-419
+    ligand: substrate
+    evidence: ECO:0000305|PubMed:20453199,ECO:0000305|PubMed:22362712, ECO:0000305|PubMed:22684075,ECO:0000305|PubMed:22745128
+
+Domain/family cross-references (no position, but may help identify a domain):
+- InterPro:IPR009286 -- Ins_P5_2-kin
+- InterPro:IPR043001 -- IP5_2-K_N_lobe
+- Pfam:PF06090 -- Ins_P5_2-kin
+
+---

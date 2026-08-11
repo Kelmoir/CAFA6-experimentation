@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0032393",
+  "name": "MHC class I receptor activity",
+  "def": "Combining with an MHC class I protein complex to initiate a change in cellular activity. Class I here refers to classical class I molecules.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "O88875",
+    "P97484",
+    "Q8CBH5",
+    "Q8NHL6"
+  ],
+  "assigned_accessions": [
+    "O88875",
+    "P97484",
+    "Q8CBH5",
+    "Q8NHL6"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0032577",
+  "name": "phosphatidylcholine:cardiolipin O-linoleoyltransferase activity",
+  "def": "Catalysis of the transfer of a linoleoyl ((9Z,12Z)-octadeca-9,12-dienoyl) group from phosphatidylcholine to an oxygen atom on a cardiolipin molecule.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9V6G5"
+  ],
+  "assigned_accessions": [
+    "Q9V6G5"
+  ]
+}

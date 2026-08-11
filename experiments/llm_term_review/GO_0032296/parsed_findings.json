@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P22192",
+      "go_id": "GO:0032296",
+      "feature_type": "DOMAIN",
+      "start": 138,
+      "end": 262,
+      "signal_kind": "text",
+      "signal_value": "RNase III",
+      "reasoning": "The DOMAIN 138-262 with note: RNase III directly matches the GO term's definition of catalyzing phosphodiester bond hydrolysis in double-stranded RNA molecules, indicating a strong and specific match to the primary reaction described."
+    },
+    {
+      "accession": "P9WLH5",
+      "go_id": "GO:0032296",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 139,
+      "signal_kind": "text",
+      "signal_value": "RNase H type-1",
+      "reasoning": "The DOMAIN feature (0-139) with the note \"RNase H type-1\" directly matches the primary reaction of the GO term, which is catalysis of the hydrolysis of phosphodiester bonds in double-stranded RNA. This provides a strong and specific explanation for why P9WLH5 carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q08I43",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct structural or functional basis for the specific activity of \"double-stranded RNA-specific ribonuclease\" as defined by the GO term. While Mg(2+) binding is relevant to the catalytic mechanism, it does not directly explain the specificity to double-stranded RNA."
+    }
+  ]
+}

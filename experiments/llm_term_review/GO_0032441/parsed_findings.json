@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9FYC2",
+      "go_id": "GO:0032441",
+      "feature_type": "BINDING",
+      "start": 129,
+      "end": 130,
+      "signal_kind": "ligand",
+      "signal_value": "[2Fe-2S] cluster",
+      "reasoning": "The binding site at position 129-130 explicitly mentions the [2Fe-2S] cluster, which is a critical cofactor for the oxygenase reaction defined by GO:0032441. This feature directly supports the primary reaction mechanism of the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

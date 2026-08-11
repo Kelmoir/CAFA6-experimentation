@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0032555",
+  "name": "purine ribonucleotide binding",
+  "def": "Binding to a purine ribonucleotide, any compound consisting of a purine ribonucleoside that is esterified with (ortho)phosphate or an oligophosphate at any hydroxyl group on the ribose moiety.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P04633",
+    "P12242",
+    "P25874"
+  ],
+  "assigned_accessions": [
+    "P04633",
+    "P12242",
+    "P25874"
+  ]
+}

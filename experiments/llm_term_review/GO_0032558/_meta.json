@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0032558",
+  "name": "adenyl deoxyribonucleotide binding",
+  "def": "Binding to an adenyl deoxyribonucleotide, any compound consisting of adenosine esterified with (ortho)phosphate or an oligophosphate at any hydroxyl group on the deoxyribose moiety.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q91XB0",
+    "Q9NSU2"
+  ],
+  "assigned_accessions": [
+    "Q91XB0",
+    "Q9NSU2"
+  ]
+}

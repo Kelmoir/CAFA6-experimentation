@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q93YN9",
+      "go_id": "GO:0032942",
+      "feature_type": "MOTIF",
+      "start": 165,
+      "end": 170,
+      "signal_kind": "text",
+      "signal_value": "EXKPK motif",
+      "reasoning": "The EXKPK motif is a known catalytic motif in kinases and directly supports the phosphorylation reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

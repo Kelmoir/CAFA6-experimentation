@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0032296",
+  "name": "double-stranded RNA-specific ribonuclease activity",
+  "def": "Catalysis of the hydrolysis of phosphodiester bonds in double-stranded RNA molecules.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P22192",
+    "P9WLH5",
+    "Q08I43"
+  ],
+  "assigned_accessions": [
+    "P22192",
+    "P9WLH5",
+    "Q08I43"
+  ]
+}

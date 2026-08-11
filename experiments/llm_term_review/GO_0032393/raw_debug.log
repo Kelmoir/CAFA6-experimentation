@@ -1,0 +1,19 @@
+=== O88875 GO:0032393 (VERDICT missing) ===
+THINKING:  
+GO:0032393 refers to "MHC class I receptor activity," which is defined as "Combining with an MHC class I protein complex to initiate a change in cellular activity. Class I here refers to classical class I molecules." The primary reaction or mechanism described in the definition is the interaction of the protein with an MHC class I molecule to alter cellular activity.
+
+The annotated features for protein O88875 include:
+- DOMAIN 27-136 (note: Ig-like V-type, evidence: ECO:0000250|UniProtKB:O95971)
+- Domain/family cross-references including "InterPro:IPR042385 -- CD160," "Pfam:PF07686 -- V-set," and others.
+
+The DOMAIN 27-136 feature is of type "DOMAIN" with the qualifier "Ig-like V-type." This directly relates to the Ig-like fold, which is a structural motif commonly found in MHC class I receptors. The Ig-like fold is a well-known structural domain that is essential for the function of MHC class I molecules, including their ability to bind peptides and initiate cellular responses.
+
+The "Ig-like V-type" qualifier suggests that this domain has a specific conformation or structure that is characteristic of the V-set found in MHC class I receptors. This matches the definition's focus on the interaction with an MHC class I protein complex, as the V-set is a critical component of the MHC class I receptor complex.
+
+The other domain/family cross-references (e.g., "InterPro:IPR042385 -- CD160") refer to different proteins and domains that are not directly relevant to the defined function of O88875. The Pfam and PROSITE entries also refer to broader domains rather than a specific structural feature that would explain the term's definition.
+
+The DOMAIN 27-136 feature is the most plausible explanation for why this protein carries the GO term "MHC class I receptor activity." It directly relates to the structural motif of the V-set, which is essential for the function described in the definition.
+
+FEATURE: DOMAIN 27-136  
+REASONING: The DOMAIN 27-136 feature with the qualifier "Ig-like V-type" most plausibly explains why this protein carries the GO term "MHC class I receptor activity," as it directly relates to the structural motif of the V-set, which is essential for the function described in the definition.
+

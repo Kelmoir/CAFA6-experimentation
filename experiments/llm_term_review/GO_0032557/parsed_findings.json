@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q91ZJ5",
+      "go_id": "GO:0032557",
+      "feature_type": "BINDING",
+      "start": 112,
+      "end": 116,
+      "signal_kind": "ligand",
+      "signal_value": "UTP",
+      "reasoning": "The binding of UTP at the specified coordinates directly matches the definition of \"pyrimidine ribonucleotide binding,\" making this the most plausible explanation for why the protein carries that GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
