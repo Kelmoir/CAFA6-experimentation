@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "P12760",
+      "go_id": "GO:0031839",
+      "feature_type": "REGION",
+      "start": 158,
+      "end": 166,
+      "signal_kind": "text",
+      "signal_value": "Involved in receptor binding",
+      "reasoning": "The REGION 158-166 feature explicitly states that it is involved in receptor binding, which directly matches the primary reaction described in the definition of GO:0031839. This provides a strong and specific explanation for why the protein carries this molecular function annotation."
+    },
+    {
+      "accession": "P48645",
+      "go_id": "GO:0031839",
+      "feature_type": "REGION",
+      "start": 158,
+      "end": 166,
+      "signal_kind": "text",
+      "signal_value": "Involved in receptor binding",
+      "reasoning": "The REGION span \"158-166\" directly matches the defined reaction of binding a type 1 neuromedin U receptor, making it the most plausible explanation for why P48645 carries this GO term."
+    },
+    {
+      "accession": "Q9QXK8",
+      "go_id": "GO:0031839",
+      "feature_type": "REGION",
+      "start": 158,
+      "end": 166,
+      "signal_kind": "text",
+      "signal_value": "Involved in receptor binding",
+      "reasoning": "The REGION span from 158-166 with a note about \"receptor binding\" directly matches the defined function of the protein as binding to a type 1 neuromedin U receptor, making it the most plausible explanation for why the protein carries this GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

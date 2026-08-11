@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0031839",
+  "name": "type 1 neuromedin U receptor binding",
+  "def": "Binding to a type 1 neuromedin U receptor.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P12760",
+    "P48645",
+    "Q9QXK8"
+  ],
+  "assigned_accessions": [
+    "P12760",
+    "P48645",
+    "Q9QXK8"
+  ]
+}

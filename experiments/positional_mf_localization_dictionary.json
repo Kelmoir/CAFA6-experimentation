@@ -13637,6 +13637,15 @@
    "important for receptor binding"
   ]
  },
+ "GO:0031858": {
+  "name": "pituitary adenylate cyclase-activating polypeptide receptor binding",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "important for receptor binding"
+  ]
+ },
  "GO:0031861": {
   "name": "prolactin-releasing peptide receptor binding",
   "ligands": [],

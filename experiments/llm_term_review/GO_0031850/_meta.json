@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0031850",
+  "name": "delta-type opioid receptor binding",
+  "def": "Binding to a delta-type opioid receptor.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P26817",
+    "Q99MK8"
+  ],
+  "assigned_accessions": [
+    "P26817",
+    "Q99MK8"
+  ]
+}

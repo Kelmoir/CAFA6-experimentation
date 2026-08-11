@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0031858",
+  "name": "pituitary adenylate cyclase-activating polypeptide receptor binding",
+  "def": "Binding to a pituitary adenylate cyclase-activating polypeptide receptor.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O70176",
+    "P13589"
+  ],
+  "assigned_accessions": [
+    "O70176",
+    "P13589"
+  ]
+}

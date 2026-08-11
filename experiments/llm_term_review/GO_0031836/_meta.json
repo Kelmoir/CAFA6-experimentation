@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0031836",
+  "name": "neuromedin K receptor binding",
+  "def": "Binding to a neuromedin K receptor.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P06767",
+    "P08435",
+    "P41539"
+  ],
+  "assigned_accessions": [
+    "P06767",
+    "P08435",
+    "P41539"
+  ]
+}

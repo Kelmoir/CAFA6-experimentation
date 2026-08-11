@@ -15343,5 +15343,193 @@
     "reasoning": "The protein's annotated features do not provide any evidence that directly explains why it carries the molecular function \"type 5 metabotropic glutamate receptor binding.\" All features describe interactions with adenosine or disordered regions, which are unrelated to the defined mechanism of binding to a type 5 metabotropic glutamate receptor."
    }
   ]
+ },
+ "GO:0031826": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "[DE]-X(1,2)-F-X-X-[FL]-X-X-X-R motif",
+    "accessions": [
+     "P29067"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q91YI4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q91YI4 specifically matches the primary reaction of GO:0031826, which is binding to a type 2A serotonin receptor. The features provided are related to interactions with other proteins or motifs, not the defined chemistry of the term."
+   }
+  ]
+ },
+ "GO:0031836": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P06767",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data directly supports the molecular function of \"neuromedin K receptor binding\" as defined by the GO term."
+   },
+   {
+    "accession": "P08435",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature provided for the protein is a disordered region (91-116), which does not directly explain the binding activity to a neuromedin K receptor. No other positional feature is present, and the domain/family cross-references do not provide a specific binding site or mechanism that matches the GO term's primary reaction. Therefore, there is no single annotated feature that plau"
+   },
+   {
+    "accession": "P41539",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P41539 describe cleavage events rather than binding interactions, so there is no positional feature that directly supports the molecular function defined by GO:0031836."
+   }
+  ]
+ },
+ "GO:0031837": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P08435",
+    "go_id": "GO:0031837",
+    "feature_type": "REGION",
+    "start": 91,
+    "end": 116,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The disordered region (91-116) is the only positional feature associated with this protein, and while it could potentially be involved in binding, there is no direct evidence that it specifically implements the \"substance K receptor binding\" function as defined by the GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P06767",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for this protein provides a clear structural or functional basis that matches the primary reaction of \"Binding to a substance K receptor.\" The features are related to cleavage sites and proteolytic activity, which do not directly explain the molecular function defined by GO:0031837."
+   },
+   {
+    "accession": "P41539",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P41539 are all cleavage sites and do not provide any evidence about substance K receptor binding. No feature matches the primary reaction described in the GO definition, making it impossible to determine a plausible explanation for the annotation."
+   },
+   {
+    "accession": "Q99N14",
+    "reason": "none_verdict",
+    "reasoning": "The region span (95-128) is the only positional feature provided for Q99N14, but it is marked as Disordered, which implies no defined structure. This makes it unlikely to be a specific binding site for substance K receptors. No other annotated features provide structural or functional evidence that directly supports the GO term's definition. Thus, there is no strong match between any of the featur"
+   }
+  ]
+ },
+ "GO:0031839": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Involved in receptor binding",
+    "accessions": [
+     "P12760",
+     "P48645",
+     "Q9QXK8"
+    ],
+    "reason": "circular agreement -- only 1 of 3 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0031840": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Involved in receptor binding",
+    "accessions": [
+     "P12760",
+     "P48645",
+     "Q9QXK8"
+    ],
+    "reason": "circular agreement -- only 1 of 3 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0031850": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P26817",
+    "reason": "none_verdict",
+    "reasoning": "The defined reaction of \"delta-type opioid receptor binding\" does not have a direct positional feature that explains why the protein carries this term. While phosphorylation sites are involved in downstream effects, they do not directly support the primary reaction of binding to a delta-type opioid receptor."
+   },
+   {
+    "accession": "Q99MK8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the binding to a delta-type opioid receptor. While some sites are involved in receptor phosphorylation, this is a secondary consequence and not the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0031858": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "important for receptor binding",
+    "accessions": [
+     "O70176",
+     "P13589"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0031955": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9JMI1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0031826",
+  "name": "type 2A serotonin receptor binding",
+  "def": "Binding to a type 2A serotonin receptor.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P29067",
+    "Q91YI4"
+  ],
+  "assigned_accessions": [
+    "P29067",
+    "Q91YI4"
+  ]
+}
