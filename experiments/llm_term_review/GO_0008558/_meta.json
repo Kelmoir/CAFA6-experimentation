@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0008558",
+  "name": "ABC-type guanine transporter activity",
+  "def": "Catalyses the reaction: ATP + H2O + guanine(out) = ADP + phosphate + guanine(in).",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P10090",
+    "P12428"
+  ],
+  "assigned_accessions": [
+    "P10090",
+    "P12428"
+  ]
+}

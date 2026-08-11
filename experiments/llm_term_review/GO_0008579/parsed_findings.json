@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "Q10038",
+      "go_id": "GO:0008579",
+      "feature_type": "DOMAIN",
+      "start": 174,
+      "end": 318,
+      "signal_kind": "text",
+      "signal_value": "Tyrosine-protein phosphatase",
+      "reasoning": "The DOMAIN 174-318 annotation with the note \"Tyrosine-protein phosphatase\" directly matches the primary reaction of the GO term, which is the catalytic dephosphorylation of JUN kinase. This provides a strong and specific basis for the molecular function prediction."
+    },
+    {
+      "accession": "Q8WTR2",
+      "go_id": "GO:0008579",
+      "feature_type": "DOMAIN",
+      "start": 64,
+      "end": 206,
+      "signal_kind": "text",
+      "signal_value": "Tyrosine-protein phosphatase",
+      "reasoning": "The DOMAIN feature specifically describes the enzyme's function as a tyrosine-protein phosphatase, which directly aligns with the primary reaction of the GO term \"JUN kinase phosphatase activity.\" This provides a strong and mechanistically specific explanation for why the protein carries the term."
+    },
+    {
+      "accession": "Q8K4T5",
+      "go_id": "GO:0008579",
+      "feature_type": "DOMAIN",
+      "start": 63,
+      "end": 205,
+      "signal_kind": "text",
+      "signal_value": "Tyrosine-protein phosphatase",
+      "reasoning": "The DOMAIN feature from 63-205 directly corresponds to the function of removing phosphate groups from tyrosine-containing proteins, which matches the primary reaction defined by GO:0008579. This provides a strong mechanistic basis for the annotation."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

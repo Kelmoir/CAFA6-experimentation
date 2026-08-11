@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008508",
+  "name": "bile acid:sodium symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: bile acid(out) + Na+(out) = bile acid(in) + Na+(in).",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "O08705",
+    "P26435",
+    "Q12908",
+    "Q14973"
+  ],
+  "assigned_accessions": [
+    "O08705",
+    "P26435",
+    "Q12908",
+    "Q14973"
+  ]
+}

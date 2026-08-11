@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P10090",
+      "go_id": "GO:0008558",
+      "feature_type": "DOMAIN",
+      "start": 92,
+      "end": 341,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter",
+      "reasoning": "The DOMAIN 92-341 annotation explicitly identifies the protein as an ABC transporter, which matches the primary reaction of the GO term \"ABC-type guanine transporter activity\" involving ATP-dependent transport."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P12428",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the specific chemical reaction defined by the GO term, only indicating that ATP binds to the protein, which is not sufficient to fully account for the function."
+    }
+  ]
+}

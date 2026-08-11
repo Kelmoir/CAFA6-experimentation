@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O08705",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION\" with coordinates 331-362 is disordered and does not directly explain why the protein carries the GO term, as it lacks specificity to the defined reaction or mechanism of bile acid and sodium ion transport."
+    },
+    {
+      "accession": "Q12908",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear, specific explanation for the defined reaction of transferring bile acids and sodium ions, which is the primary mechanism of the GO term."
+    },
+    {
+      "accession": "Q14973",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P26435",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for this protein is a disordered region, which does not provide a strong match to the defined function of bile acid:sodium symporter activity. No positional feature has been confirmed to explain why this protein carries the term."
+    }
+  ]
+}

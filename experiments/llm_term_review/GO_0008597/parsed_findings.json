@@ -1,0 +1,43 @@
+{
+  "resolved": [
+    {
+      "accession": "P63100",
+      "go_id": "GO:0008597",
+      "feature_type": "BINDING",
+      "start": 30,
+      "end": 31,
+      "signal_kind": "ligand",
+      "signal_value": "Ca(2+)",
+      "reasoning": "The binding of Ca(2+) to the enzyme's domain is a direct mechanism that supports the function described in the GO term, making it the most plausible explanation for why this protein carries the annotation."
+    },
+    {
+      "accession": "Q9UKA8",
+      "go_id": "GO:0008597",
+      "feature_type": "REGION",
+      "start": 182,
+      "end": 203,
+      "signal_kind": "text",
+      "signal_value": "Calcineurin-binding",
+      "reasoning": "The \"REGION 182-203\" with a note indicating it binds calcineurin is most plausibly linked to the regulation of calcium-dependent enzymes, which aligns with the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "G5EDN6",
+      "go_id": "GO:0008597",
+      "feature_type": "SITE",
+      "start": 117,
+      "end": 118,
+      "signal_kind": "text",
+      "signal_value": "Interaction with PxVP motif in substrates of catalytic subunit",
+      "reasoning": "The highest-scoring site (SITE 117-118) is related to interaction with a PxVP motif in substrates of the catalytic subunit, which directly supports the ability to modulate the activity of the enzyme. However, this feature is not unique to G5EDN6 and could apply to other proteins with similar functions, making it insufficient to confirm that G5EDN6 carries the GO term as a real, asserted annotation"
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q9UU93",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly supports the primary reaction of the GO term, which is binding and modulating the activity of the enzyme."
+    }
+  ]
+}

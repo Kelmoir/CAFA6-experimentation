@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0008566",
+  "name": "mitochondrial protein-transporting ATPase activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: ATP + H2O = ADP + phosphate; drives the transport of proteins into the mitochondrion via the mitochondrial inner membrane translocase complex.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P0CS90",
+    "P29845",
+    "Q9CZP5"
+  ],
+  "assigned_accessions": [
+    "P0CS90",
+    "P29845",
+    "Q9CZP5"
+  ]
+}

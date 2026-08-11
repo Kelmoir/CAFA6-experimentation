@@ -1,0 +1,29 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9CZP5",
+      "go_id": "GO:0008566",
+      "feature_type": "BINDING",
+      "start": 229,
+      "end": 237,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The BINDING feature at position 229-237 directly involves the interaction of ATP with the protein, aligning with the primary reaction mechanism of the GO term. This provides a clear structural/functional basis for the term's assertion."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P29845",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction of the GO term, which involves ATP hydrolysis and solute transport."
+    },
+    {
+      "accession": "P0CS90",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for P0CS90 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The InterPro:IPR043129 domain (ATPase_NBD) directly supports the primary reaction of ATP hydrolysis in the context of mitochondrial protein transport, making it the most plausible explanation for the GO term."
+    }
+  ]
+}

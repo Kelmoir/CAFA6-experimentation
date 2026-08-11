@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0008579",
+  "name": "JUN kinase phosphatase activity",
+  "def": "Catalysis of the reaction: JUN kinase serine/threonine/tyrosine phosphate + H2O = JUN kinase serine/threonine/tyrosine + phosphate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q10038",
+    "Q8K4T5",
+    "Q8WTR2"
+  ],
+  "assigned_accessions": [
+    "Q10038",
+    "Q8K4T5",
+    "Q8WTR2"
+  ]
+}

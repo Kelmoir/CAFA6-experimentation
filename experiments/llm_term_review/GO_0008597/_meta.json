@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008597",
+  "name": "calcium-dependent protein serine/threonine phosphatase regulator activity",
+  "def": "Binds to and modulates of the activity of the enzyme calcium-dependent protein serine/threonine phosphatase.",
+  "n_proteins_total": 23,
+  "sampled_accessions": [
+    "G5EDN6",
+    "P63100",
+    "Q9UKA8",
+    "Q9UU93"
+  ],
+  "assigned_accessions": [
+    "G5EDN6",
+    "P63100",
+    "Q9UKA8",
+    "Q9UU93"
+  ]
+}

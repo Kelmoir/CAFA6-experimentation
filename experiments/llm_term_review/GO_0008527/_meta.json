@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008527",
+  "name": "taste receptor activity",
+  "def": "Combining with soluble compounds to initiate a change in cell activity. These receptors are responsible for the sense of taste.",
+  "n_proteins_total": 62,
+  "sampled_accessions": [
+    "P83297",
+    "Q9JKT4",
+    "Q9VKA5",
+    "Q9VZJ6"
+  ],
+  "assigned_accessions": [
+    "P83297",
+    "Q9JKT4",
+    "Q9VKA5",
+    "Q9VZJ6"
+  ]
+}

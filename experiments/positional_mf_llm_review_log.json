@@ -5977,6 +5977,191 @@
    }
   ]
  },
+ "GO:0008508": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O08705",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" with coordinates 331-362 is disordered and does not directly explain why the protein carries the GO term, as it lacks specificity to the defined reaction or mechanism of bile acid and sodium ion transport."
+   },
+   {
+    "accession": "Q12908",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, specific explanation for the defined reaction of transferring bile acids and sodium ions, which is the primary mechanism of the GO term."
+   },
+   {
+    "accession": "Q14973",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P26435",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein is a disordered region, which does not provide a strong match to the defined function of bile acid:sodium symporter activity. No positional feature has been confirmed to explain why this protein carries the term."
+   }
+  ]
+ },
+ "GO:0008527": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P83297",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9JKT4",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9VKA5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's positional data directly explains the defined chemistry or mechanism of the GO term \"taste receptor activity.\""
+   },
+   {
+    "accession": "Q9VZJ6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0008558": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter",
+    "accessions": [
+     "P10090"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P12428",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the specific chemical reaction defined by the GO term, only indicating that ATP binds to the protein, which is not sufficient to fully account for the function."
+   }
+  ]
+ },
+ "GO:0008566": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q9CZP5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P29845",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction of the GO term, which involves ATP hydrolysis and solute transport."
+   },
+   {
+    "accession": "P0CS90",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for P0CS90 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The InterPro:IPR043129 domain (ATPase_NBD) directly supports the primary reaction of ATP hydrolysis in the context of mitochondrial protein transport, making it the most plausible explanation for the GO term."
+   }
+  ]
+ },
+ "GO:0008579": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Tyrosine-protein phosphatase",
+    "accessions": [
+     "Q10038",
+     "Q8K4T5",
+     "Q8WTR2"
+    ],
+    "reason": "resolved to ['InterPro:IPR000340', 'InterPro:IPR020422', 'InterPro:IPR029021', 'PROSITE:PS00383', 'PROSITE:PS50054', 'PROSITE:PS50056'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000340': 98, 'InterPro:IPR020422': 126, 'InterPro:IPR029021': 317, 'PROSITE:PS00383': 224, 'PROSITE:PS50054': 127, 'PROSITE:PS50056': 255})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0008597": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Ca(2+)",
+    "accessions": [
+     "P63100"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Calcineurin-binding",
+    "accessions": [
+     "Q9UKA8"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "G5EDN6",
+    "go_id": "GO:0008597",
+    "feature_type": "SITE",
+    "start": 117,
+    "end": 118,
+    "signal_kind": "text",
+    "signal_value": "Interaction with PxVP motif in substrates of catalytic subunit",
+    "reasoning": "The highest-scoring site (SITE 117-118) is related to interaction with a PxVP motif in substrates of the catalytic subunit, which directly supports the ability to modulate the activity of the enzyme. However, this feature is not unique to G5EDN6 and could apply to other proteins with similar functions, making it insufficient to confirm that G5EDN6 carries the GO term as a real, asserted annotation"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q9UU93",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly supports the primary reaction of the GO term, which is binding and modulating the activity of the enzyme."
+   }
+  ]
+ },
  "GO:0008675": {
   "n_resolved": 0,
   "n_uncertain": 0,
