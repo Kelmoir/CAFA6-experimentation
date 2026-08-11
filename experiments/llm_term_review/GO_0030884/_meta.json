@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0030884",
+  "name": "exogenous lipid antigen binding",
+  "def": "Binding to an exogenous lipid antigen (examples include microbial lipids and glycolipids).",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "P11609",
+    "P15812",
+    "P15813",
+    "P29016"
+  ],
+  "assigned_accessions": [
+    "P11609",
+    "P15812",
+    "P15813",
+    "P29016"
+  ]
+}

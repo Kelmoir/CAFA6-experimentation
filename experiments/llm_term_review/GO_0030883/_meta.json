@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0030883",
+  "name": "endogenous lipid antigen binding",
+  "def": "Binding to an endogenous cellular lipid antigen.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "P11609",
+    "P11610",
+    "P15812",
+    "P29017"
+  ],
+  "assigned_accessions": [
+    "P11609",
+    "P11610",
+    "P15812",
+    "P29017"
+  ]
+}

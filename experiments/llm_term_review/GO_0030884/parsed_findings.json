@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P11609",
+      "go_id": "GO:0030884",
+      "feature_type": "DOMAIN",
+      "start": 206,
+      "end": 297,
+      "signal_kind": "text",
+      "signal_value": "Ig-like",
+      "reasoning": "The Ig-like domain at position 206-297 directly matches the primary reaction of exogenous lipid antigen binding by providing a structural basis for ligand recognition and binding."
+    },
+    {
+      "accession": "P15812",
+      "go_id": "GO:0030884",
+      "feature_type": "DOMAIN",
+      "start": 190,
+      "end": 301,
+      "signal_kind": "text",
+      "signal_value": "Ig-like",
+      "reasoning": "The Ig-like domain is a well-known structural feature involved in antigen recognition and binding, which aligns with the primary reaction described by the GO term's definition."
+    },
+    {
+      "accession": "P15813",
+      "go_id": "GO:0030884",
+      "feature_type": "DOMAIN",
+      "start": 184,
+      "end": 292,
+      "signal_kind": "text",
+      "signal_value": "Ig-like",
+      "reasoning": "The Ig-like domain in position 184-292 of P15813 directly supports the primary reaction of binding an exogenous lipid antigen, which is the core definition of the GO term \"exogenous lipid antigen binding.\" This feature most plausibly explains why the protein carries this GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P29016",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of exogenous lipid antigen binding as defined by the GO term. While the Ig-like domain is relevant to antigen recognition, it does not specifically account for the binding of exogenous lipid antigens. The internalization signal is unrelated to antigen binding. Thus, there is no positional feature that plausibly explains why P29016 carries"
+    }
+  ]
+}

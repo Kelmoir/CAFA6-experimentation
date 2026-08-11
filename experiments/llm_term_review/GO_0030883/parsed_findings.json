@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "P11609",
+      "go_id": "GO:0030883",
+      "feature_type": "DOMAIN",
+      "start": 206,
+      "end": 297,
+      "signal_kind": "text",
+      "signal_value": "Ig-like",
+      "reasoning": "The Ig-like domain in position 206-297 directly matches the definition of \"endogenous lipid antigen binding\" by indicating a structural feature capable of recognizing and interacting with lipid antigens."
+    },
+    {
+      "accession": "P11610",
+      "go_id": "GO:0030883",
+      "feature_type": "BINDING",
+      "start": 97,
+      "end": 98,
+      "signal_kind": "ligand",
+      "signal_value": "a D-galactosylceramide",
+      "reasoning": "The binding site at position 97-98 for D-galactosylceramide directly supports the function of endogenous lipid antigen binding as defined by GO:0030883."
+    },
+    {
+      "accession": "P15812",
+      "go_id": "GO:0030883",
+      "feature_type": "DOMAIN",
+      "start": 190,
+      "end": 301,
+      "signal_kind": "text",
+      "signal_value": "Ig-like",
+      "reasoning": "The Ig-like domain (DOMAIN 190-301) is a known structural feature associated with antigen recognition, which directly supports the GO term's definition of binding to an endogenous lipid antigen."
+    },
+    {
+      "accession": "P29017",
+      "go_id": "GO:0030883",
+      "feature_type": "DOMAIN",
+      "start": 205,
+      "end": 296,
+      "signal_kind": "text",
+      "signal_value": "Ig-like",
+      "reasoning": "The \"Ig-like\" domain in P29017 directly supports the molecular function of binding to an endogenous cellular lipid antigen, as Ig domains are known for their antigen-binding activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

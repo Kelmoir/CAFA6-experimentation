@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P33360",
+      "go_id": "GO:0031459",
+      "feature_type": "DOMAIN",
+      "start": 1,
+      "end": 235,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter",
+      "reasoning": "The DOMAIN feature directly matches the primary reaction of the GO term by indicating that the protein is an ABC-type transporter, which is the core function described in the definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

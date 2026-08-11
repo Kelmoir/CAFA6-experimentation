@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P02599",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly explain why this protein binds to troponin I, as all the binding sites are for Ca\u00b2\u207a rather than troponin I itself."
+    },
+    {
+      "accession": "P50752",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated features for this protein are disordered regions, which do not provide a strong or specific match to the GO term's primary reaction of binding to troponin I. No positional feature has been confirmed to explain why this protein carries the molecular function."
+    },
+    {
+      "accession": "P50753",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's section provides direct evidence of binding to troponin I, which is the primary reaction defined by the GO term. Therefore, it is not possible to determine a specific explanation for why this protein carries the term."
+    },
+    {
+      "accession": "Q9UKA8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9UKA8 specifically matches the primary reaction of \"Binding to troponin I\" as defined by the GO term, and no positional feature has been confirmed to explain why the protein carries this term."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0031013",
+  "name": "troponin I binding",
+  "def": "Binding to troponin I, the inhibitory subunit of the troponin complex.",
+  "n_proteins_total": 13,
+  "sampled_accessions": [
+    "P02599",
+    "P50752",
+    "P50753",
+    "Q9UKA8"
+  ],
+  "assigned_accessions": [
+    "P02599",
+    "P50752",
+    "P50753",
+    "Q9UKA8"
+  ]
+}

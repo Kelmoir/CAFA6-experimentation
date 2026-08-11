@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0030946",
+  "name": "protein tyrosine phosphatase activity, metal-dependent",
+  "def": "Catalysis of the reaction: protein tyrosine phosphate + H2O = protein tyrosine + phosphate. This reaction requires metal ions.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O82162",
+    "P40081",
+    "Q05201"
+  ],
+  "assigned_accessions": [
+    "O82162",
+    "P40081",
+    "Q05201"
+  ]
+}

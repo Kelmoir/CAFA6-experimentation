@@ -14419,6 +14419,65 @@
    }
   ]
  },
+ "GO:0030883": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like",
+    "accessions": [
+     "P11609",
+     "P15812",
+     "P29017"
+    ],
+    "reason": "resolved to ['InterPro:IPR003597', 'InterPro:IPR007110', 'InterPro:IPR011161', 'InterPro:IPR011162', 'InterPro:IPR013783', 'InterPro:IPR036179', 'InterPro:IPR037055', 'PROSITE:PS50835'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR003597': 144, 'InterPro:IPR007110': 1106, 'InterPro:IPR011161': 53, 'InterPro:IPR011162': 102, 'InterPro:IPR013783': 1901, 'InterPro:IPR036179': 1187, 'InterPro:IPR037055': 60, 'PROSITE:PS50835': 1101})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a D-galactosylceramide",
+    "accessions": [
+     "P11610"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0030884": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like",
+    "accessions": [
+     "P11609",
+     "P15812",
+     "P15813"
+    ],
+    "reason": "resolved to ['InterPro:IPR003597', 'InterPro:IPR007110', 'InterPro:IPR011161', 'InterPro:IPR011162', 'InterPro:IPR013783', 'InterPro:IPR036179', 'InterPro:IPR037055', 'PROSITE:PS50835'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR003597': 144, 'InterPro:IPR007110': 1106, 'InterPro:IPR011161': 53, 'InterPro:IPR011162': 102, 'InterPro:IPR013783': 1901, 'InterPro:IPR036179': 1187, 'InterPro:IPR037055': 60, 'PROSITE:PS50835': 1101})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P29016",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of exogenous lipid antigen binding as defined by the GO term. While the Ig-like domain is relevant to antigen recognition, it does not specifically account for the binding of exogenous lipid antigens. The internalization signal is unrelated to antigen binding. Thus, there is no positional feature that plausibly explains why P29016 carries"
+   }
+  ]
+ },
  "GO:0030941": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -14432,6 +14491,107 @@
     "accession": "Q9SAR5",
     "reason": "none_verdict",
     "reasoning": "No annotated feature directly matches the primary reaction of chloroplast targeting sequence binding as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0030946": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Mg(2+)",
+    "accessions": [
+     "O82162"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "phosphate",
+    "accessions": [
+     "P40081"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q05201",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves catalyzing the removal of a phosphate group from tyrosine. The binding sites are more about metal coordination than the actual phosphatase activity."
+   }
+  ]
+ },
+ "GO:0030985": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P87020",
+    "go_id": "GO:0030985",
+    "feature_type": "REGION",
+    "start": 252,
+    "end": 299,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The disordered region (REGION 252-299) is a plausible structural basis for the GO term \"high molecular weight kininogen binding,\" but it does not specifically match the chemistry of the term. Other features like domain/family cross-references may be more relevant, but they are not positional features. Therefore, the evidence is insufficient to confirm a strong match."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q59L12",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein is a disordered region, which does not provide a strong explanation for the defined reaction of binding to high molecular mass kininogen. This feature is generic and could apply to many proteins, so it does not specifically match the GO term's own chemistry."
+   },
+   {
+    "accession": "Q5AL03",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list provides a clear, specific explanation for the molecular function defined by the GO term \"high molecular weight kininogen binding.\" The only evidence is about disordered regions, which do not directly support the defined chemistry of the term."
+   },
+   {
+    "accession": "Q9Y7F0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains why Q9Y7F0 carries the GO term \"high molecular weight kininogen binding,\" as none of the features explicitly reference the ligand or its molecular mass."
+   }
+  ]
+ },
+ "GO:0031013": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P02599",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain why this protein binds to troponin I, as all the binding sites are for Ca\u00b2\u207a rather than troponin I itself."
+   },
+   {
+    "accession": "P50752",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated features for this protein are disordered regions, which do not provide a strong or specific match to the GO term's primary reaction of binding to troponin I. No positional feature has been confirmed to explain why this protein carries the molecular function."
+   },
+   {
+    "accession": "P50753",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's section provides direct evidence of binding to troponin I, which is the primary reaction defined by the GO term. Therefore, it is not possible to determine a specific explanation for why this protein carries the term."
+   },
+   {
+    "accession": "Q9UKA8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9UKA8 specifically matches the primary reaction of \"Binding to troponin I\" as defined by the GO term, and no positional feature has been confirmed to explain why the protein carries this term."
    }
   ]
  },
@@ -14450,5 +14610,24 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0031459": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter",
+    "accessions": [
+     "P33360"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

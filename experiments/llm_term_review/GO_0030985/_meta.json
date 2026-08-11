@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0030985",
+  "name": "high molecular weight kininogen binding",
+  "def": "Binding to a kininogen of high molecular mass.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P87020",
+    "Q59L12",
+    "Q5AL03",
+    "Q9Y7F0"
+  ],
+  "assigned_accessions": [
+    "P87020",
+    "Q59L12",
+    "Q5AL03",
+    "Q9Y7F0"
+  ]
+}

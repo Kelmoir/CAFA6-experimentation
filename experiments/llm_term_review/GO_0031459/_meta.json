@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0031459",
+  "name": "ABC-type glycine betaine transporter activity",
+  "def": "Catalysis of the reaction: ATP + H2O + glycine betaine(out) = ADP + phosphate + glycine betaine(in).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P33360"
+  ],
+  "assigned_accessions": [
+    "P33360"
+  ]
+}

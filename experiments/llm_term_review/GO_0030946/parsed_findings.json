@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O82162",
+      "go_id": "GO:0030946",
+      "feature_type": "BINDING",
+      "start": 24,
+      "end": 25,
+      "signal_kind": "ligand",
+      "signal_value": "Mg(2+)",
+      "reasoning": "The binding of Mg(2+) to the enzyme's active site directly supports the requirement for metal ions in the reaction mechanism, which is a core part of the GO term's definition."
+    },
+    {
+      "accession": "P40081",
+      "go_id": "GO:0030946",
+      "feature_type": "BINDING",
+      "start": 11,
+      "end": 12,
+      "signal_kind": "ligand",
+      "signal_value": "phosphate",
+      "reasoning": "The binding site for \"phosphate\" (BINDING 11-12) directly supports the removal of phosphate from protein tyrosine, which is the primary reaction mechanism defined by the GO term. This feature strongly aligns with the function described in the GO definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q05201",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves catalyzing the removal of a phosphate group from tyrosine. The binding sites are more about metal coordination than the actual phosphatase activity."
+    }
+  ]
+}

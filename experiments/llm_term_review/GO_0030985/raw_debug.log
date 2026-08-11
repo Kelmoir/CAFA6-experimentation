@@ -1,0 +1,6 @@
+=== P87020 GO:0030985 (VERDICT missing) ===
+THINKING: The GO term is "high molecular weight kininogen binding" with the definition focusing on "Binding to a kininogen of high molecular mass." This implies that the protein has a domain or region capable of recognizing and binding to such a large molecule. The annotated features for P87020 include a disordered REGION from 252-299, which could be a candidate as it might contain the binding site. However, no other positional feature directly relates to kininogen binding. The domain/family cross-references suggest the presence of HRXXH motifs and other domains, but these are not positioned in the protein's sequence. Therefore, the only plausible feature is the disordered REGION from 252-299.
+
+FEATURE: REGION 252-299  
+REASONING: The disordered region from 252-299 of P87020 could plausibly contain the binding site for high molecular weight kininogen, as it is a common structural feature in proteins that recognize large molecules. This feature directly relates to the primary reaction described in the GO term's definition.
+
