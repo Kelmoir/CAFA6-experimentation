@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019783",
+  "name": "ubiquitin-like protein peptidase activity",
+  "def": "An isopeptidase activity that cleaves ubiquitin or ubiquitin-like proteins (ULP; e.g. ATG8, ISG15, NEDD8, SUMO) from target proteins.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O13979",
+    "Q6P8X6",
+    "Q70EL3",
+    "Q9UHP3"
+  ],
+  "assigned_accessions": [
+    "O13979",
+    "Q6P8X6",
+    "Q70EL3",
+    "Q9UHP3"
+  ]
+}

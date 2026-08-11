@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P49792",
+      "go_id": "GO:0019789",
+      "feature_type": "REGION",
+      "start": 2632,
+      "end": 2710,
+      "signal_kind": "text",
+      "signal_value": "Required for E3 SUMO-ligase activity",
+      "reasoning": "The feature \"REGION 2632-2710\" with the note \"Required for E3 SUMO-ligase activity\" directly matches the primary reaction of the GO term, which is the requirement for SUMO ligase activity. This provides a strong mechanistic basis for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O55187",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for this protein directly identifies a domain or region responsible for SUMO transferase activity, which is the primary reaction defined by the GO term."
+    },
+    {
+      "accession": "O96006",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains the SUMO transfer mechanism as defined by the GO term."
+    },
+    {
+      "accession": "P55271",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

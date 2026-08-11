@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q496F6",
+      "go_id": "GO:0019811",
+      "feature_type": "DOMAIN",
+      "start": 17,
+      "end": 120,
+      "signal_kind": "text",
+      "signal_value": "Ig-like V-type",
+      "reasoning": "The \"Ig-like V-type\" domain in position 17-120 of protein Q496F6 directly relates to the defined reaction of cocaine binding, as it is associated with receptor activity and ligand binding mechanisms. This feature most plausibly explains why the protein carries the \"cocaine binding\" GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P31645",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list specifically indicates that it binds to cocaine, which is the primary reaction defined by the GO term."
+    },
+    {
+      "accession": "P31652",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a specific explanation for the primary reaction of binding to cocaine as defined by the GO term."
+    },
+    {
+      "accession": "Q60857",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically describes the mechanism of cocaine binding, and all features are generic or unrelated to the primary reaction of the GO term."
+    }
+  ]
+}

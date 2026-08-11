@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0022836",
+  "name": "gated channel activity",
+  "def": "Enables the transmembrane transfer of a solute by a channel that opens in response to a specific stimulus.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WJN5"
+  ],
+  "assigned_accessions": [
+    "P9WJN5"
+  ]
+}

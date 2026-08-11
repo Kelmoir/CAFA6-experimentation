@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0019808",
+  "name": "polyamine binding",
+  "def": "Binding to a polyamine, an organic compound containing two or more amino groups.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P08723",
+    "Q5QNP2"
+  ],
+  "assigned_accessions": [
+    "P08723",
+    "Q5QNP2"
+  ]
+}

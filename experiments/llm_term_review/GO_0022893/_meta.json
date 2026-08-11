@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0022893",
+  "name": "low-affinity tryptophan transmembrane transporter activity",
+  "def": "Catalysis of the low-affinity transfer of L-tryptophan from one side of a membrane to the other. Tryptophan is 2-amino-3-(1H-indol-3-yl)propanoic acid. In low-affinity transport the transporter is able to bind the solute only if it is present at very high concentrations.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P38085"
+  ],
+  "assigned_accessions": [
+    "P38085"
+  ]
+}

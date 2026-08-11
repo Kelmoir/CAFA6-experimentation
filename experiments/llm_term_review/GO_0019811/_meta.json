@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019811",
+  "name": "cocaine binding",
+  "def": "Binding to cocaine (2-beta-carbomethoxy-3-beta-benzoxytropane), an alkaloid obtained from dried leaves of the South American shrub Erythroxylon coca or by chemical synthesis.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P31645",
+    "P31652",
+    "Q496F6",
+    "Q60857"
+  ],
+  "assigned_accessions": [
+    "P31645",
+    "P31652",
+    "Q496F6",
+    "Q60857"
+  ]
+}

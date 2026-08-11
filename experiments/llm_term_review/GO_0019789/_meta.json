@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019789",
+  "name": "SUMO transferase activity",
+  "def": "Catalysis of the transfer of SUMO from one protein to another via the reaction X-SUMO + Y = Y-SUMO + X, where both X-SUMO and Y-SUMO are covalent linkages.",
+  "n_proteins_total": 67,
+  "sampled_accessions": [
+    "O55187",
+    "O96006",
+    "P49792",
+    "P55271"
+  ],
+  "assigned_accessions": [
+    "O55187",
+    "O96006",
+    "P49792",
+    "P55271"
+  ]
+}

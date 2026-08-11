@@ -10784,6 +10784,15 @@
    "glycyl thioester intermediate"
   ]
  },
+ "GO:0019783": {
+  "name": "ubiquitin-like protein peptidase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "Pfam:PF21909"
+  ],
+  "text_patterns": []
+ },
  "GO:0019784": {
   "name": "deNEDDylase activity",
   "ligands": [],

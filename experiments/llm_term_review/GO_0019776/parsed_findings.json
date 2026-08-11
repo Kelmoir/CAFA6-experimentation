@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P40344",
+      "go_id": "GO:0019776",
+      "feature_type": "ACT_SITE",
+      "start": 233,
+      "end": 234,
+      "signal_kind": "text",
+      "signal_value": "Glycyl thioester intermediate",
+      "reasoning": "The ACT_SITE annotation directly relates to the covalent attachment mechanism described in the GO term's definition, making it a strong match for the enzyme activity of Atg8-family ligase."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O15736",
+      "reason": "none_verdict",
+      "reasoning": "The protein's annotated features do not provide any positional or domain-based evidence that directly supports the primary reaction mechanism of the GO term \"Atg8-family ligase activity.\""
+    },
+    {
+      "accession": "Q3MQ06",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9NT62",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides direct evidence for the catalytic activity of Atg8-family ligase as defined by GO:0019776. The available features are either unrelated to the primary reaction or only loosely associated with it."
+    }
+  ]
+}

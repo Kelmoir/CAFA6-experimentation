@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019776",
+  "name": "Atg8-family ligase activity",
+  "def": "Catalysis of the covalent attachment of the ubiquitin-like protein Atg8 family modifier to phosphatidylethanolamine or phosphatidylserine on a membrane.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "O15736",
+    "P40344",
+    "Q3MQ06",
+    "Q9NT62"
+  ],
+  "assigned_accessions": [
+    "O15736",
+    "P40344",
+    "Q3MQ06",
+    "Q9NT62"
+  ]
+}

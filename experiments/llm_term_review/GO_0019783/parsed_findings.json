@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "O13979",
+      "go_id": "GO:0019783",
+      "feature_type": "ACT_SITE",
+      "start": 41,
+      "end": 42,
+      "signal_kind": "text",
+      "signal_value": "Nucleophile",
+      "reasoning": "The nucleophilic action at ACT SITE 41-42 directly matches the peptidase activity described in the GO term's definition, making it a strong and specific match for the molecular function."
+    },
+    {
+      "accession": "Q6P8X6",
+      "go_id": "GO:0019783",
+      "feature_type": "DOMAIN",
+      "start": 44,
+      "end": 363,
+      "signal_kind": "text",
+      "signal_value": "USP",
+      "reasoning": "The DOMAIN annotation at position 44-363 specifically matches the activity of an isopeptidase that cleaves ubiquitin or ubiquitin-like proteins, which aligns with the primary reaction described in the GO definition."
+    },
+    {
+      "accession": "Q70EL3",
+      "go_id": "GO:0019783",
+      "feature_type": "DOMAIN",
+      "start": 43,
+      "end": 339,
+      "signal_kind": "text",
+      "signal_value": "USP",
+      "reasoning": "The \"USP\" note in the DOMAIN annotation directly aligns with the primary reaction of the GO term, which is cleaving ubiquitin or ubiquitin-like proteins from target proteins. This provides a strong and specific match to the defined chemistry of the molecular function."
+    },
+    {
+      "accession": "Q9UHP3",
+      "go_id": "GO:0019783",
+      "feature_type": "DOMAIN",
+      "start": 168,
+      "end": 657,
+      "signal_kind": "text",
+      "signal_value": "USP",
+      "reasoning": "The USP domain is a well-known peptidase domain that specifically catalyzes the removal of ubiquitin-like proteins from target proteins, directly matching the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

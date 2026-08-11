@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P08723",
+      "go_id": "GO:0019808",
+      "feature_type": "DOMAIN",
+      "start": 17,
+      "end": 151,
+      "signal_kind": "text",
+      "signal_value": "Jacalin-type lectin",
+      "reasoning": "The DOMAIN annotation (17-151) specifically matches the primary reaction of polyamine binding as defined by the GO term, with a high score indicating a strong and mechanistically relevant match."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q5QNP2",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

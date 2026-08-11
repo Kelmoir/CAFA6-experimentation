@@ -12790,6 +12790,168 @@
    }
   ]
  },
+ "GO:0019776": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Glycyl thioester intermediate",
+    "accessions": [
+     "P40344"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O15736",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features do not provide any positional or domain-based evidence that directly supports the primary reaction mechanism of the GO term \"Atg8-family ligase activity.\""
+   },
+   {
+    "accession": "Q3MQ06",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9NT62",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides direct evidence for the catalytic activity of Atg8-family ligase as defined by GO:0019776. The available features are either unrelated to the primary reaction or only loosely associated with it."
+   }
+  ]
+ },
+ "GO:0019783": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "Pfam:PF21909"
+    ],
+    "accessions": [
+     "Q6P8X6",
+     "Q70EL3",
+     "Q9UHP3"
+    ],
+    "note": "resolved from DOMAIN note 'USP' (5 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Nucleophile",
+    "accessions": [
+     "O13979"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0019789": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Required for E3 SUMO-ligase activity",
+    "accessions": [
+     "P49792"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O55187",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for this protein directly identifies a domain or region responsible for SUMO transferase activity, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "O96006",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the SUMO transfer mechanism as defined by the GO term."
+   },
+   {
+    "accession": "P55271",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0019808": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Jacalin-type lectin",
+    "accessions": [
+     "P08723"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5QNP2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0019811": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like V-type",
+    "accessions": [
+     "Q496F6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P31645",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list specifically indicates that it binds to cocaine, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "P31652",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a specific explanation for the primary reaction of binding to cocaine as defined by the GO term."
+   },
+   {
+    "accession": "Q60857",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically describes the mechanism of cocaine binding, and all features are generic or unrelated to the primary reaction of the GO term."
+   }
+  ]
+ },
  "GO:0019964": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -12803,6 +12965,40 @@
     "accession": "Q9Y2M5",
     "reason": "none_verdict",
     "reasoning": "The annotated features for this protein do not provide any strong evidence that directly explains why it carries the molecular function defined by GO:0019964, which is about binding to type II interferon."
+   }
+  ]
+ },
+ "GO:0022836": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WJN5",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for P9WJN5 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The InterPro domain IPR036019 is directly associated with the MscL family of channels, which are known to be involved in mechanosensitive processes and thus align with the \"gated channel activity\" defined by GO:0022836."
+   }
+  ]
+ },
+ "GO:0022893": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P38085",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a specific explanation for the catalysis of low-affinity transfer of L-tryptophan across a membrane, which is the primary reaction described by the GO term."
    }
   ]
  }
