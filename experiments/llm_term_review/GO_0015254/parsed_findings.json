@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "O14520",
+      "go_id": "GO:0015254",
+      "feature_type": "SITE",
+      "start": 73,
+      "end": 74,
+      "signal_kind": "text",
+      "signal_value": "Selectivity filter",
+      "reasoning": "The site 73-74 is explicitly noted as a selectivity filter, which is directly related to the primary reaction described in the definition of glycerol channel activity (facilitated diffusion through a transmembrane pore). This feature most plausibly explains why the protein carries the GO term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q6ZXT4",
+      "go_id": "GO:0015254",
+      "feature_type": "REGION",
+      "start": 27,
+      "end": 53,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The DISORDERED REGION (27-53) could plausibly be involved in the structural organization of a glycerol channel, but it does not directly describe the mechanism of energy-independent facilitated diffusion of glycerol. No other annotated feature provides a stronger match to the GO term's primary reaction mechanism."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "O43315",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features provided do not directly or specifically match the primary reaction mechanism described in the GO term's definition, making it impossible to determine which one plausibly explains the molecular function."
+    },
+    {
+      "accession": "Q8R2N1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction described in the GO term's definition, which is the energy-independent facilitated diffusion of glycerol through a transmembrane pore."
+    }
+  ]
+}

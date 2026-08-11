@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015245",
+  "name": "fatty acid transmembrane transporter activity",
+  "def": "Enables the transfer of fatty acids from one side of a membrane to the other. Fatty acids are aliphatic monocarboxylic acids liberated from naturally occurring fats and oils by hydrolysis.",
+  "n_proteins_total": 25,
+  "sampled_accessions": [
+    "A2AVZ9",
+    "Q5U3U7",
+    "Q93V66",
+    "Q9DA75"
+  ],
+  "assigned_accessions": [
+    "A2AVZ9",
+    "Q5U3U7",
+    "Q93V66",
+    "Q9DA75"
+  ]
+}

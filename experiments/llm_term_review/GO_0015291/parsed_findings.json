@@ -1,0 +1,34 @@
+{
+  "resolved": [
+    {
+      "accession": "P0AA67",
+      "go_id": "GO:0015291",
+      "feature_type": "DOMAIN",
+      "start": 29,
+      "end": 135,
+      "signal_kind": "text",
+      "signal_value": "EamA 1",
+      "reasoning": "The DOMAIN 29-135 annotation directly matches the mechanism of secondary active transport described in the GO term's definition, which involves binding the solute and undergoing conformational changes to facilitate its transfer across the membrane."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q4U2R8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly supports the primary reaction described by the GO term, which is the transfer of solutes across a membrane using energy from a chemiosmotic source."
+    },
+    {
+      "accession": "Q8R0Y8",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9Y6L6",
+      "reason": "unresolved_pointer",
+      "detail": "no matching INTERPRO:IPR036259 452-508 on record for Q9Y6L6 -- pointer didn't resolve",
+      "reported_feature": "INTERPRO:IPR036259 452-508",
+      "reasoning": "The domain InterPro:IPR036259 (MFS_trans_sf) directly matches the mechanism described in the GO term's definition, which involves secondary active transport using a chemiosmotic source of energy. This feature is specifically associated with MFS family members involved in transmembrane transport and provides a strong match to the primary reaction of the GO term."
+    }
+  ]
+}

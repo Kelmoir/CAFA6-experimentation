@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015244",
+  "name": "fluconazole transmembrane transporter activity",
+  "def": "Enables the transfer of fluconazole from one side of a membrane to the other. Fluconazole is an antifungal drug used for oral candidiasis and cryptococcal meningitis; it is still under study for treatment of vaginal candidiasis and other fungal infections.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "O94528",
+    "Q5ANA3",
+    "Q6FRT5",
+    "Q6FRT6"
+  ],
+  "assigned_accessions": [
+    "O94528",
+    "Q5ANA3",
+    "Q6FRT5",
+    "Q6FRT6"
+  ]
+}

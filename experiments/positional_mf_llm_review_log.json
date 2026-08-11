@@ -8905,6 +8905,140 @@
    }
   ]
  },
+ "GO:0015244": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O94528",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q6FRT6",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature available for Q6FRT6 is \"REGION 43-67\" with note: Disordered. This feature does not provide any direct evidence about the molecular function or the defined reaction mechanism of fluconazole transmembrane transporter activity, and thus cannot be considered a strong match to the primary reaction described in the definition."
+   },
+   {
+    "accession": "Q5ANA3",
+    "reason": "none_verdict",
+    "reasoning": "There is no single annotated feature for Q5ANA3 that directly and specifically matches the chemistry of the GO term \"fluconazole transmembrane transporter activity\" as defined. The only relevant feature (BINDING 894-902) describes ATP binding, not fluconazole transport. Thus, the evidence does not support a strong match for this GO term."
+   },
+   {
+    "accession": "Q6FRT5",
+    "reason": "none_verdict",
+    "reasoning": "The defined function of fluconazole transmembrane transporter activity (GO:0015244) requires a specific domain or structural element to facilitate the transfer. However, for protein Q6FRT5, no annotated feature provides evidence that directly supports this function. The only candidate feature is a Disordered region, which lacks specificity and does not match the primary reaction described in the G"
+   }
+  ]
+ },
+ "GO:0015245": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A2AVZ9",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" annotation for A2AVZ9 only indicates a disordered region and does not provide evidence of fatty acid transport or transmembrane activity, which are the primary mechanisms defined by GO:0015245."
+   },
+   {
+    "accession": "Q5U3U7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q93V66",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature for Q93V66 that directly matches the primary reaction of fatty acid transmembrane transport, as the only features provided are a disordered region and domain/family cross-references."
+   },
+   {
+    "accession": "Q9DA75",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015254": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Selectivity filter",
+    "accessions": [
+     "O14520"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q6ZXT4",
+    "go_id": "GO:0015254",
+    "feature_type": "REGION",
+    "start": 27,
+    "end": 53,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The DISORDERED REGION (27-53) could plausibly be involved in the structural organization of a glycerol channel, but it does not directly describe the mechanism of energy-independent facilitated diffusion of glycerol. No other annotated feature provides a stronger match to the GO term's primary reaction mechanism."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "O43315",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features provided do not directly or specifically match the primary reaction mechanism described in the GO term's definition, making it impossible to determine which one plausibly explains the molecular function."
+   },
+   {
+    "accession": "Q8R2N1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction described in the GO term's definition, which is the energy-independent facilitated diffusion of glycerol through a transmembrane pore."
+   }
+  ]
+ },
+ "GO:0015277": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B1AS29",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in B1AS29 provides evidence for the primary reaction of ionotropic glutamate receptor activity (opening a cation channel in response to glutamate and kainate selectivity), making it impossible to determine which one plausibly explains the term."
+   },
+   {
+    "accession": "Q38PU3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q38PU3 provides a clear explanation for the \"kainate selective glutamate receptor activity\" defined by GO:0015277, as none of the binding sites directly indicate the mechanism of cation channel opening or the receptor's function."
+   },
+   {
+    "accession": "Q61626",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein Q61626 do not provide any direct evidence that explains why it carries the GO term \"kainate selective glutamate receptor activity.\" The disordered regions are generic and do not imply a specific functional role."
+   },
+   {
+    "accession": "Q63273",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the GO term's primary reaction as defined."
+   }
+  ]
+ },
  "GO:0015284": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -8923,6 +9057,43 @@
     "accession": "Q9JIF3",
     "reason": "none_verdict",
     "reasoning": "No annotated feature provides specific evidence of the fructose uniporter activity mechanism, only generic binding sites for D-glucose."
+   }
+  ]
+ },
+ "GO:0015291": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "EamA 1",
+    "accessions": [
+     "P0AA67"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q4U2R8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly supports the primary reaction described by the GO term, which is the transfer of solutes across a membrane using energy from a chemiosmotic source."
+   },
+   {
+    "accession": "Q8R0Y8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9Y6L6",
+    "reason": "unresolved_pointer",
+    "detail": "no matching INTERPRO:IPR036259 452-508 on record for Q9Y6L6 -- pointer didn't resolve",
+    "reported_feature": "INTERPRO:IPR036259 452-508",
+    "reasoning": "The domain InterPro:IPR036259 (MFS_trans_sf) directly matches the mechanism described in the GO term's definition, which involves secondary active transport using a chemiosmotic source of energy. This feature is specifically associated with MFS family members involved in transmembrane transport and provides a strong match to the primary reaction of the GO term."
    }
   ]
  }

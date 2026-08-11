@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015277",
+  "name": "kainate selective glutamate receptor activity",
+  "def": "An ionotropic glutamate receptor activity that exhibits fast gating by glutamate, acts by opening a cation channel permeable to sodium and potassium, and for which kainate is an agonist.",
+  "n_proteins_total": 20,
+  "sampled_accessions": [
+    "B1AS29",
+    "Q38PU3",
+    "Q61626",
+    "Q63273"
+  ],
+  "assigned_accessions": [
+    "B1AS29",
+    "Q38PU3",
+    "Q61626",
+    "Q63273"
+  ]
+}

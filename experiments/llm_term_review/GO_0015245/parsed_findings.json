@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A2AVZ9",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION\" annotation for A2AVZ9 only indicates a disordered region and does not provide evidence of fatty acid transport or transmembrane activity, which are the primary mechanisms defined by GO:0015245."
+    },
+    {
+      "accession": "Q5U3U7",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q93V66",
+      "reason": "none_verdict",
+      "reasoning": "There is no annotated feature for Q93V66 that directly matches the primary reaction of fatty acid transmembrane transport, as the only features provided are a disordered region and domain/family cross-references."
+    },
+    {
+      "accession": "Q9DA75",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

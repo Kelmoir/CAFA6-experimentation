@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015291",
+  "name": "secondary active transmembrane transporter activity",
+  "def": "Enables the transfer of a solute from one side of a membrane to the other, up its concentration gradient. The transporter binds the solute and undergoes a series of conformational changes. Transport works equally well in either direction and is driven by a chemiosmotic source of energy, not direct ATP coupling. Secondary active transporters include symporters and antiporters.",
+  "n_proteins_total": 28,
+  "sampled_accessions": [
+    "P0AA67",
+    "Q4U2R8",
+    "Q8R0Y8",
+    "Q9Y6L6"
+  ],
+  "assigned_accessions": [
+    "P0AA67",
+    "Q4U2R8",
+    "Q8R0Y8",
+    "Q9Y6L6"
+  ]
+}

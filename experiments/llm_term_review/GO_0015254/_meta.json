@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0015254",
+  "name": "glycerol channel activity",
+  "def": "Enables the energy-independent facilitated diffusion of glycerol through a transmembrane aqueous pore or channel.",
+  "n_proteins_total": 24,
+  "sampled_accessions": [
+    "O14520",
+    "O43315",
+    "Q6ZXT4",
+    "Q8R2N1"
+  ],
+  "assigned_accessions": [
+    "O14520",
+    "O43315",
+    "Q6ZXT4",
+    "Q8R2N1"
+  ]
+}
