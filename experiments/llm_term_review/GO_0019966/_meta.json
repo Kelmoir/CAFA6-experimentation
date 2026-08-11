@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019966",
+  "name": "interleukin-1 binding",
+  "def": "Binding to interleukin-1.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "P06238",
+    "Q02955",
+    "Q63621",
+    "Q6GQT1"
+  ],
+  "assigned_accessions": [
+    "P06238",
+    "Q02955",
+    "Q63621",
+    "Q6GQT1"
+  ]
+}

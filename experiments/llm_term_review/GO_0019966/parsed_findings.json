@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q63621",
+      "go_id": "GO:0019966",
+      "feature_type": "DOMAIN",
+      "start": 402,
+      "end": 546,
+      "signal_kind": "text",
+      "signal_value": "TIR",
+      "reasoning": "The TIR domain in position 402-546 of protein Q63621 directly supports the function of receiving a phosphoryl transfer from interleukin-1, which is the primary reaction defined by the GO term. This specific structural feature matches the chemistry described in the GO definition and provides a strong basis for the molecular function prediction."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P06238",
+      "reason": "none_verdict",
+      "reasoning": "The protein's annotated features do not provide any specific evidence to explain the molecular function of \"interleukin-1 binding,\" which is defined as binding to interleukin-1. No feature directly describes this activity, and the only region noted is a generic bait region with no functional relevance to the defined GO term."
+    },
+    {
+      "accession": "Q02955",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains the molecular function of the GO term \"interleukin-1 binding\" as defined by the primary reaction or mechanism."
+    },
+    {
+      "accession": "Q6GQT1",
+      "reason": "none_verdict",
+      "reasoning": "The \"Bait region\" annotation does not provide evidence for the molecular function of binding interleukin-1, which is the primary reaction described in the GO term's definition. No other annotated feature directly states this function, and the \"Bait region\" is generic in nature."
+    }
+  ]
+}

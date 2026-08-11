@@ -12952,6 +12952,170 @@
    }
   ]
  },
+ "GO:0019841": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "P24775"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "CRAL-TRIO",
+    "accessions": [
+     "Q9Z275"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P62964",
+    "go_id": "GO:0019841",
+    "feature_type": "BINDING",
+    "start": 131,
+    "end": 134,
+    "signal_kind": "ligand",
+    "signal_value": "all-trans-retinoate",
+    "reasoning": "The \"BINDING\" feature is related to the GO term's primary reaction of retinol binding, as it indicates a domain capable of binding a molecule chemically similar to retinol. However, since the ligand specified is all-trans-retinoate rather than retinol itself, and no other positional feature directly matches the definition, this match is not definitive. Thus, the evidence is insufficient to confirm"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P82980",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0019855": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "BPTI/Kunitz inhibitor 1",
+    "accessions": [
+     "P02760"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Ca(2+)",
+    "accessions": [
+     "P0DP30"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PPIase FKBP-type",
+    "accessions": [
+     "P97534"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P48787",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P48787 directly describes the binding and inhibition of calcium channels, which is the primary reaction defined by the GO term. The domain/family cross-reference does not provide a positional feature that matches the GO term's definition."
+   }
+  ]
+ },
+ "GO:0019862": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "IgA-binding",
+    "accessions": [
+     "P18670"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like V-type",
+    "accessions": [
+     "Q2TB54"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P01592",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P02760",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of \"IgA binding\" as defined by the GO term. The protein's features are related to protease inhibition and glycoprotein secretion, not IgA binding."
+   }
+  ]
+ },
+ "GO:0019863": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "IgE-binding",
+    "accessions": [
+     "B5KVH4"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "O43099",
+    "go_id": "GO:0019863",
+    "feature_type": "DOMAIN",
+    "start": 3,
+    "end": 158,
+    "signal_kind": "text",
+    "signal_value": "Thioredoxin",
+    "reasoning": "The DOMAIN span (3-158) is associated with Thioredoxin, which is a redox enzyme involved in various cellular processes. While Thioredoxin is known for its role in antioxidant defense and redox regulation, there is no direct evidence that it is specifically involved in IgE binding. Therefore, the match between the DOMAIN span and the GO term \"IgE binding\" is not strong enough to be considered a lik"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P08699",
+    "reason": "none_verdict",
+    "reasoning": "The \"BINDING\" feature with coordinates 192-199 describes the protein's ability to bind a ligand, which could be an IgE antibody. However, since the ligand is not specified as an IgE antibody, this feature does not directly explain why the protein carries the term \"IgE binding.\" Therefore, it is not a strong match to the GO term's own chemistry."
+   },
+   {
+    "accession": "Q01882",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0019964": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -12965,6 +13129,41 @@
     "accession": "Q9Y2M5",
     "reason": "none_verdict",
     "reasoning": "The annotated features for this protein do not provide any strong evidence that directly explains why it carries the molecular function defined by GO:0019964, which is about binding to type II interferon."
+   }
+  ]
+ },
+ "GO:0019966": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "TIR",
+    "accessions": [
+     "Q63621"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P06238",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features do not provide any specific evidence to explain the molecular function of \"interleukin-1 binding,\" which is defined as binding to interleukin-1. No feature directly describes this activity, and the only region noted is a generic bait region with no functional relevance to the defined GO term."
+   },
+   {
+    "accession": "Q02955",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the molecular function of the GO term \"interleukin-1 binding\" as defined by the primary reaction or mechanism."
+   },
+   {
+    "accession": "Q6GQT1",
+    "reason": "none_verdict",
+    "reasoning": "The \"Bait region\" annotation does not provide evidence for the molecular function of binding interleukin-1, which is the primary reaction described in the GO term's definition. No other annotated feature directly states this function, and the \"Bait region\" is generic in nature."
    }
   ]
  },

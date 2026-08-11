@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P18670",
+      "go_id": "GO:0019862",
+      "feature_type": "REGION",
+      "start": 67,
+      "end": 89,
+      "signal_kind": "text",
+      "signal_value": "IgA-binding",
+      "reasoning": "The REGION annotation \"IgA-binding\" directly matches the GO term's definition, which specifies binding to an immunoglobulin of an IgA isotype. This provides a clear and specific explanation for why the protein carries this molecular function."
+    },
+    {
+      "accession": "Q2TB54",
+      "go_id": "GO:0019862",
+      "feature_type": "DOMAIN",
+      "start": 94,
+      "end": 189,
+      "signal_kind": "text",
+      "signal_value": "Ig-like V-type",
+      "reasoning": "The DOMAIN 94-189 with the note \"Ig-like V-type\" directly corresponds to the structural feature required for IgA binding, making it the most plausible explanation for the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P01592",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P02760",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of \"IgA binding\" as defined by the GO term. The protein's features are related to protease inhibition and glycoprotein secretion, not IgA binding."
+    }
+  ]
+}

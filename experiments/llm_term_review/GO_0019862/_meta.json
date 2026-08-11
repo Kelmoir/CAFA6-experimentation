@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019862",
+  "name": "IgA binding",
+  "def": "Binding to an immunoglobulin of an IgA isotype.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "P01592",
+    "P02760",
+    "P18670",
+    "Q2TB54"
+  ],
+  "assigned_accessions": [
+    "P01592",
+    "P02760",
+    "P18670",
+    "Q2TB54"
+  ]
+}

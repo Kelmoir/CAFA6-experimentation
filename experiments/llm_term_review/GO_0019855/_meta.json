@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019855",
+  "name": "calcium channel inhibitor activity",
+  "def": "Binds to and stops, prevents, or reduces the activity of a calcium channel.",
+  "n_proteins_total": 53,
+  "sampled_accessions": [
+    "P02760",
+    "P0DP30",
+    "P48787",
+    "P97534"
+  ],
+  "assigned_accessions": [
+    "P02760",
+    "P0DP30",
+    "P48787",
+    "P97534"
+  ]
+}

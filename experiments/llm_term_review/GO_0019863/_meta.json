@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019863",
+  "name": "IgE binding",
+  "def": "Binding to an immunoglobulin of the IgE isotype.",
+  "n_proteins_total": 66,
+  "sampled_accessions": [
+    "B5KVH4",
+    "O43099",
+    "P08699",
+    "Q01882"
+  ],
+  "assigned_accessions": [
+    "B5KVH4",
+    "O43099",
+    "P08699",
+    "Q01882"
+  ]
+}
