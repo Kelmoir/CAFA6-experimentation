@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0018820",
+  "name": "cyanamide hydratase activity",
+  "def": "Catalysis of the reaction: urea = cyanamide + H2O.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "B0BNN3",
+    "P00915",
+    "P00918",
+    "P00920"
+  ],
+  "assigned_accessions": [
+    "B0BNN3",
+    "P00915",
+    "P00918",
+    "P00920"
+  ]
+}

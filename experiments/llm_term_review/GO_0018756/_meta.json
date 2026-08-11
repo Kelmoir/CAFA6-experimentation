@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0018756",
+  "name": "ammeline aminohydrolase activity",
+  "def": "Catalysis of the reaction: ammeline + H2O = ammelide + NH3.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P76641"
+  ],
+  "assigned_accessions": [
+    "P76641"
+  ]
+}

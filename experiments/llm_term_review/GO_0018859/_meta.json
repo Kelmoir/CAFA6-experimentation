@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0018859",
+  "name": "4-hydroxybenzoate-CoA ligase activity",
+  "def": "Catalysis of the reaction: ATP + 4-hydroxybenzoate + CoA = AMP + diphosphate + 4-hydroxybenzoyl-CoA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q84P24"
+  ],
+  "assigned_accessions": [
+    "Q84P24"
+  ]
+}

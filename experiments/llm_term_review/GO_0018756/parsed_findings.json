@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P76641",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided data specifically matches the primary reaction described in the GO term's definition, which involves catalyzing the transformation of ammeline with water to form ammelide and ammonia."
+    }
+  ]
+}

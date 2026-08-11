@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9I4X3",
+      "reason": "none_verdict",
+      "reasoning": "The binding site for AMP is relevant to the enzyme's function but does not directly explain why the protein carries the GO term \"anthranilate-CoA ligase activity\" \u2014 it only describes one of the substrates involved in the reaction. No other positional feature provides a stronger match to the primary reaction described in the GO term's definition."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0018833",
+  "name": "DDT-dehydrochlorinase activity",
+  "def": "Catalysis of the reaction: 1,1,1-trichloro-2,2-bis(4-chlorophenyl)ethane = 1,1-dichloro-2,2-bis(4-chlorophenyl)ethylene + chloride + H+.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P20432",
+    "P67805"
+  ],
+  "assigned_accessions": [
+    "P20432",
+    "P67805"
+  ]
+}

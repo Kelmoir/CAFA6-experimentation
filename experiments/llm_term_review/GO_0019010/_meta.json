@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0019010",
+  "name": "farnesoic acid O-methyltransferase activity",
+  "def": "Catalysis of the reaction: (2E,6E)-farnesoate + S-adenosyl-L-methionine = methyl (2E,6E)-farnesoate + S-adenosyl-L-homocysteine. Also converts juvenile hormone III carboxylate into juvenile hormone-III.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q767F1",
+    "Q9FYC4",
+    "Q9VJK8"
+  ],
+  "assigned_accessions": [
+    "Q767F1",
+    "Q9FYC4",
+    "Q9VJK8"
+  ]
+}

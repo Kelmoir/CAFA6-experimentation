@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0018826",
+  "name": "methionine gamma-lyase activity",
+  "def": "Catalysis of the reaction: L-methionine = methanethiol + NH3 + 2-oxobutanoate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SGU9"
+  ],
+  "assigned_accessions": [
+    "Q9SGU9"
+  ]
+}

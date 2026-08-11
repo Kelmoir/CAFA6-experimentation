@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9FYC4",
+      "go_id": "GO:0019010",
+      "feature_type": "BINDING",
+      "start": 140,
+      "end": 145,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site with the ligand \"substrate\" at position 140-145 most plausibly explains why protein Q9FYC4 carries the GO term \"farnesoic acid O-methyltransferase activity,\" as it directly relates to the substrate involved in the reaction defined by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q767F1",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9VJK8",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

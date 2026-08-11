@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P20432",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear, direct explanation for why the protein carries the GO term's defined chemistry. The only evidence points to interactions with glutathione, which are not specific to the catalytic activity described in the definition."
+    },
+    {
+      "accession": "P67805",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term, and all features are either generic or only echo secondary clauses."
+    }
+  ]
+}

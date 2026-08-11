@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0018860",
+  "name": "anthranilate-CoA ligase activity",
+  "def": "Catalysis of the reaction: ATP + anthranilate + CoA = AMP + diphosphate + anthranilyl-CoA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9I4X3"
+  ],
+  "assigned_accessions": [
+    "Q9I4X3"
+  ]
+}

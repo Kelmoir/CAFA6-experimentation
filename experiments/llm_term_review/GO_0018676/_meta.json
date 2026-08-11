@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0018676",
+  "name": "(S)-limonene 7-monooxygenase activity",
+  "def": "Catalysis of the reaction: (4S)-limonene + O2 + reduced [NADPH--hemoprotein reductase] = (4S)-perillyl alcohol + H+ + H2O + oxidized [NADPH--hemoprotein reductase].",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P11712",
+    "P33261"
+  ],
+  "assigned_accessions": [
+    "P11712",
+    "P33261"
+  ]
+}

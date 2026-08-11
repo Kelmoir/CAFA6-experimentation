@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q84P24",
+      "go_id": "GO:0018859",
+      "feature_type": "BINDING",
+      "start": 211,
+      "end": 212,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP in multiple regions (especially the region where it is first bound) is a strong match for the GO term's definition, as ATP is a critical substrate in this reaction. While it does not directly explain the phosphorelay mechanism, it is a necessary structural feature that supports the enzyme's function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

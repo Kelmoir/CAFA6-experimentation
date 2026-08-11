@@ -12139,5 +12139,237 @@
    }
   ],
   "issues": []
+ },
+ "GO:0018676": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P33261",
+    "go_id": "GO:0018676",
+    "feature_type": "BINDING",
+    "start": 434,
+    "end": 435,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "The binding of heme at position 434-435 is a plausible structural feature for an enzyme involved in oxygen-dependent reactions, which aligns with the GO term's primary reaction. However, it does not directly explain why the protein carries the defined molecular function; rather, it supports the structural context in which the function occurs."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P11712",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for protein P11712 is BINDING 434-435 with heme, which is a structural feature that could support the enzyme's function but does not specifically explain the molecular function defined by GO:0018676. Therefore, there is no positional feature that directly matches the chemistry of the reaction described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0018756": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P76641",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data specifically matches the primary reaction described in the GO term's definition, which involves catalyzing the transformation of ammeline with water to form ammelide and ammonia."
+   }
+  ]
+ },
+ "GO:0018774": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WNH5",
+    "reason": "none_verdict",
+    "reasoning": "The highest score (1) for the feature \"ACT_SITE 268-269\" indicates that it does not specifically match the GO term's primary reaction mechanism, which involves hydrolysis of a specific substrate. While this feature is relevant to the reaction mechanism, it is not directly tied to the catalytic function described in the GO term's definition. Therefore, it does not provide a strong explanation for w"
+   }
+  ]
+ },
+ "GO:0018820": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Alpha-carbonic anhydrase",
+    "accessions": [
+     "B0BNN3",
+     "P00918"
+    ],
+    "reason": "resolved to ['InterPro:IPR018338', 'InterPro:IPR023561', 'PROSITE:PS00162', 'PROSITE:PS51144', 'Pfam:PF00194'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR018338': 34, 'InterPro:IPR023561': 45, 'PROSITE:PS00162': 34, 'PROSITE:PS51144': 49, 'Pfam:PF00194': 49})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "P00915"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P00920",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P00920 directly matches the GO term's primary definition of catalyzing urea to cyanamide, and all features are either generic or relate to metal ion binding rather than the specific reaction mechanism."
+   }
+  ]
+ },
+ "GO:0018826": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SGU9",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region in Q9SGU9 does not provide any positional evidence that directly supports the catalytic activity of methionine gamma-lyase as defined by GO:0018826."
+   }
+  ]
+ },
+ "GO:0018833": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P20432",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, direct explanation for why the protein carries the GO term's defined chemistry. The only evidence points to interactions with glutathione, which are not specific to the catalytic activity described in the definition."
+   },
+   {
+    "accession": "P67805",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, and all features are either generic or only echo secondary clauses."
+   }
+  ]
+ },
+ "GO:0018859": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q84P24"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0018860": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9I4X3",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for AMP is relevant to the enzyme's function but does not directly explain why the protein carries the GO term \"anthranilate-CoA ligase activity\" \u2014 it only describes one of the substrates involved in the reaction. No other positional feature provides a stronger match to the primary reaction described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0019002": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "GTP",
+    "accessions": [
+     "Q02787"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P08644",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the GO term's definition of GMP binding, and all features are about GTP binding instead."
+   },
+   {
+    "accession": "P51156",
+    "reason": "none_verdict",
+    "reasoning": "The protein P51156 does not have any annotated feature that directly indicates it binds to GMP, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "Q15777",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section directly matches the primary reaction of the GO term \"GMP binding,\" which is about binding to GMP. The only mentions of GMP are in generic binding positions without specifying the domain or mechanism, so no single feature can be confidently identified as the basis for this molecular function."
+   }
+  ]
+ },
+ "GO:0019010": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q9FYC4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q767F1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9VJK8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }

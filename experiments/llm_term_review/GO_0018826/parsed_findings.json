@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9SGU9",
+      "reason": "none_verdict",
+      "reasoning": "The disordered region in Q9SGU9 does not provide any positional evidence that directly supports the catalytic activity of methionine gamma-lyase as defined by GO:0018826."
+    }
+  ]
+}

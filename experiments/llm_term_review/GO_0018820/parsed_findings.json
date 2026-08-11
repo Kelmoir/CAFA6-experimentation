@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "B0BNN3",
+      "go_id": "GO:0018820",
+      "feature_type": "DOMAIN",
+      "start": 3,
+      "end": 261,
+      "signal_kind": "text",
+      "signal_value": "Alpha-carbonic anhydrase",
+      "reasoning": "The DOMAIN 3-261 is associated with \"Alpha-carbonic anhydrase,\" which directly corresponds to the catalytic reaction defined by GO:0018820, making it the most plausible explanation for why the protein carries this term."
+    },
+    {
+      "accession": "P00915",
+      "go_id": "GO:0018820",
+      "feature_type": "BINDING",
+      "start": 199,
+      "end": 201,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site at 199-201 with the ligand \"substrate\" directly matches the primary reaction of the cyanamide hydratase activity GO term, which is the catalytic conversion of urea into cyanamide and water. This feature provides a strong mechanistic basis for the enzyme's function as described in the definition."
+    },
+    {
+      "accession": "P00918",
+      "go_id": "GO:0018820",
+      "feature_type": "DOMAIN",
+      "start": 2,
+      "end": 259,
+      "signal_kind": "text",
+      "signal_value": "Alpha-carbonic anhydrase",
+      "reasoning": "The DOMAIN 2-259 is directly associated with alpha-carbonic anhydrase, which catalyzes the reaction urea = cyanamide + H2O. This domain specifically matches the GO term's definition by implementing the primary chemical mechanism of the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P00920",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for P00920 directly matches the GO term's primary definition of catalyzing urea to cyanamide, and all features are either generic or relate to metal ion binding rather than the specific reaction mechanism."
+    }
+  ]
+}

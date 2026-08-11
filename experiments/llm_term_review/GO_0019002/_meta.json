@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0019002",
+  "name": "GMP binding",
+  "def": "Binding to GMP, guanosine monophosphate.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "P08644",
+    "P51156",
+    "Q02787",
+    "Q15777"
+  ],
+  "assigned_accessions": [
+    "P08644",
+    "P51156",
+    "Q02787",
+    "Q15777"
+  ]
+}
