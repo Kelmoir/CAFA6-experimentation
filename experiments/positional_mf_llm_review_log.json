@@ -16168,5 +16168,245 @@
     "reasoning": "No annotated feature directly matches the defined chemistry of binding to a double-stranded DNA region containing an A/C mispair."
    }
   ]
+ },
+ "GO:0032139": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "DNA_BIND",
+    "accessions": [
+     "P12004",
+     "P17918"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P57761",
+    "go_id": "GO:0032139",
+    "feature_type": "DNA_BIND",
+    "start": 60,
+    "end": 80,
+    "signal_kind": "feature_type_only",
+    "signal_value": null,
+    "reasoning": "The \"DNA_BIND 60-80\" annotation suggests the protein has a domain that binds to DNA, which could be relevant for dinucleotide insertion or deletion binding. However, without more detailed information about the domain's structure or function, we cannot definitively say it matches the GO term's primary reaction."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P25846",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein that involves binding is to a ligand (ATP), which does not directly match the DNA region described in the GO term's primary reaction. No positional feature has been confirmed to explain why this protein carries the term \"dinucleotide insertion or deletion binding.\""
+   }
+  ]
+ },
+ "GO:0032141": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DNA_BIND",
+    "value": "HMG box",
+    "accessions": [
+     "Q10241"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0032142": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PWWP",
+    "accessions": [
+     "P54276"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P43247",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein P43247 do not provide any evidence that directly explains the molecular function defined by the GO term \"single guanine insertion binding.\""
+   }
+  ]
+ },
+ "GO:0032143": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P43247",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the definition of \"single thymine insertion binding,\" and the only plausible candidate (ATP binding) is too generic to explain the specific molecular function defined by the GO term."
+   },
+   {
+    "accession": "P54276",
+    "reason": "none_verdict",
+    "reasoning": "The BINDING site (1131-1139) is the only annotated feature that directly involves a ligand interaction, but it refers to ATP binding rather than DNA binding. Since the GO term specifically describes DNA binding activity, this feature does not provide a strong match for the primary reaction of the term."
+   }
+  ]
+ },
+ "GO:0032145": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "P50554"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "[2Fe-2S] cluster",
+    "accessions": [
+     "P61922"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P80404",
+    "go_id": "GO:0032145",
+    "feature_type": "BINDING",
+    "start": 162,
+    "end": 163,
+    "signal_kind": "ligand",
+    "signal_value": "[2Fe-2S] cluster",
+    "reasoning": "The feature \"BINDING 162-163\" with the ligand [2Fe-2S] cluster is the most specific to the defined reaction of binding to succinate-semialdehyde dehydrogenase, but it does not explicitly state that the protein binds to the enzyme itself. Therefore, it is a plausible candidate but not definitive evidence for the GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P80147",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the defined chemistry of \"succinate-semialdehyde dehydrogenase binding.\""
+   }
+  ]
+ },
+ "GO:0032181": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P43247",
+    "go_id": "GO:0032181",
+    "feature_type": "BINDING",
+    "start": 668,
+    "end": 676,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The \"BINDING\" feature involving ATP is relevant for DNA repair processes, but it does not directly explain the molecular function of binding to dinucleotide repeats. No other features provide a clear match to the GO term's definition."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0032190": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "P-type",
+    "accessions": [
+     "P60852"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P10761",
+    "go_id": "GO:0032190",
+    "feature_type": "DOMAIN",
+    "start": 44,
+    "end": 308,
+    "signal_kind": "text",
+    "signal_value": "ZP",
+    "reasoning": "The DOMAIN 44-308 (note: ZP) is a broad domain type that could be involved in acrosin binding, but it does not directly confirm the specific mechanism described in the GO term's definition. No other annotated feature provides a more specific match to the primary reaction of acrosin binding."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "I6M4H4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the GO term's primary reaction of acrosin binding, and all features are generic or only echo secondary clauses."
+   },
+   {
+    "accession": "P48830",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of acrosin binding as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0032399": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O14599",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0032428": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P17900",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }

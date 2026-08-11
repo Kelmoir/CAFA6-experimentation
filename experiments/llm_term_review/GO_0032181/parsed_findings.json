@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P43247",
+      "go_id": "GO:0032181",
+      "feature_type": "BINDING",
+      "start": 668,
+      "end": 676,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The \"BINDING\" feature involving ATP is relevant for DNA repair processes, but it does not directly explain the molecular function of binding to dinucleotide repeats. No other features provide a clear match to the GO term's definition."
+    }
+  ],
+  "issues": []
+}

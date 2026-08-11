@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0032145",
+  "name": "succinate-semialdehyde dehydrogenase binding",
+  "def": "Binding to succinate-semialdehyde dehydrogenase.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P50554",
+    "P61922",
+    "P80147",
+    "P80404"
+  ],
+  "assigned_accessions": [
+    "P50554",
+    "P61922",
+    "P80147",
+    "P80404"
+  ]
+}

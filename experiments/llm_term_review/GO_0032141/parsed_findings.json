@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q10241",
+      "go_id": "GO:0032141",
+      "feature_type": "DNA_BIND",
+      "start": 122,
+      "end": 197,
+      "signal_kind": "text",
+      "signal_value": "HMG box",
+      "reasoning": "The \"DNA_BIND 122-197\" feature directly matches the primary reaction of the GO term, which is binding to a specific DNA region with a single cytosine insertion or deletion. This is a strong and mechanistically specific match."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

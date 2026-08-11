@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0032428",
+  "name": "beta-N-acetylgalactosaminidase activity",
+  "def": "Catalysis of the hydrolysis of terminal non-reducing N-acetyl-D-galactosamine residues in N-acetyl-beta-D-galactosaminides.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P17900"
+  ],
+  "assigned_accessions": [
+    "P17900"
+  ]
+}

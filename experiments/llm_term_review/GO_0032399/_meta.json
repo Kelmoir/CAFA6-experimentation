@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0032399",
+  "name": "HECT domain binding",
+  "def": "Binding to a HECT, 'Homologous to the E6-AP Carboxy-Terminus', domain of a protein.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O14599"
+  ],
+  "assigned_accessions": [
+    "O14599"
+  ]
+}

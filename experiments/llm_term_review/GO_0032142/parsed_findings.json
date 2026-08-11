@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P54276",
+      "go_id": "GO:0032142",
+      "feature_type": "DOMAIN",
+      "start": 91,
+      "end": 154,
+      "signal_kind": "text",
+      "signal_value": "PWWP",
+      "reasoning": "The domain structure of P-loop proteins (PWWP) is directly associated with recognizing and binding to specific DNA structures, which aligns with the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P43247",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for protein P43247 do not provide any evidence that directly explains the molecular function defined by the GO term \"single guanine insertion binding.\""
+    }
+  ]
+}

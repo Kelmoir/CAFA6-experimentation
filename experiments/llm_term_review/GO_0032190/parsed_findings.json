@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "P60852",
+      "go_id": "GO:0032190",
+      "feature_type": "DOMAIN",
+      "start": 233,
+      "end": 274,
+      "signal_kind": "text",
+      "signal_value": "P-type",
+      "reasoning": "The P-type domain is directly associated with acrosin binding as described in the GO term's definition, making it the most plausible explanation for why this protein carries the term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P10761",
+      "go_id": "GO:0032190",
+      "feature_type": "DOMAIN",
+      "start": 44,
+      "end": 308,
+      "signal_kind": "text",
+      "signal_value": "ZP",
+      "reasoning": "The DOMAIN 44-308 (note: ZP) is a broad domain type that could be involved in acrosin binding, but it does not directly confirm the specific mechanism described in the GO term's definition. No other annotated feature provides a more specific match to the primary reaction of acrosin binding."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "I6M4H4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong match to the GO term's primary reaction of acrosin binding, and all features are generic or only echo secondary clauses."
+    },
+    {
+      "accession": "P48830",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of acrosin binding as defined by the GO term."
+    }
+  ]
+}

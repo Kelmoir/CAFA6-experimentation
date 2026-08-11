@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0032139",
+  "name": "dinucleotide insertion or deletion binding",
+  "def": "Binding to a double-stranded DNA region containing a dinucleotide insertion or deletion.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P12004",
+    "P17918",
+    "P25846",
+    "P57761"
+  ],
+  "assigned_accessions": [
+    "P12004",
+    "P17918",
+    "P25846",
+    "P57761"
+  ]
+}
