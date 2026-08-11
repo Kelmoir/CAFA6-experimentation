@@ -10721,6 +10721,34 @@
    }
   ]
  },
+ "GO:0016671": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Thioredoxin",
+    "accessions": [
+     "O64654",
+     "O64764",
+     "Q8LEK4"
+    ],
+    "reason": "resolved to ['InterPro:IPR013766', 'InterPro:IPR017937', 'InterPro:IPR036249', 'PROSITE:PS00194', 'PROSITE:PS51352', 'Pfam:PF00085'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR013766': 269, 'InterPro:IPR017937': 121, 'InterPro:IPR036249': 714, 'PROSITE:PS00194': 121, 'PROSITE:PS51352': 241, 'Pfam:PF00085': 181})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q95RA9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0016675": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -10734,6 +10762,44 @@
     "accession": "P76342",
     "reason": "none_verdict",
     "reasoning": "No annotated feature describes the redox mechanism or the heme group's role as an electron donor. The domain/family cross-references suggest involvement in molybdenum-dependent oxidoreductase activity, but they do not provide positional evidence for the specific chemistry described in the GO term."
+   }
+  ]
+ },
+ "GO:0016688": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme b",
+    "accessions": [
+     "Q05431"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Transition state stabilizer",
+    "accessions": [
+     "Q42592"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8GY91",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of L-ascorbate peroxidase activity (GO:0016688), which is catalyzing the oxidation of L-ascorbate with hydrogen peroxide. The features provided are more general and do not specifically explain the defined chemistry of this GO term."
+   },
+   {
+    "accession": "P42738",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P42738 matches the primary reaction of L-ascorbate peroxidase activity, which involves catalyzing the reaction between L-ascorbate and hydrogen peroxide. The \"DOMAIN\" and other features are either unrelated or only loosely associated with this specific function."
    }
   ]
  },
@@ -10758,6 +10824,67 @@
   ],
   "issues": []
  },
+ "GO:0016706": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "2-oxoglutarate",
+    "accessions": [
+     "O80449",
+     "Q945B5"
+    ],
+    "reason": "ligand already claimed by GO:0032452 elsewhere in the dictionary -- ligand_to_go is a plain dict, a second claim would silently overwrite it"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fe2OG dioxygenase",
+    "accessions": [
+     "F4KBY0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O65378",
+    "reason": "unresolved_pointer",
+    "detail": "no matching BINDING 236-247 on record for O65378 -- pointer didn't resolve",
+    "reported_feature": "BINDING 236-247",
+    "reasoning": "The binding of both Fe\u00b2\u207a and 2-oxoglutarate to the protein's active site is directly aligned with the defined redox reaction in GO:0016706, making it the most plausible explanation for why the protein carries this term."
+   }
+  ]
+ },
+ "GO:0016707": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fe2OG dioxygenase",
+    "accessions": [
+     "O24648",
+     "Q5W726",
+     "Q9C971",
+     "Q9FU53"
+    ],
+    "reason": "resolved to ['InterPro:IPR005123', 'InterPro:IPR044861', 'PROSITE:PS51471'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR005123': 159, 'InterPro:IPR044861': 90, 'PROSITE:PS51471': 159})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
  "GO:0016742": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -10774,6 +10901,32 @@
    }
   ]
  },
+ "GO:0016744": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0A870",
+    "reason": "none_verdict",
+    "reasoning": "There is no positional feature in the Annotated features section for P0A870 that directly matches the chemistry described by the GO term (the transfer of an aldehyde/ketonic group). The only evidence pointing to transaldolase activity is domain/family cross-references, which do not provide a specific structural/functional basis for the annotation."
+   },
+   {
+    "accession": "Q38854",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section directly explains the mechanism of aldehyde/ketone group transfer as defined by the GO term."
+   },
+   {
+    "accession": "Q58980",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the primary reaction of the GO term, which involves catalyzing the transfer of an aldehyde or ketonic group. All features are related to substrate binding or intermediates but do not directly explain why the protein carries this function."
+   }
+  ]
+ },
  "GO:0016752": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -10787,6 +10940,22 @@
     "accession": "Q8VZU3",
     "reason": "none_verdict",
     "reasoning": "The protein Q8VZU3 has no annotated feature that directly matches the GO term's definition of catalyzing sinapoyl group transfer. None of the features indicate a specific mechanism or domain involved in this activity, making it impossible to determine with certainty why the protein carries the term."
+   }
+  ]
+ },
+ "GO:0016754": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8RUW5",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated features for Q8RUW5 that directly explain the molecular function defined by GO:0016754, which involves a specific chemical reaction. The ACT_SITE annotations only indicate where the activity occurs, not why the protein carries this term."
    }
   ]
  }

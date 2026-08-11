@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016707",
+  "name": "gibberellin 3-beta-dioxygenase activity",
+  "def": "Catalysis of the reaction: a gibberellin + 2-oxoglutarate + O2 = a 3-beta-hydroxy-gibberellin + succinate + CO2.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "O24648",
+    "Q5W726",
+    "Q9C971",
+    "Q9FU53"
+  ],
+  "assigned_accessions": [
+    "O24648",
+    "Q5W726",
+    "Q9C971",
+    "Q9FU53"
+  ]
+}

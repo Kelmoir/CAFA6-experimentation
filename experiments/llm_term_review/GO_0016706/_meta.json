@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016706",
+  "name": "2-oxoglutarate-dependent dioxygenase activity",
+  "def": "Catalysis of the reaction: A + 2-oxoglutarate + O2 = B + succinate + CO2. This is an oxidation-reduction (redox) reaction in which hydrogen or electrons are transferred from 2-oxoglutarate and one other donor, and one atom of oxygen is incorporated into each donor.",
+  "n_proteins_total": 84,
+  "sampled_accessions": [
+    "F4KBY0",
+    "O65378",
+    "O80449",
+    "Q945B5"
+  ],
+  "assigned_accessions": [
+    "F4KBY0",
+    "O65378",
+    "O80449",
+    "Q945B5"
+  ]
+}

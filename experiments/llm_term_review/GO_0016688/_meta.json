@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016688",
+  "name": "L-ascorbate peroxidase activity",
+  "def": "Catalysis of the reaction: L-ascorbate + hydrogen peroxide = dehydroascorbate + 2 H2O.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "P42738",
+    "Q05431",
+    "Q42592",
+    "Q8GY91"
+  ],
+  "assigned_accessions": [
+    "P42738",
+    "Q05431",
+    "Q42592",
+    "Q8GY91"
+  ]
+}

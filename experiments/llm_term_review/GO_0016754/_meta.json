@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0016754",
+  "name": "sinapoylglucose-malate O-sinapoyltransferase activity",
+  "def": "Catalysis of the reaction: (S)-malate + 1-O-sinapoyl-beta-D-glucose = D-glucose + sinapoyl (S)-malate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8RUW5"
+  ],
+  "assigned_accessions": [
+    "Q8RUW5"
+  ]
+}

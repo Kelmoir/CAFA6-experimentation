@@ -1,0 +1,15 @@
+## P0A870 GO:0016744
+verdict: NONE
+feature: NONE 0-0
+reasoning: There is no positional feature in the Annotated features section for P0A870 that directly matches the chemistry described by the GO term (the transfer of an aldehyde/ketonic group). The only evidence pointing to transaldolase activity is domain/family cross-references, which do not provide a specific structural/functional basis for the annotation.
+---
+## Q38854 GO:0016744
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature in the protein's Annotated features section directly explains the mechanism of aldehyde/ketone group transfer as defined by the GO term.
+---
+## Q58980 GO:0016744
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature provides a strong match to the primary reaction of the GO term, which involves catalyzing the transfer of an aldehyde or ketonic group. All features are related to substrate binding or intermediates but do not directly explain why the protein carries this function.
+---

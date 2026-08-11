@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016671",
+  "name": "oxidoreductase activity, acting on a sulfur group of donors, disulfide as acceptor",
+  "def": "Catalysis of an oxidation-reduction (redox) reaction in which a sulfur-containing group acts as a hydrogen or electron donor and reduces disulfide.",
+  "n_proteins_total": 30,
+  "sampled_accessions": [
+    "O64654",
+    "O64764",
+    "Q8LEK4",
+    "Q95RA9"
+  ],
+  "assigned_accessions": [
+    "O64654",
+    "O64764",
+    "Q8LEK4",
+    "Q95RA9"
+  ]
+}

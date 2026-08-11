@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0016744",
+  "name": "transketolase or transaldolase activity",
+  "def": "Catalysis of the transfer of an aldehyde or ketonic group from one compound (donor) to another (acceptor).",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P0A870",
+    "Q38854",
+    "Q58980"
+  ],
+  "assigned_accessions": [
+    "P0A870",
+    "Q38854",
+    "Q58980"
+  ]
+}

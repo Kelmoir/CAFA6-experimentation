@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "O24648",
+      "go_id": "GO:0016707",
+      "feature_type": "DOMAIN",
+      "start": 205,
+      "end": 307,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The DOMAIN annotation for O24648 specifically identifies it as an Fe2OG dioxygenase, which directly matches the GO term's definition of catalyzing the reaction with gibberellin and 2-oxoglutarate. This provides a strong mechanistic basis for the molecular function."
+    },
+    {
+      "accession": "Q5W726",
+      "go_id": "GO:0016707",
+      "feature_type": "DOMAIN",
+      "start": 188,
+      "end": 321,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The DOMAIN annotation (188-321) specifically identifies the Fe2OG dioxygenase domain, which directly corresponds to the enzyme's catalytic activity described in the GO term. This domain is the most plausible explanation for why the protein carries the defined molecular function."
+    },
+    {
+      "accession": "Q9C971",
+      "go_id": "GO:0016707",
+      "feature_type": "DOMAIN",
+      "start": 202,
+      "end": 303,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The DOMAIN 202-303 with the note \"Fe2OG dioxygenase\" directly matches the GO term's definition by catalyzing the oxidation of 2-oxoglutarate, which is the primary reaction described."
+    },
+    {
+      "accession": "Q9FU53",
+      "go_id": "GO:0016707",
+      "feature_type": "DOMAIN",
+      "start": 202,
+      "end": 304,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The DOMAIN 202-304 annotation specifically identifies an enzyme type that catalyzes the reaction defined by the GO term, making it the most plausible explanation for why the protein carries this function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

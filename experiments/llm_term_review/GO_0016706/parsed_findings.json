@@ -1,0 +1,44 @@
+{
+  "resolved": [
+    {
+      "accession": "F4KBY0",
+      "go_id": "GO:0016706",
+      "feature_type": "DOMAIN",
+      "start": 151,
+      "end": 266,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The DOMAIN annotation \"Fe2OG dioxygenase\" directly corresponds to the enzyme's role in catalyzing the redox reaction defined by GO:0016706, making it the most plausible explanation for why the protein carries this term."
+    },
+    {
+      "accession": "Q945B5",
+      "go_id": "GO:0016706",
+      "feature_type": "BINDING",
+      "start": 368,
+      "end": 369,
+      "signal_kind": "ligand",
+      "signal_value": "2-oxoglutarate",
+      "reasoning": "The binding site for 2-oxoglutarate directly supports the primary reaction mechanism described in the GO term's definition, making it the most plausible explanation for why this protein carries the term."
+    },
+    {
+      "accession": "O80449",
+      "go_id": "GO:0016706",
+      "feature_type": "BINDING",
+      "start": 292,
+      "end": 293,
+      "signal_kind": "ligand",
+      "signal_value": "2-oxoglutarate",
+      "reasoning": "The binding site at 292-293 directly involves the substrate (2-oxoglutarate) of the redox reaction described in the GO term's definition, making it the most plausible explanation for why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O65378",
+      "reason": "unresolved_pointer",
+      "detail": "no matching BINDING 236-247 on record for O65378 -- pointer didn't resolve",
+      "reported_feature": "BINDING 236-247",
+      "reasoning": "The binding of both Fe\u00b2\u207a and 2-oxoglutarate to the protein's active site is directly aligned with the defined redox reaction in GO:0016706, making it the most plausible explanation for why the protein carries this term."
+    }
+  ]
+}
