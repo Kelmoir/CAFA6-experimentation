@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0031774",
+  "name": "leukotriene receptor binding",
+  "def": "Binding to a leukotriene receptor.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P26151"
+  ],
+  "assigned_accessions": [
+    "P26151"
+  ]
+}

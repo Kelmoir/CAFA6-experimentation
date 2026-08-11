@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P12428",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P12428 specifically matches the primary reaction of \"pigment binding,\" as the protein's binding site is for ATP rather than a pigment."
+    },
+    {
+      "accession": "Q91WW5",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9C639",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q9C639 indicate multiple binding sites for chlorophylls, but none of them directly explain why the protein carries the molecular function of \"pigment binding\" as defined by GO:0031409. The primary reaction (binding to a pigment) is not mechanistically or structurally supported by any of the features listed."
+    },
+    {
+      "accession": "Q9VHN9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the \"pigment binding\" GO term's primary reaction of binding to a pigment, and the only available positional feature (a Disordered region) does not provide a strong or specific match to the defined chemistry."
+    }
+  ]
+}

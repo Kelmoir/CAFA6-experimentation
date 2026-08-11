@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P02643",
+      "go_id": "GO:0031014",
+      "feature_type": "REGION",
+      "start": 1,
+      "end": 48,
+      "signal_kind": "text",
+      "signal_value": "Involved in binding TNC",
+      "reasoning": "The region 1-48 is explicitly noted as involved in binding TNC, which aligns with the primary reaction described in the GO term's definition (binding to troponin T). This provides a strong and specific match."
+    },
+    {
+      "accession": "P19123",
+      "go_id": "GO:0031014",
+      "feature_type": "BINDING",
+      "start": 64,
+      "end": 65,
+      "signal_kind": "ligand",
+      "signal_value": "Ca(2+)",
+      "reasoning": "The binding site at position 64-65 with Ca(2+) is directly aligned with the primary reaction of the GO term \"troponin T binding,\" making it the most plausible explanation for why this protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O88346",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature in the provided evidence directly indicates a binding activity for troponin T, which is the core of the GO term's definition. The domain/family cross-references suggest a relationship to troponin but do not provide specific evidence for the defined molecular function."
+    },
+    {
+      "accession": "P09739",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear structural or functional basis for the defined chemistry of \"troponin T binding\" as specified in the GO term."
+    }
+  ]
+}

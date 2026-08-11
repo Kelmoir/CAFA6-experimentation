@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0031517",
+  "name": "red light photoreceptor activity",
+  "def": "The function of absorbing and responding to electromagnetic radiation with a wavelength of approximately 660nm. The response may involve a change in conformation.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P14713"
+  ],
+  "assigned_accessions": [
+    "P14713"
+  ]
+}

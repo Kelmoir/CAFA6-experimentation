@@ -14595,6 +14595,44 @@
    }
   ]
  },
+ "GO:0031014": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Involved in binding TNC",
+    "accessions": [
+     "P02643"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Ca(2+)",
+    "accessions": [
+     "P19123"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O88346",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature in the provided evidence directly indicates a binding activity for troponin T, which is the core of the GO term's definition. The domain/family cross-references suggest a relationship to troponin but do not provide specific evidence for the defined molecular function."
+   },
+   {
+    "accession": "P09739",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the defined chemistry of \"troponin T binding\" as specified in the GO term."
+   }
+  ]
+ },
  "GO:0031220": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -14608,6 +14646,113 @@
     "accession": "P00490",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0031249": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Important for carbohydrate binding",
+    "accessions": [
+     "Q9UK22"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q60446",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q60446 do not provide any evidence that directly explains why it carries the molecular function \"denatured protein binding\" as defined by GO:0031249. No feature in the Annotated features section is specific to this function, and the only evidence available is generic disordered regions, which are insufficient to account for the primary reaction described in the definitio"
+   },
+   {
+    "accession": "Q80UW2",
+    "reason": "none_verdict",
+    "reasoning": "There is no specific annotated feature in Q80UW2 that directly matches the primary reaction or mechanism of \"denatured protein binding\" as defined by the GO term. All features either relate to carbohydrate binding or are generic and could apply to many proteins, not specifically explaining the denatured protein binding function."
+   },
+   {
+    "accession": "P0DMW0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the primary reaction of binding to a denatured protein as defined by GO:0031249. The available features are more general and focus on ATP binding or structural domains, not the specific function of binding to a denatured protein."
+   }
+  ]
+ },
+ "GO:0031409": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P12428",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P12428 specifically matches the primary reaction of \"pigment binding,\" as the protein's binding site is for ATP rather than a pigment."
+   },
+   {
+    "accession": "Q91WW5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9C639",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9C639 indicate multiple binding sites for chlorophylls, but none of them directly explain why the protein carries the molecular function of \"pigment binding\" as defined by GO:0031409. The primary reaction (binding to a pigment) is not mechanistically or structurally supported by any of the features listed."
+   },
+   {
+    "accession": "Q9VHN9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the \"pigment binding\" GO term's primary reaction of binding to a pigment, and the only available positional feature (a Disordered region) does not provide a strong or specific match to the defined chemistry."
+   }
+  ]
+ },
+ "GO:0031419": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "cob(II)alamin",
+    "accessions": [
+     "Q9R0D6"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q9XSC9",
+    "go_id": "GO:0031419",
+    "feature_type": "BINDING",
+    "start": 103,
+    "end": 104,
+    "signal_kind": "ligand",
+    "signal_value": "cob(II)alamin",
+    "reasoning": "The \"BINDING 103-104\" feature directly mentions the ligand \"cob(II)alamin,\" which aligns with the definition of the GO term. However, it only describes the presence of a binding site without providing detailed mechanistic or structural evidence to explain why the protein carries this function. Thus, while it is a plausible candidate, it does not strongly match the primary reaction described in the"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q96EY8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's section directly supports the primary reaction of cobalamin binding, as the ligand is consistently ATP rather than cobalamin."
+   },
+   {
+    "accession": "Q8K0B2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q8K0B2 matches the primary reaction of \"cobalamin binding\" as defined by the GO term. The motifs and domain/family cross-references are related to a different function (clathrin-mediated endocytosis), not cobalamin binding."
    }
   ]
  },
@@ -14628,6 +14773,81 @@
    }
   ],
   "uncertain": [],
+  "issues": []
+ },
+ "GO:0031473": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q24008",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list specifically matches the defined chemistry of binding to a class III myosin, which is the primary reaction implied by the GO term's definition."
+   }
+  ]
+ },
+ "GO:0031517": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "GAF",
+    "accessions": [
+     "P14713"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0031544": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fe2OG dioxygenase",
+    "accessions": [
+     "Q8N543"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0031774": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P26151",
+    "go_id": "GO:0031774",
+    "feature_type": "REGION",
+    "start": 320,
+    "end": 342,
+    "signal_kind": "text",
+    "signal_value": "Interaction with EPB41L2",
+    "reasoning": "The region's interaction with EPB41L2 is plausible, but it does not directly explain why the protein carries the GO term \"leukotriene receptor binding.\" The primary reaction of the GO term is about binding to a leukotriene receptor, and while the region may be involved in this process indirectly, it does not provide a strong match to the definition's primary mechanism."
+   }
+  ],
   "issues": []
  }
 }

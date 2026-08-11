@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0031014",
+  "name": "troponin T binding",
+  "def": "Binding to troponin T, the tropomyosin-binding subunit of the troponin complex.",
+  "n_proteins_total": 13,
+  "sampled_accessions": [
+    "O88346",
+    "P02643",
+    "P09739",
+    "P19123"
+  ],
+  "assigned_accessions": [
+    "O88346",
+    "P02643",
+    "P09739",
+    "P19123"
+  ]
+}

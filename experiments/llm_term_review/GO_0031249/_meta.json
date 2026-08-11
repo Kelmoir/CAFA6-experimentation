@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0031249",
+  "name": "denatured protein binding",
+  "def": "Binding to a denatured protein.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "P0DMW0",
+    "Q60446",
+    "Q80UW2",
+    "Q9UK22"
+  ],
+  "assigned_accessions": [
+    "P0DMW0",
+    "Q60446",
+    "Q80UW2",
+    "Q9UK22"
+  ]
+}

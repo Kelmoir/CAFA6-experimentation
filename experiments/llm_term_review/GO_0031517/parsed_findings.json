@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P14713",
+      "go_id": "GO:0031517",
+      "feature_type": "DOMAIN",
+      "start": 232,
+      "end": 434,
+      "signal_kind": "text",
+      "signal_value": "GAF",
+      "reasoning": "The GAF domain is specifically associated with light absorption and photoreceptor activity, which aligns with the definition of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

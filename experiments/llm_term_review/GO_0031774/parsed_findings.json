@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P26151",
+      "go_id": "GO:0031774",
+      "feature_type": "REGION",
+      "start": 320,
+      "end": 342,
+      "signal_kind": "text",
+      "signal_value": "Interaction with EPB41L2",
+      "reasoning": "The region's interaction with EPB41L2 is plausible, but it does not directly explain why the protein carries the GO term \"leukotriene receptor binding.\" The primary reaction of the GO term is about binding to a leukotriene receptor, and while the region may be involved in this process indirectly, it does not provide a strong match to the definition's primary mechanism."
+    }
+  ],
+  "issues": []
+}

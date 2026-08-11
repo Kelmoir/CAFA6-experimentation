@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0031544",
+  "name": "peptidyl-proline 3-dioxygenase activity",
+  "def": "Catalysis of the reaction: peptidyl L-proline + 2-oxoglutarate + O2 = peptidyl trans-3-hydroxy-L-proline + succinate + CO2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8N543"
+  ],
+  "assigned_accessions": [
+    "Q8N543"
+  ]
+}

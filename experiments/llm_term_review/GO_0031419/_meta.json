@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0031419",
+  "name": "cobalamin binding",
+  "def": "Binding to cobalamin (vitamin B12), a water-soluble vitamin characterized by possession of a corrin nucleus containing a cobalt atom.",
+  "n_proteins_total": 43,
+  "sampled_accessions": [
+    "Q8K0B2",
+    "Q96EY8",
+    "Q9R0D6",
+    "Q9XSC9"
+  ],
+  "assigned_accessions": [
+    "Q8K0B2",
+    "Q96EY8",
+    "Q9R0D6",
+    "Q9XSC9"
+  ]
+}

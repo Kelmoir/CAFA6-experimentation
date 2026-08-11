@@ -1,0 +1,20 @@
+## Q60446 GO:0031249
+verdict: NONE
+feature: NONE 0-0
+reasoning: The annotated features for Q60446 do not provide any evidence that directly explains why it carries the molecular function "denatured protein binding" as defined by GO:0031249. No feature in the Annotated features section is specific to this function, and the only evidence available is generic disordered regions, which are insufficient to account for the primary reaction described in the definitio
+---
+## Q80UW2 GO:0031249
+verdict: NONE
+feature: NONE 0-0
+reasoning: There is no specific annotated feature in Q80UW2 that directly matches the primary reaction or mechanism of "denatured protein binding" as defined by the GO term. All features either relate to carbohydrate binding or are generic and could apply to many proteins, not specifically explaining the denatured protein binding function.
+---
+## Q9UK22 GO:0031249
+verdict: LIKELY
+feature: SITE 172-173
+reasoning: The SITE annotation at position 172-173 indicates that this region is important for carbohydrate binding, which could plausibly explain why the protein carries the GO term "denatured protein binding" if the denatured protein involves carbohydrate interactions. This feature directly relates to the primary reaction of the GO term and provides a mechanistic basis for its assertion.
+---
+## P0DMW0 GO:0031249
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature directly explains the primary reaction of binding to a denatured protein as defined by GO:0031249. The available features are more general and focus on ATP binding or structural domains, not the specific function of binding to a denatured protein.
+---

@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9R0D6",
+      "go_id": "GO:0031419",
+      "feature_type": "BINDING",
+      "start": 151,
+      "end": 156,
+      "signal_kind": "ligand",
+      "signal_value": "cob(II)alamin",
+      "reasoning": "All annotated features for protein Q9R0D6 are directly related to the primary reaction of binding to cobalamin as defined in the GO term, with no secondary or qualitative clause that could be interpreted as a separate function. Therefore, the highest score (10) indicates that these features strongly match the GO term's own chemistry."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q9XSC9",
+      "go_id": "GO:0031419",
+      "feature_type": "BINDING",
+      "start": 103,
+      "end": 104,
+      "signal_kind": "ligand",
+      "signal_value": "cob(II)alamin",
+      "reasoning": "The \"BINDING 103-104\" feature directly mentions the ligand \"cob(II)alamin,\" which aligns with the definition of the GO term. However, it only describes the presence of a binding site without providing detailed mechanistic or structural evidence to explain why the protein carries this function. Thus, while it is a plausible candidate, it does not strongly match the primary reaction described in the"
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q96EY8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's section directly supports the primary reaction of cobalamin binding, as the ligand is consistently ATP rather than cobalamin."
+    },
+    {
+      "accession": "Q8K0B2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q8K0B2 matches the primary reaction of \"cobalamin binding\" as defined by the GO term. The motifs and domain/family cross-references are related to a different function (clathrin-mediated endocytosis), not cobalamin binding."
+    }
+  ]
+}

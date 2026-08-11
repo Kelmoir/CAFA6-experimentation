@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q24008",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided list specifically matches the defined chemistry of binding to a class III myosin, which is the primary reaction implied by the GO term's definition."
+    }
+  ]
+}

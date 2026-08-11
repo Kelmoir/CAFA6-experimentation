@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0031473",
+  "name": "myosin III binding",
+  "def": "Binding to a class III myosin; myosin III is monomeric and has an N terminal kinase domain.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q24008"
+  ],
+  "assigned_accessions": [
+    "Q24008"
+  ]
+}
