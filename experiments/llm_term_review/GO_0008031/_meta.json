@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0008031",
+  "name": "eclosion hormone activity",
+  "def": "The action characteristic of eclosion hormone, a peptide hormone that, upon receptor binding, triggers the death of certain muscles and neurons during insect metamorphosis.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q07892"
+  ],
+  "assigned_accessions": [
+    "Q07892"
+  ]
+}

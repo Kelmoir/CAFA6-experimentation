@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0005463",
+  "name": "UDP-N-acetylgalactosamine transmembrane transporter activity",
+  "def": "Enables the transfer of a N-acetylgalactosamine from one side of a membrane to the other. N-acetylgalactosamine is a substance composed of N-acetylgalactosamine, a common structural unit of oligosaccharides, in glycosidic linkage with uridine diphosphate.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "A2AKQ0",
+    "O16658",
+    "Q18779",
+    "Q95YI5"
+  ],
+  "assigned_accessions": [
+    "A2AKQ0",
+    "O16658",
+    "Q18779",
+    "Q95YI5"
+  ]
+}

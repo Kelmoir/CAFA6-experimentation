@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8GUJ1",
+      "go_id": "GO:0005464",
+      "feature_type": "REGION",
+      "start": 307,
+      "end": 353,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The disordered region in Q8GUJ1 is a plausible structural feature that could contribute to the transmembrane transport activity described by GO:0005464, as it may provide flexibility needed for interacting with the membrane and facilitating UDP-xylose transfer."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "F4IHS9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's positional data directly explains the molecular function of UDP-xylose transmembrane transporter activity as defined by the GO term. The definition focuses on the transfer mechanism, not structural or positional evidence."
+    },
+    {
+      "accession": "P40004",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8RXL8",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

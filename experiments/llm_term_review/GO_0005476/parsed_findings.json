@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O43772",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P97521",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q12289",
+      "reason": "none_verdict",
+      "reasoning": "The disordered region (REGION 0-29) does not directly explain the antiporter activity defined by GO:0005476, as it lacks specificity to the reaction mechanism. No other positional feature is provided, and the domain/family cross-references do not offer evidence about the antiporter function. Thus, no single annotated feature plausibly accounts for the GO term's definition."
+    },
+    {
+      "accession": "Q9Z2Z6",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

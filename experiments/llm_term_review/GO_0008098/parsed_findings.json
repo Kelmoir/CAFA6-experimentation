@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P40796",
+      "go_id": "GO:0008098",
+      "feature_type": "DOMAIN",
+      "start": 43,
+      "end": 137,
+      "signal_kind": "text",
+      "signal_value": "HTH La-type RNA-binding",
+      "reasoning": "The HTH La-type RNA-binding domain directly matches the function of binding to an unprocessed 5S rRNA transcript, which is the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

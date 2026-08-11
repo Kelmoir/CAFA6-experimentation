@@ -4499,6 +4499,163 @@
    }
   ]
  },
+ "GO:0005463": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q95YI5",
+    "go_id": "GO:0005463",
+    "feature_type": "REGION",
+    "start": 26,
+    "end": 49,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The disordered region (REGION 26-49) could be part of the structural basis for the transporter activity, but it does not specifically or directly describe the mechanism of transferring N-acetylgalactosamine across a membrane. No positional feature matches the defined chemistry of the GO term, so the match is uncertain."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "O16658",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q18779",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "A2AKQ0",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for A2AKQ0 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The InterPro:IPR050186 cross-reference indicates that the protein belongs to a domain family associated with TPT transporters, which directly aligns with the GO term's definition of enabling the transfer of N-acetylgalactosamine across membranes. This provides a strong and specific match to the primary reaction described in the GO term."
+   }
+  ]
+ },
+ "GO:0005464": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Disordered",
+    "accessions": [
+     "Q8GUJ1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "F4IHS9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's positional data directly explains the molecular function of UDP-xylose transmembrane transporter activity as defined by the GO term. The definition focuses on the transfer mechanism, not structural or positional evidence."
+   },
+   {
+    "accession": "P40004",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8RXL8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0005476": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O43772",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P97521",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q12289",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region (REGION 0-29) does not directly explain the antiporter activity defined by GO:0005476, as it lacks specificity to the reaction mechanism. No other positional feature is provided, and the domain/family cross-references do not offer evidence about the antiporter function. Thus, no single annotated feature plausibly accounts for the GO term's definition."
+   },
+   {
+    "accession": "Q9Z2Z6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0005483": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P54920",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P54921",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P81125",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P85969",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0005488": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P12710",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q08652",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong, direct match to the primary reaction of the GO term \"binding,\" which refers to the specificity of molecular interactions. Therefore, it is not possible to determine a plausible structural/functional basis for this term based on the given evidence."
+   }
+  ]
+ },
  "GO:0008012": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -4514,5 +4671,40 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0008031": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q07892",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0008098": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "HTH La-type RNA-binding",
+    "accessions": [
+     "P40796"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

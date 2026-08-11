@@ -1,0 +1,34 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q95YI5",
+      "go_id": "GO:0005463",
+      "feature_type": "REGION",
+      "start": 26,
+      "end": 49,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The disordered region (REGION 26-49) could be part of the structural basis for the transporter activity, but it does not specifically or directly describe the mechanism of transferring N-acetylgalactosamine across a membrane. No positional feature matches the defined chemistry of the GO term, so the match is uncertain."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "O16658",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q18779",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "A2AKQ0",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for A2AKQ0 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The InterPro:IPR050186 cross-reference indicates that the protein belongs to a domain family associated with TPT transporters, which directly aligns with the GO term's definition of enabling the transfer of N-acetylgalactosamine across membranes. This provides a strong and specific match to the primary reaction described in the GO term."
+    }
+  ]
+}

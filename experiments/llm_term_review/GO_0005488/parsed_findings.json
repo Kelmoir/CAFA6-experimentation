@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P12710",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q08652",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong, direct match to the primary reaction of the GO term \"binding,\" which refers to the specificity of molecular interactions. Therefore, it is not possible to determine a plausible structural/functional basis for this term based on the given evidence."
+    }
+  ]
+}
