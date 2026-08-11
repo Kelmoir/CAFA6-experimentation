@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0032034",
+  "name": "myosin II head/neck binding",
+  "def": "Binding to the head/neck region of a myosin II heavy chain.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9UPQ0"
+  ],
+  "assigned_accessions": [
+    "Q9UPQ0"
+  ]
+}

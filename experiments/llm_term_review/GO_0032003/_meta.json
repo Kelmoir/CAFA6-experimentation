@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0032003",
+  "name": "interleukin-28 receptor binding",
+  "def": "Binding to an interleukin-28 receptor.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q4VK74",
+    "Q8CGK6",
+    "Q8IU54"
+  ],
+  "assigned_accessions": [
+    "Q4VK74",
+    "Q8CGK6",
+    "Q8IU54"
+  ]
+}

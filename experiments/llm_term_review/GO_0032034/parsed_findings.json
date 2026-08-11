@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9UPQ0",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9UPQ0 directly matches the primary reaction of \"Binding to the head/neck region of a myosin II heavy chain.\" The closest candidate (REGION 250-639) is related to interaction with another protein (MYH9), not specifically to myosin II head/neck binding."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P47068",
+      "go_id": "GO:0032032",
+      "feature_type": "DOMAIN",
+      "start": 4,
+      "end": 69,
+      "signal_kind": "text",
+      "signal_value": "SH3",
+      "reasoning": "The SH3 domain in position 4-69 directly matches the primary reaction of the GO term by indicating a domain that binds to phosphorylated tyrosine residues, which are commonly found in tail regions of myosin I heavy chains. This provides a strong and specific explanation for why the protein carries the term \"myosin I tail binding.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0031956",
+  "name": "medium-chain fatty acid-CoA ligase activity",
+  "def": "Catalysis of the reaction: a medium-chain fatty acid + ATP + CoA = a medium-chain fatty acyl-CoA + AMP + diphosphate. A medium-chain fatty acid has an aliphatic tail containing 6 to 12 carbons.",
+  "n_proteins_total": 38,
+  "sampled_accessions": [
+    "P30624",
+    "Q6NUN0",
+    "Q96CM8",
+    "Q9LQ12"
+  ],
+  "assigned_accessions": [
+    "P30624",
+    "Q6NUN0",
+    "Q96CM8",
+    "Q9LQ12"
+  ]
+}

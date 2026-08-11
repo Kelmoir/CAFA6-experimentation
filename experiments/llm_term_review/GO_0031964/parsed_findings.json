@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9W369",
+      "go_id": "GO:0031964",
+      "feature_type": "SITE",
+      "start": 120,
+      "end": 122,
+      "signal_kind": "text",
+      "signal_value": "Cleavage; by autolysis",
+      "reasoning": "The SITE span with a note about cleavage and autolysis suggests that the protein has a site where it performs cleavage, which could be relevant to its hydrolase function. However, this feature does not directly indicate the specific reaction mechanism of beta-alanyl-histamine hydrolase activity, making it an uncertain match."
+    }
+  ],
+  "issues": []
+}

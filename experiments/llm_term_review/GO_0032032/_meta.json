@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0032032",
+  "name": "myosin I tail binding",
+  "def": "Binding to the tail region of a myosin I heavy chain.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P47068"
+  ],
+  "assigned_accessions": [
+    "P47068"
+  ]
+}

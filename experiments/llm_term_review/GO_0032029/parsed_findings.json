@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9ES64",
+      "reason": "none_verdict",
+      "reasoning": "The PDZ domain (DOMAIN 86-171) is known to interact with phosphorylated proteins, which are often involved in myosin function. However, the defined reaction of \"myosin tail binding\" specifically refers to the interaction with the tail region of a myosin heavy chain, not with phosphoproteins in general. Therefore, no annotated feature directly matches the primary reaction of the GO term, and the ve"
+    },
+    {
+      "accession": "Q9NRC6",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q9NRC6 do not provide evidence that directly explains why the protein carries the molecular function \"myosin tail binding.\" No candidate feature matches the primary reaction described in the GO term's definition."
+    }
+  ]
+}

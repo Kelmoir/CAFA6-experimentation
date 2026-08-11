@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q12458",
+      "go_id": "GO:0032018",
+      "feature_type": "BINDING",
+      "start": 219,
+      "end": 274,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The BINDING feature at coordinates 219-274 specifies NADP(+), which directly matches the GO term's definition by indicating the acceptor of the phosphate group in the redox reaction. This is a strong match to the primary reaction mechanism described in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

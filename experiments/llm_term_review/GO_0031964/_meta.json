@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0031964",
+  "name": "beta-alanyl-histamine hydrolase activity",
+  "def": "Catalysis of the reaction: carcinine + H2O = histamine + beta-alanine. Carcinine is also known as N-beta-alanyl histamine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9W369"
+  ],
+  "assigned_accessions": [
+    "Q9W369"
+  ]
+}

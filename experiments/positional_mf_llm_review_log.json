@@ -15729,5 +15729,240 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0031956": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P30624"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6NUN0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein Q6NUN0 provides a strong match to the primary reaction of the GO term \"medium-chain fatty acid-CoA ligase activity.\" All binding sites describe interactions with ATP but do not directly explain the enzyme's catalytic function in forming medium-chain fatty acyl-CoA."
+   },
+   {
+    "accession": "Q96CM8",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q96CM8 indicates binding of ATP but does not provide evidence of the enzyme's catalytic activity or structure, which are required to support the GO term's primary reaction."
+   },
+   {
+    "accession": "Q9LQ12",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism of the GO term, and all features are generic or only echo words from secondary clauses."
+   }
+  ]
+ },
+ "GO:0031963": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "NR LBD",
+    "accessions": [
+     "P49843",
+     "Q9IAC6"
+    ],
+    "reason": "resolved to ['PROSITE:PS51843'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'PROSITE:PS51843': 234})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0031964": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9W369",
+    "go_id": "GO:0031964",
+    "feature_type": "SITE",
+    "start": 120,
+    "end": 122,
+    "signal_kind": "text",
+    "signal_value": "Cleavage; by autolysis",
+    "reasoning": "The SITE span with a note about cleavage and autolysis suggests that the protein has a site where it performs cleavage, which could be relevant to its hydrolase function. However, this feature does not directly indicate the specific reaction mechanism of beta-alanyl-histamine hydrolase activity, making it an uncertain match."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0032003": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q4VK74",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8CGK6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8IU54",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0032018": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "Q12458"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0032029": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9ES64",
+    "reason": "none_verdict",
+    "reasoning": "The PDZ domain (DOMAIN 86-171) is known to interact with phosphorylated proteins, which are often involved in myosin function. However, the defined reaction of \"myosin tail binding\" specifically refers to the interaction with the tail region of a myosin heavy chain, not with phosphoproteins in general. Therefore, no annotated feature directly matches the primary reaction of the GO term, and the ve"
+   },
+   {
+    "accession": "Q9NRC6",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9NRC6 do not provide evidence that directly explains why the protein carries the molecular function \"myosin tail binding.\" No candidate feature matches the primary reaction described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0032032": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SH3",
+    "accessions": [
+     "P47068"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0032033": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P08964",
+    "go_id": "GO:0032033",
+    "feature_type": "BINDING",
+    "start": 179,
+    "end": 187,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The highest score for any candidate feature is 3, and no single feature clearly matches the primary reaction of \"binding to a light chain.\" While the binding to ATP is part of myosin II's function, it does not directly explain the binding to a light chain. Therefore, the evidence is insufficient to determine a strong match."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q12280",
+    "reason": "none_verdict",
+    "reasoning": "There is no single annotated feature for Q12280 that directly supports the defined function of \"myosin II light chain binding.\" The available domains and motifs are more broadly associated with other functions such as protein-protein interactions and signal transduction."
+   },
+   {
+    "accession": "Q9NB04",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section directly matches the primary reaction of \"Binding to a light chain of a myosin II complex.\" All features either relate to secondary consequences or are disordered regions without functional evidence."
+   }
+  ]
+ },
+ "GO:0032034": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UPQ0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9UPQ0 directly matches the primary reaction of \"Binding to the head/neck region of a myosin II heavy chain.\" The closest candidate (REGION 250-639) is related to interaction with another protein (MYH9), not specifically to myosin II head/neck binding."
+   }
+  ]
+ },
+ "GO:0032035": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q9TW45"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P53890",
+    "reason": "none_verdict",
+    "reasoning": "The protein P53890 has no annotated positional feature that directly matches the primary reaction described in the GO term \"myosin II tail binding,\" which involves binding to the tail region of a myosin II heavy chain. Therefore, there is no plausible explanation for why this protein carries the term based on its structural features."
+   }
+  ]
  }
 }

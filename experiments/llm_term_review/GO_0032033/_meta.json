@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0032033",
+  "name": "myosin II light chain binding",
+  "def": "Binding to a light chain of a myosin II complex.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P08964",
+    "Q12280",
+    "Q9NB04"
+  ],
+  "assigned_accessions": [
+    "P08964",
+    "Q12280",
+    "Q9NB04"
+  ]
+}

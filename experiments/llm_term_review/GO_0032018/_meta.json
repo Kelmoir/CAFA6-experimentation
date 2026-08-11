@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0032018",
+  "name": "2-methylbutanal reductase (NADPH) activity",
+  "def": "Catalysis of the reaction: 2-methylbutan-1-ol + NADP+ = 2-methylbutanal + NADPH + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q12458"
+  ],
+  "assigned_accessions": [
+    "Q12458"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0032029",
+  "name": "myosin tail binding",
+  "def": "Binding to the tail region of a myosin heavy chain.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q9ES64",
+    "Q9NRC6"
+  ],
+  "assigned_accessions": [
+    "Q9ES64",
+    "Q9NRC6"
+  ]
+}
