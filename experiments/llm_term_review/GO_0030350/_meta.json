@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0030350",
+  "name": "iron-responsive element binding",
+  "def": "Binding to an iron-responsive element, a regulatory sequence found in the 5'- and 3'-untranslated regions of mRNAs encoding many iron-binding proteins.",
+  "n_proteins_total": 16,
+  "sampled_accessions": [
+    "P28271",
+    "Q42560",
+    "Q62751",
+    "Q8ZP52"
+  ],
+  "assigned_accessions": [
+    "P28271",
+    "Q42560",
+    "Q62751",
+    "Q8ZP52"
+  ]
+}

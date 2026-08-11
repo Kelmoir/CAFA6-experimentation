@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0030519",
+  "name": "snoRNP binding",
+  "def": "Binding to a small nucleolar ribonucleoprotein particle.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q63009",
+    "Q9JIF0"
+  ],
+  "assigned_accessions": [
+    "Q63009",
+    "Q9JIF0"
+  ]
+}

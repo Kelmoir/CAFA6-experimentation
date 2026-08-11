@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0030343",
+  "name": "vitamin D3 25-hydroxylase activity",
+  "def": "Catalysis of the reaction: calciol (vitamin D3) + reduced [NADPH--hemoprotein reductase] + O2 = calcidiol + oxidized [NADPH--hemoprotein reductase] + H2O + H+.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "P05183",
+    "P17178",
+    "Q07973",
+    "Q6VVX0"
+  ],
+  "assigned_accessions": [
+    "P05183",
+    "P17178",
+    "Q07973",
+    "Q6VVX0"
+  ]
+}

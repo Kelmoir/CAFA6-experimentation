@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0030379",
+  "name": "neurotensin receptor activity, non-G protein-coupled",
+  "def": "Combining with neurotensin, a neuropeptide active in the central and peripheral nervous system in mammals, and transmitting the signal from one side of the membrane to the other by a mechanism independent of coupling to G proteins.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O54861",
+    "Q6PHU5",
+    "Q99523"
+  ],
+  "assigned_accessions": [
+    "O54861",
+    "Q6PHU5",
+    "Q99523"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P35456",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the molecular function defined by the GO term."
+    },
+    {
+      "accession": "Q03405",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction described in the GO term's definition, which involves receptor-ligand interaction to initiate a change in cell activity."
+    },
+    {
+      "accession": "Q05588",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section provides a clear structural or functional basis for the GO term \"urokinase plasminogen activator receptor activity\" as defined."
+    },
+    {
+      "accession": "P49616",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the biochemical reaction of binding urokinase plasminogen activator to initiate a change in cell activity, which is the primary reaction defined by the GO term."
+    }
+  ]
+}

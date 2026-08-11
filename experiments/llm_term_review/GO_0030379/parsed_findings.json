@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O54861",
+      "go_id": "GO:0030379",
+      "feature_type": "REGION",
+      "start": 95,
+      "end": 602,
+      "signal_kind": "text",
+      "signal_value": "10-bladed beta-propeller",
+      "reasoning": "The 10-bladed beta-propeller motif is a structural element commonly associated with membrane trafficking and receptor activity, making it a plausible explanation for the GO term's primary function."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q6PHU5",
+      "go_id": "GO:0030379",
+      "feature_type": "MOTIF",
+      "start": 819,
+      "end": 824,
+      "signal_kind": "text",
+      "signal_value": "DXXLL motif involved in the interaction with GGA1",
+      "reasoning": "The annotation for the DXXLL motif involved in interaction with GGA1 is the most plausible explanation for the neurotensin receptor activity, non-G protein-coupled GO term, as it relates to signal transduction and interactions with other proteins. However, this feature does not directly explain the mechanism of signal transmission independent of G-protein coupling, making the match only moderately"
+    },
+    {
+      "accession": "Q99523",
+      "go_id": "GO:0030379",
+      "feature_type": "REGION",
+      "start": 97,
+      "end": 604,
+      "signal_kind": "text",
+      "signal_value": "10-bladed beta-propeller",
+      "reasoning": "The \"REGION 97-604\" with the value of 7 is associated with a 10-bladed beta-propeller, which could be part of a complex involved in membrane trafficking. While this does not directly explain the mechanism of signal transduction described in the GO term, it is the highest-scoring feature and could plausibly account for the receptor's activity through its structural role in transport processes."
+    }
+  ],
+  "issues": []
+}

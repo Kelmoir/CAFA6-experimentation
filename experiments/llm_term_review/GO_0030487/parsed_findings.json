@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "O43001",
+      "go_id": "GO:0030487",
+      "feature_type": "DOMAIN",
+      "start": 143,
+      "end": 474,
+      "signal_kind": "text",
+      "signal_value": "SAC",
+      "reasoning": "The \"DOMAIN 143-474\" with the note indicating SAC is directly associated with the phosphorelay mechanism and provides a strong match to the primary reaction described in the GO term."
+    },
+    {
+      "accession": "P97573",
+      "go_id": "GO:0030487",
+      "feature_type": "DOMAIN",
+      "start": 400,
+      "end": 717,
+      "signal_kind": "text",
+      "signal_value": "5-PPase",
+      "reasoning": "The DOMAIN 400-717 (note: 5-PPase) is specifically associated with the 5-phosphatase activity, which directly matches the GO term's definition. This domain is the most plausible explanation for why the protein carries the term."
+    },
+    {
+      "accession": "Q9ES52",
+      "go_id": "GO:0030487",
+      "feature_type": "DOMAIN",
+      "start": 401,
+      "end": 718,
+      "signal_kind": "text",
+      "signal_value": "5-PPase",
+      "reasoning": "The DOMAIN 401-718 with the note \"5-PPase\" directly matches the primary reaction of the GO term, which involves catalyzing the removal of a phosphate group from inositol-4,5-bisphosphate. This is a strong and specific match to the defined chemistry of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

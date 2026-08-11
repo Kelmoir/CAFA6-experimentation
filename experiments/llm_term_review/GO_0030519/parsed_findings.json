@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q63009",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear explanation of why the protein Q63009 carries the molecular function \"snoRNP binding.\" The available features are generic and involve SAM rather than snoRNP."
+    },
+    {
+      "accession": "Q9JIF0",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains why this protein carries the GO term \"snoRNP binding.\" The only plausible explanation is that the protein's function involves methylation, which could be related to snoRNP processing, but there is no direct evidence of snoRNP binding."
+    }
+  ]
+}

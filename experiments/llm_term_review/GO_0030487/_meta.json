@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0030487",
+  "name": "inositol-4,5-bisphosphate 5-phosphatase activity",
+  "def": "Catalysis of the reaction: 1D-myo-inositol 4,5-bisphosphate + H2O = 1D-myo-inositol 4-phosphate + phosphate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O43001",
+    "P97573",
+    "Q9ES52"
+  ],
+  "assigned_accessions": [
+    "O43001",
+    "P97573",
+    "Q9ES52"
+  ]
+}

@@ -13749,6 +13749,210 @@
    }
   ]
  },
+ "GO:0030343": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "P17178"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P05183",
+    "go_id": "GO:0030343",
+    "feature_type": "BINDING",
+    "start": 442,
+    "end": 443,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "The binding of heme at positions 442-443 is a plausible candidate for the structural basis of the GO term, as cytochrome P450 enzymes require heme for their catalytic activity. However, this feature does not directly explain the specific reaction defined by the GO term (the hydroxylation of vitamin D3), making the connection speculative rather than definitive."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q07973",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a clear mechanistic basis for the specific catalytic reaction defined by the GO term \"vitamin D3 25-hydroxylase activity.\""
+   },
+   {
+    "accession": "Q6VVX0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q6VVX0 specifically matches the chemistry defined by GO:0030343, as it does not describe the phosphoryl transfer mechanism or the active site structure involved."
+   }
+  ]
+ },
+ "GO:0030350": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "[4Fe-4S] cluster",
+    "accessions": [
+     "Q62751"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q42560",
+    "go_id": "GO:0030350",
+    "feature_type": "BINDING",
+    "start": 89,
+    "end": 90,
+    "signal_kind": "ligand",
+    "signal_value": "substrate",
+    "reasoning": "The binding site at 89-90 is annotated as \"ligand: substrate,\" which is a generic feature and does not specifically match the primary reaction of binding to an iron-responsive element."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q8ZP52",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8ZP52 explicitly states the protein's ability to bind to an iron-responsive element, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "P28271",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features do not include any evidence that it binds to an iron-responsive element, which is the primary reaction defined by the GO term. Therefore, there is no single annotated feature that plausibly explains why this protein carries the term \"iron-responsive element binding.\""
+   }
+  ]
+ },
+ "GO:0030377": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P35456",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the molecular function defined by the GO term."
+   },
+   {
+    "accession": "Q03405",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction described in the GO term's definition, which involves receptor-ligand interaction to initiate a change in cell activity."
+   },
+   {
+    "accession": "Q05588",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a clear structural or functional basis for the GO term \"urokinase plasminogen activator receptor activity\" as defined."
+   },
+   {
+    "accession": "P49616",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the biochemical reaction of binding urokinase plasminogen activator to initiate a change in cell activity, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0030379": {
+  "n_resolved": 1,
+  "n_uncertain": 2,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "10-bladed beta-propeller",
+    "accessions": [
+     "O54861"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q6PHU5",
+    "go_id": "GO:0030379",
+    "feature_type": "MOTIF",
+    "start": 819,
+    "end": 824,
+    "signal_kind": "text",
+    "signal_value": "DXXLL motif involved in the interaction with GGA1",
+    "reasoning": "The annotation for the DXXLL motif involved in interaction with GGA1 is the most plausible explanation for the neurotensin receptor activity, non-G protein-coupled GO term, as it relates to signal transduction and interactions with other proteins. However, this feature does not directly explain the mechanism of signal transmission independent of G-protein coupling, making the match only moderately"
+   },
+   {
+    "accession": "Q99523",
+    "go_id": "GO:0030379",
+    "feature_type": "REGION",
+    "start": 97,
+    "end": 604,
+    "signal_kind": "text",
+    "signal_value": "10-bladed beta-propeller",
+    "reasoning": "The \"REGION 97-604\" with the value of 7 is associated with a 10-bladed beta-propeller, which could be part of a complex involved in membrane trafficking. While this does not directly explain the mechanism of signal transduction described in the GO term, it is the highest-scoring feature and could plausibly account for the receptor's activity through its structural role in transport processes."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0030487": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "5-PPase",
+    "accessions": [
+     "P97573",
+     "Q9ES52"
+    ],
+    "reason": "resolved to ['PROSITE:PS52082'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'PROSITE:PS52082': 56})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SAC",
+    "accessions": [
+     "O43001"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0030519": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q63009",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear explanation of why the protein Q63009 carries the molecular function \"snoRNP binding.\" The available features are generic and involve SAM rather than snoRNP."
+   },
+   {
+    "accession": "Q9JIF0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains why this protein carries the GO term \"snoRNP binding.\" The only plausible explanation is that the protein's function involves methylation, which could be related to snoRNP processing, but there is no direct evidence of snoRNP binding."
+   }
+  ]
+ },
  "GO:0030603": {
   "n_resolved": 0,
   "n_uncertain": 0,
