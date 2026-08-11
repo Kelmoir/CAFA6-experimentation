@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8CFE6",
+      "go_id": "GO:0015655",
+      "feature_type": "BINDING",
+      "start": 81,
+      "end": 82,
+      "signal_kind": "ligand",
+      "signal_value": "Na(+)",
+      "reasoning": "The binding site for Na(+), as specified in the \"BINDING\" feature at coordinates 81-82, directly supports the primary reaction of solute transfer described by the GO term \"alanine:sodium symporter activity.\" This is a strong match to the defined chemistry of the term."
+    },
+    {
+      "accession": "Q96QD8",
+      "go_id": "GO:0015655",
+      "feature_type": "BINDING",
+      "start": 81,
+      "end": 82,
+      "signal_kind": "ligand",
+      "signal_value": "Na(+)",
+      "reasoning": "The binding site for Na(+) at position 81-82 directly supports the core reaction of the GO term, which involves the transfer of solutes across a membrane. This is the most specific and relevant feature that matches the primary chemistry described in the definition."
+    },
+    {
+      "accession": "Q9EQ25",
+      "go_id": "GO:0015655",
+      "feature_type": "SITE",
+      "start": 231,
+      "end": 232,
+      "signal_kind": "text",
+      "signal_value": "Influences on amino acid transport capacity",
+      "reasoning": "The site 231-232 is associated with amino acid transport capacity, which directly relates to the defined reaction of the GO term. This feature provides a plausible explanation for why the protein carries the term \"alanine:sodium symporter activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9JHE5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction mechanism of \"alanine:sodium symporter activity\" (GO:0015655), which involves active transport across a membrane. The only relevant features are generic binding sites for Na(+), which do not provide enough specificity to explain the defined chemistry."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016223",
+  "name": "beta-alanine:pyruvate transaminase activity",
+  "def": "Catalysis of the reaction: L-alanine + 2-oxopropanoate = pyruvate + beta-alanine.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "Q3UEG6",
+    "Q64565",
+    "Q9BYV1",
+    "Q9I700"
+  ],
+  "assigned_accessions": [
+    "Q3UEG6",
+    "Q64565",
+    "Q9BYV1",
+    "Q9I700"
+  ]
+}

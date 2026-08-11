@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O14209",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P47039",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P77806",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8N5Z0",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q8N5Z0 provides evidence for the specific enzymatic activity described by GO:0016212, which involves catalyzing a transamination reaction. The only features are generic binding sites that do not directly explain the chemistry of the term."
+    }
+  ]
+}

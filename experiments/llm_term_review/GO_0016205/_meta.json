@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0016205",
+  "name": "selenocysteine methyltransferase activity",
+  "def": "Catalysis of the reaction: selenocysteine + S-adenosyl-L-methionine = Se-methylselenocysteine + S-adenosyl-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q4VNK0"
+  ],
+  "assigned_accessions": [
+    "Q4VNK0"
+  ]
+}

@@ -10170,6 +10170,37 @@
    }
   ]
  },
+ "GO:0015650": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O15427",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list provides a direct explanation for the defined molecular function of lactate:proton symporter activity. The features provided are more related to targeting or sorting, not the actual transport mechanism described in the GO definition."
+   },
+   {
+    "accession": "P53985",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the primary reaction mechanism of lactate:proton symporter activity as defined by GO:0015650."
+   },
+   {
+    "accession": "P57787",
+    "reason": "none_verdict",
+    "reasoning": "The \"Basolateral sorting signal\" is associated with membrane targeting, which may be relevant to the protein's function but does not directly explain the mechanism of lactate:proton symporter activity. No other annotated feature provides a strong match to the GO term's primary reaction."
+   },
+   {
+    "accession": "P53986",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P53986 specifically matches the primary reaction of lactate:proton symporter activity, which involves the transfer of solutes across a membrane. The binding sites for substrates are secondary features and do not directly explain the function described by the GO term."
+   }
+  ]
+ },
  "GO:0015654": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -10191,6 +10222,42 @@
    }
   ]
  },
+ "GO:0015655": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Na(+)",
+    "accessions": [
+     "Q8CFE6",
+     "Q96QD8"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Influences on amino acid transport capacity",
+    "accessions": [
+     "Q9EQ25"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9JHE5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism of \"alanine:sodium symporter activity\" (GO:0015655), which involves active transport across a membrane. The only relevant features are generic binding sites for Na(+), which do not provide enough specificity to explain the defined chemistry."
+   }
+  ]
+ },
  "GO:0015665": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -10204,6 +10271,120 @@
     "accession": "P53389",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0015928": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a beta-D-glucoside",
+    "accessions": [
+     "P49235"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P17164",
+    "go_id": "GO:0015928",
+    "feature_type": "SITE",
+    "start": 291,
+    "end": 292,
+    "signal_kind": "text",
+    "signal_value": "May be important for catalysis",
+    "reasoning": "The \"SITE 291-292\" annotation could plausibly relate to the active site of the enzyme responsible for fucosidase activity, but it does not explicitly state that this site is involved in the catalytic reaction. Therefore, it is a genuine near-tie between two comparably-plausible candidates, but it does not specifically match the GO term's own chemistry."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q9SR37",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9SR37 specifically matches the chemistry of fucosidase activity as defined by GO:0015928."
+   }
+  ]
+ },
+ "GO:0016205": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q4VNK0",
+    "reason": "none_verdict",
+    "reasoning": "The DOMAIN annotation for Q4VNK0 is associated with Hcy-binding, which is a separate interaction from the catalytic activity of selenocysteine methyltransferase. None of the binding sites or domain annotations directly support the primary reaction mechanism of GO:0016205."
+   }
+  ]
+ },
+ "GO:0016212": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O14209",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P47039",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P77806",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8N5Z0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8N5Z0 provides evidence for the specific enzymatic activity described by GO:0016212, which involves catalyzing a transamination reaction. The only features are generic binding sites that do not directly explain the chemistry of the term."
+   }
+  ]
+ },
+ "GO:0016223": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q3UEG6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q64565",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9BYV1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9I700",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a direct structural/functional explanation for the chemistry described in the GO term's definition."
    }
   ]
  }

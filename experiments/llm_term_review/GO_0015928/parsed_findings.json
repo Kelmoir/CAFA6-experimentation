@@ -1,0 +1,33 @@
+{
+  "resolved": [
+    {
+      "accession": "P49235",
+      "go_id": "GO:0015928",
+      "feature_type": "BINDING",
+      "start": 91,
+      "end": 92,
+      "signal_kind": "ligand",
+      "signal_value": "a beta-D-glucoside",
+      "reasoning": "The BINDING region with coordinates 91-92 is directly associated with ligand binding, which is a key step in catalyzing the hydrolysis of fucosyl compounds as defined by GO:0015928. This feature most plausibly explains why the protein carries this molecular function."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P17164",
+      "go_id": "GO:0015928",
+      "feature_type": "SITE",
+      "start": 291,
+      "end": 292,
+      "signal_kind": "text",
+      "signal_value": "May be important for catalysis",
+      "reasoning": "The \"SITE 291-292\" annotation could plausibly relate to the active site of the enzyme responsible for fucosidase activity, but it does not explicitly state that this site is involved in the catalytic reaction. Therefore, it is a genuine near-tie between two comparably-plausible candidates, but it does not specifically match the GO term's own chemistry."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q9SR37",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9SR37 specifically matches the chemistry of fucosidase activity as defined by GO:0015928."
+    }
+  ]
+}

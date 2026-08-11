@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0016212",
+  "name": "kynurenine-oxoglutarate transaminase activity",
+  "def": "Catalysis of the reaction: 2-oxoglutarate + L-kynurenine = H2O + kynurenate + L-glutamate. The product 4-(2-aminophenyl)-2,4-dioxobutanoate is converted into kynurenate by a spontaneous reaction. Also acts on 3-hydroxykynurenine to form xanthurenate.",
+  "n_proteins_total": 19,
+  "sampled_accessions": [
+    "O14209",
+    "P47039",
+    "P77806",
+    "Q8N5Z0"
+  ],
+  "assigned_accessions": [
+    "O14209",
+    "P47039",
+    "P77806",
+    "Q8N5Z0"
+  ]
+}

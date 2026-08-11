@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0015928",
+  "name": "fucosidase activity",
+  "def": "Catalysis of the hydrolysis of fucosyl compounds, substances containing a group derived from a cyclic form of fucose or a fucose derivative.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P17164",
+    "P49235",
+    "Q9SR37"
+  ],
+  "assigned_accessions": [
+    "P17164",
+    "P49235",
+    "Q9SR37"
+  ]
+}

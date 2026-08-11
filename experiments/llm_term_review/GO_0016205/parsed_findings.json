@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q4VNK0",
+      "reason": "none_verdict",
+      "reasoning": "The DOMAIN annotation for Q4VNK0 is associated with Hcy-binding, which is a separate interaction from the catalytic activity of selenocysteine methyltransferase. None of the binding sites or domain annotations directly support the primary reaction mechanism of GO:0016205."
+    }
+  ]
+}
