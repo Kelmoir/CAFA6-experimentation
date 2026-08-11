@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "Q6PJG6",
+      "go_id": "GO:0008428",
+      "feature_type": "MOTIF",
+      "start": 818,
+      "end": 821,
+      "signal_kind": "text",
+      "signal_value": "BRAT1-like motif",
+      "reasoning": "The \"BRAT1-like\" motif in position 818-821 of Q6PJG6 provides a plausible structural basis for the protein's role as a ribonuclease inhibitor, aligning with the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P0AF90",
+      "go_id": "GO:0008428",
+      "feature_type": "REGION",
+      "start": 113,
+      "end": 138,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The disordered region in P0AF90 (positions 113-138) is associated with the RraB domain family, which is known for ribonuclease inhibition activity. However, no annotated feature directly states that this region is responsible for ribonuclease inhibitor activity, only that it is part of the RraB domain family. Thus, while the domain family suggests a possible mechanism, there is no direct evidence"
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P10775",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9FH13",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature describes the specific mechanism of binding to and inhibiting ribonuclease activity, which is the primary reaction defined by the GO term."
+    }
+  ]
+}

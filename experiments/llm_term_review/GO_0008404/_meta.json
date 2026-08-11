@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008404",
+  "name": "arachidonate 14,15-epoxygenase activity",
+  "def": "Catalysis of an NADPH- and oxygen-dependent reaction that converts arachidonic acid to cis-14,15-epoxyeicosatrienoic acid.",
+  "n_proteins_total": 13,
+  "sampled_accessions": [
+    "O54749",
+    "P05178",
+    "P11712",
+    "Q86W10"
+  ],
+  "assigned_accessions": [
+    "O54749",
+    "P05178",
+    "P11712",
+    "Q86W10"
+  ]
+}

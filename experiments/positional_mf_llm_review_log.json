@@ -5582,6 +5582,193 @@
    }
   ]
  },
+ "GO:0008404": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "Q86W10"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P11712",
+    "go_id": "GO:0008404",
+    "feature_type": "BINDING",
+    "start": 434,
+    "end": 435,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "The binding site at position 434-435 is plausible for an oxygen-dependent reaction, but it does not directly confirm that the protein carries the specific GO term \"arachidonate 14,15-epoxygenase activity\" as a real annotation. No other positional feature matches the chemistry described in the GO definition with sufficient specificity."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "O54749",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's \"Annotated features\" section directly matches the GO term's primary reaction of converting arachidonic acid to cis-14,15-epoxyeicosatrienoic acid. The only positional feature indicates heme binding, which is a structural requirement for the enzyme but does not explain the specific catalytic activity described in the GO term."
+   },
+   {
+    "accession": "P05178",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature in the annotated features of P05178 directly supports the primary reaction of arachidonate 14,15-epoxygenase activity."
+   }
+  ]
+ },
+ "GO:0008405": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "P56656"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O54750",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a strong explanation for the specific chemistry of arachidonate 11,12-epoxygenase activity as defined by GO:0008405."
+   },
+   {
+    "accession": "P56655",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides positional evidence for the specific chemical reaction defined by GO:0008405, which is about catalyzing the conversion of arachidonic acid to cis-11,12-epoxyeicosatrienoic acid. The only relevant feature (BINDING 434-435) is generic and does not directly explain the function."
+   },
+   {
+    "accession": "Q9QXF7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the chemistry of the epoxidation reaction described in the GO term's definition, and the only plausible match is a generic domain/family reference that does not specify the exact mechanism."
+   }
+  ]
+ },
+ "GO:0008420": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "BRCT",
+    "accessions": [
+     "Q7TSG2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5YDB5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q5YDB5 specifically matches the defined chemistry of the GO term, which involves catalyzing the removal of a phosphate group from RNA polymerase II CTD heptapeptide repeats."
+   },
+   {
+    "accession": "Q8IXW5",
+    "reason": "none_verdict",
+    "reasoning": "The ZN_FING domain (which includes RTR1/RPAP2) is associated with phosphatase activity, but it is not explicitly confirmed in the Annotated features section for Q8IXW5. No positional feature directly matches the GO term's primary reaction of removing phosphate from RNA polymerase II CTD heptapeptide repeat."
+   },
+   {
+    "accession": "Q9Y5B0",
+    "reason": "none_verdict",
+    "reasoning": "The BRCT domain is not specifically associated with removing phosphate groups from RNA polymerase II CTD heptapeptide repeats, and thus does not strongly explain the GO term's primary reaction."
+   }
+  ]
+ },
+ "GO:0008428": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "BRAT1-like motif",
+    "accessions": [
+     "Q6PJG6"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P0AF90",
+    "go_id": "GO:0008428",
+    "feature_type": "REGION",
+    "start": 113,
+    "end": 138,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The disordered region in P0AF90 (positions 113-138) is associated with the RraB domain family, which is known for ribonuclease inhibition activity. However, no annotated feature directly states that this region is responsible for ribonuclease inhibitor activity, only that it is part of the RraB domain family. Thus, while the domain family suggests a possible mechanism, there is no direct evidence"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P10775",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9FH13",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature describes the specific mechanism of binding to and inhibiting ribonuclease activity, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0008429": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Lipid binding",
+    "accessions": [
+     "Q04690"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P97526",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features for protein P97526 directly or specifically explain the molecular function of \"phosphatidylethanolamine binding\" as defined."
+   },
+   {
+    "accession": "Q9AST8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9LRP7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0008456": {
   "n_resolved": 0,
   "n_uncertain": 0,

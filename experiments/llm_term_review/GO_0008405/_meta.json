@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008405",
+  "name": "arachidonate 11,12-epoxygenase activity",
+  "def": "Catalysis of an NADPH- and oxygen-dependent reaction that converts arachidonic acid to cis-11,12-epoxyeicosatrienoic acid.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "O54750",
+    "P56655",
+    "P56656",
+    "Q9QXF7"
+  ],
+  "assigned_accessions": [
+    "O54750",
+    "P56655",
+    "P56656",
+    "Q9QXF7"
+  ]
+}

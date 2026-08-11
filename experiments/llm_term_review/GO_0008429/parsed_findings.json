@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q04690",
+      "go_id": "GO:0008429",
+      "feature_type": "REGION",
+      "start": 1581,
+      "end": 1839,
+      "signal_kind": "text",
+      "signal_value": "Lipid binding",
+      "reasoning": "The \"REGION 1581-1839\" with the note \"Lipid binding\" directly matches the primary reaction of the GO term, which is binding to phosphatidylethanolamine. This feature provides a clear and specific explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P97526",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features for protein P97526 directly or specifically explain the molecular function of \"phosphatidylethanolamine binding\" as defined."
+    },
+    {
+      "accession": "Q9AST8",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9LRP7",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

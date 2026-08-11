@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008429",
+  "name": "phosphatidylethanolamine binding",
+  "def": "Binding to a phosphatidylethanolamine, a class of glycerophospholipids in which a phosphatidyl group is esterified to the hydroxyl group of ethanolamine.",
+  "n_proteins_total": 57,
+  "sampled_accessions": [
+    "P97526",
+    "Q04690",
+    "Q9AST8",
+    "Q9LRP7"
+  ],
+  "assigned_accessions": [
+    "P97526",
+    "Q04690",
+    "Q9AST8",
+    "Q9LRP7"
+  ]
+}

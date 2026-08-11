@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008420",
+  "name": "RNA polymerase II CTD heptapeptide repeat phosphatase activity",
+  "def": "Catalysis of the reaction: RNA polymerase II large subunit CTD heptapeptide repeat--phospho-L-serine/threonine (consensus YSPTSPS) + H2O = RNA polymerase II large subunit + phosphate.",
+  "n_proteins_total": 30,
+  "sampled_accessions": [
+    "Q5YDB5",
+    "Q7TSG2",
+    "Q8IXW5",
+    "Q9Y5B0"
+  ],
+  "assigned_accessions": [
+    "Q5YDB5",
+    "Q7TSG2",
+    "Q8IXW5",
+    "Q9Y5B0"
+  ]
+}

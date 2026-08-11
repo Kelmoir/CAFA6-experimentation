@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0008428",
+  "name": "ribonuclease inhibitor activity",
+  "def": "Binds to and stops, prevents or reduces the activity of ribonuclease.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "P0AF90",
+    "P10775",
+    "Q6PJG6",
+    "Q9FH13"
+  ],
+  "assigned_accessions": [
+    "P0AF90",
+    "P10775",
+    "Q6PJG6",
+    "Q9FH13"
+  ]
+}

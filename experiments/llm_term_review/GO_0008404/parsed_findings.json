@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "Q86W10",
+      "go_id": "GO:0008404",
+      "feature_type": "BINDING",
+      "start": 451,
+      "end": 452,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding of heme to the protein (BINDING 451-452) directly supports the enzymatic activity described by the GO term, which involves an oxygen-dependent reaction. This feature is specific and aligns with the primary reaction mechanism of the GO term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P11712",
+      "go_id": "GO:0008404",
+      "feature_type": "BINDING",
+      "start": 434,
+      "end": 435,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding site at position 434-435 is plausible for an oxygen-dependent reaction, but it does not directly confirm that the protein carries the specific GO term \"arachidonate 14,15-epoxygenase activity\" as a real annotation. No other positional feature matches the chemistry described in the GO definition with sufficient specificity."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "O54749",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's \"Annotated features\" section directly matches the GO term's primary reaction of converting arachidonic acid to cis-14,15-epoxyeicosatrienoic acid. The only positional feature indicates heme binding, which is a structural requirement for the enzyme but does not explain the specific catalytic activity described in the GO term."
+    },
+    {
+      "accession": "P05178",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature in the annotated features of P05178 directly supports the primary reaction of arachidonate 14,15-epoxygenase activity."
+    }
+  ]
+}
