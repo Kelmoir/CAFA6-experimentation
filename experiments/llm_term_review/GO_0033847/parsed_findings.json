@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P9WP53",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly matches the primary reaction mechanism described in the GO term's definition."
+    },
+    {
+      "accession": "Q79FV4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which is the catalysis of O-phospho-L-serine to L-cysteine. The only relevant features are for pyridoxal 5'-phosphate binding, which is a cofactor rather than the enzyme's function. Thus, there is no positional feature that plausibly explains why Q79FV4 carries this GO term."
+    }
+  ]
+}

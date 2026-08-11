@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0033883",
+  "name": "pyridoxal phosphatase activity",
+  "def": "Catalysis of the reaction: pyridoxal 5'-phosphate + H2O = pyridoxal + phosphate.",
+  "n_proteins_total": 14,
+  "sampled_accessions": [
+    "P05186",
+    "P21829",
+    "P27848",
+    "Q8VD52"
+  ],
+  "assigned_accessions": [
+    "P05186",
+    "P21829",
+    "P27848",
+    "Q8VD52"
+  ]
+}

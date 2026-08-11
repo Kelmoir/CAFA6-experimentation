@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033831",
+  "name": "kojibiose phosphorylase activity",
+  "def": "Catalysis of the reaction: kojibiose + phosphate = beta-D-glucose 1-phosphate + D-glucose.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P77154"
+  ],
+  "assigned_accessions": [
+    "P77154"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0033885",
+  "name": "10-hydroxy-9-(phosphonooxy)octadecanoate phosphatase activity",
+  "def": "Catalysis of the reaction: (9S,10S)-10-hydroxy-9-(phosphonooxy)octadecanoate + H2O = (9S,10S)-9,10-dihydroxyoctadecanoate + phosphate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P34913",
+    "P34914",
+    "P80299"
+  ],
+  "assigned_accessions": [
+    "P34913",
+    "P34914",
+    "P80299"
+  ]
+}

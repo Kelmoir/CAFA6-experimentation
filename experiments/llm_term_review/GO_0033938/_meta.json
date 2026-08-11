@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033938",
+  "name": "1,6-alpha-L-fucosidase activity",
+  "def": "Catalysis of the hydrolysis of (1->6) linkages between alpha-L-fucose and N-acetyl-D-glucosamine in glycopeptides such as immunoglobulin G glycopeptide and fucosyl-asialo-agalacto-fetuin.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P10901"
+  ],
+  "assigned_accessions": [
+    "P10901"
+  ]
+}

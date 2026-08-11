@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0033843",
+  "name": "xyloglucan 6-xylosyltransferase activity",
+  "def": "Catalysis of the transfer of an alpha-D-xylosyl residue from UDP-D-xylose to a glucose residue in xyloglucan, forming an alpha-1,6-D-xylosyl-D-glucose linkage.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "O22775",
+    "Q9CA75",
+    "Q9LZJ3",
+    "Q9M9U0"
+  ],
+  "assigned_accessions": [
+    "O22775",
+    "Q9CA75",
+    "Q9LZJ3",
+    "Q9M9U0"
+  ]
+}

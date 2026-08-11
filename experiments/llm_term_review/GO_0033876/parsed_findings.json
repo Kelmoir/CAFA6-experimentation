@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8BGL3",
+      "go_id": "GO:0033876",
+      "feature_type": "BINDING",
+      "start": 120,
+      "end": 121,
+      "signal_kind": "ligand",
+      "signal_value": "3'-phosphoadenylyl sulfate",
+      "reasoning": "The \"BINDING\" feature at position 120-121 directly involves the ligand \"3'-phosphoadenylyl sulfate,\" which is essential for the sulfation reaction described in the GO term's definition. This binding site is most likely the one that enables the enzyme to accept and transfer the phosphoryl group, making it a strong candidate for explaining the molecular function of glycochenodeoxycholate sulfotransf"
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

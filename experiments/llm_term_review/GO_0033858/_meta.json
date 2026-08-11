@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033858",
+  "name": "N-acetylgalactosamine kinase activity",
+  "def": "Catalysis of the reaction: ATP + N-acetyl-D-galactosamine = ADP + N-acetyl-alpha-D-galactosamine 1-phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q01415"
+  ],
+  "assigned_accessions": [
+    "Q01415"
+  ]
+}

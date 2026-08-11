@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033940",
+  "name": "glucuronoarabinoxylan endo-1,4-beta-xylanase activity",
+  "def": "Catalysis of the endohydrolysis of (1->4)-beta-D-xylosyl links in some glucuronoarabinoxylans.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9CA34"
+  ],
+  "assigned_accessions": [
+    "Q9CA34"
+  ]
+}

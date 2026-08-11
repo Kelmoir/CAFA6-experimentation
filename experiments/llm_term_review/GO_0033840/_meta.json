@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033840",
+  "name": "alpha-1,4-glucan glucosyltransferase (NDP-glucose donor) activity",
+  "def": "Catalysis of the reaction: [(1->4)-alpha-D-glucosyl](n) + an NDP-alpha-D-glucose = [(1->4)-alpha-D-glucosyl](n+1) + a ribonucleoside 5'-diphosphate + H+, where NDP is ADP or UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9Y704"
+  ],
+  "assigned_accessions": [
+    "Q9Y704"
+  ]
+}

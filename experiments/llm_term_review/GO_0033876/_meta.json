@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033876",
+  "name": "glycochenodeoxycholate sulfotransferase activity",
+  "def": "Catalysis of the reaction: 3'-phospho-5'-adenylyl sulfate + glycochenodeoxycholate = adenosine 3',5'-diphosphate + glycochenodeoxycholate 7-sulfate + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8BGL3"
+  ],
+  "assigned_accessions": [
+    "Q8BGL3"
+  ]
+}

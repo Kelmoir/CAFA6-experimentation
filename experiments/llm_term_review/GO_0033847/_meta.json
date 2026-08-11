@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0033847",
+  "name": "O-phosphoserine sulfhydrylase activity",
+  "def": "Catalysis of the reaction: O-phospho-L-serine + hydrogen sulfide = L-cysteine + phosphate.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P9WP53",
+    "Q79FV4"
+  ],
+  "assigned_accessions": [
+    "P9WP53",
+    "Q79FV4"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033845",
+  "name": "hydroxymethylfurfural reductase (NADPH) activity",
+  "def": "Catalysis of the reaction: 5-hydroxymethylfurfural + NADPH + H+ = 2,5-bis-hydroxymethylfuran + NADP+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q04894"
+  ],
+  "assigned_accessions": [
+    "Q04894"
+  ]
+}
