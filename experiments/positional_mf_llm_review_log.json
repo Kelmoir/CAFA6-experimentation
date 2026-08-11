@@ -4656,6 +4656,180 @@
    }
   ]
  },
+ "GO:0005501": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "an N-all-trans-retinylidenephosphatidylethanolamine",
+    "accessions": [
+     "O35600"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O02853",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated features for O02853 that directly relate to retinoid binding, and the only feature provided is generic and not specific to the term's definition."
+   },
+   {
+    "accession": "O09114",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature that could plausibly account for the \"retinoid binding\" GO term is ACT_SITE 64-65 with the note \"Nucleophile,\" but this feature does not directly confirm the binding of retinoids to the protein. No other features are more specific or relevant to the primary reaction of retinoid binding, and the match score is low, indicating that no positional feature explains why O09114"
+   },
+   {
+    "accession": "O97921",
+    "reason": "none_verdict",
+    "reasoning": "The \"ACT_SITE 64-65\" annotation refers to an enzyme's active site and does not provide any evidence of retinoid binding activity, which is the primary reaction defined by the GO term. This feature is generic and does not directly support the GO term's definition."
+   }
+  ]
+ },
+ "GO:0005503": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "an N-all-trans-retinylidenephosphatidylethanolamine",
+    "accessions": [
+     "F1MWM0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8TAV3",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature for Q8TAV3 is \"BINDING 432-433\" with ligand: heme, which does not directly explain why it binds all-trans retinal. No other features are relevant to the GO term's definition, and no candidate matches the primary reaction of the GO term."
+   },
+   {
+    "accession": "Q9QYY9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of binding to all-trans retinal as defined by GO:0005503."
+   },
+   {
+    "accession": "Q9UW81",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0005527": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR023566"
+    ],
+    "accessions": [
+     "P20081",
+     "P28870",
+     "Q06205"
+    ],
+    "note": "resolved from DOMAIN note 'PPIase FKBP-type' (5 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P38911",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct or specific explanation for why P38911 carries the molecular function of \"macrolide binding.\" The only candidate (nuclear localization signal) is unrelated to the defined chemistry."
+   }
+  ]
+ },
+ "GO:0005542": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "dUMP",
+    "accessions": [
+     "P07607"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "folate",
+    "accessions": [
+     "P41440"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q54U89",
+    "go_id": "GO:0005542",
+    "feature_type": "REGION",
+    "start": 637,
+    "end": 681,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The disordered region in Q54U89 does not directly describe a mechanism of binding to folic acid, and thus does not strongly explain the GO term's primary reaction."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q6PEM8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q6PEM8 specifically matches the chemistry or mechanism of folic acid binding as defined in GO:0005542, and the domain/family cross-references point to proton transport rather than folic acid binding."
+   }
+  ]
+ },
+ "GO:0005549": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O02372",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the primary reaction of odorant binding as defined by the GO term."
+   },
+   {
+    "accession": "P82982",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q86BF9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature (by type + exact coordinates) directly explains why the protein carries the \"odorant binding\" molecular function. The domain/family cross-references are not positional features and do not provide the required evidence for this GO term."
+   },
+   {
+    "accession": "Q8NGI8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0008012": {
   "n_resolved": 0,
   "n_uncertain": 0,

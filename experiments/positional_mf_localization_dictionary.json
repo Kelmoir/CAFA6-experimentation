@@ -5245,6 +5245,15 @@
   "domain_accessions": [],
   "text_patterns": []
  },
+ "GO:0005527": {
+  "name": "macrolide binding",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR023566"
+  ],
+  "text_patterns": []
+ },
  "GO:0005528": {
   "name": "FK506 binding",
   "ligands": [],

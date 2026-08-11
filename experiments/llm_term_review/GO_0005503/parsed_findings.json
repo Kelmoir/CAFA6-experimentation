@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "F1MWM0",
+      "go_id": "GO:0005503",
+      "feature_type": "BINDING",
+      "start": 586,
+      "end": 587,
+      "signal_kind": "ligand",
+      "signal_value": "an N-all-trans-retinylidenephosphatidylethanolamine",
+      "reasoning": "The binding of N-all-trans-retinylidenephosphatidylethanolamine directly matches the GO term's definition of \"all-trans retinal binding,\" making it the most plausible explanation for why this protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8TAV3",
+      "reason": "none_verdict",
+      "reasoning": "The only positional feature for Q8TAV3 is \"BINDING 432-433\" with ligand: heme, which does not directly explain why it binds all-trans retinal. No other features are relevant to the GO term's definition, and no candidate matches the primary reaction of the GO term."
+    },
+    {
+      "accession": "Q9QYY9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of binding to all-trans retinal as defined by GO:0005503."
+    },
+    {
+      "accession": "Q9UW81",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

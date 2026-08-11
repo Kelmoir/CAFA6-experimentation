@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O02372",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the primary reaction of odorant binding as defined by the GO term."
+    },
+    {
+      "accession": "P82982",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q86BF9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature (by type + exact coordinates) directly explains why the protein carries the \"odorant binding\" molecular function. The domain/family cross-references are not positional features and do not provide the required evidence for this GO term."
+    },
+    {
+      "accession": "Q8NGI8",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

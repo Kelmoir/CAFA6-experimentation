@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O35600",
+      "go_id": "GO:0005501",
+      "feature_type": "BINDING",
+      "start": 586,
+      "end": 587,
+      "signal_kind": "ligand",
+      "signal_value": "an N-all-trans-retinylidenephosphatidylethanolamine",
+      "reasoning": "The binding site for N-all-trans-retinylidenephosphatidylethanolamine (BINDING 586-587) directly involves a molecule that is structurally similar to retinoids, which matches the primary reaction of the GO term \"retinoid binding.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O02853",
+      "reason": "none_verdict",
+      "reasoning": "There are no annotated features for O02853 that directly relate to retinoid binding, and the only feature provided is generic and not specific to the term's definition."
+    },
+    {
+      "accession": "O09114",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature that could plausibly account for the \"retinoid binding\" GO term is ACT_SITE 64-65 with the note \"Nucleophile,\" but this feature does not directly confirm the binding of retinoids to the protein. No other features are more specific or relevant to the primary reaction of retinoid binding, and the match score is low, indicating that no positional feature explains why O09114"
+    },
+    {
+      "accession": "O97921",
+      "reason": "none_verdict",
+      "reasoning": "The \"ACT_SITE 64-65\" annotation refers to an enzyme's active site and does not provide any evidence of retinoid binding activity, which is the primary reaction defined by the GO term. This feature is generic and does not directly support the GO term's definition."
+    }
+  ]
+}

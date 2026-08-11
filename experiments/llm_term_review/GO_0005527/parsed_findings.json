@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P20081",
+      "go_id": "GO:0005527",
+      "feature_type": "DOMAIN",
+      "start": 25,
+      "end": 114,
+      "signal_kind": "text",
+      "signal_value": "PPIase FKBP-type",
+      "reasoning": "The DOMAIN span from 25-114 directly relates to the function of binding macrolides as it is associated with PPIase FKBP-type activity, which is relevant to the defined reaction of macrolide binding."
+    },
+    {
+      "accession": "P28870",
+      "go_id": "GO:0005527",
+      "feature_type": "DOMAIN",
+      "start": 22,
+      "end": 122,
+      "signal_kind": "text",
+      "signal_value": "PPIase FKBP-type",
+      "reasoning": "The DOMAIN annotation from position 22-122 indicates that the protein is an FKBP-type PPIase, which is a known class of enzymes involved in macrolide binding. This directly matches the primary reaction described in the GO term's definition, making it a strong and specific match."
+    },
+    {
+      "accession": "Q06205",
+      "go_id": "GO:0005527",
+      "feature_type": "DOMAIN",
+      "start": 305,
+      "end": 392,
+      "signal_kind": "text",
+      "signal_value": "PPIase FKBP-type",
+      "reasoning": "The DOMAIN feature specifically matches the GO term's primary reaction by indicating that the protein carries a PPIase FKBP-type domain, which is directly associated with macrolide binding."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P38911",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct or specific explanation for why P38911 carries the molecular function of \"macrolide binding.\" The only candidate (nuclear localization signal) is unrelated to the defined chemistry."
+    }
+  ]
+}

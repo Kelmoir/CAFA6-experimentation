@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0005549",
+  "name": "odorant binding",
+  "def": "Binding to an odorant, any substance capable of stimulating the sense of smell.",
+  "n_proteins_total": 127,
+  "sampled_accessions": [
+    "O02372",
+    "P82982",
+    "Q86BF9",
+    "Q8NGI8"
+  ],
+  "assigned_accessions": [
+    "O02372",
+    "P82982",
+    "Q86BF9",
+    "Q8NGI8"
+  ]
+}
