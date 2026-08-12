@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033973",
+  "name": "dCTP deaminase (dUMP-forming) activity",
+  "def": "Catalysis of the reaction: dCTP + 2 H2O = diphosphate + dUMP + H+ + NH4.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WP17"
+  ],
+  "assigned_accessions": [
+    "P9WP17"
+  ]
+}

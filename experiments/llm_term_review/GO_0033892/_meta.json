@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0033892",
+  "name": "deoxyribonuclease (pyrimidine dimer) activity",
+  "def": "Catalysis of the endonucleolytic cleavage near pyrimidine dimers to products with 5'-phosphate.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "P27695",
+    "P43138",
+    "Q10988",
+    "Q8QHA5"
+  ],
+  "assigned_accessions": [
+    "P27695",
+    "P43138",
+    "Q10988",
+    "Q8QHA5"
+  ]
+}

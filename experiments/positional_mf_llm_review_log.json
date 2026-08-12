@@ -17706,6 +17706,77 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0033892": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Important for catalytic activity",
+    "accessions": [
+     "P27695"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Interaction with DNA substrate",
+    "accessions": [
+     "P43138"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Nuclease activity",
+    "accessions": [
+     "Q8QHA5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q10988",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a direct explanation for the defined molecular function of deoxyribonuclease (pyrimidine dimer) activity. The domain/family cross-references are not positional and do not directly address the enzyme's ability to catalyze endonucleolytic cleavage near pyrimidine dimers."
+   }
+  ]
+ },
+ "GO:0033902": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Smr",
+    "accessions": [
+     "Q9LS25"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "C0HLG3",
+    "reason": "none_verdict",
+    "reasoning": "The \"ACT_SITE\" annotation for position 97-98 does not directly explain the molecular function of rRNA endonuclease activity as defined by the GO term. It refers to the site where an enzyme acts, which is a general functional annotation and does not specifically indicate the type of endonuclease or its substrate (28S rRNA with guanosine-adenosine pair). Therefore, it does not strongly match the pri"
+   },
+   {
+    "accession": "P00655",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P00655's list directly supports the primary reaction defined by the GO term \"rRNA endonuclease activity.\" The domain/family cross-references suggest potential relatedness to ribonucleases, but they do not provide positional evidence of an endonuclease domain or the specific enzymatic activity described. Thus, there is no plausible explanation for the GO term within the give"
+   }
+  ]
+ },
  "GO:0033938": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -17738,6 +17809,187 @@
     "accession": "Q9CA34",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0033945": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5BD38",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q5BD38 do not provide a specific explanation for why it carries the GO term \"oligosaccharide reducing-end-specific cellobiohydrolase activity.\" Neither of the ACT_SITE spans directly corresponds to the primary reaction described in the definition, which involves hydrolyzing cellobiose from the reducing end of xyloglucans."
+   }
+  ]
+ },
+ "GO:0033973": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "dCTP",
+    "accessions": [
+     "P9WP17"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0034023": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AG18",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the specific chemical reaction defined in GO:0034023."
+   }
+  ]
+ },
+ "GO:0034026": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ATP-grasp",
+    "accessions": [
+     "Q2FWC5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0034062": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "Q9LFV6"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q96Q11"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0034216": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UT18",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature available for Q9UT18 is a disordered region, which does not directly explain the mechanism of thiamine and proton transfer as defined by GO:0034216. No other positional feature is present in the Annotated features section, and the domain/family cross-references do not provide a specific positional explanation for this GO term."
+   }
+  ]
+ },
+ "GO:0034235": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a 2-acyl-6-[6-phosphoethanolamine-alpha-D-mannosyl-(1->2)-6-phosphoethanolamine-alpha-D-mannosyl-(1->6)-2-phosphoethanolamine-alpha-D-mannosyl-(1->4)-alpha-D-glucosaminyl]-1-(1-radyl,2-acyl-sn-glycero-3-phospho)-1D-myo-inositol",
+    "accessions": [
+     "O43292"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P01830",
+    "reason": "none_verdict",
+    "reasoning": "The highest score for any annotated feature was 5, but none of the features directly explained why the protein carries the \"GPI anchor binding\" term. The domain's structural motif is not specific enough to account for the defined chemistry of GPI anchor binding."
+   },
+   {
+    "accession": "P31430",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section directly explains the molecular function of \"GPI anchor binding.\" The only relevant domain/family cross-references are for metal hydrolases and peptidases, which do not provide a plausible explanation for this specific GO term."
+   },
+   {
+    "accession": "P43477",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data specifically matches the primary reaction of the GO term \"GPI anchor binding,\" which involves binding to a GPI anchor. The features are associated with Zn(2+) and substrate binding, but not with GPI anchoring."
+   }
+  ]
+ },
+ "GO:0034280": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A5A8G0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a specific explanation for the enzyme's function in catalyzing the reaction defined by GO:0034280."
+   }
+  ]
+ },
+ "GO:0034281": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A5A8G0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly explains the primary reaction of the GO term \"ent-isokaurene synthase activity,\" which involves the catalysis of a specific isoprenoid synthesis reaction."
    }
   ]
  }

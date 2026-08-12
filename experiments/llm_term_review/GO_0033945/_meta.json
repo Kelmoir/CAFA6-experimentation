@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0033945",
+  "name": "oligoxyloglucan reducing-end-specific cellobiohydrolase activity",
+  "def": "Catalysis of the hydrolysis of cellobiose from the reducing end of xyloglucans consisting of a beta-(1->4) linked glucan carrying alpha-D-xylosyl groups on O-6 of the glucose residues. To be a substrate, the first residue must be unsubstituted, the second residue may bear a xylosyl group, whether further glycosylated or not, and the third residue, which becomes the new terminus by the action of the enzyme, is preferably xylosylated, but this xylose residue must not be further substituted.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q5BD38"
+  ],
+  "assigned_accessions": [
+    "Q5BD38"
+  ]
+}

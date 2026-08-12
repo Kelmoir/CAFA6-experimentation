@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0034023",
+  "name": "5-(carboxyamino)imidazole ribonucleotide mutase activity",
+  "def": "Catalysis of the reaction: 5-carboxyamino-1-(5-phospho-D-ribosyl)imidazole = 5-amino-1-(5-phospho-D-ribosyl)imidazole-4-carboxylate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AG18"
+  ],
+  "assigned_accessions": [
+    "P0AG18"
+  ]
+}

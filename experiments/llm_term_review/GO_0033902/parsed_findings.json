@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9LS25",
+      "go_id": "GO:0033902",
+      "feature_type": "DOMAIN",
+      "start": 613,
+      "end": 696,
+      "signal_kind": "text",
+      "signal_value": "Smr",
+      "reasoning": "The \"DOMAIN\" with coordinates 613-696 is explicitly annotated as \"Smr,\" which aligns with the defined chemistry of rRNA endonuclease activity, making it a strong and specific match to the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "C0HLG3",
+      "reason": "none_verdict",
+      "reasoning": "The \"ACT_SITE\" annotation for position 97-98 does not directly explain the molecular function of rRNA endonuclease activity as defined by the GO term. It refers to the site where an enzyme acts, which is a general functional annotation and does not specifically indicate the type of endonuclease or its substrate (28S rRNA with guanosine-adenosine pair). Therefore, it does not strongly match the pri"
+    },
+    {
+      "accession": "P00655",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P00655's list directly supports the primary reaction defined by the GO term \"rRNA endonuclease activity.\" The domain/family cross-references suggest potential relatedness to ribonucleases, but they do not provide positional evidence of an endonuclease domain or the specific enzymatic activity described. Thus, there is no plausible explanation for the GO term within the give"
+    }
+  ]
+}

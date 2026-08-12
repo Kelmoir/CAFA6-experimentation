@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0033902",
+  "name": "rRNA endonuclease activity",
+  "def": "Catalysis of the reaction: a 28S rRNA containing guanosine-adenosine pair + H2O = an [RNA fragment]-3'-adenosine-3'-phosphate + a 5'-a hydroxy-guanosine-3'-[RNA fragment].",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "C0HLG3",
+    "P00655",
+    "Q9LS25"
+  ],
+  "assigned_accessions": [
+    "C0HLG3",
+    "P00655",
+    "Q9LS25"
+  ]
+}

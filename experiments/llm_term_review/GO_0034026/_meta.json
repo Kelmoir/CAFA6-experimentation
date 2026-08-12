@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0034026",
+  "name": "L-amino-acid alpha-ligase activity",
+  "def": "Catalysis of the reaction: ATP + an L-amino acid + an L-amino acid = ADP + phosphate + L-aminoacyl-L-amino acid.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q2FWC5"
+  ],
+  "assigned_accessions": [
+    "Q2FWC5"
+  ]
+}

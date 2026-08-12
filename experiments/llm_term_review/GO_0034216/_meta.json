@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0034216",
+  "name": "high-affinity thiamine:proton symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: thiamine(out) + H+(out) = thiamine(in) + H+(in). In high-affinity transport the transporter is able to bind the solute even if it is only present at very low concentrations.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9UT18"
+  ],
+  "assigned_accessions": [
+    "Q9UT18"
+  ]
+}

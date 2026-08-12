@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0034062",
+  "name": "5'-3' RNA polymerase activity",
+  "def": "Catalysis of the reaction: nucleoside triphosphate + RNA(n) = diphosphate + RNA(n+1); the synthesis of RNA from ribonucleotide triphosphates in the presence of a nucleic acid template, via extension of the 3'-end.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q96Q11",
+    "Q9LFV6"
+  ],
+  "assigned_accessions": [
+    "Q96Q11",
+    "Q9LFV6"
+  ]
+}

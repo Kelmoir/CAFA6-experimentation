@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P9WP17",
+      "go_id": "GO:0033973",
+      "feature_type": "BINDING",
+      "start": 100,
+      "end": 106,
+      "signal_kind": "ligand",
+      "signal_value": "dCTP",
+      "reasoning": "The binding site for dCTP directly supports the enzyme's catalytic activity as defined in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

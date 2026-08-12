@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0034281",
+  "name": "ent-isokaurene synthase activity",
+  "def": "Catalysis of the reaction: ent-copalyl diphosphate = ent-isokaurene + diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A5A8G0"
+  ],
+  "assigned_accessions": [
+    "A5A8G0"
+  ]
+}

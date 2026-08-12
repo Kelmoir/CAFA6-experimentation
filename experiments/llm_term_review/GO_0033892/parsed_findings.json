@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P27695",
+      "go_id": "GO:0033892",
+      "feature_type": "SITE",
+      "start": 282,
+      "end": 283,
+      "signal_kind": "text",
+      "signal_value": "Important for catalytic activity",
+      "reasoning": "The highest score is from the site described as \"Important for catalytic activity,\" which directly aligns with the defined reaction of deoxyribonuclease (pyrimidine dimer) activity. This region is most likely responsible for the endonucleolytic cleavage mechanism."
+    },
+    {
+      "accession": "P43138",
+      "go_id": "GO:0033892",
+      "feature_type": "SITE",
+      "start": 307,
+      "end": 308,
+      "signal_kind": "text",
+      "signal_value": "Interaction with DNA substrate",
+      "reasoning": "The interaction with DNA substrate in the SITE 307-308 region directly aligns with the endonucleolytic cleavage mechanism described in the GO term's definition, making it a strong candidate for explaining why P43138 carries this function."
+    },
+    {
+      "accession": "Q8QHA5",
+      "go_id": "GO:0033892",
+      "feature_type": "REGION",
+      "start": 85,
+      "end": 521,
+      "signal_kind": "text",
+      "signal_value": "Nuclease activity",
+      "reasoning": "The region 85-521 is annotated with \"nuclease activity,\" which directly aligns with the GO term's primary reaction of catalyzing endonucleolytic cleavage near pyrimidine dimers to products with 5'-phosphate."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q10988",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section provides a direct explanation for the defined molecular function of deoxyribonuclease (pyrimidine dimer) activity. The domain/family cross-references are not positional and do not directly address the enzyme's ability to catalyze endonucleolytic cleavage near pyrimidine dimers."
+    }
+  ]
+}

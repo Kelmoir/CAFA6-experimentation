@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0034280",
+  "name": "ent-sandaracopimaradiene synthase activity",
+  "def": "Catalysis of the reaction: ent-copalyl diphosphate = ent-sandaracopimara-8(14),15-diene + diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A5A8G0"
+  ],
+  "assigned_accessions": [
+    "A5A8G0"
+  ]
+}

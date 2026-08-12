@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A5A8G0",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a specific explanation for the enzyme's function in catalyzing the reaction defined by GO:0034280."
+    }
+  ]
+}

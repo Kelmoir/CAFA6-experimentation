@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O43292",
+      "go_id": "GO:0034235",
+      "feature_type": "BINDING",
+      "start": 48,
+      "end": 49,
+      "signal_kind": "ligand",
+      "signal_value": "a 2-acyl-6-[6-phosphoethanolamine-alpha-D-mannosyl-(1->2)-6-phosphoethanolamine-alpha-D-mannosyl-(1->6)-2-phosphoethanolamine-alpha-D-mannosyl-(1->4)-alpha-D-glucosaminyl]-1-(1-radyl,2-acyl-sn-glycero-3-phospho)-1D-myo-inositol",
+      "reasoning": "The \"BINDING 48-49\" feature directly matches the ligand structure of a GPI anchor, which is the primary reaction described in the GO term's definition. This provides a strong match to the defined chemistry of \"GPI anchor binding.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P01830",
+      "reason": "none_verdict",
+      "reasoning": "The highest score for any annotated feature was 5, but none of the features directly explained why the protein carries the \"GPI anchor binding\" term. The domain's structural motif is not specific enough to account for the defined chemistry of GPI anchor binding."
+    },
+    {
+      "accession": "P31430",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section directly explains the molecular function of \"GPI anchor binding.\" The only relevant domain/family cross-references are for metal hydrolases and peptidases, which do not provide a plausible explanation for this specific GO term."
+    },
+    {
+      "accession": "P43477",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided data specifically matches the primary reaction of the GO term \"GPI anchor binding,\" which involves binding to a GPI anchor. The features are associated with Zn(2+) and substrate binding, but not with GPI anchoring."
+    }
+  ]
+}

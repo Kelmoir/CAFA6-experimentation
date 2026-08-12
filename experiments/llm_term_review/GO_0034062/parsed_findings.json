@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "Q96Q11",
+      "go_id": "GO:0034062",
+      "feature_type": "BINDING",
+      "start": 63,
+      "end": 64,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP at position 63-64 is directly involved in the nucleoside triphosphate used in RNA synthesis, matching the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q9LFV6",
+      "go_id": "GO:0034062",
+      "feature_type": "ACT_SITE",
+      "start": 711,
+      "end": 712,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The \"ACT_SITE\" features with coordinates 711-712, 786-787, and 943-944 are the most plausible candidates for explaining the GO term \"5'-3' RNA polymerase activity,\" as they directly relate to the location of enzymatic activity in the protein."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

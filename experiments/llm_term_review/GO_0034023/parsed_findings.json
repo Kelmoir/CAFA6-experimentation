@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0AG18",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the specific chemical reaction defined in GO:0034023."
+    }
+  ]
+}

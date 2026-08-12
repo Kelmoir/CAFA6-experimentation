@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q2FWC5",
+      "go_id": "GO:0034026",
+      "feature_type": "DOMAIN",
+      "start": 130,
+      "end": 347,
+      "signal_kind": "text",
+      "signal_value": "ATP-grasp",
+      "reasoning": "The DOMAIN 130-347 with the \"ATP-grasp\" note is a strong match for the GO term's primary reaction of catalyzing the ATP-dependent phosphorylation of L-amino acids, as it directly supports the structural feature required for this function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

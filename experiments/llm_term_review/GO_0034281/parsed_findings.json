@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A5A8G0",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly explains the primary reaction of the GO term \"ent-isokaurene synthase activity,\" which involves the catalysis of a specific isoprenoid synthesis reaction."
+    }
+  ]
+}
