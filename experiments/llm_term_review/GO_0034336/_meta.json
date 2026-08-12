@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0034336",
+  "name": "misfolded RNA binding",
+  "def": "Binding to an RNA molecule that has assumed an incorrect conformation.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P0A7S3",
+    "P42700",
+    "Q9M9H4",
+    "Q9SVM8"
+  ],
+  "assigned_accessions": [
+    "P0A7S3",
+    "P42700",
+    "Q9M9H4",
+    "Q9SVM8"
+  ]
+}

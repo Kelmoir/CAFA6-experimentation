@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0034590",
+  "name": "L-hydroxyproline transmembrane transporter activity",
+  "def": "Enables the transfer of L-hydroxyproline from one side of a membrane to the other.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O35874",
+    "P43007"
+  ],
+  "assigned_accessions": [
+    "O35874",
+    "P43007"
+  ]
+}

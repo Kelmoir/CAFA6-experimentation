@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q94CE5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q94CE5 specifically explains the molecular function defined by GO:0034387, as it only describes binding sites for substrates and cofactors without stating the reaction mechanism itself."
+    }
+  ]
+}

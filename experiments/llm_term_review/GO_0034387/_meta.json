@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0034387",
+  "name": "4-aminobutyrate:pyruvate transaminase activity",
+  "def": "Catalysis of the reaction: 4-aminobutanoate + pyruvate = succinate semialdehyde + alanine. Also converts glyoxylate to glycine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q94CE5"
+  ],
+  "assigned_accessions": [
+    "Q94CE5"
+  ]
+}

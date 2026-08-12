@@ -17992,5 +17992,193 @@
     "reasoning": "No annotated feature in the protein's list directly explains the primary reaction of the GO term \"ent-isokaurene synthase activity,\" which involves the catalysis of a specific isoprenoid synthesis reaction."
    }
   ]
+ },
+ "GO:0034318": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A1XWY7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein A1XWY7 specifically supports the O-acyltransferase reaction mechanism described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0034336": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "RNA-binding",
+    "accessions": [
+     "P42700"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "RRM",
+    "accessions": [
+     "Q9SVM8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0A7S3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9M9H4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature matches the primary reaction described in the GO term's definition, which involves binding an incorrect conformational RNA. The provided features are structural domains without functional annotations that could plausibly explain this molecular function."
+   }
+  ]
+ },
+ "GO:0034387": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q94CE5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q94CE5 specifically explains the molecular function defined by GO:0034387, as it only describes binding sites for substrates and cofactors without stating the reaction mechanism itself."
+   }
+  ]
+ },
+ "GO:0034431": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Nudix hydrolase",
+    "accessions": [
+     "Q8NFP7",
+     "Q99321"
+    ],
+    "reason": "resolved to ['InterPro:IPR000086', 'InterPro:IPR015797', 'InterPro:IPR020084', 'InterPro:IPR047198', 'PROSITE:PS00893', 'PROSITE:PS51462', 'Pfam:PF00293'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000086': 122, 'InterPro:IPR015797': 129, 'InterPro:IPR020084': 68, 'InterPro:IPR047198': 17, 'PROSITE:PS00893': 68, 'PROSITE:PS51462': 122, 'Pfam:PF00293': 105})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Nudix box",
+    "accessions": [
+     "P0C028"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0A024RBG1",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for the substrate (ligand: substrate) indicates that the enzyme interacts with its substrate, which is a necessary step in the reaction mechanism. However, it does not specifically explain the core chemistry of bis(5'-adenosyl)-hexaphosphatase activity."
+   }
+  ]
+ },
+ "GO:0034432": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Nudix hydrolase",
+    "accessions": [
+     "O95989",
+     "Q52K88",
+     "Q9FNH4",
+     "Q9JI46"
+    ],
+    "reason": "resolved to ['InterPro:IPR000086', 'InterPro:IPR015797', 'InterPro:IPR020084', 'InterPro:IPR020476', 'InterPro:IPR047198', 'PROSITE:PS00893', 'PROSITE:PS51462', 'Pfam:PF00293'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000086': 122, 'InterPro:IPR015797': 129, 'InterPro:IPR020084': 68, 'InterPro:IPR020476': 25, 'InterPro:IPR047198': 17, 'PROSITE:PS00893': 68, 'PROSITE:PS51462': 122, 'Pfam:PF00293': 105})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0034480": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Involved in the stabilization of the negatively charged intermediate by the formation of the oxyanion hole",
+    "accessions": [
+     "O06350"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PI-PLC X-box",
+    "accessions": [
+     "Q8CIH5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P06200",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P9WIA9",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for P9WIA9 is a disordered region, which does not provide any evidence that it directly participates in the phospholipase activity defined by GO:0034480."
+   }
+  ]
+ },
+ "GO:0034590": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O35874",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not include any binding site that directly corresponds to the primary function of L-hydroxyproline transmembrane transporter activity. Therefore, no positional feature can plausibly explain why this protein carries the GO term."
+   },
+   {
+    "accession": "P43007",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature that could be interpreted as a transmembrane transporter activity is the region 0-25 marked as disordered, but this does not provide any direct evidence of L-hydroxyproline transport. No other feature in the annotated features section explicitly describes the primary reaction of transferring L-hydroxyproline across a membrane."
+   }
+  ]
  }
 }

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0034318",
+  "name": "alcohol O-acyltransferase activity",
+  "def": "Catalysis of the transfer of an acyl group to an oxygen atom on an alcohol acceptor molecule.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A1XWY7"
+  ],
+  "assigned_accessions": [
+    "A1XWY7"
+  ]
+}

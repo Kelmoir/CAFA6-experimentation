@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O06350",
+      "go_id": "GO:0034480",
+      "feature_type": "MOTIF",
+      "start": 115,
+      "end": 118,
+      "signal_kind": "text",
+      "signal_value": "Involved in the stabilization of the negatively charged intermediate by the formation of the oxyanion hole",
+      "reasoning": "The MOTIF 115-118 is a structural feature that aligns with the primary reaction of phosphatidylcholine phospholipase C activity, as it is involved in the stabilization of intermediates through an oxyanion hole. This directly supports the enzyme's function as defined by the GO term."
+    },
+    {
+      "accession": "Q8CIH5",
+      "go_id": "GO:0034480",
+      "feature_type": "DOMAIN",
+      "start": 311,
+      "end": 456,
+      "signal_kind": "text",
+      "signal_value": "PI-PLC X-box",
+      "reasoning": "The presence of a PI-PLC X-box domain in the protein's domain annotation directly supports the catalytic mechanism described in the GO term's definition, which involves the reaction of phosphatidylcholine phospholipase C activity. This is a strong match to the primary reaction of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P06200",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P9WIA9",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for P9WIA9 is a disordered region, which does not provide any evidence that it directly participates in the phospholipase activity defined by GO:0034480."
+    }
+  ]
+}
