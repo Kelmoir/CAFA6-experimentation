@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8BLR9",
+      "go_id": "GO:0036139",
+      "feature_type": "BINDING",
+      "start": 195,
+      "end": 196,
+      "signal_kind": "ligand",
+      "signal_value": "2-oxoglutarate",
+      "reasoning": "The binding site at position 195-196 directly involves the key substrate (2-oxoglutarate) and has a \"catalytic\" note, which aligns with the primary reaction of peptidyl-histidine dioxygenase activity described in the GO term's definition. This feature provides the most direct evidence for the molecular function associated with the GO term."
+    },
+    {
+      "accession": "Q8IUF8",
+      "go_id": "GO:0036139",
+      "feature_type": "DOMAIN",
+      "start": 138,
+      "end": 271,
+      "signal_kind": "text",
+      "signal_value": "JmjC",
+      "reasoning": "The \"DOMAIN 138-271\" with the JmjC note directly matches the defined reaction mechanism of the GO term, indicating that this domain is responsible for the peptidyl-histidine dioxygenase activity."
+    },
+    {
+      "accession": "Q9H6W3",
+      "go_id": "GO:0036139",
+      "feature_type": "BINDING",
+      "start": 339,
+      "end": 340,
+      "signal_kind": "ligand",
+      "signal_value": "Fe cation",
+      "reasoning": "The binding of Fe cation in the range 339-340 is most plausibly linked to the peptidyl-histidine dioxygenase activity as it directly relates to the catalytic mechanism involving a cofactor."
+    },
+    {
+      "accession": "Q9NWT6",
+      "go_id": "GO:0036139",
+      "feature_type": "DOMAIN",
+      "start": 141,
+      "end": 312,
+      "signal_kind": "text",
+      "signal_value": "JmjC",
+      "reasoning": "The JmjC domain is directly associated with peptidyl-histidine dioxygenase activity, which aligns with the primary reaction described in the GO term's definition. This provides a strong and specific explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

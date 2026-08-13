@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0036317",
+  "name": "tyrosyl-RNA phosphodiesterase activity",
+  "def": "Catalysis of the hydrolysis of a 5' tyrosyl-RNA phosphodiester bond between a protein and RNA. In picornaviruses, this covalent bond connects VPg, a viral-encoded protein essential for RNA replication, to the 5' end of all nascent picornavirus genomes; it is cleaved from viral RNA prior to its engaging in protein synthesis.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O95551"
+  ],
+  "assigned_accessions": [
+    "O95551"
+  ]
+}

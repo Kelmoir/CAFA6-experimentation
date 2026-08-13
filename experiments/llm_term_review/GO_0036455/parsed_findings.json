@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P78859",
+      "go_id": "GO:0036455",
+      "feature_type": "BINDING",
+      "start": 115,
+      "end": 116,
+      "signal_kind": "ligand",
+      "signal_value": "Fe cation",
+      "reasoning": "The binding site at position 115-116 for a Fe cation directly supports the definition of catalyzing iron-sulfur cluster transfer, making it the most plausible explanation for the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

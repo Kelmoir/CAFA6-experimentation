@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "O14763",
+      "go_id": "GO:0036463",
+      "feature_type": "DOMAIN",
+      "start": 338,
+      "end": 422,
+      "signal_kind": "text",
+      "signal_value": "Death",
+      "reasoning": "The DOMAIN 338-422 is explicitly associated with death-related functions and directly matches the primary reaction of the GO term, which involves initiating apoptotic cell death through TRAIL binding."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0036463",
+  "name": "TRAIL receptor activity",
+  "def": "Combining with the ligand TRAIL (tumor necrosis factor-related apoptosis-inducing ligand) and transmitting the signal from one side of the plasma membrane to the other to initiate apoptotic cell death.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O14763"
+  ],
+  "assigned_accessions": [
+    "O14763"
+  ]
+}

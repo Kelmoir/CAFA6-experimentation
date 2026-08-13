@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q0JF01",
+      "go_id": "GO:0036209",
+      "feature_type": "BINDING",
+      "start": 437,
+      "end": 438,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding site for heme (BINDING 437-438) is a plausible explanation for the protein's association with the GO term, as heme is a common cofactor in cytochrome P450 enzymes. However, since no positional feature directly matches the reaction mechanism described in the GO definition, the match remains uncertain."
+    }
+  ],
+  "issues": []
+}

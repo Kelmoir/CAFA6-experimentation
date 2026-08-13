@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0036209",
+  "name": "9beta-pimara-7,15-diene oxidase activity",
+  "def": "Catalysis of the reaction: 9beta-pimara-7,15-diene + 3 O2 + 3 reduced [NADPH-hemoprotein reductase] = 9beta-pimara-7,15-dien-19-oate + 4 H+ + 4 H2O + 3 oxidized [NADPH-hemoprotein reductase].",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q0JF01"
+  ],
+  "assigned_accessions": [
+    "Q0JF01"
+  ]
+}

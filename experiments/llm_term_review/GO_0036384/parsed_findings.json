@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O75354",
+      "go_id": "GO:0036384",
+      "feature_type": "BINDING",
+      "start": 109,
+      "end": 110,
+      "signal_kind": "ligand",
+      "signal_value": "a ribonucleoside 5'-diphosphate",
+      "reasoning": "The binding of CDP (a ribonucleoside diphosphate) to the protein's domain is directly related to the phosphatase reaction described in the GO term, making this feature a strong match."
+    },
+    {
+      "accession": "P55772",
+      "go_id": "GO:0036384",
+      "feature_type": "BINDING",
+      "start": 56,
+      "end": 57,
+      "signal_kind": "ligand",
+      "signal_value": "ADP",
+      "reasoning": "The binding site at position 56-57 is associated with ADP, AMP, ATP, GTP, and phosphate, all of which are consistent with the primary reaction of CDP phosphatase activity. This binding site directly supports the enzyme's function in catalyzing the removal of a phosphate group from CDP, making it a strong match to the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9WUZ9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided data specifically matches the GO term's primary reaction (catalyzing the reaction CDP + H2O = CMP + phosphate). All binding sites are generic and do not directly explain why this protein carries the term."
+    },
+    {
+      "accession": "Q9Y5L3",
+      "reason": "none_verdict",
+      "reasoning": "The GO term describes a specific biochemical reaction, but no annotated feature in Q9Y5L3 provides evidence that directly supports this reaction mechanism. All binding sites are associated with ligands rather than the phosphorelay activity itself."
+    }
+  ]
+}

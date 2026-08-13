@@ -18982,6 +18982,45 @@
    }
   ]
  },
+ "GO:0036139": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "Pfam:PF08007"
+    ],
+    "accessions": [
+     "Q8IUF8",
+     "Q9NWT6"
+    ],
+    "note": "resolved from DOMAIN note 'JmjC' (2 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "2-oxoglutarate",
+    "accessions": [
+     "Q8BLR9"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Fe cation",
+    "accessions": [
+     "Q9H6W3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
  "GO:0036140": {
   "n_resolved": 3,
   "n_uncertain": 0,
@@ -19006,6 +19045,244 @@
     "value": "JmjC",
     "accessions": [
      "Q8BLR9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0036201": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A3A871",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's positional data directly explains the primary reaction of ent-isokaurene C2-hydroxylase activity as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0036202": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q69X58",
+    "reason": "none_verdict",
+    "reasoning": "The BINDING feature at positions 441-442 is generic and does not directly explain the specific hydroxylation reaction defined by GO:0036202. It only echoes a word from a secondary clause (\"ligand\") without anchoring on the primary reaction mechanism."
+   },
+   {
+    "accession": "Q6YTF1",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature that directly matches the GO term's primary reaction mechanism of catalyzing the hydroxylation of ent-cassa-12,15-diene. The only plausible explanation is the presence of a heme-binding domain, which is more indicative of the enzyme's class than its specific function."
+   }
+  ]
+ },
+ "GO:0036209": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q0JF01",
+    "go_id": "GO:0036209",
+    "feature_type": "BINDING",
+    "start": 437,
+    "end": 438,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "The binding site for heme (BINDING 437-438) is a plausible explanation for the protein's association with the GO term, as heme is a common cofactor in cytochrome P450 enzymes. However, since no positional feature directly matches the reaction mechanism described in the GO definition, the match remains uncertain."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0036308": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "P68567"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0036317": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O95551",
+    "reason": "none_verdict",
+    "reasoning": "The highest score (2) is assigned to ACT_SITE 261-262, but this feature does not directly match the primary reaction of GO:0036317, which involves catalyzing the hydrolysis of a 5' tyrosyl-RNA phosphodiester bond. No other annotated feature provides a stronger match to the definition's primary reaction."
+   }
+  ]
+ },
+ "GO:0036320": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q00619",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0036383": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P9WJA1",
+    "go_id": "GO:0036383",
+    "feature_type": "BINDING",
+    "start": 83,
+    "end": 84,
+    "signal_kind": "ligand",
+    "signal_value": "FMN",
+    "reasoning": "The binding of FMN is a necessary component for the monooxygenase activity, but it does not fully capture the defined reaction."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0036384": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a ribonucleoside 5'-diphosphate",
+    "accessions": [
+     "O75354"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ADP",
+    "accessions": [
+     "P55772"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9WUZ9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data specifically matches the GO term's primary reaction (catalyzing the reaction CDP + H2O = CMP + phosphate). All binding sites are generic and do not directly explain why this protein carries the term."
+   },
+   {
+    "accession": "Q9Y5L3",
+    "reason": "none_verdict",
+    "reasoning": "The GO term describes a specific biochemical reaction, but no annotated feature in Q9Y5L3 provides evidence that directly supports this reaction mechanism. All binding sites are associated with ligands rather than the phosphorelay activity itself."
+   }
+  ]
+ },
+ "GO:0036401": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8ITC9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the primary reaction of combining with pyrokinins and transmitting signals within the cell to induce changes in cell activity."
+   }
+  ]
+ },
+ "GO:0036412": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P76518",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for P76518 that could plausibly explain why it carries the GO term \"acetyl-CoA:oxalate CoA-transferase\" is the ACT_SITE 232-233. However, since this feature does not describe the reaction mechanism or chemistry directly, it only weakly matches the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0036455": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Fe cation",
+    "accessions": [
+     "P78859"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0036463": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Death",
+    "accessions": [
+     "O14763"
     ]
    }
   ],

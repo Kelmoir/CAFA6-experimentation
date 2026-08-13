@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0036202",
+  "name": "ent-cassa-12,15-diene 11-hydroxylase activity",
+  "def": "Catalysis of the reaction: ent-cassa-12,15-diene + O2 + NADPH + H+ = ent-11beta-hydroxycassa-12,15-diene + NADP+ + H2O.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q69X58",
+    "Q6YTF1"
+  ],
+  "assigned_accessions": [
+    "Q69X58",
+    "Q6YTF1"
+  ]
+}

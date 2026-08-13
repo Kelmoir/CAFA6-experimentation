@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0036201",
+  "name": "ent-isokaurene C2-hydroxylase activity",
+  "def": "Catalysis of the reaction: ent-isokaurene + O2 + NADPH + H+ = ent-2alpha-hydroxyisokaurene + H2O + NADP+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A3A871"
+  ],
+  "assigned_accessions": [
+    "A3A871"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0036455",
+  "name": "iron-sulfur transferase activity",
+  "def": "Catalysis of the transfer of a iron-sulfur cluster from one compound (donor) to another (acceptor).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P78859"
+  ],
+  "assigned_accessions": [
+    "P78859"
+  ]
+}

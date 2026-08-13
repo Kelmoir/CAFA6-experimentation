@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A3A871",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's positional data directly explains the primary reaction of ent-isokaurene C2-hydroxylase activity as defined by the GO term."
+    }
+  ]
+}

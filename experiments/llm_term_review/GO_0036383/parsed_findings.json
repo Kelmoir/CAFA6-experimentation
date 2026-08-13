@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P9WJA1",
+      "go_id": "GO:0036383",
+      "feature_type": "BINDING",
+      "start": 83,
+      "end": 84,
+      "signal_kind": "ligand",
+      "signal_value": "FMN",
+      "reasoning": "The binding of FMN is a necessary component for the monooxygenase activity, but it does not fully capture the defined reaction."
+    }
+  ],
+  "issues": []
+}

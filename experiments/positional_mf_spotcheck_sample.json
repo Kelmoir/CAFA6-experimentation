@@ -321,6 +321,16 @@
       "accession": "Q4V7C7",
       "localized": [
         {
+          "go_id": "GO:0098973",
+          "start": 0,
+          "end": 418,
+          "source": "domain_whole_protein_fallback",
+          "xref": "InterPro:IPR004000",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0005200",
+          "match_hops": 1
+        },
+        {
           "go_id": "GO:0005524",
           "start": 0,
           "end": 418,
@@ -339,16 +349,6 @@
           "table_agreement": 2,
           "matched_real_term": "GO:0005200",
           "match_hops": 0
-        },
-        {
-          "go_id": "GO:0098973",
-          "start": 0,
-          "end": 418,
-          "source": "domain_whole_protein_fallback",
-          "xref": "InterPro:IPR004000",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0005200",
-          "match_hops": 1
         }
       ],
       "real_mf_terms": [
@@ -421,13 +421,13 @@
           "match_hops": 3
         },
         {
-          "go_id": "GO:0086087",
+          "go_id": "GO:0086090",
           "start": 0,
           "end": 602,
           "source": "domain_whole_protein_fallback",
           "xref": "InterPro:IPR003968",
           "table_agreement": 2,
-          "matched_real_term": "GO:0086087",
+          "matched_real_term": "GO:0086090",
           "match_hops": 0
         },
         {
@@ -451,13 +451,13 @@
           "match_hops": 0
         },
         {
-          "go_id": "GO:0086090",
+          "go_id": "GO:0086087",
           "start": 0,
           "end": 602,
           "source": "domain_whole_protein_fallback",
           "xref": "InterPro:IPR003968",
           "table_agreement": 2,
-          "matched_real_term": "GO:0086090",
+          "matched_real_term": "GO:0086087",
           "match_hops": 0
         }
       ],

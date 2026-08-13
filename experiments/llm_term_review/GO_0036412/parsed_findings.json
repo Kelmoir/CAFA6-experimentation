@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P76518",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for P76518 that could plausibly explain why it carries the GO term \"acetyl-CoA:oxalate CoA-transferase\" is the ACT_SITE 232-233. However, since this feature does not describe the reaction mechanism or chemistry directly, it only weakly matches the primary reaction defined by the GO term."
+    }
+  ]
+}

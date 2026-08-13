@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0036412",
+  "name": "acetyl-CoA:oxalate CoA-transferase",
+  "def": "Catalysis of the reaction: acetyl-CoA + oxalate = acetate + oxalyl-CoA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P76518"
+  ],
+  "assigned_accessions": [
+    "P76518"
+  ]
+}

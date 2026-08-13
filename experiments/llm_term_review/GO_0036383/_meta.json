@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0036383",
+  "name": "3-hydroxy-9,10-secoandrosta-1,3,5(10)-triene-9,17-dione monooxygenase activity",
+  "def": "Catalysis of the reaction: 3-hydroxy-9,10-secoandrosta-1,3,5(10)-triene-9,17-dione + FMNH2 + O2 = 3,4-dihydroxy-9,10-secoandrosta-1,3,5(10)-triene-9,17-dione + FMN + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WJA1"
+  ],
+  "assigned_accessions": [
+    "P9WJA1"
+  ]
+}

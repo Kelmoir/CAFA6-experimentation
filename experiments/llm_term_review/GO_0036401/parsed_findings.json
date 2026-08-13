@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8ITC9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong match to the primary reaction of combining with pyrokinins and transmitting signals within the cell to induce changes in cell activity."
+    }
+  ]
+}

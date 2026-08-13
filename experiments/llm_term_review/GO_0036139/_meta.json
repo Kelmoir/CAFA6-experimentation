@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0036139",
+  "name": "peptidyl-histidine dioxygenase activity",
+  "def": "Catalysis of the reaction: L-histidyl-[protein] + 2-oxoglutarate + O2 = (3S)-3-hydroxy-L-histidyl-[protein] + succinate + CO2.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "Q8BLR9",
+    "Q8IUF8",
+    "Q9H6W3",
+    "Q9NWT6"
+  ],
+  "assigned_accessions": [
+    "Q8BLR9",
+    "Q8IUF8",
+    "Q9H6W3",
+    "Q9NWT6"
+  ]
+}

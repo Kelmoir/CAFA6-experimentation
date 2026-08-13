@@ -16694,6 +16694,15 @@
   ],
   "text_patterns": []
  },
+ "GO:0036139": {
+  "name": "peptidyl-histidine dioxygenase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "Pfam:PF08007"
+  ],
+  "text_patterns": []
+ },
  "GO:0036143": {
   "name": "kringle domain binding",
   "ligands": [],
