@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0035594",
+  "name": "ganglioside binding",
+  "def": "Binding to a ganglioside, a ceramide oligosaccharide carrying in addition to other sugar residues, one or more sialic acid residues.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "B9EHT4",
+    "Q96DZ5"
+  ],
+  "assigned_accessions": [
+    "B9EHT4",
+    "Q96DZ5"
+  ]
+}

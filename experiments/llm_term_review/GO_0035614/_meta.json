@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0035614",
+  "name": "snRNA stem-loop binding",
+  "def": "Binding to a stem-loop in a small nuclear RNA (snRNA). An RNA stem-loop is a secondary RNA structure consisting of a double-stranded RNA (dsRNA) stem and a terminal loop.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P43332"
+  ],
+  "assigned_accessions": [
+    "P43332"
+  ]
+}

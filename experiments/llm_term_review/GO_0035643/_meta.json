@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0035643",
+  "name": "L-DOPA receptor activity",
+  "def": "Combining with L-DOPA to initiate a change in cell activity. L-DOPA is the modified amino acid (2S)-2-amino-3-(3,4-dihydroxyphenyl) propanoic acid, and is the precursor to dopamine, norepinephrine (noradrenaline) and epinephrine.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P51810",
+    "P70259"
+  ],
+  "assigned_accessions": [
+    "P51810",
+    "P70259"
+  ]
+}

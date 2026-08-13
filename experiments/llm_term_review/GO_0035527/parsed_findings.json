@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P39831",
+      "go_id": "GO:0035527",
+      "feature_type": "BINDING",
+      "start": 146,
+      "end": 147,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The binding site at position 146-147 is specifically associated with NADP+, which is the cofactor in the defined reaction, and it directly relates to the enzyme's activity as a proton acceptor, aligning with the primary reaction mechanism of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P75894",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

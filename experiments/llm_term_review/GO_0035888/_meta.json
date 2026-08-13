@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0035888",
+  "name": "isoguanine deaminase activity",
+  "def": "Catalysis of the reaction: H+ + H2O + isoguanine = NH4+ + xanthine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P25524"
+  ],
+  "assigned_accessions": [
+    "P25524"
+  ]
+}

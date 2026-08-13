@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0035612",
+  "name": "AP-2 adaptor complex binding",
+  "def": "Binding to an AP-2 adaptor complex. The AP-2 adaptor complex is a heterotetrameric AP-type membrane coat adaptor complex that consists of alpha, beta2, mu2 and sigma2 subunits and links clathrin to the membrane surface of a vesicle. In at least humans, the AP-2 complex can be heterogeneric due to the existence of multiple subunit isoforms encoded by different alpha genes (alphaA and alphaC).",
+  "n_proteins_total": 29,
+  "sampled_accessions": [
+    "P0C1X8",
+    "Q5SW96",
+    "Q8K285",
+    "Q8NBJ9"
+  ],
+  "assigned_accessions": [
+    "P0C1X8",
+    "Q5SW96",
+    "Q8K285",
+    "Q8NBJ9"
+  ]
+}

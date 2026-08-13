@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P25524",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains the catalytic mechanism of \"isoguanine deaminase activity\" as specified in its definition."
+    }
+  ]
+}

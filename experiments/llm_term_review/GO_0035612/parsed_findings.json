@@ -1,0 +1,43 @@
+{
+  "resolved": [
+    {
+      "accession": "Q5SW96",
+      "go_id": "GO:0035612",
+      "feature_type": "REGION",
+      "start": 248,
+      "end": 276,
+      "signal_kind": "text",
+      "signal_value": "AP-2 complex binding",
+      "reasoning": "The explicit mention of \"AP-2 complex binding\" in the region annotation directly aligns with the GO term's definition, making it the most plausible explanation for why the protein carries this term."
+    },
+    {
+      "accession": "Q8K285",
+      "go_id": "GO:0035612",
+      "feature_type": "REGION",
+      "start": 266,
+      "end": 439,
+      "signal_kind": "text",
+      "signal_value": "Mediates interaction with the adaptor protein complex AP-2",
+      "reasoning": "The explicit mention of \"Mediates interaction with the adaptor protein complex AP-2\" in the annotated feature region directly aligns with the primary reaction described in the GO term's definition, making it the most plausible explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P0C1X8",
+      "go_id": "GO:0035612",
+      "feature_type": "BINDING",
+      "start": 51,
+      "end": 60,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The \"BINDING\" regions with ATP ligands suggest that the protein interacts with a phosphoryl donor, which is more aligned with its role as a kinase rather than binding to an AP-2 adaptor complex. While these binding sites are relevant to the general function of the protein, they do not directly explain why it binds to the AP-2 adaptor complex."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q8NBJ9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

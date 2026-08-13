@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O14031",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide a specific explanation for the GO term's primary function of enabling oligopeptide transmembrane transport, and no positional feature directly matches the chemistry described."
+    },
+    {
+      "accession": "P40897",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear structural or functional basis for the defined chemistry of \"oligopeptide transmembrane transporter activity.\" The only evidence points to disordered regions, which are not indicative of the specific transport mechanism described in the GO term."
+    },
+    {
+      "accession": "P53134",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q2EF88",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

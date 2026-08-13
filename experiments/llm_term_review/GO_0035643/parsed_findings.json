@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P51810",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for P51810 specifically matches the primary reaction of the GO term \"L-DOPA receptor activity\" (combining with L-DOPA to initiate a change in cell activity). The features provided are more related to localization and structural organization rather than the core function defined by the GO term."
+    },
+    {
+      "accession": "P70259",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P70259 provides a direct explanation for the L-DOPA receptor activity described by GO:0035643, as all features relate to downstream consequences or localization rather than the primary reaction of L-DOPA binding and initiating cell activity."
+    }
+  ]
+}

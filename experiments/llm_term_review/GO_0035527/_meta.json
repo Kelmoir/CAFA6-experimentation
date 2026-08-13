@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0035527",
+  "name": "3-hydroxypropionate dehydrogenase (NADP+) activity",
+  "def": "Catalysis of the reaction: 3-hydroxypropanoate + NADP+ = 3-oxopropanoate + H+ + NADPH.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P39831",
+    "P75894"
+  ],
+  "assigned_accessions": [
+    "P39831",
+    "P75894"
+  ]
+}

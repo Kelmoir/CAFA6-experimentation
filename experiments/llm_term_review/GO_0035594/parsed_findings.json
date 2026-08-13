@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "B9EHT4",
+      "go_id": "GO:0035594",
+      "feature_type": "DOMAIN",
+      "start": 313,
+      "end": 356,
+      "signal_kind": "text",
+      "signal_value": "CAP-Gly 1",
+      "reasoning": "The DOMAIN 313-356 is associated with CAP-Gly, a domain known for binding sialic acid residues, which are present in gangliosides. This directly matches the primary reaction of \"ganglioside binding\" as defined by the GO term."
+    },
+    {
+      "accession": "Q96DZ5",
+      "go_id": "GO:0035594",
+      "feature_type": "DOMAIN",
+      "start": 313,
+      "end": 356,
+      "signal_kind": "text",
+      "signal_value": "CAP-Gly 1",
+      "reasoning": "The DOMAIN 313-356 with the qualifier \"CAP-Gly 1\" directly corresponds to the known function of binding gangliosides, which matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

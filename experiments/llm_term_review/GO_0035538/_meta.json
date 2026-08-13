@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0035538",
+  "name": "carbohydrate response element binding",
+  "def": "Binding to a carbohydrate response element (ChoRE) found in the promoters of genes whose expression is regulated in response to carbohydrates, such as the triglyceride synthesis genes.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q8VIP2",
+    "Q99MZ3",
+    "Q9NP71"
+  ],
+  "assigned_accessions": [
+    "Q8VIP2",
+    "Q99MZ3",
+    "Q9NP71"
+  ]
+}

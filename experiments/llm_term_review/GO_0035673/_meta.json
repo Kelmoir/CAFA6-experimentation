@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0035673",
+  "name": "oligopeptide transmembrane transporter activity",
+  "def": "Enables the transfer of oligopeptides from one side of a membrane to the other. Oligopeptides are molecules that contain a small number (2 to 20) of amino-acid residues connected by peptide linkages.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "O14031",
+    "P40897",
+    "P53134",
+    "Q2EF88"
+  ],
+  "assigned_accessions": [
+    "O14031",
+    "P40897",
+    "P53134",
+    "Q2EF88"
+  ]
+}

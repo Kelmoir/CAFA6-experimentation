@@ -18620,5 +18620,217 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0035527": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "P39831"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P75894",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0035538": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "bHLH",
+    "accessions": [
+     "Q8VIP2",
+     "Q99MZ3",
+     "Q9NP71"
+    ],
+    "reason": "resolved to ['InterPro:IPR011598', 'PROSITE:PS50888'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR011598': 602, 'PROSITE:PS50888': 602})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0035594": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "CAP-Gly 1",
+    "accessions": [
+     "B9EHT4",
+     "Q96DZ5"
+    ],
+    "reason": "resolved to ['InterPro:IPR000938', 'InterPro:IPR036859', 'PROSITE:PS00845', 'PROSITE:PS50245', 'Pfam:PF01302'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000938': 37, 'InterPro:IPR036859': 37, 'PROSITE:PS00845': 35, 'PROSITE:PS50245': 37, 'Pfam:PF01302': 37})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0035612": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "AP-2 complex binding",
+    "accessions": [
+     "Q5SW96"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Mediates interaction with the adaptor protein complex AP-2",
+    "accessions": [
+     "Q8K285"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P0C1X8",
+    "go_id": "GO:0035612",
+    "feature_type": "BINDING",
+    "start": 51,
+    "end": 60,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The \"BINDING\" regions with ATP ligands suggest that the protein interacts with a phosphoryl donor, which is more aligned with its role as a kinase rather than binding to an AP-2 adaptor complex. While these binding sites are relevant to the general function of the protein, they do not directly explain why it binds to the AP-2 adaptor complex."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q8NBJ9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0035614": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P43332",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features do not provide any positional evidence that specifically explains the snRNA stem-loop binding function as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0035639": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P60900",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0035643": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P51810",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P51810 specifically matches the primary reaction of the GO term \"L-DOPA receptor activity\" (combining with L-DOPA to initiate a change in cell activity). The features provided are more related to localization and structural organization rather than the core function defined by the GO term."
+   },
+   {
+    "accession": "P70259",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P70259 provides a direct explanation for the L-DOPA receptor activity described by GO:0035643, as all features relate to downstream consequences or localization rather than the primary reaction of L-DOPA binding and initiating cell activity."
+   }
+  ]
+ },
+ "GO:0035673": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O14031",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide a specific explanation for the GO term's primary function of enabling oligopeptide transmembrane transport, and no positional feature directly matches the chemistry described."
+   },
+   {
+    "accession": "P40897",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the defined chemistry of \"oligopeptide transmembrane transporter activity.\" The only evidence points to disordered regions, which are not indicative of the specific transport mechanism described in the GO term."
+   },
+   {
+    "accession": "P53134",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q2EF88",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0035888": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P25524",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the catalytic mechanism of \"isoguanine deaminase activity\" as specified in its definition."
+   }
+  ]
  }
 }
