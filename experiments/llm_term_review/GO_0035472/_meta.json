@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0035472",
+  "name": "choriogonadotropin hormone receptor activity",
+  "def": "Combining with the choriogonadotropin hormone to initiate a change in cell activity.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P16235",
+    "P22888",
+    "P30730",
+    "Q90674"
+  ],
+  "assigned_accessions": [
+    "P16235",
+    "P22888",
+    "P30730",
+    "Q90674"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P22888",
+      "go_id": "GO:0035472",
+      "feature_type": "DOMAIN",
+      "start": 26,
+      "end": 66,
+      "signal_kind": "text",
+      "signal_value": "LRRNT",
+      "reasoning": "The DOMAIN 26-66 annotation with LRRNT suggests a structural motif that could be involved in hormone binding and initiating a cellular response, aligning with the primary reaction of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P16235",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P30730",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q90674",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

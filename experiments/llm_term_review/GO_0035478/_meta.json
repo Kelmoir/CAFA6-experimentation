@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0035478",
+  "name": "chylomicron binding",
+  "def": "Binding to a chylomicron, a large lipoprotein particle (diameter 75-1200 nm) composed of a central core of triglycerides and cholesterol surrounded by a protein-phospholipid coating. The proteins include one molecule of apolipoprotein B-48 and may include a variety of apolipoproteins, including APOAs, APOCs and APOE.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P07867",
+    "P27656",
+    "Q8IV16",
+    "Q9D1N2"
+  ],
+  "assigned_accessions": [
+    "P07867",
+    "P27656",
+    "Q8IV16",
+    "Q9D1N2"
+  ]
+}

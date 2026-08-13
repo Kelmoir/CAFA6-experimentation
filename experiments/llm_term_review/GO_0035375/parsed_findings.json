@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "G5ECW5",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P9WGV3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P9WGV3 specifically matches the primary reaction of \"zymogen binding,\" which involves binding to a zymogen rather than general substrates or cofactors."
+    },
+    {
+      "accession": "P9WHH9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P9WHH9 directly supports the definition of \"zymogen binding\" as it refers to binding to a zymogen, an enzymatically inactive precursor that is converted to an active enzyme through proteolysis. The available features are for FAD and NAD(+), not zymogens."
+    },
+    {
+      "accession": "P9WIN9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

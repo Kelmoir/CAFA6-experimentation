@@ -1,0 +1,43 @@
+{
+  "resolved": [
+    {
+      "accession": "P07867",
+      "go_id": "GO:0035478",
+      "feature_type": "DOMAIN",
+      "start": 352,
+      "end": 487,
+      "signal_kind": "text",
+      "signal_value": "PLAT",
+      "reasoning": "The DOMAIN 352-487 with the qualifier PLAT directly relates to lipid-binding activity, which is a core aspect of chylomicron binding. This feature most plausibly explains why the protein carries the GO term \"chylomicron binding.\""
+    },
+    {
+      "accession": "Q9D1N2",
+      "go_id": "GO:0035478",
+      "feature_type": "REGION",
+      "start": 23,
+      "end": 48,
+      "signal_kind": "text",
+      "signal_value": "Important for LPL transport to the lumenal surface of endothelial cells",
+      "reasoning": "The region is important for LPL transport to the lumenal surface of endothelial cells, which is a key part of chylomicron metabolism. This directly supports the GO term's primary reaction of binding to chylomicrons."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q8IV16",
+      "go_id": "GO:0035478",
+      "feature_type": "REGION",
+      "start": 102,
+      "end": 109,
+      "signal_kind": "text",
+      "signal_value": "Important for interaction with LPL",
+      "reasoning": "The region is important for interaction with LPL, which is a type of lipoprotein, but the GO term specifically refers to chylomicron binding. While this region could be part of the broader lipid-binding activity that includes chylomicrons, it does not directly confirm the specific function of chylomicron binding as defined in the GO term."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P27656",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly or specifically describe the \"binding to a chylomicron\" activity as defined. The only domain that could be relevant is the PLAT fold, but it does not explicitly confirm the binding mechanism."
+    }
+  ]
+}

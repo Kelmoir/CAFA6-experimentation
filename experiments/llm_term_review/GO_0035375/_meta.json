@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0035375",
+  "name": "zymogen binding",
+  "def": "Binding to a zymogen, an enzymatically inactive precursor of an enzyme that is often convertible to an active enzyme by proteolysis.",
+  "n_proteins_total": 26,
+  "sampled_accessions": [
+    "G5ECW5",
+    "P9WGV3",
+    "P9WHH9",
+    "P9WIN9"
+  ],
+  "assigned_accessions": [
+    "G5ECW5",
+    "P9WGV3",
+    "P9WHH9",
+    "P9WIN9"
+  ]
+}

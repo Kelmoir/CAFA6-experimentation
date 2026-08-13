@@ -18381,6 +18381,113 @@
    }
   ]
  },
+ "GO:0035368": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P38919"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "DEAD box",
+    "accessions": [
+     "Q91VC3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q3U1C4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q3U1C4 provides a clear and specific explanation for why it carries the GO term \"selenocysteine insertion sequence binding.\""
+   },
+   {
+    "accession": "Q9JHW4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9JHW4 directly matches the primary reaction of \"selenocysteine insertion sequence binding\" (GO:0035368), which is about binding to SECIS. The only binding sites listed are for GTP and Mg(2+), not for SECIS. Thus, no feature provides a strong match to the GO term's definition."
+   }
+  ]
+ },
+ "GO:0035375": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "G5ECW5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P9WGV3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P9WGV3 specifically matches the primary reaction of \"zymogen binding,\" which involves binding to a zymogen rather than general substrates or cofactors."
+   },
+   {
+    "accession": "P9WHH9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P9WHH9 directly supports the definition of \"zymogen binding\" as it refers to binding to a zymogen, an enzymatically inactive precursor that is converted to an active enzyme through proteolysis. The available features are for FAD and NAD(+), not zymogens."
+   },
+   {
+    "accession": "P9WIN9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0035381": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Pore-forming motif",
+    "accessions": [
+     "Q86JM7"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q9JJX6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q54J33",
+    "reason": "none_verdict",
+    "reasoning": "The \"Pore-forming motif\" in region 282-296 of Q54J33 is a plausible candidate for explaining the function of ATP-gated ion channels, as it could be involved in forming the pore through which ions pass. However, this feature does not directly account for the binding and activation mechanism by ATP, which is central to the GO term's definition. While it may contribute to the overall function, it doe"
+   },
+   {
+    "accession": "Q553Y1",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION 282-296\" feature with a note about a \"Pore-forming motif\" is relevant to ion channel activity but does not specifically explain the \"ATP-gated\" mechanism of the GO term. No positional feature directly matches the chemistry described in the definition, so the verdict is NONE."
+   }
+  ]
+ },
  "GO:0035439": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -18394,6 +18501,85 @@
     "accession": "O50406",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0035472": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "LRRNT",
+    "accessions": [
+     "P22888"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P16235",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P30730",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q90674",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0035478": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PLAT",
+    "accessions": [
+     "P07867"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Important for LPL transport to the lumenal surface of endothelial cells",
+    "accessions": [
+     "Q9D1N2"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q8IV16",
+    "go_id": "GO:0035478",
+    "feature_type": "REGION",
+    "start": 102,
+    "end": 109,
+    "signal_kind": "text",
+    "signal_value": "Important for interaction with LPL",
+    "reasoning": "The region is important for interaction with LPL, which is a type of lipoprotein, but the GO term specifically refers to chylomicron binding. While this region could be part of the broader lipid-binding activity that includes chylomicrons, it does not directly confirm the specific function of chylomicron binding as defined in the GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P27656",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly or specifically describe the \"binding to a chylomicron\" activity as defined. The only domain that could be relevant is the PLAT fold, but it does not explicitly confirm the binding mechanism."
    }
   ]
  },

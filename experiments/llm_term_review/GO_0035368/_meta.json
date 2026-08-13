@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0035368",
+  "name": "selenocysteine insertion sequence binding",
+  "def": "Binding to a selenocysteine insertion sequence (SECIS), a regulatory sequence within mRNA which directs incorporation of a selenocysteine at a stop codon (UGA) during translation.",
+  "n_proteins_total": 13,
+  "sampled_accessions": [
+    "P38919",
+    "Q3U1C4",
+    "Q91VC3",
+    "Q9JHW4"
+  ],
+  "assigned_accessions": [
+    "P38919",
+    "Q3U1C4",
+    "Q91VC3",
+    "Q9JHW4"
+  ]
+}
