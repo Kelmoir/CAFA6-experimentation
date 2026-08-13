@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0036140",
+  "name": "[protein]-asparagine 3-dioxygenase activity",
+  "def": "Catalysis of the reaction: peptidyl L-asparagine + 2-oxoglutarate + O2 = peptidyl 3-hydroxy-L-asparagine + succinate + CO2.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P59723",
+    "Q8BLR9",
+    "Q9NWT6"
+  ],
+  "assigned_accessions": [
+    "P59723",
+    "Q8BLR9",
+    "Q9NWT6"
+  ]
+}

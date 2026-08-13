@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9BY32",
+      "go_id": "GO:0035870",
+      "feature_type": "BINDING",
+      "start": 13,
+      "end": 19,
+      "signal_kind": "ligand",
+      "signal_value": "ITP",
+      "reasoning": "The \"BINDING\" feature for ITP (ligand: ITP) is plausible as it could be related to the dITP diphosphatase activity, but it does not specifically confirm the catalytic reaction mechanism described in the GO term."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P0CY19",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the chemistry of dITP diphosphatase activity as defined by the GO term."
+    },
+    {
+      "accession": "P52061",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for this protein directly describes the catalytic activity of dITP diphosphatase, which is about removing a phosphate group from dITP."
+    },
+    {
+      "accession": "Q57679",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains why the protein carries the term \"dITP diphosphatase activity\" based on the provided evidence."
+    }
+  ]
+}

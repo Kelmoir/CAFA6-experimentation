@@ -16559,6 +16559,16 @@
   ],
   "text_patterns": []
  },
+ "GO:0036004": {
+  "name": "GAF domain binding",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR056277",
+   "Pfam:PF23322"
+  ],
+  "text_patterns": []
+ },
  "GO:0036033": {
   "name": "mediator complex binding",
   "ligands": [],

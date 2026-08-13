@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0035939",
+  "name": "microsatellite binding",
+  "def": "Binding to a microsatellite, a repeat_region in DNA containing repeat units (2 to 4 base pairs) that is repeated multiple times in tandem.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9P7V3"
+  ],
+  "assigned_accessions": [
+    "Q9P7V3"
+  ]
+}

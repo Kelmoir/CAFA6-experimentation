@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P17677",
+      "go_id": "GO:0035727",
+      "feature_type": "DOMAIN",
+      "start": 30,
+      "end": 60,
+      "signal_kind": "text",
+      "signal_value": "IQ",
+      "reasoning": "The DOMAIN 30-60 annotation, specifically the IQ motif, directly aligns with the primary reaction described in the GO term's definition \u2014 the binding of lysophosphatidic acid. This feature is more specific and mechanistically relevant than the disordered REGION feature, which only suggests structural flexibility without confirming the binding activity itself."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P06836",
+      "reason": "none_verdict",
+      "reasoning": "The defined domain (30-60) is associated with an IQ motif, which is a known structural element in proteins involved in GPCR signaling and receptor activation. While this supports the function of binding LPA, it does not directly explain why the protein carries the term \"lysophosphatidic acid binding\" as a defined molecular function. No other annotated feature provides a more direct explanation for"
+    },
+    {
+      "accession": "Q8BLG2",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9NWW5",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

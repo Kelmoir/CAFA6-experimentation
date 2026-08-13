@@ -18817,6 +18817,101 @@
    }
   ]
  },
+ "GO:0035727": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "IQ",
+    "accessions": [
+     "P17677"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P06836",
+    "reason": "none_verdict",
+    "reasoning": "The defined domain (30-60) is associated with an IQ motif, which is a known structural element in proteins involved in GPCR signaling and receptor activation. While this supports the function of binding LPA, it does not directly explain why the protein carries the term \"lysophosphatidic acid binding\" as a defined molecular function. No other annotated feature provides a more direct explanation for"
+   },
+   {
+    "accession": "Q8BLG2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9NWW5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0035804": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ZP",
+    "accessions": [
+     "P48831",
+     "Q12836",
+     "Q62005",
+     "Q9BH11"
+    ],
+    "reason": "resolved to ['InterPro:IPR001507', 'InterPro:IPR017977', 'InterPro:IPR042235', 'InterPro:IPR048290', 'InterPro:IPR055355', 'InterPro:IPR055356', 'PROSITE:PS00682', 'PROSITE:PS51034', 'Pfam:PF23344'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR001507': 50, 'InterPro:IPR017977': 33, 'InterPro:IPR042235': 47, 'InterPro:IPR048290': 36, 'InterPro:IPR055355': 46, 'InterPro:IPR055356': 41, 'PROSITE:PS00682': 33, 'PROSITE:PS51034': 49, 'Pfam:PF23344': 41})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0035870": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9BY32",
+    "go_id": "GO:0035870",
+    "feature_type": "BINDING",
+    "start": 13,
+    "end": 19,
+    "signal_kind": "ligand",
+    "signal_value": "ITP",
+    "reasoning": "The \"BINDING\" feature for ITP (ligand: ITP) is plausible as it could be related to the dITP diphosphatase activity, but it does not specifically confirm the catalytic reaction mechanism described in the GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P0CY19",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the chemistry of dITP diphosphatase activity as defined by the GO term."
+   },
+   {
+    "accession": "P52061",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for this protein directly describes the catalytic activity of dITP diphosphatase, which is about removing a phosphate group from dITP."
+   },
+   {
+    "accession": "Q57679",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains why the protein carries the term \"dITP diphosphatase activity\" based on the provided evidence."
+   }
+  ]
+ },
  "GO:0035888": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -18832,5 +18927,89 @@
     "reasoning": "No annotated feature directly explains the catalytic mechanism of \"isoguanine deaminase activity\" as specified in its definition."
    }
   ]
+ },
+ "GO:0035939": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9P7V3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0036004": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR056277",
+     "Pfam:PF23322"
+    ],
+    "accessions": [
+     "O00170",
+     "O08915"
+    ],
+    "note": "resolved from DOMAIN note 'PPIase FKBP-type' (3 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "GAF 1",
+    "accessions": [
+     "Q01062"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5FWY5",
+    "reason": "none_verdict",
+    "reasoning": "The \"DOMAIN 30-121\" feature is the only positional annotation for Q5FWY5 and could be related to its function of binding a GAF domain. However, since there is no direct evidence of GAF domain binding in this protein, it does not specifically explain why the protein carries the GO term \"GAF domain binding.\""
+   }
+  ]
+ },
+ "GO:0036140": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "2-oxoglutarate",
+    "accessions": [
+     "P59723",
+     "Q9NWT6"
+    ],
+    "reason": "circular agreement -- only 1 of 2 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "JmjC",
+    "accessions": [
+     "Q8BLR9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

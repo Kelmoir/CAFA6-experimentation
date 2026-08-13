@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0035727",
+  "name": "lysophosphatidic acid binding",
+  "def": "Binding to lysophosphatidic acid (LPA), a phospholipid derivative that acts as a potent mitogen due to its activation of high-affinity G protein-coupled receptors.",
+  "n_proteins_total": 21,
+  "sampled_accessions": [
+    "P06836",
+    "P17677",
+    "Q8BLG2",
+    "Q9NWW5"
+  ],
+  "assigned_accessions": [
+    "P06836",
+    "P17677",
+    "Q8BLG2",
+    "Q9NWW5"
+  ]
+}

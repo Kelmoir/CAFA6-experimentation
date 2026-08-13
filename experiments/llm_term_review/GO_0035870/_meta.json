@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0035870",
+  "name": "dITP diphosphatase activity",
+  "def": "Catalysis of the reaction: dITP + H2O = dIMP + H+ + diphosphate.",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "P0CY19",
+    "P52061",
+    "Q57679",
+    "Q9BY32"
+  ],
+  "assigned_accessions": [
+    "P0CY19",
+    "P52061",
+    "Q57679",
+    "Q9BY32"
+  ]
+}

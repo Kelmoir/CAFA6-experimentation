@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "P59723",
+      "go_id": "GO:0036140",
+      "feature_type": "BINDING",
+      "start": 135,
+      "end": 136,
+      "signal_kind": "ligand",
+      "signal_value": "2-oxoglutarate",
+      "reasoning": "The binding of 2-oxoglutarate to the protein's site is directly aligned with the primary reaction mechanism described in the GO term's definition, making it the most plausible explanation for why P59723 carries this molecular function."
+    },
+    {
+      "accession": "Q8BLR9",
+      "go_id": "GO:0036140",
+      "feature_type": "DOMAIN",
+      "start": 141,
+      "end": 307,
+      "signal_kind": "text",
+      "signal_value": "JmjC",
+      "reasoning": "The \"DOMAIN\" feature at position 141-307 is directly associated with the JmjC domain family, which is known for catalytic activities involving the transfer of phosphate groups. This matches the primary reaction described in the GO term's definition, where the protein catalyzes the transfer of a phosphoryl group from 2-oxoglutarate to L-asparagine."
+    },
+    {
+      "accession": "Q9NWT6",
+      "go_id": "GO:0036140",
+      "feature_type": "BINDING",
+      "start": 144,
+      "end": 145,
+      "signal_kind": "ligand",
+      "signal_value": "2-oxoglutarate",
+      "reasoning": "The binding site for 2-oxoglutarate directly matches the primary reaction mechanism of asparagine dioxygenase activity, making it the most plausible explanation for why the protein carries this GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
