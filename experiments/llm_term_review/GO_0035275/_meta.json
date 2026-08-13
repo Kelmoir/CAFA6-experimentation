@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0035275",
+  "name": "dibutyl phthalate binding",
+  "def": "Binding to dibutyl phthalate, C(16)H(22)O(4).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O02372"
+  ],
+  "assigned_accessions": [
+    "O02372"
+  ]
+}

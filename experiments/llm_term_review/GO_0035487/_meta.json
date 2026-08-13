@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0035487",
+  "name": "thymine/thymine mispair binding",
+  "def": "Binding to a double-stranded DNA region containing a T/T mispair.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q10241"
+  ],
+  "assigned_accessions": [
+    "Q10241"
+  ]
+}

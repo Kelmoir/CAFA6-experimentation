@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O02372",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in O02372 specifically matches the primary reaction of the GO term \"diphenyl phthalate binding\" \u2014 the protein binds alcohols, not diphenyl phthalate."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0035496",
+  "name": "lipopolysaccharide-1,5-galactosyltransferase activity",
+  "def": "Catalysis of the reaction: UDP-galactose + lipopolysaccharide = UDP + 1,5 alpha-D-galactosyl-lipopolysaccharide.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O53585"
+  ],
+  "assigned_accessions": [
+    "O53585"
+  ]
+}

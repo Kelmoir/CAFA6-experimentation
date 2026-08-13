@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0034738",
+  "name": "lanosterol O-acyltransferase activity",
+  "def": "Catalysis of the reaction: acyl-CoA + lanosterol = CoA + lanosterol ester.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P25628"
+  ],
+  "assigned_accessions": [
+    "P25628"
+  ]
+}

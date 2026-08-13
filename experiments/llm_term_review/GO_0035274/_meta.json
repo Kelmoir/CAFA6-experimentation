@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0035274",
+  "name": "diphenyl phthalate binding",
+  "def": "Binding to diphenyl phthalate, C(20)H(14)O(4).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O02372"
+  ],
+  "assigned_accessions": [
+    "O02372"
+  ]
+}

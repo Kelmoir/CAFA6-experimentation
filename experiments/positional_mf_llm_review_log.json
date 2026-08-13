@@ -18160,6 +18160,38 @@
    }
   ]
  },
+ "GO:0034512": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "LisH",
+    "accessions": [
+     "E9Q5C9",
+     "P41777"
+    ],
+    "reason": "resolved to ['InterPro:IPR006594', 'PROSITE:PS50896'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR006594': 116, 'PROSITE:PS50896': 116})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6NL34",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q6NL34 is a disordered region (REGION 94-128), which does not provide any evidence about its ability to bind box C/D sno(s)RNA. Since the GO term's definition focuses on the binding activity itself, and no positional feature in the Annotated features section directly supports this function, there is no strong match for the primary reaction of the GO term."
+   },
+   {
+    "accession": "Q9D0T1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9D0T1 specifically matches the primary reaction of \"Binding to a box C/D small nucleolar RNA,\" which is the core mechanism defining this GO term."
+   }
+  ]
+ },
  "GO:0034590": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -18180,5 +18212,227 @@
     "reasoning": "The only positional feature that could be interpreted as a transmembrane transporter activity is the region 0-25 marked as disordered, but this does not provide any direct evidence of L-hydroxyproline transport. No other feature in the annotated features section explicitly describes the primary reaction of transferring L-hydroxyproline across a membrane."
    }
   ]
+ },
+ "GO:0034596": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "5-PPase",
+    "accessions": [
+     "O15056"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "1,2-dioctanoyl-sn-glycero-3-phospho-(1D-myo-inositol-3,4,5-trisphosphate)",
+    "accessions": [
+     "O43426"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SAC",
+    "accessions": [
+     "Q9Y2H2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8CDA1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8CDA1 specifically describes the catalytic removal of a 4-phosphate group, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0034738": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "P25628"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0034785": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fe2OG dioxygenase",
+    "accessions": [
+     "Q9FLV0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0035198": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PAZ",
+    "accessions": [
+     "Q21691"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ZN_FING",
+    "value": "CCHC-type 2",
+    "accessions": [
+     "Q8K3Y3"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "RRM 1",
+    "accessions": [
+     "P98175"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O14543",
+    "reason": "none_verdict",
+    "reasoning": "The highest scoring candidate (REGION 33-45) is associated with an extended SH2 subdomain, which could be relevant for miRNA binding in some contexts, but it does not directly explain the primary reaction of the GO term, which involves binding to a microRNA. No other annotated feature clearly matches the definition's primary chemistry."
+   }
+  ]
+ },
+ "GO:0035274": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O02372",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in O02372 specifically matches the primary reaction of the GO term \"diphenyl phthalate binding\" \u2014 the protein binds alcohols, not diphenyl phthalate."
+   }
+  ]
+ },
+ "GO:0035275": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O02372",
+    "reason": "none_verdict",
+    "reasoning": "The protein O02372 does not have any annotated feature that specifically matches the chemistry of dibutyl phthalate binding, and no domain/family cross-reference is specific to this ligand. Therefore, there is no plausible explanation for why this protein carries the GO term \"dibutyl phthalate binding\"."
+   }
+  ]
+ },
+ "GO:0035302": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9VWR5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9VWR5 specifically matches the chemistry of catalyzing ecdysteroid hydroxylation at carbon position 25."
+   }
+  ]
+ },
+ "GO:0035439": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O50406",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0035487": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DNA_BIND",
+    "value": "HMG box",
+    "accessions": [
+     "Q10241"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0035496": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "UDP-alpha-D-galactofuranose",
+    "accessions": [
+     "O53585"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

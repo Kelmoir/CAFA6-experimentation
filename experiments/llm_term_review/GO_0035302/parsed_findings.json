@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9VWR5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9VWR5 specifically matches the chemistry of catalyzing ecdysteroid hydroxylation at carbon position 25."
+    }
+  ]
+}

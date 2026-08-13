@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0035198",
+  "name": "miRNA binding",
+  "def": "Binding to a microRNA, a 21-23 nucleotide RNA that is processed from a stem-loop RNA precursor (pre-miRNA) that is encoded within plant and animal genomes.",
+  "n_proteins_total": 99,
+  "sampled_accessions": [
+    "O14543",
+    "P98175",
+    "Q21691",
+    "Q8K3Y3"
+  ],
+  "assigned_accessions": [
+    "O14543",
+    "P98175",
+    "Q21691",
+    "Q8K3Y3"
+  ]
+}

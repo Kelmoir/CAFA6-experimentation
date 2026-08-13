@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9FLV0",
+      "go_id": "GO:0034785",
+      "feature_type": "DOMAIN",
+      "start": 187,
+      "end": 288,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The domain \"DOMAIN 187-288\" with the note \"Fe2OG dioxygenase\" directly corresponds to the enzyme's role in catalyzing the reaction involving salicylate and NADH, providing a strong structural basis for the defined molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

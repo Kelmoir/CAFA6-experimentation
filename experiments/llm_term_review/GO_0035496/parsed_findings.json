@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "O53585",
+      "go_id": "GO:0035496",
+      "feature_type": "BINDING",
+      "start": 170,
+      "end": 171,
+      "signal_kind": "ligand",
+      "signal_value": "UDP-alpha-D-galactofuranose",
+      "reasoning": "The binding site for UDP-alpha-D-galactofuranose directly matches the ligand involved in the primary reaction of the GO term, making it the most plausible explanation for why this protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

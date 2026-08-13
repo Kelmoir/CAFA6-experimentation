@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0034512",
+  "name": "box C/D sno(s)RNA binding",
+  "def": "Binding to a box C/D small nucleolar RNA.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "E9Q5C9",
+    "P41777",
+    "Q6NL34",
+    "Q9D0T1"
+  ],
+  "assigned_accessions": [
+    "E9Q5C9",
+    "P41777",
+    "Q6NL34",
+    "Q9D0T1"
+  ]
+}

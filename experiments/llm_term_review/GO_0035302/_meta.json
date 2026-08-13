@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0035302",
+  "name": "ecdysteroid 25-hydroxylase activity",
+  "def": "Catalysis of the hydroxylation of an ecdysteroid at carbon position 25.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9VWR5"
+  ],
+  "assigned_accessions": [
+    "Q9VWR5"
+  ]
+}

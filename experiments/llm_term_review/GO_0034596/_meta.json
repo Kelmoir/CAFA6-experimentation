@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0034596",
+  "name": "phosphatidylinositol phosphate 4-phosphatase activity",
+  "def": "Catalysis of the removal of the 4-phosphate group of a phosphatidylinositol phosphate.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "O15056",
+    "O43426",
+    "Q8CDA1",
+    "Q9Y2H2"
+  ],
+  "assigned_accessions": [
+    "O15056",
+    "O43426",
+    "Q8CDA1",
+    "Q9Y2H2"
+  ]
+}
