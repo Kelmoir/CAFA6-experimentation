@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O74429",
+      "go_id": "GO:0052846",
+      "feature_type": "BINDING",
+      "start": 332,
+      "end": 335,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site at 332-335 for ATP directly supports the enzymatic activity described by GO:0052846, which involves the removal of a phosphate group from a polyphosphoinositide substrate. This specific feature aligns with the primary reaction mechanism of the phosphatase."
+    },
+    {
+      "accession": "Q9UUF3",
+      "go_id": "GO:0052846",
+      "feature_type": "ACT_SITE",
+      "start": 188,
+      "end": 189,
+      "signal_kind": "text",
+      "signal_value": "Phosphocysteine intermediate",
+      "reasoning": "The ACT_SITE annotation at positions 188-189 directly corresponds to the active site of the enzyme, which is essential for catalyzing the hydrolysis reaction defined by the GO term. This feature provides a strong match to the primary reaction described in the GO definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q09790",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

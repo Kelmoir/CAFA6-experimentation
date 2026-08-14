@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052875",
+  "name": "riboflavin reductase [NAD(P)H] activity",
+  "def": "Catalysis of the reaction: reduced riboflavin + NAD(P)+ = riboflavin + NAD(P)H + 2 H+. This reaction can utilize NADH and NADPH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AEN1"
+  ],
+  "assigned_accessions": [
+    "P0AEN1"
+  ]
+}

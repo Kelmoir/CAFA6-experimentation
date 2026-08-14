@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "O64411",
+      "go_id": "GO:0052897",
+      "feature_type": "BINDING",
+      "start": 89,
+      "end": 90,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding of a substrate to the protein is directly relevant to the catalytic reaction described in the GO term's definition, which involves N8-acetylspermidine and oxygen to produce 1,3-diaminopropane. This specific binding supports the enzyme activity defined by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P50264",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

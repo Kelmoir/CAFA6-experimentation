@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9LYT1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9LYT1's list directly matches the primary reaction of catalyzing the oxidation of spermine as defined by GO:0052900."
+    },
+    {
+      "accession": "O64411",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term \"spermine oxidase activity\" (catalysis of the reaction with FAD and spermine), so there is no strong match for this GO term based on the given evidence."
+    }
+  ]
+}

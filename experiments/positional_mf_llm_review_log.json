@@ -28557,6 +28557,82 @@
    }
   ]
  },
+ "GO:0052846": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "O74429"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Phosphocysteine intermediate",
+    "accessions": [
+     "Q9UUF3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q09790",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0052848": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Nudix box",
+    "accessions": [
+     "Q566C7"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Phosphocysteine intermediate",
+    "accessions": [
+     "Q681Z2"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Nudix hydrolase",
+    "accessions": [
+     "Q9NZJ9"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Tyrosine-protein phosphatase",
+    "accessions": [
+     "Q9ZVN4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
  "GO:0052868": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -28586,6 +28662,139 @@
     "accession": "P78329",
     "reason": "none_verdict",
     "reasoning": "No annotated feature in P78329's Annotated features section directly supports or explains the specific chemical reaction defined by GO:0052871. The domain/family cross-references suggest a broader class of enzymes, but they do not pinpoint the enzyme's role in hydroxylation of alpha-tocopherol."
+   }
+  ]
+ },
+ "GO:0052875": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "FAD-binding FR-type",
+    "accessions": [
+     "P0AEN1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0052884": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q16518",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for this protein directly explains the molecular function defined by the GO term."
+   },
+   {
+    "accession": "Q91ZQ5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for this protein directly matches the primary reaction of the GO term, which is the hydrolysis of all-trans-retinyl palmitate to produce 11-cis-retinol. The binding sites and domain/family cross-references are related to retinal metabolism but do not specifically explain the hydrolase activity described in the GO definition."
+   },
+   {
+    "accession": "Q9TVB8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction described in the GO term, which involves the hydrolysis of all-trans-retinyl palmitate to produce 11-cis-retinol. The presence of Fe cation as a ligand is not chemically or mechanistically linked to this specific enzymatic activity."
+   },
+   {
+    "accession": "Q9YGX2",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9YGX2 does not have any annotated feature that directly matches the primary reaction mechanism of the GO term \"all-trans-retinyl-palmitate hydrolase, 11-cis retinol forming activity.\" All binding sites are for Fe cation and are marked as catalytic, but they do not provide evidence for the specific hydrolysis reaction described in the GO term's definition. Therefore, no annotated featu"
+   }
+  ]
+ },
+ "GO:0052885": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "A9C3R8",
+    "go_id": "GO:0052885",
+    "feature_type": "BINDING",
+    "start": 179,
+    "end": 180,
+    "signal_kind": "ligand",
+    "signal_value": "Fe cation",
+    "reasoning": "The binding sites are associated with catalytic activity, which aligns with the primary reaction mechanism of the GO term. However, the specific ligand (Fe cation) and the reaction (hydrolysis of all-trans-retinyl ester to form 11-cis-retinol and fatty acid) are not directly supported by these binding sites, making the match only plausible but not definitive."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q16518",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q16518 directly explains the enzymatic activity defined by GO:0052885, as the binding sites are for a ligand rather than the substrate or product of the reaction."
+   },
+   {
+    "accession": "Q28175",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the primary reaction mechanism of the GO term. The binding sites are associated with Fe cation and catalytic activity but do not specify the ester hydrolysis reaction or the 11-cis retinol forming activity."
+   },
+   {
+    "accession": "Q9YGX2",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0052897": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "O64411"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P50264",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0052900": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LYT1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9LYT1's list directly matches the primary reaction of catalyzing the oxidation of spermine as defined by GO:0052900."
+   },
+   {
+    "accession": "O64411",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term \"spermine oxidase activity\" (catalysis of the reaction with FAD and spermine), so there is no strong match for this GO term based on the given evidence."
    }
   ]
  }

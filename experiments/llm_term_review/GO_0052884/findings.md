@@ -1,0 +1,20 @@
+## Q16518 GO:0052884
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature for this protein directly explains the molecular function defined by the GO term.
+---
+## Q91ZQ5 GO:0052884
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature for this protein directly matches the primary reaction of the GO term, which is the hydrolysis of all-trans-retinyl palmitate to produce 11-cis-retinol. The binding sites and domain/family cross-references are related to retinal metabolism but do not specifically explain the hydrolase activity described in the GO definition.
+---
+## Q9TVB8 GO:0052884
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature directly matches the primary reaction described in the GO term, which involves the hydrolysis of all-trans-retinyl palmitate to produce 11-cis-retinol. The presence of Fe cation as a ligand is not chemically or mechanistically linked to this specific enzymatic activity.
+---
+## Q9YGX2 GO:0052884
+verdict: NONE
+feature: NONE 0-0
+reasoning: The protein Q9YGX2 does not have any annotated feature that directly matches the primary reaction mechanism of the GO term "all-trans-retinyl-palmitate hydrolase, 11-cis retinol forming activity." All binding sites are for Fe cation and are marked as catalytic, but they do not provide evidence for the specific hydrolysis reaction described in the GO term's definition. Therefore, no annotated featu
+---

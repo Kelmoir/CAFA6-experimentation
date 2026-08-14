@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0052846",
+  "name": "inositol-1,5-bisdiphosphate-2,3,4,6-tetrakisphosphate 1-diphosphatase activity",
+  "def": "Catalysis of the reaction: 1,5-bisdiphospho-1D-myo-inositol 2,3,4,6-tetrakisphosphate + H2O = 5-diphospho-1D-myo-inositol 1,2,3,4,6-pentakisphosphate + phosphate + H+.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O74429",
+    "Q09790",
+    "Q9UUF3"
+  ],
+  "assigned_accessions": [
+    "O74429",
+    "Q09790",
+    "Q9UUF3"
+  ]
+}

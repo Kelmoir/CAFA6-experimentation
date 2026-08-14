@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0052897",
+  "name": "N8-acetylspermidine:oxygen oxidoreductase (propane-1,3-diamine-forming) activity",
+  "def": "Catalysis of the reaction: H2O + N(8)-acetylspermidine + O2 = 1,3-diaminopropane + 4-acetamidobutanal + H2O2. Also active with N(1)-acetylspermine, weak activity with N(1),N(12)- diacetylspermine.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O64411",
+    "P50264"
+  ],
+  "assigned_accessions": [
+    "O64411",
+    "P50264"
+  ]
+}

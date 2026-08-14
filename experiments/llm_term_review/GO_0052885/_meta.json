@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0052885",
+  "name": "all-trans-retinyl-ester hydrolase, 11-cis retinol forming activity",
+  "def": "Catalysis of the reaction: H2O + all-trans-retinyl ester = 11-cis-retinol + fatty acid.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "A9C3R8",
+    "Q16518",
+    "Q28175",
+    "Q9YGX2"
+  ],
+  "assigned_accessions": [
+    "A9C3R8",
+    "Q16518",
+    "Q28175",
+    "Q9YGX2"
+  ]
+}

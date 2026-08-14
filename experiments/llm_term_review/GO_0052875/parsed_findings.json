@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P0AEN1",
+      "go_id": "GO:0052875",
+      "feature_type": "DOMAIN",
+      "start": 1,
+      "end": 99,
+      "signal_kind": "text",
+      "signal_value": "FAD-binding FR-type",
+      "reasoning": "The \"FAD-binding FR-type\" domain in the 1-99 region directly supports the GO term's primary reaction by indicating the enzyme's ability to bind and reduce FAD, which is central to its function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

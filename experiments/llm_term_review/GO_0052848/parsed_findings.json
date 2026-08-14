@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "Q566C7",
+      "go_id": "GO:0052848",
+      "feature_type": "MOTIF",
+      "start": 50,
+      "end": 72,
+      "signal_kind": "text",
+      "signal_value": "Nudix box",
+      "reasoning": "The \"MOTIF 50-72\" is a structural motif specifically associated with Nudix hydrolase family enzymes, which are known to catalyze the hydrolysis of tetrasphosphate compounds. This directly supports the GO term's definition of the enzyme's function as a 5-diphophatase activity."
+    },
+    {
+      "accession": "Q681Z2",
+      "go_id": "GO:0052848",
+      "feature_type": "ACT_SITE",
+      "start": 111,
+      "end": 112,
+      "signal_kind": "text",
+      "signal_value": "Phosphocysteine intermediate",
+      "reasoning": "The ACT_SITE annotation at positions 111-112 directly relates to the phosphocysteine intermediate involved in the reaction mechanism of the GO term, making it the most plausible explanation for why the protein carries this term."
+    },
+    {
+      "accession": "Q9NZJ9",
+      "go_id": "GO:0052848",
+      "feature_type": "DOMAIN",
+      "start": 17,
+      "end": 144,
+      "signal_kind": "text",
+      "signal_value": "Nudix hydrolase",
+      "reasoning": "The DOMAIN 17-144 annotation is strongly aligned with the enzymatic activity described by GO:0052848, as it refers to Nudix hydrolase, a class of enzymes that catalyze reactions involving phosphorus compounds, which matches the primary reaction mechanism in the definition."
+    },
+    {
+      "accession": "Q9ZVN4",
+      "go_id": "GO:0052848",
+      "feature_type": "DOMAIN",
+      "start": 57,
+      "end": 209,
+      "signal_kind": "text",
+      "signal_value": "Tyrosine-protein phosphatase",
+      "reasoning": "The DOMAIN feature (57-209) is a strong match to the GO term's definition because it indicates that the protein belongs to the class of enzymes involved in removing phosphate groups from proteins, which aligns with the catalytic activity described by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
