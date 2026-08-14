@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "Q0JH50",
+      "go_id": "GO:0045544",
+      "feature_type": "DOMAIN",
+      "start": 223,
+      "end": 324,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The \"Fe2OG dioxygenase\" domain directly corresponds to the enzymatic activity described in the GO term, which involves the oxidation of C-20 gibberellins. This feature is specific and matches the primary reaction mechanism of the GO term."
+    },
+    {
+      "accession": "Q4PT02",
+      "go_id": "GO:0045544",
+      "feature_type": "DOMAIN",
+      "start": 223,
+      "end": 324,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The domain (DOMAIN 223-324) is associated with Fe\u00b2\u207a-dependent dioxygenase activity, which aligns with the primary reaction of the GO term. This provides a strong and specific match to the enzyme's function as described in the definition."
+    },
+    {
+      "accession": "Q39110",
+      "go_id": "GO:0045544",
+      "feature_type": "DOMAIN",
+      "start": 221,
+      "end": 322,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The DOMAIN 221-322 feature is directly related to the iron-dependent oxygenase activity described in the GO term, which matches the primary reaction of catalyzing the oxidation of C-20 gibberellins. This feature provides a strong and specific match to the GO term's definition."
+    },
+    {
+      "accession": "Q69LD8",
+      "go_id": "GO:0045544",
+      "feature_type": "DOMAIN",
+      "start": 197,
+      "end": 304,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The domain \"Fe2OG dioxygenase\" directly matches the structural class of the enzyme that catalyzes the oxidation reaction described in the GO term's definition, making it the most plausible explanation for why Q69LD8 carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

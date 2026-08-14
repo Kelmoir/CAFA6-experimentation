@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0045552",
+  "name": "dihydrokaempferol 4-reductase activity",
+  "def": "Catalysis of the reaction: cis-3,4-leucopelargonidin + NADP+ = (+)-dihydrokaempferol + NADPH + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P51102"
+  ],
+  "assigned_accessions": [
+    "P51102"
+  ]
+}

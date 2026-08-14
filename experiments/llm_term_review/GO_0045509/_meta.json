@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0045509",
+  "name": "interleukin-27 receptor activity",
+  "def": "Combining with interleukin-27 and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P40189",
+    "P40190",
+    "Q00560",
+    "Q6UWB1"
+  ],
+  "assigned_accessions": [
+    "P40189",
+    "P40190",
+    "Q00560",
+    "Q6UWB1"
+  ]
+}

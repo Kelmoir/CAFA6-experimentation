@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "P43432",
+      "go_id": "GO:0045519",
+      "feature_type": "DOMAIN",
+      "start": 22,
+      "end": 106,
+      "signal_kind": "text",
+      "signal_value": "Ig-like C2-type",
+      "reasoning": "The \"Ig-like C2-type\" domain in position 22-106 is structurally similar to immunoglobulin domains and is known to interact with receptors, making it the most plausible explanation for the binding activity described by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9EQ14",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9NPF7",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

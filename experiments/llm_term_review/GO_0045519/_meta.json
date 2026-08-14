@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0045519",
+  "name": "interleukin-23 receptor binding",
+  "def": "Binding to an interleukin-23 receptor.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P43432",
+    "Q9EQ14",
+    "Q9NPF7"
+  ],
+  "assigned_accessions": [
+    "P43432",
+    "Q9EQ14",
+    "Q9NPF7"
+  ]
+}

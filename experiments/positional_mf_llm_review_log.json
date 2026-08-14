@@ -21768,5 +21768,172 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0045509": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "wsxws motif",
+    "accessions": [
+     "P40189",
+     "P40190"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like C2-type",
+    "accessions": [
+     "Q00560"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6UWB1",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q6UWB1 do not provide any specific evidence that directly explains the function of interleukin-27 receptor activity as defined by GO:0045509."
+   }
+  ]
+ },
+ "GO:0045519": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like C2-type",
+    "accessions": [
+     "P43432"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9EQ14",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9NPF7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0045543": {
+  "n_resolved": 3,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fe2OG dioxygenase",
+    "accessions": [
+     "Q7XP65",
+     "Q9C6I4",
+     "Q9FZ21"
+    ],
+    "reason": "resolved to ['InterPro:IPR005123', 'InterPro:IPR044861', 'PROSITE:PS51471'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR005123': 159, 'InterPro:IPR044861': 90, 'PROSITE:PS51471': 159})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q8LGZ9",
+    "go_id": "GO:0045543",
+    "feature_type": "BINDING",
+    "start": 197,
+    "end": 198,
+    "signal_kind": "ligand",
+    "signal_value": "2-oxoglutarate",
+    "reasoning": "The binding of 2-oxoglutarate at position 197-198 is central to the enzyme's function, but it only echoes a word from a secondary clause and does not directly explain why the protein carries the GO term."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0045544": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fe2OG dioxygenase",
+    "accessions": [
+     "Q0JH50",
+     "Q39110",
+     "Q4PT02",
+     "Q69LD8"
+    ],
+    "reason": "resolved to ['InterPro:IPR005123', 'InterPro:IPR044861', 'PROSITE:PS51471'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR005123': 159, 'InterPro:IPR044861': 90, 'PROSITE:PS51471': 159})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0045549": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "K4CJJ1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for K4CJJ1 provides a strong match to the primary reaction of the 9-cis-epoxycarotenoid dioxygenase activity. The available evidence is limited to ligand-binding sites, which do not directly support the defined catalytic mechanism."
+   },
+   {
+    "accession": "O24023",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong, specific match to the defined reaction mechanism of the GO term. All binding features involve Fe cations, which are unrelated to the 9-cis-epoxycarotenoid oxidation process described in the definition."
+   },
+   {
+    "accession": "Q9LRM7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list provides evidence for the catalytic mechanism described by the GO term, making it impossible to determine a plausible explanation."
+   },
+   {
+    "accession": "Q7XU29",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0045552": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P51102",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P51102 matches the primary reaction of the GO term, which is the catalysis of cis-3,4-leucopelargonidin with NADP+ to produce (+)-dihydrokaempferol. The protein's binding sites for NADP(+) are ligand-binding regions and do not directly account for the enzymatic activity defined by the GO term."
+   }
+  ]
  }
 }

@@ -19564,6 +19564,15 @@
   ],
   "text_patterns": []
  },
+ "GO:0045509": {
+  "name": "interleukin-27 receptor activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "wsxws motif"
+  ]
+ },
  "GO:0045513": {
   "name": "interleukin-27 binding",
   "ligands": [],

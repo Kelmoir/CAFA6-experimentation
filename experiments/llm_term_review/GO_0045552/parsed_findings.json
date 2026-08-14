@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P51102",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P51102 matches the primary reaction of the GO term, which is the catalysis of cis-3,4-leucopelargonidin with NADP+ to produce (+)-dihydrokaempferol. The protein's binding sites for NADP(+) are ligand-binding regions and do not directly account for the enzymatic activity defined by the GO term."
+    }
+  ]
+}

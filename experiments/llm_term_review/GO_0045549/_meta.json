@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0045549",
+  "name": "9-cis-epoxycarotenoid dioxygenase activity",
+  "def": "Catalysis of the reactions: a 9-cis-epoxycarotenoid + O2 = 2-cis,4-trans-xanthoxin + a 12'-apo-carotenal; 9-cis-violaxanthin + O2 = 2-cis,4-trans-xanthoxin + (3S,5R,6S)-5,6-epoxy-3-hydroxy-5,6-dihydro-12'-apo-beta-caroten-12'-al; and 9'-cis-neoxanthin + O2 = 2-cis,4-trans-xanthoxin + (3S,5R,6R)-5,6-dihydroxy-6,7-didehydro-5,6-dihydro-12'-apo-beta-caroten-12'-al.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "K4CJJ1",
+    "O24023",
+    "Q7XU29",
+    "Q9LRM7"
+  ],
+  "assigned_accessions": [
+    "K4CJJ1",
+    "O24023",
+    "Q7XU29",
+    "Q9LRM7"
+  ]
+}
