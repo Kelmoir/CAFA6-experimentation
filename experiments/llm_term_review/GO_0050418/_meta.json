@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0050418",
+  "name": "hydroxylamine reductase activity",
+  "def": "Catalysis of the reaction: NH3 + H2O + acceptor = hydroxylamine + reduced acceptor.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P24474",
+    "P75825"
+  ],
+  "assigned_accessions": [
+    "P24474",
+    "P75825"
+  ]
+}

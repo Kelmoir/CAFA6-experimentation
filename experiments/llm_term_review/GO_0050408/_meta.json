@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050408",
+  "name": "[pyruvate kinase]-phosphatase activity",
+  "def": "Catalysis of the reaction: [pyruvate kinase] phosphate + H2O = [pyruvate kinase] + phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P46014"
+  ],
+  "assigned_accessions": [
+    "P46014"
+  ]
+}

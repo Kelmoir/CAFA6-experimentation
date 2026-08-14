@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q6ZMM2",
+      "go_id": "GO:0050436",
+      "feature_type": "DOMAIN",
+      "start": 44,
+      "end": 97,
+      "signal_kind": "text",
+      "signal_value": "TSP type-1",
+      "reasoning": "The TSP type-1 domain in Q6ZMM2 directly supports the definition of microfibril binding by providing a specific structural feature that is chemically relevant to this function."
+    },
+    {
+      "accession": "Q6PCB0",
+      "go_id": "GO:0050436",
+      "feature_type": "DOMAIN",
+      "start": 33,
+      "end": 213,
+      "signal_kind": "text",
+      "signal_value": "VWFA",
+      "reasoning": "The presence of the VWFA motif in the domain 33-213 of Q6PCB0 strongly suggests that this protein has the ability to bind to microfibers, which matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P24928",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q28019",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

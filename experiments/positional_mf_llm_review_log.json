@@ -26019,5 +26019,240 @@
     "reasoning": "The protein Q9ZSK1 has multiple SAM motif regions, which are known to be involved in methyltransferase activity. However, none of these regions are explicitly positioned to carry out the defined reaction of the GO term \"tocopherol C-methyltransferase activity.\" Therefore, there is no single annotated feature that directly matches the primary reaction of this GO term."
    }
   ]
+ },
+ "GO:0050362": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q9C969"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q94A02",
+    "reason": "none_verdict",
+    "reasoning": "The GO term describes an enzymatic activity involving a specific chemical reaction, but the annotated features for Q94A02 only indicate the presence of a cofactor (pyridoxal 5'-phosphate). There is no evidence in the Annotated features that directly supports the definition of the GO term."
+   },
+   {
+    "accession": "Q9LR29",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9LR29 do not provide any direct evidence that supports the catalytic activity defined by GO:0050362."
+   },
+   {
+    "accession": "Q9S7N2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9S7N2 directly matches the GO term's primary reaction mechanism, as it only describes ligand binding without specifying the enzyme's catalytic activity or the specific reaction it performs."
+   }
+  ]
+ },
+ "GO:0050379": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9EPS3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction of catalyzing the UDP-glucuronate 5'-epimerase activity, and all features either echo words from secondary clauses or are generic and could apply to many proteins."
+   }
+  ]
+ },
+ "GO:0050408": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PPM-type phosphatase",
+    "accessions": [
+     "P46014"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050416": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "N-formimidoyl-L-glutamate",
+    "accessions": [
+     "Q9HU77"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050418": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P24474",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P75825",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0050436": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "TSP type-1",
+    "accessions": [
+     "Q6ZMM2"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "VWFA",
+    "accessions": [
+     "Q6PCB0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P24928",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q28019",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0050439": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "thiamine diphosphate",
+    "accessions": [
+     "P9WIS5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050446": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "FMN",
+    "accessions": [
+     "P41407"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050459": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8BWU8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9VU95",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8TBG4",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature provided for Q8TBG4 is a Disordered REGION (467-499), but it does not directly support or explain the primary reaction of the GO term \"ethanolamine-phosphate phospho-lyase activity.\" No other annotated feature in the protein's section provides a strong match to the definition's chemistry."
+   },
+   {
+    "accession": "Q7SY54",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q7SY54 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The highest score (5/10) is for a domain associated with phosphoethanolamine activity, which aligns with the GO term's definition. However, no feature explicitly states that this protein carries the defined enzymatic activity, so the match remains uncertain."
+   }
+  ]
+ },
+ "GO:0050465": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P37261",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }

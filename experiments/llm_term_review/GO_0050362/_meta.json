@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0050362",
+  "name": "L-tryptophan:2-oxoglutarate aminotransferase activity",
+  "def": "Catalysis of the reaction: L-tryptophan + 2-oxoglutarate = indolepyruvate + L-glutamate.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "Q94A02",
+    "Q9C969",
+    "Q9LR29",
+    "Q9S7N2"
+  ],
+  "assigned_accessions": [
+    "Q94A02",
+    "Q9C969",
+    "Q9LR29",
+    "Q9S7N2"
+  ]
+}

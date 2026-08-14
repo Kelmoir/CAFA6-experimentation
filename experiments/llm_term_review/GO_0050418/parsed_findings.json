@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P24474",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P75825",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

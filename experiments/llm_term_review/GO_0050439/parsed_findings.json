@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P9WIS5",
+      "go_id": "GO:0050439",
+      "feature_type": "BINDING",
+      "start": 541,
+      "end": 542,
+      "signal_kind": "ligand",
+      "signal_value": "thiamine diphosphate",
+      "reasoning": "The binding site for thiamine diphosphate directly supports the enzymatic activity defined by GO:0050439, which involves the transfer of a phosphate group from this cofactor. This specific feature is more likely to be the structural basis for the molecular function than any other feature that only echoes a word from a secondary clause."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

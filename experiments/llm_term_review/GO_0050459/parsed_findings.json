@@ -1,0 +1,28 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8BWU8",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9VU95",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8TBG4",
+      "reason": "none_verdict",
+      "reasoning": "The only positional feature provided for Q8TBG4 is a Disordered REGION (467-499), but it does not directly support or explain the primary reaction of the GO term \"ethanolamine-phosphate phospho-lyase activity.\" No other annotated feature in the protein's section provides a strong match to the definition's chemistry."
+    },
+    {
+      "accession": "Q7SY54",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for Q7SY54 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The highest score (5/10) is for a domain associated with phosphoethanolamine activity, which aligns with the GO term's definition. However, no feature explicitly states that this protein carries the defined enzymatic activity, so the match remains uncertain."
+    }
+  ]
+}

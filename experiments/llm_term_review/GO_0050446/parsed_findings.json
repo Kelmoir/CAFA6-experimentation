@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P41407",
+      "go_id": "GO:0050446",
+      "feature_type": "BINDING",
+      "start": 9,
+      "end": 10,
+      "signal_kind": "ligand",
+      "signal_value": "FMN",
+      "reasoning": "The binding of FMN to the enzyme is a direct and essential step in the catalytic activity of azobenzene reductase, as it provides the reducing power required for the formation of NADPH. This binding site is specifically involved in the reaction mechanism described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

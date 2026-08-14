@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050465",
+  "name": "nitroquinoline-N-oxide reductase [NAD(P)H] activity",
+  "def": "Catalysis of the reaction: 4-(hydroxyamino)quinoline N-oxide + 2 NAD(P)+ + H2O = 4-nitroquinoline N-oxide + 2 NAD(P)H + 2 H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P37261"
+  ],
+  "assigned_accessions": [
+    "P37261"
+  ]
+}

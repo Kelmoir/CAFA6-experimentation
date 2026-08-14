@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9EPS3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction of catalyzing the UDP-glucuronate 5'-epimerase activity, and all features either echo words from secondary clauses or are generic and could apply to many proteins."
+    }
+  ]
+}

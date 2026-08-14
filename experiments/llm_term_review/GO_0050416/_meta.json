@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050416",
+  "name": "formimidoylglutamate deiminase activity",
+  "def": "Catalysis of the reaction: N-formimidoyl-L-glutamate + H2O = N-formyl-L-glutamate + NH3.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9HU77"
+  ],
+  "assigned_accessions": [
+    "Q9HU77"
+  ]
+}

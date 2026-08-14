@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050439",
+  "name": "2-hydroxy-3-oxoadipate synthase activity",
+  "def": "Catalysis of the reaction: 2-oxoglutarate + glyoxylate + H+ = 2-hydroxy-3-oxoadipate + CO2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WIS5"
+  ],
+  "assigned_accessions": [
+    "P9WIS5"
+  ]
+}

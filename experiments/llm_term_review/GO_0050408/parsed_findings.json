@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P46014",
+      "go_id": "GO:0050408",
+      "feature_type": "DOMAIN",
+      "start": 303,
+      "end": 577,
+      "signal_kind": "text",
+      "signal_value": "PPM-type phosphatase",
+      "reasoning": "The \"DOMAIN 303-577\" labeled as \"PPM-type phosphatase\" directly corresponds to the enzymatic function described by the GO term, which is catalyzing phosphate transfer. This feature specifically matches the chemistry of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

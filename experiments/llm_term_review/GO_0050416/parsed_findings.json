@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9HU77",
+      "go_id": "GO:0050416",
+      "feature_type": "BINDING",
+      "start": 60,
+      "end": 61,
+      "signal_kind": "ligand",
+      "signal_value": "N-formimidoyl-L-glutamate",
+      "reasoning": "The binding site for N-formimidoyl-L-glutamate directly supports the enzymatic activity of formimidoylglutamate deiminase, which involves this substrate in the reaction mechanism described by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

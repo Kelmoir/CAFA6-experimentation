@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050379",
+  "name": "UDP-glucuronate 5'-epimerase activity",
+  "def": "Catalysis of the reaction: UDP-alpha-D-glucuronate = UDP-L-iduronate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9EPS3"
+  ],
+  "assigned_accessions": [
+    "Q9EPS3"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0050459",
+  "name": "ethanolamine-phosphate phospho-lyase activity",
+  "def": "Catalysis of the reaction: H2O + phosphoethanolamine = acetaldehyde + NH4 + phosphate.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "Q7SY54",
+    "Q8BWU8",
+    "Q8TBG4",
+    "Q9VU95"
+  ],
+  "assigned_accessions": [
+    "Q7SY54",
+    "Q8BWU8",
+    "Q8TBG4",
+    "Q9VU95"
+  ]
+}
