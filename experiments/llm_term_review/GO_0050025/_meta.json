@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050025",
+  "name": "L-glutamate oxidase activity",
+  "def": "Catalysis of the reaction: L-glutamate + O2 + H2O = 2-oxoglutarate + NH3 + H2O2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q4F867"
+  ],
+  "assigned_accessions": [
+    "Q4F867"
+  ]
+}

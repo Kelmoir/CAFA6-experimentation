@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0050017",
+  "name": "L-3-cyanoalanine synthase activity",
+  "def": "Catalysis of the reaction: L-cysteine + HCN = sulfide + L-3-cyanoalanine.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "O45679",
+    "Q76MX2",
+    "Q9S757",
+    "Q9SXS7"
+  ],
+  "assigned_accessions": [
+    "O45679",
+    "Q76MX2",
+    "Q9S757",
+    "Q9SXS7"
+  ]
+}

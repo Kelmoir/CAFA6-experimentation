@@ -25104,5 +25104,253 @@
    }
   ],
   "issues": []
+ },
+ "GO:0048307": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q39161",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section directly matches the GO term's primary reaction mechanism, which involves the catalysis of a specific electron transfer reaction."
+   }
+  ]
+ },
+ "GO:0050015": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q00870",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0050017": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9S757",
+    "go_id": "GO:0050017",
+    "feature_type": "BINDING",
+    "start": 120,
+    "end": 121,
+    "signal_kind": "ligand",
+    "signal_value": "pyridoxal 5'-phosphate",
+    "reasoning": "The binding site for pyridoxal 5'-phosphate (P5P) is a plausible candidate as it is a coenzyme often involved in enzyme reactions. However, since the protein's own Annotated features do not provide any specific evidence that directly supports the GO term's definition, the verdict remains uncertain."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q76MX2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the specific enzymatic activity defined by the GO term \"L-3-cyanoalanine synthase activity.\""
+   },
+   {
+    "accession": "Q9SXS7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the specific reaction defined by the GO term \"L-3-cyanoalanine synthase activity.\" The binding sites for pyridoxal 5'-phosphate are generic and do not directly explain the enzyme's catalytic activity."
+   },
+   {
+    "accession": "O45679",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of L-3-cyanoalanine synthase activity, which involves the catalytic transfer of a phosphoryl group from pyridoxal 5'-phosphate to L-cysteine. The presence of multiple binding sites for pyridoxal 5'-phosphate does not specifically account for the enzyme's function as defined by GO:0050017."
+   }
+  ]
+ },
+ "GO:0050024": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "FAD",
+    "accessions": [
+     "O93852"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050025": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q4F867",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong, specific match to the primary reaction defined in the GO term's definition. All features are generic and could apply to many proteins carrying this term, but none directly explain the mechanism or chemistry of L-glutamate oxidase activity as specified in the definition."
+   }
+  ]
+ },
+ "GO:0050029": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q4F867"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P81383",
+    "reason": "none_verdict",
+    "reasoning": "No single annotated feature in P81383's Annotated features section directly matches the primary reaction mechanism of L-lysine oxidase activity (GO:0050029). The only plausible explanation would be a domain implementing the oxidation process, but this is not explicitly stated in the Annotated features."
+   }
+  ]
+ },
+ "GO:0050033": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A3LZU8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0050034": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton donor",
+    "accessions": [
+     "A3LZU7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050061": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P30839",
+     "P47740",
+     "Q80VQ0"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "E9Q3E1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction described in the GO term's definition, and the available features are too generic to be considered strong explanations."
+   }
+  ]
+ },
+ "GO:0050062": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q09517",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature describes the specific catalytic mechanism of phosphate transfer from NADP+ to the substrate, which is the primary reaction defined by GO:0050062."
+   }
+  ]
+ },
+ "GO:0050101": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A8CEI3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the primary reaction defined by the GO term. All binding sites are for pyridoxal 5'-phosphate, which is a cofactor, not an enzyme-specific domain. Thus, there is no positional feature that plausibly explains why this protein carries the term \"mimosinase activity.\""
+   },
+   {
+    "accession": "U6BYK3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for U6BYK3 directly corresponds to the catalytic mechanism described in the GO definition for \"mimosinase activity.\" The domain/family cross-references suggest involvement in pyridoxal 5'-phosphate-dependent enzymatic activity, but they do not provide a positional feature that matches the chemistry of the GO term."
+   }
+  ]
+ },
+ "GO:0050140": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Mo-bis(molybdopterin guanine dinucleotide)",
+    "accessions": [
+     "P33937"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

@@ -1,0 +1,18 @@
+=== A3LZU7 GO:0050034 (VERDICT missing) ===
+THINKING: The GO term is "L-rhamnose 1-dehydrogenase activity" (GO:0050034), which defines the catalysis of the reaction: L-rhamnofuranose + NAD+ = L-rhamnono-1,4-lactone + H+ + NADH. This indicates that the protein is involved in transferring a proton from NAD+ to L-rhamnose, forming a lactone and reducing NAD+ to NADH.
+
+The annotated features for this protein include multiple ACT_SITE regions and BINDING sites with ligands such as NADP(+). These features are relevant to understanding the enzyme's function, particularly in terms of proton transfer and substrate binding. 
+
+- **ACT_SITE 146-147** (note: Proton donor) – This region is directly involved in proton donation, which is a key part of the reaction mechanism.
+- **ACT_SITE 160-161** (note: Proton donor) – Another site where proton donation occurs, supporting the overall function.
+- **ACT_SITE 164-165** (note: Lowers pKa of active site Tyr) – This feature suggests that the enzyme has a domain or region that affects the acidity of tyrosine in the active site, which is important for catalysis.
+- **BINDING 18-19** (ligand: NADP(+)) – Indicates the enzyme's interaction with NADP+, which is a coenzyme involved in the reaction.
+- **BINDING 67-68**, **BINDING 94-95**, **BINDING 160-161**, **BINDING 193-194**, and **BINDING 195-196** (all with ligand: NADP(+)) – These multiple binding sites suggest that the enzyme has several regions where it interacts with NADP+, which is essential for its function.
+
+The primary reaction involves the transfer of a proton from NAD+ to L-rhamnose, forming a lactone and reducing NAD+ to NADH. The most specific feature that directly relates to this mechanism is **ACT_SITE 164-165** (note: Lowers pKa of active site Tyr), as it implies the enzyme has a domain that affects the acidity of tyrosine in the active site, which is crucial for catalysis.
+
+The highest score for matching the primary reaction is 9, as **ACT_SITE 164-165** directly relates to the mechanism of proton transfer and the role of tyrosine in the active site. This feature provides a strong basis for understanding why the protein carries the GO term "L-rhamnose 1-dehydrogenase activity."
+
+FEATURE: ACT_SITE 164-165  
+REASONING: The feature **ACT_SITE 164-165** (note: Lowers pKa of active site Tyr) directly relates to the mechanism of proton transfer in the reaction catalyzed by L-rhamnose 1-dehydrogenase, making it the most plausible explanation for why this protein carries the GO term.
+

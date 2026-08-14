@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050062",
+  "name": "long-chain-fatty-acyl-CoA luciferin component reductase activity",
+  "def": "Catalysis of the reaction: a long-chain fatty aldehyde + CoA + NADP+ = a long-chain fatty acyl-CoA + NADPH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q09517"
+  ],
+  "assigned_accessions": [
+    "Q09517"
+  ]
+}

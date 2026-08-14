@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0048307",
+  "name": "ferredoxin-nitrite reductase activity",
+  "def": "Catalysis of the reaction: 2 H2O + NH4+ + 6 oxidized [2Fe-2S]-[ferredoxin] = 8 H+ + nitrite + 6 reduced [2Fe-2S]-[ferredoxin].",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q39161"
+  ],
+  "assigned_accessions": [
+    "Q39161"
+  ]
+}

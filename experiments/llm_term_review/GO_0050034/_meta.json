@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050034",
+  "name": "L-rhamnose 1-dehydrogenase activity",
+  "def": "Catalysis of the reaction: L-rhamnofuranose + NAD+ = L-rhamnono-1,4-lactone + H+ + NADH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A3LZU7"
+  ],
+  "assigned_accessions": [
+    "A3LZU7"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q09517",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature describes the specific catalytic mechanism of phosphate transfer from NADP+ to the substrate, which is the primary reaction defined by GO:0050062."
+    }
+  ]
+}

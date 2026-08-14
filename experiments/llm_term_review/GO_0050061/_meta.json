@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0050061",
+  "name": "long-chain fatty aldehyde dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: a long-chain fatty aldehyde + H2O + NAD+ = a long-chain fatty acid + 2 H+ + NADH.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "E9Q3E1",
+    "P30839",
+    "P47740",
+    "Q80VQ0"
+  ],
+  "assigned_accessions": [
+    "E9Q3E1",
+    "P30839",
+    "P47740",
+    "Q80VQ0"
+  ]
+}

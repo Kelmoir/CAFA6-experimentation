@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050015",
+  "name": "kievitone hydratase activity",
+  "def": "Catalysis of the reaction: kievitone hydrate = H2O + H+ + kievitone.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q00870"
+  ],
+  "assigned_accessions": [
+    "Q00870"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0050029",
+  "name": "L-lysine oxidase activity",
+  "def": "Catalysis of the reaction: H2O + L-lysine + O2 = 6-amino-2-oxohexanoate + H2O2 + NH4+.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P81383",
+    "Q4F867"
+  ],
+  "assigned_accessions": [
+    "P81383",
+    "Q4F867"
+  ]
+}

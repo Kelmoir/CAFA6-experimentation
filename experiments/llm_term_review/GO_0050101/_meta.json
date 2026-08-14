@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0050101",
+  "name": "mimosinase activity",
+  "def": "Catalysis of the reaction: L-mimosine + H2O = 3-hydroxy-4H-pyrid-4-one + L-serine.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "A8CEI3",
+    "U6BYK3"
+  ],
+  "assigned_accessions": [
+    "A8CEI3",
+    "U6BYK3"
+  ]
+}

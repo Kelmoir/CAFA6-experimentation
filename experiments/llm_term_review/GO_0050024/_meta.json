@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050024",
+  "name": "L-galactonolactone oxidase activity",
+  "def": "Catalysis of the reaction: L-galactono-1,4-lactone + O2 = L-ascorbate + H2O2 + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O93852"
+  ],
+  "assigned_accessions": [
+    "O93852"
+  ]
+}

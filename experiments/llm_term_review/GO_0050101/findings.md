@@ -1,0 +1,10 @@
+## A8CEI3 GO:0050101
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature in the protein's list directly matches the primary reaction defined by the GO term. All binding sites are for pyridoxal 5'-phosphate, which is a cofactor, not an enzyme-specific domain. Thus, there is no positional feature that plausibly explains why this protein carries the term "mimosinase activity."
+---
+## U6BYK3 GO:0050101
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature for U6BYK3 directly corresponds to the catalytic mechanism described in the GO definition for "mimosinase activity." The domain/family cross-references suggest involvement in pyridoxal 5'-phosphate-dependent enzymatic activity, but they do not provide a positional feature that matches the chemistry of the GO term.
+---
