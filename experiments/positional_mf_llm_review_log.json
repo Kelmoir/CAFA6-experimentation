@@ -23265,6 +23265,27 @@
    }
   ]
  },
+ "GO:0047243": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A7MAS5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list describes the specific mechanism of glucosyl transfer from UDP-D-glucose to a flavanone, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "A0A096SRM5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the GO term's primary reaction, as all features are generic and do not indicate the enzyme's active site or the mechanism of substrate binding."
+   }
+  ]
+ },
  "GO:0047248": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -23278,6 +23299,216 @@
     "accession": "Q5H861",
     "reason": "none_verdict",
     "reasoning": "No annotated feature directly matches the primary reaction mechanism described in the GO term's definition. The available features only echo secondary or qualifying clauses, and no positional feature is explicitly tied to the enzyme's catalytic activity as defined."
+   }
+  ]
+ },
+ "GO:0047256": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8BGY6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9BYG0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047270": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P27128",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P27128 explicitly states the mechanism of the reaction (UDP-glucose transfer to lipopolysaccharide), only that it binds UDP. Therefore, no single feature directly explains the molecular function as defined by GO:0047270."
+   }
+  ]
+ },
+ "GO:0047290": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q64686",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8NDV1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9H4F1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047291": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UNP4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation of the enzyme's catalytic activity, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0047298": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "pyridoxal 5'-phosphate",
+    "accessions": [
+     "P80404",
+     "Q21217"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "P61922"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9BGI0",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q9BGI0 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The domain/family cross-reference \"InterPro:IPR004631 -- 4NH2But_aminotransferase_euk\" most plausibly explains the GO term \"GO:0047298\" because it directly relates to the enzyme's function in catalyzing transamination reactions, which is the primary mechanism described in the GO term's definition. This domain family is specifically associated with aminotransferases, including those that perform tr"
+   }
+  ]
+ },
+ "GO:0047299": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A7XRY8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in A7XRY8's Annotated features section directly matches the GO term's primary reaction mechanism. All binding sites describe substrate interactions, which are generic and do not specifically explain the enzymatic activity of tryptophan-phenylpyruvate transaminase."
+   }
+  ]
+ },
+ "GO:0047305": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q3UEG6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q64565",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9BYV1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047312": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9S7N2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9S7N2 specifically matches the chemistry defined by GO:0047312, which is about catalyzing the transamination reaction between pyruvate and L-phenylalanine. The only relevant domain/family cross-reference points to alliinase, not the specific enzyme involved in this reaction."
+   }
+  ]
+ },
+ "GO:0047330": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P9WIN1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047338": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9C5I1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
  }

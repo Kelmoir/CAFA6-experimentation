@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0047243",
+  "name": "flavanone 7-O-beta-glucosyltransferase activity",
+  "def": "Catalysis of the reaction: a flavanone + UDP-D-glucose = a flavanone 7-O-beta-D-glucoside + UDP.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "A0A096SRM5",
+    "A7MAS5"
+  ],
+  "assigned_accessions": [
+    "A0A096SRM5",
+    "A7MAS5"
+  ]
+}

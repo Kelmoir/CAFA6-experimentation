@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A7XRY8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in A7XRY8's Annotated features section directly matches the GO term's primary reaction mechanism. All binding sites describe substrate interactions, which are generic and do not specifically explain the enzymatic activity of tryptophan-phenylpyruvate transaminase."
+    }
+  ]
+}

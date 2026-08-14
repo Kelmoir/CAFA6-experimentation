@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047338",
+  "name": "UTP:xylose-1-phosphate uridylyltransferase activity",
+  "def": "Catalysis of the reaction: alpha-D-xylose 1-phosphate + UTP = UDP-D-xylose + diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9C5I1"
+  ],
+  "assigned_accessions": [
+    "Q9C5I1"
+  ]
+}

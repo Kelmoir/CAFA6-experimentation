@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A7MAS5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list describes the specific mechanism of glucosyl transfer from UDP-D-glucose to a flavanone, which is the primary reaction defined by the GO term."
+    },
+    {
+      "accession": "A0A096SRM5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong match to the GO term's primary reaction, as all features are generic and do not indicate the enzyme's active site or the mechanism of substrate binding."
+    }
+  ]
+}

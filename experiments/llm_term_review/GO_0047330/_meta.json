@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047330",
+  "name": "polyphosphate-glucose phosphotransferase activity",
+  "def": "Catalysis of the reaction: beta-D-glucose + long chain polyphosphate = glucose-6-phosphate + long chain polyphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WIN1"
+  ],
+  "assigned_accessions": [
+    "P9WIN1"
+  ]
+}

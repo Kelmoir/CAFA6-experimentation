@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047291",
+  "name": "lactosylceramide alpha-2,3-sialyltransferase activity",
+  "def": "Catalysis of the reaction: cytolipin-H + CMP-N-acetylneuraminate = alpha-N-acetylneuraminyl-2,3-beta-D-galactosyl-1,4-beta-D-glucosylceramide + CMP. Alpha-N-acetylneuraminyl-2,3-beta-D-galactosyl-1,4-beta-D-glucosylceramide is also known as GM3.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9UNP4"
+  ],
+  "assigned_accessions": [
+    "Q9UNP4"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P9WIN1",
+      "go_id": "GO:0047330",
+      "feature_type": "BINDING",
+      "start": 23,
+      "end": 29,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The \"BINDING\" feature with ATP (23-29) directly supports the GO term's definition by indicating the protein interacts with ATP, a key component in the phosphotransferase reaction. This binding site is likely involved in the transfer of the phosphate group from polyphosphate to glucose, making it the most plausible explanation for the molecular function described by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

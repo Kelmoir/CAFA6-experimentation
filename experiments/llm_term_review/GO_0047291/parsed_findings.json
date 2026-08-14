@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9UNP4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation of the enzyme's catalytic activity, which is the primary reaction defined by the GO term."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047299",
+  "name": "tryptophan-phenylpyruvate transaminase activity",
+  "def": "Catalysis of the reaction: keto-phenylpyruvate + L-tryptophan = 3-(indol-3-yl)pyruvate + L-phenylalanine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A7XRY8"
+  ],
+  "assigned_accessions": [
+    "A7XRY8"
+  ]
+}

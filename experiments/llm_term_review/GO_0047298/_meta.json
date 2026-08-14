@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047298",
+  "name": "(S)-3-amino-2-methylpropionate transaminase activity",
+  "def": "Catalysis of the reaction: (S)-3-amino-2-methylpropanoate + 2-oxoglutarate = 2-methyl-3-oxopropanoate + L-glutamate.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "P61922",
+    "P80404",
+    "Q21217",
+    "Q9BGI0"
+  ],
+  "assigned_accessions": [
+    "P61922",
+    "P80404",
+    "Q21217",
+    "Q9BGI0"
+  ]
+}

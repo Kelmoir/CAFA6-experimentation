@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047312",
+  "name": "L-phenylalanine-pyruvate transaminase activity",
+  "def": "Catalysis of the reaction: pyruvate + L-phenylalanine = phenylpyruvate + L-alanine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9S7N2"
+  ],
+  "assigned_accessions": [
+    "Q9S7N2"
+  ]
+}
