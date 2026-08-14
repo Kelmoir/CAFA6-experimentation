@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9HUI8",
+      "go_id": "GO:0047435",
+      "feature_type": "BINDING",
+      "start": 75,
+      "end": 76,
+      "signal_kind": "ligand",
+      "signal_value": "thiamine diphosphate",
+      "reasoning": "The binding site at positions 75-76 involves thiamine diphosphate, a coenzyme critical for catalyzing the decarboxylation reaction described in the definition of the GO term. This directly supports the enzyme's function as defined by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047513",
+  "name": "1,2-alpha-L-fucosidase activity",
+  "def": "Catalysis of the reaction: H2O + methyl-2-alpha-L-fucopyranosyl-beta-D-galactoside = L-fucose + methyl beta-D-galactoside.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8L7W8"
+  ],
+  "assigned_accessions": [
+    "Q8L7W8"
+  ]
+}

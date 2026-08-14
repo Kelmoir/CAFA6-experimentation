@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P31210",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear explanation for the defined reaction of the GO term \"3-oxo-5-beta-steroid 4-dehydrogenase activity.\" The binding sites indicate interactions with substrates and acceptors, but they do not directly explain the catalytic mechanism described in the definition."
+    }
+  ]
+}

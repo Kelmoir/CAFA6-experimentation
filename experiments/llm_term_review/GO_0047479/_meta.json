@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047479",
+  "name": "trypanothione synthase activity",
+  "def": "Catalysis of the reaction: reduced glutathione + glutathionylspermidine + ATP = trypanothione + ADP + phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9GT49"
+  ],
+  "assigned_accessions": [
+    "Q9GT49"
+  ]
+}

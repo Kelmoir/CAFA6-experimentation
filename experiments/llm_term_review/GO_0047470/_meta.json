@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047470",
+  "name": "(1,4)-alpha-D-glucan 1-alpha-D-glucosylmutase activity",
+  "def": "Catalysis of the reaction: 4-[(1->4)-alpha-D-glucosyl](n-1)-D-glucose = 1-alpha-D-[(1->4)-alpha-D-glucosyl](n-1)-alpha-D-glucopyranoside.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WQ21"
+  ],
+  "assigned_accessions": [
+    "P9WQ21"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047435",
+  "name": "5-guanidino-2-oxopentanoate decarboxylase activity",
+  "def": "Catalysis of the reaction: 5-guanidino-2-oxopentanoate + H+ = 4-guanidinobutanal + CO2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9HUI8"
+  ],
+  "assigned_accessions": [
+    "Q9HUI8"
+  ]
+}

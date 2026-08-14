@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9M2E2",
+      "go_id": "GO:0047504",
+      "feature_type": "BINDING",
+      "start": 15,
+      "end": 40,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The BINDING 15-40 feature directly relates to the enzyme's interaction with NADP+, which is essential for catalyzing the reaction described in the GO term's definition, making it a strong match."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "Q02979",
+      "go_id": "GO:0047395",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 213,
+      "signal_kind": "text",
+      "signal_value": "SPX",
+      "reasoning": "The SPX domain is directly associated with the catalytic activity of phosphodiesterase, which matches the primary reaction defined in the GO term's definition."
+    },
+    {
+      "accession": "P10908",
+      "go_id": "GO:0047395",
+      "feature_type": "DOMAIN",
+      "start": 6,
+      "end": 244,
+      "signal_kind": "text",
+      "signal_value": "GP-PDE",
+      "reasoning": "The \"DOMAIN 6-244\" annotation with the name \"GP-PDE\" directly corresponds to the enzyme activity defined in the GO term, making it the most plausible structural/functional basis for the molecular function."
+    },
+    {
+      "accession": "Q9NZC3",
+      "go_id": "GO:0047395",
+      "feature_type": "DOMAIN",
+      "start": 64,
+      "end": 331,
+      "signal_kind": "text",
+      "signal_value": "GP-PDE",
+      "reasoning": "The \"DOMAIN\" feature spans the entire sequence of the protein and is annotated with \"GP-PDE,\" a domain family known for phosphodiesterase activity, which directly matches the GO term's definition of catalyzing the hydrolysis of a glycerophosphodiester bond."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9JL56",
+      "reason": "none_verdict",
+      "reasoning": "The defined reaction for the GO term involves hydrolysis of a specific phospholipid, and none of the annotated features (binding sites for Mg(2+)) directly support this mechanism."
+    }
+  ]
+}

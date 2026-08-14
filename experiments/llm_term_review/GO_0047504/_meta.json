@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047504",
+  "name": "(-)-menthol dehydrogenase activity",
+  "def": "Catalysis of the reaction: (-)-menthol + NADP+ = (2S,5R)-menthone + H+ + NADPH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9M2E2"
+  ],
+  "assigned_accessions": [
+    "Q9M2E2"
+  ]
+}

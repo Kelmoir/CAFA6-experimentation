@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047445",
+  "name": "3-hydroxy-3-isohexenylglutaryl-CoA lyase activity",
+  "def": "Catalysis of the reaction: 3-hydroxy-3-(4-methylpent-3-en-1-yl)glutaryl-CoA + 4 H+ = 7-methyl-3-oxooct-6-enoyl-CoA + acetate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9I2A0"
+  ],
+  "assigned_accessions": [
+    "Q9I2A0"
+  ]
+}

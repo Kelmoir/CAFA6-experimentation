@@ -23706,6 +23706,42 @@
    }
   ]
  },
+ "GO:0047395": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "GP-PDE",
+    "accessions": [
+     "P10908",
+     "Q9NZC3"
+    ],
+    "reason": "resolved to ['InterPro:IPR030395', 'PROSITE:PS51704'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR030395': 29, 'PROSITE:PS51704': 29})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SPX",
+    "accessions": [
+     "Q02979"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9JL56",
+    "reason": "none_verdict",
+    "reasoning": "The defined reaction for the GO term involves hydrolysis of a specific phospholipid, and none of the annotated features (binding sites for Mg(2+)) directly support this mechanism."
+   }
+  ]
+ },
  "GO:0047396": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -23754,6 +23790,206 @@
     "accession": "P0ADR8",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047435": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "thiamine diphosphate",
+    "accessions": [
+     "Q9HUI8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047445": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9I2A0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9I2A0 provides a clear structural or functional basis that directly supports the specific enzymatic activity defined by GO:0047445, which is about catalyzing the reaction of 3-hydroxy-3-isohexenylglutaryl-CoA with H+ to produce 7-methyl-3-oxooct-6-enoyl-CoA and acetate. The only binding site is for the substrate, which does not establish a strong connection between the pro"
+   }
+  ]
+ },
+ "GO:0047470": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WQ21",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047479": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9GT49",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction described in the GO term's definition, and all features are either generic or only loosely related to the enzymatic activity."
+   }
+  ]
+ },
+ "GO:0047490": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "Q2TXS4",
+     "Q5BAU9"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A2R3I1",
+    "reason": "none_verdict",
+    "reasoning": "The only domain/family cross-reference that directly relates to pectin lyase activity is \"Pec_lyase\" (InterPro:IPR002022), but since no positional feature has been confirmed to explain the term, we cannot definitively say that it matches the GO term's own chemistry."
+   },
+   {
+    "accession": "Q5BA61",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the GO term's primary reaction mechanism, and the only candidate (ACT_SITE 254-255) is too generic to establish a meaningful connection."
+   }
+  ]
+ },
+ "GO:0047493": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "E9AFX2",
+     "Q9M325"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SAM",
+    "accessions": [
+     "Q96LT4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9XIG2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047504": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "Q9M2E2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047508": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q58673",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047513": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8L7W8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047568": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P31210",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear explanation for the defined reaction of the GO term \"3-oxo-5-beta-steroid 4-dehydrogenase activity.\" The binding sites indicate interactions with substrates and acceptors, but they do not directly explain the catalytic mechanism described in the definition."
    }
   ]
  }

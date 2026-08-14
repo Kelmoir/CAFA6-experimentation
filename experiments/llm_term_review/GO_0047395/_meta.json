@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047395",
+  "name": "glycerophosphoinositol glycerophosphodiesterase activity",
+  "def": "Catalysis of the reaction: 1-(sn-glycero-3-phospho)-1D-myo-inositol + H2O = sn-glycerol 3-phosphate + myo-inositol + H+.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P10908",
+    "Q02979",
+    "Q9JL56",
+    "Q9NZC3"
+  ],
+  "assigned_accessions": [
+    "P10908",
+    "Q02979",
+    "Q9JL56",
+    "Q9NZC3"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q2TXS4",
+      "go_id": "GO:0047490",
+      "feature_type": "ACT_SITE",
+      "start": 254,
+      "end": 255,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The ACT_SITE annotation directly corresponds to the location of the enzymatic reaction described in the GO term's definition, making it a strong match for the primary reaction mechanism."
+    },
+    {
+      "accession": "Q5BAU9",
+      "go_id": "GO:0047490",
+      "feature_type": "ACT_SITE",
+      "start": 255,
+      "end": 256,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The ACT_SITE annotation directly corresponds to the site where the pectin lyase activity occurs, which is the primary mechanism described in the GO term's definition. This provides a strong and specific match for the molecular function being annotated."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A2R3I1",
+      "reason": "none_verdict",
+      "reasoning": "The only domain/family cross-reference that directly relates to pectin lyase activity is \"Pec_lyase\" (InterPro:IPR002022), but since no positional feature has been confirmed to explain the term, we cannot definitively say that it matches the GO term's own chemistry."
+    },
+    {
+      "accession": "Q5BA61",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong match to the GO term's primary reaction mechanism, and the only candidate (ACT_SITE 254-255) is too generic to establish a meaningful connection."
+    }
+  ]
+}

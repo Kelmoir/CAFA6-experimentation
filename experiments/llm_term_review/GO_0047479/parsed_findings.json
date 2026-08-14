@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9GT49",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction described in the GO term's definition, and all features are either generic or only loosely related to the enzymatic activity."
+    }
+  ]
+}

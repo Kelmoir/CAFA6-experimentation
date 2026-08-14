@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "E9AFX2",
+      "go_id": "GO:0047493",
+      "feature_type": "ACT_SITE",
+      "start": 219,
+      "end": 220,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The ACT_SITE annotation directly identifies the location of the reaction described in the GO term's definition, making it a strong and specific match."
+    },
+    {
+      "accession": "Q96LT4",
+      "go_id": "GO:0047493",
+      "feature_type": "DOMAIN",
+      "start": 11,
+      "end": 78,
+      "signal_kind": "text",
+      "signal_value": "SAM",
+      "reasoning": "The \"DOMAIN 11-78\" feature is associated with the SAM domain, which is directly involved in the reaction catalyzed by the GO term. This matches the primary chemistry of the GO term and provides a strong basis for its prediction."
+    },
+    {
+      "accession": "Q9M325",
+      "go_id": "GO:0047493",
+      "feature_type": "ACT_SITE",
+      "start": 180,
+      "end": 181,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The ACT_SITE 180-181 region is directly associated with the enzyme's active site, which is where the specific reaction of ceramide cholinephosphotransferase activity occurs. This matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9XIG2",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

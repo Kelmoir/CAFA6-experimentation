@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047508",
+  "name": "(R)-2-methylmalate dehydratase activity",
+  "def": "Catalysis of the reaction: (R)-citramalate = 2-methylmaleate + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q58673"
+  ],
+  "assigned_accessions": [
+    "Q58673"
+  ]
+}

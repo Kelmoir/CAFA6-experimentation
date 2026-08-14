@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047568",
+  "name": "3-oxo-5-beta-steroid 4-dehydrogenase activity",
+  "def": "Catalysis of the reaction: a 3-oxo-5-beta-steroid + acceptor = a 3-oxo-D4-steroid + reduced acceptor.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P31210"
+  ],
+  "assigned_accessions": [
+    "P31210"
+  ]
+}
