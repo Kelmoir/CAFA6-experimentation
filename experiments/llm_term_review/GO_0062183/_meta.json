@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0062183",
+  "name": "all-trans retinoic acid 18-hydroxylase activity",
+  "def": "Catalysis of the reaction: all-trans-retinoate + O2 + reduced [NADPH--hemoprotein reductase] = all-trans-18-hydroxyretinoate + H+ + H2O + oxidized [NADPH--hemoprotein reductase].",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "O55127",
+    "P24462",
+    "Q6EIG3",
+    "Q9NR63"
+  ],
+  "assigned_accessions": [
+    "O55127",
+    "P24462",
+    "Q6EIG3",
+    "Q9NR63"
+  ]
+}

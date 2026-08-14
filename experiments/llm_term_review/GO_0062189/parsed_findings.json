@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P10635",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the catalytic reaction or mechanism defined by the GO term's primary statement, so there is no specific match for the term's chemistry."
+    },
+    {
+      "accession": "P20813",
+      "reason": "none_verdict",
+      "reasoning": "The domain annotation at position 435-436 for P20813 is unrelated to the epoxidase activity described in GO:0062189, as it only identifies a ligand-binding site and does not provide evidence of the enzyme's catalytic mechanism. No other annotated feature directly supports the primary reaction of the GO term."
+    },
+    {
+      "accession": "P12791",
+      "reason": "none_verdict",
+      "reasoning": "The only positional feature provided for P12791 is a heme-binding site (444-445), which is relevant to the protein's potential involvement in oxygen-dependent reactions. However, this binding site does not directly explain the epoxidase activity defined by GO:0062189, as it only indicates the protein's ability to bind heme, not the specific reaction mechanism of epoxidation. Therefore, no single a"
+    },
+    {
+      "accession": "P08684",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for this protein is a binding site for heme, which is relevant to hemoprotein function but does not directly explain the epoxidation activity defined by GO:0062189."
+    }
+  ]
+}

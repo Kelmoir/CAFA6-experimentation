@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O43174",
+      "go_id": "GO:0062182",
+      "feature_type": "BINDING",
+      "start": 441,
+      "end": 442,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The BINDING 441-442 annotation directly supports the primary reaction of all-trans retinoic acid 4-hydrolase activity, involving heme binding and retinal metabolism, which is consistent with the GO term's definition."
+    },
+    {
+      "accession": "O55127",
+      "go_id": "GO:0062182",
+      "feature_type": "BINDING",
+      "start": 441,
+      "end": 442,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding of heme (a cofactor involved in oxygen-dependent enzymatic reactions) is a plausible structural feature that could support the reaction mechanism described by GO:0062182, making it a likely explanation for why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P79739",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct structural or functional basis for the specific reaction mechanism of all-trans retinoic acid 4-hydrolase activity, which is defined by the GO term's primary action."
+    },
+    {
+      "accession": "Q9PUB4",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for Q9PUB4 is BINDING 436-437, which involves heme and axial binding residues. This feature does not directly support the reaction mechanism defined by GO:0062182, which specifically involves all-trans-retinoate hydrolysis. Therefore, there is no strong evidence that this protein carries the term as defined by GO:0062182."
+    }
+  ]
+}

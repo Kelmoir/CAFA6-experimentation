@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O55127",
+      "go_id": "GO:0062183",
+      "feature_type": "BINDING",
+      "start": 441,
+      "end": 442,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The annotated feature \"BINDING 441-442\" with ligand heme directly supports the GO term's definition by indicating that the protein binds a heme ligand, which is essential for its catalytic activity in hydroxylating all-trans-retinoate. This binding is likely part of the mechanism required to perform the defined reaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P24462",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P24462's positional data matches the primary reaction mechanism of GO:0062183, which involves catalyzing the hydroxylation of all-trans-retinoate."
+    },
+    {
+      "accession": "Q9NR63",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the defined reaction mechanism of GO:0062183; the only relevant feature (BINDING 440-441) is generic to the enzyme class and does not provide a strong mechanistic explanation for the term."
+    },
+    {
+      "accession": "Q6EIG3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the defined chemistry of GO:0062183. The only relevant domain/family cross-references are about classification rather than the specific reaction mechanism."
+    }
+  ]
+}

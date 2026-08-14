@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0062188",
+  "name": "anandamide 11,12 epoxidase activity",
+  "def": "Catalysis of the reaction: N-(5Z,8Z,11Z,14Z-eicosatetraenoyl)-ethanolamine + O2 + reduced [NADPH--hemoprotein reductase] = H+ + H2O + N-(11,12-epoxy-5Z,8Z,14Z-eicosatrienoyl)-ethanolamine + oxidized [NADPH--hemoprotein reductase].",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "P08684",
+    "P12790",
+    "P13107",
+    "Q64680"
+  ],
+  "assigned_accessions": [
+    "P08684",
+    "P12790",
+    "P13107",
+    "Q64680"
+  ]
+}

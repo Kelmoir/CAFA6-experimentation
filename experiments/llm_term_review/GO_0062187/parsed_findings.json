@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P12791",
+      "go_id": "GO:0062187",
+      "feature_type": "BINDING",
+      "start": 444,
+      "end": 445,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding of heme at position 444-445 is a plausible structural feature that supports the enzymatic activity described in the GO term, even though it does not directly state the reaction mechanism."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q64680",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for this protein is a binding site involving heme, which is a cofactor in oxygen-dependent reactions. However, this feature does not directly explain the catalytic mechanism of anandamide 8,9 epoxidase activity as defined by the GO term. No other features are present that specifically describe the epoxidation reaction."
+    },
+    {
+      "accession": "P20813",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for P20813 directly explains the enzymatic activity described by GO:0062187. The only relevant information is about heme binding, which is a cofactor but not the catalytic mechanism itself. Therefore, there is no positional feature that plausibly accounts for this GO term."
+    },
+    {
+      "accession": "P10635",
+      "reason": "none_verdict",
+      "reasoning": "The binding site for substrate (BINDING 300-301) is necessary for the reaction but does not specifically explain the epoxidase activity as defined by GO:0062187. No other annotated feature provides a more specific explanation of the chemistry involved in this reaction."
+    }
+  ]
+}

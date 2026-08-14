@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0062182",
+  "name": "all-trans retinoic acid 4-hydrolase activity",
+  "def": "Catalysis of the reaction: all-trans-retinoate + O2 + reduced [NADPH--hemoprotein reductase] = all-trans-(4S)-hydroxyretinoate + H+ + H2O + oxidized [NADPH--hemoprotein reductase].",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O43174",
+    "O55127",
+    "P79739",
+    "Q9PUB4"
+  ],
+  "assigned_accessions": [
+    "O43174",
+    "O55127",
+    "P79739",
+    "Q9PUB4"
+  ]
+}
