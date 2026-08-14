@@ -24631,5 +24631,260 @@
     "reasoning": "No annotated feature for protein Q7SIG4 provides a clear structural or functional basis for the \"diisopropyl-fluorophosphatase activity\" GO term as defined by its primary reaction."
    }
   ]
+ },
+ "GO:0047863": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "K7W9N9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the enzymatic activity defined by the GO term, which focuses on the specific chemical reaction of transferring a dimethylallyl group."
+   },
+   {
+    "accession": "K7WQ45",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature with positional coordinates matches the primary reaction of the GO term, so there is no strong evidence to support the prediction."
+   },
+   {
+    "accession": "C1K5M2",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0047875": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9VY01",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly states the specific reaction or mechanism described by the GO term."
+   }
+  ]
+ },
+ "GO:0047890": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "P51102"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047900": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton donor/acceptor",
+    "accessions": [
+     "P63411"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047915": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O96024",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047917": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Critical for catalysis",
+    "accessions": [
+     "P32056"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047921": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "N-acetyltransferase",
+    "accessions": [
+     "P9WQG9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047926": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O81192",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0047931": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Hexokinase",
+    "accessions": [
+     "Q59RW5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P05708",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P17710",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P19367",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0047939": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "M9PF61"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Redox-sensitive site",
+    "accessions": [
+     "P45376"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P14550",
+    "reason": "none_verdict",
+    "reasoning": "No single annotated feature from P14550 directly matches the primary reaction of L-glucuronate reductase activity. While the enzyme has multiple NADP+ binding sites, these do not specifically explain the catalytic mechanism described in the GO term's definition. The ACT_SITE annotation is more related to the enzyme's structural or functional properties rather than the defined chemistry. Thus, ther"
+   },
+   {
+    "accession": "Q9JII6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves catalyzing a specific phosphoryl transfer from NADP+. All features are either about binding NADP+ or modifying the active site for catalytic efficiency, but none specifically explain the phosphorelay-receiving activity defined by the GO term."
+   }
+  ]
+ },
+ "GO:0047946": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q969I3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047953": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P14065",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the primary reaction mechanism described by the GO term \"glycerol 2-dehydrogenase (NADP+) activity.\""
+   }
+  ]
  }
 }

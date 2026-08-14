@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047915",
+  "name": "ganglioside galactosyltransferase activity",
+  "def": "Catalysis of the reaction: UDP-galactose + N-acetyl-D-galactosaminyl-(N-acetylneuraminyl)-D-galactosyl-1,4-beta-D-glucosyl-N-acylsphingosine = UDP + D-galactosyl-1,3-beta-N-acetyl-D-galactosaminyl-(N-acetylneuraminyl)-D-galactosyl-D-glucosyl-N-acylsphingosine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O96024"
+  ],
+  "assigned_accessions": [
+    "O96024"
+  ]
+}

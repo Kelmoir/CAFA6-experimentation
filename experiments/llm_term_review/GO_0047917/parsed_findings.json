@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P32056",
+      "go_id": "GO:0047917",
+      "feature_type": "SITE",
+      "start": 122,
+      "end": 123,
+      "signal_kind": "text",
+      "signal_value": "Critical for catalysis",
+      "reasoning": "The \"SITE 122-123\" feature directly corresponds to the critical region for catalysis, which is central to the primary reaction mechanism of GDP-glucosidase activity. This makes it the most plausible explanation for why the protein carries this GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

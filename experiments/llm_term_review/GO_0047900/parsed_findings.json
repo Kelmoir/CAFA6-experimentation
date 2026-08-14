@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P63411",
+      "go_id": "GO:0047900",
+      "feature_type": "ACT_SITE",
+      "start": 149,
+      "end": 150,
+      "signal_kind": "text",
+      "signal_value": "Proton donor/acceptor",
+      "reasoning": "The ACT_SITE feature directly relates to the proton transfer mechanism of the formate kinase reaction, which is the primary reaction defined by the GO term. This provides strong evidence for the molecular function associated with the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

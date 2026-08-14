@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047946",
+  "name": "glutamine N-acyltransferase activity",
+  "def": "Catalysis of the reaction: acyl-CoA + L-glutamine = CoA + N-acyl-L-glutamine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q969I3"
+  ],
+  "assigned_accessions": [
+    "Q969I3"
+  ]
+}

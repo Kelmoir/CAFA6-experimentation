@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047931",
+  "name": "glucosamine kinase activity",
+  "def": "Catalysis of the reaction: ATP + D-glucosamine = ADP + D-glucosamine 6-phosphate + H+.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P05708",
+    "P17710",
+    "P19367",
+    "Q59RW5"
+  ],
+  "assigned_accessions": [
+    "P05708",
+    "P17710",
+    "P19367",
+    "Q59RW5"
+  ]
+}

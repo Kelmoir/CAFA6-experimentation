@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047900",
+  "name": "formate kinase activity",
+  "def": "Catalysis of the reaction: ATP + formate = ADP + formyl phosphate + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P63411"
+  ],
+  "assigned_accessions": [
+    "P63411"
+  ]
+}

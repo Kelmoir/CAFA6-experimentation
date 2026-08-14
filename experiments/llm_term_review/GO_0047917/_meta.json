@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047917",
+  "name": "GDP-glucosidase activity",
+  "def": "Catalysis of the reaction: GDP-D-glucose + H2O = D-glucose + GDP + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P32056"
+  ],
+  "assigned_accessions": [
+    "P32056"
+  ]
+}

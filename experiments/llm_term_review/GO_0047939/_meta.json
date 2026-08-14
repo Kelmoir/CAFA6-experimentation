@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047939",
+  "name": "L-glucuronate reductase activity",
+  "def": "Catalysis of the reaction: L-gulonate + NADP+ = D-glucuronate + H+ + NADPH.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "M9PF61",
+    "P14550",
+    "P45376",
+    "Q9JII6"
+  ],
+  "assigned_accessions": [
+    "M9PF61",
+    "P14550",
+    "P45376",
+    "Q9JII6"
+  ]
+}

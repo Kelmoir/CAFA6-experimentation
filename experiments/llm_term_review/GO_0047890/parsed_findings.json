@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P51102",
+      "go_id": "GO:0047890",
+      "feature_type": "BINDING",
+      "start": 43,
+      "end": 44,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The binding site for NADP+ at position 43-44 directly supports the redox reaction defined by the GO term, making it the most plausible explanation for why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

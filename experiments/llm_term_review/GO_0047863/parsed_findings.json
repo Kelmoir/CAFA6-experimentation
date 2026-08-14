@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "K7W9N9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the enzymatic activity defined by the GO term, which focuses on the specific chemical reaction of transferring a dimethylallyl group."
+    },
+    {
+      "accession": "K7WQ45",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature with positional coordinates matches the primary reaction of the GO term, so there is no strong evidence to support the prediction."
+    },
+    {
+      "accession": "C1K5M2",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

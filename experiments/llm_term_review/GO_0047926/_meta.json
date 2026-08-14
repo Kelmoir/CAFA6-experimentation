@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047926",
+  "name": "geranyl-diphosphate cyclase activity",
+  "def": "Catalysis of the reaction: geranyl diphosphate = (2S)-bornyl diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O81192"
+  ],
+  "assigned_accessions": [
+    "O81192"
+  ]
+}

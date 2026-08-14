@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047875",
+  "name": "ecdysone oxidase activity",
+  "def": "Catalysis of the reaction: Ecdysone + O2 = 3-dehydroecdysone + H2O2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9VY01"
+  ],
+  "assigned_accessions": [
+    "Q9VY01"
+  ]
+}

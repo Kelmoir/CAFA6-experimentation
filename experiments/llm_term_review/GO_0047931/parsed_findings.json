@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q59RW5",
+      "go_id": "GO:0047931",
+      "feature_type": "DOMAIN",
+      "start": 26,
+      "end": 490,
+      "signal_kind": "text",
+      "signal_value": "Hexokinase",
+      "reasoning": "The DOMAIN 26-490 is explicitly annotated as Hexokinase, which directly corresponds to the catalytic activity described by GO:0047931. This feature strongly matches the primary reaction of ATP phosphorylation and the function defined by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P05708",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P17710",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P19367",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047953",
+  "name": "glycerol 2-dehydrogenase (NADP+) activity",
+  "def": "Catalysis of the reaction: glycerol + NADP+ = dihydroxyacetone + NADPH + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P14065"
+  ],
+  "assigned_accessions": [
+    "P14065"
+  ]
+}

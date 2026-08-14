@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P9WQG9",
+      "go_id": "GO:0047921",
+      "feature_type": "DOMAIN",
+      "start": 10,
+      "end": 162,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The DOMAIN annotation at position 10-162 directly matches the GO term's definition by specifying the enzyme's domain type (N-acetyltransferase), which is essential for catalyzing the acetylation reaction described."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

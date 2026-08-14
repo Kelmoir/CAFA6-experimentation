@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047890",
+  "name": "flavanone 4-reductase activity",
+  "def": "Catalysis of the reaction: (2S)-flavan-4-ol + NADP+ = (2S)-flavanone + NADPH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P51102"
+  ],
+  "assigned_accessions": [
+    "P51102"
+  ]
+}

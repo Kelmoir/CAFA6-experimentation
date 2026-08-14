@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047921",
+  "name": "aminoglycoside 2'-N-acetyltransferase activity",
+  "def": "Catalysis of the reaction: acetyl-CoA + gentamicin C(1a) = N(2')-acetylgentamicin C(1a) + CoA + H+. This is acetylation of the 2'-amino group of the 6-deoxy-6-aminoglucose ring.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WQG9"
+  ],
+  "assigned_accessions": [
+    "P9WQG9"
+  ]
+}

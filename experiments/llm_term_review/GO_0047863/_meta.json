@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0047863",
+  "name": "dimethylallylcistransferase activity",
+  "def": "Catalysis of the reaction: dimethylallyl diphosphate + isopentenyl diphosphate = diphosphate + neryl diphosphate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "C1K5M2",
+    "K7W9N9",
+    "K7WQ45"
+  ],
+  "assigned_accessions": [
+    "C1K5M2",
+    "K7W9N9",
+    "K7WQ45"
+  ]
+}
