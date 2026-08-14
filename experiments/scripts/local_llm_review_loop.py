@@ -397,7 +397,8 @@ def _write_finding(findings_path, go_id, accession, verdict, ftype, start, end, 
 
 
 def review_protein(host, model, system_prompt, go_id, accession, review_text, term_dir,
-                    findings_path, request_timeout, max_tokens, delay=0.0):
+                    findings_path, request_timeout, max_tokens, delay=0.0,
+                    capacity_retries=3, capacity_retry_delay=2.0):
   """One LLM call for one (go_id, accession), appended to findings.md as a block. Shared by
   process_round (first pass) and retry_issues (second-chance pass on invalid responses) so both
   go through the exact same call/parse/debug-log/append logic. Returns (verdict, ftype, start,
@@ -432,7 +433,8 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
   finish_reason = None
   try:
     raw, finish_reason = call_local_llm(
-        host, model, system_prompt, prompt, max_tokens, timeout=request_timeout)
+        host, model, system_prompt, prompt, max_tokens, timeout=request_timeout,
+        capacity_retries=capacity_retries, capacity_retry_delay=capacity_retry_delay)
   except LocalLLMError as e:
     # A genuine server-side rejection (e.g. LM Studio's KV-cache pool exhausted under
     # --concurrency > 1, already retried a few times inside call_local_llm) -- not a decisive
@@ -501,7 +503,8 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
   return verdict, ftype, start, end, reasoning, unparsed
 
 
-def _merge_consumer(merge_queue, results, host, model, system_prompt, request_timeout, max_tokens):
+def _merge_consumer(merge_queue, results, host, model, system_prompt, request_timeout, max_tokens,
+                     capacity_retries, capacity_retry_delay):
   """Runs on its own dedicated thread, strictly separate from the review-worker pool. Pulls one
   completed go_id at a time off merge_queue and runs its parse -> retry -> re-parse -> merge
   sequence (merge_one_term) -- retries call back into review_protein/_write_lock, same as any
@@ -517,13 +520,14 @@ def _merge_consumer(merge_queue, results, host, model, system_prompt, request_ti
     if go_id is None:
       merge_queue.task_done()
       return
-    if merge_one_term(go_id, host, model, system_prompt, request_timeout, max_tokens):
+    if merge_one_term(go_id, host, model, system_prompt, request_timeout, max_tokens,
+                       capacity_retries, capacity_retry_delay):
       results.append(go_id)
     merge_queue.task_done()
 
 
 def process_round(host, model, manifest, request_timeout, delay, max_tokens, system_prompt,
-                   concurrency):
+                   concurrency, capacity_retries=3, capacity_retry_delay=2.0):
   """Dispatches every (go_id, accession) protein review in the round to a fixed-size thread pool
   (concurrency workers, submitted all at once rather than term-by-term) so the pool always has up
   to `concurrency` HTTP calls to the local model in flight -- as one finishes, the pool immediately
@@ -555,32 +559,42 @@ def process_round(host, model, manifest, request_timeout, delay, max_tokens, sys
   merge_queue = queue.Queue()
   merge_thread = threading.Thread(
       target=_merge_consumer,
-      args=(merge_queue, merged_terms, host, model, system_prompt, request_timeout, max_tokens))
+      args=(merge_queue, merged_terms, host, model, system_prompt, request_timeout, max_tokens,
+            capacity_retries, capacity_retry_delay),
+      daemon=True)
   merge_thread.start()
 
-  with concurrent.futures.ThreadPoolExecutor(max_workers=concurrency) as executor:
-    futures = {}
-    for go_id, accessions in new_terms.items():
-      for accession in accessions:
-        fut = executor.submit(
-            review_protein, host, model, system_prompt, go_id, accession,
-            term_review_text[go_id], term_dirs[go_id], term_findings_path[go_id],
-            request_timeout, max_tokens, delay)
-        futures[fut] = go_id
-    for future in concurrent.futures.as_completed(futures):
-      go_id = futures[future]
-      future.result()  # surface any unexpected (non-network) exception immediately
-      pending[go_id] -= 1
-      if pending[go_id] == 0:
-        touched.append(go_id)
-        merge_queue.put(go_id)
-
-  merge_queue.put(None)
-  merge_thread.join()
+  # try/finally is load-bearing, not defensive style: merge_thread blocks forever on
+  # merge_queue.get() until it sees the None sentinel, so if an exception from future.result()
+  # (or anything else in this block) skipped straight past the "put(None); join()" lines below,
+  # the thread would be orphaned, blocked on an empty queue nobody will ever feed again -- daemon=
+  # True at least stops that from hanging process exit, but finally still ensures a clean shutdown
+  # (and a correct wait for in-flight merge work) on the success path AND any error path alike.
+  try:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=concurrency) as executor:
+      futures = {}
+      for go_id, accessions in new_terms.items():
+        for accession in accessions:
+          fut = executor.submit(
+              review_protein, host, model, system_prompt, go_id, accession,
+              term_review_text[go_id], term_dirs[go_id], term_findings_path[go_id],
+              request_timeout, max_tokens, delay, capacity_retries, capacity_retry_delay)
+          futures[fut] = go_id
+      for future in concurrent.futures.as_completed(futures):
+        go_id = futures[future]
+        future.result()  # surface any unexpected (non-network) exception immediately
+        pending[go_id] -= 1
+        if pending[go_id] == 0:
+          touched.append(go_id)
+          merge_queue.put(go_id)
+  finally:
+    merge_queue.put(None)
+    merge_thread.join()
   return touched, merged_terms
 
 
-def retry_issues(host, model, system_prompt, go_id, request_timeout, max_tokens):
+def retry_issues(host, model, system_prompt, go_id, request_timeout, max_tokens,
+                  capacity_retries=3, capacity_retry_delay=2.0):
   """Give a term's genuinely invalid responses (not decisive NONE verdicts -- those are real
   answers, not garbled ones) one extra shot. Reads the issues parse_llm_findings.py just logged,
   strips each retryable accession's block out of findings.md so it isn't double-counted, and
@@ -607,18 +621,21 @@ def retry_issues(host, model, system_prompt, go_id, request_timeout, max_tokens)
   for acc in to_retry:
     print(f"  retrying {go_id} {acc} (previously invalid)")
     review_protein(host, model, system_prompt, go_id, acc, review_text, term_dir,
-                    findings_path, request_timeout, max_tokens)
+                    findings_path, request_timeout, max_tokens,
+                    capacity_retries=capacity_retries, capacity_retry_delay=capacity_retry_delay)
   return len(to_retry)
 
 
-def merge_one_term(go_id, host, model, system_prompt, request_timeout, max_tokens):
+def merge_one_term(go_id, host, model, system_prompt, request_timeout, max_tokens,
+                    capacity_retries=3, capacity_retry_delay=2.0):
   """Parse -> retry any genuinely-invalid accessions once (sequentially -- retries are typically
   0-1 accessions out of a term's up-to-4 sample, not worth pooling) -> re-parse if anything was
-  retried -> merge. Called from process_round() the instant a term's whole protein sample has
-  landed, so this runs on the main thread while the shared thread pool's other workers keep
+  retried -> merge. Called from _merge_consumer the instant a term's whole protein sample has
+  landed, so this runs on the dedicated merge thread while the review pool's workers keep
   generating for whichever terms in the round haven't finished yet."""
   run([sys.executable, str(SCRIPTS / "parse_llm_findings.py"), go_id])
-  n_retried = retry_issues(host, model, system_prompt, go_id, request_timeout, max_tokens)
+  n_retried = retry_issues(host, model, system_prompt, go_id, request_timeout, max_tokens,
+                            capacity_retries, capacity_retry_delay)
   if n_retried:
     run([sys.executable, str(SCRIPTS / "parse_llm_findings.py"), go_id])
   result = subprocess.run(
@@ -661,6 +678,18 @@ def main():
   ap.add_argument("--delay", type=float, default=0.0,
                    help="Seconds each worker sleeps before its call (per-call pacing, not a gap "
                         "between dispatches -- dispatch itself is no longer sequential)")
+  ap.add_argument("--capacity-retries", type=int, default=3,
+                   help="Retries for an HTTP error whose response body names a transient "
+                        "server-capacity condition (e.g. LM Studio's own \"KV cache size "
+                        "overrunning\" 400, seen once --concurrency > 1 pushes total concurrent "
+                        "context past what the server pre-allocated). A non-capacity HTTP error "
+                        "is never retried, regardless of this value -- it would just fail the "
+                        "same way every time.")
+  ap.add_argument("--capacity-retry-delay", type=float, default=2.0,
+                   help="Base seconds to wait before a capacity retry; scales linearly with "
+                        "attempt number (attempt 1 waits this long, attempt 2 waits 2x, etc.) so "
+                        "later attempts give more in-flight requests a chance to finish and free "
+                        "their KV-cache slot.")
   ap.add_argument("--chain-of-thought", type=str, default="",
                    help="Enables free-text reasoning before the answer -- recommended for "
                         "non-reasoning/smaller models, which judge more accurately with room to "
@@ -690,7 +719,8 @@ def main():
       break
     touched, merged_terms = process_round(args.host, model, manifest, args.request_timeout,
                                            args.delay, args.max_tokens, system_prompt,
-                                           args.concurrency)
+                                           args.concurrency, args.capacity_retries,
+                                           args.capacity_retry_delay)
     run([sys.executable, str(SCRIPTS / "build_positional_mf_links.py")])
     commit_round(round_n, merged_terms, total_agents)
     print(f"Round {round_n} done. Merged: {', '.join(merged_terms) if merged_terms else 'none'}")
