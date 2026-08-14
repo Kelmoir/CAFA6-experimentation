@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052868",
+  "name": "protein-lysine lysyltransferase activity",
+  "def": "Catalysis of the reaction: protein-lysine + protein-lysine = protein N6-(lysyl)-L-lysine + protein. This reaction is the addition of lysine group from one protein to a lysine residue in a second protein, producing N6-(lysyl)-L-lysine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0A8N7"
+  ],
+  "assigned_accessions": [
+    "P0A8N7"
+  ]
+}

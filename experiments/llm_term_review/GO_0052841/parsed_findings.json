@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q06685",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear, specific explanation of the enzymatic activity described by GO:0052841."
+    }
+  ]
+}

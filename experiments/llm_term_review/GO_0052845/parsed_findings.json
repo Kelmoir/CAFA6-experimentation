@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "Q940L5",
+      "go_id": "GO:0052845",
+      "feature_type": "DOMAIN",
+      "start": 33,
+      "end": 188,
+      "signal_kind": "text",
+      "signal_value": "Tyrosine-protein phosphatase",
+      "reasoning": "The domain \"Tyrosine-protein phosphatase\" directly corresponds to the enzymatic activity described in the GO term, providing a strong structural basis for the function of Q940L5."
+    },
+    {
+      "accession": "Q681Z2",
+      "go_id": "GO:0052845",
+      "feature_type": "DOMAIN",
+      "start": 19,
+      "end": 169,
+      "signal_kind": "text",
+      "signal_value": "Tyrosine-protein phosphatase",
+      "reasoning": "The DOMAIN annotation directly matches the GO term's definition by classifying the protein as a tyrosine-protein phosphatase, which is the core chemistry of the function described in the GO term. This provides a strong and specific explanation for why the protein carries the given GO term."
+    },
+    {
+      "accession": "Q9JI46",
+      "go_id": "GO:0052845",
+      "feature_type": "MOTIF",
+      "start": 50,
+      "end": 72,
+      "signal_kind": "text",
+      "signal_value": "Nudix box",
+      "reasoning": "The Nudix box motif is directly related to the enzyme's function of catalyzing phosphate hydrolysis, which matches the primary reaction defined by the GO term. This feature provides a strong structural basis for the assignment of the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9UUF3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically describes the catalytic reaction of removing a phosphoryl group from the substrate, which is the primary reaction defined by the GO term."
+    }
+  ]
+}

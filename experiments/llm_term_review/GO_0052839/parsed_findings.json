@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q92551",
+      "go_id": "GO:0052839",
+      "feature_type": "BINDING",
+      "start": 219,
+      "end": 228,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding region (BINDING 219-228) directly supports the enzyme's function by indicating interaction with its substrate, which is central to the reaction mechanism described in the GO term's definition."
+    },
+    {
+      "accession": "Q96PC2",
+      "go_id": "GO:0052839",
+      "feature_type": "BINDING",
+      "start": 210,
+      "end": 219,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The \"BINDING\" span with the ligand \"substrate\" most plausibly explains why Q96PC2 carries the GO term, as it directly relates to the enzyme's interaction with its substrate, which is central to its function as a kinase."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9UHH9",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide any specific evidence that directly explains why Q9UHH9 carries the GO term \"diphosphoinositol tetrakisphosphate kinase activity.\" While the enzyme's structure and function are implied by its multiple binding sites for ATP and substrates, this is a generic description of the enzyme's catalytic mechanism and does not specifically account for the term's definiti"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q96PC2",
+      "go_id": "GO:0052836",
+      "feature_type": "BINDING",
+      "start": 210,
+      "end": 219,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site with substrate ligand directly supports the catalytic activity described in the GO term's definition, making it a strong match for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q92551",
+      "reason": "none_verdict",
+      "reasoning": "The binding feature for the substrate (ATP and 5-diphospho-1D-myo-inositol pentakisphosphate) is consistent with the enzyme's activity as defined by the GO term, but it does not specifically explain the chemistry of the reaction. No other annotated feature provides a more direct explanation of the primary reaction described in the GO term."
+    },
+    {
+      "accession": "Q9UHH9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9UHH9 specifically describes the catalytic activity of inositol 5-diphosphate pentakisphosphate 5-kinase, which is defined by the reaction mechanism."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0052840",
+  "name": "inositol diphosphate tetrakisphosphate diphosphatase activity",
+  "def": "Catalysis of the reaction: diphospho-1D-myo-inositol tetrakisphosphate + H2O = 1D-myo-inositol pentakisphosphate + phosphate.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "O95989",
+    "P53949",
+    "Q566C7",
+    "Q9JI46"
+  ],
+  "assigned_accessions": [
+    "O95989",
+    "P53949",
+    "Q566C7",
+    "Q9JI46"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0052839",
+  "name": "diphosphoinositol tetrakisphosphate kinase activity",
+  "def": "Catalysis of the reaction: ATP + diphospho-1D-myo-inositol tetrakisphosphate = ADP + bis(diphospho)-1D-myo-inositol trisphosphate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q92551",
+    "Q96PC2",
+    "Q9UHH9"
+  ],
+  "assigned_accessions": [
+    "Q92551",
+    "Q96PC2",
+    "Q9UHH9"
+  ]
+}

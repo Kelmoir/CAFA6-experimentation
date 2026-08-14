@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q566C7",
+      "go_id": "GO:0052842",
+      "feature_type": "DOMAIN",
+      "start": 16,
+      "end": 142,
+      "signal_kind": "text",
+      "signal_value": "Nudix hydrolase",
+      "reasoning": "The DOMAIN 16-142 feature is explicitly linked to Nudix hydrolase activity, which matches the primary reaction of the GO term (catalysis of the reaction involving inositol diphosphate pentakisphosphate and water). This provides a strong match to the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O95989",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction of the GO term, which involves phosphorelay. The features are more generic and do not provide a clear mechanistic basis for this specific function."
+    },
+    {
+      "accession": "Q9JI46",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

@@ -28376,5 +28376,217 @@
     "reasoning": "No annotated feature directly matches the GO term's primary reaction mechanism of catalyzing the phosphate transfer from inositol monophosphate to water."
    }
   ]
+ },
+ "GO:0052836": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q96PC2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q92551",
+    "reason": "none_verdict",
+    "reasoning": "The binding feature for the substrate (ATP and 5-diphospho-1D-myo-inositol pentakisphosphate) is consistent with the enzyme's activity as defined by the GO term, but it does not specifically explain the chemistry of the reaction. No other annotated feature provides a more direct explanation of the primary reaction described in the GO term."
+   },
+   {
+    "accession": "Q9UHH9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9UHH9 specifically describes the catalytic activity of inositol 5-diphosphate pentakisphosphate 5-kinase, which is defined by the reaction mechanism."
+   }
+  ]
+ },
+ "GO:0052839": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q92551",
+     "Q96PC2"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UHH9",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide any specific evidence that directly explains why Q9UHH9 carries the GO term \"diphosphoinositol tetrakisphosphate kinase activity.\" While the enzyme's structure and function are implied by its multiple binding sites for ATP and substrates, this is a generic description of the enzyme's catalytic mechanism and does not specifically account for the term's definiti"
+   }
+  ]
+ },
+ "GO:0052840": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Nudix box",
+    "accessions": [
+     "O95989"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Nudix hydrolase",
+    "accessions": [
+     "Q9JI46"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "Q566C7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P53949",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P53949 specifically matches the primary reaction of inositol diphosphate tetrakisphosphate diphosphatase activity, which involves the removal of phosphate groups from a specific substrate."
+   }
+  ]
+ },
+ "GO:0052841": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q06685",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, specific explanation of the enzymatic activity described by GO:0052841."
+   }
+  ]
+ },
+ "GO:0052842": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Nudix hydrolase",
+    "accessions": [
+     "Q566C7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O95989",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction of the GO term, which involves phosphorelay. The features are more generic and do not provide a clear mechanistic basis for this specific function."
+   },
+   {
+    "accession": "Q9JI46",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0052845": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Tyrosine-protein phosphatase",
+    "accessions": [
+     "Q681Z2",
+     "Q940L5"
+    ],
+    "reason": "resolved to ['InterPro:IPR020422', 'InterPro:IPR029021', 'PROSITE:PS00383', 'PROSITE:PS50054', 'PROSITE:PS50056'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR020422': 126, 'InterPro:IPR029021': 317, 'PROSITE:PS00383': 224, 'PROSITE:PS50054': 127, 'PROSITE:PS50056': 255})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Nudix box",
+    "accessions": [
+     "Q9JI46"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UUF3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically describes the catalytic reaction of removing a phosphoryl group from the substrate, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0052868": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0A8N7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides direct evidence for the specific mechanism described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0052871": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P78329",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P78329's Annotated features section directly supports or explains the specific chemical reaction defined by GO:0052871. The domain/family cross-references suggest a broader class of enzymes, but they do not pinpoint the enzyme's role in hydroxylation of alpha-tocopherol."
+   }
+  ]
  }
 }

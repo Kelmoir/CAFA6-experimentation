@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "O95989",
+      "go_id": "GO:0052840",
+      "feature_type": "MOTIF",
+      "start": 50,
+      "end": 72,
+      "signal_kind": "text",
+      "signal_value": "Nudix box",
+      "reasoning": "The Nudix box motif is a defining feature of Nudix hydrolases, which are known to catalyze phosphate transfer reactions, aligning directly with the GO term's primary reaction mechanism."
+    },
+    {
+      "accession": "Q9JI46",
+      "go_id": "GO:0052840",
+      "feature_type": "DOMAIN",
+      "start": 16,
+      "end": 144,
+      "signal_kind": "text",
+      "signal_value": "Nudix hydrolase",
+      "reasoning": "The DOMAIN 16-144 annotation is directly associated with the enzyme activity of inositol diphosphate tetrakisphosphate diphosphatase, which matches the primary reaction mechanism described in the GO term's definition."
+    },
+    {
+      "accession": "Q566C7",
+      "go_id": "GO:0052840",
+      "feature_type": "ACT_SITE",
+      "start": 68,
+      "end": 69,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The ACT_SITE 68-69 feature directly relates to the catalytic mechanism of Nudix hydrolases, which are known to perform the reaction described in the GO term. This match is specific and aligns with the primary reaction stated in the definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P53949",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P53949 specifically matches the primary reaction of inositol diphosphate tetrakisphosphate diphosphatase activity, which involves the removal of phosphate groups from a specific substrate."
+    }
+  ]
+}

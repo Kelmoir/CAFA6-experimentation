@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0A8N7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides direct evidence for the specific mechanism described in the GO term's definition."
+    }
+  ]
+}

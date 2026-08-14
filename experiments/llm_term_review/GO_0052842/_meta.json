@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0052842",
+  "name": "inositol diphosphate pentakisphosphate diphosphatase activity",
+  "def": "Catalysis of the reaction: diphospho-1D-myo-inositol pentakisphosphate + H2O = 1D-myo-inositol hexakisphosphate + phosphate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O95989",
+    "Q566C7",
+    "Q9JI46"
+  ],
+  "assigned_accessions": [
+    "O95989",
+    "Q566C7",
+    "Q9JI46"
+  ]
+}
