@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P17405",
+      "go_id": "GO:0061750",
+      "feature_type": "DOMAIN",
+      "start": 86,
+      "end": 171,
+      "signal_kind": "text",
+      "signal_value": "Saposin B-type",
+      "reasoning": "The DOMAIN 86-171 with the note \"Saposin B-type\" provides a strong match to the primary reaction of acid sphingomyelin phosphodiesterase activity, as saposin B-type proteins are known to be involved in sphingolipid metabolism and catalyze similar reactions."
+    },
+    {
+      "accession": "Q04519",
+      "go_id": "GO:0061750",
+      "feature_type": "DOMAIN",
+      "start": 82,
+      "end": 167,
+      "signal_kind": "text",
+      "signal_value": "Saposin B-type",
+      "reasoning": "The DOMAIN 82-167 is directly associated with the enzyme activity of acid sphingomyelin phosphodiesterase, which matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9UAY4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section provides a direct explanation for the phosphodiesterase activity defined by GO:0061750. The only relevant domain information is from cross-references, which are not positional features and do not directly support the term's primary reaction."
+    },
+    {
+      "accession": "Q10916",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly explains the chemistry of the reaction defined by GO:0061750. The primary reaction involves catalyzing the hydrolysis of sphingomyelin, which is not captured by any of the binding sites or other domain annotations provided."
+    }
+  ]
+}

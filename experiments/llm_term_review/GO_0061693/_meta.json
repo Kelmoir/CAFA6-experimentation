@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0061693",
+  "name": "alpha-D-ribose 1-methylphosphonate 5-triphosphate synthase activity",
+  "def": "Catalysis of the reaction: ATP + methylphosphonate = alpha-D-ribose 1-methylphosphonate 5-triphosphate + adenine.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P16679",
+    "P16685",
+    "P16686",
+    "P16687"
+  ],
+  "assigned_accessions": [
+    "P16679",
+    "P16685",
+    "P16686",
+    "P16687"
+  ]
+}

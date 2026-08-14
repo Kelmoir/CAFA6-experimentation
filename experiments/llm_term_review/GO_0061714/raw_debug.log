@@ -1,0 +1,17 @@
+=== P15328 GO:0061714 (VERDICT missing) ===
+THINKING: The GO term is "folic acid receptor activity" (GO:0061714), which defines the function of combining selectively with extracellular folic acid and delivering it into the cell via endocytosis. The protein P15328 has multiple annotated binding sites for folate, indicating that it can bind to folic acid. However, none of these binding sites are explicitly positioned to suggest the endocytic delivery mechanism described in the GO definition. The primary reaction or mechanism implied by the GO term is the selective binding and internalization of folic acid, which is directly supported by the presence of multiple folate-binding regions. The other features (like domain cross-references) may be relevant for understanding the protein's broader function but do not directly explain why it carries the specific molecular function defined by GO:0061714.
+
+- BINDING 102-103: This binding site is for folate, which is consistent with the term. However, it does not specify endocytosis or delivery.
+- BINDING 106-107: Similar to the above, this binding site supports the function of folic acid receptor activity but lacks specificity regarding the endocytic process.
+- BINDING 123-128: This binding site also supports the function of folic acid receptor activity, but again, it does not directly explain the endocytosis mechanism.
+- BINDING 156-162: Another folate-binding region, which is relevant to the term's definition but does not provide evidence for the endocytic delivery process.
+- BINDING 195-196: This binding site supports the function of folic acid receptor activity, but again, it does not directly explain the endocytosis mechanism.
+
+The highest score among these features is 3 (for each binding site), as they all support the term's definition of binding folic acid. However, none of them specifically account for the endocytic delivery process described in the GO term's primary reaction. Therefore, the best candidate feature that plausibly explains why this protein carries the GO term is not one of the binding sites but rather the domain/family cross-references.
+
+FEATURE: DOMAIN 102-103
+REASONING: The domain/family cross-reference "Folate_rcpt" (InterPro:IPR004269) directly relates to the function of folic acid receptor activity, as it is a known domain associated with folate transport and endocytosis. This domain is more likely to be the structural basis for the term than any of the binding sites, which only indicate ligand recognition rather than the full functional mechanism.
+
+=== P15328 GO:0061714 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+

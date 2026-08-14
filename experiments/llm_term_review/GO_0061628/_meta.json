@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0061628",
+  "name": "histone H3K27me3 reader activity",
+  "def": "A histone reader that recognizes a histone H3 trimethylated at lysine 27.",
+  "n_proteins_total": 27,
+  "sampled_accessions": [
+    "O55187",
+    "Q8RWR1",
+    "Q9D5D8",
+    "Q9WTK2"
+  ],
+  "assigned_accessions": [
+    "O55187",
+    "Q8RWR1",
+    "Q9D5D8",
+    "Q9WTK2"
+  ]
+}

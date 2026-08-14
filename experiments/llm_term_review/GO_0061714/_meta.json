@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0061714",
+  "name": "folic acid receptor activity",
+  "def": "Combining selectively with extracellular folic acid and delivering it into the cell via endocytosis.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P14207",
+    "P15328",
+    "P35846",
+    "Q05685"
+  ],
+  "assigned_accessions": [
+    "P14207",
+    "P15328",
+    "P35846",
+    "Q05685"
+  ]
+}

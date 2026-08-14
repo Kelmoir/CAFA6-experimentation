@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0061750",
+  "name": "acid sphingomyelin phosphodiesterase activity",
+  "def": "Catalysis of the reaction: H2O + sphingomyelin = ceramide + choline phosphate + H+ in an acidic environment.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P17405",
+    "Q04519",
+    "Q10916",
+    "Q9UAY4"
+  ],
+  "assigned_accessions": [
+    "P17405",
+    "Q04519",
+    "Q10916",
+    "Q9UAY4"
+  ]
+}

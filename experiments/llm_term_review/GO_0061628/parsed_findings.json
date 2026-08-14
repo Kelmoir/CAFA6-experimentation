@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8RWR1",
+      "go_id": "GO:0061628",
+      "feature_type": "DOMAIN",
+      "start": 271,
+      "end": 429,
+      "signal_kind": "text",
+      "signal_value": "JmjC",
+      "reasoning": "The DOMAIN span with the JmjC note is most plausibly linked to the GO term's primary reaction of recognizing histone H3K27me3, as JmjC domains are known for this type of activity."
+    },
+    {
+      "accession": "Q9D5D8",
+      "go_id": "GO:0061628",
+      "feature_type": "DOMAIN",
+      "start": 6,
+      "end": 67,
+      "signal_kind": "text",
+      "signal_value": "Chromo",
+      "reasoning": "The DOMAIN feature (6-67) with the qualifier \"Chromo\" directly aligns with the chromatin recognition aspect of the GO term, making it the most plausible explanation for why Q9D5D8 carries this molecular function."
+    },
+    {
+      "accession": "Q9WTK2",
+      "go_id": "GO:0061628",
+      "feature_type": "DOMAIN",
+      "start": 55,
+      "end": 116,
+      "signal_kind": "text",
+      "signal_value": "Chromo",
+      "reasoning": "The chromo domain (DOMAIN 55-116) directly supports the primary reaction of the GO term by enabling recognition of histone H3K27me3, which is the core function described in the definition."
+    },
+    {
+      "accession": "O55187",
+      "go_id": "GO:0061628",
+      "feature_type": "DOMAIN",
+      "start": 10,
+      "end": 69,
+      "signal_kind": "text",
+      "signal_value": "Chromo",
+      "reasoning": "The chromo domain (DOMAIN 10-69) directly matches the GO term's primary reaction of recognizing H3K27me3, making it the most plausible structural/functional basis for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

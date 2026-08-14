@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P16679",
+      "go_id": "GO:0061693",
+      "feature_type": "BINDING",
+      "start": 40,
+      "end": 48,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP is the most plausible explanation for the GO term's definition, as it directly relates to the defined chemistry of the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P16685",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P16686",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P16687",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

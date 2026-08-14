@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "Q05685",
+      "go_id": "GO:0061714",
+      "feature_type": "BINDING",
+      "start": 148,
+      "end": 154,
+      "signal_kind": "ligand",
+      "signal_value": "folate",
+      "reasoning": "The binding site at position 148-154 (BINDING 148-154) directly interacts with folic acid and is likely involved in the endocytosis process described in the GO definition, making it the most plausible explanation for why this protein carries the term \"folic acid receptor activity\" as a defined function."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P35846",
+      "go_id": "GO:0061714",
+      "feature_type": "BINDING",
+      "start": 100,
+      "end": 101,
+      "signal_kind": "ligand",
+      "signal_value": "folate",
+      "reasoning": "The binding site for folate (ligand: folate) is relevant to the function of folic acid receptor activity, but it does not specifically explain the endocytosis mechanism described in the definition."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P14207",
+      "reason": "none_verdict",
+      "reasoning": "There are no annotated features in the provided data that directly explain the defined chemistry of folic acid receptor activity, which involves both binding and endocytosis. The only evidence is about folate binding in multiple regions, but these do not provide a strong match to the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "P15328",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

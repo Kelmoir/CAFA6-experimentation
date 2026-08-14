@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0061656",
+  "name": "SUMO conjugating enzyme activity",
+  "def": "Isoenergetic transfer of SUMO from one protein to another via the reaction X-SUMO + Y = Y-SUMO + X, where both the X-SUMO and Y-SUMO linkages are thioester bonds between the C-terminal amino acid of SUMO and a sulfhydryl side group of a cysteine residue.",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "O42939",
+    "P40984",
+    "P63281",
+    "Q9W6H5"
+  ],
+  "assigned_accessions": [
+    "O42939",
+    "P40984",
+    "P63281",
+    "Q9W6H5"
+  ]
+}

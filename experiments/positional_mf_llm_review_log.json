@@ -29352,6 +29352,149 @@
    }
   ]
  },
+ "GO:0061628": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Chromo",
+    "accessions": [
+     "O55187",
+     "Q9D5D8",
+     "Q9WTK2"
+    ],
+    "reason": "resolved to ['InterPro:IPR016197', 'InterPro:IPR017984', 'InterPro:IPR023780', 'PROSITE:PS00598', 'PROSITE:PS50013', 'Pfam:PF00385'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR016197': 114, 'InterPro:IPR017984': 21, 'InterPro:IPR023780': 82, 'PROSITE:PS00598': 52, 'PROSITE:PS50013': 82, 'Pfam:PF00385': 82})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "JmjC",
+    "accessions": [
+     "Q8RWR1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0061656": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "UBC core",
+    "accessions": [
+     "P40984",
+     "Q9W6H5"
+    ],
+    "reason": "resolved to ['InterPro:IPR000608', 'PROSITE:PS00183', 'PROSITE:PS50127'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000608': 169, 'PROSITE:PS00183': 122, 'PROSITE:PS50127': 169})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Glycyl thioester intermediate",
+    "accessions": [
+     "P63281"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O42939",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the mechanism of SUMO conjugating enzyme activity, which involves thioester bond transfer between two proteins. The binding sites and disordered regions are generic and do not provide a strong match to the defined chemistry of this GO term."
+   }
+  ]
+ },
+ "GO:0061693": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P16679"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P16685",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P16686",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P16687",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0061714": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "folate",
+    "accessions": [
+     "Q05685"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P35846",
+    "go_id": "GO:0061714",
+    "feature_type": "BINDING",
+    "start": 100,
+    "end": 101,
+    "signal_kind": "ligand",
+    "signal_value": "folate",
+    "reasoning": "The binding site for folate (ligand: folate) is relevant to the function of folic acid receptor activity, but it does not specifically explain the endocytosis mechanism described in the definition."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P14207",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated features in the provided data that directly explain the defined chemistry of folic acid receptor activity, which involves both binding and endocytosis. The only evidence is about folate binding in multiple regions, but these do not provide a strong match to the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "P15328",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
  "GO:0061730": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -29365,6 +29508,38 @@
     "accession": "P42001",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0061750": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Saposin B-type",
+    "accessions": [
+     "P17405",
+     "Q04519"
+    ],
+    "reason": "resolved to ['InterPro:IPR011001', 'PROSITE:PS50015'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR011001': 19, 'PROSITE:PS50015': 23})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UAY4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a direct explanation for the phosphodiesterase activity defined by GO:0061750. The only relevant domain information is from cross-references, which are not positional features and do not directly support the term's primary reaction."
+   },
+   {
+    "accession": "Q10916",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly explains the chemistry of the reaction defined by GO:0061750. The primary reaction involves catalyzing the hydrolysis of sphingomyelin, which is not captured by any of the binding sites or other domain annotations provided."
    }
   ]
  },

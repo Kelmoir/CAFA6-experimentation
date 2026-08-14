@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P40984",
+      "go_id": "GO:0061656",
+      "feature_type": "DOMAIN",
+      "start": 3,
+      "end": 157,
+      "signal_kind": "text",
+      "signal_value": "UBC core",
+      "reasoning": "The DOMAIN feature explicitly identifies the UBC core domain, which is essential for SUMO conjugating enzyme activity, aligning with the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "P63281",
+      "go_id": "GO:0061656",
+      "feature_type": "ACT_SITE",
+      "start": 92,
+      "end": 93,
+      "signal_kind": "text",
+      "signal_value": "Glycyl thioester intermediate",
+      "reasoning": "The ACT_SITE feature indicates the presence of a glycyl thioester intermediate, which is a direct chemical feature of the SUMO conjugating enzyme reaction defined by the GO term. This specific match strongly supports the assignment of the GO term to this protein."
+    },
+    {
+      "accession": "Q9W6H5",
+      "go_id": "GO:0061656",
+      "feature_type": "DOMAIN",
+      "start": 3,
+      "end": 157,
+      "signal_kind": "text",
+      "signal_value": "UBC core",
+      "reasoning": "The DOMAIN 3-157 (type: DOMAIN) is directly associated with the UBC core, a known domain involved in ubiquitin conjugation and structurally related to SUMO transfer enzymes. This provides a strong match to the GO term's primary reaction mechanism of SUMO transfer."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O42939",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the mechanism of SUMO conjugating enzyme activity, which involves thioester bond transfer between two proteins. The binding sites and disordered regions are generic and do not provide a strong match to the defined chemistry of this GO term."
+    }
+  ]
+}
