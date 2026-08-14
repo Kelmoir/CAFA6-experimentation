@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q91WR5",
+      "go_id": "GO:0045703",
+      "feature_type": "SITE",
+      "start": 83,
+      "end": 84,
+      "signal_kind": "text",
+      "signal_value": "Lowers pKa of active site Tyr",
+      "reasoning": "The SITE annotation indicates that the enzyme lowers the pKa of its active site tyrosine, which is crucial for catalyzing the reduction of a ketone group to an alcohol, directly aligning with the primary reaction defined by GO:0045703."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P51652",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide any specific evidence that directly explains the catalytic mechanism of ketoreductase activity as defined by the GO term."
+    },
+    {
+      "accession": "Q9FYL6",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9FYL6 specifically matches the chemistry of ketoreductase activity as defined by the GO term."
+    },
+    {
+      "accession": "Q6FRM0",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

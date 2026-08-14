@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0046480",
+  "name": "galactolipid galactosyltransferase activity",
+  "def": "Catalysis of the reaction: 2 mono-beta-D-galactosyldiacylglycerol = alpha-D-galactosyl-beta-D-galactosyldiacylglycerol + 1,2-diacylglycerol.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q93Y07",
+    "Q9S7D1"
+  ],
+  "assigned_accessions": [
+    "Q93Y07",
+    "Q9S7D1"
+  ]
+}

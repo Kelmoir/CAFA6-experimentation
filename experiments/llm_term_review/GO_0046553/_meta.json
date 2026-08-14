@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0046553",
+  "name": "D-malate dehydrogenase (decarboxylating) (NAD+) activity",
+  "def": "Catalysis of the reaction: (R)-malate + NAD+ = CO2 + NADH + pyruvate.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P76251",
+    "Q58130"
+  ],
+  "assigned_accessions": [
+    "P76251",
+    "Q58130"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9SPL4",
+      "go_id": "GO:0045735",
+      "feature_type": "DOMAIN",
+      "start": 270,
+      "end": 410,
+      "signal_kind": "text",
+      "signal_value": "Cupin type-1 1",
+      "reasoning": "The DOMAIN 270-410 feature is most plausibly associated with the \"nutrient reservoir activity\" GO term due to its structural and functional relevance to Cupin type-1 proteins, which are known for their role in nutrient storage."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "C0HLT8",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P11995",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "A0A7M6UMR7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for protein A0A7M6UMR7 directly matches the primary reaction of \"nutrient reservoir activity\" as defined by the GO term, which involves storage rather than transport."
+    }
+  ]
+}

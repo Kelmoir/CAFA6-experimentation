@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0046424",
+  "name": "ferulate 5-hydroxylase activity",
+  "def": "Catalysis of the reaction: ferulic acid + NADPH + H+ + O2 = 5-hydroxyferulic acid + H2O + NADP+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q42600"
+  ],
+  "assigned_accessions": [
+    "Q42600"
+  ]
+}

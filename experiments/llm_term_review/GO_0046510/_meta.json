@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0046510",
+  "name": "UDP-sulfoquinovose:DAG sulfoquinovosyltransferase activity",
+  "def": "Catalysis of the reaction: UDP-sulfoquinovose + 1,2-diacylglycerol = sulfoquinovosyldiacylglycerol + UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8S4F6"
+  ],
+  "assigned_accessions": [
+    "Q8S4F6"
+  ]
+}

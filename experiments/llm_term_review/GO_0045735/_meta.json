@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0045735",
+  "name": "nutrient reservoir activity",
+  "def": "Functions in the storage of nutritious substrates.",
+  "n_proteins_total": 75,
+  "sampled_accessions": [
+    "A0A7M6UMR7",
+    "C0HLT8",
+    "P11995",
+    "Q9SPL4"
+  ],
+  "assigned_accessions": [
+    "A0A7M6UMR7",
+    "C0HLT8",
+    "P11995",
+    "Q9SPL4"
+  ]
+}

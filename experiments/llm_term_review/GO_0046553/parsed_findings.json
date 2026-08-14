@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P76251",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for this protein provides a direct explanation for carrying the molecular function defined in the GO term."
+    },
+    {
+      "accession": "Q58130",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the specific reaction mechanism of D-malate dehydrogenase (decarboxylating) (NAD+) activity, which involves the transfer of a hydride ion from NAD+ to malate."
+    }
+  ]
+}

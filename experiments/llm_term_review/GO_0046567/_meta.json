@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0046567",
+  "name": "aphidicolan-16 beta-ol synthase activity",
+  "def": "Catalysis of the reaction: 9-alpha-copalyl diphosphate + H2O = aphidicolan-16-beta-ol + diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q96WT2"
+  ],
+  "assigned_accessions": [
+    "Q96WT2"
+  ]
+}

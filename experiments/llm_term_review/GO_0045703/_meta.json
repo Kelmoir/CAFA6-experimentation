@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0045703",
+  "name": "ketoreductase activity",
+  "def": "Catalysis of the reduction of a ketone group to form the corresponding alcohol.",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "P51652",
+    "Q6FRM0",
+    "Q91WR5",
+    "Q9FYL6"
+  ],
+  "assigned_accessions": [
+    "P51652",
+    "Q6FRM0",
+    "Q91WR5",
+    "Q9FYL6"
+  ]
+}

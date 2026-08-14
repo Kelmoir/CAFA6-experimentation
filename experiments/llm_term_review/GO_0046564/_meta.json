@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0046564",
+  "name": "oxalate decarboxylase activity",
+  "def": "Catalysis of the reaction: H+ + oxalate = CO2 + formate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O34767"
+  ],
+  "assigned_accessions": [
+    "O34767"
+  ]
+}

@@ -21935,5 +21935,252 @@
     "reasoning": "No annotated feature in P51102 matches the primary reaction of the GO term, which is the catalysis of cis-3,4-leucopelargonidin with NADP+ to produce (+)-dihydrokaempferol. The protein's binding sites for NADP(+) are ligand-binding regions and do not directly account for the enzymatic activity defined by the GO term."
    }
   ]
+ },
+ "GO:0045703": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Lowers pKa of active site Tyr",
+    "accessions": [
+     "Q91WR5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P51652",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide any specific evidence that directly explains the catalytic mechanism of ketoreductase activity as defined by the GO term."
+   },
+   {
+    "accession": "Q9FYL6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9FYL6 specifically matches the chemistry of ketoreductase activity as defined by the GO term."
+   },
+   {
+    "accession": "Q6FRM0",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0045735": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Cupin type-1 1",
+    "accessions": [
+     "Q9SPL4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "C0HLT8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P11995",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "A0A7M6UMR7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein A0A7M6UMR7 directly matches the primary reaction of \"nutrient reservoir activity\" as defined by the GO term, which involves storage rather than transport."
+   }
+  ]
+ },
+ "GO:0046025": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WGA9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0046409": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Transition state stabilizer",
+    "accessions": [
+     "Q05431"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "O22203",
+    "go_id": "GO:0046409",
+    "feature_type": "BINDING",
+    "start": 437,
+    "end": 438,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "The binding site with heme is a plausible and mechanistically related feature, but it does not directly explain the hydroxylation activity described in the GO term."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0046424": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q42600",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for protein Q42600 is a disordered region, which does not provide any direct evidence about its catalytic activity or the defined reaction in GO:0046424. No other feature matches the primary reaction described in the GO term."
+   }
+  ]
+ },
+ "GO:0046480": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9S7D1",
+    "go_id": "GO:0046480",
+    "feature_type": "REGION",
+    "start": 0,
+    "end": 23,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The \"REGION\" span (0-23) is the only annotated feature for Q9S7D1 that could plausibly account for the GO term's definition, but it does not specifically match the chemistry of the reaction described. While a disordered region might be involved in enzyme activity, the evidence is not strong enough to confirm this as the primary structural basis for the function."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q93Y07",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein Q93Y07 directly explains the catalytic activity of transferring a galactose group as defined by GO:0046480."
+   }
+  ]
+ },
+ "GO:0046510": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8S4F6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0046553": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P76251",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for this protein provides a direct explanation for carrying the molecular function defined in the GO term."
+   },
+   {
+    "accession": "Q58130",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the specific reaction mechanism of D-malate dehydrogenase (decarboxylating) (NAD+) activity, which involves the transfer of a hydride ion from NAD+ to malate."
+   }
+  ]
+ },
+ "GO:0046562": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P93762",
+    "reason": "none_verdict",
+    "reasoning": "The \"DOMAIN\" feature at positions 39-222 is associated with \"FAD-binding PCMH-type,\" which indicates the presence of a domain that binds FAD, a cofactor used by beta-D-glucose oxidase. However, this feature does not directly explain why the protein carries the term \"beta-D-glucose oxidase activity\" as it only describes the structural aspect of FAD binding rather than the catalytic reaction itself."
+   }
+  ]
+ },
+ "GO:0046564": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton donor",
+    "accessions": [
+     "O34767"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0046567": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q96WT2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q96WT2 provides a clear and specific explanation for the molecular function defined by GO:0046567, which involves catalyzing the synthesis of aphidicolan-16-beta-ol through a phosphorelay mechanism."
+   }
+  ]
  }
 }

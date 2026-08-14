@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0046025",
+  "name": "precorrin-6Y C5,15-methyltransferase (decarboxylating) activity",
+  "def": "Catalysis of the reaction: 2 S-adenosyl-L-methionine + precorrin-6Y = 2 S-adenosyl-L-homocysteine + precorrin-8X + CO2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WGA9"
+  ],
+  "assigned_accessions": [
+    "P9WGA9"
+  ]
+}

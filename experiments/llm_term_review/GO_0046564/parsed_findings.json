@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "O34767",
+      "go_id": "GO:0046564",
+      "feature_type": "ACT_SITE",
+      "start": 340,
+      "end": 341,
+      "signal_kind": "text",
+      "signal_value": "Proton donor",
+      "reasoning": "The \"ACT_SITE\" annotation at position 340-341 directly describes the proton donor role of the protein, which is central to the defined reaction mechanism of oxalate decarboxylase activity. This feature specifically matches the chemistry described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

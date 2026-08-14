@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0046562",
+  "name": "beta-D-glucose oxidase activity",
+  "def": "Catalysis of the reaction: beta-D-glucose + O2 = D-glucono-1,5-lactone + H2O2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P93762"
+  ],
+  "assigned_accessions": [
+    "P93762"
+  ]
+}

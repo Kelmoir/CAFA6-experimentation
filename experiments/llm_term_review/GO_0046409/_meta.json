@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0046409",
+  "name": "p-coumarate 3-hydroxylase activity",
+  "def": "Catalysis of the reaction: shikimate or quinate ester of p-coumaric acid + NADPH + H+ + O2 = caffeic acid conjugate (caffeoyl shikimic acid or chlorogenic acid) + H2O + NADP+.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O22203",
+    "Q05431"
+  ],
+  "assigned_accessions": [
+    "O22203",
+    "Q05431"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q05431",
+      "go_id": "GO:0046409",
+      "feature_type": "SITE",
+      "start": 37,
+      "end": 38,
+      "signal_kind": "text",
+      "signal_value": "Transition state stabilizer",
+      "reasoning": "The feature \"SITE 37-38\" with the note \"Transition state stabilizer\" most plausibly explains why the protein carries the GO term \"p-coumarate 3-hydroxylase activity\" because it directly relates to the catalytic mechanism of stabilizing transition states, which is a key aspect of enzyme function."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "O22203",
+      "go_id": "GO:0046409",
+      "feature_type": "BINDING",
+      "start": 437,
+      "end": 438,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding site with heme is a plausible and mechanistically related feature, but it does not directly explain the hydroxylation activity described in the GO term."
+    }
+  ],
+  "issues": []
+}
