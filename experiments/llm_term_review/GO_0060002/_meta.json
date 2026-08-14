@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0060002",
+  "name": "plus-end directed microfilament motor activity",
+  "def": "A motor activity that generates movement along a microfilament towards the plus end, driven by ATP hydrolysis. The minus end of an actin filament is the end that does not preferentially add actin monomers.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "F8VQB6",
+    "Q96H55",
+    "Q9HD67",
+    "Q9V3Z6"
+  ],
+  "assigned_accessions": [
+    "F8VQB6",
+    "Q96H55",
+    "Q9HD67",
+    "Q9V3Z6"
+  ]
+}

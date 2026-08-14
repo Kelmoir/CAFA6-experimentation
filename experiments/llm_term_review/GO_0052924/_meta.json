@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0052924",
+  "name": "all-trans-nonaprenyl-diphosphate synthase (geranylgeranyl-diphosphate specific) activity",
+  "def": "Catalysis of the reaction: 5 isopentenyl diphosphate + (2E,6E,10E)-geranylgeranyl diphosphate = all-trans-nonaprenyl diphosphate + 5 diphosphate.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O06428",
+    "Q5HZ00",
+    "Q76FS5",
+    "Q8S948"
+  ],
+  "assigned_accessions": [
+    "O06428",
+    "Q5HZ00",
+    "Q76FS5",
+    "Q8S948"
+  ]
+}

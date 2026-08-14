@@ -1,0 +1,18 @@
+=== Q96H55 GO:0060002 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== F8VQB6 GO:0060002 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== Q9V3Z6 GO:0060002 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== Q9HD67 GO:0060002 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== Q96H55 GO:0060002 (VERDICT missing) ===
+THINKING: The GO term "plus-end directed microfilament motor activity" (GO:0060002) defines a motor activity that generates movement along a microfilament towards the plus end, driven by ATP hydrolysis. This primary reaction involves the motor domain receiving ATP and using it to generate force for movement. The protein Q96H55 is annotated with several features, including a DOMAIN (34-758) labeled "Myosin motor" and a BINDING region (131-139) with ligand "ATP." These features are relevant to the definition of the GO term. The DOMAIN 34-758 is directly related to the motor activity, as it is associated with myosin motors, which are known for their role in generating movement along microfilaments. The BINDING region (131-139) with ATP supports the idea that the protein interacts with ATP, which is necessary for the motor function. Other features like IQ regions and actin-binding regions may be secondary or related but do not directly explain the primary reaction of the GO term. The highest score for a feature that matches the primary reaction would be given to the DOMAIN 34-758, as it is the most relevant and directly associated with the motor activity described in the definition.
+
+FEATURE: DOMAIN 34-758  
+REASONING: The DOMAIN 34-758 labeled "Myosin motor" directly corresponds to the primary reaction of the GO term, which involves generating movement along a microfilament via ATP hydrolysis. This feature is most plausibly the structural basis for the molecular function described in the GO term.
+

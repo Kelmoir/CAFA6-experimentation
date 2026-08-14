@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q653T6",
+      "go_id": "GO:0052923",
+      "feature_type": "BINDING",
+      "start": 132,
+      "end": 133,
+      "signal_kind": "ligand",
+      "signal_value": "isopentenyl diphosphate",
+      "reasoning": "The binding site at 132-133 is directly involved in the reaction catalyzed by the enzyme, which matches the primary mechanism described in the GO term's definition."
+    },
+    {
+      "accession": "Q75HZ9",
+      "go_id": "GO:0052923",
+      "feature_type": "BINDING",
+      "start": 122,
+      "end": 123,
+      "signal_kind": "ligand",
+      "signal_value": "isopentenyl diphosphate",
+      "reasoning": "The binding of isopentenyl diphosphate at position 122-123 directly supports the catalytic reaction defined by the GO term, making it a strong match to the primary mechanism."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P9WFF7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P9WFF7 specifically matches the defined reaction mechanism of all-trans-nonaprenyl-diphosphate synthase (geranyl-diphosphate specific) activity."
+    },
+    {
+      "accession": "Q86YH6",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

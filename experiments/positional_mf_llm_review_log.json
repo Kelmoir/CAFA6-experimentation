@@ -28973,6 +28973,132 @@
    }
   ]
  },
+ "GO:0052923": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "isopentenyl diphosphate",
+    "accessions": [
+     "Q653T6",
+     "Q75HZ9"
+    ],
+    "reason": "ligand already claimed by GO:0000010 elsewhere in the dictionary -- ligand_to_go is a plain dict, a second claim would silently overwrite it"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WFF7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P9WFF7 specifically matches the defined reaction mechanism of all-trans-nonaprenyl-diphosphate synthase (geranyl-diphosphate specific) activity."
+   },
+   {
+    "accession": "Q86YH6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0052924": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "isopentenyl diphosphate",
+    "accessions": [
+     "O06428",
+     "Q8S948"
+    ],
+    "reason": "ligand already claimed by GO:0000010 elsewhere in the dictionary -- ligand_to_go is a plain dict, a second claim would silently overwrite it"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5HZ00",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q76FS5",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0052926": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P53868",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9H6U8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9H6U8 specifically matches the primary reaction of the GO term, which involves catalyzing a complex glycosylation reaction. The disordered region and translocation site are unrelated to the enzymatic activity described."
+   },
+   {
+    "accession": "Q9P7Q9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9VBV8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the specific reaction defined by GO:0052926."
+   }
+  ]
+ },
+ "GO:0055100": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P55290",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated features for P55290 that directly relate to binding to adiponectin, which is the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "Q8BQS5",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region does not provide a specific structural or functional basis for adiponectin binding, and no other feature directly supports this GO term's primary definition."
+   },
+   {
+    "accession": "Q9WTR5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9WTR5 specifically matches the primary reaction of \"adiponectin binding\" as defined by the GO term."
+   },
+   {
+    "accession": "Q96A54",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q96A54 specifically matches the chemistry or mechanism described by the GO term \"adiponectin binding.\""
+   }
+  ]
+ },
  "GO:0055103": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -28986,6 +29112,46 @@
     "accession": "Q64691",
     "reason": "none_verdict",
     "reasoning": "No annotated feature in the provided data directly explains why the protein carries the GO term \"ligase regulator activity\" in terms of binding to and modulating a ligase."
+   }
+  ]
+ },
+ "GO:0060002": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR051567",
+     "InterPro:IPR051724",
+     "InterPro:IPR057130",
+     "Pfam:PF24123"
+    ],
+    "accessions": [
+     "Q9HD67",
+     "Q9V3Z6"
+    ],
+    "note": "resolved from DOMAIN note 'Myosin motor' (4 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "F8VQB6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q96H55",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
    }
   ]
  },

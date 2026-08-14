@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "F8VQB6",
+      "go_id": "GO:0060002",
+      "feature_type": "BINDING",
+      "start": 103,
+      "end": 104,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The multiple BINDING features involving ATP binding directly support the primary reaction of the GO term (ATP hydrolysis to generate movement along microfilaments), making them strong candidates for explaining why F8VQB6 carries this term."
+    },
+    {
+      "accession": "Q9HD67",
+      "go_id": "GO:0060002",
+      "feature_type": "DOMAIN",
+      "start": 62,
+      "end": 739,
+      "signal_kind": "text",
+      "signal_value": "Myosin motor",
+      "reasoning": "The \"Myosin motor\" domain directly corresponds to the primary reaction described in the GO term, which involves ATP hydrolysis and movement along microfilaments towards the plus end. This provides a strong match between the annotated feature and the molecular function defined by the GO term."
+    },
+    {
+      "accession": "Q9V3Z6",
+      "go_id": "GO:0060002",
+      "feature_type": "DOMAIN",
+      "start": 62,
+      "end": 733,
+      "signal_kind": "text",
+      "signal_value": "Myosin motor",
+      "reasoning": "The \"DOMAIN 62-733\" with the note \"Myosin motor\" directly supports the primary reaction of the GO term, which is movement along a microfilament due to ATP hydrolysis. This specific domain is strongly associated with myosin motors and their function in generating such movement."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q96H55",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

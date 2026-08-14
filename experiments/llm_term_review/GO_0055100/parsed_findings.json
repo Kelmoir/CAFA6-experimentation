@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P55290",
+      "reason": "none_verdict",
+      "reasoning": "There are no annotated features for P55290 that directly relate to binding to adiponectin, which is the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q8BQS5",
+      "reason": "none_verdict",
+      "reasoning": "The disordered region does not provide a specific structural or functional basis for adiponectin binding, and no other feature directly supports this GO term's primary definition."
+    },
+    {
+      "accession": "Q9WTR5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9WTR5 specifically matches the primary reaction of \"adiponectin binding\" as defined by the GO term."
+    },
+    {
+      "accession": "Q96A54",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q96A54 specifically matches the chemistry or mechanism described by the GO term \"adiponectin binding.\""
+    }
+  ]
+}

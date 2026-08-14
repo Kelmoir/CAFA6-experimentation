@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O06428",
+      "go_id": "GO:0052924",
+      "feature_type": "BINDING",
+      "start": 106,
+      "end": 107,
+      "signal_kind": "ligand",
+      "signal_value": "isopentenyl diphosphate",
+      "reasoning": "The binding site at 106-107 directly involves the substrate isopentenyl diphosphate, which is a key component of the reaction defined by GO:0052924. This specific interaction is most strongly aligned with the primary reaction mechanism described in the GO term's definition."
+    },
+    {
+      "accession": "Q8S948",
+      "go_id": "GO:0052924",
+      "feature_type": "BINDING",
+      "start": 125,
+      "end": 126,
+      "signal_kind": "ligand",
+      "signal_value": "isopentenyl diphosphate",
+      "reasoning": "The binding of isopentenyl diphosphate at position 125-126 directly supports the enzyme's function in catalyzing the formation of all-trans-nonaprenyl diphosphate, which matches the primary reaction defined by GO:0052924."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q5HZ00",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q76FS5",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

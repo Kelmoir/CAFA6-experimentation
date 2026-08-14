@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P53868",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9H6U8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9H6U8 specifically matches the primary reaction of the GO term, which involves catalyzing a complex glycosylation reaction. The disordered region and translocation site are unrelated to the enzymatic activity described."
+    },
+    {
+      "accession": "Q9P7Q9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9VBV8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the specific reaction defined by GO:0052926."
+    }
+  ]
+}

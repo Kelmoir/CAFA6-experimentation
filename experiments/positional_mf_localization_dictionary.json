@@ -24499,6 +24499,18 @@
   ],
   "text_patterns": []
  },
+ "GO:0060002": {
+  "name": "plus-end directed microfilament motor activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR051567",
+   "InterPro:IPR051724",
+   "InterPro:IPR057130",
+   "Pfam:PF24123"
+  ],
+  "text_patterns": []
+ },
  "GO:0060072": {
   "name": "large conductance calcium-activated potassium channel activity",
   "ligands": [],
