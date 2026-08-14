@@ -20575,6 +20575,15 @@
    "proton acceptor"
   ]
  },
+ "GO:0047184": {
+  "name": "1-acylglycerophosphocholine O-acyltransferase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "hxxxxd motif"
+  ]
+ },
  "GO:0047186": {
   "name": "N-acetylneuraminate 9-O-acetyltransferase activity",
   "ligands": [],

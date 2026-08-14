@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047248",
+  "name": "nuatigenin 3-beta-glucosyltransferase activity",
+  "def": "Catalysis of the reaction: nuatigenin + UDP-D-glucose = H+ + nuatigenin 3-beta-D-glucopyranoside + UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q5H861"
+  ],
+  "assigned_accessions": [
+    "Q5H861"
+  ]
+}

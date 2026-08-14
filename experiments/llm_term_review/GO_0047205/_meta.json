@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047205",
+  "name": "quinate O-hydroxycinnamoyltransferase activity",
+  "def": "Catalysis of the reaction: feruloyl-CoA + quinate = O-feruloylquinate + CoA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FI78"
+  ],
+  "assigned_accessions": [
+    "Q9FI78"
+  ]
+}

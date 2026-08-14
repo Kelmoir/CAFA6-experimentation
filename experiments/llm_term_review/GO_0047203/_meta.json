@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047203",
+  "name": "13-hydroxylupinine O-tigloyltransferase activity",
+  "def": "Catalysis of the reaction: 13-hydroxylupanine + 2-methylcrotonoyl-CoA = 13-(2-methylcrotonoyloxy)lupanine + CoA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q5H873"
+  ],
+  "assigned_accessions": [
+    "Q5H873"
+  ]
+}

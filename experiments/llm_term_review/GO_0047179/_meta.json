@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047179",
+  "name": "platelet-activating factor acetyltransferase activity",
+  "def": "Catalysis of the reaction: 1-radyl-2-acyl-sn-glycero-3-phospholipid + 1-alkyl-2-acetyl-sn-glycero-3-phosphocholine = 1-alkyl-2-lyso-sn-glycero-3-phosphocholine + 1-radyl-2-acetyl-sn-glycero-3-phospholipid.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "O35263",
+    "P04180",
+    "P63004",
+    "Q61206"
+  ],
+  "assigned_accessions": [
+    "O35263",
+    "P04180",
+    "P63004",
+    "Q61206"
+  ]
+}

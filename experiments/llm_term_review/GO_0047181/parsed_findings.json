@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "L7NCQ3",
+      "reason": "none_verdict",
+      "reasoning": "There is no single annotated feature (by type + exact coordinates) that directly matches the enzymatic activity described by the GO term's definition. While the ACT_SITE annotation at position 164-165 could be relevant, it does not specifically explain why L7NCQ3 carries the term \"tetrahydroxybenzophenone synthase activity\" as defined by the GO term."
+    },
+    {
+      "accession": "Q8SAS8",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature available for Q8SAS8 is ACT_SITE 166-167, which refers to a binding site rather than the specific catalytic mechanism or reaction involved in tetrahydroxybenzophenone synthase activity. This feature does not provide enough specificity to explain the GO term's primary reaction."
+    }
+  ]
+}

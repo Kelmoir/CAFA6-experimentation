@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047241",
+  "name": "lipopolysaccharide N-acetylmannosaminouronosyltransferase activity",
+  "def": "Catalysis of the reaction: lipopolysaccharide + UDP-N-acetylmannosaminouronate = N-acetyl-beta-D-mannosaminouronosyl-1,4-lipopolysaccharide + UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P27836"
+  ],
+  "assigned_accessions": [
+    "P27836"
+  ]
+}

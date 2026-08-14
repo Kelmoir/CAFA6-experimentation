@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q6ZMB0",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION\" being disordered does not directly explain why Q6ZMB0 carries the GO term about acetylgalactosaminyl-O-glycosyl-glycoprotein beta-1,3-N-acetylglucosaminyltransferase activity. No other annotated feature provides a strong match to the primary reaction described in the GO definition."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047184",
+  "name": "1-acylglycerophosphocholine O-acyltransferase activity",
+  "def": "Catalysis of the reaction: 1-acyl-sn-glycero-3-phosphocholine + acyl-CoA = phosphatidylcholine + CoA.",
+  "n_proteins_total": 34,
+  "sampled_accessions": [
+    "O01925",
+    "Q16635",
+    "Q6NN55",
+    "Q8S8S2"
+  ],
+  "assigned_accessions": [
+    "O01925",
+    "Q16635",
+    "Q6NN55",
+    "Q8S8S2"
+  ]
+}

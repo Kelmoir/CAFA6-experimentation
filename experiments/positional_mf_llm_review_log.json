@@ -23050,5 +23050,235 @@
     "reasoning": "There is no annotated feature that specifically matches the primary reaction mechanism of the GO term \"glycerophospholipid acyltransferase (CoA-dependent) activity\" for protein Q9FD10. The ACT_SITE regions are generic and do not provide mechanistic specificity to explain the defined chemistry of the term."
    }
   ]
+ },
+ "GO:0047179": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "LisH",
+    "accessions": [
+     "P63004"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O35263",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature in the protein's data that directly matches the primary reaction of the GO term, which involves the catalytic transfer of an acetyl group. The available features are either generic (like \"REGION 0-20\") or refer to potential active site locations without sufficient structural evidence to confirm their role in the specific reaction defined by the GO term."
+   },
+   {
+    "accession": "P04180",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of catalyzing the acetyltransferase activity as defined in the GO term's id, name, and definition. All features are either generic or only loosely related to the function."
+   },
+   {
+    "accession": "Q61206",
+    "reason": "none_verdict",
+    "reasoning": "The ACT_SITE span at position 192-193 is the most plausible candidate for the catalytic activity of platelet-activating factor acetyltransferase, as it could be part of the active site where the reaction occurs. However, since no feature explicitly matches the defined reaction, the verdict remains NONE."
+   }
+  ]
+ },
+ "GO:0047181": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "L7NCQ3",
+    "reason": "none_verdict",
+    "reasoning": "There is no single annotated feature (by type + exact coordinates) that directly matches the enzymatic activity described by the GO term's definition. While the ACT_SITE annotation at position 164-165 could be relevant, it does not specifically explain why L7NCQ3 carries the term \"tetrahydroxybenzophenone synthase activity\" as defined by the GO term."
+   },
+   {
+    "accession": "Q8SAS8",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature available for Q8SAS8 is ACT_SITE 166-167, which refers to a binding site rather than the specific catalytic mechanism or reaction involved in tetrahydroxybenzophenone synthase activity. This feature does not provide enough specificity to explain the GO term's primary reaction."
+   }
+  ]
+ },
+ "GO:0047184": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "hxxxxd motif",
+    "accessions": [
+     "Q16635",
+     "Q8S8S2"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q6NN55",
+    "go_id": "GO:0047184",
+    "feature_type": "ACT_SITE",
+    "start": 348,
+    "end": 349,
+    "signal_kind": "feature_type_only",
+    "signal_value": null,
+    "reasoning": "The ACT_SITE coordinates for Q6NN55 could plausibly be part of a domain responsible for catalyzing the acyl transfer reaction described by GO:0047184, but no explicit confirmation has been provided that these regions are involved in this specific enzymatic activity."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "O01925",
+    "reason": "none_verdict",
+    "reasoning": "The defined molecular function for the GO term involves a specific enzymatic reaction (acyl transfer), which is not directly explained by any of the annotated features for O01925. While the Di-lysine motif and ACT_SITE regions are relevant to enzyme structure and activity, they do not specifically account for the acyl transfer chemistry described in the GO term's definition. Therefore, no single a"
+   }
+  ]
+ },
+ "GO:0047202": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8VZU3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8VZU3 directly matches the primary reaction mechanism of the GO term, which is about catalyzing the transfer of a sinapoyl group. The ACT_SITE and BINDING features are generic and do not provide enough specificity to explain the enzyme activity defined by the GO term."
+   }
+  ]
+ },
+ "GO:0047203": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5H873",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's section directly matches the GO term's primary reaction mechanism of acyl transfer, and all available features relate to proton acceptor activity rather than the specific chemistry of the GO term."
+   }
+  ]
+ },
+ "GO:0047205": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FI78",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the primary reaction of the GO term, which involves catalyzing the transfer of a phosphoryl group between two substrates."
+   }
+  ]
+ },
+ "GO:0047224": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6ZMB0",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" being disordered does not directly explain why Q6ZMB0 carries the GO term about acetylgalactosaminyl-O-glycosyl-glycoprotein beta-1,3-N-acetylglucosaminyltransferase activity. No other annotated feature provides a strong match to the primary reaction described in the GO definition."
+   }
+  ]
+ },
+ "GO:0047225": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O95395",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q5JCT0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8CH87",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047230": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "I1LCI8",
+    "reason": "none_verdict",
+    "reasoning": "The provided annotated features do not directly describe the catalytic reaction of transferring a phosphate group from UDP-L-rhamnose to a flavonol 3-O-D-glucoside, which is the primary reaction defined by the GO term. No feature in the Annotated features section provides a strong match to the chemistry described in the GO definition."
+   }
+  ]
+ },
+ "GO:0047241": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P27836",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047248": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5H861",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism described in the GO term's definition. The available features only echo secondary or qualifying clauses, and no positional feature is explicitly tied to the enzyme's catalytic activity as defined."
+   }
+  ]
  }
 }

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047202",
+  "name": "sinapoylglucose-choline O-sinapoyltransferase activity",
+  "def": "Catalysis of the reaction: 1-O-sinapoyl-beta-D-glucose + choline = O-sinapoylcholine + D-glucose.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8VZU3"
+  ],
+  "assigned_accessions": [
+    "Q8VZU3"
+  ]
+}

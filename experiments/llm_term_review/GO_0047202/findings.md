@@ -1,0 +1,5 @@
+## Q8VZU3 GO:0047202
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature in Q8VZU3 directly matches the primary reaction mechanism of the GO term, which is about catalyzing the transfer of a sinapoyl group. The ACT_SITE and BINDING features are generic and do not provide enough specificity to explain the enzyme activity defined by the GO term.
+---

@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9FI78",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong match to the primary reaction of the GO term, which involves catalyzing the transfer of a phosphoryl group between two substrates."
+    }
+  ]
+}

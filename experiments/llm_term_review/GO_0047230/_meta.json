@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047230",
+  "name": "flavonol-3-O-glucoside L-rhamnosyltransferase activity",
+  "def": "Catalysis of the reaction: flavonol 3-O-D-glucoside + UDP-L-rhamnose = flavonol 3-O-L-rhamnosylglucoside + UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "I1LCI8"
+  ],
+  "assigned_accessions": [
+    "I1LCI8"
+  ]
+}
