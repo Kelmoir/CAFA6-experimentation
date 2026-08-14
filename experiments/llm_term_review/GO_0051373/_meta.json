@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0051373",
+  "name": "FATZ binding",
+  "def": "Binding to a member of the FATZ family of proteins, filamin-, actinin-, and telethonin-binding proteins of the Z-disc of striated muscle. FATZ proteins are located in the Z-disc of the sarcomere and are involved in a complex network of interactions with other Z-band components.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "O15273",
+    "P35609",
+    "Q8R4E4",
+    "Q9NPC6"
+  ],
+  "assigned_accessions": [
+    "O15273",
+    "P35609",
+    "Q8R4E4",
+    "Q9NPC6"
+  ]
+}

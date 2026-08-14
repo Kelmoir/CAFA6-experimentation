@@ -26980,6 +26980,147 @@
    }
   ]
  },
+ "GO:0051264": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PNPLA",
+    "accessions": [
+     "P0C548",
+     "Q9NST1"
+    ],
+    "reason": "resolved to ['InterPro:IPR002641', 'PROSITE:PS51635'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR002641': 43, 'PROSITE:PS51635': 43})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "GXSXG",
+    "accessions": [
+     "P41247"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q91WW7",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q91WW7 does not have any annotated feature that specifically matches the primary reaction mechanism of the GO term \"mono-olein transacylation activity.\" Therefore, there is no strong evidence to support that this protein carries the term as a real, asserted annotation."
+   }
+  ]
+ },
+ "GO:0051265": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PNPLA",
+    "accessions": [
+     "Q8BJ56",
+     "Q91WW7"
+    ],
+    "reason": "resolved to ['InterPro:IPR002641', 'PROSITE:PS51635'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR002641': 43, 'PROSITE:PS51635': 43})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "GXGXXG",
+    "accessions": [
+     "Q96AD5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9NST1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9NST1 specifically matches the defined esterification reaction of GO:0051265, which involves the catalysis of a specific chemical transformation."
+   }
+  ]
+ },
+ "GO:0051373": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Calponin-homology (CH) 1",
+    "accessions": [
+     "P35609"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O15273",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein is a disordered region, which does not provide any specific evidence about why it carries the GO term \"FATZ binding.\" The definition of the GO term focuses on the function of binding to FATZ family proteins, and no positional feature directly supports that mechanism."
+   },
+   {
+    "accession": "Q8R4E4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature describes the binding to FATZ family members, which are the core aspect of the GO term's definition."
+   },
+   {
+    "accession": "Q9NPC6",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION 89-135\" feature describes a disordered region in Q9NPC6, which is relevant to the context of striated muscle and Z-disc components. However, it does not directly explain why the protein carries the \"FATZ binding\" term, as the primary reaction of binding to FATZ family members is not specified or implied by this feature."
+   }
+  ]
+ },
+ "GO:0051392": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR013562",
+     "Pfam:PF08351"
+    ],
+    "accessions": [
+     "P76562",
+     "Q9H0A0"
+    ],
+    "note": "resolved from DOMAIN note 'N-acetyltransferase'"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P53914",
+    "reason": "none_verdict",
+    "reasoning": "The domain \"N-acetyltransferase\" (DOMAIN 565-706) is the only feature that directly relates to the acetylation activity described by GO:0051392, but it does not specifically match the reaction mechanism defined by the GO term. Since no positional feature explicitly supports the reaction chemistry of the GO term, there is no strong evidence for this function in the given protein's Annotated feature"
+   },
+   {
+    "accession": "P87115",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly describe the catalytic mechanism of transferring an acetyl group from acetyl-CoA to a cytidine in tRNA. The only feature that could be interpreted as a match is the DOMAIN annotation, but it is too generic and does not provide enough specificity to explain the GO term's definition."
+   }
+  ]
+ },
  "GO:0051432": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -26993,6 +27134,48 @@
     "accession": "P30429",
     "reason": "none_verdict",
     "reasoning": "No annotated feature for P30429 directly matches the primary reaction of \"binding to a BH1 protein domain\" as defined by GO:0051432."
+   }
+  ]
+ },
+ "GO:0051435": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8VI36",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8VI36 specifically describes the ability to bind to a BH4 domain, which is the primary reaction implied by the GO term's definition."
+   },
+   {
+    "accession": "Q66H76",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the GO term's definition of \"binding to a BH4 protein domain.\" While LD motifs are involved in protein interactions, they do not specifically explain the primary reaction of binding to a BH4 domain. Therefore, there is no single annotated feature that plausibly explains why this protein carries the GO term."
+   }
+  ]
+ },
+ "GO:0051540": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P33590",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P77329",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
  }

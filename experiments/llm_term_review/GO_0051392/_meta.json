@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0051392",
+  "name": "tRNA cytidine N4-acetyltransferase activity",
+  "def": "Catalysis of the reaction: a cytidine in tRNA + acetyl-CoA + ATP + H2O = ADP + an N4-acetylcytidine in tRNA + CoA + H+ + phosphate.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P53914",
+    "P76562",
+    "P87115",
+    "Q9H0A0"
+  ],
+  "assigned_accessions": [
+    "P53914",
+    "P76562",
+    "P87115",
+    "Q9H0A0"
+  ]
+}

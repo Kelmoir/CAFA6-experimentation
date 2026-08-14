@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0051265",
+  "name": "diolein transacylation activity",
+  "def": "Catalysis of the reaction: diolein + mono-olein = triolein + glycerol. Mono-olein, also known as mono-oleoylglycerol, is the monoglyceride formed from oleic acid, 9-octodecenoic acid; diolein is also known as dioleoylglycerol, and triolein as trioleoylglycerol and olein.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "Q8BJ56",
+    "Q91WW7",
+    "Q96AD5",
+    "Q9NST1"
+  ],
+  "assigned_accessions": [
+    "Q8BJ56",
+    "Q91WW7",
+    "Q96AD5",
+    "Q9NST1"
+  ]
+}

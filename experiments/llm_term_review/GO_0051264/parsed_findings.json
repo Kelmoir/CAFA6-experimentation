@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P0C548",
+      "go_id": "GO:0051264",
+      "feature_type": "DOMAIN",
+      "start": 9,
+      "end": 179,
+      "signal_kind": "text",
+      "signal_value": "PNPLA",
+      "reasoning": "The \"DOMAIN\" feature at position 9-179 with the note \"PNPLA\" directly corresponds to the catalytic activity of acyl transfer, which is the primary reaction defined by GO:0051264. This domain is specifically associated with enzymes that perform this type of transacylation, making it a strong match for the molecular function being annotated."
+    },
+    {
+      "accession": "P41247",
+      "go_id": "GO:0051264",
+      "feature_type": "MOTIF",
+      "start": 40,
+      "end": 45,
+      "signal_kind": "text",
+      "signal_value": "GXSXG",
+      "reasoning": "The motif \"GXSXG\" is directly associated with the enzyme activity of acyltransferases, which are involved in the transacylation reaction described by the GO term. This motif provides a strong and specific match to the primary reaction mechanism of the GO term."
+    },
+    {
+      "accession": "Q9NST1",
+      "go_id": "GO:0051264",
+      "feature_type": "DOMAIN",
+      "start": 9,
+      "end": 179,
+      "signal_kind": "text",
+      "signal_value": "PNPLA",
+      "reasoning": "The \"DOMAIN 9-179\" is explicitly linked to PNPLA, which is known to catalyze mono-olein transacylation, directly matching the primary reaction described in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q91WW7",
+      "reason": "none_verdict",
+      "reasoning": "The protein Q91WW7 does not have any annotated feature that specifically matches the primary reaction mechanism of the GO term \"mono-olein transacylation activity.\" Therefore, there is no strong evidence to support that this protein carries the term as a real, asserted annotation."
+    }
+  ]
+}

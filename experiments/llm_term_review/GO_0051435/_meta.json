@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0051435",
+  "name": "BH4 domain binding",
+  "def": "Binding to a BH4 protein domain, present in Bcl-2 family members. All anti-apoptotic proteins contain BH1 and BH2 domains; some also contain an additional N-terminal BH4 domain, which is almost never seen in pro-apoptotic proteins. Loss of the BH4 domain can diminish or abrogate anti-apoptotic function or even impart outright death-promoting properties to the protein.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q66H76",
+    "Q8VI36"
+  ],
+  "assigned_accessions": [
+    "Q66H76",
+    "Q8VI36"
+  ]
+}

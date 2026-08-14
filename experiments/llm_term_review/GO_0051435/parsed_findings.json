@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8VI36",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q8VI36 specifically describes the ability to bind to a BH4 domain, which is the primary reaction implied by the GO term's definition."
+    },
+    {
+      "accession": "Q66H76",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the GO term's definition of \"binding to a BH4 protein domain.\" While LD motifs are involved in protein interactions, they do not specifically explain the primary reaction of binding to a BH4 domain. Therefore, there is no single annotated feature that plausibly explains why this protein carries the GO term."
+    }
+  ]
+}

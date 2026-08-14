@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0051540",
+  "name": "metal cluster binding",
+  "def": "Binding to a cluster of atoms including both metal ions and nonmetal atoms, usually sulfur and oxygen. Examples include iron-sulfur clusters and nickel-iron-sulfur clusters.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P33590",
+    "P77329"
+  ],
+  "assigned_accessions": [
+    "P33590",
+    "P77329"
+  ]
+}

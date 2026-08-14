@@ -23474,6 +23474,16 @@
   ],
   "text_patterns": []
  },
+ "GO:0051392": {
+  "name": "tRNA cytidine N4-acetyltransferase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR013562",
+   "Pfam:PF08351"
+  ],
+  "text_patterns": []
+ },
  "GO:0051393": {
   "name": "alpha-actinin binding",
   "ligands": [],

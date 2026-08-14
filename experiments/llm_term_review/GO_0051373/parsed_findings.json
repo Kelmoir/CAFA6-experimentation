@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P35609",
+      "go_id": "GO:0051373",
+      "feature_type": "DOMAIN",
+      "start": 37,
+      "end": 142,
+      "signal_kind": "text",
+      "signal_value": "Calponin-homology (CH) 1",
+      "reasoning": "The domain 37-142 with the note \"Calponin-homology (CH) 1\" directly matches the actin-binding activity described in the GO term's definition, which is a primary reaction for FATZ proteins. This feature provides a strong and specific match to the molecular function of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O15273",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for this protein is a disordered region, which does not provide any specific evidence about why it carries the GO term \"FATZ binding.\" The definition of the GO term focuses on the function of binding to FATZ family proteins, and no positional feature directly supports that mechanism."
+    },
+    {
+      "accession": "Q8R4E4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature describes the binding to FATZ family members, which are the core aspect of the GO term's definition."
+    },
+    {
+      "accession": "Q9NPC6",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION 89-135\" feature describes a disordered region in Q9NPC6, which is relevant to the context of striated muscle and Z-disc components. However, it does not directly explain why the protein carries the \"FATZ binding\" term, as the primary reaction of binding to FATZ family members is not specified or implied by this feature."
+    }
+  ]
+}
