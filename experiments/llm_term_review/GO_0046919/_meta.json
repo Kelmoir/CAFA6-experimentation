@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0046919",
+  "name": "pyruvyltransferase activity",
+  "def": "Catalysis of the transfer of a pyruvyl (oxopropanoyl) group from one compound to another.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9UT27"
+  ],
+  "assigned_accessions": [
+    "Q9UT27"
+  ]
+}

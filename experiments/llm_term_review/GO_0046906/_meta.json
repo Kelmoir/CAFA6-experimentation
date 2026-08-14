@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0046906",
+  "name": "tetrapyrrole binding",
+  "def": "Binding to a tetrapyrrole, a compound containing four pyrrole nuclei variously substituted and linked to each other through carbons at the alpha position.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "P22315",
+    "P36553",
+    "Q84XU2",
+    "Q9NP58"
+  ],
+  "assigned_accessions": [
+    "P22315",
+    "P36553",
+    "Q84XU2",
+    "Q9NP58"
+  ]
+}

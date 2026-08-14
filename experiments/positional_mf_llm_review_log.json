@@ -22354,6 +22354,78 @@
    }
   ]
  },
+ "GO:0046715": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A2AJN7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8NBS3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9HGM6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9SV84",
+    "reason": "none_verdict",
+    "reasoning": "The defined function of active borate transmembrane transporter activity (GO:0046715) requires a specific domain or motif that directly enables this transport mechanism. While the protein Q9SV84 has two MOTIFS with notes, these do not provide enough specificity to determine which one is the most plausible explanation for the defined function. The domain/family cross-references suggest potential fa"
+   }
+  ]
+ },
+ "GO:0046790": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Ca(2+)",
+    "accessions": [
+     "P02743"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "TonB box",
+    "accessions": [
+     "P06971"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "N-acetylneuraminate",
+    "accessions": [
+     "Q9BZZ2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P62937",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain why the protein carries the GO term \"virion binding,\" as all are associated with PPIase activity rather than specific viral component interaction."
+   }
+  ]
+ },
  "GO:0046810": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -22394,5 +22466,148 @@
     "reasoning": "The only binding site provided for P10896 is for ATP, which is not specific to the activase function of ribulose-1,5-bisphosphate carboxylase/oxygenase. No other positional feature matches the primary reaction of increasing rubisco activity through phosphate removal as defined by the GO term."
    }
   ]
+ },
+ "GO:0046871": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Jacalin-type lectin",
+    "accessions": [
+     "P84801"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P02886",
+    "reason": "none_verdict",
+    "reasoning": "The DOMAIN 1-152 of P02886 is associated with F5/8 type C and FA58C, which are known to be involved in sugar transport and binding. While these domains are not specifically defined for N-acetylgalactosamine binding, they are structurally related to the types of domains that could perform such a function. However, since no explicit evidence directly supports this domain's role in N-acetylgalactosam"
+   },
+   {
+    "accession": "P02887",
+    "reason": "none_verdict",
+    "reasoning": "The annotated feature \"DOMAIN 1-152\" is associated with F5/8 type C and contains evidence that could be relevant to sugar binding, but it does not specifically or directly explain the molecular function of N-acetylgalactosamine binding as defined by GO:0046871."
+   },
+   {
+    "accession": "P42530",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P42530 directly matches the primary reaction of \"N-acetylgalactosamine binding\" as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0046904": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P02760",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain why the protein carries the term \"calcium oxalate binding\" based on the primary reaction or mechanism stated in the GO definition."
+   }
+  ]
+ },
+ "GO:0046906": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "P36553"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "protoporphyrin IX",
+    "accessions": [
+     "P22315"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q84XU2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's section explicitly describes binding to tetrapyrroles, which is the defining chemistry of the GO term."
+   },
+   {
+    "accession": "Q9NP58",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9NP58 specifically describes the ability to bind to tetrapyrroles, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0046919": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UT27",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" with coordinates 37-64 is marked as Disordered, which is generic and could apply to many proteins. It does not specifically explain the primary reaction of catalyzing pyruvyl transfer, which is defined by the GO term's chemistry. No other positional feature is provided that directly matches the GO term's definition."
+   }
+  ]
+ },
+ "GO:0047001": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P37769"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047018": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Lowers pKa of active site Tyr",
+    "accessions": [
+     "O13848"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

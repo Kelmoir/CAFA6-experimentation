@@ -1,0 +1,5 @@
+## Q9UT27 GO:0046919
+verdict: NONE
+feature: REGION 37-64
+reasoning: The "REGION" with coordinates 37-64 is marked as Disordered, which is generic and could apply to many proteins. It does not specifically explain the primary reaction of catalyzing pyruvyl transfer, which is defined by the GO term's chemistry. No other positional feature is provided that directly matches the GO term's definition.
+---

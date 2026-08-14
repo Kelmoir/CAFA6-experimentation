@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0046871",
+  "name": "N-acetylgalactosamine binding",
+  "def": "Binding to N-acetylgalactosamine, 2-acetamido-2-deoxygalactopyranose, the n-acetyl derivative of galactosamine.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P02886",
+    "P02887",
+    "P42530",
+    "P84801"
+  ],
+  "assigned_accessions": [
+    "P02886",
+    "P02887",
+    "P42530",
+    "P84801"
+  ]
+}

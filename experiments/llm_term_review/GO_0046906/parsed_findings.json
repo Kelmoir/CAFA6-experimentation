@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P36553",
+      "go_id": "GO:0046906",
+      "feature_type": "BINDING",
+      "start": 91,
+      "end": 92,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The \"BINDING 91-92\" feature with ligand: substrate most plausibly explains why the protein carries the \"tetrapyrrole binding\" GO term, as it directly relates to the binding activity described in the definition."
+    },
+    {
+      "accession": "P22315",
+      "go_id": "GO:0046906",
+      "feature_type": "BINDING",
+      "start": 113,
+      "end": 114,
+      "signal_kind": "ligand",
+      "signal_value": "protoporphyrin IX",
+      "reasoning": "The binding site at positions 113-114 is explicitly associated with protoporphyrin IX, a known tetrapyrrole, which directly matches the primary reaction of the GO term \"tetrapyrrole binding.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q84XU2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's section explicitly describes binding to tetrapyrroles, which is the defining chemistry of the GO term."
+    },
+    {
+      "accession": "Q9NP58",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q9NP58 specifically describes the ability to bind to tetrapyrroles, which is the primary reaction defined by the GO term."
+    }
+  ]
+}

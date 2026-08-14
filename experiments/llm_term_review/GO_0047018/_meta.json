@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047018",
+  "name": "indole-3-acetaldehyde reductase (NADH) activity",
+  "def": "Catalysis of the reaction: indole-3-ethanol + NAD+ = (indol-3-yl)acetaldehyde + H+ + NADH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O13848"
+  ],
+  "assigned_accessions": [
+    "O13848"
+  ]
+}

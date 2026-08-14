@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047001",
+  "name": "2-dehydro-3-deoxy-D-gluconate 5-dehydrogenase activity",
+  "def": "Catalysis of the reaction: NAD+ + 2-dehydro-3-deoxy-D-gluconate = NADH + (4S)-4,6-dihydroxy-2,5-dioxohexanoate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P37769"
+  ],
+  "assigned_accessions": [
+    "P37769"
+  ]
+}

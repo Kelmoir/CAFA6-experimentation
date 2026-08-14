@@ -1,0 +1,6 @@
+=== P22315 GO:0046906 (VERDICT missing) ===
+THINKING: The GO term "tetrapyrrole binding" (GO:0046906) refers to the specific ability of a protein to bind to tetrapyrroles, which are compounds with four pyrrole rings. This is a chemical interaction rather than a regulatory or structural function. Among the annotated features for protein P22315, we look for any that directly relate to binding to tetrapyrroles. The only relevant feature is the "BINDING" annotation with ligand "protoporphyrin IX," which matches the definition's focus on tetrapyrrole binding. Other binding sites are for different ligands like [2Fe-2S] clusters, which are not tetrapyrroles. Therefore, the most plausible annotated feature that explains why this protein carries the term is the one involving protoporphyrin IX.
+
+FEATURE: BINDING 113-114  
+REASONING: The binding of protoporphyrin IX to the protein's site directly matches the definition of tetrapyrrole binding, which involves compounds containing four pyrrole nuclei. This specific interaction is a strong match to the primary reaction described in the GO term's definition.
+

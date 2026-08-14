@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0046715",
+  "name": "active borate transmembrane transporter activity",
+  "def": "Enables the transport of borate across a membrane against the concentration gradient.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "A2AJN7",
+    "Q8NBS3",
+    "Q9HGM6",
+    "Q9SV84"
+  ],
+  "assigned_accessions": [
+    "A2AJN7",
+    "Q8NBS3",
+    "Q9HGM6",
+    "Q9SV84"
+  ]
+}

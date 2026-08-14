@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0046790",
+  "name": "virion binding",
+  "def": "Binding to a virion, either by binding to components of the capsid or the viral envelope.",
+  "n_proteins_total": 25,
+  "sampled_accessions": [
+    "P02743",
+    "P06971",
+    "P62937",
+    "Q9BZZ2"
+  ],
+  "assigned_accessions": [
+    "P02743",
+    "P06971",
+    "P62937",
+    "Q9BZZ2"
+  ]
+}

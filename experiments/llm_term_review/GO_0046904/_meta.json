@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0046904",
+  "name": "calcium oxalate binding",
+  "def": "Binding to calcium oxalate, CaC2O4, a salt of oxalic acid. In animals, it may be excreted in urine or retained in the form of urinary calculi.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P02760"
+  ],
+  "assigned_accessions": [
+    "P02760"
+  ]
+}

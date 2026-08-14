@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P84801",
+      "go_id": "GO:0046871",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 120,
+      "signal_kind": "text",
+      "signal_value": "Jacalin-type lectin",
+      "reasoning": "The \"Jacalin-type lectin\" domain in P84801 directly supports the GO term's definition by implementing the binding activity to N-acetylgalactosamine, which is the primary reaction stated in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P02886",
+      "reason": "none_verdict",
+      "reasoning": "The DOMAIN 1-152 of P02886 is associated with F5/8 type C and FA58C, which are known to be involved in sugar transport and binding. While these domains are not specifically defined for N-acetylgalactosamine binding, they are structurally related to the types of domains that could perform such a function. However, since no explicit evidence directly supports this domain's role in N-acetylgalactosam"
+    },
+    {
+      "accession": "P02887",
+      "reason": "none_verdict",
+      "reasoning": "The annotated feature \"DOMAIN 1-152\" is associated with F5/8 type C and contains evidence that could be relevant to sugar binding, but it does not specifically or directly explain the molecular function of N-acetylgalactosamine binding as defined by GO:0046871."
+    },
+    {
+      "accession": "P42530",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for P42530 directly matches the primary reaction of \"N-acetylgalactosamine binding\" as defined by the GO term."
+    }
+  ]
+}
