@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047019",
+  "name": "indole-3-acetaldehyde reductase (NADPH) activity",
+  "def": "Catalysis of the reaction: indole-3-ethanol + NADP+ = (indol-3-yl)acetaldehyde + H+ + NADPH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O13848"
+  ],
+  "assigned_accessions": [
+    "O13848"
+  ]
+}

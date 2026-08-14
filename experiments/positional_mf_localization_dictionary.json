@@ -20217,6 +20217,15 @@
    "acyl-thioester intermediate"
   ]
  },
+ "GO:0047006": {
+  "name": "17-alpha,20-alpha-dihydroxypregn-4-en-3-one dehydrogenase [NAD(P)+] activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "lowers pka of active site tyr"
+  ]
+ },
  "GO:0047011": {
   "name": "2-dehydropantolactone reductase (A-specific) activity",
   "ligands": [],

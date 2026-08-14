@@ -1,0 +1,20 @@
+## Q15544 GO:0046966
+verdict: NONE
+feature: REGION 0-81
+reasoning: The only annotated feature for this protein is a disordered region, which does not directly explain the molecular function of binding to a nuclear thyroid hormone receptor as described in the GO term's definition. No positional feature has been confirmed to account for the primary reaction of the GO term.
+---
+## Q15545 GO:0046966
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature directly matches the primary reaction of "Binding to a nuclear thyroid hormone receptor," and the provided domain/family cross-references do not support the specific function defined by the GO term.
+---
+## Q4V8B3 GO:0046966
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature in Q4V8B3 specifically indicates binding to a nuclear thyroid hormone receptor, and the presence of multiple LXXLL motifs does not provide enough evidence to determine which one is responsible for this function.
+---
+## Q15649 GO:0046966
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature in the protein's list directly matches the GO term's primary reaction of binding to a nuclear thyroid hormone receptor, as all binding sites are for Zn(2+), not the receptor itself.
+---

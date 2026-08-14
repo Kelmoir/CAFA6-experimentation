@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047017",
+  "name": "prostaglandin F synthase activity",
+  "def": "Catalysis of the reaction: NADP+ + prostaglandin F2alpha = H+ + NADPH + prostaglandin D2.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "A9CQL8",
+    "P42330",
+    "Q8TBF2",
+    "Q9DB60"
+  ],
+  "assigned_accessions": [
+    "A9CQL8",
+    "P42330",
+    "Q8TBF2",
+    "Q9DB60"
+  ]
+}

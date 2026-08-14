@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P0AAJ8",
+      "go_id": "GO:0047067",
+      "feature_type": "BINDING",
+      "start": 196,
+      "end": 197,
+      "signal_kind": "ligand",
+      "signal_value": "[4Fe-4S] cluster",
+      "reasoning": "The binding site at position 196-197 with the [4Fe-4S] cluster directly supports the catalytic reaction of hydrogen:quinone oxidoreductase activity, which involves reducing menaquinone using H(2). This specific binding feature is most plausibly linked to the defined function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0046964",
+  "name": "3'-phosphoadenosine 5'-phosphosulfate transmembrane transporter activity",
+  "def": "Enables the transfer of 3'-phosphoadenosine 5'-phosphosulfate, a naturally occurring mixed anhydride synthesized from adenosine 5'-phosphosulfate, from one side of a membrane to the other.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "Q12251",
+    "Q8TB61",
+    "Q9VEI3",
+    "Q9VVD9"
+  ],
+  "assigned_accessions": [
+    "Q12251",
+    "Q8TB61",
+    "Q9VEI3",
+    "Q9VVD9"
+  ]
+}

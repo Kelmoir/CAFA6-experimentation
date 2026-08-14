@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047067",
+  "name": "hydrogen:quinone oxidoreductase activity",
+  "def": "Catalysis of the reaction: H(2) + menaquinone = reduced menaquinone.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AAJ8"
+  ],
+  "assigned_accessions": [
+    "P0AAJ8"
+  ]
+}

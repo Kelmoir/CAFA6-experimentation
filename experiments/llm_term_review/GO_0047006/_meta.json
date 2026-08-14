@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047006",
+  "name": "17-alpha,20-alpha-dihydroxypregn-4-en-3-one dehydrogenase [NAD(P)+] activity",
+  "def": "Catalysis of the reaction: NAD(P)+ + 17-alpha,20-alpha-dihydroxypregn-4-en-3-one = NAD(P)H + H+ + 17-alpha-hydroxyprogesterone.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P37059",
+    "P70694",
+    "Q04828",
+    "Q8K023"
+  ],
+  "assigned_accessions": [
+    "P37059",
+    "P70694",
+    "Q04828",
+    "Q8K023"
+  ]
+}

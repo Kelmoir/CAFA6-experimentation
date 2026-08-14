@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P42330",
+      "go_id": "GO:0047017",
+      "feature_type": "SITE",
+      "start": 83,
+      "end": 84,
+      "signal_kind": "text",
+      "signal_value": "Lowers pKa of active site Tyr",
+      "reasoning": "The SITE annotation at position 83-84 directly relates to the enzyme's mechanism of catalysis by lowering the pKa of the active site tyrosine, which is essential for the reaction described in the GO term. This feature most plausibly explains why the protein carries the molecular function \"prostaglandin F synthase activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A9CQL8",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8TBF2",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9DB60",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

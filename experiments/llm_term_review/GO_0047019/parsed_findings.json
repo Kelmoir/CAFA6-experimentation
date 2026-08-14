@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "O13848",
+      "go_id": "GO:0047019",
+      "feature_type": "ACT_SITE",
+      "start": 53,
+      "end": 54,
+      "signal_kind": "text",
+      "signal_value": "Proton donor",
+      "reasoning": "The \"ACT_SITE\" annotation at position 53-54 explicitly states that the active site is a proton donor, which directly matches the primary reaction mechanism of the GO term \"indole-3-acetaldehyde reductase (NADPH) activity.\" This feature provides a strong and specific explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

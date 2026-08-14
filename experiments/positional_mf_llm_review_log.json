@@ -22572,6 +22572,68 @@
    }
   ]
  },
+ "GO:0046964": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q12251",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8TB61",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9VEI3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9VVD9",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature available for Q9VVD9 is a Disordered region, which provides no structural or functional basis to explain why it carries the GO term for 3'-phosphoadenosine 5'-phosphosulfate transmembrane transporter activity. No other features are present in the Annotated features section that directly relate to the defined function of the GO term."
+   }
+  ]
+ },
+ "GO:0046966": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q15544",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein is a disordered region, which does not directly explain the molecular function of binding to a nuclear thyroid hormone receptor as described in the GO term's definition. No positional feature has been confirmed to account for the primary reaction of the GO term."
+   },
+   {
+    "accession": "Q15545",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of \"Binding to a nuclear thyroid hormone receptor,\" and the provided domain/family cross-references do not support the specific function defined by the GO term."
+   },
+   {
+    "accession": "Q4V8B3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q4V8B3 specifically indicates binding to a nuclear thyroid hormone receptor, and the presence of multiple LXXLL motifs does not provide enough evidence to determine which one is responsible for this function."
+   },
+   {
+    "accession": "Q15649",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the GO term's primary reaction of binding to a nuclear thyroid hormone receptor, as all binding sites are for Zn(2+), not the receptor itself."
+   }
+  ]
+ },
  "GO:0047001": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -22591,6 +22653,75 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0047006": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "lowers pka of active site tyr",
+    "accessions": [
+     "P70694",
+     "Q04828"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "P37059"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8K023",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, specific explanation for the molecular function defined by GO:0047006, as all features either echo secondary clauses or are generic in nature."
+   }
+  ]
+ },
+ "GO:0047017": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Lowers pKa of active site Tyr",
+    "accessions": [
+     "P42330"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A9CQL8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8TBF2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9DB60",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0047018": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -22604,6 +22735,82 @@
     "value": "Lowers pKa of active site Tyr",
     "accessions": [
      "O13848"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047019": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton donor",
+    "accessions": [
+     "O13848"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047039": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton donor",
+    "accessions": [
+     "E9QUT3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047040": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "Q01782"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047067": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "[4Fe-4S] cluster",
+    "accessions": [
+     "P0AAJ8"
     ]
    }
   ],

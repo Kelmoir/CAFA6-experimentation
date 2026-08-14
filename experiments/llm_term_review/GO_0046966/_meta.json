@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0046966",
+  "name": "nuclear thyroid hormone receptor binding",
+  "def": "Binding to a nuclear thyroid hormone receptor.",
+  "n_proteins_total": 71,
+  "sampled_accessions": [
+    "Q15544",
+    "Q15545",
+    "Q15649",
+    "Q4V8B3"
+  ],
+  "assigned_accessions": [
+    "Q15544",
+    "Q15545",
+    "Q15649",
+    "Q4V8B3"
+  ]
+}

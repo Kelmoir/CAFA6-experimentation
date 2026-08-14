@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047040",
+  "name": "pteridine reductase activity",
+  "def": "Catalysis of the reaction: 5,6,7,8-tetrahydrobiopterin + 2 NADP+ = biopterin + 2 H+ + 2 NADPH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q01782"
+  ],
+  "assigned_accessions": [
+    "Q01782"
+  ]
+}

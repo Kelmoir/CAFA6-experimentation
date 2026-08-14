@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "E9QUT3",
+      "go_id": "GO:0047039",
+      "feature_type": "ACT_SITE",
+      "start": 145,
+      "end": 146,
+      "signal_kind": "text",
+      "signal_value": "Proton donor",
+      "reasoning": "The feature ACT_SITE 145-146 explicitly states \"Proton donor,\" which directly supports the primary reaction mechanism of the GO term, making it the most plausible explanation for why E9QUT3 carries that term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

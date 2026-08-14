@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P37059",
+      "go_id": "GO:0047006",
+      "feature_type": "BINDING",
+      "start": 218,
+      "end": 219,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The BINDING feature with the ligand \"substrate\" directly relates to the substrate involved in the reaction, which is a key part of the catalytic mechanism described in the GO term's definition. This binding is essential for the enzyme's function and aligns with the chemistry of the reaction."
+    },
+    {
+      "accession": "P70694",
+      "go_id": "GO:0047006",
+      "feature_type": "SITE",
+      "start": 83,
+      "end": 84,
+      "signal_kind": "text",
+      "signal_value": "Lowers pKa of active site Tyr",
+      "reasoning": "The \"SITE 83-84\" feature specifically addresses the active site of the enzyme, indicating that the tyrosine residue plays a role in lowering the pKa, which is essential for catalytic activity. This directly supports the GO term's definition involving redox chemistry and substrate binding."
+    },
+    {
+      "accession": "Q04828",
+      "go_id": "GO:0047006",
+      "feature_type": "SITE",
+      "start": 83,
+      "end": 84,
+      "signal_kind": "text",
+      "signal_value": "Lowers pKa of active site Tyr",
+      "reasoning": "The \"SITE 83-84\" annotation specifically relates to the active site and its role in lowering the pKa of Tyr, which is a key feature of redox enzymes involved in the reaction described by GO:0047006. This directly matches the primary mechanism stated in the term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8K023",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear, specific explanation for the molecular function defined by GO:0047006, as all features either echo secondary clauses or are generic in nature."
+    }
+  ]
+}
