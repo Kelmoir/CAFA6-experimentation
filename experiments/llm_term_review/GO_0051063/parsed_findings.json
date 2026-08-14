@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P9WH75",
+      "go_id": "GO:0051063",
+      "feature_type": "SITE",
+      "start": 719,
+      "end": 720,
+      "signal_kind": "text",
+      "signal_value": "Interacts with thioredoxin/glutaredoxin",
+      "reasoning": "The SITE 719-720 feature directly ties to the interaction with thioredoxin/glutaredoxin, which is a key part of the CDP reductase activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P08699",
+      "go_id": "GO:0050785",
+      "feature_type": "REGION",
+      "start": 34,
+      "end": 112,
+      "signal_kind": "text",
+      "signal_value": "9 X 9 AA tandem repeats of Y-P-G-X(3)-P-[GS]-[AG]",
+      "reasoning": "The region with 9 X 9 AA tandem repeats of Y-P-G-X(3)-P-[GS]-[AG] is a strong candidate for the \"advanced glycation end-product receptor activity\" GO term, as it matches the structural feature associated with Galectin-like domains that bind AGEs."
+    },
+    {
+      "accession": "P16110",
+      "go_id": "GO:0050785",
+      "feature_type": "DOMAIN",
+      "start": 131,
+      "end": 262,
+      "signal_kind": "text",
+      "signal_value": "Galectin",
+      "reasoning": "The DOMAIN feature (131-262) with the note \"Galectin\" is the most plausible explanation for why the protein carries the GO term \"advanced glycation end-product receptor activity,\" as it aligns with the known structural role of Galectins in interacting with AGEs."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q15109",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for Q15109 that could plausibly account for the GO term's primary reaction is the \"REGION 366-404\" with a score of 5, but it does not directly explain the phosphoryl transfer activity. Therefore, there is no single annotated feature that specifically matches the GO term's own chemistry."
+    }
+  ]
+}

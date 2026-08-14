@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0051021",
+  "name": "GDP-dissociation inhibitor binding",
+  "def": "Binding to a GDP-dissociation inhibitor protein.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "M0RC99",
+    "P61027",
+    "P63011",
+    "P63012"
+  ],
+  "assigned_accessions": [
+    "M0RC99",
+    "P61027",
+    "P63011",
+    "P63012"
+  ]
+}

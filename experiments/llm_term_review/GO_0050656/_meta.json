@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0050656",
+  "name": "3'-phosphoadenosine 5'-phosphosulfate binding",
+  "def": "Binding to 3'-phosphoadenosine 5'-phosphosulfate (PAPS), a naturally occurring mixed anhydride. It is an intermediate in the formation of a variety of sulfo compounds in biological systems.",
+  "n_proteins_total": 22,
+  "sampled_accessions": [
+    "P17988",
+    "P52840",
+    "Q6IMI6",
+    "Q8IZT8"
+  ],
+  "assigned_accessions": [
+    "P17988",
+    "P52840",
+    "Q6IMI6",
+    "Q8IZT8"
+  ]
+}

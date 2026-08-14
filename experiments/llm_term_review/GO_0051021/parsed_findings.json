@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P63012",
+      "go_id": "GO:0051021",
+      "feature_type": "MOTIF",
+      "start": 48,
+      "end": 58,
+      "signal_kind": "text",
+      "signal_value": "Switch 1",
+      "reasoning": "The \"Switch 1\" motif is associated with GTPase activation and release, which are relevant to the function of GDP-dissociation inhibitors. However, it does not directly explain the mechanism of binding to GDP-dissociation inhibitors as clearly as the definition's primary reaction would require."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "M0RC99",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P61027",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the molecular function defined by GO:0051021, which is \"GDP-dissociation inhibitor binding.\" The available features are general ligand-binding regions without any indication of GDP-dissociation inhibitors."
+    },
+    {
+      "accession": "P63011",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for this protein do not provide any positional evidence that specifically explains why it carries the molecular function GO:0051021, which is about binding to a GDP-dissociation inhibitor."
+    }
+  ]
+}

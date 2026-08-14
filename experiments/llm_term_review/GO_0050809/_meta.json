@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0050809",
+  "name": "diazepam binding",
+  "def": "Binding to diazepam, one of the most widely used benzodiazepine drugs. It is used as an anti-anxiety-hypnotic agent and has the proprietary name Valium.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P16305",
+    "P30191",
+    "P62812",
+    "P62813"
+  ],
+  "assigned_accessions": [
+    "P16305",
+    "P30191",
+    "P62812",
+    "P62813"
+  ]
+}

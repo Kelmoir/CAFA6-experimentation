@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0051063",
+  "name": "CDP reductase activity",
+  "def": "Catalysis of the reaction: dCDP + thioredoxin disulfide + H2O = CDP + thioredoxin.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WH75"
+  ],
+  "assigned_accessions": [
+    "P9WH75"
+  ]
+}

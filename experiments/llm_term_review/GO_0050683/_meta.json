@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0050683",
+  "name": "AF-1 domain binding",
+  "def": "Binding to an AF-1 protein domain, a ligand-independent transactivation domain which is required for the full transcriptional activity of the receptor.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q9DBX7",
+    "Q9NQ87"
+  ],
+  "assigned_accessions": [
+    "Q9DBX7",
+    "Q9NQ87"
+  ]
+}

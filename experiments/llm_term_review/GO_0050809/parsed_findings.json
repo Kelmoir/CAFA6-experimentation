@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P16305",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly states that the protein binds diazepam specifically; all binding features refer to a different ligand (4-aminobutanoate), which is chemically related but not the defined GO term."
+    },
+    {
+      "accession": "P30191",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for P30191 describe binding to a metabolite of diazepam rather than the drug itself, and no feature directly matches the primary reaction of \"diazepam binding\" as defined by the GO term."
+    },
+    {
+      "accession": "P62812",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for P62812 indicates binding to diazepam, which is the primary reaction defined by the GO term."
+    },
+    {
+      "accession": "P62813",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

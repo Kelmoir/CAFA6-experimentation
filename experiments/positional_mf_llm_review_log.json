@@ -26787,5 +26787,213 @@
     "detail": "UNPARSED"
    }
   ]
+ },
+ "GO:0050656": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "3'-phosphoadenylyl sulfate",
+    "accessions": [
+     "P52840"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P17988",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly specifies binding to 3'-phosphoadenosine 5'-phosphosulfate (PAPS), the molecule defined by the GO term. All features involve binding to similar compounds, but none provide a strong match to the primary reaction of the GO term."
+   },
+   {
+    "accession": "Q6IMI6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q6IMI6 specifically states that it binds 3'-phosphoadenosine 5'-phosphosulfate, only that it can bind related compounds like 3'-phosphoadenylyl sulfate. Therefore, there is no positional feature that directly explains why the protein carries this GO term."
+   },
+   {
+    "accession": "Q8IZT8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8IZT8 specifically matches the primary reaction of the GO term \"3'-phosphoadenosine 5'-phosphosulfate binding,\" which involves binding to PAPS. While several binding regions are associated with similar molecules, none provide a strong enough match to explain why this protein carries the term."
+   }
+  ]
+ },
+ "GO:0050683": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9DBX7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9DBX7 specifically states that it binds an AF-1 domain, and no other feature clearly matches the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "Q9NQ87",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct structural or functional explanation for why the protein carries the GO term \"AF-1 domain binding.\" The highest-scoring feature is related to transcriptional repression and interactions with co-regulators, which are secondary consequences rather than the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0050785": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "9 X 9 AA tandem repeats of Y-P-G-X(3)-P-[GS]-[AG]",
+    "accessions": [
+     "P08699"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Galectin",
+    "accessions": [
+     "P16110"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q15109",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q15109 that could plausibly account for the GO term's primary reaction is the \"REGION 366-404\" with a score of 5, but it does not directly explain the phosphoryl transfer activity. Therefore, there is no single annotated feature that specifically matches the GO term's own chemistry."
+   }
+  ]
+ },
+ "GO:0050809": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P16305",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly states that the protein binds diazepam specifically; all binding features refer to a different ligand (4-aminobutanoate), which is chemically related but not the defined GO term."
+   },
+   {
+    "accession": "P30191",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P30191 describe binding to a metabolite of diazepam rather than the drug itself, and no feature directly matches the primary reaction of \"diazepam binding\" as defined by the GO term."
+   },
+   {
+    "accession": "P62812",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P62812 indicates binding to diazepam, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "P62813",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0051021": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P63012",
+    "go_id": "GO:0051021",
+    "feature_type": "MOTIF",
+    "start": 48,
+    "end": 58,
+    "signal_kind": "text",
+    "signal_value": "Switch 1",
+    "reasoning": "The \"Switch 1\" motif is associated with GTPase activation and release, which are relevant to the function of GDP-dissociation inhibitors. However, it does not directly explain the mechanism of binding to GDP-dissociation inhibitors as clearly as the definition's primary reaction would require."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "M0RC99",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P61027",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the molecular function defined by GO:0051021, which is \"GDP-dissociation inhibitor binding.\" The available features are general ligand-binding regions without any indication of GDP-dissociation inhibitors."
+   },
+   {
+    "accession": "P63011",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for this protein do not provide any positional evidence that specifically explains why it carries the molecular function GO:0051021, which is about binding to a GDP-dissociation inhibitor."
+   }
+  ]
+ },
+ "GO:0051063": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Interacts with thioredoxin/glutaredoxin",
+    "accessions": [
+     "P9WH75"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0051192": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P69330",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0051432": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P30429",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P30429 directly matches the primary reaction of \"binding to a BH1 protein domain\" as defined by GO:0051432."
+   }
+  ]
  }
 }
