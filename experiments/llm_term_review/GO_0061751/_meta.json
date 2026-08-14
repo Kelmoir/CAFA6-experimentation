@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0061751",
+  "name": "neutral sphingomyelin phosphodiesterase activity",
+  "def": "Catalysis of the reaction: H2O + sphingomyelin = ceramide + choline phosphate + H+ in a neutral environment.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O35049",
+    "P9WKQ1",
+    "Q9JJY3",
+    "Q9NY59"
+  ],
+  "assigned_accessions": [
+    "O35049",
+    "P9WKQ1",
+    "Q9JJY3",
+    "Q9NY59"
+  ]
+}

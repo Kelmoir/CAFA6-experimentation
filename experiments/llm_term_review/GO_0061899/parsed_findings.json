@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q4G0S4",
+      "go_id": "GO:0061899",
+      "feature_type": "BINDING",
+      "start": 487,
+      "end": 488,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The BINDING feature directly relates to the enzyme's interaction with heme, which is a necessary cofactor in the catalytic reaction described by GO:0061899. This provides strong evidence that the protein carries this molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

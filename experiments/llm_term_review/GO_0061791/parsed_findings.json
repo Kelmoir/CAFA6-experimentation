@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9USY7",
+      "go_id": "GO:0061791",
+      "feature_type": "REGION",
+      "start": 160,
+      "end": 168,
+      "signal_kind": "text",
+      "signal_value": "G1 motif",
+      "reasoning": "The G1 motif in region 160-168 is directly related to GTP binding, which is a key part of the GTPase motor function. However, it does not explicitly state that the protein hydrolyzes GTP or uses it as an energy source for mechanical work, which are the primary reactions defined by GO:0061791. Thus, while it is a plausible candidate, it does not strongly match the definition's primary reaction."
+    }
+  ],
+  "issues": []
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0061980",
+  "name": "regulatory RNA binding",
+  "def": "Binding to a small regulatory RNA, a short RNA (usually 50-200 nt long) that is either independently transcribed or processed from a longer RNA by an RNAse enzyme.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P0AFW0",
+    "P0DW56"
+  ],
+  "assigned_accessions": [
+    "P0AFW0",
+    "P0DW56"
+  ]
+}

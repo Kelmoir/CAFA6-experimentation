@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P35601",
+      "go_id": "GO:0061860",
+      "feature_type": "BINDING",
+      "start": 634,
+      "end": 642,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP at position 634-642 directly supports the primary reaction of DNA clamp unloader activity, which is driven by ATP hydrolysis. This feature most plausibly explains why the protein carries the GO term."
+    },
+    {
+      "accession": "Q09843",
+      "go_id": "GO:0061860",
+      "feature_type": "BINDING",
+      "start": 58,
+      "end": 66,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The BINDING feature at position 58-66 directly matches the primary reaction of DNA clamp unloader activity, involving ATP binding to drive conformational changes in the ring structure of the PCNA complex. This provides a strong and specific explanation for the annotation."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O94697",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q4QY64",
+      "reason": "none_verdict",
+      "reasoning": "The binding of ATP to the protein is consistent with the energy source for the primary reaction described in the GO term's definition, but this feature only indicates a binding site and does not directly explain the mechanism of ring-opening or clamp removal. Therefore, it does not specifically match the GO term's own chemistry."
+    }
+  ]
+}

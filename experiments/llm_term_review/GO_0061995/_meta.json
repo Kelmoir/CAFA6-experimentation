@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0061995",
+  "name": "ATP-dependent protein-DNA complex displacement activity",
+  "def": "An activity that displaces proteins or protein complexes from DNA, sometimes in a 'wire stripping' fashion, driven by ATP hydrolysis.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O13762",
+    "O60177",
+    "Q80W85",
+    "Q9UUA2"
+  ],
+  "assigned_accessions": [
+    "O13762",
+    "O60177",
+    "Q80W85",
+    "Q9UUA2"
+  ]
+}

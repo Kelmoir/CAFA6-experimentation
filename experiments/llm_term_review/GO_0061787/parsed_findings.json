@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P76008",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P76008 matches the primary reaction of peptidoglycan cross-bridge peptide endopeptidase activity. The ACT_SITE annotations are related to charge relay systems and nucleophiles, which do not directly explain the enzyme's role in cleaving peptidoglycan cross-bridges."
+    }
+  ]
+}

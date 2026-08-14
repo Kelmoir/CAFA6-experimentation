@@ -29543,6 +29543,41 @@
    }
   ]
  },
+ "GO:0061751": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "Q9NY59"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WKQ1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P9WKQ1 specifically matches the primary reaction of the GO term GO:0061751, which involves catalyzing the reaction H2O + sphingomyelin = ceramide + choline phosphate + H+ in a neutral environment."
+   },
+   {
+    "accession": "O35049",
+    "reason": "none_verdict",
+    "reasoning": "The highest-scoring feature (SITE 509-510) is related to substrate recognition but does not directly explain the primary reaction of sphingomyelin phosphodiesterase activity, which is the hydrolysis of sphingomyelin. No other annotated feature provides a more direct explanation for the defined chemistry of this GO term."
+   },
+   {
+    "accession": "Q9JJY3",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide a strong match for the primary reaction defined by the GO term. While some features may be relevant to the enzyme's mechanism, none directly explain why the protein carries the term \"neutral sphingomyelin phosphodiesterase activity\" in a way that is specific to its function as described."
+   }
+  ]
+ },
  "GO:0061776": {
   "n_resolved": 0,
   "n_uncertain": 1,
@@ -29567,6 +29602,205 @@
     "accession": "P36626",
     "reason": "none_verdict",
     "reasoning": "No annotated feature provides a clear structural or functional basis for the GO term's definition, which involves DNA binding and topological manipulation. The only features are disordered regions, which are not specific to the function defined by the GO term."
+   }
+  ]
+ },
+ "GO:0061787": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P76008",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P76008 matches the primary reaction of peptidoglycan cross-bridge peptide endopeptidase activity. The ACT_SITE annotations are related to charge relay systems and nucleophiles, which do not directly explain the enzyme's role in cleaving peptidoglycan cross-bridges."
+   }
+  ]
+ },
+ "GO:0061791": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9USY7",
+    "go_id": "GO:0061791",
+    "feature_type": "REGION",
+    "start": 160,
+    "end": 168,
+    "signal_kind": "text",
+    "signal_value": "G1 motif",
+    "reasoning": "The G1 motif in region 160-168 is directly related to GTP binding, which is a key part of the GTPase motor function. However, it does not explicitly state that the protein hydrolyzes GTP or uses it as an energy source for mechanical work, which are the primary reactions defined by GO:0061791. Thus, while it is a plausible candidate, it does not strongly match the definition's primary reaction."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0061860": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P35601",
+     "Q09843"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O94697",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q4QY64",
+    "reason": "none_verdict",
+    "reasoning": "The binding of ATP to the protein is consistent with the energy source for the primary reaction described in the GO term's definition, but this feature only indicates a binding site and does not directly explain the mechanism of ring-opening or clamp removal. Therefore, it does not specifically match the GO term's own chemistry."
+   }
+  ]
+ },
+ "GO:0061897": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q4G0S4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q4G0S4 directly matches the defined reaction mechanism of GO:0061897, indicating that the protein's structure or function does not strongly support this molecular function."
+   }
+  ]
+ },
+ "GO:0061898": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q4G0S4",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature for protein Q4G0S4 that specifically matches the defined chemistry of the GO term \"all-trans retinoic acid 3,4-desaturase activity.\" The available features are unrelated to the enzymatic reaction described in the definition."
+   }
+  ]
+ },
+ "GO:0061899": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "Q4G0S4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0061923": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q54P86",
+    "reason": "none_verdict",
+    "reasoning": "The provided annotated features do not include any positional feature that directly explains the GO term's primary chemical reaction. Therefore, there is no strong evidence to support the assignment of this GO term to Q54P86 based on the given data."
+   }
+  ]
+ },
+ "GO:0061980": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AFW0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P0DW56",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0061995": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "DNA_BIND",
+    "accessions": [
+     "Q9UUA2"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "O60177"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Helicase ATP-binding",
+    "accessions": [
+     "O13762"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q80W85",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly matches the primary reaction of ATP-dependent protein-DNA complex displacement activity described by GO:0061995."
    }
   ]
  }

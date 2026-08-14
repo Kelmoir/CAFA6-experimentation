@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0061860",
+  "name": "DNA clamp unloader activity",
+  "def": "Facilitating the opening of the ring structure of the PCNA complex, or any of the related sliding clamp complexes, and their removal from the DNA duplex, driven by ATP hydrolysis.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "O94697",
+    "P35601",
+    "Q09843",
+    "Q4QY64"
+  ],
+  "assigned_accessions": [
+    "O94697",
+    "P35601",
+    "Q09843",
+    "Q4QY64"
+  ]
+}

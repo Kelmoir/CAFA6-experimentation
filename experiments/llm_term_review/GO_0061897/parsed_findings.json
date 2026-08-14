@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q4G0S4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q4G0S4 directly matches the defined reaction mechanism of GO:0061897, indicating that the protein's structure or function does not strongly support this molecular function."
+    }
+  ]
+}

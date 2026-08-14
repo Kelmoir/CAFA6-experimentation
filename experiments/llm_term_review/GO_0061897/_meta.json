@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0061897",
+  "name": "all-trans retinal 3,4-desaturase activity",
+  "def": "Catalysis of the reaction: all-trans-retinal + 2 H+ + O2 + 2 reduced [adrenodoxin] = all-trans-3,4-didehydro retinal + 2 H2O + 2 oxidized [adrenodoxin].",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q4G0S4"
+  ],
+  "assigned_accessions": [
+    "Q4G0S4"
+  ]
+}

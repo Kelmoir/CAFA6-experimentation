@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0061923",
+  "name": "(2S,3R,6S,9S)-(-)-protoillud-7-ene synthase activity",
+  "def": "Catalysis of the reaction: 2-trans,6-trans-farnesyl diphosphate = diphosphate + (2S,3R,6S,9S)-(-)-protoillud-7-ene.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q54P86"
+  ],
+  "assigned_accessions": [
+    "Q54P86"
+  ]
+}

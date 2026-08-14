@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0061787",
+  "name": "peptidoglycan cross-bridge peptide endopeptidase activity",
+  "def": "A peptidoglycan endopeptidase activity that acts on a peptidoglycan cross-bridge.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P76008"
+  ],
+  "assigned_accessions": [
+    "P76008"
+  ]
+}

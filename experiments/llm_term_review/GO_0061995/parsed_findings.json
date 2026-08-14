@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "O60177",
+      "go_id": "GO:0061995",
+      "feature_type": "BINDING",
+      "start": 415,
+      "end": 423,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The BINDING feature (415-423) directly involves ATP in the mechanism described by the GO term's definition, making it the most plausible explanation for why this protein carries the term."
+    },
+    {
+      "accession": "O13762",
+      "go_id": "GO:0061995",
+      "feature_type": "DOMAIN",
+      "start": 262,
+      "end": 446,
+      "signal_kind": "text",
+      "signal_value": "Helicase ATP-binding",
+      "reasoning": "The DOMAIN 262-446 with the note \"Helicase ATP-binding\" most plausibly explains the GO term by directly enabling the ATP hydrolysis that drives the displacement of proteins or complexes from DNA."
+    },
+    {
+      "accession": "Q9UUA2",
+      "go_id": "GO:0061995",
+      "feature_type": "DNA_BIND",
+      "start": 743,
+      "end": 763,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The DNA_BIND feature at position 743-763 directly supports the GO term's primary reaction of displacing proteins or protein complexes from DNA, which is the core mechanism defined in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q80W85",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided list directly matches the primary reaction of ATP-dependent protein-DNA complex displacement activity described by GO:0061995."
+    }
+  ]
+}
