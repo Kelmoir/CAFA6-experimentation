@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q96330",
+      "go_id": "GO:0045431",
+      "feature_type": "BINDING",
+      "start": 203,
+      "end": 206,
+      "signal_kind": "ligand",
+      "signal_value": "2-oxoglutarate",
+      "reasoning": "The binding of 2-oxoglutarate at position 203-206 directly matches the primary reaction mechanism defined by the GO term, making it the most plausible explanation for why the protein carries this term."
+    },
+    {
+      "accession": "Q9FFQ5",
+      "go_id": "GO:0045431",
+      "feature_type": "DOMAIN",
+      "start": 166,
+      "end": 267,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The DOMAIN annotation directly matches the enzymatic activity required by the GO term, indicating that the protein has the structural capability to catalyze the reaction defined for flavonol synthase activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9FFQ4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9FFQ4 explicitly states or implies the specific chemical reaction defined by GO:0045431, making it impossible to determine a strong match for the term's definition."
+    }
+  ]
+}

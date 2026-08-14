@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P49653",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for the protein P49653 explicitly supports or explains the molecular function of \"mercury ion binding,\" which is defined as binding to a mercury ion (Hg\u00b2\u207a). The available evidence only mentions ATP binding, not Hg\u00b2\u207a. Thus, there is no plausible explanation for why this protein carries the GO term based on the provided data."
+    },
+    {
+      "accession": "O88767",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of \"mercury ion binding,\" which is the direct interaction with Hg2+. The features provided are more about activity or cleavage, not the specific molecular function defined by the GO term."
+    },
+    {
+      "accession": "Q9DCW2",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly or specifically match the primary reaction of \"mercury ion binding.\" While some features are related to protein interactions and domains, they do not provide a clear structural basis for the defined chemistry of mercury ion binding."
+    },
+    {
+      "accession": "Q9JIZ9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of mercury ion binding as defined by the GO term, and all features are either structural motifs or regions that do not imply mercury ion binding."
+    }
+  ]
+}

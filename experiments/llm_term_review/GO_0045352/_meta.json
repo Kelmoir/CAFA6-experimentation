@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0045352",
+  "name": "interleukin-1 type I receptor antagonist activity",
+  "def": "Blocks the binding of interleukin-1 to interleukin-1 type I receptors.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P18510",
+    "P25085",
+    "P25086"
+  ],
+  "assigned_accessions": [
+    "P18510",
+    "P25085",
+    "P25086"
+  ]
+}

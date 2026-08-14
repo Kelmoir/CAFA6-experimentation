@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0045504",
+  "name": "dynein heavy chain binding",
+  "def": "Binding to a heavy chain of the dynein complex.",
+  "n_proteins_total": 47,
+  "sampled_accessions": [
+    "F1QHZ6",
+    "P54703",
+    "Q28G94",
+    "Q9P3W4"
+  ],
+  "assigned_accessions": [
+    "F1QHZ6",
+    "P54703",
+    "Q28G94",
+    "Q9P3W4"
+  ]
+}

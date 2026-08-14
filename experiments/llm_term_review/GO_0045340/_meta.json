@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0045340",
+  "name": "mercury ion binding",
+  "def": "Binding to a mercury ion (Hg2+).",
+  "n_proteins_total": 17,
+  "sampled_accessions": [
+    "O88767",
+    "P49653",
+    "Q9DCW2",
+    "Q9JIZ9"
+  ],
+  "assigned_accessions": [
+    "O88767",
+    "P49653",
+    "Q9DCW2",
+    "Q9JIZ9"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0045431",
+  "name": "flavonol synthase activity",
+  "def": "Catalysis of the reaction: a dihydroflavonol + 2-oxoglurate + O2 = a flavonol + succinate + CO2 + H2O.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q96330",
+    "Q9FFQ4",
+    "Q9FFQ5"
+  ],
+  "assigned_accessions": [
+    "Q96330",
+    "Q9FFQ4",
+    "Q9FFQ5"
+  ]
+}

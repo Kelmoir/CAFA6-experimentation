@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0045462",
+  "name": "trichothecene 3-O-acetyltransferase activity",
+  "def": "Catalysis of the 3-O-acetylation of a trichothecene. Trichothecenes are sesquiterpene epoxide mycotoxins that act as potent inhibitors of eukaryotic protein synthesis.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q12226"
+  ],
+  "assigned_accessions": [
+    "Q12226"
+  ]
+}

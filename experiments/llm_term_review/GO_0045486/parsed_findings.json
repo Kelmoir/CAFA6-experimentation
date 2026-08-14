@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9S818",
+      "go_id": "GO:0045486",
+      "feature_type": "DOMAIN",
+      "start": 189,
+      "end": 294,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The DOMAIN 189-294 annotation explicitly references \"Fe2OG dioxygenase,\" which directly matches the enzyme's role in catalyzing the reaction defined by GO:0045486. This provides a strong and specific explanation for why the protein carries the term, aligning with the primary reaction mechanism described in the definition."
+    },
+    {
+      "accession": "Q96330",
+      "go_id": "GO:0045486",
+      "feature_type": "BINDING",
+      "start": 203,
+      "end": 206,
+      "signal_kind": "ligand",
+      "signal_value": "2-oxoglutarate",
+      "reasoning": "The binding site for 2-oxoglutarate (a key substrate in the reaction) directly supports the catalytic function of the enzyme, making it a strong candidate for explaining the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q28G94",
+      "go_id": "GO:0045504",
+      "feature_type": "DOMAIN",
+      "start": 149,
+      "end": 192,
+      "signal_kind": "text",
+      "signal_value": "LRRCT",
+      "reasoning": "The LRRCT domain in the protein Q28G94 directly supports the binding activity described by the GO term \"dynein heavy chain binding,\" making it a strong and specific match."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "F1QHZ6",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P54703",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for this protein do not provide any specific evidence that directly explains why it carries the GO term \"dynein heavy chain binding.\" All regions are described as disordered and do not relate to the defined function of binding to a heavy chain."
+    },
+    {
+      "accession": "Q9P3W4",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}
