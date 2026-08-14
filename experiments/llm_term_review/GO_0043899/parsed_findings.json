@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9I2Y2",
+      "go_id": "GO:0043899",
+      "feature_type": "ACT_SITE",
+      "start": 6,
+      "end": 7,
+      "signal_kind": "text",
+      "signal_value": "Nucleophile",
+      "reasoning": "The ACT_SITE 6-7 feature with the note \"Nucleophile\" most plausibly explains why the protein carries the GO term, as it directly relates to the nucleophilic attack required for the phosphoryl transfer mechanism described in the definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

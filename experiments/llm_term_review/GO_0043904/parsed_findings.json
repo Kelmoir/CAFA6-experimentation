@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P9WFX1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P9WFX1 directly matches the chemistry of isochorismate pyruvate lyase activity as defined by GO:0043904, and all features are either generic or only partially relevant to the term's primary reaction."
+    },
+    {
+      "accession": "Q51507",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

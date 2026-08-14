@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043915",
+  "name": "L-seryl-tRNA(Sec) kinase activity",
+  "def": "Catalysis of the reaction: ATP + L-seryl-tRNA(Sec) = ADP + O-phospho-L-seryl-tRNA(Sec).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8BP74"
+  ],
+  "assigned_accessions": [
+    "Q8BP74"
+  ]
+}

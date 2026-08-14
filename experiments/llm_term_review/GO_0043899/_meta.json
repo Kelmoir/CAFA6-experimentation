@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043899",
+  "name": "phosphoserine:homoserine phosphotransferase activity",
+  "def": "Catalysis of the transfer of a phosphoryl group from phosphoserine to homoserine to form phosphohomoserine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9I2Y2"
+  ],
+  "assigned_accessions": [
+    "Q9I2Y2"
+  ]
+}

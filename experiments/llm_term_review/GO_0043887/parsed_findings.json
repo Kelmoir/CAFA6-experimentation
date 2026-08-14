@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P02921",
+      "reason": "none_verdict",
+      "reasoning": "The site note is generic and does not provide specific evidence for the defined reaction or mechanism of the GO term, which involves transferring melibiose and sodium ions across a membrane. No annotated feature directly matches the primary chemistry described in the definition."
+    }
+  ]
+}

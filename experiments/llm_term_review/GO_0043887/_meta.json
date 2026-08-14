@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043887",
+  "name": "melibiose:sodium symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: melibiose(out) + Na+(out) = melibiose(in) + Na+(in).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P02921"
+  ],
+  "assigned_accessions": [
+    "P02921"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0044016",
+  "name": "histone H3K4 acetyltransferase activity",
+  "def": "Catalysis of the reaction: acetyl-CoA + histone H3 L-lysine (position 4) = CoA + histone H3 N6-acetyl-L-lysine (position 4).",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O94446",
+    "O95251",
+    "Q5SVQ0"
+  ],
+  "assigned_accessions": [
+    "O94446",
+    "O95251",
+    "Q5SVQ0"
+  ]
+}

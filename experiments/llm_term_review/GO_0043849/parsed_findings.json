@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "P59268",
+      "go_id": "GO:0043849",
+      "feature_type": "DOMAIN",
+      "start": 138,
+      "end": 189,
+      "signal_kind": "text",
+      "signal_value": "DHHC",
+      "reasoning": "The DOMAIN with the DHHC qualifier directly corresponds to the catalytic activity described in the GO term's definition, which involves palmitoyl-CoA adding to protein-cysteine. This provides a strong match to the primary reaction mechanism of the GO term."
+    },
+    {
+      "accession": "Q9Y397",
+      "go_id": "GO:0043849",
+      "feature_type": "DOMAIN",
+      "start": 138,
+      "end": 189,
+      "signal_kind": "text",
+      "signal_value": "DHHC",
+      "reasoning": "The DOMAIN annotation (138-189) with the qualifier \"DHHC\" directly corresponds to the catalytic activity described in the GO term, providing a strong match to the primary reaction mechanism."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

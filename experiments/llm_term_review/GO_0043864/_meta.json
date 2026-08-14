@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043864",
+  "name": "indoleacetamide hydrolase activity",
+  "def": "Catalysis of the reaction: iH2O + indole-3-acetamide = (indol-3-yl)acetate + NH4+. Indole-3-acetamide is known as IAM and indole-3-acetate as IAA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FR37"
+  ],
+  "assigned_accessions": [
+    "Q9FR37"
+  ]
+}

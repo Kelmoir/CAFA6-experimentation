@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043905",
+  "name": "L-seryl-tRNA(Thr) hydrolase activity",
+  "def": "Catalysis of the hydrolysis of misacylated Ser-tRNA(Thr).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P53960"
+  ],
+  "assigned_accessions": [
+    "P53960"
+  ]
+}

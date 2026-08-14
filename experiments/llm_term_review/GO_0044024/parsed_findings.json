@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8C050",
+      "go_id": "GO:0044024",
+      "feature_type": "BINDING",
+      "start": 430,
+      "end": 440,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site at 430-440 directly involves ATP, which is a key substrate in the kinase reaction described by the GO term. This supports the plausibility that the protein carries this molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O75582",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the defined chemistry of the GO term \"histone H2AS1 kinase activity,\" which involves the addition of a phosphate group to a specific serine residue."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043918",
+  "name": "cadaverine aminopropyltransferase activity",
+  "def": "Catalysis of the reaction: cadaverine + S-adenosyl 3-(methylsulfanyl)propylamine = aminopropylcadaverine + H+ + S-methyl-5'-thioadenosine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P09158"
+  ],
+  "assigned_accessions": [
+    "P09158"
+  ]
+}

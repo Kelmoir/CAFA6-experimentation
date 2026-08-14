@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8BP74",
+      "go_id": "GO:0043915",
+      "feature_type": "BINDING",
+      "start": 24,
+      "end": 32,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to the protein at positions 24-32 directly supports the GO term's definition of catalyzing the phosphoryl transfer reaction, making it the most plausible explanation for why the protein carries this function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

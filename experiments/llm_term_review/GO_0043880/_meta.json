@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043880",
+  "name": "crotonyl-CoA reductase activity",
+  "def": "Catalysis of the reaction: butanoyl-CoA + NADP+ = (2E)-butenoyl-CoA + NADPH + H+. (2E)-butenoyl-CoA is also called crotonyl-CoA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q5EU90"
+  ],
+  "assigned_accessions": [
+    "Q5EU90"
+  ]
+}

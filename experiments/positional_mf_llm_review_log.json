@@ -20713,5 +20713,267 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0043849": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "DHHC",
+    "accessions": [
+     "P59268",
+     "Q9Y397"
+    ],
+    "reason": "resolved to ['InterPro:IPR001594', 'PROSITE:PS50216', 'Pfam:PF01529'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR001594': 81, 'PROSITE:PS50216': 84, 'Pfam:PF01529': 81})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0043864": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FR37",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the primary reaction of the GO term \"indoleacetamide hydrolase activity\" (GO:0043864), which involves the catalytic breakdown of indole-3-acetamide to produce indole-3-acetate. The available features only describe secondary or qualitative aspects of the protein's function, not the core enzymatic activity defined by the GO term."
+   }
+  ]
+ },
+ "GO:0043880": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5EU90",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the enzymatic activity defined by GO:0043880."
+   }
+  ]
+ },
+ "GO:0043887": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P02921",
+    "reason": "none_verdict",
+    "reasoning": "The site note is generic and does not provide specific evidence for the defined reaction or mechanism of the GO term, which involves transferring melibiose and sodium ions across a membrane. No annotated feature directly matches the primary chemistry described in the definition."
+   }
+  ]
+ },
+ "GO:0043892": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "Q9UT59"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P83775",
+    "go_id": "GO:0043892",
+    "feature_type": "BINDING",
+    "start": 39,
+    "end": 40,
+    "signal_kind": "ligand",
+    "signal_value": "NADP(+)",
+    "reasoning": "The binding events with NADP+ are related to the primary reaction but do not fully capture the enzymatic activity or the specific chemistry involved."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "O94563",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature in the annotated features of protein O94563 provides a direct explanation for the catalytic activity defined by the GO term \"methylglyoxal reductase (NADPH) activity.\" The presence of NADP+ binding sites does not confirm that the enzyme is directly involved in the reaction mechanism described."
+   },
+   {
+    "accession": "Q12068",
+    "reason": "none_verdict",
+    "reasoning": "The GO term describes an enzymatic activity that involves catalyzing a specific redox reaction, but none of the annotated features directly point to the enzyme's active site or the precise mechanism of NADP+ reduction. While the \"BINDING\" annotations suggest interaction with NADP(+), they do not provide positional evidence for the enzyme's active site or the specific chemical steps involved in the"
+   }
+  ]
+ },
+ "GO:0043899": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Nucleophile",
+    "accessions": [
+     "Q9I2Y2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0043904": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WFX1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P9WFX1 directly matches the chemistry of isochorismate pyruvate lyase activity as defined by GO:0043904, and all features are either generic or only partially relevant to the term's primary reaction."
+   },
+   {
+    "accession": "Q51507",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0043905": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P53960",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P53960 directly matches the primary reaction of the GO term \"L-seryl-tRNA(Thr) hydrolase activity,\" which involves catalyzing the hydrolysis of misacylated Ser-tRNA(Thr). The binding sites listed are for Zn(2+), not for tRNA hydrolysis, and no domain or structural feature is explicitly stated to perform this reaction."
+   }
+  ]
+ },
+ "GO:0043915": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q8BP74"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0043918": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-methyl-5'-thioadenosine",
+    "accessions": [
+     "P09158"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0044016": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "acetyl-CoA",
+    "accessions": [
+     "Q5SVQ0"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "MYST-type HAT",
+    "accessions": [
+     "O94446"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O95251",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0044024": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q8C050"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O75582",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the defined chemistry of the GO term \"histone H2AS1 kinase activity,\" which involves the addition of a phosphate group to a specific serine residue."
+   }
+  ]
  }
 }

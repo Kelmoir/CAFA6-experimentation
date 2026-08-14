@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q5EU90",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the enzymatic activity defined by GO:0043880."
+    }
+  ]
+}

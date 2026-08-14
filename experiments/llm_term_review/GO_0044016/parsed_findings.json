@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q5SVQ0",
+      "go_id": "GO:0044016",
+      "feature_type": "BINDING",
+      "start": 476,
+      "end": 479,
+      "signal_kind": "ligand",
+      "signal_value": "acetyl-CoA",
+      "reasoning": "The binding of acetyl-CoA to the protein's site directly supports the catalytic activity described in the GO term, which involves transferring an acetyl group from acetyl-CoA to lysine at position 4 of histone H3. This is a strong match to the primary reaction stated in the definition."
+    },
+    {
+      "accession": "O94446",
+      "go_id": "GO:0044016",
+      "feature_type": "DOMAIN",
+      "start": 178,
+      "end": 451,
+      "signal_kind": "text",
+      "signal_value": "MYST-type HAT",
+      "reasoning": "The domain \"MYST-type HAT\" directly matches the defined function of the GO term, which is the catalytic activity of a histone acetyltransferase. This provides a strong and specific explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O95251",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

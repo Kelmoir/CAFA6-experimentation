@@ -1,0 +1,9 @@
+=== Q51507 GO:0043904 (VERDICT missing) ===
+THINKING: The GO term is "isochorismate pyruvate lyase activity" (GO:0043904), which defines the catalysis of the reaction where isochorismate is converted into salicylate and pyruvate. This implies that the protein carries a domain or structural feature responsible for this enzymatic activity. The annotated features for protein Q51507 include multiple binding sites with substrate as the ligand, but none directly indicate the presence of an isochorismate lyase domain. The domain/family cross-references suggest the presence of a CM_II_prokaryot domain, which could be related to this function. However, the absence of a specific domain annotation and the generic nature of the binding sites do not strongly support the GO term's definition. The highest score for a matching feature is 7, which is considered plausible but not definitive.
+
+FEATURE: DOMAIN 3-94
+REASONING: The DOMAIN 3-94 annotation suggests the presence of a Chorismate mutase domain, which could be related to the isochorismate pyruvate lyase activity. While this domain is not explicitly defined as an isochorismate lyase domain, it is closely related and could plausibly account for the GO term's primary reaction. This feature matches the definition's chemistry and provides a strong basis for the annotation.
+
+=== Q51507 GO:0043904 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+

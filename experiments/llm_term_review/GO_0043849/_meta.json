@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0043849",
+  "name": "Ras palmitoyltransferase activity",
+  "def": "Catalysis of the reaction: palmitoyl-CoA + protein-cysteine = S-palmitoyl protein + CoA, specific for Ras proteins.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P59268",
+    "Q9Y397"
+  ],
+  "assigned_accessions": [
+    "P59268",
+    "Q9Y397"
+  ]
+}

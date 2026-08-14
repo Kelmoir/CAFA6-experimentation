@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0043904",
+  "name": "isochorismate pyruvate lyase activity",
+  "def": "Catalysis of the reaction: isochorismate = salicylate + pyruvate.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P9WFX1",
+    "Q51507"
+  ],
+  "assigned_accessions": [
+    "P9WFX1",
+    "Q51507"
+  ]
+}

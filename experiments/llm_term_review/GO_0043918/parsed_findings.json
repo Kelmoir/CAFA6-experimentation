@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P09158",
+      "go_id": "GO:0043918",
+      "feature_type": "BINDING",
+      "start": 164,
+      "end": 165,
+      "signal_kind": "ligand",
+      "signal_value": "S-methyl-5'-thioadenosine",
+      "reasoning": "The binding of S-methyl-5'-thioadenosine at positions 164-165 directly corresponds to one of the substrates in the reaction defined by GO:0043918, making it a strong candidate for explaining why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

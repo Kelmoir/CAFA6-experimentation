@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0043892",
+  "name": "methylglyoxal reductase (NADPH) activity",
+  "def": "Catalysis of the reaction: lactaldehyde + NADP+ = methylglyoxal + NADPH + H+.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O94563",
+    "P83775",
+    "Q12068",
+    "Q9UT59"
+  ],
+  "assigned_accessions": [
+    "O94563",
+    "P83775",
+    "Q12068",
+    "Q9UT59"
+  ]
+}
