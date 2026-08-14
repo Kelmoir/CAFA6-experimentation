@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q12068",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains the enzyme's function as a reductase by indicating the hydride transfer mechanism, which is central to the GO term's definition."
+    }
+  ]
+}

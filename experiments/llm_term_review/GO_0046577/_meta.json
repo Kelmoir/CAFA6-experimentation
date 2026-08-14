@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0046577",
+  "name": "long-chain-alcohol oxidase activity",
+  "def": "Catalysis of the reaction: 2 long-chain alcohol + O2 = 2 long-chain aldehyde + 2 H2O.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "B5WWZ8",
+    "P30839",
+    "P47740",
+    "Q94BP3"
+  ],
+  "assigned_accessions": [
+    "B5WWZ8",
+    "P30839",
+    "P47740",
+    "Q94BP3"
+  ]
+}

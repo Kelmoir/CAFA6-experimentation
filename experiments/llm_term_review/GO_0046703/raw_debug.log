@@ -1,0 +1,16 @@
+=== Q9D676 GO:0046703 (VERDICT missing) ===
+THINKING: The GO term is "natural killer cell lectin-like receptor binding" with the definition that it involves "Binding to a lectin-like natural killer cell receptor." This indicates that the protein's function is related to receiving a lectin-like molecule through a natural killer cell receptor. 
+
+The annotated features for Q9D676 include a DOMAIN span (149-254) with the note "C-type lectin" and evidence from PROSITE-ProRule:PRU00040. The domain/family cross-references also point to C-type lectin-like domains, such as CTDL_fold and NKR-like_CTLD, which are known to be involved in lectin binding.
+
+The DOMAIN span (149-254) is the most relevant annotated feature for this GO term because it directly relates to the structural domain that is responsible for lectin binding. This matches the primary reaction of the GO term, which is about binding to a lectin-like natural killer cell receptor.
+
+FEATURE: DOMAIN 149-254  
+REASONING: The DOMAIN span (149-254) directly corresponds to the structural domain involved in lectin binding, which aligns with the primary reaction of the GO term.
+
+=== Q8C1T8 GO:0046703 (VERDICT missing) ===
+THINKING: The GO term is "natural killer cell lectin-like receptor binding" (GO:0046703), which defines the function of a protein as binding to a lectin-like natural killer cell receptor. This implies that the protein has a domain or structural feature capable of recognizing and interacting with such a ligand. The annotated features for Q8C1T8 include a DOMAIN span (96-201) with the note "C-type lectin" and evidence from PROSITE-ProRule:PRU00040. Other features include InterPro cross-references for C-type lectin-like domains, such as IPR001304, IPR016186, IPR050828, IPR016187, and IPR033992, which are all related to the C-type lectin fold. The Pfam entry PF00059 is also associated with Lectin_C, indicating a possible domain family. However, none of these features directly state that the protein binds to a lectin-like natural killer cell receptor. The only positional feature explicitly mentioned is the DOMAIN span (96-201) with the note "C-type lectin," which could plausibly be the structural basis for the defined function. This domain spans from position 96 to 201, and the qualifier "C-type lectin" directly relates to the type of receptor this protein is likely interacting with. The evidence provided in PROSITE-ProRule:PRU00040 supports the presence of a C-type lectin domain, which is consistent with the function defined by GO:0046703. Therefore, the feature that most plausibly explains why Q8C1T8 carries this GO term is the DOMAIN span (96-201) with the note "C-type lectin."
+
+FEATURE: DOMAIN 96-201  
+REASONING: The DOMAIN span (96-201) with the note "C-type lectin" directly supports the function of binding to a lectin-like natural killer cell receptor, as it is a known structural feature associated with C-type lectin domains. This matches the primary reaction of the GO term, which involves binding to a specific type of receptor.
+

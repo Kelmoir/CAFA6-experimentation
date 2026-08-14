@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0046568",
+  "name": "3-methylbutanal reductase [NAD(P)H] activity",
+  "def": "Catalysis of the reaction: 3-methylbutanol + NAD(P)+ = 3-methylbutanal + NAD(P)H + H+. 3-methylbutanal is also known as isovaleraldehyde.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q12068"
+  ],
+  "assigned_accessions": [
+    "Q12068"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0046703",
+  "name": "natural killer cell lectin-like receptor binding",
+  "def": "Binding to a lectin-like natural killer cell receptor.",
+  "n_proteins_total": 34,
+  "sampled_accessions": [
+    "O08604",
+    "P01898",
+    "Q8C1T8",
+    "Q9D676"
+  ],
+  "assigned_accessions": [
+    "O08604",
+    "P01898",
+    "Q8C1T8",
+    "Q9D676"
+  ]
+}

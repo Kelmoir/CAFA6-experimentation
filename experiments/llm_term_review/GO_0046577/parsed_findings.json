@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "B5WWZ8",
+      "go_id": "GO:0046577",
+      "feature_type": "BINDING",
+      "start": 236,
+      "end": 252,
+      "signal_kind": "ligand",
+      "signal_value": "FAD",
+      "reasoning": "The binding of FAD (a coenzyme) directly supports the enzymatic activity described by the GO term \"long-chain-alcohol oxidase activity,\" making it a strong candidate for explaining why this protein carries the term."
+    },
+    {
+      "accession": "P30839",
+      "go_id": "GO:0046577",
+      "feature_type": "BINDING",
+      "start": 184,
+      "end": 190,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The BINDING feature (184-190) directly involves NAD(+), a cofactor essential for the oxidation reaction described by the GO term, making it the most plausible explanation for why the protein carries this term."
+    },
+    {
+      "accession": "P47740",
+      "go_id": "GO:0046577",
+      "feature_type": "BINDING",
+      "start": 184,
+      "end": 190,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The BINDING feature with ligand: NAD(+) directly supports the catalytic reaction described in the GO term's definition, making it the most plausible explanation for why this protein carries the term."
+    },
+    {
+      "accession": "Q94BP3",
+      "go_id": "GO:0046577",
+      "feature_type": "BINDING",
+      "start": 237,
+      "end": 253,
+      "signal_kind": "ligand",
+      "signal_value": "FAD",
+      "reasoning": "The binding of FAD to Q94BP3 is directly related to its role in catalyzing the oxidation of long-chain alcohols, making it a strong match for the GO term's primary reaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

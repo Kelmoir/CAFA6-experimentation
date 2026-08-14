@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P9WK17",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P9WK17's list directly matches the primary reaction of the GO term \"host cell extracellular matrix binding,\" which is about binding to the extracellular matrix. The only relevant feature (REGION 717-741) is generic and not specific to the defined function."
+    }
+  ]
+}

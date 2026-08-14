@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0046583",
+  "name": "monoatomic cation efflux transmembrane transporter activity",
+  "def": "Enables the transfer of a cation or cations from the inside of the cell to the outside of the cell across a membrane.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P25396"
+  ],
+  "assigned_accessions": [
+    "P25396"
+  ]
+}

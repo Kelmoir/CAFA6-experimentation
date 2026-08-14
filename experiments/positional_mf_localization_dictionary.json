@@ -19785,6 +19785,15 @@
    "important for interaction with birc2 and birc3"
   ]
  },
+ "GO:0046703": {
+  "name": "natural killer cell lectin-like receptor binding",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR050828"
+  ],
+  "text_patterns": []
+ },
  "GO:0046811": {
   "name": "histone deacetylase inhibitor activity",
   "ligands": [],

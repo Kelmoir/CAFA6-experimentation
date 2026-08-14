@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0046810",
+  "name": "host cell extracellular matrix binding",
+  "def": "Binding to the extracellular matrix of a host cell.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WK17"
+  ],
+  "assigned_accessions": [
+    "P9WK17"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A2SWM2",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P33527",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section provides a strong match to the GO term's primary reaction of directing sphingolipid movement. The binding sites are associated with ATP, which is a common cofactor for ABC transporters, but they do not directly explain why this protein carries the term \"sphingolipid transporter activity.\""
+    },
+    {
+      "accession": "Q8IVW8",
+      "reason": "none_verdict",
+      "reasoning": "The disordered region does not provide evidence for the specific function of sphingolipid transport, as it lacks any direct connection to the defined reaction."
+    },
+    {
+      "accession": "Q91VM4",
+      "reason": "none_verdict",
+      "reasoning": "The disordered region does not provide evidence of a specific domain or structural element that would plausibly explain the defined function of the GO term."
+    }
+  ]
+}

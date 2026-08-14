@@ -22182,5 +22182,217 @@
     "reasoning": "No annotated feature in Q96WT2 provides a clear and specific explanation for the molecular function defined by GO:0046567, which involves catalyzing the synthesis of aphidicolan-16-beta-ol through a phosphorelay mechanism."
    }
   ]
+ },
+ "GO:0046568": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q12068",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the enzyme's function as a reductase by indicating the hydride transfer mechanism, which is central to the GO term's definition."
+   }
+  ]
+ },
+ "GO:0046572": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "C8VDT4",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q12062",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0046577": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "FAD",
+    "accessions": [
+     "B5WWZ8",
+     "Q94BP3"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P30839",
+     "P47740"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0046583": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P25396",
+    "reason": "none_verdict",
+    "reasoning": "The site annotation does not directly describe the molecular mechanism of monoatomic cation efflux transmembrane transporter activity. While it is relevant to the function, it only describes a structural role in gating rather than the actual transport process. Therefore, it does not specifically explain the GO term's primary reaction."
+   }
+  ]
+ },
+ "GO:0046624": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A2SWM2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P33527",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a strong match to the GO term's primary reaction of directing sphingolipid movement. The binding sites are associated with ATP, which is a common cofactor for ABC transporters, but they do not directly explain why this protein carries the term \"sphingolipid transporter activity.\""
+   },
+   {
+    "accession": "Q8IVW8",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region does not provide evidence for the specific function of sphingolipid transport, as it lacks any direct connection to the defined reaction."
+   },
+   {
+    "accession": "Q91VM4",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region does not provide evidence of a specific domain or structural element that would plausibly explain the defined function of the GO term."
+   }
+  ]
+ },
+ "GO:0046702": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "GT23",
+    "accessions": [
+     "G5EFE7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0046703": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR050828"
+    ],
+    "accessions": [
+     "Q8C1T8",
+     "Q9D676"
+    ],
+    "note": "resolved from DOMAIN note 'C-type lectin' (4 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like C1-type",
+    "accessions": [
+     "P01898"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O08604",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data directly explains why the protein carries the molecular function \"natural killer cell lectin-like receptor binding.\" The definition focuses on the interaction mechanism, and no positional feature is associated with that specific chemistry."
+   }
+  ]
+ },
+ "GO:0046810": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WK17",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P9WK17's list directly matches the primary reaction of the GO term \"host cell extracellular matrix binding,\" which is about binding to the extracellular matrix. The only relevant feature (REGION 717-741) is generic and not specific to the defined function."
+   }
+  ]
+ },
+ "GO:0046863": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q40460"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P10896",
+    "reason": "none_verdict",
+    "reasoning": "The only binding site provided for P10896 is for ATP, which is not specific to the activase function of ribulose-1,5-bisphosphate carboxylase/oxygenase. No other positional feature matches the primary reaction of increasing rubisco activity through phosphate removal as defined by the GO term."
+   }
+  ]
  }
 }

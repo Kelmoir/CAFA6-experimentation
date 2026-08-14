@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0046572",
+  "name": "versicolorin B synthase activity",
+  "def": "Catalysis of the reaction: versiconal = versicolorin B + H2O.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "C8VDT4",
+    "Q12062"
+  ],
+  "assigned_accessions": [
+    "C8VDT4",
+    "Q12062"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0046702",
+  "name": "galactoside 6-L-fucosyltransferase activity",
+  "def": "Catalysis of the transfer of an L-fucosyl group from GDP-beta-L-fucose to a galactoside acceptor molecule, usually an N-glycan, to form an alpha(1,6)-fucosylated galactoside.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "G5EFE7"
+  ],
+  "assigned_accessions": [
+    "G5EFE7"
+  ]
+}

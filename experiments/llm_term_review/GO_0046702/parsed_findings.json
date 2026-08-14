@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "G5EFE7",
+      "go_id": "GO:0046702",
+      "feature_type": "DOMAIN",
+      "start": 189,
+      "end": 480,
+      "signal_kind": "text",
+      "signal_value": "GT23",
+      "reasoning": "The DOMAIN 189-480 with the GT23 qualifier is directly associated with glycosyltransferase activity, which matches the primary reaction of transferring an L-fucosyl group as defined by GO:0046702."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
