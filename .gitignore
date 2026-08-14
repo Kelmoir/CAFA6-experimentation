@@ -16,3 +16,12 @@ __pycache__/
 
 # Sandbox environment artifact (bind-mounted to /dev/null, not real project config)
 /.mcp.json
+/.bash_profile
+/.bashrc
+/.gitconfig
+/.gitmodules
+/.idea
+/.profile
+/.ripgreprc
+/.zprofile
+/.zshrc
