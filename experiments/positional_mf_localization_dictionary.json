@@ -17900,6 +17900,15 @@
    "interaction with cflar"
   ]
  },
+ "GO:0042806": {
+  "name": "fucose binding",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "Pfam:PF03954"
+  ],
+  "text_patterns": []
+ },
  "GO:0042809": {
   "name": "nuclear vitamin D receptor binding",
   "ligands": [],

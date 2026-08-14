@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0042945",
+  "name": "D-serine transmembrane transporter activity",
+  "def": "Enables the transfer of D-serine from one side of a membrane to the other. D-serine is the D-enantiomer of 2-amino-3-hydroxypropanoic acid.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P08555",
+    "P0AAE0"
+  ],
+  "assigned_accessions": [
+    "P08555",
+    "P0AAE0"
+  ]
+}

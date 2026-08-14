@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P75831",
+      "go_id": "GO:0042897",
+      "feature_type": "DOMAIN",
+      "start": 4,
+      "end": 243,
+      "signal_kind": "text",
+      "signal_value": "ABC transporter",
+      "reasoning": "The DOMAIN 4-243 annotation explicitly states that the protein is an ABC transporter, which matches the primary reaction described in the GO term (transfer of polymyxin across a membrane). This provides a strong and specific match to the defined function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P75830",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

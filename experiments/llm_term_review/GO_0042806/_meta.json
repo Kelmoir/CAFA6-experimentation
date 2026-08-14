@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0042806",
+  "name": "fucose binding",
+  "def": "Binding to fucose, the pentose 6-deoxygalactose.",
+  "n_proteins_total": 36,
+  "sampled_accessions": [
+    "P07307",
+    "P08001",
+    "P49300",
+    "Q9I928"
+  ],
+  "assigned_accessions": [
+    "P07307",
+    "P08001",
+    "P49300",
+    "Q9I928"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P07307",
+      "go_id": "GO:0042806",
+      "feature_type": "DOMAIN",
+      "start": 175,
+      "end": 302,
+      "signal_kind": "text",
+      "signal_value": "C-type lectin",
+      "reasoning": "The C-type lectin domain in the specified position directly supports the defined function of fucose binding, making it the most plausible explanation for why this protein carries the GO term."
+    },
+    {
+      "accession": "P49300",
+      "go_id": "GO:0042806",
+      "feature_type": "DOMAIN",
+      "start": 171,
+      "end": 298,
+      "signal_kind": "text",
+      "signal_value": "C-type lectin",
+      "reasoning": "The C-type lectin domain at position 171-298 directly supports the primary reaction of fucose binding, making it a strong match to the GO term's definition."
+    },
+    {
+      "accession": "Q9I928",
+      "go_id": "GO:0042806",
+      "feature_type": "BINDING",
+      "start": 107,
+      "end": 108,
+      "signal_kind": "ligand",
+      "signal_value": "alpha-L-fucose",
+      "reasoning": "The specific BINDING region with alpha-L-fucose as the ligand directly matches the definition of \"fucose binding,\" which involves binding to fucose. This feature is positioned and annotated in a way that strongly supports the GO term's primary reaction, making it the most plausible explanation for the protein carrying this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P08001",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly or specifically match the primary reaction of \"fucose binding.\" The only domain associated with the protein does not provide evidence for fucose binding."
+    }
+  ]
+}

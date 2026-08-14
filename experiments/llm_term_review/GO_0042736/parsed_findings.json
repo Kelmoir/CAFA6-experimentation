@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P21373",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature in the Annotated features section of P21373 specifically matches the primary reaction of NADH kinase activity, which involves the catalysis of ATP + NADH = ADP + 2 H+ + NADPH. The domain/family cross-references are background context and not positional features."
+    },
+    {
+      "accession": "Q9P7K3",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9UT98",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q56YN3",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "Q7TSY6",
+      "go_id": "GO:0042835",
+      "feature_type": "DOMAIN",
+      "start": 53,
+      "end": 135,
+      "signal_kind": "text",
+      "signal_value": "RRM 1",
+      "reasoning": "The presence of an RRM domain in the specified position is a strong structural basis for RNA-binding activity, which aligns with the GO term's definition of binding to a BRE RNA element."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q4QQT3",
+      "go_id": "GO:0042835",
+      "feature_type": "DOMAIN",
+      "start": 15,
+      "end": 99,
+      "signal_kind": "text",
+      "signal_value": "RRM 1",
+      "reasoning": "The presence of an RRM domain in this position supports the general capability for RNA binding, but it does not specifically confirm the function of BRE binding as defined by the GO term."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q7T2T1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of \"BRE binding\" as defined by the GO term."
+    },
+    {
+      "accession": "Q92879",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features for protein Q92879 directly confirm or explain the molecular function of \"BRE binding\" as defined by the GO term, which requires binding to a BRE RNA element."
+    }
+  ]
+}

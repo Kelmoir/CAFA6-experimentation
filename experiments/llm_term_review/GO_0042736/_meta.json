@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0042736",
+  "name": "NADH kinase activity",
+  "def": "Catalysis of the reaction: ATP + NADH = ADP + 2 H+ + NADPH.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "P21373",
+    "Q56YN3",
+    "Q9P7K3",
+    "Q9UT98"
+  ],
+  "assigned_accessions": [
+    "P21373",
+    "Q56YN3",
+    "Q9P7K3",
+    "Q9UT98"
+  ]
+}

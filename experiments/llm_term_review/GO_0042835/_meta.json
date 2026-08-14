@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0042835",
+  "name": "BRE binding",
+  "def": "Binding to a BRE RNA element (Bruno response element).",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "Q4QQT3",
+    "Q7T2T1",
+    "Q7TSY6",
+    "Q92879"
+  ],
+  "assigned_accessions": [
+    "Q4QQT3",
+    "Q7T2T1",
+    "Q7TSY6",
+    "Q92879"
+  ]
+}

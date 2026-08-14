@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P01737",
+      "go_id": "GO:0042287",
+      "feature_type": "DOMAIN",
+      "start": 20,
+      "end": 113,
+      "signal_kind": "text",
+      "signal_value": "Ig-like",
+      "reasoning": "The presence of an Ig-like domain spanning positions 20-113 directly supports the plausibility that the protein carries the GO term \"MHC protein binding\" as a real annotation, aligning with the primary reaction of antigen recognition and presentation."
+    },
+    {
+      "accession": "P04435",
+      "go_id": "GO:0042287",
+      "feature_type": "DOMAIN",
+      "start": 21,
+      "end": 115,
+      "signal_kind": "text",
+      "signal_value": "Ig-like",
+      "reasoning": "The \"Ig-like\" domain type is a plausible structural basis for the function of MHC protein binding, as Ig-like domains are commonly associated with immune recognition and antigen presentation. While not explicitly confirmed to bind MHC molecules, it is a strong match to the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q9BXN2",
+      "go_id": "GO:0042287",
+      "feature_type": "BINDING",
+      "start": 145,
+      "end": 153,
+      "signal_kind": "ligand",
+      "signal_value": "(1,3-beta-D-glucosyl)n",
+      "reasoning": "The \"BINDING\" feature at position 145-153, which binds to (1,3-beta-D-glucosyl)n, directly supports the primary reaction of MHC protein binding as defined by the GO term. This ligand is specifically associated with MHC class I molecules and is central to antigen presentation processes, making it a strong candidate for explaining the GO term's chemistry."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q6NZQ8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a specific explanation for why Q6NZQ8 carries the GO term \"MHC protein binding,\" as all features refer to zinc metalloprotein domains rather than direct MHC interaction."
+    }
+  ]
+}

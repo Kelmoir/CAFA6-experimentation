@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0042287",
+  "name": "MHC protein binding",
+  "def": "Binding to a major histocompatibility complex molecule; a set of molecules displayed on cell surfaces that are responsible for lymphocyte recognition and antigen presentation.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "P01737",
+    "P04435",
+    "Q6NZQ8",
+    "Q9BXN2"
+  ],
+  "assigned_accessions": [
+    "P01737",
+    "P04435",
+    "Q6NZQ8",
+    "Q9BXN2"
+  ]
+}
