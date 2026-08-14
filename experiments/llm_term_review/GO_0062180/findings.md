@@ -1,0 +1,15 @@
+## Q09128 GO:0062180
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature for this protein directly matches the primary reaction of the GO term, which involves hydroxylation of 25-hydroxycholecalciferol. The only annotated feature is unrelated to the enzyme activity defined by the GO term.
+---
+## Q07973 GO:0062180
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature in the provided list directly explains the chemical mechanism of the GO term "25-hydroxycholecalciferol-23-hydroxylase activity." The only relevant domain/family cross-references suggest a cytochrome P450 enzyme, but they do not specify which domain is responsible for the hydroxylation reaction. Therefore, there is no positional feature that plausibly accounts for this GO term
+---
+## Q64441 GO:0062180
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature describes the specific enzymatic activity of catalyzing the reaction involving calcidiol and hydroxyl groups, which is the primary reaction defined by GO:0062180.
+---

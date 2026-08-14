@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0062046",
+  "name": "dehydropipecolic acid reductase",
+  "def": "Catalysis of the reaction: dehydropipecolic acid + NAD(P)H + H+ = L-pipecolic acid + NAD(P)+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FLY0"
+  ],
+  "assigned_accessions": [
+    "Q9FLY0"
+  ]
+}

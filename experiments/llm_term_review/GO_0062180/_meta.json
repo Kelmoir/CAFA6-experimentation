@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0062180",
+  "name": "25-hydroxycholecalciferol-23-hydroxylase activity",
+  "def": "Catalysis of the reaction: calcidiol + 2 H+ + O2 + 2 reduced [adrenodoxin] = (23S)-23,25-dihydroxycalciol + H2O + 2 oxidized [adrenodoxin].",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q07973",
+    "Q09128",
+    "Q64441"
+  ],
+  "assigned_accessions": [
+    "Q07973",
+    "Q09128",
+    "Q64441"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0062069",
+  "name": "GARP complex binding",
+  "def": "Binding to a GARP complex.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A0JNW5"
+  ],
+  "assigned_accessions": [
+    "A0JNW5"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0062131",
+  "name": "3-butenylglucosinolate 2-hydroxylase activity",
+  "def": "Catalysis of the reaction: gluconapin + a reduced electron acceptor + O2 = xi-progoitrin + an oxidized electron acceptor + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SKK4"
+  ],
+  "assigned_accessions": [
+    "Q9SKK4"
+  ]
+}

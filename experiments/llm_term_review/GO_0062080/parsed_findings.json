@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P26715",
+      "go_id": "GO:0062080",
+      "feature_type": "DOMAIN",
+      "start": 117,
+      "end": 231,
+      "signal_kind": "text",
+      "signal_value": "C-type lectin",
+      "reasoning": "The DOMAIN annotation (117-231) directly relates to the C-type lectin fold, which is known to interact with MHC class Ib molecules and mediate inhibitory signaling, making it the most plausible explanation for the GO term's primary reaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

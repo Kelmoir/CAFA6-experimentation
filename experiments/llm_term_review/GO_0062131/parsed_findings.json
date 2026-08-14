@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9SKK4",
+      "go_id": "GO:0062131",
+      "feature_type": "DOMAIN",
+      "start": 206,
+      "end": 308,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The DOMAIN 206-308 feature directly matches the primary reaction mechanism defined by the GO term, indicating that this domain is responsible for the enzyme's function of catalyzing the hydroxylation reaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

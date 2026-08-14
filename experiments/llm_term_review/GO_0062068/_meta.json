@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0062068",
+  "name": "chloroplast photosystem II binding",
+  "def": "Binding to a chloroplast photosystem II.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O22773"
+  ],
+  "assigned_accessions": [
+    "O22773"
+  ]
+}

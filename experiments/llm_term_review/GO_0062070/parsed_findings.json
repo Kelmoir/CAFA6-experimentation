@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q09824",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for protein Q09824 directly explains why it carries the GO term \"SAGA complex binding,\" as the defined function of the protein does not align with any specific domain or structural feature that is known to interact with a SAGA complex."
+    }
+  ]
+}

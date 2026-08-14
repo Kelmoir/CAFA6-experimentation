@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0062045",
+  "name": "L-lysine alpha-aminotransferase",
+  "def": "Catalysis of the reaction: L-lysine + pyruvate= epsilon-amino-alpha-ketocaproic acid (KAC) + alanine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9ZQI7"
+  ],
+  "assigned_accessions": [
+    "Q9ZQI7"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0062054",
+  "name": "fluoride channel activity",
+  "def": "Enables the energy-independent facilitated diffusion of a fluoride ion through a transmembrane aqueous pore or channel.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P37002",
+    "Q8BH31",
+    "Q8NHS3"
+  ],
+  "assigned_accessions": [
+    "P37002",
+    "Q8BH31",
+    "Q8NHS3"
+  ]
+}

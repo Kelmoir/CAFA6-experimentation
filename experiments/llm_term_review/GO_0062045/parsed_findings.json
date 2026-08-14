@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9ZQI7",
+      "go_id": "GO:0062045",
+      "feature_type": "BINDING",
+      "start": 107,
+      "end": 108,
+      "signal_kind": "ligand",
+      "signal_value": "pyridoxal 5'-phosphate",
+      "reasoning": "The binding site for \"pyridoxal 5'-phosphate\" directly supports the GO term's definition of catalyzing the transfer of an amino group from L-lysine to pyruvate, making it a strong match."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

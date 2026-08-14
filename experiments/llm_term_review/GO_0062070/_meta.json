@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0062070",
+  "name": "SAGA complex binding",
+  "def": "Binding to a SAGA complex.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q09824"
+  ],
+  "assigned_accessions": [
+    "Q09824"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0062192",
+  "name": "L-rhamnose mutarotase activity",
+  "def": "Catalysis of the reaction: alpha-L-rhamnose = beta-L-rhamnose.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P32156"
+  ],
+  "assigned_accessions": [
+    "P32156"
+  ]
+}

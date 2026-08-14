@@ -29803,5 +29803,266 @@
     "reasoning": "No annotated feature in the provided list directly matches the primary reaction of ATP-dependent protein-DNA complex displacement activity described by GO:0061995."
    }
   ]
+ },
+ "GO:0062045": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "pyridoxal 5'-phosphate",
+    "accessions": [
+     "Q9ZQI7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0062046": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADPH",
+    "accessions": [
+     "Q9FLY0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0062047": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LMA1",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9LMA1 has multiple binding sites for FAD and NADP(+), which are relevant to its function as an enzyme, but none of these binding sites directly explain why it carries the GO term \"pipecolic acid N-hydroxylase\" based on the defined reaction mechanism."
+   }
+  ]
+ },
+ "GO:0062054": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q8NHS3",
+    "go_id": "GO:0062054",
+    "feature_type": "REGION",
+    "start": 0,
+    "end": 20,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The region being disordered could plausibly support the function of fluoride channel activity by allowing conformational changes necessary for ion passage, but it does not specifically account for the defined chemistry of facilitated diffusion."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P37002",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of enabling energy-independent facilitated diffusion of a fluoride ion through a transmembrane pore. The available evidence only describes Na(+) binding sites, which are not relevant to the defined function of the GO term."
+   },
+   {
+    "accession": "Q8BH31",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly or specifically matches the GO term's definition regarding fluoride ion transport through a transmembrane pore."
+   }
+  ]
+ },
+ "GO:0062058": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P35732",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P35732 do not provide any positional evidence that directly explains why the protein carries the molecular function defined by GO:0062058. No feature matches the primary reaction of binding to the TFIIH holo complex with sufficient specificity."
+   }
+  ]
+ },
+ "GO:0062068": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O22773",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0062069": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0JNW5",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features specifically match the primary reaction of the GO term \"GARP complex binding,\" which is about binding to a GARP complex. The only feature that could be related is the \"DOMAIN\" at position 2-94, but it does not directly confirm the binding activity to a GARP complex."
+   }
+  ]
+ },
+ "GO:0062070": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q09824",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein Q09824 directly explains why it carries the GO term \"SAGA complex binding,\" as the defined function of the protein does not align with any specific domain or structural feature that is known to interact with a SAGA complex."
+   }
+  ]
+ },
+ "GO:0062080": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "C-type lectin",
+    "accessions": [
+     "P26715"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0062131": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fe2OG dioxygenase",
+    "accessions": [
+     "Q9SKK4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0062180": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q09128",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for this protein directly matches the primary reaction of the GO term, which involves hydroxylation of 25-hydroxycholecalciferol. The only annotated feature is unrelated to the enzyme activity defined by the GO term."
+   },
+   {
+    "accession": "Q07973",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly explains the chemical mechanism of the GO term \"25-hydroxycholecalciferol-23-hydroxylase activity.\" The only relevant domain/family cross-references suggest a cytochrome P450 enzyme, but they do not specify which domain is responsible for the hydroxylation reaction. Therefore, there is no positional feature that plausibly accounts for this GO term"
+   },
+   {
+    "accession": "Q64441",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature describes the specific enzymatic activity of catalyzing the reaction involving calcidiol and hydroxyl groups, which is the primary reaction defined by GO:0062180."
+   }
+  ]
+ },
+ "GO:0062181": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P08684",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear explanation for the specific hydroxylase activity defined by the GO term. The binding site for heme is relevant to understanding the protein's structure and potential function, but it does not directly account for the reaction mechanism described in the GO definition."
+   },
+   {
+    "accession": "Q64441",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the primary reaction defined by GO:0062181, which is the catalysis of calcitriol hydroxylation. The only relevant feature is heme binding, but it does not explain the specific enzymatic activity described by the GO term."
+   },
+   {
+    "accession": "Q64464",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the molecular function defined by the GO term."
+   },
+   {
+    "accession": "Q09128",
+    "reason": "none_verdict",
+    "reasoning": "No single annotated feature in the provided data directly supports the definition of the GO term, which involves a specific hydroxylation reaction rather than a generic binding site or domain."
+   }
+  ]
+ },
+ "GO:0062192": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P32156",
+    "reason": "none_verdict",
+    "reasoning": "No specific positional feature in the Annotated features section of P32156 provides a direct explanation for the mutarotase activity defined by GO:0062192. The only relevant annotations are domain/family cross-references, which do not constitute positional features. Therefore, there is no evidence to support a specific structural/functional basis for the term as defined in the GO definition."
+   }
+  ]
  }
 }

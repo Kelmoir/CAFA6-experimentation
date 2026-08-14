@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0062047",
+  "name": "pipecolic acid N-hydroxylase",
+  "def": "Catalysis of the reaction: L-pipecolic acid + NAD(P)H + O2 + H+ = N-hydroxypipecolic acid + NAD(P)+ + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LMA1"
+  ],
+  "assigned_accessions": [
+    "Q9LMA1"
+  ]
+}

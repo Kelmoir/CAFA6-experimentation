@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9FLY0",
+      "go_id": "GO:0062046",
+      "feature_type": "BINDING",
+      "start": 113,
+      "end": 114,
+      "signal_kind": "ligand",
+      "signal_value": "NADPH",
+      "reasoning": "The binding of NADPH to the enzyme's active site directly supports the redox reaction defined by the GO term, making it the most plausible and specific explanation for why Q9FLY0 carries this function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

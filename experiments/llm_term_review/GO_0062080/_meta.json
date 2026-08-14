@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0062080",
+  "name": "inhibitory MHC class Ib receptor activity",
+  "def": "Combining with a MHC class Ib protein complex to mediate signaling that inhibits activation of a lymphocyte.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P26715"
+  ],
+  "assigned_accessions": [
+    "P26715"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q8NHS3",
+      "go_id": "GO:0062054",
+      "feature_type": "REGION",
+      "start": 0,
+      "end": 20,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The region being disordered could plausibly support the function of fluoride channel activity by allowing conformational changes necessary for ion passage, but it does not specifically account for the defined chemistry of facilitated diffusion."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P37002",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of enabling energy-independent facilitated diffusion of a fluoride ion through a transmembrane pore. The available evidence only describes Na(+) binding sites, which are not relevant to the defined function of the GO term."
+    },
+    {
+      "accession": "Q8BH31",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided list directly or specifically matches the GO term's definition regarding fluoride ion transport through a transmembrane pore."
+    }
+  ]
+}

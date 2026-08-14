@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0062058",
+  "name": "transcription factor TFIIH holo complex binding",
+  "def": "Binding to a transcription factor TFIIH holo complex.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P35732"
+  ],
+  "assigned_accessions": [
+    "P35732"
+  ]
+}
