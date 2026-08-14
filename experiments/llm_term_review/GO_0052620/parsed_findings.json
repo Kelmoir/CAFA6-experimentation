@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9LVI9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9LVI9 directly matches the primary reaction mechanism of GO:0052620, which involves catalyzing a specific hydride transfer from an acceptor to thymine."
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+## P39713 GO:0052587
+verdict: NONE
+feature: NONE 0-0
+reasoning: The GO term describes an enzyme activity that catalyzes hydride transfer from NAD+ to (R)-acetoin. No annotated feature in P39713 indicates a role in this specific reaction mechanism, and the Zn(2+) binding sites are not relevant to the primary chemistry of the term.
+---

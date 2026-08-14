@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9H993",
+      "go_id": "GO:0051998",
+      "feature_type": "MOTIF",
+      "start": 400,
+      "end": 404,
+      "signal_kind": "text",
+      "signal_value": "Subfamily III RTxK motif",
+      "reasoning": "The Subfamily III RTxK motif is strongly associated with methyltransferase activity, which aligns with the primary reaction described in the GO term's definition. This provides a clear and mechanistically specific explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -27415,6 +27415,41 @@
    }
   ]
  },
+ "GO:0051908": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Mg(2+)",
+    "accessions": [
+     "Q9QZ11"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P15032",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P15032's list directly matches the primary reaction of the GO term, which is the specific cleavage mechanism described. The domain/family cross-references suggest related activity but do not provide positional evidence for this defined function."
+   },
+   {
+    "accession": "P40028",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature (by type + exact coordinates) provides a strong match to the primary reaction of the GO term, which involves catalyzing sequential mononucleotide cleavage from a 5' terminus of double-stranded DNA."
+   },
+   {
+    "accession": "Q9UQ84",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's section provides a direct mechanistic explanation for the specific DNA exonuclease activity defined by GO:0051908."
+   }
+  ]
+ },
  "GO:0051912": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -27428,6 +27463,37 @@
     "accession": "P60200",
     "reason": "none_verdict",
     "reasoning": "The defined chemical reaction for the GO term involves coenzyme B and CoM, but none of the annotated features describe this specific redox activity. All features are structural or ligand-binding, not catalytic."
+   }
+  ]
+ },
+ "GO:0051978": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5U3U7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q6DEJ6",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature with positional coordinates is a Disordered region (503-523), but this does not specifically match the defined reaction of lysophospholipid transport. No other feature provides a clear, mechanistically specific explanation for the function described in GO:0051978."
+   },
+   {
+    "accession": "Q8NA29",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q8NA29 is a DISORDERED REGION, which does not provide any structural or functional basis for the directed movement of lysophospholipids as defined by GO:0051978."
+   },
+   {
+    "accession": "Q9DA75",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
  },
@@ -27449,5 +27515,205 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0051992": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0A6W3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0051993": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a beta-D-glucoside",
+    "accessions": [
+     "Q9SE50"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0051998": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Subfamily III RTxK motif",
+    "accessions": [
+     "Q9H993"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0052579": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6WAU0",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0052581": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6WAU1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the specific catalytic reaction defined by the GO term, and the only relevant domain cross-references do not correspond to any positional feature of the protein."
+   }
+  ]
+ },
+ "GO:0052587": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P39713",
+    "reason": "none_verdict",
+    "reasoning": "The GO term describes an enzyme activity that catalyzes hydride transfer from NAD+ to (R)-acetoin. No annotated feature in P39713 indicates a role in this specific reaction mechanism, and the Zn(2+) binding sites are not relevant to the primary chemistry of the term."
+   }
+  ]
+ },
+ "GO:0052620": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LVI9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9LVI9 directly matches the primary reaction mechanism of GO:0052620, which involves catalyzing a specific hydride transfer from an acceptor to thymine."
+   }
+  ]
+ },
+ "GO:0052625": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LYU4",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q9LYU4 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The annotated features for this protein all involve binding AMP, which is directly involved in the reaction described by the GO term's definition. However, none of these features are specific enough to be considered a strong match for the primary reaction as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0052626": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LYU4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9LYU4 specifically matches the primary reaction of the GO term \"N-benzoyl-L-glutamate synthetase activity,\" which involves the transfer of a phosphoryl group from ATP to L-glutamate. The only evidence provided is the presence of multiple AMP-binding sites, which are products of the reaction rather than indicators of the enzyme's catalytic mechanism."
+   }
+  ]
+ },
+ "GO:0052627": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LYU4",
+    "reason": "none_verdict",
+    "reasoning": "The GO term describes a specific enzymatic activity (phosphoryl transfer), but none of the annotated features for Q9LYU4 indicate this function. All features are ligand-binding sites, which do not provide evidence for catalytic activity."
+   }
+  ]
+ },
+ "GO:0052628": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LYU4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature describes the phosphoryl transfer mechanism or the receiving domain for the reaction defined by the GO term, so there is no plausible explanation for why the protein carries this term."
+   }
+  ]
+ },
+ "GO:0052639": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O22822",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
  }
 }

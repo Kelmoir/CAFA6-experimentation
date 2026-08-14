@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052581",
+  "name": "(-)-isopiperitenone reductase activity",
+  "def": "Catalysis of the reaction: (6R)-isoperitenone + H+ + NADPH = (2R,5R)-isopulegone + NADP+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q6WAU1"
+  ],
+  "assigned_accessions": [
+    "Q6WAU1"
+  ]
+}

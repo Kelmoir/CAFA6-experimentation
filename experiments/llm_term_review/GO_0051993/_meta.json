@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0051993",
+  "name": "abscisic acid glucose ester beta-glucosidase activity",
+  "def": "Catalysis of the reaction: abscisic acid glucose ester + H2O = abscisic acid + beta-D-glucose.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SE50"
+  ],
+  "assigned_accessions": [
+    "Q9SE50"
+  ]
+}

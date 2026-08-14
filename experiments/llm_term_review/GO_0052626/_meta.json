@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052626",
+  "name": "N-benzoyl-L-glutamate synthetase activity",
+  "def": "Catalysis of the reaction: benzoate + L-glutamate + ATP = N-benzoyl-L-glutamate + AMP + diphosphate + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LYU4"
+  ],
+  "assigned_accessions": [
+    "Q9LYU4"
+  ]
+}

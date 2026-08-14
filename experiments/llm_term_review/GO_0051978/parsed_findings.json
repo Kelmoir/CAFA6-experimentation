@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q5U3U7",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q6DEJ6",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature with positional coordinates is a Disordered region (503-523), but this does not specifically match the defined reaction of lysophospholipid transport. No other feature provides a clear, mechanistically specific explanation for the function described in GO:0051978."
+    },
+    {
+      "accession": "Q8NA29",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for Q8NA29 is a DISORDERED REGION, which does not provide any structural or functional basis for the directed movement of lysophospholipids as defined by GO:0051978."
+    },
+    {
+      "accession": "Q9DA75",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9SE50",
+      "go_id": "GO:0051993",
+      "feature_type": "BINDING",
+      "start": 57,
+      "end": 58,
+      "signal_kind": "ligand",
+      "signal_value": "a beta-D-glucoside",
+      "reasoning": "The \"BINDING 57-58\" feature directly involves a beta-D-glucoside ligand, which is central to the reaction mechanism described in the GO term's definition. This binding site is most likely responsible for the enzyme's ability to catalyze the breakdown of an ester bond between abscisic acid and a glucose moiety."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

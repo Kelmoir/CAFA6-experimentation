@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0051992",
+  "name": "UDP-N-acetylmuramoyl-L-alanyl-D-glutamyl-meso-2,6-diaminopimelyl-D-alanyl-D-alanine:undecaprenyl-phosphate transferase activity",
+  "def": "Catalysis of the reaction: di-trans,octa-cis-undecaprenyl phosphate + UDP-N-acetyl-alpha-D-muramoyl-L-alanyl-gamma-D-glutamyl-meso-2,6-diaminopimeloyl-D-alanyl-D-alanine = di-trans-octa-cis-undecaprenyl diphospho-N-acetyl-alpha-D-muramoyl-L-alanyl-D-glutamyl-meso-2,6-diaminopimeloyl-D-alanyl-D-alanine + UMP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0A6W3"
+  ],
+  "assigned_accessions": [
+    "P0A6W3"
+  ]
+}

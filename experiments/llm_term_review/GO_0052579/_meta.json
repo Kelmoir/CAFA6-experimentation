@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052579",
+  "name": "(+)-pulegone reductase (NADP+) activity",
+  "def": "Catalysis of the reaction: (1R,4S)-menthone + NADP+ = (R)-pulegone + H+ + NADPH. Also converts (2R,5R)-isomenthone into (R)-pulegone.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q6WAU0"
+  ],
+  "assigned_accessions": [
+    "Q6WAU0"
+  ]
+}

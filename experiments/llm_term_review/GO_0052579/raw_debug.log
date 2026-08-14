@@ -1,0 +1,17 @@
+=== Q6WAU0 GO:0052579 (VERDICT missing) ===
+THINKING: The GO term is "Catalysis of the reaction: (1R,4S)-menthone + NADP+ = (R)-pulegone + H+ + NADPH. Also converts (2R,5R)-isomenthone into (R)-pulegone." This defines a specific enzymatic activity where the protein reduces NADP+ to NADPH using menthone and isomenthone as substrates. The primary reaction involves the transfer of a hydride from NADP+ to the substrate, resulting in the formation of pulegone and byproducts.
+
+The annotated features for this protein are all related to binding NADP+. Each binding site spans a specific range (162-166, 188-189, etc.) and is associated with the ligand NADP+.
+
+For each candidate feature:
+- **BINDING** spans multiple positions, but all are associated with NADP+ as the ligand. This supports the enzyme's function of reducing NADP+, which is central to the GO term's definition.
+- The ligand is consistently NADP+, and the evidence for this binding is provided by ECO:0000250, indicating that these positions are annotated with the ligand.
+
+The highest score is 10, as all binding sites are directly associated with the ligand NADP+ in a way that supports the enzyme's function of catalyzing the reaction described in the GO term. This matches the primary reaction of the GO term, which involves the reduction of NADP+ to NADPH.
+
+FEATURE: BINDING 162-166
+REASONING: The binding of NADP+ at position 162-166 directly supports the enzyme's function of catalyzing the reaction described in the GO term, which involves reducing NADP+ to NADPH. This matches the primary reaction of the GO term with a high score.
+
+=== Q6WAU0 GO:0052579 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+

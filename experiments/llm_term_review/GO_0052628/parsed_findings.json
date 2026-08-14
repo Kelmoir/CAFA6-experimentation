@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9LYU4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature describes the phosphoryl transfer mechanism or the receiving domain for the reaction defined by the GO term, so there is no plausible explanation for why the protein carries this term."
+    }
+  ]
+}

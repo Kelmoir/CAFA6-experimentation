@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052587",
+  "name": "diacetyl reductase ((R)-acetoin forming) (NAD+) activity",
+  "def": "Catalysis of the reaction: (R)-acetoin + NAD+ = diacetyl + H+ + NADH. This reaction is catalyzed in the reverse direction.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P39713"
+  ],
+  "assigned_accessions": [
+    "P39713"
+  ]
+}

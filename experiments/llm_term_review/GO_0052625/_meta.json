@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052625",
+  "name": "N-(4-aminobenzoyl)-L-glutamate synthetase activity",
+  "def": "Catalysis of the reaction: 4-aminobenzoate + L-glutamate + ATP = N-(4-aminobenzoyl)-L-glutamate + AMP + diphosphate + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LYU4"
+  ],
+  "assigned_accessions": [
+    "Q9LYU4"
+  ]
+}

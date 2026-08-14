@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052620",
+  "name": "thymine dehydrogenase activity",
+  "def": "Catalysis of the reaction: H2O + thymine + acceptor = 5-methyl-barbiturate + donor-H2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LVI9"
+  ],
+  "assigned_accessions": [
+    "Q9LVI9"
+  ]
+}

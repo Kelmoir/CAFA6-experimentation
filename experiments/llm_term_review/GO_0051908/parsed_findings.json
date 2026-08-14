@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9QZ11",
+      "go_id": "GO:0051908",
+      "feature_type": "BINDING",
+      "start": 29,
+      "end": 30,
+      "signal_kind": "ligand",
+      "signal_value": "Mg(2+)",
+      "reasoning": "The binding site for Mg(2+) in the region 29-30 directly supports the catalytic function of the enzyme by providing the essential cofactor for the exonuclease activity. This specific feature matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P15032",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P15032's list directly matches the primary reaction of the GO term, which is the specific cleavage mechanism described. The domain/family cross-references suggest related activity but do not provide positional evidence for this defined function."
+    },
+    {
+      "accession": "P40028",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature (by type + exact coordinates) provides a strong match to the primary reaction of the GO term, which involves catalyzing sequential mononucleotide cleavage from a 5' terminus of double-stranded DNA."
+    },
+    {
+      "accession": "Q9UQ84",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's section provides a direct mechanistic explanation for the specific DNA exonuclease activity defined by GO:0051908."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0051978",
+  "name": "lysophospholipid:sodium symporter activity",
+  "def": "Enables the directed movement of lysophospholipids from one side of a membrane to the other. A lysophospholipid is a phospholipid that lacks one of its fatty acyl chains; it is an intermediate formed during digestion of dietary and biliary phospholipids.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "Q5U3U7",
+    "Q6DEJ6",
+    "Q8NA29",
+    "Q9DA75"
+  ],
+  "assigned_accessions": [
+    "Q5U3U7",
+    "Q6DEJ6",
+    "Q8NA29",
+    "Q9DA75"
+  ]
+}

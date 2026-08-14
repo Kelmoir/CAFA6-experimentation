@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0051998",
+  "name": "protein carboxyl O-methyltransferase activity",
+  "def": "Catalysis of the transfer of a methyl group to a carboxyl group on a protein.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9H993"
+  ],
+  "assigned_accessions": [
+    "Q9H993"
+  ]
+}

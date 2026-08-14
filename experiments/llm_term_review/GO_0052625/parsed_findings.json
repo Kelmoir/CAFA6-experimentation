@@ -1,0 +1,13 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9LYU4",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for Q9LYU4 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The annotated features for this protein all involve binding AMP, which is directly involved in the reaction described by the GO term's definition. However, none of these features are specific enough to be considered a strong match for the primary reaction as defined by the GO term."
+    }
+  ]
+}
