@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047571",
+  "name": "3-oxosteroid 1-dehydrogenase activity",
+  "def": "Catalysis of the reaction: a 3-oxosteroid + acceptor = a 3-oxo-D1-steroid + reduced acceptor.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P71864"
+  ],
+  "assigned_accessions": [
+    "P71864"
+  ]
+}

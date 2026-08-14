@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P71864",
+      "go_id": "GO:0047571",
+      "feature_type": "BINDING",
+      "start": 6,
+      "end": 36,
+      "signal_kind": "ligand",
+      "signal_value": "FAD",
+      "reasoning": "The binding of FAD at position 6-36 is a plausible structural feature that could support the redox reaction mechanism described by the GO term, making it a likely explanation for why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

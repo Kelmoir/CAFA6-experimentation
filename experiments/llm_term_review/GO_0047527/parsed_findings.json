@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "P0ADI4",
+      "go_id": "GO:0047527",
+      "feature_type": "DOMAIN",
+      "start": 208,
+      "end": 284,
+      "signal_kind": "text",
+      "signal_value": "Carrier",
+      "reasoning": "The \"Carrier\" domain at positions 208-284 most plausibly explains why P0ADI4 carries the GO term \"2,3-dihydroxybenzoate-serine ligase activity,\" as it directly relates to the enzyme's function of transporting molecules, which is consistent with the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P10378",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide any evidence that directly explains the molecular function of the GO term as defined by its primary reaction. All binding regions are generic and do not describe the specific chemistry of the reaction outlined in the definition."
+    },
+    {
+      "accession": "P11454",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features for P11454 directly describe the phosphorelay mechanism or the specific ligase activity defined by the GO term. The highest score among the features is low, indicating that no positional feature provides a strong match to the primary reaction of the GO term."
+    }
+  ]
+}

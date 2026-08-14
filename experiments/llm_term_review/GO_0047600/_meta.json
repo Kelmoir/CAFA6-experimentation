@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047600",
+  "name": "abequosyltransferase activity",
+  "def": "Catalysis of the reaction: CDP-abequose + D-mannosyl-L-rhamnosyl-D-galactose-1-diphospholipid = CDP + D-abequosyl-D-mannosyl-rhamnosyl-D-galactose-1-diphospholipid.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P26401"
+  ],
+  "assigned_accessions": [
+    "P26401"
+  ]
+}

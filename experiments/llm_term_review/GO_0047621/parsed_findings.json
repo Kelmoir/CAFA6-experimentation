@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8R0F8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear mechanistic basis for the acylpyruvate hydrolase activity defined by the GO term."
+    },
+    {
+      "accession": "Q6P587",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear structural or functional basis for the acylpyruvate hydrolase activity defined by GO:0047621. The evidence provided is more about interactions with substrates or cofactors rather than the specific reaction mechanism of the enzyme."
+    },
+    {
+      "accession": "Q9P7L4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the GO term's primary reaction of catalyzing acylpyruvate hydrolysis."
+    }
+  ]
+}

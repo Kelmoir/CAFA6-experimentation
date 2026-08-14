@@ -23977,6 +23977,36 @@
    }
   ]
  },
+ "GO:0047527": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Carrier",
+    "accessions": [
+     "P0ADI4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P10378",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide any evidence that directly explains the molecular function of the GO term as defined by its primary reaction. All binding regions are generic and do not describe the specific chemistry of the reaction outlined in the definition."
+   },
+   {
+    "accession": "P11454",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features for P11454 directly describe the phosphorelay mechanism or the specific ligase activity defined by the GO term. The highest score among the features is low, indicating that no positional feature provides a strong match to the primary reaction of the GO term."
+   }
+  ]
+ },
  "GO:0047568": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -23992,5 +24022,197 @@
     "reasoning": "No annotated feature provides a clear explanation for the defined reaction of the GO term \"3-oxo-5-beta-steroid 4-dehydrogenase activity.\" The binding sites indicate interactions with substrates and acceptors, but they do not directly explain the catalytic mechanism described in the definition."
    }
   ]
+ },
+ "GO:0047571": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "FAD",
+    "accessions": [
+     "P71864"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047577": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0A9V8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P0A9V8 provides a direct explanation of the specific chemical reaction defined by GO:0047577."
+   }
+  ]
+ },
+ "GO:0047584": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q88JX8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q88JX8 directly explains the catalytic activity described by GO:0047584, as it is focused on the specific reaction mechanism rather than any binding or structural feature."
+   }
+  ]
+ },
+ "GO:0047600": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P26401",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047621": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8R0F8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear mechanistic basis for the acylpyruvate hydrolase activity defined by the GO term."
+   },
+   {
+    "accession": "Q6P587",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the acylpyruvate hydrolase activity defined by GO:0047621. The evidence provided is more about interactions with substrates or cofactors rather than the specific reaction mechanism of the enzyme."
+   },
+   {
+    "accession": "Q9P7L4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the GO term's primary reaction of catalyzing acylpyruvate hydrolysis."
+   }
+  ]
+ },
+ "GO:0047643": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PilZ",
+    "accessions": [
+     "Q9HY69"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q52463",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047655": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "M9PF61",
+     "P51635",
+     "Q9JII6"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q46856",
+    "reason": "none_verdict",
+    "reasoning": "There is no single annotated feature that directly explains why this protein carries the GO term \"allyl-alcohol dehydrogenase activity.\" The defined reaction involves NADP+ as a substrate, but none of the binding sites are positioned in a way that supports the catalytic mechanism described by the definition."
+   }
+  ]
+ },
+ "GO:0047677": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PLAT",
+    "accessions": [
+     "O75342",
+     "Q2KMM4"
+    ],
+    "reason": "resolved to ['InterPro:IPR042062', 'PROSITE:PS50095', 'Pfam:PF01477'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR042062': 22, 'PROSITE:PS50095': 81, 'Pfam:PF01477': 81})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O70582",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0047720": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "O49342"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

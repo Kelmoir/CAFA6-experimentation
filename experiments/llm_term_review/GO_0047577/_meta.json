@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047577",
+  "name": "4-hydroxybutyrate dehydrogenase activity",
+  "def": "Catalysis of the reaction: 4-hydroxybutanoate + NAD+ = H+ + NADH + succinate semialdehyde.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0A9V8"
+  ],
+  "assigned_accessions": [
+    "P0A9V8"
+  ]
+}

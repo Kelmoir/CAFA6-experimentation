@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0047621",
+  "name": "acylpyruvate hydrolase activity",
+  "def": "Catalysis of the reaction: a 3-acylpyruvate + H2O = a carboxylate + pyruvate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q6P587",
+    "Q8R0F8",
+    "Q9P7L4"
+  ],
+  "assigned_accessions": [
+    "Q6P587",
+    "Q8R0F8",
+    "Q9P7L4"
+  ]
+}

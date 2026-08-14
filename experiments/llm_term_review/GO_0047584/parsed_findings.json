@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q88JX8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q88JX8 directly explains the catalytic activity described by GO:0047584, as it is focused on the specific reaction mechanism rather than any binding or structural feature."
+    }
+  ]
+}

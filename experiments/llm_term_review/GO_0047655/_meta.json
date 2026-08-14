@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047655",
+  "name": "allyl-alcohol dehydrogenase activity",
+  "def": "Catalysis of the reaction: allyl alcohol + NADP+ = acrolein + H+ + NADPH.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "M9PF61",
+    "P51635",
+    "Q46856",
+    "Q9JII6"
+  ],
+  "assigned_accessions": [
+    "M9PF61",
+    "P51635",
+    "Q46856",
+    "Q9JII6"
+  ]
+}

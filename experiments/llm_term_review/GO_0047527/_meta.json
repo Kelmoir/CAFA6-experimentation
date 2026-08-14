@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0047527",
+  "name": "2,3-dihydroxybenzoate-serine ligase activity",
+  "def": "Catalysis of the reaction: ATP + 2,3-dihydroxybenzoate + L-serine = products of ATP breakdown + N-(2,3-dihydroxybenzoyl)-L-serine.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P0ADI4",
+    "P10378",
+    "P11454"
+  ],
+  "assigned_accessions": [
+    "P0ADI4",
+    "P10378",
+    "P11454"
+  ]
+}

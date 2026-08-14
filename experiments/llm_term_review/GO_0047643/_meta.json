@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0047643",
+  "name": "alginate synthase activity",
+  "def": "Catalysis of the reaction: GDP-D-mannuronate + alginate(n) = GDP + alginate(n+1).",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q52463",
+    "Q9HY69"
+  ],
+  "assigned_accessions": [
+    "Q52463",
+    "Q9HY69"
+  ]
+}

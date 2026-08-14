@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047720",
+  "name": "indoleacetaldoxime dehydratase activity",
+  "def": "Catalysis of the reaction: (indol-3-yl)acetaldehyde oxime = (indol-3-yl)acetonitrile + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O49342"
+  ],
+  "assigned_accessions": [
+    "O49342"
+  ]
+}

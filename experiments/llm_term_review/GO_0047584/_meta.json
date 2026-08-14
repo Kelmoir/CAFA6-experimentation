@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047584",
+  "name": "4-oxalmesaconate hydratase activity",
+  "def": "Catalysis of the reaction: 2-hydroxy-4-oxobutane-1,2,4-tricarboxylate = (1E)-4-oxobut-1-ene-1,2,4-tricarboxylate + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q88JX8"
+  ],
+  "assigned_accessions": [
+    "Q88JX8"
+  ]
+}
