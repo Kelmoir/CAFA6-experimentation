@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P49247",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P49247's positional data directly supports the definition of \"monosaccharide binding,\" which requires a specific biochemical mechanism not indicated by the available information."
+    },
+    {
+      "accession": "Q92448",
+      "reason": "none_verdict",
+      "reasoning": "The protein Q92448 has annotations related to ATP and beta-D-fructose 6-phosphate binding, but none directly describe the binding of monosaccharides. Thus, no annotated feature provides a strong match for the GO term's primary reaction."
+    },
+    {
+      "accession": "P00511",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P09467",
+      "reason": "none_verdict",
+      "reasoning": "The protein's annotated features do not include any positional feature that specifically matches the primary reaction of \"monosaccharide binding\" as defined in the GO term. All features involve binding to ligands such as AMP or substrates, which are not monosaccharides. Therefore, no single annotated feature provides a strong match to the GO term's own chemistry."
+    }
+  ]
+}

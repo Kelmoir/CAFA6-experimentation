@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P06993",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong explanation for the primary reaction of the GO term \"trisaccharide binding\" (GO:0048031)."
+    }
+  ]
+}

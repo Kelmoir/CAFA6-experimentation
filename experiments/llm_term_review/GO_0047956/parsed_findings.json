@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "P14550",
+      "go_id": "GO:0047956",
+      "feature_type": "BINDING",
+      "start": 263,
+      "end": 264,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The \"BINDING 263-264\" feature directly relates to the interaction with NADP+, which is essential for the reaction mechanism defined by the GO term. This binding site is likely involved in the transfer of hydride from glycerol to NADP+, making it a strong candidate for explaining the molecular function."
+    },
+    {
+      "accession": "M9PF61",
+      "go_id": "GO:0047956",
+      "feature_type": "BINDING",
+      "start": 243,
+      "end": 306,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The binding of NADP+ to the enzyme (as specified in the annotation) directly supports the GO term's definition of catalysis involving this coenzyme, making it a strong and specific match."
+    },
+    {
+      "accession": "P45376",
+      "go_id": "GO:0047956",
+      "feature_type": "BINDING",
+      "start": 19,
+      "end": 20,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The binding site for NADP+ directly matches the primary reaction described by the GO term, which involves catalyzing the transfer of a phosphate group from NADP+ to glycerol."
+    },
+    {
+      "accession": "P51635",
+      "go_id": "GO:0047956",
+      "feature_type": "SITE",
+      "start": 79,
+      "end": 80,
+      "signal_kind": "text",
+      "signal_value": "Lowers pKa of active site Tyr",
+      "reasoning": "The binding of NADP+ to multiple sites and the potential structural modification affecting the active site (lowering the pKa of Tyr) are both relevant to the enzyme's function, but the most specific and plausible explanation for why this protein carries the GO term is the structural feature that could influence its activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

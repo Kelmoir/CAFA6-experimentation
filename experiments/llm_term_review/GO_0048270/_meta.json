@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0048270",
+  "name": "methionine adenosyltransferase regulator activity",
+  "def": "Binds to and modulates the activity of methionine adenosyltransferase.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q99LB6"
+  ],
+  "assigned_accessions": [
+    "Q99LB6"
+  ]
+}

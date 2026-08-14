@@ -24886,5 +24886,223 @@
     "reasoning": "No annotated feature provides a clear structural or functional basis for the primary reaction mechanism described by the GO term \"glycerol 2-dehydrogenase (NADP+) activity.\""
    }
   ]
+ },
+ "GO:0047956": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "M9PF61",
+     "P14550",
+     "P45376"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Lowers pKa of active site Tyr",
+    "accessions": [
+     "P51635"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047960": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P15505",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047964": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "P53839"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047972": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9BSE5",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9BSE5 does not have any annotated feature that directly matches the primary reaction mechanism of guanidinopropionase activity (GO:0047972). The only relevant information is a domain/family cross-reference, which suggests it may be involved in similar enzymatic activity but not specifically in the reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0047982": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O05394",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P18757",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P18757 specifically describes the catalytic reaction mechanism of GO:0047982. The presence of multiple binding sites for substrates does not imply the enzyme's function \u2014 it only indicates that the protein has the capacity to bind substrates. Therefore, no positional feature matches the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "P32929",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P32929 directly matches the defined chemistry of homocysteine desulfhydrase activity, and all binding sites are generic. Therefore, there is no plausible explanation for why this protein carries the GO term."
+   },
+   {
+    "accession": "Q8VCN5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8VCN5 specifically matches the defined chemistry of homocysteine desulfhydrase activity, as all binding sites are generic and do not implement the reaction mechanism described in the GO term."
+   }
+  ]
+ },
+ "GO:0047992": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A2RU49",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly or specifically match the primary reaction of hydroxylysine kinase activity. The only plausible candidate is ACT_SITE 225-226, which describes a proton acceptor, but it does not fully explain the GO term's chemistry."
+   }
+  ]
+ },
+ "GO:0048029": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P49247",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P49247's positional data directly supports the definition of \"monosaccharide binding,\" which requires a specific biochemical mechanism not indicated by the available information."
+   },
+   {
+    "accession": "Q92448",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q92448 has annotations related to ATP and beta-D-fructose 6-phosphate binding, but none directly describe the binding of monosaccharides. Thus, no annotated feature provides a strong match for the GO term's primary reaction."
+   },
+   {
+    "accession": "P00511",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P09467",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features do not include any positional feature that specifically matches the primary reaction of \"monosaccharide binding\" as defined in the GO term. All features involve binding to ligands such as AMP or substrates, which are not monosaccharides. Therefore, no single annotated feature provides a strong match to the GO term's own chemistry."
+   }
+  ]
+ },
+ "GO:0048031": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P06993",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong explanation for the primary reaction of the GO term \"trisaccharide binding\" (GO:0048031)."
+   }
+  ]
+ },
+ "GO:0048032": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "C0HK25",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P93788",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for P93788 is a disordered region (REGION 0-24), which does not provide any positional evidence that directly explains why this protein carries the GO term \"galacturonate binding.\" No other features are present, and the disordered region is generic and could apply to many proteins. Therefore, there is no plausible explanation for the molecular function defined by GO:0048"
+   }
+  ]
+ },
+ "GO:0048270": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q99LB6",
+    "go_id": "GO:0048270",
+    "feature_type": "REGION",
+    "start": 318,
+    "end": 334,
+    "signal_kind": "text",
+    "signal_value": "Required for interaction with MAT2A",
+    "reasoning": "The \"REGION\" feature indicates interaction with MAT2A, which could be part of the regulatory mechanism for methionine adenosyltransferase. However, it does not directly explain why the protein carries the GO term's definition, as the primary reaction involves binding and modulation rather than interaction with another enzyme."
+   }
+  ],
+  "issues": []
  }
 }

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047964",
+  "name": "glyoxylate reductase (NADH) activity",
+  "def": "Catalysis of the reaction: glycolate + NAD+ = glyoxylate + NADH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P53839"
+  ],
+  "assigned_accessions": [
+    "P53839"
+  ]
+}

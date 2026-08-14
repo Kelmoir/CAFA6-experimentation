@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047992",
+  "name": "hydroxylysine kinase activity",
+  "def": "Catalysis of the reaction: erythro-5-hydroxy-L-lysine + GTP = 5-phosphonooxy-L-lysine + GDP + 2 H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A2RU49"
+  ],
+  "assigned_accessions": [
+    "A2RU49"
+  ]
+}

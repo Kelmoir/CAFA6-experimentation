@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047972",
+  "name": "guanidinopropionase activity",
+  "def": "Catalysis of the reaction: 3-guanidinopropanoate + H2O = beta-alanine + urea.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9BSE5"
+  ],
+  "assigned_accessions": [
+    "Q9BSE5"
+  ]
+}

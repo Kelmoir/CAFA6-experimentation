@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047982",
+  "name": "homocysteine desulfhydrase activity",
+  "def": "Catalysis of the reaction: L-homocysteine + H2O = sulfide + NH3 + 2-oxobutanoate.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O05394",
+    "P18757",
+    "P32929",
+    "Q8VCN5"
+  ],
+  "assigned_accessions": [
+    "O05394",
+    "P18757",
+    "P32929",
+    "Q8VCN5"
+  ]
+}

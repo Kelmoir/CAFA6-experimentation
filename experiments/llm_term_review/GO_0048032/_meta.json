@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0048032",
+  "name": "galacturonate binding",
+  "def": "Binding to a galacturonate. Galacturonate is the anion of galacturonic acid, the uronic acid formally derived from galactose by oxidation of the hydroxymethylene group at C-6 to a carboxyl group.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "C0HK25",
+    "P93788"
+  ],
+  "assigned_accessions": [
+    "C0HK25",
+    "P93788"
+  ]
+}

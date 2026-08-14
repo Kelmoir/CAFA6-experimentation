@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O05394",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P18757",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P18757 specifically describes the catalytic reaction mechanism of GO:0047982. The presence of multiple binding sites for substrates does not imply the enzyme's function \u2014 it only indicates that the protein has the capacity to bind substrates. Therefore, no positional feature matches the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "P32929",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for P32929 directly matches the defined chemistry of homocysteine desulfhydrase activity, and all binding sites are generic. Therefore, there is no plausible explanation for why this protein carries the GO term."
+    },
+    {
+      "accession": "Q8VCN5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q8VCN5 specifically matches the defined chemistry of homocysteine desulfhydrase activity, as all binding sites are generic and do not implement the reaction mechanism described in the GO term."
+    }
+  ]
+}

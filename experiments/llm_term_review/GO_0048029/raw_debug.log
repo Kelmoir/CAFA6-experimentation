@@ -1,0 +1,266 @@
+=== P09467 GO:0048029 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== P00511 GO:0048029 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== P00511 GO:0048029 (finish_reason=length) ===
+THINKING:  
+GO term ID: 0048029  
+Name: monosaccharide binding  
+Definition: Binding to a monosaccharide. Monosaccharides are the simplest carbohydrates; they are polyhydroxy aldehydes H[CH(OH)]nC(=O)H or polyhydroxy ketones H[CHOH]nC(=O)[CHOH]mH with three or more carbon atoms. They form the constitutional repeating units of oligo- and polysaccharides.  
+
+The primary reaction or mechanism described in the definition is "binding to a monosaccharide." The protein P00511 has several annotated features, including regions and binding sites. We must determine which of these features most plausibly explains why this protein carries the term "monosaccharide binding" as a molecular function.
+
+- **REGION 1-390**  
+    note: N-terminal catalytic PFK domain 1  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184,ECO:0000305|PubMed:21241708  
+
+- **REGION 390-401**  
+    note: Interdomain linker  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184,ECO:0000305|PubMed:21241708  
+
+- **REGION 401-780**  
+    note: C-terminal regulatory PFK domain 2  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184,ECO:0000305|PubMed:21241708  
+
+- **ACT_SITE 165-166**  
+    note: Proton acceptor  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 24-25**  
+    ligand: ATP  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 87-89**  
+    ligand: ATP  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 117-121**  
+    ligand: ATP  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 118-119**  
+    ligand: Mg(2+)  
+    ligand_id: ChEBI:CHEBI:18420  
+    ligand_note: catalytic  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 163-166**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    note: in other chain  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 200-201**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 207-210**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    note: in other chain  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 263-264**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    note: in other chain  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 291-292**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    note: in other chain  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 297-301**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    note: in other chain  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 470-471**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    ligand_note: allosteric activator; ligand shared between dimeric partners  
+    note: in other chain  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 527-532**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 565-566**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 572-575**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 628-629**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 654-655**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 660-664**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 734-735**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **ACT_SITE 165-166**  
+    note: Proton acceptor  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 24-25**  
+    ligand: ATP  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 87-89**  
+    ligand: ATP  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 117-121**  
+    ligand: ATP  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 118-119**  
+    ligand: Mg(2+)  
+    ligand_id: ChEBI:CHEBI:18420  
+    ligand_note: catalytic  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 163-166**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    note: in other chain  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 200-201**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 207-210**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    note: in other chain  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 263-264**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 291-292**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 297-301**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 470-471**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 527-532**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 565-566**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 572-575**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 628-629**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 654-655**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 660-664**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 734-735**  
+    ligand: beta-D-fructose 2,6-bisphosphate  
+    ligand_id: ChEBI:CHEBI:58579  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **ACT_SITE 165-166**  
+    note: Proton acceptor  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 24-25**  
+    ligand: ATP  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 87-89**  
+    ligand: ATP  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 117-121**  
+    ligand: ATP  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 118-119**  
+    ligand: Mg(2+)  
+    ligand_id: ChEBI:CHEBI:18420  
+    ligand_note: catalytic  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 163-166**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    note: in other chain  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 200-201**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    evidence: ECO:0000255|HAMAP-Rule:MF_03184  
+
+- **BINDING 207-210**  
+    ligand: substrate  
+    ligand_id: ChEBI:CHEBI:30616  
+    note: in
+

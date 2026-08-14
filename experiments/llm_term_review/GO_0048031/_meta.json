@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0048031",
+  "name": "trisaccharide binding",
+  "def": "Binding to a trisaccharide. Trisaccharides are sugars composed of three monosaccharide units.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P06993"
+  ],
+  "assigned_accessions": [
+    "P06993"
+  ]
+}

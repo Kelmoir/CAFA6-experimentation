@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047960",
+  "name": "glycine dehydrogenase activity",
+  "def": "Catalysis of the reaction: glycine + H2O + NAD+ = glyoxylate + NH3 + NADH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P15505"
+  ],
+  "assigned_accessions": [
+    "P15505"
+  ]
+}
