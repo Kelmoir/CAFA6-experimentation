@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "O22820",
+      "go_id": "GO:0052641",
+      "feature_type": "BINDING",
+      "start": 132,
+      "end": 133,
+      "signal_kind": "ligand",
+      "signal_value": "UDP-alpha-D-glucose",
+      "reasoning": "The binding site for UDP-alpha-D-glucose (ligand_id: ChEBI:CHEBI:58885) directly matches the reaction mechanism of benzoic acid glucosyltransferase activity, which involves the transfer of a glucosyl group from UDP-glucose to benzoic acid. This feature is the most specific and relevant to the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "O22822",
+      "go_id": "GO:0052641",
+      "feature_type": "BINDING",
+      "start": 272,
+      "end": 273,
+      "signal_kind": "ligand",
+      "signal_value": "UDP-alpha-D-glucose",
+      "reasoning": "The binding site at position 272-273 is directly involved in the interaction with the substrate \"UDP-alpha-D-glucose,\" which matches the primary reaction of the GO term. This feature provides a strong and specific explanation for why the protein carries the defined molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

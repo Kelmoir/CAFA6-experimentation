@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P54690",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9FYA6",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9M439",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "O15382",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for the protein O15382 matches the primary reaction of the GO term \"L-valine-2-oxoglutarate transaminase activity,\" which involves the transfer of an amino group from L-valine to 2-oxoglutarate. The binding sites are for L-isoleucine, not the specific substrates involved in the defined reaction."
+    }
+  ]
+}

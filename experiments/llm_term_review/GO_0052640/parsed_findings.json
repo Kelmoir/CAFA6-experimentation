@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9C768",
+      "go_id": "GO:0052640",
+      "feature_type": "BINDING",
+      "start": 268,
+      "end": 269,
+      "signal_kind": "ligand",
+      "signal_value": "UDP-alpha-D-glucose",
+      "reasoning": "The binding site at position 268-269 directly involves the substrate (UDP-alpha-D-glucose) required for the reaction catalyzed by the enzyme, making it the most plausible explanation for the GO term's definition."
+    },
+    {
+      "accession": "O22820",
+      "go_id": "GO:0052640",
+      "feature_type": "BINDING",
+      "start": 132,
+      "end": 133,
+      "signal_kind": "ligand",
+      "signal_value": "UDP-alpha-D-glucose",
+      "reasoning": "The binding site for UDP-alpha-D-glucose (BINDING 132-133) directly supports the reaction mechanism of catalyzing a glucosyl transfer as defined by the GO term, making it the most plausible structural/functional basis for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O22822",
+      "reason": "none_verdict",
+      "reasoning": "The binding of \"UDP-alpha-D-glucose\" is consistent with the enzyme's function but does not directly explain why it carries the GO term, as all features are about binding rather than catalytic activity."
+    }
+  ]
+}

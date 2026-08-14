@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0052655",
+  "name": "L-valine-2-oxoglutarate transaminase activity",
+  "def": "Catalysis of the reaction: 2-oxoglutarate + L-valine = 3-methyl-2-oxobutanoic acid + L-glutamatic acid.",
+  "n_proteins_total": 17,
+  "sampled_accessions": [
+    "O15382",
+    "P54690",
+    "Q9FYA6",
+    "Q9M439"
+  ],
+  "assigned_accessions": [
+    "O15382",
+    "P54690",
+    "Q9FYA6",
+    "Q9M439"
+  ]
+}

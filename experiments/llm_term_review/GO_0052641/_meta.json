@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0052641",
+  "name": "benzoic acid glucosyltransferase activity",
+  "def": "Catalysis of the reaction: benzoic acid + UDP-glucose = benzoic acid glucose ester + UDP.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O22820",
+    "O22822"
+  ],
+  "assigned_accessions": [
+    "O22820",
+    "O22822"
+  ]
+}

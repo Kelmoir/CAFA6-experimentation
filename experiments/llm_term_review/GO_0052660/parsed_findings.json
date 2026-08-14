@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P0A9S1",
+      "go_id": "GO:0052660",
+      "feature_type": "BINDING",
+      "start": 37,
+      "end": 38,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The highest score (10) for the binding site involving NAD+ directly supports the primary reaction of the GO term, which is about catalyzing the hydride transfer from NAD+. This binding site most plausibly explains why this protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

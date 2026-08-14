@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0052654",
+  "name": "L-leucine-2-oxoglutarate transaminase activity",
+  "def": "Catalysis of the reaction: 2-oxoglutarate + L-leucine = 4-methyl-2-oxopentanoate + L-glutamatic acid.",
+  "n_proteins_total": 19,
+  "sampled_accessions": [
+    "O14370",
+    "O15382",
+    "O35855",
+    "Q9M401"
+  ],
+  "assigned_accessions": [
+    "O14370",
+    "O15382",
+    "O35855",
+    "Q9M401"
+  ]
+}

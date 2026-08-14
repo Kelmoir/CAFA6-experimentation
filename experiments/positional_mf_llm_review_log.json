@@ -27715,5 +27715,210 @@
     "detail": "UNPARSED"
    }
   ]
+ },
+ "GO:0052640": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "UDP-alpha-D-glucose",
+    "accessions": [
+     "O22820",
+     "Q9C768"
+    ],
+    "reason": "ligand already claimed by GO:0016759 elsewhere in the dictionary -- ligand_to_go is a plain dict, a second claim would silently overwrite it"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O22822",
+    "reason": "none_verdict",
+    "reasoning": "The binding of \"UDP-alpha-D-glucose\" is consistent with the enzyme's function but does not directly explain why it carries the GO term, as all features are about binding rather than catalytic activity."
+   }
+  ]
+ },
+ "GO:0052641": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "UDP-alpha-D-glucose",
+    "accessions": [
+     "O22820",
+     "O22822"
+    ],
+    "reason": "ligand already claimed by GO:0016759 elsewhere in the dictionary -- ligand_to_go is a plain dict, a second claim would silently overwrite it"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0052642": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Phosphatase sequence motif I",
+    "accessions": [
+     "O88956"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Nucleophile",
+    "accessions": [
+     "P60588"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Important for substrate specificity",
+    "accessions": [
+     "Q8CE08"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P40025",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0052654": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O14370",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O15382",
+    "reason": "none_verdict",
+    "reasoning": "The protein O15382 does not have any annotated feature that specifically matches the GO term's primary reaction of catalyzing the transamination reaction between L-leucine and 2-oxoglutarate."
+   },
+   {
+    "accession": "Q9M401",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O35855",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section directly explains the specific enzymatic activity defined by the GO term \"L-leucine-2-oxoglutarate transaminase activity.\" The binding sites for L-isoleucine are not sufficient to account for the function of the enzyme, which specifically involves L-leucine."
+   }
+  ]
+ },
+ "GO:0052655": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P54690",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9FYA6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9M439",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O15382",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for the protein O15382 matches the primary reaction of the GO term \"L-valine-2-oxoglutarate transaminase activity,\" which involves the transfer of an amino group from L-valine to 2-oxoglutarate. The binding sites are for L-isoleucine, not the specific substrates involved in the defined reaction."
+   }
+  ]
+ },
+ "GO:0052660": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P0A9S1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0052661": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P0A9S1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0052664": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8X1D8",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for this protein do not directly explain why it carries the GO term \"nitroalkane oxidase activity.\" While FAD binding is relevant to the reaction, it does not provide a strong match to the primary mechanism described in the definition. No positional feature has been confirmed to account for the term's chemistry."
+   }
+  ]
  }
 }

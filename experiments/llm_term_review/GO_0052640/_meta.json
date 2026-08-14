@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0052640",
+  "name": "salicylic acid glucosyltransferase (glucoside-forming) activity",
+  "def": "Catalysis of the reaction: salicylic acid + UDP-glucose = salicylic acid 2-O-glucoside + UDP.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O22820",
+    "O22822",
+    "Q9C768"
+  ],
+  "assigned_accessions": [
+    "O22820",
+    "O22822",
+    "Q9C768"
+  ]
+}

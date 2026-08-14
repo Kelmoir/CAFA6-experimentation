@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "O88956",
+      "go_id": "GO:0052642",
+      "feature_type": "REGION",
+      "start": 119,
+      "end": 128,
+      "signal_kind": "text",
+      "signal_value": "Phosphatase sequence motif I",
+      "reasoning": "The \"Phosphatase sequence motif I\" in the specified region directly matches the GO term's definition of catalyzing the reaction involving lysophosphatidic acid, making it the most plausible explanation for why the protein carries that term."
+    },
+    {
+      "accession": "P60588",
+      "go_id": "GO:0052642",
+      "feature_type": "ACT_SITE",
+      "start": 222,
+      "end": 223,
+      "signal_kind": "text",
+      "signal_value": "Nucleophile",
+      "reasoning": "The \"ACT_SITE 222-223\" annotation directly matches the catalytic mechanism described in the GO term's definition, where the active site histidine is stabilized for nucleophilic attack. This feature provides a strong and specific explanation for why the protein carries the GO term."
+    },
+    {
+      "accession": "Q8CE08",
+      "go_id": "GO:0052642",
+      "feature_type": "SITE",
+      "start": 47,
+      "end": 48,
+      "signal_kind": "text",
+      "signal_value": "Important for substrate specificity",
+      "reasoning": "The site annotation specifically addresses the importance of substrate specificity, which is directly relevant to the defined molecular function of lysophosphatidic acid phosphatase activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P40025",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

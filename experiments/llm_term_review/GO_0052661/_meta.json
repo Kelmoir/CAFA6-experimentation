@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052661",
+  "name": "S-lactaldehyde reductase activity",
+  "def": "Catalysis of the reaction: (S)-propane-1,2-diol + NAD+ = (S)-lactaldehyde + NADH + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0A9S1"
+  ],
+  "assigned_accessions": [
+    "P0A9S1"
+  ]
+}

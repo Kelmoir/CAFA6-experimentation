@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052664",
+  "name": "nitroalkane oxidase activity",
+  "def": "Catalysis of the reaction: a primary nitroalkane + H2O + O2 = an aldehyde + H+ + H2O2 + nitrite; also converts secondary nitroalkanes to a ketone.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8X1D8"
+  ],
+  "assigned_accessions": [
+    "Q8X1D8"
+  ]
+}
