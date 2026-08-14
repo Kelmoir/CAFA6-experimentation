@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A0AAT9JA24",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features only indicate NAD+ binding sites and do not provide any evidence that these regions are specifically involved in catalyzing the reaction described by the GO term."
+    },
+    {
+      "accession": "A0A8I6GJ95",
+      "reason": "none_verdict",
+      "reasoning": "There are no annotated features for the protein A0A8I6GJ95 that specifically match the catalytic activity defined by the GO term 0047834, which involves the conversion of D-threo-aldose to a lactone with NAD+ as a cofactor. The only evidence is multiple NAD+ binding sites, which do not directly support the enzyme's function."
+    },
+    {
+      "accession": "Q9BPX1",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

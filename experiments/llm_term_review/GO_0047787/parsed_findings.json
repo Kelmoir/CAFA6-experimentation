@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "P51652",
+      "go_id": "GO:0047787",
+      "feature_type": "ACT_SITE",
+      "start": 54,
+      "end": 55,
+      "signal_kind": "text",
+      "signal_value": "Proton donor",
+      "reasoning": "The ACT_SITE annotation at position 54-55 directly matches the primary reaction of the enzyme, which involves proton donation. This feature provides a clear and specific explanation for why the protein carries the GO term \"Delta4-3-oxosteroid 5beta-reductase activity.\""
+    },
+    {
+      "accession": "P70694",
+      "go_id": "GO:0047787",
+      "feature_type": "BINDING",
+      "start": 19,
+      "end": 24,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The binding of NADP+ at position 19-24 directly supports the enzyme's function of catalyzing the reduction reaction, which is the primary mechanism described in the GO term's definition."
+    },
+    {
+      "accession": "Q8K023",
+      "go_id": "GO:0047787",
+      "feature_type": "BINDING",
+      "start": 19,
+      "end": 24,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The binding site for NADP+ (ligand: NADP(+)) directly supports the enzyme's function of catalyzing the reduction reaction with NADP+ as a cofactor, making it the most plausible explanation for why the protein carries the GO term."
+    },
+    {
+      "accession": "Q8VC28",
+      "go_id": "GO:0047787",
+      "feature_type": "SITE",
+      "start": 83,
+      "end": 84,
+      "signal_kind": "text",
+      "signal_value": "Lowers pKa of active site Tyr",
+      "reasoning": "The SITE 83-84 feature indicates that the enzyme has an active site with Tyr having a lower pKa, which could help in the proton transfer during the reduction reaction described by the GO term. This directly relates to the enzyme's ability to catalyze the specific reaction defined by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

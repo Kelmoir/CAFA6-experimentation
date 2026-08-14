@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047842",
+  "name": "dehydro-L-gulonate decarboxylase activity",
+  "def": "Catalysis of the reaction: 3-dehydro-L-gulonate + H+ = L-xylulose + CO2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9H0W9"
+  ],
+  "assigned_accessions": [
+    "Q9H0W9"
+  ]
+}

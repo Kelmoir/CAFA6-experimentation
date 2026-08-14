@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047812",
+  "name": "D-amino-acid N-acetyltransferase activity",
+  "def": "Catalysis of the reaction: acetyl-CoA + a D-amino acid = CoA + an N-acetyl-D-amino-acid.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P39979"
+  ],
+  "assigned_accessions": [
+    "P39979"
+  ]
+}

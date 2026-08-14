@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0047834",
+  "name": "D-threo-aldose 1-dehydrogenase activity",
+  "def": "Catalysis of the reaction: a D-threo-aldose + NAD+ = a D-threo-aldono-1,5-lactone + NADH.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "A0A8I6GJ95",
+    "A0AAT9JA24",
+    "Q9BPX1"
+  ],
+  "assigned_accessions": [
+    "A0A8I6GJ95",
+    "A0AAT9JA24",
+    "Q9BPX1"
+  ]
+}

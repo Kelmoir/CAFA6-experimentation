@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047776",
+  "name": "citramalate lyase activity",
+  "def": "Catalysis of the reaction: S-citramalate = acetate + pyruvate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q05957"
+  ],
+  "assigned_accessions": [
+    "Q05957"
+  ]
+}

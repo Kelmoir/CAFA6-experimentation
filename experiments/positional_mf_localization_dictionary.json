@@ -21400,6 +21400,15 @@
   ],
   "text_patterns": []
  },
+ "GO:0047809": {
+  "name": "D-lactate dehydrogenase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR051914"
+  ],
+  "text_patterns": []
+ },
  "GO:0047810": {
   "name": "D-alanine-2-oxoglutarate aminotransferase activity",
   "ligands": [],

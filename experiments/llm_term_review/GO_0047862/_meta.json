@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047862",
+  "name": "diisopropyl-fluorophosphatase activity",
+  "def": "Catalysis of the reaction: diisopropyl fluorophosphate + H2O = diisopropyl phosphate + fluoride + 2 H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q7SIG4"
+  ],
+  "assigned_accessions": [
+    "Q7SIG4"
+  ]
+}

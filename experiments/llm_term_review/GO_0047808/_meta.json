@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047808",
+  "name": "D(-)-tartrate dehydratase activity",
+  "def": "Catalysis of the reaction: D-tartrate = H2O + oxaloacetate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P14407"
+  ],
+  "assigned_accessions": [
+    "P14407"
+  ]
+}

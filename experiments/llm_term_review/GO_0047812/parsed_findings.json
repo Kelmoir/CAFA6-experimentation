@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P39979",
+      "go_id": "GO:0047812",
+      "feature_type": "DOMAIN",
+      "start": 13,
+      "end": 161,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The DOMAIN annotation for P39979 directly matches the definition of the GO term by specifying the enzyme's function, which involves transferring an acyl group from acetyl-CoA to a D-amino acid. This provides a strong and specific match to the primary reaction described in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

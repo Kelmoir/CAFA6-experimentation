@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047801",
+  "name": "L-cysteine transaminase activity",
+  "def": "Catalysis of the reaction: L-cysteine + 2-oxoglutarate = mercaptopyruvate + L-glutamate.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "B0K020",
+    "P13221",
+    "Q9FLI7",
+    "Q9NZ45"
+  ],
+  "assigned_accessions": [
+    "B0K020",
+    "P13221",
+    "Q9FLI7",
+    "Q9NZ45"
+  ]
+}

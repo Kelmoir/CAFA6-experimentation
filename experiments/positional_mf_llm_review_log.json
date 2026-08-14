@@ -24405,5 +24405,231 @@
     "reasoning": "No annotated feature explicitly states the mechanism of the reaction (i.e., the transfer of the methyl group from S-adenosyl-L-methionine to 3,4-dihydroxy-trans-cinnamate), which is the primary reaction defined by the GO term. The features are more about the enzyme's structure and function rather than the specific chemistry it catalyzes."
    }
   ]
+ },
+ "GO:0047776": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q05957",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein Q05957 only describe binding events with Mg(2+), which is a cofactor for citramalate lyase but does not directly explain why the protein carries the term \"citramalate lyase activity.\" No feature provides a strong match to the primary reaction of catalyzing S-citramalate into acetate and pyruvate."
+   }
+  ]
+ },
+ "GO:0047787": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "P70694",
+     "Q8K023"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton donor",
+    "accessions": [
+     "P51652"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Lowers pKa of active site Tyr",
+    "accessions": [
+     "Q8VC28"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047801": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Schiff-base intermediate with pyridoxal 5'-phosphate",
+    "accessions": [
+     "B0K020",
+     "Q9NZ45"
+    ],
+    "reason": "circular agreement -- only 1 of 2 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P13221",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for this protein describe binding sites for L-aspartate, but none of them provide evidence that this protein catalyzes the specific reaction defined by the GO term. Therefore, no single annotated feature plausibly explains why this protein carries the term."
+   },
+   {
+    "accession": "Q9FLI7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9FLI7 directly matches the primary reaction mechanism of the GO term \"L-cysteine transaminase activity.\" The [2Fe-2S] cluster binding sites are generic and do not specifically explain the defined enzymatic activity."
+   }
+  ]
+ },
+ "GO:0047805": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q02153",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of GO:0047805."
+   }
+  ]
+ },
+ "GO:0047808": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P14407",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for this protein describe binding sites for a [4Fe-4S] cluster, which is a cofactor involved in electron transport and redox reactions, but none of these features directly explain the catalytic reaction of D-tartrate dehydratase as defined by GO:0047808."
+   }
+  ]
+ },
+ "GO:0047809": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR051914"
+    ],
+    "accessions": [
+     "P0AEP9",
+     "P52073"
+    ],
+    "note": "resolved from DOMAIN note 'FAD-binding PCMH-type' (10 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "4Fe-4S ferredoxin-type 1",
+    "accessions": [
+     "P52074"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047812": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "N-acetyltransferase",
+    "accessions": [
+     "P39979"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047834": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0AAT9JA24",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features only indicate NAD+ binding sites and do not provide any evidence that these regions are specifically involved in catalyzing the reaction described by the GO term."
+   },
+   {
+    "accession": "A0A8I6GJ95",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated features for the protein A0A8I6GJ95 that specifically match the catalytic activity defined by the GO term 0047834, which involves the conversion of D-threo-aldose to a lactone with NAD+ as a cofactor. The only evidence is multiple NAD+ binding sites, which do not directly support the enzyme's function."
+   },
+   {
+    "accession": "Q9BPX1",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0047842": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9H0W9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9H0W9 directly matches the primary reaction mechanism of dehydro-L-gulonate decarboxylase activity. The binding sites for Zn(2+) are relevant to enzyme function but do not describe the specific chemistry of the reaction."
+   }
+  ]
+ },
+ "GO:0047862": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q7SIG4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein Q7SIG4 provides a clear structural or functional basis for the \"diisopropyl-fluorophosphatase activity\" GO term as defined by its primary reaction."
+   }
+  ]
  }
 }

@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q7SIG4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for protein Q7SIG4 provides a clear structural or functional basis for the \"diisopropyl-fluorophosphatase activity\" GO term as defined by its primary reaction."
+    }
+  ]
+}

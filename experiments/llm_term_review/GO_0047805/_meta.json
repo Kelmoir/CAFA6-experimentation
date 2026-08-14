@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047805",
+  "name": "cytidylate cyclase activity",
+  "def": "Catalysis of the reaction: CTP = 3',5'-cyclic CMP + diphosphate + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q02153"
+  ],
+  "assigned_accessions": [
+    "Q02153"
+  ]
+}

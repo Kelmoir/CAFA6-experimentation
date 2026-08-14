@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "P52073",
+      "go_id": "GO:0047809",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 173,
+      "signal_kind": "text",
+      "signal_value": "FAD-binding PCMH-type",
+      "reasoning": "The \"FAD-binding PCMH-type\" domain in P52073 is strongly associated with dehydrogenase activity, which matches the primary reaction of the GO term. This feature directly supports the enzymatic function described by the GO term."
+    },
+    {
+      "accession": "P52074",
+      "go_id": "GO:0047809",
+      "feature_type": "DOMAIN",
+      "start": 13,
+      "end": 47,
+      "signal_kind": "text",
+      "signal_value": "4Fe-4S ferredoxin-type 1",
+      "reasoning": "The DOMAIN 13-47, described as a \"4Fe-4S ferredoxin-type 1,\" directly corresponds to the enzyme's activity in redox reactions, which is consistent with the GO term's definition of catalysis involving (R)-lactate and pyruvate. This domain provides a strong match to the primary reaction mechanism described in the GO term."
+    },
+    {
+      "accession": "P0AEP9",
+      "go_id": "GO:0047809",
+      "feature_type": "DOMAIN",
+      "start": 51,
+      "end": 230,
+      "signal_kind": "text",
+      "signal_value": "FAD-binding PCMH-type",
+      "reasoning": "[auto-resolved from cross-reference accession] The IPR016166 domain is specifically associated with FAD-binding and redox activity, which are essential for the reaction catalyzed by D-lactate dehydrogenase. This feature most directly matches the primary reaction mechanism described in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

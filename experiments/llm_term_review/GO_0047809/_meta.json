@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0047809",
+  "name": "D-lactate dehydrogenase activity",
+  "def": "Catalysis of the reaction: (R)-lactate + A = AH(2) + pyruvate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P0AEP9",
+    "P52073",
+    "P52074"
+  ],
+  "assigned_accessions": [
+    "P0AEP9",
+    "P52073",
+    "P52074"
+  ]
+}
