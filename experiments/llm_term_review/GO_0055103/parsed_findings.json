@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q64691",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided data directly explains why the protein carries the GO term \"ligase regulator activity\" in terms of binding to and modulating a ligase."
+    }
+  ]
+}

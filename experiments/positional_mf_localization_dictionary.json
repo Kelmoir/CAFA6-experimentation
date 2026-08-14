@@ -24392,6 +24392,19 @@
    "microbody targeting signal"
   ]
  },
+ "GO:0052905": {
+  "name": "tRNA (guanosine(9)-N1)-methyltransferase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR025812",
+   "InterPro:IPR028564",
+   "InterPro:IPR038459",
+   "PROSITE:PS51675",
+   "Pfam:PF27710"
+  ],
+  "text_patterns": []
+ },
  "GO:0052909": {
   "name": "18S rRNA (adenine(1779)-N(6)/adenine(1780)-N(6))-dimethyltransferase activity",
   "ligands": [],

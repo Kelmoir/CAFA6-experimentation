@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P75864",
+      "go_id": "GO:0052915",
+      "feature_type": "REGION",
+      "start": 0,
+      "end": 397,
+      "signal_kind": "text",
+      "signal_value": "RlmL",
+      "reasoning": "The region \"0-397\" is associated with RlmL, which is known to be involved in methyltransferase activity, but it does not directly match the primary reaction mechanism described in the GO term's definition."
+    }
+  ],
+  "issues": []
+}

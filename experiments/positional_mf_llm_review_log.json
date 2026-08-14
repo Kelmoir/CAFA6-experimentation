@@ -28797,5 +28797,228 @@
     "reasoning": "No annotated feature directly matches the primary reaction of the GO term \"spermine oxidase activity\" (catalysis of the reaction with FAD and spermine), so there is no strong match for this GO term based on the given evidence."
    }
   ]
+ },
+ "GO:0052905": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR025812",
+     "InterPro:IPR028564",
+     "InterPro:IPR038459",
+     "PROSITE:PS51675",
+     "Pfam:PF27710"
+    ],
+    "accessions": [
+     "Q3UFY8",
+     "Q7JUX9",
+     "Q8TBZ6",
+     "Q9VR56"
+    ],
+    "note": "resolved from DOMAIN note 'SAM-dependent MTase TRM10-type'"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0052908": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P06992",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear explanation for why this protein carries the specific molecular function defined by the GO term."
+   }
+  ]
+ },
+ "GO:0052911": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P36999",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide any positional evidence that specifically explains the molecular function of the GO term as defined in the primary reaction."
+   }
+  ]
+ },
+ "GO:0052914": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P39406",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0052915": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P75864",
+    "go_id": "GO:0052915",
+    "feature_type": "REGION",
+    "start": 0,
+    "end": 397,
+    "signal_kind": "text",
+    "signal_value": "RlmL",
+    "reasoning": "The region \"0-397\" is associated with RlmL, which is known to be involved in methyltransferase activity, but it does not directly match the primary reaction mechanism described in the GO term's definition."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0052916": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P42596",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0052917": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A8MR93",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P53730",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9BV10",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9USD4",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0052918": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P53868",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9FZ49",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION 0-37\" being disordered does not specifically explain why the protein carries the GO term. It is a generic feature that could apply to many proteins and does not directly relate to the defined reaction mechanism of the GO term."
+   },
+   {
+    "accession": "Q9P7Q9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9H6U8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature from Q9H6U8 specifically matches the chemistry or mechanism described in the GO term's definition, which involves a mannosyl phosphate transfer reaction."
+   }
+  ]
+ },
+ "GO:0055103": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q64691",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data directly explains why the protein carries the GO term \"ligase regulator activity\" in terms of binding to and modulating a ligase."
+   }
+  ]
+ },
+ "GO:0060589": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q80X73",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0061602": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q46810",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein Q46810 provides a specific explanation for the molybdenum cofactor cytidylyltransferase activity, as it only indicates Mg(2+) binding, which is generic and not directly related to the defined reaction."
+   }
+  ]
  }
 }

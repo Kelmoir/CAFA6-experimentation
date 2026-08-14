@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0055103",
+  "name": "ligase regulator activity",
+  "def": "Binds to and modulates the activity of a ligase.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q64691"
+  ],
+  "assigned_accessions": [
+    "Q64691"
+  ]
+}

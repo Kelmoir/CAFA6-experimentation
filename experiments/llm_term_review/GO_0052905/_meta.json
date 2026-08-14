@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0052905",
+  "name": "tRNA (guanosine(9)-N1)-methyltransferase activity",
+  "def": "Catalysis of the reaction: guanosine9 in tRNA + S-adenosyl-L-methionine = H+ + N1-methylguanosine9 in tRNA + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "Q3UFY8",
+    "Q7JUX9",
+    "Q8TBZ6",
+    "Q9VR56"
+  ],
+  "assigned_accessions": [
+    "Q3UFY8",
+    "Q7JUX9",
+    "Q8TBZ6",
+    "Q9VR56"
+  ]
+}

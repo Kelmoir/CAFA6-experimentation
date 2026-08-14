@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052908",
+  "name": "16S rRNA (adenine(1518)-N(6)/adenine(1519)-N(6))-dimethyltransferase activity",
+  "def": "Catalysis of the reaction: 4 S-adenosyl-L-methionine + adenine(1518)/adenine(1519) in 16S rRNA = 4 S-adenosyl-L-homocysteine + N(6)-dimethyladenine(1518)/N(6)-dimethyladenine(1519) in 16S rRNA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P06992"
+  ],
+  "assigned_accessions": [
+    "P06992"
+  ]
+}

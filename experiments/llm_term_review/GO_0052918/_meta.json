@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0052918",
+  "name": "dol-P-Man:Man(8)GlcNAc(2)-PP-Dol alpha-1,2-mannosyltransferase activity",
+  "def": "Catalysis of the reaction: an alpha-D-Man-(1->2)-alpha-D-Man-(1->2)-alpha-D-Man-(1->3)-[alpha-D-Man-(1->2)-alpha-D-Man-(1->3)-[alpha-D-Man-(1->6)]-alpha-D-Man-(1->6)]-beta-D-Man-(1->4)-beta-D-GlcNAc-(1->4)-alpha-D-GlcNAc-diphospho-di-trans,poly-cis-dolichol + a di-trans,poly-cis-dolichyl beta-D-mannosyl phosphate = an alpha-D-Man-(1->2)-alpha-D-Man-(1->2)-alpha-D-Man-(1->3)-[alpha-D-Man-(1->2)-alpha-D-Man-(1->3)-[alpha-D-Man-(1->2)-alpha-D-Man-(1->6)]-alpha-D-Man-(1->6)]-beta-D-Man-(1->4)-beta-D-GlcNAc-(1->4)-alpha-D-GlcNAc-diphospho-di-trans,poly-cis-dolichol + a di-trans,poly-cis-dolichyl phosphate + H+.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P53868",
+    "Q9FZ49",
+    "Q9H6U8",
+    "Q9P7Q9"
+  ],
+  "assigned_accessions": [
+    "P53868",
+    "Q9FZ49",
+    "Q9H6U8",
+    "Q9P7Q9"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0060589",
+  "name": "nucleoside-triphosphatase regulator activity",
+  "def": "Binds to and modulates the activity of an NTPase.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q80X73"
+  ],
+  "assigned_accessions": [
+    "Q80X73"
+  ]
+}

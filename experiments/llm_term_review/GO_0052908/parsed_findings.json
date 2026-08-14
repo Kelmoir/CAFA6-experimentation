@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P06992",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear explanation for why this protein carries the specific molecular function defined by the GO term."
+    }
+  ]
+}

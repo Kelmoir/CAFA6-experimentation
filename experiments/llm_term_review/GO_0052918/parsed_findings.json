@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P53868",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9FZ49",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION 0-37\" being disordered does not specifically explain why the protein carries the GO term. It is a generic feature that could apply to many proteins and does not directly relate to the defined reaction mechanism of the GO term."
+    },
+    {
+      "accession": "Q9P7Q9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9H6U8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature from Q9H6U8 specifically matches the chemistry or mechanism described in the GO term's definition, which involves a mannosyl phosphate transfer reaction."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0061602",
+  "name": "molybdenum cofactor cytidylyltransferase activity",
+  "def": "Catalysis of the reaction: Mo-molybdopterin + CTP + H+ = Mo-molybdopterin cytosine dinucleotide + diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q46810"
+  ],
+  "assigned_accessions": [
+    "Q46810"
+  ]
+}

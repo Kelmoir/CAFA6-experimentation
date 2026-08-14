@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052915",
+  "name": "23S rRNA (guanine(2445)-N(2))-methyltransferase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-methionine + guanosine(2445) in 23S rRNA = N(2)-methylguanosine(2445) in 23S rRNA + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P75864"
+  ],
+  "assigned_accessions": [
+    "P75864"
+  ]
+}

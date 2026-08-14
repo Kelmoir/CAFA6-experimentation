@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P36999",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide any positional evidence that specifically explains the molecular function of the GO term as defined in the primary reaction."
+    }
+  ]
+}
