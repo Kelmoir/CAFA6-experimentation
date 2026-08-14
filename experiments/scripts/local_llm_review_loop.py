@@ -180,12 +180,39 @@ def build_system_prompt(chain_of_thought):
   )
 
 
-def call_local_llm(host, model, system_prompt, prompt, max_tokens, timeout=120):
+class LocalLLMError(Exception):
+  """Raised by call_local_llm for an HTTP error response, carrying status/reason/body as plain
+  attributes -- urllib's own HTTPError is itself a consumed-once file-like object, so once
+  call_local_llm has read its body (to decide whether to retry, see CAPACITY_ERROR_HINTS below),
+  the original exception can't be re-read by review_protein; this small wrapper is what actually
+  reaches the caller instead, with the body already captured."""
+
+  def __init__(self, status, reason, body):
+    self.status, self.reason, self.body = status, reason, body
+    super().__init__(f"HTTP {status} {reason}: {body[:200]}")
+
+
+CAPACITY_ERROR_HINTS = ("kv cache", "context length", "context window", "n_ctx", "too many tokens")
+
+
+def call_local_llm(host, model, system_prompt, prompt, max_tokens, timeout=120,
+                    capacity_retries=3, capacity_retry_delay=2.0):
   """Returns (content, finish_reason). finish_reason is the OpenAI-compatible API's own account of
   why generation stopped ("stop" = model concluded normally, "length" = it hit max_tokens mid-
   generation) -- authoritative, unlike guessing from the absence of expected fields in the text,
   which can't tell a genuine token-budget cutoff apart from a model that finished normally but
-  didn't follow the requested format."""
+  didn't follow the requested format.
+  Retries an HTTP error response up to capacity_retries times, with linear backoff, but ONLY when
+  the response body looks like a transient server-capacity condition (matches
+  CAPACITY_ERROR_HINTS) -- found necessary in practice: LM Studio's server pre-allocates a fixed
+  KV-cache pool shared across its parallel request slots, and running --concurrency > 1 means
+  several proteins' full context can be resident at once, which can exceed that pool and produce
+  an HTTP 400 with a body literally naming "KV cache" as the cause. That condition is genuinely
+  transient -- it clears as soon as any other in-flight request finishes and releases its slot's
+  cache -- so a short wait-and-retry is the correct remedy, unlike a truly malformed request (a
+  real code bug), which would fail identically every time and shouldn't waste retries pretending
+  otherwise. Raises LocalLLMError once retries are exhausted, or immediately for any HTTP error
+  whose body doesn't match a capacity hint."""
   url = host.rstrip("/") + "/v1/chat/completions"
   payload = {
       "model": model,
@@ -196,13 +223,21 @@ def call_local_llm(host, model, system_prompt, prompt, max_tokens, timeout=120):
       "temperature": 0.2,
       "max_tokens": max_tokens,
   }
-  req = urllib.request.Request(
-      url, data=json.dumps(payload).encode(), method="POST",
-      headers={"Content-Type": "application/json", "Authorization": "Bearer lm-studio"})
-  with urllib.request.urlopen(req, timeout=timeout) as resp:
-    body = json.loads(resp.read().decode())
-  choice = body["choices"][0]
-  return choice["message"]["content"], choice.get("finish_reason")
+  data = json.dumps(payload).encode()
+  headers = {"Content-Type": "application/json", "Authorization": "Bearer lm-studio"}
+  for attempt in range(capacity_retries + 1):
+    req = urllib.request.Request(url, data=data, method="POST", headers=headers)
+    try:
+      with urllib.request.urlopen(req, timeout=timeout) as resp:
+        body = json.loads(resp.read().decode())
+      choice = body["choices"][0]
+      return choice["message"]["content"], choice.get("finish_reason")
+    except urllib.error.HTTPError as e:
+      err_body = e.read().decode(errors="replace")
+      is_capacity = any(hint in err_body.lower() for hint in CAPACITY_ERROR_HINTS)
+      if not is_capacity or attempt == capacity_retries:
+        raise LocalLLMError(e.code, e.reason, err_body) from e
+      time.sleep(capacity_retry_delay * (attempt + 1))
 
 
 def discover_model(host, timeout=10):
@@ -348,6 +383,19 @@ def plan_round():
 RETRYABLE_ISSUE_REASONS = {"unresolved_pointer", "invalid_verdict", "go_id_mismatch"}
 
 
+def _write_finding(findings_path, go_id, accession, verdict, ftype, start, end, reasoning):
+  block = (
+      f"## {accession} {go_id}\n"
+      f"verdict: {verdict}\n"
+      f"feature: {ftype} {start}-{end}\n"
+      f"reasoning: {reasoning}\n"
+      f"---\n"
+  )
+  with _write_lock:
+    with open(findings_path, "a") as fh:
+      fh.write(block)
+
+
 def review_protein(host, model, system_prompt, go_id, accession, review_text, term_dir,
                     findings_path, request_timeout, max_tokens, delay=0.0):
   """One LLM call for one (go_id, accession), appended to findings.md as a block. Shared by
@@ -371,19 +419,11 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
   categorically nothing to point at removes this failure mode by construction rather than hoping
   the prompt is followed, and saves a request besides."""
   protein_section = extract_protein_section(review_text, accession)
+  debug_path = term_dir / "raw_debug.log"
   if NO_FEATURES_MARKER in protein_section:
     verdict, ftype, start, end = "NONE", "NONE", "0", "0"
     reasoning = "protein has zero annotated positional features on record -- nothing to point at"
-    block = (
-        f"## {accession} {go_id}\n"
-        f"verdict: {verdict}\n"
-        f"feature: {ftype} {start}-{end}\n"
-        f"reasoning: {reasoning}\n"
-        f"---\n"
-    )
-    with _write_lock:
-      with open(findings_path, "a") as fh:
-        fh.write(block)
+    _write_finding(findings_path, go_id, accession, verdict, ftype, start, end, reasoning)
     print(f"  {go_id} {accession}: NONE (no annotated features on record, skipped LLM call)")
     return verdict, ftype, start, end, reasoning, False
   if delay:
@@ -393,11 +433,30 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
   try:
     raw, finish_reason = call_local_llm(
         host, model, system_prompt, prompt, max_tokens, timeout=request_timeout)
+  except LocalLLMError as e:
+    # A genuine server-side rejection (e.g. LM Studio's KV-cache pool exhausted under
+    # --concurrency > 1, already retried a few times inside call_local_llm) -- not a decisive
+    # model judgment, so this must NOT collapse to "NONE" (see the UNPARSED sentinel's own
+    # docstring in parse_response): that would silently masquerade a server-capacity problem as a
+    # real negative answer and make it permanently unretryable.
+    verdict, ftype, start, end = "UNPARSED", "NONE", "0", "0"
+    reasoning = f"HTTP {e.status} {e.reason} from local model server -- body saved to {debug_path}"
+    with _write_lock:
+      with open(debug_path, "a") as dbg:
+        dbg.write(f"=== {accession} {go_id} (HTTP {e.status} {e.reason}) ===\n{e.body[:4000]}\n\n")
+    print(f"  ! {go_id} {accession}: HTTP {e.status} {e.reason} -- marked UNPARSED for retry "
+          f"(body saved to {debug_path})")
+    _write_finding(findings_path, go_id, accession, verdict, ftype, start, end, reasoning)
+    return verdict, ftype, start, end, reasoning, True
   except (urllib.error.URLError, TimeoutError, OSError) as e:
-    print(f"  ! {go_id} {accession}: request failed ({e}), logging as NONE and continuing")
-    raw = "VERDICT: NONE\nFEATURE: NONE 0-0\nREASONING: local model request failed"
+    # Same reasoning as LocalLLMError above -- a connection-level failure (refused/reset/timeout)
+    # is not a decisive answer either and must stay retryable.
+    verdict, ftype, start, end = "UNPARSED", "NONE", "0", "0"
+    reasoning = f"local model request failed: {e}"
+    print(f"  ! {go_id} {accession}: request failed ({e}) -- marked UNPARSED for retry")
+    _write_finding(findings_path, go_id, accession, verdict, ftype, start, end, reasoning)
+    return verdict, ftype, start, end, reasoning, True
   verdict, ftype, start, end, reasoning, unparsed, reasoning_missing = parse_response(raw)
-  debug_path = term_dir / "raw_debug.log"
   auto_resolved = False
   if verdict in ("LIKELY", "UNCERTAIN") and ftype == "NONE" and start == "0" and end == "0":
     resolved = resolve_crossref_feature(protein_section, raw)
@@ -437,16 +496,7 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
     reasoning = f"VERDICT/FEATURE parsed but no REASONING found -- raw text saved to {debug_path}"
     print(f"  ! {go_id} {accession}: REASONING missing from an otherwise-parsed response -- "
           f"raw text saved to {debug_path}")
-  block = (
-      f"## {accession} {go_id}\n"
-      f"verdict: {verdict}\n"
-      f"feature: {ftype} {start}-{end}\n"
-      f"reasoning: {reasoning}\n"
-      f"---\n"
-  )
-  with _write_lock:
-    with open(findings_path, "a") as fh:
-      fh.write(block)
+  _write_finding(findings_path, go_id, accession, verdict, ftype, start, end, reasoning)
   print(f"  {go_id} {accession}: {verdict} ({ftype} {start}-{end})")
   return verdict, ftype, start, end, reasoning, unparsed
 
