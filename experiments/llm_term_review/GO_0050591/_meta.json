@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050591",
+  "name": "quinine 3-monooxygenase activity",
+  "def": "Catalysis of the reaction: H+ + NADPH + O2 + quinine = 3-hydroxyquinine + H2O + NADP+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P08684"
+  ],
+  "assigned_accessions": [
+    "P08684"
+  ]
+}

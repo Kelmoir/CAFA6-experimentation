@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050627",
+  "name": "mycothione reductase [NAD(P)H] activity",
+  "def": "Catalysis of the reaction: NAD(P)+ + mycothiol = NAD(P)H + H+ + mycothione.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WHH3"
+  ],
+  "assigned_accessions": [
+    "P9WHH3"
+  ]
+}

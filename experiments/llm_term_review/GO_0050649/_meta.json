@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0050649",
+  "name": "testosterone 6-beta-hydroxylase activity",
+  "def": "Catalysis of the reaction: O2 + reduced [NADPH--hemoprotein reductase] + testosterone = 6beta,17beta-dihydroxyandrost-4-en-3-one + H+ + H2O + oxidized [NADPH--hemoprotein reductase].",
+  "n_proteins_total": 20,
+  "sampled_accessions": [
+    "P05183",
+    "P24462",
+    "P79401",
+    "Q9Y6A2"
+  ],
+  "assigned_accessions": [
+    "P05183",
+    "P24462",
+    "P79401",
+    "Q9Y6A2"
+  ]
+}

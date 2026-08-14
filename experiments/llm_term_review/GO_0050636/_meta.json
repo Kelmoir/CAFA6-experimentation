@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050636",
+  "name": "vinorine synthase activity",
+  "def": "Catalysis of the reaction: 16-epivellosimine + acetyl-CoA = CoA + vinorine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q70PR7"
+  ],
+  "assigned_accessions": [
+    "Q70PR7"
+  ]
+}

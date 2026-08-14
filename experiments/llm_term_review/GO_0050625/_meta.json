@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050625",
+  "name": "2-hydroxy-1,4-benzoquinone reductase (NADH) activity",
+  "def": "Catalysis of the reaction: 2-hydroxy-1,4-benzoquinone + 2 H+ + NADH = benzene-1,2,4-triol + NAD+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q59Y37"
+  ],
+  "assigned_accessions": [
+    "Q59Y37"
+  ]
+}

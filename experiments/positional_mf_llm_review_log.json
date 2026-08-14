@@ -26471,6 +26471,47 @@
    }
   ]
  },
+ "GO:0050563": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "(E)-4-coumaroyl-AMP",
+    "accessions": [
+     "Q67W82"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q9S777"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "CoA",
+    "accessions": [
+     "P17814"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O24146",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
  "GO:0050569": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -26522,6 +26563,228 @@
     "accession": "P39346",
     "reason": "none_verdict",
     "reasoning": "No annotated feature directly matches the primary reaction mechanism of the GO term, so there is no single plausible explanation for why the protein carries that term."
+   }
+  ]
+ },
+ "GO:0050589": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fe2OG dioxygenase",
+    "accessions": [
+     "A0A2R6PI27"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q96323",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0050591": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P08684",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature that could be related to the enzyme's function is its binding site for heme, but this does not directly explain the specific reaction of quinine 3-monooxygenase activity. No other positional feature provides a strong match to the GO term's primary reaction."
+   }
+  ]
+ },
+ "GO:0050616": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "U5NDT8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in U5NDT8's Annotated features section directly matches the primary reaction mechanism of the GO term \"secologanin synthase activity.\" The only relevant information is the binding site for heme, which is a cofactor but does not explain the specific catalytic activity described by the GO term."
+   }
+  ]
+ },
+ "GO:0050625": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Flavodoxin-like",
+    "accessions": [
+     "Q59Y37"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050627": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "P9WHH3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050630": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A8QW52",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list specifically matches the primary reaction of GO:0050630, which involves catalyzing the methyl transfer from S-adenosyl-L-methionine to (E)-isoeugenol. The BINDING features are relevant but do not directly explain the enzyme's function as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0050634": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FEY5",
+    "reason": "none_verdict",
+    "reasoning": "The ACT_SITE feature does not specifically explain the enzymatic activity defined by GO:0050634. It is generic and could apply to many different enzymes, making it an unsuitable explanation for the term's molecular function."
+   }
+  ]
+ },
+ "GO:0050636": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q70PR7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q70PR7 matches the chemistry of the reaction defined by GO:0050636, which requires a domain capable of accepting a phosphoryl transfer. The given ACT_SITE regions are generic and do not provide such evidence."
+   }
+  ]
+ },
+ "GO:0050646": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8TDS5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the defined molecular function of binding to 5-oxo-6E,8Z,11Z,14Z-icosatetraenoic acid. The only features are generic and do not specify the binding activity."
+   }
+  ]
+ },
+ "GO:0050647": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8TDS5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section directly describes the binding activity to 5-hydroxy-6E,8Z,11Z,14Z-icosatetraenoic acid as defined by the GO term. The Domain/family cross-references are background classifications and do not provide evidence for this specific function."
+   }
+  ]
+ },
+ "GO:0050648": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8TDS5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8TDS5's Annotated features section provides a strong match to the primary reaction of binding 5(S)-hydroxyperoxy-6E,8Z,11Z,14Z-icosatetraenoic acid. The domain/family cross-references do not specify a binding site for this particular fatty acid, and no positional feature is provided that directly supports the GO term's definition."
+   }
+  ]
+ },
+ "GO:0050649": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P05183",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for heme does not directly explain the catalytic activity of converting testosterone into 6beta,17beta-dihydroxyandrost-4-en-3-one as defined by GO:0050649. No other annotated feature provides a clear mechanistic basis for this specific enzymatic function."
+   },
+   {
+    "accession": "P24462",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P24462 do not provide a strong or specific match to the defined reaction of the GO term \"testosterone 6-beta-hydroxylase activity.\" No positional feature explicitly explains the catalytic mechanism described in the definition, and the domain/family cross-references are background context rather than direct evidence for the function."
+   },
+   {
+    "accession": "P79401",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P79401 directly matches the primary reaction mechanism of GO:0050649, which involves the catalytic transfer of hydroxyl groups from testosterone to oxygen. The only feature is a heme binding site, which is unrelated to the defined chemistry of the term."
+   },
+   {
+    "accession": "Q9Y6A2",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
    }
   ]
  }

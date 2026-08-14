@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "Q67W82",
+      "go_id": "GO:0050563",
+      "feature_type": "BINDING",
+      "start": 317,
+      "end": 318,
+      "signal_kind": "ligand",
+      "signal_value": "(E)-4-coumaroyl-AMP",
+      "reasoning": "The binding of (E)-4-coumaroyl-AMP at position 317-318 is directly related to the formation of (E)-feruloyl-CoA, which aligns with the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q9S777",
+      "go_id": "GO:0050563",
+      "feature_type": "BINDING",
+      "start": 212,
+      "end": 213,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP at position 212-213 directly participates in the phosphoryl transfer mechanism described in the GO term's definition, making it the most plausible explanation for why the protein carries this molecular function."
+    },
+    {
+      "accession": "P17814",
+      "go_id": "GO:0050563",
+      "feature_type": "BINDING",
+      "start": 279,
+      "end": 280,
+      "signal_kind": "ligand",
+      "signal_value": "CoA",
+      "reasoning": "The binding of CoA to the enzyme's domain is directly relevant to its function as a trans-feruloyl-CoA synthase, which catalyzes the reaction involving CoA and ATP. This specific binding site supports the primary mechanism described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O24146",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

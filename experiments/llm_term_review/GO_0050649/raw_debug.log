@@ -1,0 +1,14 @@
+=== Q9Y6A2 GO:0050649 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== P79401 GO:0050649 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== Q9Y6A2 GO:0050649 (VERDICT missing) ===
+THINKING: The GO term is "testosterone 6-beta-hydroxylase activity" (GO:0050649), which defines the catalytic reaction of converting testosterone into 6beta,17beta-dihydroxyandrost-4-en-3-one. This primary reaction involves a specific enzyme mechanism where heme is used as a cofactor to facilitate the hydroxylation of testosterone. The protein Q9Y6A2 is annotated with a binding feature for heme at position 436-437, which suggests that it has a heme-binding domain. This feature aligns with the enzyme's requirement for heme as a cofactor in its catalytic activity. However, while this binding site is relevant to the function of the protein, it does not directly explain why the protein carries the GO term "testosterone 6-beta-hydroxylase activity." The binding site is more indicative of the protein's structural role rather than its functional activity. Therefore, no single annotated feature clearly explains the molecular function defined by the GO term.
+
+- BINDING 436-437 (ligand: heme)
+
+FEATURE: BINDING 436-437
+REASONING: The binding of heme at position 436-437 is a structural feature that supports the enzyme's catalytic activity by providing the necessary cofactor for the hydroxylation reaction, which directly matches the primary reaction defined by the GO term.
+

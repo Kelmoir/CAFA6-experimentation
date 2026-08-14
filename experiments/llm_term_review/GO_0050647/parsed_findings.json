@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8TDS5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section directly describes the binding activity to 5-hydroxy-6E,8Z,11Z,14Z-icosatetraenoic acid as defined by the GO term. The Domain/family cross-references are background classifications and do not provide evidence for this specific function."
+    }
+  ]
+}

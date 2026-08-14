@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8TDS5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the defined molecular function of binding to 5-oxo-6E,8Z,11Z,14Z-icosatetraenoic acid. The only features are generic and do not specify the binding activity."
+    }
+  ]
+}

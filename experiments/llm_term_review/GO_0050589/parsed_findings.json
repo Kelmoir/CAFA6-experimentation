@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "A0A2R6PI27",
+      "go_id": "GO:0050589",
+      "feature_type": "DOMAIN",
+      "start": 210,
+      "end": 310,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The \"Fe2OG dioxygenase\" domain in the protein A0A2R6PI27 directly supports the catalytic activity described by GO:0050589, which is the oxidation of leucocyanidin. This feature most plausibly explains why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q96323",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0050589",
+  "name": "leucocyanidin oxygenase activity",
+  "def": "Catalysis of the reaction: leucocyanidin + 2-oxoglutarate + O2 = cis- or trans-dihydroquercetin + succinate + CO2 + 2 H2O.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "A0A2R6PI27",
+    "Q96323"
+  ],
+  "assigned_accessions": [
+    "A0A2R6PI27",
+    "Q96323"
+  ]
+}

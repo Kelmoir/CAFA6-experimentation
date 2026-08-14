@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050630",
+  "name": "(iso)eugenol O-methyltransferase activity",
+  "def": "Catalysis of the reaction: (E)-isoeugenol + S-adenosyl-L-methionine = (E)-isomethyleugenol + H+ + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A8QW52"
+  ],
+  "assigned_accessions": [
+    "A8QW52"
+  ]
+}

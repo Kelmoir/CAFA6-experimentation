@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050647",
+  "name": "5-hydroxy-6E,8Z,11Z,14Z-icosatetraenoic acid binding",
+  "def": "Binding to 5-hydroxy-6E,8Z,11Z,14Z-icosatetraenoic acid, a straight-chain fatty acid with twenty carbon atoms and four double bonds.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8TDS5"
+  ],
+  "assigned_accessions": [
+    "Q8TDS5"
+  ]
+}

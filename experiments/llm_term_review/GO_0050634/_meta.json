@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050634",
+  "name": "phloroisovalerophenone synthase activity",
+  "def": "Catalysis of the reaction: isovaleryl-CoA + 3 malonyl-CoA = 4 CoASH + 3 CO2 + 3-methyl-1-(2,4,6-trihydroxyphenyl)butan-1-one.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FEY5"
+  ],
+  "assigned_accessions": [
+    "Q9FEY5"
+  ]
+}

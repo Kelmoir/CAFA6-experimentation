@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P9WHH3",
+      "go_id": "GO:0050627",
+      "feature_type": "ACT_SITE",
+      "start": 443,
+      "end": 444,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The ACT_SITE feature directly matches the definition's focus on proton acceptor activity, which is a key part of the redox reaction mechanism described for GO:0050627."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

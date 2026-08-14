@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050616",
+  "name": "secologanin synthase activity",
+  "def": "Catalysis of the reaction: loganin + NADPH + H+ + O2 = secologanin + NADP+ + 2 H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "U5NDT8"
+  ],
+  "assigned_accessions": [
+    "U5NDT8"
+  ]
+}

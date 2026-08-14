@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q59Y37",
+      "go_id": "GO:0050625",
+      "feature_type": "DOMAIN",
+      "start": 5,
+      "end": 192,
+      "signal_kind": "text",
+      "signal_value": "Flavodoxin-like",
+      "reasoning": "The DOMAIN 5-192 feature with the qualifier \"Flavodoxin-like\" most plausibly explains why the protein carries the GO term, as it suggests a structural basis for the enzyme's function in catalyzing the defined reaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
