@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0043110",
+  "name": "rDNA spacer replication fork barrier binding",
+  "def": "Binding to replication fork barriers found in rDNA spacers, sites that inhibit replication forks in the direction opposite to rDNA transcription.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O13329",
+    "P40847",
+    "Q9P6H9"
+  ],
+  "assigned_accessions": [
+    "O13329",
+    "P40847",
+    "Q9P6H9"
+  ]
+}

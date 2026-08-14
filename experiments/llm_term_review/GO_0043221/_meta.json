@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043221",
+  "name": "SMC family protein binding",
+  "def": "Binding to a protein from the structural maintenance of chromosomes (SMC) family, a group of chromosomal ATPases with a role in mitotic chromosome organization.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q5XG87"
+  ],
+  "assigned_accessions": [
+    "Q5XG87"
+  ]
+}

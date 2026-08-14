@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0043273",
+  "name": "CTPase activity",
+  "def": "Catalysis of the reaction: CTP + H2O = CDP + H+ + phosphate. May or may not be coupled to another reaction.",
+  "n_proteins_total": 19,
+  "sampled_accessions": [
+    "O00571",
+    "O75355",
+    "Q62167",
+    "Q9BSD7"
+  ],
+  "assigned_accessions": [
+    "O00571",
+    "O75355",
+    "Q62167",
+    "Q9BSD7"
+  ]
+}

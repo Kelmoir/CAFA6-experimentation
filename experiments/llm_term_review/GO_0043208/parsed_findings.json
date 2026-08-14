@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P07882",
+      "go_id": "GO:0043208",
+      "feature_type": "REGION",
+      "start": 555,
+      "end": 599,
+      "signal_kind": "text",
+      "signal_value": "4 X 11 AA tandem repeats, O-glycosylated region",
+      "reasoning": "The O-glycosylation sites in the specified region provide structural and biochemical evidence that could plausibly support the protein's ability to bind glycosphingolipids, which is the primary reaction implied by the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P10041",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for protein P10041 directly matches the primary reaction of the GO term \"glycosphingolipid binding.\" The EGF-like domains listed are not associated with glycosphingolipid binding, and no other feature in the Annotated features section provides evidence for this molecular function."
+    },
+    {
+      "accession": "Q64285",
+      "reason": "none_verdict",
+      "reasoning": "The O-glycosylated region with tandem repeats is not sufficient to plausibly explain why the protein carries the GO term \"glycosphingolipid binding\" because it only echoes a word from a secondary clause and does not directly indicate the mechanism of binding. No other annotated feature provides a strong, specific match to the primary reaction defined by the GO term."
+    },
+    {
+      "accession": "P25391",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

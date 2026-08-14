@@ -1,0 +1,34 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9USP2",
+      "go_id": "GO:0043262",
+      "feature_type": "ACT_SITE",
+      "start": 144,
+      "end": 145,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The ACT_SITE annotation at positions 144-145 with the note \"Proton acceptor\" directly relates to the primary reaction of ADP phosphatase activity, which involves proton transfer during phosphate removal. This feature provides a strong match to the GO term's chemistry."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P79784",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P97687",
+      "reason": "unresolved_pointer",
+      "detail": "no matching BINDING 173-174 on record for P97687 -- pointer didn't resolve",
+      "reported_feature": "BINDING 173-174",
+      "reasoning": "The BINDING region at position 173-174 is explicitly associated with ADP binding, which directly matches the primary reaction in the GO term's definition. This binding site is likely involved in the catalytic activity of the phosphatase, making it a strong candidate for explaining why P97687 carries the term \"ADP phosphatase activity.\""
+    },
+    {
+      "accession": "Q6P6S9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the given data directly indicates the catalytic activity of the protein to convert ADP into AMP as defined by the GO term. While the domain/family cross-references suggest that the protein may have phosphatase activity, this is not a positional feature and does not explain why the protein carries the specific molecular function of ADP phosphatase activity."
+    }
+  ]
+}

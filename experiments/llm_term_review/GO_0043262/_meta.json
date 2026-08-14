@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0043262",
+  "name": "ADP phosphatase activity",
+  "def": "Catalysis of the reaction: ADP + H2O = AMP + phosphate + H+.",
+  "n_proteins_total": 32,
+  "sampled_accessions": [
+    "P79784",
+    "P97687",
+    "Q6P6S9",
+    "Q9USP2"
+  ],
+  "assigned_accessions": [
+    "P79784",
+    "P97687",
+    "Q6P6S9",
+    "Q9USP2"
+  ]
+}

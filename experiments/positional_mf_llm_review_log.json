@@ -20248,6 +20248,41 @@
    }
   ]
  },
+ "GO:0043110": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ZN_FING",
+    "value": "C2H2-type",
+    "accessions": [
+     "O13329"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "4 X 4 AA tandem repeats of G-[ATV]-N-M",
+    "accessions": [
+     "P40847"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DNA_BIND",
+    "value": "H-T-H motif",
+    "accessions": [
+     "Q9P6H9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
  "GO:0043167": {
   "n_resolved": 0,
   "n_uncertain": 1,
@@ -20268,5 +20303,160 @@
    }
   ],
   "issues": []
+ },
+ "GO:0043169": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a divalent metal cation",
+    "accessions": [
+     "Q7ZU92"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P07762",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly supports the molecular function of \"cation binding\" as defined by the GO term. The available features are either catalytic sites or domain/family cross-references, neither of which specifically indicates cation-binding activity."
+   },
+   {
+    "accession": "P9WN45",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature (by type + exact coordinates) provides a clear and specific explanation for the molecular function of cation binding as defined by GO:0043169."
+   },
+   {
+    "accession": "Q9FE46",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9FE46 only indicate that the protein binds glutathione, which is a specific ligand and not a general cation-binding activity. No positional feature directly supports the GO term's primary reaction of binding to a cation, making it impossible to determine a strong match."
+   }
+  ]
+ },
+ "GO:0043208": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "4 X 11 AA tandem repeats, O-glycosylated region",
+    "accessions": [
+     "P07882"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P10041",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein P10041 directly matches the primary reaction of the GO term \"glycosphingolipid binding.\" The EGF-like domains listed are not associated with glycosphingolipid binding, and no other feature in the Annotated features section provides evidence for this molecular function."
+   },
+   {
+    "accession": "Q64285",
+    "reason": "none_verdict",
+    "reasoning": "The O-glycosylated region with tandem repeats is not sufficient to plausibly explain why the protein carries the GO term \"glycosphingolipid binding\" because it only echoes a word from a secondary clause and does not directly indicate the mechanism of binding. No other annotated feature provides a strong, specific match to the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "P25391",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0043221": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5XG87",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0043262": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "Q9USP2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P79784",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P97687",
+    "reason": "unresolved_pointer",
+    "detail": "no matching BINDING 173-174 on record for P97687 -- pointer didn't resolve",
+    "reported_feature": "BINDING 173-174",
+    "reasoning": "The BINDING region at position 173-174 is explicitly associated with ADP binding, which directly matches the primary reaction in the GO term's definition. This binding site is likely involved in the catalytic activity of the phosphatase, making it a strong candidate for explaining why P97687 carries the term \"ADP phosphatase activity.\""
+   },
+   {
+    "accession": "Q6P6S9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the given data directly indicates the catalytic activity of the protein to convert ADP into AMP as defined by the GO term. While the domain/family cross-references suggest that the protein may have phosphatase activity, this is not a positional feature and does not explain why the protein carries the specific molecular function of ADP phosphatase activity."
+   }
+  ]
+ },
+ "GO:0043273": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "dead box",
+    "accessions": [
+     "O00571",
+     "Q62167"
+    ],
+    "reason": "agreed, but the note is too short/generic a phrase (or a known-generic catalytic-residue label) to trust as a global substring trigger for this term"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9BSD7",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for ATP (positions 8-16) is relevant to the function of the protein, but it does not directly explain the CTPase activity defined by GO:0043273. The primary reaction of CTPase activity involves catalyzing the reaction CTP + H2O = CDP + H+ + phosphate, which is not directly explained by the binding site for ATP."
+   },
+   {
+    "accession": "O75355",
+    "reason": "none_verdict",
+    "reasoning": "The protein's Annotated features do not include any domain or structural feature that specifically matches the definition of \"CTPase activity,\" which involves catalyzing the transfer of a phosphate group from CTP to a nucleotide. While the enzyme binds various nucleotides, this does not directly explain its catalytic function as defined by the GO term."
+   }
+  ]
  }
 }
