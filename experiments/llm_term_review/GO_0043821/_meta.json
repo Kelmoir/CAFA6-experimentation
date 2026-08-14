@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043821",
+  "name": "propionyl-CoA:succinate CoA-transferase activity",
+  "def": "Catalysis of the reaction: succinate + propionyl-CoA = succinyl-CoA + propionate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P52043"
+  ],
+  "assigned_accessions": [
+    "P52043"
+  ]
+}

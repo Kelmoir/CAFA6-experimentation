@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0043532",
+  "name": "angiostatin binding",
+  "def": "Binding to angiostatin, a proteolytic product of plasminogen or plasmin containing at least one intact kringle domain, and which is an inhibitor of angiogenesis.",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "P06576",
+    "Q03265",
+    "Q4VCS5",
+    "Q9UII2"
+  ],
+  "assigned_accessions": [
+    "P06576",
+    "Q03265",
+    "Q4VCS5",
+    "Q9UII2"
+  ]
+}

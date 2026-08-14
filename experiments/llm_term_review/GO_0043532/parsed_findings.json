@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9UII2",
+      "go_id": "GO:0043532",
+      "feature_type": "REGION",
+      "start": 73,
+      "end": 106,
+      "signal_kind": "text",
+      "signal_value": "Antiparallel alpha-helical coiled coil region",
+      "reasoning": "The \"REGION 73-106\" feature describes an antiparallel alpha-helical coiled coil region, which is a plausible structural motif for interacting with angiostatin. However, the note does not explicitly mention any interaction with angiostatin, so it remains uncertain whether this region directly accounts for the \"angiostatin binding\" function."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q03265",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly explain why the protein carries the GO term \"angiostatin binding\"\u2014specifically, none indicate a role in binding to angiostatin or its inhibitory effect on angiogenesis."
+    },
+    {
+      "accession": "P06576",
+      "reason": "none_verdict",
+      "reasoning": "The protein P06576 has no annotated binding feature that specifically references angiostatin as the ligand, and all binding features are generic (e.g., ADP, ATP, phosphate) without any direct evidence linking them to the chemistry of angiostatin binding."
+    },
+    {
+      "accession": "Q4VCS5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q4VCS5 directly matches the defined chemistry of angiostatin binding, which involves interactions with specific domains (like kringle) rather than general structural motifs or interaction partners."
+    }
+  ]
+}

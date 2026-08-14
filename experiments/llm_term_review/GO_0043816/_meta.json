@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043816",
+  "name": "phosphoserine-tRNA(Cys) ligase activity",
+  "def": "Catalysis of the reaction: tRNA(Cys) + O-phospho-L-serine + ATP = AMP + diphosphate + phosphoseryl-tRNA(Cys).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q59054"
+  ],
+  "assigned_accessions": [
+    "Q59054"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0043726",
+  "name": "5-amino-6-(5-phosphoribitylamino)uracil phosphatase activity",
+  "def": "Catalysis of the reaction: 5-amino-6-(5-phospho-D-ribitylamino)uracil + H2O = 5-amino-6-(D-ribitylamino)uracil + phosphate.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "F4JTE7",
+    "P75809",
+    "Q84VZ1",
+    "Q9LDD5"
+  ],
+  "assigned_accessions": [
+    "F4JTE7",
+    "P75809",
+    "Q84VZ1",
+    "Q9LDD5"
+  ]
+}

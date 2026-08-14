@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043731",
+  "name": "6-hydroxynicotinate 3-monooxygenase activity",
+  "def": "Catalysis of the oxidative decarboxylation of 6-hydroxynicotinate to 2,5-dihydroxypyridine, dependent on O2, NADH +H+ and FAD.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q88FY2"
+  ],
+  "assigned_accessions": [
+    "Q88FY2"
+  ]
+}

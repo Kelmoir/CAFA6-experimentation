@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P75809",
+      "go_id": "GO:0043726",
+      "feature_type": "BINDING",
+      "start": 9,
+      "end": 10,
+      "signal_kind": "ligand",
+      "signal_value": "phosphate",
+      "reasoning": "The binding of phosphate at positions 9-10 directly supports the reaction mechanism described in the GO term, which involves the removal of a phosphate group from the substrate. This specific feature is most likely responsible for the phosphatase activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "F4JTE7",
+      "reason": "none_verdict",
+      "reasoning": "The defined reaction for the GO term involves the conversion of 5-amino-6-(5-phospho-D-ribitylamino)uracil to 5-amino-6-(D-ribitylamino)uracil with the release of phosphate. None of the annotated features provided for F4JTE7 directly address this reaction mechanism, indicating that there is no positional feature that strongly explains why the protein carries this GO term."
+    },
+    {
+      "accession": "Q84VZ1",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9LDD5",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

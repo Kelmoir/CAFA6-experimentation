@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P68739",
+      "go_id": "GO:0043737",
+      "feature_type": "SITE",
+      "start": 72,
+      "end": 73,
+      "signal_kind": "text",
+      "signal_value": "Interaction with target DNA",
+      "reasoning": "The \"SITE\" annotation at position 72-73 mentions interaction with target DNA, which directly relates to the function of deoxyribonuclease V as described in the GO term's definition. This provides a strong match for the primary reaction mechanism of the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

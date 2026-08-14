@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0043739",
+  "name": "G/U mismatch-specific uracil-DNA glycosylase activity",
+  "def": "Hydrolyzes mismatched double-stranded DNA and polynucleotides, releasing free uracil and leaving an apyrimidinic (AP) site.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P56581",
+    "Q13569"
+  ],
+  "assigned_accessions": [
+    "P56581",
+    "Q13569"
+  ]
+}

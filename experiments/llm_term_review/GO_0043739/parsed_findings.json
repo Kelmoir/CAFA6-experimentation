@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P56581",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature (by type + exact coordinates) provides a strong match to the primary reaction of the GO term, which is the hydrolysis of mismatched DNA and polynucleotides. The only positional feature is Disordered and does not provide a structural basis for the function described in the GO term."
+    },
+    {
+      "accession": "Q13569",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear and specific explanation for the enzyme's function as defined by GO:0043739."
+    }
+  ]
+}

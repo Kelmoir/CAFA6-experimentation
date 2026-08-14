@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043737",
+  "name": "deoxyribonuclease V activity",
+  "def": "Catalysis of the endonucleolytic cleavage at apurinic or apyrimidinic sites to products with a 5'-phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P68739"
+  ],
+  "assigned_accessions": [
+    "P68739"
+  ]
+}

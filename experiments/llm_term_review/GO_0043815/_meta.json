@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043815",
+  "name": "phosphoribosylglycinamide formyltransferase 2 activity",
+  "def": "Catalysis of the reaction: ATP + formate + N1-(5-phospho-beta-D-ribosyl)glycinamide = ADP + H+ + N2-formyl-N1-(5-phospho-beta-D-ribosyl)glycinamide + phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P33221"
+  ],
+  "assigned_accessions": [
+    "P33221"
+  ]
+}

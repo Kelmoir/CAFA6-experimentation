@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P9WP97",
+      "go_id": "GO:0043802",
+      "feature_type": "SITE",
+      "start": 432,
+      "end": 433,
+      "signal_kind": "text",
+      "signal_value": "Increases nucleophilicity of active site Cys",
+      "reasoning": "The SITE feature directly relates to the active site's role in increasing nucleophilicity, which is essential for the reaction mechanism described in the GO term's definition. This feature most plausibly explains why P9WP97 carries the term \"hydrogenobyrinic acid a,c-diamide synthase (glutamine-hydrolysing) activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

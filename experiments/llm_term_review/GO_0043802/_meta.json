@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043802",
+  "name": "hydrogenobyrinic acid a,c-diamide synthase (glutamine-hydrolysing) activity",
+  "def": "Catalysis of the reaction: 2 L-glutamine + 2 ATP + 2 H2O + hydrogenobyrinate = 2 L-glutamate + 2 ADP + 4 H+ + hydrogenobyrinate a,c-diamide + 2 phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WP97"
+  ],
+  "assigned_accessions": [
+    "P9WP97"
+  ]
+}

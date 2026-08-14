@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043722",
+  "name": "4-hydroxyphenylacetate decarboxylase activity",
+  "def": "Catalysis of the reaction: (4-hydroxyphenyl)acetate + H+ = 4-cresol + CO2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LVB8"
+  ],
+  "assigned_accessions": [
+    "Q9LVB8"
+  ]
+}

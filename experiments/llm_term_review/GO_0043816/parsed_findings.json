@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q59054",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's section provides a specific structural or functional basis for the defined reaction of phosphoserine-tRNA(Cys) ligase activity. The presence of multiple substrate-binding regions is generic and does not strongly support the term's primary reaction."
+    }
+  ]
+}

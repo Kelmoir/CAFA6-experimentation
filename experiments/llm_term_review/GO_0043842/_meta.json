@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0043842",
+  "name": "Kdo transferase activity",
+  "def": "Catalysis of the reactions: (KDO)-lipid IVA + CMP-3-deoxy-D-manno-octulosonate = KDO2-lipid IVA + CMP, and lipid IVA + CMP-3-deoxy-D-manno-octulosonate = (KDO)-lipid IVA + CMP.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P0AC75",
+    "P27241"
+  ],
+  "assigned_accessions": [
+    "P0AC75",
+    "P27241"
+  ]
+}

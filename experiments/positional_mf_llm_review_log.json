@@ -20458,5 +20458,260 @@
     "reasoning": "The protein's Annotated features do not include any domain or structural feature that specifically matches the definition of \"CTPase activity,\" which involves catalyzing the transfer of a phosphate group from CTP to a nucleotide. While the enzyme binds various nucleotides, this does not directly explain its catalytic function as defined by the GO term."
    }
   ]
+ },
+ "GO:0043532": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9UII2",
+    "go_id": "GO:0043532",
+    "feature_type": "REGION",
+    "start": 73,
+    "end": 106,
+    "signal_kind": "text",
+    "signal_value": "Antiparallel alpha-helical coiled coil region",
+    "reasoning": "The \"REGION 73-106\" feature describes an antiparallel alpha-helical coiled coil region, which is a plausible structural motif for interacting with angiostatin. However, the note does not explicitly mention any interaction with angiostatin, so it remains uncertain whether this region directly accounts for the \"angiostatin binding\" function."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q03265",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain why the protein carries the GO term \"angiostatin binding\"\u2014specifically, none indicate a role in binding to angiostatin or its inhibitory effect on angiogenesis."
+   },
+   {
+    "accession": "P06576",
+    "reason": "none_verdict",
+    "reasoning": "The protein P06576 has no annotated binding feature that specifically references angiostatin as the ligand, and all binding features are generic (e.g., ADP, ATP, phosphate) without any direct evidence linking them to the chemistry of angiostatin binding."
+   },
+   {
+    "accession": "Q4VCS5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q4VCS5 directly matches the defined chemistry of angiostatin binding, which involves interactions with specific domains (like kringle) rather than general structural motifs or interaction partners."
+   }
+  ]
+ },
+ "GO:0043722": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LVB8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction or mechanism of the GO term, and all features are generic enough to apply to many proteins."
+   }
+  ]
+ },
+ "GO:0043726": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "phosphate",
+    "accessions": [
+     "P75809"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "F4JTE7",
+    "reason": "none_verdict",
+    "reasoning": "The defined reaction for the GO term involves the conversion of 5-amino-6-(5-phospho-D-ribitylamino)uracil to 5-amino-6-(D-ribitylamino)uracil with the release of phosphate. None of the annotated features provided for F4JTE7 directly address this reaction mechanism, indicating that there is no positional feature that strongly explains why the protein carries this GO term."
+   },
+   {
+    "accession": "Q84VZ1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9LDD5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0043729": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q57580",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein Q57580 directly explains the molecular function defined by GO:0043729. The primary reaction involves formate transfer, but none of the binding sites are associated with this activity."
+   }
+  ]
+ },
+ "GO:0043731": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q88FY2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides direct evidence of the catalytic mechanism described in the GO term's definition. All features are about FAD binding, which is a cofactor but not the primary reaction itself."
+   }
+  ]
+ },
+ "GO:0043737": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Interaction with target DNA",
+    "accessions": [
+     "P68739"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0043739": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P56581",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature (by type + exact coordinates) provides a strong match to the primary reaction of the GO term, which is the hydrolysis of mismatched DNA and polynucleotides. The only positional feature is Disordered and does not provide a structural basis for the function described in the GO term."
+   },
+   {
+    "accession": "Q13569",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and specific explanation for the enzyme's function as defined by GO:0043739."
+   }
+  ]
+ },
+ "GO:0043802": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Increases nucleophilicity of active site Cys",
+    "accessions": [
+     "P9WP97"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0043815": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ATP-grasp",
+    "accessions": [
+     "P33221"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0043816": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q59054",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's section provides a specific structural or functional basis for the defined reaction of phosphoserine-tRNA(Cys) ligase activity. The presence of multiple substrate-binding regions is generic and does not strongly support the term's primary reaction."
+   }
+  ]
+ },
+ "GO:0043821": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P52043",
+    "reason": "none_verdict",
+    "reasoning": "The defined molecular function for the GO term involves catalyzing a specific reaction between succinate and propionyl-CoA, but none of the annotated features directly explain why this protein carries that term based on the primary reaction described in the GO definition."
+   }
+  ]
+ },
+ "GO:0043842": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "CMP",
+    "accessions": [
+     "P0AC75"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P27241",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }
