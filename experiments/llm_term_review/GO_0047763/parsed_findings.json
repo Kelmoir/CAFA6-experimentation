@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "Q42653",
+      "go_id": "GO:0047763",
+      "feature_type": "BINDING",
+      "start": 240,
+      "end": 241,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-homocysteine",
+      "reasoning": "The binding site with S-adenosyl-L-homocysteine directly participates in the methyl transfer reaction described by the GO term's definition, making it the most plausible explanation for why the protein carries this term."
+    },
+    {
+      "accession": "P28002",
+      "go_id": "GO:0047763",
+      "feature_type": "BINDING",
+      "start": 207,
+      "end": 208,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-homocysteine",
+      "reasoning": "The binding site for S-adenosyl-L-homocysteine directly supports the enzyme's function of catalyzing methylation reactions, which is the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "P59049",
+      "go_id": "GO:0047763",
+      "feature_type": "BINDING",
+      "start": 240,
+      "end": 241,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-homocysteine",
+      "reasoning": "The binding of S-adenosyl-L-homocysteine to the protein is a direct match to the GO term's definition, as this cofactor is involved in the methylation reaction. This specific binding region is most relevant and directly supports the function described by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q06509",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature explicitly states the mechanism of the reaction (i.e., the transfer of the methyl group from S-adenosyl-L-methionine to 3,4-dihydroxy-trans-cinnamate), which is the primary reaction defined by the GO term. The features are more about the enzyme's structure and function rather than the specific chemistry it catalyzes."
+    }
+  ]
+}

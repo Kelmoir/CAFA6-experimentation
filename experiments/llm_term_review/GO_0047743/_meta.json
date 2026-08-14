@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047743",
+  "name": "chlordecone reductase activity",
+  "def": "Catalysis of the reaction: chlordecone alcohol + NADP+ = chlordecone + H+ + NADPH.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P17516",
+    "Q8K023",
+    "Q8VC28",
+    "Q91WR5"
+  ],
+  "assigned_accessions": [
+    "P17516",
+    "Q8K023",
+    "Q8VC28",
+    "Q91WR5"
+  ]
+}

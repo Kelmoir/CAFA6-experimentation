@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "P37040",
+      "go_id": "GO:0047726",
+      "feature_type": "DOMAIN",
+      "start": 278,
+      "end": 521,
+      "signal_kind": "text",
+      "signal_value": "FAD-binding FR-type",
+      "reasoning": "The FAD-binding FR-type domain is structurally and functionally relevant to the redox reaction described in the GO term, making it a strong candidate for explaining the reductase activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P00388",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P16435",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

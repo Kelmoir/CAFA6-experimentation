@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0047726",
+  "name": "iron-cytochrome-c reductase activity",
+  "def": "Catalysis of the reaction: ferrocytochrome c + Fe3+ = ferricytochrome c + Fe2+.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P00388",
+    "P16435",
+    "P37040"
+  ],
+  "assigned_accessions": [
+    "P00388",
+    "P16435",
+    "P37040"
+  ]
+}

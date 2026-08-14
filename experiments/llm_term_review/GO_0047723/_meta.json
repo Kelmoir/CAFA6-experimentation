@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047723",
+  "name": "inosinate nucleosidase activity",
+  "def": "Catalysis of the reaction: H2O + IMP = D-ribose 5-phosphate + hypoxanthine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0ADR8"
+  ],
+  "assigned_accessions": [
+    "P0ADR8"
+  ]
+}

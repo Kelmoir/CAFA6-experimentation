@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8K023",
+      "go_id": "GO:0047743",
+      "feature_type": "BINDING",
+      "start": 19,
+      "end": 24,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The binding of NADP(+) to the enzyme is directly relevant to its function as a reductase, as it is the cofactor used in the reaction described by the GO term. This feature most plausibly explains why the protein carries the term \"chlordecone reductase activity.\""
+    },
+    {
+      "accession": "Q91WR5",
+      "go_id": "GO:0047743",
+      "feature_type": "SITE",
+      "start": 83,
+      "end": 84,
+      "signal_kind": "text",
+      "signal_value": "Lowers pKa of active site Tyr",
+      "reasoning": "The \"SITE 83-84\" annotation directly relates to the active site's role in lowering the pKa of Tyr, which is essential for the proton transfer mechanism described in the GO term's definition. This provides a strong match to the primary reaction of chlordecone reductase activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P17516",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for this protein do not directly explain the chemistry of the reaction catalyzed by chlordecone reductase activity, which involves the transfer of a phosphoryl group from NADP+ to chlordecone alcohol."
+    },
+    {
+      "accession": "Q8VC28",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

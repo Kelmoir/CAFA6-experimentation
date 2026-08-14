@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8NET6",
+      "go_id": "GO:0047756",
+      "feature_type": "BINDING",
+      "start": 112,
+      "end": 119,
+      "signal_kind": "ligand",
+      "signal_value": "3'-phosphoadenylyl sulfate",
+      "reasoning": "The BINDING feature at position 112-119 directly involves the binding of the substrate (3'-phosphoadenylyl sulfate), which is essential for the catalytic reaction defined by the GO term, making it the most plausible explanation for why the protein carries that molecular function."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q9NPF2",
+      "go_id": "GO:0047756",
+      "feature_type": "BINDING",
+      "start": 123,
+      "end": 130,
+      "signal_kind": "ligand",
+      "signal_value": "3'-phosphoadenylyl sulfate",
+      "reasoning": "The binding site at 123-130 is directly associated with the ligand involved in the reaction, which is central to the GO term's definition. However, it does not explicitly state that the enzyme catalyzes the sulfo transfer, making it a plausible but not definitive match."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q09272",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section provides a direct explanation for the specific chemical reaction defined by the GO term \"chondroitin 4-sulfotransferase activity.\" The binding sites are generic and do not directly account for the sulfonate transfer mechanism."
+    },
+    {
+      "accession": "Q9JME2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9JME2's Annotated features section provides a specific explanation for the molecular function defined by GO:0047756, which is about catalyzing the transfer of a sulfo group from 3'-phosphoadenosine 5'-phosphosulfate to chondroitin. The binding events described are generic and do not directly support this specific reaction mechanism."
+    }
+  ]
+}

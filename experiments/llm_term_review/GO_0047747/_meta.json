@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047747",
+  "name": "cholate-CoA ligase activity",
+  "def": "Catalysis of the reactions: (1) ATP + cholate + CoA = AMP + diphosphate + choloyl-CoA and (2) ATP + (25R)-3alpha,7alpha,12alpha-trihydroxy-5beta-cholestan-26-oate + CoA = AMP + diphosphate + (25R)-3alpha,7alpha,12alpha-trihydroxy-5beta-cholestanoyl-CoA. This reaction is the first step in the conjugation of bile acids with amino acids, converting bile acids into their acyl-CoA thioesters. Chenodeoxycholate, deoxycholate, lithocholate and trihydroxycoprostanoate can also act as substrates.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "O14975",
+    "P97524",
+    "Q4LDG0",
+    "Q9Y2P5"
+  ],
+  "assigned_accessions": [
+    "O14975",
+    "P97524",
+    "Q4LDG0",
+    "Q9Y2P5"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047756",
+  "name": "chondroitin 4-sulfotransferase activity",
+  "def": "Catalysis of the reaction: 3'-phosphoadenosine 5'-phosphosulfate + chondroitin = adenosine 3',5'-bisphosphate + chondroitin 4'-sulfate.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "Q09272",
+    "Q8NET6",
+    "Q9JME2",
+    "Q9NPF2"
+  ],
+  "assigned_accessions": [
+    "Q09272",
+    "Q8NET6",
+    "Q9JME2",
+    "Q9NPF2"
+  ]
+}
