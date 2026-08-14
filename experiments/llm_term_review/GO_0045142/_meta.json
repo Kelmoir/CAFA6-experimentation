@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0045142",
+  "name": "triplex DNA binding",
+  "def": "Binding to a DNA triple helix. The formation of triple helical DNA has been evoked in several cellular processes including transcription, replication, and recombination.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P39015",
+    "P89105",
+    "Q28141",
+    "Q96FC9"
+  ],
+  "assigned_accessions": [
+    "P39015",
+    "P89105",
+    "Q28141",
+    "Q96FC9"
+  ]
+}

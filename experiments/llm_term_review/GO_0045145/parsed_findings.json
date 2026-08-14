@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q8BG07",
+      "go_id": "GO:0045145",
+      "feature_type": "ACT_SITE",
+      "start": 425,
+      "end": 426,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The highest score for the act sites is 7, but since there are multiple features related to nucleophile activity and proton donor function, it is uncertain which one specifically accounts for the GO term's definition."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q9CXP9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q9CXP9 matches the primary reaction of the GO term, which involves sequential cleavage of nucleotides from a single-stranded DNA molecule."
+    },
+    {
+      "accession": "Q96BZ4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves the sequential cleavage of nucleotides from a single-stranded DNA molecule."
+    },
+    {
+      "accession": "Q8IV08",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction of the GO term \"single-stranded DNA 5'-3' DNA exonuclease activity\" (GO:0045145). All features are either unrelated to DNA cleavage or only loosely associated with it."
+    }
+  ]
+}

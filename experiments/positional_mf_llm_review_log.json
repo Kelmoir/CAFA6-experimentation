@@ -21378,6 +21378,171 @@
    }
   ]
  },
+ "GO:0045030": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P51582",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q15077",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9ERK9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P41232",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature available for P41232 is a disordered region, which does not provide evidence about the receptor's ability to bind nucleotides or initiate G-protein signaling. No other annotated feature matches the primary reaction of the GO term."
+   }
+  ]
+ },
+ "GO:0045031": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P49650",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features involve ADP binding rather than ATP binding, and no positional feature directly supports the primary reaction described in the GO term's definition. Therefore, there is no plausible explanation for why this protein carries the term."
+   },
+   {
+    "accession": "P49651",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list matches the primary reaction of the GO term, which involves ATP binding and G-protein activation."
+   },
+   {
+    "accession": "P59902",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature from the \"Annotated features\" section provides a strong match to the primary reaction of the GO term. The only plausible explanation would be if there was an ADP-binding site that also has evidence of ATP binding or G-protein activation, but such evidence is not present."
+   },
+   {
+    "accession": "Q96G91",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" span \"344-374\" does not specifically match the GO term's primary reaction of ATP binding and G-protein activation. It is generic and could apply to many proteins with similar structural features, but it lacks the specificity required to explain why Q96G91 carries this term."
+   }
+  ]
+ },
+ "GO:0045134": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q3TCT4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the catalytic reaction defined for \"UDP phosphatase activity,\" and the presence of multiple binding sites with phosphate and UTP does not specifically indicate the phosphatase activity itself."
+   },
+   {
+    "accession": "Q9WUZ9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of UDP phosphatase activity. The binding sites describe interactions with substrates, not the core enzymatic function."
+   },
+   {
+    "accession": "Q9NQZ7",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q9Y5L3",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0045142": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Helicase ATP-binding",
+    "accessions": [
+     "Q96FC9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P89105",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region in P89105 does not provide any evidence that this protein binds to a DNA triple helix, which is the primary reaction defined by the GO term. No other annotated feature directly relates to the function described in the GO definition."
+   },
+   {
+    "accession": "P39015",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P39015's Annotated features section matches the primary reaction of DNA triplex binding as defined by GO:0045142. The only domain-related information provided is from cross-references, not positional features that would directly explain the molecular function."
+   },
+   {
+    "accession": "Q28141",
+    "reason": "none_verdict",
+    "reasoning": "The defined molecular function for the GO term \"triplix DNA binding\" requires direct evidence of binding to a triple helix, which none of the annotated features provide. All candidates either support general helicase activity or are unrelated to DNA triple helix binding."
+   }
+  ]
+ },
+ "GO:0045145": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q8BG07",
+    "go_id": "GO:0045145",
+    "feature_type": "ACT_SITE",
+    "start": 425,
+    "end": 426,
+    "signal_kind": "feature_type_only",
+    "signal_value": null,
+    "reasoning": "The highest score for the act sites is 7, but since there are multiple features related to nucleophile activity and proton donor function, it is uncertain which one specifically accounts for the GO term's definition."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q9CXP9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9CXP9 matches the primary reaction of the GO term, which involves sequential cleavage of nucleotides from a single-stranded DNA molecule."
+   },
+   {
+    "accession": "Q96BZ4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves the sequential cleavage of nucleotides from a single-stranded DNA molecule."
+   },
+   {
+    "accession": "Q8IV08",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction of the GO term \"single-stranded DNA 5'-3' DNA exonuclease activity\" (GO:0045145). All features are either unrelated to DNA cleavage or only loosely associated with it."
+   }
+  ]
+ },
  "GO:0045289": {
   "n_resolved": 0,
   "n_uncertain": 0,

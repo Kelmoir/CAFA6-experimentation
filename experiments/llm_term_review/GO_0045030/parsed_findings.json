@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P51582",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q15077",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9ERK9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P41232",
+      "reason": "none_verdict",
+      "reasoning": "The only positional feature available for P41232 is a disordered region, which does not provide evidence about the receptor's ability to bind nucleotides or initiate G-protein signaling. No other annotated feature matches the primary reaction of the GO term."
+    }
+  ]
+}

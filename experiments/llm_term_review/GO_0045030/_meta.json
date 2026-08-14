@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0045030",
+  "name": "G protein-coupled UTP receptor activity",
+  "def": "Combining with a nucleotide and transmitting the signal to a heterotrimeric G-protein complex to initiate a change in cell activity, activated by UTP.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "P41232",
+    "P51582",
+    "Q15077",
+    "Q9ERK9"
+  ],
+  "assigned_accessions": [
+    "P41232",
+    "P51582",
+    "Q15077",
+    "Q9ERK9"
+  ]
+}

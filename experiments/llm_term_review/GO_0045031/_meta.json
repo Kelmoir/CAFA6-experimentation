@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0045031",
+  "name": "G protein-coupled ATP receptor activity",
+  "def": "Combining with ATP and transmitting the signal across the membrane by activating an associated G-protein; promotes the exchange of GDP for GTP on the alpha subunit of a heterotrimeric G-protein complex.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P49650",
+    "P49651",
+    "P59902",
+    "Q96G91"
+  ],
+  "assigned_accessions": [
+    "P49650",
+    "P49651",
+    "P59902",
+    "Q96G91"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0045145",
+  "name": "single-stranded DNA 5'-3' DNA exonuclease activity",
+  "def": "Catalysis of the sequential cleavage of nucleotides (such as mononucleotides or dinucleotides) from a free 5' terminus of a single-stranded DNA molecule.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "Q8BG07",
+    "Q8IV08",
+    "Q96BZ4",
+    "Q9CXP9"
+  ],
+  "assigned_accessions": [
+    "Q8BG07",
+    "Q8IV08",
+    "Q96BZ4",
+    "Q9CXP9"
+  ]
+}
