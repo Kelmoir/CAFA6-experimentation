@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050165",
+  "name": "pantetheine kinase activity",
+  "def": "Catalysis of the reaction: ATP + pantetheine = ADP + pantetheine 4'-phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0A6I3"
+  ],
+  "assigned_accessions": [
+    "P0A6I3"
+  ]
+}

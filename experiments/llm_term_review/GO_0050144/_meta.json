@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050144",
+  "name": "nucleoside deoxyribosyltransferase activity",
+  "def": "Catalysis of the reaction: 2-deoxy-D-ribosyl-base1 + base2 = 2-deoxy-D-ribosyl-base2 + base1.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9Y7P9"
+  ],
+  "assigned_accessions": [
+    "Q9Y7P9"
+  ]
+}

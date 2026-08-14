@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0050153",
+  "name": "omega-hydroxydecanoate dehydrogenase activity",
+  "def": "Catalysis of the reaction: 10-hydroxydecanoate + NAD+ = 10-oxodecanoate + H+ + NADH.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P40394",
+    "P41682",
+    "Q64437"
+  ],
+  "assigned_accessions": [
+    "P40394",
+    "P41682",
+    "Q64437"
+  ]
+}

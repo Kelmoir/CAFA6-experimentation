@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P45850",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong match to the primary reaction of the GO term \"oxalate oxidase activity,\" as it only indicates ligand binding without specifying the catalytic mechanism."
+    }
+  ]
+}

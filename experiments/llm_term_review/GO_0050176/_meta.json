@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050176",
+  "name": "L-phenylalanine N-acetyltransferase activity",
+  "def": "Catalysis of the reaction: L-phenylalanine + acetyl-CoA = N-acetyl-L-phenylalanine + CoA + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P46854"
+  ],
+  "assigned_accessions": [
+    "P46854"
+  ]
+}

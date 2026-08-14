@@ -1,0 +1,39 @@
+{
+  "resolved": [
+    {
+      "accession": "P06169",
+      "go_id": "GO:0050177",
+      "feature_type": "BINDING",
+      "start": 27,
+      "end": 28,
+      "signal_kind": "ligand",
+      "signal_value": "pyruvate",
+      "reasoning": "The binding of pyruvate at position 27-28 directly matches the ligand involved in the catalysis of the reaction defined by the GO term, making it a strong and specific match to the primary reaction mechanism."
+    },
+    {
+      "accession": "P16467",
+      "go_id": "GO:0050177",
+      "feature_type": "BINDING",
+      "start": 412,
+      "end": 415,
+      "signal_kind": "ligand",
+      "signal_value": "thiamine diphosphate",
+      "reasoning": "The binding of thiamine diphosphate (ligand: thiamine diphosphate) in multiple regions directly supports the use of TPP as a cofactor, which is essential for the catalytic reaction defined by GO:0050177. This specific interaction aligns with the primary reaction mechanism and provides a plausible explanation for why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q06408",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P26263",
+      "reason": "unresolved_pointer",
+      "detail": "no matching DOMAIN 389-390 on record for P26263 -- pointer didn't resolve",
+      "reported_feature": "DOMAIN 389-390",
+      "reasoning": "The domain 389-390 in P26263 binds thiamine diphosphate, a coenzyme essential for the catalytic reaction described by GO:0050177. This binding site directly supports the function of phenylpyruvate decarboxylase activity."
+    }
+  ]
+}

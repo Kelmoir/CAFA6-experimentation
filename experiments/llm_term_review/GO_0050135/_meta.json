@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0050135",
+  "name": "NADP+ nucleosidase activity",
+  "def": "Catalysis of the reaction: NADP+ + H2O = ADP-D-ribose 2'-phosphate + nicotinamide + H+.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "F1QWA8",
+    "F4HT77",
+    "Q40253",
+    "V9M398"
+  ],
+  "assigned_accessions": [
+    "F1QWA8",
+    "F4HT77",
+    "Q40253",
+    "V9M398"
+  ]
+}

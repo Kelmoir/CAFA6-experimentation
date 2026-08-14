@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0050177",
+  "name": "phenylpyruvate decarboxylase activity",
+  "def": "Catalysis of the reaction: phenylpyruvate = phenylacetaldehyde + CO2.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P06169",
+    "P16467",
+    "P26263",
+    "Q06408"
+  ],
+  "assigned_accessions": [
+    "P06169",
+    "P16467",
+    "P26263",
+    "Q06408"
+  ]
+}

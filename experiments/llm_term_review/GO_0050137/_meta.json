@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0050137",
+  "name": "NADPH peroxidase activity",
+  "def": "Catalysis of the reaction: H2O2 + H+ + NADPH = 2 H2O + NADP+.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O62768",
+    "O89049",
+    "Q16881",
+    "Q9JMH6"
+  ],
+  "assigned_accessions": [
+    "O62768",
+    "O89049",
+    "Q16881",
+    "Q9JMH6"
+  ]
+}

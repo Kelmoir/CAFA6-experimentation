@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050189",
+  "name": "phosphoenolpyruvate phosphatase activity",
+  "def": "Catalysis of the reaction: H2O + phosphoenolpyruvate = phosphate + pyruvate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O53361"
+  ],
+  "assigned_accessions": [
+    "O53361"
+  ]
+}

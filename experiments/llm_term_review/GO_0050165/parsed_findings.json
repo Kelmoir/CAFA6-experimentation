@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P0A6I3",
+      "go_id": "GO:0050165",
+      "feature_type": "BINDING",
+      "start": 94,
+      "end": 102,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The \"BINDING\" annotation at position 94-102 directly supports the enzymatic function of P0A6I3 in catalyzing the reaction involving ATP and pantetheine, which is the primary mechanism described by the GO term. This feature is specific to the defined chemistry of the term and provides a strong match."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

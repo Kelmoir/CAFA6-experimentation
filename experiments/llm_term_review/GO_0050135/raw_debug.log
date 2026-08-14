@@ -1,0 +1,19 @@
+=== F4HT77 GO:0050135 (VERDICT missing) ===
+THINKING: The GO term is "NADP+ nucleosidase activity" (GO:0050135), which defines the catalysis of the reaction NADP+ + H2O = ADP-D-ribose 2'-phosphate + nicotinamide + H+. This primary reaction involves the hydrolysis of NADP+ by a nucleosidase enzyme, which is the core function being annotated. The protein F4HT77 has several annotated features, including DOMAIN, ACT_SITE, and BINDING regions. 
+
+- **DOMAIN 11-175** is noted as TIR (Toll/interleukin-1 receptor domain), which is a structural domain often associated with signaling pathways. However, the definition of NADP+ nucleosidase activity does not mention any signaling function or interaction with Toll-like receptors.
+  
+- **ACT_SITE 85-86** is annotated as ECO:0000255|PROSITE-ProRule:PRU00204 and ECO:0000305|PubMed:31439793. This suggests the enzyme's active site is located at these coordinates, which could be relevant for its function. However, it does not directly explain why the protein carries this term.
+  
+- **BINDING 20-26** and **BINDING 52-53** are both annotated with NAD(+), indicating that the enzyme binds NADP+. This is a direct match to the definition's focus on the reaction involving NADP+ and water. The binding of NADP+ is central to the function being described.
+
+The highest score for matching the primary reaction (NADP+ hydrolysis) is achieved by **BINDING 20-26** and **BINDING 52-53**, both of which are associated with NADP+ binding. However, since these features only indicate binding rather than catalysis, they are not sufficient to explain the term's definition.
+
+The only feature that directly relates to the reaction mechanism (NADP+ hydrolysis) is **ACT_SITE 85-86**, which could be interpreted as the site where the reaction occurs. This feature is more relevant to the function being annotated than any of the others, even though it does not explicitly state the reaction itself.
+
+FEATURE: ACT_SITE 85-86  
+REASONING: The ACT_SITE annotation at position 85-86 directly relates to the location of the reaction catalyzed by the enzyme, which is central to the definition of NADP+ nucleosidase activity. This feature most plausibly explains why F4HT77 carries the term.
+
+=== F4HT77 GO:0050135 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+

@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "P40394",
+      "go_id": "GO:0050153",
+      "feature_type": "BINDING",
+      "start": 210,
+      "end": 216,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD+ to the protein at position 210-216 directly supports the GO term's definition of catalyzing the reaction involving NAD+, making it a strong match for the molecular function."
+    },
+    {
+      "accession": "P41682",
+      "go_id": "GO:0050153",
+      "feature_type": "BINDING",
+      "start": 198,
+      "end": 204,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD+ at position 198-204 directly matches the definition of catalyzing the reaction involving NAD+, making it a strong candidate for explaining the molecular function."
+    },
+    {
+      "accession": "Q64437",
+      "go_id": "GO:0050153",
+      "feature_type": "BINDING",
+      "start": 291,
+      "end": 294,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD+ at position 291-294 directly supports the redox reaction mechanism described by GO:0050153, making it the most plausible explanation for why this protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

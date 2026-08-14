@@ -1,0 +1,43 @@
+{
+  "resolved": [
+    {
+      "accession": "F1QWA8",
+      "go_id": "GO:0050135",
+      "feature_type": "BINDING",
+      "start": 560,
+      "end": 562,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding site at 560-562 for NAD(+), labeled as a substrate, directly supports the defined reaction of NADP+ nucleosidase activity by being involved in the phosphoryl transfer process."
+    },
+    {
+      "accession": "Q40253",
+      "go_id": "GO:0050135",
+      "feature_type": "SITE",
+      "start": 130,
+      "end": 131,
+      "signal_kind": "text",
+      "signal_value": "Important for ADPR cyclization",
+      "reasoning": "The \"SITE 130-131\" feature directly relates to the enzyme's role in ADPR cyclization, a downstream consequence of NADP+ nucleosidase activity. This site is important for the reaction mechanism and thus most plausibly explains why the protein carries the term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "V9M398",
+      "go_id": "GO:0050135",
+      "feature_type": "BINDING",
+      "start": 33,
+      "end": 39,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding feature indicates that the protein interacts with NAD(+), which is a substrate for the reaction defined by the GO term. However, it does not directly explain the specific enzymatic activity or mechanism of catalyzing the reaction: NADP+ + H2O = ADP-D-ribose 2'-phosphate + nicotinamide + H+."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "F4HT77",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

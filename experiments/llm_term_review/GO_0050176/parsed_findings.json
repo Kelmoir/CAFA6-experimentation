@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P46854",
+      "go_id": "GO:0050176",
+      "feature_type": "DOMAIN",
+      "start": 3,
+      "end": 162,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The DOMAIN 3-162 with note: N-acetyltransferase directly matches the primary reaction of the GO term, which involves catalyzing the transfer of an acetyl group from acetyl-CoA to L-phenylalanine. This feature provides a strong mechanistic basis for the enzyme's function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
