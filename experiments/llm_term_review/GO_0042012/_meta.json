@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0042012",
+  "name": "interleukin-16 receptor activity",
+  "def": "Combining with interleukin-16 and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P01730",
+    "P05540",
+    "P06332"
+  ],
+  "assigned_accessions": [
+    "P01730",
+    "P05540",
+    "P06332"
+  ]
+}

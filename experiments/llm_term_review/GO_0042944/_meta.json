@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0042944",
+  "name": "D-alanine transmembrane transporter activity",
+  "def": "Enables the transfer of D-alanine from one side of a membrane to the other. D-alanine is the D-enantiomer of 2-aminopropanoic acid.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AAE0"
+  ],
+  "assigned_accessions": [
+    "P0AAE0"
+  ]
+}

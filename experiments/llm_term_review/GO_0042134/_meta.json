@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0042134",
+  "name": "rRNA primary transcript binding",
+  "def": "Binding to an unprocessed ribosomal RNA transcript.",
+  "n_proteins_total": 32,
+  "sampled_accessions": [
+    "P0ADG4",
+    "P15304",
+    "P53218",
+    "Q08235"
+  ],
+  "assigned_accessions": [
+    "P0ADG4",
+    "P15304",
+    "P53218",
+    "Q08235"
+  ]
+}

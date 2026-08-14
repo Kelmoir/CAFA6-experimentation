@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0042123",
+  "name": "glucanosyltransferase activity",
+  "def": "Catalysis of the splitting and linkage of glucan molecules, resulting in glucan chain elongation.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P0C7S9",
+    "P0C954",
+    "P43076",
+    "Q5AMT2"
+  ],
+  "assigned_accessions": [
+    "P0C7S9",
+    "P0C954",
+    "P43076",
+    "Q5AMT2"
+  ]
+}

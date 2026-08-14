@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q08235",
+      "go_id": "GO:0042134",
+      "feature_type": "DOMAIN",
+      "start": 30,
+      "end": 232,
+      "signal_kind": "text",
+      "signal_value": "Brix",
+      "reasoning": "The presence of a Brix domain in position 30-232 of protein Q08235 directly supports the GO term \"rRNA primary transcript binding\" by providing a structural basis for the function described in the definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0ADG4",
+      "reason": "none_verdict",
+      "reasoning": "The protein's annotated features do not provide any specific evidence that directly supports the defined function of \"rRNA primary transcript binding\" as it pertains to the interaction with an unprocessed ribosomal RNA transcript."
+    },
+    {
+      "accession": "P53218",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P15304",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly explains why it binds to an unprocessed rRNA transcript."
+    }
+  ]
+}

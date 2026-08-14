@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O13692",
+      "go_id": "GO:0042124",
+      "feature_type": "BINDING",
+      "start": 87,
+      "end": 88,
+      "signal_kind": "ligand",
+      "signal_value": "(1,3-beta-D-glucosyl)n",
+      "reasoning": "The binding site for the donor substrate (1,3-beta-D-glucosyln) is directly related to the primary reaction described in the GO term, which involves the transfer of a glucosyl group. This feature most plausibly explains why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P43076",
+      "reason": "none_verdict",
+      "reasoning": "The only positional feature provided for P43076 is a disordered region, which does not directly explain why it carries the molecular function of 1,3-beta-glucanosyltransferase activity. No other annotated feature provides evidence for this specific enzymatic function."
+    },
+    {
+      "accession": "Q08271",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section provides a direct structural or functional explanation for the specific chemical reaction defined by the GO term \"1,3-beta-glucanosyltransferase activity.\""
+    },
+    {
+      "accession": "Q9Y7Y7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q9Y7Y7 specifically matches the primary reaction mechanism of catalyzing (1->3)-beta-D-glucan chain elongation through a phosphoryl transfer."
+    }
+  ]
+}

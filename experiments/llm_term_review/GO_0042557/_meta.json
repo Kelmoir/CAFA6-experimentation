@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0042557",
+  "name": "eukaryotic elongation factor-2 kinase activator activity",
+  "def": "Binds to and increases the activity of the enzyme eukaryotic elongation factor-2 kinase.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P54645"
+  ],
+  "assigned_accessions": [
+    "P54645"
+  ]
+}

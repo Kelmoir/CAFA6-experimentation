@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P54645",
+      "go_id": "GO:0042557",
+      "feature_type": "DOMAIN",
+      "start": 26,
+      "end": 279,
+      "signal_kind": "text",
+      "signal_value": "Protein kinase",
+      "reasoning": "The DOMAIN 26-279 with the note \"Protein kinase\" most plausibly explains the GO term's definition, as it directly corresponds to the function of a protein kinase and is likely responsible for activating the enzyme."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

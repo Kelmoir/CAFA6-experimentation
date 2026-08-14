@@ -1,0 +1,40 @@
+{
+  "resolved": [
+    {
+      "accession": "P0C954",
+      "go_id": "GO:0042123",
+      "feature_type": "BINDING",
+      "start": 200,
+      "end": 201,
+      "signal_kind": "ligand",
+      "signal_value": "(1,3-beta-D-glucosyl)n",
+      "reasoning": "The binding site at positions 200-201 is specifically associated with the acceptor substrate in the reaction mechanism of glucanosyltransferase activity, which directly matches the primary defined chemistry of the GO term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P0C7S9",
+      "go_id": "GO:0042123",
+      "feature_type": "BINDING",
+      "start": 159,
+      "end": 160,
+      "signal_kind": "ligand",
+      "signal_value": "(1,3-beta-D-glucosyl)n",
+      "reasoning": "The binding site for an acceptor substrate (ligand: (1,3-beta-D-glucosyl)n; note: acceptor substrate) is consistent with the enzyme's role in receiving a glucosyl group during chain elongation. However, it does not directly state that the protein catalyzes this transfer, making the match somewhat indirect and thus uncertain."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q5AMT2",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q5AMT2 do not provide any positional evidence that specifically matches the defined chemistry of glucanosyltransferase activity, which involves the transfer of a glucosyl group."
+    },
+    {
+      "accession": "P43076",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for P43076 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The presence of a glucanosyltransferase domain (InterPro:IPR004886) directly supports the GO term's definition by indicating the protein's ability to catalyze the splitting and linkage of glucan molecules, resulting in chain elongation. This matches the primary reaction described in the GO term's definition with high specificity."
+    }
+  ]
+}
