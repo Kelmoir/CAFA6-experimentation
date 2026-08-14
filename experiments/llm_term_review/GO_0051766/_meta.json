@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0051766",
+  "name": "inositol trisphosphate kinase activity",
+  "def": "Catalysis of the reaction: inositol trisphosphate + ATP = inositol tetrakisphosphate + ADP + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FLT2"
+  ],
+  "assigned_accessions": [
+    "Q9FLT2"
+  ]
+}

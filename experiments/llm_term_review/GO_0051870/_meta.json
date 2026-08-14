@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0051870",
+  "name": "methotrexate binding",
+  "def": "Binding to methotrexate, an antineoplastic antimetabolite with immunosuppressant properties. It is an inhibitor of tetrahydrofolate reductase and prevents the formation of tetrahydrofolate, necessary for synthesis of thymidylate, an essential component of DNA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0ABQ4"
+  ],
+  "assigned_accessions": [
+    "P0ABQ4"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0051912",
+  "name": "CoB--CoM heterodisulfide reductase activity",
+  "def": "Catalysis of the reaction: coenzyme B + coenzyme M + methanophenazine = N-{7-[(2-sulfoethyl)dithio]heptanoyl}-3-O-phospho-L-threonine + dihydromethanophenazine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P60200"
+  ],
+  "assigned_accessions": [
+    "P60200"
+  ]
+}

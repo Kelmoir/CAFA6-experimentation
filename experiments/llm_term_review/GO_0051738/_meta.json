@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0051738",
+  "name": "xanthophyll binding",
+  "def": "Binding to xanthophylls, any of several neutral yellow to orange carotenoid pigments containing oxygen.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9XF91"
+  ],
+  "assigned_accessions": [
+    "Q9XF91"
+  ]
+}

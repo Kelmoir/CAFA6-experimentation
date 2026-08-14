@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P60200",
+      "reason": "none_verdict",
+      "reasoning": "The defined chemical reaction for the GO term involves coenzyme B and CoM, but none of the annotated features describe this specific redox activity. All features are structural or ligand-binding, not catalytic."
+    }
+  ]
+}

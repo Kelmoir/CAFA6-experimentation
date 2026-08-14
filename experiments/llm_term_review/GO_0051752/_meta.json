@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0051752",
+  "name": "phosphoglucan, water dikinase activity",
+  "def": "Catalysis of the reaction: [(1->4)-6-phospho-alpha-D-glucosyl](n) + n ATP + n H2O = [(1->4)-3,6-bisphospho-alpha-alpha-glucosyl](n) + n AMP + 2n H+ + n phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q6ZY51"
+  ],
+  "assigned_accessions": [
+    "Q6ZY51"
+  ]
+}

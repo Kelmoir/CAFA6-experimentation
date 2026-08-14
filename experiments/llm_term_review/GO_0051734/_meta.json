@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0051734",
+  "name": "ATP-dependent polynucleotide 5'-hydroxyl-kinase activity",
+  "def": "Catalysis of the reaction: ATP + 5'-dephosphopolynucleotide = ADP + 5'-phosphopolynucleotide. The polynucleotide may be DNA or RNA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "E7F654"
+  ],
+  "assigned_accessions": [
+    "E7F654"
+  ]
+}

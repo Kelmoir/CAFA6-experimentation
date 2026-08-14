@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "C0SQ89",
+      "go_id": "GO:0051720",
+      "feature_type": "ACT_SITE",
+      "start": 512,
+      "end": 513,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The ACT_SITE 512-513 feature directly corresponds to the active site of the enzyme involved in the methylation reaction described by GO:0051720, making it the most plausible explanation for why the protein carries this molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

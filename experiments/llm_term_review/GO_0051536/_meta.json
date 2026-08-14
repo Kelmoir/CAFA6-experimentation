@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0051536",
+  "name": "iron-sulfur cluster binding",
+  "def": "Binding to an iron-sulfur cluster, a combination of iron and sulfur atoms.",
+  "n_proteins_total": 92,
+  "sampled_accessions": [
+    "O14147",
+    "O82392",
+    "P78859",
+    "Q8GS60"
+  ],
+  "assigned_accessions": [
+    "O14147",
+    "O82392",
+    "P78859",
+    "Q8GS60"
+  ]
+}

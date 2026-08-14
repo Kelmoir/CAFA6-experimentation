@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0051746",
+  "name": "thalianol synthase activity",
+  "def": "Catalysis of the cyclization of 3(S)-oxidosqualene to (3S,13S,14R)-malabarica-8,17,21-trien-3-ol (thalianol).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FI37"
+  ],
+  "assigned_accessions": [
+    "Q9FI37"
+  ]
+}

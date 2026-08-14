@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "E7F654",
+      "go_id": "GO:0051734",
+      "feature_type": "BINDING",
+      "start": 342,
+      "end": 350,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP (342-350) directly supports the catalytic activity described by the GO term, making it the most plausible explanation for why E7F654 carries this annotation."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

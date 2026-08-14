@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9FI37",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section matches the primary reaction of thalianol synthase activity (cyclization of 3(S)-oxidosqualene to (3S,13S,14R)-malabarica-8,17,21-trien-3-ol). The only positional feature provided is ACT_SITE 490-491, which refers to a proton donor activity, not the specific enzymatic reaction defined by the GO term. Thus, there is no plausible expla"
+    }
+  ]
+}

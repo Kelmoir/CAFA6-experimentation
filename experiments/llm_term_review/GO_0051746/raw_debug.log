@@ -1,0 +1,6 @@
+=== Q9FI37 GO:0051746 (VERDICT missing) ===
+THINKING: The GO term is "thalianol synthase activity" (GO:0051746), which defines the catalysis of the cyclization of 3(S)-oxidosqualene to (3S,13S,14R)-malabarica-8,17,21-trien-3-ol (thalianol). The primary reaction described is the cyclization of a specific precursor molecule. For the protein Q9FI37, we have an ACT_SITE annotation at position 490-491 with the note "Proton donor." This feature could plausibly explain the GO term's definition by suggesting that the enzyme requires a proton donor in its catalytic mechanism, which is consistent with the chemistry of cyclization. However, no other positional features directly relate to the cyclization reaction itself. The domain/family cross-references suggest the protein may be related to squalene cyclase or terpene synthase families, but these are background context and not direct evidence for the GO term's primary reaction. Therefore, the ACT_SITE feature is the most plausible explanation for this GO term.
+
+FEATURE: ACT_SITE 490-491  
+REASONING: The ACT_SITE annotation at position 490-491 indicates that the enzyme requires a proton donor in its catalytic mechanism, which aligns with the chemistry of cyclization described by the GO term. This feature provides a plausible explanation for why the protein carries the defined molecular function.
+

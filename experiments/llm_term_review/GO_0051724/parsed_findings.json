@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P39953",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q3SY17",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q5H9E4",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q8RWA5",
+      "reason": "none_verdict",
+      "reasoning": "The defined molecular function of the GO term involves the transfer of NAD across a membrane, which requires a specific structural or functional domain. However, the only positional feature provided for this protein is a disordered region, which does not provide any evidence of NAD transport activity. Thus, there is no annotated feature that directly matches the primary reaction described in the G"
+    }
+  ]
+}
