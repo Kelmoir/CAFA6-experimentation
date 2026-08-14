@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050224",
+  "name": "prunasin beta-glucosidase activity",
+  "def": "Catalysis of the reaction: (R)-prunasin + H2O = D-glucose + mandelonitrile.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q75I93"
+  ],
+  "assigned_accessions": [
+    "Q75I93"
+  ]
+}

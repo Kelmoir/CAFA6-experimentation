@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P05186",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list provides a clear, specific match to the primary reaction of the \"phosphoamidase activity\" GO term, which involves catalyzing the removal of a phosphate group from N-phosphocreatine."
+    },
+    {
+      "accession": "P08289",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P09242",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q92058",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction mechanism of the GO term \"phosphoamidase activity\" (catalyzing N-phosphocreatine + H2O = creatine + phosphate), and all features either echo secondary clauses or involve different ligands."
+    }
+  ]
+}

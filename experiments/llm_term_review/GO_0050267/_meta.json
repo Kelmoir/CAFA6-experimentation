@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050267",
+  "name": "rubber cis-polyprenylcistransferase activity",
+  "def": "Catalysis of the reaction: (cis-prenyl)n-diphosphate + isopentenyl diphosphate = (cis-prenyl)(n+1)-diphosphate + diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8RX73"
+  ],
+  "assigned_accessions": [
+    "Q8RX73"
+  ]
+}

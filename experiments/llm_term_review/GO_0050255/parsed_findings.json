@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "Q00796",
+      "go_id": "GO:0050255",
+      "feature_type": "BINDING",
+      "start": 208,
+      "end": 209,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD(+) at position 208-209 directly supports the catalytic activity defined by the GO term, which involves the conversion of D-ribitol to D-ribulose using NAD+ as a coenzyme."
+    },
+    {
+      "accession": "Q9FJ95",
+      "go_id": "GO:0050255",
+      "feature_type": "BINDING",
+      "start": 212,
+      "end": 213,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding site for NAD(+) at position 212-213 directly supports the redox reaction mechanism described in the definition of the GO term, making it the most plausible explanation for why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

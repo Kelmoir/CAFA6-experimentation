@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0050255",
+  "name": "ribitol 2-dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: D-ribitol + NAD+ = D-ribulose + H+ + NADH.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q00796",
+    "Q9FJ95"
+  ],
+  "assigned_accessions": [
+    "Q00796",
+    "Q9FJ95"
+  ]
+}

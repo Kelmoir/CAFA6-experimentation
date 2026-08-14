@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "Q15185",
+      "go_id": "GO:0050220",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 90,
+      "signal_kind": "text",
+      "signal_value": "CS",
+      "reasoning": "The DOMAIN 0-90 feature with its note indicating a CS domain and evidence referencing it is the most plausible candidate for explaining why the protein Q15185 carries the GO term \"prostaglandin-E synthase activity,\" as it directly relates to the structural domain that could perform the enzymatic reaction defined in the GO term's primary reaction."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "G1TGF1",
+      "go_id": "GO:0050220",
+      "feature_type": "MOTIF",
+      "start": 156,
+      "end": 160,
+      "signal_kind": "text",
+      "signal_value": "PXLE motif",
+      "reasoning": "The MOTIF feature (156-160) with a \"PXLE motif\" could be involved in catalytic activity, but it does not directly confirm that this motif is responsible for the specific reaction defined by GO:0050220. No other annotated feature provides a stronger match to the primary reaction mechanism of prostaglandin-E synthase activity."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q66LN0",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for protein Q66LN0 do not provide any evidence that directly explains the specific reaction of prostaglandin-E synthase activity. No positional feature matches the primary chemistry defined by the GO term."
+    },
+    {
+      "accession": "Q95L14",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q95L14 specifically matches the chemistry of the reaction defined by the GO term \"prostaglandin-E synthase activity.\" The binding sites for glutathione are unrelated to the catalytic mechanism of forming prostaglandin E(2) from H(2)."
+    }
+  ]
+}

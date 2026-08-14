@@ -25560,6 +25560,67 @@
    }
   ]
  },
+ "GO:0050179": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "(6S)-5-formyl-5,6,7,8-tetrahydrofolate",
+    "accessions": [
+     "P50431"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P75823",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P34896",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0050187": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P05186",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list provides a clear, specific match to the primary reaction of the \"phosphoamidase activity\" GO term, which involves catalyzing the removal of a phosphate group from N-phosphocreatine."
+   },
+   {
+    "accession": "P08289",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P09242",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q92058",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism of the GO term \"phosphoamidase activity\" (catalyzing N-phosphocreatine + H2O = creatine + phosphate), and all features either echo secondary clauses or involve different ligands."
+   }
+  ]
+ },
  "GO:0050189": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -25571,6 +25632,151 @@
   "issues": [
    {
     "accession": "O53361",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0050192": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O53361",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0050211": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Mn(2+)",
+    "accessions": [
+     "Q20679"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8NBJ5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the specific chemical reaction defined by the GO term \"procollagen galactosyltransferase activity.\""
+   },
+   {
+    "accession": "Q9VTH0",
+    "reason": "none_verdict",
+    "reasoning": "The highest score for matching the primary reaction (galactosyltransferase activity) is given to BINDING 711-712, as it is a known substrate for Fe2OG dioxygenases. However, this binding site does not directly explain the galactosyltransferase activity itself."
+   },
+   {
+    "accession": "Q9R0E1",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly specify the reaction mechanism or substrates involved in the GO term's primary definition. While some binding sites are associated with relevant molecules, they do not provide a strong match to the specific chemistry described for \"procollagen galactosyltransferase activity.\""
+   }
+  ]
+ },
+ "GO:0050220": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "CS",
+    "accessions": [
+     "Q15185"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "G1TGF1",
+    "go_id": "GO:0050220",
+    "feature_type": "MOTIF",
+    "start": 156,
+    "end": 160,
+    "signal_kind": "text",
+    "signal_value": "PXLE motif",
+    "reasoning": "The MOTIF feature (156-160) with a \"PXLE motif\" could be involved in catalytic activity, but it does not directly confirm that this motif is responsible for the specific reaction defined by GO:0050220. No other annotated feature provides a stronger match to the primary reaction mechanism of prostaglandin-E synthase activity."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q66LN0",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein Q66LN0 do not provide any evidence that directly explains the specific reaction of prostaglandin-E synthase activity. No positional feature matches the primary chemistry defined by the GO term."
+   },
+   {
+    "accession": "Q95L14",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q95L14 specifically matches the chemistry of the reaction defined by the GO term \"prostaglandin-E synthase activity.\" The binding sites for glutathione are unrelated to the catalytic mechanism of forming prostaglandin E(2) from H(2)."
+   }
+  ]
+ },
+ "GO:0050224": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q75I93",
+    "reason": "none_verdict",
+    "reasoning": "The defined reaction for the GO term involves catalyzing the hydrolysis of a beta-D-glucoside using water to produce glucose and mandelonitrile, but none of the annotated features directly describe this mechanism or the active site's role in it. All features are either about binding sites or proton donors/nucleophiles, which are not specific to the reaction itself."
+   }
+  ]
+ },
+ "GO:0050255": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "Q00796",
+     "Q9FJ95"
+    ],
+    "reason": "circular agreement -- only 1 of 2 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050267": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8RX73",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }

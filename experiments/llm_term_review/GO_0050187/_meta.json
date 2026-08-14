@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0050187",
+  "name": "phosphoamidase activity",
+  "def": "Catalysis of the reaction: N-phosphocreatine + H2O = creatine + phosphate.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P05186",
+    "P08289",
+    "P09242",
+    "Q92058"
+  ],
+  "assigned_accessions": [
+    "P05186",
+    "P08289",
+    "P09242",
+    "Q92058"
+  ]
+}

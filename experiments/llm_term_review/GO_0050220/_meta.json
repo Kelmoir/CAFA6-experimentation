@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0050220",
+  "name": "prostaglandin-E synthase activity",
+  "def": "Catalysis of the reaction: prostaglandin H(2) = prostaglandin E(2).",
+  "n_proteins_total": 14,
+  "sampled_accessions": [
+    "G1TGF1",
+    "Q15185",
+    "Q66LN0",
+    "Q95L14"
+  ],
+  "assigned_accessions": [
+    "G1TGF1",
+    "Q15185",
+    "Q66LN0",
+    "Q95L14"
+  ]
+}

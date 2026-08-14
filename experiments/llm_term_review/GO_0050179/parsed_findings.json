@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "P50431",
+      "go_id": "GO:0050179",
+      "feature_type": "BINDING",
+      "start": 68,
+      "end": 69,
+      "signal_kind": "ligand",
+      "signal_value": "(6S)-5-formyl-5,6,7,8-tetrahydrofolate",
+      "reasoning": "The binding site at position 68-69 involving pyridoxal 5'-phosphate (PLP) directly matches the primary reaction of catalysis described in the GO term's definition, which involves the enzyme receiving a phosphoryl transfer from PLP. This specific binding feature is most likely to explain why the protein carries the term \"phenylserine aldolase activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P75823",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P34896",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

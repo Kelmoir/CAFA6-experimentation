@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0050179",
+  "name": "phenylserine aldolase activity",
+  "def": "Catalysis of the reaction: L-threo-3-phenylserine = benzaldehyde + glycine.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P34896",
+    "P50431",
+    "P75823"
+  ],
+  "assigned_accessions": [
+    "P34896",
+    "P50431",
+    "P75823"
+  ]
+}

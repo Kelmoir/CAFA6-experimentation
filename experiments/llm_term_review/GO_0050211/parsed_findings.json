@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q20679",
+      "go_id": "GO:0050211",
+      "feature_type": "BINDING",
+      "start": 241,
+      "end": 242,
+      "signal_kind": "ligand",
+      "signal_value": "Mn(2+)",
+      "reasoning": "The binding of UDP-galactose at position 241-242 in the protein Q20679 is directly involved in the catalytic reaction described for the GO term \"procollagen galactosyltransferase activity,\" making it the most plausible explanation for why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8NBJ5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the specific chemical reaction defined by the GO term \"procollagen galactosyltransferase activity.\""
+    },
+    {
+      "accession": "Q9VTH0",
+      "reason": "none_verdict",
+      "reasoning": "The highest score for matching the primary reaction (galactosyltransferase activity) is given to BINDING 711-712, as it is a known substrate for Fe2OG dioxygenases. However, this binding site does not directly explain the galactosyltransferase activity itself."
+    },
+    {
+      "accession": "Q9R0E1",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly specify the reaction mechanism or substrates involved in the GO term's primary definition. While some binding sites are associated with relevant molecules, they do not provide a strong match to the specific chemistry described for \"procollagen galactosyltransferase activity.\""
+    }
+  ]
+}
