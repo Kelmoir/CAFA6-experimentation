@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052768",
+  "name": "mannosyl-oligosaccharide 1,3-alpha-mannosidase activity",
+  "def": "Catalysis of the hydrolysis of the alpha-(1->3) bonds of alpha-D-mannose residues in mannosyl-oligosaccharide.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9UT61"
+  ],
+  "assigned_accessions": [
+    "Q9UT61"
+  ]
+}

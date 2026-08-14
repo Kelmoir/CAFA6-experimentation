@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "O13853",
+      "go_id": "GO:0052811",
+      "feature_type": "DOMAIN",
+      "start": 263,
+      "end": 662,
+      "signal_kind": "text",
+      "signal_value": "PIPK",
+      "reasoning": "The DOMAIN feature 263-662 is directly associated with PIPK, which catalyzes the phosphate transfer reaction defined by the GO term, making it a strong match for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

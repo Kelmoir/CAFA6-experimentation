@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052823",
+  "name": "2-hydroxy-6-oxonona-2,4,7-trienedioate hydrolase activity",
+  "def": "Catalysis of the reaction: (2Z,4E,7E)-2-hydroxy-6-oxonona-2,4,7-trienedioate + H2O = (2Z)-2-hydroxypenta-2,4-dienoate + fumarate + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P77044"
+  ],
+  "assigned_accessions": [
+    "P77044"
+  ]
+}

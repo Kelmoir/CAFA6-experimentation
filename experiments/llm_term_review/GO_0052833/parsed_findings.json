@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P20456",
+      "go_id": "GO:0052833",
+      "feature_type": "BINDING",
+      "start": 91,
+      "end": 95,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site at positions 91-95 is explicitly annotated with \"ligand: substrate,\" which directly matches the primary reaction of the GO term, indicating that this protein carries the inositol monophosphate 4-phosphatase activity."
+    },
+    {
+      "accession": "P29218",
+      "go_id": "GO:0052833",
+      "feature_type": "BINDING",
+      "start": 69,
+      "end": 70,
+      "signal_kind": "ligand",
+      "signal_value": "Mg(2+)",
+      "reasoning": "The binding of substrate at position 69-70 is directly related to the enzymatic activity described in the GO term, which involves catalyzing the hydrolysis of myo-inositol 4-phosphate. This matches the primary reaction mechanism stated in the definition."
+    },
+    {
+      "accession": "Q8CDA1",
+      "go_id": "GO:0052833",
+      "feature_type": "DOMAIN",
+      "start": 166,
+      "end": 518,
+      "signal_kind": "text",
+      "signal_value": "SAC",
+      "reasoning": "The DOMAIN 166-518 is associated with SAC and hSac2, which are known to be involved in inositol phosphate metabolism, directly matching the chemistry defined by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O14732",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the GO term's primary reaction mechanism of catalyzing the phosphate transfer from inositol monophosphate to water."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052761",
+  "name": "exo-1,4-beta-D-glucosaminidase activity",
+  "def": "Catalysis of the reaction: [beta-(1->4)-D-glucosamine]n-[N-acetyl-D-glucosamine]m = D-glucosamine + [beta-(1->4)-D-glucosamine](n-1)-[N-acetyl-D-glucosamine]m. This reaction is the hydrolysis of chitosan or chitosan oligosaccharides to remove a D-glucosamine residue from the non-reducing termini; chitosan is a linear polysaccharide composed of randomly distributed beta-(1->4)-linked D-glucosamine and N-acetyl-D-glucosamine units.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q4R1C4"
+  ],
+  "assigned_accessions": [
+    "Q4R1C4"
+  ]
+}

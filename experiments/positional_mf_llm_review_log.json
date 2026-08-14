@@ -28150,5 +28150,231 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0052757": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "EGF-like",
+    "accessions": [
+     "Q12794",
+     "Q91ZJ9"
+    ],
+    "reason": "resolved to ['PROSITE:PS00022', 'PROSITE:PS01186'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'PROSITE:PS00022': 506, 'PROSITE:PS01186': 602})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton donor",
+    "accessions": [
+     "Q2M3T9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q05A56",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and specific explanation for the enzymatic activity of chondroitin hydrolase in this protein."
+   }
+  ]
+ },
+ "GO:0052761": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q4R1C4",
+    "reason": "none_verdict",
+    "reasoning": "The \"Nucleophile\" annotation at ACT_SITE 538-539 is more relevant to the hydrolysis mechanism of the GO term, but it lacks specificity and does not directly confirm that this protein carries the term as a real, asserted annotation. No other annotated feature provides a stronger match to the primary reaction described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0052767": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UT61",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9UT61 does not have an annotated feature that directly matches the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "Q9Y2E5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9Y2E5 directly matches the primary reaction of catalyzing the hydrolysis of alpha-(1->6) bonds in mannosyl-oligosaccharides."
+   }
+  ]
+ },
+ "GO:0052768": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UT61",
+    "reason": "none_verdict",
+    "reasoning": "The \"ACT_SITE\" region at position 401-402 with the note \"Nucleophile\" is the only annotated feature that could plausibly be related to the enzyme activity described by GO:0052768. However, it does not specifically explain why this protein carries the term, as it only indicates a potential site for nucleophilic attack rather than the full catalytic mechanism of hydrolysis."
+   }
+  ]
+ },
+ "GO:0052773": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P37794",
+    "reason": "none_verdict",
+    "reasoning": "The binding sites for Mg(2+) do not directly explain the molecular function of diacetylchitobiose deacetylase activity, as they describe a cofactor interaction rather than the specific reaction mechanism. No positional feature provides a strong match to the GO term's primary reaction or mechanism."
+   }
+  ]
+ },
+ "GO:0052811": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PIPK",
+    "accessions": [
+     "O13853"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0052814": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P43353",
+     "P47740",
+     "P48448",
+     "P51648"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0052820": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "Q92383"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0052823": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Catalytic role in ketonization of the dienol substrate (substrate destabilization)",
+    "accessions": [
+     "P77044"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0052833": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "P20456"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Mg(2+)",
+    "accessions": [
+     "P29218"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SAC",
+    "accessions": [
+     "Q8CDA1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O14732",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the GO term's primary reaction mechanism of catalyzing the phosphate transfer from inositol monophosphate to water."
+   }
+  ]
  }
 }
