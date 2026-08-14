@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "O35659",
+      "go_id": "GO:0044508",
+      "feature_type": "SITE",
+      "start": 120,
+      "end": 121,
+      "signal_kind": "text",
+      "signal_value": "Interaction with the endogenous ligand GLP-1",
+      "reasoning": "The \"SITE\" type feature with coordinates 120-121 explicitly describes the interaction with the endogenous ligand GLP-1, which is the primary reaction described in the GO term's definition. This provides a strong and specific match to the term's chemistry."
+    },
+    {
+      "accession": "P32301",
+      "go_id": "GO:0044508",
+      "feature_type": "SITE",
+      "start": 120,
+      "end": 121,
+      "signal_kind": "text",
+      "signal_value": "Interaction with the endogenous ligand GLP-1",
+      "reasoning": "The \"SITE\" type feature with coordinates 120-121 directly describes an interaction with GLP-1, which is a core part of the GO term's definition of ligand binding and signal transmission. This provides a strong match to the primary reaction described in the GO term."
+    },
+    {
+      "accession": "P43220",
+      "go_id": "GO:0044508",
+      "feature_type": "SITE",
+      "start": 120,
+      "end": 121,
+      "signal_kind": "text",
+      "signal_value": "Interaction with the endogenous ligand GLP-1",
+      "reasoning": "The \"SITE\" feature with coordinates 120-121 directly describes interaction with GLP-1, which is the ligand involved in the defined function of the GO term. This matches the primary reaction of the GO term with high specificity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P0CY17",
+      "go_id": "GO:0044374",
+      "feature_type": "DNA_BIND",
+      "start": 102,
+      "end": 171,
+      "signal_kind": "text",
+      "signal_value": "HMG box",
+      "reasoning": "The \"DNA_BIND\" feature at position 102-171 directly corresponds to the primary reaction of sequence-specific DNA binding and bending described in the GO term's definition, making it a strong match."
+    },
+    {
+      "accession": "Q7CQM5",
+      "go_id": "GO:0044374",
+      "feature_type": "DNA_BIND",
+      "start": 166,
+      "end": 186,
+      "signal_kind": "text",
+      "signal_value": "H-T-H motif",
+      "reasoning": "The DNA_BIND feature with coordinates 166-186 directly matches the \"sequence-specific DNA binding\" aspect of the GO term's definition, which is the primary reaction or mechanism."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0A6R3",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features for P0A6R3 directly explain the sequence-specific DNA binding and bending activity described in the GO term's definition."
+    },
+    {
+      "accession": "P14164",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P14164 provides a clear, positional explanation for the primary reaction of sequence-specific DNA binding and bending as defined by GO:0044374."
+    }
+  ]
+}

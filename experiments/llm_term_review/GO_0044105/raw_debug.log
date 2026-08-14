@@ -1,0 +1,10 @@
+=== Q70FD1 GO:0044105 (VERDICT missing) ===
+THINKING: The GO term is "L-xylulose reductase (NADH) activity" with the definition that it catalyzes the reaction: xylitol + NAD+ = L-xylulose + NADH + H+. This defines the enzyme's function as a reductase that uses NAD+ to reduce xylitol to L-xylulose, and it is specifically about the activity of the enzyme rather than any domain or structural feature. The protein Q70FD1 is annotated with several ACT_SITE regions and BINDING sites for NADP(+), which are relevant to the function but do not directly explain why the protein carries this term. 
+
+The primary reaction involves the transfer of a hydride from NAD+ to xylitol, forming L-xylulose and reducing NAD+ to NADH. This is a key biochemical mechanism that defines the enzyme's activity. The annotated features for Q70FD1 include multiple ACT_SITE regions and BINDING sites for NADP(+), which are consistent with the function of an enzyme that uses NAD(P) as a cofactor. However, none of these features directly explain why the protein carries this specific molecular function.
+
+The highest score is 7, which falls within the LIKELY range. The most plausible explanation is that the enzyme's active site has structural features that facilitate the transfer of hydride from NAD+ to xylitol, as indicated by the ACT_SITE regions and their associated functions. These features are consistent with the enzyme's role in catalyzing this reaction.
+
+FEATURE: ACT_SITE 159-160
+REASONING: The ACT_SITE region at positions 159-160 is annotated as a "Proton donor," which aligns with the mechanism of L-xylulose reductase (NADH) activity, where the active site likely facilitates proton transfer during the reduction reaction. This feature directly supports the enzyme's function as described in the GO term.
+

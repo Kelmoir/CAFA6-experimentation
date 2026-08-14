@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0044684",
+  "name": "dihydromethanopterin reductase activity",
+  "def": "Catalysis of the reaction: 7,8-dihydromethanopterin + NADPH = 5,6,7,8-tetrahydromethanopterin + NADP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q57661"
+  ],
+  "assigned_accessions": [
+    "Q57661"
+  ]
+}

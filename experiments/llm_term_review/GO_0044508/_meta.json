@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0044508",
+  "name": "glucagon-like peptide 1 receptor activity",
+  "def": "Combining with glucagon-like peptide 1 and transmitting the signal across the membrane by activating an associated G-protein.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O35659",
+    "P32301",
+    "P43220"
+  ],
+  "assigned_accessions": [
+    "O35659",
+    "P32301",
+    "P43220"
+  ]
+}

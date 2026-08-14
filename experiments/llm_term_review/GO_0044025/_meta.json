@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0044025",
+  "name": "histone H2BS14 kinase activity",
+  "def": "Catalysis of the reaction: histone H2B-serine (position 14) + ATP = histone H2B-phosphoserine (position 14) + ADP. This reaction is the addition of a phosphate group to the serine residue at position 14 of histone H2B.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q03497",
+    "Q6FN53"
+  ],
+  "assigned_accessions": [
+    "Q03497",
+    "Q6FN53"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0044105",
+  "name": "L-xylulose reductase (NADH) activity",
+  "def": "Catalysis of the reaction: xylitol + NAD+ = L-xylulose + NADH + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q70FD1"
+  ],
+  "assigned_accessions": [
+    "Q70FD1"
+  ]
+}

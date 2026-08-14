@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0044377",
+  "name": "RNA polymerase II cis-regulatory region sequence-specific DNA binding, bending",
+  "def": "Binding to a specific upstream regulatory DNA sequence (transcription factor recognition sequence or binding site) located in cis relative to the transcription start site (i.e., on the same strand of DNA) of a gene transcribed by RNA polymerase II, and distorting the original structure of DNA, typically a straight helix, into a bend, or increasing the bend if the original structure was intrinsically bent due to its sequence.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P0CY17",
+    "P26801",
+    "P36631",
+    "P53568"
+  ],
+  "assigned_accessions": [
+    "P0CY17",
+    "P26801",
+    "P36631",
+    "P53568"
+  ]
+}

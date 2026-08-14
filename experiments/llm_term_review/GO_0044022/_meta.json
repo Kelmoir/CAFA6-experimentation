@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0044022",
+  "name": "histone H3S28 kinase activity",
+  "def": "Catalysis of the reaction: histone H3-serine (position 28) + ATP = histone H3-phosphoserine (position 28) + ADP. This reaction is the addition of a phosphate group to the serine residue at position 28 of histone H3.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "O55099",
+    "O75582",
+    "O75676",
+    "Q9Z2B9"
+  ],
+  "assigned_accessions": [
+    "O55099",
+    "O75582",
+    "O75676",
+    "Q9Z2B9"
+  ]
+}

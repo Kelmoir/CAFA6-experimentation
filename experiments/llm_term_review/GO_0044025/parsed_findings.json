@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "Q6FN53",
+      "go_id": "GO:0044025",
+      "feature_type": "BINDING",
+      "start": 625,
+      "end": 634,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to the protein is a direct and specific evidence for the phosphorelay activity described in the GO term's definition, making it the most plausible explanation for why Q6FN53 carries the term."
+    },
+    {
+      "accession": "Q03497",
+      "go_id": "GO:0044025",
+      "feature_type": "DOMAIN",
+      "start": 619,
+      "end": 871,
+      "signal_kind": "text",
+      "signal_value": "Protein kinase",
+      "reasoning": "The DOMAIN 619-871 with note \"Protein kinase\" most plausibly explains why the protein carries the GO term \"histone H2BS14 kinase activity\", as it directly indicates the presence of a kinase domain capable of catalyzing phosphorylation reactions, which is consistent with the defined reaction in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

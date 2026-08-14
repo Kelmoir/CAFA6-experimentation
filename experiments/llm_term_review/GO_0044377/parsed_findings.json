@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P0CY17",
+      "go_id": "GO:0044377",
+      "feature_type": "DNA_BIND",
+      "start": 102,
+      "end": 171,
+      "signal_kind": "text",
+      "signal_value": "HMG box",
+      "reasoning": "The DNA BIND feature at position 102-171 directly corresponds to the binding activity described in the GO term's definition, making it a strong match for the primary reaction of cis-regulatory sequence-specific DNA binding and bending by RNA polymerase II."
+    },
+    {
+      "accession": "P26801",
+      "go_id": "GO:0044377",
+      "feature_type": "DOMAIN",
+      "start": 61,
+      "end": 125,
+      "signal_kind": "text",
+      "signal_value": "bZIP",
+      "reasoning": "The bZIP domain (DOMAIN 61-125) directly matches the primary reaction described in the GO term's definition, which involves sequence-specific DNA binding and bending. This provides a strong basis for the annotation of this protein with the given molecular function."
+    },
+    {
+      "accession": "P36631",
+      "go_id": "GO:0044377",
+      "feature_type": "DNA_BIND",
+      "start": 15,
+      "end": 80,
+      "signal_kind": "text",
+      "signal_value": "HMG box",
+      "reasoning": "The \"DNA_BIND\" annotation at position 15-80 is the most plausible explanation for the RNA polymerase II cis-regulatory region sequence-specific DNA binding activity described in the GO term, as it directly relates to the primary reaction of binding to a specific upstream regulatory DNA sequence."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P53568",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains the primary reaction or mechanism of RNA polymerase II cis-regulatory region sequence-specific DNA binding and bending."
+    }
+  ]
+}

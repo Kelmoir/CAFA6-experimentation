@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8RY67",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly or specifically matches the primary reaction of \"pectin binding.\""
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0044589",
+  "name": "pectin binding",
+  "def": "Binding to pectin.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8RY67"
+  ],
+  "assigned_accessions": [
+    "Q8RY67"
+  ]
+}

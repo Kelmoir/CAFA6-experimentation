@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0044374",
+  "name": "sequence-specific DNA binding, bending",
+  "def": "The activity of binding selectively and non-covalently to DNA in a sequence-specific manner and distorting the original structure of DNA, typically a straight helix, into a bend, or increasing the bend if the original structure was intrinsically bent due to its sequence.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P0A6R3",
+    "P0CY17",
+    "P14164",
+    "Q7CQM5"
+  ],
+  "assigned_accessions": [
+    "P0A6R3",
+    "P0CY17",
+    "P14164",
+    "Q7CQM5"
+  ]
+}

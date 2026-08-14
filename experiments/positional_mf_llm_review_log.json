@@ -20951,6 +20951,42 @@
    }
   ]
  },
+ "GO:0044022": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "O75676",
+     "Q9Z2B9"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Protein kinase",
+    "accessions": [
+     "O55099"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O75582",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data specifically matches the primary reaction of histone H3S28 kinase activity (phosphorylation at position 28), and all features are either generic or only mention ATP binding, not the specific residue involved."
+   }
+  ]
+ },
  "GO:0044024": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -20973,6 +21009,177 @@
     "accession": "O75582",
     "reason": "none_verdict",
     "reasoning": "No annotated feature directly matches the defined chemistry of the GO term \"histone H2AS1 kinase activity,\" which involves the addition of a phosphate group to a specific serine residue."
+   }
+  ]
+ },
+ "GO:0044025": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q6FN53"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Protein kinase",
+    "accessions": [
+     "Q03497"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0044105": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q70FD1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q70FD1 specifically matches the chemistry of the GO term \"L-xylulose reductase (NADH) activity,\" which involves hydride transfer from NAD+ to xylitol. The features provided are either about proton donation/acceptance or binding to NADP(+), neither of which directly explains the defined reaction."
+   }
+  ]
+ },
+ "GO:0044374": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DNA_BIND",
+    "value": "HMG box",
+    "accessions": [
+     "P0CY17"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DNA_BIND",
+    "value": "H-T-H motif",
+    "accessions": [
+     "Q7CQM5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0A6R3",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features for P0A6R3 directly explain the sequence-specific DNA binding and bending activity described in the GO term's definition."
+   },
+   {
+    "accession": "P14164",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P14164 provides a clear, positional explanation for the primary reaction of sequence-specific DNA binding and bending as defined by GO:0044374."
+   }
+  ]
+ },
+ "GO:0044377": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DNA_BIND",
+    "value": "hmg box",
+    "accessions": [
+     "P0CY17",
+     "P36631"
+    ],
+    "reason": "agreed, but the note is too short/generic a phrase (or a known-generic catalytic-residue label) to trust as a global substring trigger for this term"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "bZIP",
+    "accessions": [
+     "P26801"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P53568",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the primary reaction or mechanism of RNA polymerase II cis-regulatory region sequence-specific DNA binding and bending."
+   }
+  ]
+ },
+ "GO:0044508": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Interaction with the endogenous ligand GLP-1",
+    "accessions": [
+     "O35659",
+     "P32301",
+     "P43220"
+    ],
+    "reason": "circular agreement -- only 1 of 3 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0044589": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8RY67",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly or specifically matches the primary reaction of \"pectin binding.\""
+   }
+  ]
+ },
+ "GO:0044684": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q57661",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide direct evidence of the specific redox reaction or mechanism described by GO:0044684, only the presence of a cofactor and binding sites."
    }
   ]
  }

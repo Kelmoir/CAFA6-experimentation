@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "O55099",
+      "go_id": "GO:0044022",
+      "feature_type": "DOMAIN",
+      "start": 79,
+      "end": 330,
+      "signal_kind": "text",
+      "signal_value": "Protein kinase",
+      "reasoning": "The DOMAIN span (79-330) most plausibly explains why the protein carries the GO term \"histone H3S28 kinase activity\" because it indicates a region that is likely a kinase domain, which is essential for catalyzing the phosphorylation reaction described in the definition."
+    },
+    {
+      "accession": "O75676",
+      "go_id": "GO:0044022",
+      "feature_type": "BINDING",
+      "start": 38,
+      "end": 47,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to the 38-47 region is directly related to the kinase activity described in the GO term, making it the most plausible explanation for why the protein carries this term."
+    },
+    {
+      "accession": "Q9Z2B9",
+      "go_id": "GO:0044022",
+      "feature_type": "BINDING",
+      "start": 38,
+      "end": 47,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to the active site (BINDING 38-47) directly supports the catalytic reaction described in the GO term, making it a strong match."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O75582",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided data specifically matches the primary reaction of histone H3S28 kinase activity (phosphorylation at position 28), and all features are either generic or only mention ATP binding, not the specific residue involved."
+    }
+  ]
+}
