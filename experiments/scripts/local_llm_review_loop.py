@@ -23,11 +23,13 @@ assigned protein across every term in the round, dispatched to a fixed-size thre
 (--concurrency, default 4 -- matches LM Studio's own observed throughput sweet spot: sending
 requests in packs of 4 measurably raises total tokens/sec versus one-at-a-time, presumably via
 the server's own continuous-batching path) -> as soon as a given term's whole protein sample has
-landed, that term is parsed/retried/merged immediately, on the main thread, while the thread
-pool's other workers keep generating for whichever terms haven't finished yet -- this overlaps
-LLM generation time for later terms with the (LLM-free, cheap) parse/merge bookkeeping for
-earlier ones instead of doing all generation first and all bookkeeping after -> once every term
-in the round has merged, rebuild links -> git commit -> short report (which GO terms merged).
+landed, its go_id is handed off (via a queue.Queue) to one dedicated merge-consumer thread that
+parses/retries/merges it, decoupled from the review pool -- this overlaps LLM generation time for
+later terms with parse/merge bookkeeping for earlier ones instead of doing all generation first
+and all bookkeeping after, and keeps that bookkeeping (which rewrites the whole, ever-growing
+dictionary/log JSON) off the review pool's hot path entirely, so it can never contend with the
+pool's own small, frequent findings.md writes -> once every term in the round has merged, rebuild
+links -> git commit -> short report (which GO terms merged).
 Safe to Ctrl-C between rounds; each round's git commit is a checkpoint, and plan_review_round.py
 never revisits an already-started term, so re-running this script later just continues where it
 left off.
@@ -35,6 +37,7 @@ left off.
 import argparse
 import concurrent.futures
 import json
+import queue
 import re
 import subprocess
 import sys
@@ -448,6 +451,27 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
   return verdict, ftype, start, end, reasoning, unparsed
 
 
+def _merge_consumer(merge_queue, results, host, model, system_prompt, request_timeout, max_tokens):
+  """Runs on its own dedicated thread, strictly separate from the review-worker pool. Pulls one
+  completed go_id at a time off merge_queue and runs its parse -> retry -> re-parse -> merge
+  sequence (merge_one_term) -- retries call back into review_protein/_write_lock, same as any
+  review worker, but now from exactly one thread instead of whichever worker happened to observe
+  the term's last completion. That keeps the (parse/merge subprocess reading and rewriting the
+  full, ever-growing dictionary/log JSON) work off the hot path entirely: it never contends with
+  the review pool for _write_lock's fast small-file appends, and a slow merge on a big JSON file
+  never stalls the loop that's harvesting review results. A single None on the queue is the
+  shutdown sentinel. results is a plain list, appended to only from this one thread, so it needs
+  no lock of its own."""
+  while True:
+    go_id = merge_queue.get()
+    if go_id is None:
+      merge_queue.task_done()
+      return
+    if merge_one_term(go_id, host, model, system_prompt, request_timeout, max_tokens):
+      results.append(go_id)
+    merge_queue.task_done()
+
+
 def process_round(host, model, manifest, request_timeout, delay, max_tokens, system_prompt,
                    concurrency):
   """Dispatches every (go_id, accession) protein review in the round to a fixed-size thread pool
@@ -456,13 +480,15 @@ def process_round(host, model, manifest, request_timeout, delay, max_tokens, sys
   pulls the next queued job, regardless of which term it belongs to, which is what keeps the local
   model continuously fed instead of idling between term-sized batches.
   As soon as every accession assigned to a given term has completed (tracked via a per-term
-  countdown), that term's parse -> retry -> re-parse -> merge sequence runs immediately, on this
-  (the main) thread -- while the thread pool's remaining workers keep generating for whatever
-  terms haven't finished yet. This is the pipelining half of the optimization: bookkeeping for an
-  earlier-finishing term overlaps with generation time for a later one instead of the round doing
-  all generation first and all bookkeeping after. The merge/parse subprocess calls themselves stay
-  strictly single-threaded (only ever invoked from this main-thread loop), so there's no risk of
-  two terms' parse/merge steps interleaving.
+  countdown, on the main thread's as_completed loop), that term's go_id is handed off via a
+  queue.Queue to one dedicated merge-consumer thread (_merge_consumer) that runs the parse ->
+  retry -> re-parse -> merge sequence entirely on its own, while the review pool's remaining
+  workers keep generating for whatever terms haven't finished yet. This is the pipelining half of
+  the optimization: bookkeeping for an earlier-finishing term overlaps with generation time for a
+  later one instead of the round doing all generation first and all bookkeeping after -- and
+  routing it through a queue to a single consumer (rather than running it inline on whatever
+  thread noticed the last completion) keeps that bookkeeping fully off the review pool's hot path,
+  so a slow merge against a large dictionary/log JSON can never stall in-flight or queued reviews.
   Returns (touched, merged_terms).
   """
   new_terms = manifest.get("new_terms", {})
@@ -474,7 +500,14 @@ def process_round(host, model, manifest, request_timeout, delay, max_tokens, sys
     term_findings_path[go_id] = term_dir / "findings.md"
     pending[go_id] = len(accessions)
 
-  touched, merged_terms = [], []
+  touched = []
+  merged_terms = []
+  merge_queue = queue.Queue()
+  merge_thread = threading.Thread(
+      target=_merge_consumer,
+      args=(merge_queue, merged_terms, host, model, system_prompt, request_timeout, max_tokens))
+  merge_thread.start()
+
   with concurrent.futures.ThreadPoolExecutor(max_workers=concurrency) as executor:
     futures = {}
     for go_id, accessions in new_terms.items():
@@ -490,8 +523,10 @@ def process_round(host, model, manifest, request_timeout, delay, max_tokens, sys
       pending[go_id] -= 1
       if pending[go_id] == 0:
         touched.append(go_id)
-        if merge_one_term(go_id, host, model, system_prompt, request_timeout, max_tokens):
-          merged_terms.append(go_id)
+        merge_queue.put(go_id)
+
+  merge_queue.put(None)
+  merge_thread.join()
   return touched, merged_terms
 
 
