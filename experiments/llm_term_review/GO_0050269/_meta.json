@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050269",
+  "name": "coniferyl-aldehyde dehydrogenase [NAD(P)+] activity",
+  "def": "Catalysis of the reaction: coniferyl aldehyde + H2O + NAD(P)+ = ferulate + NAD(P)H + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q56YU0"
+  ],
+  "assigned_accessions": [
+    "Q56YU0"
+  ]
+}

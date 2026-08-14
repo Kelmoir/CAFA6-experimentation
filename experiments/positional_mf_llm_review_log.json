@@ -25745,6 +25745,37 @@
    }
   ]
  },
+ "GO:0050251": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A9C3R8",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein A9C3R8 are all related to ligand binding and do not provide any evidence of retinol isomerase activity, which involves catalyzing a specific chemical reaction. Therefore, no annotated feature plausibly explains why this protein carries the term."
+   },
+   {
+    "accession": "O70276",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the primary reaction or mechanism of the GO term \"retinol isomerase activity,\" which involves catalyzing the isomerization of retinol. All features are related to ligand binding and do not provide evidence for the specific molecular function defined by the GO term."
+   },
+   {
+    "accession": "Q5F3C1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q5F3C1 specifically matches the primary reaction mechanism of retinol isomerase activity as defined by the GO term."
+   },
+   {
+    "accession": "Q28175",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide a clear or specific explanation of why the protein carries the GO term \"retinol isomerase activity.\" While the domain/family cross-reference suggests a broader family context, it does not directly confirm the active site or mechanism for retinol isomerization."
+   }
+  ]
+ },
  "GO:0050255": {
   "n_resolved": 2,
   "n_uncertain": 0,
@@ -25779,6 +25810,213 @@
     "accession": "Q8RX73",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0050268": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "Q9CAI3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O49482",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "O64743",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q9SJ25",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0050269": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "Q56YU0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050270": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q81F14",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0050272": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0ABK5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, and all features are generic ligand-binding activities rather than specific catalytic mechanisms."
+   }
+  ]
+ },
+ "GO:0050275": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9AT54",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0050281": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "pyridoxal 5'-phosphate",
+    "accessions": [
+     "Q56YA5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050302": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "[2Fe-2S] cluster",
+    "accessions": [
+     "Q7G191"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q7G192",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide any positional feature that specifically matches the chemistry described in the GO term's definition."
+   },
+   {
+    "accession": "Q7G193",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q7G9P4",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q7G9P4 do not provide a specific explanation of the molecular function defined by GO:0050302, which involves catalyzing the oxidation of indole-3-acetaldehyde. While the protein's domains and binding sites are relevant to redox activity, they do not directly match the primary reaction described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0050306": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FSV7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's positional data directly matches the primary reaction of the GO term, and the only positional feature (ACT_SITE) is too generic to be a strong match."
+   }
+  ]
+ },
+ "GO:0050316": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "dGMP",
+    "accessions": [
+     "Q8I4S1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050342": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9ZSK1",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9ZSK1 has multiple SAM motif regions, which are known to be involved in methyltransferase activity. However, none of these regions are explicitly positioned to carry out the defined reaction of the GO term \"tocopherol C-methyltransferase activity.\" Therefore, there is no single annotated feature that directly matches the primary reaction of this GO term."
    }
   ]
  }

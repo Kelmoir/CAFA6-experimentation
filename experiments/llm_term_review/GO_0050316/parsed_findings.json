@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8I4S1",
+      "go_id": "GO:0050316",
+      "feature_type": "BINDING",
+      "start": 73,
+      "end": 74,
+      "signal_kind": "ligand",
+      "signal_value": "dGMP",
+      "reasoning": "The binding of dGMP to the protein at position 73-74 directly supports the catalytic reaction defined by the GO term, making this feature a strong match for the primary mechanism of the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

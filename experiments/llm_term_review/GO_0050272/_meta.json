@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050272",
+  "name": "S-carboxymethylcysteine synthase activity",
+  "def": "Catalysis of the reaction: 3-chloro-L-alanine + thioglycolate = S-carboxymethyl-L-cysteine + chloride + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0ABK5"
+  ],
+  "assigned_accessions": [
+    "P0ABK5"
+  ]
+}

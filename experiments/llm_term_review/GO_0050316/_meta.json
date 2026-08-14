@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050316",
+  "name": "dGMP kinase activity",
+  "def": "Catalysis of the reaction: dGMP + ATP = dGDP + ADP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8I4S1"
+  ],
+  "assigned_accessions": [
+    "Q8I4S1"
+  ]
+}

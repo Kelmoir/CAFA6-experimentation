@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050342",
+  "name": "tocopherol C-methyltransferase activity",
+  "def": "Catalysis of the reaction: gamma-tocopherol + S-adenosyl-L-methionine = (+)-alpha-tocopherol + H+ + S-adenosyl-L-homocysteine. This reaction can also use delta-tocopherol, gamma-tocotrienol and delta-tocotrienol as substrates.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9ZSK1"
+  ],
+  "assigned_accessions": [
+    "Q9ZSK1"
+  ]
+}

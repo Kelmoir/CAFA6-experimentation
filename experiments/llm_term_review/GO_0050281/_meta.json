@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050281",
+  "name": "L-serine-glyoxylate transaminase activity",
+  "def": "Catalysis of the reaction: L-serine + glyoxylate = 3-hydroxypyruvate + glycine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q56YA5"
+  ],
+  "assigned_accessions": [
+    "Q56YA5"
+  ]
+}

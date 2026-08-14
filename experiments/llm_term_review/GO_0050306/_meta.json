@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050306",
+  "name": "sucrose 1F-fructosyltransferase activity",
+  "def": "Catalysis of the reaction: 2 sucrose = D-glucose + 1F-beta-D-fructosylsucrose.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FSV7"
+  ],
+  "assigned_accessions": [
+    "Q9FSV7"
+  ]
+}

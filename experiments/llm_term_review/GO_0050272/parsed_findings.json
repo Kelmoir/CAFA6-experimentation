@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0ABK5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term, and all features are generic ligand-binding activities rather than specific catalytic mechanisms."
+    }
+  ]
+}

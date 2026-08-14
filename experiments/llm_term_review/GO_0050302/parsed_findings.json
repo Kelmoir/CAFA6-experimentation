@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q7G191",
+      "go_id": "GO:0050302",
+      "feature_type": "BINDING",
+      "start": 42,
+      "end": 43,
+      "signal_kind": "ligand",
+      "signal_value": "[2Fe-2S] cluster",
+      "reasoning": "The binding site for the [2Fe-2S] cluster (BINDING 42-43) is associated with a domain type that is known to be involved in oxidoreductase reactions, which aligns with the primary reaction described by GO:0050302. While it does not explicitly state the reaction mechanism, it provides a strong structural basis for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q7G192",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide any positional feature that specifically matches the chemistry described in the GO term's definition."
+    },
+    {
+      "accession": "Q7G193",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q7G9P4",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q7G9P4 do not provide a specific explanation of the molecular function defined by GO:0050302, which involves catalyzing the oxidation of indole-3-acetaldehyde. While the protein's domains and binding sites are relevant to redox activity, they do not directly match the primary reaction described in the GO term's definition."
+    }
+  ]
+}

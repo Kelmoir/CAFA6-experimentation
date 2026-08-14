@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050270",
+  "name": "S-adenosylhomocysteine deaminase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-homocysteine + H2O + H+ = S-inosyl-L-homocysteine + NH4.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q81F14"
+  ],
+  "assigned_accessions": [
+    "Q81F14"
+  ]
+}

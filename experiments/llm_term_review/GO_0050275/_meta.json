@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050275",
+  "name": "scopoletin glucosyltransferase activity",
+  "def": "Catalysis of the reaction: scopoletin + UDP-D-glucose = H+ + scopolin + UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9AT54"
+  ],
+  "assigned_accessions": [
+    "Q9AT54"
+  ]
+}
