@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0045027",
+  "name": "DNA end binding",
+  "def": "Binding to DNA ends exposed by the creation of double-strand breaks (DSBs).",
+  "n_proteins_total": 14,
+  "sampled_accessions": [
+    "P13010",
+    "P40384",
+    "Q03435",
+    "Q58719"
+  ],
+  "assigned_accessions": [
+    "P13010",
+    "P40384",
+    "Q03435",
+    "Q58719"
+  ]
+}

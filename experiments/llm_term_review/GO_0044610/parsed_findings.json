@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O43808",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the directed movement of FMN across a membrane, which is the primary reaction for the GO term."
+    },
+    {
+      "accession": "O70579",
+      "reason": "none_verdict",
+      "reasoning": "The defined GO term focuses on the directed movement of FMN across a membrane, not its localization. While the motif is relevant to peroxisomal targeting, it does not directly explain the core function of the GO term as stated in its definition."
+    },
+    {
+      "accession": "P76352",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

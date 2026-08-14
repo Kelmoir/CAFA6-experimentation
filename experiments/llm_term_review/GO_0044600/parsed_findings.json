@@ -1,0 +1,22 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q99LF4",
+      "go_id": "GO:0044600",
+      "feature_type": "BINDING",
+      "start": 227,
+      "end": 228,
+      "signal_kind": "ligand",
+      "signal_value": "GTP",
+      "reasoning": "The binding site for GTP is relevant to the GO term's primary reaction, but it only indicates that GTP binds to the protein and does not confirm the addition of a guanylyl group to a target residue. No other feature directly supports this mechanism, making the match uncertain."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q8IWT0",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for this protein directly matches the primary reaction mechanism of the GO term (catalyzing the addition of a GMP group to a target protein), and all features only echo words from secondary clauses, not the core chemistry defined by the GO term."
+    }
+  ]
+}

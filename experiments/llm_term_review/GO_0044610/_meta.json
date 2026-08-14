@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0044610",
+  "name": "FMN transmembrane transporter activity",
+  "def": "Enables the directed movement of flavine mononucleotide (FMN) from one side of a membrane to the other.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O43808",
+    "O70579",
+    "P76352"
+  ],
+  "assigned_accessions": [
+    "O43808",
+    "O70579",
+    "P76352"
+  ]
+}

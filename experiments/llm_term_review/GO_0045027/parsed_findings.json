@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P13010",
+      "go_id": "GO:0045027",
+      "feature_type": "DOMAIN",
+      "start": 252,
+      "end": 452,
+      "signal_kind": "text",
+      "signal_value": "Ku",
+      "reasoning": "The DOMAIN 252-452 with the qualifier \"Ku\" directly matches the primary reaction described in the GO term's definition, which is binding to DNA ends exposed by double-strand break creation. This provides a strong and specific explanation for why the protein carries the term."
+    },
+    {
+      "accession": "Q03435",
+      "go_id": "GO:0045027",
+      "feature_type": "DNA_BIND",
+      "start": 93,
+      "end": 158,
+      "signal_kind": "text",
+      "signal_value": "HMG box",
+      "reasoning": "The \"DNA_BIND 93-158\" feature directly matches the definition of DNA end binding by indicating the presence of an HMG box, which is known to bind to DNA ends. This provides a strong and specific match to the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P40384",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of DNA end binding as defined by the GO term. The evidence provided focuses on enzyme activity and intermediate interactions rather than the specific DNA end binding mechanism."
+    },
+    {
+      "accession": "Q58719",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly explains the molecular function of DNA end binding as defined by the GO term."
+    }
+  ]
+}

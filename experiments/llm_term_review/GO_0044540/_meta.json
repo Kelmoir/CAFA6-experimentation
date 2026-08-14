@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0044540",
+  "name": "L-cystine L-cysteine-lyase (deaminating)",
+  "def": "Catalysis of the reaction: L-cystine + H2O = pyruvate + NH3 + thiocysteine. Thiocysteine is also known as cysteine persulfide.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P18757",
+    "P32929",
+    "Q8VCN5",
+    "Q9SUR6"
+  ],
+  "assigned_accessions": [
+    "P18757",
+    "P32929",
+    "Q8VCN5",
+    "Q9SUR6"
+  ]
+}

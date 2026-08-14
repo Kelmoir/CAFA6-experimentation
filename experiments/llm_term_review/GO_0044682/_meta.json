@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0044682",
+  "name": "GTP cyclohydrolase IV activity",
+  "def": "Catalysis of the reaction: GTP + H2O = 7,8-dihydroneopterin 2',3'-cyclic phosphate + diphosphate + formate + H+. This activity is part of the biosynthesis of methanopterin in Archaea, and requires Fe2+.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q58185",
+    "Q58247"
+  ],
+  "assigned_accessions": [
+    "Q58185",
+    "Q58247"
+  ]
+}

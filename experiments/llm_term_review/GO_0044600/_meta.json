@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0044600",
+  "name": "protein guanylyltransferase activity",
+  "def": "Catalysis of the reaction: GTP + protein = diphosphate + guanylyl-protein; mediates the addition of an guanylyl (guanosine 5'-monophosphate; GMP group) to specific residues of target proteins.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q8IWT0",
+    "Q99LF4"
+  ],
+  "assigned_accessions": [
+    "Q8IWT0",
+    "Q99LF4"
+  ]
+}

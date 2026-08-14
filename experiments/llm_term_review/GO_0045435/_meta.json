@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0045435",
+  "name": "lycopene epsilon cyclase activity",
+  "def": "Catalysis of the cyclization of an epsilon ring at one end of the lycopene molecule (psi, psi-carotene) to form delta-carotene (epsilon, psi-carotene).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q38932"
+  ],
+  "assigned_accessions": [
+    "Q38932"
+  ]
+}

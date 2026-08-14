@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0045289",
+  "name": "luciferin monooxygenase activity",
+  "def": "Catalysis of the generalized reaction: luciferin + O2 = oxidized luciferin + CO2 + light. There may be additional substrates and reactants involved in the reaction. The reaction results in light emission as luciferin returns to the ground state after enzymatic oxidation.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O77206"
+  ],
+  "assigned_accessions": [
+    "O77206"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P18757",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a specific explanation for why the protein carries the defined molecular function, as all features are generic and do not directly address the reaction mechanism described in the GO term's definition."
+    },
+    {
+      "accession": "P32929",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided data specifically matches the primary reaction mechanism of the GO term, which involves catalyzing the deamination of L-cystine to produce pyruvate, NH3, and thiocysteine."
+    },
+    {
+      "accession": "Q9SUR6",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8VCN5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides evidence about the deamination reaction or the transfer of a phosphoryl group, which are the primary reactions defined by the GO term."
+    }
+  ]
+}

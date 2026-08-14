@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0044748",
+  "name": "3'-5'-exoribonuclease activity involved in mature miRNA 3'-end processing",
+  "def": "Catalysis of the sequential cleavage of mononucleotides from a free 3' terminus of an RNA molecule that contributes to forming distinct miRNA isoforms from a mature miRNA.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "A3KPE8",
+    "P34607"
+  ],
+  "assigned_accessions": [
+    "A3KPE8",
+    "P34607"
+  ]
+}

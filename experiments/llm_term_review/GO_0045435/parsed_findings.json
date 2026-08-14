@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q38932",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q38932 describes or explains the catalytic mechanism of lycopene epsilon cyclase activity, which is defined by the formation of delta-carotene from lycopene."
+    }
+  ]
+}

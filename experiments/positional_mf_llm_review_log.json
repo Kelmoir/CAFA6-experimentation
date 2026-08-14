@@ -21151,6 +21151,37 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0044540": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P18757",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a specific explanation for why the protein carries the defined molecular function, as all features are generic and do not directly address the reaction mechanism described in the GO term's definition."
+   },
+   {
+    "accession": "P32929",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data specifically matches the primary reaction mechanism of the GO term, which involves catalyzing the deamination of L-cystine to produce pyruvate, NH3, and thiocysteine."
+   },
+   {
+    "accession": "Q9SUR6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8VCN5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides evidence about the deamination reaction or the transfer of a phosphoryl group, which are the primary reactions defined by the GO term."
+   }
+  ]
+ },
  "GO:0044589": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -21167,6 +21198,86 @@
    }
   ]
  },
+ "GO:0044600": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q99LF4",
+    "go_id": "GO:0044600",
+    "feature_type": "BINDING",
+    "start": 227,
+    "end": 228,
+    "signal_kind": "ligand",
+    "signal_value": "GTP",
+    "reasoning": "The binding site for GTP is relevant to the GO term's primary reaction, but it only indicates that GTP binds to the protein and does not confirm the addition of a guanylyl group to a target residue. No other feature directly supports this mechanism, making the match uncertain."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q8IWT0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for this protein directly matches the primary reaction mechanism of the GO term (catalyzing the addition of a GMP group to a target protein), and all features only echo words from secondary clauses, not the core chemistry defined by the GO term."
+   }
+  ]
+ },
+ "GO:0044610": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O43808",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the directed movement of FMN across a membrane, which is the primary reaction for the GO term."
+   },
+   {
+    "accession": "O70579",
+    "reason": "none_verdict",
+    "reasoning": "The defined GO term focuses on the directed movement of FMN across a membrane, not its localization. While the motif is relevant to peroxisomal targeting, it does not directly explain the core function of the GO term as stated in its definition."
+   },
+   {
+    "accession": "P76352",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0044682": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q58247",
+    "go_id": "GO:0044682",
+    "feature_type": "DOMAIN",
+    "start": 57,
+    "end": 172,
+    "signal_kind": "text",
+    "signal_value": "HD",
+    "reasoning": "The annotated feature provides a domain type (HD) associated with hydrolytic activities, which is similar to the reaction described in the GO term. However, the evidence does not specifically confirm that this domain is responsible for the defined reaction, making the match uncertain."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q58185",
+    "reason": "none_verdict",
+    "reasoning": "The annotated feature \"SITE 159-160\" indicates a catalytic site, but it does not directly explain the chemistry or mechanism described in the GO term's definition. The primary reaction involves GTP and water to form a specific product, which is not directly explained by the presence of a catalytic site. Therefore, no annotated feature provides a strong match to the GO term's own chemistry."
+   }
+  ]
+ },
  "GO:0044684": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -21180,6 +21291,122 @@
     "accession": "Q57661",
     "reason": "none_verdict",
     "reasoning": "The annotated features do not provide direct evidence of the specific redox reaction or mechanism described by GO:0044684, only the presence of a cofactor and binding sites."
+   }
+  ]
+ },
+ "GO:0044717": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Nudix hydrolase",
+    "accessions": [
+     "Q6ZVK8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0044748": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "3'-5' exonuclease",
+    "accessions": [
+     "P34607"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Exonuclease",
+    "accessions": [
+     "A3KPE8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0045027": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ku",
+    "accessions": [
+     "P13010"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DNA_BIND",
+    "value": "HMG box",
+    "accessions": [
+     "Q03435"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P40384",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of DNA end binding as defined by the GO term. The evidence provided focuses on enzyme activity and intermediate interactions rather than the specific DNA end binding mechanism."
+   },
+   {
+    "accession": "Q58719",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly explains the molecular function of DNA end binding as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0045289": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O77206",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct structural or functional basis for the catalytic activity described in GO:0045289."
+   }
+  ]
+ },
+ "GO:0045435": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q38932",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q38932 describes or explains the catalytic mechanism of lycopene epsilon cyclase activity, which is defined by the formation of delta-carotene from lycopene."
    }
   ]
  }
