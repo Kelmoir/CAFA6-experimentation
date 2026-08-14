@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0036467",
+  "name": "5-hydroxy-L-tryptophan decarboxylase activity",
+  "def": "Catalysis of the reaction: 5-hydroxy-L-tryptophan + H+ = CO2 + serotonin.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P05031",
+    "P14173",
+    "P20711",
+    "Q6ZJK7"
+  ],
+  "assigned_accessions": [
+    "P05031",
+    "P14173",
+    "P20711",
+    "Q6ZJK7"
+  ]
+}

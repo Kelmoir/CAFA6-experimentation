@@ -1,0 +1,40 @@
+{
+  "resolved": [
+    {
+      "accession": "P98156",
+      "go_id": "GO:0038025",
+      "feature_type": "DOMAIN",
+      "start": 30,
+      "end": 69,
+      "signal_kind": "text",
+      "signal_value": "LDL-receptor class A 1",
+      "reasoning": "The DOMAIN 30-69 annotation is most directly related to the primary reaction described by the GO term's definition, which involves binding to reelin and transmitting a signal across the membrane. This domain is part of the LDL-receptor class A and could be involved in the process of initiating a change in cell activity through its interaction with reelin."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P98155",
+      "go_id": "GO:0038025",
+      "feature_type": "MOTIF",
+      "start": 831,
+      "end": 837,
+      "signal_kind": "text",
+      "signal_value": "Endocytosis signal",
+      "reasoning": "The \"EGF-like 1\" domain in the range 395-435 could be related to EGF signaling, which is a class of proteins that often act as receptors for growth factors. However, this feature does not directly describe the interaction with reelin or the transmembrane signal transmission, which are the primary reaction described by the GO term. The \"Endocytosis signal\" motif in the range 831-837 is more generic"
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q14114",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q924X6",
+      "reason": "unresolved_pointer",
+      "detail": "no matching BINDING 408-448 on record for Q924X6 -- pointer didn't resolve",
+      "reported_feature": "BINDING 408-448",
+      "reasoning": "The binding site for EGF-like 2; calcium-binding (BINDING 408-448) is a plausible candidate, but it does not directly match the defined function of reelin receptor activity. The definition specifies the ligand as reelin, not calcium, and no other feature in the Annotated features section provides a clear mechanistic basis for the signal transduction process described."
+    }
+  ]
+}

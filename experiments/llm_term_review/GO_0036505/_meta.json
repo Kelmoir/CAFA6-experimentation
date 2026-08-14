@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0036505",
+  "name": "prosaposin receptor activity",
+  "def": "Combining with prosaposin to initiate a change in cell activity. Prosaposin is the glycoprotein precursor of four cleavage products (saposins A, B, C and D).",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O15354",
+    "O60883",
+    "Q99JG2",
+    "Q9QY42"
+  ],
+  "assigned_accessions": [
+    "O15354",
+    "O60883",
+    "Q99JG2",
+    "Q9QY42"
+  ]
+}

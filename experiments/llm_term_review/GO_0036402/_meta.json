@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0036402",
+  "name": "proteasome-activating activity",
+  "def": "Catalysis of the reaction: ATP + H2O = ADP + phosphate, which promotes unfolding of protein substrates, and channel opening of the core proteasome.",
+  "n_proteins_total": 55,
+  "sampled_accessions": [
+    "P62193",
+    "Q3T030",
+    "Q94BQ2",
+    "Q9SSB5"
+  ],
+  "assigned_accessions": [
+    "P62193",
+    "Q3T030",
+    "Q94BQ2",
+    "Q9SSB5"
+  ]
+}

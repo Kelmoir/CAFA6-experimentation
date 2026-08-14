@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P62193",
+      "go_id": "GO:0036402",
+      "feature_type": "BINDING",
+      "start": 225,
+      "end": 233,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to the specified region directly supports the catalytic reaction described in the GO term, making it the most plausible explanation for why this protein carries the \"proteasome-activating activity\" annotation."
+    },
+    {
+      "accession": "Q94BQ2",
+      "go_id": "GO:0036402",
+      "feature_type": "BINDING",
+      "start": 201,
+      "end": 209,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP (BINDING 201-209) directly supports the catalytic reaction described in the definition of GO:0036402, which involves ATP hydrolysis to promote protein unfolding and channel opening. This feature is specific to the enzyme's function and matches the primary reaction mechanism of the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q3T030",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for Q3T030 is BINDING 205-213, which involves ATP binding. While this matches the GO term's primary reaction (ATP catalysis), it does not specify the domain or mechanism within the proteasome that carries out the unfolding and channel opening described in the definition. Therefore, no positional feature directly explains why Q3T030 carries the GO term \"proteasome-activat"
+    },
+    {
+      "accession": "Q9SSB5",
+      "reason": "none_verdict",
+      "reasoning": "The binding site for ATP (BINDING 208-216) is relevant to the chemistry of ATP hydrolysis described in the GO term's definition, but it does not directly explain why the protein carries the term \"proteasome-activating activity\" \u2014 it only indicates that ATP binds to the protein. The primary reaction involves ATP hydrolysis to drive proteolytic activity, which is not explicitly captured by this feat"
+    }
+  ]
+}

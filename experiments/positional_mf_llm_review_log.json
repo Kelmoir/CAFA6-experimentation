@@ -19235,6 +19235,38 @@
    }
   ]
  },
+ "GO:0036402": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P62193",
+     "Q94BQ2"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q3T030",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q3T030 is BINDING 205-213, which involves ATP binding. While this matches the GO term's primary reaction (ATP catalysis), it does not specify the domain or mechanism within the proteasome that carries out the unfolding and channel opening described in the definition. Therefore, no positional feature directly explains why Q3T030 carries the GO term \"proteasome-activat"
+   },
+   {
+    "accession": "Q9SSB5",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for ATP (BINDING 208-216) is relevant to the chemistry of ATP hydrolysis described in the GO term's definition, but it does not directly explain why the protein carries the term \"proteasome-activating activity\" \u2014 it only indicates that ATP binds to the protein. The primary reaction involves ATP hydrolysis to drive proteolytic activity, which is not explicitly captured by this feat"
+   }
+  ]
+ },
  "GO:0036412": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -19288,5 +19320,153 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0036467": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "P14173"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "pyridoxal 5'-phosphate",
+    "accessions": [
+     "P05031"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P20711",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P20711 directly matches the chemistry of the reaction defined by the GO term, so there is no single feature that plausibly explains why the protein carries this term."
+   },
+   {
+    "accession": "Q6ZJK7",
+    "reason": "none_verdict",
+    "reasoning": "No single annotated feature provides positional evidence for the primary reaction of the GO term, which is catalysis of 5-hydroxy-L-tryptophan + H+ = CO2 + serotonin."
+   }
+  ]
+ },
+ "GO:0036468": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "O88533",
+     "P20711"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "pyridoxal 5'-phosphate",
+    "accessions": [
+     "P14173"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0AA51Z3J4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the GO term's defined reaction, as all features are generic and do not directly explain the catalytic mechanism of L-dopa decarboxylation."
+   }
+  ]
+ },
+ "GO:0036505": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O60883",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the primary reaction of combining with prosaposin to initiate a change in cell activity."
+   },
+   {
+    "accession": "O15354",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the defined chemistry of \"combining with prosaposin to initiate a change in cell activity.\" The features present are either disordered regions or cleavage sites, which do not directly support the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "Q99JG2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's positional data directly matches the primary reaction of the GO term, which is combining with prosaposin to initiate a change in cell activity. The disordered regions are not specific enough to explain this function."
+   },
+   {
+    "accession": "Q9QY42",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the primary reaction of combining with prosaposin to initiate a change in cell activity."
+   }
+  ]
+ },
+ "GO:0038025": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "LDL-receptor class A 1",
+    "accessions": [
+     "P98156"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P98155",
+    "go_id": "GO:0038025",
+    "feature_type": "MOTIF",
+    "start": 831,
+    "end": 837,
+    "signal_kind": "text",
+    "signal_value": "Endocytosis signal",
+    "reasoning": "The \"EGF-like 1\" domain in the range 395-435 could be related to EGF signaling, which is a class of proteins that often act as receptors for growth factors. However, this feature does not directly describe the interaction with reelin or the transmembrane signal transmission, which are the primary reaction described by the GO term. The \"Endocytosis signal\" motif in the range 831-837 is more generic"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q14114",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q924X6",
+    "reason": "unresolved_pointer",
+    "detail": "no matching BINDING 408-448 on record for Q924X6 -- pointer didn't resolve",
+    "reported_feature": "BINDING 408-448",
+    "reasoning": "The binding site for EGF-like 2; calcium-binding (BINDING 408-448) is a plausible candidate, but it does not directly match the defined function of reelin receptor activity. The definition specifies the ligand as reelin, not calcium, and no other feature in the Annotated features section provides a clear mechanistic basis for the signal transduction process described."
+   }
+  ]
  }
 }

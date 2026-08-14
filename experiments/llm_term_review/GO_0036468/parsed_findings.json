@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "O88533",
+      "go_id": "GO:0036468",
+      "feature_type": "BINDING",
+      "start": 81,
+      "end": 82,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site at position 81-82 directly corresponds to the interaction of L-dopa as a substrate, which is the primary reaction defined for the molecular function GO:0036468. This feature provides strong evidence that the protein carries this function."
+    },
+    {
+      "accession": "P20711",
+      "go_id": "GO:0036468",
+      "feature_type": "BINDING",
+      "start": 81,
+      "end": 82,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site at 81-82 directly reflects the primary reaction of L-dopa decarboxylase activity, where the enzyme catalyzes the conversion of L-dopa to dopamine. This specific feature is essential for the enzyme's function and provides a strong match to the GO term's chemistry."
+    },
+    {
+      "accession": "P14173",
+      "go_id": "GO:0036468",
+      "feature_type": "BINDING",
+      "start": 147,
+      "end": 148,
+      "signal_kind": "ligand",
+      "signal_value": "pyridoxal 5'-phosphate",
+      "reasoning": "The binding of pyridoxal 5'-phosphate at position 147-148 directly supports the chemistry described by the GO term, which involves L-dopa decarboxylation. This feature is more specific to the reaction mechanism than generic substrate binding."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A0AA51Z3J4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the GO term's defined reaction, as all features are generic and do not directly explain the catalytic mechanism of L-dopa decarboxylation."
+    }
+  ]
+}
