@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "O97788",
+      "go_id": "GO:0060229",
+      "feature_type": "BINDING",
+      "start": 126,
+      "end": 129,
+      "signal_kind": "ligand",
+      "signal_value": "a fatty acid",
+      "reasoning": "The binding of a fatty acid to the protein at positions 126-129 most plausibly explains why it carries the GO term \"lipase activator activity,\" as this directly matches the primary reaction described in the term's definition."
+    },
+    {
+      "accession": "P70623",
+      "go_id": "GO:0060229",
+      "feature_type": "BINDING",
+      "start": 126,
+      "end": 129,
+      "signal_kind": "ligand",
+      "signal_value": "a fatty acid",
+      "reasoning": "The \"BINDING\" feature at position 126-129 directly supports the primary reaction of the GO term by indicating that the protein interacts with a fatty acid, which is the ligand involved in activating a lipase. This matches the chemistry described in the GO term's definition more specifically than any other annotated feature."
+    },
+    {
+      "accession": "Q9DBL9",
+      "go_id": "GO:0060229",
+      "feature_type": "DOMAIN",
+      "start": 78,
+      "end": 184,
+      "signal_kind": "text",
+      "signal_value": "AB hydrolase-1",
+      "reasoning": "The DOMAIN annotation specifically matches the enzyme class (AB hydrolase) associated with the function described in the GO term's definition, making it the most plausible explanation for why Q9DBL9 carries the term \"lipase activator activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q6Q788",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

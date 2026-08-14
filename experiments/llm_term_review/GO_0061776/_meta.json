@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0061776",
+  "name": "ATP-dependent topological DNA co-entrapment activity",
+  "def": "A DNA binding activity in which a protein complex interacts with at least one DNA duplex to encircle the DNA molecules with a loose fitting ring.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P36626",
+    "Q23243"
+  ],
+  "assigned_accessions": [
+    "P36626",
+    "Q23243"
+  ]
+}

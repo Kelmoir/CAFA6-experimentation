@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0061135",
+  "name": "endopeptidase regulator activity",
+  "def": "Binds to and modulates the activity of a peptidase, any enzyme that hydrolyzes nonterminal peptide bonds in polypeptides.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P41234",
+    "Q9BZC7",
+    "Q9ESR9"
+  ],
+  "assigned_accessions": [
+    "P41234",
+    "Q9BZC7",
+    "Q9ESR9"
+  ]
+}

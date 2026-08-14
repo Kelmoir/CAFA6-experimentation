@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0060229",
+  "name": "lipase activator activity",
+  "def": "Binds to and increases the activity of a lipase, an enzyme that catalyzes of the hydrolysis of a lipid.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "O97788",
+    "P70623",
+    "Q6Q788",
+    "Q9DBL9"
+  ],
+  "assigned_accessions": [
+    "O97788",
+    "P70623",
+    "Q6Q788",
+    "Q9DBL9"
+  ]
+}

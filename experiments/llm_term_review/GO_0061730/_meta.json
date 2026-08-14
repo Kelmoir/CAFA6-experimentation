@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0061730",
+  "name": "C-rich strand telomeric DNA binding",
+  "def": "Binding to C-rich, single-stranded, telomere-associated DNA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P42001"
+  ],
+  "assigned_accessions": [
+    "P42001"
+  ]
+}

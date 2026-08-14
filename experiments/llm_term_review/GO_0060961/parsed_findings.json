@@ -1,0 +1,22 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q61548",
+      "go_id": "GO:0060961",
+      "feature_type": "DOMAIN",
+      "start": 13,
+      "end": 145,
+      "signal_kind": "text",
+      "signal_value": "ENTH",
+      "reasoning": "The highest score (7) corresponds to the DOMAIN 13-145 annotation, which could plausibly be the domain responsible for the enzyme-related function described in the GO term's definition. However, without more specific evidence that directly links this domain to inhibiting phospholipase D activity, it remains a plausible but not definitive match."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q05140",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong, specific match to the primary reaction of inhibiting phospholipase D as defined by GO:0060961."
+    }
+  ]
+}
