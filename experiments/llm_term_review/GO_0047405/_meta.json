@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047405",
+  "name": "pyrimidine-5'-nucleotide nucleosidase activity",
+  "def": "Catalysis of the reaction: H2O + a pyrimidine 5'-nucleotide = ribose-5-phosphate + a pyrimidine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0ADR8"
+  ],
+  "assigned_accessions": [
+    "P0ADR8"
+  ]
+}

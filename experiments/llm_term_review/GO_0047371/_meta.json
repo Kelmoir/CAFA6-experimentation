@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047371",
+  "name": "butyrate-acetoacetate CoA-transferase activity",
+  "def": "Catalysis of the reaction: acetoacetate + butanoyl-CoA = acetoacetyl-CoA + butanoate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P76459"
+  ],
+  "assigned_accessions": [
+    "P76459"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047400",
+  "name": "phosphonoacetate hydrolase activity",
+  "def": "Catalysis of the reaction: H2O + phosphonoacetate = acetate + H+ + phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AFJ1"
+  ],
+  "assigned_accessions": [
+    "P0AFJ1"
+  ]
+}

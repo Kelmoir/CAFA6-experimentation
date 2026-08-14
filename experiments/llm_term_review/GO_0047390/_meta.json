@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0047390",
+  "name": "glycerophosphocholine cholinephosphodiesterase activity",
+  "def": "Catalysis of the reaction: sn-glycero-3-phosphocholine + H2O = choline phosphate + glycerol + H+.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q6UWR7",
+    "Q8BGN3"
+  ],
+  "assigned_accessions": [
+    "Q6UWR7",
+    "Q8BGN3"
+  ]
+}

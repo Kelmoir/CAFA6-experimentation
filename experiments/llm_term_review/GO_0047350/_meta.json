@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047350",
+  "name": "glucuronate-1-phosphate uridylyltransferase activity",
+  "def": "Catalysis of the reaction: 1-phospho-alpha-D-glucuronate + UTP = diphosphate + UDP-alpha-D-glucuronate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9C5I1"
+  ],
+  "assigned_accessions": [
+    "Q9C5I1"
+  ]
+}

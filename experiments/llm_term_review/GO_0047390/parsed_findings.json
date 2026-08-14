@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8BGN3",
+      "go_id": "GO:0047390",
+      "feature_type": "BINDING",
+      "start": 31,
+      "end": 32,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site at positions 31-32 is explicitly annotated as \"substrate,\" which aligns with the primary reaction of the GO term, making it the most plausible explanation for why the protein carries this molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q6UWR7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong match to the primary reaction mechanism of the GO term. The only plausible candidate (ACT_SITE 70-71) is too generic and does not directly explain the molecular function."
+    }
+  ]
+}

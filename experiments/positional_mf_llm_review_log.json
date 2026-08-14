@@ -23477,6 +23477,36 @@
    }
   ]
  },
+ "GO:0047323": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "O14874",
+     "O55028"
+    ],
+    "reason": "circular agreement -- only 1 of 2 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Histidine kinase",
+    "accessions": [
+     "Q00972"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
  "GO:0047330": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -23507,6 +23537,221 @@
   "issues": [
    {
     "accession": "Q9C5I1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047345": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FK51",
+    "reason": "none_verdict",
+    "reasoning": "The defined molecular function for ribose-5-phosphate adenylyltransferase activity involves catalyzing a specific reaction, but none of the annotated features directly explain *why* this protein carries that term in a way that is more specific than the general role of binding substrates or cofactors."
+   }
+  ]
+ },
+ "GO:0047350": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9C5I1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047371": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P76459",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the specific reaction catalyzed by the protein in the GO term's definition. The only available feature (ACT_SITE) is too generic to be considered a strong match."
+   }
+  ]
+ },
+ "GO:0047374": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "acyl-ester intermediate",
+    "accessions": [
+     "O00748",
+     "P23141"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P10768",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P10768's Annotated features section provides a clear structural or functional basis for the methylumbelliferyl-acetate deacetylase activity described by GO:0047374. The only evidence provided is the presence of three ACT_SITE regions associated with a charge relay system, which does not directly explain the enzyme's function."
+   }
+  ]
+ },
+ "GO:0047376": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "acyl-ester intermediate",
+    "accessions": [
+     "G3V7J5",
+     "Q64573"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PLAT",
+    "accessions": [
+     "P16233"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q63108",
+    "reason": "none_verdict",
+    "reasoning": "The defined chemical reaction for the GO term involves ester hydrolysis, which is not directly explained by any of the protein's annotated features. The available features are either unrelated to the reaction mechanism or only describe secondary consequences. Therefore, no single annotated feature provides a strong explanation for why the protein carries this GO term."
+   }
+  ]
+ },
+ "GO:0047386": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P11491",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly or specifically match the GO term's primary reaction, which involves catalyzing the conversion of fructose-2,6-bisphosphate to fructofuranose 2-phosphate. The binding sites and regions described are generic and do not provide a strong mechanistic basis for the enzyme carrying this specific molecular function."
+   }
+  ]
+ },
+ "GO:0047390": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q8BGN3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6UWR7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the primary reaction mechanism of the GO term. The only plausible candidate (ACT_SITE 70-71) is too generic and does not directly explain the molecular function."
+   }
+  ]
+ },
+ "GO:0047394": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9ESM6",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0047396": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PI-PLC X-box",
+    "accessions": [
+     "P09194"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0047400": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AFJ1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047405": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0ADR8",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }

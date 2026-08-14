@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "G3V7J5",
+      "go_id": "GO:0047376",
+      "feature_type": "ACT_SITE",
+      "start": 236,
+      "end": 237,
+      "signal_kind": "text",
+      "signal_value": "Acyl-ester intermediate",
+      "reasoning": "The \"ACT_SITE\" feature with coordinates 236-237 most plausibly explains why the protein carries the GO term, as it directly relates to the reaction mechanism of ester hydrolysis and the processing of an acyl-ester intermediate."
+    },
+    {
+      "accession": "P16233",
+      "go_id": "GO:0047376",
+      "feature_type": "DOMAIN",
+      "start": 354,
+      "end": 465,
+      "signal_kind": "text",
+      "signal_value": "PLAT",
+      "reasoning": "The \"DOMAIN\" region (354-465) annotated with PLAT suggests that the protein has a structure related to lipase or hydrolase activity, which aligns with the GO term's description of catalyzing the reaction between all-trans-retinyl palmitate and water to produce all-trans-retinol and palmitate. This provides a plausible structural basis for why the protein carries the GO term."
+    },
+    {
+      "accession": "Q64573",
+      "go_id": "GO:0047376",
+      "feature_type": "ACT_SITE",
+      "start": 220,
+      "end": 221,
+      "signal_kind": "text",
+      "signal_value": "Acyl-ester intermediate",
+      "reasoning": "The ACT_SITE 220-221 annotation directly relates to the defined chemistry of the GO term, as it refers to an acyl-ester intermediate in the reaction catalyzed by all-trans-retinyl-palmitate hydrolase. This is a strong match to the primary reaction described in the GO definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q63108",
+      "reason": "none_verdict",
+      "reasoning": "The defined chemical reaction for the GO term involves ester hydrolysis, which is not directly explained by any of the protein's annotated features. The available features are either unrelated to the reaction mechanism or only describe secondary consequences. Therefore, no single annotated feature provides a strong explanation for why the protein carries this GO term."
+    }
+  ]
+}

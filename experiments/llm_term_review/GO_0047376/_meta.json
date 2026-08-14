@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047376",
+  "name": "all-trans-retinyl-palmitate hydrolase, all-trans-retinol forming activity",
+  "def": "Catalysis of the reaction: all-trans-retinyl palmitate + H2O = all-trans-retinol + H+ + palmitate.",
+  "n_proteins_total": 19,
+  "sampled_accessions": [
+    "G3V7J5",
+    "P16233",
+    "Q63108",
+    "Q64573"
+  ],
+  "assigned_accessions": [
+    "G3V7J5",
+    "P16233",
+    "Q63108",
+    "Q64573"
+  ]
+}

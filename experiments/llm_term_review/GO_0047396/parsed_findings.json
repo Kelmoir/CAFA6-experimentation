@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P09194",
+      "go_id": "GO:0047396",
+      "feature_type": "DOMAIN",
+      "start": 24,
+      "end": 198,
+      "signal_kind": "text",
+      "signal_value": "PI-PLC X-box",
+      "reasoning": "The DOMAIN 24-198 with the note \"PI-PLC X-box\" directly corresponds to the enzymatic activity described in the GO term, making it a strong and specific match."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

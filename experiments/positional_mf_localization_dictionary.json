@@ -20852,6 +20852,24 @@
    "charge relay system"
   ]
  },
+ "GO:0047374": {
+  "name": "methylumbelliferyl-acetate deacetylase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "acyl-ester intermediate"
+  ]
+ },
+ "GO:0047376": {
+  "name": "all-trans-retinyl-palmitate hydrolase, all-trans-retinol forming activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "acyl-ester intermediate"
+  ]
+ },
  "GO:0047385": {
   "name": "[3-methyl-2-oxobutanoate dehydrogenase (lipoamide)]-phosphatase activity",
   "ligands": [],

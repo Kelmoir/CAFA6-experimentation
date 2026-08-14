@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047396",
+  "name": "glycosylphosphatidylinositol diacylglycerol-lyase activity",
+  "def": "Catalysis of the reaction: 6-(alpha-D-glucosaminyl)-1-phosphatidyl-1D-myo-inositol = 1,2-diacyl-sn-glycerol + 6-(alpha-D-glucosaminyl)-1D-myo-inositol 1,2-cyclic phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P09194"
+  ],
+  "assigned_accessions": [
+    "P09194"
+  ]
+}

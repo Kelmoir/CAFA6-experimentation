@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047345",
+  "name": "ribose-5-phosphate adenylyltransferase activity",
+  "def": "Catalysis of the reaction: D-ribose 5-phosphate + ADP + H+ = ADP-ribose + phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FK51"
+  ],
+  "assigned_accessions": [
+    "Q9FK51"
+  ]
+}

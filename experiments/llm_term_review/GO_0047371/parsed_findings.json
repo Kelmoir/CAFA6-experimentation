@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P76459",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the specific reaction catalyzed by the protein in the GO term's definition. The only available feature (ACT_SITE) is too generic to be considered a strong match."
+    }
+  ]
+}

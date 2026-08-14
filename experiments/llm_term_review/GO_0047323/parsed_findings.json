@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "O14874",
+      "go_id": "GO:0047323",
+      "feature_type": "BINDING",
+      "start": 278,
+      "end": 279,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP directly matches the primary reaction mechanism described in the GO term's definition, indicating that this feature plausibly explains why the protein carries the molecular function."
+    },
+    {
+      "accession": "O55028",
+      "go_id": "GO:0047323",
+      "feature_type": "BINDING",
+      "start": 278,
+      "end": 279,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site at position 278-279 directly involves ATP, which is the primary phosphate donor in the reaction described by the GO term, making it the most plausible explanation for the molecular function."
+    },
+    {
+      "accession": "Q00972",
+      "go_id": "GO:0047323",
+      "feature_type": "DOMAIN",
+      "start": 158,
+      "end": 404,
+      "signal_kind": "text",
+      "signal_value": "Histidine kinase",
+      "reasoning": "The domain annotation \"Histidine kinase\" directly supports the primary reaction mechanism described in the GO term, providing a structural basis for the enzyme's function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

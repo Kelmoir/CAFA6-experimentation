@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047386",
+  "name": "fructose-2,6-bisphosphate 6-phosphatase activity",
+  "def": "Catalysis of the reaction: beta-D-fructose 2,6-bisphosphate + H2O = beta-D-fructofuranose 2-phosphate + phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P11491"
+  ],
+  "assigned_accessions": [
+    "P11491"
+  ]
+}

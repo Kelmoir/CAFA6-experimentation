@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0047374",
+  "name": "methylumbelliferyl-acetate deacetylase activity",
+  "def": "Catalysis of the reaction: 4-methylumbelliferyl acetate + H2O = 4-methylumbelliferone + acetate + H+.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O00748",
+    "P10768",
+    "P23141"
+  ],
+  "assigned_accessions": [
+    "O00748",
+    "P10768",
+    "P23141"
+  ]
+}

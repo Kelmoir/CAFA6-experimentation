@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0047323",
+  "name": "[3-methyl-2-oxobutanoate dehydrogenase (acetyl-transferring)] kinase activity",
+  "def": "Catalysis of the reaction: ATP + L-seryl-[3-methyl-2-oxobutanoate dehydrogenase] = ADP + H+ + O-phospho-L-seryl-[3-methyl-2-oxobutanoate dehydrogenase].",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O14874",
+    "O55028",
+    "Q00972"
+  ],
+  "assigned_accessions": [
+    "O14874",
+    "O55028",
+    "Q00972"
+  ]
+}

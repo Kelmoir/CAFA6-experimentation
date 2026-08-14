@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O00748",
+      "go_id": "GO:0047374",
+      "feature_type": "ACT_SITE",
+      "start": 227,
+      "end": 228,
+      "signal_kind": "text",
+      "signal_value": "Acyl-ester intermediate",
+      "reasoning": "The ACT_SITE 227-228 annotation describes an acyl-ester intermediate, which is directly involved in the reaction catalyzed by methylumbelliferyl-acetate deacetylase activity. This feature provides a structural/functional basis for the enzyme's activity as defined by the GO term."
+    },
+    {
+      "accession": "P23141",
+      "go_id": "GO:0047374",
+      "feature_type": "ACT_SITE",
+      "start": 220,
+      "end": 221,
+      "signal_kind": "text",
+      "signal_value": "Acyl-ester intermediate",
+      "reasoning": "The ACT_SITE region at positions 220-221 directly matches the enzyme's chemistry of acting on an acyl-ester intermediate, which is the primary reaction defined by the GO term. This feature provides a strong and specific match to the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P10768",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P10768's Annotated features section provides a clear structural or functional basis for the methylumbelliferyl-acetate deacetylase activity described by GO:0047374. The only evidence provided is the presence of three ACT_SITE regions associated with a charge relay system, which does not directly explain the enzyme's function."
+    }
+  ]
+}
