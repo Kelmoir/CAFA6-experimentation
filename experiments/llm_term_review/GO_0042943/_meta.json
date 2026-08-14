@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0042943",
+  "name": "D-amino acid transmembrane transporter activity",
+  "def": "Enables the transfer of D-amino acids from one side of a membrane to the other. D-amino acids are the D-enantiomers of amino acids.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "B3NV41",
+    "B4NDL8",
+    "B4R4T6",
+    "Q29GB8"
+  ],
+  "assigned_accessions": [
+    "B3NV41",
+    "B4NDL8",
+    "B4R4T6",
+    "Q29GB8"
+  ]
+}

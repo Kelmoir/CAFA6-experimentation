@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0042931",
+  "name": "enterobactin transmembrane transporter activity",
+  "def": "Enables the directed movement of the siderochrome enterochelin, a cyclic trimer of 2, 3 dihydroxybenzoylserine from one side of a membrane to the other.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "P02930",
+    "P24077",
+    "P31224",
+    "Q05098"
+  ],
+  "assigned_accessions": [
+    "P02930",
+    "P24077",
+    "P31224",
+    "Q05098"
+  ]
+}

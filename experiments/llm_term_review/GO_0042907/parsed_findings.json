@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P48777",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q07307",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's section provides a clear structural or functional basis for the defined molecular function of \"xanthine transmembrane transporter activity.\""
+    },
+    {
+      "accession": "Q9HE12",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P67444",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the mechanism of xanthine transmembrane transport, only functional aspects like affinity and purine uptake."
+    }
+  ]
+}

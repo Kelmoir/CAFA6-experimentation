@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0043167",
+  "name": "ion binding",
+  "def": "Binding to an ion, a charged atoms or groups of atoms.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9PRS8"
+  ],
+  "assigned_accessions": [
+    "Q9PRS8"
+  ]
+}

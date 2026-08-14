@@ -20035,6 +20035,107 @@
    }
   ]
  },
+ "GO:0042907": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P48777",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q07307",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's section provides a clear structural or functional basis for the defined molecular function of \"xanthine transmembrane transporter activity.\""
+   },
+   {
+    "accession": "Q9HE12",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P67444",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the mechanism of xanthine transmembrane transport, only functional aspects like affinity and purine uptake."
+   }
+  ]
+ },
+ "GO:0042931": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "TonB box",
+    "accessions": [
+     "Q05098"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P02930",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's sequence provides a direct structural or functional explanation for the defined reaction of \"enterobactin transmembrane transporter activity.\" The only evidence is about disordered regions, which do not directly account for the transport mechanism described in the GO term."
+   },
+   {
+    "accession": "P24077",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P31224",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves the directed transport of a specific molecule across a membrane."
+   }
+  ]
+ },
+ "GO:0042943": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Disordered",
+    "accessions": [
+     "B4R4T6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B3NV41",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for B3NV41 that could plausibly explain why it carries the GO term \"D-amino acid transmembrane transporter activity\" is the \"REGION 0-36\" with a note that it is Disordered. However, this feature does not provide a strong match to the primary reaction described in the GO term's definition, which involves the transfer of D-amino acids across a membrane. The \"REGION 0-36\" o"
+   },
+   {
+    "accession": "B4NDL8",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for B4NDL8 is a generic \"REGION\" span (0-37) marked as Disordered, which does not provide any evidence of D-amino acid transport activity. This feature is not specific to the defined function of the GO term and therefore cannot be used to explain why the protein carries the term."
+   },
+   {
+    "accession": "Q29GB8",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein is a disordered region (REGION 0-55), but it does not provide a strong match to the primary reaction of D-amino acid transfer as defined by the GO term. It is generic and could apply to any protein with a disordered region, not specifically explaining the GO term's own chemistry."
+   }
+  ]
+ },
  "GO:0042944": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -20071,5 +20172,101 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0042960": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AB93",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0042970": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AA67",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation of the mechanism or structural basis for the GO term's primary reaction."
+   },
+   {
+    "accession": "P0AG34",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0043028": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "BH3",
+    "accessions": [
+     "P55957"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Cleavage; by caspases",
+    "accessions": [
+     "Q24307"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q24106",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the defined chemistry or mechanism of binding and modulating a cysteine-type endopeptidase. The \"Domain/family cross-references\" section is empty, so no domain can be identified as being responsible for this function."
+   },
+   {
+    "accession": "Q8MIP2",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature that could plausibly explain the binding and modulation of a cysteine-type endopeptidase is DNA_BIND 54-149, but the note \"Fork-head\" suggests this domain may be associated with forkhead transcription factors rather than directly modulating an endopeptidase. This feature does not clearly align with the primary reaction of the GO term, which involves binding to and modula"
+   }
+  ]
+ },
+ "GO:0043167": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9PRS8",
+    "go_id": "GO:0043167",
+    "feature_type": "DOMAIN",
+    "start": 11,
+    "end": 139,
+    "signal_kind": "text",
+    "signal_value": "C-type lectin",
+    "reasoning": "The DOMAIN feature spans positions 11-139 and is associated with the C-type lectin family, which includes proteins capable of ion binding. While the feature does not explicitly state \"ion binding,\" it is a plausible candidate for implementing this function. However, no other annotated features specifically mention ion binding or a related mechanism, making the match uncertain."
+   }
+  ],
+  "issues": []
  }
 }

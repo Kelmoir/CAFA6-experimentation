@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0042970",
+  "name": "homoserine transmembrane transporter activity",
+  "def": "Enables the transfer of homoserine from one side of a membrane to the other. Homoserine is alpha-amino-gamma-hydroxybutyric acid, an intermediate in the biosynthesis of cystathionine, threonine and methionine.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P0AA67",
+    "P0AG34"
+  ],
+  "assigned_accessions": [
+    "P0AA67",
+    "P0AG34"
+  ]
+}

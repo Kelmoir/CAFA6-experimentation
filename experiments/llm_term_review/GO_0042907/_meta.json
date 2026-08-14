@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0042907",
+  "name": "xanthine transmembrane transporter activity",
+  "def": "Enables the transfer of xanthine from one side of a membrane to the other. Xanthine (2,6-dihydroxypurine) is a purine formed in the metabolic breakdown of guanine, but is not present in nucleic acids.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "P48777",
+    "P67444",
+    "Q07307",
+    "Q9HE12"
+  ],
+  "assigned_accessions": [
+    "P48777",
+    "P67444",
+    "Q07307",
+    "Q9HE12"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q05098",
+      "go_id": "GO:0042931",
+      "feature_type": "MOTIF",
+      "start": 38,
+      "end": 44,
+      "signal_kind": "text",
+      "signal_value": "TonB box",
+      "reasoning": "The \"TonB box\" motif directly relates to the function described by the GO term, which involves the directed movement of enterobactin across a membrane. This makes it the most plausible explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P02930",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's sequence provides a direct structural or functional explanation for the defined reaction of \"enterobactin transmembrane transporter activity.\" The only evidence is about disordered regions, which do not directly account for the transport mechanism described in the GO term."
+    },
+    {
+      "accession": "P24077",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P31224",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves the directed transport of a specific molecule across a membrane."
+    }
+  ]
+}

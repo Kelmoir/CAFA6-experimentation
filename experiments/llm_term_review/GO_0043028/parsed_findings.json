@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P55957",
+      "go_id": "GO:0043028",
+      "feature_type": "MOTIF",
+      "start": 85,
+      "end": 100,
+      "signal_kind": "text",
+      "signal_value": "BH3",
+      "reasoning": "The BH3 motif is a well-known structural feature associated with proteins that regulate cysteine-type endopeptidases during apoptosis, making it a strong match to the defined function of the GO term."
+    },
+    {
+      "accession": "Q24307",
+      "go_id": "GO:0043028",
+      "feature_type": "SITE",
+      "start": 99,
+      "end": 101,
+      "signal_kind": "text",
+      "signal_value": "Cleavage; by caspases",
+      "reasoning": "The SITE feature directly supports the \"apoptotic process\" aspect of the GO term's definition by indicating that the protein cleaves by caspases, which is a key mechanism in apoptosis. This matches the primary reaction described in the GO term's definition more specifically than any other annotated feature."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q24106",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the defined chemistry or mechanism of binding and modulating a cysteine-type endopeptidase. The \"Domain/family cross-references\" section is empty, so no domain can be identified as being responsible for this function."
+    },
+    {
+      "accession": "Q8MIP2",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature that could plausibly explain the binding and modulation of a cysteine-type endopeptidase is DNA_BIND 54-149, but the note \"Fork-head\" suggests this domain may be associated with forkhead transcription factors rather than directly modulating an endopeptidase. This feature does not clearly align with the primary reaction of the GO term, which involves binding to and modula"
+    }
+  ]
+}

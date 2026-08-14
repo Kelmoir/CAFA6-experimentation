@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0043028",
+  "name": "cysteine-type endopeptidase regulator activity involved in apoptotic process",
+  "def": "Binds to and modulates the activity of a cysteine-type endopeptidase involved in the apoptotic process.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P55957",
+    "Q24106",
+    "Q24307",
+    "Q8MIP2"
+  ],
+  "assigned_accessions": [
+    "P55957",
+    "Q24106",
+    "Q24307",
+    "Q8MIP2"
+  ]
+}

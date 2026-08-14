@@ -1,0 +1,5 @@
+## Q9PRS8 GO:0043167
+verdict: UNCERTAIN
+feature: DOMAIN 11-139
+reasoning: The DOMAIN feature spans positions 11-139 and is associated with the C-type lectin family, which includes proteins capable of ion binding. While the feature does not explicitly state "ion binding," it is a plausible candidate for implementing this function. However, no other annotated features specifically mention ion binding or a related mechanism, making the match uncertain.
+---
