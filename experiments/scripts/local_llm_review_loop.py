@@ -18,19 +18,27 @@ Code calls out to.
 Usage:
   python3 experiments/scripts/local_llm_review_loop.py --host http://192.168.1.122:1234 --rounds 10
 
-Each round: plan (agent-budget-capped term/protein selection) -> one HTTP completion per assigned
-protein -> parse each touched term -> retry any accession whose response was genuinely invalid
-(unresolved pointer, malformed verdict, wrong go_id -- not a decisive NONE, that's a real answer)
-once, re-parse if anything was retried -> merge -> rebuild links -> git commit -> short report
-(which GO terms merged). Safe to Ctrl-C between rounds; each round's git commit is a checkpoint,
-and plan_review_round.py never revisits an already-started term, so re-running this script later
-just continues where it left off.
+Each round: plan (agent-budget-capped term/protein selection) -> HTTP completions for every
+assigned protein across every term in the round, dispatched to a fixed-size thread pool
+(--concurrency, default 4 -- matches LM Studio's own observed throughput sweet spot: sending
+requests in packs of 4 measurably raises total tokens/sec versus one-at-a-time, presumably via
+the server's own continuous-batching path) -> as soon as a given term's whole protein sample has
+landed, that term is parsed/retried/merged immediately, on the main thread, while the thread
+pool's other workers keep generating for whichever terms haven't finished yet -- this overlaps
+LLM generation time for later terms with the (LLM-free, cheap) parse/merge bookkeeping for
+earlier ones instead of doing all generation first and all bookkeeping after -> once every term
+in the round has merged, rebuild links -> git commit -> short report (which GO terms merged).
+Safe to Ctrl-C between rounds; each round's git commit is a checkpoint, and plan_review_round.py
+never revisits an already-started term, so re-running this script later just continues where it
+left off.
 """
 import argparse
+import concurrent.futures
 import json
 import re
 import subprocess
 import sys
+import threading
 import time
 import urllib.error
 import urllib.request
@@ -38,6 +46,14 @@ from pathlib import Path
 
 ROOT = Path("experiments/llm_term_review")
 SCRIPTS = Path("experiments/scripts")
+
+# Guards every append to a term's findings.md/raw_debug.log: with --concurrency > 1, multiple
+# worker threads can finish protein reviews for the SAME term back-to-back (a term's whole
+# sample, up to 4 proteins, can be in flight across up to 4 workers at once), and interleaved
+# writes to the same file from separate threads would corrupt it. One global lock is enough --
+# each critical section is a single tiny file append, so contention is never a real bottleneck
+# next to the seconds-scale HTTP call it follows.
+_write_lock = threading.Lock()
 
 THINKING_INSTRUCTIONS = (
     "In the THINKING block, follow these steps in order:\n"
@@ -330,7 +346,7 @@ RETRYABLE_ISSUE_REASONS = {"unresolved_pointer", "invalid_verdict", "go_id_misma
 
 
 def review_protein(host, model, system_prompt, go_id, accession, review_text, term_dir,
-                    findings_path, request_timeout, max_tokens):
+                    findings_path, request_timeout, max_tokens, delay=0.0):
   """One LLM call for one (go_id, accession), appended to findings.md as a block. Shared by
   process_round (first pass) and retry_issues (second-chance pass on invalid responses) so both
   go through the exact same call/parse/debug-log/append logic. Returns (verdict, ftype, start,
@@ -362,10 +378,13 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
         f"reasoning: {reasoning}\n"
         f"---\n"
     )
-    with open(findings_path, "a") as fh:
-      fh.write(block)
+    with _write_lock:
+      with open(findings_path, "a") as fh:
+        fh.write(block)
     print(f"  {go_id} {accession}: NONE (no annotated features on record, skipped LLM call)")
     return verdict, ftype, start, end, reasoning, False
+  if delay:
+    time.sleep(delay)
   prompt = build_prompt(go_id, accession, protein_section)
   finish_reason = None
   try:
@@ -385,16 +404,17 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
       reasoning = f"[auto-resolved from cross-reference accession] {reasoning}"
       print(f"  {go_id} {accession}: auto-resolved cross-reference FEATURE to {ftype} {start}-{end}")
   if verdict == "UNPARSED" or reasoning_missing or auto_resolved:
-    with open(debug_path, "a") as dbg:
-      if auto_resolved:
-        tag = "auto-resolved cross-ref"
-      elif unparsed:
-        tag = f"finish_reason={finish_reason}"
-      elif verdict == "UNPARSED":
-        tag = "VERDICT missing"
-      else:
-        tag = "reasoning missing"
-      dbg.write(f"=== {accession} {go_id} ({tag}) ===\n{raw}\n\n")
+    with _write_lock:
+      with open(debug_path, "a") as dbg:
+        if auto_resolved:
+          tag = "auto-resolved cross-ref"
+        elif unparsed:
+          tag = f"finish_reason={finish_reason}"
+        elif verdict == "UNPARSED":
+          tag = "VERDICT missing"
+        else:
+          tag = "reasoning missing"
+        dbg.write(f"=== {accession} {go_id} ({tag}) ===\n{raw}\n\n")
   if auto_resolved:
     pass
   elif unparsed:
@@ -421,26 +441,58 @@ def review_protein(host, model, system_prompt, go_id, accession, review_text, te
       f"reasoning: {reasoning}\n"
       f"---\n"
   )
-  with open(findings_path, "a") as fh:
-    fh.write(block)
+  with _write_lock:
+    with open(findings_path, "a") as fh:
+      fh.write(block)
   print(f"  {go_id} {accession}: {verdict} ({ftype} {start}-{end})")
   return verdict, ftype, start, end, reasoning, unparsed
 
 
-def process_round(host, model, manifest, request_timeout, delay, max_tokens, system_prompt):
+def process_round(host, model, manifest, request_timeout, delay, max_tokens, system_prompt,
+                   concurrency):
+  """Dispatches every (go_id, accession) protein review in the round to a fixed-size thread pool
+  (concurrency workers, submitted all at once rather than term-by-term) so the pool always has up
+  to `concurrency` HTTP calls to the local model in flight -- as one finishes, the pool immediately
+  pulls the next queued job, regardless of which term it belongs to, which is what keeps the local
+  model continuously fed instead of idling between term-sized batches.
+  As soon as every accession assigned to a given term has completed (tracked via a per-term
+  countdown), that term's parse -> retry -> re-parse -> merge sequence runs immediately, on this
+  (the main) thread -- while the thread pool's remaining workers keep generating for whatever
+  terms haven't finished yet. This is the pipelining half of the optimization: bookkeeping for an
+  earlier-finishing term overlaps with generation time for a later one instead of the round doing
+  all generation first and all bookkeeping after. The merge/parse subprocess calls themselves stay
+  strictly single-threaded (only ever invoked from this main-thread loop), so there's no risk of
+  two terms' parse/merge steps interleaving.
+  Returns (touched, merged_terms).
+  """
   new_terms = manifest.get("new_terms", {})
-  touched = []
+  term_dirs, term_review_text, term_findings_path, pending = {}, {}, {}, {}
   for go_id, accessions in new_terms.items():
     term_dir = ROOT / go_id.replace(":", "_")
-    review_text = (term_dir / "review.md").read_text()
-    findings_path = term_dir / "findings.md"
-    for accession in accessions:
-      review_protein(host, model, system_prompt, go_id, accession, review_text, term_dir,
-                      findings_path, request_timeout, max_tokens)
-      if delay:
-        time.sleep(delay)
-    touched.append(go_id)
-  return touched
+    term_dirs[go_id] = term_dir
+    term_review_text[go_id] = (term_dir / "review.md").read_text()
+    term_findings_path[go_id] = term_dir / "findings.md"
+    pending[go_id] = len(accessions)
+
+  touched, merged_terms = [], []
+  with concurrent.futures.ThreadPoolExecutor(max_workers=concurrency) as executor:
+    futures = {}
+    for go_id, accessions in new_terms.items():
+      for accession in accessions:
+        fut = executor.submit(
+            review_protein, host, model, system_prompt, go_id, accession,
+            term_review_text[go_id], term_dirs[go_id], term_findings_path[go_id],
+            request_timeout, max_tokens, delay)
+        futures[fut] = go_id
+    for future in concurrent.futures.as_completed(futures):
+      go_id = futures[future]
+      future.result()  # surface any unexpected (non-network) exception immediately
+      pending[go_id] -= 1
+      if pending[go_id] == 0:
+        touched.append(go_id)
+        if merge_one_term(go_id, host, model, system_prompt, request_timeout, max_tokens):
+          merged_terms.append(go_id)
+  return touched, merged_terms
 
 
 def retry_issues(host, model, system_prompt, go_id, request_timeout, max_tokens):
@@ -474,20 +526,21 @@ def retry_issues(host, model, system_prompt, go_id, request_timeout, max_tokens)
   return len(to_retry)
 
 
-def merge_round(touched, host, model, system_prompt, request_timeout, max_tokens):
-  merged_terms = []
-  for go_id in touched:
+def merge_one_term(go_id, host, model, system_prompt, request_timeout, max_tokens):
+  """Parse -> retry any genuinely-invalid accessions once (sequentially -- retries are typically
+  0-1 accessions out of a term's up-to-4 sample, not worth pooling) -> re-parse if anything was
+  retried -> merge. Called from process_round() the instant a term's whole protein sample has
+  landed, so this runs on the main thread while the shared thread pool's other workers keep
+  generating for whichever terms in the round haven't finished yet."""
+  run([sys.executable, str(SCRIPTS / "parse_llm_findings.py"), go_id])
+  n_retried = retry_issues(host, model, system_prompt, go_id, request_timeout, max_tokens)
+  if n_retried:
     run([sys.executable, str(SCRIPTS / "parse_llm_findings.py"), go_id])
-    n_retried = retry_issues(host, model, system_prompt, go_id, request_timeout, max_tokens)
-    if n_retried:
-      run([sys.executable, str(SCRIPTS / "parse_llm_findings.py"), go_id])
-    result = subprocess.run(
-        [sys.executable, str(SCRIPTS / "merge_llm_findings.py"), go_id],
-        check=True, capture_output=True, text=True)
-    print(result.stdout, end="")
-    if re.match(rf"^{re.escape(go_id)}: merged [1-9]", result.stdout):
-      merged_terms.append(go_id)
-  return merged_terms
+  result = subprocess.run(
+      [sys.executable, str(SCRIPTS / "merge_llm_findings.py"), go_id],
+      check=True, capture_output=True, text=True)
+  print(result.stdout, end="")
+  return bool(re.match(rf"^{re.escape(go_id)}: merged [1-9]", result.stdout))
 
 
 def commit_round(round_n, merged_terms, total_agents):
@@ -515,7 +568,14 @@ def main():
   ap.add_argument("--model", default=None, help="Model id; auto-detected from /v1/models if omitted")
   ap.add_argument("--rounds", type=int, default=10)
   ap.add_argument("--request-timeout", type=int, default=180, help="Seconds per completion call")
-  ap.add_argument("--delay", type=float, default=0.0, help="Seconds to sleep between calls")
+  ap.add_argument("--concurrency", type=int, default=4,
+                   help="Max simultaneous HTTP calls to the local model. Default 4 matches the "
+                        "observed throughput sweet spot for LM Studio's own batching -- packs of "
+                        "4 concurrent requests measurably raise total tokens/sec versus issuing "
+                        "them one at a time.")
+  ap.add_argument("--delay", type=float, default=0.0,
+                   help="Seconds each worker sleeps before its call (per-call pacing, not a gap "
+                        "between dispatches -- dispatch itself is no longer sequential)")
   ap.add_argument("--chain-of-thought", type=str, default="",
                    help="Enables free-text reasoning before the answer -- recommended for "
                         "non-reasoning/smaller models, which judge more accurately with room to "
@@ -543,10 +603,9 @@ def main():
     if total_agents == 0:
       print("No more terms fit the budget (backlog may be exhausted). Stopping.")
       break
-    touched = process_round(args.host, model, manifest, args.request_timeout, args.delay,
-                             args.max_tokens, system_prompt)
-    merged_terms = merge_round(touched, args.host, model, system_prompt, args.request_timeout,
-                                args.max_tokens)
+    touched, merged_terms = process_round(args.host, model, manifest, args.request_timeout,
+                                           args.delay, args.max_tokens, system_prompt,
+                                           args.concurrency)
     run([sys.executable, str(SCRIPTS / "build_positional_mf_links.py")])
     commit_round(round_n, merged_terms, total_agents)
     print(f"Round {round_n} done. Merged: {', '.join(merged_terms) if merged_terms else 'none'}")
