@@ -17423,6 +17423,16 @@
    "box 1 motif"
   ]
  },
+ "GO:0042011": {
+  "name": "interleukin-16 binding",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR008424",
+   "Pfam:PF05790"
+  ],
+  "text_patterns": []
+ },
  "GO:0042018": {
   "name": "interleukin-22 receptor activity",
   "ligands": [],

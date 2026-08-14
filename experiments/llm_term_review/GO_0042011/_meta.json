@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0042011",
+  "name": "interleukin-16 binding",
+  "def": "Binding to interleukin-16.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P01730",
+    "P05540",
+    "P06332"
+  ],
+  "assigned_accessions": [
+    "P01730",
+    "P05540",
+    "P06332"
+  ]
+}

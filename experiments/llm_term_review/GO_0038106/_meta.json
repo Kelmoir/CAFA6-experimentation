@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0038106",
+  "name": "choriogonadotropin hormone binding",
+  "def": "Binding to choriogonadotropin hormone, a heterodimer, with an alpha subunit identical to that of luteinizing hormone (LH), follicle-stimulating hormone (FSH) and thyroid-stimulating hormone (TSH), and a unique beta subunit.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P16235",
+    "P22888",
+    "P30730",
+    "Q90674"
+  ],
+  "assigned_accessions": [
+    "P16235",
+    "P22888",
+    "P30730",
+    "Q90674"
+  ]
+}

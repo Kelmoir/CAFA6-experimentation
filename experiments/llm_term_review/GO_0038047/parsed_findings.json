@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P33535",
+      "go_id": "GO:0038047",
+      "feature_type": "MOTIF",
+      "start": 331,
+      "end": 336,
+      "signal_kind": "text",
+      "signal_value": "NPxxY; plays a role in stabilizing the activated conformation of the receptor",
+      "reasoning": "The \"MOTIF 331-336\" with NPxxY characteristics directly relates to stabilizing the activated conformation of the receptor, which is essential for transmitting the signal across the membrane as defined by GO:0038047. This matches the primary reaction described in the term's definition."
+    },
+    {
+      "accession": "P35372",
+      "go_id": "GO:0038047",
+      "feature_type": "MOTIF",
+      "start": 333,
+      "end": 338,
+      "signal_kind": "text",
+      "signal_value": "NPxxY; plays a role in stabilizing the activated conformation of the receptor",
+      "reasoning": "The \"MOTIF 333-338\" with the \"NPxxY\" qualifier directly relates to stabilizing the activated conformation of the receptor, which is a key mechanism for morphine receptor activity as defined."
+    },
+    {
+      "accession": "P42866",
+      "go_id": "GO:0038047",
+      "feature_type": "MOTIF",
+      "start": 331,
+      "end": 336,
+      "signal_kind": "text",
+      "signal_value": "NPxxY; plays a role in stabilizing the activated conformation of the receptor",
+      "reasoning": "The NPxxY motif in the specified region is directly relevant to stabilizing the activated conformation of the receptor, which aligns with the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P97266",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

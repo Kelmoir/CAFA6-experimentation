@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0038047",
+  "name": "morphine receptor activity",
+  "def": "Combining with morphine (17-methyl-7,8-didehydro-4,5alpha-epoxymorphinan-3,6alpha-diol), and transmitting the signal across the membrane by activating an associated G-protein.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P33535",
+    "P35372",
+    "P42866",
+    "P97266"
+  ],
+  "assigned_accessions": [
+    "P33535",
+    "P35372",
+    "P42866",
+    "P97266"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P22888",
+      "go_id": "GO:0038106",
+      "feature_type": "DOMAIN",
+      "start": 26,
+      "end": 66,
+      "signal_kind": "text",
+      "signal_value": "LRRNT",
+      "reasoning": "The DOMAIN 26-66 with the LRRNT motif is likely involved in hormone binding, which aligns with the GO term's definition, but it does not specifically confirm that this domain is responsible for the term. Thus, the match is plausible but not definitive."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P16235",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P30730",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q90674",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

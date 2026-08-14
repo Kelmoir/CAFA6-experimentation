@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0042019",
+  "name": "interleukin-23 binding",
+  "def": "Binding to interleukin-23.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8K4B4"
+  ],
+  "assigned_accessions": [
+    "Q8K4B4"
+  ]
+}

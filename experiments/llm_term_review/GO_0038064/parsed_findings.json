@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9HCN6",
+      "go_id": "GO:0038064",
+      "feature_type": "DOMAIN",
+      "start": 25,
+      "end": 104,
+      "signal_kind": "text",
+      "signal_value": "Ig-like C2-type 1",
+      "reasoning": "The Ig-like C2-type 1 domain is specifically associated with collagen binding and signal transduction, which are the primary reactions defined for the GO term \"collagen receptor activity.\""
+    },
+    {
+      "accession": "P61622",
+      "go_id": "GO:0038064",
+      "feature_type": "DOMAIN",
+      "start": 163,
+      "end": 345,
+      "signal_kind": "text",
+      "signal_value": "VWFA",
+      "reasoning": "The VWFA domain is directly associated with collagen receptor activity and signal transduction, aligning with the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q62469",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction described in the GO term's definition, which involves signal transmission from one side of the membrane to another. The presence of multiple Ca(2+) binding sites does not provide sufficient evidence to support the molecular function defined by GO:0038064."
+    },
+    {
+      "accession": "P0C191",
+      "reason": "none_verdict",
+      "reasoning": "The protein's annotated features do not provide a clear, specific explanation for the primary reaction described in the GO term \"collagen receptor activity.\" No positional feature directly supports this function."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0038062",
+  "name": "protein tyrosine kinase collagen receptor activity",
+  "def": "Combining with collagen and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity by catalysis of the reaction: ATP + a protein-L-tyrosine = ADP + a protein-L-tyrosine phosphate.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "Q16832",
+    "Q62371",
+    "Q63474",
+    "Q95ZV7"
+  ],
+  "assigned_accessions": [
+    "Q16832",
+    "Q62371",
+    "Q63474",
+    "Q95ZV7"
+  ]
+}

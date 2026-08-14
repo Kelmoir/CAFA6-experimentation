@@ -19468,5 +19468,191 @@
     "reasoning": "The binding site for EGF-like 2; calcium-binding (BINDING 408-448) is a plausible candidate, but it does not directly match the defined function of reelin receptor activity. The definition specifies the ligand as reelin, not calcium, and no other feature in the Annotated features section provides a clear mechanistic basis for the signal transduction process described."
    }
   ]
+ },
+ "GO:0038047": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "NPxxY; plays a role in stabilizing the activated conformation of the receptor",
+    "accessions": [
+     "P33535",
+     "P35372",
+     "P42866"
+    ],
+    "reason": "circular agreement -- only 1 of 3 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P97266",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0038062": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q16832"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "PPxY motif",
+    "accessions": [
+     "Q63474"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q62371",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly and specifically explains the defined reaction mechanism of ATP binding and phosphoryl transfer, which is central to the GO term's definition."
+   },
+   {
+    "accession": "Q95ZV7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q95ZV7 specifically matches the GO term's primary reaction of catalyzing ATP-dependent phosphorylation of protein tyrosine."
+   }
+  ]
+ },
+ "GO:0038064": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like C2-type 1",
+    "accessions": [
+     "Q9HCN6"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "VWFA",
+    "accessions": [
+     "P61622"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q62469",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction described in the GO term's definition, which involves signal transmission from one side of the membrane to another. The presence of multiple Ca(2+) binding sites does not provide sufficient evidence to support the molecular function defined by GO:0038064."
+   },
+   {
+    "accession": "P0C191",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features do not provide a clear, specific explanation for the primary reaction described in the GO term \"collagen receptor activity.\" No positional feature directly supports this function."
+   }
+  ]
+ },
+ "GO:0038106": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P22888",
+    "go_id": "GO:0038106",
+    "feature_type": "DOMAIN",
+    "start": 26,
+    "end": 66,
+    "signal_kind": "text",
+    "signal_value": "LRRNT",
+    "reasoning": "The DOMAIN 26-66 with the LRRNT motif is likely involved in hormone binding, which aligns with the GO term's definition, but it does not specifically confirm that this domain is responsible for the term. Thus, the match is plausible but not definitive."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P16235",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P30730",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q90674",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0042011": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR008424",
+     "Pfam:PF05790"
+    ],
+    "accessions": [
+     "P01730",
+     "P06332"
+    ],
+    "note": "resolved from DOMAIN note 'Ig-like C2-type 1' (8 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P05540",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein P05450 provides a direct explanation for the molecular function \"interleukin-16 binding\" as defined by GO:0042011."
+   }
+  ]
+ },
+ "GO:0042019": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8K4B4",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features for Q8K4B4 directly explain the molecular function of interleukin-23 binding, as they refer to fibronectin type-III domains rather than the specific interaction with interleukin-23."
+   }
+  ]
  }
 }

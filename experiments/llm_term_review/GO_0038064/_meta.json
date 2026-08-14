@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0038064",
+  "name": "collagen receptor activity",
+  "def": "Combining with a collagen and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "P0C191",
+    "P61622",
+    "Q62469",
+    "Q9HCN6"
+  ],
+  "assigned_accessions": [
+    "P0C191",
+    "P61622",
+    "Q62469",
+    "Q9HCN6"
+  ]
+}

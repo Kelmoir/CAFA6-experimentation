@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8K4B4",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features for Q8K4B4 directly explain the molecular function of interleukin-23 binding, as they refer to fibronectin type-III domains rather than the specific interaction with interleukin-23."
+    }
+  ]
+}

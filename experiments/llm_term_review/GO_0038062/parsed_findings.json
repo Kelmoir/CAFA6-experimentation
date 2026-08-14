@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q16832",
+      "go_id": "GO:0038062",
+      "feature_type": "BINDING",
+      "start": 568,
+      "end": 577,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP directly supports the primary reaction of the GO term, which involves catalyzing the phosphorylation of tyrosine. This feature is most specific and relevant to the function described in the definition."
+    },
+    {
+      "accession": "Q63474",
+      "go_id": "GO:0038062",
+      "feature_type": "MOTIF",
+      "start": 477,
+      "end": 481,
+      "signal_kind": "text",
+      "signal_value": "PPxY motif",
+      "reasoning": "The PPxY motif (MOTIF 477-481) directly matches the catalytic mechanism described in the GO term's primary reaction, making it the most plausible explanation for why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q62371",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly and specifically explains the defined reaction mechanism of ATP binding and phosphoryl transfer, which is central to the GO term's definition."
+    },
+    {
+      "accession": "Q95ZV7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q95ZV7 specifically matches the GO term's primary reaction of catalyzing ATP-dependent phosphorylation of protein tyrosine."
+    }
+  ]
+}
