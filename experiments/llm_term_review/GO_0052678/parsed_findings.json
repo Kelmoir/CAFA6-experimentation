@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "F2XFB2",
+      "go_id": "GO:0052678",
+      "feature_type": "BINDING",
+      "start": 391,
+      "end": 392,
+      "signal_kind": "ligand",
+      "signal_value": "Mg(2+)",
+      "reasoning": "The multiple binding sites with Mg(2+) in F2XFB2 directly support the primary reaction of the GO term, which involves catalysis of the reaction (+)-copalyl diphosphate = abieta-8(14),12-diene + diphosphate. This is a strong match to the chemistry defined by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

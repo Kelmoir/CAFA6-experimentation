@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052748",
+  "name": "baicalin beta-D-glucuronidase activity",
+  "def": "Catalysis of the reaction: baicalin + H2O = baicalein + D-glucuronate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LRC8"
+  ],
+  "assigned_accessions": [
+    "Q9LRC8"
+  ]
+}

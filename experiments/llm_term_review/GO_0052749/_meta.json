@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052749",
+  "name": "glucose-6-phosphate dehydrogenase (coenzyme F420) activity",
+  "def": "Catalysis of the reaction: beta-D-glucose 6-phosphate + coenzyme F420 + H+ = 6-O-phosphono-D-glucono-1,5-lactone + reduced coenzyme F420.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WNE1"
+  ],
+  "assigned_accessions": [
+    "P9WNE1"
+  ]
+}

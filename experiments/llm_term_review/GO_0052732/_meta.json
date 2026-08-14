@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0052732",
+  "name": "phosphoethanolamine phosphatase activity",
+  "def": "Catalysis of the reaction: phosphoethanolamine + H2O = ethanolamine + phosphate.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "O73884",
+    "P09487",
+    "Q92058",
+    "Q9FZ62"
+  ],
+  "assigned_accessions": [
+    "O73884",
+    "P09487",
+    "Q92058",
+    "Q9FZ62"
+  ]
+}

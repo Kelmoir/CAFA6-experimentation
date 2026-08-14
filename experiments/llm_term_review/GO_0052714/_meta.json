@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052714",
+  "name": "mannosyl-inositol phosphorylceramide phospholipase activity",
+  "def": "Catalysis of the reaction: mannosyl-inositol phosphorylceramide + H2O = C26-phytoceramide + mannosylphosphorylinositol.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O74369"
+  ],
+  "assigned_accessions": [
+    "O74369"
+  ]
+}

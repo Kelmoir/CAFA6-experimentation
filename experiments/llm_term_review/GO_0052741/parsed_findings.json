@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P0DO38",
+      "go_id": "GO:0052741",
+      "feature_type": "BINDING",
+      "start": 434,
+      "end": 435,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The BINDING domain at position 434-435 directly relates to the enzyme's mechanism of action, which involves the oxidation of limonene using heme as a cofactor. This feature matches the primary reaction described in the GO term and is specific to its function."
+    },
+    {
+      "accession": "P0DO39",
+      "go_id": "GO:0052741",
+      "feature_type": "BINDING",
+      "start": 434,
+      "end": 435,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding of heme at position 434-435 directly supports the monooxygenase activity described in the GO term's definition, which involves catalyzing the reaction of (4R)-limonene with oxygen. This is a strong match to the primary reaction mechanism of the GO term."
+    },
+    {
+      "accession": "P11712",
+      "go_id": "GO:0052741",
+      "feature_type": "BINDING",
+      "start": 434,
+      "end": 435,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding of heme at position 434-435 directly supports the monooxygenase activity described by the GO term, which is central to the reaction mechanism. This feature specifically matches the chemistry involved in the defined reaction and is not a generic or secondary consequence."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0DO41",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct structural or functional explanation for the enzyme activity described in the GO term's definition."
+    }
+  ]
+}

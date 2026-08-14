@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q07010",
+      "go_id": "GO:0052657",
+      "feature_type": "BINDING",
+      "start": 172,
+      "end": 173,
+      "signal_kind": "ligand",
+      "signal_value": "GMP",
+      "reasoning": "The binding of Mg(2+) at position 172-173 could support the function of guanine phosphoribosyltransferase by indicating that the enzyme requires Mg(2+) as a cofactor, but it does not directly explain why the protein carries the term itself."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "O13917",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of GO:0052657, and none provides a strong explanation for why this protein carries the term."
+    },
+    {
+      "accession": "P27605",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P27605 directly matches the GO term's primary reaction mechanism of catalyzing the phosphate transfer from diphosphate to GMP."
+    },
+    {
+      "accession": "Q9W719",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear structural or functional basis for the enzyme's catalytic activity as defined by the GO term."
+    }
+  ]
+}

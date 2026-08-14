@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052678",
+  "name": "levopimaradiene synthase activity",
+  "def": "Catalysis of the reaction: (+)-copalyl diphosphate = abieta-8(14),12-diene + diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "F2XFB2"
+  ],
+  "assigned_accessions": [
+    "F2XFB2"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0052673",
+  "name": "prenol kinase activity",
+  "def": "Catalysis of the reaction: prenol + nucleoside triphosphate = prenyl phosphate + nucleoside diphosphate activity.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P76423",
+    "Q67ZM7"
+  ],
+  "assigned_accessions": [
+    "P76423",
+    "Q67ZM7"
+  ]
+}

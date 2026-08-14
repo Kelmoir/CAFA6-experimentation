@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O73884",
+      "go_id": "GO:0052732",
+      "feature_type": "BINDING",
+      "start": 42,
+      "end": 43,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The \"BINDING 42-43\" feature explicitly mentions the substrate (phosphoethanolamine), which is directly involved in the catalytic reaction defined by the GO term, making it the most plausible explanation for why the protein carries this term."
+    },
+    {
+      "accession": "P09487",
+      "go_id": "GO:0052732",
+      "feature_type": "BINDING",
+      "start": 172,
+      "end": 173,
+      "signal_kind": "ligand",
+      "signal_value": "Mg(2+)",
+      "reasoning": "The binding of Mg(2+) at position 172-173 directly supports the catalytic activity of phosphoethanolamine phosphatase, which involves the removal of a phosphate group from phosphoethanolamine. This specific binding site is more likely to be the structural basis for the enzyme's function than other features that may indicate secondary or unrelated interactions."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9FZ62",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly explains the catalytic mechanism of phosphoethanolamine phosphatase activity, which is defined by the reaction itself."
+    },
+    {
+      "accession": "Q92058",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct match to the primary reaction defined by the GO term."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0052657",
+  "name": "guanine phosphoribosyltransferase activity",
+  "def": "Catalysis of the reaction: GMP + diphosphate = guanine + 5-phospho-alpha-D-ribose 1-diphosphate.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "O13917",
+    "P27605",
+    "Q07010",
+    "Q9W719"
+  ],
+  "assigned_accessions": [
+    "O13917",
+    "P27605",
+    "Q07010",
+    "Q9W719"
+  ]
+}

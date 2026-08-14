@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P9WNE1",
+      "go_id": "GO:0052749",
+      "feature_type": "BINDING",
+      "start": 38,
+      "end": 39,
+      "signal_kind": "ligand",
+      "signal_value": "coenzyme F420-(gamma-Glu)n",
+      "reasoning": "The binding of coenzyme F420 to the enzyme is a direct and essential part of the reaction mechanism described by GO:0052749, making it the most plausible explanation for why P9WNE1 carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

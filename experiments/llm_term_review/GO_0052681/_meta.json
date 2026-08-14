@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0052681",
+  "name": "alpha-bisabolene synthase activity",
+  "def": "Catalysis of the reaction: 2-trans,6-trans-farnesyl diphosphate = (E,R)-alpha-bisabolene + diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "U5PZT6"
+  ],
+  "assigned_accessions": [
+    "U5PZT6"
+  ]
+}

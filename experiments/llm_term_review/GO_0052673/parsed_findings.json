@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P76423",
+      "go_id": "GO:0052673",
+      "feature_type": "BINDING",
+      "start": 49,
+      "end": 50,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site with the ligand \"substrate\" directly relates to the substrate involved in the catalytic reaction of prenol kinase activity, making it the most plausible explanation for why the protein carries this GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q67ZM7",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

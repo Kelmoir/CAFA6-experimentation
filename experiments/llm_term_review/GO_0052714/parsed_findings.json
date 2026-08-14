@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O74369",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for protein O74369 do not provide a strong or specific explanation for the molecular function defined by GO:0052714."
+    }
+  ]
+}

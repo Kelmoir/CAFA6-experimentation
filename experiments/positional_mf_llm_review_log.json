@@ -27867,6 +27867,43 @@
    }
   ]
  },
+ "GO:0052657": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q07010",
+    "go_id": "GO:0052657",
+    "feature_type": "BINDING",
+    "start": 172,
+    "end": 173,
+    "signal_kind": "ligand",
+    "signal_value": "GMP",
+    "reasoning": "The binding of Mg(2+) at position 172-173 could support the function of guanine phosphoribosyltransferase by indicating that the enzyme requires Mg(2+) as a cofactor, but it does not directly explain why the protein carries the term itself."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "O13917",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of GO:0052657, and none provides a strong explanation for why this protein carries the term."
+   },
+   {
+    "accession": "P27605",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P27605 directly matches the GO term's primary reaction mechanism of catalyzing the phosphate transfer from diphosphate to GMP."
+   },
+   {
+    "accession": "Q9W719",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the enzyme's catalytic activity as defined by the GO term."
+   }
+  ]
+ },
  "GO:0052660": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -27920,5 +27957,198 @@
     "reasoning": "The annotated features for this protein do not directly explain why it carries the GO term \"nitroalkane oxidase activity.\" While FAD binding is relevant to the reaction, it does not provide a strong match to the primary mechanism described in the definition. No positional feature has been confirmed to account for the term's chemistry."
    }
   ]
+ },
+ "GO:0052673": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "P76423"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q67ZM7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0052678": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Mg(2+)",
+    "accessions": [
+     "F2XFB2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0052681": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "U5PZT6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for U5PZT6 specifically matches the chemistry of alpha-bisabolene synthase activity as defined by GO:0052681. The best candidate, MOTIF 345-350, is a general structural motif and not specific to this reaction mechanism."
+   }
+  ]
+ },
+ "GO:0052714": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O74369",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein O74369 do not provide a strong or specific explanation for the molecular function defined by GO:0052714."
+   }
+  ]
+ },
+ "GO:0052724": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q06685",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0052732": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "O73884"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Mg(2+)",
+    "accessions": [
+     "P09487"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FZ62",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly explains the catalytic mechanism of phosphoethanolamine phosphatase activity, which is defined by the reaction itself."
+   },
+   {
+    "accession": "Q92058",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct match to the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0052741": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "P0DO38",
+     "P0DO39",
+     "P11712"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0DO41",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct structural or functional explanation for the enzyme activity described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0052748": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LRC8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the specific enzymatic activity of baicalin beta-D-glucuronidase as defined by the GO term. The available features only suggest general roles in acid-base catalysis, not the precise mechanism of this reaction."
+   }
+  ]
+ },
+ "GO:0052749": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "coenzyme F420-(gamma-Glu)n",
+    "accessions": [
+     "P9WNE1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }
