@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047178",
+  "name": "glycerophospholipid acyltransferase (CoA-dependent) activity",
+  "def": "Catalysis of the reaction: 1-radyl-2-lyso-sn-glycero-3-phosphoethanolamine + 1-radyl-2-acyl-sn-glycero-3-phosphocholine = 1-radyl-2-lyso-sn-glycero-3-phosphocholine + 1-radyl-2-acyl-sn-glycero-3-phosphoethanolamine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FD10"
+  ],
+  "assigned_accessions": [
+    "Q9FD10"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9FMN4",
+      "go_id": "GO:0047134",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 134,
+      "signal_kind": "text",
+      "signal_value": "Thioredoxin",
+      "reasoning": "The DOMAIN annotation \"Thioredoxin\" is directly related to the function of reducing disulfide bonds, which matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P00558",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P16617",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION\" 37-43 annotation describes a mitochondrial targeting region, but it does not directly explain the catalytic activity of the GO term. No other feature in the Annotated features section provides evidence that strongly matches the defined reaction mechanism of the GO term."
+    },
+    {
+      "accession": "P9WF43",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

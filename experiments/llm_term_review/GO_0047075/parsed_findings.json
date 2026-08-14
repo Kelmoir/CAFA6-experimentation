@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q88FY1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q88FY1 matches the primary reaction mechanism of the GO term \"2,5-dihydroxypyridine 5,6-dioxygenase activity.\""
+    }
+  ]
+}

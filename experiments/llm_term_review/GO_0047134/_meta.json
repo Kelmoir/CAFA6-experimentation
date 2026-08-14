@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0047134",
+  "name": "protein-disulfide reductase [NAD(P)H] activity",
+  "def": "Catalysis of the reaction: protein-dithiol + NAD(P)+ = protein-disulfide + NAD(P)H + H+.",
+  "n_proteins_total": 23,
+  "sampled_accessions": [
+    "P00558",
+    "P16617",
+    "P9WF43",
+    "Q9FMN4"
+  ],
+  "assigned_accessions": [
+    "P00558",
+    "P16617",
+    "P9WF43",
+    "Q9FMN4"
+  ]
+}

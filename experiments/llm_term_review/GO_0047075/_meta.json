@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047075",
+  "name": "2,5-dihydroxypyridine 5,6-dioxygenase activity",
+  "def": "Catalysis of the reaction: H2O + O2 + 2,5-dihydroxypyridine = formate + maleamate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q88FY1"
+  ],
+  "assigned_accessions": [
+    "Q88FY1"
+  ]
+}

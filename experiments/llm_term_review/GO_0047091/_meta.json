@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047091",
+  "name": "L-lysine 6-monooxygenase (NADPH) activity",
+  "def": "Catalysis of the reaction: L-lysine + NADPH + O2 = N(6)-hydroxy-L-lysine + H2O + NADP+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WKF7"
+  ],
+  "assigned_accessions": [
+    "P9WKF7"
+  ]
+}

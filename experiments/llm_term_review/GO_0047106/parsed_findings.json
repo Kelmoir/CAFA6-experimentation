@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P80668",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P80668 specifically matches the primary reaction mechanism of GO:0047106, which involves catalyzing the oxidation of (4-hydroxyphenyl)acetaldehyde using NAD+."
+    }
+  ]
+}

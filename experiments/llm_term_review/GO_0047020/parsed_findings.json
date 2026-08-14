@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P48758",
+      "go_id": "GO:0047020",
+      "feature_type": "ACT_SITE",
+      "start": 193,
+      "end": 194,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The \"Proton acceptor\" annotation at position 193-194 most plausibly explains why P48758 carries the GO term \"15-hydroxyprostaglandin-D dehydrogenase (NADP+) activity,\" as it directly relates to the proton transfer mechanism described in the definition."
+    },
+    {
+      "accession": "P51652",
+      "go_id": "GO:0047020",
+      "feature_type": "SITE",
+      "start": 83,
+      "end": 84,
+      "signal_kind": "text",
+      "signal_value": "Lowers pKa of active site Tyr",
+      "reasoning": "The SITE annotation with coordinates 83-84 indicates that the active site Tyr has a low pKa, which directly supports the mechanism of proton transfer described in the GO term's definition. This feature most plausibly explains why the protein carries the term as it is essential for the reaction mechanism involving NADP+ and its substrate."
+    },
+    {
+      "accession": "Q28960",
+      "go_id": "GO:0047020",
+      "feature_type": "BINDING",
+      "start": 193,
+      "end": 198,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The binding of NADP+ to the protein's domain at position 193-198 directly supports the catalytic activity described by the GO term, which involves the reaction of NADP+ with a specific substrate. This feature is the most specific and directly relevant to the primary reaction mechanism of the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P16152",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

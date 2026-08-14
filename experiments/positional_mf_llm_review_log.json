@@ -22760,6 +22760,47 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0047020": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "P48758"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Lowers pKa of active site Tyr",
+    "accessions": [
+     "P51652"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "Q28960"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P16152",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
  "GO:0047039": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -22816,5 +22857,198 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0047075": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q88FY1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q88FY1 matches the primary reaction mechanism of the GO term \"2,5-dihydroxypyridine 5,6-dioxygenase activity.\""
+   }
+  ]
+ },
+ "GO:0047091": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WKF7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0047100": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "activates thiol group during catalysis",
+    "accessions": [
+     "O34425",
+     "P09315"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P12859",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P50362",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0047106": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P80668",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P80668 specifically matches the primary reaction mechanism of GO:0047106, which involves catalyzing the oxidation of (4-hydroxyphenyl)acetaldehyde using NAD+."
+   }
+  ]
+ },
+ "GO:0047128": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0DKI7",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features or domain/family cross-references directly explain the redox reaction mechanism described in the GO term's definition. The only candidate feature with a score of 1 is about ligand binding, which does not relate to the function defined by the GO term."
+   }
+  ]
+ },
+ "GO:0047134": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Thioredoxin",
+    "accessions": [
+     "Q9FMN4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P00558",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P16617",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" 37-43 annotation describes a mitochondrial targeting region, but it does not directly explain the catalytic activity of the GO term. No other feature in the Annotated features section provides evidence that strongly matches the defined reaction mechanism of the GO term."
+   },
+   {
+    "accession": "P9WF43",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0047146": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q12120",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's section directly describes the catalytic activity or the mechanism of methyl transfer as defined by GO:0047146. All features are related to substrate binding, which is a generic description and not specific to the 7-O-methyltransferase reaction."
+   }
+  ]
+ },
+ "GO:0047158": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8RUW5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list provides a clear structural or functional basis for the specific enzymatic activity defined by the GO term. The presence of multiple ACT_SITE annotations is generic and does not directly support the sinapoyltransferase function described in the definition."
+   }
+  ]
+ },
+ "GO:0047172": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FI78",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9FI78 provides a clear, direct explanation for why it carries the GO term \"shikimate O-hydroxycinnamoyltransferase activity.\" The definition focuses on the reaction mechanism rather than a specific domain or structural feature that would be expected to carry out this function."
+   }
+  ]
+ },
+ "GO:0047178": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FD10",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature that specifically matches the primary reaction mechanism of the GO term \"glycerophospholipid acyltransferase (CoA-dependent) activity\" for protein Q9FD10. The ACT_SITE regions are generic and do not provide mechanistic specificity to explain the defined chemistry of the term."
+   }
+  ]
  }
 }

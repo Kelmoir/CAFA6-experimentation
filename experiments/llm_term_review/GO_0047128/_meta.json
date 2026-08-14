@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047128",
+  "name": "1,2-dehydroreticulinium reductase (NADPH) activity",
+  "def": "Catalysis of the reaction: (R)-reticuline + NADP+ = 1,2-dehydroreticuline + H+ + NADPH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0DKI7"
+  ],
+  "assigned_accessions": [
+    "P0DKI7"
+  ]
+}

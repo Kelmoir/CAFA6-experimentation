@@ -1,0 +1,17 @@
+=== P16152 GO:0047020 (VERDICT missing) ===
+THINKING: 
+The GO term is "15-hydroxyprostaglandin-D dehydrogenase (NADP+) activity" with the definition that it catalyzes the reaction: NADP+ + (5Z,13E)-(15S)-9-alpha,15-dihydroxy-11-oxoprosta-5,13-dienoate = NADPH + H+ + (5Z,13E)-9-alpha-hydroxy-11,15-dioxoprosta-5,13-dienoate. This definition focuses on the primary reaction mechanism — the catalytic activity of the enzyme in transferring a proton and reducing NADP+ to NADPH.
+
+The annotated features for this protein include multiple instances of "BINDING" with different ligands. The most relevant binding sites are those that bind NADP(+), as the term is about the enzyme's activity involving NADP+. Other binding sites involve glutathione and substrate, but these are not central to the primary reaction defined by the GO term.
+
+- **BINDING 193-198** binds NADP(+), which is directly involved in the reaction mechanism described in the definition. This binding site is likely the active site where the enzyme catalyzes the transfer of a proton and reduces NADP+ to NADPH.
+- Other binding sites, such as those for glutathione or substrate, are not central to the primary reaction defined by the GO term.
+
+The highest score for matching the primary reaction mechanism is 10, as this binding site directly involves the ligand (NADP(+)) that is part of the reaction described in the definition. This binding site is most plausibly the structural/functional basis for the molecular function defined by the GO term.
+
+FEATURE: BINDING 193-198
+REASONING: The binding site at 193-198 directly involves NADP(+), which is a key component of the reaction catalyzed by the enzyme, making it the most plausible explanation for the molecular function defined by GO:0047020.
+
+=== P16152 GO:0047020 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+

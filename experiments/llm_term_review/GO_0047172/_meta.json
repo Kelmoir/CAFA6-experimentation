@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047172",
+  "name": "shikimate O-hydroxycinnamoyltransferase activity",
+  "def": "Catalysis of the reaction: shikimate + coumaroyl-CoA = 4-coumaroylshikimate + CoA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FI78"
+  ],
+  "assigned_accessions": [
+    "Q9FI78"
+  ]
+}

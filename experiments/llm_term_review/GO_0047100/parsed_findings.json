@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O34425",
+      "go_id": "GO:0047100",
+      "feature_type": "SITE",
+      "start": 178,
+      "end": 179,
+      "signal_kind": "text",
+      "signal_value": "Activates thiol group during catalysis",
+      "reasoning": "The binding sites for NADP+ and glyceraldehyde-3-phosphate are relevant but not specific to the defined reaction. However, the thiol group activation site directly supports the enzymatic activity described in the GO term's definition, making it the most plausible explanation for why the protein carries that function."
+    },
+    {
+      "accession": "P09315",
+      "go_id": "GO:0047100",
+      "feature_type": "SITE",
+      "start": 246,
+      "end": 247,
+      "signal_kind": "text",
+      "signal_value": "Activates thiol group during catalysis",
+      "reasoning": "The SITE 246-247 annotation directly relates to the activation of a thiol group during catalysis, which is a key part of the enzyme's function as described in the GO term. This feature provides a more specific and plausible explanation for why the protein carries the term than any other binding site or generic activity annotation."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P12859",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P50362",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

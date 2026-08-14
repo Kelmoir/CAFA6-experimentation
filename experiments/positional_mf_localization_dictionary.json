@@ -20471,6 +20471,15 @@
    "important for substrate specificity"
   ]
  },
+ "GO:0047100": {
+  "name": "glyceraldehyde-3-phosphate dehydrogenase (NADP+) (phosphorylating) activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "activates thiol group during catalysis"
+  ]
+ },
  "GO:0047107": {
   "name": "gamma-guanidinobutyraldehyde dehydrogenase (NAD+) activity",
   "ligands": [],

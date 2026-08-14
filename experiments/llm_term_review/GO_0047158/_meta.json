@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047158",
+  "name": "sinapoylglucose-sinapoylglucose O-sinapoyltransferase activity",
+  "def": "Catalysis of the reaction: 2 1-O-sinapoyl-beta-D-glucose = 1,2-di-O-sinapoyl-beta-D-glucose + D-glucose.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8RUW5"
+  ],
+  "assigned_accessions": [
+    "Q8RUW5"
+  ]
+}

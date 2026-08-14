@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047146",
+  "name": "sterigmatocystin 7-O-methyltransferase activity",
+  "def": "Catalysis of the reaction: sterigmatocystin + S-adenosyl-L-methionine = 7-O-methylsterigmatocystin + S-adenosyl-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q12120"
+  ],
+  "assigned_accessions": [
+    "Q12120"
+  ]
+}

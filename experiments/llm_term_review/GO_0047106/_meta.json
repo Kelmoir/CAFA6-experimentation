@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0047106",
+  "name": "4-hydroxyphenylacetaldehyde dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: (4-hydroxyphenyl)acetaldehyde + H2O + NAD+ = 4-hydroxyphenylacetate + 2 H+ + NADH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P80668"
+  ],
+  "assigned_accessions": [
+    "P80668"
+  ]
+}
