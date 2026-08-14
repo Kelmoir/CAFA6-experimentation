@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P9WIC7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which is the catalytic conversion of mannosyl-3-phosphoglycerate to D-glycerate with phosphate release."
+    }
+  ]
+}

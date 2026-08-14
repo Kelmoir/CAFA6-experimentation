@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050571",
+  "name": "1,5-anhydro-D-fructose reductase activity",
+  "def": "Catalysis of the reaction: 1,5-anhydro-D-glucitol + NADP+ = 1,5-anhydro-D-fructose + H+ + NADPH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q96JD6"
+  ],
+  "assigned_accessions": [
+    "Q96JD6"
+  ]
+}

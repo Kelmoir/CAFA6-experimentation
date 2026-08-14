@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050531",
+  "name": "mannosyl-3-phosphoglycerate phosphatase activity",
+  "def": "Catalysis of the reaction: 2-(alpha-D-mannosyl)-3-phosphoglycerate + H2O = 2-(alpha-D-mannosyl)-D-glycerate + phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WIC7"
+  ],
+  "assigned_accessions": [
+    "P9WIC7"
+  ]
+}

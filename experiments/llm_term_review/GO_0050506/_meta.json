@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050506",
+  "name": "vomilenine glucosyltransferase activity",
+  "def": "Catalysis of the reaction: UDP-D-glucose + vomilenine = H+ + raucaffricine + UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SPP9"
+  ],
+  "assigned_accessions": [
+    "Q9SPP9"
+  ]
+}

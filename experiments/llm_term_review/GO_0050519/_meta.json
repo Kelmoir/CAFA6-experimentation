@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050519",
+  "name": "holo-citrate lyase synthase activity",
+  "def": "Catalysis of the reaction: apo-citrate lyase + 2'-(5''-triphosphoribosyl)-3'-dephospho-CoA = diphosphate + holo-citrate lyase.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0A6G5"
+  ],
+  "assigned_accessions": [
+    "P0A6G5"
+  ]
+}

@@ -26254,5 +26254,275 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0050486": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Lipoxygenase",
+    "accessions": [
+     "Q9BYJ1",
+     "Q9WV07"
+    ],
+    "reason": "resolved to ['PROSITE:PS00081', 'PROSITE:PS00711', 'PROSITE:PS51393', 'Pfam:PF00305'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'PROSITE:PS00081': 39, 'PROSITE:PS00711': 39, 'PROSITE:PS51393': 45, 'Pfam:PF00305': 45})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "D3ZKX9",
+    "go_id": "GO:0050486",
+    "feature_type": "BINDING",
+    "start": 407,
+    "end": 408,
+    "signal_kind": "ligand",
+    "signal_value": "Fe cation",
+    "reasoning": "The binding site with ligand Fe cation is marked as catalytic, which suggests a role in hydroxylation. However, this feature does not directly confirm the mechanism of intramolecular hydroxytransferase activity, and no other binding site or domain provides a more specific match to the primary reaction described in the GO term's definition."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q94AR8",
+    "reason": "none_verdict",
+    "reasoning": "The defined function of catalyzing intramolecular hydroxytransferase activity is not supported by any of the annotated features for protein Q94AR8, which only describe structural or ligand-related aspects without directly indicating the enzymatic mechanism."
+   }
+  ]
+ },
+ "GO:0050505": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9M156",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0050506": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SPP9",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0050513": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LDH0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0050519": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0A6G5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0050526": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Charge relay system",
+    "accessions": [
+     "P45524"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050529": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SE93",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the enzyme's catalytic activity as defined by GO:0050529."
+   }
+  ]
+ },
+ "GO:0050531": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WIC7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which is the catalytic conversion of mannosyl-3-phosphoglycerate to D-glycerate with phosphate release."
+   }
+  ]
+ },
+ "GO:0050546": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q06408",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0050547": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0A072UTP9",
+    "reason": "none_verdict",
+    "reasoning": "The defined chemical reaction for the GO term does not align with any of the annotated features, which are all related to actin-binding sites and do not provide evidence for the enzyme's catalytic activity."
+   },
+   {
+    "accession": "A0A0F7G352",
+    "reason": "none_verdict",
+    "reasoning": "The defined chemical reaction for the GO term does not align with any of the provided ACT_SITE annotations, which are generic binding site indicators rather than mechanistically specific features that would explain the enzyme's function."
+   },
+   {
+    "accession": "Q8H166",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly matches the primary reaction mechanism of the GO term, and all features are generic or only note interactions without mechanistic specificity."
+   },
+   {
+    "accession": "Q8RWQ9",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for this protein do not provide any positional evidence that specifically explains the molecular function defined by GO:0050547, which is the catalysis of a specific chemical reaction."
+   }
+  ]
+ },
+ "GO:0050554": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "F2XFB2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism of abietadiene synthase activity as defined by GO:0050554."
+   }
+  ]
+ },
+ "GO:0050569": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P25553"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050571": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Lowers pKa of active site Tyr",
+    "accessions": [
+     "Q96JD6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0050572": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P39346",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism of the GO term, so there is no single plausible explanation for why the protein carries that term."
+   }
+  ]
  }
 }

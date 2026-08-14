@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050546",
+  "name": "4-hydroxyphenylpyruvate decarboxylase activity",
+  "def": "Catalysis of the reaction: (4-hydroxyphenyl)pyruvate + H+ = (4-hydroxyphenyl)acetaldehyde + CO2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q06408"
+  ],
+  "assigned_accessions": [
+    "Q06408"
+  ]
+}

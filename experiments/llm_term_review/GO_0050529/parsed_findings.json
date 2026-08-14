@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9SE93",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the enzyme's catalytic activity as defined by GO:0050529."
+    }
+  ]
+}

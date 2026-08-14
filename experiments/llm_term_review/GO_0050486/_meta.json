@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0050486",
+  "name": "intramolecular hydroxytransferase activity",
+  "def": "Catalysis of the transfer of a hydroxyl group from one position to another within a single molecule.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "D3ZKX9",
+    "Q94AR8",
+    "Q9BYJ1",
+    "Q9WV07"
+  ],
+  "assigned_accessions": [
+    "D3ZKX9",
+    "Q94AR8",
+    "Q9BYJ1",
+    "Q9WV07"
+  ]
+}

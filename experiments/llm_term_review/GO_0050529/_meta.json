@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050529",
+  "name": "polyneuridine-aldehyde esterase activity",
+  "def": "Catalysis of the reaction: H2O + polyneuridine aldehyde = 16-epivellosimine + CO2 + methanol.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SE93"
+  ],
+  "assigned_accessions": [
+    "Q9SE93"
+  ]
+}

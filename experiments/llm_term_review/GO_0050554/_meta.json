@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050554",
+  "name": "abietadiene synthase activity",
+  "def": "Catalysis of the reaction: (+)-copalyl diphosphate = (-)-abietadiene + diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "F2XFB2"
+  ],
+  "assigned_accessions": [
+    "F2XFB2"
+  ]
+}

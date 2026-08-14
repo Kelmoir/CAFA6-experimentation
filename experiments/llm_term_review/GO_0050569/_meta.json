@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050569",
+  "name": "glycolaldehyde dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: glycolaldehyde + H2O + NAD+ = glycolate + 2 H+ + NADH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P25553"
+  ],
+  "assigned_accessions": [
+    "P25553"
+  ]
+}

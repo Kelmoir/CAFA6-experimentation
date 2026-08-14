@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050526",
+  "name": "poly(3-hydroxybutyrate) depolymerase activity",
+  "def": "Catalysis of the reaction: H2O + poly[(R)-3-hydroxybutanoate](n) = poly[(R)-3-hydroxybutanoate](x) + poly[(R)-3-hydroxybutanoate](n-x); x is 1-5.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P45524"
+  ],
+  "assigned_accessions": [
+    "P45524"
+  ]
+}

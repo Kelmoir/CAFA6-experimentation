@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0050505",
+  "name": "hydroquinone glucosyltransferase activity",
+  "def": "Catalysis of the reaction: hydroquinone + UDP-D-glucose = H+ + hydroquinone O-beta-D-glucopyranoside + UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9M156"
+  ],
+  "assigned_accessions": [
+    "Q9M156"
+  ]
+}

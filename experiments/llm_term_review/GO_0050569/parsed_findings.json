@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P25553",
+      "go_id": "GO:0050569",
+      "feature_type": "BINDING",
+      "start": 149,
+      "end": 150,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD+ to the enzyme at position 149-150 is directly related to the redox reaction described by the GO term, making it the most plausible explanation for why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
