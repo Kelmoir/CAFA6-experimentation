@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102041",
+  "name": "7,8-dihydropterin-6-yl-methyl-4-(beta-D-ribofuranosyl)aminobenzene 5'-phosphate synthase",
+  "def": "Catalysis of the reaction: 4-(beta-D-ribofuranosyl)aminobenzene 5'-phosphate + (2-amino-4-hydroxy-7,8-dihydropteridin-6-yl)methyl diphosphate = N-[(7,8-dihydropterin-6-yl)methyl]-4-(beta-D-ribofuranosyl)aniline 5'-phosphate + diphosphoric acid.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q57749"
+  ],
+  "assigned_accessions": [
+    "Q57749"
+  ]
+}

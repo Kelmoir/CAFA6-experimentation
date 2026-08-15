@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0102002",
+  "name": "valine N-monooxygenase (oxime forming) activity",
+  "def": "Catalysis of the reaction: L-valine + 2 O2 + 2 NADPH(4-) + 2 H+ = (E)-2-methylpropanal oxime + 2 NADP(3-) + carbon dioxide + 3 H2O.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "Q6J540",
+    "Q6J541",
+    "Q9M7B7",
+    "Q9M7B8"
+  ],
+  "assigned_accessions": [
+    "Q6J540",
+    "Q6J541",
+    "Q9M7B7",
+    "Q9M7B8"
+  ]
+}

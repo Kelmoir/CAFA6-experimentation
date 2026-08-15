@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0102007",
+  "name": "acyl-L-homoserine-lactone lactonohydrolase activity",
+  "def": "Catalysis of the reaction: H2O + an N-acyl-L-homoserine lactone = H+ + an N-acyl-L-homoserine.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "P27169",
+    "Q15166",
+    "Q62087",
+    "Q6AXM8"
+  ],
+  "assigned_accessions": [
+    "P27169",
+    "Q15166",
+    "Q62087",
+    "Q6AXM8"
+  ]
+}

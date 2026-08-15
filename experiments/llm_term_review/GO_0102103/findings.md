@@ -1,0 +1,5 @@
+## C6L7V9 GO:0102103
+verdict: NONE
+feature: ACT_SITE 163-164
+reasoning: The only annotated feature for C6L7V9 is ACT_SITE 163-164, which refers to the site where an enzyme acts. This does not provide a strong match to the primary reaction or mechanism described by GO:0102103, as it only echoes a word from a secondary clause of the definition. Therefore, there is no positional feature that plausibly explains why C6L7V9 carries the term "demethoxycurcumin synthase activ
+---

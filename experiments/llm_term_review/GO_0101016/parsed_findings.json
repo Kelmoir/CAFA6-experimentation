@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q84KI6",
+      "go_id": "GO:0101016",
+      "feature_type": "BINDING",
+      "start": 269,
+      "end": 270,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding to NAD(+) at position 269-270 is directly related to the function of FMN-binding domain binding, as NAD+ is a common cofactor for enzymes that interact with such domains. This feature most plausibly explains why the protein carries the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

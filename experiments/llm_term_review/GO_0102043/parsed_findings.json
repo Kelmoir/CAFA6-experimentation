@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q8H1F7",
+      "go_id": "GO:0102043",
+      "feature_type": "SITE",
+      "start": 26,
+      "end": 27,
+      "signal_kind": "text",
+      "signal_value": "Transition state stabilizer",
+      "reasoning": "The site with the note about being a transition state stabilizer could plausibly explain why the protein carries the GO term, but it does not directly confirm the catalytic activity described by the GO term."
+    }
+  ],
+  "issues": []
+}

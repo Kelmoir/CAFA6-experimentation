@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102031",
+  "name": "4-acetamido-4,6-dideoxy-D-galactose transferase activity",
+  "def": "Catalysis of the reaction: dTDP-4-acetamido-4,6-dideoxy-alpha-D-galactose + beta-D-ManNAcA-(1->4)-alpha-D-GlcNAc-1-diphospho-ditrans,polycis-undecaprenol = H+ + alpha-D-FucNAc4-(1->4)-beta-D-ManNAcA-(1->4)-D-GlcNAc-undecaprenyl diphosphate + dTDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P56258"
+  ],
+  "assigned_accessions": [
+    "P56258"
+  ]
+}

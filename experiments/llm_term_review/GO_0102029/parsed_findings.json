@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P06149",
+      "go_id": "GO:0102029",
+      "feature_type": "DOMAIN",
+      "start": 41,
+      "end": 213,
+      "signal_kind": "text",
+      "signal_value": "FAD-binding PCMH-type",
+      "reasoning": "The DOMAIN 41-213 with the note \"FAD-binding PCMH-type\" directly matches the primary reaction described in the GO term's definition, which is catalysis of the reaction involving (R)-lactate and ubiquinone. This domain is likely responsible for the enzymatic activity associated with the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

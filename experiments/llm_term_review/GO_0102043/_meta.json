@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102043",
+  "name": "isopentenyl phosphate kinase activity",
+  "def": "Catalysis of the reaction: isopentenyl phosphate(2-) + ATP(4-) = isopentenyl diphosphate(3-) + ADP(3-).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8H1F7"
+  ],
+  "assigned_accessions": [
+    "Q8H1F7"
+  ]
+}

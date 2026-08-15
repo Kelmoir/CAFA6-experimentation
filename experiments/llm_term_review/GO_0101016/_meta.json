@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0101016",
+  "name": "FMN-binding domain binding",
+  "def": "Binding to the FMN-binding domain of a protein.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q84KI6"
+  ],
+  "assigned_accessions": [
+    "Q84KI6"
+  ]
+}

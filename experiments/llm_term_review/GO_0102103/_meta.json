@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102103",
+  "name": "demethoxycurcumin synthase activity",
+  "def": "Catalysis of the reaction: (4-coumaroyl)acetyl-CoA + 4-coumaryl-CoA + H2O = bisdemethoxycurcumin + 2 coenzyme A + carbon dioxide.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "C6L7V9"
+  ],
+  "assigned_accessions": [
+    "C6L7V9"
+  ]
+}

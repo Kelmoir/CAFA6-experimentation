@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9M7B7",
+      "go_id": "GO:0102002",
+      "feature_type": "BINDING",
+      "start": 476,
+      "end": 477,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The \"BINDING 476-477\" feature directly supports the heme-dependent oxidation reaction described in the GO term's definition, and the spatial arrangement of the heme molecule is crucial for catalytic activity."
+    },
+    {
+      "accession": "Q9M7B8",
+      "go_id": "GO:0102002",
+      "feature_type": "BINDING",
+      "start": 477,
+      "end": 478,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding site for heme at position 477-478 directly supports the catalytic reaction defined by GO:0102002, making it a strong candidate for explaining why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q6J540",
+      "reason": "none_verdict",
+      "reasoning": "The binding site for heme in Q6J540 does not specifically explain the defined reaction mechanism of valine N-monooxygenase activity. No other annotated feature directly relates to the primary chemical reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q6J541",
+      "reason": "none_verdict",
+      "reasoning": "The binding site for heme at position 469-470 is not directly related to the specific reaction catalyzed by valine N-monooxygenase (oxime forming) activity, which involves L-valine and O2. Therefore, no annotated feature provides a strong match to the GO term's primary reaction mechanism."
+    }
+  ]
+}

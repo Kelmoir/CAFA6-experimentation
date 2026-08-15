@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102029",
+  "name": "D-lactate dehydrogenase (quinone) activity",
+  "def": "Catalysis of the reaction: (R)-lactate + an ubiquinone = pyruvate + an ubiquinol.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P06149"
+  ],
+  "assigned_accessions": [
+    "P06149"
+  ]
+}

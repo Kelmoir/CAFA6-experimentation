@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102096",
+  "name": "decaprenyl-N-acetyl-alpha-D-glucosaminyl-pyrophosphate:dTDP-alpha-L-rhamnose rhamnosyltransferase activity",
+  "def": "Catalysis of the reaction: dTDP-6-deoxy-beta-L-mannose + N-acetyl-alpha-D-glucosaminyl-diphospho-trans,octacis-decaprenol = dTDP(3-) + alpha-L-Rhap-(1->3)-alpha-D-GlcpNAc-1-diphospho-trans,octacis-decaprenol + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WMY3"
+  ],
+  "assigned_accessions": [
+    "P9WMY3"
+  ]
+}

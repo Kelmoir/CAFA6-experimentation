@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102059",
+  "name": "(2Z,6Z)-farnesyl diphosphate synthase activity",
+  "def": "Catalysis of the reaction: 2 isopentenyl diphosphate + dimethylallyl diphosphate = (2Z,6Z)-farnesyl diphosphate + 2 diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "K7W9N9"
+  ],
+  "assigned_accessions": [
+    "K7W9N9"
+  ]
+}

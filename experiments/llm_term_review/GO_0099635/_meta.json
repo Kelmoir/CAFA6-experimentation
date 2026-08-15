@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0099635",
+  "name": "voltage-gated calcium channel activity involved in positive regulation of presynaptic cytosolic calcium levels",
+  "def": "Positive regulation of presynaptic cytosolic calcium ion concentrations via the directed movement of calcium ions across the plasma-membrane into the cytosol via the action of voltage-gated calcium ion channels. This is the first step in synaptic transmission.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q99246"
+  ],
+  "assigned_accessions": [
+    "Q99246"
+  ]
+}
