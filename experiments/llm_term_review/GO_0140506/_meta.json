@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140506",
+  "name": "endoplasmic reticulum-autophagosome adaptor activity",
+  "def": "The binding activity of a molecule that brings together an ER membrane and an autophagosome during reticulophagy.",
+  "n_proteins_total": 13,
+  "sampled_accessions": [
+    "Q10484",
+    "Q12983",
+    "Q9LD45",
+    "Q9VC57"
+  ],
+  "assigned_accessions": [
+    "Q10484",
+    "Q12983",
+    "Q9LD45",
+    "Q9VC57"
+  ]
+}

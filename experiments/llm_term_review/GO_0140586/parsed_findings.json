@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q02455",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves bridging cis-regulatory elements and terminator DNA sequences to maintain a chromatin loop."
+    }
+  ]
+}

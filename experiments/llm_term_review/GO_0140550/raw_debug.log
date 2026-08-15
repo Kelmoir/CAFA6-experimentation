@@ -1,0 +1,21 @@
+=== Q96WV2 GO:0140550 (finish_reason=stop) ===
+THINKING: The GO term is "phosphatidylinositol-4,5-bisphosphate sensor activity" (GO:0140550), which defines the function of binding to and responding to changes in the cellular level of phosphatidylinositol-4,5-bisphosphate. The primary reaction or mechanism implied is the sensing and response to this molecule, likely through conformational changes.
+
+The annotated features for protein Q96WV2 include:
+- DOMAIN 24-119 with note: PH 1 and evidence: ECO:0000255|PROSITE-ProRule:PRU00145
+- DOMAIN 232-330 with note: PH 2 and evidence: ECO:0000255|PROSITE-ProRule:PRU00145
+- REGION 140-170 with note: Disordered and evidence: ECO:0000256|SAM:MobiDB-lite
+
+For each candidate feature:
+- DOMAIN 24-119: This domain is annotated as "PH 1" and has the evidence of a ProRule. The ProRule suggests a phosphatidylinositol-binding activity, which could plausibly be the sensor activity for phosphatidylinositol-4,5-bisphosphate. However, the exact function of this domain is not specified in the evidence.
+- DOMAIN 232-330: This domain is also annotated as "PH 2" and has similar evidence. The annotation suggests a second phosphatidylinositol-binding activity, which could be part of the sensor mechanism but does not directly explain the function.
+- REGION 140-170: This region is marked as disordered, which may indicate flexibility necessary for conformational changes in response to molecular signals. However, this alone does not confirm the specific function of sensing phosphatidylinositol-4,5-bisphosphate.
+
+The highest score among these candidates is 6 (for both domains), indicating that they are somewhat plausible but not strongly specific to the defined function. Since no single feature provides a clear and direct explanation for the sensor activity as defined by GO:0140550, the verdict is NONE.
+
+FEATURE: NONE  
+REASONING: No annotated feature directly explains the sensor activity of phosphatidylinositol-4,5-bisphosphate as defined by GO:0140550.
+
+=== Q96WV2 GO:0140550 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+

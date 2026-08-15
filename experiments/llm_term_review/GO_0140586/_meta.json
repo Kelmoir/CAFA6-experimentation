@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140586",
+  "name": "promoter-terminator loop anchoring activity",
+  "def": "Bridging together a cis-regulatory element and a terminator DNA sequences on the chromatin, holding two loop anchors together, maintaining a chromatin loop.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q02455"
+  ],
+  "assigned_accessions": [
+    "Q02455"
+  ]
+}

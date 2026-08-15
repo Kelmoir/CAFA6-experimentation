@@ -38961,5 +38961,220 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0140496": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q1LUV9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "B3H5K9",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature explicitly matches the GO term's primary reaction of binding to a gamma-tubulin complex. The domain/family cross-references suggest a possible connection to WD40 repeats, but this is not confirmed by any positional feature. Therefore, there is no strong evidence to support that B3H5K9 carries the term \"gamma-tubulin complex binding\" as a real annotation."
+   },
+   {
+    "accession": "Q9V877",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list provides a clear, specific explanation for why Q9V877 binds to a gamma-tubulin complex."
+   }
+  ]
+ },
+ "GO:0140506": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "MSP",
+    "accessions": [
+     "Q10484"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LD45",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q12983",
+    "reason": "none_verdict",
+    "reasoning": "The \"BH3\" motif in the protein's sequence does not directly support the defined function of the GO term, which involves binding an ER membrane and an autophagosome during reticulophagy. While BH3 motifs are associated with proteins involved in apoptosis regulation, this connection is not specific to the function described by the GO term. Therefore, no annotated feature provides a strong explanatio"
+   },
+   {
+    "accession": "Q9VC57",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140522": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0A060A682",
+    "reason": "none_verdict",
+    "reasoning": "The note indicating that this region is important for membrane fusion suggests a plausible connection to the function of fusogenic activity, but it does not directly explain why the protein carries this term. Without more detailed information on the specific interactions or mechanisms within this region, it's not a strong match to the GO term's primary reaction."
+   }
+  ]
+ },
+ "GO:0140550": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "FFAT",
+    "accessions": [
+     "O74504"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q96WV2",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140567": {
+  "n_resolved": 3,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P28737",
+     "P39986"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   },
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "Q8JZQ2"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "O14072",
+    "go_id": "GO:0140567",
+    "feature_type": "BINDING",
+    "start": 484,
+    "end": 485,
+    "signal_kind": "ligand",
+    "signal_value": "Mg(2+)",
+    "reasoning": "The binding site for ATP (ligand: ATP) directly involves the reaction described in the GO term's definition, but the annotation does not explicitly state that this domain is responsible for removing a protein from a membrane."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0140580": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "atg8 interacting motif (AIM)",
+    "accessions": [
+     "O13709"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "AIM",
+    "accessions": [
+     "H1VPS8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O55003",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for O55003 directly matches the defined function of the GO term \"mitochondrion autophagosome adaptor activity,\" which requires a specific binding activity between mitochondrial membranes and autophagosomes. The available features are generic and not mechanistically specific to this function."
+   },
+   {
+    "accession": "P40458",
+    "reason": "none_verdict",
+    "reasoning": "The protein P40458 has no positional features that directly relate to the defined function of the GO term \"mitochondrion autophagosome adaptor activity.\" No domain/family cross-references are provided, and the only features listed are disordered regions with no functional specificity. Thus, there is no evidence to determine which feature explains this GO term."
+   }
+  ]
+ },
+ "GO:0140586": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q02455",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves bridging cis-regulatory elements and terminator DNA sequences to maintain a chromatin loop."
+   }
+  ]
+ },
+ "GO:0140629": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Basic residue of the functional dyad, important for the interaction with Kv1.2/KCNA2 channel",
+    "accessions": [
+     "C0HM65"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

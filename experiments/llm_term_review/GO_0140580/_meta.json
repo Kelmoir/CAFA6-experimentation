@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140580",
+  "name": "mitochondrion autophagosome adaptor activity",
+  "def": "The binding activity of a molecule that brings together a mitochondrial membrane and an autophagosome during mitophagy.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "H1VPS8",
+    "O13709",
+    "O55003",
+    "P40458"
+  ],
+  "assigned_accessions": [
+    "H1VPS8",
+    "O13709",
+    "O55003",
+    "P40458"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140567",
+  "name": "membrane protein dislocase activity",
+  "def": "The activity of removing a protein from a membrane, by binding to a transmembrane helical fragment of a tail-anchored protein and releasing it from the the hydrophobic region of one or both lipid bilayers. The reaction is driven by ATP hydrolysis.",
+  "n_proteins_total": 13,
+  "sampled_accessions": [
+    "O14072",
+    "P28737",
+    "P39986",
+    "Q8JZQ2"
+  ],
+  "assigned_accessions": [
+    "O14072",
+    "P28737",
+    "P39986",
+    "Q8JZQ2"
+  ]
+}

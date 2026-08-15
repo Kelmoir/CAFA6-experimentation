@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140629",
+  "name": "small conductance calcium-activated potassium channel inhibitor activity",
+  "def": "Binds to and stops, prevents, or reduces the activity of a small conductance calcium-activated potassium channel.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "C0HM65"
+  ],
+  "assigned_accessions": [
+    "C0HM65"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "C0HM65",
+      "go_id": "GO:0140629",
+      "feature_type": "SITE",
+      "start": 26,
+      "end": 27,
+      "signal_kind": "text",
+      "signal_value": "Basic residue of the functional dyad, important for the interaction with Kv1.2/KCNA2 channel",
+      "reasoning": "The site 26-27 feature directly matches the chemistry described in the GO term's definition, which involves binding to and inhibiting a small conductance calcium-activated potassium channel. This specific interaction is central to the function of the protein and provides a strong match to the primary reaction stated in the definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

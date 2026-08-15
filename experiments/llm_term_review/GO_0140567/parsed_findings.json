@@ -1,0 +1,47 @@
+{
+  "resolved": [
+    {
+      "accession": "P28737",
+      "go_id": "GO:0140567",
+      "feature_type": "BINDING",
+      "start": 132,
+      "end": 140,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to the specified region (132-140) directly supports the defined reaction of membrane protein dislocase activity, which involves removing a protein from a membrane through ATP hydrolysis. This is a strong match to the primary mechanism described in the GO term's definition."
+    },
+    {
+      "accession": "P39986",
+      "go_id": "GO:0140567",
+      "feature_type": "BINDING",
+      "start": 486,
+      "end": 489,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to the region 486-489 directly supports the mechanism described in the GO term's definition, which involves ATP hydrolysis driving the dislocase activity. This is a strong match to the primary reaction of the GO term."
+    },
+    {
+      "accession": "Q8JZQ2",
+      "go_id": "GO:0140567",
+      "feature_type": "ACT_SITE",
+      "start": 573,
+      "end": 574,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The presence of an ATPase activity at the specified site directly supports the energy-driven mechanism described in the GO term, making it the most plausible explanation for why the protein carries that term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "O14072",
+      "go_id": "GO:0140567",
+      "feature_type": "BINDING",
+      "start": 484,
+      "end": 485,
+      "signal_kind": "ligand",
+      "signal_value": "Mg(2+)",
+      "reasoning": "The binding site for ATP (ligand: ATP) directly involves the reaction described in the GO term's definition, but the annotation does not explicitly state that this domain is responsible for removing a protein from a membrane."
+    }
+  ],
+  "issues": []
+}

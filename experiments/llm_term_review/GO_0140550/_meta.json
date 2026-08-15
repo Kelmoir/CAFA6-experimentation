@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0140550",
+  "name": "phosphatidylinositol-4,5-bisphosphate sensor activity",
+  "def": "Binding to and responding, e.g. by conformational change, to changes in the cellular level of phosphatidylinositol-4,5-bisphosphate.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O74504",
+    "Q96WV2"
+  ],
+  "assigned_accessions": [
+    "O74504",
+    "Q96WV2"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q10484",
+      "go_id": "GO:0140506",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 121,
+      "signal_kind": "text",
+      "signal_value": "MSP",
+      "reasoning": "The DOMAIN feature (0-121) with note \"MSP\" is the most plausible explanation for the GO term's primary reaction, which involves binding activity between an ER membrane and an autophagosome during reticulophagy."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9LD45",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q12983",
+      "reason": "none_verdict",
+      "reasoning": "The \"BH3\" motif in the protein's sequence does not directly support the defined function of the GO term, which involves binding an ER membrane and an autophagosome during reticulophagy. While BH3 motifs are associated with proteins involved in apoptosis regulation, this connection is not specific to the function described by the GO term. Therefore, no annotated feature provides a strong explanatio"
+    },
+    {
+      "accession": "Q9VC57",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

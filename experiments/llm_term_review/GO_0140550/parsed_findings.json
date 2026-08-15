@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "O74504",
+      "go_id": "GO:0140550",
+      "feature_type": "MOTIF",
+      "start": 372,
+      "end": 379,
+      "signal_kind": "text",
+      "signal_value": "FFAT",
+      "reasoning": "The FFAT motif in region 372-379 of O74504 is a strong indicator of phosphatidylinositol-4,5-bisphosphate sensing activity, as FFAT domains are known to be involved in lipid sensing and signal transduction. This matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q96WV2",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0140496",
+  "name": "gamma-tubulin complex binding",
+  "def": "Binding to a gamma-tubulin complex.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "B3H5K9",
+    "Q1LUV9",
+    "Q9V877"
+  ],
+  "assigned_accessions": [
+    "B3H5K9",
+    "Q1LUV9",
+    "Q9V877"
+  ]
+}

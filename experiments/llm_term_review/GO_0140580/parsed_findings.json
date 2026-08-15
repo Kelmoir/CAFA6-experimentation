@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O13709",
+      "go_id": "GO:0140580",
+      "feature_type": "MOTIF",
+      "start": 27,
+      "end": 31,
+      "signal_kind": "text",
+      "signal_value": "atg8 interacting motif (AIM)",
+      "reasoning": "The \"atg8 interacting motif (AIM)\" directly supports the binding activity described in the GO term, which is central to the function of the protein. This feature provides a strong match to the primary reaction of the GO term."
+    },
+    {
+      "accession": "H1VPS8",
+      "go_id": "GO:0140580",
+      "feature_type": "MOTIF",
+      "start": 105,
+      "end": 109,
+      "signal_kind": "text",
+      "signal_value": "AIM",
+      "reasoning": "The presence of the \"AIM\" motif (105-109) directly supports the binding activity described by the GO term, which is central to its definition. This makes it the most plausible feature explaining why H1VPS8 carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O55003",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for O55003 directly matches the defined function of the GO term \"mitochondrion autophagosome adaptor activity,\" which requires a specific binding activity between mitochondrial membranes and autophagosomes. The available features are generic and not mechanistically specific to this function."
+    },
+    {
+      "accession": "P40458",
+      "reason": "none_verdict",
+      "reasoning": "The protein P40458 has no positional features that directly relate to the defined function of the GO term \"mitochondrion autophagosome adaptor activity.\" No domain/family cross-references are provided, and the only features listed are disordered regions with no functional specificity. Thus, there is no evidence to determine which feature explains this GO term."
+    }
+  ]
+}
