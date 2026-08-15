@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q4KSH9",
+      "go_id": "GO:0102885",
+      "feature_type": "MOTIF",
+      "start": 309,
+      "end": 314,
+      "signal_kind": "text",
+      "signal_value": "DDXXD motif",
+      "reasoning": "The DDXXD motif is a well-known structural feature in enzymes that catalyze phosphoryl transfer reactions, particularly those involved in isoprenoid biosynthesis. This motif directly supports the molecular function defined by GO:0102885, which involves catalyzing the reaction of 2-trans,6-trans-farnesyl diphosphate to produce (-)-alpha-cuprenene and diphosphoric acid."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

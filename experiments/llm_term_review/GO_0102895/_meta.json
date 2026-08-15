@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102895",
+  "name": "colneleate synthase activity",
+  "def": "Catalysis of the reaction: 9(S)-HPODE = colneleate + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q2WE96"
+  ],
+  "assigned_accessions": [
+    "Q2WE96"
+  ]
+}

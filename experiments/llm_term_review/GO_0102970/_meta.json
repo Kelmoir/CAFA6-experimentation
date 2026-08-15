@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102970",
+  "name": "7-deoxyloganetic acid glucosyltransferase activity",
+  "def": "Catalysis of the reaction: UDP-alpha-D-glucose + 7-deoxyloganetate = H+ + 7-deoxyloganate + UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "U3U992"
+  ],
+  "assigned_accessions": [
+    "U3U992"
+  ]
+}

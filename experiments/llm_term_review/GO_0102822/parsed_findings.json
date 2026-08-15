@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "F2YTN4",
+      "go_id": "GO:0102822",
+      "feature_type": "BINDING",
+      "start": 228,
+      "end": 229,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding of S-adenosyl-L-methionine to the protein is directly involved in the catalytic reaction described by the GO term, making it the most plausible explanation for why the protein carries the term."
+    },
+    {
+      "accession": "Q06509",
+      "go_id": "GO:0102822",
+      "feature_type": "BINDING",
+      "start": 130,
+      "end": 137,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site at positions 130-137 directly involves the substrate (3'-hydroxyflavone), which matches the primary reaction mechanism of the GO term. This feature is the most specific and relevant to the enzyme's function as a methyltransferase."
+    },
+    {
+      "accession": "P59049",
+      "go_id": "GO:0102822",
+      "feature_type": "BINDING",
+      "start": 206,
+      "end": 207,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-homocysteine",
+      "reasoning": "The binding of S-adenosyl-L-homocysteine to the enzyme's active site (as indicated by the \"BINDING\" feature) is directly tied to the methyl transfer reaction described in the GO term, making it a strong candidate for explaining why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9FK25",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly states that Q9FK25 catalyzes the specific reaction defined by GO:0102822. While multiple binding sites are present for substrates and cofactors, none of them explicitly confirm the enzyme's role in the methyl transfer mechanism as described in the GO term's definition."
+    }
+  ]
+}

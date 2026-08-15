@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102904",
+  "name": "germacrene C synthase activity",
+  "def": "Catalysis of the reaction: 2-trans,6-trans-farnesyl diphosphate = germacrene C + diphosphoric acid.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O64961"
+  ],
+  "assigned_accessions": [
+    "O64961"
+  ]
+}

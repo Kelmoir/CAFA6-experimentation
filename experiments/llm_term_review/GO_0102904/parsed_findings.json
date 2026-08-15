@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O64961",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction of germacrene C synthase activity. All features are either generic or only loosely related to the defined chemistry."
+    }
+  ]
+}

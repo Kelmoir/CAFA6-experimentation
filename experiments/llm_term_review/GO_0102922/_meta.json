@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102922",
+  "name": "phenylpropanoyltransferase activity",
+  "def": "Catalysis of the reaction: (3R)-3-amino-3-phenylpropanoyl-CoA + baccatin III = 3'-N-debenzoyl-2'-deoxytaxol + CoA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8H2B5"
+  ],
+  "assigned_accessions": [
+    "Q8H2B5"
+  ]
+}

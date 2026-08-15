@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102921",
+  "name": "mannosylglycerate synthase activity",
+  "def": "Catalysis of the reaction: GDP-alpha-D-mannose + D-glycerate = H+ + 2-(alpha-D-mannosyl)-D-glycerate + GDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "D8S5L4"
+  ],
+  "assigned_accessions": [
+    "D8S5L4"
+  ]
+}

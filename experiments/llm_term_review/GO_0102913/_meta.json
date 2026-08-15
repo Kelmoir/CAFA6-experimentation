@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102913",
+  "name": "3-aminomethylindole N-methyltransferase activity",
+  "def": "Catalysis of the reaction: 3-(aminomethyl)indole + S-adenosyl-L-methionine = (1H-indol-3-yl)-N-methylmethanamine + H+ + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q96565"
+  ],
+  "assigned_accessions": [
+    "Q96565"
+  ]
+}

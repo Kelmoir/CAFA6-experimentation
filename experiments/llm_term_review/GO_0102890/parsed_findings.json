@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q33DV3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q33DV3 explicitly states that it catalyzes the transfer of a glucose moiety to chalcones, which is the primary reaction defined by the GO term."
+    }
+  ]
+}

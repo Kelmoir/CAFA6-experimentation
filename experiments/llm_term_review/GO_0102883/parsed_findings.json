@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q4KSH9",
+      "go_id": "GO:0102883",
+      "feature_type": "MOTIF",
+      "start": 309,
+      "end": 314,
+      "signal_kind": "text",
+      "signal_value": "DDXXD motif",
+      "reasoning": "The DDXXD motif is a known structural feature in terpene synthases and directly relates to the catalytic activity described in the GO term, making it the most plausible explanation for why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

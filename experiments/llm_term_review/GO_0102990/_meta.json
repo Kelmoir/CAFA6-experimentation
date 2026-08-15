@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102990",
+  "name": "5-n-alk(en)ylresorcinol O-methyltransferase activity",
+  "def": "Catalysis of the reaction: (8Z,11Z)-5-(pentadeca-8,11,14-trien-1-yl)resorcinol + S-adenosyl-L-methionine = (8Z,11Z)-5-(pentadeca- 8,11,14-trien-1-yl)resorcinol-3-methyl ether + H+ + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A8QW53"
+  ],
+  "assigned_accessions": [
+    "A8QW53"
+  ]
+}

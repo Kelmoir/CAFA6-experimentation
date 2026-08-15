@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102883",
+  "name": "(+)-beta-chamigrene synthase activity",
+  "def": "Catalysis of the reaction: (2E,6E)-farnesyl diphosphate = (+)-beta-chamigrene + diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q4KSH9"
+  ],
+  "assigned_accessions": [
+    "Q4KSH9"
+  ]
+}

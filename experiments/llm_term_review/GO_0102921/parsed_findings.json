@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "D8S5L4",
+      "go_id": "GO:0102921",
+      "feature_type": "BINDING",
+      "start": 6,
+      "end": 11,
+      "signal_kind": "ligand",
+      "signal_value": "GDP-alpha-D-mannose",
+      "reasoning": "The binding of GDP-alpha-D-mannose at position 6-11 directly relates to the primary reaction described in the GO term's definition, making it a strong candidate for explaining why the protein carries that term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

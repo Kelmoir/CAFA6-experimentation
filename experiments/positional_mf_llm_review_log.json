@@ -35192,6 +35192,47 @@
    }
   ]
  },
+ "GO:0102822": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "F2YTN4"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q06509"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-homocysteine",
+    "accessions": [
+     "P59049"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FK25",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly states that Q9FK25 catalyzes the specific reaction defined by GO:0102822. While multiple binding sites are present for substrates and cofactors, none of them explicitly confirm the enzyme's role in the methyl transfer mechanism as described in the GO term's definition."
+   }
+  ]
+ },
  "GO:0102850": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -35205,6 +35246,282 @@
     "accession": "P46312",
     "reason": "none_verdict",
     "reasoning": "No annotated feature in P46312's list directly matches the primary reaction mechanism of the GO term, which involves the desaturation of an acyl-lipid. The motifs and domain/family cross-references are related to ferredoxin activity but do not specifically account for the defined chemical reaction."
+   }
+  ]
+ },
+ "GO:0102878": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "(2E,6E)-farnesyl diphosphate",
+    "accessions": [
+     "Q4KSH9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102882": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q4KSH9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section specifically matches the primary reaction mechanism of the GO term \"beta-acoradiene synthase activity.\" The only binding events are generic and do not provide a strong, specific match to the chemistry defined by the GO term."
+   }
+  ]
+ },
+ "GO:0102883": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "DDXXD motif",
+    "accessions": [
+     "Q4KSH9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102884": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "(2E,6E)-farnesyl diphosphate",
+    "accessions": [
+     "Q4KSH9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102885": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "DDXXD motif",
+    "accessions": [
+     "Q4KSH9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102890": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q33DV3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q33DV3 explicitly states that it catalyzes the transfer of a glucose moiety to chalcones, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0102895": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q2WE96",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q2WE96 provides a specific explanation for why it carries the molecular function \"colneleate synthase activity.\" The only relevant feature is a binding site with heme, which does not directly explain the catalytic reaction described by the GO term."
+   }
+  ]
+ },
+ "GO:0102904": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O64961",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction of germacrene C synthase activity. All features are either generic or only loosely related to the defined chemistry."
+   }
+  ]
+ },
+ "GO:0102910": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q1ZZU9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0102913": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q96565",
+    "go_id": "GO:0102913",
+    "feature_type": "BINDING",
+    "start": 219,
+    "end": 220,
+    "signal_kind": "ligand",
+    "signal_value": "S-adenosyl-L-homocysteine",
+    "reasoning": "The binding site for S-adenosyl-L-homocysteine at positions 219-220 is relevant to the enzyme's function as a methyltransferase, but it does not directly explain why the protein carries this GO term. It only indicates that the protein can interact with the substrate."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0102917": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6WUC2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q6WUC2's Annotated features section provides a specific explanation for the molecular function defined by GO:0102917, as all binding sites are generic and do not directly account for the enzyme's activity."
+   }
+  ]
+ },
+ "GO:0102921": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "GDP-alpha-D-mannose",
+    "accessions": [
+     "D8S5L4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102922": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8H2B5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the enzymatic activity defined by GO:0102922."
+   }
+  ]
+ },
+ "GO:0102970": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "U3U992",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly describes the catalytic reaction defined by the GO term, so no specific feature can be identified as the basis for the molecular function."
+   }
+  ]
+ },
+ "GO:0102983": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q94AA9",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q94AA9 is a disordered region (REGION 61-110), which does not provide any direct evidence of the enzyme's active site or catalytic mechanism. This means there is no positional feature that plausibly accounts for the GO term's primary reaction, and thus the verdict is NONE."
+   }
+  ]
+ },
+ "GO:0102990": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A8QW53",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a specific explanation for the catalytic activity described in the GO term. The presence of multiple binding sites for S-adenosyl-L-methionine does not confirm that the protein is performing a methyl transfer reaction, which is the primary mechanism defined by the GO term."
    }
   ]
  }

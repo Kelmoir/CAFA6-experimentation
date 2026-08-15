@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q4KSH9",
+      "go_id": "GO:0102884",
+      "feature_type": "BINDING",
+      "start": 272,
+      "end": 273,
+      "signal_kind": "ligand",
+      "signal_value": "(2E,6E)-farnesyl diphosphate",
+      "reasoning": "The binding of (2E,6E)-farnesyl diphosphate to the protein's site is directly aligned with the reaction mechanism described for alpha-zingiberene synthase activity, making it a strong candidate for explaining the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102890",
+  "name": "chalcone 4'-O-glucosyltransferase activity",
+  "def": "Catalysis of the reaction: UDP-alpha-D-glucose + 2',4,4',6'-tetrahydroxychalcone = UDP + 2',4,4',6'-tetrahydroxychalcone 4'-O-beta-D-glucoside + H+. Also converts 2',3,4,4',6'-pentahydroxychalcone + UDP-alpha-D-glucose into 2',3,4,4',6'-pentahydroxychalcone 4'-O-beta-D-glucoside.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q33DV3"
+  ],
+  "assigned_accessions": [
+    "Q33DV3"
+  ]
+}
