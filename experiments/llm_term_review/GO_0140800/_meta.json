@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0140800",
+  "name": "gamma-aminobutyric acid:proton antiporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: 4-aminobutanoate(out) + H+(in) = 4-aminobutanoate(in) + H+(out).",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O35458",
+    "O35633",
+    "Q9H598"
+  ],
+  "assigned_accessions": [
+    "O35458",
+    "O35633",
+    "Q9H598"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9XIP2",
+      "go_id": "GO:0140934",
+      "feature_type": "DOMAIN",
+      "start": 445,
+      "end": 491,
+      "signal_kind": "text",
+      "signal_value": "UBA",
+      "reasoning": "The UBA domain is a well-known motif in deubiquitinases and is directly associated with ubiquitin recognition and cleavage, which matches the primary reaction of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

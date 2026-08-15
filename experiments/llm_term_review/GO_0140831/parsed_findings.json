@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9DCP2",
+      "go_id": "GO:0140831",
+      "feature_type": "SITE",
+      "start": 75,
+      "end": 76,
+      "signal_kind": "text",
+      "signal_value": "Modulates L-glutamine-induced conductances and Na(+) binding",
+      "reasoning": "The site feature (positions 75-76) is more plausible than the disordered region in explaining the function of Q9DCP2 for GO:0140831, as it implies a role in ion transport and solute exchange. However, since the site feature does not explicitly state the antiport mechanism, it is a near-tie between two candidates."
+    },
+    {
+      "accession": "Q99624",
+      "go_id": "GO:0140831",
+      "feature_type": "SITE",
+      "start": 76,
+      "end": 77,
+      "signal_kind": "text",
+      "signal_value": "Modulates L-glutamine-induced conductances and Na(+) binding",
+      "reasoning": "The annotated feature at SITE 76-77 is plausible as it involves Na(+) binding and conductance modulation, which are related to antiporter activity. However, it does not explicitly describe the transfer of L-asparagine or the proton mechanism, so it only provides a partial match to the GO term's primary reaction."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q9JHZ9",
+      "reason": "none_verdict",
+      "reasoning": "The annotated feature \"SITE 75-76\" does not specifically or mechanistically explain the GO term's primary reaction of solute transport across a membrane. It appears to be more about regulation or interaction rather than the core function of the antiporter."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+=== Q6DG36 GO:0140826 (VERDICT missing) ===
+THINKING: The GO term is "zinc:proton antiporter activity" (GO:0140826), which defines the ability of a protein to transfer zinc from one side of a membrane to the other in exchange for protons. This primary reaction involves the movement of both zinc and protons across a membrane, with the specific chemical equation given as H+(out) + Zn2+(in) = H+(in) + Zn2+(out). 
+
+The annotated features for protein Q6DG36 include several regions and binding sites that are relevant to zinc transport. The key feature is the "REGION" span 537-584, which is noted as a His-rich loop required for zinc transport. This region directly relates to the structural feature necessary for the function of zinc:proton antiporter activity.
+
+Other features such as "BINDING" spans with ligand Zn(2+) are also relevant but focus more on the interaction rather than the primary reaction mechanism. The "REGION" span 537-584 is the most specific and directly supports the definition's primary reaction by indicating a structural element required for zinc transport.
+
+The highest score for the match is 10, as it directly corresponds to the defined function of the protein through its structure.
+
+FEATURE: REGION 537-584
+REASONING: The "REGION" span 537-584 is the most specific and direct evidence supporting the GO term's primary reaction of zinc:proton antiporter activity, as it indicates a His-rich loop required for zinc transport.
+

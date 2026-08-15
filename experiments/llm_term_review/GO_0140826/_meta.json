@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140826",
+  "name": "zinc:proton antiporter activity",
+  "def": "Enables the transfer of zinc from one side of a membrane to the other according to the reaction: H+(out) + Zn2+(in) = H+(in) + Zn2+(out).",
+  "n_proteins_total": 13,
+  "sampled_accessions": [
+    "Q62941",
+    "Q6DG36",
+    "Q8IWU4",
+    "Q9BRI3"
+  ],
+  "assigned_accessions": [
+    "Q62941",
+    "Q6DG36",
+    "Q8IWU4",
+    "Q9BRI3"
+  ]
+}

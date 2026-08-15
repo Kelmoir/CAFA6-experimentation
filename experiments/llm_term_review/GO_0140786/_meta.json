@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140786",
+  "name": "glutamine sensor activity",
+  "def": "Binding to and responding, e.g. by conformational change, to changes in the cellular level of glutamine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9Y7M3"
+  ],
+  "assigned_accessions": [
+    "Q9Y7M3"
+  ]
+}

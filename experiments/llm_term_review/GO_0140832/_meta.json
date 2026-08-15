@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0140832",
+  "name": "L-histidine, sodium:proton antiporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: H+(in) + L-histidine(out) + Na+(out) = H+(out) + L-histidine(in) + Na+(in).",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q99624",
+    "Q9DCP2",
+    "Q9JHZ9"
+  ],
+  "assigned_accessions": [
+    "Q99624",
+    "Q9DCP2",
+    "Q9JHZ9"
+  ]
+}

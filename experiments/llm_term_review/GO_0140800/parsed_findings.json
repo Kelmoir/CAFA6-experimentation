@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O35458",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "O35633",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9H598",
+      "reason": "none_verdict",
+      "reasoning": "The only positional feature provided for the protein does not provide any direct evidence of the proton antiporter activity described in the GO term."
+    }
+  ]
+}

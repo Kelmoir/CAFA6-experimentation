@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O35458",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "O35633",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9H598",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for Q9H598 is a disordered region, which does not provide structural or functional evidence that supports the antiporter activity defined by GO:0140799."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0140802",
+  "name": "NAD+-protein-C-terminal glycine ADP-ribosyltransferase activity",
+  "def": "Catalysis of the reaction: [protein]-C-terminal glycine + NAD+ = [protein]-C-terminal O-(ADP-D-ribosyl)-glycine + nicotinamide.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q8CAS9",
+    "Q8IXQ6"
+  ],
+  "assigned_accessions": [
+    "Q8CAS9",
+    "Q8IXQ6"
+  ]
+}

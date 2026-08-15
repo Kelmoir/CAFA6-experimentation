@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9Y7M3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9Y7M3 directly explains the molecular function of \"glutamine sensor activity\" as defined by the GO term."
+    }
+  ]
+}

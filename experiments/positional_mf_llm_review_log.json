@@ -39813,5 +39813,211 @@
     "reasoning": "No annotated feature in the provided data directly supports the primary reaction of amino acid sensing as defined by the GO term."
    }
   ]
+ },
+ "GO:0140786": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9Y7M3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9Y7M3 directly explains the molecular function of \"glutamine sensor activity\" as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0140799": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O35458",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O35633",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9H598",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q9H598 is a disordered region, which does not provide structural or functional evidence that supports the antiporter activity defined by GO:0140799."
+   }
+  ]
+ },
+ "GO:0140800": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O35458",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O35633",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9H598",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature provided for the protein does not provide any direct evidence of the proton antiporter activity described in the GO term."
+   }
+  ]
+ },
+ "GO:0140802": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PARP catalytic",
+    "accessions": [
+     "Q8CAS9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8IXQ6",
+    "reason": "none_verdict",
+    "reasoning": "The domain \"PARP catalytic\" (DOMAIN 627-850) is associated with ADP-ribosylation, which is a related but distinct process from the NAD+-dependent glycine transfer reaction defined by GO:0140802. Since no annotated feature directly matches the specific chemistry of the reaction described in the definition, the verdict is NONE."
+   }
+  ]
+ },
+ "GO:0140826": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q62941",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for Zn(2+) (BINDING 35-36) is the most specific match to the ligand involved in the defined reaction, even though it does not explicitly describe the antiporter activity."
+   },
+   {
+    "accession": "Q8IWU4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves the specific antiport mechanism of zinc and protons. While some features are related to zinc binding, none describe the antiporter activity as defined by the GO term's primary reaction."
+   },
+   {
+    "accession": "Q9BRI3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the defined chemical reaction of zinc-proton antiporter activity, and all features either focus on localization or general zinc binding without specifying the antiport mechanism."
+   },
+   {
+    "accession": "Q6DG36",
+    "reason": "none_verdict",
+    "reasoning": "The region is described as a His-rich loop required for zinc transport, but this feature does not directly explain why the protein carries the term. It only describes a structural requirement rather than the specific mechanism of zinc and proton transfer."
+   }
+  ]
+ },
+ "GO:0140831": {
+  "n_resolved": 0,
+  "n_uncertain": 2,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9DCP2",
+    "go_id": "GO:0140831",
+    "feature_type": "SITE",
+    "start": 75,
+    "end": 76,
+    "signal_kind": "text",
+    "signal_value": "Modulates L-glutamine-induced conductances and Na(+) binding",
+    "reasoning": "The site feature (positions 75-76) is more plausible than the disordered region in explaining the function of Q9DCP2 for GO:0140831, as it implies a role in ion transport and solute exchange. However, since the site feature does not explicitly state the antiport mechanism, it is a near-tie between two candidates."
+   },
+   {
+    "accession": "Q99624",
+    "go_id": "GO:0140831",
+    "feature_type": "SITE",
+    "start": 76,
+    "end": 77,
+    "signal_kind": "text",
+    "signal_value": "Modulates L-glutamine-induced conductances and Na(+) binding",
+    "reasoning": "The annotated feature at SITE 76-77 is plausible as it involves Na(+) binding and conductance modulation, which are related to antiporter activity. However, it does not explicitly describe the transfer of L-asparagine or the proton mechanism, so it only provides a partial match to the GO term's primary reaction."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q9JHZ9",
+    "reason": "none_verdict",
+    "reasoning": "The annotated feature \"SITE 75-76\" does not specifically or mechanistically explain the GO term's primary reaction of solute transport across a membrane. It appears to be more about regulation or interaction rather than the core function of the antiporter."
+   }
+  ]
+ },
+ "GO:0140832": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q99624",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism of the GO term, and the only relevant domain family is generic and not specific to this protein's function."
+   },
+   {
+    "accession": "Q9DCP2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9DCP2 specifically matches the defined reaction mechanism of GO:0140832."
+   },
+   {
+    "accession": "Q9JHZ9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, specific explanation for the defined chemical reaction of the GO term, making it impossible to determine the most plausible structural/functional basis."
+   }
+  ]
+ },
+ "GO:0140934": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "UBA",
+    "accessions": [
+     "Q9XIP2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }
