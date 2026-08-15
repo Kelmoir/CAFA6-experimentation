@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0070853",
+  "name": "myosin VI binding",
+  "def": "Binding to a class VI myosin. The myosin VI heavy chain has a single IQ motif in the neck and a tail region with a coiled coil domain followed by a unique globular domain, a unique insertion that enables myosin VI to move towards the pointed or minus end of actin filaments.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O60784",
+    "O88746",
+    "Q8IWU2"
+  ],
+  "assigned_accessions": [
+    "O60784",
+    "O88746",
+    "Q8IWU2"
+  ]
+}

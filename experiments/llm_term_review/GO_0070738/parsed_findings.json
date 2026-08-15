@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "Q1ECV4",
+      "go_id": "GO:0070738",
+      "feature_type": "BINDING",
+      "start": 344,
+      "end": 345,
+      "signal_kind": "ligand",
+      "signal_value": "a protein",
+      "reasoning": "The binding of an L-glutamate residue to the target protein directly supports the GO term's definition by indicating the specific glutamate residue that receives glycine residues during posttranslational modification. This feature is more specifically aligned with the primary reaction described in the GO term than other features, which either lack specificity or are not directly involved in the ca"
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A7YE96",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

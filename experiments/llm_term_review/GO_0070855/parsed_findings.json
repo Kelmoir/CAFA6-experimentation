@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P49258",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P62152",
+      "reason": "none_verdict",
+      "reasoning": "The protein P62152 has multiple Ca(2+) binding sites, but none of the annotated features directly or specifically explain why it binds to the head/neck region of myosin VI."
+    }
+  ]
+}

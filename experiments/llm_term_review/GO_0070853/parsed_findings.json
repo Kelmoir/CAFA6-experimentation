@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O60784",
+      "go_id": "GO:0070853",
+      "feature_type": "REGION",
+      "start": 391,
+      "end": 463,
+      "signal_kind": "text",
+      "signal_value": "Interaction with MYO6",
+      "reasoning": "The \"Interaction with MYO6\" region directly relates to the primary reaction of myosin VI binding, making it the most plausible explanation for the GO term."
+    },
+    {
+      "accession": "O88746",
+      "go_id": "GO:0070853",
+      "feature_type": "DOMAIN",
+      "start": 19,
+      "end": 152,
+      "signal_kind": "text",
+      "signal_value": "VHS",
+      "reasoning": "The VHS domain (DOMAIN 19-152) directly corresponds to the structural feature that enables myosin VI binding, as described in the GO term's primary reaction. This is a strong match to the defined chemistry of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8IWU2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q8IWU2 directly matches the definition of \"myosin VI binding,\" which requires a specific interaction with class VI myosin. The only relevant features are ATP-binding sites, which do not imply a specific interaction with myosin VI. Thus, there is no positional feature that plausibly explains why this protein carries the term."
+    }
+  ]
+}

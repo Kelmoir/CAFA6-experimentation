@@ -30610,6 +30610,77 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0070697": {
+  "n_resolved": 3,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "MH1",
+    "accessions": [
+     "O15105",
+     "O35253",
+     "O88406"
+    ],
+    "reason": "resolved to ['InterPro:IPR013019', 'InterPro:IPR036578', 'PROSITE:PS51075', 'Pfam:PF03165'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR013019': 35, 'InterPro:IPR036578': 35, 'PROSITE:PS51075': 35, 'Pfam:PF03165': 45})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P13385",
+    "go_id": "GO:0070697",
+    "feature_type": "DOMAIN",
+    "start": 77,
+    "end": 107,
+    "signal_kind": "text",
+    "signal_value": "EGF-like",
+    "reasoning": "The EGF-like domain annotation suggests potential involvement in ligand-binding activity, but it does not specifically confirm the protein's role in activin receptor binding as defined by GO:0070697. Thus, while plausible, it does not strongly match the primary reaction of the term."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0070698": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "MH1",
+    "accessions": [
+     "O35182",
+     "O43541"
+    ],
+    "reason": "resolved to ['InterPro:IPR013019', 'InterPro:IPR036578', 'PROSITE:PS51075', 'Pfam:PF03165'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR013019': 35, 'InterPro:IPR036578': 35, 'PROSITE:PS51075': 35, 'Pfam:PF03165': 45})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P51865",
+    "go_id": "GO:0070698",
+    "feature_type": "DOMAIN",
+    "start": 61,
+    "end": 91,
+    "signal_kind": "text",
+    "signal_value": "EGF-like",
+    "reasoning": "The only positional feature available for P51865 is the DOMAIN span (61-91), which is noted as EGF-like. While this could be related to activin receptor binding, it does not specifically account for the primary reaction of receiving a phosphoryl transfer from a type I activin receptor. The match is too generic to be considered strong evidence for the GO term's definition."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P43021",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0070704": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -30623,6 +30694,149 @@
     "value": "Fatty acid hydroxylase",
     "accessions": [
      "Q9EQS5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0070717": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "RRM",
+    "accessions": [
+     "P62996",
+     "P62997"
+    ],
+    "reason": "resolved to ['InterPro:IPR000504', 'PROSITE:PS50102', 'Pfam:PF00076'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000504': 810, 'PROSITE:PS50102': 794, 'Pfam:PF00076': 726})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0070738": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a protein",
+    "accessions": [
+     "Q1ECV4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A7YE96",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0070853": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Interaction with MYO6",
+    "accessions": [
+     "O60784"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "VHS",
+    "accessions": [
+     "O88746"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8IWU2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8IWU2 directly matches the definition of \"myosin VI binding,\" which requires a specific interaction with class VI myosin. The only relevant features are ATP-binding sites, which do not imply a specific interaction with myosin VI. Thus, there is no positional feature that plausibly explains why this protein carries the term."
+   }
+  ]
+ },
+ "GO:0070854": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9VJE5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein Q9VJE5 directly states the mechanism of binding to a myosin VI heavy chain, which is the primary reaction implied by the GO term."
+   }
+  ]
+ },
+ "GO:0070855": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P49258",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P62152",
+    "reason": "none_verdict",
+    "reasoning": "The protein P62152 has multiple Ca(2+) binding sites, but none of the annotated features directly or specifically explain why it binds to the head/neck region of myosin VI."
+   }
+  ]
+ },
+ "GO:0070856": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Myosin motor",
+    "accessions": [
+     "Q01989"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Calponin-homology (CH)",
+    "accessions": [
+     "Q86VI3"
     ]
    }
   ],

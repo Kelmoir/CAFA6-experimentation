@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "Q01989",
+      "go_id": "GO:0070856",
+      "feature_type": "DOMAIN",
+      "start": 56,
+      "end": 766,
+      "signal_kind": "text",
+      "signal_value": "Myosin motor",
+      "reasoning": "The \"MYO6_lever\" domain (InterPro:IPR049016) is directly associated with the lever arm of myosin VI, which is involved in light chain binding. This domain matches the primary reaction of the GO term by implementing the function of binding to a light chain of a myosin VI complex."
+    },
+    {
+      "accession": "Q86VI3",
+      "go_id": "GO:0070856",
+      "feature_type": "DOMAIN",
+      "start": 33,
+      "end": 149,
+      "signal_kind": "text",
+      "signal_value": "Calponin-homology (CH)",
+      "reasoning": "The Calponin-homology (CH) domain is a known structural feature associated with light chain binding in myosins, making it the most plausible explanation for the molecular function of \"myosin VI light chain binding.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0070697",
+  "name": "activin receptor binding",
+  "def": "Binding to an activin receptor.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "O15105",
+    "O35253",
+    "O88406",
+    "P13385"
+  ],
+  "assigned_accessions": [
+    "O15105",
+    "O35253",
+    "O88406",
+    "P13385"
+  ]
+}

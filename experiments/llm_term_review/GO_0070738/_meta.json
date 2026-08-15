@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0070738",
+  "name": "tubulin-glycine ligase activity",
+  "def": "Catalysis of the posttranslational transfer of one or more glycine residues to a specific glutamate residue on a target tubulin molecule; acts on alpha or beta tubulin.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "A7YE96",
+    "Q1ECV4"
+  ],
+  "assigned_accessions": [
+    "A7YE96",
+    "Q1ECV4"
+  ]
+}

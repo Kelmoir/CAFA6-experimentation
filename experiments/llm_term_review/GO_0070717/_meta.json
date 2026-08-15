@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0070717",
+  "name": "poly-purine tract binding",
+  "def": "Binding to a stretch of purines (adenine or guanine) in an RNA molecule.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P62996",
+    "P62997"
+  ],
+  "assigned_accessions": [
+    "P62996",
+    "P62997"
+  ]
+}

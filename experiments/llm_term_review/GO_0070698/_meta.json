@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0070698",
+  "name": "type I activin receptor binding",
+  "def": "Binding to a type I activin receptor.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "O35182",
+    "O43541",
+    "P43021",
+    "P51865"
+  ],
+  "assigned_accessions": [
+    "O35182",
+    "O43541",
+    "P43021",
+    "P51865"
+  ]
+}
