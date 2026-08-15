@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "F4JUY5",
+      "go_id": "GO:0102117",
+      "feature_type": "BINDING",
+      "start": 21,
+      "end": 22,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-homocysteine",
+      "reasoning": "The feature \"BINDING 21-22\" with ligand \"S-adenosyl-L-methionine\" directly matches the primary reaction of the GO term, which is the catalysis of the reaction between gibberellin A9 and S-adenosyl-L-methionine."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

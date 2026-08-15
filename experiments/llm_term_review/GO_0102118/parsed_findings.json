@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q5XF78",
+      "go_id": "GO:0102118",
+      "feature_type": "BINDING",
+      "start": 32,
+      "end": 33,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-homocysteine",
+      "reasoning": "The binding of S-adenosyl-L-methionine to the enzyme's active site directly supports the methyl transfer mechanism described in the GO term, making it the most specific and relevant feature."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

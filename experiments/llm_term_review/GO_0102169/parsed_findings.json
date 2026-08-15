@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9HWG9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction mechanism described for the GO term, and all features are generic or unrelated to the defined chemistry."
+    }
+  ]
+}

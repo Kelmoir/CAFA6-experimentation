@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102169",
+  "name": "5-methylphenazine-1-carboxylate 1-monooxygenase (NADH) activity",
+  "def": "Catalysis of the reaction: 5-methyl-phenazine-1-carboxylate + 2 H+ + NADH + O2 = CO2 + H2O + NAD+ + pyocyanin. Also converts phenazine-1-carboxylate into 1-hydroxyphenazine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9HWG9"
+  ],
+  "assigned_accessions": [
+    "Q9HWG9"
+  ]
+}

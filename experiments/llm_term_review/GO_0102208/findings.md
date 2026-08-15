@@ -1,0 +1,5 @@
+## P17993 GO:0102208
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature (by type + exact coordinates) specifically matches the primary reaction of the GO term "2-polyprenyl-6-hydroxyphenol methylase activity" (catalysis of the reaction between a 3-(all-trans-polyprenyl)benzene-1,2-diol and S-adenosyl-L-methionine to form a 2-methoxy-6-(all-trans-polyprenyl)phenol). The binding sites for S-adenosyl-L-methionine are generic features that describe th
+---

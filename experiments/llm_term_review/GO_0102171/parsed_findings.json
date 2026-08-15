@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "A0A1D6HSP4",
+      "go_id": "GO:0102171",
+      "feature_type": "BINDING",
+      "start": 463,
+      "end": 464,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The BINDING feature at position 463-464 directly involves heme, a cofactor required for oxygen-dependent reactions, which matches the primary reaction described in the GO term's definition. This provides a strong mechanistic basis for the protein carrying the term \"DMNT synthase activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9LSF8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9LSF8 specifically matches the primary reaction mechanism described in the GO term's definition. The only relevant binding feature (BINDING 218-219) is generic and could apply to many proteins, not just those carrying this specific molecular function. Therefore, there is no single annotated feature that plausibly explains why Q9LSF8 carries the GO term \"DMNT synthase activ"
+    }
+  ]
+}

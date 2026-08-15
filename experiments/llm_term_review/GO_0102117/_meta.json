@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102117",
+  "name": "gibberellin A9 carboxyl methyltransferase activity",
+  "def": "Catalysis of the reaction: gibberellin A9 + S-adenosyl-L-methionine = gibberellin A9 methyl ester + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "F4JUY5"
+  ],
+  "assigned_accessions": [
+    "F4JUY5"
+  ]
+}

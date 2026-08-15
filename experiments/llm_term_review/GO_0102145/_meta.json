@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0102145",
+  "name": "(3R)-(E)-nerolidol synthase activity",
+  "def": "Catalysis of the reaction: 2-trans,6-trans-farnesyl diphosphate + H2O = (3R,6E)-nerolidol + diphosphoric acid.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q75J90",
+    "Q84ZW8"
+  ],
+  "assigned_accessions": [
+    "Q75J90",
+    "Q84ZW8"
+  ]
+}

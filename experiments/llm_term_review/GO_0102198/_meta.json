@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102198",
+  "name": "L-idonate 5-dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: L-idonate + NAD+ = 5-dehydro-D-gluconate + NADH + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P39346"
+  ],
+  "assigned_accessions": [
+    "P39346"
+  ]
+}

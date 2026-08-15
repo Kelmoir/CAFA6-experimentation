@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "Q75J90",
+      "go_id": "GO:0102145",
+      "feature_type": "MOTIF",
+      "start": 102,
+      "end": 108,
+      "signal_kind": "text",
+      "signal_value": "DDxx(x)D/E motif",
+      "reasoning": "The DDxx(x)D/E motif is a plausible candidate for explaining the GO term because it is commonly found in enzymes involved in the synthesis of isoprenoids and related compounds, which aligns with the reaction mechanism described."
+    },
+    {
+      "accession": "Q84ZW8",
+      "go_id": "GO:0102145",
+      "feature_type": "MOTIF",
+      "start": 332,
+      "end": 337,
+      "signal_kind": "text",
+      "signal_value": "DDXXD motif",
+      "reasoning": "The DDXXD motif is a well-known structural feature in enzymes involved in isoprenoid biosynthesis, including terpene synthases, and it directly relates to the catalytic activity described in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

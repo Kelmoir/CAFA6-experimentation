@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0102171",
+  "name": "DMNT synthase activity",
+  "def": "Catalysis of the reaction: (3S,6E)-nerolidol + O2 + reduced [NADPH--hemoprotein reductase] = (3E)-4,8-dimethylnona-1,3,7-triene + but-3-en-2-one + H+ + 2 H2O + oxidized [NADPH--hemoprotein reductase].",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "A0A1D6HSP4",
+    "Q9LSF8"
+  ],
+  "assigned_accessions": [
+    "A0A1D6HSP4",
+    "Q9LSF8"
+  ]
+}

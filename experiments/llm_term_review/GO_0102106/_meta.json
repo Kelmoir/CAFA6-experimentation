@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0102106",
+  "name": "curcumin synthase activity",
+  "def": "Catalysis of the reaction: feruloylacetyl-CoA + feruloyl-CoA(4-) + H2O = curcumin + 2 coenzyme A(4-) + carbon dioxide.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "C0SVZ6",
+    "C6L7V8",
+    "C6L7V9"
+  ],
+  "assigned_accessions": [
+    "C0SVZ6",
+    "C6L7V8",
+    "C6L7V9"
+  ]
+}

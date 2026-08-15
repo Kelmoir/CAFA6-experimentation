@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "C6L7V9",
+      "go_id": "GO:0102106",
+      "feature_type": "ACT_SITE",
+      "start": 163,
+      "end": 164,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The \"ACT_SITE\" feature directly relates to the location of the catalytic activity described in the GO term's definition, providing a plausible explanation for why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "C0SVZ6",
+      "reason": "none_verdict",
+      "reasoning": "The only positional feature provided for C0SVZ6 does not directly support the catalytic reaction defined by GO:0102106, and no other annotated features are present that could plausibly explain this molecular function."
+    },
+    {
+      "accession": "C6L7V8",
+      "reason": "none_verdict",
+      "reasoning": "The protein C6L7V8 has no annotated positional feature that directly explains the \"curcumin synthase activity\" GO term. While its domain/family cross-references suggest it may be involved in chalcone/stilbene or polyketide synthesis, these are not positional features and do not directly account for the specific reaction defined by the GO term. Therefore, no single annotated feature can plausibly e"
+    }
+  ]
+}

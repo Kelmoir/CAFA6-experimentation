@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9HWH2",
+      "go_id": "GO:0102168",
+      "feature_type": "BINDING",
+      "start": 197,
+      "end": 198,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding sites for S-adenosyl-L-methionine at positions 197-198 in Q9HWH2 directly support the catalytic activity of methyl transfer as defined by GO:0102168, which is a strong match to the primary reaction mechanism."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

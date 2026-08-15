@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102146",
+  "name": "tricetin O-methytransferase activity",
+  "def": "Catalysis of the reaction: tricetin + S-adenosyl-L-methionine = H+ + 3'-O-methyltricetin + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q06509"
+  ],
+  "assigned_accessions": [
+    "Q06509"
+  ]
+}

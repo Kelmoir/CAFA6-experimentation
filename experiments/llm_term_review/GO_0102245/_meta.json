@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102245",
+  "name": "lupan-3beta,20-diol synthase activity",
+  "def": "Catalysis of the reaction: lupan-3beta,20-diol = (S)-2,3-epoxysqualene + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9C5M3"
+  ],
+  "assigned_accessions": [
+    "Q9C5M3"
+  ]
+}

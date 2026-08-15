@@ -1,0 +1,12 @@
+=== Q9C5M3 GO:0102245 (VERDICT missing) ===
+THINKING: The GO term is "lupan-3beta,20-diol synthase activity" (GO:0102245), which defines the catalysis of the reaction where lupan-3beta,20-diol is converted into (S)-2,3-epoxysqualene and water. The primary reaction involves a specific enzymatic mechanism — likely a cyclization or rearrangement of the diol to form the epoxide. 
+
+The protein Q9C5M3 has several annotated features, including ACT_SITE 482-483, which indicates that this position acts as a proton donor. This feature is relevant because many enzymes require proton transfer during catalytic reactions, especially those involving cyclization or epoxidation.
+
+Other features include domain/family cross-references to various cyclase and terpene synthase families, suggesting the protein may be involved in similar types of biochemical processes. However, none of these features directly specify the mechanism of reaction (e.g., the exact type of cyclization or the specific diol structure being processed), nor do they provide positional evidence that would clearly explain why this protein carries the term.
+
+The only feature that directly relates to the enzymatic activity described in the GO definition is the ACT_SITE annotation, which could plausibly be involved in the proton transfer required for the reaction. This feature is more specific than generic domain classifications and aligns with the primary reaction mechanism of the GO term.
+
+FEATURE: ACT_SITE 482-483  
+REASONING: The ACT_SITE annotation at position 482-483 indicates that this region acts as a proton donor, which is directly relevant to the enzymatic reaction described in the GO term. This feature plausibly explains why the protein carries the term "lupan-3beta,20-diol synthase activity" by supporting the mechanism of proton transfer involved in the reaction.
+

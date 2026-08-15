@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102168",
+  "name": "5-methyl-phenazine-1-carboxylate N-methyltransferase activity",
+  "def": "Catalysis of the reaction: phenazine-1-carboxylate + S-adenosyl-L-methionine = 5-methyl-phenazine-1-carboxylate + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9HWH2"
+  ],
+  "assigned_accessions": [
+    "Q9HWH2"
+  ]
+}

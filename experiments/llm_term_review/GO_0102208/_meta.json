@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102208",
+  "name": "2-polyprenyl-6-hydroxyphenol methylase activity",
+  "def": "Catalysis of the reaction: a 3-(all-trans-polyprenyl)benzene-1,2-diol + S-adenosyl-L-methionine = a 2-methoxy-6-(all-trans-polyprenyl)phenol + H+ + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P17993"
+  ],
+  "assigned_accessions": [
+    "P17993"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P39346",
+      "reason": "none_verdict",
+      "reasoning": "No specific binding site for NAD+ or L-idonate has been identified in the provided annotated features, so there is no strong evidence to suggest that this protein carries the defined molecular function of L-idonate 5-dehydrogenase (NAD+) activity."
+    }
+  ]
+}
