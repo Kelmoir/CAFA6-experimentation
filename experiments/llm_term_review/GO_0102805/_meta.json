@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102805",
+  "name": "codeine O-demethylase activity",
+  "def": "Catalysis of the reaction: codeine + 2-oxoglutarate + O2 = morphine + formaldehyde + succinate + CO2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "D4N502"
+  ],
+  "assigned_accessions": [
+    "D4N502"
+  ]
+}

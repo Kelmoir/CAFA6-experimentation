@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P49235",
+      "go_id": "GO:0102726",
+      "feature_type": "BINDING",
+      "start": 91,
+      "end": 92,
+      "signal_kind": "ligand",
+      "signal_value": "a beta-D-glucoside",
+      "reasoning": "The binding site for beta-D-glucoside in region 91-92 is consistent with the enzyme's interaction with its substrate, but it does not directly confirm the catalytic activity described in the GO term's definition."
+    }
+  ],
+  "issues": []
+}

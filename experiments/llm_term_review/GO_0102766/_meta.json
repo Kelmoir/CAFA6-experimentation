@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102766",
+  "name": "naringenin 7-O-methyltransferase activity",
+  "def": "Catalysis of the reaction: (S)-naringenin(1-) + S-adenosyl-L-methionine = sakuranetin + S-adenosyl-L-homocysteine + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q0IP69"
+  ],
+  "assigned_accessions": [
+    "Q0IP69"
+  ]
+}

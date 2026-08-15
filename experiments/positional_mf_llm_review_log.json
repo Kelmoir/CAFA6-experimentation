@@ -34943,5 +34943,269 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0102717": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "2-oxoglutarate",
+    "accessions": [
+     "Q84TC2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102726": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P49235",
+    "go_id": "GO:0102726",
+    "feature_type": "BINDING",
+    "start": 91,
+    "end": 92,
+    "signal_kind": "ligand",
+    "signal_value": "a beta-D-glucoside",
+    "reasoning": "The binding site for beta-D-glucoside in region 91-92 is consistent with the enzyme's interaction with its substrate, but it does not directly confirm the catalytic activity described in the GO term's definition."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0102731": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q93YN9",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature in Q93YN9 that directly matches the primary reaction mechanism of the GO term GO:0102731, which involves the catalysis of a specific phosphate transfer from ATP to inositol-1,3,4,6-tetrakisphosphate. The \"MOTIF\" and \"BINDING\" features are too generic or not directly related to the defined reaction."
+   }
+  ]
+ },
+ "GO:0102732": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FLT2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9LY23",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, positional explanation for the molecular function defined by GO:0102732. The only evidence is generic and does not match the primary reaction of the enzyme."
+   }
+  ]
+ },
+ "GO:0102735": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "L7NCQ3",
+    "reason": "none_verdict",
+    "reasoning": "The annotated feature ACT_SITE 164-165 does not specifically explain why L7NCQ3 carries the GO term \"trihydroxybenzophenone synthase activity\" in terms of the defined chemistry. It is generic and could apply to many enzymes, but it does not directly account for the specific reaction mechanism or active site structure required for this function."
+   },
+   {
+    "accession": "Q8SAS8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q8SAS8 directly matches the primary reaction defined by the GO term \"trihydroxybenzophenone synthase activity.\" The definition focuses on the specific chemical reaction, and none of the provided features (ACT_SITE or domain/family cross-references) provide a strong match to this mechanism."
+   }
+  ]
+ },
+ "GO:0102757": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q58327",
+    "go_id": "GO:0102757",
+    "feature_type": "BINDING",
+    "start": 361,
+    "end": 363,
+    "signal_kind": "ligand",
+    "signal_value": "NAD(+)",
+    "reasoning": "The binding sites with NAD(+) suggest interactions relevant to the catalytic function of the enzyme, but no specific binding site or domain is directly associated with the phosphatase activity in this protein."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "A8JQX3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of NADPH phosphatase activity, and all features are either disordered regions or binding sites with ligands rather than catalytic domains."
+   },
+   {
+    "accession": "O35710",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data specifically matches the chemistry of the GO term \"NADPH phosphatase activity,\" as it involves a reaction that is not directly referenced by any binding site or domain. The closest evidence is generic binding to substrates, which does not provide enough specificity to confirm the function."
+   },
+   {
+    "accession": "Q9UK39",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9UK39 does not carry the GO term \"NADPH phosphatase activity\" as a real, asserted annotation based on the provided evidence. No binding site or domain in the annotated features directly matches the primary reaction of catalyzing the NADPH + H2O = NADH + hydrogenphosphate reaction."
+   }
+  ]
+ },
+ "GO:0102763": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SYM0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0102766": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "Q0IP69"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102801": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6TXD2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q6TXD2 provides a clear, specific explanation for the enzymatic activity described by GO:0102801. The only domain/family cross-reference is too general to account for the precise reaction mechanism of this term."
+   }
+  ]
+ },
+ "GO:0102802": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fe2OG dioxygenase",
+    "accessions": [
+     "D4N502"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "D4N500",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in D4N500 specifically matches the chemistry of receiving a phosphoryl transfer described by GO:0102802."
+   }
+  ]
+ },
+ "GO:0102805": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "D4N502",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in D4N502 specifically matches the primary reaction defined by GO:0102805, which involves catalyzing the demethylation of codeine. The binding sites and domain annotation provide context about the enzyme's type and substrates but do not directly explain the enzymatic activity itself."
+   }
+  ]
+ },
+ "GO:0102811": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "D1MI46",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's positional data directly matches the primary reaction mechanism of the GO term \"geraniol 10-hydroxylase activity.\" While the presence of a P450 domain (from cross-references) suggests the enzyme likely uses heme for catalysis, the defined reaction does not specify binding residues or cofactor interactions in the positional data. Thus, no single annotated featu"
+   },
+   {
+    "accession": "Q8VWZ7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the hydroxylase activity defined by GO:0102811."
+   }
+  ]
+ },
+ "GO:0102850": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P46312",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P46312's list directly matches the primary reaction mechanism of the GO term, which involves the desaturation of an acyl-lipid. The motifs and domain/family cross-references are related to ferredoxin activity but do not specifically account for the defined chemical reaction."
+   }
+  ]
  }
 }

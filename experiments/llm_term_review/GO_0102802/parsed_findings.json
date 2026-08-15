@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "D4N502",
+      "go_id": "GO:0102802",
+      "feature_type": "DOMAIN",
+      "start": 210,
+      "end": 311,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The DOMAIN 210-311 feature is directly associated with Fe2OG dioxygenase activity, which matches the primary reaction mechanism of thebaine 6-O-demethylase activity as defined by the GO term. This domain provides a strong structural basis for the enzyme's function in catalyzing the specific reaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "D4N500",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in D4N500 specifically matches the chemistry of receiving a phosphoryl transfer described by GO:0102802."
+    }
+  ]
+}

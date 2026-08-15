@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102726",
+  "name": "DIMBOA glucoside beta-D-glucosidase activity",
+  "def": "Catalysis of the reaction: (2R)-DIMBOA glucoside + H2O = H+ + DIMBOA + beta-D-glucose.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P49235"
+  ],
+  "assigned_accessions": [
+    "P49235"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0102732",
+  "name": "inositol-1,2,3,4,6-pentakisphosphate 5-kinase activity",
+  "def": "Catalysis of the reaction: 1D-myo-inositol 1,2,3,4,6-pentakisphosphate + ATP = 1D-myo-inositol hexakisphosphate + ADP + H+.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q9FLT2",
+    "Q9LY23"
+  ],
+  "assigned_accessions": [
+    "Q9FLT2",
+    "Q9LY23"
+  ]
+}

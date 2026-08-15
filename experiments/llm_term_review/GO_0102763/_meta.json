@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102763",
+  "name": "phytyl-P kinase activity",
+  "def": "Catalysis of the reaction: a ribonucleoside 5'-triphosphate + phytyl phosphate = a ribonucleoside 5'-diphosphate + phytyl diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SYM0"
+  ],
+  "assigned_accessions": [
+    "Q9SYM0"
+  ]
+}

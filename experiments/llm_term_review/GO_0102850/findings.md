@@ -1,0 +1,5 @@
+## P46312 GO:0102850
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature in P46312's list directly matches the primary reaction mechanism of the GO term, which involves the desaturation of an acyl-lipid. The motifs and domain/family cross-references are related to ferredoxin activity but do not specifically account for the defined chemical reaction.
+---

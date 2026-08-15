@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102801",
+  "name": "anthocyanin 5-O-glucoside-4'''-O-malonyltransferase activity",
+  "def": "Catalysis of the reaction: 4'''-demalonylsalvianin + malonyl-CoA = salvianin + coenzyme A.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q6TXD2"
+  ],
+  "assigned_accessions": [
+    "Q6TXD2"
+  ]
+}

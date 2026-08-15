@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0102735",
+  "name": "trihydroxybenzophenone synthase activity",
+  "def": "Catalysis of the reaction: benzoyl-CoA + 3 malonyl-CoA + 3 H+ = 2,4,6-trihydroxybenzophenone + 4 coenzyme A + 3 carbon dioxide.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "L7NCQ3",
+    "Q8SAS8"
+  ],
+  "assigned_accessions": [
+    "L7NCQ3",
+    "Q8SAS8"
+  ]
+}

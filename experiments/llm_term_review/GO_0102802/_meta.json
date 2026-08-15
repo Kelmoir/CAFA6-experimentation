@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0102802",
+  "name": "thebaine 6-O-demethylase activity",
+  "def": "Catalysis of the reaction: thebaine + 2-oxoglutarate + O2 = neopinone + formaldehyde + succinate + carbon dioxide.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "D4N500",
+    "D4N502"
+  ],
+  "assigned_accessions": [
+    "D4N500",
+    "D4N502"
+  ]
+}

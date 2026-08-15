@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102850",
+  "name": "acyl-lipid (n+3)-(Z)-desaturase (ferredoxin) activity",
+  "def": "Catalysis of the reaction: a (9Z)-octadecenoyl-containing glycerolipid + 2 H+ + O2 + 2 reduced [2Fe-2S]-[ferredoxin] = a (9Z,12Z)-octadecadienoyl-containing glycerolipid + 2 H2O + 2 oxidized [2Fe-2S]-[ferredoxin].",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P46312"
+  ],
+  "assigned_accessions": [
+    "P46312"
+  ]
+}

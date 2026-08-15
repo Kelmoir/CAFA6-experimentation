@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102717",
+  "name": "DIBOA-glucoside oxygenase activity",
+  "def": "Catalysis of the reaction: DIBOA-beta-D-glucoside + O2 + 2-oxoglutarate = TRIBOA-beta-D-glucoside + succinate + carbon dioxide.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q84TC2"
+  ],
+  "assigned_accessions": [
+    "Q84TC2"
+  ]
+}

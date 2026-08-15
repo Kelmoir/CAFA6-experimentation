@@ -1,0 +1,10 @@
+## D1MI46 GO:0102811
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature in the protein's positional data directly matches the primary reaction mechanism of the GO term "geraniol 10-hydroxylase activity." While the presence of a P450 domain (from cross-references) suggests the enzyme likely uses heme for catalysis, the defined reaction does not specify binding residues or cofactor interactions in the positional data. Thus, no single annotated featu
+---
+## Q8VWZ7 GO:0102811
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature provides a direct explanation for the hydroxylase activity defined by GO:0102811.
+---

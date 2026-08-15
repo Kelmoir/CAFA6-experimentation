@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0102757",
+  "name": "NADPH phosphatase activity",
+  "def": "Catalysis of the reaction: NADPH + H2O = NADH + hydrogenphosphate.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "A8JQX3",
+    "O35710",
+    "Q58327",
+    "Q9UK39"
+  ],
+  "assigned_accessions": [
+    "A8JQX3",
+    "O35710",
+    "Q58327",
+    "Q9UK39"
+  ]
+}
