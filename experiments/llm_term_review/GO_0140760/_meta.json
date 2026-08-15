@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0140760",
+  "name": "histone H3K56me2/H3K56me3 demethylase activity",
+  "def": "Catalysis of the removal of a methyl group from a tri or a dimethyl-lysine residue at position 56 of the histone H3 protein.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "B2RXH2",
+    "Q3U2K5",
+    "Q9V333"
+  ],
+  "assigned_accessions": [
+    "B2RXH2",
+    "Q3U2K5",
+    "Q9V333"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P78929",
+      "go_id": "GO:0140775",
+      "feature_type": "DOMAIN",
+      "start": 4,
+      "end": 135,
+      "signal_kind": "text",
+      "signal_value": "ADF-H",
+      "reasoning": "The DOMAIN 4-135 feature directly corresponds to the primary reaction of the GO term, which involves binding to an actin filament and promoting its dissociation. This domain is associated with the ADF-H family, a known player in actin filament debranching activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

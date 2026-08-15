@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140776",
+  "name": "protein-containing complex destabilizing activity",
+  "def": "A molecular function that involves direct binding to one of the subunits of a protein-containing complex and promoting the dissociation of one or many subunits. This often happens by changing the conformation of the protein being bound, which decreases its affinity for the rest of the complex.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "E7F0Z8",
+    "P11247",
+    "Q8R116",
+    "Q9VUX3"
+  ],
+  "assigned_accessions": [
+    "E7F0Z8",
+    "P11247",
+    "Q8R116",
+    "Q9VUX3"
+  ]
+}

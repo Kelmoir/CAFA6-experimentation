@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q08BA4",
+      "go_id": "GO:0140785",
+      "feature_type": "REGION",
+      "start": 116,
+      "end": 122,
+      "signal_kind": "text",
+      "signal_value": "Important for arginine binding and amino acid transport",
+      "reasoning": "The annotated feature \"REGION 116-122\" is directly related to arginine binding and amino acid transport, which are core aspects of sensing amino acid levels. This region likely implements the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9W1K5",
+      "reason": "none_verdict",
+      "reasoning": "The Disordered REGION (225-255) does not provide a specific structural basis for the amino acid sensor activity defined by GO:0140785, as it lacks specificity to the primary reaction of sensing and responding to amino acid levels."
+    },
+    {
+      "accession": "P53191",
+      "reason": "none_verdict",
+      "reasoning": "The defined molecular function of the GO term \"amino acid sensor activity\" involves binding to and responding to changes in the cellular level of an amino acid. None of the annotated features directly state that the protein responds to such changes, only that it binds to Zn(2+), which is an amino acid. Thus, no single feature plausibly explains why this protein carries the term."
+    },
+    {
+      "accession": "Q9I7X6",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided data directly supports the primary reaction of amino acid sensing as defined by the GO term."
+    }
+  ]
+}

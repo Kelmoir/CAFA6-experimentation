@@ -1,0 +1,28 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q0HA29",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q9EPA7",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q9HAN9",
+      "reason": "unresolved_pointer",
+      "detail": "no matching DOMAIN 135-144 on record for Q9HAN9 -- pointer didn't resolve",
+      "reported_feature": "DOMAIN 135-144",
+      "reasoning": "The domain \"Cyt_trans-like\" is consistent with the enzyme-substrate adaptor activity described in the GO term, as it suggests a role in transporting molecules, which aligns with the function of binding and facilitating the transfer of an ADP-ribose group."
+    },
+    {
+      "accession": "Q9NWY4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides direct evidence for the enzyme-substrate binding activity described in the GO term's definition."
+    }
+  ]
+}

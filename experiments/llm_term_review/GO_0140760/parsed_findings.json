@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9V333",
+      "reason": "none_verdict",
+      "reasoning": "The protein's annotated features do not provide any positional feature that specifically matches the GO term's primary reaction (removal of a methyl group from lysine residues at position 56). Therefore, there is no single annotated feature that can be confidently identified as the basis for this molecular function."
+    },
+    {
+      "accession": "B2RXH2",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q3U2K5",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

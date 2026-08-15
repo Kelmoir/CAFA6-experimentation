@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140768",
+  "name": "protein ADP-ribosyltransferase-substrate adaptor activity",
+  "def": "An enzyme-substrate adaptor that bings together a protein ADP-ribosyl transferase and its substrate.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "Q0HA29",
+    "Q9EPA7",
+    "Q9HAN9",
+    "Q9NWY4"
+  ],
+  "assigned_accessions": [
+    "Q0HA29",
+    "Q9EPA7",
+    "Q9HAN9",
+    "Q9NWY4"
+  ]
+}

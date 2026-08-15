@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140785",
+  "name": "amino acid sensor activity",
+  "def": "Binding to and responding, e.g. by conformational change, to changes in the cellular level of an amino acid.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "P53191",
+    "Q08BA4",
+    "Q9I7X6",
+    "Q9W1K5"
+  ],
+  "assigned_accessions": [
+    "P53191",
+    "Q08BA4",
+    "Q9I7X6",
+    "Q9W1K5"
+  ]
+}
