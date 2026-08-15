@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q94A82",
+      "go_id": "GO:0110153",
+      "feature_type": "BINDING",
+      "start": 275,
+      "end": 276,
+      "signal_kind": "ligand",
+      "signal_value": "Mg(2+)",
+      "reasoning": "The binding of Mg(2+) to the protein is directly related to the cofactor required for the Nudix hydrolase activity, which is central to the reaction mechanism described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0A776",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for why P0A776 carries the GO term \"RNA NAD-cap (NMN-forming) hydrolase activity\" based on the defined reaction mechanism. The available features are related to the enzyme's domain and motif, which are consistent with Nudix hydrolases, but they do not specifically account for the chemistry of the reaction described in the GO term."
+    },
+    {
+      "accession": "Q96DE0",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q9DCN1",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

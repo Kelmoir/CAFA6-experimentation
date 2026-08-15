@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0120160",
+  "name": "intraciliary transport particle A binding",
+  "def": "Binding to an intraciliary transport particle A (IFT A) complex.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "O75386",
+    "O88808",
+    "P50607",
+    "Q86VG3"
+  ],
+  "assigned_accessions": [
+    "O75386",
+    "O88808",
+    "P50607",
+    "Q86VG3"
+  ]
+}

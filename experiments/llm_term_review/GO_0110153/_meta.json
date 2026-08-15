@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0110153",
+  "name": "RNA NAD-cap (NMN-forming) hydrolase activity",
+  "def": "Catalysis of the reaction: a 5'-end NAD+-phospho-ribonucleoside in mRNA + H2O = a 5'-end phospho-adenosine-phospho-ribonucleoside in mRNA + beta-nicotinamide D-ribonucleotide + 2 H+.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "P0A776",
+    "Q94A82",
+    "Q96DE0",
+    "Q9DCN1"
+  ],
+  "assigned_accessions": [
+    "P0A776",
+    "Q94A82",
+    "Q96DE0",
+    "Q9DCN1"
+  ]
+}

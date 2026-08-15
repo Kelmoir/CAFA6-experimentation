@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O75386",
+      "go_id": "GO:0120160",
+      "feature_type": "REGION",
+      "start": 22,
+      "end": 68,
+      "signal_kind": "text",
+      "signal_value": "Required for association with the IFT complex A (IFT-A)",
+      "reasoning": "The region 22-68 is explicitly noted as required for association with the IFT complex A, which directly matches the primary reaction of the GO term \"intraciliary transport particle A binding.\" This provides a strong and specific explanation for why the protein carries this annotation."
+    },
+    {
+      "accession": "P50607",
+      "go_id": "GO:0120160",
+      "feature_type": "REGION",
+      "start": 35,
+      "end": 244,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The \"REGION 35-244\" span marked as \"Disordered\" is the most plausible candidate for explaining why P50607 carries the GO term \"intraciliary transport particle A binding.\" While it does not explicitly state that the protein binds to IFT A, the disordered nature of this region suggests flexibility and potential involvement in complex interactions, which aligns with the function defined by the GO ter"
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q86VG3",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "O88808",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature available for protein O88808 is a broad region annotation (REGION 34-243), which does not specifically describe the ability to bind to an intraciliary transport particle A complex. This feature is too generic and lacks the specificity required to explain the defined molecular function of the GO term."
+    }
+  ]
+}

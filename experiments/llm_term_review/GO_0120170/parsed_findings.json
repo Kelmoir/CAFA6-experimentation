@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P28741",
+      "go_id": "GO:0120170",
+      "feature_type": "BINDING",
+      "start": 99,
+      "end": 107,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to the protein is a plausible explanation for its role in intraciliary transport, but it does not directly confirm binding to an IFT B complex as specified in the GO term's definition."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "A0AVF1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear and specific explanation for the molecular function of \"intraciliary transport particle B binding\" as defined by the GO term."
+    },
+    {
+      "accession": "A2AKQ8",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8BS45",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for Q8BS45 is a disordered region, which does not provide specific evidence of binding to IFT B. No other features are mentioned in the Annotated features section that directly support the molecular function defined by GO:0120170."
+    }
+  ]
+}

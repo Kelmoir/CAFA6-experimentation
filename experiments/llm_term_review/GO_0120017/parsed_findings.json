@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q6VVX2",
+      "go_id": "GO:0120017",
+      "feature_type": "BINDING",
+      "start": 445,
+      "end": 446,
+      "signal_kind": "ligand",
+      "signal_value": "an N-acylsphing-4-enine",
+      "reasoning": "The binding site at 445-446 directly involves the ligand (N-acylsphing-4-enine) that is removed during ceramide transfer activity, which matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P55058",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P55065",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9EQG9",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

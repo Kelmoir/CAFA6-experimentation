@@ -36710,6 +36710,76 @@
    }
   ]
  },
+ "GO:0110153": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Mg(2+)",
+    "accessions": [
+     "Q94A82"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0A776",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for why P0A776 carries the GO term \"RNA NAD-cap (NMN-forming) hydrolase activity\" based on the defined reaction mechanism. The available features are related to the enzyme's domain and motif, which are consistent with Nudix hydrolases, but they do not specifically account for the chemistry of the reaction described in the GO term."
+   },
+   {
+    "accession": "Q96DE0",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q9DCN1",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0120017": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "an N-acylsphing-4-enine",
+    "accessions": [
+     "Q6VVX2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P55058",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P55065",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9EQG9",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
  "GO:0120086": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -36729,6 +36799,42 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0120091": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fe2OG dioxygenase",
+    "accessions": [
+     "O80449",
+     "Q9LY48"
+    ],
+    "reason": "resolved to ['InterPro:IPR005123', 'InterPro:IPR044861', 'PROSITE:PS51471'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR005123': 159, 'InterPro:IPR044861': 90, 'PROSITE:PS51471': 159})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Fe cation",
+    "accessions": [
+     "Q9FFF6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SRM3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of catalyzing jasmonic acid hydroxylation, and the domain/family cross-references do not provide a positional feature that explains this specific molecular function."
+   }
+  ]
+ },
  "GO:0120152": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -36742,6 +36848,81 @@
     "accession": "Q9D3N2",
     "reason": "none_verdict",
     "reasoning": "No annotated feature directly specifies the binding to an outer dynein arm in the presence of calcium, and all features only provide evidence for Ca(2+) binding without anchoring to the defined mechanism of the GO term."
+   }
+  ]
+ },
+ "GO:0120160": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Required for association with the IFT complex A (IFT-A)",
+    "accessions": [
+     "O75386"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Disordered",
+    "accessions": [
+     "P50607"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q86VG3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O88808",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature available for protein O88808 is a broad region annotation (REGION 34-243), which does not specifically describe the ability to bind to an intraciliary transport particle A complex. This feature is too generic and lacks the specificity required to explain the defined molecular function of the GO term."
+   }
+  ]
+ },
+ "GO:0120170": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P28741",
+    "go_id": "GO:0120170",
+    "feature_type": "BINDING",
+    "start": 99,
+    "end": 107,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The binding of ATP to the protein is a plausible explanation for its role in intraciliary transport, but it does not directly confirm binding to an IFT B complex as specified in the GO term's definition."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "A0AVF1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and specific explanation for the molecular function of \"intraciliary transport particle B binding\" as defined by the GO term."
+   },
+   {
+    "accession": "A2AKQ8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8BS45",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q8BS45 is a disordered region, which does not provide specific evidence of binding to IFT B. No other features are mentioned in the Annotated features section that directly support the molecular function defined by GO:0120170."
    }
   ]
  }

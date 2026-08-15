@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0120170",
+  "name": "intraciliary transport particle B binding",
+  "def": "Binding to an intraciliary transport particle B (IFT B) complex.",
+  "n_proteins_total": 21,
+  "sampled_accessions": [
+    "A0AVF1",
+    "A2AKQ8",
+    "P28741",
+    "Q8BS45"
+  ],
+  "assigned_accessions": [
+    "A0AVF1",
+    "A2AKQ8",
+    "P28741",
+    "Q8BS45"
+  ]
+}
