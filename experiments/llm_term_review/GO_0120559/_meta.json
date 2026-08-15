@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0120559",
+  "name": "phosphatidylethanolamine lysophospholipase activity",
+  "def": "Catalysis of the reaction: a 1-acyl-sn-glycero-3-phosphoethanolamine + H2O = sn-glycero-3-phosphoethanolamine + a fatty acid + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q08448"
+  ],
+  "assigned_accessions": [
+    "Q08448"
+  ]
+}

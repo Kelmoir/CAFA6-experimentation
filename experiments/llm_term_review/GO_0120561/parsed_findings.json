@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P39105",
+      "go_id": "GO:0120561",
+      "feature_type": "DOMAIN",
+      "start": 34,
+      "end": 586,
+      "signal_kind": "text",
+      "signal_value": "PLA2c",
+      "reasoning": "The DOMAIN annotation for P39105 is specifically related to phosphatidylinositol lysophospholipase activity, as it refers to the PLA2c family known for this function. This feature directly matches the primary reaction described in the GO definition and provides a strong mechanistic basis for the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

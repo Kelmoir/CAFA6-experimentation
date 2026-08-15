@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0120554",
+  "name": "2-aminobutanoate transaminase activity",
+  "def": "Catalysis of the reaction: (2S)-2-aminobutanoate + 2-oxoglutarate = 2-oxobutanoate + L-glutamate.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P00504",
+    "P05201",
+    "P13221",
+    "P17174"
+  ],
+  "assigned_accessions": [
+    "P00504",
+    "P05201",
+    "P13221",
+    "P17174"
+  ]
+}

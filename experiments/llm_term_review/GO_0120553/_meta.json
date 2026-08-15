@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0120553",
+  "name": "farnesal dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: (2E,6E)-farnesal + NAD+ + H2O = (2E,6E)-farnesoate + NADH + 2 H+.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P30839",
+    "P47740",
+    "P51648"
+  ],
+  "assigned_accessions": [
+    "P30839",
+    "P47740",
+    "P51648"
+  ]
+}

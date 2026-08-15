@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140098",
+  "name": "catalytic activity, acting on RNA",
+  "def": "Catalytic activity that acts to modify RNA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O25114"
+  ],
+  "assigned_accessions": [
+    "O25114"
+  ]
+}

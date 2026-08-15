@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140054",
+  "name": "histone H2A reader activity",
+  "def": "A histone reader that specifically binds either to an unmodified histone H2A or a form modified by a post-translational modification on a specific residue. The most common PTMs on histones are methylation, acetylation and phosphorylation.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P32597"
+  ],
+  "assigned_accessions": [
+    "P32597"
+  ]
+}

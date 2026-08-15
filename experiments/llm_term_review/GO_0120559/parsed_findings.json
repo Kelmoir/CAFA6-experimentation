@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q08448",
+      "go_id": "GO:0120559",
+      "feature_type": "MOTIF",
+      "start": 87,
+      "end": 92,
+      "signal_kind": "text",
+      "signal_value": "Lipase-specific GXSXG motif",
+      "reasoning": "The \"MOTIF\" feature at positions 87-92 is specifically associated with lipase activity, which matches the primary reaction defined by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

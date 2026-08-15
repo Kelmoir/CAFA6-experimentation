@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0120524",
+  "name": "long-chain fatty acyl-CoA oxidase activity",
+  "def": "Catalysis of the reaction: a long-chain 2,3-saturated fatty acyl-CoA + O2 = a long-chain (2E)-enoyl-CoA + H2O2.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "P09110",
+    "Q99424",
+    "Q9EPL9",
+    "Q9R0H0"
+  ],
+  "assigned_accessions": [
+    "P09110",
+    "Q99424",
+    "Q9EPL9",
+    "Q9R0H0"
+  ]
+}

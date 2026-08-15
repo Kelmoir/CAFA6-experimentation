@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0120561",
+  "name": "phosphatidylinositol lysophospholipase activity",
+  "def": "Catalysis of the reaction: a 1-acyl-sn-glycero-3-phospho-(1D-myo-inositol) + H2O = sn-glycero-3-phospho-1D-myo-inositol + a fatty acid + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P39105"
+  ],
+  "assigned_accessions": [
+    "P39105"
+  ]
+}

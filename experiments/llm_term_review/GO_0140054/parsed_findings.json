@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P32597",
+      "go_id": "GO:0140054",
+      "feature_type": "DOMAIN",
+      "start": 1256,
+      "end": 1357,
+      "signal_kind": "text",
+      "signal_value": "Bromo",
+      "reasoning": "The bromodomain domain (DOMAIN 1256-1357) is associated with reading post-translational modifications, which could include histone H2A modifications. However, the GO term specifically refers to binding to modified or unmodified histone H2A, not all bromodomain activity. Thus, while this domain is relevant, it does not definitively explain the GO term's primary reaction."
+    }
+  ],
+  "issues": []
+}

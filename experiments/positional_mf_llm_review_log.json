@@ -37136,6 +37136,37 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0120524": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q99424",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation of the catalytic activity defined by GO:0120524. The only features available are related to subcellular localization and enzyme classification, not the specific function of oxidizing long-chain fatty acyl-CoA."
+   },
+   {
+    "accession": "P09110",
+    "reason": "none_verdict",
+    "reasoning": "The defined molecular function of long-chain fatty acyl-CoA oxidase activity involves catalyzing a specific oxidation reaction, but none of the annotated features directly explain why this protein carries that term. All features are either about targeting signals, intermediates, or proton acceptors, which are secondary consequences rather than the primary chemistry of the term."
+   },
+   {
+    "accession": "Q9R0H0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly explains the catalytic mechanism of long-chain fatty acyl-CoA oxidase activity as defined by GO:0120524."
+   },
+   {
+    "accession": "Q9EPL9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a direct explanation for the catalytic reaction defined by GO:0120524. The domain/family cross-references refer to the enzyme's structure, not the specific chemistry of the reaction."
+   }
+  ]
+ },
  "GO:0120526": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -37154,6 +37185,187 @@
     "accession": "Q9FUY7",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0120553": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P30839",
+     "P47740",
+     "P51648"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0120554": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P13221",
+    "go_id": "GO:0120554",
+    "feature_type": "BINDING",
+    "start": 38,
+    "end": 39,
+    "signal_kind": "ligand",
+    "signal_value": "L-aspartate",
+    "reasoning": "All annotated binding sites involve L-aspartate as a ligand, which matches the primary reaction of the GO term. However, since all features are identical in type and qualifier text, there is no single most specific match."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P05201",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides direct evidence about the mechanism or chemistry of the transamination reaction described in the GO term's definition."
+   },
+   {
+    "accession": "P17174",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P17174 provides a strong explanation for the transaminase activity defined by GO:0120554."
+   },
+   {
+    "accession": "P00504",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a direct explanation of the defined molecular function (transamination reaction) for the GO term. The presence of multiple binding sites for L-aspartate is consistent with the enzyme's substrate, but it does not directly indicate the catalytic mechanism or the specific reaction it performs."
+   }
+  ]
+ },
+ "GO:0120559": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Lipase-specific GXSXG motif",
+    "accessions": [
+     "Q08448"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0120561": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PLA2c",
+    "accessions": [
+     "P39105"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0120564": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q92521",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9JJQ0",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" span (0-36) is marked as disordered and does not provide any mechanistic insight into the specific enzymatic reaction defined by the GO term. It is generic and could apply to a variety of proteins involved in mannosyltransferase activity, but it does not directly explain why this protein carries the given GO term."
+   },
+   {
+    "accession": "Q9USN0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0120565": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q09837",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q86VD9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0140054": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P32597",
+    "go_id": "GO:0140054",
+    "feature_type": "DOMAIN",
+    "start": 1256,
+    "end": 1357,
+    "signal_kind": "text",
+    "signal_value": "Bromo",
+    "reasoning": "The bromodomain domain (DOMAIN 1256-1357) is associated with reading post-translational modifications, which could include histone H2A modifications. However, the GO term specifically refers to binding to modified or unmodified histone H2A, not all bromodomain activity. Thus, while this domain is relevant, it does not definitively explain the GO term's primary reaction."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0140098": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O25114",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for O25114 that could be related to catalytic activity on RNA is ACT_SITE, but it does not provide specific evidence about the modification of RNA. The domain/family cross-references suggest involvement in pseudoU synthase, which is a separate function and not directly linked to the GO term's definition of catalytic activity acting on RNA. Thus, no positional feature pro"
    }
   ]
  }
