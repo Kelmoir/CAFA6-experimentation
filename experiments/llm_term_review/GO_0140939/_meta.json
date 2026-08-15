@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140939",
+  "name": "histone H4 methyltransferase activity",
+  "def": "Catalysis of the reaction: Catalysis of the reaction: S-adenosyl-L-methionine + a histone H4 = S-adenosyl-L-homocysteine + a methylated histone H4. Histone methylation generally occurs on either an arginine or a lysine residue.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "Q86Y97",
+    "Q922X9",
+    "Q9H7B4",
+    "Q9NVM4"
+  ],
+  "assigned_accessions": [
+    "Q86Y97",
+    "Q922X9",
+    "Q9H7B4",
+    "Q9NVM4"
+  ]
+}

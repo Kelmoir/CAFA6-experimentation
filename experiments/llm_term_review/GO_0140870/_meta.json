@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140870",
+  "name": "RNA polymerase inhibitor activity",
+  "def": "Binds to and stops, prevents or reduces the activity of RNA polymerase.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "O55201",
+    "P63271",
+    "Q8BG30",
+    "Q922L6"
+  ],
+  "assigned_accessions": [
+    "O55201",
+    "P63271",
+    "Q8BG30",
+    "Q922L6"
+  ]
+}

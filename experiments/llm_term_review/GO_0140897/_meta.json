@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140897",
+  "name": "mechanoreceptor activity",
+  "def": "Combining with a mechanical force and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity or state as part of signal transduction.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "A0T2N3",
+    "A1Z7G7",
+    "P79960",
+    "Q7SZP9"
+  ],
+  "assigned_accessions": [
+    "A0T2N3",
+    "A1Z7G7",
+    "P79960",
+    "Q7SZP9"
+  ]
+}

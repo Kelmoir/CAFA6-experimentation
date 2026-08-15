@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140989",
+  "name": "7-deoxyloganate 7-hydroxylase activity",
+  "def": "Catalysis of the reaction: 7-deoxyloganate + O2 + reduced [NADPH-hemoprotein reductase] = H+ + H2O + loganate + oxidized [NADPH-hemoprotein reductase].",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "U5NE19"
+  ],
+  "assigned_accessions": [
+    "U5NE19"
+  ]
+}

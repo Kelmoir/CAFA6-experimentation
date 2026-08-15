@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A0T2N3",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P79960",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q7SZP9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "A1Z7G7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section directly explains the primary reaction mechanism of \"mechanoreceptor activity\" as defined. The only candidate that could be interpreted as related to signal transduction is a cleavage site, which does not align with the definition's focus on mechanoreception and signal transmission."
+    }
+  ]
+}

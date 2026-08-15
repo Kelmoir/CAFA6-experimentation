@@ -40141,6 +40141,110 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0140870": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Interaction with RNA polymerase II",
+    "accessions": [
+     "O55201"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q8BG30",
+    "go_id": "GO:0140870",
+    "feature_type": "REGION",
+    "start": 188,
+    "end": 248,
+    "signal_kind": "text",
+    "signal_value": "RNAPII-binding",
+    "reasoning": "The region 188-248 is associated with RNAPII binding, which may be related to RNA polymerase function, but it does not directly explain the inhibitory activity described in the GO term. While it provides a plausible explanation for the enzyme's broader role in transcription, it does not specifically account for the defined chemistry of RNA polymerase inhibition."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P63271",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P63271 directly supports the primary reaction of GO:0140870, which is the inhibition of RNA polymerase activity through binding. The only evidence found is generic Zn(2+) binding events without any indication of interaction with RNA polymerase."
+   },
+   {
+    "accession": "Q922L6",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q922L6 has no annotated positional feature that directly explains its function as an RNA polymerase inhibitor, and the domain/family cross-references do not provide enough evidence to infer the specific mechanism."
+   }
+  ]
+ },
+ "GO:0140893": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q8WUX1",
+    "go_id": "GO:0140893",
+    "feature_type": "SITE",
+    "start": 463,
+    "end": 464,
+    "signal_kind": "text",
+    "signal_value": "Involved in pH-sensing to the transport activity regulation",
+    "reasoning": "The site (463-464) is involved in pH-sensing to regulate transport activity, which could be relevant to the function of sodium:proton antiporters. However, it does not directly explain the core molecular mechanism of solute transfer as defined by the GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q3U1J0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation of the molecular function defined by GO:0140893, which involves the transfer of ions and amino acids across a membrane. The only available feature is related to pH-sensing and transport regulation, not the specific chemical reaction that defines the term."
+   },
+   {
+    "accession": "A2VCW5",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein is related to pH-sensing, which may be involved in regulating transport activity, but it does not provide a direct explanation of the defined chemical mechanism of amino acid and sodium ion transfer. No positional feature matches the GO term's primary reaction."
+   }
+  ]
+ },
+ "GO:0140897": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0T2N3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P79960",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q7SZP9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "A1Z7G7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section directly explains the primary reaction mechanism of \"mechanoreceptor activity\" as defined. The only candidate that could be interpreted as related to signal transduction is a cleavage site, which does not align with the definition's focus on mechanoreception and signal transmission."
+   }
+  ]
+ },
  "GO:0140902": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -40162,6 +40266,48 @@
    }
   ]
  },
+ "GO:0140926": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UPY5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9UPY5 provides evidence for the specific molecular function defined by GO:0140926, which is the transfer of L-kynurenine across a membrane."
+   },
+   {
+    "accession": "Q9WTR6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9WTR6 directly supports the primary reaction of GO:0140926, which is the transport of L-kynurenine across a membrane. The only evidence provided is about binding to L-glutamate, which does not align with the defined function."
+   }
+  ]
+ },
+ "GO:0140930": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0PJK1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q5SWY8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0140934": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -40175,6 +40321,56 @@
     "value": "UBA",
     "accessions": [
      "Q9XIP2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140939": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SAM-dependent MTase PRMT-type 1",
+    "accessions": [
+     "Q922X9",
+     "Q9NVM4"
+    ],
+    "reason": "resolved to ['InterPro:IPR029063', 'InterPro:IPR055135', 'PROSITE:PS51678', 'Pfam:PF22528'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR029063': 760, 'InterPro:IPR055135': 37, 'PROSITE:PS51678': 47, 'Pfam:PF22528': 37})"
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "Q86Y97",
+     "Q9H7B4"
+    ],
+    "reason": "ligand already claimed by GO:1904047 elsewhere in the dictionary -- ligand_to_go is a plain dict, a second claim would silently overwrite it"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140989": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "U5NE19"
     ]
    }
   ],

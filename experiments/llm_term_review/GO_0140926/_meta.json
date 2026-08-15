@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0140926",
+  "name": "L-kynurenine transmembrane transporter activity",
+  "def": "Enables the transfer of L-kynurenine from one side of a membrane to the other.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q9UPY5",
+    "Q9WTR6"
+  ],
+  "assigned_accessions": [
+    "Q9UPY5",
+    "Q9WTR6"
+  ]
+}

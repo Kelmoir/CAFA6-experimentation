@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0140893",
+  "name": "neutral amino acid, sodium:proton antiporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: H+(in) + amino acid(out) + Na+(out) = H+(out) + amino acid(in) + Na+(in).",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "A2VCW5",
+    "Q3U1J0",
+    "Q8WUX1"
+  ],
+  "assigned_accessions": [
+    "A2VCW5",
+    "Q3U1J0",
+    "Q8WUX1"
+  ]
+}

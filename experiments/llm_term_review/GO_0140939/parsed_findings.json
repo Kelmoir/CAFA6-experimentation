@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "Q922X9",
+      "go_id": "GO:0140939",
+      "feature_type": "DOMAIN",
+      "start": 13,
+      "end": 345,
+      "signal_kind": "text",
+      "signal_value": "SAM-dependent MTase PRMT-type 1",
+      "reasoning": "The DOMAIN 13-345 annotation specifically identifies a PRMT-type 1 enzyme, which is directly linked to the primary reaction of catalyzing the methyl transfer from S-adenosyl-L-methionine to histone H4, matching the GO term's definition."
+    },
+    {
+      "accession": "Q86Y97",
+      "go_id": "GO:0140939",
+      "feature_type": "BINDING",
+      "start": 31,
+      "end": 32,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding of S-adenosyl-L-methionine to the protein's domain directly supports the catalytic reaction defined by the GO term, making this a strong match for the molecular function."
+    },
+    {
+      "accession": "Q9NVM4",
+      "go_id": "GO:0140939",
+      "feature_type": "DOMAIN",
+      "start": 13,
+      "end": 345,
+      "signal_kind": "text",
+      "signal_value": "SAM-dependent MTase PRMT-type 1",
+      "reasoning": "The DOMAIN 13-345 feature is directly associated with PRMT-type 1, which catalyzes the specific reaction of S-adenosyl-L-methionine transferring a methyl group to histone H4, matching the primary reaction defined by the GO term."
+    },
+    {
+      "accession": "Q9H7B4",
+      "go_id": "GO:0140939",
+      "feature_type": "BINDING",
+      "start": 123,
+      "end": 124,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding site at 123\u2013124 is directly involved in the reaction mechanism of histone H4 methyltransferase activity, matching the primary chemistry described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

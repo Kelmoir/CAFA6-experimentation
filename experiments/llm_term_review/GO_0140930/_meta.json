@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0140930",
+  "name": "fructose:sodium symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: D-fructose(out) + Na+(out) = D-fructose(in) + Na+(in).",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "A0PJK1",
+    "Q5SWY8"
+  ],
+  "assigned_accessions": [
+    "A0PJK1",
+    "Q5SWY8"
+  ]
+}
