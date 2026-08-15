@@ -37944,5 +37944,219 @@
     "reasoning": "There is no single annotated feature in Q96T88 that directly matches the defined reaction or mechanism for GO:0140248. All features are generic and do not provide a strong, specific match to the molecular function."
    }
   ]
+ },
+ "GO:0140259": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9VHA0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides evidence that the protein specifically binds to a PRC1 complex, only that it binds Zn(2+). The definition focuses on the reaction (binding) rather than the target (PRC1 complex), and no binding site or domain is explicitly stated for this function."
+   }
+  ]
+ },
+ "GO:0140262": {
+  "n_resolved": 3,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Necessary for interaction with CBP80",
+    "accessions": [
+     "Q63068"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ZN_FING",
+    "value": "C3H1-type",
+    "accessions": [
+     "Q86VM9"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Piwi",
+    "accessions": [
+     "Q96J94"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q9JMB7",
+    "go_id": "GO:0140262",
+    "feature_type": "MOTIF",
+    "start": 217,
+    "end": 225,
+    "signal_kind": "text",
+    "signal_value": "D-box",
+    "reasoning": "The D-box motif is a well-known RNA-binding element, which could be involved in interactions with mRNA structures, including the cap binding complex. However, it does not directly specify the function of binding to a cap binding complex as described in the GO term's definition. The region for piRNA processing (REGION 316-319) is more specific to this function but is tied to a different RNA structu"
+   }
+  ],
+  "issues": []
+ },
+ "GO:0140272": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P10852",
+    "go_id": "GO:0140272",
+    "feature_type": "REGION",
+    "start": 0,
+    "end": 31,
+    "signal_kind": "text",
+    "signal_value": "Disordered",
+    "reasoning": "The DISORDERED REGION (0-31) could plausibly account for the GO term's definition of exogenous protein binding. While not specific to the chemistry of binding from a different species, it is a plausible structural feature that could support such a function. However, no other annotated feature directly matches the primary reaction or mechanism described in the GO term's definition."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P02770",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P02770 directly supports the definition of \"exogenous protein binding,\" which involves binding to a protein from a different species, such as a pathogen molecule binding to a host protein. The available evidence indicates general ligand recognition rather than exogenous origin."
+   },
+   {
+    "accession": "P08195",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region (REGION 0-30) does not specifically account for the GO term \"exogenous protein binding\" as it is more indicative of structural flexibility rather than a defined function in binding. No other annotated feature directly matches the primary reaction or mechanism described in the definition of the GO term."
+   },
+   {
+    "accession": "P07724",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data specifically explains why the protein carries the GO term \"exogenous protein binding.\" The available features are general ligand-binding sites, and no domain or binding site is explicitly tied to exogenous protein interaction."
+   }
+  ]
+ },
+ "GO:0140293": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q922B1"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q3UYG8",
+    "go_id": "GO:0140293",
+    "feature_type": "DOMAIN",
+    "start": 58,
+    "end": 240,
+    "signal_kind": "text",
+    "signal_value": "Macro",
+    "reasoning": "The domain spans positions 58-240 and is marked as \"Macro,\" which could suggest a large, multi-functional domain involved in catalytic activity or substrate binding. However, the definition focuses on the hydrolysis of ADP-ribosylglutamate, and while the domain may be relevant, it does not specifically explain the chemistry of this reaction."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "A1Z1Q3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the GO term's primary reaction mechanism of ADP-ribosylglutamate hydrolysis, and all binding sites point to substrate rather than the specific chemical transformation defined in the GO term."
+   },
+   {
+    "accession": "Q9BQ69",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9BQ69 do not provide any positional evidence that specifically matches the primary reaction mechanism of the ADP-ribosylglutamate hydrolase activity GO term. While several binding sites are consistent with substrate interaction, none directly explain the catalytic chemistry described in the definition."
+   }
+  ]
+ },
+ "GO:0140295": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A9JX75",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION 86-117\" feature with the note that it contains a \"Chitin-binding domain\" does not specifically explain why protein A9JX75 carries the GO term \"pathogen-derived receptor ligand activity.\" While chitin-binding domains are often found in proteins involved in interactions with fungal cell walls, this feature only echoes a word from a secondary clause and does not provide strong evidence fo"
+   },
+   {
+    "accession": "P13773",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, positional basis for the GO term's primary reaction mechanism, which involves pathogen-derived entity interaction with host receptors to activate immunity. The disordered regions do not strongly suggest a specific domain or function that matches the GO term's definition."
+   }
+  ]
+ },
+ "GO:0140303": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AAA7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0140314": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q02910",
+    "go_id": "GO:0140314",
+    "feature_type": "REGION",
+    "start": 815,
+    "end": 858,
+    "signal_kind": "text",
+    "signal_value": "Leucine-zipper",
+    "reasoning": "The REGION span with the note \"Leucine-zipper\" is plausible as it could be part of a DNA-binding domain that might also regulate calcium ion sequestration, but it does not directly match the GO term's primary reaction of binding to a calcium ion. Thus, the evidence is insufficient to confirm the GO term's definition with certainty."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "O09161",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature available is a disordered region at positions 365-415, which does not directly confirm the function of calcium ion sequestering activity as defined by the GO term. No positional feature matches the primary reaction described in the definition, and no other evidence is provided to support this function. Therefore, there is no plausible explanation for why this protein car"
+   },
+   {
+    "accession": "O14958",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein is a disordered region with no specific functional annotation that directly explains the \"calcium ion sequestering activity\" defined by GO:0140314. No positional feature has been confirmed to account for the primary reaction of calcium binding and sequestration."
+   },
+   {
+    "accession": "P51868",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for P51868 is a Disordered region, which does not provide direct evidence of calcium ion sequestering activity. Therefore, there is no single annotated feature that plausibly explains why this protein carries the GO term \"calcium ion sequestering activity.\""
+   }
+  ]
  }
 }

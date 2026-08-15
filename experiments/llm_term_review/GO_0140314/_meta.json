@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140314",
+  "name": "calcium ion sequestering activity",
+  "def": "Binding to a calcium ion to prevent it from interacting with other partners or to inhibit its localization to the area of the cell or complex where it is active.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O09161",
+    "O14958",
+    "P51868",
+    "Q02910"
+  ],
+  "assigned_accessions": [
+    "O09161",
+    "O14958",
+    "P51868",
+    "Q02910"
+  ]
+}

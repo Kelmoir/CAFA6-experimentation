@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140293",
+  "name": "ADP-ribosylglutamate hydrolase activity",
+  "def": "Catalysis of the reaction: (ADP-D-ribosyl)-L-glutamyl-[protein] + H2O = L-glutamyl-[protein] + ADP-ribose.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "A1Z1Q3",
+    "Q3UYG8",
+    "Q922B1",
+    "Q9BQ69"
+  ],
+  "assigned_accessions": [
+    "A1Z1Q3",
+    "Q3UYG8",
+    "Q922B1",
+    "Q9BQ69"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140262",
+  "name": "mRNA cap binding complex binding",
+  "def": "Binding to a mRNA cap binding complex.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "Q63068",
+    "Q86VM9",
+    "Q96J94",
+    "Q9JMB7"
+  ],
+  "assigned_accessions": [
+    "Q63068",
+    "Q86VM9",
+    "Q96J94",
+    "Q9JMB7"
+  ]
+}

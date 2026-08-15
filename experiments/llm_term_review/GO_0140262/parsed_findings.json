@@ -1,0 +1,47 @@
+{
+  "resolved": [
+    {
+      "accession": "Q63068",
+      "go_id": "GO:0140262",
+      "feature_type": "REGION",
+      "start": 1,
+      "end": 320,
+      "signal_kind": "text",
+      "signal_value": "Necessary for interaction with CBP80",
+      "reasoning": "The \"REGION 1-320\" is explicitly noted as necessary for interaction with CBP80, which is a key component of the mRNA cap binding complex. This directly supports the GO term's definition of \"Binding to a mRNA cap binding complex.\""
+    },
+    {
+      "accession": "Q86VM9",
+      "go_id": "GO:0140262",
+      "feature_type": "ZN_FING",
+      "start": 218,
+      "end": 245,
+      "signal_kind": "text",
+      "signal_value": "C3H1-type",
+      "reasoning": "The ZN_FING region (218-245) is a C3H1-type zinc finger domain, which is known to be involved in RNA binding and regulation. This directly matches the GO term's definition of \"Binding to a mRNA cap binding complex,\" making it the most plausible explanation for why the protein carries this term."
+    },
+    {
+      "accession": "Q96J94",
+      "go_id": "GO:0140262",
+      "feature_type": "DOMAIN",
+      "start": 554,
+      "end": 847,
+      "signal_kind": "text",
+      "signal_value": "Piwi",
+      "reasoning": "The \"Piwi\" domain in Q96J94 is directly associated with Piwi proteins, which are known to play a role in RNA silencing and processing. This domain most plausibly explains the protein's function of binding an mRNA cap binding complex."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q9JMB7",
+      "go_id": "GO:0140262",
+      "feature_type": "MOTIF",
+      "start": 217,
+      "end": 225,
+      "signal_kind": "text",
+      "signal_value": "D-box",
+      "reasoning": "The D-box motif is a well-known RNA-binding element, which could be involved in interactions with mRNA structures, including the cap binding complex. However, it does not directly specify the function of binding to a cap binding complex as described in the GO term's definition. The region for piRNA processing (REGION 316-319) is more specific to this function but is tied to a different RNA structu"
+    }
+  ],
+  "issues": []
+}

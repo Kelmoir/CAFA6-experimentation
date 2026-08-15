@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A9JX75",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION 86-117\" feature with the note that it contains a \"Chitin-binding domain\" does not specifically explain why protein A9JX75 carries the GO term \"pathogen-derived receptor ligand activity.\" While chitin-binding domains are often found in proteins involved in interactions with fungal cell walls, this feature only echoes a word from a secondary clause and does not provide strong evidence fo"
+    },
+    {
+      "accession": "P13773",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear, positional basis for the GO term's primary reaction mechanism, which involves pathogen-derived entity interaction with host receptors to activate immunity. The disordered regions do not strongly suggest a specific domain or function that matches the GO term's definition."
+    }
+  ]
+}

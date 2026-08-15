@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140259",
+  "name": "PRC1 complex binding",
+  "def": "Binding to a PRC1 complex.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9VHA0"
+  ],
+  "assigned_accessions": [
+    "Q9VHA0"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140303",
+  "name": "intramembrane lipid transporter activity",
+  "def": "Enables the transport of a lipid from a region of a membrane to a different region on the same membrane.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AAA7"
+  ],
+  "assigned_accessions": [
+    "P0AAA7"
+  ]
+}

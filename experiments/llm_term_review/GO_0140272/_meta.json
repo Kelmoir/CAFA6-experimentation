@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140272",
+  "name": "exogenous protein binding",
+  "def": "Binding to a protein or protein complex from a different species, for example a pathogen molecule binding to a host protein.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P02770",
+    "P07724",
+    "P08195",
+    "P10852"
+  ],
+  "assigned_accessions": [
+    "P02770",
+    "P07724",
+    "P08195",
+    "P10852"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P10852",
+      "go_id": "GO:0140272",
+      "feature_type": "REGION",
+      "start": 0,
+      "end": 31,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The DISORDERED REGION (0-31) could plausibly account for the GO term's definition of exogenous protein binding. While not specific to the chemistry of binding from a different species, it is a plausible structural feature that could support such a function. However, no other annotated feature directly matches the primary reaction or mechanism described in the GO term's definition."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P02770",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for P02770 directly supports the definition of \"exogenous protein binding,\" which involves binding to a protein from a different species, such as a pathogen molecule binding to a host protein. The available evidence indicates general ligand recognition rather than exogenous origin."
+    },
+    {
+      "accession": "P08195",
+      "reason": "none_verdict",
+      "reasoning": "The disordered region (REGION 0-30) does not specifically account for the GO term \"exogenous protein binding\" as it is more indicative of structural flexibility rather than a defined function in binding. No other annotated feature directly matches the primary reaction or mechanism described in the definition of the GO term."
+    },
+    {
+      "accession": "P07724",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided data specifically explains why the protein carries the GO term \"exogenous protein binding.\" The available features are general ligand-binding sites, and no domain or binding site is explicitly tied to exogenous protein interaction."
+    }
+  ]
+}

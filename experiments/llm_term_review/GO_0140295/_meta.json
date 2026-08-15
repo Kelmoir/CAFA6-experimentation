@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0140295",
+  "name": "pathogen-derived receptor ligand activity",
+  "def": "The activity of a pathogen-derived entity that interacts with a host receptor to activate effector-triggered immunity.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "A9JX75",
+    "P13773"
+  ],
+  "assigned_accessions": [
+    "A9JX75",
+    "P13773"
+  ]
+}
