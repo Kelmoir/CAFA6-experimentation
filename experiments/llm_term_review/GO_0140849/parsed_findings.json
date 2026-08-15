@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O13682",
+      "go_id": "GO:0140849",
+      "feature_type": "BINDING",
+      "start": 471,
+      "end": 479,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP is directly aligned with the chaperone activity defined by the GO term, which involves ATP-driven histone exchange."
+    },
+    {
+      "accession": "Q59U81",
+      "go_id": "GO:0140849",
+      "feature_type": "BINDING",
+      "start": 847,
+      "end": 855,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to the protein is directly supported by the GO term's definition and provides the energy required for the ATP-dependent histone exchange mechanism described."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P31376",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for P31376 provides a clear structural or functional basis that matches the primary reaction described in the GO term's definition. The only features are disordered regions with no specificity to the chaperone activity or histone dimer exchange mechanism."
+    },
+    {
+      "accession": "Q9NDJ2",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

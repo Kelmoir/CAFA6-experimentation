@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140850",
+  "name": "histone H2B C-terminal K residue ubiquitin ligase activity",
+  "def": "Catalysis of the transfer of a ubiquitin molecule to a histone 2B at the conserved C-terminal lysine (K) residue. The last K residue is at position 119 in fission yeast, 123 in budding yeast, and 120 in mammals.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "Q1MTQ0",
+    "Q5A4X0",
+    "Q5DTM8",
+    "Q5VTR2"
+  ],
+  "assigned_accessions": [
+    "Q1MTQ0",
+    "Q5A4X0",
+    "Q5DTM8",
+    "Q5VTR2"
+  ]
+}

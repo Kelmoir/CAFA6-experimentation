@@ -40001,6 +40001,167 @@
    }
   ]
  },
+ "GO:0140836": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Protein kinase",
+    "accessions": [
+     "O13958",
+     "P24788",
+     "Q9UQ88"
+    ],
+    "reason": "resolved to ['InterPro:IPR000719', 'InterPro:IPR008271', 'InterPro:IPR011009', 'PROSITE:PS00108', 'PROSITE:PS50011'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000719': 2588, 'InterPro:IPR008271': 1851, 'InterPro:IPR011009': 2795, 'PROSITE:PS00108': 1852, 'PROSITE:PS50011': 2586})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P50613",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140849": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "O13682",
+     "Q59U81"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P31376",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P31376 provides a clear structural or functional basis that matches the primary reaction described in the GO term's definition. The only features are disordered regions with no specificity to the chaperone activity or histone dimer exchange mechanism."
+   },
+   {
+    "accession": "Q9NDJ2",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140850": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "ZN_FING",
+    "value": "ring-type",
+    "accessions": [
+     "Q1MTQ0",
+     "Q5A4X0",
+     "Q5DTM8",
+     "Q5VTR2"
+    ],
+    "reason": "agreed, but the note is too short/generic a phrase (or a known-generic catalytic-residue label) to trust as a global substring trigger for this term"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140852": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "ZN_FING",
+    "value": "ring-type",
+    "accessions": [
+     "H2KYH3",
+     "Q19336"
+    ],
+    "reason": "agreed, but the note is too short/generic a phrase (or a known-generic catalytic-residue label) to trust as a global substring trigger for this term"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "UBA",
+    "accessions": [
+     "Q7Z6Z7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9C895",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the primary reaction of catalyzing the transfer of ubiquitin to a histone substrate, which is the core mechanism defined by the GO term."
+   }
+  ]
+ },
+ "GO:0140858": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "ZN_FING",
+    "value": "ring-type",
+    "accessions": [
+     "Q80XJ2",
+     "Q8IYW5"
+    ],
+    "reason": "agreed, but the note is too short/generic a phrase (or a known-generic catalytic-residue label) to trust as a global substring trigger for this term"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140902": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8BWH0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9NVC3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0140934": {
   "n_resolved": 1,
   "n_uncertain": 0,

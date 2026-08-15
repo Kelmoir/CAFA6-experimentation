@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8IYW5",
+      "go_id": "GO:0140858",
+      "feature_type": "ZN_FING",
+      "start": 15,
+      "end": 55,
+      "signal_kind": "text",
+      "signal_value": "RING-type",
+      "reasoning": "The ZN_FING region with its RING-type note directly relates to the primary reaction of transferring ubiquitin to histone H2A at lysine-15, making it a strong candidate for explaining why Q8IYW5 carries this GO term."
+    },
+    {
+      "accession": "Q80XJ2",
+      "go_id": "GO:0140858",
+      "feature_type": "ZN_FING",
+      "start": 15,
+      "end": 55,
+      "signal_kind": "text",
+      "signal_value": "RING-type",
+      "reasoning": "The ZN_FING region with its RING-type note directly matches the primary reaction of the GO term, which involves the transfer of a ubiquitin molecule to histone 2A at lysine-15. This is a strong and specific match for the defined chemistry of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

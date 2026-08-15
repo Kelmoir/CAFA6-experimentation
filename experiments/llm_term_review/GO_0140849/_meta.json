@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140849",
+  "name": "ATP-dependent H2AZ histone chaperone activity",
+  "def": "A histone chaperone that mediates the exchange of histone H2A-H2B dimer and histone H2AZ-H2B dimers in a nucleosome, driven by ATP hydrolysis. Some chaperones insert H2AZ-H2B dimers and remove H2A-H2B, while others do the opposite.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "O13682",
+    "P31376",
+    "Q59U81",
+    "Q9NDJ2"
+  ],
+  "assigned_accessions": [
+    "O13682",
+    "P31376",
+    "Q59U81",
+    "Q9NDJ2"
+  ]
+}

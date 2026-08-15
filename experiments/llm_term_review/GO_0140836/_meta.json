@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140836",
+  "name": "RNA polymerase II CTD heptapeptide repeat S5 kinase activity",
+  "def": "Catalysis of the reaction: ATP + RNA polymerase II large subunit CTD heptapeptide repeat (consensus YSPTSPS) = ADP + H+ + RNA polymerase II large subunit phosphoserine (position 5).",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "O13958",
+    "P24788",
+    "P50613",
+    "Q9UQ88"
+  ],
+  "assigned_accessions": [
+    "O13958",
+    "P24788",
+    "P50613",
+    "Q9UQ88"
+  ]
+}

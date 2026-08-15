@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "Q5DTM8",
+      "go_id": "GO:0140850",
+      "feature_type": "ZN_FING",
+      "start": 919,
+      "end": 959,
+      "signal_kind": "text",
+      "signal_value": "RING-type",
+      "reasoning": "The ZN_FING domain with a RING-type evidence directly matches the primary reaction of ubiquitin transfer to histone H2B at its C-terminal K residue, which is the defining chemistry for this GO term."
+    },
+    {
+      "accession": "Q5A4X0",
+      "go_id": "GO:0140850",
+      "feature_type": "ZN_FING",
+      "start": 628,
+      "end": 668,
+      "signal_kind": "text",
+      "signal_value": "RING-type",
+      "reasoning": "The RING-type domain in ZN_FING 628-668 directly supports the catalytic mechanism of transferring a ubiquitin molecule to histone H2B, which is the primary reaction defined by GO:0140850."
+    },
+    {
+      "accession": "Q5VTR2",
+      "go_id": "GO:0140850",
+      "feature_type": "ZN_FING",
+      "start": 921,
+      "end": 961,
+      "signal_kind": "text",
+      "signal_value": "RING-type",
+      "reasoning": "The ZN_FING 921-961 feature with its RING-type annotation directly relates to the domain structure necessary for ubiquitin ligase activity, aligning with the primary reaction described in the definition."
+    },
+    {
+      "accession": "Q1MTQ0",
+      "go_id": "GO:0140850",
+      "feature_type": "ZN_FING",
+      "start": 638,
+      "end": 679,
+      "signal_kind": "text",
+      "signal_value": "RING-type",
+      "reasoning": "The ZN_FING span with the qualifier \"RING-type\" directly supports the primary reaction of the GO term, which involves catalyzing the transfer of a ubiquitin molecule to a histone 2B at its C-terminal lysine residue. This specific domain type is known to be involved in ubiquitination activities, making it a strong match for the defined function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

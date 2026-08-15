@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140852",
+  "name": "histone ubiquitin ligase activity",
+  "def": "Catalysis of the transfer of ubiquitin to a histone substrate.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "H2KYH3",
+    "Q19336",
+    "Q7Z6Z7",
+    "Q9C895"
+  ],
+  "assigned_accessions": [
+    "H2KYH3",
+    "Q19336",
+    "Q7Z6Z7",
+    "Q9C895"
+  ]
+}

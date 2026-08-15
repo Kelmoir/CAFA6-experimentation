@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0140858",
+  "name": "histone H2AK15 ubiquitin ligase activity",
+  "def": "Catalysis of the transfer of a ubiquitin molecule to histone 2A at the lysine-15 residue.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q80XJ2",
+    "Q8IYW5"
+  ],
+  "assigned_accessions": [
+    "Q80XJ2",
+    "Q8IYW5"
+  ]
+}

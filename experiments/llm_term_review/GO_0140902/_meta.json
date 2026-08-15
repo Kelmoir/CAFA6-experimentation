@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0140902",
+  "name": "L-glutamine:sodium symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: L-glutamine(out) + Na+(out) = L-glutamine(in) + Na+(in).",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q8BWH0",
+    "Q9NVC3"
+  ],
+  "assigned_accessions": [
+    "Q8BWH0",
+    "Q9NVC3"
+  ]
+}

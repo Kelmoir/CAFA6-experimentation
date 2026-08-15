@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "O13958",
+      "go_id": "GO:0140836",
+      "feature_type": "DOMAIN",
+      "start": 4,
+      "end": 319,
+      "signal_kind": "text",
+      "signal_value": "Protein kinase",
+      "reasoning": "The DOMAIN 4-319 annotation is directly associated with kinase activity, which matches the primary reaction described in the GO term's definition. This provides a strong and specific explanation for why the protein carries the term."
+    },
+    {
+      "accession": "P24788",
+      "go_id": "GO:0140836",
+      "feature_type": "DOMAIN",
+      "start": 426,
+      "end": 712,
+      "signal_kind": "text",
+      "signal_value": "Protein kinase",
+      "reasoning": "The DOMAIN 426-712 annotation is most plausibly linked to the catalytic function of RNA polymerase II CTD heptapeptide repeat S5 kinase activity, as it is associated with kinase activity and directly relates to the phosphorylation reaction described in the GO term."
+    },
+    {
+      "accession": "Q9UQ88",
+      "go_id": "GO:0140836",
+      "feature_type": "DOMAIN",
+      "start": 426,
+      "end": 647,
+      "signal_kind": "text",
+      "signal_value": "Protein kinase",
+      "reasoning": "The DOMAIN 426-647 is associated with kinase activity, which aligns with the primary reaction of the GO term involving ATP and phosphorylation. While it does not directly reference the CTD heptapeptide repeat or position 5, it provides a plausible structural basis for the enzyme's function in this context."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P50613",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}
