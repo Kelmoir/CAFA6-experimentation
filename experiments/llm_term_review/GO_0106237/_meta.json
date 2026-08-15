@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0106237",
+  "name": "arachidonate 12(R)-lipoxygenase activity",
+  "def": "Catalysis of the reaction: arachidonate + O2 = (5Z,8Z,10E,12R,14Z)-12-hydroperoxyicosa-5,8,10,14-tetraenoate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O70582",
+    "O75342",
+    "Q2KMM4"
+  ],
+  "assigned_accessions": [
+    "O70582",
+    "O75342",
+    "Q2KMM4"
+  ]
+}

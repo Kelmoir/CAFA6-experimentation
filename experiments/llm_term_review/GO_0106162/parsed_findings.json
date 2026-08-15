@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9H0A0",
+      "go_id": "GO:0106162",
+      "feature_type": "DOMAIN",
+      "start": 557,
+      "end": 753,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The DOMAIN 557-753 of Q9H0A0 is explicitly labeled as \"N-acetyltransferase,\" which directly matches the primary reaction defined by GO:0106162. This provides a strong, positional match to the molecular function described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9XIK4",
+      "reason": "none_verdict",
+      "reasoning": "The domain annotation for Q9XIK4 indicates it is an N-acetyltransferase, which aligns with the GO term's definition. However, since no binding site or catalytic mechanism is explicitly described in the annotated features, this domain alone does not provide a strong explanation for why the protein carries the term."
+    }
+  ]
+}

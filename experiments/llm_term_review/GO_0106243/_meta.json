@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106243",
+  "name": "syn-isopimara-7,15-diene synthase activity",
+  "def": "Catalysis of the reaction: 9alpha-copalyl diphosphate = diphosphate + syn-isopimara-7,15-diene.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A0A2K9RFZ9"
+  ],
+  "assigned_accessions": [
+    "A0A2K9RFZ9"
+  ]
+}

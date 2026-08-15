@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106244",
+  "name": "eupatolide synthase activity",
+  "def": "Catalysis of the reaction: 8beta-hydroxygermacra-1(10),4,11(13)-trien-12-oate + O2 + reduced [NADPH--hemoprotein reductase] = eupatolide + 2 H2O + oxidized [NADPH--hemoprotein reductase].",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "F8S1H8"
+  ],
+  "assigned_accessions": [
+    "F8S1H8"
+  ]
+}

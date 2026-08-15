@@ -35795,6 +35795,91 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0106155": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "JmjC",
+    "accessions": [
+     "O94606"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "2-oxoglutarate",
+    "accessions": [
+     "Q9VU77"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0C870",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P0C870 directly matches the primary reaction mechanism of peptidyl-lysine 3-dioxygenase activity. The only domain annotation is for a general family, not a specific enzyme function."
+   }
+  ]
+ },
+ "GO:0106162": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "N-acetyltransferase",
+    "accessions": [
+     "Q9H0A0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9XIK4",
+    "reason": "none_verdict",
+    "reasoning": "The domain annotation for Q9XIK4 indicates it is an N-acetyltransferase, which aligns with the GO term's definition. However, since no binding site or catalytic mechanism is explicitly described in the annotated features, this domain alone does not provide a strong explanation for why the protein carries the term."
+   }
+  ]
+ },
+ "GO:0106237": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Lipoxygenase",
+    "accessions": [
+     "O70582",
+     "Q2KMM4"
+    ],
+    "reason": "resolved to ['PROSITE:PS00081', 'PROSITE:PS00711', 'PROSITE:PS51393', 'Pfam:PF00305'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'PROSITE:PS00081': 39, 'PROSITE:PS00711': 39, 'PROSITE:PS51393': 45, 'Pfam:PF00305': 45})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O75342",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides positional evidence that directly explains the molecular function defined by the GO term."
+   }
+  ]
+ },
  "GO:0106242": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -35812,6 +35897,181 @@
    }
   ],
   "uncertain": [],
+  "issues": []
+ },
+ "GO:0106243": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "A0A2K9RFZ9",
+    "go_id": "GO:0106243",
+    "feature_type": "MOTIF",
+    "start": 329,
+    "end": 334,
+    "signal_kind": "text",
+    "signal_value": "DDXXD motif",
+    "reasoning": "The \"MOTIF 329-334\" feature could plausibly be related to the enzyme's activity, but there is no direct evidence that this motif is involved in the specific reaction described by the GO term."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0106244": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "F8S1H8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0106250": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O14109",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region in positions 214-238 of O14109 does not provide specific evidence for the DNA-binding transcription repressor activity defined by GO:0106250, as it lacks domain-specific annotations and is not directly linked to the mechanism described in the definition."
+   }
+  ]
+ },
+ "GO:0106251": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ASCH",
+    "accessions": [
+     "P67603"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0106255": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Lipoxygenase",
+    "accessions": [
+     "D3ZKX9",
+     "P39654",
+     "Q9WV07"
+    ],
+    "reason": "resolved to ['PROSITE:PS00081', 'PROSITE:PS00711', 'PROSITE:PS51393', 'Pfam:PF00305'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'PROSITE:PS00081': 39, 'PROSITE:PS00711': 39, 'PROSITE:PS51393': 45, 'Pfam:PF00305': 45})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P51589",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P51589 specifically matches the GO term's primary reaction of hydroperoxy icosatetraenoate isomerization. The only evidence is a heme binding site, which is not sufficient to explain the defined molecular function."
+   }
+  ]
+ },
+ "GO:0106260": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O74986",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature provided for O74986 is a \"REGION\" spanning from 53-108, which is marked as Disordered. This region could be involved in DNA-DNA interactions, but the annotation does not specify any particular function or mechanism related to tethering DNA. Since no positional feature directly explains the defined chemistry of DNA-DNA tethering activity, there is no strong evidence for a"
+   }
+  ]
+ },
+ "GO:0106268": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8T638",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain the defined chemistry of the GO term, which involves catalyzing a methyl transfer reaction. The \"ACT_SITE\" feature at position 269-270 is generic and does not specifically account for the methyl transfer mechanism described in the GO definition."
+   }
+  ]
+ },
+ "GO:0106271": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NADP(+)",
+    "accessions": [
+     "P38115"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0106301": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P51589",
+    "go_id": "GO:0106301",
+    "feature_type": "BINDING",
+    "start": 447,
+    "end": 448,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "The BINDING feature at position 447-448 is plausible for an enzyme involved in this reaction, but it does not specifically explain the chemistry of converting arachidonic acid to cis-5,6-epoxyeicosatrienoic acid. No other features directly match the primary reaction mechanism described in the GO term's definition."
+   }
+  ],
   "issues": []
  }
 }

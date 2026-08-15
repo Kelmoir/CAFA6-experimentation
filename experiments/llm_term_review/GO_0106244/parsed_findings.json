@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "F8S1H8",
+      "go_id": "GO:0106244",
+      "feature_type": "BINDING",
+      "start": 429,
+      "end": 430,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding site with heme as the ligand directly supports the function of F8S1H8 in the reaction defined by GO:0106244, which involves oxygen and reduced [NADPH--hemoprotein reductase]. This matches the primary reaction described in the definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

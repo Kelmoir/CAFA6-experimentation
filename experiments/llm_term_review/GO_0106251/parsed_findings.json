@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P67603",
+      "go_id": "GO:0106251",
+      "feature_type": "DOMAIN",
+      "start": 5,
+      "end": 101,
+      "signal_kind": "text",
+      "signal_value": "ASCH",
+      "reasoning": "The DOMAIN 5-101 with the qualifier \"ASCH\" directly corresponds to the enzyme activity of N4-acetylcytidine amidohydrolase, which matches the primary reaction described in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

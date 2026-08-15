@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106251",
+  "name": "N4-acetylcytidine amidohydrolase activity",
+  "def": "Catalysis of the reaction N4-acetylcytidine +H2O = cytidine + acetate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P67603"
+  ],
+  "assigned_accessions": [
+    "P67603"
+  ]
+}

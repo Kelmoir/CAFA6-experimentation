@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P38115",
+      "go_id": "GO:0106271",
+      "feature_type": "BINDING",
+      "start": 240,
+      "end": 295,
+      "signal_kind": "ligand",
+      "signal_value": "NADP(+)",
+      "reasoning": "The binding site for NADP+ (BINDING 240-295) directly involves the cofactor in the reaction mechanism described by the GO term, making it the most plausible explanation for why P38115 carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

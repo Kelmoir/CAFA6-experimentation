@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106301",
+  "name": "arachidonate 5,6-epoxygenase activity",
+  "def": "Catalysis of an NADPH- and oxygen-dependent reaction that converts arachidonic acid to cis-5,6-epoxyeicosatrienoic acid.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P51589"
+  ],
+  "assigned_accessions": [
+    "P51589"
+  ]
+}

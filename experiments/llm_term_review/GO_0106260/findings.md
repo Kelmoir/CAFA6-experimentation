@@ -1,0 +1,5 @@
+## O74986 GO:0106260
+verdict: NONE
+feature: REGION 53-108
+reasoning: The only annotated feature provided for O74986 is a "REGION" spanning from 53-108, which is marked as Disordered. This region could be involved in DNA-DNA interactions, but the annotation does not specify any particular function or mechanism related to tethering DNA. Since no positional feature directly explains the defined chemistry of DNA-DNA tethering activity, there is no strong evidence for a
+---

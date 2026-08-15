@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0106155",
+  "name": "peptidyl-lysine 3-dioxygenase activity",
+  "def": "Catalysis of the reaction: protein L-lysine + 2-oxoglutarate + O2 = protein 3-hydroxy-L-lysine + succinate + CO2.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O94606",
+    "P0C870",
+    "Q9VU77"
+  ],
+  "assigned_accessions": [
+    "O94606",
+    "P0C870",
+    "Q9VU77"
+  ]
+}

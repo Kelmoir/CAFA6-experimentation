@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106260",
+  "name": "DNA-DNA tethering activity",
+  "def": "Bridging together two regions of a DNA molecule.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O74986"
+  ],
+  "assigned_accessions": [
+    "O74986"
+  ]
+}

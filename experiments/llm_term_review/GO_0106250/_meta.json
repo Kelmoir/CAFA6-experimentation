@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106250",
+  "name": "DNA-binding transcription repressor activity, RNA polymerase III-specific",
+  "def": "A DNA-binding transcription factor activity that represses or decreases the transcription of specific genes sets transcribed by RNA polymerase III.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O14109"
+  ],
+  "assigned_accessions": [
+    "O14109"
+  ]
+}

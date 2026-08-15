@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "A0A2K9RFZ9",
+      "go_id": "GO:0106243",
+      "feature_type": "MOTIF",
+      "start": 329,
+      "end": 334,
+      "signal_kind": "text",
+      "signal_value": "DDXXD motif",
+      "reasoning": "The \"MOTIF 329-334\" feature could plausibly be related to the enzyme's activity, but there is no direct evidence that this motif is involved in the specific reaction described by the GO term."
+    }
+  ],
+  "issues": []
+}

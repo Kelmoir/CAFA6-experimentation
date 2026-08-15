@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106271",
+  "name": "D-arabinose 1-dehydrogenase (NADP+) activity",
+  "def": "Catalysis of the reaction: D-arabinose + NADP+ = D-arabinono-1,4-lactone + NADPH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P38115"
+  ],
+  "assigned_accessions": [
+    "P38115"
+  ]
+}

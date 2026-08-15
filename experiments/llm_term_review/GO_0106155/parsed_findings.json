@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O94606",
+      "go_id": "GO:0106155",
+      "feature_type": "DOMAIN",
+      "start": 139,
+      "end": 433,
+      "signal_kind": "text",
+      "signal_value": "JmjC",
+      "reasoning": "The JmjC domain in the specified range is a plausible explanation for the peptidyl-lysine 3-dioxygenase activity, as it is known to be involved in oxidation reactions. This matches the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q9VU77",
+      "go_id": "GO:0106155",
+      "feature_type": "BINDING",
+      "start": 122,
+      "end": 123,
+      "signal_kind": "ligand",
+      "signal_value": "2-oxoglutarate",
+      "reasoning": "The binding of 2-oxoglutarate at position 122-123 directly supports the reaction mechanism described for peptidyl-lysine 3-dioxygenase activity, making it a strong candidate for explaining why this protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0C870",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P0C870 directly matches the primary reaction mechanism of peptidyl-lysine 3-dioxygenase activity. The only domain annotation is for a general family, not a specific enzyme function."
+    }
+  ]
+}
