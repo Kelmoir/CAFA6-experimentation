@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140993",
+  "name": "histone modifying activity",
+  "def": "A catalytic activity that acts on a histone protein. Reversible histone modifications contribute to regulation of gene expression.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LYK6"
+  ],
+  "assigned_accessions": [
+    "Q9LYK6"
+  ]
+}

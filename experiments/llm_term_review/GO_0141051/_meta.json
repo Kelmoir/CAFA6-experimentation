@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0141051",
+  "name": "histone H4K deacetylase activity",
+  "def": "Removal of an acetyl group from a lysine residue in a histone H4.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q21921",
+    "Q9VK34"
+  ],
+  "assigned_accessions": [
+    "Q21921",
+    "Q9VK34"
+  ]
+}

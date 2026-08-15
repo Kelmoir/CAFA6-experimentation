@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8TDB6",
+      "go_id": "GO:0141000",
+      "feature_type": "ZN_FING",
+      "start": 560,
+      "end": 600,
+      "signal_kind": "text",
+      "signal_value": "RING-type",
+      "reasoning": "The ZN_FING region with its RING-type annotation is the most plausible explanation for why Q8TDB6 carries the GO term \"histone H4K91 ubiquitin ligase activity.\" It directly relates to the enzymatic function described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

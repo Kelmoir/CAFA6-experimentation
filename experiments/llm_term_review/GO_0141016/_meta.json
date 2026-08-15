@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0141016",
+  "name": "G/T mismatch-specific thymine-DNA glycosylase activity",
+  "def": "Hydrolyzes mismatched double-stranded DNA and polynucleotides, releasing free thymine and leaving an apyrimidinic (AP) site.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P56581",
+    "Q13569"
+  ],
+  "assigned_accessions": [
+    "P56581",
+    "Q13569"
+  ]
+}

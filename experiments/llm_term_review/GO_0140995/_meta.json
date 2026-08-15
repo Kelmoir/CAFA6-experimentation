@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140995",
+  "name": "histone H2A kinase activity",
+  "def": "Catalysis of the transfer of a phosphate group to a histone H2A.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "O08901",
+    "O74630",
+    "O94751",
+    "Q02099"
+  ],
+  "assigned_accessions": [
+    "O08901",
+    "O74630",
+    "O94751",
+    "Q02099"
+  ]
+}

@@ -40523,6 +40523,76 @@
    }
   ]
  },
+ "GO:0140978": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Carrier",
+    "accessions": [
+     "P52505"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "LYR motif",
+    "accessions": [
+     "L0R8F8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q10275",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8K013",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q8K013 does not have any annotated feature that directly states it binds to a mitochondrial large ribosomal subunit. All features are related to GTP-binding domains or disordered regions, which do not match the primary reaction of the GO term."
+   }
+  ]
+ },
+ "GO:0140981": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "A2A974",
+     "P08516"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O88833",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction mechanism of the GO term, which involves the catalytic conversion of an omega-methyl-medium-chain fatty acid into an omega-hydroxy-medium-chain fatty acid using O2 and reduced [NADPH--hemoprotein reductase]. The only relevant features (heme binding) are generic and do not directly explain the chemistry described in the GO term."
+   },
+   {
+    "accession": "Q91WL5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q91WL5 provides a clear, specific explanation of why it carries the GO term \"medium-chain fatty acid omega-hydroxylase activity.\" The only features are heme-binding sites, which do not directly relate to the catalytic mechanism described in the definition."
+   }
+  ]
+ },
  "GO:0140985": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -40566,6 +40636,148 @@
     ]
    }
   ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140993": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LYK6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0140995": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "O08901"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "FAT",
+    "accessions": [
+     "Q02099"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O94751",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features specifically explain why O94751 carries the GO term \"histone H2A kinase activity.\" The binding sites for ATP are generic and do not directly indicate the specific function of phosphoryl transfer to histone H2A."
+   },
+   {
+    "accession": "O74630",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly describes the phosphorelay activity to histone H2A, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0141000": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ZN_FING",
+    "value": "RING-type",
+    "accessions": [
+     "Q8TDB6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0141003": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Protein kinase",
+    "accessions": [
+     "Q80X41"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q99986",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term \"histone H2AX kinase activity,\" which involves catalyzing the transfer of a phosphate group to H2AX. The available features are either generic (like \"Protein kinase\") or relate to secondary consequences such as ATP binding or nucleosome interaction, not the specific mechanism of H2AX phosphorylation."
+   }
+  ]
+ },
+ "GO:0141016": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P56581",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION 44-108\" with the qualifier \"Disordered\" does not specifically or strongly match the primary reaction of hydrolyzing mismatched DNA as defined by the GO term. No positional feature has been confirmed to explain why P56581 carries this GO term."
+   },
+   {
+    "accession": "Q13569",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q13569 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The Pfam domain PF03167 is specifically associated with uracil-DNA glycosylase activity, which directly matches the primary reaction of the GO term. This provides a strong and specific explanation for why the protein carries the term."
+   }
+  ]
+ },
+ "GO:0141051": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Deacetylase sirtuin-type",
+    "accessions": [
+     "Q21921",
+     "Q9VK34"
+    ],
+    "reason": "resolved to ['InterPro:IPR003000', 'InterPro:IPR026591', 'InterPro:IPR050134', 'PROSITE:PS50305'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR003000': 57, 'InterPro:IPR026591': 47, 'InterPro:IPR050134': 56, 'PROSITE:PS50305': 57})"
+   }
+  ],
+  "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": []
  }

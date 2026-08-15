@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "Q80X41",
+      "go_id": "GO:0141003",
+      "feature_type": "DOMAIN",
+      "start": 36,
+      "end": 317,
+      "signal_kind": "text",
+      "signal_value": "Protein kinase",
+      "reasoning": "The DOMAIN 36-317 being \"Protein kinase\" with evidence from PROSITE-ProRule:PRU00159 most plausibly explains the GO term \"histone H2AX kinase activity,\" as it directly relates to the catalytic transfer of a phosphate group."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q99986",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of the GO term \"histone H2AX kinase activity,\" which involves catalyzing the transfer of a phosphate group to H2AX. The available features are either generic (like \"Protein kinase\") or relate to secondary consequences such as ATP binding or nucleosome interaction, not the specific mechanism of H2AX phosphorylation."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P52505",
+      "go_id": "GO:0140978",
+      "feature_type": "DOMAIN",
+      "start": 76,
+      "end": 152,
+      "signal_kind": "text",
+      "signal_value": "Carrier",
+      "reasoning": "The \"DOMAIN\" span from 76-152 is directly associated with the protein's role as a carrier, which aligns with the defined function of binding to a mitochondrial large ribosomal subunit. This feature provides a clear structural basis for the molecular function described in the GO term."
+    },
+    {
+      "accession": "L0R8F8",
+      "go_id": "GO:0140978",
+      "feature_type": "MOTIF",
+      "start": 11,
+      "end": 14,
+      "signal_kind": "text",
+      "signal_value": "LYR motif",
+      "reasoning": "The presence of a LYR motif in the MOTIF 11-14 of L0R8F8 directly supports the function of binding to a mitochondrial large ribosomal subunit, which is the primary reaction defined by the GO term. This specific sequence is known to be associated with mitochondrial complex I and its functions, making it a strong match for the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q10275",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8K013",
+      "reason": "none_verdict",
+      "reasoning": "The protein Q8K013 does not have any annotated feature that directly states it binds to a mitochondrial large ribosomal subunit. All features are related to GTP-binding domains or disordered regions, which do not match the primary reaction of the GO term."
+    }
+  ]
+}

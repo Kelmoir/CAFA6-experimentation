@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0141000",
+  "name": "histone H4K91 ubiquitin ligase activity",
+  "def": "Catalysis of the transfer of a ubiquitin molecule to histone 4 at the lysine-91 residue.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8TDB6"
+  ],
+  "assigned_accessions": [
+    "Q8TDB6"
+  ]
+}

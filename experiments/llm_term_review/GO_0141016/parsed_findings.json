@@ -1,0 +1,18 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P56581",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION 44-108\" with the qualifier \"Disordered\" does not specifically or strongly match the primary reaction of hydrolyzing mismatched DNA as defined by the GO term. No positional feature has been confirmed to explain why P56581 carries this GO term."
+    },
+    {
+      "accession": "Q13569",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for Q13569 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The Pfam domain PF03167 is specifically associated with uracil-DNA glycosylase activity, which directly matches the primary reaction of the GO term. This provides a strong and specific explanation for why the protein carries the term."
+    }
+  ]
+}
