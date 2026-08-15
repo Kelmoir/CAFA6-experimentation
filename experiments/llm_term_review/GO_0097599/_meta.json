@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0097599",
+  "name": "xylanase activity",
+  "def": "Catalysis of the hydrolysis of xylans, homopolysaccharides composed of xylose residues.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P49235"
+  ],
+  "assigned_accessions": [
+    "P49235"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P18757",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature (by type + exact coordinates) provides a specific explanation for the GO term's defined reaction mechanism."
+    },
+    {
+      "accession": "P32929",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for P32929 only indicate substrate-binding sites and do not provide any evidence that directly supports the enzymatic activity defined by GO:0098606. Therefore, there is no single annotated feature that plausibly explains why this protein carries the term."
+    },
+    {
+      "accession": "Q8VCN5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q8VCN5 directly explains the GO term's chemistry or mechanism, and no domain is explicitly mentioned that would support this function."
+    }
+  ]
+}

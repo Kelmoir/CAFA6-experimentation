@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P49715",
+      "go_id": "GO:0097677",
+      "feature_type": "DOMAIN",
+      "start": 281,
+      "end": 345,
+      "signal_kind": "text",
+      "signal_value": "bZIP",
+      "reasoning": "The DOMAIN 281-345 (bZIP) is directly associated with bZIP proteins, which are known for their role in signal transduction and transcription factor activity, making it a strong match to the GO term's primary function of binding to the STAT family."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O88275",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly supports the primary reaction of binding to the STAT family as defined by the GO term."
+    },
+    {
+      "accession": "Q8IXQ6",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided list specifically indicates that the protein Q8IXQ6 has a domain involved in binding to the STAT family, which is the primary reaction defined by the GO term."
+    },
+    {
+      "accession": "Q99M80",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

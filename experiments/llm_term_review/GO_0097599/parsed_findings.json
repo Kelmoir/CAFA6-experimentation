@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P49235",
+      "go_id": "GO:0097599",
+      "feature_type": "BINDING",
+      "start": 91,
+      "end": 92,
+      "signal_kind": "ligand",
+      "signal_value": "a beta-D-glucoside",
+      "reasoning": "The binding of a beta-D-glucoside to the protein's domain is directly relevant to its function as an xylanase, which involves catalyzing the hydrolysis of xylans. This matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

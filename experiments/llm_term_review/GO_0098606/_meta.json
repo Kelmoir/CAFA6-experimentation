@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0098606",
+  "name": "selenocystathionine gamma-lyase activity",
+  "def": "Catalysis of the reaction: L-Selenocystathionine + H2O => L-Selenocysteine + NH3 + 2-Oxobutanoic acid.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P18757",
+    "P32929",
+    "Q8VCN5"
+  ],
+  "assigned_accessions": [
+    "P18757",
+    "P32929",
+    "Q8VCN5"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0097507",
+  "name": "hypoxanthine DNA N-glycosylase activity",
+  "def": "DNA N-glycosylase activity acting on deaminated adenine (hypoxanthine).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O59825"
+  ],
+  "assigned_accessions": [
+    "O59825"
+  ]
+}

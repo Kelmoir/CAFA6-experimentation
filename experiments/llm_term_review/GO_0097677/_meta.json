@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0097677",
+  "name": "STAT family protein binding",
+  "def": "Binding to a member of the signal transducers and activators of transcription (STAT) protein family. STATs are, as the name indicates, both signal transducers and transcription factors. STATs are activated by cytokines and some growth factors and thus control important biological processes including cell growth, cell differentiation, apoptosis and immune responses.",
+  "n_proteins_total": 27,
+  "sampled_accessions": [
+    "O88275",
+    "P49715",
+    "Q8IXQ6",
+    "Q99M80"
+  ],
+  "assigned_accessions": [
+    "O88275",
+    "P49715",
+    "Q8IXQ6",
+    "Q99M80"
+  ]
+}

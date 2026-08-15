@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0098603",
+  "name": "selenol Se-methyltransferase activity",
+  "def": "Catalysis of the reaction: R + Se-Adenosylselenomethionine => CH3-R + Se-Adenosyl-L-selenohomocysteine.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P13255",
+    "Q01984"
+  ],
+  "assigned_accessions": [
+    "P13255",
+    "Q01984"
+  ]
+}

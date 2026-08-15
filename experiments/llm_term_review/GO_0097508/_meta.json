@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0097508",
+  "name": "xanthine DNA N-glycosylase activity",
+  "def": "DNA N-glycosylase activity acting on deaminated guanine (xanthine).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O59825"
+  ],
+  "assigned_accessions": [
+    "O59825"
+  ]
+}

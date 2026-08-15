@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "P13255",
+      "go_id": "GO:0098603",
+      "feature_type": "BINDING",
+      "start": 3,
+      "end": 4,
+      "signal_kind": "ligand",
+      "signal_value": "(6S)-5-methyl-5,6,7,8-tetrahydrofolate",
+      "reasoning": "All candidate features are of type BINDING and involve S-adenosyl-L-methionine or (6S)-5-methyl-5,6,7,8-tetrahydrofolate as ligands, which are methyl donors. These ligands directly participate in the reaction described by the GO term's definition, making them the most plausible explanation for why this protein carries the term."
+    },
+    {
+      "accession": "Q01984",
+      "go_id": "GO:0098603",
+      "feature_type": "BINDING",
+      "start": 27,
+      "end": 28,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding of a substrate (R) to the protein, as described in the \"BINDING 27-28\" feature, directly matches the core reaction mechanism of the GO term, which involves catalyzing the transfer of a methyl group from Se-Adenosylselenomethionine to R. This binding is essential for the function defined by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

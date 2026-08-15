@@ -1,0 +1,5 @@
+## O59825 GO:0097507
+verdict: NONE
+feature: NONE 0-0
+reasoning: The highest-scoring features do not specifically match the primary reaction of hypoxanthine DNA N-glycosylase activity, which involves deaminated adenine (hypoxanthine). These features refer to uracil DNA glycosylases, which are a different class of enzymes. Therefore, no positional feature provides a strong explanation for why this protein carries the given GO term.
+---

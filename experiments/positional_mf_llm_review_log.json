@@ -33046,5 +33046,268 @@
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0097434": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P50537",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a direct explanation for the defined chemical reaction of succinate:proton symporter activity. The domain/family cross-reference \"SLAC1\" is relevant to the function but does not serve as a positional feature that directly matches the GO term's primary reaction."
+   }
+  ]
+ },
+ "GO:0097507": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O59825",
+    "reason": "none_verdict",
+    "reasoning": "The highest-scoring features do not specifically match the primary reaction of hypoxanthine DNA N-glycosylase activity, which involves deaminated adenine (hypoxanthine). These features refer to uracil DNA glycosylases, which are a different class of enzymes. Therefore, no positional feature provides a strong explanation for why this protein carries the given GO term."
+   }
+  ]
+ },
+ "GO:0097508": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O59825",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region (REGION 0-50) does not provide any evidence for the enzymatic activity of xanthine DNA N-glycosylase, which is defined by its specific reaction mechanism. No other annotated feature directly supports this function."
+   }
+  ]
+ },
+ "GO:0097509": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O59825",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for O59825 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The Pfam entry \"PF03167 -- UDG\" directly corresponds to the uracil-DNA glycosylase domain, which is known to be involved in DNA repair and base excision. This domain is likely responsible for the N-glycosylase activity described by the GO term \"oxanine DNA N-glycosylase activity\"."
+   }
+  ]
+ },
+ "GO:0097599": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a beta-D-glucoside",
+    "accessions": [
+     "P49235"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0097677": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "bZIP",
+    "accessions": [
+     "P49715"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O88275",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly supports the primary reaction of binding to the STAT family as defined by the GO term."
+   },
+   {
+    "accession": "Q8IXQ6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list specifically indicates that the protein Q8IXQ6 has a domain involved in binding to the STAT family, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "Q99M80",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0097690": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q99MH3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9EQ21",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0097697": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P36566",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a specific mechanistic basis for the GO term's primary reaction, so it cannot be determined with confidence."
+   }
+  ]
+ },
+ "GO:0098603": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "(6S)-5-methyl-5,6,7,8-tetrahydrofolate",
+    "accessions": [
+     "P13255"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q01984"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0098604": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P10760",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0098606": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P18757",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature (by type + exact coordinates) provides a specific explanation for the GO term's defined reaction mechanism."
+   },
+   {
+    "accession": "P32929",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P32929 only indicate substrate-binding sites and do not provide any evidence that directly supports the enzymatic activity defined by GO:0098606. Therefore, there is no single annotated feature that plausibly explains why this protein carries the term."
+   },
+   {
+    "accession": "Q8VCN5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q8VCN5 directly explains the GO term's chemistry or mechanism, and no domain is explicitly mentioned that would support this function."
+   }
+  ]
+ },
+ "GO:0098615": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P40936",
+    "go_id": "GO:0098615",
+    "feature_type": "BINDING",
+    "start": 20,
+    "end": 21,
+    "signal_kind": "ligand",
+    "signal_value": "S-adenosyl-L-methionine",
+    "reasoning": "The binding site for S-adenosyl-L-methionine is relevant to the reaction mechanism but does not specifically explain why the protein carries the defined activity."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0098848": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P16688",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }

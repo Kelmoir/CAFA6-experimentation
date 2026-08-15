@@ -1,0 +1,13 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O59825",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for O59825 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The Pfam entry \"PF03167 -- UDG\" directly corresponds to the uracil-DNA glycosylase domain, which is known to be involved in DNA repair and base excision. This domain is likely responsible for the N-glycosylase activity described by the GO term \"oxanine DNA N-glycosylase activity\"."
+    }
+  ]
+}

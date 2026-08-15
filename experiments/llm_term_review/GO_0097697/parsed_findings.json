@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P36566",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a specific mechanistic basis for the GO term's primary reaction, so it cannot be determined with confidence."
+    }
+  ]
+}

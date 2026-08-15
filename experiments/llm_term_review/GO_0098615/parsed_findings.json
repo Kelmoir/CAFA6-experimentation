@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P40936",
+      "go_id": "GO:0098615",
+      "feature_type": "BINDING",
+      "start": 20,
+      "end": 21,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding site for S-adenosyl-L-methionine is relevant to the reaction mechanism but does not specifically explain why the protein carries the defined activity."
+    }
+  ],
+  "issues": []
+}

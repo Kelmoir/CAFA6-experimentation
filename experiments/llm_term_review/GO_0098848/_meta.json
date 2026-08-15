@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0098848",
+  "name": "alpha-D-ribose 1-methylphosphonate 5-phosphate C-P-lyase activity",
+  "def": "Catalysis of the reaction: alpha-D-ribose 1-methylphosphonate 5-phosphate = alpha-D-ribose 1,2-cyclic phosphate 5-phosphate + methane.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P16688"
+  ],
+  "assigned_accessions": [
+    "P16688"
+  ]
+}

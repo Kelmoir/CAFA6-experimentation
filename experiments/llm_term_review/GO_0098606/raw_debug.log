@@ -1,0 +1,16 @@
+=== P18757 GO:0098606 (VERDICT missing) ===
+THINKING: The GO term is "selenocystathionine gamma-lyase activity" (GO:0098606), which defines the catalytic reaction of L-Selenocystathionine + H2O to form L-Selenocysteine + NH3 + 2-Oxobutanoic acid. The primary reaction involves the cleavage of a sulfur-containing compound, likely through a mechanism involving a specific active site or domain that facilitates this transformation. For protein P18757, the only annotated features are binding sites with substrate as the ligand. These binding sites are not directly related to the catalytic activity described in the GO term. The presence of multiple binding sites does not imply that the protein carries the specific molecular function defined by the GO term. Therefore, no single annotated feature clearly explains why this protein carries the given GO term.
+
+FEATURE: NONE 0-0
+
+REASONING: No annotated feature for protein P18757 directly supports the catalytic activity of selenocystathionine gamma-lyase as defined by GO:0098606. The presence of multiple binding sites does not imply that the protein carries this specific molecular function, and no positional feature has been confirmed to explain it.
+
+=== P32929 GO:0098606 (VERDICT missing) ===
+THINKING: The GO term is "selenocystathionine gamma-lyase activity" (GO:0098606), which defines the catalytic reaction of L-Selenocystathionine + H2O => L-Selenocysteine + NH3 + 2-Oxobutanoic acid. This is a specific enzymatic function involving the conversion of a selenocysteine-containing substrate to a different product. The protein P32929 has multiple binding sites annotated with "ligand: substrate," indicating that it interacts with substrates. However, none of these binding sites are positioned in a way that directly supports the specific chemistry of the reaction defined by the GO term. The presence of multiple binding sites does not imply that the protein is specifically involved in this particular enzymatic activity. Therefore, no annotated feature clearly explains why P32929 carries the term "selenocystathionine gamma-lyase activity."
+
+FEATURE: BINDING 61-62  
+REASONING: The binding site at position 61-62 is annotated with "ligand: substrate," which could plausibly indicate that the protein interacts with substrates, but it does not specifically match the GO term's primary reaction of catalyzing the conversion of L-Selenocystathionine to L-Selenocysteine. This feature is generic and could apply to many proteins involved in similar substrate interactions, making it a weak match to the defined chemistry of the GO term.
+
+=== Q8VCN5 GO:0098606 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+

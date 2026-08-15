@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0098615",
+  "name": "dimethyl selenide methyltransferase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-methionine + dimethyl selenide => S-adenosyl-L-homocysteine + trimethylselenonium.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P40936"
+  ],
+  "assigned_accessions": [
+    "P40936"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0097690",
+  "name": "iron ion transmembrane transporter inhibitor activity",
+  "def": "Binds to and stops, prevents, or reduces the activity of an iron ion transmembrane transporter.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q99MH3",
+    "Q9EQ21"
+  ],
+  "assigned_accessions": [
+    "Q99MH3",
+    "Q9EQ21"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0097434",
+  "name": "succinate:proton symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: succinate(out) + H+(out) = succinate(in) + H+(in).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P50537"
+  ],
+  "assigned_accessions": [
+    "P50537"
+  ]
+}
