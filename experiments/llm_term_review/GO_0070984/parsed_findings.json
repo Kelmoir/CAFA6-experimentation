@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O88286",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly indicates that the protein binds to a SET domain, which is the primary reaction described in the GO term's definition."
+    }
+  ]
+}

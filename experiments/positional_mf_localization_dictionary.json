@@ -26644,6 +26644,15 @@
   ],
   "text_patterns": []
  },
+ "GO:0071209": {
+  "name": "U7 snRNA binding",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR052840"
+  ],
+  "text_patterns": []
+ },
  "GO:0071253": {
   "name": "connexin binding",
   "ligands": [],

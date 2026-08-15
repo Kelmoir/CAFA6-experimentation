@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0071614",
+  "name": "linoleic acid epoxygenase activity",
+  "def": "Catalysis of an NADPH- and oxygen-dependent reaction that converts linoleic acid to a cis-epoxyoctadecenoic acid.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "P51589",
+    "Q6XVG2",
+    "Q91X77",
+    "Q9D816"
+  ],
+  "assigned_accessions": [
+    "P51589",
+    "Q6XVG2",
+    "Q91X77",
+    "Q9D816"
+  ]
+}

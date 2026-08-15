@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0071172",
+  "name": "dihydromonapterin reductase activity",
+  "def": "Catalysis of the reaction: 7,8-dihydromonapterin + NADPH = tetrahydromonapterin + NADP+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AFS3"
+  ],
+  "assigned_accessions": [
+    "P0AFS3"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0071209",
+  "name": "U7 snRNA binding",
+  "def": "Binding to a U7 small nuclear RNA (U7 snRNA).",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P62318",
+    "P62320",
+    "Q8QZX5",
+    "Q969L4"
+  ],
+  "assigned_accessions": [
+    "P62318",
+    "P62320",
+    "Q8QZX5",
+    "Q969L4"
+  ]
+}

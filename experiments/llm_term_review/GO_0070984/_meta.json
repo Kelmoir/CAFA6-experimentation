@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0070984",
+  "name": "SET domain binding",
+  "def": "Binding to a SET domain of a protein. SET domains are named after three Drosophila proteins that contain this domain: Su(var), E(z) and trithorax. SET domains are associated with histone lysine methylation.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O88286"
+  ],
+  "assigned_accessions": [
+    "O88286"
+  ]
+}

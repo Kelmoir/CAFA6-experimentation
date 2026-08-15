@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O60174",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear structural or functional basis for the primary reaction of tDNA binding as defined by the GO term."
+    },
+    {
+      "accession": "Q02209",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for the protein is a disordered region, which does not provide any direct evidence about tDNA binding or the ability to interact with DNA sequences encoding transfer RNA. Therefore, there is no plausible explanation for the GO term based on the given evidence."
+    }
+  ]
+}

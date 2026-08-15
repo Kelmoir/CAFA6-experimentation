@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0071443",
+  "name": "tDNA binding",
+  "def": "Binding to DNA sequences encoding transfer RNA.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O60174",
+    "Q02209"
+  ],
+  "assigned_accessions": [
+    "O60174",
+    "Q02209"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0070996",
+  "name": "type 1 melanocortin receptor binding",
+  "def": "Binding to a type 1 melanocortin receptor.",
+  "n_proteins_total": 13,
+  "sampled_accessions": [
+    "D3Z1Q2",
+    "F8W4H9",
+    "P01193",
+    "P0DM64"
+  ],
+  "assigned_accessions": [
+    "D3Z1Q2",
+    "F8W4H9",
+    "P01193",
+    "P0DM64"
+  ]
+}

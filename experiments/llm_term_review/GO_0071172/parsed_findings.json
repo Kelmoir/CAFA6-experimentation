@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0AFS3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of dihydromonapterin reductase activity as defined by the GO term."
+    }
+  ]
+}

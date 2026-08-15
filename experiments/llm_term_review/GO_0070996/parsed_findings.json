@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "D3Z1Q2",
+      "reason": "none_verdict",
+      "reasoning": "The protein D3Z1Q2 has no annotated feature that directly explains why it carries the molecular function of \"type 1 melanocortin receptor binding.\" The only available feature is a disordered region, which does not provide evidence about the binding activity or mechanism. Therefore, there is no plausible explanation for this GO term based on the given data."
+    },
+    {
+      "accession": "F8W4H9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P0DM64",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P01193",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature with exact coordinates was found that directly explains the molecular function of \"type 1 melanocortin receptor binding\" as defined by the GO term."
+    }
+  ]
+}

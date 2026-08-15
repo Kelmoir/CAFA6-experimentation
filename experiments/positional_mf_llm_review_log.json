@@ -30842,5 +30842,186 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0070984": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O88286",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly indicates that the protein binds to a SET domain, which is the primary reaction described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0070996": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "D3Z1Q2",
+    "reason": "none_verdict",
+    "reasoning": "The protein D3Z1Q2 has no annotated feature that directly explains why it carries the molecular function of \"type 1 melanocortin receptor binding.\" The only available feature is a disordered region, which does not provide evidence about the binding activity or mechanism. Therefore, there is no plausible explanation for this GO term based on the given data."
+   },
+   {
+    "accession": "F8W4H9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P0DM64",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P01193",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature with exact coordinates was found that directly explains the molecular function of \"type 1 melanocortin receptor binding\" as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0071172": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AFS3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of dihydromonapterin reductase activity as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0071209": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR052840"
+    ],
+    "accessions": [
+     "P62318",
+     "P62320",
+     "Q8QZX5",
+     "Q969L4"
+    ],
+    "note": "resolved from DOMAIN note 'Sm' (3 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0071443": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O60174",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the primary reaction of tDNA binding as defined by the GO term."
+   },
+   {
+    "accession": "Q02209",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for the protein is a disordered region, which does not provide any direct evidence about tDNA binding or the ability to interact with DNA sequences encoding transfer RNA. Therefore, there is no plausible explanation for the GO term based on the given evidence."
+   }
+  ]
+ },
+ "GO:0071614": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "P51589"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6XVG2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q6XVG2's positional data directly explains the specific enzymatic activity defined by GO:0071614."
+   },
+   {
+    "accession": "Q91X77",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q91X77's Annotated features section directly matches the defined chemistry of linoleic acid epoxygenase activity. The only relevant information provided is about heme binding, which is a component of cytochrome P450 enzymes but does not explain why this protein carries the specific GO term."
+   },
+   {
+    "accession": "Q9D816",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the catalytic activity of linoleic acid epoxygenase, only describing ligand binding to an enzyme."
+   }
+  ]
+ },
+ "GO:0071714": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "AMP",
+    "accessions": [
+     "Q60714"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transmembrane type-1 1",
+    "accessions": [
+     "O15438"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B2RX12",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for ATP (ligand: ATP) is a core feature of ABC transporter activity, but it does not specifically explain the icosanoid transmembrane transporter function. No other positional feature directly describes the mechanism of icosanoid transport."
+   },
+   {
+    "accession": "O88563",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide a specific explanation for the molecular function defined by GO:0071714."
+   }
+  ]
  }
 }

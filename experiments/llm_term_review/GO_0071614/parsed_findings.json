@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P51589",
+      "go_id": "GO:0071614",
+      "feature_type": "BINDING",
+      "start": 447,
+      "end": 448,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding site with heme (BINDING 447-448) is most plausibly associated with the epoxygenase activity of the protein, as it involves an iron-containing cofactor essential for oxygen-dependent reactions. While this feature does not directly confirm the epoxygenase activity, it strongly supports the mechanism described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q6XVG2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q6XVG2's positional data directly explains the specific enzymatic activity defined by GO:0071614."
+    },
+    {
+      "accession": "Q91X77",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q91X77's Annotated features section directly matches the defined chemistry of linoleic acid epoxygenase activity. The only relevant information provided is about heme binding, which is a component of cytochrome P450 enzymes but does not explain why this protein carries the specific GO term."
+    },
+    {
+      "accession": "Q9D816",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the catalytic activity of linoleic acid epoxygenase, only describing ligand binding to an enzyme."
+    }
+  ]
+}
