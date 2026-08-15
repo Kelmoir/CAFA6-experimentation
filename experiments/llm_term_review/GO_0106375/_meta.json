@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0106375",
+  "name": "deoxynucleoside triphosphate hydrolase activity",
+  "def": "Catalysis of the reaction: dNTP + H2O = 2'-deoxynucleoside + H+ + triphosphate.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "Q09374",
+    "Q502K2",
+    "Q6INN8",
+    "Q9Y3Z3"
+  ],
+  "assigned_accessions": [
+    "Q09374",
+    "Q502K2",
+    "Q6INN8",
+    "Q9Y3Z3"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0120086",
+  "name": "(3S)-(+)-asterisca-2(9),6-diene synthase activity",
+  "def": "Catalysis of the reaction: 2-trans,6-trans-farnesyl diphosphate = diphosphate + (3S)-(+)-asterisca-2(9),6-diene.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q7KWU0"
+  ],
+  "assigned_accessions": [
+    "Q7KWU0"
+  ]
+}

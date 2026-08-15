@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P76041",
+      "reason": "none_verdict",
+      "reasoning": "The ACT_SITE annotation at position 228-229 for P76041 indicates a nucleophilic site, which could be relevant to the enzyme's mechanism. However, this feature does not directly explain the specific reaction of glucosylglycerate phosphorylase activity as defined by GO:0110068, which requires a more precise match to the primary reaction mechanism. Therefore, no single annotated feature clearly expla"
+    }
+  ]
+}

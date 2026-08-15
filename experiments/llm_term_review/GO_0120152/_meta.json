@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0120152",
+  "name": "calcium-dependent outer dynein arm binding",
+  "def": "Binding to an outer dynein arm in the presence of calcium.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9D3N2"
+  ],
+  "assigned_accessions": [
+    "Q9D3N2"
+  ]
+}

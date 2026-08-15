@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9VYX7",
+      "go_id": "GO:0106415",
+      "feature_type": "DOMAIN",
+      "start": 58,
+      "end": 186,
+      "signal_kind": "text",
+      "signal_value": "N-acetylmuramoyl-L-alanine amidase",
+      "reasoning": "The DOMAIN 58-186 feature, which is annotated as \"N-acetylmuramoyl-L-alanine amidase,\" directly matches the primary reaction of the GO term by indicating the enzymatic activity involved in peptidoglycan metabolism. This provides a strong and specific explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0AFV4",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for P0AFV4 do not provide a specific explanation for the molecular function defined by GO:0106415, which involves the hydrolysis of a particular peptide bond."
+    },
+    {
+      "accession": "P76008",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P76008 matches the defined chemistry of the GO term \"muramoyltetrapeptide carboxypeptidase activity\" (i.e., the specific peptidase reaction). The only plausible explanation is that the enzyme's active site is involved in this reaction, but no such feature has been explicitly annotated for P76008."
+    }
+  ]
+}

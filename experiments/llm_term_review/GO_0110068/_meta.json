@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0110068",
+  "name": "glucosylglycerate phosphorylase activity",
+  "def": "Catalysis of the reaction: glucosylglycerate + phosphate = glucose-1-phosphate + D-glycerate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P76041"
+  ],
+  "assigned_accessions": [
+    "P76041"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "resolved": [
+    {
+      "accession": "P24549",
+      "go_id": "GO:0106373",
+      "feature_type": "BINDING",
+      "start": 166,
+      "end": 170,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD+ to the enzyme's active site directly matches the definition of the GO term, which focuses on the catalytic reaction involving NAD+. This specific binding site is central to the enzyme's function and provides a strong match to the primary reaction mechanism."
+    },
+    {
+      "accession": "P48644",
+      "go_id": "GO:0106373",
+      "feature_type": "ACT_SITE",
+      "start": 268,
+      "end": 269,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The ACT_SITE annotation for P48644 describes the active site as a proton acceptor, which directly aligns with the reaction mechanism of 3-deoxyglucosone dehydrogenase activity. This specific feature strongly supports the assignment of the GO term to this protein."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P00352",
+      "go_id": "GO:0106373",
+      "feature_type": "BINDING",
+      "start": 166,
+      "end": 170,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding site for NAD+ (ligand: NAD(+)) is highly relevant to the reaction mechanism, but no specific binding site has been identified that directly explains the phosphoryl transfer activity."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P51977",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

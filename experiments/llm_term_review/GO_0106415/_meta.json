@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0106415",
+  "name": "muramoyltetrapeptide carboxypeptidase activity",
+  "def": "GlcNAc-MurNAc-L-alanyl-gamma-D-glutamyl-meso-diaminopimelyl-D-alanine + H2O = GlcNAc-MurNAc-L-alanyl-gamma-D-glutamyl-meso-diaminopimelate + D-alanine.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P0AFV4",
+    "P76008",
+    "Q9VYX7"
+  ],
+  "assigned_accessions": [
+    "P0AFV4",
+    "P76008",
+    "Q9VYX7"
+  ]
+}

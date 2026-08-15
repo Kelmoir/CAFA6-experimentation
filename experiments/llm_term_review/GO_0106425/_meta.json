@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0106425",
+  "name": "3,4-dihydroxyphenylacetaldehyde synthase activity",
+  "def": "Catalysis of the reaction: L-dopa + O2 + H2O + H+ = 3,4-dihydroxyphenylacetaldehyde + CO2 + NH(4)+ + H2O2.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P18486",
+    "Q16S21",
+    "Q8RY79"
+  ],
+  "assigned_accessions": [
+    "P18486",
+    "Q16S21",
+    "Q8RY79"
+  ]
+}

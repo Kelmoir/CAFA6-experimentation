@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0106373",
+  "name": "3-deoxyglucosone dehydrogenase activity",
+  "def": "Catalysis of the reaction: 3-deoxyglucosone + H2O + NAD+ = 2-dehydro-3-deoxy-D-gluconate + 2 H+ + NADH.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "P00352",
+    "P24549",
+    "P48644",
+    "P51977"
+  ],
+  "assigned_accessions": [
+    "P00352",
+    "P24549",
+    "P48644",
+    "P51977"
+  ]
+}

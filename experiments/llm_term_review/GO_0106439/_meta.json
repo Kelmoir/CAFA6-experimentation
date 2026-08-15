@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0106439",
+  "name": "L-lysine:L-arginine antiporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: L-lysine(out) + L-arginine(in) = L-lysine(in) + L-arginine(out).",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "D3ZMM8",
+    "Q8BGK6",
+    "Q92536"
+  ],
+  "assigned_accessions": [
+    "D3ZMM8",
+    "Q8BGK6",
+    "Q92536"
+  ]
+}

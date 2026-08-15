@@ -1,0 +1,21 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "D3ZMM8",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8BGK6",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q92536",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the L-lysine:L-arginine antiporter activity as defined by the GO term. The only positional feature available is a Disordered region, which does not align with the primary reaction mechanism of solute transport."
+    }
+  ]
+}
