@@ -40358,6 +40358,198 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0140940": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "Q9U2X0"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SAM-dependent MTase PRMT-type",
+    "accessions": [
+     "P46580"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140942": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O88974",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P45975",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q15047",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q9H9B1",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140944": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "Q86Y97"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SET",
+    "accessions": [
+     "Q9W5E0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q3U8K7",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q3UZD5",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140950": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "USP",
+    "accessions": [
+     "Q70EK9",
+     "Q9Y5T5"
+    ],
+    "reason": "resolved to ['InterPro:IPR018200', 'InterPro:IPR028889', 'PROSITE:PS00972', 'PROSITE:PS00973', 'PROSITE:PS50235'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR018200': 165, 'InterPro:IPR028889': 182, 'PROSITE:PS00972': 156, 'PROSITE:PS00973': 158, 'PROSITE:PS50235': 182})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "DUSP",
+    "accessions": [
+     "O22207"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "MPN",
+    "accessions": [
+     "Q69Z66"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140968": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A7KAU2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q3V050",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9LYT3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q86VL8",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for Q86VL8 is a Disordered region span (502-529), which does not directly explain the molecular function of polyspecific organic cation:proton antiporter activity. No positional feature has been confirmed to account for this GO term's primary reaction mechanism."
+   }
+  ]
+ },
+ "GO:0140985": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "G-alpha",
+    "accessions": [
+     "P34046"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q54SH8",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q54SH8 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The PROSITE:PS50259 domain (G_PROTEIN_RECEP_F3_4) directly aligns with the chemistry described in the GO term's definition, which involves G-protein activation and signal transduction. This feature provides a strong match to the primary reaction of the GO term."
+   }
+  ]
+ },
  "GO:0140989": {
   "n_resolved": 1,
   "n_uncertain": 0,

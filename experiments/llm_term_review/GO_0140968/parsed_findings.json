@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A7KAU2",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q3V050",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9LYT3",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q86VL8",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for Q86VL8 is a Disordered region span (502-529), which does not directly explain the molecular function of polyspecific organic cation:proton antiporter activity. No positional feature has been confirmed to account for this GO term's primary reaction mechanism."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "O22207",
+      "go_id": "GO:0140950",
+      "feature_type": "DOMAIN",
+      "start": 14,
+      "end": 145,
+      "signal_kind": "text",
+      "signal_value": "DUSP",
+      "reasoning": "The DOMAIN 14-145 with note: DUSP directly corresponds to the deubiquitinating function described by the GO term, making it the most plausible explanation for why O22207 carries this annotation."
+    },
+    {
+      "accession": "Q69Z66",
+      "go_id": "GO:0140950",
+      "feature_type": "DOMAIN",
+      "start": 567,
+      "end": 700,
+      "signal_kind": "text",
+      "signal_value": "MPN",
+      "reasoning": "The MPN domain is associated with deubiquitination activity and directly relates to the function described by the GO term, making it the most plausible explanation for why the protein carries that term."
+    },
+    {
+      "accession": "Q70EK9",
+      "go_id": "GO:0140950",
+      "feature_type": "DOMAIN",
+      "start": 362,
+      "end": 706,
+      "signal_kind": "text",
+      "signal_value": "USP",
+      "reasoning": "The \"USP\" domain in position 362-706 directly aligns with the enzymatic activity described in the GO term's definition, making it the most plausible explanation for the molecular function."
+    },
+    {
+      "accession": "Q9Y5T5",
+      "go_id": "GO:0140950",
+      "feature_type": "DOMAIN",
+      "start": 195,
+      "end": 822,
+      "signal_kind": "text",
+      "signal_value": "USP",
+      "reasoning": "The DOMAIN 195-822 as USP directly matches the primary reaction of the GO term, which involves the enzymatic activity of a histone deubiquitinase. This domain is likely involved in the removal of ubiquitin from histone H2A proteins, aligning with the definition of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

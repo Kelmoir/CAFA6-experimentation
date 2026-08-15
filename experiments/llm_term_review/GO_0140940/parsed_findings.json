@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9U2X0",
+      "go_id": "GO:0140940",
+      "feature_type": "BINDING",
+      "start": 36,
+      "end": 37,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding site for S-adenosyl-L-methionine directly supports the primary reaction of the histone H2A methyltransferase activity, making it the most plausible explanation for why the protein carries this GO term."
+    },
+    {
+      "accession": "P46580",
+      "go_id": "GO:0140940",
+      "feature_type": "DOMAIN",
+      "start": 359,
+      "end": 706,
+      "signal_kind": "text",
+      "signal_value": "SAM-dependent MTase PRMT-type",
+      "reasoning": "The DOMAIN 359-706 annotation directly corresponds to the enzyme's function in catalyzing the transfer of a methyl group from S-adenosyl-L-methionine to histone H2A, which is the primary reaction defined by the GO term. This provides a strong match to the term's chemistry."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

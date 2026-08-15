@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140944",
+  "name": "histone H4K20 monomethyltransferase activity",
+  "def": "Catalysis of the reaction: L-lysyl20-[histone H4] + S-adenosyl-L-methionine = H+ + N6-methyl-L-lysyl20-[histone H4] + S-adenosyl-L-homocysteine. This reaction is the addition of a methyl group to the unmethylated lysine residue at position 20 of histone H4, producing histone H4K20me.",
+  "n_proteins_total": 17,
+  "sampled_accessions": [
+    "Q3U8K7",
+    "Q3UZD5",
+    "Q86Y97",
+    "Q9W5E0"
+  ],
+  "assigned_accessions": [
+    "Q3U8K7",
+    "Q3UZD5",
+    "Q86Y97",
+    "Q9W5E0"
+  ]
+}

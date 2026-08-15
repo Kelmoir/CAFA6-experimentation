@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q86Y97",
+      "go_id": "GO:0140944",
+      "feature_type": "BINDING",
+      "start": 31,
+      "end": 32,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding site for S-adenosyl-L-methionine (the methyl donor) directly supports the primary reaction of histone H4K20 monomethyltransferase activity, which is the addition of a methyl group to lysine at position 20 of histone H4. This feature most plausibly explains why the protein carries the GO term."
+    },
+    {
+      "accession": "Q9W5E0",
+      "go_id": "GO:0140944",
+      "feature_type": "DOMAIN",
+      "start": 254,
+      "end": 366,
+      "signal_kind": "text",
+      "signal_value": "SET",
+      "reasoning": "The domain \"DOMAIN 254-366\" with the note \"SET\" directly matches the GO term's primary reaction of catalyzing the methyl transfer from S-adenosyl-L-methionine to lysine 20 of histone H4, making it a strong and specific match."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q3U8K7",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q3UZD5",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0140940",
+  "name": "histone H2A methyltransferase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-methionine + a histone H2 = S-adenosyl-L-homocysteine + a methylated histone H2A. Histone methylation generally occurs on either an arginine or a lysine residue.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P46580",
+    "Q9U2X0"
+  ],
+  "assigned_accessions": [
+    "P46580",
+    "Q9U2X0"
+  ]
+}

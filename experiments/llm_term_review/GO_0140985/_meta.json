@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0140985",
+  "name": "G protein-coupled chemorepellent receptor activity",
+  "def": "Combining with a chemorepellent and transmitting the signal across the membrane by activating an associated G-protein; promotes the exchange of GDP for GTP on the alpha subunit of a heterotrimeric G-protein complex.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P34046",
+    "Q54SH8"
+  ],
+  "assigned_accessions": [
+    "P34046",
+    "Q54SH8"
+  ]
+}

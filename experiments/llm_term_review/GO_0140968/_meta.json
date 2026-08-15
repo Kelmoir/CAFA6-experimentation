@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140968",
+  "name": "polyspecific organic cation:proton antiporter activity",
+  "def": "Enables the transfer of various organic cations in exchange for a proton, according to the reaction: H+(out) + organic cation(in) = H+(in) + organic cation(out). The transported substrates are usually toxic molecules, drugs and xenobiotics.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "A7KAU2",
+    "Q3V050",
+    "Q86VL8",
+    "Q9LYT3"
+  ],
+  "assigned_accessions": [
+    "A7KAU2",
+    "Q3V050",
+    "Q86VL8",
+    "Q9LYT3"
+  ]
+}

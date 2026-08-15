@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140950",
+  "name": "histone H2A deubiquitinase activity",
+  "def": "A histone deubiquitinase that cleaves ubiquitin from a histone H2A protein to which it is conjugated.",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "O22207",
+    "Q69Z66",
+    "Q70EK9",
+    "Q9Y5T5"
+  ],
+  "assigned_accessions": [
+    "O22207",
+    "Q69Z66",
+    "Q70EK9",
+    "Q9Y5T5"
+  ]
+}

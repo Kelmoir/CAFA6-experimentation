@@ -1,0 +1,23 @@
+=== Q3UZD5 GO:0140944 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== Q3U8K7 GO:0140944 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== Q9W5E0 GO:0140944 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== Q86Y97 GO:0140944 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== Q3U8K7 GO:0140944 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== Q3UZD5 GO:0140944 (VERDICT missing) ===
+THINKING: The GO term is "histone H4K20 monomethyltransferase activity," which defines the catalytic function of adding a methyl group to lysine 20 of histone H4. This is a specific enzymatic reaction involving a methyltransferase domain. The annotated features for protein Q3UZD5 include several domains and regions, but none directly describe this particular reaction mechanism. The "DOMAIN" spans are associated with different types of domains (e.g., SET, C2H2-type), which may be relevant to the function but not the specific reaction. The "REGION" is marked as disordered, which is a general feature and does not explain the enzyme's activity. Since no annotated feature directly matches the primary reaction described in the GO term, there is no strong evidence to support the term's assertion for this protein.
+
+The highest score among all candidates is 0 (none of the features match the defined reaction). Therefore, the verdict is NONE.
+
+FEATURE: NONE 0-0
+REASONING: The defined reaction for the GO term "histone H4K20 monomethyltransferase activity" involves a specific methyl transfer to lysine 20 of histone H4. None of the annotated features for protein Q3UZD5 describe this precise enzymatic mechanism, and no feature directly matches the chemistry defined in the GO term.
+
