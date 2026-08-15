@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140613",
+  "name": "P-type manganese transporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: ATP + H2O + Mn2+(in) = ADP + H+ + Mn2+(out) + phosphate.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "P13586",
+    "P98194",
+    "P9WPT5",
+    "Q64566"
+  ],
+  "assigned_accessions": [
+    "P13586",
+    "P98194",
+    "P9WPT5",
+    "Q64566"
+  ]
+}

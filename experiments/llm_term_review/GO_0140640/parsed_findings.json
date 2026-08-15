@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8VHK9",
+      "go_id": "GO:0140640",
+      "feature_type": "MOTIF",
+      "start": 326,
+      "end": 330,
+      "signal_kind": "text",
+      "signal_value": "DEAH box",
+      "reasoning": "The DEAH box motif is directly linked to ATP binding and helicase activity, which align with the GO term's primary reaction of modifying a nucleic acid."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O70133",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in O70133 specifically matches the primary reaction of GO:0140640, which is about catalytic activity on a nucleic acid. The closest features are ATP binding sites and helicase domains, but they do not directly explain the modification of a nucleic acid through catalysis."
+    },
+    {
+      "accession": "Q5SXJ3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of catalytic activity on a nucleic acid as defined by GO:0140640."
+    },
+    {
+      "accession": "D4A2Z8",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

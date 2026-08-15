@@ -1,0 +1,43 @@
+{
+  "resolved": [
+    {
+      "accession": "P9WPT5",
+      "go_id": "GO:0140613",
+      "feature_type": "DOMAIN",
+      "start": 10,
+      "end": 78,
+      "signal_kind": "text",
+      "signal_value": "HMA",
+      "reasoning": "The DOMAIN annotation (10-78) with note \"HMA\" directly relates to the primary reaction of the GO term, which involves manganese transport using ATP. This strongly matches the defined chemistry of the GO term."
+    },
+    {
+      "accession": "Q64566",
+      "go_id": "GO:0140613",
+      "feature_type": "ACT_SITE",
+      "start": 349,
+      "end": 350,
+      "signal_kind": "text",
+      "signal_value": "4-aspartylphosphate intermediate",
+      "reasoning": "The ACT_SITE annotation at positions 349-350 directly corresponds to the defined reaction of ATP-dependent solute transfer, making it a strong candidate for explaining why the protein carries the GO term \"P-type manganese transporter activity.\""
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P98194",
+      "go_id": "GO:0140613",
+      "feature_type": "BINDING",
+      "start": 302,
+      "end": 303,
+      "signal_kind": "ligand",
+      "signal_value": "Ca(2+)",
+      "reasoning": "The binding of Ca(2+) to P98194 is a part of its overall function as an ATP-driven solute transporter, but it does not directly explain the primary reaction of solute transfer. No single feature matches the chemistry defined in the GO term with high specificity."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P13586",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the defined chemistry of P-type manganese transporter activity, which involves ATP-dependent solute transport across membranes. The only relevant feature is ACT_SITE, but it does not specifically account for the function as described in the GO term's definition."
+    }
+  ]
+}

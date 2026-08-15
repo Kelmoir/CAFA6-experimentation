@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q08477",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features do not provide any evidence that directly explains why protein Q08477 carries the GO term \"very long-chain fatty acid omega-hydroxylase activity.\" No feature matches the primary reaction described by the GO definition."
+    }
+  ]
+}

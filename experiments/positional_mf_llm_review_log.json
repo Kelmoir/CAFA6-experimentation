@@ -39158,6 +39158,123 @@
    }
   ]
  },
+ "GO:0140592": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SAM-dependent MTase PRMT-type",
+    "accessions": [
+     "D9IVE5"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "P55345"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140613": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "HMA",
+    "accessions": [
+     "P9WPT5"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "4-aspartylphosphate intermediate",
+    "accessions": [
+     "Q64566"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P98194",
+    "go_id": "GO:0140613",
+    "feature_type": "BINDING",
+    "start": 302,
+    "end": 303,
+    "signal_kind": "ligand",
+    "signal_value": "Ca(2+)",
+    "reasoning": "The binding of Ca(2+) to P98194 is a part of its overall function as an ATP-driven solute transporter, but it does not directly explain the primary reaction of solute transfer. No single feature matches the chemistry defined in the GO term with high specificity."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P13586",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the defined chemistry of P-type manganese transporter activity, which involves ATP-dependent solute transport across membranes. The only relevant feature is ACT_SITE, but it does not specifically account for the function as described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0140618": {
+  "n_resolved": 3,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "Q8VY13"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "FAD-binding FR-type",
+    "accessions": [
+     "Q8W110"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ferric oxidoreductase",
+    "accessions": [
+     "Q9LMM2"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q3KTM0",
+    "go_id": "GO:0140618",
+    "feature_type": "BINDING",
+    "start": 222,
+    "end": 223,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "The binding of heme is a relevant component in the reaction defined by the GO term, but none of the annotated features directly explain the chemistry of the reaction itself (the transfer of electrons and reduction of Fe3+ to Fe2+) as clearly as one might expect from a domain or structural feature."
+   }
+  ],
+  "issues": []
+ },
  "GO:0140629": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -39176,5 +39293,118 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0140640": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "DEAH box",
+    "accessions": [
+     "Q8VHK9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O70133",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in O70133 specifically matches the primary reaction of GO:0140640, which is about catalytic activity on a nucleic acid. The closest features are ATP binding sites and helicase domains, but they do not directly explain the modification of a nucleic acid through catalysis."
+   },
+   {
+    "accession": "Q5SXJ3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of catalytic activity on a nucleic acid as defined by GO:0140640."
+   },
+   {
+    "accession": "D4A2Z8",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140659": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Ca(2+)",
+    "accessions": [
+     "Q9D3N2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UUG5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the defined molecular function of \"cytoskeletal motor regulator activity\" as it pertains to binding and modulating motor protein activity."
+   },
+   {
+    "accession": "Q06580",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q06580 specifically matches the primary reaction of the GO term \"cytoskeletal motor regulator activity,\" which involves binding to and modulating a motor protein. The presence of Ca(2+) binding is relevant but not sufficient to explain the GO term's core function."
+   }
+  ]
+ },
+ "GO:0140692": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q08477",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide any evidence that directly explains why protein Q08477 carries the GO term \"very long-chain fatty acid omega-hydroxylase activity.\" No feature matches the primary reaction described by the GO definition."
+   }
+  ]
+ },
+ "GO:0140696": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P37339",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0140728": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FIX5",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
  }
 }

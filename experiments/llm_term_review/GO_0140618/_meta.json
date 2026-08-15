@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140618",
+  "name": "ferric-chelate reductase (NADH) activity",
+  "def": "Catalysis of the reaction: 2 Fe3+-siderophore + NAD+ + H+ -> 2 Fe2+-siderophore + NADH.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "Q3KTM0",
+    "Q8VY13",
+    "Q8W110",
+    "Q9LMM2"
+  ],
+  "assigned_accessions": [
+    "Q3KTM0",
+    "Q8VY13",
+    "Q8W110",
+    "Q9LMM2"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "D9IVE5",
+      "go_id": "GO:0140592",
+      "feature_type": "DOMAIN",
+      "start": 100,
+      "end": 405,
+      "signal_kind": "text",
+      "signal_value": "SAM-dependent MTase PRMT-type",
+      "reasoning": "The presence of a SAM-dependent MTase PRMT-type domain in the protein directly supports its role as a histone H3R8 methyltransferase, aligning with the primary reaction described in the GO term."
+    },
+    {
+      "accession": "P55345",
+      "go_id": "GO:0140592",
+      "feature_type": "BINDING",
+      "start": 111,
+      "end": 112,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding site for S-adenosyl-L-methionine (the methyl donor) directly supports the catalytic activity described in the GO term, which is the addition of a methyl group to histone H3 at position 8. This feature most plausibly explains why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

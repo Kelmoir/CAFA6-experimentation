@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140692",
+  "name": "very long-chain fatty acid omega-hydroxylase activity",
+  "def": "Catalysis of the reaction: an omega-methyl-very-long-chain fatty acid + O2 + reduced [NADPH-hemoprotein reductase] = an omega-hydroxy-very-long-chain fatty acid + H+ + H2O + oxidized [NADPH-hemoprotein reductase]. A very long-chain fatty acid has an aliphatic tail containing more than 22 carbons.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q08477"
+  ],
+  "assigned_accessions": [
+    "Q08477"
+  ]
+}

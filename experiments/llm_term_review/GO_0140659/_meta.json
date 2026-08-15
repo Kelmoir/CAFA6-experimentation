@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0140659",
+  "name": "cytoskeletal motor regulator activity",
+  "def": "Binds to and modulates the activity of a motor protein.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q06580",
+    "Q9D3N2",
+    "Q9UUG5"
+  ],
+  "assigned_accessions": [
+    "Q06580",
+    "Q9D3N2",
+    "Q9UUG5"
+  ]
+}

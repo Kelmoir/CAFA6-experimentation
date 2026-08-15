@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140696",
+  "name": "(S)-2-hydroxyglutarate dehydrogenase activity",
+  "def": "Catalysis of the reaction: (S)-2-hydroxyglutarate + a quinone = 2-oxoglutarate + a quinol.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P37339"
+  ],
+  "assigned_accessions": [
+    "P37339"
+  ]
+}
