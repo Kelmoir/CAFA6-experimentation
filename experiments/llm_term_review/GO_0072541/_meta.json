@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0072541",
+  "name": "peroxynitrite reductase activity",
+  "def": "Catalysis of the reaction: [protein]-dithiol + ONOO- = [protein]-disulfide + NO2- + H2O.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P30044",
+    "P99029",
+    "Q9R063"
+  ],
+  "assigned_accessions": [
+    "P30044",
+    "P99029",
+    "Q9R063"
+  ]
+}

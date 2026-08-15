@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0080044",
+  "name": "quercetin 7-O-glucosyltransferase activity",
+  "def": "Catalysis of the transfer of a glucosyl group from UDP-glucose to the 7-hydroxy group of a quercetin molecule.",
+  "n_proteins_total": 68,
+  "sampled_accessions": [
+    "A0AAW1M2U7",
+    "Q8W491",
+    "Q9FIA0",
+    "U3UA11"
+  ],
+  "assigned_accessions": [
+    "A0AAW1M2U7",
+    "Q8W491",
+    "Q9FIA0",
+    "U3UA11"
+  ]
+}

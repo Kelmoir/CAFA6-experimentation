@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080011",
+  "name": "baruol synthase activity",
+  "def": "Catalysis of the reaction: (S)-2,3-epoxysqualene = baruol. Baruol is also known as D:B-Friedo-Baccharan-5,21-dien-3-ol.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O23390"
+  ],
+  "assigned_accessions": [
+    "O23390"
+  ]
+}

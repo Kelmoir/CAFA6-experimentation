@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080018",
+  "name": "anthocyanin 5-O-glucosyltransferase activity",
+  "def": "Catalysis of the reaction: an anthocyanin + UDP-D-glucose = an anthocyanin-5-O-glucoside + UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q0WW21"
+  ],
+  "assigned_accessions": [
+    "Q0WW21"
+  ]
+}

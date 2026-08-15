@@ -307,14 +307,14 @@
       "accession": "Q4V7C7",
       "localized": [
         {
-          "go_id": "GO:0005200",
+          "go_id": "GO:0098973",
           "start": 0,
           "end": 418,
           "source": "domain_whole_protein_fallback",
           "xref": "InterPro:IPR004000",
-          "table_agreement": 2,
+          "table_agreement": 3,
           "matched_real_term": "GO:0005200",
-          "match_hops": 0
+          "match_hops": 1
         },
         {
           "go_id": "GO:0005524",
@@ -327,14 +327,14 @@
           "match_hops": 0
         },
         {
-          "go_id": "GO:0098973",
+          "go_id": "GO:0005200",
           "start": 0,
           "end": 418,
           "source": "domain_whole_protein_fallback",
           "xref": "InterPro:IPR004000",
-          "table_agreement": 3,
+          "table_agreement": 2,
           "matched_real_term": "GO:0005200",
-          "match_hops": 1
+          "match_hops": 0
         }
       ],
       "real_mf_terms": [
@@ -407,6 +407,16 @@
           "match_hops": 3
         },
         {
+          "go_id": "GO:0086090",
+          "start": 0,
+          "end": 602,
+          "source": "domain_whole_protein_fallback",
+          "xref": "InterPro:IPR003968",
+          "table_agreement": 2,
+          "matched_real_term": "GO:0086090",
+          "match_hops": 0
+        },
+        {
           "go_id": "GO:0086087",
           "start": 0,
           "end": 602,
@@ -434,16 +444,6 @@
           "xref": "InterPro:IPR003968",
           "table_agreement": 1,
           "matched_real_term": "GO:0005249",
-          "match_hops": 0
-        },
-        {
-          "go_id": "GO:0086090",
-          "start": 0,
-          "end": 602,
-          "source": "domain_whole_protein_fallback",
-          "xref": "InterPro:IPR003968",
-          "table_agreement": 2,
-          "matched_real_term": "GO:0086090",
           "match_hops": 0
         }
       ],
@@ -602,26 +602,6 @@
       "accession": "Q7ZZH7",
       "localized": [
         {
-          "go_id": "GO:0003676",
-          "start": 17,
-          "end": 111,
-          "source": "domain_fallback_union",
-          "xref": "InterPro:IPR006572",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0003676",
-          "match_hops": 0
-        },
-        {
-          "go_id": "GO:0003676",
-          "start": 135,
-          "end": 161,
-          "source": "domain_fallback_union",
-          "xref": "InterPro:IPR006572",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0003676",
-          "match_hops": 0
-        },
-        {
           "go_id": "GO:0008270",
           "start": 17,
           "end": 111,
@@ -639,6 +619,26 @@
           "xref": "InterPro:IPR006572",
           "table_agreement": 3,
           "matched_real_term": "GO:0008270",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0003676",
+          "start": 17,
+          "end": 111,
+          "source": "domain_fallback_union",
+          "xref": "InterPro:IPR006572",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0003676",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0003676",
+          "start": 135,
+          "end": 161,
+          "source": "domain_fallback_union",
+          "xref": "InterPro:IPR006572",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0003676",
           "match_hops": 0
         }
       ],
@@ -651,317 +651,410 @@
   ],
   "domain_bridge": [
     {
-      "accession": "Q59DY6",
+      "accession": "Q75V57",
       "localized": [
-        {
-          "go_id": "GO:0070492",
-          "start": 45,
-          "end": 169,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR001304",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0030246",
-          "match_hops": 1
-        }
-      ],
-      "real_mf_terms": [
-        "GO:0005534",
-        "GO:0030246",
-        "GO:0038187",
-        "GO:0046872"
-      ]
-    },
-    {
-      "accession": "O49326",
-      "localized": [
-        {
-          "go_id": "GO:0030246",
-          "start": 1,
-          "end": 144,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR033734",
-          "table_agreement": 1,
-          "matched_real_term": "GO:0030246",
-          "match_hops": 0
-        }
-      ],
-      "real_mf_terms": [
-        "GO:0016829",
-        "GO:0030234",
-        "GO:0030246",
-        "GO:0046872"
-      ]
-    },
-    {
-      "accession": "P05106",
-      "localized": [
-        {
-          "go_id": "GO:0098640",
-          "start": 29,
-          "end": 76,
-          "source": "domain_bridge",
-          "xref": "Pfam:PF17205",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0005178",
-          "match_hops": 1
-        },
-        {
-          "go_id": "GO:0070051",
-          "start": 29,
-          "end": 76,
-          "source": "domain_bridge",
-          "xref": "Pfam:PF17205",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0070051",
-          "match_hops": 0
-        },
-        {
-          "go_id": "GO:0098639",
-          "start": 29,
-          "end": 76,
-          "source": "domain_bridge",
-          "xref": "Pfam:PF17205",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0050839",
-          "match_hops": 3
-        },
-        {
-          "go_id": "GO:0098640",
-          "start": 462,
-          "end": 498,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR013111",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0005178",
-          "match_hops": 1
-        },
-        {
-          "go_id": "GO:0070051",
-          "start": 462,
-          "end": 498,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR013111",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0070051",
-          "match_hops": 0
-        },
-        {
-          "go_id": "GO:0098639",
-          "start": 462,
-          "end": 498,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR013111",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0050839",
-          "match_hops": 3
-        },
-        {
-          "go_id": "GO:0098640",
-          "start": 498,
-          "end": 548,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR013111",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0005178",
-          "match_hops": 1
-        },
-        {
-          "go_id": "GO:0070051",
-          "start": 498,
-          "end": 548,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR013111",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0070051",
-          "match_hops": 0
-        },
-        {
-          "go_id": "GO:0098639",
-          "start": 498,
-          "end": 548,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR013111",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0050839",
-          "match_hops": 3
-        },
-        {
-          "go_id": "GO:0098640",
-          "start": 548,
-          "end": 585,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR013111",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0005178",
-          "match_hops": 1
-        },
-        {
-          "go_id": "GO:0070051",
-          "start": 548,
-          "end": 585,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR013111",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0070051",
-          "match_hops": 0
-        },
-        {
-          "go_id": "GO:0098639",
-          "start": 548,
-          "end": 585,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR013111",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0050839",
-          "match_hops": 3
-        },
-        {
-          "go_id": "GO:0098640",
-          "start": 585,
-          "end": 625,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR013111",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0005178",
-          "match_hops": 1
-        },
-        {
-          "go_id": "GO:0070051",
-          "start": 585,
-          "end": 625,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR013111",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0070051",
-          "match_hops": 0
-        },
-        {
-          "go_id": "GO:0098639",
-          "start": 585,
-          "end": 625,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR013111",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0050839",
-          "match_hops": 3
-        }
-      ],
-      "real_mf_terms": [
-        "GO:0001618",
-        "GO:0001968",
-        "GO:0002020",
-        "GO:0003756",
-        "GO:0005080",
-        "GO:0005161",
-        "GO:0005178",
-        "GO:0015026",
-        "GO:0019899",
-        "GO:0042802",
-        "GO:0043184",
-        "GO:0046872",
-        "GO:0050839",
-        "GO:0050840",
-        "GO:0070051"
-      ]
-    },
-    {
-      "accession": "Q06599",
-      "localized": [
-        {
-          "go_id": "GO:0005125",
-          "start": 88,
-          "end": 234,
-          "source": "domain_bridge",
-          "xref": "PROSITE:PS00251",
-          "table_agreement": 2,
-          "matched_real_term": "GO:0005125",
-          "match_hops": 0
-        },
-        {
-          "go_id": "GO:0048018",
-          "start": 88,
-          "end": 234,
-          "source": "domain_bridge",
-          "xref": "PROSITE:PS00251",
-          "table_agreement": 2,
-          "matched_real_term": "GO:0005125",
-          "match_hops": 1
-        },
-        {
-          "go_id": "GO:0005164",
-          "start": 88,
-          "end": 234,
-          "source": "domain_bridge",
-          "xref": "PROSITE:PS50049",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0005164",
-          "match_hops": 0
-        }
-      ],
-      "real_mf_terms": [
-        "GO:0005125",
-        "GO:0005164"
-      ]
-    },
-    {
-      "accession": "Q1PE89",
-      "localized": [
-        {
-          "go_id": "GO:0004672",
-          "start": 70,
-          "end": 348,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR000719",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0004672",
-          "match_hops": 0
-        },
-        {
-          "go_id": "GO:0004714",
-          "start": 70,
-          "end": 348,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR000719",
-          "table_agreement": 1,
-          "matched_real_term": "GO:0004672",
-          "match_hops": 2
-        },
-        {
-          "go_id": "GO:0016301",
-          "start": 70,
-          "end": 348,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR000719",
-          "table_agreement": 1,
-          "matched_real_term": "GO:0004672",
-          "match_hops": 1
-        },
-        {
-          "go_id": "GO:0005524",
-          "start": 70,
-          "end": 348,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR000719",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0005524",
-          "match_hops": 0
-        },
         {
           "go_id": "GO:0106310",
-          "start": 70,
-          "end": 348,
+          "start": 21,
+          "end": 278,
           "source": "domain_bridge",
           "xref": "InterPro:IPR000719",
           "table_agreement": 1,
           "matched_real_term": "GO:0106310",
           "match_hops": 0
+        },
+        {
+          "go_id": "GO:0004672",
+          "start": 21,
+          "end": 278,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR000719",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0004674",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0016301",
+          "start": 21,
+          "end": 278,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR000719",
+          "table_agreement": 1,
+          "matched_real_term": "GO:0004674",
+          "match_hops": 2
+        },
+        {
+          "go_id": "GO:0005524",
+          "start": 21,
+          "end": 278,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR000719",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0005524",
+          "match_hops": 0
         }
       ],
       "real_mf_terms": [
-        "GO:0004672",
         "GO:0004674",
         "GO:0005524",
         "GO:0106310"
+      ]
+    },
+    {
+      "accession": "Q8WN95",
+      "localized": [
+        {
+          "go_id": "GO:0098695",
+          "start": 112,
+          "end": 173,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR036300",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0005220",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0048763",
+          "start": 112,
+          "end": 173,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR036300",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0015278",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0098695",
+          "start": 173,
+          "end": 224,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR036300",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0005220",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0048763",
+          "start": 173,
+          "end": 224,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR036300",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0015278",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0098695",
+          "start": 231,
+          "end": 288,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR036300",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0005220",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0048763",
+          "start": 231,
+          "end": 288,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR036300",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0015278",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0098695",
+          "start": 294,
+          "end": 372,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR036300",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0005220",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0048763",
+          "start": 294,
+          "end": 372,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR036300",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0015278",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0098695",
+          "start": 377,
+          "end": 434,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR036300",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0005220",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0048763",
+          "start": 377,
+          "end": 434,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR036300",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0015278",
+          "match_hops": 1
+        }
+      ],
+      "real_mf_terms": [
+        "GO:0005220",
+        "GO:0005509",
+        "GO:0005524",
+        "GO:0008270",
+        "GO:0015278",
+        "GO:0035091",
+        "GO:0070679"
+      ]
+    },
+    {
+      "accession": "P59941",
+      "localized": [
+        {
+          "go_id": "GO:0032041",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0017136",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0032129",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0032129",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0140774",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0140774",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0046969",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0046969",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0106274",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0106274",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0141050",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0032129",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0034979",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0034979",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0140937",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0033558",
+          "match_hops": 3
+        },
+        {
+          "go_id": "GO:0046970",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0017136",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0141208",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0034979",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0097372",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0097372",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0140612",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0140612",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0140765",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0140765",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0140804",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0140804",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0140773",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR050134",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0140773",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0070403",
+          "start": 26,
+          "end": 272,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR003000",
+          "table_agreement": 2,
+          "matched_real_term": "GO:0070403",
+          "match_hops": 0
+        }
+      ],
+      "real_mf_terms": [
+        "GO:0003677",
+        "GO:0003682",
+        "GO:0003684",
+        "GO:0003714",
+        "GO:0008270",
+        "GO:0016779",
+        "GO:0017136",
+        "GO:0030234",
+        "GO:0031490",
+        "GO:0031491",
+        "GO:0032129",
+        "GO:0033558",
+        "GO:0034979",
+        "GO:0035033",
+        "GO:0042803",
+        "GO:0046969",
+        "GO:0070403",
+        "GO:0097372",
+        "GO:0106222",
+        "GO:0106274",
+        "GO:0140612",
+        "GO:0140765",
+        "GO:0140773",
+        "GO:0140774",
+        "GO:0140804",
+        "GO:1904841",
+        "GO:1990404"
+      ]
+    },
+    {
+      "accession": "Q9NYQ2",
+      "localized": [
+        {
+          "go_id": "GO:0016491",
+          "start": 1,
+          "end": 353,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR012133",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0003973",
+          "match_hops": 3
+        },
+        {
+          "go_id": "GO:0010181",
+          "start": 1,
+          "end": 353,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR012133",
+          "table_agreement": 1,
+          "matched_real_term": "GO:0010181",
+          "match_hops": 0
+        }
+      ],
+      "real_mf_terms": [
+        "GO:0003973",
+        "GO:0010181",
+        "GO:0042802"
+      ]
+    },
+    {
+      "accession": "B0S5N4",
+      "localized": [
+        {
+          "go_id": "GO:0005515",
+          "start": 20,
+          "end": 509,
+          "source": "domain_bridge",
+          "xref": "Pfam:PF01403",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0042802",
+          "match_hops": 1
+        }
+      ],
+      "real_mf_terms": [
+        "GO:0017154",
+        "GO:0042802"
       ]
     }
   ],

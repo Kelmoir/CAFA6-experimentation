@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0072550",
+  "name": "triferuloylspermidine meta-hydroxylase activity",
+  "def": "Catalysis of the reaction: triferuloyl spermidine + NADPH + O2 = diferuloyl mono-(hydroxyferuloyl) spermidine + NADP+ + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9CA61"
+  ],
+  "assigned_accessions": [
+    "Q9CA61"
+  ]
+}

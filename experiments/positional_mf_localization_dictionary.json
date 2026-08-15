@@ -26972,6 +26972,15 @@
    "mediates interaction with tlr4"
   ]
  },
+ "GO:0072354": {
+  "name": "histone H3T3 kinase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "Pfam:PF12330"
+  ],
+  "text_patterns": []
+ },
  "GO:0072518": {
   "name": "Rho-dependent protein serine/threonine kinase activity",
   "ligands": [],

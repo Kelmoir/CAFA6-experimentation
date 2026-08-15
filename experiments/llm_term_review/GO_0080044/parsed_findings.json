@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "A0AAW1M2U7",
+      "go_id": "GO:0080044",
+      "feature_type": "BINDING",
+      "start": 19,
+      "end": 20,
+      "signal_kind": "ligand",
+      "signal_value": "UDP-alpha-D-glucose",
+      "reasoning": "The binding site at position 19-20 with the ligand \"UDP-alpha-D-glucose\" directly supports the enzymatic activity of transferring a glucosyl group from UDP-glucose to quercetin, which is the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q8W491",
+      "go_id": "GO:0080044",
+      "feature_type": "BINDING",
+      "start": 354,
+      "end": 355,
+      "signal_kind": "ligand",
+      "signal_value": "UDP-alpha-D-glucose",
+      "reasoning": "The binding of UDP-alpha-D-glucose at position 354-355 is a direct and specific feature that aligns with the enzyme's primary function of catalyzing the transfer of a glucosyl group from UDP-glucose to quercetin."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "U3UA11",
+      "reason": "none_verdict",
+      "reasoning": "The binding site for \"UDP-alpha-D-glucose\" does not directly explain why U3UA11 carries the GO term \"quercetin 7-O-glucosyltransferase activity,\" as it is more about substrate recognition than the catalytic mechanism of transferring a glucosyl group."
+    },
+    {
+      "accession": "Q9FIA0",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly indicates the presence of a 7-O-glucosyltransferase domain or region, which is necessary for the defined molecular function. The binding sites only confirm substrate interaction, not the specific catalytic activity. Therefore, no positional feature plausibly explains why this protein carries the GO term."
+    }
+  ]
+}

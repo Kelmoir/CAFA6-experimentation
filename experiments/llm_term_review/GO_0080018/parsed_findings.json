@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q0WW21",
+      "go_id": "GO:0080018",
+      "feature_type": "BINDING",
+      "start": 23,
+      "end": 24,
+      "signal_kind": "ligand",
+      "signal_value": "an anthocyanidin",
+      "reasoning": "The \"BINDING 23-24\" feature with an anthocyanidin ligand is the most specific and relevant evidence for the GO term, as it directly relates to the substrate involved in the defined reaction mechanism."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

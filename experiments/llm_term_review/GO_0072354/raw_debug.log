@@ -1,0 +1,27 @@
+=== O80528 GO:0072354 (VERDICT missing) ===
+THINKING: 
+The GO term is "histone H3T3 kinase activity," which defines the catalytic reaction of adding a phosphate group to the threonine residue at position 3 of histone H3. The protein O80528 is annotated with several binding sites for ATP, indicating that it interacts with this molecule. However, none of these binding sites directly specify the location or mechanism of the phosphorylation reaction on histone H3. The primary reaction involves the kinase domain and the specific residue (position 3) of histone H3, which is not explicitly mentioned in any of the binding sites.
+
+The candidate features for O80528 include:
+- DOMAIN 286-599
+- ACT_SITE 447-448
+- BINDING 292-301 (ligand: ATP)
+- BINDING 309-310 (ligand: ATP)
+- BINDING 406-412 (ligand: ATP)
+- BINDING 447-453 (ligand: ATP)
+- BINDING 485-488 (ligand: ATP)
+
+Each of these features is evaluated for its relevance to the primary reaction described in the GO term's definition. The DOMAIN feature spans from position 286 to 599, which could include the kinase domain responsible for catalyzing the phosphorylation. However, this span is too broad and does not specifically identify the threonine residue at position 3 of histone H3.
+
+The ACT_SITE feature indicates that the protein acts as a proton acceptor, which is not directly related to the phosphorylation reaction described in the GO term's definition.
+
+The BINDING features all involve ATP as a ligand, indicating that the protein interacts with this molecule. However, none of these binding sites specifically identify the location or mechanism of the phosphorylation on histone H3.
+
+Given the information provided, there is no annotated feature that directly matches the primary reaction described in the GO term's definition. Therefore, the verdict is NONE.
+
+FEATURE: 
+NONE 0-0
+
+REASONING: 
+The protein O80528 has binding sites for ATP, which suggests it interacts with this molecule. However, none of these binding sites specifically identify the location or mechanism of the phosphorylation on histone H3. The primary reaction described in the GO term's definition involves adding a phosphate group to the threonine residue at position 3 of histone H3, which is not explicitly mentioned in any of the annotated features for this protein. Therefore, there is no evidence that directly explains why this protein carries the given GO term.
+

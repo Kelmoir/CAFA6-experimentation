@@ -31199,6 +31199,39 @@
    }
   ]
  },
+ "GO:0072354": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "Pfam:PF12330"
+    ],
+    "accessions": [
+     "P83103",
+     "Q99986"
+    ],
+    "note": "resolved from DOMAIN note 'Protein kinase' (8 bridged accession(s) dropped for being too generic)"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P32789",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct match to the defined reaction mechanism of histone H3T3 kinase activity."
+   },
+   {
+    "accession": "O80528",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly describes the specific reaction mechanism of histone H3T3 kinase activity as defined by the GO term."
+   }
+  ]
+ },
  "GO:0072532": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -31214,6 +31247,36 @@
     "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves catalyzing meta-hydroxylation. The only relevant feature is a binding site for heme, which does not specifically explain the enzyme's function as defined by the GO term."
    }
   ]
+ },
+ "GO:0072541": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Thioredoxin",
+    "accessions": [
+     "P99029",
+     "Q9R063"
+    ],
+    "reason": "resolved to ['InterPro:IPR013766', 'InterPro:IPR036249', 'PROSITE:PS51352'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR013766': 269, 'InterPro:IPR036249': 714, 'PROSITE:PS51352': 241})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Cysteine sulfenic acid (-SOH) intermediate",
+    "accessions": [
+     "P30044"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  },
  "GO:0072548": {
   "n_resolved": 0,
@@ -31233,6 +31296,180 @@
     "accession": "Q9CA60",
     "reason": "none_verdict",
     "reasoning": "No annotated feature directly matches the primary reaction mechanism defined by GO:0072548, which involves the hydroxylation of dicoumaroyl monocaffeoyl spermidine. The binding site for heme is more about cofactor interaction than the specific enzymatic activity described in the term."
+   }
+  ]
+ },
+ "GO:0072549": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "Q9CA60"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9CA61",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9CA61's positional data directly explains the catalytic reaction defined by GO:0072549. The binding site for heme is a domain-related annotation, not a positional one that would explain the specific function of the GO term."
+   }
+  ]
+ },
+ "GO:0072550": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9CA61",
+    "reason": "none_verdict",
+    "reasoning": "The binding of heme at position 430-431 does not directly account for the catalytic activity described by the GO term, which involves a specific hydroxyl transfer mechanism. No other annotated feature provides a more direct explanation for the primary reaction of the GO term."
+   }
+  ]
+ },
+ "GO:0072551": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9CA61",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein is a binding site involving heme, which does not provide any evidence that the protein carries the specific molecular function defined by GO:0072551. Therefore, there is no plausible explanation for why this protein carries the term based on the provided evidence."
+   }
+  ]
+ },
+ "GO:0072552": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9CA61",
+    "reason": "unresolved_pointer",
+    "detail": "no matching DOMAIN 1-249 on record for Q9CA61 -- pointer didn't resolve",
+    "reported_feature": "DOMAIN 1-249",
+    "reasoning": "The domain/family cross-reference \"Cyt_P450\" is directly related to the type of enzyme that could catalyze the reaction described for GO:0072552, making it a strong match."
+   }
+  ]
+ },
+ "GO:0080004": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FI39",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9FI39 provides a clear and direct explanation of the thalian-diol desaturase activity defined by GO:0080004. The binding site for heme is unrelated to the reaction mechanism described in the definition, and no other positional feature matches the primary reaction of introducing a double bond at carbon 15."
+   }
+  ]
+ },
+ "GO:0080011": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O23390",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0080012": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9C9W4",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0080018": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "an anthocyanidin",
+    "accessions": [
+     "Q0WW21"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0080044": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "UDP-alpha-D-glucose",
+    "accessions": [
+     "A0AAW1M2U7",
+     "Q8W491"
+    ],
+    "reason": "ligand already claimed by GO:0016759 elsewhere in the dictionary -- ligand_to_go is a plain dict, a second claim would silently overwrite it"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "U3UA11",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for \"UDP-alpha-D-glucose\" does not directly explain why U3UA11 carries the GO term \"quercetin 7-O-glucosyltransferase activity,\" as it is more about substrate recognition than the catalytic mechanism of transferring a glucosyl group."
+   },
+   {
+    "accession": "Q9FIA0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly indicates the presence of a 7-O-glucosyltransferase domain or region, which is necessary for the defined molecular function. The binding sites only confirm substrate interaction, not the specific catalytic activity. Therefore, no positional feature plausibly explains why this protein carries the GO term."
    }
   ]
  }

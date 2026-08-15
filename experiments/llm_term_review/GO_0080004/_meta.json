@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080004",
+  "name": "thalian-diol desaturase activity",
+  "def": "Catalysis of the reaction: a thalian-diol = a desaturated thalian-diol. This reaction is the introduction of a double bond to a thalian-diol molecule at carbon 15.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FI39"
+  ],
+  "assigned_accessions": [
+    "Q9FI39"
+  ]
+}

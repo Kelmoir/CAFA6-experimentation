@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P83103",
+      "go_id": "GO:0072354",
+      "feature_type": "DOMAIN",
+      "start": 247,
+      "end": 566,
+      "signal_kind": "text",
+      "signal_value": "Protein kinase",
+      "reasoning": "The \"DOMAIN\" annotation for P83103 indicates the presence of a kinase domain, which is essential for catalyzing the phosphoryl transfer reaction described by the GO term. While this feature does not directly specify the threonine residue at position 3, it strongly supports the enzyme's ability to carry out the defined molecular function."
+    },
+    {
+      "accession": "Q99986",
+      "go_id": "GO:0072354",
+      "feature_type": "DOMAIN",
+      "start": 36,
+      "end": 317,
+      "signal_kind": "text",
+      "signal_value": "Protein kinase",
+      "reasoning": "The DOMAIN 36-317 annotation, marked with the note \"Protein kinase\" and evidence from PROSITE-ProRule:PRU00159, directly corresponds to the active site of the enzyme where the phosphorylation reaction (as defined by GO:0072354) occurs. This feature most plausibly explains why the protein carries this molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P32789",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct match to the defined reaction mechanism of histone H3T3 kinase activity."
+    },
+    {
+      "accession": "O80528",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly describes the specific reaction mechanism of histone H3T3 kinase activity as defined by the GO term."
+    }
+  ]
+}

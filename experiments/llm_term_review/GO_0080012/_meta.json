@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080012",
+  "name": "trihydroxyferuloyl spermidine O-methyltransferase activity",
+  "def": "Catalysis of the reaction: trihydroxyferuloyl spermidine + S-adenosyl-L-methionine = dihydroxyferuloyl-sinapoyl spermidine + S-adenosyl-L-homocysteine + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9C9W4"
+  ],
+  "assigned_accessions": [
+    "Q9C9W4"
+  ]
+}
