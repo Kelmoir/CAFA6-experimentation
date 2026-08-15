@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O13836",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for protein O13836 do not provide any positional evidence that directly explains why it carries the GO term \"5'-hydroxyl dinucleotide hydrolase activity.\" All binding sites are generic and do not describe the specific reaction mechanism defined by the GO term."
+    }
+  ]
+}

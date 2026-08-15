@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0140347",
+  "name": "N-retinylidene-phosphatidylethanolamine flippase activity",
+  "def": "Catalysis of the movement of N-retinylidene-N-retinylphosphatidylethanolamine from the exoplasmic to the cytosolic leaflet of a membrane, using energy from the hydrolysis of ATP.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "F1MWM0",
+    "O35600",
+    "P78363"
+  ],
+  "assigned_accessions": [
+    "F1MWM0",
+    "O35600",
+    "P78363"
+  ]
+}

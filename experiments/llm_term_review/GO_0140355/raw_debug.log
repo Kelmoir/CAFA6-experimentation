@@ -1,0 +1,13 @@
+=== O88968 GO:0140355 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict request returned 500: {\"error\":{\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}}"}
+
+=== P20061 GO:0140355 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== O88968 GO:0140355 (VERDICT missing) ===
+THINKING: The GO term is "GO:0140355", named "cargo receptor ligand activity" with the definition that it refers to the activity of a gene product that interacts with a cargo receptor and initiates endocytosis. This primary reaction involves the interaction between a protein and a cargo receptor, leading to the initiation of endocytosis. The annotated features for this protein all relate to binding cob(II)alamin, which is a ligand, but none of these features directly describe the interaction with a cargo receptor or the initiation of endocytosis. The only relevant domain/family cross-references are "InterPro:IPR002157 -- Cbl-bd_prot" and "Pfam:PF01122 -- Cobalamin_bind", which might be related to cobalamin-binding activity, but not the specific function of interacting with a cargo receptor. Since none of the positional features or domain/family cross-references directly describe the primary reaction of this GO term, there is no strong evidence that explains why this protein carries the term.
+
+FEATURE: NONE 0-0
+
+REASONING: There is no annotated feature (by type + exact coordinates) that specifically matches the primary reaction described in the GO term's definition. All features are related to cob(II)alamin binding, not to interacting with a cargo receptor or initiating endocytosis. Therefore, the protein O88968 does not have a strong evidence-based explanation for carrying the GO term "GO:0140355".
+

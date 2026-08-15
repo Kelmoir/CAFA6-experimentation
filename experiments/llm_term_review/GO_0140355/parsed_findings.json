@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P52787",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for P52787 only describe binding to cob(II)alamin, which is a ligand, but not the endocytosis mechanism or cargo receptor interaction that defines \"cargo receptor ligand activity.\" Therefore, no annotated feature directly explains why this protein carries the term."
+    },
+    {
+      "accession": "Q6FJZ6",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "O88968",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P20061",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided list directly supports the primary reaction of endocytosis initiation described in the GO term's definition."
+    }
+  ]
+}

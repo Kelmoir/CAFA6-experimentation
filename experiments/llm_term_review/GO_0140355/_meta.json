@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140355",
+  "name": "cargo receptor ligand activity",
+  "def": "The activity of a gene product that interacts with a cargo receptor and initiates endocytosis.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "O88968",
+    "P20061",
+    "P52787",
+    "Q6FJZ6"
+  ],
+  "assigned_accessions": [
+    "O88968",
+    "P20061",
+    "P52787",
+    "Q6FJZ6"
+  ]
+}

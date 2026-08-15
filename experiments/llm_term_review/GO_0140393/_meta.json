@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140393",
+  "name": "norsolorinic acid ketoreductase activity",
+  "def": "Catalysis of the reaction: (1'S)-averantin + NADP+ = norsolorinic acid + NADPH.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q00278"
+  ],
+  "assigned_accessions": [
+    "Q00278"
+  ]
+}

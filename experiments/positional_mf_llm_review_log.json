@@ -38498,6 +38498,70 @@
    }
   ]
  },
+ "GO:0140346": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P40527",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P98196",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q12674",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q9Y2Q0",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140347": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "an N-all-trans-retinylidenephosphatidylethanolamine",
+    "accessions": [
+     "O35600"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "P78363"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "F1MWM0",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
  "GO:0140348": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -38519,6 +38583,37 @@
    }
   ]
  },
+ "GO:0140355": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P52787",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P52787 only describe binding to cob(II)alamin, which is a ligand, but not the endocytosis mechanism or cargo receptor interaction that defines \"cargo receptor ligand activity.\" Therefore, no annotated feature directly explains why this protein carries the term."
+   },
+   {
+    "accession": "Q6FJZ6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O88968",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P20061",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly supports the primary reaction of endocytosis initiation described in the GO term's definition."
+   }
+  ]
+ },
  "GO:0140376": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -38537,5 +38632,128 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0140383": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0DPA8",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly or specifically match the primary reaction mechanism of the GO term, which involves catalyzing the phosphorylation of 4-hydroxytryptamine. The only feature that could be interpreted as a site for ATP binding is ACT_SITE 223-224, but it does not provide sufficient evidence to support the specific molecular function defined by GO:0140383."
+   }
+  ]
+ },
+ "GO:0140393": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q00278",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the catalytic mechanism described by the GO term \"GO:0140393.\""
+   }
+  ]
+ },
+ "GO:0140432": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O13836",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein O13836 do not provide any positional evidence that directly explains why it carries the GO term \"5'-hydroxyl dinucleotide hydrolase activity.\" All binding sites are generic and do not describe the specific reaction mechanism defined by the GO term."
+   }
+  ]
+ },
+ "GO:0140442": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "GAF",
+    "accessions": [
+     "O14002"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140443": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PH",
+    "accessions": [
+     "Q9Y7J9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140463": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P47027",
+    "go_id": "GO:0140463",
+    "feature_type": "DOMAIN",
+    "start": 0,
+    "end": 99,
+    "signal_kind": "text",
+    "signal_value": "BRCT 1",
+    "reasoning": "The BRCT domains are relevant to chromatin interactions and DNA binding, which align with the function of bringing together a protein and chromatin. However, none of these features explicitly state that they are responsible for the specific adaptor activity described in the GO definition, making it uncertain whether any single domain is the direct structural/functional basis for this term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P32641",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the chromatin-protein adaptor activity described by GO:0140463."
+   },
+   {
+    "accession": "Q6ZQF0",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly and specifically describe the primary reaction of bringing together a protein and chromatin as defined by the GO term, making it impossible to determine which feature most plausibly explains this molecular function."
+   },
+   {
+    "accession": "Q14676",
+    "reason": "none_verdict",
+    "reasoning": "The \"chromatin-protein adaptor activity\" as defined involves bringing together a protein and a chromatin region to establish or maintain the complex. While the NLS1 region is involved in nuclear localization, it does not directly explain the molecular function of the GO term. No other annotated feature provides a clear explanation for the primary reaction described in the definition."
+   }
+  ]
  }
 }

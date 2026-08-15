@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140463",
+  "name": "chromatin-protein adaptor activity",
+  "def": "An adaptor activity that brings together a protein and a region of the chromatin, such as a nucleosome, to establish or maintain the chromatin localization of the protein, or the complex to which it belongs.",
+  "n_proteins_total": 79,
+  "sampled_accessions": [
+    "P32641",
+    "P47027",
+    "Q14676",
+    "Q6ZQF0"
+  ],
+  "assigned_accessions": [
+    "P32641",
+    "P47027",
+    "Q14676",
+    "Q6ZQF0"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140383",
+  "name": "4-hydroxytryptamine kinase activity",
+  "def": "Catalysis of the reaction: 4-hydroxytryptamine + ATP = 4-hydoxytryptamine 4-phosphate + ADP + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0DPA8"
+  ],
+  "assigned_accessions": [
+    "P0DPA8"
+  ]
+}

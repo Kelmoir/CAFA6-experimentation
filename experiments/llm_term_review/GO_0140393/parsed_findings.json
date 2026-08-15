@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q00278",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the catalytic mechanism described by the GO term \"GO:0140393.\""
+    }
+  ]
+}

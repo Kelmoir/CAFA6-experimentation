@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140443",
+  "name": "mitochondrion-plasma membrane adaptor activity",
+  "def": "The binding activity of a molecule that brings together a mitochondrion and a plasma membrane either via membrane lipid binding or by interacting with a mitochondrial outer membrane protein, to establish or maintain the localization of the mitochondrion.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9Y7J9"
+  ],
+  "assigned_accessions": [
+    "Q9Y7J9"
+  ]
+}

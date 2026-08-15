@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O35600",
+      "go_id": "GO:0140347",
+      "feature_type": "BINDING",
+      "start": 586,
+      "end": 587,
+      "signal_kind": "ligand",
+      "signal_value": "an N-all-trans-retinylidenephosphatidylethanolamine",
+      "reasoning": "The binding site for the substrate of the flippase activity directly supports the mechanism described in the GO term's definition, which involves catalyzing the movement of N-retinylidene-N-retinylphosphatidylethanolamine from the exoplasmic to the cytosolic leaflet using ATP hydrolysis."
+    },
+    {
+      "accession": "P78363",
+      "go_id": "GO:0140347",
+      "feature_type": "BINDING",
+      "start": 965,
+      "end": 966,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP (BINDING 965-966) directly involves the energy source required for the translocation reaction described in the GO term's definition, making it the most plausible candidate to explain why P78363 carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "F1MWM0",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

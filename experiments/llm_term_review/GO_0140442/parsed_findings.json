@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "O14002",
+      "go_id": "GO:0140442",
+      "feature_type": "DOMAIN",
+      "start": 1425,
+      "end": 1593,
+      "signal_kind": "text",
+      "signal_value": "GAF",
+      "reasoning": "The GAF domain (DOMAIN 1425-1593) directly matches the requirement of detecting hydrogen peroxide and eliciting a change in activity, which are central to the definition of the GO term \"peroxide sensor activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

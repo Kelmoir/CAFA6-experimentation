@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140442",
+  "name": "peroxide sensor activity",
+  "def": "Binding to hydrogen peroxide (H2O2) and eliciting a change in the protein's activity in response to the intracellular level of that small molecule.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O14002"
+  ],
+  "assigned_accessions": [
+    "O14002"
+  ]
+}

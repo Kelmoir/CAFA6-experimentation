@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140432",
+  "name": "5'-hydroxyl dinucleotide hydrolase activity",
+  "def": "Catalysis of the hydrolysis of phosphodiester bonds in 5'OH-RNA according to the reaction 5'OH-NpN-RNA + H20 = 5'OH-NpN + 5'P-RNA, where NpN represents a dinucleotide.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O13836"
+  ],
+  "assigned_accessions": [
+    "O13836"
+  ]
+}

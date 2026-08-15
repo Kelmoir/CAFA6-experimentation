@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9Y7J9",
+      "go_id": "GO:0140443",
+      "feature_type": "DOMAIN",
+      "start": 846,
+      "end": 958,
+      "signal_kind": "text",
+      "signal_value": "PH",
+      "reasoning": "The DOMAIN span (846-958) is a strong match to the GO term's primary reaction, which involves binding activity between mitochondrion and plasma membrane. This feature provides a plausible explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
