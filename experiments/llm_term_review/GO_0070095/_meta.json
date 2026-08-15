@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0070095",
+  "name": "fructose-6-phosphate binding",
+  "def": "Binding to fructose 6-phosphate.",
+  "n_proteins_total": 25,
+  "sampled_accessions": [
+    "O42938",
+    "P47859",
+    "P52034",
+    "Q07071"
+  ],
+  "assigned_accessions": [
+    "O42938",
+    "P47859",
+    "P52034",
+    "Q07071"
+  ]
+}

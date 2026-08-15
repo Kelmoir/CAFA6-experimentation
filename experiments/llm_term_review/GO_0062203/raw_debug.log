@@ -1,0 +1,10 @@
+=== A0A2K9RFZ2 GO:0062203 (HTTP 400 Bad Request) ===
+{
+    "error": {
+        "message": "Failed to load model \"prism-ml/bonsai-27b\". Error: Engine protocol startup was aborted.",
+        "type": "invalid_request_error",
+        "param": "model",
+        "code": null
+    }
+}
+

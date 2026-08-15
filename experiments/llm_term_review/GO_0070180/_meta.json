@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0070180",
+  "name": "large ribosomal subunit rRNA binding",
+  "def": "Binding to large ribosomal subunit RNA (LSU rRNA), a constituent of the large ribosomal subunit. In S. cerevisiae, this is the 25S rRNA.",
+  "n_proteins_total": 89,
+  "sampled_accessions": [
+    "P0AG55",
+    "P0CT61",
+    "P0CT83",
+    "P61514"
+  ],
+  "assigned_accessions": [
+    "P0AG55",
+    "P0CT61",
+    "P0CT83",
+    "P61514"
+  ]
+}

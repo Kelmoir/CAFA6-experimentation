@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0062203",
+  "name": "Viteagnusin D synthase activity",
+  "def": "Catalysis of the reaction: H2O + peregrinol diphosphate = diphosphate + viteagnusin D.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A0A2K9RFZ2"
+  ],
+  "assigned_accessions": [
+    "A0A2K9RFZ2"
+  ]
+}

@@ -30229,5 +30229,186 @@
     "reasoning": "No specific positional feature in the Annotated features section of P32156 provides a direct explanation for the mutarotase activity defined by GO:0062192. The only relevant annotations are domain/family cross-references, which do not constitute positional features. Therefore, there is no evidence to support a specific structural/functional basis for the term as defined in the GO definition."
    }
   ]
+ },
+ "GO:0070080": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Actin-binding",
+    "accessions": [
+     "P35609"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Ca(2+)",
+    "accessions": [
+     "Q9JI91"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O70548",
+    "reason": "none_verdict",
+    "reasoning": "The region from 141 to 167 aa is marked as disordered, which could be part of the structural context required for binding to a titin Z domain, but it does not specifically explain why the protein carries this molecular function."
+   },
+   {
+    "accession": "O15273",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein is a disordered region, which does not provide specific structural evidence for the defined reaction of binding to a titin Z domain. No other features are available to confirm or explain the molecular function described in GO:0070080."
+   }
+  ]
+ },
+ "GO:0070089": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6UVM3",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain why this protein carries the GO term \"chloride-activated potassium channel activity.\" The definition focuses on chloride ion binding leading to potassium cation transmembrane transfer, but none of the provided features clearly implement that chemistry."
+   },
+   {
+    "accession": "Q6UVM4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the defined chemistry of chloride-activated potassium channel activity, as the features provided are generic and not directly tied to the mechanism of ion transmembrane transfer."
+   },
+   {
+    "accession": "Q6ZPR4",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q9Z258",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0070095": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "beta-D-fructose 1-phosphate",
+    "accessions": [
+     "Q07071"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O42938",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the GO term's definition of \"binding to fructose 6-phosphate\" with sufficient specificity."
+   },
+   {
+    "accession": "P47859",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the binding of fructose 6-phosphate to a protein domain, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "P52034",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain why P52034 carries the GO term \"fructose-6-phosphate binding.\" The only feature that could be relevant is about substrate binding, but it does not specify fructose-6-phosphate."
+   }
+  ]
+ },
+ "GO:0070119": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like C2-type",
+    "accessions": [
+     "P08887"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P22272",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P22272 directly matches the primary reaction of GO:0070119, which is binding to ciliary neurotrophic factor."
+   },
+   {
+    "accession": "P22273",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature for this protein that directly or specifically explains why it carries the GO term \"ciliary neurotrophic factor binding.\" The defined function involves binding to a specific cytokine, and none of the features provided are related to that interaction."
+   }
+  ]
+ },
+ "GO:0070180": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AG55",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P0CT61",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P0CT83",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P61514",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P61514 only indicate Zn(2+) binding, which is not specific to large ribosomal subunit rRNA. There are no domain annotations that directly relate to the function of binding LSU rRNA, and none of the \"BINDING\" spans specifically refer to this interaction. Thus, there is no annotated feature that plausibly explains why P61514 carries the GO term \"large ribosomal subunit rRN"
+   }
+  ]
+ },
+ "GO:0070338": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P39735",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }

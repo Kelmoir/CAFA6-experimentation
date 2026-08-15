@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0070026",
+  "name": "nitric oxide binding",
+  "def": "Binding to nitric oxide (NO).",
+  "n_proteins_total": 20,
+  "sampled_accessions": [
+    "P09211",
+    "P35520",
+    "P90895",
+    "Q86C56"
+  ],
+  "assigned_accessions": [
+    "P09211",
+    "P35520",
+    "P90895",
+    "Q86C56"
+  ]
+}

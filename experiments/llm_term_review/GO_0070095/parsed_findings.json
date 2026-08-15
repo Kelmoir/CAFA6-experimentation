@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q07071",
+      "go_id": "GO:0070095",
+      "feature_type": "BINDING",
+      "start": 108,
+      "end": 110,
+      "signal_kind": "ligand",
+      "signal_value": "beta-D-fructose 1-phosphate",
+      "reasoning": "The binding site at position 108-110 specifically interacts with beta-D-fructose 6-phosphate, which is the substrate for the fructose-6-phosphate binding molecular function. This directly supports the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O42938",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the GO term's definition of \"binding to fructose 6-phosphate\" with sufficient specificity."
+    },
+    {
+      "accession": "P47859",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the binding of fructose 6-phosphate to a protein domain, which is the primary reaction defined by the GO term."
+    },
+    {
+      "accession": "P52034",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly explain why P52034 carries the GO term \"fructose-6-phosphate binding.\" The only feature that could be relevant is about substrate binding, but it does not specify fructose-6-phosphate."
+    }
+  ]
+}

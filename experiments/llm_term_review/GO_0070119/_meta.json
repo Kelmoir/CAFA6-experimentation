@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0070119",
+  "name": "ciliary neurotrophic factor binding",
+  "def": "Binding to the cytokine ciliary neurotrophic factor.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P08887",
+    "P22272",
+    "P22273"
+  ],
+  "assigned_accessions": [
+    "P08887",
+    "P22272",
+    "P22273"
+  ]
+}

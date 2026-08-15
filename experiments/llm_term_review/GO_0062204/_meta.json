@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0062204",
+  "name": "(13S)-vitexifolin A synthase activity",
+  "def": "Catalysis of the reaction:9alpha-copalyl diphosphate + H2O = (13S)-vitexifolin A + diphosphate.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "A0A2K9RFZ2",
+    "P9WJ61"
+  ],
+  "assigned_accessions": [
+    "A0A2K9RFZ2",
+    "P9WJ61"
+  ]
+}

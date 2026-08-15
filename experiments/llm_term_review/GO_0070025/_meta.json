@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0070025",
+  "name": "carbon monoxide binding",
+  "def": "Binding to carbon monoxide (CO).",
+  "n_proteins_total": 13,
+  "sampled_accessions": [
+    "O02298",
+    "P24192",
+    "P9WGK1",
+    "Q9CX80"
+  ],
+  "assigned_accessions": [
+    "O02298",
+    "P24192",
+    "P9WGK1",
+    "Q9CX80"
+  ]
+}

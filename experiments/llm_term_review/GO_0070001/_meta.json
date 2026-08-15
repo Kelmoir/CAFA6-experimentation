@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0070001",
+  "name": "aspartic-type peptidase activity",
+  "def": "Catalysis of the hydrolysis of peptide bonds in a polypeptide chain by a mechanism in which a water molecule bound by the side chains of aspartic residues at the active center acts as a nucleophile.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "P07339",
+    "P24268",
+    "Q504J1",
+    "Q9LS40"
+  ],
+  "assigned_accessions": [
+    "P07339",
+    "P24268",
+    "Q504J1",
+    "Q9LS40"
+  ]
+}

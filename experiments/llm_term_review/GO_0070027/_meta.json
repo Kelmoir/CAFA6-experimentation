@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0070027",
+  "name": "carbon monoxide sensor activity",
+  "def": "Binding to and responding, e.g. by conformational change, to changes in the cellular level of carbon monoxide (CO).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P90895"
+  ],
+  "assigned_accessions": [
+    "P90895"
+  ]
+}

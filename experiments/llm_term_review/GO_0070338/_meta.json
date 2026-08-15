@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0070338",
+  "name": "5'-flap-structured DNA binding",
+  "def": "Binding to a 5'-flap structure in DNA. A DNA flap structure is one in which a single-stranded 5'-end of DNA or RNA protrudes from a double-stranded DNA molecule. 5'-flap structures can be formed during DNA repair or lagging strand synthesis; in the latter case RNA flaps form from lagging strand RNA primers.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P39735"
+  ],
+  "assigned_accessions": [
+    "P39735"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0062202",
+  "name": "Labd-13(16),14-diene-9-ol synthase activity",
+  "def": "Catalysis of the reaction: peregrinol diphosphate = diphosphate + labd-13(16),14-diene-9-ol.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A0A2K9RFZ9"
+  ],
+  "assigned_accessions": [
+    "A0A2K9RFZ9"
+  ]
+}

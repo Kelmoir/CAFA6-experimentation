@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0070080",
+  "name": "titin Z domain binding",
+  "def": "Binding to a titin Z protein domain, which recognizes and binds to the C-terminal calmodulin-like domain of alpha-actinin-2 (Act-EF34), adopts a helical structure, and binds in a groove formed by the two planes between the helix pairs of Act-EF34.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O15273",
+    "O70548",
+    "P35609",
+    "Q9JI91"
+  ],
+  "assigned_accessions": [
+    "O15273",
+    "O70548",
+    "P35609",
+    "Q9JI91"
+  ]
+}

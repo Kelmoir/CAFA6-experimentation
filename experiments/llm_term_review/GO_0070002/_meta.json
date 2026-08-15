@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0070002",
+  "name": "glutamic-type peptidase activity",
+  "def": "Catalysis of the hydrolysis of peptide bonds in a polypeptide chain by a mechanism involving a glutamate/glutamine catalytic dyad.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q6HA08",
+    "Q6HA09"
+  ],
+  "assigned_accessions": [
+    "Q6HA08",
+    "Q6HA09"
+  ]
+}

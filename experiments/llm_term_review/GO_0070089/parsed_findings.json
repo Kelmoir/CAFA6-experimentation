@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q6UVM3",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly explain why this protein carries the GO term \"chloride-activated potassium channel activity.\" The definition focuses on chloride ion binding leading to potassium cation transmembrane transfer, but none of the provided features clearly implement that chemistry."
+    },
+    {
+      "accession": "Q6UVM4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the defined chemistry of chloride-activated potassium channel activity, as the features provided are generic and not directly tied to the mechanism of ion transmembrane transfer."
+    },
+    {
+      "accession": "Q6ZPR4",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q9Z258",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

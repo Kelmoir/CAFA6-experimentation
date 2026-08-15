@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0062206",
+  "name": "manoyl oxide synthase activity",
+  "def": "Catalysis of the reaction: 8-hydroxycopalyl diphosphate = (13R)-manoyl oxide + diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A0A075FBG7"
+  ],
+  "assigned_accessions": [
+    "A0A075FBG7"
+  ]
+}

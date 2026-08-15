@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0AG55",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P0CT61",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P0CT83",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P61514",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for P61514 only indicate Zn(2+) binding, which is not specific to large ribosomal subunit rRNA. There are no domain annotations that directly relate to the function of binding LSU rRNA, and none of the \"BINDING\" spans specifically refer to this interaction. Thus, there is no annotated feature that plausibly explains why P61514 carries the GO term \"large ribosomal subunit rRN"
+    }
+  ]
+}
