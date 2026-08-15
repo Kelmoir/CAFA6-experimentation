@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q96JA3",
+      "go_id": "GO:0140340",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 93,
+      "signal_kind": "text",
+      "signal_value": "PH",
+      "reasoning": "The DOMAIN 0-93 with the note \"PH\" directly relates to the primary reaction of the GO term, which involves phosphorelay activity. This feature most plausibly explains why the protein carries the term \"cerebroside transfer activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P55058",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P55065",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

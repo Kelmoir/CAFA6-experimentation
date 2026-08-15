@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140338",
+  "name": "sphingomyelin transfer activity",
+  "def": "Removes a sphingomyelin from the outer leaflet of a donor membrane, transports it through the aqueous phase while protected in a hydrophobic pocket, and brings it to the outer leaflet of an acceptor membrane.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "O64587",
+    "P55058",
+    "Q3TWI9",
+    "Q9TR36"
+  ],
+  "assigned_accessions": [
+    "O64587",
+    "P55058",
+    "Q3TWI9",
+    "Q9TR36"
+  ]
+}

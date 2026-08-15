@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140345",
+  "name": "phosphatidylcholine flippase activity",
+  "def": "Catalysis of the movement of phosphatidylcholine from the exoplasmic to the cytosolic leaflet of a membrane, using energy from the hydrolysis of ATP.",
+  "n_proteins_total": 17,
+  "sampled_accessions": [
+    "A3FIN4",
+    "G2X7W6",
+    "O94823",
+    "Q12674"
+  ],
+  "assigned_accessions": [
+    "A3FIN4",
+    "G2X7W6",
+    "O94823",
+    "Q12674"
+  ]
+}

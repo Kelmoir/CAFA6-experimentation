@@ -54,16 +54,6 @@
           "match_hops": 0
         },
         {
-          "go_id": "GO:0004842",
-          "start": 0,
-          "end": 305,
-          "source": "domain_whole_protein_fallback",
-          "xref": "InterPro:IPR001841",
-          "table_agreement": 1,
-          "matched_real_term": "GO:0061630",
-          "match_hops": 1
-        },
-        {
           "go_id": "GO:0061630",
           "start": 0,
           "end": 305,
@@ -72,6 +62,16 @@
           "table_agreement": 1,
           "matched_real_term": "GO:0061630",
           "match_hops": 0
+        },
+        {
+          "go_id": "GO:0004842",
+          "start": 0,
+          "end": 305,
+          "source": "domain_whole_protein_fallback",
+          "xref": "InterPro:IPR001841",
+          "table_agreement": 1,
+          "matched_real_term": "GO:0061630",
+          "match_hops": 1
         }
       ],
       "real_mf_terms": [
@@ -126,14 +126,14 @@
       "accession": "Q505J8",
       "localized": [
         {
-          "go_id": "GO:0005524",
+          "go_id": "GO:0000166",
           "start": 0,
           "end": 508,
           "source": "domain_whole_protein_fallback",
           "xref": "InterPro:IPR004529",
-          "table_agreement": 2,
+          "table_agreement": 1,
           "matched_real_term": "GO:0005524",
-          "match_hops": 0
+          "match_hops": 4
         },
         {
           "go_id": "GO:0004826",
@@ -146,14 +146,14 @@
           "match_hops": 0
         },
         {
-          "go_id": "GO:0000166",
+          "go_id": "GO:0005524",
           "start": 0,
           "end": 508,
           "source": "domain_whole_protein_fallback",
           "xref": "InterPro:IPR004529",
-          "table_agreement": 1,
+          "table_agreement": 2,
           "matched_real_term": "GO:0005524",
-          "match_hops": 4
+          "match_hops": 0
         },
         {
           "go_id": "GO:0000049",
@@ -629,14 +629,14 @@
       "accession": "P91001",
       "localized": [
         {
-          "go_id": "GO:0005515",
+          "go_id": "GO:0008233",
           "start": 55,
           "end": 193,
           "source": "domain_fallback_union",
           "xref": "InterPro:IPR000555",
           "table_agreement": 2,
-          "matched_real_term": "GO:0017151",
-          "match_hops": 2
+          "matched_real_term": "GO:0008237",
+          "match_hops": 1
         },
         {
           "go_id": "GO:0008237",
@@ -649,14 +649,14 @@
           "match_hops": 0
         },
         {
-          "go_id": "GO:0008233",
+          "go_id": "GO:0005515",
           "start": 55,
           "end": 193,
           "source": "domain_fallback_union",
           "xref": "InterPro:IPR000555",
           "table_agreement": 2,
-          "matched_real_term": "GO:0008237",
-          "match_hops": 1
+          "matched_real_term": "GO:0017151",
+          "match_hops": 2
         }
       ],
       "real_mf_terms": [
@@ -773,34 +773,14 @@
       "accession": "P42345",
       "localized": [
         {
-          "go_id": "GO:0005515",
+          "go_id": "GO:0035979",
           "start": 1381,
           "end": 1982,
           "source": "domain_bridge",
           "xref": "InterPro:IPR003151",
           "table_agreement": 3,
-          "matched_real_term": "GO:0042802",
+          "matched_real_term": "GO:0004674",
           "match_hops": 1
-        },
-        {
-          "go_id": "GO:0001156",
-          "start": 1381,
-          "end": 1982,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR003151",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0001156",
-          "match_hops": 0
-        },
-        {
-          "go_id": "GO:0001002",
-          "start": 1381,
-          "end": 1982,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR003151",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0001002",
-          "match_hops": 0
         },
         {
           "go_id": "GO:0000822",
@@ -823,16 +803,6 @@
           "match_hops": 0
         },
         {
-          "go_id": "GO:0035979",
-          "start": 1381,
-          "end": 1982,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR003151",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0004674",
-          "match_hops": 1
-        },
-        {
           "go_id": "GO:0001006",
           "start": 1381,
           "end": 1982,
@@ -843,34 +813,44 @@
           "match_hops": 0
         },
         {
-          "go_id": "GO:0005515",
-          "start": 2516,
-          "end": 2549,
+          "go_id": "GO:0001002",
+          "start": 1381,
+          "end": 1982,
           "source": "domain_bridge",
-          "xref": "InterPro:IPR003152",
+          "xref": "InterPro:IPR003151",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0001002",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0005515",
+          "start": 1381,
+          "end": 1982,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR003151",
           "table_agreement": 3,
           "matched_real_term": "GO:0042802",
           "match_hops": 1
         },
         {
           "go_id": "GO:0001156",
-          "start": 2516,
-          "end": 2549,
+          "start": 1381,
+          "end": 1982,
           "source": "domain_bridge",
-          "xref": "InterPro:IPR003152",
+          "xref": "InterPro:IPR003151",
           "table_agreement": 3,
           "matched_real_term": "GO:0001156",
           "match_hops": 0
         },
         {
-          "go_id": "GO:0001002",
+          "go_id": "GO:0035979",
           "start": 2516,
           "end": 2549,
           "source": "domain_bridge",
           "xref": "InterPro:IPR003152",
           "table_agreement": 3,
-          "matched_real_term": "GO:0001002",
-          "match_hops": 0
+          "matched_real_term": "GO:0004674",
+          "match_hops": 1
         },
         {
           "go_id": "GO:0000822",
@@ -893,16 +873,6 @@
           "match_hops": 0
         },
         {
-          "go_id": "GO:0035979",
-          "start": 2516,
-          "end": 2549,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR003152",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0004674",
-          "match_hops": 1
-        },
-        {
           "go_id": "GO:0001006",
           "start": 2516,
           "end": 2549,
@@ -910,6 +880,36 @@
           "xref": "InterPro:IPR003152",
           "table_agreement": 3,
           "matched_real_term": "GO:0001006",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0001002",
+          "start": 2516,
+          "end": 2549,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR003152",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0001002",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0005515",
+          "start": 2516,
+          "end": 2549,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR003152",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0042802",
+          "match_hops": 1
+        },
+        {
+          "go_id": "GO:0001156",
+          "start": 2516,
+          "end": 2549,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR003152",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0001156",
           "match_hops": 0
         }
       ],
@@ -995,16 +995,6 @@
           "match_hops": 0
         },
         {
-          "go_id": "GO:0008984",
-          "start": 151,
-          "end": 344,
-          "source": "domain_bridge",
-          "xref": "InterPro:IPR008248",
-          "table_agreement": 3,
-          "matched_real_term": "GO:0008984",
-          "match_hops": 0
-        },
-        {
           "go_id": "GO:0000156",
           "start": 151,
           "end": 344,
@@ -1012,6 +1002,16 @@
           "xref": "InterPro:IPR008248",
           "table_agreement": 3,
           "matched_real_term": "GO:0000156",
+          "match_hops": 0
+        },
+        {
+          "go_id": "GO:0008984",
+          "start": 151,
+          "end": 344,
+          "source": "domain_bridge",
+          "xref": "InterPro:IPR008248",
+          "table_agreement": 3,
+          "matched_real_term": "GO:0008984",
           "match_hops": 0
         }
       ],

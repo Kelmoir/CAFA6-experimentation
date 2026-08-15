@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0140340",
+  "name": "cerebroside transfer activity",
+  "def": "Directly binding to a cerebroside and delivering it either to an acceptor molecule or to a specific location.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P55058",
+    "P55065",
+    "Q96JA3"
+  ],
+  "assigned_accessions": [
+    "P55058",
+    "P55065",
+    "Q96JA3"
+  ]
+}

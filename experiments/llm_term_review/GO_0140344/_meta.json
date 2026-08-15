@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140344",
+  "name": "triglyceride transfer activity",
+  "def": "Directly binding to a triglyceride and delivering it either to an acceptor molecule or to a specific location.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "D4A1W8",
+    "O08601",
+    "P55156",
+    "P55157"
+  ],
+  "assigned_accessions": [
+    "D4A1W8",
+    "O08601",
+    "P55156",
+    "P55157"
+  ]
+}

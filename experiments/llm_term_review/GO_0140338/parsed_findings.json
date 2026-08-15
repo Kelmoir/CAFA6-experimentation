@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9TR36",
+      "go_id": "GO:0140338",
+      "feature_type": "DOMAIN",
+      "start": 1,
+      "end": 261,
+      "signal_kind": "text",
+      "signal_value": "PITP-like",
+      "reasoning": "The DOMAIN 1-261 with the \"PITP-like\" note most plausibly explains the sphingomyelin transfer activity by directly implementing the structural and functional features necessary for this specific lipid transfer mechanism."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q3TWI9",
+      "go_id": "GO:0140338",
+      "feature_type": "REGION",
+      "start": 566,
+      "end": 599,
+      "signal_kind": "text",
+      "signal_value": "Gating helix",
+      "reasoning": "The annotated feature \"REGION 566-599\" (note: Gating helix) is the most plausibly aligned with the GO term's primary reaction of sphingomyelin transfer activity, as it may be involved in regulating membrane transport. However, it does not directly explain the specific chemistry or mechanism described in the GO term's definition, making the match uncertain."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P55058",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "O64587",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in O64587 provides specific evidence about the molecular mechanism of sphingomyelin transfer activity, which is defined by its core reaction of removing and transporting sphingomyelin."
+    }
+  ]
+}

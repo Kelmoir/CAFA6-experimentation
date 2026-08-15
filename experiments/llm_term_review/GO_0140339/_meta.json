@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140339",
+  "name": "phosphatidylglycerol transfer activity",
+  "def": "Directly binding to phosphatidylglycerol and delivering it either to an acceptor molecule or to a specific location.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O00746",
+    "P55058",
+    "P55065",
+    "Q9WV84"
+  ],
+  "assigned_accessions": [
+    "O00746",
+    "P55058",
+    "P55065",
+    "Q9WV84"
+  ]
+}

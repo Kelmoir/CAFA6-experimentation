@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140376",
+  "name": "innate immune receptor activity",
+  "def": "Receiving a signal and transmitting it in a cell to initiate an innate immune response.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "F4J339"
+  ],
+  "assigned_accessions": [
+    "F4J339"
+  ]
+}

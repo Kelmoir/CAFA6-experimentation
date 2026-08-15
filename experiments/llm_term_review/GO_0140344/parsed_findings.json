@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "D4A1W8",
+      "go_id": "GO:0140344",
+      "feature_type": "DOMAIN",
+      "start": 27,
+      "end": 659,
+      "signal_kind": "text",
+      "signal_value": "Vitellogenin",
+      "reasoning": "The DOMAIN 27-659 of D4A1W8 is explicitly noted as \"Vitellogenin,\" which is a known protein associated with triglyceride transfer activity. This directly matches the GO term's definition and provides a strong basis for the annotation."
+    },
+    {
+      "accession": "P55157",
+      "go_id": "GO:0140344",
+      "feature_type": "DOMAIN",
+      "start": 27,
+      "end": 659,
+      "signal_kind": "text",
+      "signal_value": "Vitellogenin",
+      "reasoning": "The DOMAIN 27-659 with the note \"Vitellogenin\" most plausibly explains why P55157 carries the GO term \"triglyceride transfer activity,\" as it directly relates to the primary reaction of binding and delivering triglycerides."
+    },
+    {
+      "accession": "P55156",
+      "go_id": "GO:0140344",
+      "feature_type": "DOMAIN",
+      "start": 20,
+      "end": 655,
+      "signal_kind": "text",
+      "signal_value": "Vitellogenin",
+      "reasoning": "The \"DOMAIN 20-655\" feature directly matches the GO term's definition of triglyceride transfer activity, as it is associated with Vitellogenin, a protein known to perform this function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O08601",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

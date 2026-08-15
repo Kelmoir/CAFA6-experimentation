@@ -38340,6 +38340,164 @@
    }
   ]
  },
+ "GO:0140338": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PITP-like",
+    "accessions": [
+     "Q9TR36"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q3TWI9",
+    "go_id": "GO:0140338",
+    "feature_type": "REGION",
+    "start": 566,
+    "end": 599,
+    "signal_kind": "text",
+    "signal_value": "Gating helix",
+    "reasoning": "The annotated feature \"REGION 566-599\" (note: Gating helix) is the most plausibly aligned with the GO term's primary reaction of sphingomyelin transfer activity, as it may be involved in regulating membrane transport. However, it does not directly explain the specific chemistry or mechanism described in the GO term's definition, making the match uncertain."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P55058",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O64587",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in O64587 provides specific evidence about the molecular mechanism of sphingomyelin transfer activity, which is defined by its core reaction of removing and transporting sphingomyelin."
+   }
+  ]
+ },
+ "GO:0140339": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P55058",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P55065",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O00746",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the primary reaction described in the GO term's definition (binding to phosphatidylglycerol and delivering it). All features are either unrelated or only loosely associated with the function."
+   },
+   {
+    "accession": "Q9WV84",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9WV84's Annotated features do not provide any positional feature that directly matches the GO term's primary reaction of binding to phosphatidylglycerol and delivering it to an acceptor molecule or a specific location. All binding sites refer to nucleotides, not phosphatidylglycerol, and no binding site is explicitly associated with the transfer activity described in the GO term's def"
+   }
+  ]
+ },
+ "GO:0140340": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PH",
+    "accessions": [
+     "Q96JA3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P55058",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P55065",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0140344": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Vitellogenin",
+    "accessions": [
+     "D4A1W8",
+     "P55156",
+     "P55157"
+    ],
+    "reason": "resolved to ['InterPro:IPR001747', 'PROSITE:PS51211', 'Pfam:PF01347'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR001747': 16, 'PROSITE:PS51211': 16, 'Pfam:PF01347': 16})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O08601",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140345": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "G2X7W6",
+     "O94823",
+     "Q12674"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A3FIN4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the specific molecular function of phosphatidylcholine flippase activity as defined by GO:0140345."
+   }
+  ]
+ },
  "GO:0140348": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -38360,5 +38518,24 @@
     "reasoning": "The only positional feature provided for Q8NA29 is a disordered region (REGION 0-34), which does not directly specify the function of lysophosphatidylcholine flippase activity. While MFS family members are known to be involved in lipid translocation, this protein's annotated features do not confirm that it carries the specific molecular function defined by GO:0140348."
    }
   ]
+ },
+ "GO:0140376": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "TIR",
+    "accessions": [
+     "F4J339"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }
