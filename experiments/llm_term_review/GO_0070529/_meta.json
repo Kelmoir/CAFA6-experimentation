@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0070529",
+  "name": "L-tryptophan aminotransferase activity",
+  "def": "Catalysis of the transfer of an amino group from L-tryptophan to an acceptor, usually a 2-oxo acid.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A7XRY8"
+  ],
+  "assigned_accessions": [
+    "A7XRY8"
+  ]
+}

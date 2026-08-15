@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0070463",
+  "name": "tubulin-dependent ATPase activity",
+  "def": "Catalysis of the reaction: ATP + H2O = ADP + phosphate. This reaction requires the presence of a tubulin dimer to accelerate release of ADP and phosphate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P53086",
+    "Q8NI77",
+    "Q91WD7"
+  ],
+  "assigned_accessions": [
+    "P53086",
+    "Q8NI77",
+    "Q91WD7"
+  ]
+}

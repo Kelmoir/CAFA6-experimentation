@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9EQS5",
+      "go_id": "GO:0070704",
+      "feature_type": "DOMAIN",
+      "start": 123,
+      "end": 252,
+      "signal_kind": "text",
+      "signal_value": "Fatty acid hydroxylase",
+      "reasoning": "The DOMAIN feature (123-252) is most plausibly associated with the sterol desaturase activity as it directly relates to the enzymatic function described in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

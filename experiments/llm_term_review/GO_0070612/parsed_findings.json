@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "Q6NUA1",
+      "go_id": "GO:0070612",
+      "feature_type": "DOMAIN",
+      "start": 303,
+      "end": 611,
+      "signal_kind": "text",
+      "signal_value": "SAM-dependent MTase PRMT-type",
+      "reasoning": "The DOMAIN annotation directly specifies the enzyme type (SAM-dependent MTase PRMT-type), which matches the primary reaction described in the GO term's definition, making it the most plausible explanation for carrying the term."
+    },
+    {
+      "accession": "Q96LA8",
+      "go_id": "GO:0070612",
+      "feature_type": "DOMAIN",
+      "start": 43,
+      "end": 374,
+      "signal_kind": "text",
+      "signal_value": "SAM-dependent MTase PRMT-type",
+      "reasoning": "The \"DOMAIN\" feature specifically matches the enzyme class (PRMT-type methyltransferase) defined by the GO term, providing a strong mechanistic basis for the catalytic activity described."
+    },
+    {
+      "accession": "Q8CIG8",
+      "go_id": "GO:0070612",
+      "feature_type": "SITE",
+      "start": 326,
+      "end": 327,
+      "signal_kind": "text",
+      "signal_value": "Critical for specifying symmetric addition of methyl groups",
+      "reasoning": "The binding site at position 326-327 is critical for specifying symmetric addition of methyl groups, which directly aligns with the defined reaction mechanism of histone H2AR3 methyltransferase activity."
+    },
+    {
+      "accession": "Q6NZB1",
+      "go_id": "GO:0070612",
+      "feature_type": "BINDING",
+      "start": 59,
+      "end": 60,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding site for S-adenosyl-L-methionine at position 59-60 directly supports the molecular function of catalyzing the methyl transfer reaction described in GO:0070612, making it the most plausible explanation."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

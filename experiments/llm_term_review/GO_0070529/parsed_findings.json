@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A7XRY8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature describes the catalytic mechanism of amino group transfer from L-tryptophan to an acceptor, which is the primary reaction defined by the GO term."
+    }
+  ]
+}

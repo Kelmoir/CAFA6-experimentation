@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0070330",
+  "name": "aromatase activity",
+  "def": "Catalysis of the reaction: 3 O2 + 3 reduced [NADPH--hemoprotein reductase] + testosterone = 17beta-estradiol + formate + 4 H+ + 4 H2O + 3 oxidized [NADPH--hemoprotein reductase]. Also converts androst-4-ene-3,17-dione into estrone.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "O42145",
+    "P19098",
+    "Q92112",
+    "Q9HGE0"
+  ],
+  "assigned_accessions": [
+    "O42145",
+    "P19098",
+    "Q92112",
+    "Q9HGE0"
+  ]
+}

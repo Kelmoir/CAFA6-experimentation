@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0070704",
+  "name": "sterol desaturase activity",
+  "def": "Catalysis of the introduction of a double bond into a sterol molecule.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9EQS5"
+  ],
+  "assigned_accessions": [
+    "Q9EQS5"
+  ]
+}

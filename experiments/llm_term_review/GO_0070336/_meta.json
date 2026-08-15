@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0070336",
+  "name": "flap-structured DNA binding",
+  "def": "Binding to a flap structure in DNA. A DNA flap structure is one in which a single-stranded length of DNA or RNA protrudes from a double-stranded DNA molecule.",
+  "n_proteins_total": 14,
+  "sampled_accessions": [
+    "P07266",
+    "Q03702",
+    "Q06340",
+    "Q9I2N0"
+  ],
+  "assigned_accessions": [
+    "P07266",
+    "Q03702",
+    "Q06340",
+    "Q9I2N0"
+  ]
+}

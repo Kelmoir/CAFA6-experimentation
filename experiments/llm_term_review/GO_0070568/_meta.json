@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0070568",
+  "name": "guanylyltransferase activity",
+  "def": "Catalysis of the transfer of a guanylyl group to an acceptor.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q5XG87",
+    "Q8NDF8"
+  ],
+  "assigned_accessions": [
+    "Q5XG87",
+    "Q8NDF8"
+  ]
+}

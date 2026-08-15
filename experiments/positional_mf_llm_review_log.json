@@ -30395,6 +30395,73 @@
    }
   ]
  },
+ "GO:0070330": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "O42145",
+     "P19098"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Disordered",
+    "accessions": [
+     "Q9HGE0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q92112",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the chemistry of aromatase activity as defined by GO:0070330. The binding site for heme is consistent with cytochrome P450 enzymes, but it does not directly explain the specific enzymatic activity of aromatase."
+   }
+  ]
+ },
+ "GO:0070336": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P07266",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q03702",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides evidence for the specific DNA flap binding activity defined by the GO term."
+   },
+   {
+    "accession": "Q06340",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" span (0-154) is marked as \"Disordered,\" which does not provide a clear indication of the protein's ability to bind to a flap structure in DNA. No other annotated feature directly addresses the GO term's primary reaction of DNA binding to a flap structure, and the \"REGION\" span lacks specificity to explain this function."
+   },
+   {
+    "accession": "Q9I2N0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9I2N0 specifically matches the primary reaction of \"flap-structured DNA binding,\" which involves recognizing and binding to a flap structure in DNA. The protein's binding sites are associated with Mn(2+), not DNA flaps, making it unclear why it carries this term."
+   }
+  ]
+ },
  "GO:0070338": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -30410,5 +30477,156 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0070463": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Kinesin motor",
+    "accessions": [
+     "P53086",
+     "Q8NI77"
+    ],
+    "reason": "resolved to ['InterPro:IPR001752', 'InterPro:IPR019821', 'InterPro:IPR027640', 'InterPro:IPR036961', 'PROSITE:PS00411', 'PROSITE:PS50067', 'Pfam:PF00225'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR001752': 191, 'InterPro:IPR019821': 175, 'InterPro:IPR027640': 144, 'InterPro:IPR036961': 347, 'PROSITE:PS00411': 175, 'PROSITE:PS50067': 191, 'Pfam:PF00225': 191})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q91WD7",
+    "go_id": "GO:0070463",
+    "feature_type": "BINDING",
+    "start": 112,
+    "end": 120,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The binding of ATP to the protein is a direct component of the reaction catalyzed by the \"tubulin-dependent ATPase activity\" term, but the presence of a tubulin dimer and the full catalytic mechanism are not explicitly confirmed by any positional feature. Therefore, while this feature supports the general activity, it does not specifically explain why the protein carries the defined molecular func"
+   }
+  ],
+  "issues": []
+ },
+ "GO:0070529": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A7XRY8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature describes the catalytic mechanism of amino group transfer from L-tryptophan to an acceptor, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0070568": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q5XG87"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q8NDF8",
+    "go_id": "GO:0070568",
+    "feature_type": "BINDING",
+    "start": 283,
+    "end": 284,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The binding site for ATP (a common nucleotide substrate) is associated with catalytic activity, which could plausibly support the guanylyltransferase function. However, it does not directly state the mechanism of guanylyl transfer, making it a plausible but not definitive match."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0070594": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P54397",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature that specifically matches the primary reaction of \"juvenile hormone response element binding\" as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0070612": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SAM-dependent MTase PRMT-type",
+    "accessions": [
+     "Q6NUA1",
+     "Q96LA8"
+    ],
+    "reason": "resolved to ['InterPro:IPR029063', 'InterPro:IPR055135', 'PROSITE:PS51678', 'Pfam:PF22528'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR029063': 760, 'InterPro:IPR055135': 37, 'PROSITE:PS51678': 47, 'Pfam:PF22528': 37})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Critical for specifying symmetric addition of methyl groups",
+    "accessions": [
+     "Q8CIG8"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "Q6NZB1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0070704": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fatty acid hydroxylase",
+    "accessions": [
+     "Q9EQS5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

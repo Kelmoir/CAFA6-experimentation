@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P19098",
+      "go_id": "GO:0070330",
+      "feature_type": "BINDING",
+      "start": 435,
+      "end": 436,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding of heme to the protein (BINDING 435-436) is a strong indicator that P19098 contains a cytochrome P450 domain, which is essential for aromatase activity. This feature directly supports the enzyme's structure and function, which are necessary for catalyzing the conversion of testosterone into estradiol."
+    },
+    {
+      "accession": "O42145",
+      "go_id": "GO:0070330",
+      "feature_type": "BINDING",
+      "start": 455,
+      "end": 456,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding site for heme (BINDING 455-456) is a plausible structural feature that could explain why O42145 carries the \"aromatase activity\" GO term, as heme is essential for the catalytic function of many P450 enzymes."
+    },
+    {
+      "accession": "Q9HGE0",
+      "go_id": "GO:0070330",
+      "feature_type": "REGION",
+      "start": 487,
+      "end": 515,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The \"REGION 487-515\" annotation specifically matches the enzyme's role in catalyzing reactions involving NADPH and P450 enzymes, which are central to aromatase activity. This provides a strong structural/functional basis for the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q92112",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the chemistry of aromatase activity as defined by GO:0070330. The binding site for heme is consistent with cytochrome P450 enzymes, but it does not directly explain the specific enzymatic activity of aromatase."
+    }
+  ]
+}

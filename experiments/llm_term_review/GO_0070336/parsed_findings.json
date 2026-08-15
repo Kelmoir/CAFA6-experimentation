@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P07266",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q03702",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides evidence for the specific DNA flap binding activity defined by the GO term."
+    },
+    {
+      "accession": "Q06340",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION\" span (0-154) is marked as \"Disordered,\" which does not provide a clear indication of the protein's ability to bind to a flap structure in DNA. No other annotated feature directly addresses the GO term's primary reaction of DNA binding to a flap structure, and the \"REGION\" span lacks specificity to explain this function."
+    },
+    {
+      "accession": "Q9I2N0",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9I2N0 specifically matches the primary reaction of \"flap-structured DNA binding,\" which involves recognizing and binding to a flap structure in DNA. The protein's binding sites are associated with Mn(2+), not DNA flaps, making it unclear why it carries this term."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+=== Q6NZB1 GO:0070612 (VERDICT missing) ===
+THINKING: The GO term is "histone H2AR3 methyltransferase activity" (GO:0070612), which defines the catalytic reaction of adding a methyl group to the arginine residue at position 3 of histone H2A. This primary reaction involves the enzyme's interaction with S-adenosyl-L-methionine (SAM) as a methyl donor and the target histone residue as a methyl acceptor.
+
+The annotated features for protein Q6NZB1 include:
+- A DOMAIN spanning positions 46-377, noted as "SAM-dependent MTase PRMT-type" with evidence from PROSITE-ProRule:PRU01015.
+- Multiple BINDING regions where the ligand S-adenosyl-L-methionine is specified (positions 59-60, 68-69, 92-93, 114-115).
+- ACT_SITE regions at positions 157-158 and 166-167.
+- A REGION spanning positions 0-46 marked as "Disordered."
+
+For each candidate feature:
+- The DOMAIN (46-377) is a strong match because it indicates the presence of a PRMT-type methyltransferase domain, which is directly related to the enzyme's function described in the GO term. This domain is likely responsible for the catalytic activity of adding methyl groups to histone residues.
+- The multiple BINDING regions (e.g., 59-60) are relevant because they specify the interaction with SAM, but they do not directly explain the primary reaction mechanism or the enzyme's function as clearly as the DOMAIN.
+- ACT_SITE regions (157-158 and 166-167) are generic and could apply to many enzymes, so they are not strong matches.
+- The DISORDERED REGION (0-46) is unrelated to the primary reaction mechanism.
+
+The highest score for a strong match is given to the DOMAIN (46-377), which directly relates to the enzyme's function as described in the GO term. This feature most plausibly explains why the protein carries the term "histone H2AR3 methyltransferase activity."
+
+FEATURE: DOMAIN 46-377
+REASONING: The DOMAIN annotation (46-377) is a strong match to the GO term's primary reaction mechanism, as it indicates the presence of a PRMT-type methyltransferase domain, which is directly related to the enzyme's function of catalyzing the addition of a methyl group to histone H2A. This feature most plausibly explains why the protein carries the term.
+

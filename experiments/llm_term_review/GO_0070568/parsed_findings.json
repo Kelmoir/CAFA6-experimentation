@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q5XG87",
+      "go_id": "GO:0070568",
+      "feature_type": "BINDING",
+      "start": 359,
+      "end": 360,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP (ligand: ATP) is directly related to the catalytic activity described in the GO term's definition, which involves transferring a guanylyl group to an acceptor. This specific binding site supports the enzyme's function as a guanylyltransferase."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q8NDF8",
+      "go_id": "GO:0070568",
+      "feature_type": "BINDING",
+      "start": 283,
+      "end": 284,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP (a common nucleotide substrate) is associated with catalytic activity, which could plausibly support the guanylyltransferase function. However, it does not directly state the mechanism of guanylyl transfer, making it a plausible but not definitive match."
+    }
+  ],
+  "issues": []
+}

@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P54397",
+      "reason": "none_verdict",
+      "reasoning": "There is no annotated feature that specifically matches the primary reaction of \"juvenile hormone response element binding\" as defined by the GO term."
+    }
+  ]
+}
