@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0090488",
+  "name": "polo box domain specific binding",
+  "def": "Binding to a polo box domain of a protein. The polo box domain is involved in binding substrates of polo kinases.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P78953"
+  ],
+  "assigned_accessions": [
+    "P78953"
+  ]
+}

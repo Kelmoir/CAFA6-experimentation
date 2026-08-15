@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P25297",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P25297 specifically matches the primary reaction mechanism of \"selenite:proton symporter activity\" as defined by the GO term. The phosphate-binding sites are unrelated to proton transport, and no domain/family cross-reference directly identifies this function."
+    },
+    {
+      "accession": "P36035",
+      "reason": "none_verdict",
+      "reasoning": "The disordered region (REGION 0-65) could be involved in dynamic processes such as ion transport, but it does not directly confirm the specific mechanism of selenite proton symporter activity defined by GO:0097079. No other annotated feature provides a clear match to the primary reaction described in the definition."
+    }
+  ]
+}

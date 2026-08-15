@@ -32592,6 +32592,27 @@
    }
   ]
  },
+ "GO:0090448": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q944G5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q944G5 directly supports the defined reaction of glucosinolate:proton symporter activity. The disordered region and domain/family cross-references do not provide evidence for the specific molecular mechanism described in the GO term's definition."
+   },
+   {
+    "accession": "Q9LV10",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION 0-22\" span with the \"Disordered\" qualifier does not strongly match the primary reaction of transferring glucosinolates and protons across a membrane. It is a generic feature that could apply to many proteins, not specifically indicating the function defined by the GO term."
+   }
+  ]
+ },
  "GO:0090471": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -32607,5 +32628,242 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0090488": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PH",
+    "accessions": [
+     "P78953"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0090489": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "O81346",
+     "Q501D8"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0090524": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "FAD-binding FR-type",
+    "accessions": [
+     "P83686",
+     "Q0X0E5",
+     "Q9DCN2"
+    ],
+    "reason": "resolved to ['InterPro:IPR008333', 'InterPro:IPR017927', 'PROSITE:PS51384', 'Pfam:PF00175', 'Pfam:PF00970'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR008333': 44, 'InterPro:IPR017927': 149, 'PROSITE:PS51384': 149, 'Pfam:PF00175': 94, 'Pfam:PF00970': 44})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "FAD",
+    "accessions": [
+     "Q6FUX5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0090704": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "UDP-alpha-D-glucose",
+    "accessions": [
+     "O22822"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0090736": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P34808",
+    "reason": "none_verdict",
+    "reasoning": "There are no annotated features in the protein's section that specifically explain the molecular function of \"MATH domain binding\" as defined by the GO term."
+   },
+   {
+    "accession": "O01761",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0097005": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P61855",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0097008": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q9LSF8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0097030": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q12334",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provided for this protein directly matches the primary reaction or mechanism of the GO term, which is binding to a centromere-specific nucleosome. The \"REGION\" type with coordinates is too generic to be considered as a plausible explanation for the molecular function described in the GO term."
+   }
+  ]
+ },
+ "GO:0097063": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WMI9",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0097077": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Cu cation",
+    "accessions": [
+     "P9WP49"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0097079": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P25297",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P25297 specifically matches the primary reaction mechanism of \"selenite:proton symporter activity\" as defined by the GO term. The phosphate-binding sites are unrelated to proton transport, and no domain/family cross-reference directly identifies this function."
+   },
+   {
+    "accession": "P36035",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region (REGION 0-65) could be involved in dynamic processes such as ion transport, but it does not directly confirm the specific mechanism of selenite proton symporter activity defined by GO:0097079. No other annotated feature provides a clear match to the primary reaction described in the definition."
+   }
+  ]
+ },
+ "GO:0097098": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "DEAH box",
+    "accessions": [
+     "P38036"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

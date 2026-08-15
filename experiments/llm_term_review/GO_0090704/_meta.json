@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0090704",
+  "name": "nicotinate-O-glucosyltransferase activity",
+  "def": "Catalysis of the reaction: nicotinate + UDP-D-glucose = O-D-glucosylnicotinate + UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O22822"
+  ],
+  "assigned_accessions": [
+    "O22822"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P78953",
+      "go_id": "GO:0090488",
+      "feature_type": "DOMAIN",
+      "start": 801,
+      "end": 901,
+      "signal_kind": "text",
+      "signal_value": "PH",
+      "reasoning": "The \"DOMAIN 801-901\" with the \"PH\" note directly relates to the binding of a polo box domain, which is the primary reaction described in the GO term's definition. This feature most plausibly explains why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

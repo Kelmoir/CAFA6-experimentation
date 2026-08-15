@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0090736",
+  "name": "MATH domain binding",
+  "def": "Binding to a meprin and TRAF homology (MATH) domain.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O01761",
+    "P34808"
+  ],
+  "assigned_accessions": [
+    "O01761",
+    "P34808"
+  ]
+}

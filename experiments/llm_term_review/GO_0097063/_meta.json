@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0097063",
+  "name": "cadmium ion sensor activity",
+  "def": "Binding to and responding, e.g. by conformational change, to changes in the cellular level of cadmium (Cd++).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WMI9"
+  ],
+  "assigned_accessions": [
+    "P9WMI9"
+  ]
+}

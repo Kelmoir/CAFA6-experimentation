@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0097030",
+  "name": "CENP-A containing nucleosome binding",
+  "def": "Binding to a centromere-specific nucleosome, a form of nucleosome located only at the centromere, in which the histone H3 is replaced by the variant form CENP-A (sometimes known as CenH3).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q12334"
+  ],
+  "assigned_accessions": [
+    "Q12334"
+  ]
+}

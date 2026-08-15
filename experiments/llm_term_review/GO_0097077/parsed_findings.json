@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P9WP49",
+      "go_id": "GO:0097077",
+      "feature_type": "BINDING",
+      "start": 35,
+      "end": 36,
+      "signal_kind": "ligand",
+      "signal_value": "Cu cation",
+      "reasoning": "The binding of Cu+ to the protein at position 35-36 directly supports the primary reaction of \"copper ion sensor activity,\" which involves sensing changes in copper levels through conformational change. This feature is specific and directly relevant to the function defined by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

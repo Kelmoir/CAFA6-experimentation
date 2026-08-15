@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0097098",
+  "name": "DNA/RNA hybrid annealing activity",
+  "def": "An activity that facilitates the base-pairing of single-stranded RNA to double-stranded DNA resulting in the formation of R-loops.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P38036"
+  ],
+  "assigned_accessions": [
+    "P38036"
+  ]
+}

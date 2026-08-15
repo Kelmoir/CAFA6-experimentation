@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0097079",
+  "name": "selenite:proton symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: selenite(out) + H+(out) = selenite(in) + H+(in).",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P25297",
+    "P36035"
+  ],
+  "assigned_accessions": [
+    "P25297",
+    "P36035"
+  ]
+}

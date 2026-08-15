@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0090524",
+  "name": "cytochrome-b5 reductase activity, acting on NADH",
+  "def": "Catalysis of the reaction: 2 Fe(III)-[cytochrome b5] + NADH = 2 Fe(II)-[cytochrome b5] + NAD+ + H+.",
+  "n_proteins_total": 22,
+  "sampled_accessions": [
+    "P83686",
+    "Q0X0E5",
+    "Q6FUX5",
+    "Q9DCN2"
+  ],
+  "assigned_accessions": [
+    "P83686",
+    "Q0X0E5",
+    "Q6FUX5",
+    "Q9DCN2"
+  ]
+}

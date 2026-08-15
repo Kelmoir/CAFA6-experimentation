@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P38036",
+      "go_id": "GO:0097098",
+      "feature_type": "MOTIF",
+      "start": 451,
+      "end": 455,
+      "signal_kind": "text",
+      "signal_value": "DEAH box",
+      "reasoning": "The DEAH box motif is directly associated with RNA hybridization and loop formation, which matches the primary reaction of DNA/RNA hybrid annealing activity as defined by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

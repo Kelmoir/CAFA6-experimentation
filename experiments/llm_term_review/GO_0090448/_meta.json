@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0090448",
+  "name": "glucosinolate:proton symporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: glucosinolate(out) + H+(out) = glucosinolate(in) + H+(in).",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q944G5",
+    "Q9LV10"
+  ],
+  "assigned_accessions": [
+    "Q944G5",
+    "Q9LV10"
+  ]
+}

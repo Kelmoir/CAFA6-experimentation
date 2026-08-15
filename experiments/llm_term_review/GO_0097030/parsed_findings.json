@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q12334",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provided for this protein directly matches the primary reaction or mechanism of the GO term, which is binding to a centromere-specific nucleosome. The \"REGION\" type with coordinates is too generic to be considered as a plausible explanation for the molecular function described in the GO term."
+    }
+  ]
+}
