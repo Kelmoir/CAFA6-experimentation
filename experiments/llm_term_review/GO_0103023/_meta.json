@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0103023",
+  "name": "ITPase activity",
+  "def": "Catalysis of the reaction: ITP + H2O = IDP + H+ + phosphate.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "P39411",
+    "P55772",
+    "Q9MYU4",
+    "Q9Y5L3"
+  ],
+  "assigned_accessions": [
+    "P39411",
+    "P55772",
+    "Q9MYU4",
+    "Q9Y5L3"
+  ]
+}

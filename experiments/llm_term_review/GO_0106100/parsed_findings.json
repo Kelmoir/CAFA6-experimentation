@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q54TW4",
+      "go_id": "GO:0106100",
+      "feature_type": "MOTIF",
+      "start": 79,
+      "end": 85,
+      "signal_kind": "text",
+      "signal_value": "DDxx(x)D/E motif",
+      "reasoning": "The DDxx(x)D/E motif in MOTIF 79-85 is strongly associated with the catalytic activity of beta-pinacene synthase, directly supporting the GO term's primary reaction of cyclizing GGPP to form beta-pinacene."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

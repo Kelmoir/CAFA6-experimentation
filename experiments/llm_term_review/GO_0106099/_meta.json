@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106099",
+  "name": "2-keto-3-deoxy-L-rhamnonate aldolase activity",
+  "def": "Catalysis of the reaction 2-dehydro-3-deoxy-L-rhamnonate = pyruvate + (S)-lactaldehyde.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P76469"
+  ],
+  "assigned_accessions": [
+    "P76469"
+  ]
+}

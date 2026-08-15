@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0103031",
+  "name": "L-Ala-D/L-Glu epimerase activity",
+  "def": "Catalysis of the reaction:L-alanyl-L-glutamate = L-alanyl-D-glutamate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P51981"
+  ],
+  "assigned_accessions": [
+    "P51981"
+  ]
+}

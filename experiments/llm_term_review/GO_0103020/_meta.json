@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0103020",
+  "name": "1-deoxy-D-xylulose kinase activity",
+  "def": "Catalysis of the reaction: 1-deoxy-D-xylulose + ATP = H+ + 1-deoxy-D-xylulose 5-phosphate + ADP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P09099"
+  ],
+  "assigned_accessions": [
+    "P09099"
+  ]
+}

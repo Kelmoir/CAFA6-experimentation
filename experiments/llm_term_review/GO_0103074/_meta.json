@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0103074",
+  "name": "glucose-6-phosphate 3-dehydrogenase activity",
+  "def": "Catalysis of the reaction: NAD + D-glucopyranose 6-phosphate = NADH + H+ + 3-dehydro-D-glucose 6-phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O07564"
+  ],
+  "assigned_accessions": [
+    "O07564"
+  ]
+}

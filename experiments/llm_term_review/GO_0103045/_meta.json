@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0103045",
+  "name": "L-methionine N-acyltransferase activity",
+  "def": "Catalysis of the reaction: L-methionine + acetyl-CoA = N-acetyl-L-methionine + coenzyme A + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P46854"
+  ],
+  "assigned_accessions": [
+    "P46854"
+  ]
+}

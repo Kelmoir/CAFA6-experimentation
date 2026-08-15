@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106242",
+  "name": "kolavenyl diphosphate synthase activity",
+  "def": "Catalysis of the reaction: all-trans-geranylgeranyl diphosphate = (+)-kolavenyl diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A0A2K9RG07"
+  ],
+  "assigned_accessions": [
+    "A0A2K9RG07"
+  ]
+}

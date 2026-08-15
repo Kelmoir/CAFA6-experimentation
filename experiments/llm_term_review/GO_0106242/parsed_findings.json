@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "A0A2K9RG07",
+      "go_id": "GO:0106242",
+      "feature_type": "MOTIF",
+      "start": 374,
+      "end": 378,
+      "signal_kind": "text",
+      "signal_value": "DXDD motif",
+      "reasoning": "The presence of a DXDD motif in the protein's sequence is most plausibly explained by its role in catalyzing the reaction described by the GO term, which involves the transfer of a geranylgeranyl group. This feature directly supports the primary reaction mechanism of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0103012",
+  "name": "ferredoxin-thioredoxin reductase activity",
+  "def": "Catalysis of the reaction: 2 H+ + 2 a reduced ferredoxin + an oxidized thioredoxin = 2 an oxidized ferredoxin + a reduced thioredoxin, involving a 4Fe-4S cluster and an adjacent active-site disulfide.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SJ89"
+  ],
+  "assigned_accessions": [
+    "Q9SJ89"
+  ]
+}

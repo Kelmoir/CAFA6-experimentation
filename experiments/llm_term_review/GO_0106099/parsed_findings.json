@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "P76469",
+      "go_id": "GO:0106099",
+      "feature_type": "SITE",
+      "start": 87,
+      "end": 88,
+      "signal_kind": "text",
+      "signal_value": "Increases basicity of active site His",
+      "reasoning": "The highest score of 5 suggests that the feature could plausibly support the definition's primary reaction by stabilizing the transition state, but it does not directly describe the catalytic activity itself. Therefore, the match is uncertain."
+    }
+  ],
+  "issues": []
+}

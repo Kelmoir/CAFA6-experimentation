@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106145",
+  "name": "scopoletin 8-hydroxylase activity",
+  "def": "Catalyzes of the reaction: scopoletin + 2-oxoglutarate+O2=fraxetin +succinate+ CO2).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LE86"
+  ],
+  "assigned_accessions": [
+    "Q9LE86"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P09099",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the chemistry of receiving a phosphoryl group from ATP as defined by the GO term."
+    }
+  ]
+}

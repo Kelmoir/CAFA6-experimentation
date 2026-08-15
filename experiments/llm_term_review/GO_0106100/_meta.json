@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106100",
+  "name": "beta-pinacene synthase activity",
+  "def": "Catalysis of the cyclization of geranylgeranyl pyrophosphate (GGPP) to yield the monocyclic diterpene beta-pinacene.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q54TW4"
+  ],
+  "assigned_accessions": [
+    "Q54TW4"
+  ]
+}

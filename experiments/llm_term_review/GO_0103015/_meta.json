@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0103015",
+  "name": "4-amino-4-deoxy-L-arabinose transferase activity",
+  "def": "Catalysis of the reaction: (Kdo)2-lipid A + 2 4-amino-4-deoxy-alpha-L-arabinopyranosyl di-trans,poly-cis-undecaprenyl phosphate = (beta-L-Ara4N)2-(KDO)2-lipid A + 2 ditrans,polycis-undecaprenyl phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P76473"
+  ],
+  "assigned_accessions": [
+    "P76473"
+  ]
+}

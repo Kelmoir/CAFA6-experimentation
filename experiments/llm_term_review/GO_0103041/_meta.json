@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0103041",
+  "name": "thiosulfate-thioredoxin sulfurtransferase activity",
+  "def": "Catalysis of the reaction: thiosulfate + [thioredoxin]-dithiol = sulfite + 2 H+ + [thioredoxin]-disulfide + hydrogen sulfide.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0A6V5"
+  ],
+  "assigned_accessions": [
+    "P0A6V5"
+  ]
+}

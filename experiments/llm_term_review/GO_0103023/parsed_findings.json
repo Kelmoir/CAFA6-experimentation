@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9Y5L3",
+      "go_id": "GO:0103023",
+      "feature_type": "ACT_SITE",
+      "start": 164,
+      "end": 165,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The \"ACT_SITE\" feature (164-165) directly corresponds to the proton acceptor role in the ITPase activity reaction, which is a key part of the GO term's definition. This provides a more specific and plausible explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P39411",
+      "go_id": "GO:0103023",
+      "feature_type": "BINDING",
+      "start": 37,
+      "end": 38,
+      "signal_kind": "ligand",
+      "signal_value": "Mg(2+)",
+      "reasoning": "The highest score (5) is shared by two features, and neither explicitly indicates the specific reaction mechanism of catalyzing the ITP hydrolysis reaction. Therefore, it is not possible to determine with certainty which annotated feature most plausibly explains why this protein carries the GO term."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P55772",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q9MYU4",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

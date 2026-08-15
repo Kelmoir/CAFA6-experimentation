@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P0A6V5",
+      "go_id": "GO:0103041",
+      "feature_type": "DOMAIN",
+      "start": 16,
+      "end": 105,
+      "signal_kind": "text",
+      "signal_value": "Rhodanese",
+      "reasoning": "The DOMAIN annotation (16-105) is most plausibly linked to the GO term's primary reaction, as it refers to a known class of enzymes (Rhodanese) that are typically associated with sulfur transfer activities."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

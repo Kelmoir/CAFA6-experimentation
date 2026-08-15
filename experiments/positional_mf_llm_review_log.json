@@ -35524,5 +35524,294 @@
     "reasoning": "No annotated feature in the protein's Annotated features section provides a specific explanation for the catalytic activity described in the GO term. The presence of multiple binding sites for S-adenosyl-L-methionine does not confirm that the protein is performing a methyl transfer reaction, which is the primary mechanism defined by the GO term."
    }
   ]
+ },
+ "GO:0103002": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O88833",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features only describe heme-binding sites, which are characteristic of cytochrome P450 enzymes but do not directly account for the specific reaction mechanism defined by the GO term. No positional feature provides a strong match to the primary reaction described in the GO definition."
+   },
+   {
+    "accession": "A2A974",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the enzymatic activity of 16-hydroxypalmitate dehydrogenase as defined by GO:0103002."
+   },
+   {
+    "accession": "Q91WL5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q91WL5 specifically matches the chemistry of the reaction defined by GO:0103002."
+   },
+   {
+    "accession": "P08516",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P08516 directly matches the chemistry of the reaction defined by GO:0103002, which is about catalyzing the conversion of 16-hydroxypalmitate to 16-oxo-palmitate. The binding sites for heme are relevant to cytochrome P450 function but do not specifically explain why this protein carries the term."
+   }
+  ]
+ },
+ "GO:0103012": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "[4Fe-4S] cluster",
+    "accessions": [
+     "Q9SJ89"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0103015": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P76473",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0103020": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P09099",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the chemistry of receiving a phosphoryl group from ATP as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0103023": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "Q9Y5L3"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P39411",
+    "go_id": "GO:0103023",
+    "feature_type": "BINDING",
+    "start": 37,
+    "end": 38,
+    "signal_kind": "ligand",
+    "signal_value": "Mg(2+)",
+    "reasoning": "The highest score (5) is shared by two features, and neither explicitly indicates the specific reaction mechanism of catalyzing the ITP hydrolysis reaction. Therefore, it is not possible to determine with certainty which annotated feature most plausibly explains why this protein carries the GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P55772",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q9MYU4",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0103031": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor; specific for (R)-substrate epimerization",
+    "accessions": [
+     "P51981"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0103041": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Rhodanese",
+    "accessions": [
+     "P0A6V5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0103045": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P46854",
+    "reason": "none_verdict",
+    "reasoning": "The domain classification \"N-acetyltransferase\" is relevant to the function of L-methionine N-acyltransferase activity, but it does not directly explain why this protein carries the term. No positional feature has been confirmed to provide a strong match to the primary reaction described in the GO term."
+   }
+  ]
+ },
+ "GO:0103074": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O07564",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0106063": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q54U89",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for Q54U89 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The InterPro domain IPR017978 (GPCR_3_C) is directly associated with G protein-coupled receptors, which are known to interact with ligands and activate G-proteins. This supports the primary reaction described in the GO term's definition, making it a strong match for the molecular function of \"G protein-coupled folate receptor activity.\""
+   }
+  ]
+ },
+ "GO:0106099": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P76469",
+    "go_id": "GO:0106099",
+    "feature_type": "SITE",
+    "start": 87,
+    "end": 88,
+    "signal_kind": "text",
+    "signal_value": "Increases basicity of active site His",
+    "reasoning": "The highest score of 5 suggests that the feature could plausibly support the definition's primary reaction by stabilizing the transition state, but it does not directly describe the catalytic activity itself. Therefore, the match is uncertain."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0106100": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "DDxx(x)D/E motif",
+    "accessions": [
+     "Q54TW4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0106145": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "2-oxoglutarate",
+    "accessions": [
+     "Q9LE86"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0106242": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "DXDD motif",
+    "accessions": [
+     "A0A2K9RG07"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }
