@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0160039",
+  "name": "serotonin-gated chloride channel activity",
+  "def": "Enables the transmembrane transfer of a chloride ion by a channel that opens when the biogenic amine serotonin has been bound by the channel complex or one of its constituent parts. Serotonin (5-hydroxytryptamine) is a neurotransmitter and hormone found in vertebrates and invertebrates.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9GQ00"
+  ],
+  "assigned_accessions": [
+    "Q9GQ00"
+  ]
+}

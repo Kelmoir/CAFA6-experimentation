@@ -1,0 +1,27 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q80WM4",
+      "go_id": "GO:0150043",
+      "feature_type": "DOMAIN",
+      "start": 163,
+      "end": 266,
+      "signal_kind": "text",
+      "signal_value": "Link 1",
+      "reasoning": "The \"Link 1\" domain (DOMAIN 163-266) directly supports the structural role implied by the GO term's definition, but since there are two domains with similar scores, the match is not definitive."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P55268",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q61292",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

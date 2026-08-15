@@ -40992,5 +40992,241 @@
     "reasoning": "The annotated features for E9Q3T6 do not provide any evidence that directly explains why the protein carries the molecular function of methyltransferase regulator activity. No feature explicitly indicates binding to or modulation of a methyltransferase, and all other features are either generic or unrelated to the primary reaction described in the GO term's definition."
    }
   ]
+ },
+ "GO:0141223": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P50867",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism of cysteine synthase activity as defined by the GO term."
+   },
+   {
+    "accession": "O59701",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of catalyzing the hydrogen sulfide + O-succinyl-L-serine \u2192 L-cysteine + succinate, as all features only echo a word from a secondary clause and do not provide positional evidence for this specific chemistry."
+   }
+  ]
+ },
+ "GO:0150043": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q80WM4",
+    "go_id": "GO:0150043",
+    "feature_type": "DOMAIN",
+    "start": 163,
+    "end": 266,
+    "signal_kind": "text",
+    "signal_value": "Link 1",
+    "reasoning": "The \"Link 1\" domain (DOMAIN 163-266) directly supports the structural role implied by the GO term's definition, but since there are two domains with similar scores, the match is not definitive."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P55268",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q61292",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0150047": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "4-aminobutanoate",
+    "accessions": [
+     "Q9WV18"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P50571",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains why this protein carries the GO term, as the primary reaction (regulation of presynaptic membrane potential) is not clearly accounted for by any of the ligand binding features."
+   },
+   {
+    "accession": "Q6WVG3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q6WVG3 provides a clear and specific explanation for the primary reaction of G protein-coupled neurotransmitter receptor activity as defined by GO:0150047."
+   },
+   {
+    "accession": "Q9UBS5",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0160002": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "BRCT 1",
+    "accessions": [
+     "Q60596"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a glycoprotein",
+    "accessions": [
+     "Q9QZQ8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P18887",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q9D842",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0160011": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "A0A0J9UVG7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160013": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Deacetylase sirtuin-type",
+    "accessions": [
+     "P75960"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160039": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "serotonin",
+    "accessions": [
+     "Q9GQ00"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160047": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9QZ08",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves ATP phosphoryl transfer to muramyl dipeptide. The presence of ATP binding is consistent with the enzyme's function, but no specific domain or binding site for the substrate is provided in the Annotated features section."
+   },
+   {
+    "accession": "Q9UJ70",
+    "reason": "none_verdict",
+    "reasoning": "The highest score for any candidate binding site is generic and does not directly describe the phosphoryl transfer mechanism of the GO term. No annotated feature provides a strong match to the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0160081": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8N695",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the defined chemistry or mechanism of iodide channel activity, and the disordered region does not provide a strong explanation for this function."
+   }
+  ]
+ },
+ "GO:0160090": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9UBP6",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9UBP6 indicate binding sites for substrates involved in a reaction, but none directly explain the specific chemical mechanism described in the GO term's definition."
+   }
+  ]
  }
 }

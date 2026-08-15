@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8N695",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the defined chemistry or mechanism of iodide channel activity, and the disordered region does not provide a strong explanation for this function."
+    }
+  ]
+}

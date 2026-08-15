@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0150043",
+  "name": "structural constituent of synapse-associated extracellular matrix",
+  "def": "The action of a molecule that contributes to the structural integrity of the extracellular matrix of the perisynaptic space (the extracellular space adjacent to the synapse) and the synaptic cleft.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P55268",
+    "Q61292",
+    "Q80WM4"
+  ],
+  "assigned_accessions": [
+    "P55268",
+    "Q61292",
+    "Q80WM4"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0141223",
+  "name": "cysteine synthase activity, acting on O-succinyl-L-serine",
+  "def": "Catalysis of the reaction: hydrogen sulfide + O-succinyl-L-serine = L-cysteine + succinate.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O59701",
+    "P50867"
+  ],
+  "assigned_accessions": [
+    "O59701",
+    "P50867"
+  ]
+}

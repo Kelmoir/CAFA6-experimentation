@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0160081",
+  "name": "iodide channel activity",
+  "def": "Enables the energy-independent facilitated diffusion of iodide through a transmembrane aqueous pore or channel.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8N695"
+  ],
+  "assigned_accessions": [
+    "Q8N695"
+  ]
+}

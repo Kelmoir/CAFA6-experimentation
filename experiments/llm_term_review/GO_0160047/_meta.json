@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0160047",
+  "name": "muramyl dipeptide kinase activity",
+  "def": "Catalysis of the reaction: ATP + muramyl dipeptide = ADP + H+ + 6-O-phospho-muramyl dipeptide.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q9QZ08",
+    "Q9UJ70"
+  ],
+  "assigned_accessions": [
+    "Q9QZ08",
+    "Q9UJ70"
+  ]
+}

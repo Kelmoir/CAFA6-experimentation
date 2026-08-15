@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q60596",
+      "go_id": "GO:0160002",
+      "feature_type": "DOMAIN",
+      "start": 314,
+      "end": 403,
+      "signal_kind": "text",
+      "signal_value": "BRCT 1",
+      "reasoning": "The DOMAIN 314-403 is explicitly associated with BRCT activity, which is central to ADP-ribosylation-dependent protein binding as defined by the GO term. This feature directly matches the primary reaction of the GO term and provides a strong structural basis for its function."
+    },
+    {
+      "accession": "Q9QZQ8",
+      "go_id": "GO:0160002",
+      "feature_type": "BINDING",
+      "start": 202,
+      "end": 203,
+      "signal_kind": "ligand",
+      "signal_value": "a glycoprotein",
+      "reasoning": "The binding site associated with the ADP-ribosylation group and a glycoprotein directly matches the ligand and mechanism described in the GO term's primary reaction, making it the most plausible explanation for why this protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P18887",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q9D842",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0160090",
+  "name": "internal mRNA (guanine-N7-)-methyltransferase activity",
+  "def": "Catalysis of the reaction: a guanosine in mRNA + S-adenosyl-L-methionine = an N(7)-methylguanosine in mRNA + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9UBP6"
+  ],
+  "assigned_accessions": [
+    "Q9UBP6"
+  ]
+}

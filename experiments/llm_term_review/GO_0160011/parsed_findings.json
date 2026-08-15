@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "A0A0J9UVG7",
+      "go_id": "GO:0160011",
+      "feature_type": "BINDING",
+      "start": 52,
+      "end": 72,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD+ to the specified region directly supports the catalytic activity defined by the GO term, which involves the reaction with NAD+. This is a strong match to the primary reaction described in the definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0150047",
+  "name": "G protein-coupled neurotransmitter receptor activity involved in regulation of presynaptic membrane potential",
+  "def": "G protein-coupled neurotransmitter receptor activity, occurring in the presynaptic membrane, involved in regulation of presynaptic membrane potential.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "P50571",
+    "Q6WVG3",
+    "Q9UBS5",
+    "Q9WV18"
+  ],
+  "assigned_accessions": [
+    "P50571",
+    "Q6WVG3",
+    "Q9UBS5",
+    "Q9WV18"
+  ]
+}

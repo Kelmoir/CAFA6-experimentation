@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P50867",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction mechanism of cysteine synthase activity as defined by the GO term."
+    },
+    {
+      "accession": "O59701",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of catalyzing the hydrogen sulfide + O-succinyl-L-serine \u2192 L-cysteine + succinate, as all features only echo a word from a secondary clause and do not provide positional evidence for this specific chemistry."
+    }
+  ]
+}

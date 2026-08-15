@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0160002",
+  "name": "ADP-D-ribose modification-dependent protein binding",
+  "def": "Binding to a protein upon ADP-ribosylation of the target protein.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "P18887",
+    "Q60596",
+    "Q9D842",
+    "Q9QZQ8"
+  ],
+  "assigned_accessions": [
+    "P18887",
+    "Q60596",
+    "Q9D842",
+    "Q9QZQ8"
+  ]
+}

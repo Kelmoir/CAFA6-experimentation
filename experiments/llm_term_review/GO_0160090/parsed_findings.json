@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9UBP6",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q9UBP6 indicate binding sites for substrates involved in a reaction, but none directly explain the specific chemical mechanism described in the GO term's definition."
+    }
+  ]
+}

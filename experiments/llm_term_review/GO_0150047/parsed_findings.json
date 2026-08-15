@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9WV18",
+      "go_id": "GO:0150047",
+      "feature_type": "BINDING",
+      "start": 245,
+      "end": 246,
+      "signal_kind": "ligand",
+      "signal_value": "4-aminobutanoate",
+      "reasoning": "The \"BINDING\" feature with coordinates 245-246 directly relates to the interaction between the receptor and its ligand, which is a core aspect of G protein-coupled neurotransmitter receptor activity. This binding site is explicitly noted in the evidence for the term and supports the primary reaction described in the GO definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P50571",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains why this protein carries the GO term, as the primary reaction (regulation of presynaptic membrane potential) is not clearly accounted for by any of the ligand binding features."
+    },
+    {
+      "accession": "Q6WVG3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q6WVG3 provides a clear and specific explanation for the primary reaction of G protein-coupled neurotransmitter receptor activity as defined by GO:0150047."
+    },
+    {
+      "accession": "Q9UBS5",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}
