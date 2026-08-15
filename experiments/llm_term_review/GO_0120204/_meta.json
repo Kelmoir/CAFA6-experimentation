@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0120204",
+  "name": "methylcytosine to 5-glyceryl-methylcytosine dioxygenase activity",
+  "def": "Catalysis of the reaction: methylcytosine + L-ascorbate + O2 = 5-glyceryl-methylcytosine + glyoxylate + CO2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A0A2K3D5Z7"
+  ],
+  "assigned_accessions": [
+    "A0A2K3D5Z7"
+  ]
+}

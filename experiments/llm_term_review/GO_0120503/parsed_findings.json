@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q27593",
+      "go_id": "GO:0120503",
+      "feature_type": "BINDING",
+      "start": 450,
+      "end": 451,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The BINDING feature at position 450-451 with heme as a ligand directly supports the chemical mechanism described in the GO term, which involves oxygen-dependent hydroxylation of medium-chain fatty acids. This is the most specific and relevant evidence for the defined molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

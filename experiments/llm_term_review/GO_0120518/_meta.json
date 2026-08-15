@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0120518",
+  "name": "protein N-terminal-methionine acetyltransferase activity",
+  "def": "Catalysis of the reaction: acetyl-CoA + N-terminal L-methionyl-[protein] = CoA + H+ + N-terminal N(alpha)-acetyl-L-methionyl-[protein].",
+  "n_proteins_total": 17,
+  "sampled_accessions": [
+    "I6YG32",
+    "O74311",
+    "Q6DBY2",
+    "Q7X9V3"
+  ],
+  "assigned_accessions": [
+    "I6YG32",
+    "O74311",
+    "Q6DBY2",
+    "Q7X9V3"
+  ]
+}

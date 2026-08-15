@@ -36925,5 +36925,236 @@
     "reasoning": "The only annotated feature for Q8BS45 is a disordered region, which does not provide specific evidence of binding to IFT B. No other features are mentioned in the Annotated features section that directly support the molecular function defined by GO:0120170."
    }
   ]
+ },
+ "GO:0120204": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0A2K3D5Z7",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0120233": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AAB4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data specifically matches the primary reaction of the GO term \"prenyl-FMNH2 binding,\" which involves binding to prenyl-FMNH2, a cofactor for decarboxylase enzymes. The closest match is the \"BINDING\" regions with ligands of \"prenylated FMN,\" but these do not directly reference the specific molecule described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0120274": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "C-type lectin",
+    "accessions": [
+     "Q6UXB4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8BNX1",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0120283": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9JIB6",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9JIB6 do not provide any evidence that directly explains why it carries the GO term \"protein serine/threonine kinase binding.\" All features describe ligand binding rather than the mechanism of receiving phosphoryl transfers from such enzymes."
+   },
+   {
+    "accession": "G3V928",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P12023",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q6PER3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section explicitly indicates binding to a serine/threonine kinase, and while some regions suggest interactions with other proteins, none directly support the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0120296": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P08587",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P08587 matches the primary reaction of the GO term, which involves the transfer of a phosphoryl group from dopamine to L-glutamine."
+   }
+  ]
+ },
+ "GO:0120503": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "Q27593"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0120505": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "Q8INR6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0120506": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "Q8INR6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0120512": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "Q9V675"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "C0SPF7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in C0SPF7's list directly matches the primary reaction mechanism of GO:0120512, which involves catalyzing a specific epoxidation reaction. The only relevant feature is a binding site for heme, but it does not explain the enzymatic activity itself. Thus, there is no single annotated feature that plausibly accounts for this GO term."
+   }
+  ]
+ },
+ "GO:0120518": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR051556"
+    ],
+    "accessions": [
+     "I6YG32",
+     "O74311",
+     "Q6DBY2",
+     "Q7X9V3"
+    ],
+    "note": "resolved from DOMAIN note 'N-acetyltransferase'"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0120526": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q949U1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9FUY7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }

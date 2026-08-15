@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0120296",
+  "name": "peptide dopaminyltransferase activity",
+  "def": "Catalysis of the reaction: dopamine + L-glutaminyl-[protein] = 5-dopaminyl-L-glutamyl-[protein] + NH4(+).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P08587"
+  ],
+  "assigned_accessions": [
+    "P08587"
+  ]
+}

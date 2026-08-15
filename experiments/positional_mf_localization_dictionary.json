@@ -31091,6 +31091,15 @@
    "charge relay system"
   ]
  },
+ "GO:0120518": {
+  "name": "protein N-terminal-methionine acetyltransferase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR051556"
+  ],
+  "text_patterns": []
+ },
  "GO:0120520": {
   "name": "free fatty acid 2-hydroxylase activity",
   "ligands": [],

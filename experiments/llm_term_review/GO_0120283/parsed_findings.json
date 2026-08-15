@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9JIB6",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q9JIB6 do not provide any evidence that directly explains why it carries the GO term \"protein serine/threonine kinase binding.\" All features describe ligand binding rather than the mechanism of receiving phosphoryl transfers from such enzymes."
+    },
+    {
+      "accession": "G3V928",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P12023",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q6PER3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section explicitly indicates binding to a serine/threonine kinase, and while some regions suggest interactions with other proteins, none directly support the primary reaction defined by the GO term."
+    }
+  ]
+}

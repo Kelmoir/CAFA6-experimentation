@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "Q6DBY2",
+      "go_id": "GO:0120518",
+      "feature_type": "DOMAIN",
+      "start": 4,
+      "end": 154,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The domain annotation (4-154) with the note \"N-acetyltransferase\" directly matches the primary reaction of the GO term, which involves acetyl-CoA transfer to an N-terminal methionine residue. This provides a strong and specific structural basis for the function defined by the GO term."
+    },
+    {
+      "accession": "O74311",
+      "go_id": "GO:0120518",
+      "feature_type": "DOMAIN",
+      "start": 1,
+      "end": 150,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The DOMAIN 1-150 feature explicitly states \"N-acetyltransferase,\" which directly matches the primary reaction of acetyl-CoA transferring an acetyl group to an N-terminal methionine residue, making it the most plausible explanation for why this protein carries the GO term."
+    },
+    {
+      "accession": "Q7X9V3",
+      "go_id": "GO:0120518",
+      "feature_type": "DOMAIN",
+      "start": 106,
+      "end": 258,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The DOMAIN feature directly corresponds to the enzyme's function as described by the GO term, providing a clear and specific explanation for why the protein carries this term."
+    },
+    {
+      "accession": "I6YG32",
+      "go_id": "GO:0120518",
+      "feature_type": "DOMAIN",
+      "start": 7,
+      "end": 155,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The DOMAIN feature (7-155) directly matches the primary reaction of the GO term, indicating that this protein carries an acetyltransferase domain capable of catalyzing the described acetyl transfer activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

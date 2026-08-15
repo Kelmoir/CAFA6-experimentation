@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8INR6",
+      "go_id": "GO:0120506",
+      "feature_type": "BINDING",
+      "start": 141,
+      "end": 145,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding site for S-adenosyl-L-methionine directly supports the primary reaction of histone H3K79 dimethyltransferase activity, making it a strong match."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0120512",
+  "name": "farnesoate epoxidase activity",
+  "def": "Catalysis of the reaction: (2E,6E)-farnesoate + O2 + reduced [NADPH--hemoprotein reductase] = H+ + H2O + juvenile hormone III carboxylate + oxidized [NADPH--hemoprotein reductase].",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "C0SPF7",
+    "Q9V675"
+  ],
+  "assigned_accessions": [
+    "C0SPF7",
+    "Q9V675"
+  ]
+}

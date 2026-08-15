@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0120233",
+  "name": "prenyl-FMNH2 binding",
+  "def": "Binding to prenyl-FMNH2, a flavin mononucleotide obtained by prenylation of the N-10 position of FMNH2 followed by cyclisation. An essential cofactor for the decarboxylase enzymes UbiD and Fdc1.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AAB4"
+  ],
+  "assigned_accessions": [
+    "P0AAB4"
+  ]
+}

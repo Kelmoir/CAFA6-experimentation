@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0120505",
+  "name": "histone H3K79 monomethyltransferase activity",
+  "def": "Catalysis of the reaction: L-lysyl79-[histone H3] + S-adenosyl-L-methionine = H+ + N6-methyl-L-lysyl79-[histone H3] + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8INR6"
+  ],
+  "assigned_accessions": [
+    "Q8INR6"
+  ]
+}

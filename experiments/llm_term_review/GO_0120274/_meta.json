@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0120274",
+  "name": "virus coreceptor activity",
+  "def": "Combining with a virus component, and in cooperation with a nearby primary receptor, initiating a change in cell activity.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q6UXB4",
+    "Q8BNX1"
+  ],
+  "assigned_accessions": [
+    "Q6UXB4",
+    "Q8BNX1"
+  ]
+}

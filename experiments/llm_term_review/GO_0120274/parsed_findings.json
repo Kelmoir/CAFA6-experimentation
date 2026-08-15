@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "Q6UXB4",
+      "go_id": "GO:0120274",
+      "feature_type": "DOMAIN",
+      "start": 171,
+      "end": 287,
+      "signal_kind": "text",
+      "signal_value": "C-type lectin",
+      "reasoning": "The DOMAIN feature (171-287) directly corresponds to the C-type lectin domain, which is known for its role in recognizing and binding to viral components, aligning with the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8BNX1",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

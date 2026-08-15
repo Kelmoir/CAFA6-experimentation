@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0120503",
+  "name": "medium-chain fatty acid omega-1 hydroxylase activity",
+  "def": "Catalysis of the reaction: an (omega-1)-ethyl medium-chain fatty acid + O2 + reduced [NADPH-hemoprotein reductase] = an (omega-1)-hydroxy-medium-chain fatty acid + H+ + H2O + oxidized [NADPH-hemoprotein reductase. A medium-chain fatty acid has an aliphatic tail containing 6 to 12 carbons.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q27593"
+  ],
+  "assigned_accessions": [
+    "Q27593"
+  ]
+}

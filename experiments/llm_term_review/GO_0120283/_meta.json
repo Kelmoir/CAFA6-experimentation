@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0120283",
+  "name": "protein serine/threonine kinase binding",
+  "def": "Binding to a protein serine/threonine kinase.",
+  "n_proteins_total": 103,
+  "sampled_accessions": [
+    "G3V928",
+    "P12023",
+    "Q6PER3",
+    "Q9JIB6"
+  ],
+  "assigned_accessions": [
+    "G3V928",
+    "P12023",
+    "Q6PER3",
+    "Q9JIB6"
+  ]
+}

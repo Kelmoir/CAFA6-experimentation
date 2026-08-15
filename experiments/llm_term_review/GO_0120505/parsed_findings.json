@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8INR6",
+      "go_id": "GO:0120505",
+      "feature_type": "BINDING",
+      "start": 141,
+      "end": 145,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding sites for S-adenosyl-L-methionine directly support the primary reaction of the GO term, which involves catalyzing the methyl transfer from this molecule to histone H3. This is a strong match to the defined chemistry of the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

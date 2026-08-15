@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P08587",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P08587 matches the primary reaction of the GO term, which involves the transfer of a phosphoryl group from dopamine to L-glutamine."
+    }
+  ]
+}
