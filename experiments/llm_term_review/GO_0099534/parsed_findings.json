@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P47728",
+      "go_id": "GO:0099534",
+      "feature_type": "DOMAIN",
+      "start": 15,
+      "end": 51,
+      "signal_kind": "text",
+      "signal_value": "EF-hand 1",
+      "reasoning": "The DOMAIN 15-51 feature, labeled as EF-hand 1, directly corresponds to the primary reaction described in the GO term's definition, which involves binding calcium ions and modulating their concentration. This structural domain is a known calcium-binding element and is likely responsible for the function associated with the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P05937",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear and specific explanation for the primary reaction described in GO:0099534."
+    },
+    {
+      "accession": "P22676",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q08331",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

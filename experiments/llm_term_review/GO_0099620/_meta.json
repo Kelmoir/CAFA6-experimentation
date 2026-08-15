@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0099620",
+  "name": "UDP-4-amino-4-deoxy-L-arabinose aminotransferase",
+  "def": "Catalysis of the reaction: UDP-4-amino-4-deoxy-beta-L-arabinopyranose + 2-oxoglutarate = UDP-beta-L-threo-pentapyranos-4-ulose + L-glutamate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P77690"
+  ],
+  "assigned_accessions": [
+    "P77690"
+  ]
+}

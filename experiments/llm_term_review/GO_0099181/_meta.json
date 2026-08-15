@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0099181",
+  "name": "structural constituent of presynapse",
+  "def": "The action of a molecule that contributes to the structural integrity of a presynapse.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O75334",
+    "P34926",
+    "Q8BSS9",
+    "Q9QYR6"
+  ],
+  "assigned_accessions": [
+    "O75334",
+    "P34926",
+    "Q8BSS9",
+    "Q9QYR6"
+  ]
+}

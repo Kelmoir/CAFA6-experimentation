@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O75334",
+      "go_id": "GO:0099181",
+      "feature_type": "DOMAIN",
+      "start": 897,
+      "end": 964,
+      "signal_kind": "text",
+      "signal_value": "SAM 1",
+      "reasoning": "The highest-scoring feature (DOMAIN 897-964) is part of the SAM family and could plausibly be involved in maintaining the structural integrity of presynaptic terminals, aligning with the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P34926",
+      "reason": "none_verdict",
+      "reasoning": "The defined function of the GO term \"structural constituent of presynapse\" requires a specific domain or structural element that contributes to presynaptic structure, but no such feature is present in the annotated features for P34926. All regions are marked as disordered and do not provide any evidence for the primary reaction described in the definition."
+    },
+    {
+      "accession": "Q9QYR6",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear and direct explanation for why the protein carries the GO term \"structural constituent of presynapse.\""
+    },
+    {
+      "accession": "Q8BSS9",
+      "reason": "none_verdict",
+      "reasoning": "There is no annotated feature in the protein's data that directly explains why it contributes to the structural integrity of a presynapse."
+    }
+  ]
+}

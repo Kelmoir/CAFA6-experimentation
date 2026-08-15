@@ -1,0 +1,15 @@
+## P05937 GO:0099567
+verdict: LIKELY
+feature: DOMAIN 10-46
+reasoning: The DOMAIN 10-46 with note: EF-hand 1 is a direct structural feature that supports the function of calcium ion binding involved in regulation of postsynaptic cytosolic calcium ion concentration, as it is an EF-hand domain known for calcium binding.
+---
+## P07171 GO:0099567
+verdict: LIKELY
+feature: DOMAIN 10-46
+reasoning: The domain 10-46 with EF-hand 1 is a known calcium-binding motif and directly corresponds to the primary reaction of the GO term, which involves calcium ion binding to regulate postsynaptic cytosolic calcium concentrations.
+---
+## P12658 GO:0099567
+verdict: LIKELY
+feature: DOMAIN 10-46
+reasoning: The highest score of 10 corresponds to the DOMAIN 10-46 (note: EF-hand 1), which is specifically associated with calcium-binding activity and directly matches the primary reaction described in the GO term's definition.
+---

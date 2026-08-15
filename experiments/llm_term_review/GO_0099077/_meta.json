@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0099077",
+  "name": "histone-dependent DNA binding",
+  "def": "DNA-binding activity that is dependent on binding to a histone.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P10636"
+  ],
+  "assigned_accessions": [
+    "P10636"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "resolved": [
+    {
+      "accession": "Q00534",
+      "go_id": "GO:0098770",
+      "feature_type": "BINDING",
+      "start": 18,
+      "end": 27,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site at 18-27 interacts with ATP, which could be part of the mechanism by which the protein binds to the FBXO family members, making it the most plausible explanation for the defined function."
+    },
+    {
+      "accession": "Q13490",
+      "go_id": "GO:0098770",
+      "feature_type": "BINDING",
+      "start": 305,
+      "end": 306,
+      "signal_kind": "ligand",
+      "signal_value": "Zn(2+)",
+      "reasoning": "The \"BINDING\" feature at position 305-306 with ligand Zn(2+) directly supports the defined function of binding to a member of the FBXO family, making it the most plausible explanation for why this protein carries the GO term."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "G5ECN9",
+      "go_id": "GO:0098770",
+      "feature_type": "REGION",
+      "start": 500,
+      "end": 652,
+      "signal_kind": "text",
+      "signal_value": "Required for ubiquitination-mediated degradation",
+      "reasoning": "The highest score (3) is for the REGION feature, which is associated with ubiquitination-mediated degradation \u2014 a downstream consequence of the protein's function but not the primary reaction defined by the GO term. While this provides some contextual evidence that the protein might be involved in interactions with the FBXO family, it does not directly explain why the protein carries the term \"FBX"
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q64261",
+      "reason": "none_verdict",
+      "reasoning": "The binding site with ATP ligand is relevant to the function of FBXO proteins but does not specifically explain why the protein carries the GO term \"FBXO family protein binding,\" as it lacks direct evidence about the interaction with a member of the FBXO family."
+    }
+  ]
+}

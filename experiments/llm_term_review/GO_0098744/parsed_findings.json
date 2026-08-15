@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q09711",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for protein Q09711 do not provide any evidence that directly explains the molecular function defined by GO:0098744, which involves binding to and increasing the activity of 1-phosphatidylinositol 4-kinase."
+    },
+    {
+      "accession": "Q06389",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly explain why the protein carries the molecular function of \"1-phosphatidylinositol 4-kinase activator activity\" as defined by the GO term. All features are Ca\u00b2\u207a binding sites, but none provide evidence for the enzyme activation mechanism described in the definition."
+    }
+  ]
+}

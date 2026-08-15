@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0098744",
+  "name": "1-phosphatidylinositol 4-kinase activator activity",
+  "def": "Binds to and increases the activity of 1-phosphatidylinositol 4-kinase.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q06389",
+    "Q09711"
+  ],
+  "assigned_accessions": [
+    "Q06389",
+    "Q09711"
+  ]
+}

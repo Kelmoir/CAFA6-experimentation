@@ -33294,6 +33294,71 @@
   ],
   "issues": []
  },
+ "GO:0098744": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q09711",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein Q09711 do not provide any evidence that directly explains the molecular function defined by GO:0098744, which involves binding to and increasing the activity of 1-phosphatidylinositol 4-kinase."
+   },
+   {
+    "accession": "Q06389",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly explain why the protein carries the molecular function of \"1-phosphatidylinositol 4-kinase activator activity\" as defined by the GO term. All features are Ca\u00b2\u207a binding sites, but none provide evidence for the enzyme activation mechanism described in the definition."
+   }
+  ]
+ },
+ "GO:0098770": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q00534"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Zn(2+)",
+    "accessions": [
+     "Q13490"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "G5ECN9",
+    "go_id": "GO:0098770",
+    "feature_type": "REGION",
+    "start": 500,
+    "end": 652,
+    "signal_kind": "text",
+    "signal_value": "Required for ubiquitination-mediated degradation",
+    "reasoning": "The highest score (3) is for the REGION feature, which is associated with ubiquitination-mediated degradation \u2014 a downstream consequence of the protein's function but not the primary reaction defined by the GO term. While this provides some contextual evidence that the protein might be involved in interactions with the FBXO family, it does not directly explain why the protein carries the term \"FBX"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q64261",
+    "reason": "none_verdict",
+    "reasoning": "The binding site with ATP ligand is relevant to the function of FBXO proteins but does not specifically explain why the protein carries the GO term \"FBXO family protein binding,\" as it lacks direct evidence about the interaction with a member of the FBXO family."
+   }
+  ]
+ },
  "GO:0098848": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -33305,6 +33370,146 @@
   "issues": [
    {
     "accession": "P16688",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0099077": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P10636",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a specific explanation for why this protein carries the GO term \"histone-dependent DNA binding.\" All features are generic and do not directly relate to the primary reaction or mechanism described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0099181": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SAM 1",
+    "accessions": [
+     "O75334"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P34926",
+    "reason": "none_verdict",
+    "reasoning": "The defined function of the GO term \"structural constituent of presynapse\" requires a specific domain or structural element that contributes to presynaptic structure, but no such feature is present in the annotated features for P34926. All regions are marked as disordered and do not provide any evidence for the primary reaction described in the definition."
+   },
+   {
+    "accession": "Q9QYR6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and direct explanation for why the protein carries the GO term \"structural constituent of presynapse.\""
+   },
+   {
+    "accession": "Q8BSS9",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature in the protein's data that directly explains why it contributes to the structural integrity of a presynapse."
+   }
+  ]
+ },
+ "GO:0099511": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P17785",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0099534": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "EF-hand 1",
+    "accessions": [
+     "P47728"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P05937",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and specific explanation for the primary reaction described in GO:0099534."
+   },
+   {
+    "accession": "P22676",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q08331",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0099567": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "EF-hand 1",
+    "accessions": [
+     "P05937",
+     "P07171",
+     "P12658"
+    ],
+    "reason": "resolved to ['InterPro:IPR002048', 'InterPro:IPR011992', 'InterPro:IPR018247', 'PROSITE:PS00018', 'PROSITE:PS50222', 'Pfam:PF00036', 'Pfam:PF13499'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR002048': 800, 'InterPro:IPR011992': 924, 'InterPro:IPR018247': 681, 'PROSITE:PS00018': 679, 'PROSITE:PS50222': 787, 'Pfam:PF00036': 59, 'Pfam:PF13499': 443})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0099620": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P77690",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }

@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0099567",
+  "name": "calcium ion binding involved in regulation of postsynaptic cytosolic calcium ion concentration",
+  "def": "The directed change of free calcium ion concentration in the postsynaptic cytosol via the reversible binding of calcium ions to calcium-binding proteins in the cytosol thereby modulating the spatial and temporal dynamics of changes in postsynaptic cytosolic calcium concentrations.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P05937",
+    "P07171",
+    "P12658"
+  ],
+  "assigned_accessions": [
+    "P05937",
+    "P07171",
+    "P12658"
+  ]
+}

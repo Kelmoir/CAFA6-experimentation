@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P10636",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a specific explanation for why this protein carries the GO term \"histone-dependent DNA binding.\" All features are generic and do not directly relate to the primary reaction or mechanism described in the GO term's definition."
+    }
+  ]
+}
