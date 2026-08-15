@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140003",
+  "name": "histone H3K36me3 reader activity",
+  "def": "A histone reader that recognizes a histone H3 trimethylated at lysine 36.",
+  "n_proteins_total": 24,
+  "sampled_accessions": [
+    "O43189",
+    "Q69Z61",
+    "Q96N64",
+    "Q9W2I4"
+  ],
+  "assigned_accessions": [
+    "O43189",
+    "Q69Z61",
+    "Q96N64",
+    "Q9W2I4"
+  ]
+}

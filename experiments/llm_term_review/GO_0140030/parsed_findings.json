@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P42568",
+      "go_id": "GO:0140030",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 138,
+      "signal_kind": "text",
+      "signal_value": "YEATS",
+      "reasoning": "The DOMAIN 0-138 feature with the name \"YEATS\" is most plausibly linked to the GO term \"modification-dependent protein binding,\" as it directly relates to the domain's role in post-translational modification processes, which matches the primary reaction of the GO term."
+    },
+    {
+      "accession": "Q9ULM3",
+      "go_id": "GO:0140030",
+      "feature_type": "REGION",
+      "start": 258,
+      "end": 261,
+      "signal_kind": "text",
+      "signal_value": "Histone H3K27cr binding",
+      "reasoning": "The region marked as \"Histone H3K27cr binding\" directly relates to the specific post-translational modification described in the GO term's definition, making it a strong candidate for explaining why the protein carries that term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P63038",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides evidence for the modification-dependent mechanism described in GO:0140030."
+    },
+    {
+      "accession": "Q3TUF7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q3TUF7 specifically matches the primary reaction of GO:0140030, which is about binding to a modified protein. The features provided are either generic or related to specific interactions rather than the defined mechanism of modification-dependent binding."
+    }
+  ]
+}

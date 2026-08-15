@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140073",
+  "name": "bioadhesive activity",
+  "def": "A structural molecule ativity that mediates an organism's attachment to an environmental substrate via stable, non-selective binding by a protein to an external surface. Examples includes proteins used by insects to anchor pupae to surfaces.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P02840",
+    "P02842",
+    "P07701",
+    "Q00725"
+  ],
+  "assigned_accessions": [
+    "P02840",
+    "P02842",
+    "P07701",
+    "Q00725"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140034",
+  "name": "methylation-dependent protein binding",
+  "def": "Binding to a protein upon methylation of the target protein.",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "P0C606",
+    "P25823",
+    "Q8BLB7",
+    "Q9DA08"
+  ],
+  "assigned_accessions": [
+    "P0C606",
+    "P25823",
+    "Q8BLB7",
+    "Q9DA08"
+  ]
+}

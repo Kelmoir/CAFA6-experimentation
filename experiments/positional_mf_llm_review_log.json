@@ -37332,6 +37332,155 @@
    }
   ]
  },
+ "GO:0140003": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PWWP",
+    "accessions": [
+     "Q69Z61",
+     "Q96N64"
+    ],
+    "reason": "resolved to ['InterPro:IPR000313', 'PROSITE:PS50812', 'Pfam:PF00855'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000313': 71, 'PROSITE:PS50812': 70, 'Pfam:PF00855': 70})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Tudor",
+    "accessions": [
+     "O43189"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9W2I4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9W2I4 directly matches the primary reaction of the GO term \"histone H3K36me3 reader activity,\" as it involves recognizing a specific post-translational modification (trimethylation) at lysine 36, which is not present in the protein's binding sites or regions. The closest match would be a site associated with H3K4me3 binding, but this does not specifically explain the GO t"
+   }
+  ]
+ },
+ "GO:0140030": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "YEATS",
+    "accessions": [
+     "P42568"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Histone H3K27cr binding",
+    "accessions": [
+     "Q9ULM3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P63038",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides evidence for the modification-dependent mechanism described in GO:0140030."
+   },
+   {
+    "accession": "Q3TUF7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q3TUF7 specifically matches the primary reaction of GO:0140030, which is about binding to a modified protein. The features provided are either generic or related to specific interactions rather than the defined mechanism of modification-dependent binding."
+   }
+  ]
+ },
+ "GO:0140032": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P05852",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P05852 specifically matches the GO term's primary reaction of binding to a protein upon glycosylation. All features describe interactions with Fe cation or substrate, which are unrelated to the defined chemistry of the GO term."
+   },
+   {
+    "accession": "Q5RKH6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q5RKH6 directly explains the molecular function of \"glycosylation-dependent protein binding\" as defined by the GO term. The binding regions are generic and do not mention glycosylation, while the domain-related features do not provide evidence for this specific function."
+   },
+   {
+    "accession": "Q9W192",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P47543",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the \"glycosylation-dependent protein binding\" function as defined by GO:0140032. The domain/family cross-references suggest involvement in glycolytic pathways, but none of these features correspond to a binding activity triggered by glycosylation."
+   }
+  ]
+ },
+ "GO:0140034": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SAM",
+    "accessions": [
+     "Q8BLB7"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Histone H3K4me3 N-terminus binding",
+    "accessions": [
+     "Q9DA08"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P0C606",
+    "go_id": "GO:0140034",
+    "feature_type": "REGION",
+    "start": 193,
+    "end": 196,
+    "signal_kind": "text",
+    "signal_value": "Histone H3K4me3 N-terminus binding",
+    "reasoning": "The region's note describes a specific binding interaction with histone H3K4me3, but it does not explicitly state that this binding occurs *upon* methylation, which is the primary reaction defined in the GO term. Thus, while plausible, it does not definitively explain why the protein carries the term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P25823",
+    "reason": "none_verdict",
+    "reasoning": "The evidence for P25823 does not provide a specific positional feature that directly accounts for the methylation-dependent protein binding function described by GO:0140034. All Tudor domains are generic and do not offer a unique or mechanistically specific explanation for this function."
+   }
+  ]
+ },
  "GO:0140054": {
   "n_resolved": 0,
   "n_uncertain": 1,
@@ -37352,6 +37501,37 @@
    }
   ],
   "issues": []
+ },
+ "GO:0140073": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P02842",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P07701",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P02840",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein is a Disordered REGION (55-257), which does not provide any evidence that explains why the protein carries the \"bioadhesive activity\" GO term. No other positional feature or domain/family cross-reference is present in the Annotated features section, and none of them match the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "Q00725",
+    "reason": "none_verdict",
+    "reasoning": "The presence of a region with tandem repeats (25-179) suggests a structural motif that could be involved in binding, which is a plausible explanation for the \"bioadhesive activity\" GO term. However, this feature does not explicitly state any functional activity or mechanism related to bioadhesion, making it a weak match."
+   }
+  ]
  },
  "GO:0140098": {
   "n_resolved": 0,

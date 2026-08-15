@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140032",
+  "name": "glycosylation-dependent protein binding",
+  "def": "Binding to a protein upon glycosylation of the target protein.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "P05852",
+    "P47543",
+    "Q5RKH6",
+    "Q9W192"
+  ],
+  "assigned_accessions": [
+    "P05852",
+    "P47543",
+    "Q5RKH6",
+    "Q9W192"
+  ]
+}
