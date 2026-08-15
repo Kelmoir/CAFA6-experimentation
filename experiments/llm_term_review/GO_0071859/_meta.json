@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0071859",
+  "name": "neuropeptide F receptor binding",
+  "def": "Binding to a neuropeptide F receptor.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9VET0"
+  ],
+  "assigned_accessions": [
+    "Q9VET0"
+  ]
+}

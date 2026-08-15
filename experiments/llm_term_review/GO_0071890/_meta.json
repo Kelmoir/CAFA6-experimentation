@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0071890",
+  "name": "bicarbonate binding",
+  "def": "Binding to bicarbonate ions (CHO3-).",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P0A9H7",
+    "P0ABU0",
+    "P23966",
+    "Q8C0T9"
+  ],
+  "assigned_accessions": [
+    "P0A9H7",
+    "P0ABU0",
+    "P23966",
+    "Q8C0T9"
+  ]
+}

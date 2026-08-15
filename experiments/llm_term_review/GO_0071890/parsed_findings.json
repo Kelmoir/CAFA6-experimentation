@@ -1,0 +1,43 @@
+{
+  "resolved": [
+    {
+      "accession": "P23966",
+      "go_id": "GO:0071890",
+      "feature_type": "BINDING",
+      "start": 139,
+      "end": 142,
+      "signal_kind": "ligand",
+      "signal_value": "hydrogencarbonate",
+      "reasoning": "The binding of hydrogencarbonate directly matches the definition of the GO term \"bicarbonate binding,\" indicating a strong functional basis for the annotation."
+    },
+    {
+      "accession": "Q8C0T9",
+      "go_id": "GO:0071890",
+      "feature_type": "BINDING",
+      "start": 94,
+      "end": 95,
+      "signal_kind": "ligand",
+      "signal_value": "hydrogencarbonate",
+      "reasoning": "The binding site for hydrogencarbonate directly supports the GO term's definition of \"Binding to bicarbonate ions (CHO3-)\" by indicating that the protein has a domain or region capable of binding this specific ion."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P0ABU0",
+      "go_id": "GO:0071890",
+      "feature_type": "BINDING",
+      "start": 153,
+      "end": 156,
+      "signal_kind": "ligand",
+      "signal_value": "hydrogencarbonate",
+      "reasoning": "The feature \"BINDING 153-156\" with the ligand type \"hydrogencarbonate\" is more specific than others but still lacks positional specificity for the active site and does not directly explain the molecular function in a way that is uniquely tied to this GO term."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "P0A9H7",
+      "reason": "none_verdict",
+      "reasoning": "There is no annotated feature in the protein's data that directly indicates a site for bicarbonate binding, which is the primary reaction defined by the GO term."
+    }
+  ]
+}

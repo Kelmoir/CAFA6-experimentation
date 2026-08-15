@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0072548",
+  "name": "dicoumaroyl monocaffeoyl spermidine meta-hydroxylase activity",
+  "def": "Catalysis of the reaction: dicoumaroyl monocaffeoyl spermidine + NADPH + O2 = monocoumaroyl dicaffeoyl spermidine + NADP+ + H2O.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q9CA60",
+    "Q9CA61"
+  ],
+  "assigned_accessions": [
+    "Q9CA60",
+    "Q9CA61"
+  ]
+}

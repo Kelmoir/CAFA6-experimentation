@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0071917",
+  "name": "triose-phosphate transmembrane transporter activity",
+  "def": "Enables the transfer of a triose phosphate from one side of a membrane to the other.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "O94695",
+    "Q10354",
+    "Q9LF61",
+    "Q9ZSR7"
+  ],
+  "assigned_accessions": [
+    "O94695",
+    "Q10354",
+    "Q9LF61",
+    "Q9ZSR7"
+  ]
+}

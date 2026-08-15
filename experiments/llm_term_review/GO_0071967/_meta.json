@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0071967",
+  "name": "lipopolysaccharide core heptosyltransferase activity",
+  "def": "Catalysis of the reaction: glucosyl-heptosyl2-KDO2-lipid A-phosphate + ADP-L-glycero-beta-D-manno-heptose = glucosyl-heptosyl3-KDO2-lipid A-phosphate + ADP + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P25742"
+  ],
+  "assigned_accessions": [
+    "P25742"
+  ]
+}

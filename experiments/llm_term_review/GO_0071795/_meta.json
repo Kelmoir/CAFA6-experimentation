@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0071795",
+  "name": "K11-linked polyubiquitin modification-dependent protein binding",
+  "def": "Binding to a protein upon poly-ubiquitination formed by linkages between lysine residues at position 11 in the target protein.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q8NBR6",
+    "Q9VBP9"
+  ],
+  "assigned_accessions": [
+    "Q8NBR6",
+    "Q9VBP9"
+  ]
+}

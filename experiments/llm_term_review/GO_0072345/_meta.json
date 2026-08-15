@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0072345",
+  "name": "NAADP-sensitive calcium-release channel activity",
+  "def": "Enables the transmembrane transfer of a calcium ion by a channel that opens when nicotinic acid adenine dinucleotide phosphate (NAADP) has been bound by the channel complex or one of its constituent parts.",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "A0JMD4",
+    "F6RG56",
+    "Q8IZK6",
+    "Q8R4F0"
+  ],
+  "assigned_accessions": [
+    "A0JMD4",
+    "F6RG56",
+    "Q8IZK6",
+    "Q8R4F0"
+  ]
+}

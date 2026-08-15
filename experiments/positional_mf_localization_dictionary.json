@@ -26852,6 +26852,15 @@
    "dry motif; important for ligand-induced conformation changes"
   ]
  },
+ "GO:0071890": {
+  "name": "bicarbonate binding",
+  "ligands": [
+   "hydrogencarbonate"
+  ],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": []
+ },
  "GO:0071913": {
   "name": "citrate secondary active transmembrane transporter activity",
   "ligands": [],

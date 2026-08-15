@@ -31023,5 +31023,217 @@
     "reasoning": "The annotated features do not provide a specific explanation for the molecular function defined by GO:0071714."
    }
   ]
+ },
+ "GO:0071795": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8NBR6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8NBR6 specifically matches the primary reaction of the GO term \"GO:0071795,\" which involves binding to a protein upon poly-ubiquitination at lysine position 11. The closest match is a generic site annotation, but it does not provide the specific structural or functional basis required for this GO term."
+   },
+   {
+    "accession": "Q9VBP9",
+    "reason": "none_verdict",
+    "reasoning": "No single annotated feature provides a strong, specific match to the GO term's definition, as they only indicate association with the MPN family rather than a direct explanation of the binding activity of polyubiquitinated proteins."
+   }
+  ]
+ },
+ "GO:0071859": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9VET0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0071890": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "ligands",
+    "value": "hydrogencarbonate",
+    "accessions": [
+     "P23966",
+     "Q8C0T9"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P0ABU0",
+    "go_id": "GO:0071890",
+    "feature_type": "BINDING",
+    "start": 153,
+    "end": 156,
+    "signal_kind": "ligand",
+    "signal_value": "hydrogencarbonate",
+    "reasoning": "The feature \"BINDING 153-156\" with the ligand type \"hydrogencarbonate\" is more specific than others but still lacks positional specificity for the active site and does not directly explain the molecular function in a way that is uniquely tied to this GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P0A9H7",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature in the protein's data that directly indicates a site for bicarbonate binding, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:0071906": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P16371",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list provides evidence for the primary reaction or mechanism described in the GO term's definition. The only features identified are unrelated to CRD domain binding, and none of them directly explain why the protein carries this term."
+   }
+  ]
+ },
+ "GO:0071917": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "EamA",
+    "accessions": [
+     "Q9LF61"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O94695",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature has been confirmed to explain the defined function of triose-phosphate transmembrane transporter activity, which involves the transfer of triose phosphate across a membrane."
+   },
+   {
+    "accession": "Q10354",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9ZSR7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0071967": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P25742",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0072345": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Extracellular/lumenal pore loop",
+    "accessions": [
+     "Q8IZK6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0JMD4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides positional evidence that directly explains the primary reaction of the GO term, which is the transmembrane transfer of a calcium ion in response to NAADP binding."
+   },
+   {
+    "accession": "F6RG56",
+    "reason": "none_verdict",
+    "reasoning": "The \"selectivity filter\" motif is a structural feature that could be relevant to ion transmembrane transport, but it does not directly explain the mechanism of calcium ion transfer in response to NAADP binding. Therefore, it does not specifically match the GO term's primary reaction."
+   },
+   {
+    "accession": "Q8R4F0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q8R4F0 specifically matches the primary reaction described in the GO term's definition of enabling calcium ion transmembrane transfer by NAADP binding."
+   }
+  ]
+ },
+ "GO:0072532": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9CA61",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves catalyzing meta-hydroxylation. The only relevant feature is a binding site for heme, which does not specifically explain the enzyme's function as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0072548": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9CA61",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein Q9CA61 provides a clear structural or functional basis that matches the primary reaction of the GO term \"dicoumaroyl monocaffeoyl spermidine meta-hydroxylase activity.\" The only feature is a heme-binding site, which does not directly support the enzymatic activity described."
+   },
+   {
+    "accession": "Q9CA60",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism defined by GO:0072548, which involves the hydroxylation of dicoumaroyl monocaffeoyl spermidine. The binding site for heme is more about cofactor interaction than the specific enzymatic activity described in the term."
+   }
+  ]
  }
 }

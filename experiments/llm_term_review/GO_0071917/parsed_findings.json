@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9LF61",
+      "go_id": "GO:0071917",
+      "feature_type": "DOMAIN",
+      "start": 126,
+      "end": 243,
+      "signal_kind": "text",
+      "signal_value": "EamA",
+      "reasoning": "The DOMAIN 126-243 annotation (note: EamA) directly corresponds to the EmrE-like transporter family, which is known for triose phosphate transport. This feature strongly matches the GO term's primary reaction of transferring triose phosphate across a membrane."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O94695",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature has been confirmed to explain the defined function of triose-phosphate transmembrane transporter activity, which involves the transfer of triose phosphate across a membrane."
+    },
+    {
+      "accession": "Q10354",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9ZSR7",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0072532",
+  "name": "tri-(feruloyl or hydroxyferuloyl) spermidine meta-hydroxylase activity",
+  "def": "Catalysis of the meta-hydroxylation of any of the three phenolic rings on triferuloyl spermidine or any of its mono- or di-(hydroxyferuloyl)-spermidine derivatives.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9CA61"
+  ],
+  "assigned_accessions": [
+    "Q9CA61"
+  ]
+}
