@@ -38755,5 +38755,211 @@
     "reasoning": "The \"chromatin-protein adaptor activity\" as defined involves bringing together a protein and a chromatin region to establish or maintain the complex. While the NLS1 region is involved in nuclear localization, it does not directly explain the molecular function of the GO term. No other annotated feature provides a clear explanation for the primary reaction described in the definition."
    }
   ]
+ },
+ "GO:0140473": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "HTH APSES-type",
+    "accessions": [
+     "O60158"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O74510",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0140474": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SMP-LTD",
+    "accessions": [
+     "Q92377"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140475": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "FHA",
+    "accessions": [
+     "O74388"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0CF96",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9P6R4",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q92351",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" span (0-91) is generic and does not provide any evidence of a specific domain or function that would explain the binding activity of the spindle pole body with other molecules."
+   }
+  ]
+ },
+ "GO:0140481": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "O75027",
+     "Q61102"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "H2LNR5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in H2LNR5 directly describes the catalytic activity or the specific reaction mechanism involving iron-sulfur clusters as defined by GO:0140481. The binding sites for ATP and glutathione are relevant to the function of an ABC-type transporter, but they do not specifically explain why the protein carries the term \"ABC-type iron-sulfur cluster transporter activity.\""
+   },
+   {
+    "accession": "O14286",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of catalyzing ATP + H2O + iron-sulfur cluster(in) = ADP + phosphate + iron-sulfur cluster(out), which is essential for understanding why the protein carries this GO term."
+   }
+  ]
+ },
+ "GO:0140482": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ZN_FING",
+    "value": "GATA-type 1",
+    "accessions": [
+     "Q10134"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140483": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "POLO box domain (PBD)-binding",
+    "accessions": [
+     "Q9UTI4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q10173",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9D0F1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9D0F1 describes binding activity between the kinetochore and another molecule, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "O59757",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of the GO term \"kinetochore adaptor activity,\" which involves bringing the kinetochore and another molecule into contact. All features either lack specificity or are unrelated to this function."
+   }
+  ]
+ },
+ "GO:0140486": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Zn(2+)",
+    "accessions": [
+     "Q6P5W5"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Required for zinc-binding",
+    "accessions": [
+     "Q9ZT63"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Essential role in Zn(2+) sensing",
+    "accessions": [
+     "Q78IQ7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8W4S4",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }

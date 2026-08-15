@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q92377",
+      "go_id": "GO:0140474",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 273,
+      "signal_kind": "text",
+      "signal_value": "SMP-LTD",
+      "reasoning": "The DOMAIN spans the entire sequence of the protein, which is consistent with a domain involved in binding activities that bring together mitochondria and ER membranes, directly matching the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

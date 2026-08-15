@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "O74388",
+      "go_id": "GO:0140475",
+      "feature_type": "DOMAIN",
+      "start": 26,
+      "end": 85,
+      "signal_kind": "text",
+      "signal_value": "FHA",
+      "reasoning": "The \"FHA\" domain is a known functional element that can mediate interactions with other proteins, including those involved in spindle pole body anchoring, which directly supports the definition's primary reaction of bringing together components."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0CF96",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9P6R4",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q92351",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION\" span (0-91) is generic and does not provide any evidence of a specific domain or function that would explain the binding activity of the spindle pole body with other molecules."
+    }
+  ]
+}

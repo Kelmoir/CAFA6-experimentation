@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140483",
+  "name": "kinetochore adaptor activity",
+  "def": "The binding activity of a protein that brings the kinetochore and another molecule into contact, permitting those molecules to function in a coordinated way.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "O59757",
+    "Q10173",
+    "Q9D0F1",
+    "Q9UTI4"
+  ],
+  "assigned_accessions": [
+    "O59757",
+    "Q10173",
+    "Q9D0F1",
+    "Q9UTI4"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0140473",
+  "name": "telomere-nuclear envelope anchor activity",
+  "def": "The binding activity of a molecule that brings together the telomeric region of a chromosome and the inner nuclear membrane by interacting with both the telomere and the nuclear membrane, in order to establish and maintain the telomeric location.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O60158",
+    "O74510"
+  ],
+  "assigned_accessions": [
+    "O60158",
+    "O74510"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140475",
+  "name": "spindle pole body anchor activity",
+  "def": "The binding activity of a protein that brings together the spindle pole body and one or more other molecules, permitting them to function in a coordinated way.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "O74388",
+    "P0CF96",
+    "Q92351",
+    "Q9P6R4"
+  ],
+  "assigned_accessions": [
+    "O74388",
+    "P0CF96",
+    "Q92351",
+    "Q9P6R4"
+  ]
+}

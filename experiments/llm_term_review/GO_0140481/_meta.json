@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140481",
+  "name": "ABC-type iron-sulfur cluster transporter activity",
+  "def": "Catalysis of the reaction: ATP + H2O + iron-sulfur cluster(in) = ADP + phosphate + iron-sulfur cluster(out).",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "H2LNR5",
+    "O14286",
+    "O75027",
+    "Q61102"
+  ],
+  "assigned_accessions": [
+    "H2LNR5",
+    "O14286",
+    "O75027",
+    "Q61102"
+  ]
+}

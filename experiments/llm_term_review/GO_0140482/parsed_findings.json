@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q10134",
+      "go_id": "GO:0140482",
+      "feature_type": "ZN_FING",
+      "start": 11,
+      "end": 36,
+      "signal_kind": "text",
+      "signal_value": "GATA-type 1",
+      "reasoning": "The ZN_FING 11-36 domain is specifically associated with GATA-type 1 activity, which aligns with the primary reaction of iron sensor activity as defined by the GO term. This feature provides a strong and specific mechanistic basis for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

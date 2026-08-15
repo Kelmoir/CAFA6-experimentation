@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "Q6P5W5",
+      "go_id": "GO:0140486",
+      "feature_type": "BINDING",
+      "start": 506,
+      "end": 507,
+      "signal_kind": "ligand",
+      "signal_value": "Zn(2+)",
+      "reasoning": "The binding site at position 506-507 explicitly involves Zn(2+) and is directly related to the primary reaction of zinc ion sequestering activity, making it the most plausible explanation for the GO term."
+    },
+    {
+      "accession": "Q9ZT63",
+      "go_id": "GO:0140486",
+      "feature_type": "REGION",
+      "start": 181,
+      "end": 232,
+      "signal_kind": "text",
+      "signal_value": "Required for zinc-binding",
+      "reasoning": "The region 181-232 is explicitly noted as required for zinc-binding, which aligns with the primary reaction of the GO term \"zinc ion sequestering activity.\" This provides a strong and specific match to the defined chemistry."
+    },
+    {
+      "accession": "Q78IQ7",
+      "go_id": "GO:0140486",
+      "feature_type": "SITE",
+      "start": 523,
+      "end": 524,
+      "signal_kind": "text",
+      "signal_value": "Essential role in Zn(2+) sensing",
+      "reasoning": "The \"SITE 523-524\" annotation explicitly states an essential role in Zn(2+) sensing, which directly matches the primary reaction mechanism of the GO term \"zinc ion sequestering activity.\" This provides a strong and specific explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8W4S4",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

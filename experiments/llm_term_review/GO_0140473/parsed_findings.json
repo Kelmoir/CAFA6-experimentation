@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "O60158",
+      "go_id": "GO:0140473",
+      "feature_type": "DOMAIN",
+      "start": 37,
+      "end": 147,
+      "signal_kind": "text",
+      "signal_value": "HTH APSES-type",
+      "reasoning": "The HTH APSES-type domain in position 37-147 is directly associated with the function of anchoring telomeres to the nuclear envelope, as described in the GO term's definition. This feature provides a strong match to the primary reaction of the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O74510",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

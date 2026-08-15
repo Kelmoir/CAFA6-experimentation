@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140482",
+  "name": "iron sensor activity",
+  "def": "Binding to and responding, e.g. by conformational change, to changes in the cellular level of iron.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q10134"
+  ],
+  "assigned_accessions": [
+    "Q10134"
+  ]
+}

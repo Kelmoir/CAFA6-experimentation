@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9UTI4",
+      "go_id": "GO:0140483",
+      "feature_type": "MOTIF",
+      "start": 99,
+      "end": 102,
+      "signal_kind": "text",
+      "signal_value": "POLO box domain (PBD)-binding",
+      "reasoning": "The POLO box domain (PBD)-binding motif in position 99-102 of Q9UTI4 is directly related to the function of bringing components into contact, which aligns with the primary reaction described in the GO term's definition. This provides a strong match to the molecular function being annotated."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q10173",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9D0F1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9D0F1 describes binding activity between the kinetochore and another molecule, which is the primary reaction defined by the GO term."
+    },
+    {
+      "accession": "O59757",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of the GO term \"kinetochore adaptor activity,\" which involves bringing the kinetochore and another molecule into contact. All features either lack specificity or are unrelated to this function."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O75027",
+      "go_id": "GO:0140481",
+      "feature_type": "BINDING",
+      "start": 480,
+      "end": 481,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP (BINDING 480-481) directly involves the ligand that is part of the primary reaction defined by the GO term, making it the most plausible explanation for why the protein carries this term."
+    },
+    {
+      "accession": "Q61102",
+      "go_id": "GO:0140481",
+      "feature_type": "BINDING",
+      "start": 480,
+      "end": 481,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding site for ATP directly supports the mechanism of ATP-driven transport described by the GO term, making it the most plausible feature that explains why this protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "H2LNR5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in H2LNR5 directly describes the catalytic activity or the specific reaction mechanism involving iron-sulfur clusters as defined by GO:0140481. The binding sites for ATP and glutathione are relevant to the function of an ABC-type transporter, but they do not specifically explain why the protein carries the term \"ABC-type iron-sulfur cluster transporter activity.\""
+    },
+    {
+      "accession": "O14286",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of catalyzing ATP + H2O + iron-sulfur cluster(in) = ADP + phosphate + iron-sulfur cluster(out), which is essential for understanding why the protein carries this GO term."
+    }
+  ]
+}
