@@ -1,0 +1,24 @@
+{
+  "resolved": [
+    {
+      "accession": "H1A981",
+      "go_id": "GO:0102375",
+      "feature_type": "BINDING",
+      "start": 471,
+      "end": 472,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding site for heme at position 471-472 directly supports the catalytic activity of the GO term, as cytochrome P450 enzymes require heme to participate in redox reactions."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "H1A988",
+      "reason": "unresolved_pointer",
+      "detail": "no matching NONE 0-0 on record for H1A988 -- pointer didn't resolve",
+      "reported_feature": "NONE 0-0",
+      "reasoning": "The domain/family cross-reference \"InterPro:IPR001128 -- Cyt_P450\" directly matches the GO term's definition of monooxygenase activity, indicating that this protein is likely to carry the specified function."
+    }
+  ]
+}

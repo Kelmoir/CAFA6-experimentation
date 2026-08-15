@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0102375",
+  "name": "11-oxo-beta-amyrin 30-oxidase activity",
+  "def": "Catalysis of the reaction: 11-oxo-beta-amyrin + 3 NADPH + 3 O2 + 2 H+ = glycyrrhetinic acid + 3 NADP + 4 H2O.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "H1A981",
+    "H1A988"
+  ],
+  "assigned_accessions": [
+    "H1A981",
+    "H1A988"
+  ]
+}

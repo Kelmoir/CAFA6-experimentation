@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102299",
+  "name": "linolenate 9R-lipoxygenase activity",
+  "def": "Catalysis of the reaction: (9Z,12Z,15Z)-octadecatrienoate + O2 = (9R,10E,12Z,15Z)-9-hydroperoxyoctadeca-10,12,15-trienoate. Also converts linoleate to (9R,10E,12Z)-9- hydroperoxyoctadeca-10,12-dienoate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P08170"
+  ],
+  "assigned_accessions": [
+    "P08170"
+  ]
+}

@@ -34053,5 +34053,266 @@
     "detail": "UNPARSED"
    }
   ]
+ },
+ "GO:0102251": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8VY26",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8VY26 directly matches the primary reaction mechanism of the GO term \"all-trans-beta-apo-10'-carotenal cleavage oxygenase activity.\" All binding sites are generic and do not provide evidence for the specific chemistry described in the definition."
+   },
+   {
+    "accession": "Q8LIY8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8LIY8 directly matches the primary reaction mechanism of the GO term \"all-trans-beta-apo-10'-carotenal cleavage oxygenase activity.\" The binding sites for Fe cation are not specific to the defined chemistry, and the only domain/family cross-reference is not an annotated feature. Thus, there is no positional evidence that plausibly explains why this protein carries the GO t"
+   }
+  ]
+ },
+ "GO:0102294": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "P9WQP7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102296": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P9WNH5",
+    "reason": "none_verdict",
+    "reasoning": "The binding sites (BINDING) are the most direct evidence that the protein interacts with its substrate, which is a necessary condition for the defined molecular function. However, none of these features specifically account for the mechanism of catalysis or the structural elements required to perform the hydrolysis reaction described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0102299": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Lipoxygenase",
+    "accessions": [
+     "P08170"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102311": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O64635",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for why O64635 carries the specific molecular function defined by GO:0102311. The binding site for heme is relevant to the broader class of Cyt_P450 enzymes but does not directly account for the precise reaction catalyzed by this protein."
+   },
+   {
+    "accession": "W8JWV8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature explicitly states that W8JWV8 catalyzes the specific reaction defined by GO:0102311, which involves the transfer of a hydride from 8-hydroxygeraniol to NADP. The binding sites for Zn(2+) and NAD(+), while relevant, do not directly explain the enzyme's function as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0102312": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fe2OG dioxygenase",
+    "accessions": [
+     "G9M9M3",
+     "G9M9M4",
+     "G9M9M5"
+    ],
+    "reason": "resolved to ['InterPro:IPR005123', 'InterPro:IPR044861', 'PROSITE:PS51471'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR005123': 159, 'InterPro:IPR044861': 90, 'PROSITE:PS51471': 159})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "W5QJZ5",
+    "reason": "none_verdict",
+    "reasoning": "No specific annotated feature (by type + exact coordinates) directly matches the primary reaction of the GO term. All features are generic binding sites for ligands, and no domain is explicitly annotated that corresponds to the enzymatic activity described by the GO term."
+   }
+  ]
+ },
+ "GO:0102320": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P08684",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P08684 specifically matches the primary reaction of the GO term \"1,8-cineole 2-exo-monooxygenase activity,\" as it only indicates heme binding, which is a general feature of many monooxygenases."
+   }
+  ]
+ },
+ "GO:0102358": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-homocysteine",
+    "accessions": [
+     "Q84XW5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102365": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6JTJ0",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q6JTJ0 only describe heme-binding sites and do not provide any evidence of catalytic activity or the specific hydroxylase mechanism defined by GO:0102365."
+   },
+   {
+    "accession": "Q6JD68",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q6JD68 directly describes the catalytic reaction or mechanism defined by GO:0102365, indicating that the term does not have a clear structural/functional basis in this protein."
+   }
+  ]
+ },
+ "GO:0102375": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "H1A981"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "H1A988",
+    "reason": "unresolved_pointer",
+    "detail": "no matching NONE 0-0 on record for H1A988 -- pointer didn't resolve",
+    "reported_feature": "NONE 0-0",
+    "reasoning": "The domain/family cross-reference \"InterPro:IPR001128 -- Cyt_P450\" directly matches the GO term's definition of monooxygenase activity, indicating that this protein is likely to carry the specified function."
+   }
+  ]
+ },
+ "GO:0102379": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6VAA6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism of the GO term, which involves transferring a glucose moiety from UDP to steviolbioside. The features provided are generic and do not specifically account for this biochemical activity."
+   }
+  ]
+ },
+ "GO:0102381": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "UDP",
+    "accessions": [
+     "Q6VAB4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102382": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "UDP-alpha-D-glucose",
+    "accessions": [
+     "Q6VAA6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

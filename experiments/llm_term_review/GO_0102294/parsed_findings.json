@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P9WQP7",
+      "go_id": "GO:0102294",
+      "feature_type": "ACT_SITE",
+      "start": 157,
+      "end": 158,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The ACT_SITE feature indicates a proton acceptor site, which directly supports the redox reaction mechanism described by the GO term \"cholesterol dehydrogenase (NAD+) activity.\" This matches the primary reaction of the term more specifically than the BINDING feature."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102382",
+  "name": "rebaudioside B glucosyltransferase activity",
+  "def": "Catalysis of the reaction: rebaudioside B + UDP-alpha-D-glucose = rebaudioside A + UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q6VAA6"
+  ],
+  "assigned_accessions": [
+    "Q6VAA6"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q6JTJ0",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q6JTJ0 only describe heme-binding sites and do not provide any evidence of catalytic activity or the specific hydroxylase mechanism defined by GO:0102365."
+    },
+    {
+      "accession": "Q6JD68",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q6JD68 directly describes the catalytic reaction or mechanism defined by GO:0102365, indicating that the term does not have a clear structural/functional basis in this protein."
+    }
+  ]
+}

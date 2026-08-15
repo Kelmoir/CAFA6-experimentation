@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0102311",
+  "name": "8-hydroxygeraniol dehydrogenase activity",
+  "def": "Catalysis of the reaction: (6E)-8-hydroxygeraniol + 2 NADP = (6E)-8-oxogeranial + 2 NADPH + 2 H+.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O64635",
+    "W8JWV8"
+  ],
+  "assigned_accessions": [
+    "O64635",
+    "W8JWV8"
+  ]
+}

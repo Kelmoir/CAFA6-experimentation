@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "G9M9M3",
+      "go_id": "GO:0102312",
+      "feature_type": "DOMAIN",
+      "start": 199,
+      "end": 308,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The domain annotation for G9M9M3 directly relates to the enzyme's activity and matches the primary reaction described in the GO term, making it a strong candidate for explaining why the protein carries the term."
+    },
+    {
+      "accession": "G9M9M4",
+      "go_id": "GO:0102312",
+      "feature_type": "DOMAIN",
+      "start": 206,
+      "end": 308,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The DOMAIN feature (206-308) directly matches the enzymatic activity defined by the GO term, which involves catalyzing a specific reaction. This domain is associated with Fe2OG dioxygenase, indicating that the protein has the structural and functional capacity to carry out the reaction described by the GO term."
+    },
+    {
+      "accession": "G9M9M5",
+      "go_id": "GO:0102312",
+      "feature_type": "DOMAIN",
+      "start": 200,
+      "end": 309,
+      "signal_kind": "text",
+      "signal_value": "Fe2OG dioxygenase",
+      "reasoning": "The DOMAIN 200-309 feature directly corresponds to the enzyme's ability to catalyze the specific reaction described by the GO term, making it the most plausible explanation for why the protein carries this annotation."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "W5QJZ5",
+      "reason": "none_verdict",
+      "reasoning": "No specific annotated feature (by type + exact coordinates) directly matches the primary reaction of the GO term. All features are generic binding sites for ligands, and no domain is explicitly annotated that corresponds to the enzymatic activity described by the GO term."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0102251",
+  "name": "all-trans-beta-apo-10'-carotenal cleavage oxygenase activity",
+  "def": "Catalysis of the reaction: 10'-apo-beta-carotenal + O2 = 13-apo-beta-carotenone + 4-methylocta-2,4,6-trienedial.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q8LIY8",
+    "Q8VY26"
+  ],
+  "assigned_accessions": [
+    "Q8LIY8",
+    "Q8VY26"
+  ]
+}

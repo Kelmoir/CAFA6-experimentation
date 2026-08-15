@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102381",
+  "name": "stevioside glucosyltransferase activity (rebaudioside A forming)",
+  "def": "Catalysis of the reaction: stevioside + UDP-alpha-D-glucose = H+ + rebaudioside A + UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q6VAB4"
+  ],
+  "assigned_accessions": [
+    "Q6VAB4"
+  ]
+}

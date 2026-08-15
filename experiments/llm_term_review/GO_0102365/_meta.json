@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0102365",
+  "name": "taxoid 2alpha-hydroxylase activity",
+  "def": "Catalysis of the reaction: taxusin + NADPH + O2 + H+ = 2-alpha-hydroxytaxusin + NADP + H2O. Also converts 7beta-hydroxytaxusin to 2alpha,7beta-dihydroxytaxusin.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q6JD68",
+    "Q6JTJ0"
+  ],
+  "assigned_accessions": [
+    "Q6JD68",
+    "Q6JTJ0"
+  ]
+}

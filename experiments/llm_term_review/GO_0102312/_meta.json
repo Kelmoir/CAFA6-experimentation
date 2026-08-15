@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0102312",
+  "name": "4-coumaroyl 2'-hydroxylase activity",
+  "def": "Catalysis of the reaction: 4-coumaryl-CoA + 2-oxoglutarate + O2 = 2,4-dihydroxycinnamoyl-CoA + succinate + carbon dioxide.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "G9M9M3",
+    "G9M9M4",
+    "G9M9M5",
+    "W5QJZ5"
+  ],
+  "assigned_accessions": [
+    "G9M9M3",
+    "G9M9M4",
+    "G9M9M5",
+    "W5QJZ5"
+  ]
+}

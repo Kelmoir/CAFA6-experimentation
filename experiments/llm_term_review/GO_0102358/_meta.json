@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102358",
+  "name": "daphnetin-8-O-methyltransferase activity",
+  "def": "Catalysis of the reaction: 7,8-dihydroxycoumarin + S-adenosyl-L-methionine = 7-hydroxy-8-methoxycoumarin + H+ + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q84XW5"
+  ],
+  "assigned_accessions": [
+    "Q84XW5"
+  ]
+}

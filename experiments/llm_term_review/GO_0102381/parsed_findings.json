@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q6VAB4",
+      "go_id": "GO:0102381",
+      "feature_type": "BINDING",
+      "start": 26,
+      "end": 27,
+      "signal_kind": "ligand",
+      "signal_value": "UDP",
+      "reasoning": "The binding of UDP to the enzyme's active site is a direct structural feature that supports the catalytic reaction described in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

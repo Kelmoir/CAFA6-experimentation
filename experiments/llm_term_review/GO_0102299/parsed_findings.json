@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P08170",
+      "go_id": "GO:0102299",
+      "feature_type": "DOMAIN",
+      "start": 147,
+      "end": 839,
+      "signal_kind": "text",
+      "signal_value": "Lipoxygenase",
+      "reasoning": "The domain annotation for Lipoxygenase directly matches the primary reaction of the GO term, which is catalyzing the oxidation of linolenate. This provides a strong mechanistic basis for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

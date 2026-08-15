@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102379",
+  "name": "steviolbioside glucosyltransferase activity (stevioside forming)",
+  "def": "Catalysis of the reaction: steviolbioside + UDP-alpha-D-glucose = stevioside + UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q6VAA6"
+  ],
+  "assigned_accessions": [
+    "Q6VAA6"
+  ]
+}

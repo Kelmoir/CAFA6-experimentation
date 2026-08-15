@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102294",
+  "name": "cholesterol dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: cholesterol + NAD+ = cholest-5-en-3-one + NADH + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P9WQP7"
+  ],
+  "assigned_accessions": [
+    "P9WQP7"
+  ]
+}
