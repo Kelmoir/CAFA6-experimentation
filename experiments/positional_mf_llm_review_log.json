@@ -37734,6 +37734,44 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0140129": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Bromo",
+    "accessions": [
+     "Q03330"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Bromo 1",
+    "accessions": [
+     "Q07442"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P20263",
+    "reason": "none_verdict",
+    "reasoning": "The given evidence for the protein's annotated features does not provide any positional feature that directly matches the primary reaction of the GO term \"histone H3K56ac reader activity.\" While the motif \"9aaTAD\" is associated with POU transcription factors, it only echoes a word from a secondary clause and does not specifically explain the chemistry of the GO term."
+   },
+   {
+    "accession": "Q6FTW5",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
  "GO:0140177": {
   "n_resolved": 1,
   "n_uncertain": 0,
@@ -37756,6 +37794,154 @@
     "accession": "Q04164",
     "reason": "none_verdict",
     "reasoning": "No annotated feature for protein Q04164 specifically matches the primary reaction of the GO term (phosphoryl transfer), which is not stated in the provided definition. Therefore, no single feature can be confidently identified as the basis for this molecular function prediction."
+   }
+  ]
+ },
+ "GO:0140189": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q96KQ7",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q9Z148",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140191": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P50750",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q641Z4",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q99J95",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140197": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Protein kinase",
+    "accessions": [
+     "Q96GD4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O55099",
+    "reason": "none_verdict",
+    "reasoning": "The \"ACT_SITE\" with coordinates 202-203 is the only feature that directly relates to the protein's interaction with ATP, even though it is labeled as a proton acceptor rather than an ATP-binding site. This feature most plausibly explains why the protein carries the GO term \"protein kinase ATP binding site.\""
+   },
+   {
+    "accession": "O70126",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140234": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Helicase ATP-binding",
+    "accessions": [
+     "Q14527",
+     "Q95216"
+    ],
+    "reason": "resolved to ['InterPro:IPR001650', 'InterPro:IPR014001', 'InterPro:IPR050628', 'PROSITE:PS51192', 'PROSITE:PS51194', 'Pfam:PF00271'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR001650': 570, 'InterPro:IPR014001': 580, 'InterPro:IPR050628': 19, 'PROSITE:PS51192': 570, 'PROSITE:PS51194': 569, 'Pfam:PF00271': 553})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Zn(2+)",
+    "accessions": [
+     "Q8VDF2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q7TPK1",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140248": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Required to promote base flipping",
+    "accessions": [
+     "Q7TPK1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "E7EZF3",
+    "reason": "none_verdict",
+    "reasoning": "Since the definition of GO:0140248 is not provided, we cannot determine which annotated feature most plausibly explains it. The available features suggest a range of possible functions, but none directly align with the term's defined chemistry."
+   },
+   {
+    "accession": "Q8VDF2",
+    "reason": "none_verdict",
+    "reasoning": "The Ubiquitin-like domain (DOMAIN 0-78) is a known structural feature that can be associated with various molecular functions, including DNA repair and transcription regulation. However, without a defined GO term, it's not possible to determine which specific function the protein carries."
+   },
+   {
+    "accession": "Q96T88",
+    "reason": "none_verdict",
+    "reasoning": "There is no single annotated feature in Q96T88 that directly matches the defined reaction or mechanism for GO:0140248. All features are generic and do not provide a strong, specific match to the molecular function."
    }
   ]
  }

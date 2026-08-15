@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "Q14527",
+      "go_id": "GO:0140234",
+      "feature_type": "DOMAIN",
+      "start": 434,
+      "end": 606,
+      "signal_kind": "text",
+      "signal_value": "Helicase ATP-binding",
+      "reasoning": "The DOMAIN 434-606 feature explicitly states that the protein has an ATP-binding helicase domain, which directly aligns with the primary reaction implied by the GO term's definition."
+    },
+    {
+      "accession": "Q8VDF2",
+      "go_id": "GO:0140234",
+      "feature_type": "BINDING",
+      "start": 345,
+      "end": 346,
+      "signal_kind": "ligand",
+      "signal_value": "Zn(2+)",
+      "reasoning": "The binding site \"BINDING 345-346\" involves Zn(2+) and a ligand with a 5-methylcytosine group, which is directly related to DNA methylation. This specific interaction could plausibly explain the molecular function defined by GO:0140234, making it a likely candidate."
+    },
+    {
+      "accession": "Q95216",
+      "go_id": "GO:0140234",
+      "feature_type": "DOMAIN",
+      "start": 426,
+      "end": 603,
+      "signal_kind": "text",
+      "signal_value": "Helicase ATP-binding",
+      "reasoning": "The DOMAIN 426-603 is associated with the ATP-binding site of a helicase, which is a plausible structural basis for the molecular function of receiving a phosphoryl transfer."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q7TPK1",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

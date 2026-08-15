@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q03330",
+      "go_id": "GO:0140129",
+      "feature_type": "DOMAIN",
+      "start": 326,
+      "end": 431,
+      "signal_kind": "text",
+      "signal_value": "Bromo",
+      "reasoning": "The bromodomain in the specified region is a known structural feature that interacts with acetylated lysines on histones, aligning with the definition of a \"histone H3K56ac reader activity.\""
+    },
+    {
+      "accession": "Q07442",
+      "go_id": "GO:0140129",
+      "feature_type": "DOMAIN",
+      "start": 129,
+      "end": 239,
+      "signal_kind": "text",
+      "signal_value": "Bromo 1",
+      "reasoning": "The presence of a bromodomain domain (DOMAIN 129-239) is directly related to the recognition of acetylated lysine residues, which matches the GO term's definition of a histone H3K56ac reader activity. This feature specifically explains the molecular function associated with the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P20263",
+      "reason": "none_verdict",
+      "reasoning": "The given evidence for the protein's annotated features does not provide any positional feature that directly matches the primary reaction of the GO term \"histone H3K56ac reader activity.\" While the motif \"9aaTAD\" is associated with POU transcription factors, it only echoes a word from a secondary clause and does not specifically explain the chemistry of the GO term."
+    },
+    {
+      "accession": "Q6FTW5",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

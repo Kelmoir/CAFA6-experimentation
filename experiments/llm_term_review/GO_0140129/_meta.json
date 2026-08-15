@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140129",
+  "name": "histone H3K56ac reader activity",
+  "def": "A histone reader that recognizes a histone H3 acetylated at lysine 56.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P20263",
+    "Q03330",
+    "Q07442",
+    "Q6FTW5"
+  ],
+  "assigned_accessions": [
+    "P20263",
+    "Q03330",
+    "Q07442",
+    "Q6FTW5"
+  ]
+}

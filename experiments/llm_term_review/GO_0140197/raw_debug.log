@@ -1,0 +1,24 @@
+=== O70126 GO:0140197 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== O55099 GO:0140197 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== O70126 GO:0140197 (VERDICT missing) ===
+THINKING: The GO term is "protein kinase ATP binding site" (GO:0140197). This term refers to the specific region of a protein where ATP binds, which is a key functional aspect of kinases. The annotated features for this protein include a DOMAIN and ACT_SITE with positions and qualifiers that suggest ATP-binding activity. 
+
+The candidate features are:
+- DOMAIN 81-332 (note: Protein kinase) with evidence ECO:0000255|PROSITE-ProRule:PRU00159
+- REGION 0-25 (note: Disordered) with evidence ECO:0000256|SAM:MobiDB-lite
+- REGION 49-77 (note: Disordered) with evidence ECO:0000256|SAM:MobiDB-lite
+- ACT_SITE 204-205 (note: Proton acceptor) with evidence ECO:0000255|PROSITE-ProRule:PRU00159, ECO:0000255|PROSITE-ProRule:PRU10027
+- BINDING 87-96 (ligand: ATP) with evidence ECO:0000255|PROSITE-ProRule:PRU00159
+- BINDING 110-111 (ligand: ATP) with evidence ECO:0000255|PROSITE-ProRule:PRU00159
+
+The primary reaction or mechanism for this GO term is the binding of ATP to a protein kinase, which is essential for its catalytic activity. The DOMAIN 81-332 has the note "Protein kinase" and is associated with the evidence ECO:0000255|PROSITE-ProRule:PRU00159, which directly relates to the kinase domain. This feature most plausibly explains why the protein carries the term "protein kinase ATP binding site."
+
+The other features either describe disordered regions or proton acceptor activity, which are not central to the definition of this GO term. The BINDING regions with ATP ligands also relate to the function but are more specific to the enzyme's active site rather than the general term.
+
+FEATURE: DOMAIN 81-332
+REASONING: The DOMAIN 81-332 with the note "Protein kinase" directly aligns with the primary reaction of the GO term, which is ATP binding to a protein kinase. This feature most plausibly explains why the protein carries the term.
+

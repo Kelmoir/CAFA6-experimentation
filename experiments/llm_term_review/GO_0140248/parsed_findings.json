@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q7TPK1",
+      "go_id": "GO:0140248",
+      "feature_type": "REGION",
+      "start": 441,
+      "end": 443,
+      "signal_kind": "text",
+      "signal_value": "Required to promote base flipping",
+      "reasoning": "The region 441-443 is explicitly noted as \"Required to promote base flipping,\" which directly aligns with the primary reaction of the GO term, suggesting that this feature most plausibly explains the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "E7EZF3",
+      "reason": "none_verdict",
+      "reasoning": "Since the definition of GO:0140248 is not provided, we cannot determine which annotated feature most plausibly explains it. The available features suggest a range of possible functions, but none directly align with the term's defined chemistry."
+    },
+    {
+      "accession": "Q8VDF2",
+      "reason": "none_verdict",
+      "reasoning": "The Ubiquitin-like domain (DOMAIN 0-78) is a known structural feature that can be associated with various molecular functions, including DNA repair and transcription regulation. However, without a defined GO term, it's not possible to determine which specific function the protein carries."
+    },
+    {
+      "accession": "Q96T88",
+      "reason": "none_verdict",
+      "reasoning": "There is no single annotated feature in Q96T88 that directly matches the defined reaction or mechanism for GO:0140248. All features are generic and do not provide a strong, specific match to the molecular function."
+    }
+  ]
+}

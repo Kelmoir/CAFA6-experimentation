@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q96GD4",
+      "go_id": "GO:0140197",
+      "feature_type": "DOMAIN",
+      "start": 76,
+      "end": 327,
+      "signal_kind": "text",
+      "signal_value": "Protein kinase",
+      "reasoning": "The DOMAIN annotation (76-327) directly matches the definition of \"protein kinase activity\" by indicating the presence of a domain known to be involved in this function. This provides a strong and specific match to the GO term's primary reaction or mechanism."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O55099",
+      "reason": "none_verdict",
+      "reasoning": "The \"ACT_SITE\" with coordinates 202-203 is the only feature that directly relates to the protein's interaction with ATP, even though it is labeled as a proton acceptor rather than an ATP-binding site. This feature most plausibly explains why the protein carries the GO term \"protein kinase ATP binding site.\""
+    },
+    {
+      "accession": "O70126",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}
