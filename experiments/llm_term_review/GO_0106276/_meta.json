@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0106276",
+  "name": "biliberdin reductase (NADH) activity",
+  "def": "Catalysis of the reaction: bilirubin IXalpha + NAD+ = biliverdin IXalpha + NADH+ H+.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P46844",
+    "P53004",
+    "Q9CY64"
+  ],
+  "assigned_accessions": [
+    "P46844",
+    "P53004",
+    "Q9CY64"
+  ]
+}

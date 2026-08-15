@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "P46844",
+      "go_id": "GO:0106276",
+      "feature_type": "BINDING",
+      "start": 17,
+      "end": 19,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding site for NAD+ at position 17-19 directly supports the primary reaction of the GO term, which involves catalyzing the transfer of a phosphate group from NAD+ to bilirubin. This feature is most specific and relevant to the enzyme's function as described in the definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P53004",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for P53004 do not provide any specific evidence that directly explains the molecular function defined by GO:0106276, which involves the catalysis of a hydride transfer reaction. None of the binding sites or other features are mechanistically specific to this reaction."
+    },
+    {
+      "accession": "Q9CY64",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9CY64 specifically matches the primary reaction defined by the GO term \"biliberdin reductase (NADH) activity.\" The binding sites for NAD(+), Zn(2+), and other ligands suggest multiple interactions, but none directly indicate the catalytic domain responsible for the described reaction."
+    }
+  ]
+}

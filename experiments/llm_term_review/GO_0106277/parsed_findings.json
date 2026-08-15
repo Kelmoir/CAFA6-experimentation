@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "P46844",
+      "go_id": "GO:0106277",
+      "feature_type": "BINDING",
+      "start": 17,
+      "end": 19,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD(+) at position 17-19 is directly related to the reaction catalyzed by biliverdin reductase, which involves the transfer of a phosphate group from NADP+ to bilirubin. This supports the primary mechanism described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9CY64",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9CY64 specifically matches the primary reaction defined for the GO term \"biliverdin reductase (NADPH) activity.\" All binding sites are related to ligands, not the enzymatic mechanism of reducing NADP+ to NADPH."
+    },
+    {
+      "accession": "P53004",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a specific explanation for the enzyme's catalytic activity as defined by the GO term, and all binding sites are generic."
+    }
+  ]
+}

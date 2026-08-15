@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0106281",
+  "name": "chenodeoxycholate 7-alpha-dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: chenodeoxycholate + NAD+ = 7-oxolithocholate + H+ + NADH.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O08756",
+    "O70351",
+    "P0AET8",
+    "Q99714"
+  ],
+  "assigned_accessions": [
+    "O08756",
+    "O70351",
+    "P0AET8",
+    "Q99714"
+  ]
+}

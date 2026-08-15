@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "O70351",
+      "go_id": "GO:0106281",
+      "feature_type": "BINDING",
+      "start": 167,
+      "end": 168,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding site at position 167-168 is explicitly noted as a proton acceptor, which directly aligns with the primary reaction of the GO term. This feature most plausibly explains the enzyme's function as described in the definition."
+    },
+    {
+      "accession": "O08756",
+      "go_id": "GO:0106281",
+      "feature_type": "ACT_SITE",
+      "start": 167,
+      "end": 168,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The \"ACT_SITE\" annotation at position 167-168 directly relates to the proton acceptor site, which is essential for catalyzing the reaction defined by the GO term. This feature provides a strong match to the primary reaction mechanism described in the definition."
+    },
+    {
+      "accession": "P0AET8",
+      "go_id": "GO:0106281",
+      "feature_type": "BINDING",
+      "start": 158,
+      "end": 159,
+      "signal_kind": "ligand",
+      "signal_value": "glycochenodeoxycholate",
+      "reasoning": "The binding of NAD+ at position 158-159 is most specific and directly related to the catalytic reaction defined by GO:0106281, making it the most plausible explanation for why the protein carries that term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q99714",
+      "reason": "none_verdict",
+      "reasoning": "The defined reaction of chenodeoxycholate 7-alpha-dehydrogenase (NAD+) activity involves catalyzing a redox reaction where NAD+ donates electrons and a proton to chenodeoxycholate, forming 7-oxolithocholate. However, none of the annotated features directly specify this mechanism or the active site where it occurs. The highest-scoring feature is generic and could apply to many enzymes, not specific"
+    }
+  ]
+}

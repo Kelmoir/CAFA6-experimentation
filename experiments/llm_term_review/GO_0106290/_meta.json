@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0106290",
+  "name": "trans-cinnamate-CoA ligase activity",
+  "def": "Catalysis of the reaction: (E)-cinnamate + ATP + CoA = (E)-cinnamoyl-CoA + AMP + diphosphate.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "O24146",
+    "Q67W82",
+    "Q7XXL2",
+    "Q9S777"
+  ],
+  "assigned_accessions": [
+    "O24146",
+    "Q67W82",
+    "Q7XXL2",
+    "Q9S777"
+  ]
+}

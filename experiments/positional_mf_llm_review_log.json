@@ -36053,6 +36053,179 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:0106276": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P46844"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P53004",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for P53004 do not provide any specific evidence that directly explains the molecular function defined by GO:0106276, which involves the catalysis of a hydride transfer reaction. None of the binding sites or other features are mechanistically specific to this reaction."
+   },
+   {
+    "accession": "Q9CY64",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9CY64 specifically matches the primary reaction defined by the GO term \"biliberdin reductase (NADH) activity.\" The binding sites for NAD(+), Zn(2+), and other ligands suggest multiple interactions, but none directly indicate the catalytic domain responsible for the described reaction."
+   }
+  ]
+ },
+ "GO:0106277": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P46844"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9CY64",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9CY64 specifically matches the primary reaction defined for the GO term \"biliverdin reductase (NADPH) activity.\" All binding sites are related to ligands, not the enzymatic mechanism of reducing NADP+ to NADPH."
+   },
+   {
+    "accession": "P53004",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a specific explanation for the enzyme's catalytic activity as defined by the GO term, and all binding sites are generic."
+   }
+  ]
+ },
+ "GO:0106281": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "O70351"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "O08756"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "glycochenodeoxycholate",
+    "accessions": [
+     "P0AET8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q99714",
+    "reason": "none_verdict",
+    "reasoning": "The defined reaction of chenodeoxycholate 7-alpha-dehydrogenase (NAD+) activity involves catalyzing a redox reaction where NAD+ donates electrons and a proton to chenodeoxycholate, forming 7-oxolithocholate. However, none of the annotated features directly specify this mechanism or the active site where it occurs. The highest-scoring feature is generic and could apply to many enzymes, not specific"
+   }
+  ]
+ },
+ "GO:0106286": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q67W82",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q67W82 directly matches the primary reaction of GO:0106286, which involves the catalysis of a phosphoryl transfer from ATP to (E)-caffeate. The presence of multiple binding sites for various ligands does not provide evidence that any specific region is responsible for this mechanism."
+   },
+   {
+    "accession": "Q6ETN3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q6ETN3 directly matches the primary reaction mechanism of the GO term \"Caffeate-CoA ligase activity.\" The only evidence is generic binding sites with ATP and CoA, which do not specifically explain the phosphoryl transfer from ATP to caffeate."
+   },
+   {
+    "accession": "Q6ZAC1",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q9S777",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0106290": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q9S777"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q7XXL2",
+    "go_id": "GO:0106290",
+    "feature_type": "BINDING",
+    "start": 200,
+    "end": 201,
+    "signal_kind": "ligand",
+    "signal_value": "ATP",
+    "reasoning": "The presence of multiple ATP-binding regions (e.g., at positions 200-201) supports the idea that the protein can accept a phosphoryl group from ATP, which is consistent with the function described in the GO term. However, no single binding site directly matches the specific reaction mechanism of the GO term's definition."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "O24146",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q67W82",
+    "reason": "none_verdict",
+    "reasoning": "The only feature that involves binding a product of the reaction defined by GO:0106290 is BINDING 317-318 with (E)-4-coumaroyl-AMP. However, this feature does not directly indicate that the protein is involved in the phosphoryl transfer itself. Therefore, there is no single annotated feature that plausibly explains why this protein carries the term."
+   }
+  ]
+ },
  "GO:0106301": {
   "n_resolved": 0,
   "n_uncertain": 1,
@@ -36072,6 +36245,44 @@
     "reasoning": "The BINDING feature at position 447-448 is plausible for an enzyme involved in this reaction, but it does not specifically explain the chemistry of converting arachidonic acid to cis-5,6-epoxyeicosatrienoic acid. No other features directly match the primary reaction mechanism described in the GO term's definition."
    }
   ],
+  "issues": []
+ },
+ "GO:0106332": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "GIY-YIG",
+    "accessions": [
+     "Q9P7M3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0106334": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Nucleophile",
+    "accessions": [
+     "Q9USG9"
+    ]
+   }
+  ],
+  "uncertain": [],
   "issues": []
  }
 }

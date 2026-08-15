@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9P7M3",
+      "go_id": "GO:0106332",
+      "feature_type": "DOMAIN",
+      "start": 4,
+      "end": 87,
+      "signal_kind": "text",
+      "signal_value": "GIY-YIG",
+      "reasoning": "The \"GIY-YIG\" motif in the DOMAIN 4-87 directly supports the endonucleolytic cleavage activity described by the GO term, which is the primary reaction mechanism."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

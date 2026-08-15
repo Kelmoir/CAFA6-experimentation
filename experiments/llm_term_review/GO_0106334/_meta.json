@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106334",
+  "name": "3'-deoxyribose phosphate lyase activity",
+  "def": "Catalysis of the conversion of a 3'-deoxyribose phosphate in DNA to a 3'-phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9USG9"
+  ],
+  "assigned_accessions": [
+    "Q9USG9"
+  ]
+}

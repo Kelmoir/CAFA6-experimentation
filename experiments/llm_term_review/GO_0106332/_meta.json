@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106332",
+  "name": "ds/ssDNA junction-specific dsDNA endonuclease activity",
+  "def": "Catalysis of the endonucleolytic cleavage of double-stranded DNA near a double-strand/single-strand DNA junction.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9P7M3"
+  ],
+  "assigned_accessions": [
+    "Q9P7M3"
+  ]
+}

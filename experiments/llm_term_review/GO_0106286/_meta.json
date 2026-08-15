@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0106286",
+  "name": "(E)-caffeate-CoA ligase activity",
+  "def": "Catalysis of the reaction: (E)-caffeate + ATP + CoA = (E)-caffeoyl-CoA + AMP + diphosphate.",
+  "n_proteins_total": 13,
+  "sampled_accessions": [
+    "Q67W82",
+    "Q6ETN3",
+    "Q6ZAC1",
+    "Q9S777"
+  ],
+  "assigned_accessions": [
+    "Q67W82",
+    "Q6ETN3",
+    "Q6ZAC1",
+    "Q9S777"
+  ]
+}
