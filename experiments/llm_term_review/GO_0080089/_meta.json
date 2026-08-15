@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080089",
+  "name": "sinapoyl spermidine:sinapoyl CoA N-acyltransferase activity",
+  "def": "Catalysis of the transfer of a sinapoyl group to a nitrogen atom on a sinapoyl spermidine molecule resulting in the formation of a disinapoyl spermidine derivative.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O80467"
+  ],
+  "assigned_accessions": [
+    "O80467"
+  ]
+}

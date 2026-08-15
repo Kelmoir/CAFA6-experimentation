@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9C9W4",
+      "go_id": "GO:0080078",
+      "feature_type": "BINDING",
+      "start": 51,
+      "end": 52,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding site for S-adenosyl-L-methionine (a key methyl donor in the reaction) is directly relevant to the function of the enzyme, but it does not explicitly state that the enzyme catalyzes the transfer of a methyl group from SAM to tricaffeoyl spermidine. This feature is more about the substrate binding rather than the specific chemical mechanism described in the GO term's definition."
+    }
+  ],
+  "issues": []
+}

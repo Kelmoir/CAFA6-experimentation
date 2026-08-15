@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080078",
+  "name": "tricaffeoyl spermidine:S-adenosyl-L-methionine O-methyltransferase activity",
+  "def": "Catalysis of the transfer of a methyl group from S-adenosyl-L-methionine to the oxygen atom of a tricaffeoyl spermidine molecule.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9C9W4"
+  ],
+  "assigned_accessions": [
+    "Q9C9W4"
+  ]
+}

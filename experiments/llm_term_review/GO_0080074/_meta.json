@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080074",
+  "name": "spermidine:caffeoyl CoA N-acyltransferase activity",
+  "def": "Catalysis of the transfer of a caffeoyl group to a nitrogen atom on the spermidine molecule.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O64470"
+  ],
+  "assigned_accessions": [
+    "O64470"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080098",
+  "name": "L-tyrosine-pyruvate transaminase activity",
+  "def": "Catalysis of the reaction: L-tyrosine + pyruvate = (4-hydroxyphenyl)pyruvate + L-alanine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9S7N2"
+  ],
+  "assigned_accessions": [
+    "Q9S7N2"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9LV33",
+      "go_id": "GO:0080081",
+      "feature_type": "BINDING",
+      "start": 203,
+      "end": 205,
+      "signal_kind": "ligand",
+      "signal_value": "a beta-D-glucoside",
+      "reasoning": "The binding site at 203-205 for beta-D-glucosides is the most relevant and specific feature that could plausibly explain why Q9LV33 carries the GO term, as it directly relates to the substrate involved in the hydrolysis reaction described by the definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -31472,5 +31472,289 @@
     "reasoning": "No annotated feature in the protein's list directly indicates the presence of a 7-O-glucosyltransferase domain or region, which is necessary for the defined molecular function. The binding sites only confirm substrate interaction, not the specific catalytic activity. Therefore, no positional feature plausibly explains why this protein carries the GO term."
    }
   ]
+ },
+ "GO:0080045": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O82382",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in O82382 directly describes the enzymatic activity of transferring a glucosyl group from UDP-glucose to quercetin, which is the primary reaction defined by GO:0080045."
+   },
+   {
+    "accession": "Q9LK73",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9LK73 has multiple binding sites for UDP-alpha-D-glucose, which aligns with the enzyme's function of transferring a glucosyl group. However, no specific domain type or structural feature is mentioned in the Annotated features section that directly explains the catalytic mechanism of the reaction as defined by GO:0080045. Therefore, there is no positional feature that strongly matches"
+   },
+   {
+    "accession": "O82381",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, specific explanation for why the protein carries the molecular function defined by GO:0080045. The binding sites are related to ligands but do not directly account for the catalytic activity described in the definition."
+   }
+  ]
+ },
+ "GO:0080046": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "UDP-alpha-D-glucose",
+    "accessions": [
+     "O22820"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q9C9B0",
+    "go_id": "GO:0080046",
+    "feature_type": "BINDING",
+    "start": 347,
+    "end": 348,
+    "signal_kind": "ligand",
+    "signal_value": "UDP-alpha-D-glucose",
+    "reasoning": "The binding site for UDP-alpha-D-glucose is directly related to the enzyme's function of transferring a glucosyl group, but it does not describe the catalytic mechanism itself."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q9FLP9",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9FLP9 do not provide any direct evidence that explains why the protein carries the GO term \"quercetin 4'-O-glucosyltransferase activity.\" None of the features explicitly describe the transfer of a glucosyl group from UDP-glucose to quercetin, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "Q9LK73",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9LK73 specifically matches the GO term's primary reaction mechanism of transferring a glucosyl group from UDP-glucose to quercetin. The presence of multiple binding sites for the ligand does not imply the existence of a transferase domain or the specific enzymatic activity defined by the GO term."
+   }
+  ]
+ },
+ "GO:0080062": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FI99",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9FI99 specifically matches the primary reaction mechanism described in GO:0080062 (N-glucosylation), only describing ligand binding."
+   },
+   {
+    "accession": "Q9FIA0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9FIA0 provides a strong match to the primary reaction of the GO term, which involves the transfer of a glucose unit from UDP-D-glucose to a substrate. The binding sites for the ligand do not explain the enzymatic activity itself, and the domain/family cross-references are general and not specific to this function."
+   }
+  ]
+ },
+ "GO:0080074": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O64470",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for this protein do not include any positional feature that specifically matches the primary reaction or mechanism described in the GO term's definition. While some features mention the ligand as spermidine, they do not provide direct evidence of the transfer activity itself."
+   }
+  ]
+ },
+ "GO:0080075": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O64470",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide any positional evidence that directly explains the molecular function of GO:0080075, which involves transferring a feruloyl group to a nitrogen atom on the spermidine molecule."
+   }
+  ]
+ },
+ "GO:0080077": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "Q9C9W4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0080078": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9C9W4",
+    "go_id": "GO:0080078",
+    "feature_type": "BINDING",
+    "start": 51,
+    "end": 52,
+    "signal_kind": "ligand",
+    "signal_value": "S-adenosyl-L-methionine",
+    "reasoning": "The binding site for S-adenosyl-L-methionine (a key methyl donor in the reaction) is directly relevant to the function of the enzyme, but it does not explicitly state that the enzyme catalyzes the transfer of a methyl group from SAM to tricaffeoyl spermidine. This feature is more about the substrate binding rather than the specific chemical mechanism described in the GO term's definition."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0080081": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a beta-D-glucoside",
+    "accessions": [
+     "Q9LV33"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0080082": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Nucleophile",
+    "accessions": [
+     "Q9LV33"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0080084": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q84MZ4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction of \"5S rDNA binding\" as described in its definition. The evidence only describes structural motifs and regions, not the direct biochemical mechanism of DNA binding."
+   }
+  ]
+ },
+ "GO:0080089": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "spermidine",
+    "accessions": [
+     "O80467"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0080095": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Acyl-ester intermediate",
+    "accessions": [
+     "Q4VCM1"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0080096": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q4VCM1",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q4VCM1 specifically matches the primary reaction defined by GO:0080096, which involves catalyzing the formation of a sterol ester from phosphatidate and sterol."
+   }
+  ]
+ },
+ "GO:0080098": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9S7N2",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q9S7N2 only indicate binding of pyridoxal 5'-phosphate, which is a cofactor required for transaminase activity. However, none of these binding sites specifically describe the catalytic reaction defined by GO:0080098, which involves the transfer of an amino group from L-tyrosine to pyruvate. Therefore, no annotated feature directly explains why this protein carries the te"
+   }
+  ]
  }
 }

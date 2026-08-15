@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080081",
+  "name": "4-methylumbelliferyl-beta-D-glucopyranoside beta-glucosidase activity",
+  "def": "Catalysis of the hydrolysis of glucosidic link in 4-methylumbelliferyl-beta-D-glucopyranoside.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LV33"
+  ],
+  "assigned_accessions": [
+    "Q9LV33"
+  ]
+}

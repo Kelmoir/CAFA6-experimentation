@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0080045",
+  "name": "quercetin 3'-O-glucosyltransferase activity",
+  "def": "Catalysis of the transfer of a glucosyl group from UDP-glucose to the 3'-hydroxy group of a quercetin molecule.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O82381",
+    "O82382",
+    "Q9LK73"
+  ],
+  "assigned_accessions": [
+    "O82381",
+    "O82382",
+    "Q9LK73"
+  ]
+}

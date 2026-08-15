@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080084",
+  "name": "5S rDNA binding",
+  "def": "Binding to a 5S rDNA sequence, encoding ribosomal 5S rRNA, which is individually transcribed by RNA polymerase III, rather than by RNA polymerase I, in species where it exists.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q84MZ4"
+  ],
+  "assigned_accessions": [
+    "Q84MZ4"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080096",
+  "name": "phosphatidate-sterol O-acyltransferase activity",
+  "def": "Catalysis of the reaction: a phosphatidate + a sterol = a sterol ester + a lysophosphatidate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q4VCM1"
+  ],
+  "assigned_accessions": [
+    "Q4VCM1"
+  ]
+}

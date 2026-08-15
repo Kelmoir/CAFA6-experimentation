@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080095",
+  "name": "phosphatidylethanolamine-sterol O-acyltransferase activity",
+  "def": "Catalysis of the reaction: a phosphatidylethanolamine + a sterol = a sterol ester + a lysophosphatidylethanolamine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q4VCM1"
+  ],
+  "assigned_accessions": [
+    "Q4VCM1"
+  ]
+}

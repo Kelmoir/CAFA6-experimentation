@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q4VCM1",
+      "go_id": "GO:0080095",
+      "feature_type": "ACT_SITE",
+      "start": 194,
+      "end": 195,
+      "signal_kind": "text",
+      "signal_value": "Acyl-ester intermediate",
+      "reasoning": "The ACT_SITE 194-195 feature directly supports the chemistry of the reaction described in the GO definition, making it the most plausible explanation for why this protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

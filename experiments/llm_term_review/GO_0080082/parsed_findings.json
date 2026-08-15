@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9LV33",
+      "go_id": "GO:0080082",
+      "feature_type": "ACT_SITE",
+      "start": 418,
+      "end": 419,
+      "signal_kind": "text",
+      "signal_value": "Nucleophile",
+      "reasoning": "The \"ACT_SITE 418-419\" annotation with the qualifier \"Nucleophile\" directly aligns with the primary reaction of catalyzing hydrolysis, which requires a nucleophilic site. This feature most plausibly explains why the protein carries the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

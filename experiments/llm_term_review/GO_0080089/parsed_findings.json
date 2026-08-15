@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "O80467",
+      "go_id": "GO:0080089",
+      "feature_type": "BINDING",
+      "start": 46,
+      "end": 47,
+      "signal_kind": "ligand",
+      "signal_value": "spermidine",
+      "reasoning": "The \"BINDING\" feature with the ligand \"spermidine\" directly relates to the substrate involved in the GO term's defined reaction, making it the most plausible explanation for why the protein carries this molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

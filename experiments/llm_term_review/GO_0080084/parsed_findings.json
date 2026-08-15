@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q84MZ4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction of \"5S rDNA binding\" as described in its definition. The evidence only describes structural motifs and regions, not the direct biochemical mechanism of DNA binding."
+    }
+  ]
+}

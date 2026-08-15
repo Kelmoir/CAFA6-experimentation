@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0080062",
+  "name": "cytokinin 9-beta-glucosyltransferase activity",
+  "def": "Catalysis of the reaction: 6-alkylaminopurine + UDP-D-glucose = 6-alkylamino-9-beta-D-glucosylpurine + H+ + UDP. This reaction is an N-glucosylation event.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q9FI99",
+    "Q9FIA0"
+  ],
+  "assigned_accessions": [
+    "Q9FI99",
+    "Q9FIA0"
+  ]
+}
