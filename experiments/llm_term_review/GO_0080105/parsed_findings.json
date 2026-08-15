@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9SS04",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9SS04 directly supports the oxygenase reaction mechanism described by GO:0080105."
+    },
+    {
+      "accession": "Q9SXE1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9SXE1 specifically matches the chemistry defined by GO:0080105, which involves catalyzing a specific reaction with 6-methylthiopropyl-glucosinolate. The only evidence is binding sites for FAD and NADP(+), which do not directly explain the defined molecular function."
+    }
+  ]
+}

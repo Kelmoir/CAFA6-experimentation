@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080108",
+  "name": "S-alkylthiohydroximate lyase activity",
+  "def": "Catalysis of the conversion of a S-alkylthiohydroximate to a thiohydroximate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SIV0"
+  ],
+  "assigned_accessions": [
+    "Q9SIV0"
+  ]
+}

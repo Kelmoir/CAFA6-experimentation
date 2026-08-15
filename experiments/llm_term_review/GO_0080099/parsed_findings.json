@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9S7N2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9S7N2 directly describes the catalytic mechanism of L-methionine:2-oxoglutarate aminotransferase activity, which is defined by the specific reaction it catalyzes."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q93Y23",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the positional or domain sections of Q93Y23 specifically describes the catalytic reaction defined by GO:0080103. The binding sites are more about cofactor interaction than the actual oxygenation mechanism."
+    },
+    {
+      "accession": "Q94K43",
+      "reason": "none_verdict",
+      "reasoning": "The defined reaction of the GO term involves a specific cofactor (FAD) and substrate (4-methylthiopropyl-glucosinolate), but the protein's annotated features do not include any binding site or domain that directly supports this reaction mechanism. The domain/family cross-references suggest potential similarity to flavin monooxygenases, but these are background classifications rather than positiona"
+    },
+    {
+      "accession": "Q9SS04",
+      "reason": "none_verdict",
+      "reasoning": "No single annotated feature (binding site or domain) in Q9SS04 directly matches the primary reaction mechanism of the GO term \"4-methylthiopropyl glucosinolate S-oxygenase activity.\" While FAD and NADP(+)-binding sites are relevant to redox activity, they do not specifically explain the conversion of 4-methylthiopropyl-glucosinolate to 4-methylsulfinylpropyl-glucosinolate."
+    },
+    {
+      "accession": "Q9SXE1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature describes the actual chemical reaction or mechanism of the GO term, so there is no plausible explanation for why Q9SXE1 carries this term."
+    }
+  ]
+}

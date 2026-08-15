@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080099",
+  "name": "L-methionine:2-oxoglutarate aminotransferase activity",
+  "def": "Catalysis of the reaction: L-methionine + 2-oxoglutarate = 4-methylthio-2-oxobutyrate + L-glutamate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9S7N2"
+  ],
+  "assigned_accessions": [
+    "Q9S7N2"
+  ]
+}

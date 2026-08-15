@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0080102",
+  "name": "3-methylthiopropyl glucosinolate S-oxygenase activity",
+  "def": "Catalysis of the reaction: 3-methylthiopropyl-glucosinolate = 3-methylsulfinylpropyl-glucosinolate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q94K43",
+    "Q9SS04",
+    "Q9SXE1"
+  ],
+  "assigned_accessions": [
+    "Q94K43",
+    "Q9SS04",
+    "Q9SXE1"
+  ]
+}

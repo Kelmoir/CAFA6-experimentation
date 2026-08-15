@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0080105",
+  "name": "6-methylthiopropyl glucosinolate S-oxygenase activity",
+  "def": "Catalysis of the reaction: 6-methylthiopropyl-glucosinolate = 6-methylsulfinylpropyl-glucosinolate.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q9SS04",
+    "Q9SXE1"
+  ],
+  "assigned_accessions": [
+    "Q9SS04",
+    "Q9SXE1"
+  ]
+}

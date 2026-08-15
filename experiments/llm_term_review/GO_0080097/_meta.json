@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0080097",
+  "name": "L-tryptophan:pyruvate aminotransferase activity",
+  "def": "Catalysis of the reaction: L-tryptophan + pyruvate = 3-(indol-3-yl)pyruvate + L-alanine.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q94A02",
+    "Q9LR29",
+    "Q9S7N2"
+  ],
+  "assigned_accessions": [
+    "Q94A02",
+    "Q9LR29",
+    "Q9S7N2"
+  ]
+}

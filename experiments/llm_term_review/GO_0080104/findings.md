@@ -1,0 +1,15 @@
+## Q94K43 GO:0080104
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature provides a direct explanation for the defined reaction mechanism of 5-methylthiopropyl glucosinolate S-oxygenase activity.
+---
+## Q9SS04 GO:0080104
+verdict: NONE
+feature: BINDING 16-22
+reasoning: The annotated feature "BINDING 16-22" with ligand "FAD" does not directly explain the specific reaction mechanism or catalytic activity defined by the GO term, as it only indicates the enzyme's interaction with FAD, which is a coenzyme involved in many oxygenase reactions but not necessarily the one described.
+---
+## Q9SXE1 GO:0080104
+verdict: NONE
+feature: NONE 0-0
+reasoning: The protein Q9SXE1 does not have any annotated feature that directly matches the GO term's primary reaction mechanism of catalyzing the oxygenation of 5-methylthiopropyl-glucosinolate. All relevant evidence is secondary and only echoes words from a qualifying clause, not the defined chemistry itself.
+---

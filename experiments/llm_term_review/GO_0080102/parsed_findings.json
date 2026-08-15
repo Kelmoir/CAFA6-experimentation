@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q94K43",
+      "go_id": "GO:0080102",
+      "feature_type": "BINDING",
+      "start": 16,
+      "end": 22,
+      "signal_kind": "ligand",
+      "signal_value": "FAD",
+      "reasoning": "The binding site for FAD directly supports the redox activity of the enzyme, which is central to the catalytic mechanism described by the GO term. This feature most plausibly explains why the protein carries the term \"3-methylthiopropyl glucosinolate S-oxygenase activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9SS04",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9SS04 provides a strong match to the primary reaction of the GO term \"3-methylthiopropyl glucosinolate S-oxygenase activity.\" The binding sites for FAD and NADP(+) are not directly related to the oxygenase mechanism defined by the GO term."
+    },
+    {
+      "accession": "Q9SXE1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides direct evidence for the enzyme activity defined by GO:0080102. The binding sites for FAD and NADP(+) are relevant to the reaction but do not explain the molecular function itself."
+    }
+  ]
+}
