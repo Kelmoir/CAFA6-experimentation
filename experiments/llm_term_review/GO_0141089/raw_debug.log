@@ -1,0 +1,33 @@
+=== P52792 GO:0141089 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== Q07071 GO:0141089 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== Q91X44 GO:0141089 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== Q14397 GO:0141089 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+
+=== Q91X44 GO:0141089 (VERDICT missing) ===
+THINKING: The GO term "glucose sensor activity" (GO:0141089) refers to the ability of a protein to bind to and respond to changes in the cellular level of glucose, typically through conformational change. This is a primary reaction or mechanism that defines the function of the term. 
+
+The annotated features for protein Q91X44 include several domains and regions, as well as binding sites for various ligands. To determine which feature most plausibly explains why this protein carries the GO term, we must evaluate each candidate's type and qualifier text against the primary reaction described in the definition.
+
+- **DOMAIN 89-286** (note: SIS 1) - This domain is associated with sugar transporters and may be involved in glucose sensing.
+- **DOMAIN 319-476** (note: SIS 2) - Another domain that could be involved in glucose sensing or regulation.
+- **REGION 198-200** (note: Important for interaction with GCK) - This region is specifically noted for its role in interacting with GCK, which is a key enzyme in glucose metabolism.
+- **REGION 462-465** (note: Essential for interaction with GCK) - Similar to the previous region but emphasizes the essential nature of this interaction.
+- **BINDING 108-110** (ligand: beta-D-fructose 1-phosphate) - This binding site is associated with a specific ligand, which may be relevant to glucose sensing.
+- **BINDING 152-153** (ligand: beta-D-fructose 1-phosphate) - Another binding site for the same ligand as above.
+- **BINDING 178-181** (ligand: beta-D-fructose 1-phosphate) - This binding site is also associated with the same ligand.
+- **BINDING 347-348** (ligand: beta-D-fructose 1-phosphate) - Another binding site for the same ligand.
+
+The primary reaction described in the definition is "binding to and responding, e.g. by conformational change, to changes in the cellular level of glucose." This implies that the protein has a binding domain that can respond to glucose levels, likely through structural changes. 
+
+Among the candidate features, **BINDING 108-110** (ligand: beta-D-fructose 1-phosphate) directly relates to the ligand involved in glucose sensing. While other binding sites are associated with similar ligands, this one is explicitly noted and could be a key structural feature that supports the function of "glucose sensor activity."
+
+FEATURE: BINDING 108-110  
+REASONING: The binding site at position 108-110 for beta-D-fructose 1-phosphate directly supports the GO term's definition of glucose sensing by binding to and responding to changes in glucose levels, making it a strong match.
+

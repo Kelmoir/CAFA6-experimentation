@@ -34398,6 +34398,16 @@
   ],
   "text_patterns": []
  },
+ "GO:0141106": {
+  "name": "tRNA methyltransferase activator activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR005651",
+   "InterPro:IPR039127"
+  ],
+  "text_patterns": []
+ },
  "GO:0141108": {
   "name": "transporter regulator activity",
   "ligands": [],

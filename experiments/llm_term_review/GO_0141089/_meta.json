@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0141089",
+  "name": "glucose sensor activity",
+  "def": "Binding to and responding, e.g. by conformational change, to changes in the cellular level of glucose.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P52792",
+    "Q07071",
+    "Q14397",
+    "Q91X44"
+  ],
+  "assigned_accessions": [
+    "P52792",
+    "Q07071",
+    "Q14397",
+    "Q91X44"
+  ]
+}

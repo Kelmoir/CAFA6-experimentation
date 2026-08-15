@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0141102",
+  "name": "tRNA (5-carboxymethylaminomethyluridine(34)-2'-O)-methyltransferase activity",
+  "def": "Catalysis of the reaction: 5-carboxymethylaminomethyluridine34 in tRNA(Leu) + S-adenosyl-L-methionine = 5-carboxymethylaminomethyl-2'-O-methyluridine34 in tRNA(Leu) + H+ + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AGJ7"
+  ],
+  "assigned_accessions": [
+    "P0AGJ7"
+  ]
+}

@@ -40760,6 +40760,48 @@
    }
   ]
  },
+ "GO:0141039": {
+  "n_resolved": 0,
+  "n_uncertain": 2,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "A8K0Z3",
+    "go_id": "GO:0141039",
+    "feature_type": "REGION",
+    "start": 0,
+    "end": 54,
+    "signal_kind": "text",
+    "signal_value": "Required for WASH complex assembly",
+    "reasoning": "The \"REQUIRED FOR WASH COMPLEX ASSEMBLY\" annotation in REGION 0-54 suggests a possible secondary role in transcriptional regulation or chromatin remodeling, which could be related to the protein's interaction with PI3K. However, it does not directly explain why the protein has PI3K inhibitor activity. The highest score (6) is not sufficient to confirm a strong match for the primary reaction of the"
+   },
+   {
+    "accession": "Q8VDD8",
+    "go_id": "GO:0141039",
+    "feature_type": "DOMAIN",
+    "start": 368,
+    "end": 391,
+    "signal_kind": "text",
+    "signal_value": "WH2",
+    "reasoning": "The DOMAIN 368-391 with note WH2 is the most relevant candidate, as it directly relates to the WH2 motif, which is a structural element often found in proteins that interact with other domains or enzymes. However, this feature does not explicitly state a role in phosphatidylinositol 3-kinase inhibition, making it only plausibly related but not definitively explaining the GO term's primary reaction"
+   }
+  ],
+  "issues": [
+   {
+    "accession": "A4D1P6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the phosphatidylinositol 3-kinase inhibitor activity as defined by the GO term."
+   },
+   {
+    "accession": "Q96FE7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q96FE7 provides a strong, specific match to the primary reaction described in the GO definition for \"phosphatidylinositol 3-kinase inhibitor activity\". The available features are more about structural characteristics than functional roles."
+   }
+  ]
+ },
  "GO:0141051": {
   "n_resolved": 2,
   "n_uncertain": 0,
@@ -40780,5 +40822,175 @@
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0141054": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0A1D5NVS8",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P50534",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q69ZF8",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q9HCI7",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0141089": {
+  "n_resolved": 1,
+  "n_uncertain": 2,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "beta-D-fructose 1-phosphate",
+    "accessions": [
+     "Q14397"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "P52792",
+    "go_id": "GO:0141089",
+    "feature_type": "DOMAIN",
+    "start": 9,
+    "end": 454,
+    "signal_kind": "text",
+    "signal_value": "Hexokinase",
+    "reasoning": "The highest score for matching the GO term \"glucose sensor activity\" is given to the \"BINDING 9-454\" feature, which is associated with hexokinase. However, this domain does not directly explain why the protein carries the term \"glucose sensor activity.\" Therefore, the verdict is UNCERTAIN."
+   },
+   {
+    "accession": "Q07071",
+    "go_id": "GO:0141089",
+    "feature_type": "BINDING",
+    "start": 108,
+    "end": 110,
+    "signal_kind": "ligand",
+    "signal_value": "beta-D-fructose 1-phosphate",
+    "reasoning": "The binding sites for beta-D-fructose 1-phosphate and beta-D-fructose 6-phosphate are more directly related to glucose sensing than other features, but no feature explicitly states the \"responding\" aspect of the definition."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q91X44",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0141090": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q16222",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for protein Q16222 describe ligand binding sites, but none of them provide evidence that the protein is involved in receiving a phosphoryl group from an intermediate molecule as defined by GO:0141090. Therefore, there is no plausible explanation for why this protein carries the term based on the given evidence."
+   }
+  ]
+ },
+ "GO:0141102": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AGJ7",
+    "reason": "none_verdict",
+    "reasoning": "The binding sites for S-adenosyl-L-methionine do not directly indicate the catalytic activity of methyl transfer as defined by the GO term, and therefore do not plausibly explain why the protein carries this term."
+   }
+  ]
+ },
+ "GO:0141106": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR005651",
+     "InterPro:IPR039127"
+    ],
+    "accessions": [
+     "Q9DCG9",
+     "Q9VP65"
+    ],
+    "note": "resolved from DOMAIN note 'TRM112'"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9EP82",
+    "reason": "none_verdict",
+    "reasoning": "The region span and disordered status do not provide a specific explanation for the GO term's primary reaction of activating a methyltransferase. No positional feature has been confirmed to explain this function, so the verdict is NONE."
+   },
+   {
+    "accession": "Q9UI30",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0141107": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9GZV8",
+    "go_id": "GO:0141107",
+    "feature_type": "DOMAIN",
+    "start": 250,
+    "end": 367,
+    "signal_kind": "text",
+    "signal_value": "SET",
+    "reasoning": "The DOMAIN 250-367 with the SET annotation is associated with proteins that can regulate methyltransferase activity through post-translational modifications. However, this domain type alone does not directly explain the mechanism of modulating methyltransferase activity, making it a plausible but not definitive match."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "E9Q3T6",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for E9Q3T6 do not provide any evidence that directly explains why the protein carries the molecular function of methyltransferase regulator activity. No feature explicitly indicates binding to or modulation of a methyltransferase, and all other features are either generic or unrelated to the primary reaction described in the GO term's definition."
+   }
+  ]
  }
 }

@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q16222",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for protein Q16222 describe ligand binding sites, but none of them provide evidence that the protein is involved in receiving a phosphoryl group from an intermediate molecule as defined by GO:0141090. Therefore, there is no plausible explanation for why this protein carries the term based on the given evidence."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0141107",
+  "name": "methyltransferase regulator activity",
+  "def": "Binds to and modulates the activity of a methyltransferase.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "E9Q3T6",
+    "Q9GZV8"
+  ],
+  "assigned_accessions": [
+    "E9Q3T6",
+    "Q9GZV8"
+  ]
+}

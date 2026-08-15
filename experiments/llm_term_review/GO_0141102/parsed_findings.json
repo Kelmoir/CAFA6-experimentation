@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0AGJ7",
+      "reason": "none_verdict",
+      "reasoning": "The binding sites for S-adenosyl-L-methionine do not directly indicate the catalytic activity of methyl transfer as defined by the GO term, and therefore do not plausibly explain why the protein carries this term."
+    }
+  ]
+}

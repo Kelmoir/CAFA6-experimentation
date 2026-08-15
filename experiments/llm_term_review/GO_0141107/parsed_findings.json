@@ -1,0 +1,22 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9GZV8",
+      "go_id": "GO:0141107",
+      "feature_type": "DOMAIN",
+      "start": 250,
+      "end": 367,
+      "signal_kind": "text",
+      "signal_value": "SET",
+      "reasoning": "The DOMAIN 250-367 with the SET annotation is associated with proteins that can regulate methyltransferase activity through post-translational modifications. However, this domain type alone does not directly explain the mechanism of modulating methyltransferase activity, making it a plausible but not definitive match."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "E9Q3T6",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for E9Q3T6 do not provide any evidence that directly explains why the protein carries the molecular function of methyltransferase regulator activity. No feature explicitly indicates binding to or modulation of a methyltransferase, and all other features are either generic or unrelated to the primary reaction described in the GO term's definition."
+    }
+  ]
+}

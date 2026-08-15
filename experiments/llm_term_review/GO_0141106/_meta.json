@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0141106",
+  "name": "tRNA methyltransferase activator activity",
+  "def": "Binds to and increases the activity of a methyltransferase.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "Q9DCG9",
+    "Q9EP82",
+    "Q9UI30",
+    "Q9VP65"
+  ],
+  "assigned_accessions": [
+    "Q9DCG9",
+    "Q9EP82",
+    "Q9UI30",
+    "Q9VP65"
+  ]
+}

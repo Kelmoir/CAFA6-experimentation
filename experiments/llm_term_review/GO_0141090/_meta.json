@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0141090",
+  "name": "protein serine pyrophosphorylase activity",
+  "def": "Catalysis of the reaction: protein phospho-serine + inositol 5-triphosphate pentakisphosphate = protein diphospho-serine + inositol 5-diphosphate pentakisphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q16222"
+  ],
+  "assigned_accessions": [
+    "Q16222"
+  ]
+}

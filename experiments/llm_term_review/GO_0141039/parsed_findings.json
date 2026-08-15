@@ -1,0 +1,37 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "A8K0Z3",
+      "go_id": "GO:0141039",
+      "feature_type": "REGION",
+      "start": 0,
+      "end": 54,
+      "signal_kind": "text",
+      "signal_value": "Required for WASH complex assembly",
+      "reasoning": "The \"REQUIRED FOR WASH COMPLEX ASSEMBLY\" annotation in REGION 0-54 suggests a possible secondary role in transcriptional regulation or chromatin remodeling, which could be related to the protein's interaction with PI3K. However, it does not directly explain why the protein has PI3K inhibitor activity. The highest score (6) is not sufficient to confirm a strong match for the primary reaction of the"
+    },
+    {
+      "accession": "Q8VDD8",
+      "go_id": "GO:0141039",
+      "feature_type": "DOMAIN",
+      "start": 368,
+      "end": 391,
+      "signal_kind": "text",
+      "signal_value": "WH2",
+      "reasoning": "The DOMAIN 368-391 with note WH2 is the most relevant candidate, as it directly relates to the WH2 motif, which is a structural element often found in proteins that interact with other domains or enzymes. However, this feature does not explicitly state a role in phosphatidylinositol 3-kinase inhibition, making it only plausibly related but not definitively explaining the GO term's primary reaction"
+    }
+  ],
+  "issues": [
+    {
+      "accession": "A4D1P6",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the phosphatidylinositol 3-kinase inhibitor activity as defined by the GO term."
+    },
+    {
+      "accession": "Q96FE7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q96FE7 provides a strong, specific match to the primary reaction described in the GO definition for \"phosphatidylinositol 3-kinase inhibitor activity\". The available features are more about structural characteristics than functional roles."
+    }
+  ]
+}

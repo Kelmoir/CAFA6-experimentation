@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0141039",
+  "name": "phosphatidylinositol 3-kinase inhibitor activity",
+  "def": "Binds to and decreases the activity of a phosphatidylinositol 3-kinase (PI3K).",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "A4D1P6",
+    "A8K0Z3",
+    "Q8VDD8",
+    "Q96FE7"
+  ],
+  "assigned_accessions": [
+    "A4D1P6",
+    "A8K0Z3",
+    "Q8VDD8",
+    "Q96FE7"
+  ]
+}
