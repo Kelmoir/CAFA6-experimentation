@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140087",
+  "name": "acetaldehyde dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: acetaldehyde + NAD+ + H2O = acetate + NADH + 2 H+.",
+  "n_proteins_total": 12,
+  "sampled_accessions": [
+    "P00352",
+    "P24549",
+    "Q8HYE4",
+    "Q9JLJ3"
+  ],
+  "assigned_accessions": [
+    "P00352",
+    "P24549",
+    "Q8HYE4",
+    "Q9JLJ3"
+  ]
+}

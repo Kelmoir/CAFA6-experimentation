@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P35992",
+      "go_id": "GO:0140177",
+      "feature_type": "DOMAIN",
+      "start": 956,
+      "end": 1057,
+      "signal_kind": "text",
+      "signal_value": "Fibronectin type-III 9",
+      "reasoning": "The domain \"956-1057\" is explicitly named as \"Tyrosine-protein phosphatase,\" directly aligning with the GO term's definition and providing a strong match to its primary reaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q04164",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for protein Q04164 specifically matches the primary reaction of the GO term (phosphoryl transfer), which is not stated in the provided definition. Therefore, no single feature can be confidently identified as the basis for this molecular function prediction."
+    }
+  ]
+}

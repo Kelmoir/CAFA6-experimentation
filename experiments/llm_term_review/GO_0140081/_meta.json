@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0140081",
+  "name": "glycosylated region protein binding",
+  "def": "Binding to a glycosylated region of a protein.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P41217",
+    "Q6UXB4",
+    "Q8TD46"
+  ],
+  "assigned_accessions": [
+    "P41217",
+    "Q6UXB4",
+    "Q8TD46"
+  ]
+}

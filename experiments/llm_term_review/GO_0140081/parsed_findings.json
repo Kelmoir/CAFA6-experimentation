@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "Q6UXB4",
+      "go_id": "GO:0140081",
+      "feature_type": "DOMAIN",
+      "start": 171,
+      "end": 287,
+      "signal_kind": "text",
+      "signal_value": "C-type lectin",
+      "reasoning": "The \"C-type lectin\" domain in Q6UXB4 directly matches the primary reaction of the GO term, which is binding to a glycosylated region of another protein. This provides a strong and specific explanation for why the protein carries the term."
+    },
+    {
+      "accession": "P41217",
+      "go_id": "GO:0140081",
+      "feature_type": "DOMAIN",
+      "start": 30,
+      "end": 141,
+      "signal_kind": "text",
+      "signal_value": "Ig-like V-type",
+      "reasoning": "The \"Ig-like V-type\" domain directly matches the defined function of binding to a glycosylated region, making it the most plausible explanation for why this protein carries the GO term."
+    },
+    {
+      "accession": "Q8TD46",
+      "go_id": "GO:0140081",
+      "feature_type": "DOMAIN",
+      "start": 159,
+      "end": 251,
+      "signal_kind": "text",
+      "signal_value": "Ig-like C2-type",
+      "reasoning": "The DOMAIN span from 159-251 in Q8TD46 corresponds to an Ig-like C2-type domain, which is known for binding glycosylated regions of other proteins, directly matching the GO term's primary reaction of binding to a glycosylated region."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

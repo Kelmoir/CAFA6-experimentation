@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140108",
+  "name": "high-affinity D-glucose transmembrane transporter activity",
+  "def": "Enables the transfer of D-glucose from one side of a membrane to the other. In high-affinity transport the transporter is able to bind the solute even if it is only present at very low concentrations.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P78831"
+  ],
+  "assigned_accessions": [
+    "P78831"
+  ]
+}

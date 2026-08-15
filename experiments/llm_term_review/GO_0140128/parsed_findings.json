@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "G5EET5",
+      "go_id": "GO:0140128",
+      "feature_type": "DOMAIN",
+      "start": 36,
+      "end": 95,
+      "signal_kind": "text",
+      "signal_value": "Chromo",
+      "reasoning": "The \"Chromo\" domain in G5EET5 is directly associated with chromatin-related activities, which aligns with the primary reaction of the GO term \"histone H1 reader activity,\" suggesting that this domain is the structural basis for the function."
+    },
+    {
+      "accession": "Q9Y468",
+      "go_id": "GO:0140128",
+      "feature_type": "SITE",
+      "start": 425,
+      "end": 426,
+      "signal_kind": "text",
+      "signal_value": "Positioned at the entrance of MBT 2 and is required for recognition of monomethylated and dimethylated peptides",
+      "reasoning": "The SITE 425-426 annotation directly explains why the protein carries the GO term \"histone H1 reader activity\" by specifying that it is required for recognition of monomethylated and dimethylated peptides, which aligns with the primary reaction described in the definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

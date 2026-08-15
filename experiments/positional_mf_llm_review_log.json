@@ -37533,6 +37533,110 @@
    }
   ]
  },
+ "GO:0140081": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "C-type lectin",
+    "accessions": [
+     "Q6UXB4"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like V-type",
+    "accessions": [
+     "P41217"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Ig-like C2-type",
+    "accessions": [
+     "Q8TD46"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140087": {
+  "n_resolved": 2,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P00352",
+     "P24549"
+    ],
+    "reason": "circular agreement -- only 1 of 2 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9JLJ3",
+    "go_id": "GO:0140087",
+    "feature_type": "ACT_SITE",
+    "start": 253,
+    "end": 254,
+    "signal_kind": "text",
+    "signal_value": "Proton acceptor",
+    "reasoning": "The highest-scoring feature (ACT_SITE 253-254) is related to the proton acceptor role in the reaction, which is a part of the GO term's definition. However, it only echoes a word from a secondary clause (\"Proton acceptor\") rather than being the primary reaction itself, so it does not fully match the GO term's own chemistry."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q8HYE4",
+    "reason": "none_verdict",
+    "reasoning": "The highest-scoring binding sites for NAD(+) are consistent with the enzyme's function, but they do not directly explain why the protein carries the GO term. No positional feature has been confirmed to account for the primary reaction mechanism of the GO term."
+   }
+  ]
+ },
+ "GO:0140096": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6ZRS2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q6ZRS2 provides a clear, specific match to the primary reaction of catalytic activity modifying a protein as defined for GO:0140096."
+   },
+   {
+    "accession": "Q97PR0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q97RS9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q97RS9 directly matches the primary reaction or mechanism defined by the GO term \"catalytic activity, acting on a protein.\""
+   },
+   {
+    "accession": "Q97PI4",
+    "reason": "none_verdict",
+    "reasoning": "The highest scoring feature (BINDING 386-387) is associated with Zn(2+) binding, which could be part of a catalytic mechanism. However, it only echoes a word from a secondary clause and does not specifically explain the modification process. Therefore, there is no annotated feature that directly explains why Q97PI4 carries the GO term \"catalytic activity, acting on a protein.\""
+   }
+  ]
+ },
  "GO:0140098": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -37546,6 +37650,112 @@
     "accession": "O25114",
     "reason": "none_verdict",
     "reasoning": "The only annotated feature for O25114 that could be related to catalytic activity on RNA is ACT_SITE, but it does not provide specific evidence about the modification of RNA. The domain/family cross-references suggest involvement in pseudoU synthase, which is a separate function and not directly linked to the GO term's definition of catalytic activity acting on RNA. Thus, no positional feature pro"
+   }
+  ]
+ },
+ "GO:0140104": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Lipoyl-binding",
+    "accessions": [
+     "P11183"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "START",
+    "accessions": [
+     "Q8R1R3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AG78",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O80493",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for O80493 is a disordered region (REGION 0-37), which does not directly explain the molecular carrier activity as defined by the GO term. No other positional feature is provided, and the domain/family cross-references do not indicate a specific function that matches the primary reaction of the GO term."
+   }
+  ]
+ },
+ "GO:0140108": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P78831",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" annotation for P78831 does not provide any positional evidence that directly supports the molecular function of high-affinity D-glucose transmembrane transporter activity. It is generic and does not specify a domain or structural feature that would be expected to enable glucose transport with high affinity."
+   }
+  ]
+ },
+ "GO:0140128": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Chromo",
+    "accessions": [
+     "G5EET5"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Positioned at the entrance of MBT 2 and is required for recognition of monomethylated and dimethylated peptides",
+    "accessions": [
+     "Q9Y468"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140177": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Fibronectin type-III 9",
+    "accessions": [
+     "P35992"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q04164",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein Q04164 specifically matches the primary reaction of the GO term (phosphoryl transfer), which is not stated in the provided definition. Therefore, no single feature can be confidently identified as the basis for this molecular function prediction."
    }
   ]
  }

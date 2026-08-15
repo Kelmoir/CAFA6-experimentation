@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140104",
+  "name": "molecular carrier activity",
+  "def": "Directly binding to a specific ion or molecule and delivering it either to an acceptor molecule or to a specific location.",
+  "n_proteins_total": 58,
+  "sampled_accessions": [
+    "O80493",
+    "P0AG78",
+    "P11183",
+    "Q8R1R3"
+  ],
+  "assigned_accessions": [
+    "O80493",
+    "P0AG78",
+    "P11183",
+    "Q8R1R3"
+  ]
+}
