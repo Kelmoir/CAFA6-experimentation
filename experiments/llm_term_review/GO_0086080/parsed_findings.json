@@ -1,0 +1,43 @@
+{
+  "resolved": [
+    {
+      "accession": "Q6AY06",
+      "go_id": "GO:0086080",
+      "feature_type": "REGION",
+      "start": 147,
+      "end": 160,
+      "signal_kind": "text",
+      "signal_value": "Important for interaction with IZUMO1R",
+      "reasoning": "The REGION 147-160 feature is most plausibly linked to the GO term's primary reaction of binding to a protein or protein complex contributing to heterotypic cell-cell adhesion, as it explicitly mentions interaction with IZUMO1R."
+    },
+    {
+      "accession": "P78324",
+      "go_id": "GO:0086080",
+      "feature_type": "DOMAIN",
+      "start": 31,
+      "end": 137,
+      "signal_kind": "text",
+      "signal_value": "Ig-like V-type",
+      "reasoning": "The Ig-like V-type domain in P78324 is directly related to the binding activity that contributes to heterotypic cell-cell adhesion, as defined by GO:0086080. This domain type is known to be involved in protein interactions that facilitate adhesion between different cell types."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "P04218",
+      "go_id": "GO:0086080",
+      "feature_type": "DOMAIN",
+      "start": 30,
+      "end": 141,
+      "signal_kind": "text",
+      "signal_value": "Ig-like V-type",
+      "reasoning": "The Ig-like V-type domain in the protein is structurally plausible for participating in heterotypic cell-cell adhesion, but it does not explicitly confirm the defined mechanism of the GO term."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q9ES57",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P36382",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the primary reaction described in the GO term's definition, which is the activity of gap junction channels enabling electrical coupling between Purkinje myocytes and ventricular cardiac muscle cells."
+    }
+  ]
+}

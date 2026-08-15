@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P36382",
+      "reason": "none_verdict",
+      "reasoning": "The only positional feature available for P36382 is a \"Disordered\" region, which does not provide any structural or functional basis that directly explains why it carries the GO term \"gap junction channel activity involved in SA node cell-atrial cardiac muscle cell electrical coupling.\""
+    },
+    {
+      "accession": "P36383",
+      "reason": "none_verdict",
+      "reasoning": "No positional feature has been confirmed to explain the primary reaction of gap junction channel activity involved in SA node cell-atrial cardiac muscle cell electrical coupling. The only domain-related information is that the protein belongs to the Connexin family, but this is not an annotated feature for P36383."
+    }
+  ]
+}

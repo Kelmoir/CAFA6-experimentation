@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0086061",
+  "name": "voltage-gated sodium channel activity involved in bundle of His cell action potential",
+  "def": "Enables the transmembrane transfer of a sodium ion by a voltage-gated channel through the plasma membrane of a bundle of His cardiac muscle cell contributing to the depolarization phase of an action potential. A voltage-gated channel is a channel whose open state is dependent on the voltage across the membrane in which it is embedded.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P15389",
+    "Q14524",
+    "Q9JJV9"
+  ],
+  "assigned_accessions": [
+    "P15389",
+    "Q14524",
+    "Q9JJV9"
+  ]
+}

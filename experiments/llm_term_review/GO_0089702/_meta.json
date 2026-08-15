@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0089702",
+  "name": "undecaprenyl-phosphate glucose phosphotransferase activity",
+  "def": "Catalysis of the reaction: di-trans,octa-cis-undecaprenyl phosphate + UDP-alpha-D-glucose = alpha-D-glucosyl di-trans,octa-cis-undecaprenyl diphosphate + UMP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P71241"
+  ],
+  "assigned_accessions": [
+    "P71241"
+  ]
+}

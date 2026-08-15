@@ -1,0 +1,33 @@
+{
+  "resolved": [
+    {
+      "accession": "P15389",
+      "go_id": "GO:0086060",
+      "feature_type": "SITE",
+      "start": 373,
+      "end": 374,
+      "signal_kind": "text",
+      "signal_value": "Cys residue near the selectivity filter, which has a free thiol that is susceptible to reaction with methanethiosulfonate (MTSET); Sodium current is irreversibly blocked by MTSET",
+      "reasoning": "The site feature at coordinates 373-374 directly relates to the sodium channel's function in enabling transmembrane sodium ion transfer, as it is associated with a cysteine residue near the selectivity filter that can be irreversibly blocked by MTSET. This matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q9JJV9",
+      "go_id": "GO:0086060",
+      "feature_type": "DOMAIN",
+      "start": 1902,
+      "end": 1932,
+      "signal_kind": "text",
+      "signal_value": "IQ",
+      "reasoning": "The IQ motif in the DOMAIN is likely to be associated with voltage-gated sodium channels, but no positional feature directly matches the defined chemistry of sodium ion transmembrane transfer."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q14524",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of sodium ion translocation described in the GO term's definition."
+    }
+  ]
+}

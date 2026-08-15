@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0086020",
+  "name": "gap junction channel activity involved in SA node cell-atrial cardiac muscle cell electrical coupling",
+  "def": "A wide pore channel activity that enables a direct cytoplasmic connection from an SA node cell to an atrial cardiomyocyte. The gap junction passes electrical signals between the cells contributing to cardiac conduction.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P36382",
+    "P36383"
+  ],
+  "assigned_accessions": [
+    "P36382",
+    "P36383"
+  ]
+}

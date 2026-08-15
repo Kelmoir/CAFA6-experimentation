@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0086080",
+  "name": "protein binding involved in heterotypic cell-cell adhesion",
+  "def": "Binding to a protein or protein complex contributing to the adhesion of two different types of cells.",
+  "n_proteins_total": 22,
+  "sampled_accessions": [
+    "P04218",
+    "P78324",
+    "Q6AY06",
+    "Q9ES57"
+  ],
+  "assigned_accessions": [
+    "P04218",
+    "P78324",
+    "Q6AY06",
+    "Q9ES57"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0086079",
+  "name": "gap junction channel activity involved in Purkinje myocyte-ventricular cardiac muscle cell electrical coupling",
+  "def": "A wide pore channel activity that enables a direct cytoplasmic connection from a Purkinje myocyte to a ventricular cardiac muscle cell. The gap junction passes electrical signals between the cells contributing to cardiac conduction.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P36382"
+  ],
+  "assigned_accessions": [
+    "P36382"
+  ]
+}

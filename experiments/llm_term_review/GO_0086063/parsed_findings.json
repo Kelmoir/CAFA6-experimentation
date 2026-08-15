@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P15389",
+      "go_id": "GO:0086063",
+      "feature_type": "SITE",
+      "start": 373,
+      "end": 374,
+      "signal_kind": "text",
+      "signal_value": "Cys residue near the selectivity filter, which has a free thiol that is susceptible to reaction with methanethiosulfonate (MTSET); Sodium current is irreversibly blocked by MTSET",
+      "reasoning": "The SITE 373-374 feature directly relates to the sodium ion transmembrane transport activity described in the GO term's definition, making it a strong match."
+    },
+    {
+      "accession": "Q9JJV9",
+      "go_id": "GO:0086063",
+      "feature_type": "DOMAIN",
+      "start": 1902,
+      "end": 1932,
+      "signal_kind": "text",
+      "signal_value": "IQ",
+      "reasoning": "The IQ motif in the DOMAIN 1902-1932 is directly associated with voltage-gated sodium channel activity, which matches the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q14524",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction of enabling sodium ion transmembrane transfer through a voltage-gated channel as defined by the GO term. All features either are generic or only echo secondary clauses about interactions with other proteins, not the core function of the sodium channel in action potential generation."
+    }
+  ]
+}
