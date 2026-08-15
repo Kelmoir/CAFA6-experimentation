@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P18173",
+      "go_id": "GO:0140762",
+      "feature_type": "BINDING",
+      "start": 65,
+      "end": 95,
+      "signal_kind": "ligand",
+      "signal_value": "FAD",
+      "reasoning": "The \"BINDING\" feature at position 65-95 directly supports the function of glucose dehydrogenase by indicating its interaction with FAD, a coenzyme essential for the reaction described in the GO term's definition. This matches the primary reaction mechanism stated in the GO term's definition and provides strong evidence for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,34 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9V333",
+      "go_id": "GO:0140681",
+      "feature_type": "DOMAIN",
+      "start": 17,
+      "end": 60,
+      "signal_kind": "text",
+      "signal_value": "JmjN",
+      "reasoning": "The domain is associated with JmjN family demethylases, which could be relevant to the described reaction, but it does not directly specify the mechanism of removing a methyl group from H3K36."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q8RWR1",
+      "reason": "none_verdict",
+      "reasoning": "The binding of Fe(II) as a ligand aligns with the requirement for Fe(II) in the dioxygenase reaction, but it does not directly specify the lysine residue (position 36) or the precise mechanism of demethylation. Therefore, it is not a strong match for the GO term's primary reaction."
+    },
+    {
+      "accession": "Q8BW72",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q9U297",
+      "reason": "unresolved_pointer",
+      "detail": "no matching BINDING 222-267 on record for Q9U297 -- pointer didn't resolve",
+      "reported_feature": "BINDING 222-267",
+      "reasoning": "The binding site associated with JmjC family proteins and involving Fe(II) is a strong candidate for the demethylation reaction, which matches the primary mechanism described in the GO term's definition."
+    }
+  ]
+}

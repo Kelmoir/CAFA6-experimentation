@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "A8DYP7",
+      "go_id": "GO:0140700",
+      "feature_type": "BINDING",
+      "start": 198,
+      "end": 199,
+      "signal_kind": "ligand",
+      "signal_value": "GTP",
+      "reasoning": "The binding of GTP at position 198-199 directly involves one of the key reactants in the defined reaction, and it is associated with catalytic activity, which strongly supports the protein's role as a 3',2'-cyclic GMP-AMP synthase."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A1ZA55",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the specific reaction of forming cyclic GMP-AMP, which is the primary mechanism defined by the GO term."
+    },
+    {
+      "accession": "P0DV11",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation of the enzyme's function or the specific reaction mechanism described in the GO term's definition. The highest score (4) is for catalytic Mg(2+) binding sites, but these are not sufficient to directly explain the primary reaction of phosphorelay."
+    },
+    {
+      "accession": "P0DV12",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

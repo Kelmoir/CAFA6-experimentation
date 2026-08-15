@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O74475",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for O74475 provides a specific explanation for the molecular function defined by GO:0140752."
+    }
+  ]
+}

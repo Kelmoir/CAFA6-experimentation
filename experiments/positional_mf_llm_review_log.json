@@ -39359,6 +39359,80 @@
    }
   ]
  },
+ "GO:0140660": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SAM 1",
+    "accessions": [
+     "Q21049"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P13833",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the function of increasing motor protein activity as defined by the GO term."
+   },
+   {
+    "accession": "P09402",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P09402 specifically describes binding to and increasing the activity of a motor protein, which is the primary reaction defined by GO:0140660."
+   },
+   {
+    "accession": "P68135",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides specific evidence for the defined function of the GO term \"cytoskeletal motor activator activity,\" which requires binding and increasing the activity of a motor protein. The available features are generic and do not directly support this primary reaction."
+   }
+  ]
+ },
+ "GO:0140681": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9V333",
+    "go_id": "GO:0140681",
+    "feature_type": "DOMAIN",
+    "start": 17,
+    "end": 60,
+    "signal_kind": "text",
+    "signal_value": "JmjN",
+    "reasoning": "The domain is associated with JmjN family demethylases, which could be relevant to the described reaction, but it does not directly specify the mechanism of removing a methyl group from H3K36."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q8RWR1",
+    "reason": "none_verdict",
+    "reasoning": "The binding of Fe(II) as a ligand aligns with the requirement for Fe(II) in the dioxygenase reaction, but it does not directly specify the lysine residue (position 36) or the precise mechanism of demethylation. Therefore, it is not a strong match for the GO term's primary reaction."
+   },
+   {
+    "accession": "Q8BW72",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q9U297",
+    "reason": "unresolved_pointer",
+    "detail": "no matching BINDING 222-267 on record for Q9U297 -- pointer didn't resolve",
+    "reported_feature": "BINDING 222-267",
+    "reasoning": "The binding site associated with JmjC family proteins and involving Fe(II) is a strong candidate for the demethylation reaction, which matches the primary mechanism described in the GO term's definition."
+   }
+  ]
+ },
  "GO:0140692": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -39391,6 +39465,82 @@
    }
   ]
  },
+ "GO:0140700": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "GTP",
+    "accessions": [
+     "A8DYP7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A1ZA55",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the specific reaction of forming cyclic GMP-AMP, which is the primary mechanism defined by the GO term."
+   },
+   {
+    "accession": "P0DV11",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation of the enzyme's function or the specific reaction mechanism described in the GO term's definition. The highest score (4) is for catalytic Mg(2+) binding sites, but these are not sufficient to directly explain the primary reaction of phosphorelay."
+   },
+   {
+    "accession": "P0DV12",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140713": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Interaction with histone H3, CHAF1B, and HIRA",
+    "accessions": [
+     "Q9CQE6"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q96P70",
+    "go_id": "GO:0140713",
+    "feature_type": "DOMAIN",
+    "start": 42,
+    "end": 119,
+    "signal_kind": "text",
+    "signal_value": "Importin N-terminal",
+    "reasoning": "The DOMAIN 42-119 is an importin N-terminal region, which is structurally and functionally related to nuclear transport, a process that involves transporting histones. However, this domain does not directly explain the chromatin assembly or disassembly activity described by GO:0140713, making it a plausible but not definitive match."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q9H4Q4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a strong match to the primary reaction of the GO term \"histone chaperone activity.\""
+   },
+   {
+    "accession": "O74515",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of histone chaperone activity, which involves binding to and carrying histones. The only candidate feature is a disordered region, which does not provide a strong match to the defined chemistry."
+   }
+  ]
+ },
  "GO:0140728": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -39406,5 +39556,77 @@
     "detail": "UNPARSED"
    }
   ]
+ },
+ "GO:0140733": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q95T19",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0140752": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O74475",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for O74475 provides a specific explanation for the molecular function defined by GO:0140752."
+   }
+  ]
+ },
+ "GO:0140758": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q9XZ58",
+    "go_id": "GO:0140758",
+    "feature_type": "BINDING",
+    "start": 134,
+    "end": 135,
+    "signal_kind": "ligand",
+    "signal_value": "Zn(2+)",
+    "reasoning": "The binding sites for Zn(2+) are consistent with metal-dependent function, but none of the features directly describe the enzymatic activity of deNEDDylase."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0140762": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "FAD",
+    "accessions": [
+     "P18173"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

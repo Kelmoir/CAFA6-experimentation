@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140762",
+  "name": "glucose dehydrogenase (FAD, quinone) activity",
+  "def": "Catalysis of the reaction: a quinone + D-glucose = a quinol + D-glucono-1,5-lactone.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P18173"
+  ],
+  "assigned_accessions": [
+    "P18173"
+  ]
+}

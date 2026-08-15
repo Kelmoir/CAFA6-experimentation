@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140758",
+  "name": "metal-dependent deNEDDylase activity",
+  "def": "An metal-dependent isopeptidase activity that cleaves NEDD8 from a target protein to which it is conjugated.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9XZ58"
+  ],
+  "assigned_accessions": [
+    "Q9XZ58"
+  ]
+}

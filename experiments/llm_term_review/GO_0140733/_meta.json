@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140733",
+  "name": "tRNA ligase activator activity",
+  "def": "Binds to and increases the activity of a tRNA ligase.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q95T19"
+  ],
+  "assigned_accessions": [
+    "Q95T19"
+  ]
+}

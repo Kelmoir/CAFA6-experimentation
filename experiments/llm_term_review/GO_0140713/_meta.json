@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140713",
+  "name": "histone chaperone activity",
+  "def": "Binding to and carrying a histone or a histone complex to unload or deposit it as a nucleosome. The histone can be newly synthesized or result from nucleosome disassembly (either spontaneously, or by a histone chaperone).",
+  "n_proteins_total": 48,
+  "sampled_accessions": [
+    "O74515",
+    "Q96P70",
+    "Q9CQE6",
+    "Q9H4Q4"
+  ],
+  "assigned_accessions": [
+    "O74515",
+    "Q96P70",
+    "Q9CQE6",
+    "Q9H4Q4"
+  ]
+}

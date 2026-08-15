@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q9XZ58",
+      "go_id": "GO:0140758",
+      "feature_type": "BINDING",
+      "start": 134,
+      "end": 135,
+      "signal_kind": "ligand",
+      "signal_value": "Zn(2+)",
+      "reasoning": "The binding sites for Zn(2+) are consistent with metal-dependent function, but none of the features directly describe the enzymatic activity of deNEDDylase."
+    }
+  ],
+  "issues": []
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140681",
+  "name": "histone H3K36me2/H3K36me3 demethylase activity",
+  "def": "Catalysis of the removal of a methyl group from a tri- or a dimethyl-lysine residue at position 36 of the histone H3 protein. This is a dioxygenase reaction that is dependent on Fe(II) and 2-oxoglutarate.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "Q8BW72",
+    "Q8RWR1",
+    "Q9U297",
+    "Q9V333"
+  ],
+  "assigned_accessions": [
+    "Q8BW72",
+    "Q8RWR1",
+    "Q9U297",
+    "Q9V333"
+  ]
+}

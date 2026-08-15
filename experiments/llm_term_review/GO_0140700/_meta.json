@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140700",
+  "name": "3',2'-cyclic GMP-AMP synthase activity",
+  "def": "Catalysis of the reaction: ATP + GTP = 2 diphosphate + cyclic G-P(3'-5')A-P(2'-5') (cyclic 3',2' GAMP).",
+  "n_proteins_total": 7,
+  "sampled_accessions": [
+    "A1ZA55",
+    "A8DYP7",
+    "P0DV11",
+    "P0DV12"
+  ],
+  "assigned_accessions": [
+    "A1ZA55",
+    "A8DYP7",
+    "P0DV11",
+    "P0DV12"
+  ]
+}

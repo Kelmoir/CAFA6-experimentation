@@ -1,0 +1,38 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9CQE6",
+      "go_id": "GO:0140713",
+      "feature_type": "REGION",
+      "start": 0,
+      "end": 156,
+      "signal_kind": "text",
+      "signal_value": "Interaction with histone H3, CHAF1B, and HIRA",
+      "reasoning": "The \"REGION 0-156\" feature most plausibly explains why Q9CQE6 carries the GO term \"histone chaperone activity,\" as it directly relates to the protein's interaction with histones, which is central to the defined function of carrying and unloading nucleosomes."
+    }
+  ],
+  "uncertain": [
+    {
+      "accession": "Q96P70",
+      "go_id": "GO:0140713",
+      "feature_type": "DOMAIN",
+      "start": 42,
+      "end": 119,
+      "signal_kind": "text",
+      "signal_value": "Importin N-terminal",
+      "reasoning": "The DOMAIN 42-119 is an importin N-terminal region, which is structurally and functionally related to nuclear transport, a process that involves transporting histones. However, this domain does not directly explain the chromatin assembly or disassembly activity described by GO:0140713, making it a plausible but not definitive match."
+    }
+  ],
+  "issues": [
+    {
+      "accession": "Q9H4Q4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a strong match to the primary reaction of the GO term \"histone chaperone activity.\""
+    },
+    {
+      "accession": "O74515",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction of histone chaperone activity, which involves binding to and carrying histones. The only candidate feature is a disordered region, which does not provide a strong match to the defined chemistry."
+    }
+  ]
+}
