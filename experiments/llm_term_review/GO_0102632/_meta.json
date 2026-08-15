@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0102632",
+  "name": "(S)-nandinine synthase activity",
+  "def": "Catalysis of the reaction: (S)-scoulerine + [reduced NADPH--hemoprotein reductase] + O2 -> (S)-nandinine + [oxidized NADPH--hemoprotein reductase] + 2 H2O.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "B1NF19",
+    "Q50LH4"
+  ],
+  "assigned_accessions": [
+    "B1NF19",
+    "Q50LH4"
+  ]
+}

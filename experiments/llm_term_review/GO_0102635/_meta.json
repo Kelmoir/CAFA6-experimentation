@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102635",
+  "name": "11-deoxycorticosterone reductase activity",
+  "def": "Catalysis of the reaction: 11-deoxycorticosterone + NADH + H+ = 4-pregnen-20,21-diol-3-one + NAD.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P37769"
+  ],
+  "assigned_accessions": [
+    "P37769"
+  ]
+}

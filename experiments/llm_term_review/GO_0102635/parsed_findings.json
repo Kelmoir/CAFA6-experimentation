@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P37769",
+      "go_id": "GO:0102635",
+      "feature_type": "BINDING",
+      "start": 13,
+      "end": 38,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NADH to the protein directly supports the catalytic mechanism described by the GO term, which involves the transfer of a hydride from NADH to the substrate. This feature is specifically related to the reductase activity and matches the primary reaction of the GO term with high specificity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

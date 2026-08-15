@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102547",
+  "name": "glucosylglycerate hydrolase activity",
+  "def": "Catalysis of the reaction: (2R)-2-O-(alpha-D-glucopyranosyl)-glycerate + H2O = (R)-glycerate + D-glucose.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "D8QTR2"
+  ],
+  "assigned_accessions": [
+    "D8QTR2"
+  ]
+}

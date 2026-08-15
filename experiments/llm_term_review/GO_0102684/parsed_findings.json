@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9FLC8",
+      "go_id": "GO:0102684",
+      "feature_type": "BINDING",
+      "start": 466,
+      "end": 467,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The binding site for heme at position 466-467 is the most plausible explanation for why Q9FLC8 carries the GO term \"L-phenylalanine N-monooxygenase activity,\" as it directly relates to the type of enzyme involved in oxygen-dependent reactions, which are characteristic of this molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

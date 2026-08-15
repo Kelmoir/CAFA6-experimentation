@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102684",
+  "name": "L-phenylalanine N-monooxygenase activity",
+  "def": "Catalysis of the reaction: L-phenylalanine + 2 NADPH + 2 O2 + 2 H+ = (E)-phenylacetaldehyde oxime + 2 NADP + 3 H2O + carbon dioxide.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FLC8"
+  ],
+  "assigned_accessions": [
+    "Q9FLC8"
+  ]
+}

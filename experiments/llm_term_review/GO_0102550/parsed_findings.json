@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9LY74",
+      "reason": "none_verdict",
+      "reasoning": "No single annotated feature provides a direct match to the GO term's primary reaction mechanism or active site, making it impossible to determine which feature specifically accounts for the term."
+    }
+  ]
+}

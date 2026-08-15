@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9LVW3",
+      "go_id": "GO:0102580",
+      "feature_type": "BINDING",
+      "start": 283,
+      "end": 284,
+      "signal_kind": "ligand",
+      "signal_value": "UDP-alpha-D-xylose",
+      "reasoning": "The binding of UDP-alpha-D-xylose at position 283-284 is consistent with the enzyme's role in catalyzing the transfer of a sugar group to cyanidin, which matches the primary reaction defined by GO:0102580."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

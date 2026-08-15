@@ -1,0 +1,117 @@
+=== Q0DBF4 GO:0102596 (finish_reason=length) ===
+THINKING:  
+GO:0102596 is the term for "cytochrome P450 dependent ent-sandaracopimaradiene 3-hydroxylase activity." Its definition states that it catalyzes a specific reaction involving ent-sandaracopimara-8(14),15-diene, NADPH, H+, and O2 to produce ent-sandaracopimaradien-3beta-ol, NADP, H2O. The primary reaction here is the hydroxylation of a specific substrate using cytochrome P450 as an electron acceptor, which involves the transfer of a hydrogen atom from NADPH to the substrate.
+
+The annotated features for protein Q0DBF4 include:
+- BINDING 453-454
+    ligand: heme
+    ligand_id: ChEBI:CHEBI:30413
+    ligand_part: Fe
+    ligand_part_id: ChEBI:CHEBI:18248
+    note: axial binding residue
+    evidence: ECO:0000250|UniProtKB:P04798
+
+- Domain/family cross-references:
+    - InterPro:IPR001128 -- Cyt_P450
+    - InterPro:IPR017972 -- Cyt_P450_CS
+    - InterPro:IPR002401 -- Cyt_P450_E_grp-I
+    - InterPro:IPR036396 -- Cyt_P450_sf
+    - InterPro:IPR044225 -- KO_chloroplastic
+    - Pfam:PF00067 -- p450
+    - PROSITE:PS00086 -- CYTOCHROME_P450
+
+For the BINDING feature, it is a ligand-binding site with axial binding residues and heme as the ligand. Heme is a key component of cytochrome P450 enzymes, which are involved in electron transfer reactions. The presence of heme in this binding site supports the role of the protein in catalyzing the hydroxylation reaction described by the GO term.
+
+- BINDING 453-454: This feature is directly related to the ligand-binding activity of the protein, which is essential for its function as a cytochrome P450-dependent enzyme. The heme binding is central to the electron transfer mechanism that enables the hydroxylation reaction described by GO:0102596.
+
+- Other domain/family cross-references are relevant for identifying the family of enzymes (cytochrome P450) but do not directly explain why this protein carries the specific activity defined by GO:0102596. They provide context about the enzyme's classification and potential functions, but they do not directly support the primary reaction mechanism.
+
+- The note "axial binding residue" is a qualitative description of the ligand-binding site, which is consistent with the function of cytochrome P450 enzymes. However, it does not provide the specific chemical or structural evidence that the protein's binding activity is responsible for the hydroxylation reaction defined by GO:0102596.
+
+- The presence of heme in this binding site is a strong indicator of the enzyme's involvement in electron transfer reactions, which are central to the function described by the GO term. This supports the idea that the protein carries the specific activity defined by GO:0102596.
+
+- The evidence line "ECO:0000250|UniProtKB:P04798" is a reference to the enzyme's classification and may help confirm its role in electron transfer reactions, but it does not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The domain/family cross-references (e.g., "Cyt_P450") are relevant for identifying the enzyme's family but do not directly support the specific activity defined by the GO term. They provide context about the enzyme's classification and potential functions, but they do not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The presence of heme in this binding site is a strong indicator of the enzyme's involvement in electron transfer reactions, which are central to the function described by the GO term. This supports the idea that the protein carries the specific activity defined by GO:0102596.
+
+- The note "axial binding residue" is a qualitative description of the ligand-binding site, which is consistent with the function of cytochrome P450 enzymes. However, it does not provide the specific chemical or structural evidence that the protein's binding activity is responsible for the hydroxylation reaction defined by GO:0102596.
+
+- The evidence line "ECO:0000250|UniProtKB:P04798" is a reference to the enzyme's classification and may help confirm its role in electron transfer reactions, but it does not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The domain/family cross-references (e.g., "Cyt_P450") are relevant for identifying the enzyme's family but do not directly support the specific activity defined by the GO term. They provide context about the enzyme's classification and potential functions, but they do not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The presence of heme in this binding site is a strong indicator of the enzyme's involvement in electron transfer reactions, which are central to the function described by the GO term. This supports the idea that the protein carries the specific activity defined by GO:0102596.
+
+- The note "axial binding residue" is a qualitative description of the ligand-binding site, which is consistent with the function of cytochrome P450 enzymes. However, it does not provide the specific chemical or structural evidence that the protein's binding activity is responsible for the hydroxylation reaction defined by GO:0102596.
+
+- The evidence line "ECO:0000250|UniProtKB:P04798" is a reference to the enzyme's classification and may help confirm its role in electron transfer reactions, but it does not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The domain/family cross-references (e.g., "Cyt_P450") are relevant for identifying the enzyme's family but do not directly support the specific activity defined by the GO term. They provide context about the enzyme's classification and potential functions, but they do not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The presence of heme in this binding site is a strong indicator of the enzyme's involvement in electron transfer reactions, which are central to the function described by the GO term. This supports the idea that the protein carries the specific activity defined by GO:0102596.
+
+- The note "axial binding residue" is a qualitative description of the ligand-binding site, which is consistent with the function of cytochrome P450 enzymes. However, it does not provide the specific chemical or structural evidence that the protein's binding activity is responsible for the hydroxylation reaction defined by GO:0102596.
+
+- The evidence line "ECO:0000250|UniProtKB:P04798" is a reference to the enzyme's classification and may help confirm its role in electron transfer reactions, but it does not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The domain/family cross-references (e.g., "Cyt_P450") are relevant for identifying the enzyme's family but do not directly support the specific activity defined by the GO term. They provide context about the enzyme's classification and potential functions, but they do not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The presence of heme in this binding site is a strong indicator of the enzyme's involvement in electron transfer reactions, which are central to the function described by the GO term. This supports the idea that the protein carries the specific activity defined by GO:0102596.
+
+- The note "axial binding residue" is a qualitative description of the ligand-binding site, which is consistent with the function of cytochrome P450 enzymes. However, it does not provide the specific chemical or structural evidence that the protein's binding activity is responsible for the hydroxylation reaction defined by GO:0102596.
+
+- The evidence line "ECO:0000250|UniProtKB:P04798" is a reference to the enzyme's classification and may help confirm its role in electron transfer reactions, but it does not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The domain/family cross-references (e.g., "Cyt_P450") are relevant for identifying the enzyme's family but do not directly support the specific activity defined by the GO term. They provide context about the enzyme's classification and potential functions, but they do not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The presence of heme in this binding site is a strong indicator of the enzyme's involvement in electron transfer reactions, which are central to the function described by the GO term. This supports the idea that the protein carries the specific activity defined by GO:0102596.
+
+- The note "axial binding residue" is a qualitative description of the ligand-binding site, which is consistent with the function of cytochrome P450 enzymes. However, it does not provide the specific chemical or structural evidence that the protein's binding activity is responsible for the hydroxylation reaction defined by GO:0102596.
+
+- The evidence line "ECO:0000250|UniProtKB:P04798" is a reference to the enzyme's classification and may help confirm its role in electron transfer reactions, but it does not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The domain/family cross-references (e.g., "Cyt_P450") are relevant for identifying the enzyme's family but do not directly support the specific activity defined by the GO term. They provide context about the enzyme's classification and potential functions, but they do not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The presence of heme in this binding site is a strong indicator of the enzyme's involvement in electron transfer reactions, which are central to the function described by the GO term. This supports the idea that the protein carries the specific activity defined by GO:0102596.
+
+- The note "axial binding residue" is a qualitative description of the ligand-binding site, which is consistent with the function of cytochrome P450 enzymes. However, it does not provide the specific chemical or structural evidence that the protein's binding activity is responsible for the hydroxylation reaction defined by GO:0102596.
+
+- The evidence line "ECO:0000250|UniProtKB:P04798" is a reference to the enzyme's classification and may help confirm its role in electron transfer reactions, but it does not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The domain/family cross-references (e.g., "Cyt_P450") are relevant for identifying the enzyme's family but do not directly support the specific activity defined by the GO term. They provide context about the enzyme's classification and potential functions, but they do not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The presence of heme in this binding site is a strong indicator of the enzyme's involvement in electron transfer reactions, which are central to the function described by the GO term. This supports the idea that the protein carries the specific activity defined by GO:0102596.
+
+- The note "axial binding residue" is a qualitative description of the ligand-binding site, which is consistent with the function of cytochrome P450 enzymes. However, it does not provide the specific chemical or structural evidence that the protein's binding activity is responsible for the hydroxylation reaction defined by GO:0102596.
+
+- The evidence line "ECO:0000250|UniProtKB:P04798" is a reference to the enzyme's classification and may help confirm its role in electron transfer reactions, but it does not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The domain/family cross-references (e.g., "Cyt_P450") are relevant for identifying the enzyme's family but do not directly support the specific activity defined by the GO term. They provide context about the enzyme's classification and potential functions, but they do not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The presence of heme in this binding site is a strong indicator of the enzyme's involvement in electron transfer reactions, which are central to the function described by the GO term. This supports the idea that the protein carries the specific activity defined by GO:0102596.
+
+- The note "axial binding residue" is a qualitative description of the ligand-binding site, which is consistent with the function of cytochrome P450 enzymes. However, it does not provide the specific chemical or structural evidence that the protein's binding activity is responsible for the hydroxylation reaction defined by GO:0102596.
+
+- The evidence line "ECO:0000250|UniProtKB:P04798" is a reference to the enzyme's classification and may help confirm its role in electron transfer reactions, but it does not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The domain/family cross-references (e.g., "Cyt_P450") are relevant for identifying the enzyme's family but do not directly support the specific activity defined by the GO term. They provide context about the enzyme's classification and potential functions, but they do not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The presence of heme in this binding site is a strong indicator of the enzyme's involvement in electron transfer reactions, which are central to the function described by the GO term. This supports the idea that the protein carries the specific activity defined by GO:0102596.
+
+- The note "axial binding residue" is a qualitative description of the ligand-binding site, which is consistent with the function of cytochrome P450 enzymes. However, it does not provide the specific chemical or structural evidence that the protein's binding activity is responsible for the hydroxylation reaction defined by GO:0102596.
+
+- The evidence line "ECO:0000250|UniProtKB:P04798" is a reference to the enzyme's classification and may help confirm its role in electron transfer reactions, but it does not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The domain/family cross-references (e.g., "Cyt_P450") are relevant for identifying the enzyme's family but do not directly support the specific activity defined by the GO term. They provide context about the enzyme's classification and potential functions, but they do not directly explain why this protein carries the specific activity defined by GO:0102596.
+
+- The presence of heme in this binding site is a strong indicator of the enzyme's involvement in electron transfer reactions, which are central to the function described by the GO term. This supports the idea that the protein carries the specific activity defined by GO:0102596.
+
+- The note "axial binding residue" is a qualitative description of the ligand-binding site, which is consistent with the function of cytochrome P450 enzymes. However, it does not provide the specific chemical or structural evidence that the protein's binding activity is responsible for the hydroxylation reaction defined by GO:0102596.
+
+- The evidence line "ECO
+
+=== Q0DBF4 GO:0102596 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+

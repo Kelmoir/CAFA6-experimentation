@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102596",
+  "name": "cytochrome P450 dependent ent-sandaracopimaradiene 3-hydroxylase activity",
+  "def": "Catalysis of the reaction: ent-sandaracopimara-8(14),15-diene + NADPH + H+ + O2 = ent-sandaracopimaradien-3beta-ol + NADP + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q0DBF4"
+  ],
+  "assigned_accessions": [
+    "Q0DBF4"
+  ]
+}

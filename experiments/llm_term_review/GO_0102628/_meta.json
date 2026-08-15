@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102628",
+  "name": "costunolide 3beta-hydroxylase activity",
+  "def": "Catalysis of the reaction: (+)-costunolide (12,6alpha) + reduced [NADPH-hemoprotein reductase] + dioxygen = 3beta-hydroxycostunolide + oxidized [NADPH-hemoprotein reductase] + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "X2EW55"
+  ],
+  "assigned_accessions": [
+    "X2EW55"
+  ]
+}

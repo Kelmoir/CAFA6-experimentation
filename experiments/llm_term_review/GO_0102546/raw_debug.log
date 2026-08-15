@@ -1,0 +1,9 @@
+=== D8QTR2 GO:0102546 (VERDICT missing) ===
+THINKING: The GO term is "manosylglycerate hydrolase activity" (GO:0102546), which defines the catalytic reaction of (2R)-2-O-(alpha-D-mannosyl)-glycerate + H2O = (R)-glycerate + D-mannose. This is a specific enzymatic function involving the hydrolysis of a glycosyl ester. The protein D8QTR2 has several annotated features, including ACT_SITE and BINDING regions with substrate as the ligand. These features suggest that the protein interacts with substrates and may participate in proton transfer reactions. However, none of these features directly specify the enzymatic activity or the specific chemistry of the reaction described in the GO term's definition. The primary reaction involves the hydrolysis of a glycosyl ester, which is not explicitly mentioned in any of the annotated features. Therefore, no single annotated feature clearly explains why D8QTR2 carries this GO term.
+
+FEATURE: BINDING 93-94
+REASONING: The BINDING region with "substrate" as the ligand directly relates to the enzymatic activity described in the GO term's definition, which involves the hydrolysis of a glycosyl ester. This feature most plausibly accounts for why D8QTR2 carries the term.
+
+=== D8QTR2 GO:0102546 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict stream returned an error: {\"code\":500,\"message\":\"Context size has been exceeded.\",\"type\":\"server_error\"}"}
+

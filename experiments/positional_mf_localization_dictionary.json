@@ -29437,6 +29437,15 @@
   ],
   "text_patterns": []
  },
+ "GO:0102571": {
+  "name": "[protein]-3-O-(N-acetyl-D-glucosaminyl)-L-serine/L-threonine O-N-acetyl-alpha-D-glucosaminase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "PROSITE:PS52009"
+  ],
+  "text_patterns": []
+ },
  "GO:0102670": {
   "name": "2,7,4'-trihydroxyisoflavanone-4'-O-methyltransferase activity",
   "ligands": [],

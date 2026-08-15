@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "Q50LH4",
+      "go_id": "GO:0102632",
+      "feature_type": "BINDING",
+      "start": 438,
+      "end": 439,
+      "signal_kind": "ligand",
+      "signal_value": "heme",
+      "reasoning": "The \"BINDING\" feature at position 438-439 directly relates to the heme cofactor required for the enzyme's activity, which is consistent with the defined reaction mechanism of the GO term. This binding activity is a strong indicator of the enzyme's function in catalyzing the synthesis of (S)-nandinine."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "B1NF19",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for B1NF19 is a ligand binding site, which does not directly explain the catalytic activity of (S)-nandinine synthase as defined by GO:0102632."
+    }
+  ]
+}

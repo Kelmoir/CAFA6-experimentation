@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102698",
+  "name": "5-epi-aristolochene synthase activity",
+  "def": "Catalysis of the reaction: 2-trans,6-trans-farnesyl diphosphate = (+)-5-epi-aristolochene + diphosphoric acid.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q40577"
+  ],
+  "assigned_accessions": [
+    "Q40577"
+  ]
+}

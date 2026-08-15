@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0102571",
+  "name": "[protein]-3-O-(N-acetyl-D-glucosaminyl)-L-serine/L-threonine O-N-acetyl-alpha-D-glucosaminase activity",
+  "def": "Catalysis of the reaction: 3-O-(N-acetyl-beta-D-glucosaminyl)-L-seryl/L-threonyl-[protein] + H2O = L-seryl//L-threonyl-[protein] + N-acetyl-D-glucosamine.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O60502",
+    "Q8VIJ5",
+    "Q9EQQ9"
+  ],
+  "assigned_accessions": [
+    "O60502",
+    "Q8VIJ5",
+    "Q9EQQ9"
+  ]
+}

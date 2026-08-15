@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "D8QTR2",
+      "go_id": "GO:0102547",
+      "feature_type": "BINDING",
+      "start": 93,
+      "end": 94,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding of the substrate to the enzyme's active site is a direct and essential part of the catalytic mechanism described by the GO term, making this feature the most plausible explanation for why the protein carries that term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

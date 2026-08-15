@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102580",
+  "name": "cyanidin 3-O-glucoside 2-O''-xylosyltransferase activity",
+  "def": "Catalysis of the reaction: cyanidin 3-O-beta-D-glucoside betaine + UDP-alpha-D-xylose = cyanidin 3-O-beta-D-sambubioside + UDP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LVW3"
+  ],
+  "assigned_accessions": [
+    "Q9LVW3"
+  ]
+}

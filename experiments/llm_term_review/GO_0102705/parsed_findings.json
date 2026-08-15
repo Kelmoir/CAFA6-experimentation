@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9MA74",
+      "go_id": "GO:0102705",
+      "feature_type": "SITE",
+      "start": 340,
+      "end": 341,
+      "signal_kind": "text",
+      "signal_value": "Essential for enzymatic activity",
+      "reasoning": "The \"SITE 340-341\" feature is specifically linked to enzymatic activity, which directly corresponds to the primary reaction mechanism described in the GO term's definition. This provides a strong match for the molecular function associated with the protein."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102654",
+  "name": "palmitoyl-[glycerolipid] 3-(E)-desaturase activity",
+  "def": "Catalysis of the reaction: a 1-acyl-2-hexadecanoyl-glycerolipid + 2 H+ + O2 + 2 reduced [2Fe-2S]-[ferredoxin] = a 1-acyl-2-[(3E)-hexadec-3-enoyl]-glycerolipid + 2 H2O + 2 oxidized [2Fe-2S]-[ferredoxin]. The this activity introduces an unusual trans double bond at carbon 3 of a palmitoyl group attached to the sn-2 position of glycerolipids.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SZ42"
+  ],
+  "assigned_accessions": [
+    "Q9SZ42"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102550",
+  "name": "2-methyl-6-geranylgeranyl-1,4-benzoquinol methyltransferase activity",
+  "def": "Catalysis of the reaction: S-adenosyl-L-methionine + 2-methyl-6-geranylgeranyl-1,4-benzoquinol = S-adenosyl-L-homocysteine + 2,3-dimethyl-6-geranylgeranyl-1,4-benzoquinol + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LY74"
+  ],
+  "assigned_accessions": [
+    "Q9LY74"
+  ]
+}

@@ -34634,5 +34634,314 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0102546": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "D8QTR2",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0102547": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "D8QTR2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102550": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LY74",
+    "reason": "none_verdict",
+    "reasoning": "No single annotated feature provides a direct match to the GO term's primary reaction mechanism or active site, making it impossible to determine which feature specifically accounts for the term."
+   }
+  ]
+ },
+ "GO:0102571": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "PROSITE:PS52009"
+    ],
+    "accessions": [
+     "O60502",
+     "Q9EQQ9"
+    ],
+    "note": "resolved from DOMAIN note 'GH84'"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8VIJ5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves catalyzing a phosphoryl transfer. The available features are too generic to explain the specific chemistry of the defined molecular function."
+   }
+  ]
+ },
+ "GO:0102580": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "UDP-alpha-D-xylose",
+    "accessions": [
+     "Q9LVW3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102585": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LJB4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, positional explanation for the defined reaction mechanism of the GO term, which involves catalyzing the transfer of a malonyl group from malonyl-CoA to an anthocyanin."
+   }
+  ]
+ },
+ "GO:0102596": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q0DBF4",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0102597": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "Q6Z5I7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q6YTF5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the defined reaction of GO:0102597. The only relevant domain (Cyt_P450) is not explicitly tied to the function in the positional features, and the binding information does not directly account for the catalytic mechanism described in the definition."
+   }
+  ]
+ },
+ "GO:0102598": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q6YTF1",
+    "go_id": "GO:0102598",
+    "feature_type": "BINDING",
+    "start": 441,
+    "end": 442,
+    "signal_kind": "ligand",
+    "signal_value": "heme",
+    "reasoning": "The BINDING feature describes interaction with heme, which is a cofactor involved in oxygen-dependent reactions, but it does not directly explain the monooxygenase activity described by GO:0102598. The domain/family cross-references are more broadly associated with the type of enzyme involved in oxygen-dependent reactions but do not specifically confirm the activity described by GO:0102598."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0102628": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "X2EW55"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102632": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "Q50LH4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B1NF19",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for B1NF19 is a ligand binding site, which does not directly explain the catalytic activity of (S)-nandinine synthase as defined by GO:0102632."
+   }
+  ]
+ },
+ "GO:0102635": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "P37769"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102654": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SZ42",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the specific reaction mechanism of palmitoyl-[glycerolipid] 3-(E)-desaturase activity, which involves introducing a trans double bond at carbon 3."
+   }
+  ]
+ },
+ "GO:0102684": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "heme",
+    "accessions": [
+     "Q9FLC8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102698": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q40577",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0102705": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Essential for enzymatic activity",
+    "accessions": [
+     "Q9MA74"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

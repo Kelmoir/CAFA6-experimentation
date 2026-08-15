@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102705",
+  "name": "serine decarboxylase activity",
+  "def": "Catalysis of the reaction: H+ + L-serine = ethanolaminium(1+) + carbon dioxide.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9MA74"
+  ],
+  "assigned_accessions": [
+    "Q9MA74"
+  ]
+}

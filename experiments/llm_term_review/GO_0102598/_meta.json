@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102598",
+  "name": "3alpha-hydroxy-ent-sandaracopimardiene 7-beta-monooxygenase activity",
+  "def": "Catalysis of the reaction: ent-sandaracopimaradien-3-beta-ol + NADPH + H+ + O2 = oryzalexin D + NADP + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q6YTF1"
+  ],
+  "assigned_accessions": [
+    "Q6YTF1"
+  ]
+}
