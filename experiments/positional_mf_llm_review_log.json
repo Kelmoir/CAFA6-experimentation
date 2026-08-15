@@ -32374,6 +32374,47 @@
    }
   ]
  },
+ "GO:0086083": {
+  "n_resolved": 1,
+  "n_uncertain": 1,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Interaction with DSC1 and DSG1",
+    "accessions": [
+     "P14923"
+    ]
+   }
+  ],
+  "uncertain": [
+   {
+    "accession": "Q14126",
+    "go_id": "GO:0086083",
+    "feature_type": "REGION",
+    "start": 261,
+    "end": 386,
+    "signal_kind": "text",
+    "signal_value": "Interacts with human adenovirus B3 fiber protein",
+    "reasoning": "The \"REGION 261-386\" feature indicates an interaction with a viral fiber protein, which could be relevant to cell-cell communication in some contexts, but it does not directly support the defined reaction of forming a connection between bundle of His cells and Purkinje myocytes as specified in the GO term's definition."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "P15924",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P15924 provides a clear, direct explanation for the molecular function defined by GO:0086083. The primary reaction of binding to a protein complex that connects bundle of His cells with Purkinje myocytes is not directly supported by any positional feature listed in the Annotated features section."
+   },
+   {
+    "accession": "Q99959",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q99959 provides evidence that directly supports the primary reaction described in the GO term, which is the connection between a bundle of His cell and a Purkinje myocyte through binding."
+   }
+  ]
+ },
  "GO:0089702": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -32385,6 +32426,183 @@
   "issues": [
    {
     "accession": "P71241",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0090369": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "P00812",
+    "go_id": "GO:0090369",
+    "feature_type": "BINDING",
+    "start": 122,
+    "end": 123,
+    "signal_kind": "ligand",
+    "signal_value": "Mn(2+)",
+    "reasoning": "The binding event at positions 122-123 involves Mn(2+), which could be part of the enzyme's structure, but it does not clearly indicate inhibition. The GO term defines an inhibitory activity, and this feature only shows a ligand binding without specifying its role in inhibition."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0090409": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8H151",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q3URE1",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q4G176",
+    "reason": "none_verdict",
+    "reasoning": "The annotated binding sites for ATP do not provide evidence that Q4G176 carries the molecular function defined by GO:0090409, which is about catalyzing the synthesis of malonyl-CoA from substrates."
+   }
+  ]
+ },
+ "GO:0090411": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SHG5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides direct evidence of brassinosteroid binding, making it impossible to determine which feature most plausibly explains the GO term."
+   }
+  ]
+ },
+ "GO:0090422": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Substrate recognition",
+    "accessions": [
+     "Q9HC21"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B4FIJ0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8RXZ9",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q91VA1",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0090430": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FFQ7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism described by the GO term, which involves the transfer of a caffeoyl group from CoA to a primary alcohol. The provided ACT_SITE features are related to proton acceptor activity but do not explain the specific chemical mechanism of the GO term."
+   },
+   {
+    "accession": "Q9C942",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the GO term's primary reaction of catalyzing the transfer of a caffeoyl group from CoA to a primary alcohol."
+   }
+  ]
+ },
+ "GO:0090432": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "O60135",
+     "Q9P7D7"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0090440": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8H157",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9FJ87",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0090471": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SAC0",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }

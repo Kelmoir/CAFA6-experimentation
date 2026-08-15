@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0090430",
+  "name": "caffeoyl-CoA: alcohol caffeoyl transferase activity",
+  "def": "Catalysis of the reaction: caffeoyl-CoA + a saturated primary alcohol = an alkyl caffeate + CoA.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q9C942",
+    "Q9FFQ7"
+  ],
+  "assigned_accessions": [
+    "Q9C942",
+    "Q9FFQ7"
+  ]
+}

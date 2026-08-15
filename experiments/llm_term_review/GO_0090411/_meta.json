@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0090411",
+  "name": "brassinosteroid binding",
+  "def": "Binding to a brassinosteroid.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SHG5"
+  ],
+  "assigned_accessions": [
+    "Q9SHG5"
+  ]
+}

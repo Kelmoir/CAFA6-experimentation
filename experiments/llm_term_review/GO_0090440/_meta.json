@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0090440",
+  "name": "abscisic acid transmembrane transporter activity",
+  "def": "Enables the transfer of abscisic acid from one side of a membrane to the other.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q8H157",
+    "Q9FJ87"
+  ],
+  "assigned_accessions": [
+    "Q8H157",
+    "Q9FJ87"
+  ]
+}

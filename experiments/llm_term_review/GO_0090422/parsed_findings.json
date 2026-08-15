@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9HC21",
+      "go_id": "GO:0090422",
+      "feature_type": "MOTIF",
+      "start": 240,
+      "end": 246,
+      "signal_kind": "text",
+      "signal_value": "Substrate recognition",
+      "reasoning": "The \"MOTIF 240-246\" with the note about \"Substrate recognition\" directly supports the GO term's definition by indicating that the protein is involved in the transfer of thiamine pyrophosphate across a membrane, which aligns with the primary reaction described in the GO term. This motif is likely responsible for substrate binding and transport activity, making it a strong candidate for explaining w"
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "B4FIJ0",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8RXZ9",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q91VA1",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

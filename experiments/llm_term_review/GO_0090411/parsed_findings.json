@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9SHG5",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides direct evidence of brassinosteroid binding, making it impossible to determine which feature most plausibly explains the GO term."
+    }
+  ]
+}

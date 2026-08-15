@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "O60135",
+      "go_id": "GO:0090432",
+      "feature_type": "BINDING",
+      "start": 245,
+      "end": 257,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to this protein is directly aligned with the primary reaction described in the GO term's definition, making it the most plausible explanation for why the protein carries the term."
+    },
+    {
+      "accession": "Q9P7D7",
+      "go_id": "GO:0090432",
+      "feature_type": "BINDING",
+      "start": 251,
+      "end": 263,
+      "signal_kind": "ligand",
+      "signal_value": "ATP",
+      "reasoning": "The binding of ATP to the protein is directly tied to the primary reaction mechanism of myristoyl-CoA ligase activity, making it the most plausible explanation for why the protein carries this GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

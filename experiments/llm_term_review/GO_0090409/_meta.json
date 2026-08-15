@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0090409",
+  "name": "malonyl-CoA synthetase activity",
+  "def": "Catalysis of the reaction: malonate + ATP + coenzyme A = malonyl-CoA + AMP + diphosphate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q3URE1",
+    "Q4G176",
+    "Q8H151"
+  ],
+  "assigned_accessions": [
+    "Q3URE1",
+    "Q4G176",
+    "Q8H151"
+  ]
+}

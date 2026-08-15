@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0090369",
+  "name": "ornithine carbamoyltransferase inhibitor activity",
+  "def": "Binds to and stops, prevents, or reduces the activity of ornithine carbamoyltransferase.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P00812"
+  ],
+  "assigned_accessions": [
+    "P00812"
+  ]
+}

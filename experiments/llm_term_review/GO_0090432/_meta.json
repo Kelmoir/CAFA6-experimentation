@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0090432",
+  "name": "myristoyl-CoA ligase activity",
+  "def": "Catalysis of the reaction: ATP + myristic acid + CoA = AMP + diphosphate + myristoyl-CoA.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O60135",
+    "Q9P7D7"
+  ],
+  "assigned_accessions": [
+    "O60135",
+    "Q9P7D7"
+  ]
+}

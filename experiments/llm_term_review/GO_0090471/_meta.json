@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0090471",
+  "name": "9,15,9'-tri-cis-zeta-carotene isomerase activity",
+  "def": "Catalysis of the reaction: 9,9',15-tri-cis-zeta-carotene = 9,9'-di-cis-zeta-carotene.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SAC0"
+  ],
+  "assigned_accessions": [
+    "Q9SAC0"
+  ]
+}
