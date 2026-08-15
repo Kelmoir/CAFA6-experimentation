@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080131",
+  "name": "hydroxyjasmonate sulfotransferase activity",
+  "def": "Catalysis of the reaction: a hydroxyjasmonate + 3'-phosphoadenosine-5'-phosphosulfate = a hydroxyjasmonate sulfate + adenosine-3',5'-diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8L5A7"
+  ],
+  "assigned_accessions": [
+    "Q8L5A7"
+  ]
+}

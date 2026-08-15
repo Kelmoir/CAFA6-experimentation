@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080161",
+  "name": "auxin transmembrane transporter activity",
+  "def": "Enables the transfer of auxins from one side of a membrane to the other. Auxins are plant hormones that regulate aspects of plant growth.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FFD0"
+  ],
+  "assigned_accessions": [
+    "Q9FFD0"
+  ]
+}

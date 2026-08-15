@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "O08532",
+      "go_id": "GO:0086057",
+      "feature_type": "DOMAIN",
+      "start": 252,
+      "end": 430,
+      "signal_kind": "text",
+      "signal_value": "VWFA",
+      "reasoning": "The DOMAIN 252-430 with note \"VWFA\" directly matches the defined chemistry of the GO term, which involves calcium ion transmembrane transfer by a voltage-gated channel. This provides a strong and specific basis for the annotation."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

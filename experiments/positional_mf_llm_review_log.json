@@ -31939,6 +31939,37 @@
    }
   ]
  },
+ "GO:0080107": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SXE1",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9SXE1 has binding sites for FAD and NADP(+), which are cofactors involved in redox reactions. However, these binding sites do not directly explain the catalysis of the specific reaction defined by GO:0080107, which involves oxygen transfer to 8-methylthiopropyl-glucosinolate. Therefore, there is no positional feature that specifically matches the chemistry of the reaction defined by t"
+   },
+   {
+    "accession": "Q94K43",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q94K43 specifically matches the chemistry defined by GO:0080107, which involves catalyzing a specific oxidation reaction. The binding sites for FAD and NADP(+) are relevant to the enzyme's function but do not directly explain why it carries this term."
+   },
+   {
+    "accession": "A8MRX0",
+    "reason": "none_verdict",
+    "reasoning": "The GO term defines a specific enzymatic activity involving oxygenation, which requires an active site domain that catalyzes this reaction. However, the protein A8MRX0 has binding sites for FAD and NADP(+), which are cofactors involved in redox reactions but do not directly explain the defined enzymatic activity of the GO term. No positional feature provided matches the primary reaction of the GO"
+   },
+   {
+    "accession": "Q93Y23",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
  "GO:0080108": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -31954,5 +31985,184 @@
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
+ },
+ "GO:0080122": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Peroxisome localization signal",
+    "accessions": [
+     "O43808"
+    ]
+   },
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Ca(2+)",
+    "accessions": [
+     "Q9FLS8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O04619",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O70579",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in O70579's list directly explains the primary reaction or mechanism of AMP transmembrane transporter activity as defined by the GO term."
+   }
+  ]
+ },
+ "GO:0080130": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9S7N2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9S7N2 directly explains the enzyme's function as defined by GO:0080130."
+   }
+  ]
+ },
+ "GO:0080131": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q8L5A7",
+    "go_id": "GO:0080131",
+    "feature_type": "BINDING",
+    "start": 100,
+    "end": 106,
+    "signal_kind": "ligand",
+    "signal_value": "3'-phosphoadenylyl sulfate",
+    "reasoning": "The binding events with \"3'-phosphoadenylyl sulfate\" are most directly related to the reaction mechanism described for hydroxyjasmonate sulfotransferase activity. However, these annotations do not explicitly describe a domain involved in catalysis, so they do not strongly explain why the protein carries this GO term."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0080146": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P23256",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "F4K5T2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's section directly matches the primary reaction of L-cysteine desulfhydrase activity, and the domain/family cross-references do not provide specific evidence for this function."
+   },
+   {
+    "accession": "P9WP55",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly and specifically explain why P9WP55 carries the GO term \"L-cysteine desulfhydrase activity.\" The cofactor binding sites are consistent with the enzyme's function but do not provide a strong match to the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "Q79FV4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section directly matches the defined reaction of the GO term, and the binding sites for pyridoxal 5'-phosphate are not sufficient to explain the specific chemistry of L-cysteine desulfhydrase activity."
+   }
+  ]
+ },
+ "GO:0080161": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FFD0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0086006": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Cys residue near the selectivity filter, which has a free thiol that is susceptible to reaction with methanethiosulfonate (MTSET); Sodium current is irreversibly blocked by MTSET",
+    "accessions": [
+     "P15389"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "IQ",
+    "accessions": [
+     "Q6QIY3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P54900",
+    "reason": "none_verdict",
+    "reasoning": "The binding site for SCN2A (SITE 55-56) is associated with the protein's function in cardiac muscle cells, but it does not directly explain the sodium ion translocation mechanism described in the GO term's definition. No other annotated feature provides a more specific explanation of the primary reaction of the GO term."
+   },
+   {
+    "accession": "Q7M729",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q7M729 specifically matches the primary reaction of enabling sodium ion transmembrane transfer through a voltage-gated channel as defined for GO:0086006."
+   }
+  ]
+ },
+ "GO:0086057": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "VWFA",
+    "accessions": [
+     "O08532"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9SXE1",
+      "reason": "none_verdict",
+      "reasoning": "The protein Q9SXE1 has binding sites for FAD and NADP(+), which are cofactors involved in redox reactions. However, these binding sites do not directly explain the catalysis of the specific reaction defined by GO:0080107, which involves oxygen transfer to 8-methylthiopropyl-glucosinolate. Therefore, there is no positional feature that specifically matches the chemistry of the reaction defined by t"
+    },
+    {
+      "accession": "Q94K43",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q94K43 specifically matches the chemistry defined by GO:0080107, which involves catalyzing a specific oxidation reaction. The binding sites for FAD and NADP(+) are relevant to the enzyme's function but do not directly explain why it carries this term."
+    },
+    {
+      "accession": "A8MRX0",
+      "reason": "none_verdict",
+      "reasoning": "The GO term defines a specific enzymatic activity involving oxygenation, which requires an active site domain that catalyzes this reaction. However, the protein A8MRX0 has binding sites for FAD and NADP(+), which are cofactors involved in redox reactions but do not directly explain the defined enzymatic activity of the GO term. No positional feature provided matches the primary reaction of the GO"
+    },
+    {
+      "accession": "Q93Y23",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

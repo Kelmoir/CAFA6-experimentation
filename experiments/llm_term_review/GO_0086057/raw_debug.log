@@ -1,0 +1,22 @@
+=== O08532 GO:0086057 (VERDICT missing) ===
+THINKING: The GO term is "voltage-gated calcium channel activity involved in bundle of His cell action potential" (GO:0086057). Its definition focuses on the primary reaction of enabling the transmembrane transfer of a calcium ion by a voltage-gated channel across the plasma membrane of a bundle of His cardiac muscle cell, which contributes to the depolarization phase of an action potential. The key mechanism here is the transport of a calcium ion through a voltage-dependent channel.
+
+The annotated features for protein O08532 include:
+- DOMAIN 252-430 (note: VWFA)
+- DOMAIN 445-537 (note: Cache)
+- MOTIF 258-263 (note: MIDAS-like motif)
+- BINDING 258-259 (ligand: a divalent metal cation)
+- BINDING 260-261 (ligand: a divetal metal cation)
+- BINDING 262-263 (ligand: a divetal metal cation)
+
+The primary reaction described in the GO term is the transmembrane transfer of a calcium ion by a voltage-gated channel. The only candidate feature that directly relates to this mechanism is the "BINDING" of a divalent metal cation, which is consistent with the function of calcium channels.
+
+- BINDING 258-259: ligand: a divetal metal cation (matches the definition's focus on calcium ion transport)
+- BINDING 260-261: ligand: a divetal metal cation (same as above)
+- BINDING 262-263: ligand: a divetal metal cation (same as above)
+
+The "BINDING" of a divalent metal cation is the most relevant and specific feature that could plausibly explain why this protein carries the GO term. It directly relates to the function of calcium channels, which are defined by their ability to transport calcium ions across membranes in response to voltage changes.
+
+FEATURE: BINDING 258-259
+REASONING: The binding of a divalent metal cation (specifically calcium) is directly related to the function of voltage-gated calcium channels, which are defined by their ability to transfer calcium ions across membranes in response to voltage changes. This matches the primary reaction described in the GO term's definition.
+

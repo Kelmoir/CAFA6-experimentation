@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0080130",
+  "name": "L-phenylalanine-2-oxoglutarate transaminase activity",
+  "def": "Catalysis of the reaction: L-phenylalanine + 2-oxoglutarate = 3-phenylpyruvate + L-glutamate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9S7N2"
+  ],
+  "assigned_accessions": [
+    "Q9S7N2"
+  ]
+}

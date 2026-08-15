@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "O43808",
+      "go_id": "GO:0080122",
+      "feature_type": "MOTIF",
+      "start": 189,
+      "end": 199,
+      "signal_kind": "text",
+      "signal_value": "Peroxisome localization signal",
+      "reasoning": "The motif 189-199 is explicitly labeled as a peroxisome localization signal, which directly aligns with the primary reaction of the GO term \"AMP transmembrane transporter activity\" (the transfer of AMP across membranes). This provides a strong and specific match to the defined chemistry of the term."
+    },
+    {
+      "accession": "Q9FLS8",
+      "go_id": "GO:0080122",
+      "feature_type": "BINDING",
+      "start": 80,
+      "end": 81,
+      "signal_kind": "ligand",
+      "signal_value": "Ca(2+)",
+      "reasoning": "The binding site for Ca(2+) in Q9FLS8 directly relates to the interaction of a ligand with the protein, which is a key aspect of the function described by the GO term \"AMP transmembrane transporter activity.\" This specific feature aligns with the primary reaction mechanism of transferring AMP across membranes."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O04619",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "O70579",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in O70579's list directly explains the primary reaction or mechanism of AMP transmembrane transporter activity as defined by the GO term."
+    }
+  ]
+}

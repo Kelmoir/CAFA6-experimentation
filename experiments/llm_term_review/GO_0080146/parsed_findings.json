@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P23256",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "F4K5T2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's section directly matches the primary reaction of L-cysteine desulfhydrase activity, and the domain/family cross-references do not provide specific evidence for this function."
+    },
+    {
+      "accession": "P9WP55",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly and specifically explain why P9WP55 carries the GO term \"L-cysteine desulfhydrase activity.\" The cofactor binding sites are consistent with the enzyme's function but do not provide a strong match to the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q79FV4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section directly matches the defined reaction of the GO term, and the binding sites for pyridoxal 5'-phosphate are not sufficient to explain the specific chemistry of L-cysteine desulfhydrase activity."
+    }
+  ]
+}

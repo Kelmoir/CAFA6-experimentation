@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q8L5A7",
+      "go_id": "GO:0080131",
+      "feature_type": "BINDING",
+      "start": 100,
+      "end": 106,
+      "signal_kind": "ligand",
+      "signal_value": "3'-phosphoadenylyl sulfate",
+      "reasoning": "The binding events with \"3'-phosphoadenylyl sulfate\" are most directly related to the reaction mechanism described for hydroxyjasmonate sulfotransferase activity. However, these annotations do not explicitly describe a domain involved in catalysis, so they do not strongly explain why the protein carries this GO term."
+    }
+  ],
+  "issues": []
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0080146",
+  "name": "L-cysteine desulfhydrase activity",
+  "def": "Catalysis of the reaction: L-cysteine + H2O = ammonia + pyruvate + hydrogen sulfide + H+.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "F4K5T2",
+    "P23256",
+    "P9WP55",
+    "Q79FV4"
+  ],
+  "assigned_accessions": [
+    "F4K5T2",
+    "P23256",
+    "P9WP55",
+    "Q79FV4"
+  ]
+}
