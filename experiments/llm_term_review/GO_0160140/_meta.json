@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0160140",
+  "name": "23S rRNA pseudouridine(1911/1915/1917) synthase activity",
+  "def": "Catalysis of the reaction: uridine(1911/1915/1917) in 23S rRNA = pseudouridine(1911/1915/1917) in 23S rRNA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P33643"
+  ],
+  "assigned_accessions": [
+    "P33643"
+  ]
+}

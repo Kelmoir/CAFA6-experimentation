@@ -34813,6 +34813,19 @@
    "involved in rna binding"
   ]
  },
+ "GO:0160106": {
+  "name": "tRNA (adenine(9)-N1)-methyltransferase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR025812",
+   "InterPro:IPR028564",
+   "InterPro:IPR038459",
+   "PROSITE:PS51675",
+   "Pfam:PF27710"
+  ],
+  "text_patterns": []
+ },
  "GO:0160117": {
   "name": "tRNA (guanine(6)-N2)-methyltransferase activity",
   "ligands": [],
@@ -34867,6 +34880,15 @@
   ],
   "text_patterns": [
    "sh3-binding"
+  ]
+ },
+ "GO:0160125": {
+  "name": "pH-gated sodium channel activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "gas motif; ion selectivity filter"
   ]
  },
  "GO:0160126": {

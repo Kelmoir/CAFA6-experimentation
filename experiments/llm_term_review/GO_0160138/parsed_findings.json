@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P32684",
+      "go_id": "GO:0160138",
+      "feature_type": "ACT_SITE",
+      "start": 106,
+      "end": 107,
+      "signal_kind": "text",
+      "signal_value": "Nucleophile",
+      "reasoning": "The ACT_SITE 106-107 annotation indicates that the enzyme has a nucleophilic site, which directly supports the catalytic activity described in the GO term's definition. This feature most plausibly explains why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

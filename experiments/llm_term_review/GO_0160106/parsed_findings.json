@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "Q3UFY8",
+      "go_id": "GO:0160106",
+      "feature_type": "DOMAIN",
+      "start": 185,
+      "end": 378,
+      "signal_kind": "text",
+      "signal_value": "SAM-dependent MTase TRM10-type",
+      "reasoning": "The DOMAIN annotation from position 185 to 378 with the note \"SAM-dependent MTase TRM10-type\" directly matches the primary reaction mechanism described in the GO term's definition, making it the most plausible explanation for why the protein carries this term."
+    },
+    {
+      "accession": "Q7JUX9",
+      "go_id": "GO:0160106",
+      "feature_type": "DOMAIN",
+      "start": 178,
+      "end": 373,
+      "signal_kind": "text",
+      "signal_value": "SAM-dependent MTase TRM10-type",
+      "reasoning": "The DOMAIN feature directly matches the chemistry and function described in the GO term's definition, indicating that the enzyme catalyzes methylation reactions involving SAM, which aligns with the primary reaction mechanism of the GO term."
+    },
+    {
+      "accession": "Q7L0Y3",
+      "go_id": "GO:0160106",
+      "feature_type": "DOMAIN",
+      "start": 190,
+      "end": 383,
+      "signal_kind": "text",
+      "signal_value": "SAM-dependent MTase TRM10-type",
+      "reasoning": "The DOMAIN 190-383 annotation directly specifies the enzyme type (SAM-dependent MTase TRM10-type), which is mechanistically specific to the function described in the GO term. This feature most plausibly explains why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

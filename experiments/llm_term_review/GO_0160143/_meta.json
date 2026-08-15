@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0160143",
+  "name": "21S rRNA pseudouridine(2819) synthase activity",
+  "def": "Catalysis of the reaction: uridine(2819) in 21S rRNA = pseudouridine(2819) in 21S rRNA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q06244"
+  ],
+  "assigned_accessions": [
+    "Q06244"
+  ]
+}

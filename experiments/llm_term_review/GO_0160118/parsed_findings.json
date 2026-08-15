@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9BV44",
+      "go_id": "GO:0160118",
+      "feature_type": "DOMAIN",
+      "start": 164,
+      "end": 285,
+      "signal_kind": "text",
+      "signal_value": "THUMP",
+      "reasoning": "The \"DOMAIN 164-285\" feature with the note \"THUMP\" directly corresponds to the catalytic domain of a methyltransferase, which is consistent with the GO term's definition. This provides a strong match to the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

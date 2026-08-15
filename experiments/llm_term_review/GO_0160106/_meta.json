@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0160106",
+  "name": "tRNA (adenine(9)-N1)-methyltransferase activity",
+  "def": "Catalysis of the reaction: adenosine(9) in tRNA + S-adenosyl-L-methionine = H+ + N(1)-methyladenosine(9) in tRNA + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q3UFY8",
+    "Q7JUX9",
+    "Q7L0Y3"
+  ],
+  "assigned_accessions": [
+    "Q3UFY8",
+    "Q7JUX9",
+    "Q7L0Y3"
+  ]
+}

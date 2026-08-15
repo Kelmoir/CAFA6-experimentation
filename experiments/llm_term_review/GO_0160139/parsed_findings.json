@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P37765",
+      "go_id": "GO:0160139",
+      "feature_type": "ACT_SITE",
+      "start": 109,
+      "end": 110,
+      "signal_kind": "text",
+      "signal_value": "Nucleophile",
+      "reasoning": "The ACT_SITE annotation indicates a nucleophilic activity at position 109-110, which aligns with the enzymatic mechanism of pseudouridine synthesis described in the GO term. This feature directly supports the primary reaction of the GO term, making it the most plausible explanation."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

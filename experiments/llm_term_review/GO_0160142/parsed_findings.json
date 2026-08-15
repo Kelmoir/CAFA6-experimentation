@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P0AA37",
+      "go_id": "GO:0160142",
+      "feature_type": "ACT_SITE",
+      "start": 63,
+      "end": 64,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The \"ACT_SITE\" with coordinates 63-64 directly matches the primary reaction of the GO term by indicating the site within the protein where the catalytic activity occurs, specifically at position 746 in the 23S rRNA."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

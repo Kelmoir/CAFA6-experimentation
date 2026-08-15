@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0160139",
+  "name": "23S rRNA pseudouridine(2605) synthase activity",
+  "def": "Catalysis of the reaction: uridine(2605) in 23S rRNA = pseudouridine(2605) in 23S rRNA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P37765"
+  ],
+  "assigned_accessions": [
+    "P37765"
+  ]
+}

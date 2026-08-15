@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0160118",
+  "name": "tRNA (guanine(7)-N2)-methyltransferase activity",
+  "def": "Catalysis of the reaction: guanosine(7) in tRNA + S-adenosyl-L-methionine = H+ + N(2)-methylguanosine(7) in tRNA + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9BV44"
+  ],
+  "assigned_accessions": [
+    "Q9BV44"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "Q708S5",
+      "go_id": "GO:0160125",
+      "feature_type": "MOTIF",
+      "start": 461,
+      "end": 464,
+      "signal_kind": "text",
+      "signal_value": "GAS motif; ion selectivity filter",
+      "reasoning": "The GAS motif with an ion selectivity filter in the protein's sequence is a strong match for the GO term \"pH-gated sodium channel activity\" as it directly supports the mechanism of pH-dependent sodium ion transmembrane transfer through the channel."
+    },
+    {
+      "accession": "Q925H0",
+      "go_id": "GO:0160125",
+      "feature_type": "MOTIF",
+      "start": 440,
+      "end": 443,
+      "signal_kind": "text",
+      "signal_value": "GAS motif; ion selectivity filter",
+      "reasoning": "The presence of a GAS motif and an ion selectivity filter in the MOTIF 440-443 region of Q925H0 is consistent with the function described by GO:0160125, which involves pH-gated sodium channel activity. This feature directly supports the primary reaction mechanism of the term."
+    },
+    {
+      "accession": "Q9UHC3",
+      "go_id": "GO:0160125",
+      "feature_type": "MOTIF",
+      "start": 446,
+      "end": 449,
+      "signal_kind": "text",
+      "signal_value": "GAS motif; ion selectivity filter",
+      "reasoning": "The GAS motif with an ion selectivity filter in position 446-449 directly supports the GO term's definition of enabling transmembrane sodium ion transfer through a pH-gated mechanism, making it the most plausible explanation for why Q9UHC3 carries this annotation."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O35240",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains why the protein carries the GO term \"pH-gated sodium channel activity.\" While the definition mentions an ion selectivity filter, this is not a positional feature and does not provide a clear structural/functional basis for the term."
+    }
+  ]
+}

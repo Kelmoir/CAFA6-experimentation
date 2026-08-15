@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P0AA43",
+      "go_id": "GO:0160136",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 68,
+      "signal_kind": "text",
+      "signal_value": "S4 RNA-binding",
+      "reasoning": "The DOMAIN feature indicates the presence of an S4 RNA-binding domain, which is a known structural component in 16S rRNA pseudouridine(516) synthase enzymes and directly supports the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

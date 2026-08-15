@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P33643",
+      "go_id": "GO:0160140",
+      "feature_type": "DOMAIN",
+      "start": 17,
+      "end": 91,
+      "signal_kind": "text",
+      "signal_value": "S4 RNA-binding",
+      "reasoning": "The \"DOMAIN\" feature specifically matches the primary reaction of the GO term by indicating the RNA-binding domain (S4) that is essential for catalyzing the pseudouridine synthesis reaction in 23S rRNA."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

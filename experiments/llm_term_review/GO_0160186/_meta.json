@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0160186",
+  "name": "phospholipase C inhibitor activity",
+  "def": "Binds to and stops, prevents or reduces the activity of the enzyme phospholipase C.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q05140",
+    "Q61548"
+  ],
+  "assigned_accessions": [
+    "Q05140",
+    "Q61548"
+  ]
+}

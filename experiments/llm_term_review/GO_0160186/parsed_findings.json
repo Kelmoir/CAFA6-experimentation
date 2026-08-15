@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q05140",
+      "reason": "none_verdict",
+      "reasoning": "There is no annotated feature in the protein's Annotated features section that directly or plausibly explains why Q05140 carries the molecular function \"phospholipase C inhibitor activity.\" The only domain mentioned is ENTH, which does not specifically relate to this function."
+    },
+    {
+      "accession": "Q61548",
+      "reason": "none_verdict",
+      "reasoning": "The highest scoring feature, DOMAIN 13-145, is annotated as \"ENTH,\" which is a generic enzyme annotation and does not specifically explain the GO term's primary reaction of inhibiting phospholipase C. No other feature provides direct evidence for this function."
+    }
+  ]
+}

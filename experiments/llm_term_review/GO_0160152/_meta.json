@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0160152",
+  "name": "tRNA pseudouridine(31) synthase activity",
+  "def": "Catalysis of the reaction: uridine(31) in tRNA = pseudouridine(31) in tRNA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P53294"
+  ],
+  "assigned_accessions": [
+    "P53294"
+  ]
+}

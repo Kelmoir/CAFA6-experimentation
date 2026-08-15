@@ -41228,5 +41228,282 @@
     "reasoning": "The annotated features for Q9UBP6 indicate binding sites for substrates involved in a reaction, but none directly explain the specific chemical mechanism described in the GO term's definition."
    }
   ]
+ },
+ "GO:0160106": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR025812",
+     "InterPro:IPR028564",
+     "InterPro:IPR038459",
+     "PROSITE:PS51675",
+     "Pfam:PF27710"
+    ],
+    "accessions": [
+     "Q3UFY8",
+     "Q7JUX9",
+     "Q7L0Y3"
+    ],
+    "note": "resolved from DOMAIN note 'SAM-dependent MTase TRM10-type'"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160118": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "THUMP",
+    "accessions": [
+     "Q9BV44"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160125": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "gas motif; ion selectivity filter",
+    "accessions": [
+     "Q708S5",
+     "Q925H0",
+     "Q9UHC3"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O35240",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains why the protein carries the GO term \"pH-gated sodium channel activity.\" While the definition mentions an ion selectivity filter, this is not a positional feature and does not provide a clear structural/functional basis for the term."
+   }
+  ]
+ },
+ "GO:0160136": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "S4 RNA-binding",
+    "accessions": [
+     "P0AA43"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160137": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Nucleophile",
+    "accessions": [
+     "P75966"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160138": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Nucleophile",
+    "accessions": [
+     "P32684"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160139": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Nucleophile",
+    "accessions": [
+     "P37765"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160140": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "S4 RNA-binding",
+    "accessions": [
+     "P33643"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160141": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "S4 RNA-binding",
+    "accessions": [
+     "P0AA39"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160142": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "P0AA37"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160143": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "Q06244"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160149": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AA41",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section provides a direct explanation for the molecular function defined by GO:0160149. The only available annotation is \"ACT_SITE 53-54,\" which identifies the location of the active site but does not explain why the protein carries this term. Therefore, there is no strong evidence to support the assignment of this GO term to P0AA41 based on"
+   }
+  ]
+ },
+ "GO:0160152": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P53294",
+    "reason": "none_verdict",
+    "reasoning": "There is no positional feature in the Annotated features section for protein P53294 that directly matches the primary reaction of the GO term \"tRNA pseudouridine(31) synthase activity.\" The only annotation provided is an ACT_SITE feature, which does not provide a structural or functional basis for the defined molecular function."
+   }
+  ]
+ },
+ "GO:0160186": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q05140",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature in the protein's Annotated features section that directly or plausibly explains why Q05140 carries the molecular function \"phospholipase C inhibitor activity.\" The only domain mentioned is ENTH, which does not specifically relate to this function."
+   },
+   {
+    "accession": "Q61548",
+    "reason": "none_verdict",
+    "reasoning": "The highest scoring feature, DOMAIN 13-145, is annotated as \"ENTH,\" which is a generic enzyme annotation and does not specifically explain the GO term's primary reaction of inhibiting phospholipase C. No other feature provides direct evidence for this function."
+   }
+  ]
  }
 }

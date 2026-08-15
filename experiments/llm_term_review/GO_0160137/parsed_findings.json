@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P75966",
+      "go_id": "GO:0160137",
+      "feature_type": "ACT_SITE",
+      "start": 78,
+      "end": 79,
+      "signal_kind": "text",
+      "signal_value": "Nucleophile",
+      "reasoning": "The \"ACT_SITE\" feature directly corresponds to the enzyme's active site, where it catalyzes the conversion of uridine to pseudouridine in the 23S rRNA molecule, which matches the primary reaction described in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

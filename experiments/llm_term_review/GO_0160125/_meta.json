@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0160125",
+  "name": "pH-gated sodium channel activity",
+  "def": "A gated channel activity that enables the transmembrane transfer of a sodium ion by a channel that opens in response to a change in pH.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "O35240",
+    "Q708S5",
+    "Q925H0",
+    "Q9UHC3"
+  ],
+  "assigned_accessions": [
+    "O35240",
+    "Q708S5",
+    "Q925H0",
+    "Q9UHC3"
+  ]
+}

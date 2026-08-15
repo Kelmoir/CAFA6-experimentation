@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0160136",
+  "name": "16S rRNA pseudouridine(516) synthase activity",
+  "def": "Catalysis of the reaction: uridine(516) in 16S rRNA = pseudouridine(516) in 16S rRNA.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AA43"
+  ],
+  "assigned_accessions": [
+    "P0AA43"
+  ]
+}

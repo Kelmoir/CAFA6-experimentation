@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0AA41",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's Annotated features section provides a direct explanation for the molecular function defined by GO:0160149. The only available annotation is \"ACT_SITE 53-54,\" which identifies the location of the active site but does not explain why the protein carries this term. Therefore, there is no strong evidence to support the assignment of this GO term to P0AA41 based on"
+    }
+  ]
+}
