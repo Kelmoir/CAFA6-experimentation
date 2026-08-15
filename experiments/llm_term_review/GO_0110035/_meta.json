@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0110035",
+  "name": "rDNA spacer replication fork barrier binding, bending",
+  "def": "The activity of binding selectively, and in a sequence-specific manner, a replication fork barrier found in rDNA spacers, and distorting the original structure of DNA, typically a straight helix, into a bend, or increasing the bend if the original structure was intrinsically bent due to its sequence.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9P6H9"
+  ],
+  "assigned_accessions": [
+    "Q9P6H9"
+  ]
+}

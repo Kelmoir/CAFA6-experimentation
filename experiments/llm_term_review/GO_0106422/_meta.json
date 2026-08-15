@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106422",
+  "name": "carotenoid isomerooxygenase activity",
+  "def": "Catalysis of the reaction: Zeaxanthin + O2 = (3R)-11-cis-3-hydroxyretinal + (3R)-all-trans-3-hydroxyretinal.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9VFS2"
+  ],
+  "assigned_accessions": [
+    "Q9VFS2"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9SRQ1",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction mechanism of the GO term, and the only plausible match is the binding of heme, which does not fully explain the monooxygenase activity described in the definition."
+    }
+  ]
+}

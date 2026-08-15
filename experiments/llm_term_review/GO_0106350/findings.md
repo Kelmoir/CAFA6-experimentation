@@ -1,0 +1,5 @@
+## P0AD57 GO:0106350
+verdict: NONE
+feature: NONE 0-0
+reasoning: The highest score is 10, and there are multiple features that directly relate to the ligands in the reaction defined by the GO term. However, none of these features specifically explain why the protein carries the term, as they only describe the ligand binding sites.
+---

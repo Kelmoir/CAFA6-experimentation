@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106413",
+  "name": "RNA dihydrouridine synthase activity",
+  "def": "Catalysis of the reaction: RNA-uracil + NAD(P)+ = RNA-dihydrouridine + NAD(P)H + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P37631"
+  ],
+  "assigned_accessions": [
+    "P37631"
+  ]
+}

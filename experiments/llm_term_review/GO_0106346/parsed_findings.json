@@ -1,0 +1,22 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q8LFA9",
+      "go_id": "GO:0106346",
+      "feature_type": "REGION",
+      "start": 55,
+      "end": 77,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The \"REGION\" (55-77) marked as \"Disordered\" is the only positional feature that could plausibly explain the GO term's definition, but it does not directly describe the mechanism of methyl transfer in an snRNA molecule. While it may suggest a domain with such activity, there is no explicit evidence linking this region to the specific reaction described by the GO term. Therefore, the match is uncert"
+    }
+  ],
+  "issues": [
+    {
+      "accession": "E1B8U2",
+      "reason": "none_verdict",
+      "reasoning": "The DOMAIN annotation (148-264) for E1B8U2 is associated with \"THUMP,\" which could plausibly be a domain involved in catalytic activity, but it does not directly describe the methyl transfer mechanism specified in the GO term's definition. Therefore, it does not strongly explain why the protein carries the term."
+    }
+  ]
+}

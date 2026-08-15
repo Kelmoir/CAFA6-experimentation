@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106356",
+  "name": "4-hydroxybenzoate 3-monooxygenase (NADPH) activity",
+  "def": "Catalysis of the reaction: 4-hydroxybenzoate + H+ + NADPH + O2 = 3,4-dihydroxybenzoate + H2O + NADP+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P20586"
+  ],
+  "assigned_accessions": [
+    "P20586"
+  ]
+}

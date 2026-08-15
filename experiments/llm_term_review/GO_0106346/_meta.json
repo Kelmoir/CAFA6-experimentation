@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0106346",
+  "name": "snRNA methyltransferase activity",
+  "def": "Catalysis of the transfer of a methyl group from a donor to a nucleoside residue in an snRNA molecule.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "E1B8U2",
+    "Q8LFA9"
+  ],
+  "assigned_accessions": [
+    "E1B8U2",
+    "Q8LFA9"
+  ]
+}

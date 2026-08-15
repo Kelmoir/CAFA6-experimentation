@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106350",
+  "name": "all-trans-octaprenyl-diphosphate synthase activity",
+  "def": "Catalysis of the reaction: (2E,6E)-farnesyl diphosphate + 5 isopentenyl diphosphate = 5 diphosphate + all-trans-octaprenyl diphosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P0AD57"
+  ],
+  "assigned_accessions": [
+    "P0AD57"
+  ]
+}

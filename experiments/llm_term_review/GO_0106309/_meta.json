@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0106309",
+  "name": "progesterone 21-hydroxylase activity",
+  "def": "Catalysis of the reaction: O2 + progesterone + reduced [NADPH--hemoprotein reductase] = 21-hydroxyprogesterone + H+ + H2O + oxidized [NADPH--hemoprotein reductase].",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "P00191",
+    "P08686",
+    "Q64562",
+    "Q64680"
+  ],
+  "assigned_accessions": [
+    "P00191",
+    "P08686",
+    "Q64562",
+    "Q64680"
+  ]
+}

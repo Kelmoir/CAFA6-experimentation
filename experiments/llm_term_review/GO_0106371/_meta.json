@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106371",
+  "name": "fluorescent chlorophyll catabolite monooxygenase (deformylase) activity",
+  "def": "Catalysis of the reaction: O2 + primary fluorescent chlorophyll catabolite + reduced [NADPH--hemoprotein reductase] = formate + 2 H+ + oxidized [NADPH--hemoprotein reductase] + primary fluorescent dioxobilin-type chlorophyll catabolite.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9SRQ1"
+  ],
+  "assigned_accessions": [
+    "Q9SRQ1"
+  ]
+}

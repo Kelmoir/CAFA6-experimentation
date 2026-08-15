@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0106343",
+  "name": "glutarate dioxygenase activity",
+  "def": "Catalysis of the reaction glutarate + 2-oxoglutarate + O2 = (S)-2-hydroxyglutarate + succinate + CO2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P76621"
+  ],
+  "assigned_accessions": [
+    "P76621"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0106347",
+  "name": "U2 snRNA 2'-O-methyladenosine m6 methyltransferase activity",
+  "def": "Catalysis of the reaction: a 2'-O-methyladenosine in U2 snRNA + S-adenosyl-L-methionine = an N6-methyl-2'-O-methyladenosine in U2 snRNA + S-adenosyl-L-homocysteine + H+.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q3U034",
+    "Q8N3J2"
+  ],
+  "assigned_accessions": [
+    "Q3U034",
+    "Q8N3J2"
+  ]
+}

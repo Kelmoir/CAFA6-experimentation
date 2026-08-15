@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0106329",
+  "name": "L-phenylalaine oxidase activity",
+  "def": "Catalysis of the reaction: H2O + L-phenylalanine + O2 = 3-phenylpyruvate + H2O2 + NH4(+).",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "O09046",
+    "Q4F867",
+    "Q6TGQ8",
+    "Q96RQ9"
+  ],
+  "assigned_accessions": [
+    "O09046",
+    "Q4F867",
+    "Q6TGQ8",
+    "Q96RQ9"
+  ]
+}

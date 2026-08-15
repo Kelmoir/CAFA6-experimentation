@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P37631",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P37631 provides a direct explanation for the enzymatic activity defined by GO:0106413, as all binding sites refer to FAD rather than the specific reaction mechanism."
+    }
+  ]
+}
