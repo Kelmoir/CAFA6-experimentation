@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0140327",
+  "name": "flippase activity",
+  "def": "Catalysis of the movement of lipids from the exoplasmic to the cytosolic leaflet of a membrane, using energy from the hydrolysis of ATP.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O35600",
+    "P78363",
+    "Q9SGG3"
+  ],
+  "assigned_accessions": [
+    "O35600",
+    "P78363",
+    "Q9SGG3"
+  ]
+}

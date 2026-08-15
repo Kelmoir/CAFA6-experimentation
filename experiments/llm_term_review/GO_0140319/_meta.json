@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140319",
+  "name": "receptor decoy activity",
+  "def": "Binding and sequestering a specific receptor ligand to prevent it from binding to its regular receptor.",
+  "n_proteins_total": 13,
+  "sampled_accessions": [
+    "O95407",
+    "P17342",
+    "P70180",
+    "Q9UBN6"
+  ],
+  "assigned_accessions": [
+    "O95407",
+    "P17342",
+    "P70180",
+    "Q9UBN6"
+  ]
+}

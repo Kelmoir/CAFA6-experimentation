@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140315",
+  "name": "iron ion sequestering activity",
+  "def": "Binding to an iron ion to prevent it from interacting with other partners or to inhibit its localization to the area of the cell or complex where it is active.",
+  "n_proteins_total": 11,
+  "sampled_accessions": [
+    "P11672",
+    "P19132",
+    "P54802",
+    "P80188"
+  ],
+  "assigned_accessions": [
+    "P11672",
+    "P19132",
+    "P54802",
+    "P80188"
+  ]
+}

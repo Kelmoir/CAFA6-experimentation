@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9LI83",
+      "go_id": "GO:0140333",
+      "feature_type": "ACT_SITE",
+      "start": 429,
+      "end": 430,
+      "signal_kind": "text",
+      "signal_value": "4-aspartylphosphate intermediate",
+      "reasoning": "The ACT_SITE annotation at position 429-430 directly matches the primary reaction mechanism described in the definition of the GO term, which involves ATP hydrolysis for glycerophospholipid translocation. This provides a strong and specific match to the defined chemistry of the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "A0A385MIS5",
+      "go_id": "GO:0140320",
+      "feature_type": "DOMAIN",
+      "start": 53,
+      "end": 437,
+      "signal_kind": "text",
+      "signal_value": "GH18",
+      "reasoning": "The \"DOMAIN 53-437\" feature with the note \"GH18\" directly matches the primary reaction of binding and sequestering PAMP ligands to prevent activation of the host innate immune response, which is the core function defined by the GO term. This provides a strong basis for the annotation."
+    },
+    {
+      "accession": "F9XMT4",
+      "go_id": "GO:0140320",
+      "feature_type": "DOMAIN",
+      "start": 46,
+      "end": 91,
+      "signal_kind": "text",
+      "signal_value": "LysM 1",
+      "reasoning": "The DOMAIN 46-91 feature directly matches the primary reaction of binding and sequestering PAMP ligands as defined by the GO term, making it a strong candidate for explaining why the protein carries this term."
+    },
+    {
+      "accession": "Q00363",
+      "go_id": "GO:0140320",
+      "feature_type": "DOMAIN",
+      "start": 46,
+      "end": 111,
+      "signal_kind": "text",
+      "signal_value": "Chitin-binding type-2",
+      "reasoning": "The \"DOMAIN\" feature (46-111) directly matches the primary reaction of the GO term by encoding chitin-binding activity, which is a form of ligand binding and sequestration. This provides a strong mechanistic basis for the protein carrying the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "F9XHX3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the primary reaction of \"binding and sequestering PAMP ligands to prevent activation\" as defined by GO:0140320."
+    }
+  ]
+}

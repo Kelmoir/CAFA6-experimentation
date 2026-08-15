@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9UBN6",
+      "go_id": "GO:0140319",
+      "feature_type": "DOMAIN",
+      "start": 339,
+      "end": 366,
+      "signal_kind": "text",
+      "signal_value": "Death; truncated",
+      "reasoning": "The DOMAIN span 339-366 is directly related to the primary reaction of binding and sequestering a specific receptor ligand, which aligns with the definition of \"receptor decoy activity.\" This feature provides a structural basis for the function described in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O95407",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P17342",
+      "reason": "none_verdict",
+      "reasoning": "The annotated feature indicates a chloride-binding site, which could be part of a decoy function. However, without explicit evidence that this binding inhibits receptor signaling or is used as a decoy, the GO term's primary reaction cannot be confirmed with certainty."
+    },
+    {
+      "accession": "P70180",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear explanation for the primary reaction of \"receptor decoy activity,\" which involves sequestering a ligand to prevent it from binding to its regular receptor. The only evidence is about chloride binding, but this does not directly support the function described by the GO term."
+    }
+  ]
+}

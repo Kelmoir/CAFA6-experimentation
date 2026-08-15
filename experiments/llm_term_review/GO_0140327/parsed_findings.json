@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "O35600",
+      "go_id": "GO:0140327",
+      "feature_type": "REGION",
+      "start": 2242,
+      "end": 2248,
+      "signal_kind": "text",
+      "signal_value": "Essential for ATP binding and ATPase activity",
+      "reasoning": "The region marked as essential for ATP binding and ATPase activity directly supports the flippase activity definition by indicating the location of ATP hydrolysis, which is central to the mechanism of lipid movement across membranes."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9SGG3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9SGG3 provides a clear positional explanation for the flippase activity defined by GO:0140327. The available features are related to ATP binding and Mg(2+) cofactor interaction, but they do not directly support the mechanism of lipid translocation described in the GO term's definition."
+    },
+    {
+      "accession": "P78363",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0140320",
+  "name": "PAMP receptor decoy activity",
+  "def": "Binding and sequestering PAMP ligands in order to prevent them from binding and activating to the host PAMP receptor. Usually this activity is encoded by a symbiont or a pathogen to prevent activation of the host innate immune response.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "A0A385MIS5",
+    "F9XHX3",
+    "F9XMT4",
+    "Q00363"
+  ],
+  "assigned_accessions": [
+    "A0A385MIS5",
+    "F9XHX3",
+    "F9XMT4",
+    "Q00363"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9DA75",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q8NA29",
+      "reason": "none_verdict",
+      "reasoning": "The only positional feature provided for Q8NA29 is a disordered region (REGION 0-34), which does not directly specify the function of lysophosphatidylcholine flippase activity. While MFS family members are known to be involved in lipid translocation, this protein's annotated features do not confirm that it carries the specific molecular function defined by GO:0140348."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0140348",
+  "name": "lysophosphatidylcholine flippase activity",
+  "def": "Catalysis of the movement of lysophosphatidylcholine from the exoplasmic to the cytosolic leaflet of a membrane, using energy from the hydrolysis of ATP.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q8NA29",
+    "Q9DA75"
+  ],
+  "assigned_accessions": [
+    "Q8NA29",
+    "Q9DA75"
+  ]
+}

@@ -38158,5 +38158,207 @@
     "reasoning": "The only annotated feature for P51868 is a Disordered region, which does not provide direct evidence of calcium ion sequestering activity. Therefore, there is no single annotated feature that plausibly explains why this protein carries the GO term \"calcium ion sequestering activity.\""
    }
   ]
+ },
+ "GO:0140315": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Fe cation",
+    "accessions": [
+     "P19132"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P54802",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P11672",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P11672 explicitly describes binding to an iron ion, which is the primary reaction defined by GO:0140315. The presence of multiple binding sites for different ligands does not confirm that these ligands are specifically iron ions or that the protein's function is limited to sequestering them."
+   },
+   {
+    "accession": "P80188",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the \"Annotated features\" section of P80188 directly matches the primary reaction of the GO term \"iron ion sequestering activity,\" which involves binding an iron ion to prevent its interaction with other partners or localization. The only domain-related evidence is a general Pfam entry, not a positional feature within the protein's sequence."
+   }
+  ]
+ },
+ "GO:0140319": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Death; truncated",
+    "accessions": [
+     "Q9UBN6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O95407",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P17342",
+    "reason": "none_verdict",
+    "reasoning": "The annotated feature indicates a chloride-binding site, which could be part of a decoy function. However, without explicit evidence that this binding inhibits receptor signaling or is used as a decoy, the GO term's primary reaction cannot be confirmed with certainty."
+   },
+   {
+    "accession": "P70180",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear explanation for the primary reaction of \"receptor decoy activity,\" which involves sequestering a ligand to prevent it from binding to its regular receptor. The only evidence is about chloride binding, but this does not directly support the function described by the GO term."
+   }
+  ]
+ },
+ "GO:0140320": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "GH18",
+    "accessions": [
+     "A0A385MIS5"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "LysM 1",
+    "accessions": [
+     "F9XMT4"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Chitin-binding type-2",
+    "accessions": [
+     "Q00363"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "F9XHX3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the primary reaction of \"binding and sequestering PAMP ligands to prevent activation\" as defined by GO:0140320."
+   }
+  ]
+ },
+ "GO:0140327": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Essential for ATP binding and ATPase activity",
+    "accessions": [
+     "O35600"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9SGG3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9SGG3 provides a clear positional explanation for the flippase activity defined by GO:0140327. The available features are related to ATP binding and Mg(2+) cofactor interaction, but they do not directly support the mechanism of lipid translocation described in the GO term's definition."
+   },
+   {
+    "accession": "P78363",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0140333": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "4-aspartylphosphate intermediate",
+    "accessions": [
+     "Q9LI83"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0140337": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P55058",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P55065",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0140348": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9DA75",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8NA29",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature provided for Q8NA29 is a disordered region (REGION 0-34), which does not directly specify the function of lysophosphatidylcholine flippase activity. While MFS family members are known to be involved in lipid translocation, this protein's annotated features do not confirm that it carries the specific molecular function defined by GO:0140348."
+   }
+  ]
  }
 }

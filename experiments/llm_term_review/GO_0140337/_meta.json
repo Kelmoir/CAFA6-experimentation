@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0140337",
+  "name": "diacylglyceride transfer activity",
+  "def": "Directly binding to diacylglyceride and delivering it either to an acceptor molecule or to a specific location.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P55058",
+    "P55065"
+  ],
+  "assigned_accessions": [
+    "P55058",
+    "P55065"
+  ]
+}

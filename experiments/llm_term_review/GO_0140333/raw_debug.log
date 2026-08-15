@@ -1,0 +1,15 @@
+=== Q9LI83 GO:0140333 (VERDICT missing) ===
+THINKING: The GO term "glycerophospholipid flippase activity" (GO:0140333) is defined as the catalysis of the movement of a glycerophospholipid from the exoplasmic to the cytosolic leaflet of a membrane, using energy from the hydrolysis of ATP. This implies that the protein carries an ATPase domain capable of providing the energy required for this translocation process.
+
+The annotated features for Q9LI83 include:
+- ACT_SITE 429-430 (note: 4-aspartylphosphate intermediate, evidence: ECO:0000250)
+- BINDING 864-865 (ligand: Mg(2+), ligand_id: ChEBI:CHEBI:18420, evidence: ECO:0000250)
+- BINDING 868-869 (ligand: Mg(2+), ligand_id: ChEBI:CHEBI:18420, evidence: ECO:0000250)
+
+The primary reaction described in the definition is the movement of a glycerophospholipid across a membrane using ATP hydrolysis. The only feature that directly relates to this process is the ACT_SITE annotation, which refers to the site where the 4-aspartylphosphate intermediate is formed during the ATP hydrolysis reaction.
+
+The other features (BINDING) refer to Mg(2+) binding, which is not central to the primary reaction of glycerophospholipid flippase activity. Therefore, the ACT_SITE annotation is the most plausible explanation for why Q9LI83 carries the GO term "glycerophospholipid flippase activity."
+
+FEATURE: ACT_SITE 429-430  
+REASONING: The ACT_SITE annotation at position 429-430 directly relates to the primary reaction of ATP hydrolysis, which is essential for the movement of glycerophospholipids across membranes as defined by the GO term.
+

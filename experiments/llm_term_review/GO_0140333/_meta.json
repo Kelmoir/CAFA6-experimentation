@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0140333",
+  "name": "glycerophospholipid flippase activity",
+  "def": "Catalysis of the movement of a glycerophospholipid from the exoplasmic to the cytosolic leaflet of a membrane, using energy from the hydrolysis of ATP.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9LI83"
+  ],
+  "assigned_accessions": [
+    "Q9LI83"
+  ]
+}
