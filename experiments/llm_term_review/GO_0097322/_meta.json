@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0097322",
+  "name": "7SK snRNA binding",
+  "def": "Binding to a 7SK small nuclear RNA (7SK snRNA).",
+  "n_proteins_total": 22,
+  "sampled_accessions": [
+    "Q7L2J0",
+    "Q8R409",
+    "Q9DF35",
+    "Q9NR30"
+  ],
+  "assigned_accessions": [
+    "Q7L2J0",
+    "Q8R409",
+    "Q9DF35",
+    "Q9NR30"
+  ]
+}

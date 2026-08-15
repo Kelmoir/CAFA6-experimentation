@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0097383",
+  "name": "dIDP phosphatase activity",
+  "def": "Catalysis of the reaction: dIDP + H2O = dIMP + H+ + phosphate.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q6P3D0",
+    "Q6TEC1",
+    "Q96DE0"
+  ],
+  "assigned_accessions": [
+    "Q6P3D0",
+    "Q6TEC1",
+    "Q96DE0"
+  ]
+}

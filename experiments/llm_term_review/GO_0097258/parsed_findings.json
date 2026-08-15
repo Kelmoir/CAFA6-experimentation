@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P78329",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided data specifically matches the primary reaction defined by GO:0097258. The only plausible explanation would involve a domain with a specific catalytic function, such as an oxidase domain, which is not present in the Annotated features section for this protein."
+    },
+    {
+      "accession": "Q08477",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

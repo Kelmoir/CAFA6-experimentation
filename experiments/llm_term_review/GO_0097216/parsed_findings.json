@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "P0A6P5",
+      "go_id": "GO:0097216",
+      "feature_type": "BINDING",
+      "start": 8,
+      "end": 16,
+      "signal_kind": "ligand",
+      "signal_value": "GTP",
+      "reasoning": "The \"BINDING 8-16\" annotation explicitly mentions the protein's ability to bind GTP, which directly matches the primary reaction described in the GO term's definition. This feature provides a clear and specific explanation for why the protein carries the defined molecular function."
+    },
+    {
+      "accession": "P39286",
+      "go_id": "GO:0097216",
+      "feature_type": "BINDING",
+      "start": 159,
+      "end": 163,
+      "signal_kind": "ligand",
+      "signal_value": "GTP",
+      "reasoning": "The \"BINDING 159-163\" feature directly describes the interaction of the protein with GTP, which matches the primary reaction defined for the GO term \"guanosine tetraphosphate binding.\" This is the most specific and relevant evidence among the annotated features."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P00350",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P0ADG7",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

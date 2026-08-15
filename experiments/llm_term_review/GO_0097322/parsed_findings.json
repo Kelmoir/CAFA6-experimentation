@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8R409",
+      "go_id": "GO:0097322",
+      "feature_type": "REGION",
+      "start": 146,
+      "end": 174,
+      "signal_kind": "text",
+      "signal_value": "Basic region; mediates nuclear localization and interaction with 7SK snRNA and NR3C1",
+      "reasoning": "The region is explicitly noted for mediating interaction with 7SK snRNA, which directly matches the primary reaction of the GO term \"7SK snRNA binding.\" This provides a strong and specific explanation for why the protein carries this annotation."
+    },
+    {
+      "accession": "Q7L2J0",
+      "go_id": "GO:0097322",
+      "feature_type": "DOMAIN",
+      "start": 430,
+      "end": 686,
+      "signal_kind": "text",
+      "signal_value": "Bin3-type SAM",
+      "reasoning": "The DOMAIN 430-686 feature specifically matches the GO term's definition of binding to a 7SK snRNA, indicating that this domain is directly involved in the function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9DF35",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q9DF35 directly supports the molecular function of \"7SK snRNA binding.\" The closest match is a binding site for ATP, which is not specific to 7SK snRNA."
+    },
+    {
+      "accession": "Q9NR30",
+      "reason": "none_verdict",
+      "reasoning": "The protein Q9NR30 has no annotated feature that specifically matches the primary reaction of \"Binding to a 7SK small nuclear RNA (7SK snRNA).\" All features are either general or not directly related to the specific RNA-binding activity described in the GO term."
+    }
+  ]
+}

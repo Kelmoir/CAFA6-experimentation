@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "Q96DE0",
+      "go_id": "GO:0097383",
+      "feature_type": "DOMAIN",
+      "start": 17,
+      "end": 173,
+      "signal_kind": "text",
+      "signal_value": "Nudix hydrolase",
+      "reasoning": "The \"DOMAIN\" feature (17-173) is associated with Nudix hydrolase, which is a class of enzymes that includes phosphatases. This domain is likely responsible for the catalytic activity described by the GO term, making it the most plausible explanation for why Q96DE0 carries the term \"dIDP phosphatase activity.\""
+    },
+    {
+      "accession": "Q6P3D0",
+      "go_id": "GO:0097383",
+      "feature_type": "DOMAIN",
+      "start": 17,
+      "end": 173,
+      "signal_kind": "text",
+      "signal_value": "Nudix hydrolase",
+      "reasoning": "The DOMAIN 17-173 annotation is directly related to the Nudix hydrolase domain family, which includes enzymes capable of catalyzing reactions similar to those defined by the GO term \"dIDP phosphatase activity.\" This provides a strong match to the primary reaction mechanism described in the GO definition."
+    },
+    {
+      "accession": "Q6TEC1",
+      "go_id": "GO:0097383",
+      "feature_type": "DOMAIN",
+      "start": 38,
+      "end": 187,
+      "signal_kind": "text",
+      "signal_value": "Nudix hydrolase",
+      "reasoning": "The DOMAIN 38-187 feature is directly associated with Nudix hydrolase-like activity, which matches the primary reaction of dIDP phosphatase activity as defined in the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

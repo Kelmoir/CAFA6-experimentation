@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0097259",
+  "name": "20-aldehyde-leukotriene B4 20-monooxygenase activity",
+  "def": "Catalysis of the reaction: 20-oxo-leukotriene B4 + O2 + reduced [NADPH-hemoprotein reductase] = 20-carboxy-leukotriene B4 + 2 H+ + H2O + oxidized [NADPH-hemoprotein reductase].",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P78329",
+    "Q08477"
+  ],
+  "assigned_accessions": [
+    "P78329",
+    "Q08477"
+  ]
+}

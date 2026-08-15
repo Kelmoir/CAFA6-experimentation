@@ -32865,5 +32865,186 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0097216": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "GTP",
+    "accessions": [
+     "P0A6P5",
+     "P39286"
+    ],
+    "reason": "generic ligand -- shared cofactor across too many unrelated functions to trust as this term's own marker"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P00350",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P0ADG7",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0097258": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P78329",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data specifically matches the primary reaction defined by GO:0097258. The only plausible explanation would involve a domain with a specific catalytic function, such as an oxidase domain, which is not present in the Annotated features section for this protein."
+   },
+   {
+    "accession": "Q08477",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0097259": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P78329",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the GO term's definition, which involves catalyzing an oxygen transfer reaction. The only evidence provided is about heme binding and axial residues, which are structural and functional but do not specifically explain the monooxygenase activity."
+   },
+   {
+    "accession": "Q08477",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which involves catalyzing a specific oxidation reaction with heme as a cofactor. The binding sites for heme are related to the enzyme's structure but do not explain the monooxygenase activity itself."
+   }
+  ]
+ },
+ "GO:0097269": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O13851",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q86YH6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q33DR2",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q5T2R2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q5T2R2 directly matches the chemistry or mechanism described in the GO term's definition."
+   }
+  ]
+ },
+ "GO:0097322": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Basic region; mediates nuclear localization and interaction with 7SK snRNA and NR3C1",
+    "accessions": [
+     "Q8R409"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Bin3-type SAM",
+    "accessions": [
+     "Q7L2J0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9DF35",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q9DF35 directly supports the molecular function of \"7SK snRNA binding.\" The closest match is a binding site for ATP, which is not specific to 7SK snRNA."
+   },
+   {
+    "accession": "Q9NR30",
+    "reason": "none_verdict",
+    "reasoning": "The protein Q9NR30 has no annotated feature that specifically matches the primary reaction of \"Binding to a 7SK small nuclear RNA (7SK snRNA).\" All features are either general or not directly related to the specific RNA-binding activity described in the GO term."
+   }
+  ]
+ },
+ "GO:0097358": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q07648",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear, specific explanation for the catalytic activity described in the GO term's definition. The only relevant feature is a motif related to amino acid discrimination, which does not directly support the primary reaction of deacylation."
+   }
+  ]
+ },
+ "GO:0097383": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Nudix hydrolase",
+    "accessions": [
+     "Q6P3D0",
+     "Q6TEC1",
+     "Q96DE0"
+    ],
+    "reason": "resolved to ['InterPro:IPR000086', 'InterPro:IPR015797', 'PROSITE:PS51462'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000086': 122, 'InterPro:IPR015797': 129, 'PROSITE:PS51462': 122})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
  }
 }

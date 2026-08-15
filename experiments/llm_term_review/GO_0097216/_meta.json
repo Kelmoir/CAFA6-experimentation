@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0097216",
+  "name": "guanosine tetraphosphate binding",
+  "def": "Binding to guanosine tetraphosphate (5'-ppGpp-3'), a guanosine bisphosphate having diphosphate groups at both the 3' and 5'-positions.",
+  "n_proteins_total": 35,
+  "sampled_accessions": [
+    "P00350",
+    "P0A6P5",
+    "P0ADG7",
+    "P39286"
+  ],
+  "assigned_accessions": [
+    "P00350",
+    "P0A6P5",
+    "P0ADG7",
+    "P39286"
+  ]
+}
