@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q53UH4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q53UH4 specifically matches the catalytic mechanism of the defined molecular function for GO:0102455."
+    }
+  ]
+}

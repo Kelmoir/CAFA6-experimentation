@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102435",
+  "name": "myricetin 7-O-methyltransferase activity",
+  "def": "Catalysis of the reaction: myricetin + S-adenosyl-L-methionine = 7-O-methylmyricetin + H+ + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "F2YTN5"
+  ],
+  "assigned_accessions": [
+    "F2YTN5"
+  ]
+}

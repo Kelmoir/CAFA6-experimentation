@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "F2YTN5",
+      "go_id": "GO:0102435",
+      "feature_type": "BINDING",
+      "start": 220,
+      "end": 221,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The BINDING feature directly refers to the interaction with S-adenosyl-L-methionine, which is a key reactant in the reaction catalyzed by myricetin 7-O-methyltransferase activity. This provides a strong match to the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

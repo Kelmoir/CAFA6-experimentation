@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "E3W9M2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in E3W9M2 specifically describes the mechanism of transferring a glucosyl group or forming a glycosidic bond, which are central to the defined function of the protein."
+    }
+  ]
+}

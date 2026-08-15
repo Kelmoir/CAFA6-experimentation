@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "A2RUC4",
+      "go_id": "GO:0102524",
+      "feature_type": "BINDING",
+      "start": 105,
+      "end": 106,
+      "signal_kind": "ligand",
+      "signal_value": "2-oxoglutarate",
+      "reasoning": "The binding site for 2-oxoglutarate directly involves one of the reactants in the reaction defined by the GO term, making it the most plausible candidate for explaining why A2RUC4 carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q2HWK7",
+      "go_id": "GO:0102431",
+      "feature_type": "DOMAIN",
+      "start": 9,
+      "end": 75,
+      "signal_kind": "text",
+      "signal_value": "Cytochrome b5 heme-binding",
+      "reasoning": "The DOMAIN 9-75 is explicitly associated with cytochrome b5 heme-binding, which is essential for the reaction mechanism described in the GO term. This feature directly supports the enzyme's function as an acyl-lipid omega-(9-4) desaturase."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

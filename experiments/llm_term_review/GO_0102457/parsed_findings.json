@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "E3W9M3",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for E3W9M3 do not provide evidence that directly explains the molecular function defined by GO:0102457, which involves a specific glycosylation reaction. None of the binding sites or active site annotations indicate the enzyme's catalytic activity in this context."
+    }
+  ]
+}

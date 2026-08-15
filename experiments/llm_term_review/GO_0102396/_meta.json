@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0102396",
+  "name": "9-cis-10'-apo-beta-carotenal cleavage oxygenase activity",
+  "def": "Catalysis of the reaction: 9-cis-10'-apo-beta-carotenal + 2 O2 = carlactone + (2E,4E,6E)-7-hydroxy-4-methylhepta-2,4,6-trienal.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q8LIY8",
+    "Q8VY26"
+  ],
+  "assigned_accessions": [
+    "Q8LIY8",
+    "Q8VY26"
+  ]
+}

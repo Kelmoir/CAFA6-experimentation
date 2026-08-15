@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102506",
+  "name": "cyanidin 3-O-glucoside 5-O-glucosyltransferase (acyl-glucose) activity",
+  "def": "Catalysis of the reaction: cyanidin 3-O-beta-D-glucoside betaine + 1-O-feruloyl-beta-D-glucose = cyanin betaine + ferulate + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "E3W9M2"
+  ],
+  "assigned_accessions": [
+    "E3W9M2"
+  ]
+}

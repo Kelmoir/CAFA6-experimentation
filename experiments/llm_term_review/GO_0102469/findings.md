@@ -1,0 +1,10 @@
+## P93149 GO:0102469
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature provides a direct explanation for the specific chemical reaction defined by the GO term "naringenin 2-hydroxylase activity." The only relevant feature is a heme-binding site, which is generic to cytochrome P450 enzymes and does not specifically account for the reaction mechanism of naringenin 2-hydroxylase.
+---
+## Q5VRI5 GO:0102469
+verdict: NONE
+feature: NONE 0-0
+reasoning: The only annotated feature for protein Q5VRI5 is a binding site with heme as the ligand, which is relevant to cytochrome P450 enzymes but does not directly account for the specific hydroxylation activity defined by GO:0102469. No other positional feature is provided, and the domain/family cross-references do not provide a strong match for the primary reaction of the term. Therefore, there is no si
+---

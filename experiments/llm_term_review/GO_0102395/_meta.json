@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0102395",
+  "name": "9-cis-beta-carotene 9',10'-cleavage oxygenase activity",
+  "def": "Catalysis of the reaction: 9-cis-beta-carotene + O2 = 9-cis-10'-apo-beta-carotenal + beta-ionone.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q7XJM2",
+    "Q7XU29"
+  ],
+  "assigned_accessions": [
+    "Q7XJM2",
+    "Q7XU29"
+  ]
+}

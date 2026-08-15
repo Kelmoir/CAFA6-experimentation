@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102452",
+  "name": "bisdemethoxycurcumin synthase activity",
+  "def": "Catalysis of the reaction: 2 4-coumaryl-CoA + malonyl-CoA + H2O + H+ = 3 coenzyme A + bisdemethoxycurcumin + 2 carbon dioxide.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8LIL0"
+  ],
+  "assigned_accessions": [
+    "Q8LIL0"
+  ]
+}

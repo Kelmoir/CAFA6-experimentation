@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8LIY8",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in Q8LIY8 specifically matches the defined reaction mechanism of the GO term \"9-cis-10'-apo-beta-carotenal cleavage oxygenase activity.\""
+    },
+    {
+      "accession": "Q8VY26",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly matches the defined reaction mechanism of the GO term, so there is no single plausible explanation for why Q8VY26 carries this term."
+    }
+  ]
+}

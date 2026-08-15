@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102517",
+  "name": "oleate 12-hydroxylase activity",
+  "def": "Catalysis of the reaction: (9Z)-octadecenoate + AH2 + O2 = (12R)-hydroxy-(9Z)-octadecenoate + acceptor + H2O.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "B4YQU1"
+  ],
+  "assigned_accessions": [
+    "B4YQU1"
+  ]
+}

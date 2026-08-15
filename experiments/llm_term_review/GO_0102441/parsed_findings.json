@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "F2YTN5",
+      "go_id": "GO:0102441",
+      "feature_type": "BINDING",
+      "start": 220,
+      "end": 221,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The BINDING feature explicitly references the S-adenosyl-L-methionine ligand involved in the methyltransferase reaction, which directly matches the primary mechanism described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

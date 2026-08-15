@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "F2YTN5",
+      "go_id": "GO:0102448",
+      "feature_type": "BINDING",
+      "start": 220,
+      "end": 221,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The binding of S-adenosyl-L-methionine to F2YTN5 directly supports the reaction mechanism described in the GO term, making it a strong match."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

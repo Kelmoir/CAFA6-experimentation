@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102448",
+  "name": "rhamnetin 4'-O-methyltransferase activity",
+  "def": "Catalysis of the reaction: rhamnetin + S-adenosyl-L-methionine = 7,4'-O-dimethylquercetin + H+ + S-adenosyl-L-homocysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "F2YTN5"
+  ],
+  "assigned_accessions": [
+    "F2YTN5"
+  ]
+}

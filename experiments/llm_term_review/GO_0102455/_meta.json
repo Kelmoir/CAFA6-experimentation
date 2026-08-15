@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102455",
+  "name": "anthocyanidin 3-O-glucoside 2''-O-glucosyltransferase activity",
+  "def": "Catalysis of the reaction: UDP-alpha-D-glucose + an anthocyanidin-3-O-beta-D-glucoside = UDP + H+ + an anthocyanidin 3-O-sophoroside.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q53UH4"
+  ],
+  "assigned_accessions": [
+    "Q53UH4"
+  ]
+}

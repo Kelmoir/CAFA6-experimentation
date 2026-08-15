@@ -34314,5 +34314,325 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0102395": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Fe cation",
+    "accessions": [
+     "Q7XU29"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q7XJM2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q7XJM2 provides a clear, specific explanation for the defined reaction mechanism of 9-cis-beta-carotene cleavage by oxygen."
+   }
+  ]
+ },
+ "GO:0102396": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8LIY8",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q8LIY8 specifically matches the defined reaction mechanism of the GO term \"9-cis-10'-apo-beta-carotenal cleavage oxygenase activity.\""
+   },
+   {
+    "accession": "Q8VY26",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the defined reaction mechanism of the GO term, so there is no single plausible explanation for why Q8VY26 carries this term."
+   }
+  ]
+ },
+ "GO:0102406": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q94CD1",
+    "reason": "none_verdict",
+    "reasoning": "The ACT_SITE features are generic annotations about proton acceptor activity, which do not directly explain the specific enzymatic function defined by GO:0102406. No other annotated feature in the protein's list is relevant to the primary reaction of the GO term."
+   }
+  ]
+ },
+ "GO:0102431": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Cytochrome b5 heme-binding",
+    "accessions": [
+     "Q2HWK7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102435": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "F2YTN5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102439": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "F2YTN5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102440": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "A0A3Q7HYF0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102441": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "F2YTN5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102448": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "F2YTN5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102450": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "S-adenosyl-L-methionine",
+    "accessions": [
+     "F2YTN5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0102452": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8LIL0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction mechanism of the GO term \"bisdemethoxycurcumin synthase activity.\" The only related feature describes an intermediate in a similar type of reaction, but it does not strongly explain why the protein carries the term."
+   }
+  ]
+ },
+ "GO:0102455": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q53UH4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in Q53UH4 specifically matches the catalytic mechanism of the defined molecular function for GO:0102455."
+   }
+  ]
+ },
+ "GO:0102457": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "E3W9M3",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for E3W9M3 do not provide evidence that directly explains the molecular function defined by GO:0102457, which involves a specific glycosylation reaction. None of the binding sites or active site annotations indicate the enzyme's catalytic activity in this context."
+   }
+  ]
+ },
+ "GO:0102469": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P93149",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the specific chemical reaction defined by the GO term \"naringenin 2-hydroxylase activity.\" The only relevant feature is a heme-binding site, which is generic to cytochrome P450 enzymes and does not specifically account for the reaction mechanism of naringenin 2-hydroxylase."
+   },
+   {
+    "accession": "Q5VRI5",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for protein Q5VRI5 is a binding site with heme as the ligand, which is relevant to cytochrome P450 enzymes but does not directly account for the specific hydroxylation activity defined by GO:0102469. No other positional feature is provided, and the domain/family cross-references do not provide a strong match for the primary reaction of the term. Therefore, there is no si"
+   }
+  ]
+ },
+ "GO:0102506": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "E3W9M2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in E3W9M2 specifically describes the mechanism of transferring a glucosyl group or forming a glycosidic bond, which are central to the defined function of the protein."
+   }
+  ]
+ },
+ "GO:0102517": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "B4YQU1",
+    "go_id": "GO:0102517",
+    "feature_type": "MOTIF",
+    "start": 154,
+    "end": 159,
+    "signal_kind": "text",
+    "signal_value": "Histidine box-1",
+    "reasoning": "The \"MOTIF 154-159\" (Histidine box-1) is a plausible candidate for an annotated feature that could be involved in the function of oleate 12-hydroxylase activity, as it is commonly associated with metalloenzymes. However, it does not directly explain the hydroxylation mechanism of the enzyme, and therefore, the match is considered uncertain."
+   }
+  ],
+  "issues": []
+ },
+ "GO:0102524": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "2-oxoglutarate",
+    "accessions": [
+     "A2RUC4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

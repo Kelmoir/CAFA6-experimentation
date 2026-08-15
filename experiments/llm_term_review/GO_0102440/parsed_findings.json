@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "A0A3Q7HYF0",
+      "go_id": "GO:0102440",
+      "feature_type": "BINDING",
+      "start": 228,
+      "end": 229,
+      "signal_kind": "ligand",
+      "signal_value": "S-adenosyl-L-methionine",
+      "reasoning": "The BINDING feature explicitly mentions the ligand involved in the methyl transfer reaction, directly supporting the primary mechanism described by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

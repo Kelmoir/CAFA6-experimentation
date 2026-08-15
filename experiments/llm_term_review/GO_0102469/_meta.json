@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0102469",
+  "name": "naringenin 2-hydroxylase activity",
+  "def": "Catalysis of the reaction:(2S)-naringenin + O2 + reduced [NADPH--hemoprotein reductase] = (2S)-2-hydroxynaringenin + H(+) + H2O + oxidized [NADPH--hemoprotein reductase].",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P93149",
+    "Q5VRI5"
+  ],
+  "assigned_accessions": [
+    "P93149",
+    "Q5VRI5"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0102406",
+  "name": "omega-hydroxypalmitate O-sinapoyl transferase activity",
+  "def": "Catalysis of the reaction: sinapoyl-CoA + 16-hydroxypalmitate = coenzyme A + 16-sinapoyloxypalmitate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q94CD1"
+  ],
+  "assigned_accessions": [
+    "Q94CD1"
+  ]
+}
