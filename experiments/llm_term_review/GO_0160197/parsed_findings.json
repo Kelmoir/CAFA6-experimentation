@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8N5I4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction or mechanism defined for the GO term \"dolichal reductase (NADPH) activity.\" All binding sites are generic and do not provide evidence of the enzyme's catalytic function."
+    }
+  ]
+}

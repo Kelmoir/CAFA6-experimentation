@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0160193",
+  "name": "L-lactate dehydrogenase inhibitor activity",
+  "def": "Binds to and stops, prevents or reduces the activity of L-lactate dehydrogenase.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "C0HLV8"
+  ],
+  "assigned_accessions": [
+    "C0HLV8"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0160196",
+  "name": "polyprenol dehydrogenase (NAD+) activity",
+  "def": "Catalysis of the reaction: a di-trans,poly-cis-polyprenol + NAD+ = a di-trans,poly-cis-polyprenal + NADH + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8N5I4"
+  ],
+  "assigned_accessions": [
+    "Q8N5I4"
+  ]
+}

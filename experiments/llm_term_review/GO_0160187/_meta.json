@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0160187",
+  "name": "paracellular tight junction channel activity",
+  "def": "Enables size- and charge-selective transport of solutes through a tight junction barrier paracellularly, across the epithelium.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "P56748",
+    "P56750",
+    "P78369",
+    "Q91Y55"
+  ],
+  "assigned_accessions": [
+    "P56748",
+    "P56750",
+    "P78369",
+    "Q91Y55"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:0160212",
+  "name": "glycine-gated cation channel activity",
+  "def": "Enables the transmembrane transfer of a cation by a channel that opens when glycine is bound by the channel complex or one of its constituent parts on the extracellular side of the plasma membrane.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "O60391",
+    "Q05586",
+    "Q8TCU5"
+  ],
+  "assigned_accessions": [
+    "O60391",
+    "Q05586",
+    "Q8TCU5"
+  ]
+}

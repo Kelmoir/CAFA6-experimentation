@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9V3S0",
+      "go_id": "GO:0160238",
+      "feature_type": "REGION",
+      "start": 313,
+      "end": 319,
+      "signal_kind": "text",
+      "signal_value": "Essential for protein function",
+      "reasoning": "The region (313-319) is essential for protein function, which could imply a structural role in the active site or cofactor binding, making it a plausible explanation for the enzyme's catalytic activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

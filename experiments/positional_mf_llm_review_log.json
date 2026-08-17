@@ -41505,5 +41505,229 @@
     "reasoning": "The highest scoring feature, DOMAIN 13-145, is annotated as \"ENTH,\" which is a generic enzyme annotation and does not specifically explain the GO term's primary reaction of inhibiting phospholipase C. No other feature provides direct evidence for this function."
    }
   ]
+ },
+ "GO:0160187": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Interaction with TJP1",
+    "accessions": [
+     "Q91Y55"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Disordered",
+    "accessions": [
+     "P56748"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P56750",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P78369",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0160190": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "GTP",
+    "accessions": [
+     "P38297"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P25584",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0160191": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O64989",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for O64989 do not provide any evidence that directly explains the hydroxylase activity defined by GO:0160191."
+   },
+   {
+    "accession": "Q5CCK3",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features do not include any positional feature that directly supports the enzymatic activity defined by the GO term. While the heme-binding site is relevant to cytochrome P450 enzymes, it does not specifically account for the hydroxylation reaction described in the definition of GO:0160191."
+   }
+  ]
+ },
+ "GO:0160193": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "C0HLV8",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0160196": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8N5I4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a specific explanation for why the protein carries the molecular function defined by GO:0160196, as all features are generic and do not directly align with the primary reaction mechanism described in the term's definition."
+   }
+  ]
+ },
+ "GO:0160197": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8N5I4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction or mechanism defined for the GO term \"dolichal reductase (NADPH) activity.\" All binding sites are generic and do not provide evidence of the enzyme's catalytic function."
+   }
+  ]
+ },
+ "GO:0160212": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "glycine",
+    "accessions": [
+     "O60391",
+     "Q05586",
+     "Q8TCU5"
+    ],
+    "reason": "ligand already claimed by GO:0016594 elsewhere in the dictionary -- ligand_to_go is a plain dict, a second claim would silently overwrite it"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160214": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "MSP",
+    "accessions": [
+     "O60119",
+     "Q10484"
+    ],
+    "reason": "resolved to ['InterPro:IPR000535', 'PROSITE:PS50202'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000535': 30, 'PROSITE:PS50202': 30})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160238": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Essential for protein function",
+    "accessions": [
+     "Q9V3S0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0160241": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "NAD(+)",
+    "accessions": [
+     "O08756",
+     "Q99714"
+    ],
+    "reason": "circular agreement -- only 1 of 2 contributing accession(s) have evidence independent of another accession in this same group (e.g. an ortholog pair where one's annotation cites 'ECO:0000250|UniProtKB:<the other>' -- inferred by similarity from it, not a second independent witness)"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "ACT_SITE",
+    "value": "Proton acceptor",
+    "accessions": [
+     "O70351"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

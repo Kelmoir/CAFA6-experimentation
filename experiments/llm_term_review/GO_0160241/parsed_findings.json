@@ -1,0 +1,36 @@
+{
+  "resolved": [
+    {
+      "accession": "O08756",
+      "go_id": "GO:0160241",
+      "feature_type": "BINDING",
+      "start": 167,
+      "end": 168,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding site for NAD+ at position 167-168 is consistent with the enzyme's function of catalyzing the reaction between cardiolipin and NAD+, which directly matches the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "O70351",
+      "go_id": "GO:0160241",
+      "feature_type": "ACT_SITE",
+      "start": 167,
+      "end": 168,
+      "signal_kind": "text",
+      "signal_value": "Proton acceptor",
+      "reasoning": "The \"ACT_SITE\" region (167-168) is explicitly noted as a proton acceptor, which directly aligns with the primary reaction mechanism of the GO term, making it the most plausible explanation for why the protein carries this term."
+    },
+    {
+      "accession": "Q99714",
+      "go_id": "GO:0160241",
+      "feature_type": "BINDING",
+      "start": 167,
+      "end": 168,
+      "signal_kind": "ligand",
+      "signal_value": "NAD(+)",
+      "reasoning": "The binding of NAD+ to the protein at position 167-168 directly matches the primary reaction of catalyzing the transfer of a phosphate group from NAD+ to cardiolipin, making it the most plausible explanation for why the protein carries the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

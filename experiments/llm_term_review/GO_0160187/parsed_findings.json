@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q91Y55",
+      "go_id": "GO:0160187",
+      "feature_type": "MOTIF",
+      "start": 232,
+      "end": 235,
+      "signal_kind": "text",
+      "signal_value": "Interaction with TJP1",
+      "reasoning": "The \"MOTIF\" at positions 232-235 is the most plausible explanation for the GO term because it directly relates to the formation of the tight junction channel, which is essential for the transport activity described in the definition. This motif's interaction with TJP1 supports its role in enabling size- and charge-selective transport through the tight junction barrier."
+    },
+    {
+      "accession": "P56748",
+      "go_id": "GO:0160187",
+      "feature_type": "REGION",
+      "start": 205,
+      "end": 225,
+      "signal_kind": "text",
+      "signal_value": "Disordered",
+      "reasoning": "The \"REGION\" feature spans from 205 to 225, which is a plausible candidate for the structural basis of the paracellular tight junction channel activity. This span corresponds to a disordered region that could be involved in channel function or interactions with other proteins, making it a strong match to the GO term's primary reaction."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P56750",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P78369",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

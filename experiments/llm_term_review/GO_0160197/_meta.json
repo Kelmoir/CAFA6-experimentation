@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0160197",
+  "name": "dolichal reductase (NADPH) activity",
+  "def": "Catalysis of the reaction: a di-trans,poly-cis-dolichol + NADP+ = a di-trans,poly-cis-dolichal + NADPH + H+.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8N5I4"
+  ],
+  "assigned_accessions": [
+    "Q8N5I4"
+  ]
+}

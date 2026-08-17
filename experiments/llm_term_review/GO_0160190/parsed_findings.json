@@ -1,0 +1,22 @@
+{
+  "resolved": [
+    {
+      "accession": "P38297",
+      "go_id": "GO:0160190",
+      "feature_type": "BINDING",
+      "start": 196,
+      "end": 202,
+      "signal_kind": "ligand",
+      "signal_value": "GTP",
+      "reasoning": "The binding site at 196-202 involves GTP, which is relevant to membrane trafficking and localization processes. This feature directly supports the GO term's primary reaction of peroxisome-mitochondrion membrane tether activity by indicating a direct interaction with a molecule (GTP) that brings membranes together."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P25584",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

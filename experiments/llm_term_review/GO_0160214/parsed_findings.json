@@ -1,0 +1,26 @@
+{
+  "resolved": [
+    {
+      "accession": "O60119",
+      "go_id": "GO:0160214",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 123,
+      "signal_kind": "text",
+      "signal_value": "MSP",
+      "reasoning": "The DOMAIN 0-123 with the note \"MSP\" directly corresponds to the described function of bringing together membranes via lipid binding, which matches the primary reaction of the GO term."
+    },
+    {
+      "accession": "Q10484",
+      "go_id": "GO:0160214",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 121,
+      "signal_kind": "text",
+      "signal_value": "MSP",
+      "reasoning": "The \"MSP_dom\" domain (InterPro:IPR000535) directly supports the primary reaction of lipid binding and contact site formation between endoplasmic reticulum and plasma membranes, making it the most plausible explanation for the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

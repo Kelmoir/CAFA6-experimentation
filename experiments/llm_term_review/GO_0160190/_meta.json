@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0160190",
+  "name": "peroxisome-mitochondrion membrane tether activity",
+  "def": "The binding activity of a molecule that brings together the peroxisome and the mitochondrial outer membrane, establishing the localization of the peroxisome close to the mitochondrion.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P25584",
+    "P38297"
+  ],
+  "assigned_accessions": [
+    "P25584",
+    "P38297"
+  ]
+}

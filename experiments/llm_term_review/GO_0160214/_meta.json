@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0160214",
+  "name": "endoplasmic reticulum-plasma membrane adaptor activity",
+  "def": "The binding activity of a molecule that brings together a plasma membrane with an endoplasmic reticulum membrane, via membrane lipid binding, to establish membrane contact sites and mediate exchange and communication.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O60119",
+    "Q10484"
+  ],
+  "assigned_accessions": [
+    "O60119",
+    "Q10484"
+  ]
+}

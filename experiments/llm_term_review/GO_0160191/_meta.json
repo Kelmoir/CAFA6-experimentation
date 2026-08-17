@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0160191",
+  "name": "steroid 22S-hydroxylase activity",
+  "def": "Catalysis of the reaction: a C28-steroid + O2 + reduced NADPH--hemoprotein reductase = a (22S)-22-hydroxy C28-steroid + H+ + H2O + oxidized NADPH--hemoprotein reductase. Also catalyzes the C-22 hydroxylation of a variety of C27 and C29 steroids.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O64989",
+    "Q5CCK3"
+  ],
+  "assigned_accessions": [
+    "O64989",
+    "Q5CCK3"
+  ]
+}
