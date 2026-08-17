@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "O43001",
+      "go_id": "GO:1990651",
+      "feature_type": "DOMAIN",
+      "start": 552,
+      "end": 853,
+      "signal_kind": "text",
+      "signal_value": "5-PPase",
+      "reasoning": "The DOMAIN 552-853 with the note \"5-PPase\" directly corresponds to the enzyme's function of catalyzing the removal of a phosphate group from inositol pentakisphosphate, which matches the primary reaction described by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

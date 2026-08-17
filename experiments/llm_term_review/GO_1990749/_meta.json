@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1990749",
+  "name": "polynucleotide adenylyltransferase activator activity",
+  "def": "Increases the activity of the enzyme polynucleotide adenylyltransferase.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q95ZK7"
+  ],
+  "assigned_accessions": [
+    "Q95ZK7"
+  ]
+}

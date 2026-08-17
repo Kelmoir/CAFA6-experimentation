@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990631",
+  "name": "ErbB-4 class receptor binding",
+  "def": "Binding to the protein-tyrosine kinase receptor ErbB-4/HER4.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O35569",
+    "P09405",
+    "P13383",
+    "P56974"
+  ],
+  "assigned_accessions": [
+    "O35569",
+    "P09405",
+    "P13383",
+    "P56974"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990782",
+  "name": "protein tyrosine kinase binding",
+  "def": "Binding to protein tyrosine kinase.",
+  "n_proteins_total": 131,
+  "sampled_accessions": [
+    "P05556",
+    "P07901",
+    "P16573",
+    "Q54BD4"
+  ],
+  "assigned_accessions": [
+    "P05556",
+    "P07901",
+    "P16573",
+    "Q54BD4"
+  ]
+}

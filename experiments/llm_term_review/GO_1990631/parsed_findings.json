@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P13383",
+      "go_id": "GO:1990631",
+      "feature_type": "DOMAIN",
+      "start": 310,
+      "end": 387,
+      "signal_kind": "text",
+      "signal_value": "RRM 1",
+      "reasoning": "The RRM domain (DOMAIN 310-387) is directly associated with the defined function of binding to ErbB-4/HER4, which matches the primary reaction stated in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P09405",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature describes the specific binding activity to ErbB-4/HER4, so there is no single feature that plausibly explains why the protein carries this GO term."
+    },
+    {
+      "accession": "O35569",
+      "reason": "none_verdict",
+      "reasoning": "None of the annotated features directly describe the interaction with ErbB-4/HER4, and the highest score for matching the primary reaction is low."
+    },
+    {
+      "accession": "P56974",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of the GO term \"ErbB-4 class receptor binding,\" which involves binding to ErbB-4/HER4. The presence of Ig-like and EGF-like domains is structural and may be relevant, but they do not explicitly state that they bind to the receptor. Therefore, there is no strong evidence to support the GO term for this protein."
+    }
+  ]
+}

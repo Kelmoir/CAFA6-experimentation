@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990715",
+  "name": "mRNA CDS binding",
+  "def": "Binding to an mRNA molecule coding sequence (CDS).",
+  "n_proteins_total": 17,
+  "sampled_accessions": [
+    "Q5ZMA3",
+    "Q6GQD3",
+    "Q76LC6",
+    "Q9C0B0"
+  ],
+  "assigned_accessions": [
+    "Q5ZMA3",
+    "Q6GQD3",
+    "Q76LC6",
+    "Q9C0B0"
+  ]
+}

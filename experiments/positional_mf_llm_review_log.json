@@ -43637,6 +43637,41 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:1990631": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "RRM 1",
+    "accessions": [
+     "P13383"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P09405",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature describes the specific binding activity to ErbB-4/HER4, so there is no single feature that plausibly explains why the protein carries this GO term."
+   },
+   {
+    "accession": "O35569",
+    "reason": "none_verdict",
+    "reasoning": "None of the annotated features directly describe the interaction with ErbB-4/HER4, and the highest score for matching the primary reaction is low."
+   },
+   {
+    "accession": "P56974",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly matches the primary reaction of the GO term \"ErbB-4 class receptor binding,\" which involves binding to ErbB-4/HER4. The presence of Ig-like and EGF-like domains is structural and may be relevant, but they do not explicitly state that they bind to the receptor. Therefore, there is no strong evidence to support the GO term for this protein."
+   }
+  ]
+ },
  "GO:1990634": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -43671,5 +43706,176 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:1990649": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "5-PPase",
+    "accessions": [
+     "O43001"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:1990650": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SAC",
+    "accessions": [
+     "O43001"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:1990651": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "5-PPase",
+    "accessions": [
+     "O43001"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:1990698": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "feature_type_only",
+    "feature_type": "ACT_SITE",
+    "accessions": [
+     "Q9VWV9"
+    ],
+    "reason": "no ligand/note qualifier to generalize"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q22329",
+    "reason": "none_verdict",
+    "reasoning": "The ACT_SITE annotation at position 320-321 is related to the enzyme's active site, which is where substrate binding and catalysis occur. While it does not directly explain the specific chemistry of palmitoleoyl transfer, it is a plausible candidate for an annotated feature that could be associated with this GO term in a broader context. However, since no other feature matches the primary reaction"
+   },
+   {
+    "accession": "Q9JJJ7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the primary reaction of palmitoleoyl transfer as defined by the GO term."
+   },
+   {
+    "accession": "Q9H237",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:1990715": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "RRM",
+    "accessions": [
+     "Q5ZMA3",
+     "Q6GQD3",
+     "Q76LC6"
+    ],
+    "reason": "resolved to ['InterPro:IPR000504', 'PROSITE:PS50102', 'Pfam:PF00076'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000504': 810, 'PROSITE:PS50102': 794, 'Pfam:PF00076': 726})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9C0B0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of \"Binding to an mRNA molecule coding sequence (CDS)\" for the GO term \"mRNA CDS binding.\""
+   }
+  ]
+ },
+ "GO:1990749": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q95ZK7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly describes the mechanism of activating polynucleotide adenylyltransferase as defined by the GO term. The KH domains suggest catalytic or regulatory functions, but they do not specifically explain the activator activity."
+   }
+  ]
+ },
+ "GO:1990782": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "SH2",
+    "accessions": [
+     "Q54BD4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P05556",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list specifically matches the primary reaction of the GO term \"binding to protein tyrosine kinase,\" and no domain is explicitly linked to this function."
+   },
+   {
+    "accession": "P16573",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term, which is about binding to a tyrosine kinase."
+   },
+   {
+    "accession": "P07901",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features do not provide any positional evidence that directly explains why the protein carries the GO term \"protein tyrosine kinase binding.\" While some regions bind ATP, which is a ligand for tyrosine kinases, none of these features specifically account for the defined function of binding to a tyrosine kinase."
+   }
+  ]
  }
 }

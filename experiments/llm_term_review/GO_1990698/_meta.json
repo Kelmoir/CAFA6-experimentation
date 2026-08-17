@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990698",
+  "name": "palmitoleoyltransferase activity",
+  "def": "Catalysis of the transfer of a palmitoleoyl group, a 16-carbon monounsaturated fatty acid (C16:1), to an acceptor molecule.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "Q22329",
+    "Q9H237",
+    "Q9JJJ7",
+    "Q9VWV9"
+  ],
+  "assigned_accessions": [
+    "Q22329",
+    "Q9H237",
+    "Q9JJJ7",
+    "Q9VWV9"
+  ]
+}

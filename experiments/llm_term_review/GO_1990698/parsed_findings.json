@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9VWV9",
+      "go_id": "GO:1990698",
+      "feature_type": "ACT_SITE",
+      "start": 397,
+      "end": 398,
+      "signal_kind": "feature_type_only",
+      "signal_value": null,
+      "reasoning": "The ACT_SITE annotation at positions 397-398 directly corresponds to the enzyme's active site, which is essential for catalyzing the transfer of a palmitoleoyl group as defined by the GO term. This feature most plausibly explains why the protein carries the term \"palmitoleoyltransferase activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q22329",
+      "reason": "none_verdict",
+      "reasoning": "The ACT_SITE annotation at position 320-321 is related to the enzyme's active site, which is where substrate binding and catalysis occur. While it does not directly explain the specific chemistry of palmitoleoyl transfer, it is a plausible candidate for an annotated feature that could be associated with this GO term in a broader context. However, since no other feature matches the primary reaction"
+    },
+    {
+      "accession": "Q9JJJ7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the primary reaction of palmitoleoyl transfer as defined by the GO term."
+    },
+    {
+      "accession": "Q9H237",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q95ZK7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly describes the mechanism of activating polynucleotide adenylyltransferase as defined by the GO term. The KH domains suggest catalytic or regulatory functions, but they do not specifically explain the activator activity."
+    }
+  ]
+}

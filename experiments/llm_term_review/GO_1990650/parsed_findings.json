@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "O43001",
+      "go_id": "GO:1990650",
+      "feature_type": "DOMAIN",
+      "start": 143,
+      "end": 474,
+      "signal_kind": "text",
+      "signal_value": "SAC",
+      "reasoning": "The \"DOMAIN 143-474\" with note: SAC is directly related to the phosphatase activity described in the GO term and is a known domain associated with this type of enzymatic function."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}
