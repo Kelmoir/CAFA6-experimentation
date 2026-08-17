@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990447",
+  "name": "U2 snRNP binding",
+  "def": "Binding to a U2 small nuclear ribonucleoprotein particle.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P14678",
+    "P17136",
+    "P27048",
+    "Q9Z1Z2"
+  ],
+  "assigned_accessions": [
+    "P14678",
+    "P17136",
+    "P27048",
+    "Q9Z1Z2"
+  ]
+}

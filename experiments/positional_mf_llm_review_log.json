@@ -43430,5 +43430,246 @@
     "detail": "UNPARSED"
    }
   ]
+ },
+ "GO:1990447": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Sm",
+    "accessions": [
+     "P14678",
+     "P17136",
+     "P27048"
+    ],
+    "reason": "resolved to ['InterPro:IPR001163', 'InterPro:IPR047575', 'PROSITE:PS52002'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR001163': 95, 'InterPro:IPR047575': 131, 'PROSITE:PS52002': 131})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9Z1Z2",
+    "reason": "none_verdict",
+    "reasoning": "The defined chemistry for the GO term \"U2 snRNP binding\" does not have any annotated feature that directly matches it, and all features are either generic or not specific enough to explain the primary reaction."
+   }
+  ]
+ },
+ "GO:1990448": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Necessary for interaction with NUDT21/CPSF5",
+    "accessions": [
+     "Q16630"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "RRM",
+    "accessions": [
+     "Q6NVF9"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P82804",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P82804 specifically matches the definition of \"exon-exon junction complex binding,\" which requires a domain or structural element that directly interacts with this complex. The disordered regions provided are not sufficient to explain the function described by the GO term."
+   }
+  ]
+ },
+ "GO:1990458": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "F5/8 type C",
+    "accessions": [
+     "P02886"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:1990470": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9V629",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:1990482": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8GWB7",
+    "reason": "none_verdict",
+    "reasoning": "The \"SITE 107-108\" note mentions that it is important for catalytic activity, which could imply involvement in the active site where the reaction occurs. However, no specific feature directly describes the mechanism of transferring a glucuronate group from UDP to IPC, so it does not specifically match the GO term's own chemistry."
+   }
+  ]
+ },
+ "GO:1990576": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O94744",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" span provided for O94744 is marked as disordered, but it does not directly explain why the protein carries the GO term 1990576. Since no positional feature matches the primary reaction described in the definition, the evidence is insufficient to determine a strong match."
+   }
+  ]
+ },
+ "GO:1990599": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "TNase-like 1",
+    "accessions": [
+     "Q78PY7"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Nuclease",
+    "accessions": [
+     "Q9QZD4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8BIR2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a positional explanation for the enzyme's defined function of catalyzing the hydrolysis of ester linkages within 3' overhang single-stranded DNA."
+   },
+   {
+    "accession": "Q9W0S7",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for protein Q9W0S7 directly matches the primary reaction of the GO term \"3' overhang single-stranded DNA endodeoxyribonuclease activity,\" which involves the hydrolysis of ester linkages within a 3' overhang. The \"TNase-like\" domains are related to nuclease activity but lack specificity for the defined reaction."
+   }
+  ]
+ },
+ "GO:1990601": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Nuclease activity",
+    "accessions": [
+     "Q9URU2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:1990606": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Dynamin-type G",
+    "accessions": [
+     "Q09748",
+     "Q9URZ5"
+    ],
+    "reason": "resolved to ['InterPro:IPR000375', 'InterPro:IPR001401', 'InterPro:IPR019762', 'InterPro:IPR022812', 'InterPro:IPR030381', 'InterPro:IPR045063', 'PROSITE:PS00410', 'PROSITE:PS51718', 'Pfam:PF00350', 'Pfam:PF01031'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR000375': 55, 'InterPro:IPR001401': 66, 'InterPro:IPR019762': 56, 'InterPro:IPR022812': 66, 'InterPro:IPR030381': 94, 'InterPro:IPR045063': 99, 'PROSITE:PS00410': 56, 'PROSITE:PS51718': 94, 'Pfam:PF00350': 99, 'Pfam:PF01031': 55})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:1990634": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q18688",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for why the protein carries the molecular function of \"protein phosphatase 5 binding,\" as it does not specify an interaction with this particular enzyme."
+   }
+  ]
+ },
+ "GO:1990648": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "5-PPase",
+    "accessions": [
+     "O43001"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
  }
 }

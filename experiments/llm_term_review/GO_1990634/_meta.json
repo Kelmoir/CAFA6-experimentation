@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1990634",
+  "name": "protein phosphatase 5 binding",
+  "def": "Binding to protein phosphatase 5.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q18688"
+  ],
+  "assigned_accessions": [
+    "Q18688"
+  ]
+}

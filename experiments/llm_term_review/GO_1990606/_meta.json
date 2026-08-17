@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:1990606",
+  "name": "membrane scission GTPase motor activity",
+  "def": "Generation of a 'twisting' activity resulting in the scission of a membrane, driven by GTP hydrolysis.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q09748",
+    "Q9URZ5"
+  ],
+  "assigned_accessions": [
+    "Q09748",
+    "Q9URZ5"
+  ]
+}

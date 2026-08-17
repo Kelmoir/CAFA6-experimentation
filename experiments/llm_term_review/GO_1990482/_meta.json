@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1990482",
+  "name": "sphingolipid alpha-glucuronosyltransferase activity",
+  "def": "Catalysis of the reaction: UDP-glucuronate + inositol phosphorylceramide (IPC) = UDP + GlcA-IPC.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8GWB7"
+  ],
+  "assigned_accessions": [
+    "Q8GWB7"
+  ]
+}

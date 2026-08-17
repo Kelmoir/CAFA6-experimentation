@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990599",
+  "name": "3' overhang single-stranded DNA endodeoxyribonuclease activity",
+  "def": "Catalysis of the hydrolysis of ester linkages within 3' overhang single-stranded deoxyribonucleic acid by creating internal breaks.",
+  "n_proteins_total": 10,
+  "sampled_accessions": [
+    "Q78PY7",
+    "Q8BIR2",
+    "Q9QZD4",
+    "Q9W0S7"
+  ],
+  "assigned_accessions": [
+    "Q78PY7",
+    "Q8BIR2",
+    "Q9QZD4",
+    "Q9W0S7"
+  ]
+}

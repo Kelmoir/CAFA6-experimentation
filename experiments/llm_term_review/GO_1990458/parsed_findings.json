@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P02886",
+      "go_id": "GO:1990458",
+      "feature_type": "DOMAIN",
+      "start": 1,
+      "end": 152,
+      "signal_kind": "text",
+      "signal_value": "F5/8 type C",
+      "reasoning": "The \"DOMAIN\" feature spans from position 1 to 152 and is associated with an F5/8 type C domain, which is a known receptor domain capable of binding lipooligosaccharides. This directly supports the molecular function defined by the GO term \"lipooligosaccharide binding.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

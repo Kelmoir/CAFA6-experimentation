@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q16630",
+      "go_id": "GO:1990448",
+      "feature_type": "REGION",
+      "start": 80,
+      "end": 161,
+      "signal_kind": "text",
+      "signal_value": "Necessary for interaction with NUDT21/CPSF5",
+      "reasoning": "The region 80-161 is noted as necessary for interaction with NUDT21/CPSF5, which are components of the spliceosome and likely involved in the binding to the exon-exon junction complex. This directly aligns with the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q6NVF9",
+      "go_id": "GO:1990448",
+      "feature_type": "DOMAIN",
+      "start": 80,
+      "end": 161,
+      "signal_kind": "text",
+      "signal_value": "RRM",
+      "reasoning": "The DOMAIN 80-161 with the RRM note directly corresponds to the RNA recognition motif, which is essential for binding to an exon-exon junction complex as described by the GO term. This provides a strong and specific match to the primary reaction of the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P82804",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P82804 specifically matches the definition of \"exon-exon junction complex binding,\" which requires a domain or structural element that directly interacts with this complex. The disordered regions provided are not sufficient to explain the function described by the GO term."
+    }
+  ]
+}

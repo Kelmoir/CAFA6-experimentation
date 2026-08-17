@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1990648",
+  "name": "inositol-4,5,6-triphosphate 5-phosphatase activity",
+  "def": "Catalysis of the reaction: 1D-myo-inositol 4,5,6-trisphosphate + H2O = 1D-myo-inositol 4,6-bisphosphate + phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O43001"
+  ],
+  "assigned_accessions": [
+    "O43001"
+  ]
+}

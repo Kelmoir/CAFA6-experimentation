@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "O43001",
+      "go_id": "GO:1990648",
+      "feature_type": "DOMAIN",
+      "start": 552,
+      "end": 853,
+      "signal_kind": "text",
+      "signal_value": "5-PPase",
+      "reasoning": "The \"DOMAIN 552-853\" with the qualifier \"5-PPase\" directly matches the catalytic activity of inositol-4,5,6-triphosphate 5-phosphatase as defined by the GO term. This domain is specifically associated with the removal of a phosphate group from IP3, which aligns with the primary reaction described in the GO definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

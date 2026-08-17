@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8GWB7",
+      "reason": "none_verdict",
+      "reasoning": "The \"SITE 107-108\" note mentions that it is important for catalytic activity, which could imply involvement in the active site where the reaction occurs. However, no specific feature directly describes the mechanism of transferring a glucuronate group from UDP to IPC, so it does not specifically match the GO term's own chemistry."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1990470",
+  "name": "piRNA cluster binding",
+  "def": "Binding to piRNA clusters, double-stranded DNA regions that give rise to PIWI-interacting RNAs (piRNAs).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9V629"
+  ],
+  "assigned_accessions": [
+    "Q9V629"
+  ]
+}

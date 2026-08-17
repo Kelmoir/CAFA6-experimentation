@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "Q78PY7",
+      "go_id": "GO:1990599",
+      "feature_type": "DOMAIN",
+      "start": 17,
+      "end": 166,
+      "signal_kind": "text",
+      "signal_value": "TNase-like 1",
+      "reasoning": "The \"TNase-like\" designation in the DOMAIN annotation directly matches the enzymatic activity described in the GO term, making it the most plausible explanation for why the protein carries that term."
+    },
+    {
+      "accession": "Q9QZD4",
+      "go_id": "GO:1990599",
+      "feature_type": "REGION",
+      "start": 658,
+      "end": 814,
+      "signal_kind": "text",
+      "signal_value": "Nuclease",
+      "reasoning": "The region \"REGION 658-814\" is explicitly labeled as \"Nuclease,\" which directly matches the primary reaction described in the GO term's definition, making it the most plausible explanation for why the protein carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8BIR2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a positional explanation for the enzyme's defined function of catalyzing the hydrolysis of ester linkages within 3' overhang single-stranded DNA."
+    },
+    {
+      "accession": "Q9W0S7",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for protein Q9W0S7 directly matches the primary reaction of the GO term \"3' overhang single-stranded DNA endodeoxyribonuclease activity,\" which involves the hydrolysis of ester linkages within a 3' overhang. The \"TNase-like\" domains are related to nuclease activity but lack specificity for the defined reaction."
+    }
+  ]
+}

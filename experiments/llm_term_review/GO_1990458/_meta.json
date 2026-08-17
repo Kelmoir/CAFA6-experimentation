@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1990458",
+  "name": "lipooligosaccharide binding",
+  "def": "Binding to lipooligosaccharide. Lipooligosaccharides (LOSs) are the major glycolipids expressed on mucosal Gram-negative bacteria.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P02886"
+  ],
+  "assigned_accessions": [
+    "P02886"
+  ]
+}
