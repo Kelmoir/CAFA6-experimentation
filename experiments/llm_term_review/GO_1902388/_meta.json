@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1902388",
+  "name": "ceramide 1-phosphate transfer activity",
+  "def": "Removes a ceramide 1-phosphate from a membrane or a monolayer lipid particle, transports it through the aqueous phase while protected in a hydrophobic pocket, and brings it to an acceptor membrane or lipid particle.",
+  "n_proteins_total": 15,
+  "sampled_accessions": [
+    "D2KC46",
+    "Q8BS40",
+    "Q96JA3",
+    "Q9NZD2"
+  ],
+  "assigned_accessions": [
+    "D2KC46",
+    "Q8BS40",
+    "Q96JA3",
+    "Q9NZD2"
+  ]
+}

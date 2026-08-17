@@ -42410,6 +42410,42 @@
    }
   ]
  },
+ "GO:1902388": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PH",
+    "accessions": [
+     "D2KC46",
+     "Q96JA3"
+    ],
+    "reason": "resolved to ['InterPro:IPR001849', 'InterPro:IPR011993', 'PROSITE:PS50003', 'Pfam:PF00169'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR001849': 661, 'InterPro:IPR011993': 1139, 'PROSITE:PS50003': 605, 'Pfam:PF00169': 416})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "beta-D-galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-N-[(9Z)-octadecenoyl]-sphing-4-enine",
+    "accessions": [
+     "Q9NZD2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8BS40",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature describes the primary reaction of the GO term, which involves transport and hydrophobic protection."
+   }
+  ]
+ },
  "GO:1902485": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -42426,6 +42462,48 @@
    }
   ]
  },
+ "GO:1902557": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q12251",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q8TFH2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:1903777": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "C0HK25",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q868M7",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
  "GO:1903794": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -42439,6 +42517,161 @@
     "accession": "Q9IAC6",
     "reason": "none_verdict",
     "reasoning": "No annotated feature for Q9IAC6 directly matches the primary reaction of \"binding to cortisol\" as defined by the GO term, which involves receiving a phosphoryl transfer."
+   }
+  ]
+ },
+ "GO:1903875": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "21-hydroxyprogesterone",
+    "accessions": [
+     "Q9IAC6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q5ANA3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q5ANA3 specifically matches the molecular function of \"corticosterone binding\" as defined by the GO term, which requires a domain or region capable of recognizing corticosterone. The only binding-related feature is for ATP, not corticosterone."
+   }
+  ]
+ },
+ "GO:1903876": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9IAC6",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features do not provide any positional evidence that directly supports the molecular function of binding 11-deoxycortisol."
+   }
+  ]
+ },
+ "GO:1903877": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9IAC6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction of the GO term \"21-deoxycortisol binding,\" and all other features are either unrelated or involve different ligands. Therefore, there is no single plausible explanation for why this protein carries the term based on the provided evidence."
+   }
+  ]
+ },
+ "GO:1903878": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "NR LBD",
+    "accessions": [
+     "Q9IAC6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:1903880": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9IAC6",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:1904067": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q18321",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:1904408": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P00358",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P00358 directly supports the \"melatonin binding\" molecular function as defined by the GO term."
+   },
+   {
+    "accession": "P00925",
+    "reason": "none_verdict",
+    "reasoning": "The protein P00925 has no annotated feature that specifically matches the chemistry of \"melatonin binding,\" as all binding annotations are for Mg(2+). Therefore, there is no strong evidence to explain why this protein carries the term."
+   },
+   {
+    "accession": "P00359",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P00359 specifically matches the GO term's definition of \"Binding to melatonin.\" The highest score is generic and could apply to many proteins, not a strong match to the defined chemistry of the GO term."
+   },
+   {
+    "accession": "Q9LLQ2",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature that mentions melatonin is BINDING 82-83, but this is not the primary ligand for the protein and does not strongly explain why it carries the \"melatonin binding\" GO term."
+   }
+  ]
+ },
+ "GO:1904483": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P56971",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P56971 directly explains the molecular function of \"synthetic cannabinoid binding\" as defined, and the only positional features are related to localization rather than the specific binding activity."
    }
   ]
  }

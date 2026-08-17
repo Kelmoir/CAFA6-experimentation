@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "D2KC46",
+      "go_id": "GO:1902388",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 93,
+      "signal_kind": "text",
+      "signal_value": "PH",
+      "reasoning": "The \"PH\" note in the DOMAIN 0-93 with evidence: ECO:0000255|PROSITE-ProRule:PRU00145 directly matches the primary reaction of the GO term, which involves removing a ceramide 1-phosphate from a membrane or monolayer lipid particle. This domain is most likely responsible for the phosphorelay activity described in the GO term."
+    },
+    {
+      "accession": "Q96JA3",
+      "go_id": "GO:1902388",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 93,
+      "signal_kind": "text",
+      "signal_value": "PH",
+      "reasoning": "The DOMAIN 0-93 with note \"PH\" is the most specific and relevant annotated feature that directly matches the primary reaction of the GO term, which involves removing and transporting ceramide 1-phosphate. This feature provides a plausible structural basis for the described molecular function."
+    },
+    {
+      "accession": "Q9NZD2",
+      "go_id": "GO:1902388",
+      "feature_type": "BINDING",
+      "start": 47,
+      "end": 55,
+      "signal_kind": "ligand",
+      "signal_value": "beta-D-galactosyl-(1->4)-beta-D-glucosyl-(1<->1)-N-[(9Z)-octadecenoyl]-sphing-4-enine",
+      "reasoning": "The \"BINDING 47-55\" feature directly involves the ligand that is transferred in the defined reaction of the GO term, making it the most plausible explanation for why the protein carries this molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q8BS40",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature describes the primary reaction of the GO term, which involves transport and hydrophobic protection."
+    }
+  ]
+}

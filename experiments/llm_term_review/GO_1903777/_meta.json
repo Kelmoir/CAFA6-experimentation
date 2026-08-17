@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:1903777",
+  "name": "melibiose binding",
+  "def": "Binding to melibiose.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "C0HK25",
+    "Q868M7"
+  ],
+  "assigned_accessions": [
+    "C0HK25",
+    "Q868M7"
+  ]
+}

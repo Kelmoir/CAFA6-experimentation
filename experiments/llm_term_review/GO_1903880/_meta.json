@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1903880",
+  "name": "17alpha-hydroxyprogesterone binding",
+  "def": "Binding to 17alpha-hydroxyprogesterone.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9IAC6"
+  ],
+  "assigned_accessions": [
+    "Q9IAC6"
+  ]
+}

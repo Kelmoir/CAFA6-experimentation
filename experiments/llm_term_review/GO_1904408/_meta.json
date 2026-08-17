@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1904408",
+  "name": "melatonin binding",
+  "def": "Binding to melatonin.",
+  "n_proteins_total": 20,
+  "sampled_accessions": [
+    "P00358",
+    "P00359",
+    "P00925",
+    "Q9LLQ2"
+  ],
+  "assigned_accessions": [
+    "P00358",
+    "P00359",
+    "P00925",
+    "Q9LLQ2"
+  ]
+}

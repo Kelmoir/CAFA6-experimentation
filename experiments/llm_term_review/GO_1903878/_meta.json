@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1903878",
+  "name": "11-deoxycorticosterone binding",
+  "def": "Binding to 11-deoxycorticosterone.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9IAC6"
+  ],
+  "assigned_accessions": [
+    "Q9IAC6"
+  ]
+}

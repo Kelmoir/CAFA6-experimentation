@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9IAC6",
+      "go_id": "GO:1903878",
+      "feature_type": "DOMAIN",
+      "start": 107,
+      "end": 339,
+      "signal_kind": "text",
+      "signal_value": "NR LBD",
+      "reasoning": "The \"DOMAIN\" feature (107-339) is associated with the NR LBD domain, which is a known structural motif in hormone receptor proteins and is likely responsible for binding 11-deoxycorticosterone. This matches the primary reaction of the GO term, making it a strong candidate."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

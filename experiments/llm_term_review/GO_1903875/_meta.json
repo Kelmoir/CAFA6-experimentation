@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:1903875",
+  "name": "corticosterone binding",
+  "def": "Binding to corticosterone.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q5ANA3",
+    "Q9IAC6"
+  ],
+  "assigned_accessions": [
+    "Q5ANA3",
+    "Q9IAC6"
+  ]
+}

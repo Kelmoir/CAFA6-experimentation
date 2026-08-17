@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1904067",
+  "name": "ascr#2 binding",
+  "def": "Binding to ascr#2.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q18321"
+  ],
+  "assigned_accessions": [
+    "Q18321"
+  ]
+}

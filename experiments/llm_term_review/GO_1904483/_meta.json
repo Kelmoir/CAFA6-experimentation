@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1904483",
+  "name": "synthetic cannabinoid binding",
+  "def": "Binding to synthetic cannabinoid.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P56971"
+  ],
+  "assigned_accessions": [
+    "P56971"
+  ]
+}

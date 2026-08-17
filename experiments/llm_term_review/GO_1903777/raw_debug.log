@@ -1,0 +1,6 @@
+=== Q868M7 GO:1903777 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict request returned 400: {\"error\":{\"code\":400,\"message\":\"request (9227 tokens) exceeds the available context size (8192 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":9227,\"n_ctx\":8192}}"}
+
+=== Q868M7 GO:1903777 (HTTP 400 Bad Request) ===
+{"error":"Engine protocol predict request returned 400: {\"error\":{\"code\":400,\"message\":\"request (9227 tokens) exceeds the available context size (8192 tokens), try increasing it\",\"type\":\"exceed_context_size_error\",\"n_prompt_tokens\":9227,\"n_ctx\":8192}}"}
+
