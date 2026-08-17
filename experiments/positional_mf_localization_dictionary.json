@@ -36438,6 +36438,15 @@
    "proton acceptor"
   ]
  },
+ "GO:1990189": {
+  "name": "protein N-terminal-serine acetyltransferase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR051908"
+  ],
+  "text_patterns": []
+ },
  "GO:1990190": {
   "name": "protein-N-terminal-glutamate acetyltransferase activity",
   "ligands": [],

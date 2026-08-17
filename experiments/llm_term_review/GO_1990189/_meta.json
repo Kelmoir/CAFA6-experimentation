@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990189",
+  "name": "protein N-terminal-serine acetyltransferase activity",
+  "def": "Catalysis of the reaction: acetyl-CoA + N-terminal L-seryl-[protein] = CoA + H+ + N-terminal Nalpha-acetyl-L-seryl-[protein].",
+  "n_proteins_total": 16,
+  "sampled_accessions": [
+    "I6YG32",
+    "O61219",
+    "P13857",
+    "Q9USH6"
+  ],
+  "assigned_accessions": [
+    "I6YG32",
+    "O61219",
+    "P13857",
+    "Q9USH6"
+  ]
+}

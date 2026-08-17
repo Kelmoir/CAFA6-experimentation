@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:1990244",
+  "name": "histone H2AT120 kinase activity",
+  "def": "Catalysis of the reaction: histone H2A-threonine (position 120) + ATP = histone H2A-phosphothreonine (position 120) + ADP. This reaction is the addition of a phosphate group to the threonine residue at position 120 of histone H2A.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "Q7KRY6",
+    "Q80TR8",
+    "Q9Y4B6"
+  ],
+  "assigned_accessions": [
+    "Q7KRY6",
+    "Q80TR8",
+    "Q9Y4B6"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990174",
+  "name": "phosphodiesterase decapping endonuclease activity",
+  "def": "Catalysis of the removal of the cap from an unmethylated 5'-end capped RNA resulting in the release of the entire cap structure (GpppN) and a 5' monophosphorylated RNA.",
+  "n_proteins_total": 8,
+  "sampled_accessions": [
+    "O13836",
+    "Q6P3D0",
+    "Q96DE0",
+    "Q99321"
+  ],
+  "assigned_accessions": [
+    "O13836",
+    "Q6P3D0",
+    "Q96DE0",
+    "Q99321"
+  ]
+}

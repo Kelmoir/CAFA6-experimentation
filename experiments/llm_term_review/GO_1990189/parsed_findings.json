@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "O61219",
+      "go_id": "GO:1990189",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 152,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The DOMAIN feature (0-152) with the note \"N-acetyltransferase\" directly corresponds to the defined reaction of acetyl-CoA transfer to an N-terminal residue, making it a strong match for the GO term's primary reaction."
+    },
+    {
+      "accession": "P13857",
+      "go_id": "GO:1990189",
+      "feature_type": "DOMAIN",
+      "start": 10,
+      "end": 172,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The DOMAIN annotation from position 10-172 with the note \"N-acetyltransferase\" directly matches the primary reaction of the GO term, which involves catalyzing the acetylation of an N-terminal serine residue. This feature is specific to the defined chemical activity and provides a strong basis for the molecular function prediction."
+    },
+    {
+      "accession": "I6YG32",
+      "go_id": "GO:1990189",
+      "feature_type": "DOMAIN",
+      "start": 7,
+      "end": 155,
+      "signal_kind": "text",
+      "signal_value": "N-acetyltransferase",
+      "reasoning": "The DOMAIN annotation with the note \"N-acetyltransferase\" and evidence PRU00532 directly supports the presence of an acetyltransferase domain, which is consistent with the GO term's definition involving the catalysis of acetyl-CoA transfer to a protein residue. This provides a strong match to the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q9USH6",
+      "go_id": "GO:1990189",
+      "feature_type": "SITE",
+      "start": 104,
+      "end": 105,
+      "signal_kind": "text",
+      "signal_value": "Essential for catalytic activity",
+      "reasoning": "The binding site at 104-105 indicates that acetyl-CoA and substrate are essential for catalytic activity, which aligns with the GO term's definition of the reaction. While not explicitly stating the acyl transfer mechanism, it provides strong evidence of the necessary components involved in the defined chemical process."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

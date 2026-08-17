@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q95NM6",
+      "go_id": "GO:1990238",
+      "feature_type": "BINDING",
+      "start": 179,
+      "end": 180,
+      "signal_kind": "ligand",
+      "signal_value": "Mg(2+)",
+      "reasoning": "The binding of Mg(2+) to the protein's active site is a plausible explanation for its ability to catalyze the hydrolysis of ester linkages within DNA, as magnesium ions are commonly involved in such enzymatic reactions."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "B0WQ10",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P77768",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9SXA6",
+      "reason": "none_verdict",
+      "reasoning": "The \"SITE\" annotation for Q9SXA6 indicates regions important for catalytic activity, which could be relevant to DNA endonucleolytic function. However, it does not directly describe the enzyme's ability to break internal phosphodiester bonds in DNA, and its description is too generic to strongly support the GO term's primary reaction."
+    }
+  ]
+}

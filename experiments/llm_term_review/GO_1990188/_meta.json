@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990188",
+  "name": "euchromatin binding",
+  "def": "Binding to euchromatin, a dispersed and relatively uncompacted form of chromatin.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P08970",
+    "P59169",
+    "Q09884",
+    "Q960X4"
+  ],
+  "assigned_accessions": [
+    "P08970",
+    "P59169",
+    "Q09884",
+    "Q960X4"
+  ]
+}

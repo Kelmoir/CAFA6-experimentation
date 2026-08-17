@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1990424",
+  "name": "protein arginine kinase activity",
+  "def": "Catalysis of the reaction: ATP + a protein arginine = ADP + protein arginine phosphate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q2G0P6"
+  ],
+  "assigned_accessions": [
+    "Q2G0P6"
+  ]
+}

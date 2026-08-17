@@ -43042,6 +43042,104 @@
    }
   ]
  },
+ "GO:1990174": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "Nudix box",
+    "accessions": [
+     "Q6P3D0"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O13836",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear and specific explanation for the defined molecular function of phosphodiesterase decapping endonuclease activity."
+   },
+   {
+    "accession": "Q96DE0",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q99321",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:1990188": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P59169",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the primary reaction of the GO term \"euchromatin binding\" in terms of the actual binding activity. The evidence provided is more about post-translational modifications and recognition by transcription factors rather than the direct mechanism of binding to euchromatin."
+   },
+   {
+    "accession": "P08970",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P08970's list provides a clear and specific explanation for the molecular function of \"euchromatin binding,\" as it does not directly reference the binding to euchromatin."
+   },
+   {
+    "accession": "Q09884",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q960X4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the molecular function of \"euchromatin binding\" as defined by the GO term."
+   }
+  ]
+ },
+ "GO:1990189": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR051908"
+    ],
+    "accessions": [
+     "I6YG32",
+     "O61219",
+     "P13857"
+    ],
+    "note": "resolved from DOMAIN note 'N-acetyltransferase'"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Essential for catalytic activity",
+    "accessions": [
+     "Q9USH6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
  "GO:1990206": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -43058,6 +43156,76 @@
    }
   ]
  },
+ "GO:1990238": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "Mg(2+)",
+    "accessions": [
+     "Q95NM6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B0WQ10",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P77768",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9SXA6",
+    "reason": "none_verdict",
+    "reasoning": "The \"SITE\" annotation for Q9SXA6 indicates regions important for catalytic activity, which could be relevant to DNA endonucleolytic function. However, it does not directly describe the enzyme's ability to break internal phosphodiester bonds in DNA, and its description is too generic to strongly support the GO term's primary reaction."
+   }
+  ]
+ },
+ "GO:1990244": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "ATP",
+    "accessions": [
+     "Q7KRY6"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "MOTIF",
+    "value": "DWD box 1",
+    "accessions": [
+     "Q80TR8"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "LisH",
+    "accessions": [
+     "Q9Y4B6"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
  "GO:1990411": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -43071,6 +43239,22 @@
     "accession": "O94431",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:1990424": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q2G0P6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the GO term's definition, which involves the catalytic transfer of a phosphoryl group from ATP to an arginine residue. The binding sites for ATP indicate interaction but not the specific enzymatic activity described in the GO term."
    }
   ]
  }

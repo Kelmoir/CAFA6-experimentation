@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P59169",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains the primary reaction of the GO term \"euchromatin binding\" in terms of the actual binding activity. The evidence provided is more about post-translational modifications and recognition by transcription factors rather than the direct mechanism of binding to euchromatin."
+    },
+    {
+      "accession": "P08970",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P08970's list provides a clear and specific explanation for the molecular function of \"euchromatin binding,\" as it does not directly reference the binding to euchromatin."
+    },
+    {
+      "accession": "Q09884",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q960X4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains the molecular function of \"euchromatin binding\" as defined by the GO term."
+    }
+  ]
+}

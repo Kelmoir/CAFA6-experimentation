@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q6P3D0",
+      "go_id": "GO:1990174",
+      "feature_type": "MOTIF",
+      "start": 60,
+      "end": 82,
+      "signal_kind": "text",
+      "signal_value": "Nudix box",
+      "reasoning": "The Nudix box motif is directly associated with the enzymatic activity of phosphodiesterases, including decapping endonuclease activity, which matches the primary reaction of the defined GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O13836",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear and specific explanation for the defined molecular function of phosphodiesterase decapping endonuclease activity."
+    },
+    {
+      "accession": "Q96DE0",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "Q99321",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

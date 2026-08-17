@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q2G0P6",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the GO term's definition, which involves the catalytic transfer of a phosphoryl group from ATP to an arginine residue. The binding sites for ATP indicate interaction but not the specific enzymatic activity described in the GO term."
+    }
+  ]
+}
