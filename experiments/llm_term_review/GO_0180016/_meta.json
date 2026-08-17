@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0180016",
+  "name": "SUMO ligase regulator activity",
+  "def": "Binds to and modulates the activity of a SUMO ligase.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q06340",
+    "Q9USX3"
+  ],
+  "assigned_accessions": [
+    "Q06340",
+    "Q9USX3"
+  ]
+}

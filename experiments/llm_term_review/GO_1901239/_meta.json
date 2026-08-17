@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:1901239",
+  "name": "malonate(1-) transmembrane transporter activity",
+  "def": "Enables the transfer of malonate(1-) from one side of a membrane to the other.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P32332",
+    "P50537"
+  ],
+  "assigned_accessions": [
+    "P32332",
+    "P50537"
+  ]
+}

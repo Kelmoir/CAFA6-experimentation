@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1901974",
+  "name": "glycerate transmembrane transporter activity",
+  "def": "Enables the transfer of glycerate from one side of a membrane to the other.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9FVQ4"
+  ],
+  "assigned_accessions": [
+    "Q9FVQ4"
+  ]
+}

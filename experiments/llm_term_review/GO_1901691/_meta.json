@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1901691",
+  "name": "proton binding",
+  "def": "Binding to proton.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P09627"
+  ],
+  "assigned_accessions": [
+    "P09627"
+  ]
+}

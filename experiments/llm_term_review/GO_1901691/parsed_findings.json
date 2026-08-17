@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P09627",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the provided list directly supports the \"proton binding\" GO term, as none explicitly describes the ability to bind protons."
+    }
+  ]
+}

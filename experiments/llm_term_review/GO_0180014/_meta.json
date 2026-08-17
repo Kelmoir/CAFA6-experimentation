@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:0180014",
+  "name": "protein-tRNA adaptor activity",
+  "def": "The binding activity of a protein that brings together another protein and a tRNA, permitting those molecules to function in a coordinated way.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P56286",
+    "P87151"
+  ],
+  "assigned_accessions": [
+    "P56286",
+    "P87151"
+  ]
+}

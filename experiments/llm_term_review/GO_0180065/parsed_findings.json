@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O74356",
+      "reason": "none_verdict",
+      "reasoning": "The protein's annotated features do not include any positional feature that specifically explains why it carries the molecular function \"ATPase activity\" as defined by GO:0180065."
+    }
+  ]
+}

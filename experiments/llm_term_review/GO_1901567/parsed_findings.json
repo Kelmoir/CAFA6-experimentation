@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P62139",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly or specifically matches the chemistry of binding fatty acid derivatives as defined by the GO term."
+    }
+  ]
+}

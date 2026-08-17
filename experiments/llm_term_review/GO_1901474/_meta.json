@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1901474",
+  "name": "azole transmembrane transporter activity",
+  "def": "Enables the directed movement of azoles, heterocyclic compound found in many biologically important substances, from one side of a membrane to the other.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "O00337",
+    "O43868",
+    "P50080",
+    "Q5ANA3"
+  ],
+  "assigned_accessions": [
+    "O00337",
+    "O43868",
+    "P50080",
+    "Q5ANA3"
+  ]
+}

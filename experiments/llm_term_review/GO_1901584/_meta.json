@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1901584",
+  "name": "tetrapeptide transmembrane transporter activity",
+  "def": "Enables the transfer of tetrapeptide from one side of a membrane to the other.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P40900"
+  ],
+  "assigned_accessions": [
+    "P40900"
+  ]
+}

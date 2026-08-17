@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P40900",
+      "reason": "none_verdict",
+      "reasoning": "The protein P40900 does not have any annotated positional feature that plausibly accounts for the molecular function defined by GO:1901584, which is tetrapeptide transmembrane transporter activity."
+    }
+  ]
+}

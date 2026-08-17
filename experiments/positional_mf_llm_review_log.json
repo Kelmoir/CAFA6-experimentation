@@ -41955,6 +41955,32 @@
    }
   ]
  },
+ "GO:0180003": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q4V9P0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q5U680",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q70HW3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0180005": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -41971,6 +41997,54 @@
    }
   ]
  },
+ "GO:0180014": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "THUMP",
+    "accessions": [
+     "P87151"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "S1 motif",
+    "accessions": [
+     "P56286"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0180016": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q06340",
+    "reason": "none_verdict",
+    "reasoning": "No annotated positional feature directly explains the defined function of GO:0180016 (binding and modulating a SUMO ligase). The only candidate that could plausibly account for this function is a domain/family cross-reference, not an annotated positional feature."
+   },
+   {
+    "accession": "Q9USX3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:0180024": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -41984,6 +42058,174 @@
     "accession": "O94730",
     "reason": "none_verdict",
     "reasoning": "The \"REGION\" 420-449 is marked as disordered and does not directly explain the activity of restricting fenestration size in a membrane, which is the primary reaction defined by the GO term. No other positional feature provides a strong match to the GO term's definition."
+   }
+  ]
+ },
+ "GO:0180065": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O74356",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features do not include any positional feature that specifically explains why it carries the molecular function \"ATPase activity\" as defined by GO:0180065."
+   }
+  ]
+ },
+ "GO:1901239": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P32332",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P50537",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature (by type + exact coordinates) provides a clear structural/functional basis for the GO term's primary reaction of enabling malonate(1-) transfer, and all other features either describe broader domains or unrelated structures."
+   }
+  ]
+ },
+ "GO:1901359": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P37329",
+    "reason": "none_verdict",
+    "reasoning": "The protein's annotated features do not provide any evidence that directly explains why it binds to tungstate, as all are associated with molybdate. Therefore, there is no specific feature that plausibly accounts for this GO term."
+   }
+  ]
+ },
+ "GO:1901474": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter 1",
+    "accessions": [
+     "Q5ANA3"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O00337",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "O43868",
+    "reason": "none_verdict",
+    "reasoning": "The only positional feature found for the protein O43868 is a disordered region (REGION 0-55), which does not directly explain the directed movement of azoles across a membrane as described in the GO term's definition. No other positional feature matches the primary reaction of the GO term, so it cannot be confidently attributed to this protein."
+   },
+   {
+    "accession": "P50080",
+    "reason": "none_verdict",
+    "reasoning": "No positional feature in P50080's Annotated features section matches the defined function of \"azole transmembrane transporter activity\" with sufficient specificity to be considered a strong match."
+   }
+  ]
+ },
+ "GO:1901567": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P62139",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly or specifically matches the chemistry of binding fatty acid derivatives as defined by the GO term."
+   }
+  ]
+ },
+ "GO:1901584": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P40900",
+    "reason": "none_verdict",
+    "reasoning": "The protein P40900 does not have any annotated positional feature that plausibly accounts for the molecular function defined by GO:1901584, which is tetrapeptide transmembrane transporter activity."
+   }
+  ]
+ },
+ "GO:1901604": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O13880",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for O13880 is a disordered region, which does not provide any evidence that this region is involved in dethiobiotin transport or the defined mechanism of the GO term. Thus, no feature plausibly explains why O13880 carries the GO term."
+   }
+  ]
+ },
+ "GO:1901691": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P09627",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly supports the \"proton binding\" GO term, as none explicitly describes the ability to bind protons."
+   }
+  ]
+ },
+ "GO:1901974": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9FVQ4",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
  }

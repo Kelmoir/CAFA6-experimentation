@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1901567",
+  "name": "fatty acid derivative binding",
+  "def": "Binding to fatty acid derivative.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P62139"
+  ],
+  "assigned_accessions": [
+    "P62139"
+  ]
+}
