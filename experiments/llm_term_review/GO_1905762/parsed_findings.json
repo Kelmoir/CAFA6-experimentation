@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "P42694",
+      "go_id": "GO:1905762",
+      "feature_type": "REGION",
+      "start": 1049,
+      "end": 1942,
+      "signal_kind": "text",
+      "signal_value": "Interaction with NOT1, NOT3 and PABPC1",
+      "reasoning": "The region 1049-1942 is explicitly noted as interacting with NOT1, NOT3, and PABPC1, which are components of the CCR4-NOT complex. This directly supports the function of binding to a CCR4-NOT complex as defined by the GO term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P25822",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    },
+    {
+      "accession": "P47979",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the protein's list directly explains why it binds to a CCR4-NOT complex."
+    },
+    {
+      "accession": "Q5TC82",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction of binding to a CCR4-NOT complex as defined by the GO term. All binding features indicate ligand interaction without specifying the target complex, and no other type of feature directly relates to the defined function."
+    }
+  ]
+}

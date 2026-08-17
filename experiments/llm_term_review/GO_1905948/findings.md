@@ -1,0 +1,5 @@
+## P10090 GO:1905948
+verdict: LIKELY
+feature: DOMAIN 92-341
+reasoning: The DOMAIN span (92-341) directly corresponds to the "ABC transporter" domain family, which is known to mediate solute transport across membranes, aligning with the GO term's definition of enabling the transfer of solutes from one side of a membrane to the other. This provides a strong structural basis for the molecular function described.
+---

@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q7XHL3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct explanation for the primary reaction defined by the GO term."
+    },
+    {
+      "accession": "Q8RY79",
+      "reason": "none_verdict",
+      "reasoning": "The annotated features for Q8RY79 only indicate binding sites for L-phenylalanine, which do not directly explain the catalytic activity of phenylacetaldehyde synthase as defined by GO:1990055."
+    }
+  ]
+}

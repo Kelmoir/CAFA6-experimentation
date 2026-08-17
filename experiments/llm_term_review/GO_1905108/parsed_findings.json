@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O74859",
+      "reason": "none_verdict",
+      "reasoning": "There is no annotated feature for this protein that directly or specifically relates to the primary reaction of binding to guanosine as defined in the GO term."
+    }
+  ]
+}

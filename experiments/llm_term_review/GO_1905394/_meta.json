@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1905394",
+  "name": "retromer complex binding",
+  "def": "Binding to a retromer complex.",
+  "n_proteins_total": 24,
+  "sampled_accessions": [
+    "P51150",
+    "Q07113",
+    "Q641Q2",
+    "Q8S9J3"
+  ],
+  "assigned_accessions": [
+    "P51150",
+    "Q07113",
+    "Q641Q2",
+    "Q8S9J3"
+  ]
+}

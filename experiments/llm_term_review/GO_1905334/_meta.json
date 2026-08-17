@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:1905334",
+  "name": "Swi5-Sfr1 complex binding",
+  "def": "Binding to a Swi5-Sfr1 complex.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O42634",
+    "P36601"
+  ],
+  "assigned_accessions": [
+    "O42634",
+    "P36601"
+  ]
+}

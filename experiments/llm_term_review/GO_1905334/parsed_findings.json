@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P36601",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P36601 directly matches the primary reaction of \"Binding to a Swi5-Sfr1 complex,\" making it impossible to determine which one plausibly explains the GO term."
+    },
+    {
+      "accession": "O42634",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction of binding to the Swi5-Sfr1 complex as defined by the GO term."
+    }
+  ]
+}

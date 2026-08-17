@@ -42674,5 +42674,211 @@
     "reasoning": "No annotated feature for P56971 directly explains the molecular function of \"synthetic cannabinoid binding\" as defined, and the only positional features are related to localization rather than the specific binding activity."
    }
   ]
+ },
+ "GO:1904854": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P10518",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided data specifically indicates binding to a proteasome core complex, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "P06214",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P06214 specifically matches the primary reaction of the GO term \"proteasome core complex binding,\" which is about binding to a proteasome core complex. The features are more generic and relate to ligand interactions rather than direct binding to the proteasome core complex."
+   },
+   {
+    "accession": "P13716",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list provides a strong match to the primary reaction or mechanism of \"proteasome core complex binding.\" All features refer to *binding* with specific ligands, which is a *general binding event*, not specifically about *binding to a proteasome core complex*."
+   }
+  ]
+ },
+ "GO:1905108": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O74859",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature for this protein that directly or specifically relates to the primary reaction of binding to guanosine as defined in the GO term."
+   }
+  ]
+ },
+ "GO:1905131": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9VIK2",
+    "reason": "none_verdict",
+    "reasoning": "The disordered region (REGION 613-647) is noted as such but does not provide specific evidence for the function of transporting carcinine across a membrane, which is defined in the GO term. No other annotated feature directly describes the mechanism of this transport activity."
+   }
+  ]
+ },
+ "GO:1905201": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "MtN3/slv 1",
+    "accessions": [
+     "Q9FGQ2",
+     "Q9SW25"
+    ],
+    "reason": "agreed but the note text didn't token-overlap any corroborating protein's domain_xrefs descriptions -- couldn't resolve to a specific accession"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:1905334": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P36601",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P36601 directly matches the primary reaction of \"Binding to a Swi5-Sfr1 complex,\" making it impossible to determine which one plausibly explains the GO term."
+   },
+   {
+    "accession": "O42634",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction of binding to the Swi5-Sfr1 complex as defined by the GO term."
+   }
+  ]
+ },
+ "GO:1905394": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P51150",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's Annotated features section specifically describes binding to a retromer complex, which is the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "Q8S9J3",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q07113",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "Q641Q2",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:1905762": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "Interaction with NOT1, NOT3 and PABPC1",
+    "accessions": [
+     "P42694"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P25822",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P47979",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the protein's list directly explains why it binds to a CCR4-NOT complex."
+   },
+   {
+    "accession": "Q5TC82",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction of binding to a CCR4-NOT complex as defined by the GO term. All binding features indicate ligand interaction without specifying the target complex, and no other type of feature directly relates to the defined function."
+   }
+  ]
+ },
+ "GO:1905948": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transporter",
+    "accessions": [
+     "P10090"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:1990055": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q7XHL3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the primary reaction defined by the GO term."
+   },
+   {
+    "accession": "Q8RY79",
+    "reason": "none_verdict",
+    "reasoning": "The annotated features for Q8RY79 only indicate binding sites for L-phenylalanine, which do not directly explain the catalytic activity of phenylacetaldehyde synthase as defined by GO:1990055."
+   }
+  ]
  }
 }

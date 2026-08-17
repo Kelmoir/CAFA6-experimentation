@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1905948",
+  "name": "ABC-type 3',5'-cyclic GMP transmembrane transporter activity",
+  "def": "Enables the transfer of a solute or solutes from one side of a membrane to the other according to the reaction: ATP + H2O + 3',5'-cyclic GMP(in) = ADP + phosphate + 3',5'-cyclic GMP(out).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P10090"
+  ],
+  "assigned_accessions": [
+    "P10090"
+  ]
+}

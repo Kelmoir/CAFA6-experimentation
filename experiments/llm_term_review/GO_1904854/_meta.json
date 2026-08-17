@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:1904854",
+  "name": "proteasome core complex binding",
+  "def": "Binding to a proteasome core complex.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P06214",
+    "P10518",
+    "P13716"
+  ],
+  "assigned_accessions": [
+    "P06214",
+    "P10518",
+    "P13716"
+  ]
+}

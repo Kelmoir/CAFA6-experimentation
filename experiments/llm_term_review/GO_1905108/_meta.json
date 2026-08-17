@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1905108",
+  "name": "guanosine binding",
+  "def": "Binding to guanosine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O74859"
+  ],
+  "assigned_accessions": [
+    "O74859"
+  ]
+}

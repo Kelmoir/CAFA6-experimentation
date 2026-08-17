@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:1990055",
+  "name": "phenylacetaldehyde synthase activity",
+  "def": "Catalyzes the reaction: L-phenylalanine + O2 + H2O -> phenylacetaldehyde + ammonia + hydrogen peroxide + CO2.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q7XHL3",
+    "Q8RY79"
+  ],
+  "assigned_accessions": [
+    "Q7XHL3",
+    "Q8RY79"
+  ]
+}
