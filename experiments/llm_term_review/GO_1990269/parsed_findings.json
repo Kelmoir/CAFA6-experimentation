@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q05543",
+      "go_id": "GO:1990269",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 135,
+      "signal_kind": "text",
+      "signal_value": "CID",
+      "reasoning": "The \"DOMAIN\" feature (0-135) is the most plausible explanation for the GO term \"RNA polymerase II C-terminal domain phosphoserine binding,\" as it directly relates to the C-terminal domain and the binding activity described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P38439",
+      "reason": "none_verdict",
+      "reasoning": "There is no annotated feature in P38439 that directly states the binding of phosphorylated serine residues in its C-terminal domain, which is the primary reaction defined by the GO term. Therefore, it is not possible to determine a strong match for this GO term based on the given evidence."
+    },
+    {
+      "accession": "Q94546",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a direct structural/functional explanation for the defined reaction of \"Binding to phosphorylated serine residues in the C-terminal domain of RNA polymerase II.\" The only relevant domain information is from cross-references, which do not include any positional feature that matches the definition's primary action."
+    },
+    {
+      "accession": "Q9H4Z3",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for the protein Q9H4Z3 directly describes the binding of phosphorylated serine residues in the C-terminal domain of RNA polymerase II, which is the primary reaction defined by the GO term."
+    }
+  ]
+}

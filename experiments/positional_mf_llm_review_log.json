@@ -43226,6 +43226,138 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:1990269": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "CID",
+    "accessions": [
+     "Q05543"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P38439",
+    "reason": "none_verdict",
+    "reasoning": "There is no annotated feature in P38439 that directly states the binding of phosphorylated serine residues in its C-terminal domain, which is the primary reaction defined by the GO term. Therefore, it is not possible to determine a strong match for this GO term based on the given evidence."
+   },
+   {
+    "accession": "Q94546",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct structural/functional explanation for the defined reaction of \"Binding to phosphorylated serine residues in the C-terminal domain of RNA polymerase II.\" The only relevant domain information is from cross-references, which do not include any positional feature that matches the definition's primary action."
+   },
+   {
+    "accession": "Q9H4Z3",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for the protein Q9H4Z3 directly describes the binding of phosphorylated serine residues in the C-terminal domain of RNA polymerase II, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:1990275": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P0AGK4",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for P0AGK4 that could be related to the function of binding to a preribosome is the DOMAIN 0-97 with the note \"CRM.\" However, this feature is associated with RNA-binding activities rather than the specific function of binding to a preribosome. Therefore, it does not specifically explain why the protein carries the GO term \"preribosome binding.\""
+   },
+   {
+    "accession": "Q02256",
+    "reason": "none_verdict",
+    "reasoning": "The \"DOMAIN\" feature spans from position 10 to 173 and is associated with a phosphatase domain, which could theoretically interact with ribosomal structures. However, the definition of the GO term \"preribosome binding\" focuses on the specific interaction with a preribosome rather than general phosphatase activity, making this feature insufficient to directly explain the GO term's primary reaction."
+   },
+   {
+    "accession": "Q9BVQ7",
+    "reason": "none_verdict",
+    "reasoning": "The region's note about being required for interaction with AFG2A and CINP suggests a functional domain involved in ribosome-related processes, but it does not specifically confirm the binding to a preribosome. No annotated feature directly matches the GO term's primary reaction of \"Binding to a preribosome.\""
+   },
+   {
+    "accession": "Q9NAG4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly matches the primary reaction or mechanism described in the GO term's definition for \"preribosome binding,\" and all candidate features are generic and could apply to many proteins with similar functions."
+   }
+  ]
+ },
+ "GO:1990407": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O60894",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q867C0",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9JJ74",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9WTJ5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:1990409": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "SITE",
+    "value": "Required for ADM interaction",
+    "accessions": [
+     "Q9R1W5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O60895",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for O60895 is a site that is involved in an interaction with CALCRL, not directly with adrenomedullin. Since the GO term's definition focuses on binding to AM and no positional feature matches this chemistry, there is no plausible explanation for why the protein carries the term."
+   },
+   {
+    "accession": "Q16602",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the given evidence specifically describes the adrenomedullin binding chemistry, only the interaction with other proteins. Thus, there is no strong basis to conclude that any of these features explain why the protein carries the GO term \"adrenomedullin binding.\""
+   },
+   {
+    "accession": "Q9WUP0",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated features for this protein do not provide a strong or specific match to the GO term's primary reaction of binding adrenomedullin."
+   }
+  ]
+ },
  "GO:1990411": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -43255,6 +43387,47 @@
     "accession": "Q2G0P6",
     "reason": "none_verdict",
     "reasoning": "No annotated feature specifically matches the GO term's definition, which involves the catalytic transfer of a phosphoryl group from ATP to an arginine residue. The binding sites for ATP indicate interaction but not the specific enzymatic activity described in the GO term."
+   }
+  ]
+ },
+ "GO:1990439": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PPM-type phosphatase",
+    "accessions": [
+     "P40371"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Tyrosine-protein phosphatase",
+    "accessions": [
+     "Q62767"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Rhodanese",
+    "accessions": [
+     "Q13115"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P35182",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
    }
   ]
  }

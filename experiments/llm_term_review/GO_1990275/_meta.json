@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990275",
+  "name": "preribosome binding",
+  "def": "Binding to a preribosome.",
+  "n_proteins_total": 17,
+  "sampled_accessions": [
+    "P0AGK4",
+    "Q02256",
+    "Q9BVQ7",
+    "Q9NAG4"
+  ],
+  "assigned_accessions": [
+    "P0AGK4",
+    "Q02256",
+    "Q9BVQ7",
+    "Q9NAG4"
+  ]
+}

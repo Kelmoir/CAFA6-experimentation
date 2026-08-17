@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990409",
+  "name": "adrenomedullin binding",
+  "def": "Binding to adrenomedullin (AM).",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "O60895",
+    "Q16602",
+    "Q9R1W5",
+    "Q9WUP0"
+  ],
+  "assigned_accessions": [
+    "O60895",
+    "Q16602",
+    "Q9R1W5",
+    "Q9WUP0"
+  ]
+}

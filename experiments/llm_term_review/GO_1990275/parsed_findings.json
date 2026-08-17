@@ -1,0 +1,26 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P0AGK4",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for P0AGK4 that could be related to the function of binding to a preribosome is the DOMAIN 0-97 with the note \"CRM.\" However, this feature is associated with RNA-binding activities rather than the specific function of binding to a preribosome. Therefore, it does not specifically explain why the protein carries the GO term \"preribosome binding.\""
+    },
+    {
+      "accession": "Q02256",
+      "reason": "none_verdict",
+      "reasoning": "The \"DOMAIN\" feature spans from position 10 to 173 and is associated with a phosphatase domain, which could theoretically interact with ribosomal structures. However, the definition of the GO term \"preribosome binding\" focuses on the specific interaction with a preribosome rather than general phosphatase activity, making this feature insufficient to directly explain the GO term's primary reaction."
+    },
+    {
+      "accession": "Q9BVQ7",
+      "reason": "none_verdict",
+      "reasoning": "The region's note about being required for interaction with AFG2A and CINP suggests a functional domain involved in ribosome-related processes, but it does not specifically confirm the binding to a preribosome. No annotated feature directly matches the GO term's primary reaction of \"Binding to a preribosome.\""
+    },
+    {
+      "accession": "Q9NAG4",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly matches the primary reaction or mechanism described in the GO term's definition for \"preribosome binding,\" and all candidate features are generic and could apply to many proteins with similar functions."
+    }
+  ]
+}

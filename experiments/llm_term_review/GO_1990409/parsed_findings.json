@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9R1W5",
+      "go_id": "GO:1990409",
+      "feature_type": "SITE",
+      "start": 371,
+      "end": 372,
+      "signal_kind": "text",
+      "signal_value": "Required for ADM interaction",
+      "reasoning": "The feature \"SITE 371-372\" explicitly states that it is required for ADM interaction, which directly matches the primary reaction of the GO term \"adrenomedullin binding.\" This provides a strong and specific match to the defined chemistry of the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "O60895",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated feature for O60895 is a site that is involved in an interaction with CALCRL, not directly with adrenomedullin. Since the GO term's definition focuses on binding to AM and no positional feature matches this chemistry, there is no plausible explanation for why the protein carries the term."
+    },
+    {
+      "accession": "Q16602",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in the given evidence specifically describes the adrenomedullin binding chemistry, only the interaction with other proteins. Thus, there is no strong basis to conclude that any of these features explain why the protein carries the GO term \"adrenomedullin binding.\""
+    },
+    {
+      "accession": "Q9WUP0",
+      "reason": "none_verdict",
+      "reasoning": "The only annotated features for this protein do not provide a strong or specific match to the GO term's primary reaction of binding adrenomedullin."
+    }
+  ]
+}

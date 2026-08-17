@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990439",
+  "name": "MAP kinase serine/threonine phosphatase activity",
+  "def": "Catalysis of the reaction: MAP kinase threonine phosphate + H2O = MAP kinase threonine + phosphate and MAP kinase serine phosphate + H2O = MAP kinase serine + phosphate.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P35182",
+    "P40371",
+    "Q13115",
+    "Q62767"
+  ],
+  "assigned_accessions": [
+    "P35182",
+    "P40371",
+    "Q13115",
+    "Q62767"
+  ]
+}

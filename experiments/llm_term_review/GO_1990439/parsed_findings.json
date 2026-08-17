@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "P40371",
+      "go_id": "GO:1990439",
+      "feature_type": "DOMAIN",
+      "start": 70,
+      "end": 323,
+      "signal_kind": "text",
+      "signal_value": "PPM-type phosphatase",
+      "reasoning": "The DOMAIN annotation \"PPM-type phosphatase\" directly aligns with the enzyme's function as defined by the GO term, which involves catalyzing the removal of phosphate groups from MAP kinases. This provides a strong match to the primary reaction described in the GO definition."
+    },
+    {
+      "accession": "Q62767",
+      "go_id": "GO:1990439",
+      "feature_type": "DOMAIN",
+      "start": 195,
+      "end": 337,
+      "signal_kind": "text",
+      "signal_value": "Tyrosine-protein phosphatase",
+      "reasoning": "The \"Tyrosine-protein phosphatase\" domain in the 195-337 position directly supports the enzymatic function described by the GO term, which involves removing phosphate groups from tyrosine residues. This is a strong match to the primary reaction of the GO term."
+    },
+    {
+      "accession": "Q13115",
+      "go_id": "GO:1990439",
+      "feature_type": "DOMAIN",
+      "start": 40,
+      "end": 159,
+      "signal_kind": "text",
+      "signal_value": "Rhodanese",
+      "reasoning": "The \"Rhodanese\" domain (DOMAIN 40-159) directly matches the chemistry of the GO term, which involves catalyzing the transfer of a phosphate group to MAP kinases. This provides a strong and specific explanation for why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P35182",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}
