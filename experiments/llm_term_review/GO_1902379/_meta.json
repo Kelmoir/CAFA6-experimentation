@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1902379",
+  "name": "chemoattractant activity involved in axon guidance",
+  "def": "Any chemoattractant activity that is involved in axon guidance.",
+  "n_proteins_total": 5,
+  "sampled_accessions": [
+    "P22725",
+    "P28047",
+    "P39905",
+    "P41221"
+  ],
+  "assigned_accessions": [
+    "P22725",
+    "P28047",
+    "P39905",
+    "P41221"
+  ]
+}

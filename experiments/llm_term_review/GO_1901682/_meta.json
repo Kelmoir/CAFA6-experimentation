@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:1901682",
+  "name": "sulfur compound transmembrane transporter activity",
+  "def": "Enables the transfer of a sulfur compound from one side of a membrane to the other.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P32136",
+    "P40445",
+    "Q61285"
+  ],
+  "assigned_accessions": [
+    "P32136",
+    "P40445",
+    "Q61285"
+  ]
+}

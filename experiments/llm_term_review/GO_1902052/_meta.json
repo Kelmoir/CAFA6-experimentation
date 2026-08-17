@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1902052",
+  "name": "(25S)-Delta(7)-dafachronate binding",
+  "def": "Binding to (25S)-Delta(7)-dafachronate.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "G5EFF5"
+  ],
+  "assigned_accessions": [
+    "G5EFF5"
+  ]
+}

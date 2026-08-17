@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:1901707",
+  "name": "leptomycin B binding",
+  "def": "Binding to leptomycin B.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "P41133",
+    "P41138",
+    "Q02535"
+  ],
+  "assigned_accessions": [
+    "P41133",
+    "P41138",
+    "Q02535"
+  ]
+}

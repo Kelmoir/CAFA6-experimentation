@@ -1,0 +1,32 @@
+{
+  "resolved": [
+    {
+      "accession": "Q00169",
+      "go_id": "GO:1901611",
+      "feature_type": "BINDING",
+      "start": 57,
+      "end": 58,
+      "signal_kind": "ligand",
+      "signal_value": "a 1,2-diacyl-sn-glycero-3-phospho-(1D-myo-inositol)",
+      "reasoning": "The multiple BINDING annotations with phosphatidylglycerol derivatives directly reflect the protein's ability to bind to its substrate, which aligns with the definition of the GO term \"phosphatidylglycerol binding.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P55058",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P55065",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P12950",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides a clear structural or functional basis for the defined chemistry of phosphatidylglycerol binding."
+    }
+  ]
+}

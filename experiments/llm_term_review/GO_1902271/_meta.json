@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:1902271",
+  "name": "D3 vitamins binding",
+  "def": "Binding to D3 vitamins.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "Q6VVW9",
+    "Q6VVX0"
+  ],
+  "assigned_accessions": [
+    "Q6VVW9",
+    "Q6VVX0"
+  ]
+}

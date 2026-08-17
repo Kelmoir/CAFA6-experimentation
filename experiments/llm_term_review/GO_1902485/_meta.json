@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1902485",
+  "name": "L-cysteine binding",
+  "def": "Binding to L-cysteine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P53191"
+  ],
+  "assigned_accessions": [
+    "P53191"
+  ]
+}

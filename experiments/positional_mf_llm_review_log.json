@@ -42197,6 +42197,71 @@
    }
   ]
  },
+ "GO:1901611": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a 1,2-diacyl-sn-glycero-3-phospho-(1D-myo-inositol)",
+    "accessions": [
+     "Q00169"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P55058",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P55065",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P12950",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a clear structural or functional basis for the defined chemistry of phosphatidylglycerol binding."
+   }
+  ]
+ },
+ "GO:1901682": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "ABC transmembrane type-1",
+    "accessions": [
+     "Q61285"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P32136",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P40445",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
  "GO:1901691": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -42213,6 +42278,32 @@
    }
   ]
  },
+ "GO:1901707": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P41133",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P41133 specifically matches the primary reaction of \"leptomycin B binding,\" which is the direct interaction with leptomycin B. The provided features only hint at potential interactions or domain types, not the specific ligand-binding activity defined by the GO term."
+   },
+   {
+    "accession": "Q02535",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains the molecular function of leptomycin B binding, and the only relevant domain (bHLH) is not positioned to account for this specific function."
+   },
+   {
+    "accession": "P41138",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for this protein is a bHLH domain (DOMAIN 27-80), which is not directly tied to leptomycin B binding and only echoes the term in a generic way. No positional feature provides a strong mechanistic basis for the GO term's definition, so the verdict is NONE."
+   }
+  ]
+ },
  "GO:1901974": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -42226,6 +42317,128 @@
     "accession": "Q9FVQ4",
     "reason": "none_verdict",
     "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:1902051": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "G5EFF5",
+    "reason": "none_verdict",
+    "reasoning": "The protein G5EFF5 does not have any annotated feature that specifically matches the primary reaction of \"Binding to (25S)-Delta(4)-dafachronate\" as defined by the GO term. The available features are either generic or related to broader nuclear receptor functions, not the precise binding mechanism described in the GO definition."
+   }
+  ]
+ },
+ "GO:1902052": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "G5EFF5",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in G5EFF5 specifically describes the binding to (25S)-Delta(7)-dafachronate, which is the primary reaction defined by the GO term. The DNA_BIND feature only echoes a word from a secondary clause and doesn't provide a strong match for the primary reaction."
+   }
+  ]
+ },
+ "GO:1902271": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q6VVW9",
+    "go_id": "GO:1902271",
+    "feature_type": "BINDING",
+    "start": 249,
+    "end": 250,
+    "signal_kind": "ligand",
+    "signal_value": "substrate",
+    "reasoning": "The binding site annotation \"BINDING 249-250\" suggests the protein has a region capable of interacting with ligands, but it only echoes the word \"binding\" from the GO term's definition and does not specifically describe the interaction with D3 vitamins. Thus, it does not strongly match the primary reaction implied by the GO term."
+   }
+  ],
+  "issues": [
+   {
+    "accession": "Q6VVX0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the chemistry of binding to D3 vitamins, so there is no strong evidence to support this GO term for the protein Q6VVX0."
+   }
+  ]
+ },
+ "GO:1902379": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P22725",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P39905",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides a direct explanation for the chemoattractant activity involved in axon guidance, as both candidates are generic and do not align with the primary reaction described in the GO term's definition."
+   },
+   {
+    "accession": "P41221",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "P28047",
+    "reason": "none_verdict",
+    "reasoning": "The only annotated feature for P28047 is a region span (237-266) that describes a disordered linker, which does not provide any evidence of chemoattractant activity or its role in axon guidance. No other positional features are present to explain the GO term."
+   }
+  ]
+ },
+ "GO:1902485": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P53191",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the provided list directly matches the GO term's definition of L-cysteine binding; all features are either about Zn(2+) binding or regulatory regions, not L-cysteine."
+   }
+  ]
+ },
+ "GO:1903794": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9IAC6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q9IAC6 directly matches the primary reaction of \"binding to cortisol\" as defined by the GO term, which involves receiving a phosphoryl transfer."
    }
   ]
  }

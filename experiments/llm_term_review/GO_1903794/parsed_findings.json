@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9IAC6",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q9IAC6 directly matches the primary reaction of \"binding to cortisol\" as defined by the GO term, which involves receiving a phosphoryl transfer."
+    }
+  ]
+}

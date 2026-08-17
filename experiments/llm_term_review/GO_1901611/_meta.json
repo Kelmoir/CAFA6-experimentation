@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1901611",
+  "name": "phosphatidylglycerol binding",
+  "def": "Binding to phosphatidylglycerol.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "P12950",
+    "P55058",
+    "P55065",
+    "Q00169"
+  ],
+  "assigned_accessions": [
+    "P12950",
+    "P55058",
+    "P55065",
+    "Q00169"
+  ]
+}

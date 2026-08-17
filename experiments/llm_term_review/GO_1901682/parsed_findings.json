@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q61285",
+      "go_id": "GO:1901682",
+      "feature_type": "DOMAIN",
+      "start": 106,
+      "end": 399,
+      "signal_kind": "text",
+      "signal_value": "ABC transmembrane type-1",
+      "reasoning": "The DOMAIN 106-399 feature is specifically annotated as \"ABC transmembrane type-1,\" which directly aligns with the primary reaction described in the GO term's definition of enabling sulfur compound transport. This provides a strong and mechanistically specific explanation for the molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P32136",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "P40445",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}
