@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0170045",
+  "name": "isopentenyl pyrophosphate transmembrane transporter activity",
+  "def": "Enables the transfer of isopentenyl pyrophosphate from one side of a membrane to the other.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9P6N6"
+  ],
+  "assigned_accessions": [
+    "Q9P6N6"
+  ]
+}

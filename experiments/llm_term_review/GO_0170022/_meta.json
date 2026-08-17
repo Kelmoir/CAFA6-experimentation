@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0170022",
+  "name": "ionotropic bitter taste receptor activity",
+  "def": "Enables the transmembrane transfer of an ion by a channel that opens when a specific bitter compound has been bound by the channel complex or one of its constituent parts.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q9W1U5"
+  ],
+  "assigned_accessions": [
+    "Q9W1U5"
+  ]
+}

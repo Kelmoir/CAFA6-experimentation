@@ -1,0 +1,37 @@
+{
+  "resolved": [
+    {
+      "accession": "E9PVA8",
+      "go_id": "GO:0170011",
+      "feature_type": "REGION",
+      "start": 2259,
+      "end": 2408,
+      "signal_kind": "text",
+      "signal_value": "RWDBD region",
+      "reasoning": "The REGION span (2259-2408) is associated with the RWDBD region, which is known to be involved in sensing ribosomal states and initiating signaling, directly matching the primary reaction described in the GO term's definition."
+    },
+    {
+      "accession": "Q05580",
+      "go_id": "GO:0170011",
+      "feature_type": "DOMAIN",
+      "start": 221,
+      "end": 292,
+      "signal_kind": "text",
+      "signal_value": "LIM zinc-binding",
+      "reasoning": "The DOMAIN 221-292 with note: LIM zinc-binding is a structural feature that could plausibly account for the recognition of stalled ribosomes and the subsequent signaling response, aligning with the primary reaction described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9BRX2",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9NYL2",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the primary reaction or mechanism of the GO term \"stalled ribosome sensor activity\" as defined."
+    }
+  ]
+}

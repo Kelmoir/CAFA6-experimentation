@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0170005",
+  "name": "cyclic nucleotide phosphodiesterase activator activity",
+  "def": "Binds to and increases the activity of cyclic nucleotide phosphodiesterase.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P02599"
+  ],
+  "assigned_accessions": [
+    "P02599"
+  ]
+}

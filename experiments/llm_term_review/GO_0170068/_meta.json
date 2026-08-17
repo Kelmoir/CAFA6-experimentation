@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0170068",
+  "name": "geranylgeranyltransferase type III activity",
+  "def": "Catalyzes the covalent addition of a geranylgeranyl group to a mono-farnesylated substrate via a thioether linkage to a cysteine residue located within a conserved C-terminal tandem cysteine motif (CCAIM or CCIIM) that is used in substrate recognition. Known substrates include mono-farnesylated Golgi SNARE proteins.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q02202"
+  ],
+  "assigned_accessions": [
+    "Q02202"
+  ]
+}

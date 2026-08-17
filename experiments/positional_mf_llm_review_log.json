@@ -41729,5 +41729,262 @@
   ],
   "uncertain": [],
   "issues": []
+ },
+ "GO:0160291": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PH",
+    "accessions": [
+     "Q3B7Z2"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P22059",
+    "reason": "none_verdict",
+    "reasoning": "The absence of a defined molecular function for GO:0160291 makes it impossible to identify a specific annotated feature that directly explains why the protein carries this term. Without knowing what the term defines, we cannot assess which feature matches it."
+   }
+  ]
+ },
+ "GO:0170003": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "B2RXV4",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in B2RXV4 directly explains the primary reaction of enabling the transfer of heme B from one side of a membrane to the other. The binding sites for ethanolamine and choline are more likely to indicate interactions with other molecules rather than the core function of the GO term."
+   }
+  ]
+ },
+ "GO:0170005": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P02599",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0170011": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "RWDBD region",
+    "accessions": [
+     "E9PVA8"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "LIM zinc-binding",
+    "accessions": [
+     "Q05580"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9BRX2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9NYL2",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction or mechanism of the GO term \"stalled ribosome sensor activity\" as defined."
+   }
+  ]
+ },
+ "GO:0170021": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 4,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9VKJ7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9VSH2",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9VZJ6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9VKA5",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:0170022": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9W1U5",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0170045": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9P6N6",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0170053": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "REGION",
+    "value": "DNA-binding",
+    "accessions": [
+     "P46946"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:0170060": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q09933",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" type with coordinates does not provide any evidence of microtubule destabilizing activity. No positional feature matches the primary reaction described in the GO term's definition, and all regions are marked as disordered, which is irrelevant to the function being defined."
+   }
+  ]
+ },
+ "GO:0170068": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q02202",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:0180001": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0A2B4SES9",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature provides structural or functional evidence about why the protein A0A2B4SES9 binds cyclic-di-AMP; all features only confirm the presence of binding to this molecule."
+   }
+  ]
+ },
+ "GO:0180005": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P13681",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P13681 provides a direct explanation for the specific molecular function described in the GO term, which is the phosphatase activity of the RNA polymerase II CTD heptapeptide repeat T4."
+   }
+  ]
+ },
+ "GO:0180024": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O94730",
+    "reason": "none_verdict",
+    "reasoning": "The \"REGION\" 420-449 is marked as disordered and does not directly explain the activity of restricting fenestration size in a membrane, which is the primary reaction defined by the GO term. No other positional feature provides a strong match to the GO term's definition."
+   }
+  ]
  }
 }

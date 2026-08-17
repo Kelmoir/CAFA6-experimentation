@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0170011",
+  "name": "stalled ribosome sensor activity",
+  "def": "A molecule that recognizes stalled ribosomes and initiates a signaling response.",
+  "n_proteins_total": 9,
+  "sampled_accessions": [
+    "E9PVA8",
+    "Q05580",
+    "Q9BRX2",
+    "Q9NYL2"
+  ],
+  "assigned_accessions": [
+    "E9PVA8",
+    "Q05580",
+    "Q9BRX2",
+    "Q9NYL2"
+  ]
+}

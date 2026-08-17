@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P13681",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P13681 provides a direct explanation for the specific molecular function described in the GO term, which is the phosphatase activity of the RNA polymerase II CTD heptapeptide repeat T4."
+    }
+  ]
+}

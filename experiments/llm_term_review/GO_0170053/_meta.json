@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0170053",
+  "name": "nuclease activator activity",
+  "def": "Binds to and increases the activity of a nuclease.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P46946"
+  ],
+  "assigned_accessions": [
+    "P46946"
+  ]
+}

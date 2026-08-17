@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P46946",
+      "go_id": "GO:0170053",
+      "feature_type": "REGION",
+      "start": 20,
+      "end": 172,
+      "signal_kind": "text",
+      "signal_value": "DNA-binding",
+      "reasoning": "The \"DNA-binding\" note in region 20-172 directly supports the primary reaction of the GO term by indicating the protein's ability to bind to a nuclease, which is consistent with increasing its activity."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

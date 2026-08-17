@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0180001",
+  "name": "cyclic-di-AMP binding",
+  "def": "Binding to a cyclic di-AMP nucleotide.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A0A2B4SES9"
+  ],
+  "assigned_accessions": [
+    "A0A2B4SES9"
+  ]
+}

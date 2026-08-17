@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q09933",
+      "reason": "none_verdict",
+      "reasoning": "The \"REGION\" type with coordinates does not provide any evidence of microtubule destabilizing activity. No positional feature matches the primary reaction described in the GO term's definition, and all regions are marked as disordered, which is irrelevant to the function being defined."
+    }
+  ]
+}

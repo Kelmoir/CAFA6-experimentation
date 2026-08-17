@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0170003",
+  "name": "heme B transmembrane transporter activity",
+  "def": "Enables the transfer of heme B from one side of a membrane to the other.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "B2RXV4"
+  ],
+  "assigned_accessions": [
+    "B2RXV4"
+  ]
+}

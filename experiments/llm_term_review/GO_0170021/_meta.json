@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:0170021",
+  "name": "ionotropic taste receptor activity",
+  "def": "Enables the transmembrane transfer of an ion by a channel that opens when a soluble compound has been bound by the channel complex or one of its constituent parts.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "Q9VKA5",
+    "Q9VKJ7",
+    "Q9VSH2",
+    "Q9VZJ6"
+  ],
+  "assigned_accessions": [
+    "Q9VKA5",
+    "Q9VKJ7",
+    "Q9VSH2",
+    "Q9VZJ6"
+  ]
+}

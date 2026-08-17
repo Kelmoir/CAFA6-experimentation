@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A0A2B4SES9",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature provides structural or functional evidence about why the protein A0A2B4SES9 binds cyclic-di-AMP; all features only confirm the presence of binding to this molecule."
+    }
+  ]
+}

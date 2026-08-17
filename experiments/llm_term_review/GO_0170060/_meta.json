@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:0170060",
+  "name": "microtubule destabilizing activity",
+  "def": "A protein-containing complex destabilizing activity that promotes microtubule catastrophe (transition from microtubule growth to microtubule shrinkage).",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q09933"
+  ],
+  "assigned_accessions": [
+    "Q09933"
+  ]
+}
