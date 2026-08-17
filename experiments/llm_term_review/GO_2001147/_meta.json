@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:2001147",
+  "name": "camalexin binding",
+  "def": "Binding to camalexin.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P42760",
+    "P46422"
+  ],
+  "assigned_accessions": [
+    "P42760",
+    "P46422"
+  ]
+}

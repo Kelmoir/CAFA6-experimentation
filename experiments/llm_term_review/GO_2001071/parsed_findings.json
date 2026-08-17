@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q9LFY0",
+      "reason": "none_verdict",
+      "reasoning": "The region is marked as disordered and does not directly correspond to any known domain or binding site for maltoheptaose, so it cannot be considered a strong match to the GO term's primary reaction of binding to maltoheptaose."
+    },
+    {
+      "accession": "P59213",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly explains why P59213 carries the \"maltoheptaose binding\" GO term, as none of the \"BINDING\" regions are associated with the specific molecule."
+    }
+  ]
+}

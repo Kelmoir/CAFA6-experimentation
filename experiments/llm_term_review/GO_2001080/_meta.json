@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:2001080",
+  "name": "chitosan binding",
+  "def": "Binding to chitosan.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A8R7E6"
+  ],
+  "assigned_accessions": [
+    "A8R7E6"
+  ]
+}

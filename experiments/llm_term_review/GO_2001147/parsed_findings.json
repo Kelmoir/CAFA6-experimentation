@@ -1,0 +1,16 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P46422",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature directly supports the primary reaction of \"Binding to camalexin\" as defined by the GO term."
+    },
+    {
+      "accession": "P42760",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P42760 directly describes the binding to camalexin, which is the primary reaction defined by the GO term."
+    }
+  ]
+}

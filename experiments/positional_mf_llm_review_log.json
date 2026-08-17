@@ -44085,5 +44085,116 @@
     "reasoning": "No annotated feature specifically matches the defined reaction of \"binding to pullulan\" and none provide sufficient specificity to justify the GO term."
    }
   ]
+ },
+ "GO:2001071": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q9LFY0",
+    "reason": "none_verdict",
+    "reasoning": "The region is marked as disordered and does not directly correspond to any known domain or binding site for maltoheptaose, so it cannot be considered a strong match to the GO term's primary reaction of binding to maltoheptaose."
+   },
+   {
+    "accession": "P59213",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly explains why P59213 carries the \"maltoheptaose binding\" GO term, as none of the \"BINDING\" regions are associated with the specific molecule."
+   }
+  ]
+ },
+ "GO:2001080": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A8R7E6",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in the given list provides a clear and specific explanation for why the protein A8R7E6 carries the molecular function GO:2001080 (\"chitosan binding\"). The only binding site mentioned is for chitin, which is not identical to chitosan, and it does not directly support the defined chemistry of the term."
+   }
+  ]
+ },
+ "GO:2001147": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P46422",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly supports the primary reaction of \"Binding to camalexin\" as defined by the GO term."
+   },
+   {
+    "accession": "P42760",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P42760 directly describes the binding to camalexin, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:2001227": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P42760",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for P42760 directly supports the molecular function of \"quercitrin binding,\" as all binding information relates to glutathione instead."
+   },
+   {
+    "accession": "P46422",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature directly supports the \"quercitrin binding\" GO term with specific positional coordinates or a clear mechanistic basis. The available evidence only indicates glutathione-binding activity, which is unrelated to quercitrin."
+   }
+  ]
+ },
+ "GO:7770026": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8CFJ7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:7770027": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8CFJ7",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
  }
 }

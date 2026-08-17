@@ -1,0 +1,5 @@
+## A8R7E6 GO:2001080
+verdict: NONE
+feature: NONE 0-0
+reasoning: No annotated feature in the given list provides a clear and specific explanation for why the protein A8R7E6 carries the molecular function GO:2001080 ("chitosan binding"). The only binding site mentioned is for chitin, which is not identical to chitosan, and it does not directly support the defined chemistry of the term.
+---

@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:2001071",
+  "name": "maltoheptaose binding",
+  "def": "Binding to maltoheptaose.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "P59213",
+    "Q9LFY0"
+  ],
+  "assigned_accessions": [
+    "P59213",
+    "Q9LFY0"
+  ]
+}
