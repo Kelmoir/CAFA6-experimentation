@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1990119",
+  "name": "RNA helicase inhibitor activity",
+  "def": "Binds to and stops, prevents or reduces the activity of an RNA helicase.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q12159"
+  ],
+  "assigned_accessions": [
+    "Q12159"
+  ]
+}

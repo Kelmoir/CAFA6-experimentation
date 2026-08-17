@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "Q12159",
+      "go_id": "GO:1990119",
+      "feature_type": "DOMAIN",
+      "start": 77,
+      "end": 158,
+      "signal_kind": "text",
+      "signal_value": "RRM",
+      "reasoning": "The RRM domain in Q12159 is a known structural feature associated with helicase activity regulation, which directly matches the primary reaction of the GO term \"RNA helicase inhibitor activity.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

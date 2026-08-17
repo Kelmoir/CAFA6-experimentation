@@ -36327,6 +36327,15 @@
    "proton donor"
   ]
  },
+ "GO:1990003": {
+  "name": "IDP phosphatase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [],
+  "text_patterns": [
+   "proton acceptor"
+  ]
+ },
  "GO:1990080": {
   "name": "2-phenylethylamine receptor activity",
   "ligands": [],

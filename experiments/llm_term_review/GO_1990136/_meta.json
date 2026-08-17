@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990136",
+  "name": "linoleate 9S-lipoxygenase activity",
+  "def": "Catalysis of the reaction: linoleate + O2 = (9S,10E,12Z)-9-hydroperoxy-10,12-octadecadienoate.",
+  "n_proteins_total": 14,
+  "sampled_accessions": [
+    "O35936",
+    "O75342",
+    "Q2KMM4",
+    "Q8K4F2"
+  ],
+  "assigned_accessions": [
+    "O35936",
+    "O75342",
+    "Q2KMM4",
+    "Q8K4F2"
+  ]
+}

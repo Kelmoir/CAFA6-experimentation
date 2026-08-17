@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990003",
+  "name": "IDP phosphatase activity",
+  "def": "Catalysis of the reaction: IDP + H2O = IMP + H+ + phosphate.",
+  "n_proteins_total": 17,
+  "sampled_accessions": [
+    "O75356",
+    "P49961",
+    "P97687",
+    "Q9ER31"
+  ],
+  "assigned_accessions": [
+    "O75356",
+    "P49961",
+    "P97687",
+    "Q9ER31"
+  ]
+}

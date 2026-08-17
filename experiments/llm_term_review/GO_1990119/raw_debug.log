@@ -1,0 +1,13 @@
+=== Q12159 GO:1990119 (VERDICT missing) ===
+THINKING: The GO term is "RNA helicase inhibitor activity" with the definition that it "Binds to and stops, prevents or reduces the activity of an RNA helicase." This indicates a functional role where the protein interacts with an RNA helicase to inhibit its activity. 
+
+The annotated features for this protein include:
+- DOMAIN 77-158 (note: RRM; evidence: ECO:0000255|PROSITE-ProRule:PRU00176)
+- REGION 0-62 (note: Disordered; evidence: ECO:0000256|SAM:MobiDB-lite)
+- REGION 172-226 (note: Disordered; evidence: ECO:0000256|SAM:MobiDB-lite)
+
+The DOMAIN feature is the most relevant as it directly relates to the RRM domain, which is known to be involved in RNA helicase inhibition. The definition focuses on the binding and inhibitory activity of an RNA helicase, which aligns with the structural role of the RRM domain.
+
+FEATURE: DOMAIN 77-158  
+REASONING: The DOMAIN feature 77-158, marked as RRM, directly corresponds to the defined function of RNA helicase inhibition, making it the most plausible explanation for why the protein carries this GO term.
+

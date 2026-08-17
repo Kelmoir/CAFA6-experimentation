@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1990411",
+  "name": "hercynylcysteine sulfoxide lyase activity (ergothioneine-forming)",
+  "def": "Catalysis of the reaction: hercynylcysteine sulfoxide + 2H+ = ergothioneine + pyruvate + ammonium.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "O94431"
+  ],
+  "assigned_accessions": [
+    "O94431"
+  ]
+}

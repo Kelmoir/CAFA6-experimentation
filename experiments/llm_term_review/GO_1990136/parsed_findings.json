@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "Q8K4F2",
+      "go_id": "GO:1990136",
+      "feature_type": "DOMAIN",
+      "start": 125,
+      "end": 677,
+      "signal_kind": "text",
+      "signal_value": "Lipoxygenase",
+      "reasoning": "The \"Lipoxygenase\" domain directly corresponds to the enzymatic function described in the GO definition, making it the most plausible explanation for why Q8K4F2 carries the term."
+    },
+    {
+      "accession": "Q2KMM4",
+      "go_id": "GO:1990136",
+      "feature_type": "DOMAIN",
+      "start": 119,
+      "end": 701,
+      "signal_kind": "text",
+      "signal_value": "Lipoxygenase",
+      "reasoning": "The \"Lipoxygenase\" domain annotation directly matches the primary reaction of the GO term, which is the catalysis of linoleate with oxygen to produce a hydroperoxy product. This provides a strong and specific explanation for why the protein carries this molecular function."
+    },
+    {
+      "accession": "O35936",
+      "go_id": "GO:1990136",
+      "feature_type": "DOMAIN",
+      "start": 125,
+      "end": 677,
+      "signal_kind": "text",
+      "signal_value": "Lipoxygenase",
+      "reasoning": "The domain annotation \"Lipoxygenase\" in the specified range directly corresponds to the enzymatic activity defined by the GO term, making it the most plausible explanation for why the protein carries that term."
+    },
+    {
+      "accession": "O75342",
+      "go_id": "GO:1990136",
+      "feature_type": "DOMAIN",
+      "start": 119,
+      "end": 701,
+      "signal_kind": "text",
+      "signal_value": "Lipoxygenase",
+      "reasoning": "The domain 119-701 is explicitly annotated as \"Lipoxygenase,\" which directly corresponds to the enzymatic activity defined by the GO term, making it the most plausible explanation for why O75342 carries this term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

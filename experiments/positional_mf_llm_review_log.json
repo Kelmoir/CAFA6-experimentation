@@ -42860,6 +42860,72 @@
   "uncertain": [],
   "issues": []
  },
+ "GO:1990003": {
+  "n_resolved": 2,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [
+   {
+    "field": "text_patterns",
+    "value": "proton acceptor",
+    "accessions": [
+     "O75356",
+     "Q9ER31"
+    ]
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P49961",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   },
+   {
+    "accession": "P97687",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:1990050": {
+  "n_resolved": 3,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PRELI/MSF1",
+    "accessions": [
+     "Q04006",
+     "Q9Y3B1"
+    ],
+    "reason": "resolved to ['InterPro:IPR006797'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR006797': 17})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "PITP-like",
+    "accessions": [
+     "Q8K4R4"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q05776",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
  "GO:1990055": {
   "n_resolved": 0,
   "n_uncertain": 0,
@@ -42878,6 +42944,133 @@
     "accession": "Q8RY79",
     "reason": "none_verdict",
     "reasoning": "The annotated features for Q8RY79 only indicate binding sites for L-phenylalanine, which do not directly explain the catalytic activity of phenylacetaldehyde synthase as defined by GO:1990055."
+   }
+  ]
+ },
+ "GO:1990107": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P30139",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the primary reaction mechanism of thiazole synthase activity as defined by the GO term. All features are about substrate binding or active site structure, not the catalytic chemistry itself."
+   }
+  ]
+ },
+ "GO:1990119": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "RRM",
+    "accessions": [
+     "Q12159"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:1990136": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "Lipoxygenase",
+    "accessions": [
+     "O35936",
+     "O75342",
+     "Q2KMM4",
+     "Q8K4F2"
+    ],
+    "reason": "resolved to ['PROSITE:PS00081', 'PROSITE:PS00711', 'PROSITE:PS51393', 'Pfam:PF00305'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'PROSITE:PS00081': 39, 'PROSITE:PS00711': 39, 'PROSITE:PS51393': 45, 'Pfam:PF00305': 45})"
+   }
+  ],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:1990147": {
+  "n_resolved": 0,
+  "n_uncertain": 1,
+  "n_issues": 3,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [
+   {
+    "accession": "Q5I6B8",
+    "go_id": "GO:1990147",
+    "feature_type": "DOMAIN",
+    "start": 74,
+    "end": 443,
+    "signal_kind": "text",
+    "signal_value": "PIPK",
+    "reasoning": "The domain associated with PIPK activity is likely involved in actin filament assembly and cell migration, which are closely related to the function of \"talin binding.\" However, the definition does not explicitly state that this protein binds to talin, only that it plays a role in these processes. Thus, while plausible, it does not directly explain why the protein carries the term \"talin binding\""
+   }
+  ],
+  "issues": [
+   {
+    "accession": "O70161",
+    "reason": "none_verdict",
+    "reasoning": "The DOMAIN feature indicates the presence of a kinase domain, which is associated with actin filament assembly and cell migration\u2014key functions linked to talin binding\u2014but does not directly state that O70161 binds to talin. Therefore, it does not specifically explain why the protein carries the GO term \"talin binding.\""
+   },
+   {
+    "accession": "Q8BH44",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   },
+   {
+    "accession": "Q9UQ03",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+   }
+  ]
+ },
+ "GO:1990206": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q8VYX0",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:1990411": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O94431",
+    "reason": "none_verdict",
+    "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
    }
   ]
  }

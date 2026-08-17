@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1990206",
+  "name": "jasmonyl-Ile conjugate hydrolase activity",
+  "def": "Catalysis of the reaction: jasmonyl-Ile + H2O = jasmonic acid + L-isoleucine.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "Q8VYX0"
+  ],
+  "assigned_accessions": [
+    "Q8VYX0"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990147",
+  "name": "talin binding",
+  "def": "Binding to a talin, a family of related cytoskeletal proteins that play a role in assembly of actin filaments and migration of various cell types.",
+  "n_proteins_total": 4,
+  "sampled_accessions": [
+    "O70161",
+    "Q5I6B8",
+    "Q8BH44",
+    "Q9UQ03"
+  ],
+  "assigned_accessions": [
+    "O70161",
+    "Q5I6B8",
+    "Q8BH44",
+    "Q9UQ03"
+  ]
+}

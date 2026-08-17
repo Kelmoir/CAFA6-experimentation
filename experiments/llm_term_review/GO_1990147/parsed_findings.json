@@ -1,0 +1,32 @@
+{
+  "resolved": [],
+  "uncertain": [
+    {
+      "accession": "Q5I6B8",
+      "go_id": "GO:1990147",
+      "feature_type": "DOMAIN",
+      "start": 74,
+      "end": 443,
+      "signal_kind": "text",
+      "signal_value": "PIPK",
+      "reasoning": "The domain associated with PIPK activity is likely involved in actin filament assembly and cell migration, which are closely related to the function of \"talin binding.\" However, the definition does not explicitly state that this protein binds to talin, only that it plays a role in these processes. Thus, while plausible, it does not directly explain why the protein carries the term \"talin binding\""
+    }
+  ],
+  "issues": [
+    {
+      "accession": "O70161",
+      "reason": "none_verdict",
+      "reasoning": "The DOMAIN feature indicates the presence of a kinase domain, which is associated with actin filament assembly and cell migration\u2014key functions linked to talin binding\u2014but does not directly state that O70161 binds to talin. Therefore, it does not specifically explain why the protein carries the GO term \"talin binding.\""
+    },
+    {
+      "accession": "Q8BH44",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    },
+    {
+      "accession": "Q9UQ03",
+      "reason": "none_verdict",
+      "reasoning": "protein has zero annotated positional features on record -- nothing to point at"
+    }
+  ]
+}

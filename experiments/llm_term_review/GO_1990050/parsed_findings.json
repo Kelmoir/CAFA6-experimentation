@@ -1,0 +1,42 @@
+{
+  "resolved": [
+    {
+      "accession": "Q04006",
+      "go_id": "GO:1990050",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 175,
+      "signal_kind": "text",
+      "signal_value": "PRELI/MSF1",
+      "reasoning": "The DOMAIN annotation for Q04006 is directly associated with the PRELI/MSF1 family, which is known to carry out phosphatidic acid transfer activity as defined by the GO term. This matches the primary reaction of the GO term and provides a strong basis for its assertion on this protein."
+    },
+    {
+      "accession": "Q8K4R4",
+      "go_id": "GO:1990050",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 252,
+      "signal_kind": "text",
+      "signal_value": "PITP-like",
+      "reasoning": "The DOMAIN feature with the note \"PITP-like\" directly aligns with the primary reaction of removing a phosphatidic acid from a membrane and transporting it to an acceptor, making it the most plausible explanation for why Q8K4R4 carries the GO term."
+    },
+    {
+      "accession": "Q9Y3B1",
+      "go_id": "GO:1990050",
+      "feature_type": "DOMAIN",
+      "start": 0,
+      "end": 172,
+      "signal_kind": "text",
+      "signal_value": "PRELI/MSF1",
+      "reasoning": "The DOMAIN feature (0-172) directly corresponds to the class of proteins that perform phosphatidic acid transfer activity, which matches the primary reaction described in the GO term's definition. This is the most specific and relevant annotation available for Q9Y3B1, making it the best candidate to explain why the protein carries this molecular function."
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q05776",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}
