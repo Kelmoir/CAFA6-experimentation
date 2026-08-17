@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:2001067",
+  "name": "pullulan binding",
+  "def": "Binding to pullulan.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "A0A0H2UNG0"
+  ],
+  "assigned_accessions": [
+    "A0A0H2UNG0"
+  ]
+}

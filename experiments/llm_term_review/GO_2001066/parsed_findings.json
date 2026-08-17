@@ -1,0 +1,27 @@
+{
+  "resolved": [
+    {
+      "accession": "Q9FEB5",
+      "go_id": "GO:2001066",
+      "feature_type": "BINDING",
+      "start": 198,
+      "end": 204,
+      "signal_kind": "ligand",
+      "signal_value": "substrate",
+      "reasoning": "The binding site at positions 198-204 in Q9FEB5 is directly associated with substrate binding, which matches the primary reaction of the GO term \"amylopectin binding.\""
+    }
+  ],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "Q10F03",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature for Q10F03 provides a strong match to the primary reaction of \"binding to amylopectin,\" as the only evidence is disordered regions without domain-specific details."
+    },
+    {
+      "accession": "A0A0H2UNG0",
+      "reason": "invalid_verdict",
+      "detail": "UNPARSED"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "A0A0H2UNG0",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature specifically matches the defined reaction of \"binding to pullulan\" and none provide sufficient specificity to justify the GO term."
+    }
+  ]
+}

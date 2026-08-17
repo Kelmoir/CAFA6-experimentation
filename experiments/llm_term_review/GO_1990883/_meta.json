@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990883",
+  "name": "18S rRNA cytidine N-acetyltransferase activity",
+  "def": "Catalysis of the reaction: a cytidine in 18S rRNA + acetyl-CoA + ATP + H2O = an N(4)-acetylcytidine in 18S rRNA + ADP + phosphate + CoA + H+.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P53914",
+    "P87115",
+    "Q9H0A0",
+    "Q9XIK4"
+  ],
+  "assigned_accessions": [
+    "P53914",
+    "P87115",
+    "Q9H0A0",
+    "Q9XIK4"
+  ]
+}

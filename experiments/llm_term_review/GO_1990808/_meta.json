@@ -1,0 +1,14 @@
+{
+  "go_id": "GO:1990808",
+  "name": "F-bar domain binding",
+  "def": "Binding to an F-BAR domain of a protein, a domain of about 60 residues that occurs in a wide range of cytoskeletal proteins.",
+  "n_proteins_total": 2,
+  "sampled_accessions": [
+    "O74398",
+    "Q10059"
+  ],
+  "assigned_accessions": [
+    "O74398",
+    "Q10059"
+  ]
+}

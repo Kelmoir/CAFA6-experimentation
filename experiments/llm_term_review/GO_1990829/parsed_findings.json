@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "P57722",
+      "go_id": "GO:1990829",
+      "feature_type": "DOMAIN",
+      "start": 44,
+      "end": 95,
+      "signal_kind": "text",
+      "signal_value": "KH 1",
+      "reasoning": "The DOMAIN 44-95 annotation is specifically associated with KH type 1 domains, which are known to recognize and bind C-rich single-stranded DNA, directly matching the primary reaction described by the GO term."
+    },
+    {
+      "accession": "P0ADG7",
+      "go_id": "GO:1990829",
+      "feature_type": "DOMAIN",
+      "start": 92,
+      "end": 149,
+      "signal_kind": "text",
+      "signal_value": "CBS 1",
+      "reasoning": "The DOMAIN 92-149 annotation specifically refers to CBS 1, which is a known domain involved in DNA binding. This directly matches the primary reaction described in the GO term's definition, making it the most plausible explanation for why the protein carries that term."
+    },
+    {
+      "accession": "P61979",
+      "go_id": "GO:1990829",
+      "feature_type": "DOMAIN",
+      "start": 41,
+      "end": 104,
+      "signal_kind": "text",
+      "signal_value": "KH 1",
+      "reasoning": "The DOMAIN 41-104 feature (note: KH 1) directly matches the primary reaction described in the GO term's definition, which is binding to C-rich, single-stranded DNA. This provides a strong and specific explanation for why the protein carries the term."
+    },
+    {
+      "accession": "P61980",
+      "go_id": "GO:1990829",
+      "feature_type": "DOMAIN",
+      "start": 41,
+      "end": 104,
+      "signal_kind": "text",
+      "signal_value": "KH 1",
+      "reasoning": "The presence of the KH 1 domain in the specified range directly supports the primary reaction of binding to C-rich, single-stranded DNA as defined by the GO term. This is a strong match and explains why the protein carries the term."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

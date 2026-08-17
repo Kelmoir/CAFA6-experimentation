@@ -1,0 +1,12 @@
+{
+  "go_id": "GO:1990915",
+  "name": "structural constituent of ascospore wall",
+  "def": "The action of a molecule that contributes to the structural integrity of an ascospore wall.",
+  "n_proteins_total": 1,
+  "sampled_accessions": [
+    "P40899"
+  ],
+  "assigned_accessions": [
+    "P40899"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "resolved": [
+    {
+      "accession": "P32138",
+      "go_id": "GO:1990929",
+      "feature_type": "BINDING",
+      "start": 287,
+      "end": 288,
+      "signal_kind": "ligand",
+      "signal_value": "a 6-sulfo-alpha-D-quinovosyldiacylglycerol",
+      "reasoning": "The binding site at position 287-288 directly references the ligand involved in the reaction, aligning with the primary mechanism described in the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

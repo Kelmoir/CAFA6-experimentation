@@ -1,0 +1,16 @@
+{
+  "go_id": "GO:2001066",
+  "name": "amylopectin binding",
+  "def": "Binding to amylopectin.",
+  "n_proteins_total": 3,
+  "sampled_accessions": [
+    "A0A0H2UNG0",
+    "Q10F03",
+    "Q9FEB5"
+  ],
+  "assigned_accessions": [
+    "A0A0H2UNG0",
+    "Q10F03",
+    "Q9FEB5"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "go_id": "GO:1990829",
+  "name": "C-rich single-stranded DNA binding",
+  "def": "Binding to C-rich, single-stranded DNA.",
+  "n_proteins_total": 6,
+  "sampled_accessions": [
+    "P0ADG7",
+    "P57722",
+    "P61979",
+    "P61980"
+  ],
+  "assigned_accessions": [
+    "P0ADG7",
+    "P57722",
+    "P61979",
+    "P61980"
+  ]
+}

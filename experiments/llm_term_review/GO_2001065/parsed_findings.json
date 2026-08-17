@@ -1,0 +1,46 @@
+{
+  "resolved": [
+    {
+      "accession": "Q15485",
+      "go_id": "GO:2001065",
+      "feature_type": "BINDING",
+      "start": 240,
+      "end": 242,
+      "signal_kind": "ligand",
+      "signal_value": "a carbohydrate",
+      "reasoning": "The binding site at position 240-242 is explicitly annotated with a ligand of a carbohydrate, which directly aligns with the definition of \"mannan binding.\" This feature provides the most specific and relevant evidence for the molecular function."
+    },
+    {
+      "accession": "Q9BYZ8",
+      "go_id": "GO:2001065",
+      "feature_type": "DOMAIN",
+      "start": 36,
+      "end": 155,
+      "signal_kind": "text",
+      "signal_value": "C-type lectin",
+      "reasoning": "The C-type lectin domain in Q9BYZ8 is directly associated with the primary reaction of mannan binding, as it is a known functional domain for carbohydrate recognition."
+    },
+    {
+      "accession": "Q9D8G5",
+      "go_id": "GO:2001065",
+      "feature_type": "DOMAIN",
+      "start": 35,
+      "end": 154,
+      "signal_kind": "text",
+      "signal_value": "C-type lectin",
+      "reasoning": "The C-type lectin domain in Q9D8G5 directly implements the binding activity to mannan, aligning with the primary reaction of the GO term \"mannon binding.\" This provides a strong and specific match to the defined chemistry."
+    },
+    {
+      "accession": "Q9USH8",
+      "go_id": "GO:2001065",
+      "feature_type": "DOMAIN",
+      "start": 278,
+      "end": 474,
+      "signal_kind": "text",
+      "signal_value": "MRH",
+      "reasoning": "The DOMAIN feature spans the region known to contain the MRH domain, which is specifically associated with mannan binding, directly supporting the GO term's definition."
+    }
+  ],
+  "uncertain": [],
+  "issues": []
+}

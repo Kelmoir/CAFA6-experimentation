@@ -1,0 +1,11 @@
+{
+  "resolved": [],
+  "uncertain": [],
+  "issues": [
+    {
+      "accession": "P40899",
+      "reason": "none_verdict",
+      "reasoning": "No annotated feature in P40899 provides a clear, specific explanation for why it carries the molecular function defined by GO:1990915."
+    }
+  ]
+}

@@ -37012,6 +37012,16 @@
   ],
   "text_patterns": []
  },
+ "GO:1990883": {
+  "name": "18S rRNA cytidine N-acetyltransferase activity",
+  "ligands": [],
+  "feature_types": [],
+  "domain_accessions": [
+   "InterPro:IPR013562",
+   "Pfam:PF08351"
+  ],
+  "text_patterns": []
+ },
  "GO:1990889": {
   "name": "histone H4K20me3 reader activity",
   "ligands": [],

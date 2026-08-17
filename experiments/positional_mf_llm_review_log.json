@@ -43877,5 +43877,213 @@
     "reasoning": "The annotated features do not provide any positional evidence that directly explains why the protein carries the GO term \"protein tyrosine kinase binding.\" While some regions bind ATP, which is a ligand for tyrosine kinases, none of these features specifically account for the defined function of binding to a tyrosine kinase."
    }
   ]
+ },
+ "GO:1990808": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "GBD/FH3",
+    "accessions": [
+     "Q10059"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "O74398",
+    "reason": "none_verdict",
+    "reasoning": "No specific positional feature in the Annotated features section of O74398 directly confirms the binding to an F-BAR domain, which is the primary reaction defined by the GO term."
+   }
+  ]
+ },
+ "GO:1990829": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "KH 1",
+    "accessions": [
+     "P57722",
+     "P61979",
+     "P61980"
+    ],
+    "reason": "resolved to ['InterPro:IPR004087', 'InterPro:IPR004088', 'InterPro:IPR036612', 'PROSITE:PS50084', 'Pfam:PF00013'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR004087': 136, 'InterPro:IPR004088': 108, 'InterPro:IPR036612': 162, 'PROSITE:PS50084': 114, 'Pfam:PF00013': 98})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "CBS 1",
+    "accessions": [
+     "P0ADG7"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:1990883": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [
+   {
+    "field": "domain_accessions",
+    "value": [
+     "InterPro:IPR013562",
+     "Pfam:PF08351"
+    ],
+    "accessions": [
+     "P87115",
+     "Q9H0A0",
+     "Q9XIK4"
+    ],
+    "note": "resolved from DOMAIN note 'N-acetyltransferase'"
+   }
+  ],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "acetyl-CoA",
+    "accessions": [
+     "P53914"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:1990915": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "P40899",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature in P40899 provides a clear, specific explanation for why it carries the molecular function defined by GO:1990915."
+   }
+  ]
+ },
+ "GO:1990929": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a 6-sulfo-alpha-D-quinovosyldiacylglycerol",
+    "accessions": [
+     "P32138"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:2001065": {
+  "n_resolved": 4,
+  "n_uncertain": 0,
+  "n_issues": 0,
+  "merged": [],
+  "unmerged_agreements": [
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "C-type lectin",
+    "accessions": [
+     "Q9BYZ8",
+     "Q9D8G5"
+    ],
+    "reason": "resolved to ['InterPro:IPR001304', 'InterPro:IPR016186', 'InterPro:IPR018378', 'InterPro:IPR050111', 'PROSITE:PS00615', 'PROSITE:PS50041', 'Pfam:PF00059'], but every accession has dataset-wide frequency > 15 -- too generic a fold to trust as this term's own marker (frequencies: {'InterPro:IPR001304': 222, 'InterPro:IPR016186': 249, 'InterPro:IPR018378': 122, 'InterPro:IPR050111': 79, 'PROSITE:PS00615': 122, 'PROSITE:PS50041': 219, 'Pfam:PF00059': 216})"
+   }
+  ],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "a carbohydrate",
+    "accessions": [
+     "Q15485"
+    ]
+   },
+   {
+    "kind": "text",
+    "feature_type": "DOMAIN",
+    "value": "MRH",
+    "accessions": [
+     "Q9USH8"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": []
+ },
+ "GO:2001066": {
+  "n_resolved": 1,
+  "n_uncertain": 0,
+  "n_issues": 2,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [
+   {
+    "kind": "ligand",
+    "feature_type": "BINDING",
+    "value": "substrate",
+    "accessions": [
+     "Q9FEB5"
+    ]
+   }
+  ],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "Q10F03",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature for Q10F03 provides a strong match to the primary reaction of \"binding to amylopectin,\" as the only evidence is disordered regions without domain-specific details."
+   },
+   {
+    "accession": "A0A0H2UNG0",
+    "reason": "invalid_verdict",
+    "detail": "UNPARSED"
+   }
+  ]
+ },
+ "GO:2001067": {
+  "n_resolved": 0,
+  "n_uncertain": 0,
+  "n_issues": 1,
+  "merged": [],
+  "unmerged_agreements": [],
+  "unconfirmed_singletons": [],
+  "uncertain": [],
+  "issues": [
+   {
+    "accession": "A0A0H2UNG0",
+    "reason": "none_verdict",
+    "reasoning": "No annotated feature specifically matches the defined reaction of \"binding to pullulan\" and none provide sufficient specificity to justify the GO term."
+   }
+  ]
  }
 }
