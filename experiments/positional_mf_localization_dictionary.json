@@ -761,8 +761,7 @@
   "feature_types": [],
   "domain_accessions": [
    "InterPro:IPR034167",
-   "InterPro:IPR034894",
-   "InterPro:IPR051186"
+   "InterPro:IPR034894"
   ],
   "text_patterns": []
  },
@@ -4982,15 +4981,6 @@
    "InterPro:IPR005989"
   ],
   "text_patterns": []
- },
- "GO:0005367": {
-  "name": "myo-inositol:sodium symporter activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "implicated in sodium coupling"
-  ]
  },
  "GO:0005372": {
   "name": "water transmembrane transporter activity",
@@ -16477,16 +16467,6 @@
   ],
   "text_patterns": []
  },
- "GO:0036004": {
-  "name": "GAF domain binding",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [
-   "InterPro:IPR056277",
-   "Pfam:PF23322"
-  ],
-  "text_patterns": []
- },
  "GO:0036033": {
   "name": "mediator complex binding",
   "ligands": [],
@@ -21245,15 +21225,6 @@
   ],
   "text_patterns": []
  },
- "GO:0047809": {
-  "name": "D-lactate dehydrogenase activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [
-   "InterPro:IPR051914"
-  ],
-  "text_patterns": []
- },
  "GO:0047810": {
   "name": "D-alanine-2-oxoglutarate aminotransferase activity",
   "ligands": [],
@@ -24341,18 +24312,6 @@
   "feature_types": [],
   "domain_accessions": [
    "InterPro:IPR036114"
-  ],
-  "text_patterns": []
- },
- "GO:0060002": {
-  "name": "plus-end directed microfilament motor activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [
-   "InterPro:IPR051567",
-   "InterPro:IPR051724",
-   "InterPro:IPR057130",
-   "Pfam:PF24123"
   ],
   "text_patterns": []
  },
@@ -30935,15 +30894,6 @@
    "involved in the stabilization of the negatively charged intermediate by the formation of the oxyanion hole",
    "charge relay system"
   ]
- },
- "GO:0120518": {
-  "name": "protein N-terminal-methionine acetyltransferase activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [
-   "InterPro:IPR051556"
-  ],
-  "text_patterns": []
  },
  "GO:0120520": {
   "name": "free fatty acid 2-hydroxylase activity",

@@ -672,14 +672,13 @@
     "field": "domain_accessions",
     "value": [
      "InterPro:IPR034167",
-     "InterPro:IPR034894",
-     "InterPro:IPR051186"
+     "InterPro:IPR034894"
     ],
     "accessions": [
      "P38996",
      "P53617"
     ],
-    "note": "resolved from DOMAIN note 'RRM' (3 bridged accession(s) dropped for being too generic)"
+    "note": "resolved from DOMAIN note 'RRM' (3 bridged accession(s) dropped for being too generic) -- IPR051186 (broad RRM_HNRPC/RALY_subfam homology bin, also covers unrelated ordinary hnRNPs) manually dropped after review; IPR034167/IPR034894 (Nab3_RRM, Nrd1/Seb1_RRM) kept, both freq=2, both genuinely NNS-termination-complex-specific (user call, 2026-08-19)"
    }
   ],
   "unmerged_agreements": [],
@@ -4188,17 +4187,18 @@
   "n_resolved": 2,
   "n_uncertain": 1,
   "n_issues": 1,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "implicated in sodium coupling",
     "accessions": [
      "P13866",
      "P31637"
-    ]
+    ],
+    "reason": "REVERTED after manual review: text_pattern 'implicated in sodium coupling' marks the Na+-coupling mechanism shared by the whole sodium/solute symporter family, not myo-inositol substrate specificity -- the same 'right family, wrong substrate' flaw as the 4 acyl-ester/proton/pKa patterns already purged for GO:0047374/GO:0047376/GO:0047006/GO:0047100. Removed for consistency (user call, 2026-08-19)."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [
    {
@@ -18959,7 +18959,8 @@
   "n_resolved": 3,
   "n_uncertain": 0,
   "n_issues": 1,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "domain_accessions",
     "value": [
@@ -18970,10 +18971,10 @@
      "O00170",
      "O08915"
     ],
-    "note": "resolved from DOMAIN note 'PPIase FKBP-type' (3 bridged accession(s) dropped for being too generic)"
+    "note": "resolved from DOMAIN note 'PPIase FKBP-type' (3 bridged accession(s) dropped for being too generic)",
+    "reason": "REVERTED after manual review: domain_accessions IPR056277/PF23322 (PPIase_AIP) -- both witnesses (O00170 human AIP, O08915 mouse Aip) are literal cross-species orthologs of the same gene, not independent corroboration, and the LLM's own reasoning is circular (never mentions GAF at all: 'has a domain involved in binding to another domain'). Removed (user call, 2026-08-19)."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [
    {
     "kind": "text",
@@ -24547,7 +24548,8 @@
   "n_resolved": 3,
   "n_uncertain": 0,
   "n_issues": 0,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "domain_accessions",
     "value": [
@@ -24557,10 +24559,10 @@
      "P0AEP9",
      "P52073"
     ],
-    "note": "resolved from DOMAIN note 'FAD-binding PCMH-type' (10 bridged accession(s) dropped for being too generic)"
+    "note": "resolved from DOMAIN note 'FAD-binding PCMH-type' (10 bridged accession(s) dropped for being too generic)",
+    "reason": "REVERTED after manual review: domain_accessions IPR051914 -- one of the two 'witnesses' (P0AEP9) is tagged '[auto-resolved from cross-reference accession]' in its own reasoning text, not an actual LLM judgment; only 1 genuine reviewed witness (P52073) actually backs this despite the bookkeeping showing 2. Removed (user call, 2026-08-19)."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [
    {
     "kind": "text",
@@ -29138,7 +29140,8 @@
   "n_resolved": 3,
   "n_uncertain": 0,
   "n_issues": 1,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "domain_accessions",
     "value": [
@@ -29151,10 +29154,10 @@
      "Q9HD67",
      "Q9V3Z6"
     ],
-    "note": "resolved from DOMAIN note 'Myosin motor' (4 bridged accession(s) dropped for being too generic)"
+    "note": "resolved from DOMAIN note 'Myosin motor' (4 bridged accession(s) dropped for being too generic)",
+    "reason": "REVERTED after manual review: domain_accessions include IPR051724/IPR051567, broad automatic InterPro homology bins spanning multiple myosin classes by sequence clustering (not by directionality) that plausibly include myosin VI, the superfamily's one well-known minus-end-directed exception -- opposite of what this term claims. Dropping those two leaves only 1 witness (Q9V3Z6) behind the remaining Myosin-VII-specific accessions, below the agreement threshold. Removed entirely (user call, 2026-08-19)."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [
    {
     "kind": "ligand",
@@ -37135,7 +37138,8 @@
   "n_resolved": 4,
   "n_uncertain": 0,
   "n_issues": 0,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "domain_accessions",
     "value": [
@@ -37147,10 +37151,10 @@
      "Q6DBY2",
      "Q7X9V3"
     ],
-    "note": "resolved from DOMAIN note 'N-acetyltransferase'"
+    "note": "resolved from DOMAIN note 'N-acetyltransferase'",
+    "reason": "REVERTED after manual review: domain_accessions IPR051556 ('N-term/lysine_N-AcTrnsfr') -- carried by only 1 of 4 witnesses, whose other 3 are each in a different, mutually exclusive GNAT subfamily (RimI/Ard1-like, NAA30-like, NSI-like) sharing nothing but the generic catalytic GNAT domain; the accession's own name conflates two distinct GO activities (N-terminal-Met vs. lysine acetylation); and its primary witness (I6YG32) is double-booked as a witness for GO:1990189's mutually-exclusive N-terminal-serine-specific claim off the identical generic evidence. Removed (user call, 2026-08-19)."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": []
