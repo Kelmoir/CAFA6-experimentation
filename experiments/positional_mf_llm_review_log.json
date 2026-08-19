@@ -1145,17 +1145,18 @@
   "n_resolved": 2,
   "n_uncertain": 0,
   "n_issues": 0,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "phorbol-ester/dag-type",
     "accessions": [
      "Q8K0T7",
      "Q9Z1N9"
-    ]
+    ],
+    "reason": "REVERTED after user-approved threshold purge (2026-08-19): text_pattern 'phorbol-ester/dag-type' matches 206/82396 proteins, the majority PKCs -- the very class this 'non-kinase' term explicitly excludes."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": []
@@ -1313,14 +1314,6 @@
   "merged": [
    {
     "field": "text_patterns",
-    "value": "cleavage; by thrombin",
-    "accessions": [
-     "O08675",
-     "Q920E1"
-    ]
-   },
-   {
-    "field": "text_patterns",
     "value": "cleavage; by trypsin",
     "accessions": [
      "P55086",
@@ -1328,7 +1321,17 @@
     ]
    }
   ],
-  "unmerged_agreements": [],
+  "unmerged_agreements": [
+   {
+    "field": "text_patterns",
+    "value": "cleavage; by thrombin",
+    "accessions": [
+     "O08675",
+     "Q920E1"
+    ],
+    "reason": "REVERTED after user-approved threshold purge (2026-08-19): text_pattern 'cleavage; by thrombin' matches 47/82396 proteins, mostly coagulation substrates (fibrinogen, factor V) rather than PAR-family GPCRs; its sibling pattern 'cleavage; by trypsin' (12/82396) stays under threshold and is unaffected by this removal."
+   }
+  ],
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": []
@@ -3945,7 +3948,8 @@
   "n_resolved": 3,
   "n_uncertain": 0,
   "n_issues": 1,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "selectivity filter",
@@ -3953,10 +3957,10 @@
      "Q9UK17",
      "Q9Z0V1",
      "Q9Z0V2"
-    ]
+    ],
+    "reason": "REVERTED after independent_accessions() bugfix (2026-08-19): text_pattern 'selectivity filter' -- all 3 witnesses' MOTIF evidence cites the same external ECO:0000250|UniProtKB:P63142 (one curated record, not 3 independent witnesses); the fixed independent_accessions() now collapses these to 1 source, below AGREEMENT_THRESHOLD=2."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": [
@@ -6713,17 +6717,18 @@
   "n_resolved": 3,
   "n_uncertain": 0,
   "n_issues": 1,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "proton donor",
     "accessions": [
      "P13697",
      "Q8BMF3"
-    ]
+    ],
+    "reason": "REVERTED after independent Opus audit (2026-08-19): text_pattern 'proton donor' fires on 2724/82396 proteins, already reused by 109 other entries; both witnesses' ACT_SITE evidence cites the same external source ECO:0000250|UniProtKB:P23368."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [
    {
     "kind": "text",
@@ -9101,17 +9106,18 @@
   "n_resolved": 2,
   "n_uncertain": 0,
   "n_issues": 2,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "selectivity filter",
     "accessions": [
      "A1CWT6",
      "Q7S4I4"
-    ]
+    ],
+    "reason": "REVERTED after user-approved threshold purge (2026-08-19): text_pattern 'selectivity filter' matches 333/82396 proteins dataset-wide (NARROW_TEXT_THRESHOLD=30) -- says nothing about uniport specifically."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": [
@@ -12060,17 +12066,18 @@
   "n_resolved": 2,
   "n_uncertain": 0,
   "n_issues": 0,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "redox-sensitive site",
     "accessions": [
      "P07943",
      "P45376"
-    ]
+    ],
+    "reason": "REVERTED after independent Opus audit (2026-08-19): text_pattern 'redox-sensitive site' -- both witnesses are 316-aa aldose-reductase orthologs with byte-identical feature sets, both citing ECO:0000250|UniProtKB:P15121 (one curated record); the site is the regulatory/thiol-modification Cys of aldo-keto reductases, unrelated to NAD+-dependent dihydrodiol dehydrogenation."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": []
@@ -12829,7 +12836,8 @@
   "n_resolved": 4,
   "n_uncertain": 0,
   "n_issues": 0,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "domain_accessions",
     "value": [
@@ -12840,10 +12848,10 @@
      "Q70EL3",
      "Q9UHP3"
     ],
-    "note": "resolved from DOMAIN note 'USP' (5 bridged accession(s) dropped for being too generic)"
+    "note": "resolved from DOMAIN note 'USP' (5 bridged accession(s) dropped for being too generic)",
+    "reason": "REVERTED after independent Opus audit (2026-08-19): domain_accessions Pfam:PF21909 (USP_UIM_N) is the non-catalytic UIM-bearing N-terminal extension unique to USP25/USP28, carried by only 1 of 3 witnesses (Q9UHP3); the catalytic USP/UCH domain that actually performs the isopeptidase chemistry (PF00443, PS50235) was discarded for dataset-wide frequency. Points at an accessory domain of one paralog pair, not the catalytic mechanism."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [
    {
     "kind": "text",
@@ -13409,17 +13417,18 @@
   "n_resolved": 2,
   "n_uncertain": 0,
   "n_issues": 0,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "itim motif 1",
     "accessions": [
      "P97484",
      "Q8NHL6"
-    ]
+    ],
+    "reason": "REVERTED after independent Opus audit (2026-08-19): text_pattern 'itim motif 1' is a generic inhibitory-signalling motif (26 proteins here) carrying no information about MHC-I ligand subclass, which is the entire content of this term. Also self-refuting: the identical value from the identical two witnesses (P97484, Q8NHL6) was also merged for GO:0030109 (HLA-B-specific) -- one signature cannot mean both HLA-A-specific and HLA-B-specific."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": []
@@ -13459,17 +13468,18 @@
   "n_resolved": 3,
   "n_uncertain": 0,
   "n_issues": 0,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "itim motif 1",
     "accessions": [
      "P97484",
      "Q8NHL6"
-    ]
+    ],
+    "reason": "REVERTED after independent Opus audit (2026-08-19): text_pattern 'itim motif 1' -- identical value from the identical two witnesses (P97484, Q8NHL6) as GO:0030107 (HLA-A-specific); self-refuting as a localization rule for two mutually-exclusive terms, and ITIM itself is a generic inhibitory motif (26 proteins here) uninformative about MHC-I subclass."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [
    {
     "kind": "text",
@@ -15532,17 +15542,18 @@
   "n_resolved": 2,
   "n_uncertain": 0,
   "n_issues": 0,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "important for receptor binding",
     "accessions": [
      "O70176",
      "P13589"
-    ]
+    ],
+    "reason": "REVERTED after independent Opus audit (2026-08-19): text_pattern 'important for receptor binding' -- both witnesses are 175-aa PACAP orthologs with the identical single REGION 148-157, both citing ECO:0000250|UniProtKB:P18509 (one curated record); the phrase is contentless and already attached to 6 other dictionary GO terms across unrelated receptor systems."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": []
@@ -19614,7 +19625,8 @@
   "n_resolved": 2,
   "n_uncertain": 0,
   "n_issues": 1,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "domain_accessions",
     "value": [
@@ -19625,10 +19637,10 @@
      "P01730",
      "P06332"
     ],
-    "note": "resolved from DOMAIN note 'Ig-like C2-type 1' (8 bridged accession(s) dropped for being too generic)"
+    "note": "resolved from DOMAIN note 'Ig-like C2-type 1' (8 bridged accession(s) dropped for being too generic)",
+    "reason": "REVERTED after independent Opus audit (2026-08-19): domain_accessions InterPro:IPR008424/Pfam:PF05790 (generic Ig-like C2-set fold) -- IL-16 binds CD4, and both witnesses (P01730 human CD4, P06332 mouse Cd4) carry CD4-specific accessions (IPR000973 CD4, PF09191 CD4-extracel) that never bridged because the DOMAIN note's text ('Ig-like C2-type 1') only token-overlapped the generic Ig-fold xref, not the CD4-specific ones; what landed explains nothing CD4-specific."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": [
@@ -19936,7 +19948,8 @@
   "n_resolved": 3,
   "n_uncertain": 0,
   "n_issues": 1,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "domain_accessions",
     "value": [
@@ -19946,10 +19959,10 @@
      "P07307",
      "P49300"
     ],
-    "note": "resolved from DOMAIN note 'C-type lectin' (7 bridged accession(s) dropped for being too generic)"
+    "note": "resolved from DOMAIN note 'C-type lectin' (7 bridged accession(s) dropped for being too generic)",
+    "reason": "REVERTED after independent Opus audit (2026-08-19): domain_accessions Pfam:PF03954 (Lectin_N) is the N-terminal neck region of ASGPR-type lectins, not the carbohydrate-recognition domain -- the actual CRD (PF00059 Lectin_C) was dropped for dataset-wide frequency. Both witnesses (P07307 ASGR2, P49300) are galactose/GalNAc-type lectins; C-type-lectin membership alone implies no fucose specificity."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [
    {
     "kind": "ligand",
@@ -21773,17 +21786,18 @@
   "n_resolved": 3,
   "n_uncertain": 0,
   "n_issues": 1,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "wsxws motif",
     "accessions": [
      "P40189",
      "P40190"
-    ]
+    ],
+    "reason": "REVERTED after independent Opus audit (2026-08-19): text_pattern 'wsxws motif' is the defining motif of every type-I cytokine receptor (77 proteins here, already in 10 other dictionary entries); both witnesses are gp130 orthologs (human/mouse IL6ST) -- one protein, two species, nothing about IL-27 specifically."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [
    {
     "kind": "text",
@@ -22657,17 +22671,18 @@
   "n_resolved": 3,
   "n_uncertain": 0,
   "n_issues": 1,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "lowers pka of active site tyr",
     "accessions": [
      "P70694",
      "Q04828"
-    ]
+    ],
+    "reason": "REVERTED after user-approved threshold purge (2026-08-19): text_pattern 'lowers pka of active site tyr' matches 143/82396 proteins -- the AKR-superfamily catalytic-tetrad His, family-correct but says nothing about the specific steroid substrate the term names."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [
    {
     "kind": "ligand",
@@ -22894,17 +22909,18 @@
   "n_resolved": 2,
   "n_uncertain": 0,
   "n_issues": 2,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "activates thiol group during catalysis",
     "accessions": [
      "O34425",
      "P09315"
-    ]
+    ],
+    "reason": "REVERTED after user-approved threshold purge (2026-08-19): text_pattern 'activates thiol group during catalysis' matches 42/82396 proteins, all GAPDH-family, but cannot separate NADP+-dependent GAPDH (this term) from NAD+-dependent GAPDH (GO:0004365) -- precisely the distinction the term makes."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": [
@@ -23111,17 +23127,18 @@
   "n_resolved": 2,
   "n_uncertain": 1,
   "n_issues": 1,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "hxxxxd motif",
     "accessions": [
      "Q16635",
      "Q8S8S2"
-    ]
+    ],
+    "reason": "REVERTED after independent_accessions() bugfix (2026-08-19): text_pattern 'hxxxxd motif' -- both witnesses' MOTIF evidence cites the same external ECO:0000250|UniProtKB:Q3TFD2; the fixed independent_accessions() now collapses these to 1 source."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [
    {
@@ -23594,17 +23611,18 @@
   "n_resolved": 2,
   "n_uncertain": 0,
   "n_issues": 1,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "acyl-ester intermediate",
     "accessions": [
      "O00748",
      "P23141"
-    ]
+    ],
+    "reason": "REVERTED after user-approved threshold purge (2026-08-19): text_pattern 'acyl-ester intermediate' matches 147/82396 proteins -- the type-B carboxylesterase catalytic serine, family-correct but substrate-blind."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": [
@@ -23619,17 +23637,18 @@
   "n_resolved": 3,
   "n_uncertain": 0,
   "n_issues": 1,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "acyl-ester intermediate",
     "accessions": [
      "G3V7J5",
      "Q64573"
-    ]
+    ],
+    "reason": "REVERTED after user-approved threshold purge (2026-08-19): text_pattern 'acyl-ester intermediate' matches 147/82396 proteins -- same pattern as GO:0047374, on a different substrate-specific term; one signature cannot localize two different substrate specificities."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [
    {
     "kind": "text",
@@ -41279,7 +41298,8 @@
   "n_resolved": 3,
   "n_uncertain": 0,
   "n_issues": 1,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "gas motif; ion selectivity filter",
@@ -41287,10 +41307,10 @@
      "Q708S5",
      "Q925H0",
      "Q9UHC3"
-    ]
+    ],
+    "reason": "REVERTED after independent_accessions() bugfix (2026-08-19): text_pattern 'gas motif; ion selectivity filter' -- all 3 witnesses' MOTIF evidence cites the same external ECO:0000250|UniProtKB:P78348; the fixed independent_accessions() now collapses these to 1 source."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": [
@@ -42864,17 +42884,18 @@
   "n_resolved": 2,
   "n_uncertain": 0,
   "n_issues": 2,
-  "merged": [
+  "merged": [],
+  "unmerged_agreements": [
    {
     "field": "text_patterns",
     "value": "proton acceptor",
     "accessions": [
      "O75356",
      "Q9ER31"
-    ]
+    ],
+    "reason": "REVERTED after independent Opus audit (2026-08-19): text_pattern 'proton acceptor' fires on 5219/82396 proteins dataset-wide, already reused as the text_pattern of 286 other dictionary entries -- zero discriminative content for IDP phosphatase specifically; both witnesses' ACT_SITE evidence cites the same external source ECO:0000250|UniProtKB:P23368 (one curated record, not two independent witnesses)."
    }
   ],
-  "unmerged_agreements": [],
   "unconfirmed_singletons": [],
   "uncertain": [],
   "issues": [

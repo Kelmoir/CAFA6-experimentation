@@ -1038,15 +1038,6 @@
    "arginine finger; crucial for gtp hydrolysis by stabilizing the transition state"
   ]
  },
- "GO:0001566": {
-  "name": "non-kinase phorbol ester receptor activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "phorbol-ester/dag-type"
-  ]
- },
  "GO:0001567": {
   "name": "cholesterol 25-hydroxylase activity",
   "ligands": [],
@@ -1200,7 +1191,6 @@
   "feature_types": [],
   "domain_accessions": [],
   "text_patterns": [
-   "cleavage; by thrombin",
    "cleavage; by trypsin"
   ]
  },
@@ -4781,15 +4771,6 @@
    "selectivity filter part_1"
   ]
  },
- "GO:0005250": {
-  "name": "A-type (transient outward) potassium channel activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "selectivity filter"
-  ]
- },
  "GO:0005251": {
   "name": "delayed rectifier potassium channel activity",
   "ligands": [],
@@ -6802,15 +6783,6 @@
    "influences the redox potential of the prosthetic heme and fad groups"
   ]
  },
- "GO:0008948": {
-  "name": "oxaloacetate decarboxylase activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "proton donor"
-  ]
- },
  "GO:0008970": {
   "name": "phospholipase A1 activity",
   "ligands": [],
@@ -8339,15 +8311,6 @@
    "PROSITE:PS01259"
   ],
   "text_patterns": []
- },
- "GO:0015292": {
-  "name": "uniporter activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "selectivity filter"
-  ]
  },
  "GO:0015295": {
   "name": "solute:proton symporter activity",
@@ -10410,15 +10373,6 @@
    "proton acceptor"
   ]
  },
- "GO:0018505": {
-  "name": "cis-1,2-dihydro-1,2-dihydroxynaphthalene dehydrogenase activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "redox-sensitive site"
-  ]
- },
  "GO:0018549": {
   "name": "methanethiol oxidase activity",
   "ligands": [],
@@ -10783,15 +10737,6 @@
   "text_patterns": [
    "glycyl thioester intermediate"
   ]
- },
- "GO:0019783": {
-  "name": "ubiquitin-like protein peptidase activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [
-   "Pfam:PF21909"
-  ],
-  "text_patterns": []
  },
  "GO:0019784": {
   "name": "deNEDDylase activity",
@@ -11380,24 +11325,6 @@
    "Pfam:PF07159"
   ],
   "text_patterns": []
- },
- "GO:0030107": {
-  "name": "HLA-A specific inhibitory MHC class I receptor activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "itim motif 1"
-  ]
- },
- "GO:0030109": {
-  "name": "HLA-B specific inhibitory MHC class I receptor activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "itim motif 1"
-  ]
  },
  "GO:0030145": {
   "name": "manganese ion binding",
@@ -13633,15 +13560,6 @@
    "Pfam:PF01279",
    "PROSITE:PS00335"
   ],
-  "text_patterns": [
-   "important for receptor binding"
-  ]
- },
- "GO:0031858": {
-  "name": "pituitary adenylate cyclase-activating polypeptide receptor binding",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
   "text_patterns": [
    "important for receptor binding"
   ]
@@ -17423,16 +17341,6 @@
    "box 1 motif"
   ]
  },
- "GO:0042011": {
-  "name": "interleukin-16 binding",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [
-   "InterPro:IPR008424",
-   "Pfam:PF05790"
-  ],
-  "text_patterns": []
- },
  "GO:0042018": {
   "name": "interleukin-22 receptor activity",
   "ligands": [],
@@ -17899,15 +17807,6 @@
    "essential for interaction with hif1an",
    "interaction with cflar"
   ]
- },
- "GO:0042806": {
-  "name": "fucose binding",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [
-   "Pfam:PF03954"
-  ],
-  "text_patterns": []
  },
  "GO:0042809": {
   "name": "nuclear vitamin D receptor binding",
@@ -19564,15 +19463,6 @@
   ],
   "text_patterns": []
  },
- "GO:0045509": {
-  "name": "interleukin-27 receptor activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "wsxws motif"
-  ]
- },
  "GO:0045513": {
   "name": "interleukin-27 binding",
   "ligands": [],
@@ -20217,15 +20107,6 @@
    "acyl-thioester intermediate"
   ]
  },
- "GO:0047006": {
-  "name": "17-alpha,20-alpha-dihydroxypregn-4-en-3-one dehydrogenase [NAD(P)+] activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "lowers pka of active site tyr"
-  ]
- },
  "GO:0047011": {
   "name": "2-dehydropantolactone reductase (A-specific) activity",
   "ligands": [],
@@ -20471,15 +20352,6 @@
    "important for substrate specificity"
   ]
  },
- "GO:0047100": {
-  "name": "glyceraldehyde-3-phosphate dehydrogenase (NADP+) (phosphorylating) activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "activates thiol group during catalysis"
-  ]
- },
  "GO:0047107": {
   "name": "gamma-guanidinobutyraldehyde dehydrogenase (NAD+) activity",
   "ligands": [],
@@ -20573,15 +20445,6 @@
    "hxxxd motif",
    "dfgwg motif",
    "proton acceptor"
-  ]
- },
- "GO:0047184": {
-  "name": "1-acylglycerophosphocholine O-acyltransferase activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "hxxxxd motif"
   ]
  },
  "GO:0047186": {
@@ -20850,24 +20713,6 @@
   ],
   "text_patterns": [
    "charge relay system"
-  ]
- },
- "GO:0047374": {
-  "name": "methylumbelliferyl-acetate deacetylase activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "acyl-ester intermediate"
-  ]
- },
- "GO:0047376": {
-  "name": "all-trans-retinyl-palmitate hydrolase, all-trans-retinol forming activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "acyl-ester intermediate"
   ]
  },
  "GO:0047385": {
@@ -34882,15 +34727,6 @@
    "sh3-binding"
   ]
  },
- "GO:0160125": {
-  "name": "pH-gated sodium channel activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "gas motif; ion selectivity filter"
-  ]
- },
  "GO:0160126": {
   "name": "pH-gated calcium channel activity",
   "ligands": [],
@@ -36325,15 +36161,6 @@
   "domain_accessions": [],
   "text_patterns": [
    "proton donor"
-  ]
- },
- "GO:1990003": {
-  "name": "IDP phosphatase activity",
-  "ligands": [],
-  "feature_types": [],
-  "domain_accessions": [],
-  "text_patterns": [
-   "proton acceptor"
   ]
  },
  "GO:1990080": {
