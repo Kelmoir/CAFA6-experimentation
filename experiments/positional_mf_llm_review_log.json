@@ -22340,13 +22340,13 @@
    {
     "field": "domain_accessions",
     "value": [
-     "InterPro:IPR050828"
+     "InterPro:IPR033992"
     ],
     "accessions": [
      "Q8C1T8",
      "Q9D676"
     ],
-    "note": "resolved from DOMAIN note 'C-type lectin' (4 bridged accession(s) dropped for being too generic)"
+    "note": "resolved from DOMAIN note 'C-type lectin', manually corrected 2026-08-19: both witnesses (Q8C1T8, Q9D676) actually carry InterPro:IPR033992 (NKR-like_CTLD -- literally 'NK-receptor-like C-type lectin domain') in their own domain_xrefs, a name-for-name match to this GO term. The broader IPR050828 (C-type_lectin/matrix_domain, freq 9) had won the token-overlap match against the DOMAIN note text instead and was merged first; swapped to IPR033992 on user review despite its higher dataset-wide frequency (56, above NARROW_DOMAIN_THRESHOLD=15) -- accepted because the accession's own name is diagnostic of the exact NK-receptor class this term names, unlike a coincidentally-shared generic fold"
    }
   ],
   "unmerged_agreements": [],
