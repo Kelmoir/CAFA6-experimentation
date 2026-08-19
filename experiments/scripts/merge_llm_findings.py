@@ -62,12 +62,29 @@ DICT_PATH = Path("experiments/positional_mf_localization_dictionary.json")
 LOG_PATH = Path("experiments/positional_mf_llm_review_log.json")
 AGREEMENT_THRESHOLD = 2
 NARROW_DOMAIN_THRESHOLD = 15
+# Text-pattern analogue of NARROW_DOMAIN_THRESHOLD: how many proteins dataset-wide have some
+# TEXT_TIER_FEATURE_TYPES note containing the candidate pattern as a substring (the same test
+# link_protein itself applies). Set higher than the domain threshold because substring matching
+# against free-text notes naturally has a wider match surface than an exact accession id, but an
+# Opus audit of the first 48 LLM merges found this cap was needed regardless: catalytic-residue
+# labels like "proton donor" (2724 proteins) and "proton acceptor" (5219 proteins) passed the old
+# length-only is_specific_text check and ended up reused as the text_pattern for over 100 unrelated
+# dictionary entries each -- agreement between 2 reviewed proteins never meant the phrase was
+# specific to their shared GO term, just that the phrase was real.
+NARROW_TEXT_THRESHOLD = 30
+TEXT_TIER_FEATURE_TYPES = {"ACT_SITE", "SITE", "MOTIF", "REGION", "ZN_FING"}
 GENERIC_LIGANDS = {
     "atp", "gtp", "adp", "gdp", "amp", "substrate", "product", "water", "nadh", "nad+", "nadph",
     "nadp+", "fad", "fmn", "coenzyme a", "pyridoxal 5'-phosphate", "heme", "heme b", "dna", "rna",
 }
 GENERIC_LIGAND_PREFIXES = ("a divalent", "an ", "a ")
-GENERIC_TEXT_NOTES = {"disordered", "cleavage", "n-acetylmethionine", "phosphoserine", "phosphothreonine"}
+# "proton donor"/"proton acceptor" are the two catalytic-residue labels the Opus audit caught
+# concretely (see NARROW_TEXT_THRESHOLD above); listed explicitly, not just left to the frequency
+# check, since they're common enough phrases worth rejecting on sight without a raw_features scan.
+GENERIC_TEXT_NOTES = {
+    "disordered", "cleavage", "n-acetylmethionine", "phosphoserine", "phosphothreonine",
+    "proton donor", "proton acceptor",
+}
 
 
 def normalize(text):
@@ -76,7 +93,22 @@ def normalize(text):
   return set(re.split(r"[\s\-_,]+", text.lower())) - {""}
 
 
-def is_specific_text(norm_value):
+def text_pattern_frequency(raw_features, pattern):
+  """How many distinct proteins dataset-wide have some TEXT_TIER_FEATURE_TYPES note containing
+  pattern as a (lowercase) substring -- the exact test link_protein applies. Counts proteins, not
+  occurrences, since link_protein only needs one match per feature to add a candidate."""
+  count = 0
+  for rec in raw_features.values():
+    for f in rec.get("features", []):
+      if f["type"] in TEXT_TIER_FEATURE_TYPES:
+        note = (f.get("qualifiers", {}).get("note") or "").lower()
+        if pattern in note:
+          count += 1
+          break
+  return count
+
+
+def is_specific_text(raw_features, norm_value):
   """Mirrors term_gap_autolink.py's is_specific_text: a text_pattern needs to be a real phrase
   (>=10 chars, contains a space or hyphen), not a single bare word -- otherwise it risks becoming
   a global substring trigger (link_protein matches text_patterns via `pattern in note`, checked
@@ -84,10 +116,17 @@ def is_specific_text(norm_value):
   until a real near-miss surfaced it: two unrelated pseudouridine synthases both had an ACT_SITE
   note that was just the bare word "Nucleophile" -- a catalytic-residue label generic enough to
   appear on countless unrelated hydrolase/transferase active sites, not specific to either protein's
-  actual GO term. 2/2 agreement alone doesn't make a single generic word safe to generalize."""
+  actual GO term. 2/2 agreement alone doesn't make a single generic word safe to generalize.
+
+  The length/space-or-hyphen check alone still let real generic phrases through -- "proton donor"
+  and "proton acceptor" both pass it easily. NARROW_TEXT_THRESHOLD (dataset-wide substring-match
+  frequency, the same idea as NARROW_DOMAIN_THRESHOLD for accessions) catches those, and any future
+  phrase shaped the same way, without needing another name added to GENERIC_TEXT_NOTES by hand."""
   if norm_value in GENERIC_TEXT_NOTES:
     return False
-  return len(norm_value) >= 10 and (" " in norm_value or "-" in norm_value)
+  if not (len(norm_value) >= 10 and (" " in norm_value or "-" in norm_value)):
+    return False
+  return text_pattern_frequency(raw_features, norm_value) <= NARROW_TEXT_THRESHOLD
 
 
 def is_generic_ligand(lig):
@@ -118,14 +157,33 @@ def independent_accessions(raw_features, entries):
   accessions where one's annotation cited the other's UniProtKB accession as its evidence source --
   the AGREEMENT_THRESHOLD=2 gate was satisfied by one real witness counted twice, not two
   independent ones. A 3+-accession group survives fine as long as enough OTHER members are
-  independently evidenced; this only screens out groups that don't actually have 2 real sources."""
+  independently evidenced; this only screens out groups that don't actually have 2 real sources.
+
+  A second, commoner variant of the same loophole slipped through the original version of this
+  check: N accessions each citing the SAME THIRD-PARTY accession outside the group (e.g. 3 rodent
+  ion-channel orthologs whose ACT_SITE/BINDING features are all independently annotated
+  'ECO:0000250|UniProtKB:P63142', a single curated source none of them shares with each other by
+  name) -- the old check only looked for citations of other members of the SAME group, so this
+  passed as "3 independent witnesses" when it's really one curated record propagated to 3 orthologs
+  and counted 3 times. Caught concretely by an Opus audit of the first 48 merges: GO:0005250,
+  GO:0008948, GO:0018505, GO:0031858, GO:0047184, and GO:0160125 all rested on exactly this pattern.
+  Every entry is now attributed to a "source" -- the external UniProtKB accession its evidence cites
+  by similarity, or itself if its evidence is a direct/primary observation -- and entries sharing a
+  source collapse to one representative, since they're not independent of each other either."""
   accs = {e["accession"] for e in entries}
-  derivative = set()
+  sources = {}
   for e in entries:
     ev = get_evidence(raw_features, e["accession"], e["feature_type"], e["start"], e["end"])
-    if any(f"UniProtKB:{other}" in ev for other in accs if other != e["accession"]):
-      derivative.add(e["accession"])
-  return accs - derivative
+    cited = re.findall(r"UniProtKB:(\w+)", ev)
+    if any(c in accs and c != e["accession"] for c in cited):
+      continue  # derivative from another member of THIS group -- excluded outright, as before
+    sources[e["accession"]] = cited[0] if cited else e["accession"]
+  kept, seen_sources = set(), set()
+  for acc, src in sources.items():
+    if src not in seen_sources:
+      seen_sources.add(src)
+      kept.add(acc)
+  return kept
 
 
 def build_domain_freq(raw_features):
@@ -140,15 +198,26 @@ def resolve_domain_accessions(raw_features, accessions, note):
   """For a DOMAIN feature's note, find which of each corroborating protein's domain_xrefs it
   plausibly bridges to (same test build_positional_mf_links.py's link_protein uses), across all
   proteins in the agreeing group -- union of whatever resolves, since different proteins in the
-  same family may carry different subsets of PROSITE/Pfam/InterPro cross-references."""
+  same family may carry different subsets of PROSITE/Pfam/InterPro cross-references (e.g. a
+  heterodimeric transporter's two witnesses legitimately each carry only their own subunit's
+  accession, and both belong in the union -- GO:0015439's CydC/CydD merge is a real, correct
+  instance of this). So this deliberately does NOT require an accession to be carried by >=2
+  witnesses to be included -- a per-accession witness count is returned alongside instead, purely
+  for visibility (recorded in the merge log's note field), since an Opus audit of the first 48
+  merges found the union sometimes let ONE witness's own idiosyncratic cross-reference dominate a
+  merge that read as "N witnesses agree" (13 of 28 domain merges had a resolved accession carried
+  by only 1 of N witnesses) -- not always wrong (as the CydC/CydD case shows) but always worth a
+  human being able to see at a glance."""
   note_tokens = normalize(note)
-  resolved = set()
+  witnesses = defaultdict(set)
   for acc in accessions:
     rec = raw_features.get(acc, {})
     for d in rec.get("domain_xrefs", []):
       if note_tokens & normalize(d["description"]):
-        resolved.add(f"{d['db']}:{d['accession']}")
-  return sorted(resolved)
+        witnesses[f"{d['db']}:{d['accession']}"].add(acc)
+  resolved = sorted(witnesses)
+  witness_counts = {a: sorted(witnesses[a]) for a in resolved}
+  return resolved, witness_counts
 
 
 def main():
@@ -224,17 +293,18 @@ def main():
         existing_ligands[original_value] = go_id
       merged.append({"field": "ligands", "value": original_value, "accessions": accessions})
     elif kind == "text" and ftype != "DOMAIN":
-      if not is_specific_text(norm_value):
+      if not is_specific_text(raw_features, norm_value):
         unmerged_agreements.append({
             "kind": kind, "feature_type": ftype, "value": norm_value, "accessions": accessions,
             "reason": "agreed, but the note is too short/generic a phrase (or a known-generic "
-                      "catalytic-residue label) to trust as a global substring trigger for this term"})
+                      "catalytic-residue label, or matches too many proteins dataset-wide -- see "
+                      "NARROW_TEXT_THRESHOLD) to trust as a global substring trigger for this term"})
         continue
       if norm_value not in entry["text_patterns"]:
         entry["text_patterns"].append(norm_value)
       merged.append({"field": "text_patterns", "value": norm_value, "accessions": accessions})
     elif kind == "text" and ftype == "DOMAIN":
-      bridged = resolve_domain_accessions(raw_features, accessions, original_value)
+      bridged, witness_counts = resolve_domain_accessions(raw_features, accessions, original_value)
       narrow = [a for a in bridged if domain_freq.get(a, 999999) <= NARROW_DOMAIN_THRESHOLD]
       if not bridged:
         unmerged_agreements.append({
@@ -253,6 +323,7 @@ def main():
       added = [a for a in narrow if a not in entry["domain_accessions"]]
       entry["domain_accessions"].extend(added)
       merged.append({"field": "domain_accessions", "value": narrow, "accessions": accessions,
+                      "witness_counts": {a: witness_counts[a] for a in narrow},
                       "note": f"resolved from DOMAIN note {original_value!r}"
                               + (f" ({len(bridged) - len(narrow)} bridged accession(s) dropped "
                                  "for being too generic)" if len(narrow) < len(bridged) else "")})

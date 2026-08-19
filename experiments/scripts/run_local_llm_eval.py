@@ -65,7 +65,7 @@ def check_match(raw_features, accession, ftype, start, end, expected):
   if field == "domain_accessions":
     if not (kind == "text" and ftype == "DOMAIN"):
       return False, f"expected a DOMAIN note, model pointed at {ftype} ({kind}={value!r})"
-    resolved = mlf.resolve_domain_accessions(raw_features, [accession], value)
+    resolved, _witness_counts = mlf.resolve_domain_accessions(raw_features, [accession], value)
     overlap = sorted(set(resolved) & set(exp_value))
     if overlap:
       return True, f"DOMAIN note {value!r} resolved to {resolved}, overlaps expected {exp_value}"
