@@ -6,8 +6,9 @@ from pathlib import Path
 import numpy as np
 from progressbar import progressbar
 import datasets
-import random
 import json
+
+from split_utils import compute_cluster_aware_split
 
 prot_sequences = {}
 unique_prot = []
@@ -234,18 +235,17 @@ def main():
 
   # 1. Get unique protein IDs
   unique_protein_ids = list(train_df['EntryID'].unique())
-  random.seed(42)
-  random.shuffle(unique_protein_ids)
 
-  # 2. Split IDs manually (80/20 split)
-  test_size = int(len(unique_protein_ids) * 0.18)
-  train_val_ids = unique_protein_ids[:-test_size]
-  test_ids = unique_protein_ids[-test_size:]
-
-  # 3. Split Train/Val IDs (80/20 of the 80%)
-  val_size = int(len(train_val_ids) * 0.22)
-  train_ids = train_val_ids[:-val_size]
-  val_ids = train_val_ids[-val_size:]
+  # 2. Cluster-aware split (same ~64/18/18 target proportions as the original plain-random
+  # split, but assigning whole CD-HIT clusters -- ~90-99% sequence identity, from
+  # data/.../Train/split.fasta.clstr -- to a single split, so no near-duplicate sequence pair
+  # straddles train/val/test. See split_utils.py's docstring for why this matters: a
+  # span-localization model trained against the old split scored suspiciously well, traced to
+  # 17.4% of validation proteins sharing a cluster with a training protein.
+  split_assignment = compute_cluster_aware_split(unique_protein_ids)
+  train_ids = [pid for pid in unique_protein_ids if split_assignment[pid] == "train"]
+  val_ids = [pid for pid in unique_protein_ids if split_assignment[pid] == "validation"]
+  test_ids = [pid for pid in unique_protein_ids if split_assignment[pid] == "test"]
 
   print(f"Splitting IDs: Train={len(train_ids)}, Val={len(val_ids)}, Test={len(test_ids)}")
 
