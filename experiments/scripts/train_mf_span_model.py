@@ -32,12 +32,18 @@ from the dataset before committing to any of this):
 
 This script builds the pair-level dataset, precomputes (and caches) label text embeddings for
 every distinct GO id encountered, defines the FiLM-conditioned ESM-2 span model, and runs a plain
-PyTorch training loop (same manual-loop style as training_run.py, no Trainer abstraction). No
-Hub-push/trackio wiring yet -- this is the "get a first working model" step; that infra can be
-ported over from training_run.py once there's a config worth promoting.
+PyTorch training loop (same manual-loop style as training_run.py, no Trainer abstraction). The
+best (lowest val_loss) checkpoint is saved locally every epoch it improves and can optionally be
+pushed to the Hub via --push-to-hub (see save_checkpoint/push_checkpoint_to_hub below) -- this
+model isn't a transformers PreTrainedModel (it's a plain nn.Module: ESM backbone + FiLM layers +
+span head), so checkpointing is state_dict + a small span_model_config.json rather than
+save_pretrained/push_to_hub, and load_span_model() reconstructs it on the other end. Also logs
+per-epoch metrics to trackio if installed, local-only (no Hub Space) since training now runs on
+local hardware -- see init_trackio_run below.
 """
 import argparse
 import json
+import os
 import random
 import re
 from collections import defaultdict
@@ -47,15 +53,23 @@ import numpy as np
 import obonet
 import torch
 import torch.nn as nn
+from huggingface_hub import HfApi, get_token, hf_hub_download
+from safetensors.torch import load_file, save_file
 from torch.optim import AdamW
 from torch.utils.data import DataLoader, Dataset
 from transformers import AutoModel, AutoTokenizer, EsmModel, EsmTokenizer
+
+try:
+  import trackio
+except ImportError:  # pragma: no cover - optional dependency
+  trackio = None
 
 DATA_PATH = Path("./data/cafa-6-protein-function-prediction")
 LOCAL_DATASET_PATH = DATA_PATH / "dataset_mf_placed"
 HUB_DATASET_ID = "kelmoir/cafa6_mf_placed"
 OBO_PATH = DATA_PATH / "Train" / "go-basic.obo"
 GO_TEXT_CACHE_PATH = Path("experiments/positional_mf_go_term_texts.json")
+HF_REPO_ID = os.getenv("HF_MF_SPAN_REPO_ID", "kelmoir/cafa6-mf-span")
 
 WHOLE_PROTEIN_SOURCE = "domain_whole_protein_fallback"
 LABEL_TEXT_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
@@ -317,6 +331,115 @@ def compute_pos_weight(examples):
 
 
 # --------------------------------------------------------------------------------------------
+# Experiment tracking -- local trackio only (no space_id): training now runs on local hardware
+# (a single ~15GB-usable-VRAM GPU, not Colab), and trackio's Hub-Space persistence isn't a fit
+# for that -- see training_run.py's init_trackio_run for the Space-backed variant this project
+# used with Colab. trackio.init() with no space_id writes to a local sqlite db and serves its
+# own local dashboard (`trackio show`), which is exactly what's wanted here.
+# --------------------------------------------------------------------------------------------
+
+def init_trackio_run(run_name, config=None):
+  if trackio is None:
+    print("[INFO] trackio is not installed; skipping experiment tracking.")
+    return None
+  try:
+    trackio.init(project="cafa6-mf-span", name=run_name, config=config)
+    return trackio
+  except Exception as exc:  # pragma: no cover - runtime dependency
+    print(f"[WARN] Could not initialize trackio: {exc}")
+    return None
+
+
+# --------------------------------------------------------------------------------------------
+# Checkpointing -- this model is a plain nn.Module (ESM backbone + FiLM layers + span head), not
+# a transformers PreTrainedModel, so there's no save_pretrained/push_to_hub to lean on. Saves the
+# full state dict (safetensors) plus a small span_model_config.json recording the constructor
+# args needed to rebuild the architecture before loading weights back in -- same
+# local-dir-then-upload_folder pattern training_run.py's push_checkpoint uses. Kept self-contained
+# here rather than imported from training_run.py: colab exec -f only ever transmits a single
+# local file's source to the remote VM, no sibling-module imports (see CLAUDE.md).
+# --------------------------------------------------------------------------------------------
+
+def get_hf_token(hf_token_file=None):
+  try:
+    from google.colab import userdata  # type: ignore
+    token = userdata.get("HF_TOKEN")
+    if token:
+      print("[INFO] HF token resolved via Colab Secrets")
+      return token
+  except Exception:
+    pass
+
+  if hf_token_file:
+    try:
+      token = Path(hf_token_file).read_text().strip()
+      os.remove(hf_token_file)
+      if token:
+        print("[INFO] HF token resolved via --hf-token-file")
+        return token
+    except Exception as exc:
+      print(f"[WARN] Could not read --hf-token-file {hf_token_file}: {exc}")
+
+  env_token = os.getenv("HF_TOKEN")
+  if env_token:
+    print("[INFO] HF token resolved via HF_TOKEN env var")
+    return env_token
+
+  cached_token = get_token()
+  if cached_token:
+    print("[INFO] HF token resolved via huggingface_hub cache")
+    return cached_token
+
+  print("[WARN] No HF token found from any source")
+  return None
+
+
+def save_checkpoint(model, tokenizer, local_dir, esm_model_name, label_dim, unfreeze_last_n,
+                     output_dropout, epoch, metrics, config):
+  local_dir.mkdir(parents=True, exist_ok=True)
+  state_dict = {k: v.detach().cpu().contiguous() for k, v in model.state_dict().items()}
+  save_file(state_dict, local_dir / "model.safetensors")
+  tokenizer.save_pretrained(local_dir)
+  span_config = {
+      "esm_model_name": esm_model_name, "label_dim": label_dim,
+      "unfreeze_last_n": unfreeze_last_n, "output_dropout": output_dropout,
+  }
+  (local_dir / "span_model_config.json").write_text(json.dumps(span_config, indent=1))
+  (local_dir / "trial_metrics.json").write_text(
+      json.dumps({"epoch": epoch, **metrics, "config": config}, default=str))
+
+
+def push_checkpoint_to_hub(local_dir, repo_id, branch, token, epoch, metrics):
+  api = HfApi()
+  api.create_repo(repo_id, repo_type="model", private=True, exist_ok=True, token=token)
+  api.create_branch(repo_id, branch=branch, exist_ok=True, token=token)
+  api.upload_folder(
+      repo_id=repo_id, folder_path=str(local_dir), revision=branch, token=token,
+      commit_message=f"epoch {epoch}: val_loss={metrics.get('val_loss', float('nan')):.4f}",
+  )
+
+
+def load_span_model(repo_id_or_path, device="cpu", revision=None):
+  """Reconstruct a SpanLocalizationModel from a checkpoint written by save_checkpoint() --
+  repo_id_or_path may be a local directory or a Hub repo id (optionally at a branch/revision)."""
+  path = Path(repo_id_or_path)
+  if path.exists():
+    config_path = path / "span_model_config.json"
+    weights_path = path / "model.safetensors"
+  else:
+    config_path = Path(hf_hub_download(repo_id_or_path, "span_model_config.json", revision=revision))
+    weights_path = Path(hf_hub_download(repo_id_or_path, "model.safetensors", revision=revision))
+
+  span_config = json.loads(config_path.read_text())
+  model = SpanLocalizationModel(
+      span_config["esm_model_name"], span_config["label_dim"],
+      span_config["unfreeze_last_n"], span_config["output_dropout"],
+  )
+  model.load_state_dict(load_file(weights_path))
+  return model.to(device)
+
+
+# --------------------------------------------------------------------------------------------
 # Main
 # --------------------------------------------------------------------------------------------
 
@@ -346,6 +469,17 @@ def main():
   ap.add_argument("--max-val-pairs", type=int, default=None, help="Subset for smoke tests.")
   ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
   ap.add_argument("--seed", type=int, default=SEED)
+  ap.add_argument("--run-name", default=None,
+                   help="Local checkpoint dir name / trial_metrics.json label; auto-derived from "
+                        "model/epochs/batch-size if omitted.")
+  ap.add_argument("--push-to-hub", action="store_true",
+                   help="Upload the best (lowest val_loss) checkpoint to the Hub after training.")
+  ap.add_argument("--hf-repo-id", default=HF_REPO_ID,
+                   help="Hugging Face Hub repository id, e.g. kelmoir/cafa6-mf-span")
+  ap.add_argument("--hub-branch", default="main", help="Branch to push the checkpoint to")
+  ap.add_argument("--hf-token-file", default=None,
+                   help="Path to a file containing the HF token (e.g. uploaded separately on "
+                        "Colab); read once then deleted")
   args = ap.parse_args()
 
   random.seed(args.seed)
@@ -390,6 +524,14 @@ def main():
   optimizer = AdamW(trainable_params, lr=args.learning_rate, weight_decay=args.weight_decay)
   loss_fn = nn.BCEWithLogitsLoss(reduction="none")
   pos_weight = torch.tensor(pos_weight_value, device=args.device)
+
+  run_name = args.run_name or (
+      f"mf-span-{args.model_name.split('/')[-1]}-epochs{args.epochs}-bs{args.batch_size}")
+  best_checkpoint_dir = Path("models") / run_name / "best_checkpoint"
+  best_val_loss = float("inf")
+  best_epoch = None
+  best_metrics = None
+  tracker = init_trackio_run(run_name, config)
 
   for epoch in range(args.epochs):
     model.train()
@@ -454,7 +596,36 @@ def main():
           f"val_precision={metrics['precision']:.4f} val_recall={metrics['recall']:.4f} "
           f"val_f1={metrics['f1']:.4f}")
 
-  print(f"[SUMMARY] {json.dumps({'final_val_loss': val_loss, **metrics})}")
+    latest_metrics = {"train_loss": train_loss, "val_loss": val_loss, **metrics}
+    if tracker is not None:
+      tracker.log({"epoch": epoch + 1, **latest_metrics})
+    if val_loss < best_val_loss:
+      best_val_loss = val_loss
+      best_epoch = epoch + 1
+      best_metrics = latest_metrics
+      save_checkpoint(model, tokenizer, best_checkpoint_dir, args.model_name, label_dim,
+                       args.unfreeze_last_n, args.output_dropout, epoch + 1, latest_metrics, config)
+      print(f"[INFO] New best checkpoint (val_loss={val_loss:.4f}) saved -> {best_checkpoint_dir}")
+
+  print(f"[SUMMARY] {json.dumps({'final_val_loss': val_loss, 'best_epoch': best_epoch, 'best_val_loss': best_val_loss, **metrics})}")
+
+  if args.push_to_hub:
+    if best_epoch is None:
+      print("[WARN] --push-to-hub requested but no checkpoint was ever saved "
+            "(val_loss never improved); skipping upload.")
+    else:
+      token = get_hf_token(args.hf_token_file)
+      if token:
+        print(f"[INFO] Uploading best checkpoint (epoch {best_epoch}, val_loss={best_val_loss:.4f}) "
+              f"to {args.hf_repo_id}@{args.hub_branch}")
+        try:
+          push_checkpoint_to_hub(best_checkpoint_dir, args.hf_repo_id, args.hub_branch, token,
+                                  best_epoch, best_metrics)
+          print(f"[INFO] Pushed to {args.hf_repo_id}@{args.hub_branch}")
+        except Exception as exc:  # pragma: no cover - runtime dependency
+          print(f"[WARN] Hub push failed: {exc}")
+      else:
+        print("[WARN] --push-to-hub requested but no HF token was found; skipping upload.")
 
 
 if __name__ == "__main__":
