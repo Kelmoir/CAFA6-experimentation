@@ -39,10 +39,16 @@ model isn't a transformers PreTrainedModel (it's a plain nn.Module: ESM backbone
 span head), so checkpointing is state_dict + a small span_model_config.json rather than
 save_pretrained/push_to_hub, and load_span_model() reconstructs it on the other end. Also logs
 per-epoch metrics to trackio if installed, local-only (no Hub Space) since training now runs on
-local hardware -- see init_trackio_run below.
+local hardware -- see init_trackio_run below. Regularization knobs mirror training_run.py's
+established surface (same flag names/semantics, duplicated rather than imported -- see the
+self-containment note above save_checkpoint): --esm-dropout/--attention-dropout on the unfrozen
+backbone layers (in addition to the existing --output-dropout on the span head), an
+LR warmup + --lr-schedule {constant,linear_decay,cosine} via get_lr_schedule, and an opt-in
+--decouple-bias-wd to exclude 1-D (bias/LayerNorm) params from weight decay.
 """
 import argparse
 import json
+import math
 import os
 import random
 import re
@@ -78,6 +84,26 @@ MAX_LENGTH = 1024
 SEED = 42
 
 DEF_PATTERN = re.compile(r'^"(.*)"')
+
+
+# --------------------------------------------------------------------------------------------
+# LR schedule -- same warmup + {constant,linear_decay,cosine} shape as training_run.py's
+# get_lr_schedule, duplicated here for the same self-containment reason as get_hf_token below.
+# --------------------------------------------------------------------------------------------
+
+def get_lr_schedule(optimizer, num_warmup_steps, num_training_steps, schedule_type="constant"):
+  def lr_lambda(step):
+    if step < num_warmup_steps:
+      return (step + 1) / max(1, num_warmup_steps)
+    if schedule_type == "constant":
+      return 1.0
+    progress = min(1.0, (step - num_warmup_steps) / max(1, num_training_steps - num_warmup_steps))
+    if schedule_type == "linear_decay":
+      return max(0.0, 1.0 - progress)
+    if schedule_type == "cosine":
+      return 0.5 * (1.0 + math.cos(math.pi * progress))
+    raise ValueError(f"Unknown schedule_type: {schedule_type}")
+  return torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda=lr_lambda)
 
 
 # --------------------------------------------------------------------------------------------
@@ -259,7 +285,8 @@ def make_collate_fn(tokenizer, label_embeddings, max_length=MAX_LENGTH):
 # --------------------------------------------------------------------------------------------
 
 class SpanLocalizationModel(nn.Module):
-  def __init__(self, esm_model_name, label_dim, unfreeze_last_n=2, output_dropout=0.2):
+  def __init__(self, esm_model_name, label_dim, unfreeze_last_n=2, output_dropout=0.2,
+               esm_dropout=0.0, attention_dropout=0.0):
     super().__init__()
     self.esm = EsmModel.from_pretrained(esm_model_name, add_pooling_layer=False)
     hidden_size = self.esm.config.hidden_size
@@ -269,10 +296,16 @@ class SpanLocalizationModel(nn.Module):
     num_layers = self.esm.config.num_hidden_layers
     unfreeze_last_n = min(unfreeze_last_n, num_layers)
     if unfreeze_last_n > 0:
+      # esm_dropout/attention_dropout only set on the unfrozen layers -- same convention as
+      # training_run.py's create_esm: dropout on a frozen layer has no effect anyway (no
+      # backward pass touches it), so there's nothing to gain applying it more broadly.
       for i in range(num_layers - unfreeze_last_n, num_layers):
         for param in self.esm.encoder.layer[i].parameters():
           param.requires_grad = True
-    print(f"[INFO] ESM backbone: {num_layers} layers, last {unfreeze_last_n} unfrozen")
+        self.esm.encoder.layer[i].output.dropout.p = esm_dropout
+        self.esm.encoder.layer[i].attention.output.dropout.p = attention_dropout
+    print(f"[INFO] ESM backbone: {num_layers} layers, last {unfreeze_last_n} unfrozen "
+          f"(esm_dropout={esm_dropout}, attention_dropout={attention_dropout})")
 
     self.film_scale = nn.Linear(label_dim, hidden_size)
     self.film_shift = nn.Linear(label_dim, hidden_size)
@@ -395,7 +428,7 @@ def get_hf_token(hf_token_file=None):
 
 
 def save_checkpoint(model, tokenizer, local_dir, esm_model_name, label_dim, unfreeze_last_n,
-                     output_dropout, epoch, metrics, config):
+                     output_dropout, esm_dropout, attention_dropout, epoch, metrics, config):
   local_dir.mkdir(parents=True, exist_ok=True)
   state_dict = {k: v.detach().cpu().contiguous() for k, v in model.state_dict().items()}
   save_file(state_dict, local_dir / "model.safetensors")
@@ -403,6 +436,7 @@ def save_checkpoint(model, tokenizer, local_dir, esm_model_name, label_dim, unfr
   span_config = {
       "esm_model_name": esm_model_name, "label_dim": label_dim,
       "unfreeze_last_n": unfreeze_last_n, "output_dropout": output_dropout,
+      "esm_dropout": esm_dropout, "attention_dropout": attention_dropout,
   }
   (local_dir / "span_model_config.json").write_text(json.dumps(span_config, indent=1))
   (local_dir / "trial_metrics.json").write_text(
@@ -434,6 +468,9 @@ def load_span_model(repo_id_or_path, device="cpu", revision=None):
   model = SpanLocalizationModel(
       span_config["esm_model_name"], span_config["label_dim"],
       span_config["unfreeze_last_n"], span_config["output_dropout"],
+      # .get(): checkpoints saved before esm_dropout/attention_dropout existed default to 0.0,
+      # which is also what they trained with (the args didn't exist yet).
+      span_config.get("esm_dropout", 0.0), span_config.get("attention_dropout", 0.0),
   )
   model.load_state_dict(load_file(weights_path))
   return model.to(device)
@@ -459,9 +496,20 @@ def main():
   ap.add_argument("--batch-size", type=int, default=8)
   ap.add_argument("--learning-rate", type=float, default=5e-5)
   ap.add_argument("--unfreeze-last-n", type=int, default=2)
-  ap.add_argument("--output-dropout", type=float, default=0.2)
+  ap.add_argument("--output-dropout", type=float, default=0.2, help="Dropout inside the span head")
+  ap.add_argument("--esm-dropout", type=float, default=0.0,
+                   help="Dropout on unfrozen ESM encoder layers' output sublayer")
+  ap.add_argument("--attention-dropout", type=float, default=0.0,
+                   help="Attention dropout on unfrozen ESM encoder layers")
   ap.add_argument("--weight-decay", type=float, default=0.01)
+  ap.add_argument("--decouple-bias-wd", action="store_true",
+                   help="Exclude 1-D params (biases, LayerNorm weights) from weight decay "
+                        "(standard practice; opt-in to match training_run.py's default)")
   ap.add_argument("--grad-clip-norm", type=float, default=1.0)
+  ap.add_argument("--lr-schedule", choices=["constant", "linear_decay", "cosine"], default="constant",
+                   help="Shape of the post-warmup LR schedule")
+  ap.add_argument("--warmup-steps", type=int, default=None,
+                   help="Override the default warmup step count (default: min(100, steps_per_epoch // 10))")
   ap.add_argument("--n-negatives-per-protein", type=int, default=2)
   ap.add_argument("--pos-weight", type=float, default=None,
                    help="Override the auto-computed BCE pos_weight (negative/positive token ratio).")
@@ -518,12 +566,30 @@ def main():
                            batch_size=args.batch_size, shuffle=False, collate_fn=collate_fn)
 
   model = SpanLocalizationModel(args.model_name, label_dim, args.unfreeze_last_n,
-                                 args.output_dropout).to(args.device)
+                                 args.output_dropout, args.esm_dropout,
+                                 args.attention_dropout).to(args.device)
 
   trainable_params = [p for p in model.parameters() if p.requires_grad]
-  optimizer = AdamW(trainable_params, lr=args.learning_rate, weight_decay=args.weight_decay)
+  if args.decouple_bias_wd:
+    decay_params = [p for p in trainable_params if p.ndim != 1]
+    no_decay_params = [p for p in trainable_params if p.ndim == 1]
+    optimizer = AdamW(
+        [
+            {"params": decay_params, "weight_decay": args.weight_decay},
+            {"params": no_decay_params, "weight_decay": 0.0},
+        ],
+        lr=args.learning_rate,
+    )
+  else:
+    optimizer = AdamW(trainable_params, lr=args.learning_rate, weight_decay=args.weight_decay)
   loss_fn = nn.BCEWithLogitsLoss(reduction="none")
   pos_weight = torch.tensor(pos_weight_value, device=args.device)
+
+  warmup_steps = args.warmup_steps if args.warmup_steps is not None else max(1, min(100, len(train_loader) // 10))
+  scheduler = get_lr_schedule(
+      optimizer, num_warmup_steps=warmup_steps,
+      num_training_steps=max(1, len(train_loader) * args.epochs), schedule_type=args.lr_schedule,
+  )
 
   run_name = args.run_name or (
       f"mf-span-{args.model_name.split('/')[-1]}-epochs{args.epochs}-bs{args.batch_size}")
@@ -553,6 +619,7 @@ def main():
       loss.backward()
       torch.nn.utils.clip_grad_norm_(trainable_params, max_norm=args.grad_clip_norm)
       optimizer.step()
+      scheduler.step()
 
       train_loss_total += loss.item()
       train_n_batches += 1
@@ -598,13 +665,14 @@ def main():
 
     latest_metrics = {"train_loss": train_loss, "val_loss": val_loss, **metrics}
     if tracker is not None:
-      tracker.log({"epoch": epoch + 1, **latest_metrics})
+      tracker.log({"epoch": epoch + 1, "lr": scheduler.get_last_lr()[0], **latest_metrics})
     if val_loss < best_val_loss:
       best_val_loss = val_loss
       best_epoch = epoch + 1
       best_metrics = latest_metrics
       save_checkpoint(model, tokenizer, best_checkpoint_dir, args.model_name, label_dim,
-                       args.unfreeze_last_n, args.output_dropout, epoch + 1, latest_metrics, config)
+                       args.unfreeze_last_n, args.output_dropout, args.esm_dropout,
+                       args.attention_dropout, epoch + 1, latest_metrics, config)
       print(f"[INFO] New best checkpoint (val_loss={val_loss:.4f}) saved -> {best_checkpoint_dir}")
 
   print(f"[SUMMARY] {json.dumps({'final_val_loss': val_loss, 'best_epoch': best_epoch, 'best_val_loss': best_val_loss, **metrics})}")
