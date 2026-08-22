@@ -10,12 +10,21 @@ span is always the full sequence by construction and carries no real positional 
 --go-id to restrict to specific term(s), including ones NOT annotated on this protein (a
 prediction-only negative-case check, ground truth column reads "-").
 
+--checkpoint and --protein are both optional: with no --checkpoint, the most recently modified
+models/*/best_checkpoint on disk is used (see find_latest_checkpoint()); with no --protein, a
+random protein that has at least one positionally-grounded ground-truth MF term is picked (see
+pick_random_protein()) so the resulting table is never empty by default.
+
 Example:
   python experiments/scripts/predict_protein_spans.py \\
       --checkpoint models/mf-span-esm2_t12_35M_UR50D-epochs10-bs8/best_checkpoint \\
       --protein A0A0B4J1F2
+
+  # or, letting both default:
+  python experiments/scripts/predict_protein_spans.py
 """
 import argparse
+import random
 from collections import defaultdict
 from pathlib import Path
 
@@ -81,14 +90,41 @@ def format_spans(spans):
   return ", ".join(f"{s}-{e}" for s, e in spans) if spans else "-"
 
 
+def find_latest_checkpoint(models_dir="models"):
+  """Most recently modified models/*/best_checkpoint dir (by its model.safetensors mtime), or
+  None if none exist."""
+  candidates = [p for p in Path(models_dir).glob("*/best_checkpoint") if (p / "model.safetensors").exists()]
+  if not candidates:
+    return None
+  return max(candidates, key=lambda p: (p / "model.safetensors").stat().st_mtime)
+
+
+def pick_random_protein(dataset_dict):
+  """A random (split_name, row) with at least one positionally-grounded ground-truth MF term, so
+  the default table is never empty."""
+  candidates = [
+      (split_name, row)
+      for split_name, split in dataset_dict.items()
+      for row in split
+      if ground_truth_spans(row)
+  ]
+  if not candidates:
+    raise SystemExit("No protein in cafa6_mf_placed has any positionally-grounded ground-truth "
+                      "MF terms -- pass --protein explicitly.")
+  return random.choice(candidates)
+
+
 def main():
   ap = argparse.ArgumentParser()
-  ap.add_argument("--checkpoint", required=True,
+  ap.add_argument("--checkpoint", default=None,
                    help="Local checkpoint dir (e.g. models/<run_name>/best_checkpoint) or a Hub "
-                        "repo id (e.g. kelmoir/cafa6-mf-span)")
+                        "repo id (e.g. kelmoir/cafa6-mf-span); default: the most recently "
+                        "modified local models/*/best_checkpoint")
   ap.add_argument("--revision", default=None,
                    help="Hub branch/revision, if --checkpoint is a Hub repo id")
-  ap.add_argument("--protein", required=True, help="EntryID accession to run predictions on")
+  ap.add_argument("--protein", default=None,
+                   help="EntryID accession to run predictions on; default: a random protein with "
+                        "at least one ground-truth span")
   ap.add_argument("--go-id", nargs="*", default=None,
                    help="Restrict to these GO term(s) instead of every ground-truth term on the "
                         "protein; a term not annotated on the protein is a prediction-only check "
@@ -97,19 +133,34 @@ def main():
   ap.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
   args = ap.parse_args()
 
+  if args.checkpoint is None:
+    latest = find_latest_checkpoint()
+    if latest is None:
+      raise SystemExit("No --checkpoint given and no local models/*/best_checkpoint found; "
+                        "pass --checkpoint explicitly (local dir or Hub repo id).")
+    args.checkpoint = str(latest)
+    print(f"[INFO] No --checkpoint given; using most recently modified local checkpoint: "
+          f"{args.checkpoint}")
+
   print(f"[INFO] Loading checkpoint from {args.checkpoint}"
         f"{'@' + args.revision if args.revision else ''}...")
   model = load_span_model(args.checkpoint, device=args.device, revision=args.revision)
   model.eval()
   tokenizer = EsmTokenizer.from_pretrained(args.checkpoint, revision=args.revision)
 
-  print("[INFO] Loading kelmoir/cafa6_mf_placed to look up "
-        f"{args.protein}'s sequence + ground truth...")
+  print("[INFO] Loading kelmoir/cafa6_mf_placed...")
   dataset_dict = load_dataset_dict()
-  split_name, row = find_protein_row(dataset_dict, args.protein)
-  if row is None:
-    raise SystemExit(f"Protein {args.protein!r} not found in any split of cafa6_mf_placed.")
-  print(f"[INFO] Found {args.protein} in the '{split_name}' split ({len(row['sequence'])} residues).")
+
+  if args.protein is None:
+    split_name, row = pick_random_protein(dataset_dict)
+    print(f"[INFO] No --protein given; randomly selected {row['protein']} from the '{split_name}' "
+          f"split ({len(row['sequence'])} residues).")
+    args.protein = row["protein"]
+  else:
+    split_name, row = find_protein_row(dataset_dict, args.protein)
+    if row is None:
+      raise SystemExit(f"Protein {args.protein!r} not found in any split of cafa6_mf_placed.")
+    print(f"[INFO] Found {args.protein} in the '{split_name}' split ({len(row['sequence'])} residues).")
 
   gt_spans = ground_truth_spans(row)
   go_ids = args.go_id if args.go_id else sorted(gt_spans)
