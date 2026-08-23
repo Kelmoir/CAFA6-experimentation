@@ -25,3 +25,13 @@ __pycache__/
 /.ripgreprc
 /.zprofile
 /.zshrc
+.claude/agents
+.claude/commands
+.claude/hooks
+.claude/launch.json
+.claude/loop.md
+.claude/output-styles
+.claude/routines
+.claude/settings.json
+.claude/skills
+.claude/workflows
