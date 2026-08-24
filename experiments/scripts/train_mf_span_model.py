@@ -520,6 +520,10 @@ def main():
   ap.add_argument("--run-name", default=None,
                    help="Local checkpoint dir name / trial_metrics.json label; auto-derived from "
                         "model/epochs/batch-size if omitted.")
+  ap.add_argument("--log-file", default=None,
+                   help="Per-epoch JSONL log path, flushed+fsynced after every epoch so an "
+                        "accidental crash mid-run doesn't lose completed epochs' metrics "
+                        "(default: experiments/logs/mf_span_<run-name>.jsonl)")
   ap.add_argument("--push-to-hub", action="store_true",
                    help="Upload the best (lowest val_loss) checkpoint to the Hub after training.")
   ap.add_argument("--hf-repo-id", default=HF_REPO_ID,
@@ -599,6 +603,14 @@ def main():
   best_metrics = None
   tracker = init_trackio_run(run_name, config)
 
+  log_file_path = Path(args.log_file) if args.log_file else Path("experiments/logs") / f"mf_span_{run_name}.jsonl"
+  log_file_path.parent.mkdir(parents=True, exist_ok=True)
+  log_file = open(log_file_path, "w")
+  log_file.write(json.dumps({"config": config}) + "\n")
+  log_file.flush()
+  os.fsync(log_file.fileno())
+  print(f"[INFO] Per-epoch metrics log -> {log_file_path}")
+
   for epoch in range(args.epochs):
     model.train()
     train_loss_total, train_n_batches = 0.0, 0
@@ -664,6 +676,9 @@ def main():
           f"val_f1={metrics['f1']:.4f}")
 
     latest_metrics = {"train_loss": train_loss, "val_loss": val_loss, **metrics}
+    log_file.write(json.dumps({"epoch": epoch + 1, "lr": scheduler.get_last_lr()[0], **latest_metrics}) + "\n")
+    log_file.flush()
+    os.fsync(log_file.fileno())
     if tracker is not None:
       tracker.log({"epoch": epoch + 1, "lr": scheduler.get_last_lr()[0], **latest_metrics})
     if val_loss < best_val_loss:
@@ -675,6 +690,7 @@ def main():
                        args.attention_dropout, epoch + 1, latest_metrics, config)
       print(f"[INFO] New best checkpoint (val_loss={val_loss:.4f}) saved -> {best_checkpoint_dir}")
 
+  log_file.close()
   print(f"[SUMMARY] {json.dumps({'final_val_loss': val_loss, 'best_epoch': best_epoch, 'best_val_loss': best_val_loss, **metrics})}")
 
   if args.push_to_hub:

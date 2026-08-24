@@ -27,6 +27,9 @@ pipeline's `sweep_log.md`.
 | 6 (reg-out-dropout-0.2) | `mf-span-reg-out-dropout-0.2` | **none** — identical config to trial 4 (weight_decay 0.05 + decouple_bias_wd, n_negatives=2), just a fresh run_name | 8 | 0.3956 | 0.6319 / 0.6319 | Exact reproduction of trial 4 (bit-for-bit matching val_loss/F1) — recovers a retrievable checkpoint after trial 5 overwrote trial 4's |
 | 7 (reg-more-data) | `mf-span-reg-more-data` | esm/attn dropout 0.0→0.1 **+** max_train_pairs 12000→20000, max_val_pairs 2000→5000 (2 axes at once — methodology slip, but dropout is a known no-op from trial 3) | 10 (still falling — no overfit yet) | 0.3532 | 0.6879 / 0.6879 | Genuine improvement — more data (same 42.9% positive rate, so a real volume increase not a composition change) resolves the overfit trials 1/3/4/6 all showed |
 | 8 (reg-more-data-less-dropout) | `mf-span-reg-more-data-less-dropout` | isolates trial 7: dropout reverted to 0.0, data volume unchanged (20000/5000) | 10 (still falling — no overfit yet) | 0.3593 (≈trial 7) | 0.6874 / 0.6874 (≈trial 7, **best so far**) | Isolated: confirms trial 7's gain is purely from data volume — dropout remains a no-op even at this larger scale |
+| 9 (reg-more-data-unfreeze-1) | `mf-span-reg-more-data-unfreeze-1` | isolates capacity: `unfreeze_last_n` 2→1, data volume unchanged (20000/5000), else identical to trial 8 | 10 (still falling — no overfit yet) | 0.3669 (worse) | 0.6493 / 0.6493 (worse) | Regression: cutting capacity underfits — there was no overfitting at this data scale (per trials 7/8) for it to fix |
+| 10 (reg-more-data-unfreeze-4) | `mf-span-reg-more-data-unfreeze-4` | isolates capacity: `unfreeze_last_n` 2→4, data volume unchanged (20000/5000), else identical to trial 8 | 5 (by val_loss; **see note**) | 0.3601 | **0.6441 (pushed checkpoint, epoch 5) / 0.6980 (final epoch — sweep-best, but not the pushed checkpoint)** | First clear OVERFITTING-by-loss in the sweep (val_loss diverges from train_loss after epoch 5), but F1 keeps rising anyway through epoch 10 — val_loss-based checkpoint selection picked a worse-F1 epoch than several later ones |
+| 11 (unfreeze-2, epochs=20, crashed) | not captured (crash — see note) | extends epochs on `unfreeze_last_n=2` (trial 7/8's setting, not trial 10's) from 10→20, data volume unchanged (20000/5000), else identical to trial 8 | 10 (confirmed via trackio) | 0.378 (confirmed; epoch 16 = 0.396 — **mild rise, see note**) | ≈0.714 at epoch 17 (still unconfirmed — trackio recovery so far only pulled val_loss/train_loss, not F1) | **Corrected verdict**: trackio recovery shows val_loss *did* rise after epoch 10 (0.378→0.396 by epoch 16, train_loss still falling to 0.16) — a real but much gentler OVERFITTING-by-loss than trial 10's sharp epoch-5 spike, not the "no divergence" read the crash-memory estimate gave. F1 apparently kept climbing anyway (≈0.714, unconfirmed) — same recurring val_loss/F1 divergence as trials 5 and 10. **Exposed a real gap: script had no incremental per-epoch log file, only stdout — fixed same day, see note.** |
 
 ## Trial notes
 
@@ -109,23 +112,122 @@ at this data volume regardless of dropout.
 Also overwrote trial 7's Hub copy (`kelmoir/cafa6-mf-span@main`) per the recurring pattern noted
 above; trial 7's checkpoint is still safe locally at `models/mf-span-reg-more-data/best_checkpoint`.
 
-## Standing conclusion (through trial 8)
+**Trial 9 (reg-more-data-unfreeze-1).** Isolates a capacity cut instead of a penalty-based
+regularizer: `unfreeze_last_n` 2→1 (only the last backbone layer trainable), data volume unchanged
+from trial 8 (20000/5000), dropout still 0.0. This is a real, unconfounded regression — both metrics
+land clearly outside trial 8's range (val_loss 0.3669 vs. 0.3593; F1 0.6493 vs. 0.6874, a ~0.038 F1
+drop, well past the noise band every dropout/weight-decay trial landed within). Still hadn't plateaued
+by epoch 10 either (val_loss 0.3772→0.3669), so this isn't a case of "less capacity, faster
+convergence" — it's just a worse model throughout training.
 
-Data volume, not any regularization axis, is the binding constraint at this scale. Trials 7 and 8
-isolate this cleanly: doubling `--max-train-pairs`/`--max-val-pairs` (12k/2k → 20k/5k, same 42.9%
-positive rate) lifts best F1 from ~0.63 to ~0.688 regardless of dropout, and in both cases val_loss
-was still falling at epoch 10 — the epoch-8 overfit ceiling every 12k/2k trial (1/3/4/6) hit is gone.
-Every regularization axis tried so far (esm/attn dropout, weight decay+decoupling, more negatives per
-protein) has been a no-op or a regression; none of them, and not the LR schedule change either, moved
-the result in the way more data did.
+Consistent with trial 7/8's finding: there is no overfitting at the 20k/5k data scale for a capacity
+cut to fix (val_loss was still falling in both, not diverging), so removing trainable capacity here
+only hurts. The "considerable overfitting" this trial was meant to guard against is a 12k/2k-scale
+phenomenon (trials 1/3/4/6) that more data already resolved — `unfreeze_last_n=2` should stay as-is
+unless overfitting reappears at a larger data/epoch budget.
 
-Current best/most useful checkpoint: trial 7 or 8 (statistically tied), both far ahead of the
-12k/2k-scale trials.
+Also overwrote trial 8's Hub copy per the recurring pattern; trial 8's checkpoint is still safe
+locally at `models/mf-span-reg-more-data-less-dropout/best_checkpoint`.
 
-Recommended next trial: extend `--epochs` past 10 on the 20k/5k config (either trial 7 or 8's setup)
-to find where it actually plateaus, since neither has yet. If GPU/time budget allows, also worth
-trying a further data-volume increase (e.g. 30k/7k) as its own isolated trial, holding dropout/weight
-decay at their no-op-confirmed values. Untested axes still on the list but now lower priority given
-data volume's outsized effect: `--output-dropout` above 0.2, `--unfreeze-last-n` below 2. Remember to
-give each future trial a distinct `--hub-branch`, not just a distinct `--run-name`, if the Hub copy
-should stay retrievable.
+**Trial 10 (reg-more-data-unfreeze-4).** Isolates capacity in the other direction: `unfreeze_last_n`
+2→4, data volume unchanged (20000/5000), dropout still 0.0. Per-epoch curve:
+
+| epoch | train_loss | val_loss | val_f1 |
+|---|---|---|---|
+| 1 | 0.4905 | 0.4499 | 0.4892 |
+| 2 | 0.3726 | 0.4110 | 0.5762 |
+| 3 | 0.3245 | 0.3990 | 0.6049 |
+| 4 | 0.2902 | 0.3900 | 0.6158 |
+| 5 | 0.2627 | **0.3601 (best val_loss)** | 0.6441 |
+| 6 | 0.2351 | 0.3743 | 0.6661 |
+| 7 | 0.2138 | 0.3680 | 0.6814 |
+| 8 | 0.1962 | 0.4061 (spike) | 0.6803 |
+| 9 | 0.1821 | 0.3863 | 0.6950 |
+| 10 | 0.1650 | 0.3682 | **0.6980 (best F1)** |
+
+Two things at once here:
+
+1. **This is the sweep's first genuine OVERFITTING verdict by the project rubric.** train_loss falls
+   smoothly the entire run (0.49→0.17) while val_loss bottoms at epoch 5 and then diverges — flattens,
+   spikes, oscillates — a widening train/val gap exactly matching the CLAUDE.md rubric's OVERFITTING
+   pattern. Neither trial 7/8 (unfreeze=2) nor trial 9 (unfreeze=1) showed this at the same 20k/5k data
+   scale — `unfreeze_last_n=4` is the first setting where this data volume isn't enough to keep the
+   extra capacity from overfitting (by loss).
+2. **But F1 doesn't reflect that overfitting** — it keeps climbing almost monotonically through
+   epoch 10 (0.644→0.698), reaching the best F1 of the entire sweep, *after* val_loss says the model
+   started overfitting. Same val_loss/F1-divergence pattern already seen in trial 5 and documented in
+   CLAUDE.md's `run_diagnostic()`/trial-050 precedent for the main pipeline: aggregate BCE loss and
+   threshold-based F1 don't always move together under class imbalance.
+3. **Practical consequence**: `save_checkpoint`'s selection criterion is val_loss-only (lowest wins),
+   so the checkpoint actually written to disk and pushed to `kelmoir/cafa6-mf-span@main` is **epoch
+   5's** (F1 0.6441) — worse by F1 than trials 7/8 (~0.687-0.688), even though this same run reached
+   F1 0.698 at epoch 10. The better-F1 weights were never saved; only the per-epoch log line records
+   they existed. If F1/task quality is the metric that matters, val_loss-based early-stopping is
+   picking a suboptimal checkpoint whenever this divergence happens.
+
+**Trial 11 (unfreeze-2, epochs=20, crashed).** Rather than trial 10's specific recommendation
+(rerun *unfreeze=4* with more epochs), this trial extended epochs on `unfreeze_last_n=2` instead —
+trials 7/8's setting, the one that "hadn't found its ceiling within 10 epochs" per the trial-10
+conclusion. Same data volume (20000/5000), same non-dropout config as trial 8, `--epochs 20`. The
+machine crashed partway through (accidental, not a training divergence) after epoch 17, before the
+run's own summary/checkpoint bookkeeping could be inspected, and at the time the script had no
+per-epoch log file, only stdout — so most exact numbers were initially lost. A first pass at this
+note relied on memory alone ("val_loss stayed at usual rates, no divergence") and has since been
+**corrected** using the run's local trackio db, which survived the crash independently of stdout:
+
+- **val_loss bottomed at epoch 10 (0.378, confirmed)** — close to, but slightly higher than, the
+  memory-based estimate (~0.35-0.36).
+- **val_loss then rose to 0.396 by epoch 16, while train_loss kept falling to 0.16.** This *is* a
+  real overfitting-by-loss signature after all — the earlier "no divergence" read was wrong. It's
+  materially gentler than trial 10's: trial 10 spiked from 0.360→0.406 (Δ0.046) in a single epoch
+  (5→8); trial 11 rose from 0.378→0.396 (Δ0.018) over six epochs. Same direction, much slower
+  onset — consistent with `unfreeze_last_n=2` overfitting later and more gradually than `unfreeze=4`
+  at this data scale, not avoiding it entirely.
+- **val F1 ≈0.714 at epoch 17 is still unconfirmed** — the trackio pull so far only recovered
+  val_loss/train_loss, not precision/recall/F1 (which was also logged per-epoch to the same
+  tracker). If it holds, it's still the sweep's best F1, reached despite — not because of — a val_loss
+  curve that had already turned upward by then, extending the same val_loss/F1-divergence pattern
+  as trials 5 and 10.
+- No checkpoint near epoch 17 was saved either way — `save_checkpoint`'s val_loss-only selection
+  means whatever's on disk from this run is close to the epoch-10 optimum, not the later (likely
+  higher-F1) epochs. Same gap as trial 10, compounded here by the crash.
+- **Fixed same day**: `train_mf_span_model.py` previously only printed per-epoch metrics to
+  stdout — nothing hit disk until a checkpoint improved, so a crash mid-run (like this one) loses
+  everything except what a human happened to be watching or what trackio's local db happened to
+  capture. Added incremental per-epoch JSONL logging (`--log-file`, default
+  `experiments/logs/mf_span_<run-name>.jsonl`), flushed and `os.fsync`'d after every epoch, so any
+  future crash preserves every completed epoch's exact numbers regardless of when it happens.
+
+## Standing conclusion (through trial 11)
+
+The capacity axis (`unfreeze_last_n`) now has a shape at the 20k/5k data scale: 1 underfits; 2
+overfits-by-loss too, but later and much more gently than 4 (val_loss bottoms at epoch 10 at 0.378,
+then only creeps to 0.396 by epoch 16 — Δ0.018 over six epochs, vs. trial 10's Δ0.046 in a single
+epoch); 4 overfits sharply starting around epoch 5-6. In both trial 10 and trial 11, F1 kept rising
+past the point val_loss turned upward — trial 11's F1 reportedly kept going to ≈0.714 by epoch 17
+(unconfirmed; not yet recovered from trackio), ahead of trial 10's 0.698. So more capacity doesn't
+straightforwardly buy a *better* ceiling, just a *faster, less stable* approach to a similar-or-lower
+one — `unfreeze=2` reaches a higher observed F1 with a much gentler val_loss rise. This still needs a
+clean, uncrashed rerun to confirm before being trusted as more than directional. Every dropout/
+weight-decay axis remains a no-op; capacity is the only axis that has produced a real, direction-
+dependent effect.
+
+Current best *retrievable* checkpoint by F1: still trial 7 or 8 (~0.687-0.688) — trial 10's best-F1
+epoch (0.698) was never saved, and trial 11's likely-better result (≈0.714) is both unsaved *and*
+unconfirmed (only val_loss/train_loss have been recovered from trackio so far, not F1). Best F1
+*observed anywhere* in the sweep is trial 11's approximate epoch-17 figure, but it must be treated as
+provisional until the F1 curve itself is pulled from trackio or reproduced by a clean rerun.
+
+Recommended next trial: **cleanly rerun trial 11's exact config** (`unfreeze_last_n=2`, 20k/5k, no
+dropout, `--epochs 20`, ideally a couple past 20 as headroom) now that the crash-logging gap is fixed
+(`--log-file`, see trial 11's note) — this both confirms/refutes the ≈0.714 figure with exact numbers
+and, since `unfreeze=2`'s val_loss rise is much gentler than `unfreeze=4`'s, should produce a
+checkpoint that's closer to actually retrievable (val_loss and F1 aren't fighting each other as
+sharply as they are for `unfreeze=4`). If it confirms, this becomes the sweep's leading config, ahead
+of trials 7/8/10, without needing the capacity increase trial 10 introduced. Separately, still worth
+deciding whether checkpoint selection should switch from val_loss to F1 (or track both) given the
+recurring divergence, now seen at both `unfreeze=2` and `unfreeze=4`; flagging, not changing anything
+without you weighing in. Untested regularization axes remain lowest priority given how little effect
+they've had so far: `--output-dropout` above 0.2, `--learning-rate` lower than 5e-5, `--lr-schedule
+linear_decay`, `--pos-weight` override. Remember to give each future trial a distinct `--hub-branch`,
+not just a distinct `--run-name`, if the Hub copy should stay retrievable.
