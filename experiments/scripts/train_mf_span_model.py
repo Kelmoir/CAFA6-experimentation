@@ -52,6 +52,7 @@ import math
 import os
 import random
 import re
+import time
 from collections import defaultdict
 from pathlib import Path
 
@@ -506,10 +507,32 @@ def main():
                    help="Exclude 1-D params (biases, LayerNorm weights) from weight decay "
                         "(standard practice; opt-in to match training_run.py's default)")
   ap.add_argument("--grad-clip-norm", type=float, default=1.0)
+  ap.add_argument("--compile", action="store_true",
+                   help="Wrap the model with torch.compile() for PyTorch 2 graph-compilation "
+                        "speedups. Optional/opt-in: first-batch compile overhead can dominate on "
+                        "short smoke tests, and checkpointing always saves from the uncompiled "
+                        "module reference regardless (see checkpoint_model below), so this only "
+                        "affects training speed, not checkpoint compatibility.")
   ap.add_argument("--lr-schedule", choices=["constant", "linear_decay", "cosine"], default="constant",
                    help="Shape of the post-warmup LR schedule")
   ap.add_argument("--warmup-steps", type=int, default=None,
                    help="Override the default warmup step count (default: min(100, steps_per_epoch // 10))")
+  ap.add_argument("--label-smoothing", type=float, default=0.0,
+                   help="Soften training-time BCE targets toward 0.5 by this amount (0=off, e.g. "
+                        "0.1 caps target confidence at 0.95/0.05 instead of 1.0/0.0). Applied only "
+                        "to the training loss, not validation -- val_loss stays computed against "
+                        "hard 0/1 targets so it remains comparable to every past trial and to "
+                        "--checkpoint-selection val_loss. Targets the overconfidence-driven "
+                        "val_loss/F1 divergence documented in experiments/mf_span_sweep_log.md "
+                        "trials 10-12 (train_loss falling toward ~0 while val_loss rises, even as "
+                        "F1 keeps improving).")
+  ap.add_argument("--early-stop-patience", type=int, default=None,
+                   help="Stop training if --checkpoint-selection's monitored metric hasn't improved "
+                        "for this many consecutive epochs (default: disabled, train the full "
+                        "--epochs budget). Reuses the exact same improvement check checkpoint "
+                        "selection uses, so it reflects what's actually being saved -- e.g. with "
+                        "--checkpoint-selection f1, a stall in F1 stops the run even if val_loss is "
+                        "still moving.")
   ap.add_argument("--n-negatives-per-protein", type=int, default=2)
   ap.add_argument("--pos-weight", type=float, default=None,
                    help="Override the auto-computed BCE pos_weight (negative/positive token ratio).")
@@ -581,6 +604,15 @@ def main():
                                  args.attention_dropout).to(args.device)
 
   trainable_params = [p for p in model.parameters() if p.requires_grad]
+  # Keep a reference to the uncompiled module for checkpointing: torch.compile's wrapper can
+  # prefix state_dict keys ("_orig_mod.") depending on PyTorch version, and parameters are shared
+  # (not copied) between the wrapper and the original module either way, so saving from this
+  # reference is always safe and produces a checkpoint load_span_model() can read regardless of
+  # whether --compile was used to train it.
+  checkpoint_model = model
+  if args.compile:
+    print("[INFO] Compiling model with torch.compile() (--compile)...")
+    model = torch.compile(model)
   if args.decouple_bias_wd:
     decay_params = [p for p in trainable_params if p.ndim != 1]
     no_decay_params = [p for p in trainable_params if p.ndim == 1]
@@ -609,6 +641,7 @@ def main():
   best_score = float("inf") if args.checkpoint_selection == "val_loss" else float("-inf")
   best_epoch = None
   best_metrics = None
+  epochs_without_improvement = 0
   tracker = init_trackio_run(run_name, config)
 
   log_file_path = Path(args.log_file) if args.log_file else Path("experiments/logs") / f"mf_span_{run_name}.jsonl"
@@ -619,7 +652,9 @@ def main():
   os.fsync(log_file.fileno())
   print(f"[INFO] Per-epoch metrics log -> {log_file_path}")
 
+  training_start = time.perf_counter()
   for epoch in range(args.epochs):
+    epoch_start = time.perf_counter()
     model.train()
     train_loss_total, train_n_batches = 0.0, 0
     for batch in train_loader:
@@ -631,8 +666,11 @@ def main():
 
       logits = model(input_ids, attention_mask, label_embedding)
       weight = torch.where(targets == 1, pos_weight, torch.tensor(1.0, device=args.device))
+      # Weighting uses the hard targets (a token's true positive/negative status); only the BCE
+      # target itself is softened, so pos_weight still applies to the right tokens.
+      loss_targets = targets * (1.0 - args.label_smoothing) + 0.5 * args.label_smoothing
       per_token_loss = nn.functional.binary_cross_entropy_with_logits(
-          logits, targets, weight=weight, reduction="none")
+          logits, loss_targets, weight=weight, reduction="none")
       loss = (per_token_loss * valid_mask).sum() / valid_mask.sum().clamp(min=1)
 
       optimizer.zero_grad()
@@ -679,11 +717,13 @@ def main():
 
     train_loss = train_loss_total / max(train_n_batches, 1)
     val_loss = val_loss_total / max(val_n_batches, 1)
+    epoch_time = time.perf_counter() - epoch_start
     print(f"[EPOCH {epoch + 1}/{args.epochs}] train_loss={train_loss:.4f} val_loss={val_loss:.4f} "
           f"val_precision={metrics['precision']:.4f} val_recall={metrics['recall']:.4f} "
-          f"val_f1={metrics['f1']:.4f}")
+          f"val_f1={metrics['f1']:.4f} epoch_time={epoch_time:.1f}s")
 
-    latest_metrics = {"train_loss": train_loss, "val_loss": val_loss, **metrics}
+    latest_metrics = {"train_loss": train_loss, "val_loss": val_loss,
+                       "epoch_time_s": round(epoch_time, 2), **metrics}
     log_file.write(json.dumps({"epoch": epoch + 1, "lr": scheduler.get_last_lr()[0], **latest_metrics}) + "\n")
     log_file.flush()
     os.fsync(log_file.fileno())
@@ -697,14 +737,24 @@ def main():
       best_val_loss = val_loss
       best_epoch = epoch + 1
       best_metrics = latest_metrics
-      save_checkpoint(model, tokenizer, best_checkpoint_dir, args.model_name, label_dim,
+      epochs_without_improvement = 0
+      save_checkpoint(checkpoint_model, tokenizer, best_checkpoint_dir, args.model_name, label_dim,
                        args.unfreeze_last_n, args.output_dropout, args.esm_dropout,
                        args.attention_dropout, epoch + 1, latest_metrics, config)
       print(f"[INFO] New best checkpoint ({args.checkpoint_selection}={current_score:.4f}) "
             f"saved -> {best_checkpoint_dir}")
+    else:
+      epochs_without_improvement += 1
+      if (args.early_stop_patience is not None
+          and epochs_without_improvement >= args.early_stop_patience):
+        print(f"[INFO] Early stopping: {args.checkpoint_selection} hasn't improved for "
+              f"{epochs_without_improvement} epochs (--early-stop-patience="
+              f"{args.early_stop_patience}); stopping after epoch {epoch + 1}/{args.epochs}.")
+        break
 
+  total_time = time.perf_counter() - training_start
   log_file.close()
-  print(f"[SUMMARY] {json.dumps({'final_val_loss': val_loss, 'best_epoch': best_epoch, 'best_val_loss': best_val_loss, **(best_metrics or metrics)})}")
+  print(f"[SUMMARY] {json.dumps({'final_val_loss': val_loss, 'best_epoch': best_epoch, 'best_val_loss': best_val_loss, 'total_time_s': round(total_time, 2), **(best_metrics or metrics)})}")
 
   if args.push_to_hub:
     if best_epoch is None:
