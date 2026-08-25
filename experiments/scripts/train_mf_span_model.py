@@ -524,8 +524,15 @@ def main():
                    help="Per-epoch JSONL log path, flushed+fsynced after every epoch so an "
                         "accidental crash mid-run doesn't lose completed epochs' metrics "
                         "(default: experiments/logs/mf_span_<run-name>.jsonl)")
+  ap.add_argument("--checkpoint-selection", choices=["val_loss", "f1"], default="val_loss",
+                   help="Metric used to decide which epoch's checkpoint is 'best' (saved/pushed). "
+                        "val_loss and F1 can diverge once the model gets confident under this "
+                        "task's class imbalance -- see experiments/mf_span_sweep_log.md trials "
+                        "5/10/11/12, where the val_loss-selected checkpoint trailed the best "
+                        "observed F1 by as much as 0.05. Default kept as val_loss to match every "
+                        "past trial's behavior.")
   ap.add_argument("--push-to-hub", action="store_true",
-                   help="Upload the best (lowest val_loss) checkpoint to the Hub after training.")
+                   help="Upload the best checkpoint (by --checkpoint-selection) to the Hub after training.")
   ap.add_argument("--hf-repo-id", default=HF_REPO_ID,
                    help="Hugging Face Hub repository id, e.g. kelmoir/cafa6-mf-span")
   ap.add_argument("--hub-branch", default="main", help="Branch to push the checkpoint to")
@@ -599,6 +606,7 @@ def main():
       f"mf-span-{args.model_name.split('/')[-1]}-epochs{args.epochs}-bs{args.batch_size}")
   best_checkpoint_dir = Path("models") / run_name / "best_checkpoint"
   best_val_loss = float("inf")
+  best_score = float("inf") if args.checkpoint_selection == "val_loss" else float("-inf")
   best_epoch = None
   best_metrics = None
   tracker = init_trackio_run(run_name, config)
@@ -681,17 +689,22 @@ def main():
     os.fsync(log_file.fileno())
     if tracker is not None:
       tracker.log({"epoch": epoch + 1, "lr": scheduler.get_last_lr()[0], **latest_metrics})
-    if val_loss < best_val_loss:
+    current_score = val_loss if args.checkpoint_selection == "val_loss" else metrics["f1"]
+    improved = (current_score < best_score if args.checkpoint_selection == "val_loss"
+                else current_score > best_score)
+    if improved:
+      best_score = current_score
       best_val_loss = val_loss
       best_epoch = epoch + 1
       best_metrics = latest_metrics
       save_checkpoint(model, tokenizer, best_checkpoint_dir, args.model_name, label_dim,
                        args.unfreeze_last_n, args.output_dropout, args.esm_dropout,
                        args.attention_dropout, epoch + 1, latest_metrics, config)
-      print(f"[INFO] New best checkpoint (val_loss={val_loss:.4f}) saved -> {best_checkpoint_dir}")
+      print(f"[INFO] New best checkpoint ({args.checkpoint_selection}={current_score:.4f}) "
+            f"saved -> {best_checkpoint_dir}")
 
   log_file.close()
-  print(f"[SUMMARY] {json.dumps({'final_val_loss': val_loss, 'best_epoch': best_epoch, 'best_val_loss': best_val_loss, **metrics})}")
+  print(f"[SUMMARY] {json.dumps({'final_val_loss': val_loss, 'best_epoch': best_epoch, 'best_val_loss': best_val_loss, **(best_metrics or metrics)})}")
 
   if args.push_to_hub:
     if best_epoch is None:
