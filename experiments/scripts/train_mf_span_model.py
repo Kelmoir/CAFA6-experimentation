@@ -481,6 +481,21 @@ def load_span_model(repo_id_or_path, device="cpu", revision=None):
 # Main
 # --------------------------------------------------------------------------------------------
 
+def iter_grad_accum_windows(loader, accum_steps):
+  """Groups a DataLoader's micro-batches into windows of up to accum_steps batches each (the
+  final window of an epoch may be shorter if len(loader) isn't evenly divisible). Batches stay
+  as CPU tensors here -- only moved to args.device inside the per-micro-batch training step --
+  so grouping them costs nothing beyond a Python list."""
+  window = []
+  for batch in loader:
+    window.append(batch)
+    if len(window) == accum_steps:
+      yield window
+      window = []
+  if window:
+    yield window
+
+
 def load_dataset_dict():
   import datasets
   if LOCAL_DATASET_PATH.exists():
@@ -495,6 +510,21 @@ def main():
   ap.add_argument("--model-name", default=DEFAULT_ESM_MODEL)
   ap.add_argument("--epochs", type=int, default=3)
   ap.add_argument("--batch-size", type=int, default=8)
+  ap.add_argument("--grad-accum-steps", type=int, default=1,
+                   help="Accumulate gradients over this many micro-batches (each of size "
+                        "--batch-size) before every optimizer step, simulating a "
+                        "--batch-size * --grad-accum-steps effective batch without the memory "
+                        "cost of holding that many sequences' activations at once -- only the "
+                        "accumulated gradients are cheap to keep around; forward/backward still "
+                        "run one micro-batch at a time. Normalizes each micro-batch's loss by the "
+                        "*whole window's* total valid-token count (computed up front from "
+                        "valid_mask, before any forward pass -- free) rather than its own "
+                        "micro-batch's count -- the fix for the well-known 2024 Unsloth/HF "
+                        "grad-accum bug, where naively averaging each micro-batch's own "
+                        "already-token-normalized loss is NOT equivalent to computing loss over "
+                        "the true combined token count whenever micro-batches have unequal valid "
+                        "token counts (guaranteed here, since protein sequences vary in length). "
+                        "Default 1 reduces to the exact prior per-micro-batch behavior.")
   ap.add_argument("--learning-rate", type=float, default=5e-5)
   ap.add_argument("--unfreeze-last-n", type=int, default=2)
   ap.add_argument("--output-dropout", type=float, default=0.2, help="Dropout inside the span head")
@@ -628,10 +658,13 @@ def main():
   loss_fn = nn.BCEWithLogitsLoss(reduction="none")
   pos_weight = torch.tensor(pos_weight_value, device=args.device)
 
-  warmup_steps = args.warmup_steps if args.warmup_steps is not None else max(1, min(100, len(train_loader) // 10))
+  # Optimizer steps per epoch = ceil(micro-batches / grad_accum_steps), not raw micro-batch
+  # count -- with grad_accum_steps > 1, scheduler.step() only fires once per accumulation window.
+  steps_per_epoch = math.ceil(len(train_loader) / args.grad_accum_steps)
+  warmup_steps = args.warmup_steps if args.warmup_steps is not None else max(1, min(100, steps_per_epoch // 10))
   scheduler = get_lr_schedule(
       optimizer, num_warmup_steps=warmup_steps,
-      num_training_steps=max(1, len(train_loader) * args.epochs), schedule_type=args.lr_schedule,
+      num_training_steps=max(1, steps_per_epoch * args.epochs), schedule_type=args.lr_schedule,
   )
 
   run_name = args.run_name or (
@@ -656,34 +689,55 @@ def main():
   for epoch in range(args.epochs):
     epoch_start = time.perf_counter()
     model.train()
-    train_loss_total, train_n_batches = 0.0, 0
-    for batch in train_loader:
-      input_ids = batch["input_ids"].to(args.device)
-      attention_mask = batch["attention_mask"].to(args.device)
-      targets = batch["targets"].to(args.device)
-      valid_mask = batch["valid_mask"].to(args.device)
-      label_embedding = batch["label_embedding"].to(args.device)
-
-      logits = model(input_ids, attention_mask, label_embedding)
-      weight = torch.where(targets == 1, pos_weight, torch.tensor(1.0, device=args.device))
-      # Weighting uses the hard targets (a token's true positive/negative status); only the BCE
-      # target itself is softened, so pos_weight still applies to the right tokens.
-      loss_targets = targets * (1.0 - args.label_smoothing) + 0.5 * args.label_smoothing
-      per_token_loss = nn.functional.binary_cross_entropy_with_logits(
-          logits, loss_targets, weight=weight, reduction="none")
-      loss = (per_token_loss * valid_mask).sum() / valid_mask.sum().clamp(min=1)
+    # Accumulate the raw token-weighted loss numerator and the true valid-token denominator
+    # separately across the WHOLE epoch, dividing once at the end -- averaging each window's
+    # already-normalized mean (the old train_loss_total / train_n_batches) has the same bias as
+    # the val_loss bug fixed below, just usually smaller in practice since --grad-accum-steps
+    # windows tend to be more uniformly composed than raw --batch-size validation batches are.
+    train_loss_sum, train_valid_tokens = 0.0, 0.0
+    for window in iter_grad_accum_windows(train_loader, args.grad_accum_steps):
+      # Precompute the whole window's total valid-token count up front -- valid_mask comes
+      # straight from tokenization/collation, not the model, so this costs nothing extra and
+      # doesn't require a forward pass. Normalizing every micro-batch's loss by this shared total
+      # (instead of its own valid_mask sum) makes accumulation exactly equivalent to running the
+      # whole window as one big batch -- see --grad-accum-steps help for why the naive per-
+      # micro-batch normalization (the 2024 Unsloth/HF grad-accum bug) is wrong here.
+      total_valid_tokens = sum(b["valid_mask"].sum().item() for b in window)
 
       optimizer.zero_grad()
-      loss.backward()
+      for batch in window:
+        input_ids = batch["input_ids"].to(args.device)
+        attention_mask = batch["attention_mask"].to(args.device)
+        targets = batch["targets"].to(args.device)
+        valid_mask = batch["valid_mask"].to(args.device)
+        label_embedding = batch["label_embedding"].to(args.device)
+
+        logits = model(input_ids, attention_mask, label_embedding)
+        weight = torch.where(targets == 1, pos_weight, torch.tensor(1.0, device=args.device))
+        # Weighting uses the hard targets (a token's true positive/negative status); only the BCE
+        # target itself is softened, so pos_weight still applies to the right tokens.
+        loss_targets = targets * (1.0 - args.label_smoothing) + 0.5 * args.label_smoothing
+        per_token_loss = nn.functional.binary_cross_entropy_with_logits(
+            logits, loss_targets, weight=weight, reduction="none")
+        numerator = (per_token_loss * valid_mask).sum()
+        loss = numerator / max(total_valid_tokens, 1)
+        loss.backward()
+        train_loss_sum += numerator.item()
+        train_valid_tokens += valid_mask.sum().item()
+
       torch.nn.utils.clip_grad_norm_(trainable_params, max_norm=args.grad_clip_norm)
       optimizer.step()
       scheduler.step()
 
-      train_loss_total += loss.item()
-      train_n_batches += 1
-
     model.eval()
-    val_loss_total, val_n_batches = 0.0, 0
+    # Same fix as training: accumulate the raw numerator/token-count and divide once, rather than
+    # averaging each batch's own already-normalized mean. val_loader's batch size follows
+    # --batch-size directly (no accumulation concept in eval), so this is what makes val_loss
+    # comparable across runs using different --batch-size -- previously, a smaller --batch-size
+    # (e.g. to enable more --grad-accum-steps) silently biased val_loss upward, since sequence
+    # length varies and per-batch normalization is uneven across unequal-token-count batches --
+    # more so the smaller/more numerous the batches, exactly the pattern that motivated this fix.
+    val_loss_sum, val_valid_tokens = 0.0, 0.0
     all_logits, all_targets, all_valid = [], [], []
     with torch.no_grad():
       for batch in val_loader:
@@ -697,9 +751,8 @@ def main():
         weight = torch.where(targets == 1, pos_weight, torch.tensor(1.0, device=args.device))
         per_token_loss = nn.functional.binary_cross_entropy_with_logits(
             logits, targets, weight=weight, reduction="none")
-        loss = (per_token_loss * valid_mask).sum() / valid_mask.sum().clamp(min=1)
-        val_loss_total += loss.item()
-        val_n_batches += 1
+        val_loss_sum += (per_token_loss * valid_mask).sum().item()
+        val_valid_tokens += valid_mask.sum().item()
 
         all_logits.append(logits.cpu())
         all_targets.append(targets.cpu())
@@ -715,8 +768,8 @@ def main():
         torch.cat([pad(t) for t in all_valid]),
     )
 
-    train_loss = train_loss_total / max(train_n_batches, 1)
-    val_loss = val_loss_total / max(val_n_batches, 1)
+    train_loss = train_loss_sum / max(train_valid_tokens, 1)
+    val_loss = val_loss_sum / max(val_valid_tokens, 1)
     epoch_time = time.perf_counter() - epoch_start
     print(f"[EPOCH {epoch + 1}/{args.epochs}] train_loss={train_loss:.4f} val_loss={val_loss:.4f} "
           f"val_precision={metrics['precision']:.4f} val_recall={metrics['recall']:.4f} "
