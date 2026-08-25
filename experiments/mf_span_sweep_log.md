@@ -31,6 +31,7 @@ pipeline's `sweep_log.md`.
 | 10 (reg-more-data-unfreeze-4) | `mf-span-reg-more-data-unfreeze-4` | isolates capacity: `unfreeze_last_n` 2→4, data volume unchanged (20000/5000), else identical to trial 8 | 5 (by val_loss; **see note**) | 0.3601 | **0.6441 (pushed checkpoint, epoch 5) / 0.6980 (final epoch — sweep-best, but not the pushed checkpoint)** | First clear OVERFITTING-by-loss in the sweep (val_loss diverges from train_loss after epoch 5), but F1 keeps rising anyway through epoch 10 — val_loss-based checkpoint selection picked a worse-F1 epoch than several later ones |
 | 11 (unfreeze-2, epochs=20, crashed) | not captured (crash — see note) | extends epochs on `unfreeze_last_n=2` (trial 7/8's setting, not trial 10's) from 10→20, data volume unchanged (20000/5000), else identical to trial 8 | 11 (confirmed via trackio) | 0.378 (confirmed; epoch 17 = 0.396 — **mild rise, see note**) | **0.710 at epoch 17 (confirmed, new sweep-best)** — precision 0.67, recall 0.74 | **Corrected verdict**: trackio recovery (step counter is 0-indexed, so trackio step *N* = epoch *N*+1 — corrected from an initial off-by-one) shows val_loss *did* rise after epoch 11 (0.378→0.396 by epoch 17, train_loss still falling to 0.16) — a real but much gentler OVERFITTING-by-loss than trial 10's sharp epoch-8 spike, not the "no divergence" read the crash-memory estimate gave. Precision/recall/F1 were all still climbing at epoch 17 despite the val_loss rise — same recurring val_loss/F1 divergence as trials 5 and 10, now with confirmed numbers. **Exposed a real gap: script had no incremental per-epoch log file, only stdout — fixed same day, see note.** |
 | 12 (unfreeze2-epochs30, clean) | `mf-span-reg-more-data-unfreeze2-epochs30` | clean, uncrashed rerun of trial 11's config with `--epochs 30` (the recommended next trial), full `--log-file` capture, all other args identical to trial 8 | 10 (exact) | **0.3593 (exact match to trial 8 — see note on determinism)** | **0.7421 at epoch 28 (new sweep-best, saved checkpoint only reaches 0.6874 at epoch 10 — see note)** | Confirms and sharpens trial 11: real OVERFITTING-by-loss after epoch 10, noisy and much larger by epoch 30 (val_loss 0.3593→0.5936, Δ0.234) than the partial trial-11 picture suggested, while F1 climbs to a plateau of roughly 0.72-0.74 from epoch ~19 onward. Largest val_loss/F1-selection gap in the sweep so far (0.6874 saved vs. 0.7421 true best) — prompted adding a `--checkpoint-selection {val_loss,f1}` flag (see note) |
+| 13 (unfreeze2-epochs30-label-smoothing) | `mf-span-reg-more-data-unfreeze2-epochs30-label_smoothing` | trial 12 + `--label-smoothing 0.1` (training targets only), `--checkpoint-selection f1` (first trial to actually use it), `--early-stop-patience 5` (never triggered — ran the full 30 epochs) | 28 | 0.3069 (val_loss at the best-F1 epoch — see note) | **0.7539 at epoch 28 — new sweep-best, and the first trial where the true-best epoch is also the actually saved/pushed checkpoint** | Label smoothing closes the val_loss/F1 divergence almost entirely (val_loss rises only 0.0057 from its epoch-28 min by epoch 30, vs. trial 12's Δ0.234) while also raising absolute F1 above trial 12's at every directly-comparable epoch — a genuine, unconfounded win (the other two changed flags don't affect the training curve itself — see note) |
 
 ## Trial notes
 
@@ -284,36 +285,112 @@ Several findings:
    `metrics` only if no checkpoint was ever saved, i.e. val_loss/F1 never improved past its initial
    value).
 
-## Standing conclusion (through trial 12)
+**Trial 13 (unfreeze2-epochs30-label-smoothing).** Reruns trial 12's exact config with three new
+flags, all added in direct response to trial 12's findings: `--label-smoothing 0.1` (softens BCE
+training targets toward 0.5, applied only to the training loss — validation loss still uses hard
+targets, so it stays comparable to every prior trial's val_loss), `--checkpoint-selection f1` (first
+trial to actually use it, instead of the `val_loss`-only default every prior trial used), and
+`--early-stop-patience 5` (never triggered — the run completed all 30 epochs with the longest
+no-improvement streak topping out at 2 epochs). Of these three, only label smoothing can affect the
+training/validation curves themselves — `--checkpoint-selection` and `--early-stop-patience` only
+change which epoch's weights get saved and whether the run stops early, neither of which happened
+differently enough to matter here (the run went the full 30 epochs regardless). So despite three
+flags differing from trial 12, this is a clean, unconfounded isolation of label smoothing's effect.
+Full curve:
 
-The capacity axis (`unfreeze_last_n`) now has a well-established shape at the 20k/5k data scale, and
-trial 12 finally located its F1 plateau: **`unfreeze=2` plateaus around F1 ≈ 0.72-0.74** (epoch ~19-30,
-peak 0.7421 at epoch 28), clearing every other config in the sweep by a wide margin, while
-`unfreeze=4` (trial 10) only reached F1 0.698 before its much sharper val_loss overfit made further
-training unproductive, and `unfreeze=1` (trial 9) underfits throughout. Trial 12 also corrected the
-partial picture trial 11's crash left: `unfreeze=2` *does* eventually overfit substantially by
-val_loss (0.3593 at epoch 10 → 0.5936 by epoch 30, noisy but clearly upward) — just far later and
-more gradually than `unfreeze=4`'s epoch-5 spike, not "no divergence." Every dropout/weight-decay
-axis remains a no-op; capacity and (now) epoch budget are the only axes that have produced real
-effects. Trial 12 is the trustworthy reference for this config — an unresolved discrepancy against
-trial 11's numbers means trial 11 should no longer be treated as authoritative (see trial 12's note).
+| epoch | train_loss | val_loss | val_f1 | new best (by F1)? |
+|---|---|---|---|---|
+| 1 | 0.5757 | 0.4834 | 0.4181 | yes |
+| 2 | 0.5012 | 0.4428 | 0.5441 | yes |
+| 3 | 0.4710 | 0.4190 | 0.5825 | yes |
+| 4 | 0.4485 | 0.4015 | 0.6058 | yes |
+| 5 | 0.4301 | 0.3817 | 0.6301 | yes |
+| 6 | 0.4134 | 0.3670 | 0.6519 | yes |
+| 7 | 0.3991 | 0.3546 | 0.6678 | yes |
+| 8 | 0.3871 | 0.3466 | 0.6782 | yes |
+| 9 | 0.3765 | 0.3441 | 0.6856 | yes |
+| 10 | 0.3664 | 0.3380 | 0.6950 | yes |
+| 11 | 0.3570 | 0.3320 | 0.7021 | yes |
+| 12 | 0.3496 | 0.3300 | 0.7044 | yes |
+| 13 | 0.3421 | 0.3180 | 0.7155 | yes |
+| 14 | 0.3351 | 0.3291 | 0.7101 | no |
+| 15 | 0.3303 | 0.3187 | 0.7247 | yes |
+| 16 | 0.3239 | 0.3188 | 0.7264 | yes |
+| 17 | 0.3185 | 0.3175 | 0.7279 | yes |
+| 18 | 0.3141 | 0.3164 | 0.7289 | yes |
+| 19 | 0.3101 | 0.3193 | 0.7287 | no |
+| 20 | 0.3051 | 0.3182 | 0.7276 | no |
+| 21 | 0.3009 | 0.3134 | 0.7427 | yes |
+| 22 | 0.2973 | 0.3101 | 0.7392 | no |
+| 23 | 0.2936 | 0.3076 | 0.7446 | yes |
+| 24 | 0.2898 | 0.3140 | 0.7435 | no |
+| 25 | 0.2870 | 0.3134 | 0.7443 | no |
+| 26 | 0.2841 | 0.3139 | 0.7455 | yes |
+| 27 | 0.2812 | 0.3118 | 0.7420 | no |
+| 28 | 0.2787 | **0.3069 (min)** | **0.7539 (best F1 — saved/pushed checkpoint)** | yes |
+| 29 | 0.2766 | 0.3209 | 0.7397 | no |
+| 30 | 0.2744 | 0.3126 | 0.7481 | no |
 
-Current best *retrievable* checkpoint by F1: still trial 7 or 8 (~0.687-0.688) — trial 12's actual
-best (F1 0.7421 at epoch 28) was saved under the old `val_loss`-only criterion, so what's on disk/Hub
-from trial 12 is epoch 10's (F1 0.6874), not epoch 28's. This is now fixed going forward: a
-`--checkpoint-selection {val_loss,f1}` flag was added to `train_mf_span_model.py` (default `val_loss`,
-see trial 12's note) — the next trial should pass `--checkpoint-selection f1` to actually retain the
-plateau-region weights.
+Several findings:
 
-Recommended next trial: **rerun trial 12's exact config with `--checkpoint-selection f1`** (same
-`unfreeze_last_n=2`, 20k/5k, no dropout, `--epochs 30`) to get a genuinely retrievable checkpoint near
-the F1 plateau (~0.72-0.74) instead of the val_loss-selected epoch-10 one — training curves should be
-identical to trial 12's (same seed/config), so this is mainly about capturing the right checkpoint,
-not re-discovering the curve. With the plateau now located for this data/capacity combo, the next
-open question per the user's bitter-lesson framing is whether to push a new axis — more data (the
-uncapped pool is ~32k/9k pairs, see the earlier ad hoc calculation) or a capacity value between 2 and
-4 (e.g. `unfreeze_last_n=3`) — rather than continuing to spend epochs on `unfreeze=2`, which has now
-plateaued. Untested regularization axes remain lowest priority given how little effect they've had so
-far: `--output-dropout` above 0.2, `--learning-rate` lower than 5e-5, `--lr-schedule linear_decay`,
-`--pos-weight` override. Remember to give each future trial a distinct `--hub-branch`, not just a
-distinct `--run-name`, if the Hub copy should stay retrievable.
+1. **The val_loss/F1 divergence is almost gone.** val_loss falls essentially monotonically (with mild
+   noise, e.g. epoch 14, 19-20, 24-25, 29) all the way to its epoch-28 minimum (0.3069), then rises
+   only to 0.3126 by epoch 30 — a Δ0.0057 uptick, compared to trial 12's Δ0.234 rise over the same
+   back half of training. Label smoothing did what it was added to do: it stopped BCE from rewarding
+   the model for growing arbitrarily confident on already-correct tokens, so val_loss now tracks F1
+   almost the whole way through instead of diverging from it after epoch ~10.
+2. **Absolute quality improved too, not just the divergence.** This isn't only a "delays overfitting"
+   story — at every directly-comparable epoch, trial 13 beats trial 12 on both metrics (val_loss is
+   *lower*, not just later-rising): epoch 10 val_loss 0.3380 vs. trial 12's 0.3593, F1 0.6950 vs.
+   0.6874; epoch 18 F1 0.7289 vs. 0.7215; epoch 28 F1 0.7539 vs. trial 12's peak of 0.7421 (itself the
+   prior sweep-best). Label smoothing is acting as a real regularizer here, not just a cosmetic loss
+   transform.
+3. **First trial where the saved/pushed checkpoint actually is the best one.** With
+   `--checkpoint-selection f1` finally exercised, the checkpoint written to disk and pushed to
+   `kelmoir/cafa6-mf-span@main` is epoch 28's — genuinely the run's best F1 (0.7539), not a
+   val_loss-selected earlier epoch sitting well below the run's true peak the way trials 10-12 all
+   were. The val_loss/F1-selection gap that motivated the flag in the first place is now 0.0 for this
+   trial (epoch 28 happens to be the val_loss minimum too).
+4. **Precision/recall are noticeably more balanced than prior trials.** 0.7465/0.7615 at epoch 28 —
+   close to even, versus the recall > precision skew seen since trial 7 (e.g. trial 7's 0.6329/0.7533,
+   trial 11's 0.67/0.74). Not yet clear whether this is a label-smoothing effect or just noise; worth
+   watching in future trials rather than treating as established.
+5. **First real epoch-timing data in the sweep**, from this trial's `--compile`-adjacent timing
+   feature: ~907-910s/epoch (~15.1 min), 27241.1s total (~7.57h) for the full 30 epochs on this
+   machine's GPU at this data scale (20k/5k pairs, `unfreeze_last_n=2`) — useful as a reference for
+   estimating future same-scale trials' wall-clock cost.
+
+## Standing conclusion (through trial 13)
+
+The capacity axis (`unfreeze_last_n`) has a well-established shape at the 20k/5k data scale:
+`unfreeze=2` clears every other config in the sweep by a wide margin, `unfreeze=4` (trial 10) overfits
+by val_loss much sooner (epoch ~5) and tops out at F1 0.698, and `unfreeze=1` (trial 9) underfits
+throughout. Trial 12 first located `unfreeze=2`'s F1 plateau (~0.72-0.74, peak 0.7421 at epoch 28)
+alongside a real, substantial val_loss overfit after epoch 10 (0.3593 → 0.5936 by epoch 30). Trial 13
+then showed that plateau wasn't the ceiling: `--label-smoothing 0.1` both closes the val_loss/F1
+divergence almost entirely (val_loss rises only Δ0.0057 past its epoch-28 minimum, vs. trial 12's
+Δ0.234) **and** raises absolute F1 at every comparable epoch, reaching a new sweep-best of **F1
+0.7539 at epoch 28** — and for the first time, thanks to `--checkpoint-selection f1`, that epoch-28
+checkpoint is what's actually saved and pushed to the Hub, not a val_loss-selected earlier epoch sitting
+well below the run's true peak. Every dropout/weight-decay axis tested pre-label-smoothing remains a
+no-op; capacity, epoch budget, and now label smoothing are the axes that have produced real effects.
+Trial 13 is the new trustworthy reference and current sweep-best config.
+
+Current best *retrievable* checkpoint by F1: **trial 13, F1 0.7539** (`kelmoir/cafa6-mf-span@main`,
+run_name `mf-span-reg-more-data-unfreeze2-epochs30-label_smoothing`) — the first trial in the sweep
+where the Hub checkpoint actually matches the run's true best epoch rather than an earlier
+val_loss-selected one.
+
+Recommended next trial: with label smoothing confirmed as a real, unconfounded win and the
+val_loss/F1 selection gap now closed, the next open question per the user's bitter-lesson framing is
+which axis to push next — options, roughly in order of expected payoff: (a) more data (the uncapped
+pool is ~32k/9k pairs, see the earlier ad hoc calculation) now that the model can apparently make use
+of more training signal without overfitting as readily; (b) a capacity value between 2 and 4 (e.g.
+`unfreeze_last_n=3`) combined with label smoothing, since trial 10 showed `unfreeze=4` has more raw
+capacity but overfits fast — label smoothing might let that capacity be used productively where it
+couldn't before; (c) a higher `--label-smoothing` value (e.g. 0.2) to see whether trial 13's gain
+extrapolates or the current 0.1 is already near-optimal. Untested regularization axes remain lowest
+priority given how little effect they've had so far: `--output-dropout` above 0.2, `--learning-rate`
+lower than 5e-5, `--lr-schedule linear_decay`, `--pos-weight` override. Remember to give each future
+trial a distinct `--hub-branch`, not just a distinct `--run-name`, if the Hub copy should stay
+retrievable.
