@@ -32,6 +32,7 @@ pipeline's `sweep_log.md`.
 | 11 (unfreeze-2, epochs=20, crashed) | not captured (crash — see note) | extends epochs on `unfreeze_last_n=2` (trial 7/8's setting, not trial 10's) from 10→20, data volume unchanged (20000/5000), else identical to trial 8 | 11 (confirmed via trackio) | 0.378 (confirmed; epoch 17 = 0.396 — **mild rise, see note**) | **0.710 at epoch 17 (confirmed, new sweep-best)** — precision 0.67, recall 0.74 | **Corrected verdict**: trackio recovery (step counter is 0-indexed, so trackio step *N* = epoch *N*+1 — corrected from an initial off-by-one) shows val_loss *did* rise after epoch 11 (0.378→0.396 by epoch 17, train_loss still falling to 0.16) — a real but much gentler OVERFITTING-by-loss than trial 10's sharp epoch-8 spike, not the "no divergence" read the crash-memory estimate gave. Precision/recall/F1 were all still climbing at epoch 17 despite the val_loss rise — same recurring val_loss/F1 divergence as trials 5 and 10, now with confirmed numbers. **Exposed a real gap: script had no incremental per-epoch log file, only stdout — fixed same day, see note.** |
 | 12 (unfreeze2-epochs30, clean) | `mf-span-reg-more-data-unfreeze2-epochs30` | clean, uncrashed rerun of trial 11's config with `--epochs 30` (the recommended next trial), full `--log-file` capture, all other args identical to trial 8 | 10 (exact) | **0.3593 (exact match to trial 8 — see note on determinism)** | **0.7421 at epoch 28 (new sweep-best, saved checkpoint only reaches 0.6874 at epoch 10 — see note)** | Confirms and sharpens trial 11: real OVERFITTING-by-loss after epoch 10, noisy and much larger by epoch 30 (val_loss 0.3593→0.5936, Δ0.234) than the partial trial-11 picture suggested, while F1 climbs to a plateau of roughly 0.72-0.74 from epoch ~19 onward. Largest val_loss/F1-selection gap in the sweep so far (0.6874 saved vs. 0.7421 true best) — prompted adding a `--checkpoint-selection {val_loss,f1}` flag (see note) |
 | 13 (unfreeze2-epochs30-label-smoothing) | `mf-span-reg-more-data-unfreeze2-epochs30-label_smoothing` | trial 12 + `--label-smoothing 0.1` (training targets only), `--checkpoint-selection f1` (first trial to actually use it), `--early-stop-patience 5` (never triggered — ran the full 30 epochs) | 28 | 0.3069 (val_loss at the best-F1 epoch — see note) | **0.7539 at epoch 28 — new sweep-best, and the first trial where the true-best epoch is also the actually saved/pushed checkpoint** | Label smoothing closes the val_loss/F1 divergence almost entirely (val_loss rises only 0.0057 from its epoch-28 min by epoch 30, vs. trial 12's Δ0.234) while also raising absolute F1 above trial 12's at every directly-comparable epoch — a genuine, unconfounded win (the other two changed flags don't affect the training curve itself — see note) |
+| 14 (unfreeze2-epochs30-label-smoothing-effbatch32) | `mf-span-reg-more-data-unfreeze2-epochs30-label_smoothing-effbatch32` | trial 13 + `--batch-size 4 --grad-accum-steps 8` (effective batch 32, vs. trial 13's real batch 16), same `--learning-rate 5e-5` (not scaled up for the larger effective batch) | 28 | 0.3140 (worse than trial 13's 0.3069) | **0.7384 at epoch 28 (worse than trial 13's 0.7539 by 0.0155 — trailed trial 13 at every matched epoch, not just the end)** | Doubling effective batch size at a fixed epoch budget and unscaled LR is a real regression, not an improvement — but ~24% faster wall-clock (20719s vs. trial 13's 27241s for the same 30 epochs), consistent with half as many optimizer steps/epoch and unscaled LR under-training relative to trial 13, not evidence that a bigger effective batch is inherently worse (see note) |
 
 ## Trial notes
 
@@ -360,7 +361,76 @@ Several findings:
    machine's GPU at this data scale (20k/5k pairs, `unfreeze_last_n=2`) — useful as a reference for
    estimating future same-scale trials' wall-clock cost.
 
-## Standing conclusion (through trial 13)
+**Trial 14 (unfreeze2-epochs30-label-smoothing-effbatch32).** Reruns trial 13's exact config with
+`--batch-size 4 --grad-accum-steps 8` instead of a plain `--batch-size 16` — an effective batch of
+32 (double trial 13's), using the newly-added `--grad-accum-steps` flag and its accompanying
+`val_loss`-normalization fix (both added this session in response to a real, measured bug: matched-
+effective-batch runs at different `--batch-size` values were producing systematically different
+`val_loss`, traced to the validation loop naively averaging per-batch means instead of a true
+token-weighted average — see the script's git history for the fix). `--learning-rate` was left at
+trial 13's `5e-5`, not scaled up for the larger batch. Full curve:
+
+| epoch | train_loss | val_loss | val_f1 | new best (by F1)? |
+|---|---|---|---|---|
+| 1 | 0.5936 | 0.4938 | 0.4454 | yes |
+| 2 | 0.5162 | 0.4624 | 0.5271 | yes |
+| 3 | 0.4866 | 0.4326 | 0.5615 | yes |
+| 4 | 0.4647 | 0.4248 | 0.5836 | yes |
+| 5 | 0.4481 | 0.4023 | 0.5958 | yes |
+| 6 | 0.4325 | 0.3883 | 0.6238 | yes |
+| 7 | 0.4193 | 0.3740 | 0.6307 | yes |
+| 8 | 0.4082 | 0.3654 | 0.6422 | yes |
+| 9 | 0.3978 | 0.3591 | 0.6565 | yes |
+| 10 | 0.3884 | 0.3541 | 0.6681 | yes |
+| 11 | 0.3801 | 0.3469 | 0.6778 | yes |
+| 12 | 0.3738 | 0.3442 | 0.6787 | yes |
+| 13 | 0.3654 | 0.3359 | 0.6922 | yes |
+| 14 | 0.3584 | 0.3386 | 0.6922 | yes |
+| 15 | 0.3535 | 0.3351 | 0.7017 | yes |
+| 16 | 0.3472 | 0.3303 | 0.7066 | yes |
+| 17 | 0.3418 | 0.3232 | 0.7140 | yes |
+| 18 | 0.3367 | 0.3268 | 0.7095 | no |
+| 19 | 0.3325 | 0.3243 | 0.7174 | yes |
+| 20 | 0.3271 | 0.3225 | 0.7152 | no |
+| 21 | 0.3226 | 0.3227 | 0.7230 | yes |
+| 22 | 0.3187 | 0.3156 | 0.7301 | yes |
+| 23 | 0.3153 | 0.3157 | 0.7304 | yes |
+| 24 | 0.3115 | 0.3296 | 0.7190 | no |
+| 25 | 0.3084 | 0.3179 | 0.7324 | yes |
+| 26 | 0.3050 | 0.3205 | 0.7337 | yes |
+| 27 | 0.3019 | 0.3163 | 0.7317 | no |
+| 28 | 0.2990 | **0.3140** | **0.7384 (best F1 — saved/pushed checkpoint)** | yes |
+| 29 | 0.2965 | 0.3163 | 0.7348 | no |
+| 30 | 0.2935 | 0.3194 | 0.7334 | no |
+
+Findings:
+
+1. **Worse quality at every matched epoch, not just at the end.** trial 14 trails trial 13 on both
+   val_loss and F1 essentially throughout — epoch 10 (0.3541/0.6681 vs. trial 13's 0.3380/0.6950),
+   epoch 20 (0.3225/0.7152 vs. 0.3182/0.7276), epoch 28-best (0.3140/0.7384 vs. 0.3069/0.7539, a
+   0.0155 F1 gap). This isn't a late-training divergence like the val_loss/F1 story in trials 5-12 —
+   it's a consistent lag from early epochs onward, a different failure signature.
+2. **Likely cause: same LR, half as many optimizer steps per epoch, unscaled.** Effective batch 32
+   on the same 20000-pair training set means ~625 optimizer steps/epoch vs. trial 13's ~1250 —
+   literally half the gradient updates per epoch — while `--learning-rate` stayed at trial 13's
+   `5e-5`. This is exactly the setup the "linear scaling rule" (Goyal et al. 2017) warns about:
+   doubling batch size without proportionally increasing LR under-trains relative to the smaller-
+   batch baseline at a fixed epoch budget. Not yet tested whether a scaled-up LR (or a doubled epoch
+   budget, to match total step count instead of epoch count) closes this gap — flagging as the
+   natural follow-up before concluding effective batch 32 is a worse setting in general.
+3. **Substantially faster wall-clock despite the larger effective batch: 20719s vs. trial 13's
+   27241s (~24% less total training time for the same 30 epochs).** Consistent with the earlier
+   batch-size speed-test finding (smaller literal `--batch-size` trains faster per epoch due to less
+   per-batch padding waste) — `--batch-size 4` here is cheap per step even though `--grad-accum-steps
+   8` reaches a bigger effective batch than trial 13's plain `--batch-size 16` ever did. If a
+   scaled-LR or matched-step-count rerun closes finding 2's quality gap, this configuration could be
+   a strictly better (faster *and* as-good) setting than trial 13's.
+4. **Confirms the grad-accum / val_loss fix works correctly in a real, full-scale trial** — not just
+   the CPU smoke tests. `--checkpoint-selection f1` and `--push-to-hub` both worked as expected, and
+   the checkpoint was pushed to a distinct `--hub-branch trial-14` (not overwriting trial 13's
+   `main`), per the sweep's recurring-overwrite note.
+
+## Standing conclusion (through trial 14)
 
 The capacity axis (`unfreeze_last_n`) has a well-established shape at the 20k/5k data scale:
 `unfreeze=2` clears every other config in the sweep by a wide margin, `unfreeze=4` (trial 10) overfits
@@ -374,23 +444,29 @@ divergence almost entirely (val_loss rises only Δ0.0057 past its epoch-28 minim
 checkpoint is what's actually saved and pushed to the Hub, not a val_loss-selected earlier epoch sitting
 well below the run's true peak. Every dropout/weight-decay axis tested pre-label-smoothing remains a
 no-op; capacity, epoch budget, and now label smoothing are the axes that have produced real effects.
-Trial 13 is the new trustworthy reference and current sweep-best config.
+Trial 14 tested effective batch size as a new axis (32 via `--grad-accum-steps`, vs. trial 13's real
+16) at trial 13's unchanged learning rate, and came out worse at every matched epoch (F1 0.7384 vs.
+0.7539) despite ~24% faster wall-clock — most plausibly an LR/step-count artifact (half as many
+optimizer steps/epoch, unscaled LR) rather than evidence that a bigger effective batch is inherently
+worse; not yet retested with a scaled-up LR. **Trial 13 remains the trustworthy reference and current
+sweep-best config**; trial 14 is a real, useful data point but not an improvement as run.
 
 Current best *retrievable* checkpoint by F1: **trial 13, F1 0.7539** (`kelmoir/cafa6-mf-span@main`,
 run_name `mf-span-reg-more-data-unfreeze2-epochs30-label_smoothing`) — the first trial in the sweep
 where the Hub checkpoint actually matches the run's true best epoch rather than an earlier
-val_loss-selected one.
+val_loss-selected one. Trial 14's checkpoint (F1 0.7384) is also retrievable, on its own branch
+(`kelmoir/cafa6-mf-span@trial-14`), but is not currently the best.
 
-Recommended next trial: with label smoothing confirmed as a real, unconfounded win and the
-val_loss/F1 selection gap now closed, the next open question per the user's bitter-lesson framing is
-which axis to push next — options, roughly in order of expected payoff: (a) more data (the uncapped
-pool is ~32k/9k pairs, see the earlier ad hoc calculation) now that the model can apparently make use
-of more training signal without overfitting as readily; (b) a capacity value between 2 and 4 (e.g.
-`unfreeze_last_n=3`) combined with label smoothing, since trial 10 showed `unfreeze=4` has more raw
-capacity but overfits fast — label smoothing might let that capacity be used productively where it
-couldn't before; (c) a higher `--label-smoothing` value (e.g. 0.2) to see whether trial 13's gain
-extrapolates or the current 0.1 is already near-optimal. Untested regularization axes remain lowest
-priority given how little effect they've had so far: `--output-dropout` above 0.2, `--learning-rate`
-lower than 5e-5, `--lr-schedule linear_decay`, `--pos-weight` override. Remember to give each future
-trial a distinct `--hub-branch`, not just a distinct `--run-name`, if the Hub copy should stay
-retrievable.
+Recommended next trial: **before pushing a new regularization/data axis, resolve trial 14's open
+question** — rerun its exact config (`--batch-size 4 --grad-accum-steps 8`, effective batch 32) with
+the learning rate scaled up per the linear scaling rule (try `--learning-rate 1e-4`, i.e. 2x, matching
+the 2x effective-batch increase) to test whether the quality gap versus trial 13 closes. If it does,
+trial 14's config becomes the new reference (same or better quality, ~24% cheaper wall-clock than
+trial 13) — genuinely worth having given how many more trials this sweep is likely to run. If it
+doesn't close, effective batch 32 can be deprioritized and the sweep can return to trial 13's axes:
+(a) more data (the uncapped pool is ~32k/9k pairs, see the earlier ad hoc calculation); (b) a capacity
+value between 2 and 4 (e.g. `unfreeze_last_n=3`) combined with label smoothing; (c) a higher
+`--label-smoothing` value (e.g. 0.2). Untested regularization axes remain lowest priority given how
+little effect they've had so far: `--output-dropout` above 0.2, `--lr-schedule linear_decay`,
+`--pos-weight` override. Remember to give each future trial a distinct `--hub-branch`, not just a
+distinct `--run-name`, if the Hub copy should stay retrievable.
