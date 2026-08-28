@@ -33,7 +33,9 @@ pipeline's `sweep_log.md`.
 | 12 (unfreeze2-epochs30, clean) | `mf-span-reg-more-data-unfreeze2-epochs30` | clean, uncrashed rerun of trial 11's config with `--epochs 30` (the recommended next trial), full `--log-file` capture, all other args identical to trial 8 | 10 (exact) | **0.3593 (exact match to trial 8 — see note on determinism)** | **0.7421 at epoch 28 (new sweep-best, saved checkpoint only reaches 0.6874 at epoch 10 — see note)** | Confirms and sharpens trial 11: real OVERFITTING-by-loss after epoch 10, noisy and much larger by epoch 30 (val_loss 0.3593→0.5936, Δ0.234) than the partial trial-11 picture suggested, while F1 climbs to a plateau of roughly 0.72-0.74 from epoch ~19 onward. Largest val_loss/F1-selection gap in the sweep so far (0.6874 saved vs. 0.7421 true best) — prompted adding a `--checkpoint-selection {val_loss,f1}` flag (see note) |
 | 13 (unfreeze2-epochs30-label-smoothing) | `mf-span-reg-more-data-unfreeze2-epochs30-label_smoothing` | trial 12 + `--label-smoothing 0.1` (training targets only), `--checkpoint-selection f1` (first trial to actually use it), `--early-stop-patience 5` (never triggered — ran the full 30 epochs) | 28 | 0.3069 (val_loss at the best-F1 epoch — see note) | **0.7539 at epoch 28 — new sweep-best, and the first trial where the true-best epoch is also the actually saved/pushed checkpoint** | Label smoothing closes the val_loss/F1 divergence almost entirely (val_loss rises only 0.0057 from its epoch-28 min by epoch 30, vs. trial 12's Δ0.234) while also raising absolute F1 above trial 12's at every directly-comparable epoch — a genuine, unconfounded win (the other two changed flags don't affect the training curve itself — see note) |
 | 14 (unfreeze2-epochs30-label-smoothing-effbatch32) | `mf-span-reg-more-data-unfreeze2-epochs30-label_smoothing-effbatch32` | trial 13 + `--batch-size 4 --grad-accum-steps 8` (effective batch 32, vs. trial 13's real batch 16), same `--learning-rate 5e-5` (not scaled up for the larger effective batch) | 28 | 0.3140 (worse than trial 13's 0.3069) | **0.7384 at epoch 28 (worse than trial 13's 0.7539 by 0.0155 — trailed trial 13 at every matched epoch, not just the end)** | Doubling effective batch size at a fixed epoch budget and unscaled LR is a real regression, not an improvement — but ~24% faster wall-clock (20719s vs. trial 13's 27241s for the same 30 epochs), consistent with half as many optimizer steps/epoch and unscaled LR under-training relative to trial 13, not evidence that a bigger effective batch is inherently worse (see note) |
-| 15 (unfreeze2-epochs30-trial-15, effbatch32+lr-scaled) | `mf-span-reg-more-data-unfreeze2-epochs30-trial-15` | trial 14 + `--learning-rate 1e-4` (2x, scaled with effective batch per the linear scaling rule) | 19 (early-stopped after 24) | **0.3038 (new sweep-best)** | **0.7544 at epoch 19 — new sweep-best (barely edges out trial 13's 0.7539), reached 9 epochs earlier than trial 13's peak** | Confirms the linear scaling rule hypothesis: LR-scaling doesn't just close trial 14's gap, it slightly exceeds trial 13's quality — while finishing in 16677.7s, ~39% faster than trial 13's 27241s and ~19% faster than trial 14's 20719s (first trial where early stopping actually fired, on top of the batch-size speed advantage) — see note |
+| 15 (unfreeze2-epochs30-trial-15, effbatch32+lr-scaled) | `mf-span-reg-more-data-unfreeze2-epochs30-trial-15` | trial 14 + `--learning-rate 1e-4` (2x, scaled with effective batch per the linear scaling rule) | 19 (early-stopped after 24) | **0.3038** | **0.7544 at epoch 19 (barely edges out trial 13's 0.7539), reached 9 epochs earlier than trial 13's peak** | Confirms the linear scaling rule hypothesis: LR-scaling doesn't just close trial 14's gap, it slightly exceeds trial 13's quality — while finishing in 16677.7s, ~39% faster than trial 13's 27241s and ~19% faster than trial 14's 20719s (first trial where early stopping actually fired, on top of the batch-size speed advantage) — see note |
+| 16 (unfreeze2-epochs30-trial-16, effbatch32/bs2-ga16+label_smoothing0.2) | `mf-span-reg-trial-16` | trial 15 + `--batch-size 2 --grad-accum-steps 16` (same effective batch 32, different split) + `--label-smoothing 0.2` | — | — | **abandoned at epoch 17/30, no `[SUMMARY]`** | Incomplete run, not a result — superseded by trial 17, which isolates the label-smoothing change alone against trial 15's exact batch/grad-accum split. Log file kept for the record only |
+| 17 (reg-trial-17, label_smoothing0.2) | `mf-span-reg-trial-17` | trial 15's exact config (`--batch-size 4 --grad-accum-steps 8 --learning-rate 1e-4`) + `--label-smoothing 0.2` (2x) | 26 | 0.3190 (not the run's true min — see note) | **0.7642 at epoch 26 — new sweep-best**, beats trial 15 at every matched epoch | Higher label smoothing is a further real, unconfounded win — but early stopping didn't fire this time (only 4 flat epochs after 26, one short of patience 5), so it ran the full 30 epochs: 20180.2s, ~21% more expensive than trial 15 though still ~26% cheaper than trial 13 — see note |
 
 ## Trial notes
 
@@ -487,7 +489,77 @@ Findings:
    band from epoch ~9 onward, consistent with label smoothing's regularizing effect being orthogonal
    to the batch-size/LR axis.
 
-## Standing conclusion (through trial 15)
+**Trial 16 (trial-16, effbatch32/bs2-ga16+label_smoothing0.2, abandoned).** Same idea as trial 17
+below (test `--label-smoothing 0.2` on top of trial 15's config) but with `--batch-size 2
+--grad-accum-steps 16` instead of trial 15's `--batch-size 4 --grad-accum-steps 8` (same effective
+batch 32, different split). Run was interrupted at epoch 17/30 — no `[SUMMARY]` line, so it isn't a
+completed trial. `experiments/logs/mf_span_mf-span-reg-trial-16.jsonl` is kept as a record of the
+partial curve (it was tracking trial 15 closely through epoch 17: F1 0.7514 vs. trial 15's later
+epochs), but no row conclusion is drawn from it — superseded by trial 17, which reruns the same
+label-smoothing change against trial 15's exact batch/grad-accum split for a clean isolated
+comparison instead of confounding it with a second batch-split change.
+
+**Trial 17 (reg-trial-17, label_smoothing0.2).** Isolates the label-smoothing axis from trial 15's
+"Recommended next trial" list: trial 15's exact config (`--batch-size 4 --grad-accum-steps 8
+--learning-rate 1e-4`), only `--label-smoothing` raised 0.1→0.2. Full curve:
+
+| epoch | train_loss | val_loss | precision | recall | val_f1 | new best (by F1)? |
+|---|---|---|---|---|---|---|
+| 1 | 0.6206 | 0.4928 | 0.5601 | 0.4030 | 0.4687 | yes |
+| 2 | 0.5613 | 0.4500 | 0.5307 | 0.6008 | 0.5636 | yes |
+| 3 | 0.5354 | 0.4128 | 0.5879 | 0.6502 | 0.6175 | yes |
+| 4 | 0.5152 | 0.4077 | 0.5714 | 0.7251 | 0.6391 | yes |
+| 5 | 0.5009 | 0.3861 | 0.6156 | 0.7114 | 0.6601 | yes |
+| 6 | 0.4891 | 0.3671 | 0.6629 | 0.7296 | 0.6947 | yes |
+| 7 | 0.4779 | 0.3561 | 0.6818 | 0.7342 | 0.7071 | yes |
+| 8 | 0.4688 | 0.3538 | 0.6810 | 0.7286 | 0.7040 | no |
+| 9 | 0.4616 | 0.3497 | 0.7089 | 0.7373 | 0.7228 | yes |
+| 10 | 0.4548 | 0.3403 | 0.6922 | 0.7671 | 0.7277 | yes |
+| 11 | 0.4482 | 0.3343 | 0.7157 | 0.7515 | 0.7331 | yes |
+| 12 | 0.4443 | 0.3313 | 0.6909 | 0.7939 | 0.7388 | yes |
+| 13 | 0.4385 | 0.3260 | 0.7238 | 0.7762 | 0.7491 | yes |
+| 14 | 0.4347 | 0.3306 | 0.7334 | 0.7534 | 0.7433 | no |
+| 15 | 0.4311 | 0.3257 | 0.7550 | 0.7502 | 0.7526 | yes |
+| 16 | 0.4272 | 0.3285 | 0.7266 | 0.7648 | 0.7452 | no |
+| 17 | 0.4239 | 0.3212 | 0.7297 | 0.7761 | 0.7522 | no |
+| 18 | 0.4214 | 0.3232 | 0.7350 | 0.7654 | 0.7499 | no |
+| 19 | 0.4185 | 0.3230 | 0.7521 | 0.7623 | 0.7572 | yes |
+| 20 | 0.4160 | 0.3278 | 0.7744 | 0.7220 | 0.7473 | no |
+| 21 | 0.4137 | 0.3258 | 0.7608 | 0.7471 | 0.7539 | no |
+| 22 | 0.4113 | **0.3176 (min)** | 0.7423 | 0.7678 | 0.7548 | no |
+| 23 | 0.4092 | 0.3231 | 0.7514 | 0.7550 | 0.7532 | no |
+| 24 | 0.4074 | 0.3232 | 0.7708 | 0.7478 | 0.7591 | yes |
+| 25 | 0.4053 | 0.3247 | 0.7644 | 0.7473 | 0.7558 | no |
+| 26 | 0.4035 | 0.3190 | 0.7667 | 0.7617 | **0.7642 (best F1 — saved/pushed checkpoint)** | yes |
+| 27 | 0.4023 | 0.3194 | 0.7542 | 0.7605 | 0.7573 | no |
+| 28 | 0.4009 | 0.3208 | 0.7551 | 0.7528 | 0.7540 | no |
+| 29 | 0.4000 | 0.3227 | 0.7700 | 0.7378 | 0.7536 | no |
+| 30 | 0.3981 | 0.3220 | 0.7871 | 0.7345 | 0.7599 | no (only 4 epochs since last best — early stop never armed) |
+
+Findings:
+
+1. **Higher label smoothing is a further real, unconfounded win.** Trial 17 beats trial 15 at every
+   directly matched epoch (epoch 19: F1 0.7572 vs. 0.7544; epoch 24: 0.7591 vs. trial 15's
+   early-stopped final of 0.7526), and its peak of **0.7642 at epoch 26 is a new sweep-best**,
+   clearing trial 15's 0.7544 by a real margin (+0.0098) — a bigger jump than trial 15's own
+   marginal +0.0005 over trial 13.
+2. **Early stopping didn't fire this time, so the trial cost more.** The best epoch kept moving
+   until 26, leaving only 4 flat epochs (27-30) by the time the 30-epoch budget ran out — one short
+   of `--early-stop-patience 5`. Total time 20180.2s, ~21% more than trial 15's 16677.7s, though
+   still ~26% cheaper than trial 13's 27241s (the batch-size speed advantage alone, without early
+   stopping's help this time).
+3. **A small val_loss/F1 divergence reappears.** The run's true val_loss minimum is 0.3176 at epoch
+   22, but the best-F1 epoch (26) sits slightly higher at val_loss 0.3190 — in trial 15 these
+   coincided exactly (both at epoch 19). Not a real regression (both are in the same tight ~0.32
+   band, and F1 is the selection criterion this sweep cares about), but a sign that pushing label
+   smoothing higher loosens rather than tightens the val_loss/F1 alignment.
+4. Trial 16's abandoned partial curve (batch_size=2/grad_accum=16 split) tracked trial 17 closely
+   through its last completed epoch (17: F1 0.7514 vs. trial 17's 0.7522), suggesting the literal
+   batch/grad-accum split matters little once the effective batch and LR are fixed — consistent with
+   trial 14/15's existing read that the split mainly affects wall-clock (padding waste), not the
+   learning curve itself.
+
+## Standing conclusion (through trial 17)
 
 The capacity axis (`unfreeze_last_n`) has a well-established shape at the 20k/5k data scale:
 `unfreeze=2` clears every other config in the sweep by a wide margin, `unfreeze=4` (trial 10) overfits
@@ -509,23 +581,35 @@ worse. Trial 15 confirmed this directly: rerunning trial 14's config with `--lea
 (2x, per the linear scaling rule) not only closed the gap but slightly exceeded trial 13's quality
 (F1 0.7544 vs. 0.7539, reached 9 epochs earlier) while finishing in ~39% less wall-clock than trial 13
 and ~19% less than trial 14 — the first trial where early stopping actually fired, stacking on top of
-the smaller-`--batch-size` speed advantage. **Trial 15 is now the trustworthy reference and current
-sweep-best config**, strictly dominating trial 13 (equal-or-better quality, substantially cheaper).
+the smaller-`--batch-size` speed advantage. Trial 17 then tested one of trial 15's own recommended
+next axes — `--label-smoothing` 0.1→0.2, everything else held at trial 15's exact config — and it's a
+real, larger win: **F1 0.7642 at epoch 26, a new sweep-best**, beating trial 15 at every matched epoch
+(+0.0098 at the peak, well outside the noise trial 15's own +0.0005-over-trial-13 margin sat in). The
+cost tradeoff flipped, though: early stopping didn't fire this time (only 4 flat epochs after the
+epoch-26 peak, one short of patience 5), so trial 17 ran the full 30 epochs and cost ~21% more than
+trial 15 (20180.2s vs. 16677.7s) — still ~26% cheaper than trial 13, just not as cheap as trial 15 was.
+Trial 16, an abandoned same-idea run with a different batch/grad-accum split (`--batch-size 2
+--grad-accum-steps 16`, same effective batch 32), tracked trial 17 closely through its last completed
+epoch before being interrupted — further evidence the literal batch/grad-accum split mainly affects
+wall-clock, not the learning curve. **Trial 17 is now the trustworthy reference and current sweep-best
+config**, strictly dominating trial 15 on quality (equal cost profile aside from the early-stop miss).
 
-Current best *retrievable* checkpoint by F1: **trial 15, F1 0.7544** (`kelmoir/cafa6-mf-span@trial-15`,
-run_name `mf-span-reg-more-data-unfreeze2-epochs30-trial-15`) — effective batch 32
-(`--batch-size 4 --grad-accum-steps 8`), `--learning-rate 1e-4`, `--label-smoothing 0.1`,
-`--checkpoint-selection f1`, `--early-stop-patience 5`. Trial 13's checkpoint (F1 0.7539) remains
-retrievable at `kelmoir/cafa6-mf-span@main` and is a near-tie, just markedly more expensive to
-reproduce. Trial 14's checkpoint (F1 0.7384) is also retrievable, on `kelmoir/cafa6-mf-span@trial-14`,
-but is now the weakest of the three.
+Current best *retrievable* checkpoint by F1: **trial 17, F1 0.7642** (`kelmoir/cafa6-mf-span@trial-17`,
+run_name `mf-span-reg-trial-17`) — effective batch 32 (`--batch-size 4 --grad-accum-steps 8`),
+`--learning-rate 1e-4`, `--label-smoothing 0.2`, `--checkpoint-selection f1`,
+`--early-stop-patience 5`. Trial 15's checkpoint (F1 0.7544) remains retrievable at
+`kelmoir/cafa6-mf-span@trial-15` — a cheaper but now clearly lower-quality alternative. Trial 13's
+checkpoint (F1 0.7539, `@main`) and trial 14's (F1 0.7384, `@trial-14`) are both now further behind
+the frontier.
 
-Recommended next trial: the effective-batch/LR-scaling axis is resolved — trial 15's config should be
-the new base for future trials. The F1 gain over trial 13 was marginal (0.0005), though, so the next
-trial should pursue a genuinely new axis on top of trial 15's config rather than re-tuning batch/LR
-further: (a) more data (the uncapped pool is ~32k/9k pairs, see the earlier ad hoc calculation); (b) a
-capacity value between 2 and 4 (e.g. `unfreeze_last_n=3`) combined with label smoothing; (c) a higher
-`--label-smoothing` value (e.g. 0.2). Untested regularization axes remain lowest priority given how
-little effect they've had so far: `--output-dropout` above 0.2, `--lr-schedule linear_decay`,
-`--pos-weight` override. Remember to give each future trial a distinct `--hub-branch`, not just a
-distinct `--run-name`, if the Hub copy should stay retrievable.
+Recommended next trial: label smoothing is a real, non-saturated axis — worth pushing further before
+moving on. Try (a) `--label-smoothing 0.3` on top of trial 17's config, watching specifically whether
+the val_loss/F1 divergence trial 17 showed (true val_loss min at epoch 22, best-F1 epoch at 26) widens
+further, which would signal smoothing is starting to fight the val_loss-based signal even though F1
+keeps improving. If 0.3 regresses F1, treat 0.2 as the smoothing plateau and switch to a different
+axis instead: (b) more data (the uncapped pool is ~32k/9k pairs, see the earlier ad hoc calculation);
+(c) a capacity value between 2 and 4 (e.g. `unfreeze_last_n=3`) combined with `--label-smoothing 0.2`.
+Untested regularization axes remain lowest priority given how little effect they've had so far:
+`--output-dropout` above 0.2, `--lr-schedule linear_decay`, `--pos-weight` override. Remember to give
+each future trial a distinct `--hub-branch`, not just a distinct `--run-name`, if the Hub copy should
+stay retrievable.
