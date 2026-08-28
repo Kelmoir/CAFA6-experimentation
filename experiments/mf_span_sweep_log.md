@@ -34,7 +34,7 @@ pipeline's `sweep_log.md`.
 | 13 (unfreeze2-epochs30-label-smoothing) | `mf-span-reg-more-data-unfreeze2-epochs30-label_smoothing` | trial 12 + `--label-smoothing 0.1` (training targets only), `--checkpoint-selection f1` (first trial to actually use it), `--early-stop-patience 5` (never triggered — ran the full 30 epochs) | 28 | 0.3069 (val_loss at the best-F1 epoch — see note) | **0.7539 at epoch 28 — new sweep-best, and the first trial where the true-best epoch is also the actually saved/pushed checkpoint** | Label smoothing closes the val_loss/F1 divergence almost entirely (val_loss rises only 0.0057 from its epoch-28 min by epoch 30, vs. trial 12's Δ0.234) while also raising absolute F1 above trial 12's at every directly-comparable epoch — a genuine, unconfounded win (the other two changed flags don't affect the training curve itself — see note) |
 | 14 (unfreeze2-epochs30-label-smoothing-effbatch32) | `mf-span-reg-more-data-unfreeze2-epochs30-label_smoothing-effbatch32` | trial 13 + `--batch-size 4 --grad-accum-steps 8` (effective batch 32, vs. trial 13's real batch 16), same `--learning-rate 5e-5` (not scaled up for the larger effective batch) | 28 | 0.3140 (worse than trial 13's 0.3069) | **0.7384 at epoch 28 (worse than trial 13's 0.7539 by 0.0155 — trailed trial 13 at every matched epoch, not just the end)** | Doubling effective batch size at a fixed epoch budget and unscaled LR is a real regression, not an improvement — but ~24% faster wall-clock (20719s vs. trial 13's 27241s for the same 30 epochs), consistent with half as many optimizer steps/epoch and unscaled LR under-training relative to trial 13, not evidence that a bigger effective batch is inherently worse (see note) |
 | 15 (unfreeze2-epochs30-trial-15, effbatch32+lr-scaled) | `mf-span-reg-more-data-unfreeze2-epochs30-trial-15` | trial 14 + `--learning-rate 1e-4` (2x, scaled with effective batch per the linear scaling rule) | 19 (early-stopped after 24) | **0.3038** | **0.7544 at epoch 19 (barely edges out trial 13's 0.7539), reached 9 epochs earlier than trial 13's peak** | Confirms the linear scaling rule hypothesis: LR-scaling doesn't just close trial 14's gap, it slightly exceeds trial 13's quality — while finishing in 16677.7s, ~39% faster than trial 13's 27241s and ~19% faster than trial 14's 20719s (first trial where early stopping actually fired, on top of the batch-size speed advantage) — see note |
-| 16 (unfreeze2-epochs30-trial-16, effbatch32/bs2-ga16+label_smoothing0.2) | `mf-span-reg-trial-16` | trial 15 + `--batch-size 2 --grad-accum-steps 16` (same effective batch 32, different split) + `--label-smoothing 0.2` | — | — | **abandoned at epoch 17/30, no `[SUMMARY]`** | Incomplete run, not a result — superseded by trial 17, which isolates the label-smoothing change alone against trial 15's exact batch/grad-accum split. Log file kept for the record only |
+| 16 (unfreeze2-epochs30-trial-16, effbatch32/bs2-ga16+label_smoothing0.2) | `mf-span-reg-trial-16` | trial 15 + `--batch-size 2 --grad-accum-steps 16` (same effective batch 32, different split) + `--label-smoothing 0.2` | — | — | **crashed after epoch 17/30 (cause unknown), no `[SUMMARY]`** | Incomplete run, not a result — superseded by trial 17, which isolates the label-smoothing change alone against trial 15's exact batch/grad-accum split. Notably ~14% faster per epoch than trial 17 (~577s avg vs. ~672s avg) — user suspects a link to the crash, unconfirmed. Log file kept for the record only |
 | 17 (reg-trial-17, label_smoothing0.2) | `mf-span-reg-trial-17` | trial 15's exact config (`--batch-size 4 --grad-accum-steps 8 --learning-rate 1e-4`) + `--label-smoothing 0.2` (2x) | 26 | 0.3190 (not the run's true min — see note) | **0.7642 at epoch 26 — new sweep-best**, beats trial 15 at every matched epoch | Higher label smoothing is a further real, unconfounded win — but early stopping didn't fire this time (only 4 flat epochs after 26, one short of patience 5), so it ran the full 30 epochs: 20180.2s, ~21% more expensive than trial 15 though still ~26% cheaper than trial 13 — see note |
 
 ## Trial notes
@@ -489,15 +489,24 @@ Findings:
    band from epoch ~9 onward, consistent with label smoothing's regularizing effect being orthogonal
    to the batch-size/LR axis.
 
-**Trial 16 (trial-16, effbatch32/bs2-ga16+label_smoothing0.2, abandoned).** Same idea as trial 17
-below (test `--label-smoothing 0.2` on top of trial 15's config) but with `--batch-size 2
+**Trial 16 (trial-16, effbatch32/bs2-ga16+label_smoothing0.2, crashed).** Same idea as trial 17 below
+(test `--label-smoothing 0.2` on top of trial 15's config) but with `--batch-size 2
 --grad-accum-steps 16` instead of trial 15's `--batch-size 4 --grad-accum-steps 8` (same effective
-batch 32, different split). Run was interrupted at epoch 17/30 — no `[SUMMARY]` line, so it isn't a
-completed trial. `experiments/logs/mf_span_mf-span-reg-trial-16.jsonl` is kept as a record of the
-partial curve (it was tracking trial 15 closely through epoch 17: F1 0.7514 vs. trial 15's later
-epochs), but no row conclusion is drawn from it — superseded by trial 17, which reruns the same
-label-smoothing change against trial 15's exact batch/grad-accum split for a clean isolated
-comparison instead of confounding it with a second batch-split change.
+batch 32, different split). **Crashed after epoch 17/30 for an unknown reason** (not a manual
+interruption) — no `[SUMMARY]` line, so it isn't a completed trial.
+`experiments/logs/mf_span_mf-span-reg-trial-16.jsonl` is kept as a record of the partial curve (it
+was tracking trial 15 closely through epoch 17: F1 0.7514 vs. trial 15's later epochs), but no row
+conclusion is drawn from it — superseded by trial 17, which reruns the same label-smoothing change
+against trial 15's exact batch/grad-accum split for a clean isolated comparison instead of
+confounding it with a second batch-split change. One notable data point for whoever revisits the
+crash: trial 16's per-epoch time was consistently faster than trial 17's (~577s avg over its 17
+completed epochs vs. trial 17's ~672s avg — the same batch_size=2-vs-4 padding-waste effect seen
+since trial 14, just more pronounced at bs=2). The crash's cause is unconfirmed, but the speed
+difference is a real, measured signal (smaller literal batch size means far more optimizer
+micro-steps per epoch — 10000 vs. trial 17's 5000 — which is at least a plausible place to look:
+e.g. an OOM/edge case tied to a specific micro-batch, or instability from noisier per-step gradients
+at that granularity) rather than a coincidence, worth checking first if this batch/grad-accum split
+is revisited.
 
 **Trial 17 (reg-trial-17, label_smoothing0.2).** Isolates the label-smoothing axis from trial 15's
 "Recommended next trial" list: trial 15's exact config (`--batch-size 4 --grad-accum-steps 8
