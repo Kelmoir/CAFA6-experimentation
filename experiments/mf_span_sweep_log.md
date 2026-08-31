@@ -35,7 +35,9 @@ pipeline's `sweep_log.md`.
 | 14 (unfreeze2-epochs30-label-smoothing-effbatch32) | `mf-span-reg-more-data-unfreeze2-epochs30-label_smoothing-effbatch32` | trial 13 + `--batch-size 4 --grad-accum-steps 8` (effective batch 32, vs. trial 13's real batch 16), same `--learning-rate 5e-5` (not scaled up for the larger effective batch) | 28 | 0.3140 (worse than trial 13's 0.3069) | **0.7384 at epoch 28 (worse than trial 13's 0.7539 by 0.0155 — trailed trial 13 at every matched epoch, not just the end)** | Doubling effective batch size at a fixed epoch budget and unscaled LR is a real regression, not an improvement — but ~24% faster wall-clock (20719s vs. trial 13's 27241s for the same 30 epochs), consistent with half as many optimizer steps/epoch and unscaled LR under-training relative to trial 13, not evidence that a bigger effective batch is inherently worse (see note) |
 | 15 (unfreeze2-epochs30-trial-15, effbatch32+lr-scaled) | `mf-span-reg-more-data-unfreeze2-epochs30-trial-15` | trial 14 + `--learning-rate 1e-4` (2x, scaled with effective batch per the linear scaling rule) | 19 (early-stopped after 24) | **0.3038** | **0.7544 at epoch 19 (barely edges out trial 13's 0.7539), reached 9 epochs earlier than trial 13's peak** | Confirms the linear scaling rule hypothesis: LR-scaling doesn't just close trial 14's gap, it slightly exceeds trial 13's quality — while finishing in 16677.7s, ~39% faster than trial 13's 27241s and ~19% faster than trial 14's 20719s (first trial where early stopping actually fired, on top of the batch-size speed advantage) — see note |
 | 16 (unfreeze2-epochs30-trial-16, effbatch32/bs2-ga16+label_smoothing0.2) | `mf-span-reg-trial-16` | trial 15 + `--batch-size 2 --grad-accum-steps 16` (same effective batch 32, different split) + `--label-smoothing 0.2` | — | — | **crashed after epoch 17/30 (cause unknown), no `[SUMMARY]`** | Incomplete run, not a result — superseded by trial 17, which isolates the label-smoothing change alone against trial 15's exact batch/grad-accum split. Notably ~14% faster per epoch than trial 17 (~577s avg vs. ~672s avg) — user suspects a link to the crash, unconfirmed. Log file kept for the record only |
-| 17 (reg-trial-17, label_smoothing0.2) | `mf-span-reg-trial-17` | trial 15's exact config (`--batch-size 4 --grad-accum-steps 8 --learning-rate 1e-4`) + `--label-smoothing 0.2` (2x) | 26 | 0.3190 (not the run's true min — see note) | **0.7642 at epoch 26 — new sweep-best**, beats trial 15 at every matched epoch | Higher label smoothing is a further real, unconfounded win — but early stopping didn't fire this time (only 4 flat epochs after 26, one short of patience 5), so it ran the full 30 epochs: 20180.2s, ~21% more expensive than trial 15 though still ~26% cheaper than trial 13 — see note |
+| 17 (reg-trial-17, label_smoothing0.2) | `mf-span-reg-trial-17` | trial 15's exact config (`--batch-size 4 --grad-accum-steps 8 --learning-rate 1e-4`) + `--label-smoothing 0.2` (2x) | 26 | 0.3190 (not the run's true min — see note) | 0.7642 at epoch 26, beats trial 15 at every matched epoch | Higher label smoothing is a further real, unconfounded win — but early stopping didn't fire this time (only 4 flat epochs after 26, one short of patience 5), so it ran the full 30 epochs: 20180.2s, ~21% more expensive than trial 15 though still ~26% cheaper than trial 13 — see note |
+| 18 (trial-18, label_smoothing0.3, crashed) | `mf-span-reg-trial-18` | trial 17's exact config + `--label-smoothing` 0.2→0.3 | — | — | **crashed after epoch 14/30, no `[SUMMARY]`** | Incomplete run — a confirmed CUDA Xid 13 GPU exception (via `dmesg`/`journalctl`, timestamp-matched to the log file's last write to the second), not a code bug; see the session's diagnosis. Predates `--resume-from-checkpoint`/`run_mf_span_trial.sh` (added the same session), so nothing to resume from — superseded by trial 19, an identical-config clean rerun |
+| 19 (reg-trial-19, label_smoothing0.3) | `mf-span-reg-trial-19` | trial 17's exact config + `--label-smoothing` 0.2→0.3 (rerun of trial 18's config, clean this time) | 26 | 0.3538 (not the run's true min — see note) | **0.7651 at epoch 26 — new sweep-best**, beats trial 17 at 25/30 epochs | Marginal further win, not a repeat of trial 17's jump: +0.0009 over trial 17 vs. trial 17's own +0.0098 over trial 15 — an order of magnitude smaller. Same cost profile as trial 17 (early stop didn't fire, full 30 epochs, ~20119s) and a wider val_loss/F1 divergence (Δ0.0033 vs. trial 17's Δ0.0014) — signature of a plateau, not a regression. See note |
 
 ## Trial notes
 
@@ -568,7 +570,81 @@ Findings:
    trial 14/15's existing read that the split mainly affects wall-clock (padding waste), not the
    learning curve itself.
 
-## Standing conclusion (through trial 17)
+**Trial 18 (trial-18, label_smoothing0.3, crashed).** Trial 17's exact config with
+`--label-smoothing` raised 0.2→0.3, the first (a) option from trial 17's "Recommended next trial"
+list. Completed epoch 14 cleanly (F1 0.7430, matching trial 19's epoch 14 below almost exactly —
+see trial 19's note) then crashed during epoch 15 with `CUDA error: unspecified launch failure`.
+Diagnosed directly, not left as an unknown this time: `dmesg`/`journalctl -k` showed `NVRM: Xid
+(PCI:0000:06:00): 13, Graphics Exception` timestamped to the second against the log file's last
+write (00:25:49 vs. 00:25:45) — a GPU-side graphics-engine exception, and on this card (RTX 5060
+Ti, driver 595.84 at the time) most plausibly new-architecture driver immaturity under a sustained
+multi-hour load rather than anything wrong with this script or this config. This trial predates
+`--resume-from-checkpoint`/`experiments/scripts/run_mf_span_trial.sh` (both added the same
+session, directly motivated by this crash and trial 16's earlier one) — there was no
+`latest_checkpoint` to resume from, so the only option was a full clean rerun. `training_state.pt`
+now exists precisely so a future crash like this one costs at most one epoch instead of the whole
+trial. `experiments/logs/mf_span_mf-span-reg-trial-18.jsonl` is kept as a record of the partial
+curve; no row conclusion is drawn from it beyond the crash itself — superseded by trial 19.
+
+**Trial 19 (reg-trial-19, label_smoothing0.3).** Clean rerun of trial 18's exact config (trial 17 +
+`--label-smoothing 0.3`) after the crash, run via the new `run_mf_span_trial.sh` wrapper (didn't
+end up needing a retry — completed all 30 epochs on the first attempt). Full curve:
+
+| epoch | train_loss | val_loss | precision | recall | val_f1 | new best (by F1)? |
+|---|---|---|---|---|---|---|
+| 1 | 0.6631 | 0.5182 | 0.5636 | 0.4043 | 0.4708 | yes |
+| 2 | 0.6199 | 0.4793 | 0.5347 | 0.5977 | 0.5644 | yes |
+| 3 | 0.6010 | 0.4417 | 0.5959 | 0.6434 | 0.6187 | yes |
+| 4 | 0.5863 | 0.4387 | 0.5748 | 0.7237 | 0.6407 | yes |
+| 5 | 0.5759 | 0.4210 | 0.6182 | 0.7146 | 0.6629 | yes |
+| 6 | 0.5673 | 0.4005 | 0.6676 | 0.7280 | 0.6965 | yes |
+| 7 | 0.5592 | 0.3915 | 0.6832 | 0.7359 | 0.7086 | yes |
+| 8 | 0.5526 | 0.3884 | 0.6859 | 0.7264 | 0.7056 | no |
+| 9 | 0.5475 | 0.3863 | 0.7113 | 0.7370 | 0.7239 | yes |
+| 10 | 0.5426 | 0.3762 | 0.6989 | 0.7642 | 0.7301 | yes |
+| 11 | 0.5381 | 0.3703 | 0.7195 | 0.7536 | 0.7361 | yes |
+| 12 | 0.5353 | 0.3672 | 0.6939 | 0.7918 | 0.7396 | yes |
+| 13 | 0.5312 | 0.3628 | 0.7266 | 0.7755 | 0.7503 | yes |
+| 14 | 0.5287 | 0.3666 | 0.7376 | 0.7484 | 0.7430 | no |
+| 15 | 0.5260 | 0.3605 | 0.7529 | 0.7559 | 0.7544 | yes |
+| 16 | 0.5232 | 0.3639 | 0.7321 | 0.7601 | 0.7459 | no |
+| 17 | 0.5210 | 0.3572 | 0.7328 | 0.7746 | 0.7531 | no |
+| 18 | 0.5192 | 0.3569 | 0.7339 | 0.7707 | 0.7518 | no |
+| 19 | 0.5170 | 0.3583 | 0.7566 | 0.7570 | 0.7568 | yes |
+| 20 | 0.5156 | 0.3622 | 0.7690 | 0.7278 | 0.7478 | no |
+| 21 | 0.5135 | 0.3606 | 0.7587 | 0.7476 | 0.7531 | no |
+| 22 | 0.5120 | **0.3505 (min)** | 0.7485 | 0.7670 | 0.7576 | yes |
+| 23 | 0.5104 | 0.3566 | 0.7535 | 0.7582 | 0.7559 | no |
+| 24 | 0.5092 | 0.3597 | 0.7763 | 0.7407 | 0.7581 | yes |
+| 25 | 0.5078 | 0.3565 | 0.7634 | 0.7519 | 0.7576 | no |
+| 26 | 0.5064 | 0.3538 | 0.7673 | 0.7630 | **0.7651 (best F1 — saved/pushed checkpoint)** | yes |
+| 27 | 0.5055 | 0.3536 | 0.7557 | 0.7674 | 0.7615 | no |
+| 28 | 0.5047 | 0.3568 | 0.7631 | 0.7476 | 0.7553 | no |
+| 29 | 0.5037 | 0.3563 | 0.7663 | 0.7404 | 0.7531 | no |
+| 30 | 0.5023 | 0.3553 | 0.7891 | 0.7341 | 0.7606 | no (only 4 epochs since last best — early stop never armed) |
+
+Findings:
+
+1. **A further win, but a much smaller one — the plateau signature, not a regression.** Trial 19
+   beats trial 17 at 25 of 30 epochs (loses at 5, all by ≤0.001 — noise), and its peak of **0.7651
+   at epoch 26 is a new sweep-best**, but the margin over trial 17 is only **+0.0009** — an order of
+   magnitude smaller than trial 17's own +0.0098 over trial 15. Label smoothing hasn't started
+   hurting, but it's stopped paying off.
+2. **The val_loss/F1 divergence widened further, as trial 17's note flagged as the thing to watch.**
+   True val_loss minimum is 0.3505 at epoch 22 (same epoch as trial 17's minimum, interestingly),
+   best-F1 epoch is 26 at val_loss 0.3538 — a gap of 0.0033, more than double trial 17's 0.0014 gap.
+   Consistent with trial 17's note 3: pushing smoothing further keeps loosening the val_loss/F1
+   alignment rather than tightening it.
+3. **Same cost profile as trial 17.** Early stopping didn't fire again (4 flat epochs after the
+   epoch-26 peak, one short of patience 5) — 20118.8s, essentially identical to trial 17's 20180.2s.
+4. **Verdict: treat label smoothing 0.2-0.3 as the plateau, per trial 17's own pre-declared decision
+   rule.** That rule was phrased as "if 0.3 regresses, treat 0.2 as the plateau" — 0.3 didn't
+   technically regress, but a 10x collapse in marginal gain plus a widening val_loss/F1 gap is the
+   same signal the rule was written to catch. Not worth a 0.4 trial; time to switch axes (see
+   "Recommended next trial" below). Trial 18's crash (same config, see its note above) is unrelated
+   to this — a confirmed GPU-side Xid 13 exception, not a sign 0.3 destabilizes training.
+
+## Standing conclusion (through trial 19)
 
 The capacity axis (`unfreeze_last_n`) has a well-established shape at the 20k/5k data scale:
 `unfreeze=2` clears every other config in the sweep by a wide margin, `unfreeze=4` (trial 10) overfits
@@ -600,25 +676,35 @@ trial 15 (20180.2s vs. 16677.7s) — still ~26% cheaper than trial 13, just not 
 Trial 16, an abandoned same-idea run with a different batch/grad-accum split (`--batch-size 2
 --grad-accum-steps 16`, same effective batch 32), tracked trial 17 closely through its last completed
 epoch before being interrupted — further evidence the literal batch/grad-accum split mainly affects
-wall-clock, not the learning curve. **Trial 17 is now the trustworthy reference and current sweep-best
-config**, strictly dominating trial 15 on quality (equal cost profile aside from the early-stop miss).
+wall-clock, not the learning curve. Trial 17 became the reference config, strictly dominating trial 15
+on quality. Trial 18 pushed `--label-smoothing` to 0.3 on top of trial 17's config (trial 17's own
+recommended next step) but crashed at epoch 15 with a confirmed CUDA Xid 13 GPU exception — diagnosed
+directly via `dmesg`/`journalctl`, unrelated to the config itself, and the direct motivation for adding
+`--resume-from-checkpoint`/`run_mf_span_trial.sh` the same session (see trial 18's note). Trial 19
+reran that exact config cleanly and confirmed the result: **F1 0.7651 at epoch 26, a new sweep-best**,
+but only +0.0009 over trial 17 — a full order of magnitude smaller than trial 17's own +0.0098 over
+trial 15, alongside a val_loss/F1 divergence that widened further (Δ0.0033 vs. trial 17's Δ0.0014).
+**Label smoothing has hit its plateau around 0.2-0.3** — real gains through 0.2, negligible by 0.3 —
+so per trial 17's own pre-declared decision rule, it's time to switch axes rather than push to 0.4.
+**Trial 19 is now the trustworthy reference and current sweep-best config**, marginally ahead of trial
+17 at essentially the same cost.
 
-Current best *retrievable* checkpoint by F1: **trial 17, F1 0.7642** (`kelmoir/cafa6-mf-span@trial-17`,
-run_name `mf-span-reg-trial-17`) — effective batch 32 (`--batch-size 4 --grad-accum-steps 8`),
-`--learning-rate 1e-4`, `--label-smoothing 0.2`, `--checkpoint-selection f1`,
-`--early-stop-patience 5`. Trial 15's checkpoint (F1 0.7544) remains retrievable at
-`kelmoir/cafa6-mf-span@trial-15` — a cheaper but now clearly lower-quality alternative. Trial 13's
-checkpoint (F1 0.7539, `@main`) and trial 14's (F1 0.7384, `@trial-14`) are both now further behind
-the frontier.
+Current best *retrievable* checkpoint by F1: **trial 19, F1 0.7651** (`kelmoir/cafa6-mf-span@trial-19`,
+run_name `mf-span-reg-trial-19`) — effective batch 32 (`--batch-size 4 --grad-accum-steps 8`),
+`--learning-rate 1e-4`, `--label-smoothing 0.3`, `--checkpoint-selection f1`,
+`--early-stop-patience 5`. Trial 17's checkpoint (F1 0.7642, `@trial-17`) and trial 15's (F1 0.7544,
+`@trial-15`) remain retrievable as clearly lower-quality alternatives now. Trial 13's checkpoint (F1
+0.7539, `@main`) and trial 14's (F1 0.7384, `@trial-14`) are both further behind the frontier still.
 
-Recommended next trial: label smoothing is a real, non-saturated axis — worth pushing further before
-moving on. Try (a) `--label-smoothing 0.3` on top of trial 17's config, watching specifically whether
-the val_loss/F1 divergence trial 17 showed (true val_loss min at epoch 22, best-F1 epoch at 26) widens
-further, which would signal smoothing is starting to fight the val_loss-based signal even though F1
-keeps improving. If 0.3 regresses F1, treat 0.2 as the smoothing plateau and switch to a different
-axis instead: (b) more data (the uncapped pool is ~32k/9k pairs, see the earlier ad hoc calculation);
-(c) a capacity value between 2 and 4 (e.g. `unfreeze_last_n=3`) combined with `--label-smoothing 0.2`.
-Untested regularization axes remain lowest priority given how little effect they've had so far:
-`--output-dropout` above 0.2, `--lr-schedule linear_decay`, `--pos-weight` override. Remember to give
-each future trial a distinct `--hub-branch`, not just a distinct `--run-name`, if the Hub copy should
-stay retrievable.
+Recommended next trial: label smoothing is exhausted as an axis (0.1→0.2 was a real +0.0098 win,
+0.2→0.3 only +0.0009 — not worth a 0.4 attempt). Pivot to one of trial 17's other two listed
+alternatives: (a) more data (the uncapped pool is ~32k/9k pairs, see the earlier ad hoc calculation) —
+the highest-leverage untested lever, since every axis tested so far has been at the fixed 20k/5k
+subset; or (b) a capacity value between 2 and 4 (e.g. `unfreeze_last_n=3`) combined with
+`--label-smoothing 0.3` (trial 19's now-reference smoothing value, not trial 17's superseded 0.2).
+Given trial 18/19's local-GPU crash, launch whichever is picked via
+`experiments/scripts/run_mf_span_trial.sh` rather than the script directly, so a repeat Xid 13 costs
+one epoch instead of the whole trial. Untested regularization axes remain lowest priority given how
+little effect they've had so far: `--output-dropout` above 0.2, `--lr-schedule linear_decay`,
+`--pos-weight` override. Remember to give each future trial a distinct `--hub-branch`, not just a
+distinct `--run-name`, if the Hub copy should stay retrievable.
