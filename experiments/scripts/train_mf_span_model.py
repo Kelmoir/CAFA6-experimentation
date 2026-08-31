@@ -33,11 +33,17 @@ from the dataset before committing to any of this):
 This script builds the pair-level dataset, precomputes (and caches) label text embeddings for
 every distinct GO id encountered, defines the FiLM-conditioned ESM-2 span model, and runs a plain
 PyTorch training loop (same manual-loop style as training_run.py, no Trainer abstraction). The
-best (lowest val_loss) checkpoint is saved locally every epoch it improves and can optionally be
-pushed to the Hub via --push-to-hub (see save_checkpoint/push_checkpoint_to_hub below) -- this
-model isn't a transformers PreTrainedModel (it's a plain nn.Module: ESM backbone + FiLM layers +
-span head), so checkpointing is state_dict + a small span_model_config.json rather than
-save_pretrained/push_to_hub, and load_span_model() reconstructs it on the other end. Also logs
+best (lowest val_loss, or highest F1 with --checkpoint-selection f1) checkpoint is saved locally
+every epoch it improves and can optionally be pushed to the Hub via --push-to-hub (see
+save_checkpoint/push_checkpoint_to_hub below) -- this model isn't a transformers PreTrainedModel
+(it's a plain nn.Module: ESM backbone + FiLM layers + span head), so checkpointing is state_dict +
+a small span_model_config.json rather than save_pretrained/push_to_hub, and load_span_model()
+reconstructs it on the other end. Separately, a *latest_checkpoint* (model weights +
+optimizer/scheduler/RNG state, via save_training_state) is written unconditionally every epoch,
+regardless of improvement, so --resume-from-checkpoint can continue a crashed run losing at most
+one epoch of work instead of restarting the whole trial -- see experiments/mf_span_sweep_log.md's
+trial 16/18 crashes (Xid 13 GPU exceptions, not a code bug) for why this exists, and
+experiments/scripts/run_mf_span_trial.sh for a thin wrapper that does this automatically. Also logs
 per-epoch metrics to trackio if installed, local-only (no Hub Space) since training now runs on
 local hardware -- see init_trackio_run below. Regularization knobs mirror training_run.py's
 established surface (same flag names/semantics, duplicated rather than imported -- see the
@@ -444,6 +450,39 @@ def save_checkpoint(model, tokenizer, local_dir, esm_model_name, label_dim, unfr
       json.dumps({"epoch": epoch, **metrics, "config": config}, default=str))
 
 
+def save_training_state(local_dir, optimizer, scheduler, epoch, best_score, best_val_loss,
+                         best_epoch, best_metrics, epochs_without_improvement):
+  """Saves everything save_checkpoint() doesn't -- optimizer/scheduler state, epoch progress, the
+  best-so-far bookkeeping, and RNG state -- so --resume-from-checkpoint can continue training
+  exactly where a crash interrupted it (same optimizer momentum, same LR schedule position, same
+  data shuffling order via the restored RNG state) instead of resuming with the right weights but
+  a cold-started optimizer. Written alongside save_checkpoint()'s model.safetensors in the same
+  directory (see latest_checkpoint_dir in main()), unconditionally every epoch -- not just
+  improving ones like best_checkpoint_dir -- so a crash mid-plateau costs at most one epoch of
+  work, not everything back to the last improving epoch. torch.save (not safetensors): the
+  optimizer state_dict and RNG states aren't a flat tensor dict, and this file is never pushed to
+  the Hub or loaded by anything other than this script's own --resume-from-checkpoint path, so
+  there's no interop reason to avoid pickling here the way save_checkpoint avoids it for weights."""
+  state = {
+      "epoch": epoch, "best_score": best_score, "best_val_loss": best_val_loss,
+      "best_epoch": best_epoch, "best_metrics": best_metrics,
+      "epochs_without_improvement": epochs_without_improvement,
+      "optimizer": optimizer.state_dict(), "scheduler": scheduler.state_dict(),
+      "torch_rng_state": torch.get_rng_state(),
+      "numpy_rng_state": np.random.get_state(), "python_rng_state": random.getstate(),
+  }
+  if torch.cuda.is_available():
+    state["cuda_rng_state_all"] = torch.cuda.get_rng_state_all()
+  torch.save(state, local_dir / "training_state.pt")
+
+
+def load_training_state(local_dir, device):
+  # weights_only=False: this file carries RNG-state tuples and other non-tensor Python objects
+  # (see save_training_state), which torch>=2.6's default weights_only=True unpickling rejects.
+  # Safe here since it's a file this script wrote itself, never a downloaded/untrusted one.
+  return torch.load(local_dir / "training_state.pt", map_location=device, weights_only=False)
+
+
 def push_checkpoint_to_hub(local_dir, repo_id, branch, token, epoch, metrics):
   api = HfApi()
   api.create_repo(repo_id, repo_type="model", private=True, exist_ok=True, token=token)
@@ -592,6 +631,17 @@ def main():
   ap.add_argument("--hf-token-file", default=None,
                    help="Path to a file containing the HF token (e.g. uploaded separately on "
                         "Colab); read once then deleted")
+  ap.add_argument("--resume-from-checkpoint", default=None,
+                   help="Path to a checkpoint directory previously written as this run's "
+                        "'latest_checkpoint' (model.safetensors + training_state.pt, saved "
+                        "unconditionally every epoch -- see save_training_state). Resumes the "
+                        "optimizer/scheduler/RNG state and epoch count from there instead of "
+                        "restarting the trial from scratch -- meant to recover from a mid-run "
+                        "crash (see experiments/mf_span_sweep_log.md trial 16/18) without losing "
+                        "more than one epoch of work. All other args should match the original "
+                        "run's; this isn't validated, just assumed, same as load_span_model(). "
+                        "See also experiments/scripts/run_mf_span_trial.sh, a thin wrapper that "
+                        "does this automatically on a crash.")
   args = ap.parse_args()
 
   random.seed(args.seed)
@@ -670,23 +720,65 @@ def main():
   run_name = args.run_name or (
       f"mf-span-{args.model_name.split('/')[-1]}-epochs{args.epochs}-bs{args.batch_size}")
   best_checkpoint_dir = Path("models") / run_name / "best_checkpoint"
+  # Defaults to this run's own latest_checkpoint dir even when NOT resuming, so the very first
+  # epoch already has somewhere to write to -- if --resume-from-checkpoint is set, saves continue
+  # into that same directory going forward (it's both the source and the ongoing destination),
+  # rather than resuming from one location and then silently starting a second one.
+  latest_checkpoint_dir = (Path(args.resume_from_checkpoint) if args.resume_from_checkpoint
+                            else Path("models") / run_name / "latest_checkpoint")
+
+  start_epoch = 0
   best_val_loss = float("inf")
   best_score = float("inf") if args.checkpoint_selection == "val_loss" else float("-inf")
   best_epoch = None
   best_metrics = None
   epochs_without_improvement = 0
+
+  if args.resume_from_checkpoint:
+    resume_dir = Path(args.resume_from_checkpoint)
+    print(f"[INFO] Resuming from checkpoint: {resume_dir}")
+    checkpoint_model.load_state_dict(load_file(resume_dir / "model.safetensors", device=str(args.device)))
+    state = load_training_state(resume_dir, args.device)
+    optimizer.load_state_dict(state["optimizer"])
+    scheduler.load_state_dict(state["scheduler"])
+    start_epoch = state["epoch"]
+    best_score = state["best_score"]
+    best_val_loss = state["best_val_loss"]
+    best_epoch = state["best_epoch"]
+    best_metrics = state["best_metrics"]
+    epochs_without_improvement = state["epochs_without_improvement"]
+    # Restoring RNG state (not just model/optimizer state) means the train_loader's shuffle order
+    # for the resumed epoch continues exactly where the crashed run's would have gone, rather than
+    # replaying the pre-crash epochs' order over again from a fresh seed.
+    torch.set_rng_state(state["torch_rng_state"])
+    if torch.cuda.is_available() and "cuda_rng_state_all" in state:
+      torch.cuda.set_rng_state_all(state["cuda_rng_state_all"])
+    np.random.set_state(state["numpy_rng_state"])
+    random.setstate(state["python_rng_state"])
+    print(f"[INFO] Resumed at epoch {start_epoch} (best so far: "
+          f"{args.checkpoint_selection}={best_score:.4f} @ epoch {best_epoch})")
+
   tracker = init_trackio_run(run_name, config)
 
   log_file_path = Path(args.log_file) if args.log_file else Path("experiments/logs") / f"mf_span_{run_name}.jsonl"
   log_file_path.parent.mkdir(parents=True, exist_ok=True)
-  log_file = open(log_file_path, "w")
-  log_file.write(json.dumps({"config": config}) + "\n")
+  if args.resume_from_checkpoint and log_file_path.exists():
+    # Append rather than overwrite: the pre-crash epochs' lines are still valid and worth keeping
+    # in one contiguous log rather than losing them to a fresh "w".
+    log_file = open(log_file_path, "a")
+    log_file.write(json.dumps({"resumed_from_epoch": start_epoch}) + "\n")
+  else:
+    log_file = open(log_file_path, "w")
+    log_file.write(json.dumps({"config": config}) + "\n")
   log_file.flush()
   os.fsync(log_file.fileno())
   print(f"[INFO] Per-epoch metrics log -> {log_file_path}")
 
+  # Wall-clock from this process's own start, not the crashed run's -- after a resume this
+  # undercounts the trial's true total time (see [SUMMARY]'s resumed_from_epoch flag as the signal
+  # to add the prior segment's total_time_s back in by hand if the true total matters).
   training_start = time.perf_counter()
-  for epoch in range(args.epochs):
+  for epoch in range(start_epoch, args.epochs):
     epoch_start = time.perf_counter()
     model.train()
     # Accumulate the raw token-weighted loss numerator and the true valid-token denominator
@@ -798,16 +890,38 @@ def main():
             f"saved -> {best_checkpoint_dir}")
     else:
       epochs_without_improvement += 1
-      if (args.early_stop_patience is not None
-          and epochs_without_improvement >= args.early_stop_patience):
-        print(f"[INFO] Early stopping: {args.checkpoint_selection} hasn't improved for "
-              f"{epochs_without_improvement} epochs (--early-stop-patience="
-              f"{args.early_stop_patience}); stopping after epoch {epoch + 1}/{args.epochs}.")
-        break
+
+    # Unconditional every-epoch checkpoint for --resume-from-checkpoint, separate from
+    # best_checkpoint_dir above (which only updates on an improving epoch, and by itself carries
+    # no optimizer/scheduler/RNG state -- not enough to resume training from, only to re-evaluate
+    # or deploy the model). Written after the improvement check so best_score/best_epoch/etc.
+    # reflect this epoch's result, and before the early-stop check below so even the final epoch
+    # before an early stop remains resumable. Costs a full model write every epoch rather than
+    # only on improving ones -- negligible at this script's current 35M-param scale (a few seconds
+    # against a ~700s epoch), but worth reconsidering if this script is ever pointed at a
+    # substantially larger backbone.
+    save_checkpoint(checkpoint_model, tokenizer, latest_checkpoint_dir, args.model_name, label_dim,
+                     args.unfreeze_last_n, args.output_dropout, args.esm_dropout,
+                     args.attention_dropout, epoch + 1, latest_metrics, config)
+    save_training_state(latest_checkpoint_dir, optimizer, scheduler, epoch + 1, best_score,
+                         best_val_loss, best_epoch, best_metrics, epochs_without_improvement)
+
+    if (args.early_stop_patience is not None
+        and epochs_without_improvement >= args.early_stop_patience):
+      print(f"[INFO] Early stopping: {args.checkpoint_selection} hasn't improved for "
+            f"{epochs_without_improvement} epochs (--early-stop-patience="
+            f"{args.early_stop_patience}); stopping after epoch {epoch + 1}/{args.epochs}.")
+      break
 
   total_time = time.perf_counter() - training_start
   log_file.close()
-  print(f"[SUMMARY] {json.dumps({'final_val_loss': val_loss, 'best_epoch': best_epoch, 'best_val_loss': best_val_loss, 'total_time_s': round(total_time, 2), **(best_metrics or metrics)})}")
+  summary = {'final_val_loss': val_loss, 'best_epoch': best_epoch, 'best_val_loss': best_val_loss,
+             'total_time_s': round(total_time, 2), **(best_metrics or metrics)}
+  if args.resume_from_checkpoint:
+    # total_time_s above is only this process's own wall-clock -- add the prior segment's
+    # total_time_s by hand (from its own [SUMMARY]/crash-time log) if the trial's true total matters.
+    summary['resumed_from_epoch'] = start_epoch
+  print(f"[SUMMARY] {json.dumps(summary)}")
 
   if args.push_to_hub:
     if best_epoch is None:
