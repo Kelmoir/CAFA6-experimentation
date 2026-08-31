@@ -47,12 +47,24 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TRAIN_SCRIPT="${SCRIPT_DIR}/train_mf_span_model.py"
 LATEST_CKPT="models/${RUN_NAME}/latest_checkpoint"
 
+# HF_HUB_DISABLE_XET: CLAUDE.md's documented hf_xet/huggingface_hub version-mismatch gotcha on this
+# host -- exported (not embedded in the command string) so it actually reaches the Hub push at the
+# end of a --push-to-hub run, in either branch below.
+export HF_HUB_DISABLE_XET=1
+
+# No hardcoded venv: the trials in mf_span_sweep_log.md are run from a `(base)` conda shell, not
+# the env/ virtualenv CLAUDE.md documents for the main pipeline -- env/ doesn't even have torch
+# installed on this host (verified directly). PYTHON_BIN defaults to whatever `python3` resolves
+# to in the shell that invokes this wrapper, i.e. whatever's already active when you run it -- set
+# PYTHON_BIN explicitly only if you need something other than that.
+PYTHON_BIN="${PYTHON_BIN:-python3}"
+
 attempt=0
 while true; do
   attempt=$((attempt + 1))
   if [[ $attempt -gt 1 && -f "${LATEST_CKPT}/training_state.pt" ]]; then
     echo "[WRAPPER] attempt ${attempt}/${MAX_RETRIES}: resuming from ${LATEST_CKPT}"
-    python "$TRAIN_SCRIPT" "${ARGS[@]}" --resume-from-checkpoint "$LATEST_CKPT"
+    "$PYTHON_BIN" "$TRAIN_SCRIPT" "${ARGS[@]}" --resume-from-checkpoint "$LATEST_CKPT"
   else
     if [[ $attempt -gt 1 ]]; then
       echo "[WRAPPER] attempt ${attempt}/${MAX_RETRIES}: no ${LATEST_CKPT}/training_state.pt yet" \
@@ -60,7 +72,7 @@ while true; do
     else
       echo "[WRAPPER] attempt ${attempt}/${MAX_RETRIES}: starting fresh"
     fi
-    python "$TRAIN_SCRIPT" "${ARGS[@]}"
+    "$PYTHON_BIN" "$TRAIN_SCRIPT" "${ARGS[@]}"
   fi
   status=$?
 
