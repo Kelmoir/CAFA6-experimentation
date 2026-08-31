@@ -57,7 +57,7 @@ export HF_HUB_DISABLE_XET=1
 # installed on this host (verified directly). PYTHON_BIN defaults to whatever `python3` resolves
 # to in the shell that invokes this wrapper, i.e. whatever's already active when you run it -- set
 # PYTHON_BIN explicitly only if you need something other than that.
-PYTHON_BIN="${PYTHON_BIN:-python3}"
+PYTHON_BIN="env/bin/python"
 
 attempt=0
 while true; do
