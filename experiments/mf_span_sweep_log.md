@@ -705,15 +705,16 @@ Findings:
    (`unfreeze_last_n=2`, F1 0.7651) checkpoint is no longer retrievable from either place. Not a data
    loss that matters much given trial 19b strictly dominates it, but worth naming so it isn't mistaken
    for a live checkpoint later.
-6. **A separate, unexplained `mf-span-reg-trial-20` artifact pair exists locally and doesn't need
-   action yet, but is worth flagging.** `models/mf-span-reg-trial-20/` holds real checkpoints
-   (through epoch 18, metrics identical to this run's epochs 15/18 above) under this same
-   `unfreeze_last_n=3`/capped-pairs config — apparently an earlier, interrupted attempt at this exact
-   run before it got relaunched under the `trial-19` name. But
-   `experiments/logs/mf_span_mf-span-reg-trial-20.jsonl` holds only a single config line, for a
-   *different* config (uncapped `max_train_pairs`/`max_val_pairs`, `--batch-size 2 --grad-accum-steps
-   16`) — no epochs, no running process (`ps aux` shows nothing). The two don't agree with each other
-   and nothing is currently in flight; left alone pending clarification rather than logged as a trial.
+6. **`mf-span-reg-trial-20`'s config-only log, resolved: it's the real next (more-data) trial, just
+   getting started concurrently.** `experiments/logs/mf_span_mf-span-reg-trial-20.jsonl`'s single
+   config line (uncapped `max_train_pairs`/`max_val_pairs`, `--batch-size 2 --grad-accum-steps 16`)
+   was being launched by the user while this session was processing trial 19b's paste — its sparse
+   state (no epoch lines yet, no process visible when checked) simply reflected how early it was, not
+   an interrupted or abandoned run. `models/mf-span-reg-trial-20/`'s checkpoint dir (through epoch 18,
+   metrics identical to this run's epochs 15/18 above, under the old capped-pairs `unfreeze_last_n=3`
+   config) is a separate, stale leftover from an earlier attempt under the same name — harmless,
+   ignore it. Per the user: the Hub-side naming collision this caused for trial 19b (finding 5 above)
+   is likewise fine to leave as-is, not worth recovering.
 
 ## Standing conclusion (through trial 19b)
 
@@ -778,10 +779,9 @@ past their easy wins on this model — the next lever is more data (the uncapped
 vs. every trial so far's fixed 20k/5k subset), and per the user's own call, that's the intended next
 trial rather than pushing capacity further to `unfreeze_last_n=4`: the plan is to move to a bigger
 ESM-2 model later, and `unfreeze_last_n` doesn't translate cleanly across a different layer count, so
-it's not worth over-investing in tuning it further at this model's scale. There's an unresolved local
-artifact pair under the `mf-span-reg-trial-20` name (see trial 19b's finding 6) that should be sorted
-out — confirm what it actually is and pick a fresh, never-before-used `--run-name`/`--hub-branch`
-before launching the real more-data trial, to avoid a third naming collision. Given the local-GPU
+it's not worth over-investing in tuning it further at this model's scale. That more-data trial is
+already underway as `mf-span-reg-trial-20` (see trial 19b's finding 6 — its sparse on-disk state
+mid-session was just it getting started, not a collision this time). Given the local-GPU
 crash history (trials 16/18), launch it via `experiments/scripts/run_mf_span_trial.sh` rather than the
 script directly, so a repeat Xid 13 costs one epoch instead of the whole trial. Untested regularization
 axes remain lowest priority given how little effect they've had so far: `--output-dropout` above 0.2,
