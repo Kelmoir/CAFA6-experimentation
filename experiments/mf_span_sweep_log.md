@@ -37,7 +37,8 @@ pipeline's `sweep_log.md`.
 | 16 (unfreeze2-epochs30-trial-16, effbatch32/bs2-ga16+label_smoothing0.2) | `mf-span-reg-trial-16` | trial 15 + `--batch-size 2 --grad-accum-steps 16` (same effective batch 32, different split) + `--label-smoothing 0.2` | — | — | **crashed after epoch 17/30 (cause unknown), no `[SUMMARY]`** | Incomplete run, not a result — superseded by trial 17, which isolates the label-smoothing change alone against trial 15's exact batch/grad-accum split. Notably ~14% faster per epoch than trial 17 (~577s avg vs. ~672s avg) — user suspects a link to the crash, unconfirmed. Log file kept for the record only |
 | 17 (reg-trial-17, label_smoothing0.2) | `mf-span-reg-trial-17` | trial 15's exact config (`--batch-size 4 --grad-accum-steps 8 --learning-rate 1e-4`) + `--label-smoothing 0.2` (2x) | 26 | 0.3190 (not the run's true min — see note) | 0.7642 at epoch 26, beats trial 15 at every matched epoch | Higher label smoothing is a further real, unconfounded win — but early stopping didn't fire this time (only 4 flat epochs after 26, one short of patience 5), so it ran the full 30 epochs: 20180.2s, ~21% more expensive than trial 15 though still ~26% cheaper than trial 13 — see note |
 | 18 (trial-18, label_smoothing0.3, crashed) | `mf-span-reg-trial-18` | trial 17's exact config + `--label-smoothing` 0.2→0.3 | — | — | **crashed after epoch 14/30, no `[SUMMARY]`** | Incomplete run — a confirmed CUDA Xid 13 GPU exception (via `dmesg`/`journalctl`, timestamp-matched to the log file's last write to the second), not a code bug; see the session's diagnosis. Predates `--resume-from-checkpoint`/`run_mf_span_trial.sh` (added the same session), so nothing to resume from — superseded by trial 19, an identical-config clean rerun |
-| 19 (reg-trial-19, label_smoothing0.3) | `mf-span-reg-trial-19` | trial 17's exact config + `--label-smoothing` 0.2→0.3 (rerun of trial 18's config, clean this time) | 26 | 0.3538 (not the run's true min — see note) | **0.7651 at epoch 26 — new sweep-best**, beats trial 17 at 25/30 epochs | Marginal further win, not a repeat of trial 17's jump: +0.0009 over trial 17 vs. trial 17's own +0.0098 over trial 15 — an order of magnitude smaller. Same cost profile as trial 17 (early stop didn't fire, full 30 epochs, ~20119s) and a wider val_loss/F1 divergence (Δ0.0033 vs. trial 17's Δ0.0014) — signature of a plateau, not a regression. See note |
+| 19 (reg-trial-19, unfreeze2, label_smoothing0.3) | `mf-span-reg-trial-19` *(original — overwritten, see 19b)* | trial 17's exact config + `--label-smoothing` 0.2→0.3 (rerun of trial 18's config, clean this time) | 26 | 0.3538 (not the run's true min — see note) | 0.7651 at epoch 26, beats trial 17 at 25/30 epochs | Marginal further win over trial 17: +0.0009 vs. trial 17's own +0.0098 over trial 15 — an order of magnitude smaller. Superseded on disk/Hub by trial 19b below (same run-name/branch accidentally reused) — this run's full 30-epoch curve only survives in git history at commit `d383a6c`, not on disk anymore. See note |
+| 19b (reg-trial-19, unfreeze3, label_smoothing0.3) | `mf-span-reg-trial-19` *(current)* | trial 19's exact config + `unfreeze_last_n` 2→3 — recommendation (b) from trial 19's own next-trial list, but launched under trial 19's unchanged `--run-name`/`--hub-branch` instead of a new one | 24 (early-stopped at 29/30) | 0.3531 (not the run's true min — see note) | **0.7751 at epoch 24 — new sweep-best** | Clean, isolated one-axis win over trial 19: +0.0100 F1 from `unfreeze_last_n` alone (only config change), bigger than trial 17's own smoothing jump. First trial since 15 to actually early-stop. Also: this run's `--run-name`/`--hub-branch` collided with trial 19's, overwriting its local log file and Hub checkpoint — see note |
 
 ## Trial notes
 
@@ -644,7 +645,77 @@ Findings:
    "Recommended next trial" below). Trial 18's crash (same config, see its note above) is unrelated
    to this — a confirmed GPU-side Xid 13 exception, not a sign 0.3 destabilizes training.
 
-## Standing conclusion (through trial 19)
+**Trial 19b (reg-trial-19, unfreeze3, label_smoothing0.3).** Trial 19's exact config with
+`--unfreeze-last-n` raised 2→3 — the (b) option from trial 19's own "Recommended next trial" list —
+but launched with trial 19's `--run-name`/`--hub-branch` left unchanged instead of given a new one,
+which overwrote trial 19's local log file and Hub checkpoint (see finding 4 below). Full curve:
+
+| epoch | train_loss | val_loss | precision | recall | val_f1 | new best (by F1)? |
+|---|---|---|---|---|---|---|
+| 1 | 0.6590 | 0.5058 | 0.5706 | 0.4039 | 0.4730 | yes |
+| 2 | 0.6134 | 0.4650 | 0.5452 | 0.6497 | 0.5929 | yes |
+| 3 | 0.5926 | 0.4269 | 0.6206 | 0.6638 | 0.6415 | yes |
+| 4 | 0.5768 | 0.4257 | 0.5716 | 0.7801 | 0.6598 | yes |
+| 5 | 0.5670 | 0.4115 | 0.6249 | 0.7526 | 0.6829 | yes |
+| 6 | 0.5573 | 0.3925 | 0.6650 | 0.7546 | 0.7070 | yes |
+| 7 | 0.5498 | 0.3840 | 0.6974 | 0.7431 | 0.7196 | yes |
+| 8 | 0.5430 | 0.3790 | 0.7128 | 0.7319 | 0.7222 | yes |
+| 9 | 0.5379 | 0.3795 | 0.7075 | 0.7646 | 0.7350 | yes |
+| 10 | 0.5329 | 0.3721 | 0.6864 | 0.7894 | 0.7343 | no |
+| 11 | 0.5286 | 0.3665 | 0.7234 | 0.7615 | 0.7419 | yes |
+| 12 | 0.5254 | 0.3642 | 0.7265 | 0.7764 | 0.7507 | yes |
+| 13 | 0.5218 | 0.3550 | 0.7292 | 0.7917 | 0.7592 | yes |
+| 14 | 0.5190 | 0.3632 | 0.7374 | 0.7630 | 0.7499 | no |
+| 15 | 0.5161 | 0.3596 | 0.7558 | 0.7651 | 0.7604 | yes |
+| 16 | 0.5136 | 0.3566 | 0.7445 | 0.7713 | 0.7576 | no |
+| 17 | 0.5116 | 0.3584 | 0.7426 | 0.7630 | 0.7526 | no |
+| 18 | 0.5097 | 0.3532 | 0.7450 | 0.7730 | 0.7587 | no |
+| 19 | 0.5078 | 0.3511 | 0.7598 | 0.7692 | 0.7645 | yes |
+| 20 | 0.5061 | 0.3589 | 0.7846 | 0.7369 | 0.7600 | no |
+| 21 | 0.5048 | 0.3602 | 0.7542 | 0.7643 | 0.7592 | no |
+| 22 | 0.5034 | **0.3487 (min, tied)** | 0.7646 | 0.7719 | 0.7683 | yes |
+| 23 | 0.5018 | 0.3516 | 0.7872 | 0.7469 | 0.7665 | no |
+| 24 | 0.5013 | 0.3531 | 0.7877 | 0.7630 | **0.7751 (best F1 — saved/pushed checkpoint)** | yes |
+| 25 | 0.4998 | **0.3487 (min, tied)** | 0.7718 | 0.7627 | 0.7672 | no |
+| 26 | 0.4991 | 0.3492 | 0.7660 | 0.7717 | 0.7688 | no |
+| 27 | 0.4984 | 0.3483 | 0.7650 | 0.7770 | 0.7709 | no |
+| 28 | 0.4976 | 0.3527 | 0.7886 | 0.7564 | 0.7722 | no |
+| 29 | 0.4969 | 0.3508 | 0.7850 | 0.7548 | 0.7696 | no (5 flat epochs since epoch 24 — early stop fires) |
+
+Findings:
+
+1. **A real, isolated capacity win — bigger than trial 17's own smoothing jump.** Only
+   `unfreeze_last_n` changed vs. trial 19 (2→3). Peak F1 **0.7751 at epoch 24** beats trial 19's 0.7651
+   by **+0.0100** — larger than trial 17's own +0.0098 gain from smoothing 0.1→0.2, and unlike trial
+   19's marginal 0.3-vs-0.2 gain, this one isn't plateau-sized.
+2. **First trial since 15 to actually early-stop** — 5 flat epochs after the epoch-24 peak (25-29),
+   stopping at 29/30 rather than running the full budget.
+3. **Val_loss/F1 divergence widens further still.** True val_loss minimum (0.3487) is now hit *twice*
+   (epochs 22 and 25), while the best-F1 epoch (24) sits at 0.3531 — a gap of 0.0044, wider than trial
+   19's 0.0033 and trial 17's 0.0014. The pattern trial 17 first flagged keeps loosening, now along the
+   capacity axis too, not just smoothing.
+4. **Cost: early stopping saved an epoch, but it didn't save wall-clock.** 21781.0s total, ~8% *more*
+   than trial 19's 20118.8s despite stopping one epoch early — the extra unfrozen layer's
+   forward/backward cost outweighs the 1-epoch saving (~750-800s/epoch here vs. trial 19's ~740s).
+5. **Run-name/hub-branch collision — trial 19's original checkpoint is gone.** This run reused
+   `--run-name mf-span-reg-trial-19 --hub-branch trial-19` unchanged, which is exactly the mistake the
+   bottom of this doc already warns against. It overwrote `experiments/logs/mf_span_mf-span-reg-trial-19.jsonl`
+   in place (trial 19's original 30-epoch curve now only exists in git history, commit `d383a6c`) and
+   pushed over the Hub checkpoint on `kelmoir/cafa6-mf-span@trial-19` — trial 19's original
+   (`unfreeze_last_n=2`, F1 0.7651) checkpoint is no longer retrievable from either place. Not a data
+   loss that matters much given trial 19b strictly dominates it, but worth naming so it isn't mistaken
+   for a live checkpoint later.
+6. **A separate, unexplained `mf-span-reg-trial-20` artifact pair exists locally and doesn't need
+   action yet, but is worth flagging.** `models/mf-span-reg-trial-20/` holds real checkpoints
+   (through epoch 18, metrics identical to this run's epochs 15/18 above) under this same
+   `unfreeze_last_n=3`/capped-pairs config — apparently an earlier, interrupted attempt at this exact
+   run before it got relaunched under the `trial-19` name. But
+   `experiments/logs/mf_span_mf-span-reg-trial-20.jsonl` holds only a single config line, for a
+   *different* config (uncapped `max_train_pairs`/`max_val_pairs`, `--batch-size 2 --grad-accum-steps
+   16`) — no epochs, no running process (`ps aux` shows nothing). The two don't agree with each other
+   and nothing is currently in flight; left alone pending clarification rather than logged as a trial.
+
+## Standing conclusion (through trial 19b)
 
 The capacity axis (`unfreeze_last_n`) has a well-established shape at the 20k/5k data scale:
 `unfreeze=2` clears every other config in the sweep by a wide margin, `unfreeze=4` (trial 10) overfits
@@ -681,30 +752,39 @@ on quality. Trial 18 pushed `--label-smoothing` to 0.3 on top of trial 17's conf
 recommended next step) but crashed at epoch 15 with a confirmed CUDA Xid 13 GPU exception — diagnosed
 directly via `dmesg`/`journalctl`, unrelated to the config itself, and the direct motivation for adding
 `--resume-from-checkpoint`/`run_mf_span_trial.sh` the same session (see trial 18's note). Trial 19
-reran that exact config cleanly and confirmed the result: **F1 0.7651 at epoch 26, a new sweep-best**,
-but only +0.0009 over trial 17 — a full order of magnitude smaller than trial 17's own +0.0098 over
-trial 15, alongside a val_loss/F1 divergence that widened further (Δ0.0033 vs. trial 17's Δ0.0014).
-**Label smoothing has hit its plateau around 0.2-0.3** — real gains through 0.2, negligible by 0.3 —
-so per trial 17's own pre-declared decision rule, it's time to switch axes rather than push to 0.4.
-**Trial 19 is now the trustworthy reference and current sweep-best config**, marginally ahead of trial
-17 at essentially the same cost.
+reran that exact config cleanly and confirmed the result: F1 0.7651 at epoch 26, only +0.0009 over
+trial 17 — an order of magnitude smaller than trial 17's own +0.0098 over trial 15, alongside a
+val_loss/F1 divergence that widened further (Δ0.0033 vs. trial 17's Δ0.0014) — the plateau signature
+per trial 17's own pre-declared decision rule. Trial 19b then tested trial 19's own (b)
+recommendation — `unfreeze_last_n` 2→3 on top of `--label-smoothing 0.3` — and it's a real, larger
+win: **F1 0.7751 at epoch 24, a new sweep-best**, +0.0100 over trial 19 (bigger than trial 17's own
+smoothing-driven jump), and the first trial since 15 to actually early-stop. It was launched under
+trial 19's unchanged `--run-name`/`--hub-branch`, though, which overwrote trial 19's local log and Hub
+checkpoint in place (trial 19's original curve survives only in git history at commit `d383a6c` — see
+trial 19b's note). **Trial 19b is now the trustworthy reference and current sweep-best config.**
 
-Current best *retrievable* checkpoint by F1: **trial 19, F1 0.7651** (`kelmoir/cafa6-mf-span@trial-19`,
-run_name `mf-span-reg-trial-19`) — effective batch 32 (`--batch-size 4 --grad-accum-steps 8`),
-`--learning-rate 1e-4`, `--label-smoothing 0.3`, `--checkpoint-selection f1`,
-`--early-stop-patience 5`. Trial 17's checkpoint (F1 0.7642, `@trial-17`) and trial 15's (F1 0.7544,
-`@trial-15`) remain retrievable as clearly lower-quality alternatives now. Trial 13's checkpoint (F1
-0.7539, `@main`) and trial 14's (F1 0.7384, `@trial-14`) are both further behind the frontier still.
+Current best *retrievable* checkpoint by F1: **trial 19b, F1 0.7751**
+(`kelmoir/cafa6-mf-span@trial-19`, run_name `mf-span-reg-trial-19`) — effective batch 32
+(`--batch-size 4 --grad-accum-steps 8`), `--learning-rate 1e-4`, `--unfreeze-last-n 3`,
+`--label-smoothing 0.3`, `--checkpoint-selection f1`, `--early-stop-patience 5`. Trial 19's original
+config (`unfreeze_last_n=2`, F1 0.7651) is no longer retrievable from the Hub (overwritten, see
+above) or locally, only from git history. Trial 17's checkpoint (F1 0.7642, `@trial-17`) and trial
+15's (F1 0.7544, `@trial-15`) remain retrievable as clearly lower-quality alternatives. Trial 13's
+checkpoint (F1 0.7539, `@main`) and trial 14's (F1 0.7384, `@trial-14`) are both further behind the
+frontier still.
 
-Recommended next trial: label smoothing is exhausted as an axis (0.1→0.2 was a real +0.0098 win,
-0.2→0.3 only +0.0009 — not worth a 0.4 attempt). Pivot to one of trial 17's other two listed
-alternatives: (a) more data (the uncapped pool is ~32k/9k pairs, see the earlier ad hoc calculation) —
-the highest-leverage untested lever, since every axis tested so far has been at the fixed 20k/5k
-subset; or (b) a capacity value between 2 and 4 (e.g. `unfreeze_last_n=3`) combined with
-`--label-smoothing 0.3` (trial 19's now-reference smoothing value, not trial 17's superseded 0.2).
-Given trial 18/19's local-GPU crash, launch whichever is picked via
-`experiments/scripts/run_mf_span_trial.sh` rather than the script directly, so a repeat Xid 13 costs
-one epoch instead of the whole trial. Untested regularization axes remain lowest priority given how
-little effect they've had so far: `--output-dropout` above 0.2, `--lr-schedule linear_decay`,
-`--pos-weight` override. Remember to give each future trial a distinct `--hub-branch`, not just a
-distinct `--run-name`, if the Hub copy should stay retrievable.
+Recommended next trial: capacity (`unfreeze_last_n=3`) and label smoothing (0.2-0.3) are both now
+past their easy wins on this model — the next lever is more data (the uncapped pool is ~32k/9k pairs
+vs. every trial so far's fixed 20k/5k subset), and per the user's own call, that's the intended next
+trial rather than pushing capacity further to `unfreeze_last_n=4`: the plan is to move to a bigger
+ESM-2 model later, and `unfreeze_last_n` doesn't translate cleanly across a different layer count, so
+it's not worth over-investing in tuning it further at this model's scale. There's an unresolved local
+artifact pair under the `mf-span-reg-trial-20` name (see trial 19b's finding 6) that should be sorted
+out — confirm what it actually is and pick a fresh, never-before-used `--run-name`/`--hub-branch`
+before launching the real more-data trial, to avoid a third naming collision. Given the local-GPU
+crash history (trials 16/18), launch it via `experiments/scripts/run_mf_span_trial.sh` rather than the
+script directly, so a repeat Xid 13 costs one epoch instead of the whole trial. Untested regularization
+axes remain lowest priority given how little effect they've had so far: `--output-dropout` above 0.2,
+`--lr-schedule linear_decay`, `--pos-weight` override. **Give each future trial a distinct
+`--run-name` AND `--hub-branch`, never reused from a prior trial** — two collisions have now happened
+(trial 19b over trial 19) from skipping this.
