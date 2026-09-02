@@ -769,10 +769,16 @@ def main():
     epochs_without_improvement = state["epochs_without_improvement"]
     # Restoring RNG state (not just model/optimizer state) means the train_loader's shuffle order
     # for the resumed epoch continues exactly where the crashed run's would have gone, rather than
-    # replaying the pre-crash epochs' order over again from a fresh seed.
-    torch.set_rng_state(state["torch_rng_state"])
+    # replaying the pre-crash epochs' order over again from a fresh seed. .cpu() on both RNG state
+    # tensors is required, not defensive: load_training_state's torch.load(..., map_location=device)
+    # remaps EVERY tensor in the file onto args.device (cuda), but torch.set_rng_state()/
+    # torch.cuda.set_rng_state_all() both specifically require CPU ByteTensor input regardless of
+    # which device's generator they're setting -- passing a cuda-mapped tensor fails with
+    # "TypeError: RNG state must be a torch.ByteTensor" (confirmed directly: this is the actual
+    # tensor type, just on the wrong device, not really a type error).
+    torch.set_rng_state(state["torch_rng_state"].cpu())
     if torch.cuda.is_available() and "cuda_rng_state_all" in state:
-      torch.cuda.set_rng_state_all(state["cuda_rng_state_all"])
+      torch.cuda.set_rng_state_all([t.cpu() for t in state["cuda_rng_state_all"]])
     np.random.set_state(state["numpy_rng_state"])
     random.setstate(state["python_rng_state"])
     if args.reset_early_stop_on_resume and epochs_without_improvement:
