@@ -636,12 +636,32 @@ def main():
                         "'latest_checkpoint' (model.safetensors + training_state.pt, saved "
                         "unconditionally every epoch -- see save_training_state). Resumes the "
                         "optimizer/scheduler/RNG state and epoch count from there instead of "
-                        "restarting the trial from scratch -- meant to recover from a mid-run "
-                        "crash (see experiments/mf_span_sweep_log.md trial 16/18) without losing "
-                        "more than one epoch of work. All other args should match the original "
+                        "restarting the trial from scratch. Two distinct uses: (1) recovering from "
+                        "a mid-run crash (see experiments/mf_span_sweep_log.md trial 16/18) without "
+                        "losing more than one epoch of work -- pass the exact same args as the "
+                        "original run, epoch loop just continues to the same --epochs target; (2) "
+                        "extending an already-*completed* run past its original --epochs (e.g. "
+                        "trial 20 finished its full 30 epochs still improving -- resume from "
+                        "models/mf-span-reg-trial-20/latest_checkpoint with --epochs 40 to train 10 "
+                        "more instead of redoing the first 30). For use (2), also pass "
+                        "--reset-early-stop-on-resume (see its help) and raise --epochs above what "
+                        "the checkpoint already reached, or the run has nothing left to do -- a "
+                        "warning below catches that case. All other args should match the original "
                         "run's; this isn't validated, just assumed, same as load_span_model(). "
                         "See also experiments/scripts/run_mf_span_trial.sh, a thin wrapper that "
-                        "does this automatically on a crash.")
+                        "resumes from an existing checkpoint automatically, whether that checkpoint "
+                        "is a crash's leftover or a prior completed run's.")
+  ap.add_argument("--reset-early-stop-on-resume", action="store_true",
+                   help="When resuming, reset epochs_without_improvement to 0 instead of carrying "
+                        "over the checkpoint's saved streak. Meant for extending a *completed* run "
+                        "past its original --epochs (--resume-from-checkpoint use (2) above): that "
+                        "streak was counted against the old, shorter target, and letting it carry "
+                        "over could early-stop the extension after just a couple more epochs even "
+                        "though the whole point of extending is to see how much further an "
+                        "still-improving curve goes. Leave unset for plain crash recovery (use (1)) "
+                        "-- there, the streak is exactly what an uninterrupted run would have had, "
+                        "and carrying it over is what makes the resumed run behave identically to "
+                        "one that never crashed.")
   args = ap.parse_args()
 
   random.seed(args.seed)
@@ -755,8 +775,16 @@ def main():
       torch.cuda.set_rng_state_all(state["cuda_rng_state_all"])
     np.random.set_state(state["numpy_rng_state"])
     random.setstate(state["python_rng_state"])
+    if args.reset_early_stop_on_resume and epochs_without_improvement:
+      print(f"[INFO] --reset-early-stop-on-resume: dropping saved streak of "
+            f"{epochs_without_improvement} epoch(s) without improvement -> 0")
+      epochs_without_improvement = 0
     print(f"[INFO] Resumed at epoch {start_epoch} (best so far: "
           f"{args.checkpoint_selection}={best_score:.4f} @ epoch {best_epoch})")
+    if start_epoch >= args.epochs:
+      print(f"[WARN] Checkpoint is already at epoch {start_epoch}, which is >= --epochs "
+            f"{args.epochs}; there are no more epochs to run. Raise --epochs past {start_epoch} "
+            f"if the intent was to extend this run further.")
 
   tracker = init_trackio_run(run_name, config)
 

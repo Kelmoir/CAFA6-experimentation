@@ -14,16 +14,35 @@
 # every attempt fails within a few seconds rather than a few hundred, that's the likely reason;
 # check `nvidia-smi` by hand before assuming the wrapper itself is broken.
 #
+# RESUMING A *COMPLETED* RUN TO TRAIN MORE EPOCHS: the same models/<run-name>/latest_checkpoint
+# this wrapper uses for crash retries also works to extend a run that already finished, past its
+# original --epochs -- e.g. trial 20 ran its full 30 epochs still improving (see
+# experiments/mf_span_sweep_log.md); to train 10 more instead of redoing the first 30, rerun this
+# wrapper with trial 20's exact original args, --run-name mf-span-reg-trial-20 (unchanged, so it
+# finds that same latest_checkpoint), --epochs 40, and --reset-early-stop-on-resume (see
+# train_mf_span_model.py's --help -- without it, --early-stop-patience keeps the streak count from
+# the old, shorter target, which can stop the extension after just a couple more epochs). The
+# wrapper checks for an existing checkpoint on EVERY attempt, including the first -- not just
+# retries -- so this "first attempt, but a checkpoint already exists" case resumes automatically,
+# the same as a genuine crash retry would.
+#
 # Usage: pass the exact same arguments you'd give train_mf_span_model.py directly, with one
 # addition -- --run-name is REQUIRED (used to locate models/<run-name>/latest_checkpoint for
 # resume, same path train_mf_span_model.py itself defaults to when --resume-from-checkpoint is
 # unset -- see latest_checkpoint_dir in main()). Do not pass --resume-from-checkpoint yourself;
-# the wrapper adds it on retries.
+# the wrapper adds it whenever a checkpoint for --run-name already exists, whether that's a crash's
+# leftover or a prior completed run's.
 #
-# Example:
+# Example (fresh trial):
 #   experiments/scripts/run_mf_span_trial.sh --run-name mf-span-reg-trial-19 \
 #     --batch-size 4 --grad-accum-steps 8 --learning-rate 1e-4 --label-smoothing 0.3 \
 #     --epochs 30 --early-stop-patience 5 --push-to-hub --hub-branch trial-19
+#
+# Example (extend a completed run):
+#   experiments/scripts/run_mf_span_trial.sh --run-name mf-span-reg-trial-20 \
+#     --batch-size 2 --grad-accum-steps 16 --learning-rate 1e-4 --unfreeze-last-n 3 \
+#     --label-smoothing 0.3 --epochs 40 --early-stop-patience 5 --reset-early-stop-on-resume \
+#     --push-to-hub --hub-branch trial-20
 #
 # MAX_RETRIES env var overrides the default retry cap (5).
 
@@ -62,16 +81,18 @@ PYTHON_BIN="env/bin/python"
 attempt=0
 while true; do
   attempt=$((attempt + 1))
-  if [[ $attempt -gt 1 && -f "${LATEST_CKPT}/training_state.pt" ]]; then
+  # Checked on EVERY attempt, not just retries -- a checkpoint already sitting at ${LATEST_CKPT}
+  # on the very first attempt means --run-name is being reused deliberately to continue that run
+  # (either a prior completed trial being extended to more epochs, or -- less likely, since a
+  # fresh invocation normally starts with no checkpoint at all -- a retry of this same wrapper
+  # after it was killed and relaunched). Either way, resuming is the right call; there's no
+  # "attempt 1 must be fresh" case worth special-casing separately from a mid-loop retry.
+  if [[ -f "${LATEST_CKPT}/training_state.pt" ]]; then
     echo "[WRAPPER] attempt ${attempt}/${MAX_RETRIES}: resuming from ${LATEST_CKPT}"
     "$PYTHON_BIN" "$TRAIN_SCRIPT" "${ARGS[@]}" --resume-from-checkpoint "$LATEST_CKPT"
   else
-    if [[ $attempt -gt 1 ]]; then
-      echo "[WRAPPER] attempt ${attempt}/${MAX_RETRIES}: no ${LATEST_CKPT}/training_state.pt yet" \
-           "(crashed before epoch 1 finished?) -- restarting from scratch"
-    else
-      echo "[WRAPPER] attempt ${attempt}/${MAX_RETRIES}: starting fresh"
-    fi
+    echo "[WRAPPER] attempt ${attempt}/${MAX_RETRIES}: no ${LATEST_CKPT}/training_state.pt yet" \
+         "-- starting fresh"
     "$PYTHON_BIN" "$TRAIN_SCRIPT" "${ARGS[@]}"
   fi
   status=$?
