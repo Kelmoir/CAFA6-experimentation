@@ -468,6 +468,14 @@ def data_collate_function(preprocessed_batch: List[Dict[str, Any]], tokenizer: E
     if loss_mask:
         collated_data["loss_mask"] = torch.stack(loss_mask)
 
+    # preprocess_batch attaches "protein" per-sample but this function never gathered it into the
+    # batch -- added for experiments/scripts/dataset_refinement_pilot.py, which needs to know
+    # which batch row belongs to which protein to patch in its per-run label overrides. A plain
+    # list, not a tensor (protein ids are strings).
+    proteins = [sample["protein"] for sample in preprocessed_batch if "protein" in sample]
+    if proteins:
+        collated_data["protein"] = proteins
+
     return collated_data
 
 
@@ -766,6 +774,7 @@ def main() -> None:
     parser.add_argument("--lr-schedule", choices=["constant", "linear_decay", "cosine"], default="constant", help="Shape of the post-warmup LR schedule")
     parser.add_argument("--warmup-steps", type=int, default=None, help="Override the default warmup step count (default: min(100, steps_per_epoch // 10))")
     parser.add_argument("--label-smoothing", type=float, default=0.0, help="Smooth 0/1 BCE targets toward 0.5 by this amount (0 disables)")
+    parser.add_argument("--unknown-target-value", type=float, default=None, help="Replace every currently-0 (i.e. unannotated/unknown, per GO's Open World Assumption -- see experiments/sweep_log.md's trial-080/081 investigation) BCE target with this value instead of hard 0.0; confirmed positives (1.0) are never touched. None (default) keeps today's behavior. Unlike --label-smoothing (which softens both classes symmetrically), this only touches the unknown side -- the gentler, soft-target alternative trial-081's own closing note recommended after hard masking made AUROC measurably worse.")
     parser.add_argument("--decouple-bias-wd", action=argparse.BooleanOptionalAction, default=False, help="Exclude bias and LayerNorm params from weight decay (standard AdamW refinement)")
     parser.add_argument("--grad-accum-steps", type=int, default=1, help="Accumulate gradients over this many steps before each optimizer step (raises effective batch size)")
     parser.add_argument("--pos-weight", action=argparse.BooleanOptionalAction, default=False, help="Weight positive examples in BCE loss by (n_negative/n_positive)**--pos-weight-exponent per label, computed from the training split - helps severely imbalanced multi-label tasks (e.g. the coarse GO-term label space, ~3.6% average positive rate) at the cost of one more axis to tune")
@@ -986,6 +995,11 @@ def main() -> None:
             attention_mask = batch["attention_mask"].to(device)
             hard_labels = batch["labels"].to(device)
             labels = hard_labels
+            if args.unknown_target_value is not None:
+                # Only the unknown (currently-0) side moves -- confirmed positives stay at 1.0,
+                # unlike --label-smoothing below which softens both classes symmetrically.
+                labels = torch.where(hard_labels == 0,
+                                      torch.full_like(labels, args.unknown_target_value), labels)
             if args.label_smoothing > 0:
                 labels = labels * (1 - args.label_smoothing) + 0.5 * args.label_smoothing
 
