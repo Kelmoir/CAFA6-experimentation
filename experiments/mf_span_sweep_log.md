@@ -1,5 +1,12 @@
 # MF Span-Localization Regularization Sweep Log
 
+**STATUS: SHELVED (2026-09-03).** A real CAFA-style test (`evaluate_cafa_score.py`) scored trial
+20's checkpoint at Fmax=0.1779 — a small fraction of the ~0.82 F1 this sweep had climbed to. The
+sweep's own metric doesn't predict the real task; see
+[`mf_span_postmortem.md`](mf_span_postmortem.md) for the full diagnosis and a route back in if
+this is ever revisited. The trial-by-trial record below stands as-is, unedited, as the accurate
+history of what the sweep itself found and concluded at the time.
+
 Tracks manual local-GPU trials of `experiments/scripts/train_mf_span_model.py` (the positional
 molecular_function span-localization side-experiment described in `CLAUDE.md`'s "Data layout"
 section — not part of the main CAFA6 pipeline). Regularization features (esm/attention dropout, LR
@@ -1017,3 +1024,20 @@ remain lowest priority given how little effect they've had so far: `--output-dro
 AND `--hub-branch`, never reused from a prior trial** — one collision has already happened (trial 19b
 over trial 19) from skipping this; trial 20's own resume/extension is the one deliberate, documented
 exception to that rule (same run identity, continued on purpose).
+
+## Trial 22 and the sweep's end
+
+Trial 22 (`unfreeze_last_n` 3→4, retesting the capacity axis trial 10 had found overfitting badly
+on at the old 20k/5k data scale) finished its full 30 epochs: F1 0.8110 at epoch 30 — in line with
+trials 20/21, no further gain over the epoch-extended trial 20. By this sweep's own metric, that
+would have been a fair "capacity doesn't help further" verdict and the next trial in line.
+
+It didn't get one. A real CAFA-style test (`evaluate_cafa_score.py`, built the same session)
+scored trial 20's checkpoint — the sweep's own reference config — at **Fmax=0.1779** against an
+open 66-term candidate set, versus the ~0.82 this whole sweep had been climbing toward. See
+**[`mf_span_postmortem.md`](mf_span_postmortem.md)** for the full diagnosis: the sweep's metric
+was never actually measuring the deployment task (open-candidate presence/absence), only a
+narrow curated-pair proxy for it, and no trial's config choice — capacity, data volume, epoch
+budget, or otherwise — could have fixed that from inside the sweep as it was structured. The
+project is shelved as of this trial; nothing past this point in the log reflects a metric worth
+trusting.
