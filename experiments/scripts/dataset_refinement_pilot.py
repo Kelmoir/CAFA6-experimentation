@@ -11,8 +11,9 @@ controlled pilot before any commitment to a real sweep.
 It runs a base configuration plus three experimental conditions (see CONDITIONS below), each
 repeated many times with a fresh random sample of "resolved" cells, and asks: does the resulting
 validation loss differ from the base run in a way that survives averaging over repeats -- and if
-not at this item count/data scale, the three bar charts this script produces are meant to make
-that (lack of) signal directly visible, motivating what scale to try next.
+not at this item count/data scale, the three charts this script produces (two bar charts plus a
+per-condition histogram) are meant to make that (lack of) signal directly visible, motivating what
+scale to try next.
 
 Every run in this pilot is trained on the EXACT SAME fixed --max-train-samples/--max-val-samples
 protein subset and the EXACT SAME model initialization + data order (both pinned to --seed) -- the
@@ -39,6 +40,7 @@ Usage:
 """
 
 import argparse
+import copy
 import json
 import os
 import random
@@ -133,23 +135,39 @@ def build_overrides(condition: str, labels_matrix: np.ndarray, protein_ids: List
 
 
 # --------------------------------------------------------------------------------------------
-# Training / evaluation for one run
+# Model caching -- create_esm() re-downloads/re-parses the pretrained checkpoint from disk and
+# rebuilds the whole HF module graph every time it's called, which used to happen once per run
+# (301 times). Since every run is seeded identically anyway (see build_base_model), a from-scratch
+# rebuild was always producing a bit-identical model to the one already sitting in memory -- pure
+# waste. Now built exactly ONCE, kept resident on --device (GPU included, per the whole point of
+# caching it there), and copy.deepcopy'd per run instead: a plain tensor copy already on-device,
+# no disk I/O, no from_pretrained bookkeeping, no shape/config validation.
 # --------------------------------------------------------------------------------------------
 
-def train_one_run(args, model_name: str, train_ds, val_loader, label_names: List[str],
-                   overrides: Dict[str, Dict[int, float]], device: torch.device, tokenizer) -> float:
-    # Re-seeded before every run so model init is bit-identical across all 301 runs -- the only
-    # thing that should ever differ is the label content.
+def build_base_model(args, model_name: str, label_names: List[str], device: torch.device):
     torch.manual_seed(args.seed)
     if device.type == "cuda":
         torch.cuda.manual_seed_all(args.seed)
-
     label2id = {name: i for i, name in enumerate(label_names)}
     id2label = {i: name for name, i in label2id.items()}
     model = training_run.create_esm(
         unfreeze_last_n=args.unfreeze_last_n, model_type=model_name,
         id2label=id2label, label2id=label2id,
     ).to(device)
+    model.eval()  # the cached reference itself is never trained directly
+    return model
+
+
+# --------------------------------------------------------------------------------------------
+# Training / evaluation for one run
+# --------------------------------------------------------------------------------------------
+
+def train_one_run(args, base_model, train_ds, val_loader, label_names: List[str],
+                   overrides: Dict[str, Dict[int, float]], device: torch.device, tokenizer) -> float:
+    # A fresh, independent copy of the cached base model -- bit-identical starting weights to
+    # every other run (base_model was built once, under the fixed seed), without re-reading
+    # anything from disk.
+    model = copy.deepcopy(base_model)
 
     generator = torch.Generator().manual_seed(args.seed)
     train_loader = torch.utils.data.DataLoader(
@@ -275,6 +293,10 @@ def run_pilot(args) -> None:
         collate_fn=partial(training_run.data_collate_function, tokenizer=tokenizer),
     )
 
+    base_model = build_base_model(args, args.model_name, label_names, device)
+    print(f"[INFO] Base model cached on {device} -- every run copies from this instead of "
+          f"rebuilding from disk")
+
     specs = build_run_specs(args)
     completed = load_completed_run_ids(log_path) if args.resume else set()
     if completed:
@@ -292,7 +314,7 @@ def run_pilot(args) -> None:
                                          args.items_per_trial, rng)
 
         start = time.time()
-        val_loss = train_one_run(args, args.model_name, train_ds, val_loader, label_names,
+        val_loss = train_one_run(args, base_model, train_ds, val_loader, label_names,
                                   overrides, device, tokenizer)
         elapsed = time.time() - start
 
@@ -361,31 +383,29 @@ def make_charts(log_path: Path, out_prefix: Path) -> None:
     fig.savefig(f"{out_prefix}_loss_diff_vs_base.png", dpi=150)
     plt.close(fig)
 
-    # 3. Per-run detail: every repeat's own difference from base, as its own bar
-    fig, ax = plt.subplots(figsize=(max(10, 0.05 * len(records)), 5))
+    # 3. Distribution of every individual repeat's own difference from base, as a histogram --
+    # overlaid per condition (shared bin edges) rather than one bar per run, so the shape of each
+    # condition's spread (and any overlap between conditions) is directly visible.
+    fig, ax = plt.subplots(figsize=(10, 6))
     colors = {"faithful": "tab:blue", "false_positive": "tab:orange", "false_negative": "tab:red"}
-    x = 0
-    tick_pos, tick_lbl = [], []
+    all_diffs = [v - base_mean for c in CONDITIONS for v in by_condition[c]]
+    bins = np.histogram_bin_edges(all_diffs, bins=30) if all_diffs else 30
     for c in CONDITIONS:
-        vals = sorted(v - base_mean for v in by_condition[c])
-        xs = list(range(x, x + len(vals)))
-        ax.bar(xs, vals, color=colors[c], width=0.9, label=c)
-        if vals:
-            tick_pos.append(x + len(vals) / 2)
-            tick_lbl.append(c)
-        x += len(vals) + max(2, len(vals) // 20)
-    ax.axhline(0, color="black", linewidth=0.8)
-    ax.set_xticks(tick_pos)
-    ax.set_xticklabels(tick_lbl)
-    ax.set_ylabel("Val loss difference vs. base run")
-    ax.set_title("Per-run loss difference vs. base (every repeat, sorted within condition)")
+        diffs = [v - base_mean for v in by_condition[c]]
+        if diffs:
+            ax.hist(diffs, bins=bins, color=colors[c], alpha=0.5, edgecolor="black",
+                     linewidth=0.3, label=f"{c} (n={len(diffs)})")
+    ax.axvline(0, color="black", linewidth=1.0, linestyle="--", label="base")
+    ax.set_xlabel("Val loss difference vs. base run")
+    ax.set_ylabel("Count")
+    ax.set_title("Distribution of per-run loss difference vs. base, by condition")
     ax.legend()
     fig.tight_layout()
-    fig.savefig(f"{out_prefix}_loss_diff_per_run.png", dpi=150)
+    fig.savefig(f"{out_prefix}_loss_diff_histogram.png", dpi=150)
     plt.close(fig)
 
     print(f"[INFO] Wrote charts -> {out_prefix}_loss_after_training.png, "
-          f"{out_prefix}_loss_diff_vs_base.png, {out_prefix}_loss_diff_per_run.png")
+          f"{out_prefix}_loss_diff_vs_base.png, {out_prefix}_loss_diff_histogram.png")
     print(f"[SUMMARY] base: mean={base_mean:.6f} std={np.std(base_losses):.6f} n={len(base_losses)}")
     for c in CONDITIONS:
         if by_condition[c]:
