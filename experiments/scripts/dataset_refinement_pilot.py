@@ -428,10 +428,13 @@ def main() -> None:
     ap.add_argument("--epochs", type=int, default=3)
     ap.add_argument("--items-per-trial", type=int, default=100)
     ap.add_argument("--repeats-per-condition", type=int, default=100)
-    ap.add_argument("--base-repeats", type=int, default=1,
-                     help="Optional: repeat the base run too, for a training-noise floor")
+    ap.add_argument("--base-repeats", type=int, default=4,
+                     help="Repeat the base run and average, to smooth out training noise -- a "
+                          "fixed-seed base run still showed a ~0.00003 val-loss noise floor "
+                          "between repeats")
     ap.add_argument("--seed", type=int, default=42)
-    ap.add_argument("--batch-size", type=int, default=16)
+    ap.add_argument("--batch-size", type=int, default=4,
+                     help="4 was fastest on the speed-test set among {2,4,8}")
     ap.add_argument("--learning-rate", type=float, default=5e-5)
     ap.add_argument("--weight-decay", type=float, default=0.01)
     ap.add_argument("--unfreeze-last-n", type=int, default=2)
