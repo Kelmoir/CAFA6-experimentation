@@ -8,7 +8,7 @@ GPU it trained on (this script has no GPU access in this sandbox and runs on CPU
 which is dramatically slower for anything above ~100M params - see run_diagnostic()'s
 own docstring in training_run.py for why the diagnostic itself exists).
 
-Meant to run directly via `python3 experiments/scripts/diagnostic_eval_stage2.py <revision> [max_val_samples]`,
+Meant to run directly via `python3 experiments/ancestor_sweep/scripts/diagnostic_eval_stage2.py <revision> [max_val_samples]`,
 not through Colab, since it doesn't need training_run.py's Colab-secrets HF token path
 (local huggingface_hub cache already has one).
 """

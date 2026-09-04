@@ -41,9 +41,9 @@ a small span_model_config.json rather than save_pretrained/push_to_hub, and load
 reconstructs it on the other end. Separately, a *latest_checkpoint* (model weights +
 optimizer/scheduler/RNG state, via save_training_state) is written unconditionally every epoch,
 regardless of improvement, so --resume-from-checkpoint can continue a crashed run losing at most
-one epoch of work instead of restarting the whole trial -- see experiments/mf_span_sweep_log.md's
+one epoch of work instead of restarting the whole trial -- see experiments/mf_span/mf_span_sweep_log.md's
 trial 16/18 crashes (Xid 13 GPU exceptions, not a code bug) for why this exists, and
-experiments/scripts/run_mf_span_trial.sh for a thin wrapper that does this automatically. Also logs
+experiments/mf_span/scripts/run_mf_span_trial.sh for a thin wrapper that does this automatically. Also logs
 per-epoch metrics to trackio if installed, local-only (no Hub Space) since training now runs on
 local hardware -- see init_trackio_run below. Regularization knobs mirror training_run.py's
 established surface (same flag names/semantics, duplicated rather than imported -- see the
@@ -81,7 +81,7 @@ DATA_PATH = Path("./data/cafa-6-protein-function-prediction")
 LOCAL_DATASET_PATH = DATA_PATH / "dataset_mf_placed"
 HUB_DATASET_ID = "kelmoir/cafa6_mf_placed"
 OBO_PATH = DATA_PATH / "Train" / "go-basic.obo"
-GO_TEXT_CACHE_PATH = Path("experiments/positional_mf_go_term_texts.json")
+GO_TEXT_CACHE_PATH = Path("experiments/mf_span/positional_mf_go_term_texts.json")
 HF_REPO_ID = os.getenv("HF_MF_SPAN_REPO_ID", "kelmoir/cafa6-mf-span")
 
 WHOLE_PROTEIN_SOURCE = "domain_whole_protein_fallback"
@@ -592,7 +592,7 @@ def main():
                         "to the training loss, not validation -- val_loss stays computed against "
                         "hard 0/1 targets so it remains comparable to every past trial and to "
                         "--checkpoint-selection val_loss. Targets the overconfidence-driven "
-                        "val_loss/F1 divergence documented in experiments/mf_span_sweep_log.md "
+                        "val_loss/F1 divergence documented in experiments/mf_span/mf_span_sweep_log.md "
                         "trials 10-12 (train_loss falling toward ~0 while val_loss rises, even as "
                         "F1 keeps improving).")
   ap.add_argument("--early-stop-patience", type=int, default=None,
@@ -615,11 +615,11 @@ def main():
   ap.add_argument("--log-file", default=None,
                    help="Per-epoch JSONL log path, flushed+fsynced after every epoch so an "
                         "accidental crash mid-run doesn't lose completed epochs' metrics "
-                        "(default: experiments/logs/mf_span_<run-name>.jsonl)")
+                        "(default: experiments/mf_span/logs/mf_span_<run-name>.jsonl)")
   ap.add_argument("--checkpoint-selection", choices=["val_loss", "f1"], default="val_loss",
                    help="Metric used to decide which epoch's checkpoint is 'best' (saved/pushed). "
                         "val_loss and F1 can diverge once the model gets confident under this "
-                        "task's class imbalance -- see experiments/mf_span_sweep_log.md trials "
+                        "task's class imbalance -- see experiments/mf_span/mf_span_sweep_log.md trials "
                         "5/10/11/12, where the val_loss-selected checkpoint trailed the best "
                         "observed F1 by as much as 0.05. Default kept as val_loss to match every "
                         "past trial's behavior.")
@@ -637,7 +637,7 @@ def main():
                         "unconditionally every epoch -- see save_training_state). Resumes the "
                         "optimizer/scheduler/RNG state and epoch count from there instead of "
                         "restarting the trial from scratch. Two distinct uses: (1) recovering from "
-                        "a mid-run crash (see experiments/mf_span_sweep_log.md trial 16/18) without "
+                        "a mid-run crash (see experiments/mf_span/mf_span_sweep_log.md trial 16/18) without "
                         "losing more than one epoch of work -- pass the exact same args as the "
                         "original run, epoch loop just continues to the same --epochs target; (2) "
                         "extending an already-*completed* run past its original --epochs (e.g. "
@@ -648,7 +648,7 @@ def main():
                         "the checkpoint already reached, or the run has nothing left to do -- a "
                         "warning below catches that case. All other args should match the original "
                         "run's; this isn't validated, just assumed, same as load_span_model(). "
-                        "See also experiments/scripts/run_mf_span_trial.sh, a thin wrapper that "
+                        "See also experiments/mf_span/scripts/run_mf_span_trial.sh, a thin wrapper that "
                         "resumes from an existing checkpoint automatically, whether that checkpoint "
                         "is a crash's leftover or a prior completed run's.")
   ap.add_argument("--reset-early-stop-on-resume", action="store_true",
@@ -794,7 +794,7 @@ def main():
 
   tracker = init_trackio_run(run_name, config)
 
-  log_file_path = Path(args.log_file) if args.log_file else Path("experiments/logs") / f"mf_span_{run_name}.jsonl"
+  log_file_path = Path(args.log_file) if args.log_file else Path("experiments/mf_span/logs") / f"mf_span_{run_name}.jsonl"
   log_file_path.parent.mkdir(parents=True, exist_ok=True)
   if args.resume_from_checkpoint and log_file_path.exists():
     # Append rather than overwrite: the pre-crash epochs' lines are still valid and worth keeping

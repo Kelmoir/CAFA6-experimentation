@@ -2,7 +2,7 @@
 trace in validation loss?
 
 `training_run.py` treats every non-asserted (protein, GO-term) cell as a hard negative. Per
-`experiments/sweep_log.md`'s trial-080/081 investigation, that's the field's own Open World
+`experiments/ancestor_sweep/sweep_log.md`'s trial-080/081 investigation, that's the field's own Open World
 Assumption problem -- absence of annotation isn't confirmed absence of function, and trial-081's
 own closing note recommended trying a soft-target correction instead of a hard mask (which made
 things measurably worse) or a hard 0. This script is that follow-up, run as a small, fast,

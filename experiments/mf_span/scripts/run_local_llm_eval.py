@@ -1,7 +1,7 @@
 """Run the local model against the small Opus-confirmed eval set
-(experiments/llm_review_eval_set.json) -- the exact same proteins Haiku reviewed and Opus
+(experiments/mf_span/llm_review_eval_set.json) -- the exact same proteins Haiku reviewed and Opus
 independently verified -- and write everything to a dedicated, separate output location for easy
-comparison. This never touches experiments/llm_term_review/ (production review state): no merge,
+comparison. This never touches experiments/mf_span/llm_term_review/ (production review state): no merge,
 no dictionary write, no already_started() footprint, no raw_debug.log dropped into a production
 term directory.
 
@@ -24,7 +24,7 @@ logic for DOMAIN/text signals, so "does this match" uses the identical resolutio
 merge step would use, not a separate ad hoc comparison.
 
 Usage:
-  python3 experiments/scripts/run_local_llm_eval.py --host http://192.168.1.122:1234 \
+  python3 experiments/mf_span/scripts/run_local_llm_eval.py --host http://192.168.1.122:1234 \
       --chain-of-thought "Let's think step by step."
 
 Output, under experiments/llm_eval_runs/<run_name>/ (run_name defaults to a timestamp):
@@ -46,8 +46,8 @@ import merge_llm_findings as mlf
 import parse_llm_findings as plf
 import prepare_term_review_files as ptr
 
-EVAL_SET_PATH = Path("experiments/llm_review_eval_set.json")
-RAW_FEATURES_PATH = Path("experiments/positional_mf_raw_features.json")
+EVAL_SET_PATH = Path("experiments/mf_span/llm_review_eval_set.json")
+RAW_FEATURES_PATH = Path("experiments/mf_span/positional_mf_raw_features.json")
 OUT_ROOT = Path("experiments/llm_eval_runs")
 
 

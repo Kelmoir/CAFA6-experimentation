@@ -2,7 +2,7 @@
 GO term that has never been confirmed-localized for any protein, sample up to 5 proteins that
 carry it as a real annotation, look for a raw signal (domain accession, ligand, or free-text
 note) that recurs across the sample, and -- only when that signal looks narrow/specific enough
-to be safe to generalize -- add it to experiments/positional_mf_localization_dictionary.json.
+to be safe to generalize -- add it to experiments/mf_span/positional_mf_localization_dictionary.json.
 
 This mirrors the manual gap-review loop's judgment calls (see build_positional_mf_links.py's
 module docstring and the dictionary's own growth history): a domain accession shared by only a
@@ -13,7 +13,7 @@ annotation). A domain shared by dozens+ of unrelated proteins (generic folds lik
 plain kinase catalytic domain) is declined here, same as every manual round -- it would encode
 "this fold correlates with the term" rather than "this specific protein/family has the term".
 
-Every visited term (added or not) is recorded in experiments/positional_mf_visited_terms.json so
+Every visited term (added or not) is recorded in experiments/mf_span/positional_mf_visited_terms.json so
 repeat runs never redo work and the loop has a clear terminating condition: run until every
 never-localized term has been visited.
 """
@@ -24,10 +24,10 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-RAW_FEATURES_PATH = Path("experiments/positional_mf_raw_features.json")
-LINKS_PATH = Path("experiments/positional_mf_links.json")
-DICT_PATH = Path("experiments/positional_mf_localization_dictionary.json")
-VISITED_PATH = Path("experiments/positional_mf_visited_terms.json")
+RAW_FEATURES_PATH = Path("experiments/mf_span/positional_mf_raw_features.json")
+LINKS_PATH = Path("experiments/mf_span/positional_mf_links.json")
+DICT_PATH = Path("experiments/mf_span/positional_mf_localization_dictionary.json")
+VISITED_PATH = Path("experiments/mf_span/positional_mf_visited_terms.json")
 GO_OBO_PATH = Path("data/cafa-6-protein-function-prediction/Train/go-basic.obo")
 
 TEXT_TIER_FEATURE_TYPES = {"ACT_SITE", "SITE", "MOTIF", "REGION"}

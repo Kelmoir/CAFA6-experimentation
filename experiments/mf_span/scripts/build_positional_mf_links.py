@@ -1,7 +1,7 @@
 """Link UniProt positional features to a protein's real molecular_function GO annotations.
 
 Design (see the positional-MF design discussion for the full reasoning): a tiered
-candidate-generation pass over experiments/positional_mf_raw_features.json, followed by an
+candidate-generation pass over experiments/mf_span/positional_mf_raw_features.json, followed by an
 automatic verification pass that only keeps a candidate if it agrees - under GO's true-path
 ancestor closure, not exact-ID equality - with a GO term the protein is *already* annotated
 with. Nothing here invents a GO term a protein isn't already labeled with; it only tries to
@@ -11,9 +11,9 @@ fails to confirm on proteins that don't already carry the real annotation, rathe
 introducing a false one.
 
 All trigger data - ligand names, feature types, domain accession overrides, and free-text
-note patterns - lives in experiments/positional_mf_localization_dictionary.json, keyed by GO
+note patterns - lives in experiments/mf_span/positional_mf_localization_dictionary.json, keyed by GO
 id (see load_localization_dictionary), not hardcoded here. That file is meant to be grown over
-time: run this script, inspect experiments/positional_mf_gaps.json (written by main() below -
+time: run this script, inspect experiments/mf_span/positional_mf_gaps.json (written by main() below -
 per protein, whatever raw annotations produced no candidate at all, plus whatever real MF terms
 still have no confirmed span), spot-check a sample of gap proteins by hand, add new trigger
 entries for whatever you can confirm, and re-run. The goal is for that loop to do almost all of
@@ -51,13 +51,13 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
-RAW_FEATURES_PATH = Path("experiments/positional_mf_raw_features.json")
+RAW_FEATURES_PATH = Path("experiments/mf_span/positional_mf_raw_features.json")
 GO_GRAPH_PATH = Path("data/cafa-6-protein-function-prediction/dataset/go_dependency_graph.json")
 GO_MAPPINGS_DIR = Path("data/go_mappings")
-LOCALIZATION_DICT_PATH = Path("experiments/positional_mf_localization_dictionary.json")
-OUTPUT_PATH = Path("experiments/positional_mf_links.json")
-GAPS_PATH = Path("experiments/positional_mf_gaps.json")
-SPOTCHECK_PATH = Path("experiments/positional_mf_spotcheck_sample.json")
+LOCALIZATION_DICT_PATH = Path("experiments/mf_span/positional_mf_localization_dictionary.json")
+OUTPUT_PATH = Path("experiments/mf_span/positional_mf_links.json")
+GAPS_PATH = Path("experiments/mf_span/positional_mf_gaps.json")
+SPOTCHECK_PATH = Path("experiments/mf_span/positional_mf_spotcheck_sample.json")
 
 TRUE_PATH_RELATIONSHIPS = {"is_a", "part_of"}
 SEED = 42
@@ -216,14 +216,14 @@ def collect_domain_accession_candidates(domain_xrefs, mappings, overrides=None):
 
 def link_protein(accession, record, mappings, ancestors_with_depth, localization_dict, verbose=False):
   """verbose=True additionally returns every raw candidate (confirmed or not) as
-  all_candidates, for the visualizer (experiments/scripts/visualize_protein.py) to show what
+  all_candidates, for the visualizer (experiments/mf_span/scripts/visualize_protein.py) to show what
   the databanks offered vs. what got selected. Bulk pipeline runs (main(), below) never pass
   verbose=True, so their output is unaffected.
 
   uncovered_raw_annotations (always populated, not just under verbose) lists every raw
   annotation - a BINDING ligand, a DOMAIN accession, or a text-tier feature's note - that
   produced *no* candidate at all because no dictionary entry covers it. This is the raw
-  material for experiments/positional_mf_gaps.json (see main()).
+  material for experiments/mf_span/positional_mf_gaps.json (see main()).
   """
   real_mf_terms = {t["go_id"] for t in record["go_terms"] if t["aspect"] == "F"}
   features = record["features"]

@@ -15,14 +15,14 @@ rather than N near-duplicate files differing only in which protein section matte
 
 Fixed budget: a term is sampled once, gets exactly min(4, num proteins carrying it) proteins, and
 is reviewed exactly once. There is no retry/carry-over mechanism -- once a term's directory exists
-under experiments/llm_term_review/, it's permanently out of scope for future rounds (see
+under experiments/mf_span/llm_term_review/, it's permanently out of scope for future rounds (see
 plan_review_round.py), whether or not that single pass reached merge agreement. This replaced an
 earlier design that kept feeding one more witness per round into an unresolved term (up to 10
 sampled proteins) -- reasonable for chasing a real signal, but most of the terms it kept retrying
 turned out to have no positional evidence to find at all (NONE verdicts) or kept re-surfacing the
 same already-rejected generic signal, so the extra rounds weren't earning their cost.
 
-Output: experiments/llm_term_review/<go_id>/review.md plus a companion _meta.json manifest
+Output: experiments/mf_span/llm_term_review/<go_id>/review.md plus a companion _meta.json manifest
 recording the term, its definition, and the sampled accession list (== assigned_accessions,
 since the full sample is reviewed in one pass now).
 """
@@ -32,10 +32,10 @@ import re
 import sys
 from pathlib import Path
 
-RAW_FEATURES_PATH = Path("experiments/positional_mf_raw_features.json")
-VISITED_PATH = Path("experiments/positional_mf_visited_terms.json")
+RAW_FEATURES_PATH = Path("experiments/mf_span/positional_mf_raw_features.json")
+VISITED_PATH = Path("experiments/mf_span/positional_mf_visited_terms.json")
 GO_OBO_PATH = Path("data/cafa-6-protein-function-prediction/Train/go-basic.obo")
-OUT_ROOT = Path("experiments/llm_term_review")
+OUT_ROOT = Path("experiments/mf_span/llm_term_review")
 SEED = 42
 MAX_PROTEINS = 4
 

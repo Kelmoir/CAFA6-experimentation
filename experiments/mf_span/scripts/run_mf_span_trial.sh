@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Thin retry wrapper for local mf-span trials: relaunches train_mf_span_model.py automatically if
 # it exits non-zero (e.g. the CUDA Xid 13 GPU exceptions documented in
-# experiments/mf_span_sweep_log.md's trial 16/18 crashes), resuming from the latest checkpoint
+# experiments/mf_span/mf_span_sweep_log.md's trial 16/18 crashes), resuming from the latest checkpoint
 # instead of restarting the whole trial from scratch. Mirrors the Colab CLI self-healing retry
 # pattern (run_trial.sh/make_wrapper.py, see CLAUDE.md's "Colab regularization sweep"), adapted
 # for a local bash retry loop instead of a colab exec relaunch -- there's no session/VM to
@@ -17,7 +17,7 @@
 # RESUMING A *COMPLETED* RUN TO TRAIN MORE EPOCHS: the same models/<run-name>/latest_checkpoint
 # this wrapper uses for crash retries also works to extend a run that already finished, past its
 # original --epochs -- e.g. trial 20 ran its full 30 epochs still improving (see
-# experiments/mf_span_sweep_log.md); to train 10 more instead of redoing the first 30, rerun this
+# experiments/mf_span/mf_span_sweep_log.md); to train 10 more instead of redoing the first 30, rerun this
 # wrapper with trial 20's exact original args, --run-name mf-span-reg-trial-20 (unchanged, so it
 # finds that same latest_checkpoint), --epochs 40, and --reset-early-stop-on-resume (see
 # train_mf_span_model.py's --help -- without it, --early-stop-patience keeps the streak count from
@@ -34,12 +34,12 @@
 # leftover or a prior completed run's.
 #
 # Example (fresh trial):
-#   experiments/scripts/run_mf_span_trial.sh --run-name mf-span-reg-trial-19 \
+#   experiments/mf_span/scripts/run_mf_span_trial.sh --run-name mf-span-reg-trial-19 \
 #     --batch-size 4 --grad-accum-steps 8 --learning-rate 1e-4 --label-smoothing 0.3 \
 #     --epochs 30 --early-stop-patience 5 --push-to-hub --hub-branch trial-19
 #
 # Example (extend a completed run):
-#   experiments/scripts/run_mf_span_trial.sh --run-name mf-span-reg-trial-20 \
+#   experiments/mf_span/scripts/run_mf_span_trial.sh --run-name mf-span-reg-trial-20 \
 #     --batch-size 2 --grad-accum-steps 16 --learning-rate 1e-4 --unfreeze-last-n 3 \
 #     --label-smoothing 0.3 --epochs 40 --early-stop-patience 5 --reset-early-stop-on-resume \
 #     --push-to-hub --hub-branch trial-20

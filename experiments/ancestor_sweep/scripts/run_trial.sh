@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Launch one training_run.py trial against an existing (already-provisioned/adopted) Colab
-# session, capturing output to experiments/logs/<trial-name>.log.
+# session, capturing output to experiments/ancestor_sweep/logs/<trial-name>.log.
 #
 # Robustness: the underlying colab exec connection has been observed to die mid-run
 # unpredictably (mid-epoch or between epochs), independent of wall-clock length. Rather than
@@ -76,7 +76,7 @@ while [ "$attempt" -le "$MAX_ATTEMPTS" ] && [ "$completed" -lt "$TARGET_EPOCHS" 
   fi
 
   WRAPPER=".podman/tmp/${TRIAL_NAME}_attempt${attempt}_wrapper.py"
-  python3 experiments/scripts/make_wrapper.py "$WRAPPER" "$TRIAL_NAME" "$TARGET_EPOCHS" "$completed" "$@" | tee -a "$LOG"
+  python3 experiments/ancestor_sweep/scripts/make_wrapper.py "$WRAPPER" "$TRIAL_NAME" "$TARGET_EPOCHS" "$completed" "$@" | tee -a "$LOG"
 
   colab --auth=adc upload .podman/secrets/huggingface_token /content/.hf_token -s "$SESSION_NAME" >>"$LOG" 2>&1
   if [ $? -ne 0 ]; then

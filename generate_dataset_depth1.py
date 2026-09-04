@@ -1,6 +1,6 @@
 """Depth-1-only GO-term dataset variant for the aspect-conditioning ablation
 (trial-077: no aspect input, trial-078: ground-truth aspect input to the classifier -
-see experiments/sweep_log.md). Label space is restricted to the 39 depth-1 GO terms
+see experiments/ancestor_sweep/sweep_log.md). Label space is restricted to the 39 depth-1 GO terms
 (no depth-0 aspect roots, no depth-2+ terms) instead of generate_dataset.py's full
 383-term coarse space, and each example additionally carries a 3-way aspect_labels
 multi-hot column ([C, F, P] - 1 where that aspect root is in the protein's true-path
@@ -96,7 +96,7 @@ def generate_dataset_with_aspect(protein_ids, propagated_terms: dict, label2id: 
   dataset_info = datasets.DatasetInfo(
       description=(
           "CAFA-6 depth-1-only GO-term variant, for the aspect-conditioning ablation "
-          "(see experiments/sweep_log.md trial-077/trial-078). aspect_labels is a "
+          "(see experiments/ancestor_sweep/sweep_log.md trial-077/trial-078). aspect_labels is a "
           "3-way multi-hot [C, F, P] derived from the ground-truth true-path ancestor "
           "closure - intended as an optional model INPUT feature, not a prediction "
           "target."

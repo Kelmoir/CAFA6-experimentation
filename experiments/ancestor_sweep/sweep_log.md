@@ -589,9 +589,9 @@ re-verified with a GPU smoke test before continuing.
 
 Also extracted the repeated launch sequence (generate a `sys.argv` wrapper, upload token, upload
 script, run `colab exec`, log output) into reusable scripts, since it had been copy-pasted by hand for
-every single trial: `experiments/scripts/run_trial.sh <trial-name> <session-name> [--timeout N] --
-<training_run.py args...>`, `experiments/scripts/adopt_session.py <session-name>`, and
-`experiments/scripts/check_and_adopt_session.sh <session-name>` (checks liveness, adopts + smoke-tests
+every single trial: `experiments/ancestor_sweep/scripts/run_trial.sh <trial-name> <session-name> [--timeout N] --
+<training_run.py args...>`, `experiments/ancestor_sweep/scripts/adopt_session.py <session-name>`, and
+`experiments/ancestor_sweep/scripts/check_and_adopt_session.sh <session-name>` (checks liveness, adopts + smoke-tests
 if needed). All trials from trial-016 onward are launched via `run_trial.sh`.
 
 ## trial-017 (abandoned)
@@ -622,9 +622,9 @@ beam member — 6 experiments per round) instead of ad hoc single-axis guessing:
    imaginable options are exhausted, or when the user says stop — in the last case, keep enough state to
    resume cleanly.
 
-New tracking files: `experiments/beam_search_state.json` (round/beam/queue state, resumable),
-`experiments/results_index.csv` (rebuildable full index of every trial's config + best-epoch metrics +
-verdict, via `experiments/scripts/build_results_index.py`). The user explicitly authorized adding new
+New tracking files: `experiments/ancestor_sweep/beam_search_state.json` (round/beam/queue state, resumable),
+`experiments/ancestor_sweep/results_index.csv` (rebuildable full index of every trial's config + best-epoch metrics +
+verdict, via `experiments/ancestor_sweep/scripts/build_results_index.py`). The user explicitly authorized adding new
 search axes beyond the existing CLI flags and extending `training_run.py` as needed — this isn't meant
 to be a pure grid search over already-exposed hyperparameters.
 
@@ -702,7 +702,7 @@ against the same ~9-10min connection ceiling.
 
 All 6 ran back-to-back in one manual Colab-notebook session (`experiments/round1_manual.ipynb`,
 generated from `experiments/round1_manifest.json`), pasted back into chat as
-`experiments/logs/trial018-023.log` and split into per-trial `experiments/logs/trial-0NN.log` files.
+`experiments/ancestor_sweep/logs/trial018-023.log` and split into per-trial `experiments/ancestor_sweep/logs/trial-0NN.log` files.
 Every trial completed all 10 epochs cleanly (no connection drops this batch). Seed: trial-015
 (unfreeze=1, lr=2e-4, wd=0.5, dropout=0.2/0.0/0.0, best_val_loss=0.599).
 
@@ -743,7 +743,7 @@ remain far from the **val_loss < 0.45** target. If round 2 doesn't break this pl
 would be a signal worth raising with the user before sinking further rounds into `esm2_t6_8M` at
 unfreeze<=3 — it may be more of a model-capacity/task-difficulty ceiling than a regularization problem.
 
-**Decision**: beam updated to `[trial-018, trial-022]` (`experiments/beam_search_state.json`, round 2).
+**Decision**: beam updated to `[trial-018, trial-022]` (`experiments/ancestor_sweep/beam_search_state.json`, round 2).
 Round 2 (`experiments/round2_manifest.json`, trial-024 through trial-029) branches 3 children off each:
 - from trial-018 (cosine schedule): `trial-024` raises lr to 3e-4, `trial-025` lowers weight_decay to
   0.2 (regularization axis, testing under- vs over-regularization), `trial-026` bumps unfreeze to 2.
@@ -755,7 +755,7 @@ Round 2 (`experiments/round2_manifest.json`, trial-024 through trial-029) branch
 
 All 6 ran back-to-back in one manual Colab-notebook session (`experiments/round2_manual.ipynb`,
 generated from `experiments/round2_manifest.json`), pasted back into chat as
-`experiments/logs/trial-024-029.log` and split into per-trial `experiments/logs/trial-0NN.log` files.
+`experiments/ancestor_sweep/logs/trial-024-029.log` and split into per-trial `experiments/ancestor_sweep/logs/trial-0NN.log` files.
 Every trial completed all 10 epochs cleanly. Beam parents: trial-018 (best_val_loss 0.5959) and
 trial-022 (best_val_loss 0.5978).
 
@@ -794,7 +794,7 @@ or data-budget ceiling for this task that further regularization/schedule tuning
 break. Flagging this to the user now rather than queuing a round 3 that's unlikely to move the needle.
 
 **Decision**: beam updated to `[trial-025, trial-026]` (both trial-018 descendants;
-`experiments/beam_search_state.json`, round 2 marked complete). Round 3 design is paused pending user
+`experiments/ancestor_sweep/beam_search_state.json`, round 2 marked complete). Round 3 design is paused pending user
 input on whether to continue hyperparameter search at `esm2_t6_8M` scale or pivot to a larger model
 per the project's original plan ("once a satisfactory config is found at this scale, scale up and
 re-run the regularization search from scratch") — model-scale is the one major lever untested so far.
@@ -802,7 +802,7 @@ re-run the regularization search from scratch") — model-scale is the one major
 ## Scale-up phase: esm2_t6_8M -> esm2_t12_35M
 
 User direction (2026-07-24): pivot to model scale rather than continue tuning at `esm2_t6_8M`. The
-`esm2_t6_8M` phase is paused (not abandoned) in `experiments/beam_search_state.json`'s `phases` map;
+`esm2_t6_8M` phase is paused (not abandoned) in `experiments/ancestor_sweep/beam_search_state.json`'s `phases` map;
 `esm2_t12_35M_scale_up` is now the active phase. `esm2_t12_35M` is the project's actual default model
 (`SELECTED_MODEL` in `training_run.py`) and was only tried once before — trial-007, 1 epoch,
 pre-beam-search, before the bias-init fix's effects were well understood and before 10-epoch training
@@ -836,7 +836,7 @@ the 8M phase), informed by trial-031's overfitting-or-not signal.
 ## Scale-up results: trial-030 (seed/timing), trial-031 (zero-regularization diagnostic)
 
 Both ran in one manual browser Colab session (`experiments/round3_manual.ipynb`), pasted back as
-`experiments/logs/trial-030-031.log`, split into per-trial files. Both completed all 6 epochs.
+`experiments/ancestor_sweep/logs/trial-030-031.log`, split into per-trial files. Both completed all 6 epochs.
 
 **trial-030** (baseline: unfreeze=1, lr=2e-4, wd=0.5, dropout=0.2/0.0/0.0, batch=8): best val_loss
 **0.5946** at epoch 4, edging past the entire `esm2_t6_8M` phase's best (0.5959) in 6 epochs instead of
@@ -912,7 +912,7 @@ ready to hand results back for analysis.
 ## round_1 results (trial-032 through trial-037)
 
 All 6 ran in the user's manually-kept-alive browser Colab session, pasted back as
-`experiments/logs/trial-032-037.log`, split per-trial. All completed their (pre-policy) 6 epochs.
+`experiments/ancestor_sweep/logs/trial-032-037.log`, split per-trial. All completed their (pre-policy) 6 epochs.
 
 | trial | parent | axis | best epoch | best val_loss | notes |
 |-------|--------|------|-----------|----------------|-------|
@@ -970,7 +970,7 @@ exposure.
 
 ## round_2 results, part 1 (trial-038 through trial-040; trial-041 interrupted)
 
-Ran in the user's manual browser Colab session, pasted back as `experiments/logs/trial-038-041.log`.
+Ran in the user's manual browser Colab session, pasted back as `experiments/ancestor_sweep/logs/trial-038-041.log`.
 The session **disconnected mid-trial-041**, after epoch 7/10 — this is exactly the long-single-session
 risk flagged above. trial-038/039/040 completed all 10 epochs cleanly first.
 
@@ -1006,7 +1006,7 @@ config). This completes round_2's original 6-trial design, just split across two
 
 ## round_2 results, part 2 (trial-041 through trial-043) — full 10-epoch curves complete
 
-All 3 ran cleanly to 10 epochs this time, pasted back as `experiments/logs/trial-041-043.log`.
+All 3 ran cleanly to 10 epochs this time, pasted back as `experiments/ancestor_sweep/logs/trial-041-043.log`.
 
 | trial | axis | best epoch | best val_loss | epoch-10 val_loss |
 |-------|------|-----------|----------------|--------------------|
@@ -1068,7 +1068,7 @@ for this batch=128-heavy round.
 
 ## round_3 part 1 results (trial-044 through trial-046) — the noise question is answered
 
-All 3 completed 10 epochs, pasted back as `experiments/logs/trial-044-046.log`. trial-044 hit a
+All 3 completed 10 epochs, pasted back as `experiments/ancestor_sweep/logs/trial-044-046.log`. trial-044 hit a
 transient infra hiccup — `HF_TOKEN` fetch from Colab Secrets timed out mid-run (`"Requesting secret
 HF_TOKEN timed out"`), so no Hub checkpoint was pushed for it (`[WARN] --checkpoint-mode final
 requested but no HF token was found`). Training itself was unaffected — all 10 epochs completed and
@@ -1111,7 +1111,7 @@ data) may not be real. Not deciding this unilaterally; raising it once round_3 p
 
 ## round_3 part 2 results (trial-047 through trial-049) — noise finding confirmed twice, phase closes
 
-All 3 completed 10 epochs, pasted back as `experiments/logs/trial-047-049.log`.
+All 3 completed 10 epochs, pasted back as `experiments/ancestor_sweep/logs/trial-047-049.log`.
 
 | trial | axis | best epoch | best val_loss |
 |-------|------|-----------|----------------|
@@ -1181,8 +1181,8 @@ before implementation starts.
 
 ## Dataset expansion deployed (2026-07-26) — every trial above predates this
 
-Before touching `generate_dataset.py`, ran a diagnostic (`experiments/diagnostic_eval_stage1.ipynb`,
-log in `experiments/logs/diagnostics_1.log`) to check whether the aspect model was worth building on
+Before touching `generate_dataset.py`, ran a diagnostic (`experiments/ancestor_sweep/diagnostic_eval_stage1.ipynb`,
+log in `experiments/ancestor_sweep/logs/diagnostics_1.log`) to check whether the aspect model was worth building on
 at all — `compute_metrics()`'s accuracy/recall alone couldn't distinguish "learned real signal" from
 "learned the label prior" (a trivial always-positive baseline scores ~0.698 accuracy / 1.0 recall,
 suspiciously close to every trial's reported numbers). Result: AUROC clearly above 0.5 for every
@@ -1240,7 +1240,7 @@ Raw log: val_loss improved cleanly (0.0803 → 0.0772 over 10 epochs, best at ep
 stayed pinned at 2.7–3.6% the entire run and val_accuracy (97.2%) sat barely above the trivial
 always-negative baseline (96.4%). This is the textbook signature of unweighted BCE collapsing under
 severe class imbalance — before concluding that, ran a proper diagnostic
-(`experiments/scripts/diagnostic_eval_stage2.py`, locally on CPU) on the same checkpoint.
+(`experiments/ancestor_sweep/scripts/diagnostic_eval_stage2.py`, locally on CPU) on the same checkpoint.
 
 **The model is actually healthy.** Median per-label AUROC = 0.8366 (mean 0.8283), 87.3% of the 362
 evaluable labels clear AUROC > 0.7. Pooled at threshold 0.5: precision 0.6565, recall 0.4583,
@@ -1366,7 +1366,7 @@ Combined log arrived as a single `trial-052-054.log` (batched-run convention) �
 parsing convention, and `results_index.csv` rebuilt.
 
 - **trial-052** (`pos_weight_exponent=0.3`): ran the AUROC diagnostic
-  (`experiments/scripts/diagnostic_eval_stage2.py trial-052`) for the required apples-to-apples read.
+  (`experiments/ancestor_sweep/scripts/diagnostic_eval_stage2.py trial-052`) for the required apples-to-apples read.
   Median AUROC=0.8473 (best of trial-050/051/052), pooled F1@0.5=0.5445 (beats trial-050's 0.5398 and
   trial-051's 0.4989), best F1 over a threshold sweep=0.5604@0.42 — clearly better than trial-051's
   0.5007 but still short of trial-050's plain-BCE best F1 of 0.5727. Confirms a monotonic trend: as
@@ -1576,14 +1576,14 @@ atol=1e-5) against the pre-save model in eval mode. Also re-ran the existing non
 `training_run.py --unfreeze-last-n 1 --output-dropout 0.2 ...`) after the shared helper-function
 refactor to confirm no regression to the still-in-flight round 2.
 
-`experiments/scripts/diagnostic_eval_stage2.py` generalized to read `trial_metrics.json` (already
+`experiments/ancestor_sweep/scripts/diagnostic_eval_stage2.py` generalized to read `trial_metrics.json` (already
 pushed alongside every checkpoint, contains the full CLI config) instead of hardcoding
 `MODEL_NAME`/assuming non-LoRA — verified against a real checkpoint (trial-053): correctly resolved
 `use_lora=False`, ran to completion, and as a bonus turned up trial-053's own diagnostic numbers
 (median AUROC 0.8545, best F1 0.5810@0.32) — both better than trial-050's, reinforcing that round 1's
 win is real across multiple metrics, not just val_loss.
 
-**Smoke test sent, not yet run**: `experiments/smoke_test_lora_3b.py` (`.ipynb` wrapper sent to user)
+**Smoke test sent, not yet run**: `experiments/ancestor_sweep/smoke_test_lora_3b.py` (`.ipynb` wrapper sent to user)
 loads `esm2_t36_3B_UR50D` with LoRA (r=16, bf16 frozen base, gradient checkpointing), does one
 forward+backward at batch=4/seq_len=1024, and reports GPU memory allocated/reserved/peak against the
 25GB budget, plus re-confirms bias-init/gradients/save-reload at real scale (not just the tiny model
@@ -1976,12 +1976,12 @@ exactly the unreliable proxy the diagnostic exists to correct for on this severe
 The raw numbers are encouraging and directionally support trial-072 being ahead, but the rigorous call
 needs the diagnostic.
 
-Built `experiments/scripts/build_diagnostic_notebook.py` — generates a standalone, training-free
+Built `experiments/ancestor_sweep/scripts/build_diagnostic_notebook.py` — generates a standalone, training-free
 notebook that loads any Hub checkpoint by revision and runs `training_run.run_diagnostic()` against
 it, auto-detecting config from `trial_metrics.json`. Deliberately sized for a **cheap GPU** (T4/15GB
 tier), not another A100 — inference-only for a 3B LoRA checkpoint needs only ~6-10GB VRAM (per the
 original smoke test), no backward pass or training-batch memory at all. Generated and sent
-`experiments/diagnostic_trial072.ipynb`.
+`experiments/ancestor_sweep/diagnostic_trial072.ipynb`.
 
 ## trial-072 diagnostic result — decisive win, new best result across the ENTIRE sweep
 
@@ -2197,7 +2197,7 @@ trial-072-vs-trial-053 was.
 The completed trial-075 log revealed a further problem: this trial's embedded `training_run.py`
 predated the current `push_checkpoint()`-based promotion path (evidenced by the full 383-entry
 classifier-bias dict being printed verbatim, a tell for an older snapshot — see the archived
-`experiments/logs/trial-075.log` note) and had pushed directly to `main` via a raw, pre-refactor
+`experiments/ancestor_sweep/logs/trial-075.log` note) and had pushed directly to `main` via a raw, pre-refactor
 `push_to_hub()` call that also lacked `delete_patterns`. This overwrote trial-074's promoted
 `model.safetensors`/`config.json` with trial-075's 650M files, but left trial-074's
 `adapter_config.json`/`adapter_model.safetensors` (3B LoRA, `layers_to_transform: [26..35]`) sitting

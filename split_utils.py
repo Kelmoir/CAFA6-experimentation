@@ -1,5 +1,5 @@
 """Cluster-aware train/val/test protein split, shared by generate_dataset.py and
-experiments/scripts/select_positional_mf_proteins.py so the two pipelines never disagree about
+experiments/mf_span/scripts/select_positional_mf_proteins.py so the two pipelines never disagree about
 which proteins are train/val/test.
 
 Replaces the original plain-random-by-accession split (random.shuffle on EntryID, no homology

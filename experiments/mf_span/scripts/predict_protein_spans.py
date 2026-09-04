@@ -16,12 +16,12 @@ random protein that has at least one positionally-grounded ground-truth MF term 
 pick_random_protein()) so the resulting table is never empty by default.
 
 Example:
-  python experiments/scripts/predict_protein_spans.py \\
+  python experiments/mf_span/scripts/predict_protein_spans.py \\
       --checkpoint models/mf-span-esm2_t12_35M_UR50D-epochs10-bs8/best_checkpoint \\
       --protein A0A0B4J1F2
 
   # or, letting both default:
-  python experiments/scripts/predict_protein_spans.py
+  python experiments/mf_span/scripts/predict_protein_spans.py
 """
 import argparse
 import random

@@ -10,7 +10,7 @@ See [`mf_span_sweep_log.md`](mf_span_sweep_log.md) for the trial-by-trial record
 A side-experiment (never part of the main CAFA6 pipeline — see `CLAUDE.md`'s "Data layout"
 section) to localize GO `molecular_function` (MF) terms to specific residue spans within a
 protein sequence: given a protein and one of its GO MF terms, predict *which residues* are the
-evidence for that term. Built `2026-08-20` as `experiments/scripts/train_mf_span_model.py` — a
+evidence for that term. Built `2026-08-20` as `experiments/mf_span/scripts/train_mf_span_model.py` — a
 FiLM-conditioned ESM-2 model (frozen backbone + unfrozen last-N layers, same convention as the
 main pipeline's classifier) taking a semantic text embedding of the GO term (name + definition,
 via `sentence-transformers/all-MiniLM-L6-v2`) as a conditioning signal, with a per-token binary

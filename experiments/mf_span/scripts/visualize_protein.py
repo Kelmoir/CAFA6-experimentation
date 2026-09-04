@@ -7,13 +7,13 @@ actually confirmed against the protein's real GO annotations vs. left unconfirme
 
 Reuses build_positional_mf_links.link_protein(..., verbose=True) rather than reimplementing
 candidate generation, so this can never drift from what the real pipeline run in
-experiments/positional_mf_links.json actually computed.
+experiments/mf_span/positional_mf_links.json actually computed.
 
 Usage:
-  python experiments/scripts/visualize_protein.py                  # interactive prompt loop
-  python experiments/scripts/visualize_protein.py Q13444 P04637    # print markdown for each
-  python experiments/scripts/visualize_protein.py Q13444 --html experiments/Q13444.html
-  python experiments/scripts/visualize_protein.py Q13444 P04637 --out-dir experiments/reports
+  python experiments/mf_span/scripts/visualize_protein.py                  # interactive prompt loop
+  python experiments/mf_span/scripts/visualize_protein.py Q13444 P04637    # print markdown for each
+  python experiments/mf_span/scripts/visualize_protein.py Q13444 --html experiments/Q13444.html
+  python experiments/mf_span/scripts/visualize_protein.py Q13444 P04637 --out-dir experiments/reports
 """
 import argparse
 import html
@@ -315,7 +315,7 @@ def main():
     if resolved not in raw_features and resolved.upper() in raw_features:
       resolved = resolved.upper()
     if resolved not in raw_features:
-      return None, f"not found in the {len(raw_features)}-protein working set (experiments/positional_mf_raw_features.json)"
+      return None, f"not found in the {len(raw_features)}-protein working set (experiments/mf_span/positional_mf_raw_features.json)"
     data = build_report(resolved, raw_features[resolved], mappings, ancestors_with_depth, localization_dict, go_names)
     return data, None
 

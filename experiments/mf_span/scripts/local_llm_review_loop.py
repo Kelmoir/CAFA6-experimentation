@@ -16,7 +16,7 @@ is exactly why this script exists as something the user runs directly rather tha
 Code calls out to.
 
 Usage:
-  python3 experiments/scripts/local_llm_review_loop.py --host http://192.168.1.122:1234 --rounds 10
+  python3 experiments/mf_span/scripts/local_llm_review_loop.py --host http://192.168.1.122:1234 --rounds 10
 
 Each round: plan (agent-budget-capped term/protein selection) -> HTTP completions for every
 assigned protein across every term in the round, dispatched to a fixed-size thread pool
@@ -47,7 +47,7 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 
-ROOT = Path("experiments/llm_term_review")
+ROOT = Path("experiments/mf_span/llm_term_review")
 SCRIPTS = Path("experiments/scripts")
 
 # Guards every append to a term's findings.md/raw_debug.log: with --concurrency > 1, multiple
@@ -646,10 +646,10 @@ def merge_one_term(go_id, host, model, system_prompt, request_timeout, max_token
 
 
 def commit_round(round_n, merged_terms, total_agents):
-  run(["git", "add", "experiments/llm_term_review/", "experiments/positional_mf_gaps.json",
-       "experiments/positional_mf_links.json", "experiments/positional_mf_llm_review_log.json",
-       "experiments/positional_mf_localization_dictionary.json",
-       "experiments/positional_mf_spotcheck_sample.json"])
+  run(["git", "add", "experiments/mf_span/llm_term_review/", "experiments/mf_span/positional_mf_gaps.json",
+       "experiments/mf_span/positional_mf_links.json", "experiments/mf_span/positional_mf_llm_review_log.json",
+       "experiments/mf_span/positional_mf_localization_dictionary.json",
+       "experiments/mf_span/positional_mf_spotcheck_sample.json"])
   status = subprocess.run(["git", "diff", "--cached", "--quiet"])
   if status.returncode == 0:
     print("  (nothing to commit this round)")

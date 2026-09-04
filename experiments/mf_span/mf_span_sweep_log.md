@@ -7,7 +7,7 @@ sweep's own metric doesn't predict the real task; see
 this is ever revisited. The trial-by-trial record below stands as-is, unedited, as the accurate
 history of what the sweep itself found and concluded at the time.
 
-Tracks manual local-GPU trials of `experiments/scripts/train_mf_span_model.py` (the positional
+Tracks manual local-GPU trials of `experiments/mf_span/scripts/train_mf_span_model.py` (the positional
 molecular_function span-localization side-experiment described in `CLAUDE.md`'s "Data layout"
 section — not part of the main CAFA6 pipeline). Regularization features (esm/attention dropout, LR
 warmup+schedule, decoupled weight decay) were added to the script for this sweep, mirroring
@@ -223,7 +223,7 @@ stdout:
   stdout — nothing hit disk until a checkpoint improved, so a crash mid-run (like this one) loses
   everything except what a human happened to be watching or what trackio's local db happened to
   capture. Added incremental per-epoch JSONL logging (`--log-file`, default
-  `experiments/logs/mf_span_<run-name>.jsonl`), flushed and `os.fsync`'d after every epoch, so any
+  `experiments/mf_span/logs/mf_span_<run-name>.jsonl`), flushed and `os.fsync`'d after every epoch, so any
   future crash preserves every completed epoch's exact numbers regardless of when it happens.
 
 **Trial 12 (unfreeze2-epochs30, clean).** The recommended clean rerun of trial 11's config, extended
@@ -508,7 +508,7 @@ Findings:
 --grad-accum-steps 16` instead of trial 15's `--batch-size 4 --grad-accum-steps 8` (same effective
 batch 32, different split). **Crashed after epoch 17/30 for an unknown reason** (not a manual
 interruption) — no `[SUMMARY]` line, so it isn't a completed trial.
-`experiments/logs/mf_span_mf-span-reg-trial-16.jsonl` is kept as a record of the partial curve (it
+`experiments/mf_span/logs/mf_span_mf-span-reg-trial-16.jsonl` is kept as a record of the partial curve (it
 was tracking trial 15 closely through epoch 17: F1 0.7514 vs. trial 15's later epochs), but no row
 conclusion is drawn from it — superseded by trial 17, which reruns the same label-smoothing change
 against trial 15's exact batch/grad-accum split for a clean isolated comparison instead of
@@ -591,11 +591,11 @@ Diagnosed directly, not left as an unknown this time: `dmesg`/`journalctl -k` sh
 write (00:25:49 vs. 00:25:45) — a GPU-side graphics-engine exception, and on this card (RTX 5060
 Ti, driver 595.84 at the time) most plausibly new-architecture driver immaturity under a sustained
 multi-hour load rather than anything wrong with this script or this config. This trial predates
-`--resume-from-checkpoint`/`experiments/scripts/run_mf_span_trial.sh` (both added the same
+`--resume-from-checkpoint`/`experiments/mf_span/scripts/run_mf_span_trial.sh` (both added the same
 session, directly motivated by this crash and trial 16's earlier one) — there was no
 `latest_checkpoint` to resume from, so the only option was a full clean rerun. `training_state.pt`
 now exists precisely so a future crash like this one costs at most one epoch instead of the whole
-trial. `experiments/logs/mf_span_mf-span-reg-trial-18.jsonl` is kept as a record of the partial
+trial. `experiments/mf_span/logs/mf_span_mf-span-reg-trial-18.jsonl` is kept as a record of the partial
 curve; no row conclusion is drawn from it beyond the crash itself — superseded by trial 19.
 
 **Trial 19 (reg-trial-19, label_smoothing0.3).** Clean rerun of trial 18's exact config (trial 17 +
@@ -710,14 +710,14 @@ Findings:
    forward/backward cost outweighs the 1-epoch saving (~750-800s/epoch here vs. trial 19's ~740s).
 5. **Run-name/hub-branch collision — trial 19's original checkpoint is gone.** This run reused
    `--run-name mf-span-reg-trial-19 --hub-branch trial-19` unchanged, which is exactly the mistake the
-   bottom of this doc already warns against. It overwrote `experiments/logs/mf_span_mf-span-reg-trial-19.jsonl`
+   bottom of this doc already warns against. It overwrote `experiments/mf_span/logs/mf_span_mf-span-reg-trial-19.jsonl`
    in place (trial 19's original 30-epoch curve now only exists in git history, commit `d383a6c`) and
    pushed over the Hub checkpoint on `kelmoir/cafa6-mf-span@trial-19` — trial 19's original
    (`unfreeze_last_n=2`, F1 0.7651) checkpoint is no longer retrievable from either place. Not a data
    loss that matters much given trial 19b strictly dominates it, but worth naming so it isn't mistaken
    for a live checkpoint later.
 6. **`mf-span-reg-trial-20`'s config-only log, resolved: it's the real next (more-data) trial, just
-   getting started concurrently.** `experiments/logs/mf_span_mf-span-reg-trial-20.jsonl`'s single
+   getting started concurrently.** `experiments/mf_span/logs/mf_span_mf-span-reg-trial-20.jsonl`'s single
    config line (uncapped `max_train_pairs`/`max_val_pairs`, `--batch-size 2 --grad-accum-steps 16`)
    was being launched by the user while this session was processing trial 19b's paste — its sparse
    state (no epoch lines yet, no process visible when checked) simply reflected how early it was, not
@@ -1017,7 +1017,7 @@ than trial 22's result, but cheap to check once capacity is settled. The model-s
 per trial 21's result and the user's cost/benefit call (now reinforced by the extension beating it
 outright) — no further `--model-name` scouting planned. Given the local-GPU crash history (trials
 16/18) and the RNG-resume bug this session's extension just exercised and fixed (commit `ea9a9c2`),
-keep launching trials via `experiments/scripts/run_mf_span_trial.sh` rather than the script directly —
+keep launching trials via `experiments/mf_span/scripts/run_mf_span_trial.sh` rather than the script directly —
 at 8-14+ hours per trial now, that protection matters more than ever. Untested regularization axes
 remain lowest priority given how little effect they've had so far: `--output-dropout` above 0.2,
 `--lr-schedule linear_decay`, `--pos-weight` override. **Give each future trial a distinct `--run-name`

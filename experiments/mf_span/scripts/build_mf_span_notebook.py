@@ -5,7 +5,7 @@ notebook generator), adapted for the mf-span script:
   - Embeds the full current train_mf_span_model.py source via %%writefile (colab exec/run's
     single-file-transmission limitation applies here too -- no sibling-module imports, see
     CLAUDE.md's "self-containment" note on train_mf_span_model.py).
-  - Also embeds experiments/positional_mf_go_term_texts.json (the cached GO id -> "name: def"
+  - Also embeds experiments/mf_span/positional_mf_go_term_texts.json (the cached GO id -> "name: def"
     text lookup used by load_go_term_texts). Without this file present, the script falls back to
     parsing data/cafa-6-protein-function-prediction/Train/go-basic.obo, which isn't available on
     a fresh Colab VM (the raw Kaggle data dir is git-ignored and never uploaded there). The cache
@@ -16,7 +16,7 @@ notebook generator), adapted for the mf-span script:
   - kelmoir/cafa6_mf_placed is a public dataset, so no HF_TOKEN secret is needed to load it. A
     token is only required if a trial sets --push-to-hub (off by default here, since this
     notebook's purpose is a wall-clock speed comparison against the local-GPU runs already logged
-    in experiments/logs/mf_span_mf-span-speed-*.jsonl, not producing a real checkpoint).
+    in experiments/mf_span/logs/mf_span_mf-span-speed-*.jsonl, not producing a real checkpoint).
 
 Usage: build_mf_span_notebook.py <manifest.json> <output.ipynb>
 """
@@ -25,8 +25,8 @@ import json
 import sys
 from pathlib import Path
 
-TRAINING_SCRIPT = Path("experiments/scripts/train_mf_span_model.py")
-GO_TEXT_CACHE = Path("experiments/positional_mf_go_term_texts.json")
+TRAINING_SCRIPT = Path("experiments/mf_span/scripts/train_mf_span_model.py")
+GO_TEXT_CACHE = Path("experiments/mf_span/positional_mf_go_term_texts.json")
 
 
 def code_cell(source: str) -> dict:
@@ -54,7 +54,7 @@ Generated from `{manifest_path}`. Run **Runtime > Run all** in a Colab GPU runti
 already timed on), then copy the full output of the training cell back into the chat.
 
 This notebook runs {len(experiments)} trial(s) sequentially, each the exact same config already
-timed locally (see `experiments/logs/mf_span_mf-span-speed-*.jsonl`), just prefixed `colab-` and
+timed locally (see `experiments/mf_span/logs/mf_span_mf-span-speed-*.jsonl`), just prefixed `colab-` and
 run here instead: {', '.join(e['trial_id'] for e in experiments)}. Compare each trial's per-epoch
 `epoch_time=` and final `[SUMMARY]` `total_time_s` against the matching local log to see the
 Colab-vs-local wall-clock difference for that batch-size/grad-accum/compile combination.

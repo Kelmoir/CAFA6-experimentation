@@ -4,13 +4,13 @@ local_llm_review_loop.py's retry step (see its retry_issues()) only catches inva
 from the round that just ran -- terms reviewed before that retry step existed (or reviewed in a
 round where a different accession happened to fail) are permanent dead ends otherwise, since
 plan_review_round.py never revisits an already-started term. This script scans every term
-directory already under experiments/llm_term_review/ for parsed_findings.json issues that are
+directory already under experiments/mf_span/llm_term_review/ for parsed_findings.json issues that are
 genuinely invalid (unresolved pointer, malformed verdict, wrong go_id -- not a decisive NONE,
 which is a real answer, not garbled data), and gives each one an extra shot, reusing the exact
 same call/parse/retry/merge logic from local_llm_review_loop.py.
 
 Usage:
-  python3 experiments/scripts/backfill_retry_issues.py --host http://192.168.1.122:1234
+  python3 experiments/ancestor_sweep/scripts/backfill_retry_issues.py --host http://192.168.1.122:1234
 """
 import argparse
 import json
@@ -84,10 +84,10 @@ def main():
 
   loop.run([sys.executable, str(SCRIPTS / "build_positional_mf_links.py")])
 
-  loop.run(["git", "add", "experiments/llm_term_review/", "experiments/positional_mf_gaps.json",
-            "experiments/positional_mf_links.json", "experiments/positional_mf_llm_review_log.json",
-            "experiments/positional_mf_localization_dictionary.json",
-            "experiments/positional_mf_spotcheck_sample.json"])
+  loop.run(["git", "add", "experiments/mf_span/llm_term_review/", "experiments/mf_span/positional_mf_gaps.json",
+            "experiments/mf_span/positional_mf_links.json", "experiments/mf_span/positional_mf_llm_review_log.json",
+            "experiments/mf_span/positional_mf_localization_dictionary.json",
+            "experiments/mf_span/positional_mf_spotcheck_sample.json"])
   status = subprocess.run(["git", "diff", "--cached", "--quiet"])
   if status.returncode == 0:
     print("(nothing to commit)")

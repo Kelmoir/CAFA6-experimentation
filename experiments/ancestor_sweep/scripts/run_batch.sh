@@ -34,7 +34,7 @@ for i in $(seq 0 $((N - 1))); do
 
   mapfile -t ARGS < <(python3 -c "import json; [print(a) for a in json.load(open('$MANIFEST'))[$i]['args']]")
   echo "[run_batch] ($((i + 1))/$N) launching $TRIAL_ID"
-  bash experiments/scripts/run_trial.sh "$TRIAL_ID" "$SESSION_NAME" -- "${ARGS[@]}"
+  bash experiments/ancestor_sweep/scripts/run_trial.sh "$TRIAL_ID" "$SESSION_NAME" -- "${ARGS[@]}"
   status=$?
   echo "[run_batch] ($((i + 1))/$N) $TRIAL_ID finished (exit $status)"
 done

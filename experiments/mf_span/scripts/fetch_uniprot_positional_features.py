@@ -1,6 +1,6 @@
 """Fetch UniProt Swiss-Prot flat-file records for the positional_mf working set.
 
-Data acquisition design (see experiments/sweep_log.md for the full write-up):
+Data acquisition design (see experiments/ancestor_sweep/sweep_log.md for the full write-up):
 one bulk download of the complete Swiss-Prot flat file from UniProt's own FTP mirror
 (https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/
 uniprot_sprot.dat.gz) - this is UniProt's documented, sanctioned bulk-access mechanism,
@@ -30,8 +30,8 @@ from Bio import SwissProt
 UNIPROT_DUMP_URL = ("https://ftp.uniprot.org/pub/databases/uniprot/current_release/"
                      "knowledgebase/complete/uniprot_sprot.dat.gz")
 LOCAL_DUMP_PATH = Path("data/uniprot/uniprot_sprot.dat.gz")
-SELECTION_PATH = Path("experiments/positional_mf_protein_split.json")
-OUTPUT_PATH = Path("experiments/positional_mf_raw_features.json")
+SELECTION_PATH = Path("experiments/mf_span/positional_mf_protein_split.json")
+OUTPUT_PATH = Path("experiments/mf_span/positional_mf_raw_features.json")
 
 # First-pass candidate list of feature types that plausibly localize a molecular_function
 # (catalytic/binding/nucleic-acid-interaction) rather than describing cellular_component

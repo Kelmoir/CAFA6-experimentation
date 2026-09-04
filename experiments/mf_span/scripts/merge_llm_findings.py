@@ -6,7 +6,7 @@ A signal (kind, normalized value) merges only when it was independently reported
 reviewed proteins for the term. A single witness isn't corroboration -- it's logged as an
 unconfirmed singleton so a later review round can pick it up if a second protein agrees. Every
 non-merge outcome (disagreement, low confidence, a pointer that never resolved, an outright NONE
-verdict) is logged too, in experiments/positional_mf_llm_review_log.json -- nothing from a review
+verdict) is logged too, in experiments/mf_span/positional_mf_llm_review_log.json -- nothing from a review
 round is silently dropped.
 
 Where a signal lands in the dictionary depends on the feature type it came from, because
@@ -57,9 +57,9 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-RAW_FEATURES_PATH = Path("experiments/positional_mf_raw_features.json")
-DICT_PATH = Path("experiments/positional_mf_localization_dictionary.json")
-LOG_PATH = Path("experiments/positional_mf_llm_review_log.json")
+RAW_FEATURES_PATH = Path("experiments/mf_span/positional_mf_raw_features.json")
+DICT_PATH = Path("experiments/mf_span/positional_mf_localization_dictionary.json")
+LOG_PATH = Path("experiments/mf_span/positional_mf_llm_review_log.json")
 AGREEMENT_THRESHOLD = 2
 NARROW_DOMAIN_THRESHOLD = 15
 # Text-pattern analogue of NARROW_DOMAIN_THRESHOLD: how many proteins dataset-wide have some
@@ -225,7 +225,7 @@ def main():
     print("usage: merge_llm_findings.py <GO_ID>")
     return
   go_id = sys.argv[1]
-  term_dir = Path("experiments/llm_term_review") / go_id.replace(":", "_")
+  term_dir = Path("experiments/mf_span/llm_term_review") / go_id.replace(":", "_")
   findings_path = term_dir / "parsed_findings.json"
   if not findings_path.exists():
     print(f"no parsed_findings.json in {term_dir} -- run parse_llm_findings.py first")

@@ -35,7 +35,7 @@ import re
 import sys
 from pathlib import Path
 
-RAW_FEATURES_PATH = Path("experiments/positional_mf_raw_features.json")
+RAW_FEATURES_PATH = Path("experiments/mf_span/positional_mf_raw_features.json")
 BLOCK_RE = re.compile(
     r"^##\s+(\S+)\s+(GO:\d+)\s*\n"
     r"verdict:\s*(\w+)\s*\n"
@@ -74,7 +74,7 @@ def main():
     print("usage: parse_llm_findings.py <GO_ID>")
     return
   go_id = sys.argv[1]
-  term_dir = Path("experiments/llm_term_review") / go_id.replace(":", "_")
+  term_dir = Path("experiments/mf_span/llm_term_review") / go_id.replace(":", "_")
   findings_path = term_dir / "findings.md"
   if not findings_path.exists():
     print(f"no findings.md in {term_dir}")

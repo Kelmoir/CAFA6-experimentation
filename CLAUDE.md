@@ -64,7 +64,7 @@ python training_run.py --max-train-samples 100 --max-val-samples 50 --device cpu
 # Train and push the resulting model to the HF Hub
 python training_run.py --push-to-hub --hf-repo-id kelmoir/cafa6-esm
 
-# Launch a ~1h regularization-sweep trial on a Colab T4 (see experiments/sweep_log.md).
+# Launch a ~1h regularization-sweep trial on a Colab T4 (see experiments/ancestor_sweep/sweep_log.md).
 # Colab Secrets are NOT reachable from CLI-provisioned sessions (confirmed via
 # experiments/smoke_test.py: "Secrets can only be fetched when running from the Colab UI"),
 # so `colab run`'s one-shot form can't be used directly — the HF token has to be uploaded as
@@ -93,6 +93,28 @@ mismatch between the installed `huggingface_hub` and `hf_xet` packages, not a co
 `HF_HUB_DISABLE_XET=1` in the environment before running the push (falls back to the older, non-xet
 upload path).
 
+## Experiments directory layout
+
+`experiments/` was reorganized 2026-09-04 to separate two large, closed-out bodies of work from
+active/current material, since both had accumulated hundreds of scripts/logs/notebooks at the
+top level:
+
+- `experiments/ancestor_sweep/` — the beam-search regularization sweep (`sweep_log.md`, trial
+  logs/notebooks/manifests, `beam_search_state.json`, `results_index.csv`) and its dedicated
+  `scripts/`/`logs/` subfolders. This is the sweep that trained against the ancestor-propagated
+  coarse (383-term, depth≤2) label space — see the Architecture notes' label-space caveat below.
+  Still referenced as historical context/precedent (e.g. `training_run.py`'s
+  `--unknown-target-value` flag cites its trial-080/081 finding), just no longer active work.
+- `experiments/mf_span/` — the shelved positional-molecular-function side experiment (see
+  `experiments/mf_span/mf_span_postmortem.md` for why it was shelved), covering both its data-prep
+  phase (`positional_mf_*.json`, `llm_term_review/`) and training phase (`mf_span_*.md`), plus its
+  dedicated `scripts/`/`logs/` subfolders.
+- Everything else directly under `experiments/` (`dataset_refinement_pilot.py`,
+  `analyze_go_term_pareto.py`, `sequential_cascade_plan.md`, `graph_embedding_plan.md`,
+  `check_label_encoding.py`, `smoke_test.py`, and `experiments/logs/`) is current/active material,
+  working directly with the real human-annotated CAFA-6 label space rather than the old
+  ancestor-propagated coarse one.
+
 ## Data layout
 
 - `data/cafa-6-protein-function-prediction/` — raw Kaggle competition data (`Train/`, `Test/`,
@@ -105,9 +127,9 @@ upload path).
   falling back to `load_dataset("kelmoir/CAFA6")` from the Hub.
 - `data/exports/` — ad hoc exports produced from the notebooks (git-ignored).
 - `data/uniprot/uniprot_sprot.dat.gz` — bulk Swiss-Prot flat-file dump (git-ignored, ~700MB),
-  fetched once via `experiments/scripts/fetch_uniprot_positional_features.py` for the positional
+  fetched once via `experiments/mf_span/scripts/fetch_uniprot_positional_features.py` for the positional
   molecular_function sub-project (localizing GO MF terms to sequence spans within the
-  `experiments/positional_mf_*` working set — a side experiment, not part of the main
+  `experiments/mf_span/positional_mf_*` working set — a side experiment, not part of the main
   dataset/training pipeline above). Streamed record-by-record with `Bio.SwissProt.parse()`, never
   fully decompressed to disk/memory at once, re-parsed locally (no re-download) whenever the
   extraction script's captured fields change.
@@ -115,7 +137,7 @@ upload path).
   reference tables (git-ignored, one `curl` each from
   `https://current.geneontology.org/ontology/external2go/<name>`; unreachable via `WebFetch`,
   403s there for unclear reasons — plain `curl` works). Used by
-  `experiments/scripts/build_positional_mf_links.py` to map a DOMAIN feature's bridged
+  `experiments/mf_span/scripts/build_positional_mf_links.py` to map a DOMAIN feature's bridged
   PROSITE/Pfam/InterPro accession to a candidate GO term. Note the accession-system mismatch this
   cost real debugging time to find: `prosite2go` keys on `PS#####` pattern/profile accessions
   only, never the `PRU#####` ProRule IDs UniProt's DOMAIN `evidence` qualifier carries — the
@@ -143,7 +165,7 @@ upload path).
   `data/cafa-6-protein-function-prediction/dataset/go_dependency_graph.json`: the full GO graph (all
   5 relationship types, not just the propagation-safe 2) plus the coarse-term selection, so a future
   curriculum stage can look up any coarse term's descendants directly without recomputing the graph.
-  **Note**: the beam-search sweep documented in `experiments/sweep_log.md` (trial-001 through
+  **Note**: the beam-search sweep documented in `experiments/ancestor_sweep/sweep_log.md` (trial-001 through
   trial-049) predates this change and was run against the old 3-aspect-only label space — its
   hyperparameter conclusions (regularization, batch size, etc.) don't automatically transfer to the
   richer label space, per the project's own "re-run from scratch at a new scale" precedent.
@@ -170,7 +192,7 @@ upload path).
   wrapping (negligible VRAM cost, avoids AdamW updates getting rounded away on a bf16/fp16
   classifier with no fp32 master copy). A `--use-lora` checkpoint pushed to the Hub is adapter-only
   (a few MB), not a full standalone model — `--resume-from-revision` and
-  `experiments/scripts/diagnostic_eval_stage2.py` both branch on this (loading the base architecture
+  `experiments/ancestor_sweep/scripts/diagnostic_eval_stage2.py` both branch on this (loading the base architecture
   fresh from `--model-name`/the trial's recorded `model_name`, then attaching the adapter via
   `PeftModel.from_pretrained`), never treating the checkpoint repo itself as a loadable full model
   the way the non-LoRA path does. `--mixed-precision {fp16,bf16}` (autocast + `GradScaler` for fp16)
@@ -198,7 +220,7 @@ upload path).
   **unused** — trackio's Hub-Space persistence isn't viable right now (HF changed free-Space policy),
   so sweep trials don't pass `--trackio-space-id`. The script degrades gracefully (prints a warning,
   continues without tracking) if `trackio` isn't installed, isn't passed a space, or fails to init.
-  Per-trial `experiments/logs/trial-NNN.log` plus the `trial_metrics.json` pushed alongside each
+  Per-trial `experiments/ancestor_sweep/logs/trial-NNN.log` plus the `trial_metrics.json` pushed alongside each
   Hub checkpoint are the actual source of truth for the sweep (see "Colab regularization sweep").
 - **Colab bootstrapping**: `training_run.py` detects `google.colab` in `sys.modules` and pip-installs
   missing heavy dependencies at import time — this is intentional for the Colab-first workflow, don't
@@ -216,7 +238,7 @@ upload path).
   `--max-val-samples`, which governs the training loop's own per-epoch validation pass and may be set
   far smaller for a quick calibration trial. `build_notebook.py` appends `--run-diagnostic`
   automatically to every trial's args, so every future manual-notebook trial gets a `[DIAGNOSTIC]`
-  line for free, on whatever GPU it trained on. `experiments/scripts/diagnostic_eval_stage2.py` still
+  line for free, on whatever GPU it trained on. `experiments/ancestor_sweep/scripts/diagnostic_eval_stage2.py` still
   exists as a standalone script, now refactored to call the shared `run_diagnostic()` rather than
   duplicating the inference/metrics logic — it's for post-hoc re-diagnosis of a checkpoint trained
   *before* `--run-diagnostic` existed (e.g. trial-071/trial-072), where the model has to be
@@ -268,20 +290,20 @@ Claude Code itself needs `/home/sandboxuser/.local/bin` on `PATH` inside the con
 
 ## Colab regularization sweep
 
-An agent-driven loop (see `experiments/sweep_log.md`) launches ~1h training trials on a Colab T4 (via
+An agent-driven loop (see `experiments/ancestor_sweep/sweep_log.md`) launches ~1h training trials on a Colab T4 (via
 the `colab new`/`upload`/`exec`/`stop` sequence described in "Colab CLI" above, run from inside the
 Podman sandbox container), judges each trial's train/val curves against a fixed rubric, and iterates
 toward regularization/unfreezing settings that train reliably (manual attempts had consistently
-either overfit or failed to learn at all). `experiments/sweep_log.md` is the source of truth: it pins
+either overfit or failed to learn at all). `experiments/ancestor_sweep/sweep_log.md` is the source of truth: it pins
 the judgment rubric and search strategy at the top, then logs one section per trial (config, per-epoch
-metrics, verdict, next-config decision, Hub checkpoint branch, commit sha). `experiments/logs/`
+metrics, verdict, next-config decision, Hub checkpoint branch, commit sha). `experiments/ancestor_sweep/logs/`
 holds each trial's captured stdout/stderr; `experiments/smoke_test.py` is a throwaway infra check
 (GPU availability, Colab Secrets reachability) run once before trusting the pipeline for real trials —
 it confirmed GPU access works but **Colab Secrets are not reachable from CLI-provisioned sessions**
 (`"Secrets can only be fetched when running from the Colab UI"`), which is why every trial uploads the
 HF token as a file rather than relying on `google.colab.userdata`. trackio-Space tracking
 (`--trackio-space-id`) is currently **not used** — HF's free-Space policy changes made it a non-option
-for now — so `experiments/logs/trial-NNN.log` and each checkpoint's `trial_metrics.json` are the sole
+for now — so `experiments/ancestor_sweep/logs/trial-NNN.log` and each checkpoint's `trial_metrics.json` are the sole
 record of a trial's curves. `training_run.py`'s `--checkpoint-mode` defaults to `final`: exactly one
 commit gets pushed per trial, to that trial's own branch (`kelmoir/cafa6-esm@trial-NNN`), after the
 last completed epoch — cheap re-runs (~40min) don't justify littering the Hub with a commit per

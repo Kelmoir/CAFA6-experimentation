@@ -35,7 +35,7 @@ axis passes that axis by default -- "no evidence" isn't proof of homology, this 
 
 Output: one row per protein (sequence stored once, not repeated per placement) with a nested
 mf_localizations list, pushed to the HF Hub as kelmoir/cafa6_mf_placed. Protein-level train/
-validation/test split is inherited from experiments/positional_mf_protein_split.json (the same
+validation/test split is inherited from experiments/mf_span/positional_mf_protein_split.json (the same
 by-EntryID, seed=42 partition generate_dataset.py uses for kelmoir/cafa6), so this dataset never
 splits a protein across sets differently from the main one.
 """
@@ -48,9 +48,9 @@ import datasets
 from Bio import SeqIO
 
 DATA_PATH = Path("./data/cafa-6-protein-function-prediction")
-RAW_FEATURES_PATH = Path("experiments/positional_mf_raw_features.json")
-LINKS_PATH = Path("experiments/positional_mf_links.json")
-SPLIT_PATH = Path("experiments/positional_mf_protein_split.json")
+RAW_FEATURES_PATH = Path("experiments/mf_span/positional_mf_raw_features.json")
+LINKS_PATH = Path("experiments/mf_span/positional_mf_links.json")
+SPLIT_PATH = Path("experiments/mf_span/positional_mf_protein_split.json")
 GO_GRAPH_PATH = DATA_PATH / "dataset" / "go_dependency_graph.json"
 
 HOMOLOG_AUTO_TERM_EVIDENCE = {"IEA", "IBA", "ISO", "ISS", "ISA", "ISM"}
@@ -226,7 +226,7 @@ def rows_to_dataset(rows):
       description=(
           "CAFA-6 protein sequences with molecular_function GO-term annotations positionally "
           "localized to a residue span, domain, or whole protein -- derived from UniProt "
-          "Swiss-Prot feature/cross-reference data via experiments/scripts/build_positional_mf_links.py "
+          "Swiss-Prot feature/cross-reference data via experiments/mf_span/scripts/build_positional_mf_links.py "
           "and filtered to high-quality (non-homology, non-automatic) evidence only. The prediction "
           "task this supports: given a protein sequence and one of its known MF GO terms, locate the "
           "span responsible for it."

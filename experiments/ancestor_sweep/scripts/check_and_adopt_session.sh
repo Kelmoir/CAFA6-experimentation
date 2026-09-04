@@ -16,7 +16,7 @@ if colab --auth=adc status -s "$SESSION_NAME" 2>&1 | grep -q "IDLE\|BUSY"; then
 fi
 
 echo "[check_and_adopt] session '$SESSION_NAME' not found locally; attempting to adopt from server assignments..."
-"$HOME/.local/share/uv/tools/google-colab-cli/bin/python3" experiments/scripts/adopt_session.py "$SESSION_NAME"
+"$HOME/.local/share/uv/tools/google-colab-cli/bin/python3" experiments/ancestor_sweep/scripts/adopt_session.py "$SESSION_NAME"
 
 echo "[check_and_adopt] running GPU smoke test..."
 cat > .podman/tmp/smoke_check_adopted.py <<'PYEOF'

@@ -9,11 +9,11 @@ on 5 terms; terms with fewer than 4 carriers let extra terms slip into the same 
 is a budget cap, not a hard term-count target. A term that
 doesn't fit is left untouched (no directory created) and reconsidered fresh next round -- terms
 are never partially reviewed. There is no retry/carry-over: once a term has a directory under
-experiments/llm_term_review/, next_new_terms() skips it forever, regardless of whether that single
+experiments/mf_span/llm_term_review/, next_new_terms() skips it forever, regardless of whether that single
 pass reached merge agreement (see the module history for why -- most retries were just re-hitting
 the same NONE verdicts or the same already-rejected generic signal, not converging).
 
-Writes experiments/llm_term_review/_round_manifest.json (this round's plan) and each new term's
+Writes experiments/mf_span/llm_term_review/_round_manifest.json (this round's plan) and each new term's
 _meta.json assigned_accessions (== its full sample, since the whole thing is reviewed at once now).
 Does not spawn subagents itself -- only prints the manifest for the orchestrating session to act on.
 """
@@ -23,9 +23,9 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-ROOT = Path("experiments/llm_term_review")
-VISITED_PATH = Path("experiments/positional_mf_visited_terms.json")
-RAW_FEATURES_PATH = Path("experiments/positional_mf_raw_features.json")
+ROOT = Path("experiments/mf_span/llm_term_review")
+VISITED_PATH = Path("experiments/mf_span/positional_mf_visited_terms.json")
+RAW_FEATURES_PATH = Path("experiments/mf_span/positional_mf_raw_features.json")
 MAX_PROTEINS_PER_TERM = 4
 MAX_AGENTS_PER_ROUND = MAX_PROTEINS_PER_TERM * 5
 
@@ -72,7 +72,7 @@ def main():
   manifest = {"new_terms": {}}
 
   for go_id in round_terms:
-    subprocess.run([sys.executable, "experiments/scripts/prepare_term_review_files.py", go_id], check=True)
+    subprocess.run([sys.executable, "experiments/mf_span/scripts/prepare_term_review_files.py", go_id], check=True)
     term_dir = ROOT / go_id.replace(":", "_")
     meta_path = term_dir / "_meta.json"
     meta = json.loads(meta_path.read_text())

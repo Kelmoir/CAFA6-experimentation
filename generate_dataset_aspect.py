@@ -1,5 +1,5 @@
 """Aspect-only (3-way C/F/P) GO dataset variant, for training a real aspect predictor
-- the first stage a sequential cascade would need (see experiments/sweep_log.md
+- the first stage a sequential cascade would need (see experiments/ancestor_sweep/sweep_log.md
 trial-078: a ground-truth aspect input gave a decisive win over no aspect input on
 depth-1 GO-term prediction, but that used an oracle input; this dataset is for
 training the model that would actually predict those aspects at inference time).
@@ -12,7 +12,7 @@ directly: only ~29% of proteins have exactly one aspect, 43.7% have all three).
 Also carries a total_terms column: each protein's RAW (unpropagated) GO term count
 across all three aspects combined, from train_terms.tsv directly. This is the
 annotation-completeness proxy from the trial-080 investigation (see
-experiments/sweep_log.md) - proteins missing a given aspect are systematically
+experiments/ancestor_sweep/sweep_log.md) - proteins missing a given aspect are systematically
 under-annotated everywhere (63-75% of aspect-missing proteins have <=2 total terms,
 vs a full-dataset median of 4), consistent with GO's own "Open World Assumption"
 (absence of annotation != absence of function; Gaudet & Dessimoz, GO Handbook).

@@ -126,7 +126,7 @@ def get_classifier_bias_param(model) -> torch.nn.Parameter:
 
 class AspectAwareClassificationHead(torch.nn.Module):
     """Classifier head for the aspect-conditioning ablation (trial-078 vs trial-077,
-    see experiments/sweep_log.md): identical to transformers' EsmClassificationHead
+    see experiments/ancestor_sweep/sweep_log.md): identical to transformers' EsmClassificationHead
     (CLS-token pooling -> dropout -> dense -> tanh -> dropout -> out_proj) except the
     CLS-token representation is concatenated with a ground-truth aspect multi-hot
     vector ([C, F, P], see generate_dataset_depth1.py's aspect_labels column) before
@@ -411,7 +411,7 @@ def preprocess_batch(
 
         if mask_sparse_negatives_max_total_terms is not None and "total_terms" in examples:
             # GO's Open World Assumption (absence of annotation != absence of function,
-            # see experiments/sweep_log.md's trial-080 investigation): a "negative" label
+            # see experiments/ancestor_sweep/sweep_log.md's trial-080 investigation): a "negative" label
             # on a sparsely-annotated protein more likely reflects incomplete
             # characterization than a confirmed absence, so it gets excluded from the
             # loss (weight 0) rather than trusted as a hard 0. Positives are always
@@ -629,7 +629,7 @@ def run_diagnostic(
 ) -> Dict[str, Any]:
     """Post-hoc AUROC/F1 diagnostic, run against the model already resident in memory
     (GPU, post-training) rather than reloading a checkpoint from the Hub - originally a
-    separate script (experiments/scripts/diagnostic_eval_stage2.py) meant to be run
+    separate script (experiments/ancestor_sweep/scripts/diagnostic_eval_stage2.py) meant to be run
     later, locally; folded in here since re-downloading and reloading a checkpoint just
     to immediately re-run inference on it is wasted work when the trained model is
     right there, and running on CPU (the only option for a separate later invocation
@@ -774,7 +774,7 @@ def main() -> None:
     parser.add_argument("--lr-schedule", choices=["constant", "linear_decay", "cosine"], default="constant", help="Shape of the post-warmup LR schedule")
     parser.add_argument("--warmup-steps", type=int, default=None, help="Override the default warmup step count (default: min(100, steps_per_epoch // 10))")
     parser.add_argument("--label-smoothing", type=float, default=0.0, help="Smooth 0/1 BCE targets toward 0.5 by this amount (0 disables)")
-    parser.add_argument("--unknown-target-value", type=float, default=None, help="Replace every currently-0 (i.e. unannotated/unknown, per GO's Open World Assumption -- see experiments/sweep_log.md's trial-080/081 investigation) BCE target with this value instead of hard 0.0; confirmed positives (1.0) are never touched. None (default) keeps today's behavior. Unlike --label-smoothing (which softens both classes symmetrically), this only touches the unknown side -- the gentler, soft-target alternative trial-081's own closing note recommended after hard masking made AUROC measurably worse.")
+    parser.add_argument("--unknown-target-value", type=float, default=None, help="Replace every currently-0 (i.e. unannotated/unknown, per GO's Open World Assumption -- see experiments/ancestor_sweep/sweep_log.md's trial-080/081 investigation) BCE target with this value instead of hard 0.0; confirmed positives (1.0) are never touched. None (default) keeps today's behavior. Unlike --label-smoothing (which softens both classes symmetrically), this only touches the unknown side -- the gentler, soft-target alternative trial-081's own closing note recommended after hard masking made AUROC measurably worse.")
     parser.add_argument("--decouple-bias-wd", action=argparse.BooleanOptionalAction, default=False, help="Exclude bias and LayerNorm params from weight decay (standard AdamW refinement)")
     parser.add_argument("--grad-accum-steps", type=int, default=1, help="Accumulate gradients over this many steps before each optimizer step (raises effective batch size)")
     parser.add_argument("--pos-weight", action=argparse.BooleanOptionalAction, default=False, help="Weight positive examples in BCE loss by (n_negative/n_positive)**--pos-weight-exponent per label, computed from the training split - helps severely imbalanced multi-label tasks (e.g. the coarse GO-term label space, ~3.6% average positive rate) at the cost of one more axis to tune")

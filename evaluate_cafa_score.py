@@ -73,7 +73,7 @@ import generate_dataset
 import training_run
 
 # train_mf_span_model.py lives in experiments/scripts/, not importable by plain module name from
-# the repo root without this -- mirrors experiments/scripts/predict_protein_spans.py's own import
+# the repo root without this -- mirrors experiments/mf_span/scripts/predict_protein_spans.py's own import
 # of it, which works unmodified only because THAT script happens to sit in the same directory.
 sys.path.insert(0, str(Path(__file__).resolve().parent / "experiments" / "scripts"))
 import train_mf_span_model as mf_span  # noqa: E402
@@ -81,7 +81,7 @@ import train_mf_span_model as mf_span  # noqa: E402
 DATA_DIR = Path("data/cafa-6-protein-function-prediction")
 DEFAULT_IA_FILE = DATA_DIR / "IA.tsv"
 DEFAULT_DEP_GRAPH_FILE = DATA_DIR / "dataset" / "go_dependency_graph.json"
-DEFAULT_MF_SPAN_VOCAB_FILE = Path("experiments/positional_mf_go_term_texts.json")
+DEFAULT_MF_SPAN_VOCAB_FILE = Path("experiments/mf_span/positional_mf_go_term_texts.json")
 
 
 # --------------------------------------------------------------------------------------------
@@ -320,7 +320,7 @@ def run_inference(model, tokenizer, hf_split, label_names: List[str], device: to
 def load_model_and_config(model_repo: str, revision: str, model_name_override: Optional[str],
                            use_lora_override: Optional[bool], id2label: Dict[int, str],
                            label2id: Dict[str, int], device: torch.device):
-    """Mirrors experiments/scripts/diagnostic_eval_stage2.py's loading pattern: read
+    """Mirrors experiments/ancestor_sweep/scripts/diagnostic_eval_stage2.py's loading pattern: read
     trial_metrics.json (written by push_checkpoint() alongside every Hub checkpoint) for the
     model_name/use_lora/mixed_precision this checkpoint was actually trained with, rather than
     guessing -- so this works unmodified against any past or future trial's checkpoint shape.

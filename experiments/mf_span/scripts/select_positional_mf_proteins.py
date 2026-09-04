@@ -2,7 +2,7 @@
 
 Originally picked only the 5000 "best known" proteins (highest total_terms - the
 annotation-completeness proxy validated during the trial-080/081 investigation, see
-experiments/sweep_log.md); now selects every protein in train_terms.tsv, tagging each with
+experiments/ancestor_sweep/sweep_log.md); now selects every protein in train_terms.tsv, tagging each with
 the train/val/test split it already belongs to in the main pipeline (generate_dataset.py's
 cluster-aware split -- see split_utils.py), so this task never disagrees with the rest of the
 project about which proteins are train vs. val vs. test. total_terms is still recorded per
