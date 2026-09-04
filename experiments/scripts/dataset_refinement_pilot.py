@@ -21,6 +21,12 @@ only thing that ever differs between runs is which cells got resolved and how. V
 always computed against the real, untouched ground truth on the (separate) validation subset --
 neither --unknown-target-value nor any run's overrides ever touch it.
 
+Override-cell sampling is restricted to terms with >= --min-term-annotations (default 100) REAL,
+unpropagated annotations in the raw CAFA-6 train_terms.tsv -- the best-supported part of the label
+space, as a baseline: if the model can't detect a resolved cell there, that's not yet a fair test
+of whether resolution is detectable at all (rarer terms have less signal to begin with). Pass
+--min-term-annotations 0 to sample from the full label space as before.
+
 Usage:
   # Smoke test (~a couple of minutes)
   python experiments/scripts/dataset_refinement_pilot.py --run-tag smoke \\
@@ -41,11 +47,13 @@ Usage:
 
 import argparse
 import copy
+import csv
 import json
 import os
 import random
 import sys
 import time
+from collections import Counter
 from functools import partial
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
@@ -73,59 +81,89 @@ def item_rng(seed: int, condition: str, repeat_index: int) -> random.Random:
     return random.Random(derived)
 
 
+def load_raw_annotation_counts(train_terms_tsv: Path) -> Dict[str, int]:
+    """Real, unpropagated annotation count per GO term, straight from the raw CAFA-6
+    train_terms.tsv (EntryID, term, aspect) -- NOT the ancestor-propagated counts implicit in
+    the coarse label space's own labels_matrix (a term's propagated positive count includes
+    every descendant's annotations, which is a very different, much larger number). Used to
+    restrict override-cell sampling to terms with real, directly-observed human support -- see
+    --min-term-annotations."""
+    counts: Counter = Counter()
+    with train_terms_tsv.open() as f:
+        reader = csv.DictReader(f, delimiter="\t")
+        for row in reader:
+            counts[row["term"]] += 1
+    return dict(counts)
+
+
 def pick_cell(labels_matrix: np.ndarray, protein_ids: List[str], rng: random.Random,
-              value: float, exclude: set) -> Tuple[str, int]:
-    """A random (protein, term) cell whose real hard label == value, protein not in exclude."""
+              value: float, exclude: set, eligible_term_idx: np.ndarray) -> Tuple[str, int]:
+    """A random (protein, term) cell whose real hard label == value, protein not in exclude,
+    term restricted to eligible_term_idx (see --min-term-annotations)."""
     order = list(range(labels_matrix.shape[0]))
     rng.shuffle(order)
     for row in order:
         if protein_ids[row] in exclude:
             continue
-        cols = np.nonzero(labels_matrix[row] == value)[0]
+        eligible_vals = labels_matrix[row, eligible_term_idx]
+        cols = np.nonzero(eligible_vals == value)[0]
         if len(cols) == 0:
             continue
-        term_idx = int(cols[rng.randrange(len(cols))])
+        term_idx = int(eligible_term_idx[cols[rng.randrange(len(cols))]])
         return protein_ids[row], term_idx
-    raise RuntimeError(f"Could not find a protein with a real label == {value} (excluding {len(exclude)} already used).")
+    raise RuntimeError(f"Could not find a protein with an eligible-term label == {value} "
+                        f"(excluding {len(exclude)} already used, {len(eligible_term_idx)} eligible terms).")
 
 
 def pick_distinct_cells(labels_matrix: np.ndarray, protein_ids: List[str], k: int,
-                         rng: random.Random, value: float = 0.0, exclude: Optional[set] = None) -> List[Tuple[str, int]]:
+                         rng: random.Random, eligible_term_idx: np.ndarray, value: float = 0.0,
+                         exclude: Optional[set] = None) -> List[Tuple[str, int]]:
     exclude = set(exclude or ())
     chosen = []
     for _ in range(k):
-        pid, term_idx = pick_cell(labels_matrix, protein_ids, rng, value, exclude)
+        pid, term_idx = pick_cell(labels_matrix, protein_ids, rng, value, exclude, eligible_term_idx)
         chosen.append((pid, term_idx))
         exclude.add(pid)  # 1 experimental annotation per protein per run
     return chosen
 
 
 def build_overrides(condition: str, labels_matrix: np.ndarray, protein_ids: List[str],
-                     items_per_trial: int, rng: random.Random) -> Dict[str, Dict[int, Tuple[float, float]]]:
+                     items_per_trial: int, rng: random.Random,
+                     eligible_term_idx: np.ndarray) -> Dict[str, Dict[int, Tuple[float, float]]]:
     """{protein_id: {label_idx: (forced_value, original_value)}}. original_value is carried
     through purely for logging -- it's what lets a later look at the JSONL tell condition 2's
     single injected fake-positive, or condition 3's single injected false-negative, apart from
     its 99 "faithful" siblings in the same run, since forced_value alone doesn't distinguish them
     (both look like plain 0.0 overrides). See this script's module docstring / the plan's
-    "user-confirmed, exact" condition definitions."""
+    "user-confirmed, exact" condition definitions.
+
+    eligible_term_idx restricts which term columns can be chosen at all (see
+    --min-term-annotations): starting from the best-supported part of the label space as a
+    baseline, on the notion that if the model can't detect resolution there, it's not a fair
+    test of whether resolution is detectable at all -- rarer terms (which the model has less
+    signal on to begin with) are a harder, separate question for a later pilot scale."""
     overrides: Dict[str, Dict[int, Tuple[float, float]]] = {}
 
     if condition == "faithful":
-        for pid, idx in pick_distinct_cells(labels_matrix, protein_ids, items_per_trial, rng, value=0.0):
+        for pid, idx in pick_distinct_cells(labels_matrix, protein_ids, items_per_trial, rng,
+                                             eligible_term_idx, value=0.0):
             overrides[pid] = {idx: (0.0, 0.0)}
 
     elif condition == "false_positive":
-        cells = pick_distinct_cells(labels_matrix, protein_ids, items_per_trial, rng, value=0.0)
+        cells = pick_distinct_cells(labels_matrix, protein_ids, items_per_trial, rng,
+                                     eligible_term_idx, value=0.0)
         flip = rng.randrange(items_per_trial)
         for i, (pid, idx) in enumerate(cells):
             overrides[pid] = {idx: (1.0, 0.0) if i == flip else (0.0, 0.0)}
 
     elif condition == "false_negative":
-        cells = pick_distinct_cells(labels_matrix, protein_ids, items_per_trial - 1, rng, value=0.0)
+        cells = pick_distinct_cells(labels_matrix, protein_ids, items_per_trial - 1, rng,
+                                     eligible_term_idx, value=0.0)
         for pid, idx in cells:
             overrides[pid] = {idx: (0.0, 0.0)}
         used = {pid for pid, _ in cells}
-        pos_pid, pos_idx = pick_cell(labels_matrix, protein_ids, rng, value=1.0, exclude=used)
+        pos_pid, pos_idx = pick_cell(labels_matrix, protein_ids, rng, value=1.0, exclude=used,
+                                      eligible_term_idx=eligible_term_idx)
         overrides[pos_pid] = {pos_idx: (0.0, 1.0)}  # the injected false negative
 
     else:
@@ -282,6 +320,18 @@ def run_pilot(args) -> None:
     labels_matrix = evaluate_cafa_score.extract_labels_matrix(train_raw, len(label_names))
     train_protein_ids = list(train_raw["protein"])
 
+    raw_counts = load_raw_annotation_counts(Path(args.train_terms_tsv))
+    eligible_term_idx = np.array([i for i, name in enumerate(label_names)
+                                   if raw_counts.get(name, 0) >= args.min_term_annotations])
+    if len(eligible_term_idx) == 0:
+        raise RuntimeError(f"No terms in the {len(label_names)}-term label space have "
+                            f">= {args.min_term_annotations} real annotations in "
+                            f"{args.train_terms_tsv} -- lower --min-term-annotations.")
+    print(f"[INFO] {len(eligible_term_idx)}/{len(label_names)} label terms have >= "
+          f"{args.min_term_annotations} real (unpropagated) annotations in {args.train_terms_tsv} "
+          f"-- override sampling restricted to those (best-supported terms first, per this "
+          f"pilot's baseline scope)")
+
     tokenizer = training_run.create_esm_tokenizer(args.model_name)
     label2id = {name: i for i, name in enumerate(label_names)}
     preprocess = partial(training_run.preprocess_batch, tokenizer=tokenizer,
@@ -311,7 +361,7 @@ def run_pilot(args) -> None:
         else:
             rng = item_rng(args.seed, spec["condition"], spec["repeat_index"])
             overrides = build_overrides(spec["condition"], labels_matrix, train_protein_ids,
-                                         args.items_per_trial, rng)
+                                         args.items_per_trial, rng, eligible_term_idx)
 
         start = time.time()
         val_loss = train_one_run(args, base_model, train_ds, val_loader, label_names,
@@ -325,7 +375,9 @@ def run_pilot(args) -> None:
             "config": {"model_name": args.model_name, "max_train_samples": args.max_train_samples,
                        "max_val_samples": args.max_val_samples,
                        "unknown_target_value": args.unknown_target_value, "epochs": args.epochs,
-                       "items_per_trial": args.items_per_trial, "seed": args.seed},
+                       "items_per_trial": args.items_per_trial, "seed": args.seed,
+                       "min_term_annotations": args.min_term_annotations,
+                       "n_eligible_terms": len(eligible_term_idx)},
         }
         if args.overridden_cells_log_level == 2:
             record["overridden_cells"] = [
@@ -436,6 +488,17 @@ def main() -> None:
                      help="Applied to every currently-0 cell in every run, base included -- pass "
                           "0.0 to disable and fall back to today's hard-negative behavior")
     ap.add_argument("--epochs", type=int, default=3)
+    ap.add_argument("--train-terms-tsv", default="data/cafa-6-protein-function-prediction/Train/train_terms.tsv",
+                     help="Raw (unpropagated) CAFA-6 annotation table, used only to compute each "
+                          "term's real annotation count for --min-term-annotations filtering")
+    ap.add_argument("--min-term-annotations", type=int, default=100,
+                     help="Only label-space terms with at least this many REAL (asserted, "
+                          "unpropagated) CAFA-6 annotations are eligible for override-cell "
+                          "sampling. Rationale: the best-supported terms should be easiest for "
+                          "the model to have learned already, so this is the baseline to check "
+                          "detectability against first -- resolving a term the model barely has "
+                          "signal on to begin with isn't a fair test. 0 disables the filter "
+                          "(every label-space term eligible, today's prior behavior).")
     ap.add_argument("--items-per-trial", type=int, default=100)
     ap.add_argument("--repeats-per-condition", type=int, default=100)
     ap.add_argument("--overridden-cells-log-level", type=int, default=2, choices=[0, 1, 2],
