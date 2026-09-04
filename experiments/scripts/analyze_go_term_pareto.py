@@ -81,6 +81,67 @@ def main():
     print(f"[INFO] Wrote {args.out_prefix}_ia_weight_histogram.png")
     print(f"[INFO] Wrote {args.out_prefix}_annotation_count_histogram.png")
 
+    # --- Ordering comparison: same term set, ranked by IA weight vs. by annotation count ---
+    merged = pd.merge(ia, counts.rename("annotation_count"), left_on="term", right_index=True,
+                       how="inner")
+    print(f"[INFO] {len(merged)} terms present in both IA.tsv and train_terms.tsv "
+          f"({len(ia) - len(merged)} IA.tsv-only, {len(counts) - len(merged)} train_terms-only, excluded)")
+
+    spearman_rho = merged["ia_weight"].rank().corr(merged["annotation_count"].rank())
+    print(f"[INFO] Spearman rank correlation (IA weight vs. annotation count): {spearman_rho:.3f}")
+
+    def top20_share(df, sort_col, value_col):
+        n_top = max(1, round(len(df) * 0.2))
+        ranked = df.sort_values(sort_col, ascending=False)
+        return ranked.head(n_top)[value_col].sum() / df[value_col].sum(), n_top
+
+    ia_share_own, n_top = top20_share(merged, "ia_weight", "ia_weight")
+    counts_share_own, _ = top20_share(merged, "annotation_count", "annotation_count")
+    print(f"[INFO] Top 20% of terms by IA weight (n={n_top}) hold {ia_share_own:.1%} of total IA weight")
+    print(f"[INFO] Top 20% of terms by annotation count (n={n_top}) hold {counts_share_own:.1%} "
+          f"of total annotations")
+
+    # Cross shares: does the top-20%-by-one-metric set also dominate the other metric?
+    ia_top_set = merged.sort_values("ia_weight", ascending=False).head(n_top)
+    counts_top_set = merged.sort_values("annotation_count", ascending=False).head(n_top)
+    ia_top_counts_share = ia_top_set["annotation_count"].sum() / merged["annotation_count"].sum()
+    counts_top_ia_share = counts_top_set["ia_weight"].sum() / merged["ia_weight"].sum()
+    overlap = len(set(ia_top_set["term"]) & set(counts_top_set["term"])) / n_top
+    print(f"[INFO] Top-20%-by-IA-weight terms hold {ia_top_counts_share:.1%} of total annotations "
+          f"(vs. {counts_share_own:.1%} for the term set actually chosen for annotation count)")
+    print(f"[INFO] Top-20%-by-annotation-count terms hold {counts_top_ia_share:.1%} of total IA weight "
+          f"(vs. {ia_share_own:.1%} for the term set actually chosen for IA weight)")
+    print(f"[INFO] Top-20% sets overlap by {overlap:.1%} ({len(set(ia_top_set['term']) & set(counts_top_set['term']))}/{n_top} terms in common)")
+
+    # --- Chart 3: Lorenz-style cumulative-share curves for both metrics ---
+    def cumulative_curve(df, col):
+        vals = df[col].sort_values(ascending=False).to_numpy()
+        cum = np.cumsum(vals) / vals.sum()
+        x = np.arange(1, len(vals) + 1) / len(vals)
+        return x, cum
+
+    x_ia, y_ia = cumulative_curve(merged, "ia_weight")
+    x_counts, y_counts = cumulative_curve(merged, "annotation_count")
+
+    fig, ax = plt.subplots(figsize=(8, 8))
+    ax.plot([0, 1], [0, 1], color="#999990", linewidth=1.5, linestyle="--", label="equal share (no concentration)")
+    ax.plot(x_ia, y_ia, color="#2a78d6", linewidth=2, label="IA weight")
+    ax.plot(x_counts, y_counts, color="#eb6834", linewidth=2, label="annotation count")
+    ax.axvline(0.2, color="#c9c8bc", linewidth=1, linestyle=":")
+    ax.set_xlabel("Cumulative share of GO terms (sorted descending by the metric itself)")
+    ax.set_ylabel("Cumulative share of the metric's total")
+    ax.set_title(f"Concentration of IA weight vs. annotation count across {len(merged)} GO terms\n"
+                 f"Spearman ρ={spearman_rho:.2f} between the two rankings")
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.xaxis.set_major_formatter(lambda v, _: f"{v:.0%}")
+    ax.yaxis.set_major_formatter(lambda v, _: f"{v:.0%}")
+    ax.legend(loc="lower right", frameon=False)
+    fig.tight_layout()
+    fig.savefig(f"{args.out_prefix}_concentration_curve.png", dpi=150)
+    plt.close(fig)
+    print(f"[INFO] Wrote {args.out_prefix}_concentration_curve.png")
+
 
 if __name__ == "__main__":
     main()
