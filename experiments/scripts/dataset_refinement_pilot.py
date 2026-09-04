@@ -27,6 +27,13 @@ space, as a baseline: if the model can't detect a resolved cell there, that's no
 of whether resolution is detectable at all (rarer terms have less signal to begin with). Pass
 --min-term-annotations 0 to sample from the full label space as before.
 
+Defaults to kelmoir/cafa6-raw (generate_dataset_raw.py) -- the fully raw/asserted, unpropagated
+668-term label space, not the older ancestor-propagated 383-term kelmoir/CAFA6/coarse space. That
+dataset's own vocabulary is already selected at the same >=100-raw-annotation bar, so
+--min-term-annotations is a no-op there by construction (every label-space term already clears
+it) -- it only starts doing real filtering work if --data-path/--hf-dataset-repo point at a
+richer or differently-thresholded label space instead.
+
 Usage:
   # Smoke test (~a couple of minutes)
   python experiments/scripts/dataset_refinement_pilot.py --run-tag smoke \\
@@ -411,9 +418,23 @@ def make_charts(log_path: Path, out_prefix: Path) -> None:
     import matplotlib.pyplot as plt
 
     records = [json.loads(line) for line in log_path.read_text().splitlines() if line.strip()]
+
+    # A run's val_loss can occasionally come back nan/inf -- observed directly at tiny
+    # (--max-train-samples ~200) smoke scale, non-reproducible run-to-run despite the fixed
+    # seed (PyTorch's CPU ops aren't guaranteed bit-identical across runs without explicitly
+    # enabling deterministic algorithms, which this script doesn't). Dropped here rather than
+    # left to reach np.mean/histogram_bin_edges, which would otherwise crash and lose every
+    # other run's results in the same log file -- a real risk at full pilot scale (300 runs,
+    # hours of compute) if even one run hits this.
+    nan_run_ids = [r["run_id"] for r in records if not np.isfinite(r["val_loss"])]
+    if nan_run_ids:
+        print(f"[WARN] {len(nan_run_ids)} run(s) had a non-finite val_loss (nan/inf) -- excluded "
+              f"from charts/summary: {nan_run_ids}")
+    records = [r for r in records if np.isfinite(r["val_loss"])]
+
     base_losses = [r["val_loss"] for r in records if r["condition"] == "base"]
     if not base_losses:
-        raise RuntimeError(f"No 'base' run found in {log_path} -- nothing to compare against.")
+        raise RuntimeError(f"No finite 'base' run found in {log_path} -- nothing to compare against.")
     base_mean = float(np.mean(base_losses))
     by_condition = {c: [r["val_loss"] for r in records if r["condition"] == c] for c in CONDITIONS}
     for c in CONDITIONS:
@@ -478,8 +499,12 @@ def make_charts(log_path: Path, out_prefix: Path) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--data-path", default="data/cafa-6-protein-function-prediction/dataset")
-    ap.add_argument("--hf-dataset-repo", default="kelmoir/CAFA6")
+    ap.add_argument("--data-path", default="data/cafa-6-protein-function-prediction/dataset_raw",
+                     help="Local on-disk dataset (generate_dataset_raw.py's output by default -- "
+                          "the raw/unpropagated 668-term label space, not the older ancestor-"
+                          "propagated 383-term kelmoir/CAFA6/coarse one)")
+    ap.add_argument("--hf-dataset-repo", default="kelmoir/cafa6-raw",
+                     help="Hub fallback if --data-path doesn't exist locally")
     ap.add_argument("--model-name", default="facebook/esm2_t6_8M_UR50D",
                      help="Smallest ESM2 variant by default, per this pilot's starting point")
     ap.add_argument("--max-train-samples", type=int, default=4000)

@@ -151,7 +151,8 @@ def main():
 
   out_path = data_path / "dataset_depth1"
   dataset_dict.save_to_disk(out_path)
-  export_dependency_graph(obonet_graph, depth1_terms, out_path / "go_dependency_graph.json")
+  export_dependency_graph(obonet_graph, depth1_terms, out_path / "go_dependency_graph.json",
+                          selection_rule={"depth": DEPTH1, "min_annotations": COARSE_MIN_ANNOTATIONS})
   dataset_dict.push_to_hub("kelmoir/cafa6-depth1", private=False)
 
   print("\nDepth-1 datasets created successfully.")

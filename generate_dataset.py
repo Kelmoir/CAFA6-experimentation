@@ -7,6 +7,7 @@ import numpy as np
 from progressbar import progressbar
 import datasets
 import json
+from typing import Optional
 
 from split_utils import compute_cluster_aware_split
 
@@ -109,13 +110,20 @@ def select_coarse_terms(propagated_terms: dict, depths: dict,
   return selected
 
 
-def export_dependency_graph(obonet_graph: nx.MultiDiGraph, coarse_terms: dict, out_path: Path) -> None:
+def export_dependency_graph(obonet_graph: nx.MultiDiGraph, coarse_terms: dict, out_path: Path,
+                            selection_rule: Optional[dict] = None) -> None:
   """Persist the full GO graph - every relationship type, including the
   regulates-family edges that aren't used for label propagation here but are kept
   rather than discarded - alongside the coarse-term selection. A later curriculum
   stage can load this and call networkx.descendants() on any coarse term (restricted
   to TRUE_PATH_RELATIONSHIPS) to get the remaining, finer terms under that branch,
   without recomputing the graph from scratch.
+
+  selection_rule documents how coarse_terms was actually chosen. Defaults to this
+  module's own max_depth/min_annotations rule for backward compatibility, but a
+  caller with a different selection rule (e.g. generate_dataset_depth1.py's depth==1
+  variant, or a raw/unpropagated-count variant) MUST pass its own -- the default
+  would otherwise silently mislabel a differently-selected coarse_terms dict.
   """
   slim_graph = nx.MultiDiGraph()
   for node, attrs in obonet_graph.nodes(data=True):
@@ -133,7 +141,8 @@ def export_dependency_graph(obonet_graph: nx.MultiDiGraph, coarse_terms: dict, o
       "depth_convention": "shortest_path",
       "root_term_ids": ROOT_TERM_IDS,
       "coarse_terms": coarse_terms,
-      "coarse_selection_rule": {"max_depth": COARSE_MAX_DEPTH, "min_annotations": COARSE_MIN_ANNOTATIONS},
+      "coarse_selection_rule": selection_rule if selection_rule is not None
+                                else {"max_depth": COARSE_MAX_DEPTH, "min_annotations": COARSE_MIN_ANNOTATIONS},
   }
   out_path.write_text(json.dumps(payload))
   print(f"[INFO] Wrote GO dependency graph ({slim_graph.number_of_nodes()} nodes, "
