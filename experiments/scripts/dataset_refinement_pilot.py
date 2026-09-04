@@ -318,21 +318,31 @@ def run_pilot(args) -> None:
                                   overrides, device, tokenizer)
         elapsed = time.time() - start
 
-        overridden_cells = [
-            {"protein": pid, "term": label_names[idx], "forced_value": forced_val,
-             "original_value": orig_val, "is_injected_error": forced_val != orig_val}
-            for pid, cell_map in overrides.items()
-            for idx, (forced_val, orig_val) in cell_map.items()
-        ]
         record = {
             "run_id": spec["run_id"], "condition": spec["condition"],
             "repeat_index": spec["repeat_index"], "val_loss": val_loss,
-            "overridden_cells": overridden_cells, "train_time_s": elapsed,
+            "train_time_s": elapsed,
             "config": {"model_name": args.model_name, "max_train_samples": args.max_train_samples,
                        "max_val_samples": args.max_val_samples,
                        "unknown_target_value": args.unknown_target_value, "epochs": args.epochs,
                        "items_per_trial": args.items_per_trial, "seed": args.seed},
         }
+        if args.overridden_cells_log_level == 2:
+            record["overridden_cells"] = [
+                {"protein": pid, "term": label_names[idx], "forced_value": forced_val,
+                 "original_value": orig_val, "is_injected_error": forced_val != orig_val}
+                for pid, cell_map in overrides.items()
+                for idx, (forced_val, orig_val) in cell_map.items()
+            ]
+        elif args.overridden_cells_log_level == 1:
+            record["overridden_cells"] = [
+                {"protein": pid, "term": label_names[idx],
+                 "is_injected_error": forced_val != orig_val}
+                for pid, cell_map in overrides.items()
+                for idx, (forced_val, orig_val) in cell_map.items()
+            ]
+        # level 0: omit "overridden_cells" from the record entirely -- these lists are a
+        # substantial share of the JSONL's size at full pilot scale (300 runs x 100 cells each).
         append_record(log_path, record)
         print(f"[RUN {spec['run_id']}] val_loss={val_loss:.6f} ({elapsed:.1f}s)")
 
@@ -428,6 +438,11 @@ def main() -> None:
     ap.add_argument("--epochs", type=int, default=3)
     ap.add_argument("--items-per-trial", type=int, default=100)
     ap.add_argument("--repeats-per-condition", type=int, default=100)
+    ap.add_argument("--overridden-cells-log-level", type=int, default=2, choices=[0, 1, 2],
+                     help="Detail logged per run for the overridden cells (a substantial share of "
+                          "the JSONL's size at full pilot scale): 2 = full (protein, term, "
+                          "forced_value, original_value, is_injected_error); 1 = protein, term, "
+                          "is_injected_error only; 0 = omit overridden_cells entirely")
     ap.add_argument("--base-repeats", type=int, default=4,
                      help="Repeat the base run and average, to smooth out training noise -- a "
                           "fixed-seed base run still showed a ~0.00003 val-loss noise floor "
