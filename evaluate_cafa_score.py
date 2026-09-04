@@ -72,10 +72,10 @@ from huggingface_hub import HfApi, hf_hub_download
 import generate_dataset
 import training_run
 
-# train_mf_span_model.py lives in experiments/scripts/, not importable by plain module name from
-# the repo root without this -- mirrors experiments/mf_span/scripts/predict_protein_spans.py's own import
-# of it, which works unmodified only because THAT script happens to sit in the same directory.
-sys.path.insert(0, str(Path(__file__).resolve().parent / "experiments" / "scripts"))
+# train_mf_span_model.py lives in experiments/mf_span/scripts/, not importable by plain module name
+# from the repo root without this -- mirrors experiments/mf_span/scripts/predict_protein_spans.py's
+# own import of it, which works unmodified only because THAT script happens to sit in the same directory.
+sys.path.insert(0, str(Path(__file__).resolve().parent / "experiments" / "mf_span" / "scripts"))
 import train_mf_span_model as mf_span  # noqa: E402
 
 DATA_DIR = Path("data/cafa-6-protein-function-prediction")

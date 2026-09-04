@@ -21,7 +21,7 @@ from pathlib import Path
 import torch
 from huggingface_hub import hf_hub_download
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 import training_run
 
 CHECKPOINT_REVISION = sys.argv[1] if len(sys.argv) > 1 else "trial-050"

@@ -16,7 +16,7 @@ from pathlib import Path
 
 import pandas as pd
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
 from split_utils import compute_cluster_aware_split
 
 DATA_PATH = Path("./data/cafa-6-protein-function-prediction")

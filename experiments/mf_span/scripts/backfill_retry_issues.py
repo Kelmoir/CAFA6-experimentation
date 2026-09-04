@@ -10,7 +10,7 @@ which is a real answer, not garbled data), and gives each one an extra shot, reu
 same call/parse/retry/merge logic from local_llm_review_loop.py.
 
 Usage:
-  python3 experiments/ancestor_sweep/scripts/backfill_retry_issues.py --host http://192.168.1.122:1234
+  python3 experiments/mf_span/scripts/backfill_retry_issues.py --host http://192.168.1.122:1234
 """
 import argparse
 import json
