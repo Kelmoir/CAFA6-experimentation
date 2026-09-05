@@ -8,12 +8,26 @@ own closing note recommended trying a soft-target correction instead of a hard m
 things measurably worse) or a hard 0. This script is that follow-up, run as a small, fast,
 controlled pilot before any commitment to a real sweep.
 
-It runs a base configuration plus three experimental conditions (see CONDITIONS below), each
+It runs a base configuration plus two experimental conditions (see CONDITIONS below), each
 repeated many times with a fresh random sample of "resolved" cells, and asks: does the resulting
 validation loss differ from the base run in a way that survives averaging over repeats -- and if
-not at this item count/data scale, the three charts this script produces (two bar charts plus a
-per-condition histogram) are meant to make that (lack of) signal directly visible, motivating what
-scale to try next.
+not at this item count/data scale, the charts this script produces are meant to make that (lack
+of) signal directly visible, motivating what scale to try next.
+
+(An earlier version also had a false_positive condition -- one currently-unknown cell mistakenly
+forced to 1 instead of the faithful 0 -- modeling a curation mistake in the other direction. It's
+been dropped: the pilot's real focus is the false_negative blind spot, see the paragraph below, and
+the matched AUROC comparison this script now runs is clean/interpretable with fewer groups.)
+
+Pooled val_loss turns out to have a real blind spot for exactly the error type this pilot cares
+about most (false_negative): under this task's severe class imbalance, suppressing a term's only
+positive training signal nudges the model toward predicting closer to 0 for that term everywhere,
+which *lowers* pooled BCE loss (fewer, larger negative-class predictions dominate the sum) even
+though the model got worse at the one thing that matters -- ranking that term's real positives
+above its negatives. Per-term AUROC is threshold-independent and normalized per term, so it isn't
+subject to the same imbalance-driven flattery (see --compute-eligible-term-auroc below) -- this is
+the "does the injected error leave a detectable trace" instrument pooled val_loss can't be trusted
+to be.
 
 Every run in this pilot is trained on the EXACT SAME fixed --max-train-samples/--max-val-samples
 protein subset and the EXACT SAME model initialization + data order (both pinned to --seed) -- the
@@ -67,14 +81,16 @@ from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import torch
+from sklearn.metrics import roc_auc_score
 from torch.optim import AdamW
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # repo root
 import evaluate_cafa_score  # reuse extract_labels_matrix
 import training_run
 
-CONDITIONS = ["faithful", "false_positive", "false_negative"]
-CONDITION_OFFSET = {"faithful": 1, "false_positive": 2, "false_negative": 3}  # for deterministic seeding
+CONDITIONS = ["faithful", "false_negative"]
+CONDITION_OFFSET = {"faithful": 1, "false_negative": 3}  # for deterministic seeding (unchanged
+# numeric values, so existing per-repeat seeds/logs stay reproducible after dropping false_positive)
 
 
 # --------------------------------------------------------------------------------------------
@@ -138,11 +154,11 @@ def build_overrides(condition: str, labels_matrix: np.ndarray, protein_ids: List
                      items_per_trial: int, rng: random.Random,
                      eligible_term_idx: np.ndarray) -> Dict[str, Dict[int, Tuple[float, float]]]:
     """{protein_id: {label_idx: (forced_value, original_value)}}. original_value is carried
-    through purely for logging -- it's what lets a later look at the JSONL tell condition 2's
-    single injected fake-positive, or condition 3's single injected false-negative, apart from
-    its 99 "faithful" siblings in the same run, since forced_value alone doesn't distinguish them
-    (both look like plain 0.0 overrides). See this script's module docstring / the plan's
-    "user-confirmed, exact" condition definitions.
+    through purely for logging -- it's what lets a later look at the JSONL tell the
+    false_negative condition's single injected false-negative apart from its 99 "faithful"
+    siblings in the same run, since forced_value alone doesn't distinguish them (both look like
+    plain 0.0 overrides). See this script's module docstring / the plan's "user-confirmed, exact"
+    condition definitions.
 
     eligible_term_idx restricts which term columns can be chosen at all (see
     --min-term-annotations): starting from the best-supported part of the label space as a
@@ -155,13 +171,6 @@ def build_overrides(condition: str, labels_matrix: np.ndarray, protein_ids: List
         for pid, idx in pick_distinct_cells(labels_matrix, protein_ids, items_per_trial, rng,
                                              eligible_term_idx, value=0.0):
             overrides[pid] = {idx: (0.0, 0.0)}
-
-    elif condition == "false_positive":
-        cells = pick_distinct_cells(labels_matrix, protein_ids, items_per_trial, rng,
-                                     eligible_term_idx, value=0.0)
-        flip = rng.randrange(items_per_trial)
-        for i, (pid, idx) in enumerate(cells):
-            overrides[pid] = {idx: (1.0, 0.0) if i == flip else (0.0, 0.0)}
 
     elif condition == "false_negative":
         cells = pick_distinct_cells(labels_matrix, protein_ids, items_per_trial - 1, rng,
@@ -208,7 +217,11 @@ def build_base_model(args, model_name: str, label_names: List[str], device: torc
 # --------------------------------------------------------------------------------------------
 
 def train_one_run(args, base_model, train_ds, val_loader, label_names: List[str],
-                   overrides: Dict[str, Dict[int, float]], device: torch.device, tokenizer) -> float:
+                   overrides: Dict[str, Dict[int, float]], device: torch.device,
+                   tokenizer) -> Tuple[np.ndarray, np.ndarray]:
+    """Trains one run and returns the raw (logits, labels) arrays from the final validation
+    pass -- val_loss and any per-term AUROC diagnostics are derived from this single pass by the
+    caller, rather than each paying for their own forward pass over the validation set."""
     # A fresh, independent copy of the cached base model -- bit-identical starting weights to
     # every other run (base_model was built once, under the fixed seed), without re-reading
     # anything from disk.
@@ -248,29 +261,54 @@ def train_one_run(args, base_model, train_ds, val_loader, label_names: List[str]
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=args.grad_clip_norm)
             optimizer.step()
 
-    return evaluate_val_loss(model, val_loader, device)
+    return evaluate_val_predictions(model, val_loader, device)
 
 
-def evaluate_val_loss(model, val_loader, device: torch.device) -> float:
-    """Pooled mean BCE over every element in the validation set (sum-then-divide, not an average
-    of per-batch means -- avoids the batch-size-dependent bias training_run.py's own
-    compute_metrics docstring flags for the analogous recall computation), against the real,
-    unmodified ground truth. Never sees --unknown-target-value or any run's overrides."""
+def evaluate_val_predictions(model, val_loader, device: torch.device) -> Tuple[np.ndarray, np.ndarray]:
+    """Single forward pass over the whole validation set, against the real, unmodified ground
+    truth (never sees --unknown-target-value or any run's overrides). Returns (logits, labels) as
+    (n_val, n_terms) numpy arrays -- val_loss and per-term AUROC are both derived from this one
+    pass rather than each paying for their own."""
     was_training = model.training
     model.eval()
-    criterion = torch.nn.BCEWithLogitsLoss(reduction="sum")
-    total_loss, total_elements = 0.0, 0
+    all_logits, all_labels = [], []
     with torch.no_grad():
         for batch in val_loader:
             input_ids = batch["input_ids"].to(device)
             attention_mask = batch["attention_mask"].to(device)
             labels = batch["labels"].to(device)
             logits = model(input_ids=input_ids, attention_mask=attention_mask).logits
-            total_loss += criterion(logits, labels).item()
-            total_elements += labels.numel()
+            all_logits.append(logits.cpu().numpy())
+            all_labels.append(labels.cpu().numpy())
     if was_training:
         model.train()
-    return total_loss / total_elements
+    return np.concatenate(all_logits), np.concatenate(all_labels)
+
+
+def pooled_bce_loss(logits: np.ndarray, labels: np.ndarray) -> float:
+    """Pooled mean BCE-with-logits over every element -- the same sum-then-divide-once quantity
+    the previous torch-based evaluate_val_loss computed (mathematically identical to
+    reduction="mean" over the full concatenated array), just computed from the (logits, labels)
+    evaluate_val_predictions already produced. Uses the standard numerically-stable formula
+    (max(x,0) - x*y + log1p(exp(-|x|)), the same one torch.nn.BCEWithLogitsLoss uses internally)."""
+    loss = np.maximum(logits, 0) - logits * labels + np.log1p(np.exp(-np.abs(logits)))
+    return float(loss.mean())
+
+
+def per_term_auroc(probs: np.ndarray, labels: np.ndarray, term_idx: int) -> Optional[float]:
+    """AUROC for one term column against the real validation labels -- threshold-independent and
+    normalized per term, so (unlike pooled val_loss) it isn't dominated by this task's severe
+    class imbalance. None if that column is single-class in this validation slice (roc_auc_score
+    undefined there -- same check training_run.py's run_diagnostic() uses)."""
+    y_true = labels[:, term_idx]
+    if y_true.min() == y_true.max():
+        return None
+    return float(roc_auc_score(y_true, probs[:, term_idx]))
+
+
+def compute_term_auroc_dict(probs: np.ndarray, labels: np.ndarray, term_indices,
+                             label_names: List[str]) -> Dict[str, Optional[float]]:
+    return {label_names[int(idx)]: per_term_auroc(probs, labels, int(idx)) for idx in term_indices}
 
 
 # --------------------------------------------------------------------------------------------
@@ -328,16 +366,23 @@ def run_pilot(args) -> None:
     train_protein_ids = list(train_raw["protein"])
 
     raw_counts = load_raw_annotation_counts(Path(args.train_terms_tsv))
+    val_labels_matrix = evaluate_cafa_score.extract_labels_matrix(val_raw, len(label_names))
+    val_positive_counts = val_labels_matrix.sum(axis=0)
     eligible_term_idx = np.array([i for i, name in enumerate(label_names)
-                                   if raw_counts.get(name, 0) >= args.min_term_annotations])
+                                   if raw_counts.get(name, 0) >= args.min_term_annotations
+                                   and val_positive_counts[i] >= args.min_val_positives])
     if len(eligible_term_idx) == 0:
         raise RuntimeError(f"No terms in the {len(label_names)}-term label space have "
                             f">= {args.min_term_annotations} real annotations in "
-                            f"{args.train_terms_tsv} -- lower --min-term-annotations.")
+                            f"{args.train_terms_tsv} AND >= {args.min_val_positives} positives in "
+                            f"the fixed {len(val_raw)}-protein validation subset -- lower "
+                            f"--min-term-annotations/--min-val-positives or raise --max-val-samples.")
     print(f"[INFO] {len(eligible_term_idx)}/{len(label_names)} label terms have >= "
           f"{args.min_term_annotations} real (unpropagated) annotations in {args.train_terms_tsv} "
-          f"-- override sampling restricted to those (best-supported terms first, per this "
-          f"pilot's baseline scope)")
+          f"AND >= {args.min_val_positives} positives in the fixed validation subset -- override "
+          f"sampling restricted to those (best-supported terms first, per this pilot's baseline "
+          f"scope; the validation-positives bar exists so a chosen term's AUROC is actually "
+          f"computable -- see --compute-eligible-term-auroc)")
 
     tokenizer = training_run.create_esm_tokenizer(args.model_name)
     label2id = {name: i for i, name in enumerate(label_names)}
@@ -371,8 +416,9 @@ def run_pilot(args) -> None:
                                          args.items_per_trial, rng, eligible_term_idx)
 
         start = time.time()
-        val_loss = train_one_run(args, base_model, train_ds, val_loader, label_names,
-                                  overrides, device, tokenizer)
+        val_logits, val_labels_arr = train_one_run(args, base_model, train_ds, val_loader, label_names,
+                                                    overrides, device, tokenizer)
+        val_loss = pooled_bce_loss(val_logits, val_labels_arr)
         elapsed = time.time() - start
 
         record = {
@@ -384,8 +430,42 @@ def run_pilot(args) -> None:
                        "unknown_target_value": args.unknown_target_value, "epochs": args.epochs,
                        "items_per_trial": args.items_per_trial, "seed": args.seed,
                        "min_term_annotations": args.min_term_annotations,
+                       "min_val_positives": args.min_val_positives,
                        "n_eligible_terms": len(eligible_term_idx)},
         }
+
+        # AUROC diagnostics -- see module docstring for why pooled val_loss alone can't be
+        # trusted to catch a false_negative-type injected error under this task's class
+        # imbalance. eligible_term_auroc/touched_term_auroc are cheap: every override candidate
+        # comes from eligible_term_idx by construction (build_overrides), so a single full pass
+        # over eligible_term_idx covers both the global aggregate and every touched term at once
+        # -- no separate computation needed for the "touched" subset.
+        if args.compute_eligible_term_auroc:
+            val_probs = 1.0 / (1.0 + np.exp(-val_logits))
+            eligible_auroc = compute_term_auroc_dict(val_probs, val_labels_arr, eligible_term_idx, label_names)
+            valid_eligible = [v for v in eligible_auroc.values() if v is not None]
+            record["eligible_terms_mean_auroc"] = float(np.mean(valid_eligible)) if valid_eligible else None
+            record["n_eligible_terms_evaluable"] = len(valid_eligible)
+
+            if spec["condition"] == "base":
+                # Full per-term vector, kept only for base runs -- this is what make_charts uses
+                # as the "no corruption happened" baseline to match every other run's touched
+                # term(s) against.
+                record["eligible_term_auroc"] = eligible_auroc
+            else:
+                touched_idx = sorted({idx for cell_map in overrides.values() for idx in cell_map})
+                touched_auroc = {label_names[idx]: eligible_auroc[label_names[idx]] for idx in touched_idx}
+                injected_error_term = None
+                for cell_map in overrides.values():
+                    for idx, (forced_val, orig_val) in cell_map.items():
+                        if forced_val != orig_val:
+                            injected_error_term = label_names[idx]
+                valid_touched = [v for v in touched_auroc.values() if v is not None]
+                record["touched_term_auroc"] = touched_auroc
+                record["injected_error_term"] = injected_error_term
+                record["injected_error_term_auroc"] = (
+                    touched_auroc.get(injected_error_term) if injected_error_term else None)
+                record["overridden_terms_mean_auroc"] = float(np.mean(valid_touched)) if valid_touched else None
         if args.overridden_cells_log_level == 2:
             record["overridden_cells"] = [
                 {"protein": pid, "term": label_names[idx], "forced_value": forced_val,
@@ -403,7 +483,11 @@ def run_pilot(args) -> None:
         # level 0: omit "overridden_cells" from the record entirely -- these lists are a
         # substantial share of the JSONL's size at full pilot scale (300 runs x 100 cells each).
         append_record(log_path, record)
-        print(f"[RUN {spec['run_id']}] val_loss={val_loss:.6f} ({elapsed:.1f}s)")
+        auroc_note = ""
+        if args.compute_eligible_term_auroc and spec["condition"] != "base" and record.get("injected_error_term"):
+            ia = record["injected_error_term_auroc"]
+            auroc_note = f" injected_term_auroc={ia:.4f}" if ia is not None else " injected_term_auroc=N/A"
+        print(f"[RUN {spec['run_id']}] val_loss={val_loss:.6f}{auroc_note} ({elapsed:.1f}s)")
 
     print(f"[INFO] Pilot complete -> {log_path}")
 
@@ -446,7 +530,7 @@ def make_charts(log_path: Path, out_prefix: Path) -> None:
     names = ["base"] + CONDITIONS
     means = [base_mean] + [float(np.mean(by_condition[c])) if by_condition[c] else float("nan") for c in CONDITIONS]
     stds = [float(np.std(base_losses))] + [float(np.std(by_condition[c])) if by_condition[c] else 0.0 for c in CONDITIONS]
-    ax.bar(names, means, yerr=stds, capsize=4, color=["gray", "tab:blue", "tab:orange", "tab:red"])
+    ax.bar(names, means, yerr=stds, capsize=4, color=["gray", "tab:blue", "tab:red"])
     ax.set_ylabel("Validation BCE loss")
     ax.set_title(f"Validation loss after training (n_base={len(base_losses)}, "
                  f"n_condition={len(by_condition[CONDITIONS[0]])})")
@@ -458,7 +542,7 @@ def make_charts(log_path: Path, out_prefix: Path) -> None:
     fig, ax = plt.subplots(figsize=(8, 5))
     diffs = [float(np.mean(by_condition[c])) - base_mean if by_condition[c] else float("nan") for c in CONDITIONS]
     diff_stds = [float(np.std(by_condition[c])) if by_condition[c] else 0.0 for c in CONDITIONS]
-    ax.bar(CONDITIONS, diffs, yerr=diff_stds, capsize=4, color=["tab:blue", "tab:orange", "tab:red"])
+    ax.bar(CONDITIONS, diffs, yerr=diff_stds, capsize=4, color=["tab:blue", "tab:red"])
     ax.axhline(0, color="black", linewidth=0.8)
     ax.set_ylabel("Mean val loss difference vs. base run")
     ax.set_title("Mean loss difference vs. base, by condition")
@@ -470,7 +554,7 @@ def make_charts(log_path: Path, out_prefix: Path) -> None:
     # overlaid per condition (shared bin edges) rather than one bar per run, so the shape of each
     # condition's spread (and any overlap between conditions) is directly visible.
     fig, ax = plt.subplots(figsize=(10, 6))
-    colors = {"faithful": "tab:blue", "false_positive": "tab:orange", "false_negative": "tab:red"}
+    colors = {"faithful": "tab:blue", "false_negative": "tab:red"}
     all_diffs = [v - base_mean for c in CONDITIONS for v in by_condition[c]]
     bins = np.histogram_bin_edges(all_diffs, bins=30) if all_diffs else 30
     for c in CONDITIONS:
@@ -495,6 +579,120 @@ def make_charts(log_path: Path, out_prefix: Path) -> None:
             print(f"[SUMMARY] {c}: mean={np.mean(by_condition[c]):.6f} "
                   f"std={np.std(by_condition[c]):.6f} diff_vs_base={np.mean(by_condition[c]) - base_mean:.6f} "
                   f"n={len(by_condition[c])}")
+
+    make_auroc_charts(records, out_prefix)
+
+
+def make_auroc_charts(records: List[Dict], out_prefix: Path) -> None:
+    """Two AUROC-based charts, meant to directly test the pooled-val_loss blind-spot hypothesis
+    (see module docstring): (4) a global, imbalance-resistant aggregate (mean AUROC across every
+    eligible term) to confirm one corrupted cell among hundreds of terms doesn't move a broad
+    average either way -- pooled val_loss and this should agree it's a null result; (5) the
+    targeted, per-term-matched comparison that pooled val_loss can't do at all: for every
+    non-base run, each touched term's post-training AUROC minus that SAME term's own AUROC in the
+    base runs, split into the one deliberately-corrupted term ("injected") vs. the other,
+    correctly-resolved touched terms in the same run ("control"). If the false_negative
+    mechanism is real, "injected" should show a visible AUROC drop while every "control" group
+    (including all of faithful, which never corrupts anything) hovers near zero.
+    """
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    base_records = [r for r in records if r["condition"] == "base"]
+    if not any("eligible_term_auroc" in r or "eligible_terms_mean_auroc" in r for r in base_records):
+        print("[WARN] No AUROC data in this log (predates --compute-eligible-term-auroc, or it "
+              "was disabled) -- skipping AUROC charts.")
+        return
+
+    # 4. Global aggregate AUROC (mean over all eligible terms), base vs. each condition.
+    global_by_condition = {c: [r["eligible_terms_mean_auroc"] for r in records
+                                if r["condition"] == c and r.get("eligible_terms_mean_auroc") is not None]
+                            for c in CONDITIONS}
+    global_base = [r["eligible_terms_mean_auroc"] for r in base_records
+                   if r.get("eligible_terms_mean_auroc") is not None]
+    if global_base:
+        fig, ax = plt.subplots(figsize=(8, 5))
+        names = ["base"] + CONDITIONS
+        means = [float(np.mean(global_base))] + [
+            float(np.mean(global_by_condition[c])) if global_by_condition[c] else float("nan") for c in CONDITIONS]
+        stds = [float(np.std(global_base))] + [
+            float(np.std(global_by_condition[c])) if global_by_condition[c] else 0.0 for c in CONDITIONS]
+        ax.bar(names, means, yerr=stds, capsize=4, color=["gray", "tab:blue", "tab:red"])
+        ax.set_ylabel("Mean AUROC across all eligible terms")
+        ax.set_title("Global (imbalance-resistant) aggregate AUROC, by condition")
+        fig.tight_layout()
+        fig.savefig(f"{out_prefix}_global_auroc.png", dpi=150)
+        plt.close(fig)
+        print(f"[SUMMARY] global eligible-terms mean AUROC: base={np.mean(global_base):.4f} " +
+              " ".join(f"{c}={np.mean(global_by_condition[c]):.4f}" if global_by_condition[c] else f"{c}=N/A"
+                        for c in CONDITIONS))
+
+    # 5. The targeted comparison: matched per-term AUROC delta vs. base, injected term vs. control.
+    base_term_lists: Dict[str, List[float]] = {}
+    for r in base_records:
+        for term, val in r.get("eligible_term_auroc", {}).items():
+            if val is not None:
+                base_term_lists.setdefault(term, []).append(val)
+    base_term_auroc_mean = {t: float(np.mean(v)) for t, v in base_term_lists.items()}
+    if not base_term_auroc_mean:
+        print("[WARN] No base run logged a full eligible_term_auroc vector -- skipping the "
+              "matched per-term AUROC delta chart (need at least one base run with "
+              "--compute-eligible-term-auroc on).")
+        return
+
+    def matched_diffs(condition: str, want_injected: bool) -> List[float]:
+        diffs = []
+        for r in records:
+            if r["condition"] != condition:
+                continue
+            touched = r.get("touched_term_auroc")
+            if not touched:
+                continue
+            injected_term = r.get("injected_error_term")
+            for term, val in touched.items():
+                if val is None:
+                    continue
+                is_injected_term = (term == injected_term)
+                if is_injected_term != want_injected:
+                    continue
+                base_val = base_term_auroc_mean.get(term)
+                if base_val is None:
+                    continue
+                diffs.append(val - base_val)
+        return diffs
+
+    groups = [
+        ("faithful\n(control)", matched_diffs("faithful", False)),
+        ("false_negative\n(control)", matched_diffs("false_negative", False)),
+        ("false_negative\n(injected)", matched_diffs("false_negative", True)),
+    ]
+    if not any(diffs for _, diffs in groups):
+        print("[WARN] No matched per-term AUROC deltas available -- skipping that chart.")
+        return
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+    labels = [name for name, diffs in groups]
+    means = [float(np.mean(diffs)) if diffs else float("nan") for _, diffs in groups]
+    stds = [float(np.std(diffs)) if diffs else 0.0 for _, diffs in groups]
+    colors = ["tab:blue", "tab:red", "tab:red"]
+    alphas = [0.5, 0.5, 1.0]  # "injected" bars drawn solid, "control" bars faded
+    bars = ax.bar(labels, means, yerr=stds, capsize=4, color=colors)
+    for bar, a in zip(bars, alphas):
+        bar.set_alpha(a)
+    ax.axhline(0, color="black", linewidth=0.8)
+    ax.set_ylabel("Val AUROC (this run) - Val AUROC (base, same term)")
+    ax.set_title("Matched per-term AUROC delta vs. base: injected-error term vs. control terms")
+    fig.tight_layout()
+    fig.savefig(f"{out_prefix}_matched_term_auroc_delta.png", dpi=150)
+    plt.close(fig)
+
+    print(f"[INFO] Wrote charts -> {out_prefix}_global_auroc.png, "
+          f"{out_prefix}_matched_term_auroc_delta.png")
+    for name, diffs in groups:
+        if diffs:
+            print(f"[SUMMARY] matched AUROC delta {name.replace(chr(10), ' ')}: "
+                  f"mean={np.mean(diffs):.4f} std={np.std(diffs):.4f} n={len(diffs)}")
 
 
 def main() -> None:
@@ -524,6 +722,26 @@ def main() -> None:
                           "detectability against first -- resolving a term the model barely has "
                           "signal on to begin with isn't a fair test. 0 disables the filter "
                           "(every label-space term eligible, today's prior behavior).")
+    ap.add_argument("--min-val-positives", type=int, default=3,
+                     help="Additional override-eligibility filter, applied together with "
+                          "--min-term-annotations: only terms with at least this many REAL "
+                          "positives in the fixed validation subset are eligible for override "
+                          "sampling. Needed because roc_auc_score is undefined for a term with "
+                          "zero validation positives -- a term clearing >=100 annotations across "
+                          "the whole dataset can still land very few, or zero, in a 1000-protein "
+                          "validation slice, which would make --injected-error-term-auroc come "
+                          "back None for that repeat.")
+    ap.add_argument("--compute-eligible-term-auroc", action=argparse.BooleanOptionalAction, default=True,
+                     help="Per-term AUROC diagnostics (this pilot's answer to pooled val_loss's "
+                          "class-imbalance blind spot -- see module docstring): every run logs "
+                          "its global eligible_terms_mean_auroc; base runs additionally log the "
+                          "full per-term eligible_term_auroc vector (the baseline every other "
+                          "run's touched term(s) get matched against in make_charts); every "
+                          "other run logs touched_term_auroc plus which one term (if any) was the "
+                          "actual injected error and that term's own AUROC. Cheap (reuses the "
+                          "validation logits already computed for val_loss, no extra forward "
+                          "pass) -- disable only if you specifically want the original, "
+                          "loss-only pilot.")
     ap.add_argument("--items-per-trial", type=int, default=100)
     ap.add_argument("--repeats-per-condition", type=int, default=100)
     ap.add_argument("--overridden-cells-log-level", type=int, default=2, choices=[0, 1, 2],
