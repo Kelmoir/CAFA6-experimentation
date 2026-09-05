@@ -173,14 +173,20 @@ def build_overrides(condition: str, labels_matrix: np.ndarray, protein_ids: List
             overrides[pid] = {idx: (0.0, 0.0)}
 
     elif condition == "false_negative":
-        cells = pick_distinct_cells(labels_matrix, protein_ids, items_per_trial - 1, rng,
-                                     eligible_term_idx, value=0.0)
-        for pid, idx in cells:
-            overrides[pid] = {idx: (0.0, 0.0)}
-        used = {pid for pid, _ in cells}
-        pos_pid, pos_idx = pick_cell(labels_matrix, protein_ids, rng, value=1.0, exclude=used,
+        # Pick the guaranteed positive cell FIRST, while the full protein pool is still
+        # available. Picking it last (after items_per_trial-1 proteins had already been consumed
+        # for the zero cells) meant the single protein left over often didn't happen to carry a
+        # positive on any eligible term -- a near-certain RuntimeError whenever items_per_trial
+        # approached max_train_samples (observed directly at items_per_trial == max_train_samples
+        # == 1000). The set of 100 distinct proteins chosen is the same either way; only the pick
+        # order changes.
+        pos_pid, pos_idx = pick_cell(labels_matrix, protein_ids, rng, value=1.0, exclude=set(),
                                       eligible_term_idx=eligible_term_idx)
         overrides[pos_pid] = {pos_idx: (0.0, 1.0)}  # the injected false negative
+        cells = pick_distinct_cells(labels_matrix, protein_ids, items_per_trial - 1, rng,
+                                     eligible_term_idx, value=0.0, exclude={pos_pid})
+        for pid, idx in cells:
+            overrides[pid] = {idx: (0.0, 0.0)}
 
     else:
         raise ValueError(f"Unknown condition {condition!r}")
@@ -377,6 +383,12 @@ def run_pilot(args) -> None:
                             f"{args.train_terms_tsv} AND >= {args.min_val_positives} positives in "
                             f"the fixed {len(val_raw)}-protein validation subset -- lower "
                             f"--min-term-annotations/--min-val-positives or raise --max-val-samples.")
+    if args.items_per_trial >= args.max_train_samples:
+        raise RuntimeError(f"--items-per-trial ({args.items_per_trial}) must be smaller than "
+                            f"--max-train-samples ({args.max_train_samples}) -- the "
+                            f"false_negative condition needs at least one protein left over "
+                            f"after selecting items_per_trial-1 proteins for the zero cells, and "
+                            f"overriding every protein in the training subset leaves none.")
     print(f"[INFO] {len(eligible_term_idx)}/{len(label_names)} label terms have >= "
           f"{args.min_term_annotations} real (unpropagated) annotations in {args.train_terms_tsv} "
           f"AND >= {args.min_val_positives} positives in the fixed validation subset -- override "
