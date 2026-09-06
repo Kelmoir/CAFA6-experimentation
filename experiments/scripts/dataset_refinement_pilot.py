@@ -499,7 +499,7 @@ def run_pilot(args) -> None:
         if args.compute_eligible_term_auroc and spec["condition"] != "base" and record.get("injected_error_term"):
             ia = record["injected_error_term_auroc"]
             auroc_note = f" injected_term_auroc={ia:.4f}" if ia is not None else " injected_term_auroc=N/A"
-        print(f"[RUN {spec['run_id']}] val_loss={val_loss:.6f}{auroc_note} ({elapsed:.1f}s)")
+        print(f"[RUN {spec['run_id']}] val_loss={val_loss:.8f}{auroc_note} ({elapsed:.1f}s)")
 
     print(f"[INFO] Pilot complete -> {log_path}")
 
