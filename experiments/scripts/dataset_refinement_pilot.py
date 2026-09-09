@@ -64,6 +64,11 @@ Usage:
 
   # Resume a crashed/killed run -- skips run_ids already present in the log
   python experiments/scripts/dataset_refinement_pilot.py --run-tag pilot1 --resume
+
+  # Start every run from a locally pretrained checkpoint (training_run.py, --checkpoint-mode
+  # none) instead of the raw HF backbone -- see --init-from-checkpoint
+  python experiments/scripts/dataset_refinement_pilot.py --run-tag pretrained1 \\
+      --init-from-checkpoint models/pretrain-reduced-full-protein-v1/best_checkpoint
 """
 
 import argparse
@@ -210,8 +215,19 @@ def build_base_model(args, model_name: str, label_names: List[str], device: torc
         torch.cuda.manual_seed_all(args.seed)
     label2id = {name: i for i, name in enumerate(label_names)}
     id2label = {i: name for name, i in label2id.items()}
+    # --init-from-checkpoint points this at a local training_run.py checkpoint dir (e.g.
+    # models/<run-name>/best_checkpoint) instead of the raw pretrained HF backbone --
+    # transformers' from_pretrained treats a local directory the same as a Hub repo id, so
+    # nothing else about create_esm's loading path changes. id2label/label2id are still passed
+    # explicitly (as always), and the checkpoint's label count MUST match this pilot's label
+    # space: create_esm's from_pretrained call never sets ignore_mismatched_sizes=True, so a
+    # shape mismatch on classifier.out_proj is a hard RuntimeError, not a graceful reinit
+    # (confirmed directly against the installed transformers version, correcting an earlier,
+    # wrong assumption here) -- the checkpoint must have been trained against the SAME
+    # --data-path/--hf-dataset-repo as this pilot uses.
+    weights_source = args.init_from_checkpoint or model_name
     model = training_run.create_esm(
-        unfreeze_last_n=args.unfreeze_last_n, model_type=model_name,
+        unfreeze_last_n=args.unfreeze_last_n, model_type=weights_source,
         id2label=id2label, label2id=label2id,
     ).to(device)
     model.eval()  # the cached reference itself is never trained directly
@@ -408,8 +424,9 @@ def run_pilot(args) -> None:
     )
 
     base_model = build_base_model(args, args.model_name, label_names, device)
-    print(f"[INFO] Base model cached on {device} -- every run copies from this instead of "
-          f"rebuilding from disk")
+    weights_source = args.init_from_checkpoint or args.model_name
+    print(f"[INFO] Base model weights from {weights_source!r}, cached on {device} -- every run "
+          f"copies from this instead of rebuilding from disk")
 
     specs = build_run_specs(args)
     completed = load_completed_run_ids(log_path) if args.resume else set()
@@ -437,7 +454,8 @@ def run_pilot(args) -> None:
             "run_id": spec["run_id"], "condition": spec["condition"],
             "repeat_index": spec["repeat_index"], "val_loss": val_loss,
             "train_time_s": elapsed,
-            "config": {"model_name": args.model_name, "max_train_samples": args.max_train_samples,
+            "config": {"model_name": args.model_name, "init_from_checkpoint": args.init_from_checkpoint,
+                       "max_train_samples": args.max_train_samples,
                        "max_val_samples": args.max_val_samples,
                        "unknown_target_value": args.unknown_target_value, "epochs": args.epochs,
                        "items_per_trial": args.items_per_trial, "seed": args.seed,
@@ -717,6 +735,19 @@ def main() -> None:
                      help="Hub fallback if --data-path doesn't exist locally")
     ap.add_argument("--model-name", default="facebook/esm2_t6_8M_UR50D",
                      help="Smallest ESM2 variant by default, per this pilot's starting point")
+    ap.add_argument("--init-from-checkpoint", default=None,
+                     help="Local training_run.py checkpoint dir (e.g. "
+                          "models/<run-name>/best_checkpoint) to initialize the cached base model "
+                          "from, instead of --model-name's raw pretrained HF backbone -- lets every "
+                          "run start from a model already past chance-level on this label space "
+                          "(see the pretrain-then-probe discussion) rather than a freshly-"
+                          "initialized classifier head. MUST have been trained on the SAME label "
+                          "space (--data-path/--hf-dataset-repo) as this pilot uses -- a mismatched "
+                          "classifier.out_proj shape is a hard RuntimeError at load time (transformers "
+                          "does not gracefully reinit it, since create_esm never sets "
+                          "ignore_mismatched_sizes=True), not a silent fallback. "
+                          "Purely local -- generate it via training_run.py with --checkpoint-mode "
+                          "none (and no --push-to-hub) so it's never pushed to the Hub.")
     ap.add_argument("--max-train-samples", type=int, default=4000)
     ap.add_argument("--max-val-samples", type=int, default=1000)
     ap.add_argument("--unknown-target-value", type=float, default=0.5,

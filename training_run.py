@@ -498,14 +498,30 @@ def compute_metrics(logits: torch.Tensor, labels: torch.Tensor) -> Dict[str, Any
     correct = (preds == labels).float().sum().item()
     total = labels.numel()
     tp = ((preds == 1) & (labels == 1)).sum(dim=0)
+    fp = ((preds == 1) & (labels == 0)).sum(dim=0)
     fn = ((preds == 0) & (labels == 1)).sum(dim=0)
-    return {"correct": correct, "total": total, "tp": tp, "fn": fn}
+    return {"correct": correct, "total": total, "tp": tp, "fp": fp, "fn": fn}
 
 
 def finalize_metrics(accumulated: Dict[str, Any]) -> Dict[str, float]:
+    """recall is macro (mean of each label's own tp/(tp+fn) ratio) -- this is the
+    quantity --checkpoint-selection recall watches, and the one trial logs across this
+    repo call "val_recall". precision/f1 are pooled/micro instead (summed tp/fp/fn
+    across every label before taking one ratio, same as run_diagnostic()'s
+    'precision_at_0.5'/'f1_at_0.5') -- deliberately, so a per-epoch f1 trend is directly
+    comparable to --run-diagnostic's post-training number, and so f1 doesn't inherit
+    macro-recall's known failure mode against severe label imbalance (see
+    compute_metrics's docstring / trial-050) at the precision side too.
+    """
     accuracy = accumulated["correct"] / max(1, accumulated["total"])
     recall = (accumulated["tp"] / (accumulated["tp"] + accumulated["fn"] + 1e-8)).mean().item()
-    return {"accuracy": accuracy, "recall": recall}
+    tp_sum = accumulated["tp"].sum()
+    fp_sum = accumulated["fp"].sum()
+    fn_sum = accumulated["fn"].sum()
+    precision = (tp_sum / (tp_sum + fp_sum + 1e-8)).item()
+    recall_pooled = (tp_sum / (tp_sum + fn_sum + 1e-8)).item()
+    f1 = 2 * precision * recall_pooled / (precision + recall_pooled + 1e-8)
+    return {"accuracy": accuracy, "recall": recall, "precision": precision, "f1": f1}
 
 
 def compute_loss(criterion, logits: torch.Tensor, labels: torch.Tensor, loss_mask: Optional[torch.Tensor] = None) -> torch.Tensor:
@@ -754,6 +770,12 @@ def main() -> None:
     parser.add_argument("--unfreeze-last-n", type=int, default=2)
     parser.add_argument("--max-train-samples", type=int, default=None)
     parser.add_argument("--max-val-samples", type=int, default=None)
+    parser.add_argument("--data-path", default="data/cafa-6-protein-function-prediction/dataset",
+                         help="Local on-disk dataset (load_from_disk), e.g. "
+                              "data/cafa-6-protein-function-prediction/dataset_raw for the raw/"
+                              "unpropagated 668-term label space instead of the default coarse "
+                              "383-term one. Falls back to --dataset-repo-id from the Hub if this "
+                              "path doesn't exist.")
     parser.add_argument("--push-to-hub", action="store_true", help="Upload the finished model to Hugging Face Hub")
     parser.add_argument("--hf-repo-id", default=HF_REPO_ID, help="Hugging Face Hub repository id, e.g. kelmoir/cafa6-esm")
     parser.add_argument("--dataset-repo-id", default="kelmoir/CAFA6", help="Hugging Face Hub dataset repository id to fall back to when no local dataset is found at data/cafa-6-protein-function-prediction/dataset (e.g. kelmoir/cafa6-depth1 for the depth-1-only aspect-conditioning ablation)")
@@ -790,6 +812,7 @@ def main() -> None:
     parser.add_argument("--lora-layers-to-transform", type=int, default=None, help="Restrict LoRA adapters to only the last N backbone layers, instead of every layer (the default). This isn't just fewer adapters - PyTorch's autograd naturally skips the backward pass entirely for the untouched earlier layers (verified directly: their output activations have requires_grad=False), since no trainable parameter depends on them. Forward compute still runs for every layer, but backward - typically the more expensive half - only runs for the last N. Trades adaptation breadth for real wall-clock savings on large models. Only used with --use-lora")
     parser.add_argument("--mixed-precision", choices=["no", "fp16", "bf16"], default="no", help="Enable autocast mixed-precision training - needed to fit larger models (e.g. via --use-lora) in limited VRAM, and also controls the dtype frozen LoRA base weights are loaded in. bf16 is preferred on Ampere+ GPUs (A10G, L4, A100); fp16 needs GradScaler (handled automatically) and works on older GPUs (T4) too")
     parser.add_argument("--gradient-checkpointing", action=argparse.BooleanOptionalAction, default=False, help="Trade compute for activation memory by recomputing the forward pass during backward - needed to fit larger models/batches in limited VRAM")
+    parser.add_argument("--checkpoint-selection", choices=["val_loss", "f1", "recall"], default="val_loss", help="Metric that decides which epoch's weights get saved as best_checkpoint (and therefore used for --run-diagnostic/--push-to-hub/Hub promotion). 'val_loss' (default, lower is better) preserves prior behavior. 'f1'/'recall' (higher is better) select by the same pooled-f1/macro-recall numbers now printed every epoch (see finalize_metrics()) instead -- val_loss can look flat or even worsen slightly while ranking quality (f1/recall) keeps improving, especially under this task's severe class imbalance (see compute_metrics's docstring / trial-050), so it isn't always the metric that actually reflects which epoch is best. Mirrors experiments/mf_span/scripts/train_mf_span_model.py's --checkpoint-selection.")
     parser.add_argument("--run-diagnostic", action=argparse.BooleanOptionalAction, default=False, help="Run the post-training AUROC/F1 diagnostic (see run_diagnostic()) against the in-memory model right after training finishes, instead of needing a separate later script run against a re-downloaded checkpoint")
     parser.add_argument("--diagnostic-max-val-samples", type=int, default=2000, help="Validation examples to use for --run-diagnostic (independent of --max-val-samples, which controls the training loop's own per-epoch validation pass and may be set much smaller for a quick calibration trial)")
     args = parser.parse_args()
@@ -802,7 +825,7 @@ def main() -> None:
     print(f"[CONFIG] {json.dumps(config, default=str)}")
 
     device = torch.device(args.device)
-    data_path = Path("data/cafa-6-protein-function-prediction/dataset")
+    data_path = Path(args.data_path)
     dataset = load_training_data(data_path=data_path, repo_id=args.dataset_repo_id)
 
     dataset_train = dataset["train"]
@@ -971,6 +994,7 @@ def main() -> None:
     best_val_loss = float("inf")
     best_epoch: Optional[int] = None
     best_metrics: Optional[Dict[str, float]] = None
+    best_score = float("inf") if args.checkpoint_selection == "val_loss" else float("-inf")
     start_time = time.time()
 
     use_amp = args.mixed_precision != "no" and device.type == "cuda"
@@ -986,7 +1010,7 @@ def main() -> None:
         epoch_start = time.time()
         model_esm.train()
         train_loss = 0.0
-        train_metrics_acc = {"correct": 0.0, "total": 0, "tp": torch.zeros(len(label_names), device=device), "fn": torch.zeros(len(label_names), device=device)}
+        train_metrics_acc = {"correct": 0.0, "total": 0, "tp": torch.zeros(len(label_names), device=device), "fp": torch.zeros(len(label_names), device=device), "fn": torch.zeros(len(label_names), device=device)}
 
         log_every = max(1, len(train_dataloader) // 25)
         optimizer.zero_grad()
@@ -1037,6 +1061,7 @@ def main() -> None:
             train_metrics_acc["correct"] += batch_metrics["correct"]
             train_metrics_acc["total"] += batch_metrics["total"]
             train_metrics_acc["tp"] += batch_metrics["tp"]
+            train_metrics_acc["fp"] += batch_metrics["fp"]
             train_metrics_acc["fn"] += batch_metrics["fn"]
             train_loss += loss.item()
 
@@ -1047,7 +1072,7 @@ def main() -> None:
         train_metrics = finalize_metrics(train_metrics_acc)
 
         validation_loss = 0.0
-        validation_metrics_acc = {"correct": 0.0, "total": 0, "tp": torch.zeros(len(label_names), device=device), "fn": torch.zeros(len(label_names), device=device)}
+        validation_metrics_acc = {"correct": 0.0, "total": 0, "tp": torch.zeros(len(label_names), device=device), "fp": torch.zeros(len(label_names), device=device), "fn": torch.zeros(len(label_names), device=device)}
         model_esm.eval()
         with torch.inference_mode():
             for batch in validation_dataloader:
@@ -1067,6 +1092,7 @@ def main() -> None:
                 validation_metrics_acc["correct"] += batch_metrics["correct"]
                 validation_metrics_acc["total"] += batch_metrics["total"]
                 validation_metrics_acc["tp"] += batch_metrics["tp"]
+                validation_metrics_acc["fp"] += batch_metrics["fp"]
                 validation_metrics_acc["fn"] += batch_metrics["fn"]
 
         validation_loss /= max(1, len(validation_dataloader))
@@ -1079,9 +1105,27 @@ def main() -> None:
             "val_accuracy": validation_metrics["accuracy"],
             "train_recall": train_metrics["recall"],
             "val_recall": validation_metrics["recall"],
+            "train_precision": train_metrics["precision"],
+            "val_precision": validation_metrics["precision"],
+            "train_f1": train_metrics["f1"],
+            "val_f1": validation_metrics["f1"],
         }
 
-        if validation_loss < best_val_loss:
+        # --checkpoint-selection picks which epoch's weights get saved as best_checkpoint.
+        # val_loss (default) is lower-is-better; f1/recall (val_f1/val_recall, both already
+        # computed above every epoch) are higher-is-better. best_val_loss is still tracked
+        # unconditionally alongside whatever the selection metric is, purely for reporting/
+        # trial_metrics.json backward-compat -- it does not itself gate the save when
+        # --checkpoint-selection isn't "val_loss".
+        if args.checkpoint_selection == "val_loss":
+            current_score = validation_loss
+        elif args.checkpoint_selection == "f1":
+            current_score = validation_metrics["f1"]
+        else:
+            current_score = validation_metrics["recall"]
+        improved = (current_score < best_score) if args.checkpoint_selection == "val_loss" else (current_score > best_score)
+
+        if improved:
             # Tracked unconditionally (not just under --push-to-hub) since it's cheap -
             # a LoRA checkpoint only saves the small adapter (tens of MB), and even a
             # full-fine-tune save is a normal, standard "best checkpoint" cost, not a
@@ -1089,6 +1133,7 @@ def main() -> None:
             # model). Local-disk only here, no Hub upload - --checkpoint-mode's
             # every-epoch/final pushes are a separate, unrelated concern (per-epoch
             # history vs. this trial's single best point).
+            best_score = current_score
             best_val_loss = validation_loss
             best_epoch = epoch + 1
             best_metrics = latest_metrics
@@ -1099,7 +1144,8 @@ def main() -> None:
             f"Epoch {epoch + 1}/{args.start_epoch + args.epochs} | "
             f"train_loss={train_loss:.4f} | val_loss={validation_loss:.4f} | "
             f"train_acc={train_metrics['accuracy']:.4f} | val_acc={validation_metrics['accuracy']:.4f} | "
-            f"train_recall={train_metrics['recall']:.4f} | val_recall={validation_metrics['recall']:.4f}"
+            f"train_recall={train_metrics['recall']:.4f} | val_recall={validation_metrics['recall']:.4f} | "
+            f"train_f1={train_metrics['f1']:.4f} | val_f1={validation_metrics['f1']:.4f}"
         )
         print(f"[TIMING] epoch {epoch + 1} elapsed={time.time() - epoch_start:.1f}s")
 
@@ -1107,12 +1153,7 @@ def main() -> None:
             tracker.log(
                 {
                     "epoch": epoch,
-                    "train_loss": train_loss,
-                    "val_loss": validation_loss,
-                    "train_accuracy": train_metrics["accuracy"],
-                    "val_accuracy": validation_metrics["accuracy"],
-                    "train_recall": train_metrics["recall"],
-                    "val_recall": validation_metrics["recall"],
+                    **latest_metrics,
                 }
             )
 
@@ -1168,8 +1209,13 @@ def main() -> None:
         "val_accuracy": validation_metrics["accuracy"],
         "train_recall": train_metrics["recall"],
         "val_recall": validation_metrics["recall"],
+        "train_f1": train_metrics["f1"],
+        "val_f1": validation_metrics["f1"],
+        "checkpoint_selection": args.checkpoint_selection,
         "best_epoch": best_epoch,
+        "best_score": best_score,
         "best_val_loss": best_val_loss,
+        "best_metrics": best_metrics,
     }
     print(f"[SUMMARY] {json.dumps(summary, default=str)}")
 
@@ -1183,8 +1229,10 @@ def main() -> None:
     # accept a local path transparently, same as a Hub repo id.
     best_model = model_esm
     if best_epoch is not None and best_epoch != epoch + 1:
-        print(f"[INFO] Using best checkpoint (epoch {best_epoch}, val_loss={best_val_loss:.4f}) "
-              f"for diagnostic/promotion, not the last epoch ({epoch + 1}, val_loss={validation_loss:.4f})")
+        print(f"[INFO] Using best checkpoint (epoch {best_epoch}, selected by "
+              f"--checkpoint-selection={args.checkpoint_selection}={best_score:.4f}, "
+              f"val_loss={best_val_loss:.4f}) for diagnostic/promotion, not the last epoch "
+              f"({epoch + 1}, val_loss={validation_loss:.4f})")
         if args.use_lora:
             best_model = create_esm(
                 model_type=args.model_name,
