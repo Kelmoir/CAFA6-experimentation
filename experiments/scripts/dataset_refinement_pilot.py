@@ -209,7 +209,8 @@ def build_overrides(condition: str, labels_matrix: np.ndarray, protein_ids: List
 # no disk I/O, no from_pretrained bookkeeping, no shape/config validation.
 # --------------------------------------------------------------------------------------------
 
-def build_base_model(args, model_name: str, label_names: List[str], device: torch.device):
+def build_base_model(args, model_name: str, label_names: List[str], device: torch.device,
+                      labels_matrix: np.ndarray) -> torch.nn.Module:
     torch.manual_seed(args.seed)
     if device.type == "cuda":
         torch.cuda.manual_seed_all(args.seed)
@@ -230,6 +231,22 @@ def build_base_model(args, model_name: str, label_names: List[str], device: torc
         unfreeze_last_n=args.unfreeze_last_n, model_type=weights_source,
         id2label=id2label, label2id=label2id,
     ).to(device)
+
+    # Mirror training_run.py's fresh-start classifier-bias init (main(), ~line 897-905): without
+    # it, BCE with this task's severe class imbalance wastes early gradient budget just walking
+    # the bias down from a random init toward the label priors, which shrinks per-example
+    # gradient magnitude and starves the weight matrix of signal to actually discriminate -- a
+    # real cost against a 3-epoch pilot run's whole training budget, on every run (base included),
+    # not just the conditions under test. Computed once, here, from the pilot's own fixed
+    # training subset (labels_matrix), then baked into the cached base_model so every run's
+    # deepcopy starts from it -- a plain deterministic tensor write, not an RNG draw, so it
+    # doesn't disturb the seeded random init of the rest of the model.
+    label_counts = torch.from_numpy(labels_matrix.sum(axis=0)).float()
+    label_priors = (label_counts / max(1, labels_matrix.shape[0])).clamp(1e-4, 1 - 1e-4)
+    prior_bias = torch.log(label_priors / (1 - label_priors)).to(device)
+    with torch.no_grad():
+        model.classifier.out_proj.bias.copy_(prior_bias)
+
     model.eval()  # the cached reference itself is never trained directly
     return model
 
@@ -423,7 +440,7 @@ def run_pilot(args) -> None:
         collate_fn=partial(training_run.data_collate_function, tokenizer=tokenizer),
     )
 
-    base_model = build_base_model(args, args.model_name, label_names, device)
+    base_model = build_base_model(args, args.model_name, label_names, device, labels_matrix)
     weights_source = args.init_from_checkpoint or args.model_name
     print(f"[INFO] Base model weights from {weights_source!r}, cached on {device} -- every run "
           f"copies from this instead of rebuilding from disk")
