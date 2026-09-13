@@ -118,23 +118,44 @@ UniProt-GOA annotations are explicit "NOT" negatives).
 5. Re-run training with the new loss (`--run-diagnostic` enabled, as today) across the same
    eligible terms.
 6. **Success criterion is downstream model quality, not the estimation signal itself** — compare
-   `--run-diagnostic`'s per-label AUROC/F1 distribution (or the real CAFA score) against the
-   current hard-0-everywhere baseline. A plausible-looking π_term is not the goal; a better
-   classifier is.
+   `--run-diagnostic`'s per-label AUROC/F1 (or the real CAFA score), per term, against the current
+   hard-0-everywhere baseline. A plausible-looking π_term is not the goal; a better classifier is.
+   Per Bekker, Robberechts & Davis (2019)'s finding that a SCAR-style correction can actively
+   underperform doing nothing under real SAR (see "Key risks" below), this comparison is not a
+   post-hoc nicety — any term whose nnPU-trained AUROC/F1 doesn't clearly beat its baseline value
+   should have its π_term/nnPU treatment reverted to plain BCE for that term, not kept on the
+   strength of the theory alone.
 
 ## Key risks / open questions
 
-- **SCAR assumption, now fully load-bearing**: nnPU and KM2 both assume SCAR (observed positives
-  are a random sample of all true positives, independent of x). Gaudet & Dessimoz (2017) document
-  concrete GO-specific violations (species, authorship, annotator, propagation bias) that make the
-  more general SAR (Selected At Random) model more realistic. Bekker & Davis (2020)'s own
-  method-selection guidance (§5.6) notes that when separability holds better than a clean global
-  SCAR constant, Two-Step (separability-based) methods can be *more* robust than class-prior
-  methods like this one — the two-step design this plan discards was, on paper, the more
-  SCAR-robust hedge. Going with nnPU+KM2 anyway is a deliberate bet on the theoretically strongest
-  single method per this session's explicit instruction, not a resolution of this risk. The spy
-  cross-check (pipeline step 3b) is the only mitigation in place; treat any term with a large
-  KM2-vs-spy disagreement as suspect, not just noisy.
+- **SCAR assumption, now fully load-bearing — and empirically shown to be able to backfire, not
+  just underperform**: nnPU and KM2 both assume SCAR (observed positives are a random sample of all
+  true positives, independent of x). Gaudet & Dessimoz (2017) document concrete GO-specific
+  violations (species, authorship, annotator, propagation bias) that make the more general SAR
+  (Selected At Random) model more realistic. Bekker & Davis (2020)'s own method-selection guidance
+  (§5.6) notes that when separability holds better than a clean global SCAR constant, Two-Step
+  (separability-based) methods can be *more* robust than class-prior methods like this one — the
+  two-step design this plan discards was, on paper, the more SCAR-robust hedge. Going with
+  nnPU+KM2 anyway is a deliberate bet on the theoretically strongest single method per this
+  session's explicit instruction, not a resolution of this risk. **This is not just a
+  weaker-guarantee concern**: Bekker, Robberechts & Davis (2019) — the direct SAR follow-up paper,
+  see its own summary below — empirically show that under genuinely SAR-violated data, a
+  SCAR-style class-prior correction (their benchmarks used KM2 and TIcE specifically) can perform
+  *worse* than doing nothing at all (the same unknowns-as-negative Naive baseline
+  `training_run.py` uses today), because a wrong-subspace correction introduces both new false
+  positives and new false negatives, whereas doing nothing only ever contributes false negatives.
+  Two mitigations follow from that paper: (1) the spy cross-check (pipeline step 3b) is necessary
+  but per this finding **not sufficient on its own** — pipeline step 6's baseline comparison is
+  therefore not just good practice but the only real safety net, and any term/run where nnPU+KM2
+  doesn't clearly beat the current baseline should be treated as a live SAR signal, not a wash, and
+  reverted to plain BCE for that term rather than kept "because the theory says it should help";
+  (2) if the spy cross-check keeps flagging material disagreement for a meaningful share of terms,
+  the same paper's propensity-weighted ERM / SAR-EM approach (jointly modeling an instance-level
+  labeling propensity e(x) from *known* bias covariates — species, evidence-code mix, annotation
+  count as a "how well-studied" proxy — instead of one constant π_term) is the documented
+  escalation path, at real added engineering/compute cost consistent with this plan's
+  accept-the-cost stance. Not built in this revision; noted as the next step if the baseline
+  comparison keeps showing regressions.
 - **π estimation error is asymmetric and the failure mode is a cliff, not a slope**: du Plessis
   et al. (2014) show PU learning fails completely once π̂ ≤ π/2 (not a graceful degradation); Kiryo
   et al. (2017) confirm empirically that underestimating π hurts more than overestimating it. At a
@@ -186,6 +207,17 @@ UniProt-GOA annotations are explicit "NOT" negatives).
   Decision Tree Induction*, AAAI — **TIcE**, deliberately not used as the primary estimator (see
   "Chosen approach" above) despite being an order of magnitude faster than KM1/KM2; the
   compute-cost tradeoff this plan is explicitly not taking.
+
+**SAR-specific follow-up (mitigations)**
+- Bekker, Robberechts & Davis (2019), *Beyond the Selected Completely At Random Assumption for
+  Learning from Positive and Unlabeled Data*, ECML/PKDD — the direct SAR follow-up to TIcE; source
+  of the finding that a SCAR-style class-prior correction can actively underperform doing nothing
+  under real SAR (motivates the per-term revert-on-regression rule in pipeline step 6), and of two
+  concrete SAR mitigations beyond the spy cross-check this plan already uses: propensity-weighted
+  ERM (reweight by a known, per-instance labeling propensity e(x) instead of one term-level
+  constant) and SAR-EM (jointly learn the classifier and a low-dimensional propensity model via
+  EM when e(x) is unknown). Not built in this revision — the escalation path if the spy cross-check
+  keeps flagging trouble; see its own summary in `paper_summaries/` for the full method.
 
 **Survey**
 - Bekker & Davis (2020), *Learning from Positive and Unlabeled Data: A Survey*, Machine Learning
