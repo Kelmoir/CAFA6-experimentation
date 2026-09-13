@@ -1,6 +1,18 @@
 # Positive-Unlabeled (PU) learning for GO label refinement — plan
 
-**Not yet implemented.** Originally written 2026-09-13 following `dataset_refinement_pilot_summary.md`'s
+**v1 implemented 2026-09-13** (same day as the revision below). All three pipeline pieces exist and
+have been smoke-tested end-to-end on CPU (mechanism only — not yet run at real scale, see "v1
+implementation notes" below):
+- `experiments/scripts/extract_protein_embeddings.py` — pooled per-protein embeddings + classifier
+  probabilities from a trained baseline checkpoint (pipeline steps 1-2).
+- `experiments/scripts/estimate_class_priors_km2.py` — per-term KM2 class prior + Elkan-Noto spy
+  cross-check, cached to `class_priors_km2.json` (pipeline step 3).
+- `training_run.py --nnpu --class-priors-path ...` — per-label nnPU risk (new `nnpu_loss()`
+  function), replacing BCE only for labels with a cached, above-floor prior; everything else keeps
+  today's behavior unchanged (pipeline step 4). Verified the non-`--nnpu` path is byte-for-byte
+  unaffected (separate smoke test, same config minus `--nnpu`, matching loss/accuracy scale).
+
+Originally written 2026-09-13 following `dataset_refinement_pilot_summary.md`'s
 closeout: the aggregate-per-run-loss approach to detecting mislabeled GO annotations doesn't work
 (pooled val_loss/AUROC can't isolate a single cell's effect from a whole training run's worth of
 overrides). Reframes the same underlying problem — GO's Open World Assumption (OWA),
@@ -125,6 +137,46 @@ UniProt-GOA annotations are explicit "NOT" negatives).
    post-hoc nicety — any term whose nnPU-trained AUROC/F1 doesn't clearly beat its baseline value
    should have its π_term/nnPU treatment reverted to plain BCE for that term, not kept on the
    strength of the theory alone.
+
+## v1 implementation notes (disclosed deviations from the plan above)
+
+Three things came up building v1 that revise or approximate what's written above — flagged here
+explicitly rather than left implicit, since [[project_pu_learning_nnpu_km2]]'s memory entry warns
+against silently reversing this plan's decisions:
+
+- **KM2's mixture set is a shared, capped random subsample (default 5000 proteins), not the full
+  ~54k-protein population per term.** The earlier note above ("KM2 runs at full protein-set scale
+  per term, not a capped subsample") turns out to be computationally infeasible as literally
+  stated: an exact per-term QP needs an O(n^2) kernel matrix, and 5000^2 already sits at the edge
+  of what's cheap to compute 668 times — 54,395^2 (~2.96 billion entries) per term, 668 times over,
+  is many orders of magnitude beyond reach on this CPU or a GPU. The fix that keeps this a
+  *disclosed revision within KM2* rather than a silent swap to a cheaper method: the mixture
+  sample is the same one draw reused across every term (not resampled per term), so its O(n^2)
+  kernel matrix (`K_MM`) is computed exactly once and every term's QP scan reuses it — a shared
+  subsample is a standard Monte-Carlo approximation KM2 itself tolerates (larger n -> lower
+  variance, not a different assumption), not a different, cheaper estimator the way TIcE would be.
+  `--mixture-sample-size` is exposed if more compute should be spent here.
+- **kappa\* selection uses a two-segment elbow fit to the D(kappa) curve, not the paper's exact
+  statistical slope/threshold test** ("gradient thresholding"). Implementable directly from the
+  paper's own theory would need its specific Rademacher-complexity-derived threshold; the elbow fit
+  is a practical stand-in with the same qualitative shape (flat near-zero segment, then a rising
+  segment past kappa\*) but no statistical guarantee attached to where it draws the line. Worth
+  revisiting with real per-term data once a full run is done — see "Key risks" below.
+- **The Elkan-Noto spy cross-check (`pi_spy`) is computed from the SAME baseline checkpoint the
+  spy positives were trained on** — there's no held-out-per-term retraining in v1 (that's pipeline
+  step 2's "per-term spy holdout with k-fold", not built; expensive at 668-term scale, since it
+  implies up to 668 separate retrains or a shared multi-fold scheme not yet designed). This makes
+  `pi_spy` optimistic and not a rigorous second estimator yet — the code and cache output both flag
+  this, and `flagged_scar_violation` (large `pi_km2`/`pi_spy` disagreement) should be read as "worth
+  a second look", not as a validated SCAR-violation detector.
+
+**Not yet done, deliberately left for a real run rather than built speculatively**: extraction and
+KM2 estimation have only been smoke-tested on a few hundred proteins / 5 terms, not the full
+~54k-protein / 668-term scale (a real run is a multi-hour-to-overnight background job — see the
+scripts' own docstrings for the `nohup` invocation); the resulting `class_priors_km2.json` hasn't
+yet been used for a real `--nnpu` training trial (only a mechanism smoke test); and pipeline step 6
+(the `--run-diagnostic` AUROC/F1 comparison against the plain-BCE baseline, this plan's actual
+success criterion) hasn't been run at all yet.
 
 ## Key risks / open questions
 

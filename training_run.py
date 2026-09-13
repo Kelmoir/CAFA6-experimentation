@@ -537,6 +537,63 @@ def compute_loss(criterion, logits: torch.Tensor, labels: torch.Tensor, loss_mas
     return (per_element_loss * loss_mask).sum() / loss_mask.sum().clamp(min=1)
 
 
+def nnpu_loss(
+    logits_u: torch.Tensor,
+    hard_labels_u: torch.Tensor,
+    logits_p: torch.Tensor,
+    hard_labels_p: torch.Tensor,
+    priors: torch.Tensor,
+    eligible_mask: torch.Tensor,
+    beta: float = 0.0,
+    gamma: float = 1.0,
+) -> torch.Tensor:
+    """Per-label nnPU risk (Kiryo, Niu, du Plessis & Sugiyama 2017, Algorithm 1's non-negative
+    correction), generalized here to a shared-backbone multi-label network: each eligible label j
+    gets its own class prior priors[j] and its own risk terms, computed from two separate
+    forward-passed batches -- logits_u/hard_labels_u (the ordinary training batch, standing in for
+    the "unlabeled" sample U) and logits_p/hard_labels_p (a dedicated positive-anchor batch,
+    oversampled so every eligible label has real positive rows to compute R_p+/R_p- from even
+    though true positives are far too rare -- 0.556% observed rate on the raw label space -- to
+    reliably land in an ordinary batch). This dual-batch, per-label generalization is NOT
+    demonstrated in the source papers (they cover a single binary task with separate P/U streams,
+    not many simultaneous per-label priors sharing one backbone) -- see pu_learning_plan.md's "Key
+    risks" section; treat it as unreviewed until validated per-term against a --run-diagnostic
+    AUROC/F1 comparison against the plain-BCE baseline.
+
+    Uses the logistic (softplus) surrogate loss -- the same one BCEWithLogitsLoss implicitly uses
+    -- so risk magnitudes stay comparable to the rest of this script's loss reporting.
+
+    Only returns the mean risk over eligible columns; combining it with the plain-BCE loss for
+    non-eligible columns is the caller's responsibility (see main()'s training loop).
+    """
+    eligible_idx = eligible_mask.nonzero(as_tuple=True)[0]
+    if eligible_idx.numel() == 0:
+        return torch.zeros((), device=logits_u.device)
+
+    softplus_pos_u = torch.nn.functional.softplus(-logits_u[:, eligible_idx])
+    softplus_neg_u = torch.nn.functional.softplus(logits_u[:, eligible_idx])
+    u_mask = (hard_labels_u[:, eligible_idx] == 0).float()
+    n_u = u_mask.sum(dim=0).clamp(min=1)
+    r_u_neg = (softplus_neg_u * u_mask).sum(dim=0) / n_u
+
+    softplus_pos_p = torch.nn.functional.softplus(-logits_p[:, eligible_idx])
+    softplus_neg_p = torch.nn.functional.softplus(logits_p[:, eligible_idx])
+    p_mask = (hard_labels_p[:, eligible_idx] == 1).float()
+    n_p = p_mask.sum(dim=0).clamp(min=1)
+    r_p_pos = (softplus_pos_p * p_mask).sum(dim=0) / n_p
+    r_p_neg = (softplus_neg_p * p_mask).sum(dim=0) / n_p
+
+    pi = priors[eligible_idx]
+    neg_risk = r_u_neg - pi * r_p_neg
+    positive_part = pi * r_p_pos
+    # Non-negative correction: once a label's empirical negative risk drops below -beta (which
+    # can't happen in the population limit -- it's finite-sample noise from too few positives --
+    # but does happen routinely with flexible/deep models, per Kiryo et al.'s uPU-overfitting
+    # finding), switch to ascending on it instead of continuing to trust it.
+    corrected = torch.where(neg_risk < -beta, positive_part - gamma * neg_risk, positive_part + neg_risk)
+    return corrected.mean()
+
+
 def init_trackio_run(run_name: str, space_id: Optional[str] = None, config: Optional[Dict[str, Any]] = None):
     if trackio is None:
         print("[INFO] trackio is not installed; skipping experiment tracking.")
@@ -815,6 +872,12 @@ def main() -> None:
     parser.add_argument("--checkpoint-selection", choices=["val_loss", "f1", "recall"], default="val_loss", help="Metric that decides which epoch's weights get saved as best_checkpoint (and therefore used for --run-diagnostic/--push-to-hub/Hub promotion). 'val_loss' (default, lower is better) preserves prior behavior. 'f1'/'recall' (higher is better) select by the same pooled-f1/macro-recall numbers now printed every epoch (see finalize_metrics()) instead -- val_loss can look flat or even worsen slightly while ranking quality (f1/recall) keeps improving, especially under this task's severe class imbalance (see compute_metrics's docstring / trial-050), so it isn't always the metric that actually reflects which epoch is best. Mirrors experiments/mf_span/scripts/train_mf_span_model.py's --checkpoint-selection.")
     parser.add_argument("--run-diagnostic", action=argparse.BooleanOptionalAction, default=False, help="Run the post-training AUROC/F1 diagnostic (see run_diagnostic()) against the in-memory model right after training finishes, instead of needing a separate later script run against a re-downloaded checkpoint")
     parser.add_argument("--diagnostic-max-val-samples", type=int, default=2000, help="Validation examples to use for --run-diagnostic (independent of --max-val-samples, which controls the training loop's own per-epoch validation pass and may be set much smaller for a quick calibration trial)")
+    parser.add_argument("--nnpu", action=argparse.BooleanOptionalAction, default=False, help="Replace BCE with the nnPU risk (Kiryo, Niu, du Plessis & Sugiyama 2017) for labels with a cached class prior -- see experiments/pu_learning_plan.md. Labels without a cached, above-floor prior keep today's plain BCE (with --unknown-target-value/--label-smoothing applying to them as before). Requires --class-priors-path.")
+    parser.add_argument("--class-priors-path", default=None, help="Path to the class_priors_km2.json cache written by experiments/scripts/estimate_class_priors_km2.py. Required by --nnpu.")
+    parser.add_argument("--nnpu-min-term-positives", type=int, default=20, help="A label needs at least this many positives in THIS run's training split to be nnPU-eligible even if it has a cached prior -- protects the positive-anchor batch (see --nnpu-positive-batch-size) from being built on too few real examples in a small/scale-limited run.")
+    parser.add_argument("--nnpu-positive-batch-size", type=int, default=32, help="Size of the dedicated positive-anchor batch forwarded once per training step alongside the ordinary batch, so every nnPU-eligible label has real positive rows to compute its R_p+/R_p- risk terms from -- real positives are far too rare (0.556% observed rate) to show up reliably within an ordinary batch. Drawn from all train-split proteins with >=1 eligible-label positive, independent of --max-train-samples.")
+    parser.add_argument("--nnpu-beta", type=float, default=0.0, help="Kiryo et al.'s non-negative-risk correction threshold: when a label's empirical (R_u- - pi*R_p-) drops below -beta, gradient ascent is applied to it instead of continuing to descend (prevents the classic uPU overfitting failure mode on flexible/deep models).")
+    parser.add_argument("--nnpu-gamma", type=float, default=1.0, help="Scale of the gradient-ascent correction applied when a label's negative risk drops below -beta (see --nnpu-beta).")
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
@@ -903,6 +966,61 @@ def main() -> None:
         with torch.no_grad():
             model_esm.classifier.out_proj.bias.copy_(prior_bias)
         print(f"[INFO] Initialized classifier bias to label priors: {dict(zip(label_names, label_priors.tolist()))}")
+
+    class_priors_tensor = torch.zeros(len(label_names), device=device)
+    eligible_mask = torch.zeros(len(label_names), dtype=torch.bool, device=device)
+    positive_iter = None
+    if args.nnpu:
+        if args.class_priors_path is None:
+            raise ValueError("--nnpu requires --class-priors-path (see experiments/scripts/estimate_class_priors_km2.py)")
+        with open(args.class_priors_path) as f:
+            cached_priors = json.load(f)["priors"]
+        n_below_floor = 0
+        for term_name, entry in cached_priors.items():
+            if term_name not in label2id:
+                continue
+            idx = label2id[term_name]
+            if label_counts[idx].item() < args.nnpu_min_term_positives:
+                n_below_floor += 1
+                continue
+            eligible_mask[idx] = True
+            # Per du Plessis et al. (2014)/Kiryo et al. (2017)'s asymmetric-error finding
+            # (underestimating pi is the failure mode that can collapse nnPU outright, while
+            # overestimating degrades gracefully): bias toward the higher of the two cached
+            # estimates rather than averaging them, per pu_learning_plan.md's calibration rule.
+            class_priors_tensor[idx] = max(entry["pi_km2"], entry["pi_spy"])
+        n_eligible = int(eligible_mask.sum().item())
+        n_uncached = len(label_names) - n_eligible - n_below_floor
+        print(f"[INFO] --nnpu: {n_eligible} labels eligible for nnPU ({n_below_floor} cached but below "
+              f"--nnpu-min-term-positives={args.nnpu_min_term_positives}, {n_uncached} not in cache -- "
+              f"both groups keep plain BCE)")
+        if n_eligible == 0:
+            raise ValueError("--nnpu: no labels eligible after applying --nnpu-min-term-positives; "
+                              "check --class-priors-path or lower the floor")
+
+        eligible_names = {label_names[i] for i in range(len(label_names)) if eligible_mask[i]}
+        # Independent of --max-train-samples: real positives are rare enough (0.556% observed
+        # rate) that scale-limiting the anchor pool the same way as the main training stream would
+        # starve rarer eligible labels of any anchor rows at all.
+        positive_pool_indices = [
+            row_idx for row_idx, labs in enumerate(raw_train_labels)
+            if any(label_names[int(idx)] in eligible_names for idx in labs)
+        ]
+        print(f"[INFO] --nnpu positive-anchor pool: {len(positive_pool_indices)} proteins (>=1 eligible-label positive)")
+        positive_pool_dataset = processed_dataset["train"].select(positive_pool_indices)
+        positive_dataloader = torch.utils.data.DataLoader(
+            positive_pool_dataset,
+            batch_size=args.nnpu_positive_batch_size,
+            shuffle=True,
+            collate_fn=partial(data_collate_function, tokenizer=tokenizer),
+        )
+
+        def _cycle_positive_batches():
+            while True:
+                for pos_batch in positive_dataloader:
+                    yield pos_batch
+
+        positive_iter = _cycle_positive_batches()
 
     def build_train_dataloader(epoch: int) -> torch.utils.data.DataLoader:
         train_subset = processed_dataset["train"]
@@ -1034,7 +1152,37 @@ def main() -> None:
             with torch.autocast(device_type="cuda", dtype=autocast_dtype, enabled=use_amp):
                 outputs = model_esm(**model_kwargs)
                 logits = outputs.logits
-                loss = compute_loss(criterion, logits, labels, loss_mask)
+                if args.nnpu:
+                    # Non-eligible columns (no cached, above-floor prior) keep today's plain-BCE
+                    # treatment -- including --unknown-target-value/--label-smoothing, already
+                    # applied to `labels` above -- computed only over those columns here.
+                    non_eligible = ~eligible_mask
+                    if non_eligible.any():
+                        standard_loss = compute_loss(
+                            criterion, logits[:, non_eligible], labels[:, non_eligible],
+                            loss_mask[:, non_eligible] if loss_mask is not None else None,
+                        )
+                    else:
+                        standard_loss = torch.zeros((), device=device)
+                    pos_batch = next(positive_iter)
+                    pos_kwargs = {
+                        "input_ids": pos_batch["input_ids"].to(device),
+                        "attention_mask": pos_batch["attention_mask"].to(device),
+                    }
+                    if args.use_aspect_input:
+                        pos_kwargs["aspect_input"] = pos_batch["aspect_input"].to(device)
+                    pos_hard_labels = pos_batch["labels"].to(device)
+                    pos_outputs = model_esm(**pos_kwargs)
+                    nnpu_component = nnpu_loss(
+                        logits, hard_labels, pos_outputs.logits, pos_hard_labels,
+                        class_priors_tensor, eligible_mask, beta=args.nnpu_beta, gamma=args.nnpu_gamma,
+                    )
+                    # Weighted by label-count share so overall loss scale stays comparable to the
+                    # plain-BCE path regardless of how many labels this run's cache made eligible.
+                    eligible_frac = eligible_mask.float().mean()
+                    loss = eligible_frac * nnpu_component + (1 - eligible_frac) * standard_loss
+                else:
+                    loss = compute_loss(criterion, logits, labels, loss_mask)
             scaled_loss = scaler.scale(loss / args.grad_accum_steps) if use_grad_scaler else (loss / args.grad_accum_steps)
             scaled_loss.backward()
 
