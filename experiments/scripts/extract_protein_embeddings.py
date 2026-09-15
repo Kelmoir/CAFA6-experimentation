@@ -47,9 +47,12 @@ def mean_pool(last_hidden_state: torch.Tensor, attention_mask: torch.Tensor) -> 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--checkpoint-path", default="models/pretrain-reduced-full-protein-v1/best_checkpoint",
+    parser.add_argument("--checkpoint-path", default="models/pretrain-reduced-full-protein-v8/best_checkpoint",
                          help="Local checkpoint dir (AutoModelForSequenceClassification.from_pretrained-compatible). "
-                              "Must match --data-path's label space (668-term raw space by default).")
+                              "Must match --data-path's label space (668-term raw space by default). v8 is the "
+                              "largest/most-recently-trained of the local pretrain-reduced-full-protein-v* runs "
+                              "(esm2_t12_35M_UR50D, 12 layers) -- the others (v1-v7, mostly esm2_t6_8M_UR50D, "
+                              "6 layers) are earlier/smaller checkpoints from the same series.")
     parser.add_argument("--data-path", default="data/cafa-6-protein-function-prediction/dataset_raw")
     parser.add_argument("--splits", default="train,validation", help="Comma-separated dataset splits to extract")
     parser.add_argument("--batch-size", type=int, default=16)

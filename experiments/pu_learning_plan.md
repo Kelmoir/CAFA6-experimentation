@@ -1,5 +1,17 @@
 # Positive-Unlabeled (PU) learning for GO label refinement — plan
 
+**v1.1, 2026-09-15: KM2 empirically failed at real scale, dropped from the calibration formula.**
+Ran extraction (54,395 proteins, `pretrain-reduced-full-protein-v8` checkpoint) and KM2 estimation
+(437/668 eligible terms) at full scale for the first time. `pi_km2` came back within {0.12, 0.14,
+0.16} for 435/437 terms regardless of true prevalence (ranging 0.2%-3.7%) — verified this is not a
+bug (batched-GPU rewrite matches the original scalar loop to 1e-9 on synthetic data) but a real
+failure of the method on this data: D(kappa) decreases monotonically all the way to kappa=1 for
+every term checked, in both the pooled-embedding and classifier-probability feature spaces, with
+near-identical curves for terms 8x apart in true prevalence. See "v1 implementation notes" below
+for the full diagnosis. `training_run.py`'s calibration now uses `pi_spy` alone (dropped `pi_km2`
+from the `max()`), a user-confirmed decision, not a silent revert — see
+[[project_pu_learning_nnpu_km2]].
+
 **v1 implemented 2026-09-13** (same day as the revision below). All three pipeline pieces exist and
 have been smoke-tested end-to-end on CPU (mechanism only — not yet run at real scale, see "v1
 implementation notes" below):
@@ -170,13 +182,45 @@ against silently reversing this plan's decisions:
   this, and `flagged_scar_violation` (large `pi_km2`/`pi_spy` disagreement) should be read as "worth
   a second look", not as a validated SCAR-violation detector.
 
-**Not yet done, deliberately left for a real run rather than built speculatively**: extraction and
-KM2 estimation have only been smoke-tested on a few hundred proteins / 5 terms, not the full
-~54k-protein / 668-term scale (a real run is a multi-hour-to-overnight background job — see the
-scripts' own docstrings for the `nohup` invocation); the resulting `class_priors_km2.json` hasn't
-yet been used for a real `--nnpu` training trial (only a mechanism smoke test); and pipeline step 6
-(the `--run-diagnostic` AUROC/F1 comparison against the plain-BCE baseline, this plan's actual
-success criterion) hasn't been run at all yet.
+- **KM2 empirically fails on this checkpoint's embeddings — verified at full scale, not a bug
+  (2026-09-15).** `extract_protein_embeddings.py` and `estimate_class_priors_km2.py` were both run
+  for real: 54,395 proteins (`pretrain-reduced-full-protein-v8`, GPU, ~29min) and 437/668 eligible
+  terms (`--min-term-positives 100`, GPU, 38s — the QP was rewritten as a batched-across-kappa torch
+  op for this, see the script's `frank_wolfe_qp_batched`, since the original per-kappa Python loop
+  was CPU-only and estimated at >10min for a full run). Result: `pi_km2` landed on {0.12, 0.14, 0.16}
+  for 435/437 terms, with no visible relationship to true per-term prevalence (0.2%-3.7% across
+  examples checked). Diagnosis, confirmed with direct evidence before concluding it wasn't a
+  refactor bug:
+  - Re-ran the original scalar per-kappa Frank-Wolfe loop against the new batched-torch version on
+    synthetic data — outputs matched to 1e-9. The rewrite is correct; the estimator itself is not
+    finding signal.
+  - Extended `--kappa-max` from 0.3 to 1.0 for two real terms (GO:0000122, true prevalence 2.04%;
+    GO:0008584, true prevalence 0.24% — 8.5x rarer): D(kappa) decreases **monotonically all the way
+    to kappa=1** for both, never plateaus, never rises. KM2 theory expects D(kappa) to stay near a
+    noise floor for kappa <= true kappa\* then rise once kappa overshoots what the mixture can
+    supply; that shape never appears here.
+  - Tried the classifier's own 668-dim probability vectors (already extracted, presumably more
+    label-discriminative than raw pooled backbone features) as the KM2 feature space instead of the
+    pooled embeddings — same monotonic-decrease-to-1.0 failure.
+  - The clinching evidence: the two terms' D(kappa) curves are nearly numerically identical at every
+    kappa tested despite an 8.5x true-prevalence gap. If the method were tracking real per-term
+    structure, curves for terms that different should look visibly different near their own kappa\*.
+    They don't — meaning a term's "positive" protein set has almost the same mean embedding as a
+    random subset of the whole population, in both feature spaces tried. KM2's core assumption
+    (mean-embedding separability between the positive subpopulation and the general mixture) doesn't
+    hold for this checkpoint/embedding combination, at least not via simple RBF kernel mean-matching
+    with a median-heuristic bandwidth.
+  - **Decision (user-confirmed, not a silent revert)**: `training_run.py`'s calibration now uses
+    `entry["pi_spy"]` alone, dropping `pi_km2` from the `max()`. `pi_km2` stays in
+    `class_priors_km2.json` for reference/future diagnosis; it's just not consumed by training
+    anymore. This makes the Elkan-Noto spy mean's known optimism bias (same checkpoint the spy
+    positives were trained on) the sole source of `pi`, no longer cross-checked or floor-raised by a
+    second estimator — worth revisiting (different bandwidth, different embedding/pooling strategy,
+    or abandoning kernel-mean-based estimation for this checkpoint family entirely) if nnPU training
+    with spy-only priors underperforms.
+
+**Not yet done**: pipeline step 6 (the `--run-diagnostic` AUROC/F1 comparison of `--nnpu` against
+the plain-BCE baseline, this plan's actual success criterion) hasn't been run at all yet.
 
 ## Key risks / open questions
 

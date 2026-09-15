@@ -47,14 +47,18 @@ This implementation:
     recording, but don't read a close match as strong confirmation.
 
 Usage:
-  # Smoke test (few terms, small mixture sample, runs in well under a minute)
+  # Smoke test (few terms, small mixture sample, runs in well under a minute, CPU is fine)
   env/bin/python experiments/scripts/estimate_class_priors_km2.py \\
-      --embeddings-dir experiments/pu_cache/smoke --mixture-sample-size 200 \\
+      --embeddings-dir experiments/pu_cache/smoke --mixture-sample-size 200 --device cpu \\
       --min-term-positives 2 --max-terms 5 --output-path experiments/pu_cache/smoke/class_priors_km2.json
 
-  # Full run (all eligible terms, default 5000-protein mixture sample)
-  nohup env/bin/python experiments/scripts/estimate_class_priors_km2.py \\
-      > experiments/logs/estimate_class_priors_km2.out 2>&1 &
+  # Full run (all eligible terms, default 5000-protein mixture sample). The per-(term, kappa) QP
+  # is solved via torch, batched across the whole kappa grid at once (see frank_wolfe_qp_batched)
+  # and moved to --device -- at 437 eligible terms (min-term-positives=100 on the current
+  # checkpoint) this is CPU-infeasible in reasonable time (estimated >10min, many single-core
+  # matvecs), so run it with --device cuda:
+  env/bin/python experiments/scripts/estimate_class_priors_km2.py --device cuda \\
+      > experiments/logs/estimate_class_priors_km2.out 2>&1
 """
 
 import argparse
@@ -64,6 +68,7 @@ from pathlib import Path
 from typing import Tuple
 
 import numpy as np
+import torch
 from datasets import load_from_disk
 
 
@@ -76,6 +81,12 @@ def rbf_kernel_matrix(x: np.ndarray, y: np.ndarray, bandwidth: float) -> np.ndar
     return np.exp(-sq_dists / (2 * bandwidth ** 2))
 
 
+def rbf_kernel_matrix_torch(x: torch.Tensor, y: torch.Tensor, bandwidth: float) -> torch.Tensor:
+    """Same Gaussian RBF kernel as rbf_kernel_matrix, on whatever device x/y already live on."""
+    sq_dists = torch.cdist(x, y) ** 2
+    return torch.exp(-sq_dists / (2 * bandwidth ** 2))
+
+
 def median_heuristic_bandwidth(x: np.ndarray, sample_size: int = 500, seed: int = 42) -> float:
     rng = np.random.default_rng(seed)
     n = x.shape[0]
@@ -86,21 +97,32 @@ def median_heuristic_bandwidth(x: np.ndarray, sample_size: int = 500, seed: int 
     return float(np.sqrt(max(med, 1e-12) / 2))
 
 
-def frank_wolfe_qp(k_mm: np.ndarray, k_mp_mean: np.ndarray, kappa: float, max_iters: int = 100) -> float:
-    """min over beta in the simplex of || sum_i beta_i phi(x_i^M) - kappa * mean(phi(P)) ||^2_H
-    = beta^T K_MM beta - 2*kappa*beta^T k_mp_mean + kappa^2 * k_pp_mean (last term added by caller,
-    constant w.r.t. beta so dropped here). Returns the achieved (unconstant-shifted) objective
-    value beta^T K_MM beta - 2*kappa*beta^T k_mp_mean at the Frank-Wolfe optimum.
+def frank_wolfe_qp_batched(k_mm: torch.Tensor, k_mp_mean: torch.Tensor, kappa_grid: torch.Tensor,
+                            max_iters: int = 100) -> torch.Tensor:
+    """Same Frank-Wolfe QP as a per-kappa scalar loop would solve -- min over beta in the simplex
+    of || sum_i beta_i phi(x_i^M) - kappa * mean(phi(P)) ||^2_H = beta^T K_MM beta -
+    2*kappa*beta^T k_mp_mean + kappa^2 * k_pp_mean (last term added by the caller, constant w.r.t.
+    beta so dropped here) -- but solved for the WHOLE kappa_grid at once by giving beta a leading
+    kappa-batch dimension. Only the gradient's linear term depends on kappa, so all kappa values
+    share the same K_MM matmuls per iteration; this turns kappa_steps * fw_iters sequential
+    Python-level iterations into just fw_iters, each doing one batched matmul instead of
+    kappa_steps small ones -- the actual bottleneck at 437 eligible terms, more than raw device
+    placement. Returns the per-kappa objective values beta^T K_MM beta - 2*kappa*(beta^T
+    k_mp_mean), shape (len(kappa_grid),).
     """
     n = k_mm.shape[0]
-    beta = np.full(n, 1.0 / n)
+    k = kappa_grid.shape[0]
+    beta = torch.full((k, n), 1.0 / n, device=k_mm.device, dtype=k_mm.dtype)
+    linear_term = 2 * kappa_grid.unsqueeze(1) * k_mp_mean.unsqueeze(0)  # (k, n)
     for t in range(max_iters):
-        grad = 2 * (k_mm @ beta) - 2 * kappa * k_mp_mean
-        vertex = int(np.argmin(grad))
+        grad = 2 * (beta @ k_mm) - linear_term  # k_mm symmetric: beta @ k_mm == (k_mm @ beta.T).T
+        vertex = torch.argmin(grad, dim=1)
         gamma = 2.0 / (t + 2.0)
         beta = (1 - gamma) * beta
-        beta[vertex] += gamma
-    return float(beta @ k_mm @ beta - 2 * kappa * (beta @ k_mp_mean))
+        beta[torch.arange(k, device=beta.device), vertex] += gamma
+    quad = (beta @ k_mm * beta).sum(dim=1)
+    linear = (beta * k_mp_mean.unsqueeze(0)).sum(dim=1)
+    return quad - 2 * kappa_grid * linear
 
 
 def elbow_kappa(kappas: np.ndarray, d_curve: np.ndarray) -> Tuple[float, int]:
@@ -126,27 +148,27 @@ def elbow_kappa(kappas: np.ndarray, d_curve: np.ndarray) -> Tuple[float, int]:
 
 def km2_estimate_term(
     positive_embeddings: np.ndarray,
-    k_mm: np.ndarray,
-    mixture_embeddings: np.ndarray,
+    k_mm: torch.Tensor,
+    mixture_embeddings: torch.Tensor,
     bandwidth: float,
-    kappa_grid: np.ndarray,
+    kappa_grid_t: torch.Tensor,
+    kappa_grid_np: np.ndarray,
     fw_iters: int,
+    device: torch.device,
 ) -> dict:
-    k_mp = rbf_kernel_matrix(mixture_embeddings, positive_embeddings, bandwidth)
-    k_mp_mean = k_mp.mean(axis=1)
-    k_pp = rbf_kernel_matrix(positive_embeddings, positive_embeddings, bandwidth)
-    k_pp_mean = float(k_pp.mean())
+    positive_t = torch.as_tensor(positive_embeddings, device=device, dtype=k_mm.dtype)
+    k_mp = rbf_kernel_matrix_torch(mixture_embeddings, positive_t, bandwidth)
+    k_mp_mean = k_mp.mean(dim=1)
+    k_pp = rbf_kernel_matrix_torch(positive_t, positive_t, bandwidth)
+    k_pp_mean = k_pp.mean()
 
-    d_curve = np.array([
-        frank_wolfe_qp(k_mm, k_mp_mean, kappa, max_iters=fw_iters) + kappa ** 2 * k_pp_mean
-        for kappa in kappa_grid
-    ])
-    d_curve = np.clip(d_curve, 0, None)
-    kappa_star, breakpoint_idx = elbow_kappa(kappa_grid, d_curve)
+    d_curve_t = frank_wolfe_qp_batched(k_mm, k_mp_mean, kappa_grid_t, max_iters=fw_iters) + kappa_grid_t ** 2 * k_pp_mean
+    d_curve = torch.clamp(d_curve_t, min=0).cpu().numpy()
+    kappa_star, breakpoint_idx = elbow_kappa(kappa_grid_np, d_curve)
     return {
         "pi_km2": kappa_star,
         "d_curve": d_curve.tolist(),
-        "kappa_grid": kappa_grid.tolist(),
+        "kappa_grid": kappa_grid_np.tolist(),
         "breakpoint_idx": breakpoint_idx,
     }
 
@@ -181,7 +203,12 @@ def main() -> None:
     parser.add_argument("--spy-fraction", type=float, default=0.2)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--output-path", default="experiments/pu_cache/class_priors_km2.json")
+    parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu",
+                         help="Device for the K_MM/K_MP kernel matrices and batched Frank-Wolfe QP -- "
+                              "the actual per-term bottleneck at 437 eligible terms. CPU is fine for a "
+                              "small --max-terms smoke test; a full run should use cuda.")
     args = parser.parse_args()
+    device = torch.device(args.device)
 
     embeddings_dir = Path(args.embeddings_dir)
     embeddings = np.load(embeddings_dir / "protein_embeddings.npy")
@@ -213,16 +240,18 @@ def main() -> None:
 
     rng = np.random.default_rng(args.seed)
     mixture_idx = rng.choice(n, size=min(args.mixture_sample_size, n), replace=False)
-    mixture_embeddings = embeddings[mixture_idx]
-    bandwidth = median_heuristic_bandwidth(mixture_embeddings, seed=args.seed)
-    print(f"[INFO] Shared mixture sample: {len(mixture_idx)} proteins, RBF bandwidth={bandwidth:.4f}")
+    mixture_embeddings_np = embeddings[mixture_idx]
+    bandwidth = median_heuristic_bandwidth(mixture_embeddings_np, seed=args.seed)
+    print(f"[INFO] Shared mixture sample: {len(mixture_idx)} proteins, RBF bandwidth={bandwidth:.4f}, device={device}")
 
+    mixture_embeddings = torch.as_tensor(mixture_embeddings_np, device=device, dtype=torch.float32)
     start = time.time()
     print("[INFO] Computing shared K_MM (mixture-mixture kernel matrix), once for every term...")
-    k_mm = rbf_kernel_matrix(mixture_embeddings, mixture_embeddings, bandwidth)
-    print(f"[INFO] K_MM ready ({k_mm.shape}) in {time.time() - start:.1f}s")
+    k_mm = rbf_kernel_matrix_torch(mixture_embeddings, mixture_embeddings, bandwidth)
+    print(f"[INFO] K_MM ready ({tuple(k_mm.shape)}) in {time.time() - start:.1f}s")
 
-    kappa_grid = np.linspace(0.0, args.kappa_max, args.kappa_steps)
+    kappa_grid_np = np.linspace(0.0, args.kappa_max, args.kappa_steps)
+    kappa_grid_t = torch.as_tensor(kappa_grid_np, device=device, dtype=torch.float32)
 
     results = {}
     for i, term_idx in enumerate(eligible_term_indices):
@@ -232,7 +261,8 @@ def main() -> None:
             pos_rows = rng.choice(pos_rows, size=args.max_positives_per_term, replace=False)
         positive_embeddings = embeddings[pos_rows]
 
-        km2_result = km2_estimate_term(positive_embeddings, k_mm, mixture_embeddings, bandwidth, kappa_grid, args.fw_iters)
+        km2_result = km2_estimate_term(positive_embeddings, k_mm, mixture_embeddings, bandwidth,
+                                        kappa_grid_t, kappa_grid_np, args.fw_iters, device)
         c_spy, n_spy = elkan_noto_spy_mean(probs[:, term_idx], hard_labels[:, term_idx] == 1, args.spy_fraction, args.seed)
         pi_spy = c_spy  # Elkan-Noto's e1 IS the class-prior-scale quantity here (mean predicted
         # prob on held-out positives) when compared against KM2's pi on the same 0-1 scale; see

@@ -1,0 +1,51 @@
+[INFO] Loaded 54395 embedded proteins, 668 labels
+[INFO] 437/668 terms eligible (>= 100 positives)
+[INFO] Shared mixture sample: 5000 proteins, RBF bandwidth=3.9095, device=cuda
+[INFO] Computing shared K_MM (mixture-mixture kernel matrix), once for every term...
+[INFO] K_MM ready ((5000, 5000)) in 0.2s
+[STEP] term 10/437 (GO:0000324): pi_km2=0.1400 pi_spy=0.2603 n_pos=268 elapsed=1s
+[STEP] term 20/437 (GO:0000902): pi_km2=0.1400 pi_spy=0.0142 n_pos=114 elapsed=2s
+[STEP] term 30/437 (GO:0001501): pi_km2=0.1400 pi_spy=0.0208 n_pos=121 elapsed=3s
+[STEP] term 40/437 (GO:0002020): pi_km2=0.1400 pi_spy=0.0106 n_pos=101 elapsed=4s
+[STEP] term 50/437 (GO:0003723): pi_km2=0.1400 pi_spy=0.2993 n_pos=1143 elapsed=5s
+[STEP] term 60/437 (GO:0004672): pi_km2=0.1400 pi_spy=0.3683 n_pos=425 elapsed=6s
+[STEP] term 70/437 (GO:0005178): pi_km2=0.1400 pi_spy=0.0413 n_pos=110 elapsed=6s
+[STEP] term 80/437 (GO:0005634): pi_km2=0.1600 pi_spy=0.6668 n_pos=2000 elapsed=7s
+[STEP] term 90/437 (GO:0005743): pi_km2=0.1400 pi_spy=0.5301 n_pos=876 elapsed=8s
+[STEP] term 100/437 (GO:0005777): pi_km2=0.1600 pi_spy=0.1812 n_pos=435 elapsed=9s
+[STEP] term 110/437 (GO:0005819): pi_km2=0.1400 pi_spy=0.0546 n_pos=120 elapsed=10s
+[STEP] term 120/437 (GO:0005935): pi_km2=0.1400 pi_spy=0.1050 n_pos=122 elapsed=11s
+[STEP] term 130/437 (GO:0006357): pi_km2=0.1400 pi_spy=0.1547 n_pos=642 elapsed=12s
+[STEP] term 140/437 (GO:0006629): pi_km2=0.1400 pi_spy=0.0108 n_pos=132 elapsed=13s
+[STEP] term 150/437 (GO:0006914): pi_km2=0.1400 pi_spy=0.0521 n_pos=160 elapsed=14s
+[STEP] term 160/437 (GO:0007015): pi_km2=0.1400 pi_spy=0.0337 n_pos=126 elapsed=14s
+[STEP] term 170/437 (GO:0007219): pi_km2=0.1400 pi_spy=0.0211 n_pos=100 elapsed=15s
+[STEP] term 180/437 (GO:0007420): pi_km2=0.1600 pi_spy=0.0295 n_pos=201 elapsed=16s
+[STEP] term 190/437 (GO:0008083): pi_km2=0.1400 pi_spy=0.0826 n_pos=111 elapsed=17s
+[STEP] term 200/437 (GO:0008380): pi_km2=0.1400 pi_spy=0.0599 n_pos=113 elapsed=18s
+[STEP] term 210/437 (GO:0009416): pi_km2=0.1400 pi_spy=0.0315 n_pos=187 elapsed=19s
+[STEP] term 220/437 (GO:0009611): pi_km2=0.1600 pi_spy=0.0770 n_pos=283 elapsed=20s
+[STEP] term 230/437 (GO:0009733): pi_km2=0.1400 pi_spy=0.1062 n_pos=204 elapsed=20s
+[STEP] term 240/437 (GO:0009898): pi_km2=0.1400 pi_spy=0.0197 n_pos=122 elapsed=21s
+[STEP] term 250/437 (GO:0010976): pi_km2=0.1400 pi_spy=0.0160 n_pos=114 elapsed=22s
+[STEP] term 260/437 (GO:0016477): pi_km2=0.1400 pi_spy=0.0226 n_pos=171 elapsed=23s
+[STEP] term 270/437 (GO:0019901): pi_km2=0.1400 pi_spy=0.0645 n_pos=442 elapsed=24s
+[STEP] term 280/437 (GO:0030141): pi_km2=0.1400 pi_spy=0.0204 n_pos=112 elapsed=25s
+[STEP] term 290/437 (GO:0030424): pi_km2=0.1400 pi_spy=0.0893 n_pos=370 elapsed=26s
+[STEP] term 300/437 (GO:0031267): pi_km2=0.1400 pi_spy=0.0557 n_pos=203 elapsed=26s
+[STEP] term 310/437 (GO:0031982): pi_km2=0.1400 pi_spy=0.0251 n_pos=189 elapsed=27s
+[STEP] term 320/437 (GO:0032991): pi_km2=0.1400 pi_spy=0.0647 n_pos=834 elapsed=28s
+[STEP] term 330/437 (GO:0038023): pi_km2=0.1400 pi_spy=0.0541 n_pos=136 elapsed=29s
+[STEP] term 340/437 (GO:0042826): pi_km2=0.1400 pi_spy=0.0531 n_pos=101 elapsed=30s
+[STEP] term 350/437 (GO:0043197): pi_km2=0.1400 pi_spy=0.0385 n_pos=117 elapsed=31s
+[STEP] term 360/437 (GO:0044732): pi_km2=0.1400 pi_spy=0.0744 n_pos=109 elapsed=32s
+[STEP] term 370/437 (GO:0045471): pi_km2=0.1600 pi_spy=0.0396 n_pos=194 elapsed=32s
+[STEP] term 380/437 (GO:0048018): pi_km2=0.1400 pi_spy=0.0932 n_pos=144 elapsed=33s
+[STEP] term 390/437 (GO:0050830): pi_km2=0.1600 pi_spy=0.2664 n_pos=353 elapsed=34s
+[STEP] term 400/437 (GO:0051321): pi_km2=0.1600 pi_spy=0.0136 n_pos=100 elapsed=35s
+[STEP] term 410/437 (GO:0061629): pi_km2=0.1600 pi_spy=0.0719 n_pos=243 elapsed=36s
+[STEP] term 420/437 (GO:0071944): pi_km2=0.1400 pi_spy=0.1439 n_pos=295 elapsed=37s
+[STEP] term 430/437 (GO:0098978): pi_km2=0.1400 pi_spy=0.1432 n_pos=632 elapsed=38s
+[STEP] term 437/437 (GO:1990904): pi_km2=0.1400 pi_spy=0.0629 n_pos=129 elapsed=38s
+[DONE] 437 terms estimated in 38s; 308 flagged for large KM2/spy disagreement (possible SCAR violation)
+[INFO] Wrote experiments/pu_cache/class_priors_km2.json

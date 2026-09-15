@@ -984,11 +984,19 @@ def main() -> None:
                 n_below_floor += 1
                 continue
             eligible_mask[idx] = True
-            # Per du Plessis et al. (2014)/Kiryo et al. (2017)'s asymmetric-error finding
-            # (underestimating pi is the failure mode that can collapse nnPU outright, while
-            # overestimating degrades gracefully): bias toward the higher of the two cached
-            # estimates rather than averaging them, per pu_learning_plan.md's calibration rule.
-            class_priors_tensor[idx] = max(entry["pi_km2"], entry["pi_spy"])
+            # v1.1 deviation (2026-09-15, see pu_learning_plan.md): pi_km2 is NOT used here.
+            # Verified against the real embeddings/checkpoint that KM2's D(kappa) curve never
+            # exhibits the flat-then-rising shape the method depends on -- it decreases
+            # monotonically all the way to kappa=1 for every term checked, in both the pooled
+            # backbone embedding space and the classifier-probability space, with near-identical
+            # curves for terms whose true prevalence differs by 8x. That's not a tuning artifact;
+            # it means kernel-mean-matching finds no separable per-term structure in either
+            # feature space tried, so pi_km2 is uninformative (it lands on ~the same value,
+            # ~0.14-0.16, for 435/437 terms regardless of true prevalence). Falling back to the
+            # Elkan-Noto spy mean alone, which does vary sensibly per term -- still carries its
+            # own known optimism bias (same checkpoint the spy positives were trained on), just no
+            # longer cross-checked/ceilinged against a second estimator.
+            class_priors_tensor[idx] = entry["pi_spy"]
         n_eligible = int(eligible_mask.sum().item())
         n_uncached = len(label_names) - n_eligible - n_below_floor
         print(f"[INFO] --nnpu: {n_eligible} labels eligible for nnPU ({n_below_floor} cached but below "

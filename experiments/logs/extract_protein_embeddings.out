@@ -1,0 +1,49 @@
+[INFO] Loading checkpoint from models/pretrain-reduced-full-protein-v8/best_checkpoint
+Loading weights:   0%|          | 0/213 [00:00<?, ?it/s]Loading weights: 100%|██████████| 213/213 [00:00<00:00, 5196.34it/s]
+[INFO] Extracting split=train n=42369
+[STEP] split=train 64/42369 total_done=64 rate=24.0 proteins/s elapsed=3s
+[STEP] split=train 1344/42369 total_done=1344 rate=30.3 proteins/s elapsed=44s
+[STEP] split=train 2624/42369 total_done=2624 rate=30.3 proteins/s elapsed=87s
+[STEP] split=train 3904/42369 total_done=3904 rate=30.2 proteins/s elapsed=129s
+[STEP] split=train 5184/42369 total_done=5184 rate=30.3 proteins/s elapsed=171s
+[STEP] split=train 6464/42369 total_done=6464 rate=30.4 proteins/s elapsed=213s
+[STEP] split=train 7744/42369 total_done=7744 rate=30.4 proteins/s elapsed=255s
+[STEP] split=train 9024/42369 total_done=9024 rate=30.4 proteins/s elapsed=296s
+[STEP] split=train 10304/42369 total_done=10304 rate=30.6 proteins/s elapsed=337s
+[STEP] split=train 11584/42369 total_done=11584 rate=30.6 proteins/s elapsed=379s
+[STEP] split=train 12864/42369 total_done=12864 rate=30.6 proteins/s elapsed=421s
+[STEP] split=train 14144/42369 total_done=14144 rate=30.6 proteins/s elapsed=463s
+[STEP] split=train 15424/42369 total_done=15424 rate=30.5 proteins/s elapsed=505s
+[STEP] split=train 16704/42369 total_done=16704 rate=30.5 proteins/s elapsed=547s
+[STEP] split=train 17984/42369 total_done=17984 rate=30.6 proteins/s elapsed=588s
+[STEP] split=train 19264/42369 total_done=19264 rate=30.7 proteins/s elapsed=628s
+[STEP] split=train 20544/42369 total_done=20544 rate=30.7 proteins/s elapsed=669s
+[STEP] split=train 21824/42369 total_done=21824 rate=30.8 proteins/s elapsed=709s
+[STEP] split=train 23104/42369 total_done=23104 rate=30.9 proteins/s elapsed=748s
+[STEP] split=train 24384/42369 total_done=24384 rate=30.9 proteins/s elapsed=789s
+[STEP] split=train 25664/42369 total_done=25664 rate=31.0 proteins/s elapsed=828s
+[STEP] split=train 26944/42369 total_done=26944 rate=31.0 proteins/s elapsed=869s
+[STEP] split=train 28224/42369 total_done=28224 rate=31.1 proteins/s elapsed=908s
+[STEP] split=train 29504/42369 total_done=29504 rate=31.1 proteins/s elapsed=949s
+[STEP] split=train 30784/42369 total_done=30784 rate=31.1 proteins/s elapsed=989s
+[STEP] split=train 32064/42369 total_done=32064 rate=31.2 proteins/s elapsed=1028s
+[STEP] split=train 33344/42369 total_done=33344 rate=31.2 proteins/s elapsed=1068s
+[STEP] split=train 34624/42369 total_done=34624 rate=31.3 proteins/s elapsed=1108s
+[STEP] split=train 35904/42369 total_done=35904 rate=31.3 proteins/s elapsed=1147s
+[STEP] split=train 37184/42369 total_done=37184 rate=31.4 proteins/s elapsed=1186s
+[STEP] split=train 38464/42369 total_done=38464 rate=31.4 proteins/s elapsed=1226s
+[STEP] split=train 39744/42369 total_done=39744 rate=31.4 proteins/s elapsed=1265s
+[STEP] split=train 41024/42369 total_done=41024 rate=31.4 proteins/s elapsed=1305s
+[STEP] split=train 42304/42369 total_done=42304 rate=31.5 proteins/s elapsed=1345s
+[INFO] Extracting split=validation n=12026
+[STEP] split=validation 64/12026 total_done=42433 rate=31.5 proteins/s elapsed=1349s
+[STEP] split=validation 1344/12026 total_done=43713 rate=31.5 proteins/s elapsed=1390s
+[STEP] split=validation 2624/12026 total_done=44993 rate=31.4 proteins/s elapsed=1431s
+[STEP] split=validation 3904/12026 total_done=46273 rate=31.5 proteins/s elapsed=1471s
+[STEP] split=validation 5184/12026 total_done=47553 rate=31.5 proteins/s elapsed=1512s
+[STEP] split=validation 6464/12026 total_done=48833 rate=31.5 proteins/s elapsed=1551s
+[STEP] split=validation 7744/12026 total_done=50113 rate=31.5 proteins/s elapsed=1591s
+[STEP] split=validation 9024/12026 total_done=51393 rate=31.5 proteins/s elapsed=1630s
+[STEP] split=validation 10304/12026 total_done=52673 rate=31.5 proteins/s elapsed=1670s
+[STEP] split=validation 11584/12026 total_done=53953 rate=31.6 proteins/s elapsed=1710s
+[DONE] Extracted 54395 proteins in 1724s -> experiments/pu_cache
