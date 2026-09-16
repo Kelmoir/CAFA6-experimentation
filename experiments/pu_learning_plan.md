@@ -1,5 +1,40 @@
 # Positive-Unlabeled (PU) learning for GO label refinement — plan
 
+**v1.2, 2026-09-16: `--nnpu` shelved after a real trial underperformed the plain-BCE baseline.**
+Ran the plan's own stated success criterion (pipeline step 6: `--run-diagnostic` AUROC/F1
+comparison, `--nnpu` vs. plain BCE, matched seed/data/model/epochs, `dataset_raw`, 16,000-row
+train subset, 3 epochs) for the first time. Result: `--nnpu` (spy-mean-only calibration, per v1.1)
+**lost on every threshold-independent metric** — mean per-label AUROC 0.773 vs. baseline's 0.806,
+pooled AUROC 0.859 vs. 0.900, worst-label AUROC 0.21 (worse than random) vs. baseline's 0.41, and
+best-achievable F1 (each method's own optimal threshold) 0.274 vs. baseline's 0.348. The one metric
+where `--nnpu` "won" — F1 at the fixed default threshold 0.5 — was a recall/precision inversion
+artifact (recall 0.37/precision 0.22 vs. baseline's 0.11/0.65), not better discrimination.
+
+Root cause, verified directly rather than assumed: checked `pi_spy` (the sole surviving estimator
+after v1.1) against each term's true empirical prevalence. Median overestimation factor **14.4x**,
+90th percentile 46.9x, max 205.8x, with 303/437 terms overestimated by more than 10x. Confirmed
+with a synthetic degenerate-case test that this is a calibration problem, not a formula bug:
+`nnpu_loss` collapses exactly to plain BCE when `pi=0` (verified numerically, exact match); with a
+**correct** `pi`, an oracle model that correctly flags hidden positives scores ~0 loss (vs. 0.25
+for plain BCE, which punishes it) — the intended, designed divergence nnPU exists to produce. But
+feeding the same oracle model our **actual 14x-overestimated** `pi` pushes its loss to **3.25** —
+worse than what a naive all-negative model scores even under a *correctly calibrated* prior (0.25).
+That means the miscalibrated loss surface's minimum isn't near the correct answer at all; it's
+actively steering away from the best possible model, not just failing to help.
+
+Also confirmed the miscalibration isn't a fixable global bias: the overestimation factor varies
+1.9x-205.8x across terms (not a constant multiplier), so no single shrinkage correction on `pi_spy`
+can fix every term at once — some would stay badly overestimated, others would flip to
+underestimated (the more dangerous failure mode nnPU's `max()`-based asymmetric calibration was
+built to avoid in the first place). The real fix is a genuine held-out spy retrain (pipeline step
+2's original, not-yet-built design), not a scalar patch.
+
+**Decision (user-confirmed): shelve `--nnpu` for real training until a better-calibrated prior
+estimator exists.** The nnPU/KM2/spy machinery stays in the codebase (verified correct against the
+paper's math at both boundary conditions above) — this is a data/calibration problem, not an
+implementation one — but `--nnpu` should not be used for real training runs until this is
+revisited. See [[project_pu_learning_nnpu_km2]] for the memory-level version of this decision.
+
 **v1.1, 2026-09-15: KM2 empirically failed at real scale, dropped from the calibration formula.**
 Ran extraction (54,395 proteins, `pretrain-reduced-full-protein-v8` checkpoint) and KM2 estimation
 (437/668 eligible terms) at full scale for the first time. `pi_km2` came back within {0.12, 0.14,
@@ -217,10 +252,11 @@ against silently reversing this plan's decisions:
     positives were trained on) the sole source of `pi`, no longer cross-checked or floor-raised by a
     second estimator — worth revisiting (different bandwidth, different embedding/pooling strategy,
     or abandoning kernel-mean-based estimation for this checkpoint family entirely) if nnPU training
-    with spy-only priors underperforms.
+    with spy-only priors underperforms. **It did — see the v1.2 note at the top of this file.**
 
-**Not yet done**: pipeline step 6 (the `--run-diagnostic` AUROC/F1 comparison of `--nnpu` against
-the plain-BCE baseline, this plan's actual success criterion) hasn't been run at all yet.
+**Done, negative result**: pipeline step 6 (the `--run-diagnostic` AUROC/F1 comparison of `--nnpu`
+against the plain-BCE baseline, this plan's actual success criterion) has now been run — see the
+v1.2 note at the top of this file. `--nnpu` is shelved pending a better-calibrated prior estimator.
 
 ## Key risks / open questions
 
