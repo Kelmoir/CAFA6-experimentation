@@ -1,0 +1,21 @@
+[INFO] Loaded 54395 scored proteins, 668 labels
+[INFO] 11 terms eligible (>= 2000 source positives): ['GO:0005515', 'GO:0005576', 'GO:0005634', 'GO:0005654', 'GO:0005737', 'GO:0005739', 'GO:0005783', 'GO:0005829', 'GO:0005886', 'GO:0016020', 'GO:0042802']
+[STEP] GO:0005515: pi_tice=0.5206 n_known=24373 n_hidden_hat=3947/30022 unlabeled excluded from loss
+[STEP] GO:0005576: pi_tice=0.0549 n_known=2478 n_hidden_hat=507/51917 unlabeled excluded from loss
+[STEP] GO:0005634: pi_tice=0.2354 n_known=9756 n_hidden_hat=3048/44639 unlabeled excluded from loss
+[STEP] GO:0005654: pi_tice=0.0919 n_known=3569 n_hidden_hat=1429/50826 unlabeled excluded from loss
+[STEP] GO:0005737: pi_tice=0.3070 n_known=6867 n_hidden_hat=9832/47528 unlabeled excluded from loss
+[STEP] GO:0005739: pi_tice=0.1061 n_known=4534 n_hidden_hat=1236/49861 unlabeled excluded from loss
+[STEP] GO:0005783: pi_tice=0.0703 n_known=2176 n_hidden_hat=1647/52219 unlabeled excluded from loss
+[STEP] GO:0005829: pi_tice=0.3078 n_known=9583 n_hidden_hat=7161/44812 unlabeled excluded from loss
+[STEP] GO:0005886: pi_tice=0.1825 n_known=7285 n_hidden_hat=2641/47110 unlabeled excluded from loss
+[STEP] GO:0016020: pi_tice=0.1541 n_known=2507 n_hidden_hat=5878/51888 unlabeled excluded from loss
+[STEP] GO:0042802: pi_tice=0.1572 n_known=2625 n_hidden_hat=5924/51770 unlabeled excluded from loss
+[INFO] 43250 (protein, term) cells excluded from the loss across 27137 distinct proteins
+Map:   0%|          | 0/42369 [00:00<?, ? examples/s]Map:   8%|▊         | 3553/42369 [00:00<00:01, 34888.05 examples/s]Map:  17%|█▋        | 7045/42369 [00:00<00:01, 34902.59 examples/s]Map:  27%|██▋       | 11417/42369 [00:00<00:00, 31340.64 examples/s]Map:  35%|███▌      | 15000/42369 [00:00<00:00, 32873.89 examples/s]Map:  45%|████▍     | 19000/42369 [00:00<00:00, 34281.27 examples/s]Map:  54%|█████▍    | 23000/42369 [00:00<00:00, 35252.72 examples/s]Map:  65%|██████▍   | 27535/42369 [00:00<00:00, 32730.94 examples/s]Map:  73%|███████▎  | 31111/42369 [00:00<00:00, 33551.07 examples/s]Map:  83%|████████▎ | 35000/42369 [00:01<00:00, 34440.21 examples/s]Map:  91%|█████████ | 38629/42369 [00:01<00:00, 32019.67 examples/s]Map:  99%|█████████▉| 42124/42369 [00:01<00:00, 32807.20 examples/s]Map: 100%|██████████| 42369/42369 [00:01<00:00, 33072.25 examples/s]
+Map:   0%|          | 0/12026 [00:00<?, ? examples/s]Map:  19%|█▉        | 2337/12026 [00:00<00:00, 22772.31 examples/s]Map:  50%|████▉     | 6000/12026 [00:00<00:00, 30132.29 examples/s]Map:  83%|████████▎ | 10000/12026 [00:00<00:00, 33064.86 examples/s]Map: 100%|██████████| 12026/12026 [00:00<00:00, 31750.89 examples/s]
+Map:   0%|          | 0/12043 [00:00<?, ? examples/s]Map:  15%|█▌        | 1834/12043 [00:00<00:00, 18014.46 examples/s]Map:  30%|███       | 3662/12043 [00:00<00:00, 18163.30 examples/s]Map:  46%|████▌     | 5490/12043 [00:00<00:00, 18214.71 examples/s]Map:  61%|██████▏   | 7387/12043 [00:00<00:00, 18508.35 examples/s]Map:  77%|███████▋  | 9270/12043 [00:00<00:00, 18619.34 examples/s]Map: 100%|█████████▉| 12031/12043 [00:00<00:00, 18522.63 examples/s]Map: 100%|██████████| 12043/12043 [00:00<00:00, 18294.74 examples/s]
+Saving the dataset (0/1 shards):   0%|          | 0/42369 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 42369/42369 [00:00<00:00, 553047.27 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 42369/42369 [00:00<00:00, 551629.25 examples/s]
+Saving the dataset (0/1 shards):   0%|          | 0/12026 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 12026/12026 [00:00<00:00, 423704.08 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 12026/12026 [00:00<00:00, 421611.03 examples/s]
+Saving the dataset (0/1 shards):   0%|          | 0/12043 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 12043/12043 [00:00<00:00, 426268.82 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 12043/12043 [00:00<00:00, 424327.98 examples/s]
+[DONE] Wrote two-tier dataset to data/cafa-6-protein-function-prediction/dataset_raw_two_tier in 5s

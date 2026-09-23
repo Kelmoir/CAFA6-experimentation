@@ -1,5 +1,72 @@
 # Positive-Unlabeled (PU) learning for GO label refinement — plan
 
+**v2.0, 2026-09-23: `--nnpu` CLOSED (not just shelved) — pivoted to a two-tier discrete relabeling
+design using TIcE.** See the v1.3 note below for the full trail of what was tried against `--nnpu`
+and why it's closed rather than reopened again. The revived design (the ORIGINAL two-step
+reliable-negative/reliable-positive tiering approach this plan was restructured away from back on
+2026-09-13, see [[project_pu_learning_nnpu_km2]]) is a purely offline DATA change with no
+`--nnpu`-style per-step training machinery at all: `experiments/scripts/build_two_tier_dataset.py`
+uses each eligible term's TIcE prior plus the baseline classifier's own predicted-probability
+ranking to identify, for that term only, the top-ranked "unlabeled" proteins most likely to be
+hidden true positives (count estimated as `pi_tice * N_total - n_known`), and excludes exactly
+those cells from the loss — neither trusted negative nor asserted positive. Everything else (known
+positives, the remaining lower-ranked "reliably negative" unlabeled proteins, and all non-eligible
+terms) is completely unmodified, ordinary weight-1 BCE. `training_run.py --loss-mask-from-dataset`
+(new flag) reuses the EXISTING `loss_mask`/`compute_loss` machinery built for
+`--mask-sparse-negatives-max-total-terms` — no new training-time code path. First real run at the
+same 2000-source-positive floor nnPU used (11 terms), 43,250 (protein, term) cells excluded across
+27,137 proteins; trial pending.
+
+**v1.3, 2026-09-20 to 2026-09-22: three more prior/mechanism attempts against `--nnpu`, all
+documented here before the v2.0 decision to close it.**
+- **Centroid-ratio estimator** (raw cosine similarity to a term's positive centroid, and a
+  mean-centered variant, both as an Elkan-Noto-style ratio): failed worse than the v1.2 spy mean —
+  raw variant 187.9x median overestimation, centered variant's median (0.77x) looked deceptively
+  fine but hid a bimodal mess (only 12% of terms within 2x, 44% collapsed to `pi≈0`, and a
+  *negative* Spearman correlation with true prevalence, -0.178). Diagnosis: nearest-centroid AUROC
+  (from `diagnose_mf_pooling.py`) is scale-invariant and can reflect real ranking structure even
+  when the *absolute magnitude* needed for a class-prior estimate isn't recoverable — good ranking
+  doesn't imply a good prior.
+- **A genuine held-out spy retrain** (`build_spy_holdout_dataset.py` + a from-scratch backbone
+  retrain, fixing two real bugs in the old `pi_spy`: it was scored by the same checkpoint trained on
+  those exact positives, and it used the numerator alone instead of Elkan-Noto's actual ratio):
+  first estimator to show a clean, monotonic relationship between a term's source positive count
+  and calibration quality (109x median overestimation at 100-200 positives, down to 1.1x-4.7x at
+  >=2000) instead of uniform garbage. Set `--class-priors-min-source-positives` (new floor,
+  default 2000) so only well-supported terms (11/437) get nnPU treatment.
+- **A real `--nnpu` trial at that floor**: per-term effect on the 11 targeted terms was noise-level
+  (mean AUROC delta +0.0036, 8 up/3 down) — calibration alone wasn't enough to produce a real win.
+  Traced the remaining problem to the training loop itself: the positive-anchor batch's backward
+  pass shares the same unfrozen backbone layers as the main batch, and the ~650+ NON-eligible
+  labels (identical plain BCE in both nnPU and baseline runs) still degraded by about the same
+  ~4pp AUROC whether 437 terms were nnPU-eligible (badly calibrated, v1.2) or only 11 were
+  (well calibrated) — ruling out calibration as that part of the cause.
+- **TIcE** (`estimate_class_priors_tice.py`, decision-tree search for the region of feature space
+  with the highest labeled-vs-total ratio, the last established estimator from the original
+  candidate list never tried): beat the held-out spy retrain at every positive-count bucket without
+  needing a GPU retrain at all (8 min CPU against cached embeddings) — e.g. 1.6x median at
+  2000-5000 positives vs. the spy retrain's 4.7x, 2.1x vs. 7.2x at 1000-2000.
+- **Fixed the anchor-batch/backbone leak** (`--nnpu-detach-anchor-backbone`, new default `True`):
+  runs the anchor batch's backbone forward pass under `no_grad`, so only the classifier head learns
+  from it. Verified directly with a gradient-isolation test (not just "didn't crash"): with the fix,
+  backbone gradients are provably identical regardless of which anchor batch gets drawn; without it,
+  they visibly differ. **Result with the fix + TIcE priors: WORSE, not better** — all 11 targeted
+  terms got worse (mean delta -0.0754, up from the ambiguous +0.0036), and the aggregate ~4pp
+  degradation across the other 650+ labels persisted almost unchanged (0.7699 vs. pre-fix 0.7677
+  mean AUROC). This refutes the backbone-leak theory as the (sole) cause of the aggregate cost —
+  cutting it removed whatever benefit the anchor batch's shared-backbone influence was providing to
+  the targeted terms specifically, without fixing anything for everyone else.
+
+**Decision (user-confirmed 2026-09-23): `--nnpu` is CLOSED, not reopened pending a future fix.**
+Three independent failure modes were found and each one either got fixed (calibration — twice, via
+the held-out retrain and then TIcE) or diagnosed-and-fixed-without-benefit (the anchor-batch leak),
+yet no configuration ever beat plain BCE, and the true source of the aggregate ~4pp cost across
+non-eligible labels was never isolated despite two dedicated attempts. The nnPU/KM2/spy/TIcE
+machinery all stays in the codebase (each verified correct/working on its own terms — this was
+never a bug hunt with a single fix waiting to be found), but `--nnpu` itself should not be
+revisited without a genuinely new hypothesis for the unexplained aggregate cost, not just another
+prior estimator. See [[project_pu_learning_nnpu_km2]] for the memory-level version.
+
 **v1.2, 2026-09-16: `--nnpu` shelved after a real trial underperformed the plain-BCE baseline.**
 Ran the plan's own stated success criterion (pipeline step 6: `--run-diagnostic` AUROC/F1
 comparison, `--nnpu` vs. plain BCE, matched seed/data/model/epochs, `dataset_raw`, 16,000-row

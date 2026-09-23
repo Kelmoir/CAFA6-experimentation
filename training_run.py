@@ -350,6 +350,7 @@ def preprocess_batch(
     unique_items: List[str],
     max_length: int = MAX_LENGTH,
     mask_sparse_negatives_max_total_terms: Optional[int] = None,
+    loss_mask_from_dataset: bool = False,
 ):
     seq_key = "sequence" if "sequence" in examples else "input_ids"
     if seq_key not in examples:
@@ -425,6 +426,23 @@ def preprocess_batch(
             for labels, total_terms in zip(labels_list, raw_total_terms):
                 sparse = total_terms <= mask_sparse_negatives_max_total_terms
                 mask = torch.ones_like(labels) if not sparse else (labels == 1.0).float()
+                loss_mask_list.append(mask)
+            output_dict["loss_mask"] = loss_mask_list
+
+        if loss_mask_from_dataset and "excluded_labels" in examples:
+            # Two-tier discrete relabeling (see experiments/scripts/build_two_tier_dataset.py):
+            # the dataset already carries a sparse per-row list of label indices to exclude from
+            # the loss (currently-unlabeled cells a TIcE-calibrated prior + the baseline
+            # classifier's own ranking flagged as likely-hidden-positives) -- just materialize it
+            # into a dense mask here, no derivation needed (unlike the total_terms path above).
+            raw_excluded = examples["excluded_labels"]
+            if not isinstance(raw_excluded, list):
+                raw_excluded = [raw_excluded]
+            loss_mask_list = []
+            for labels, excluded in zip(labels_list, raw_excluded):
+                mask = torch.ones_like(labels)
+                for idx in excluded:
+                    mask[int(idx)] = 0.0
                 loss_mask_list.append(mask)
             output_dict["loss_mask"] = loss_mask_list
 
@@ -862,6 +880,14 @@ def main() -> None:
     parser.add_argument("--use-lora", action=argparse.BooleanOptionalAction, default=False, help="Fine-tune via LoRA adapters (peft) instead of freeze-mostly/unfreeze-last-n: freezes the entire backbone and trains small low-rank adapters plus the classifier head, letting a much bigger model fit in limited VRAM. --unfreeze-last-n is ignored when this is set")
     parser.add_argument("--use-aspect-input", action=argparse.BooleanOptionalAction, default=False, help="Feed the dataset's ground-truth aspect_labels column (a 3-way [C,F,P] multi-hot, see generate_dataset_depth1.py) into the classifier head as an auxiliary input, concatenated to the pooled ESM sequence representation. Requires a dataset with an aspect_labels column (e.g. kelmoir/cafa6-depth1); not implemented with --use-lora")
     parser.add_argument("--mask-sparse-negatives-max-total-terms", type=int, default=None, help="Exclude 'negative' (0) labels from the loss for proteins whose total_terms (raw GO annotation count across all aspects, see generate_dataset_aspect.py) is <= this value - an annotation-completeness proxy for GO's Open World Assumption (absence of annotation != absence of function). Positive (1) labels are always trusted regardless of total_terms. Requires a dataset with a total_terms column (e.g. kelmoir/cafa6-aspect); no-op otherwise")
+    parser.add_argument("--loss-mask-from-dataset", action=argparse.BooleanOptionalAction, default=False,
+                         help="Two-tier discrete relabeling (see experiments/scripts/build_two_tier_dataset.py, "
+                              "the OWA approach revived after --nnpu's training-time mechanism failed three "
+                              "separate ways -- see project_pu_learning_nnpu_km2.md): reads a precomputed sparse "
+                              "'excluded_labels' column from the dataset and reuses the SAME loss_mask/"
+                              "compute_loss machinery --mask-sparse-negatives-max-total-terms uses, instead of "
+                              "deriving the mask from total_terms. A purely offline data change -- no nnPU-style "
+                              "per-step training code involved. Requires a dataset with an excluded_labels column.")
     parser.add_argument("--lora-r", type=int, default=16, help="LoRA rank (only used with --use-lora)")
     parser.add_argument("--lora-alpha", type=int, default=32, help="LoRA scaling factor, typically 2x --lora-r (only used with --use-lora)")
     parser.add_argument("--lora-dropout", type=float, default=0.05, help="Dropout on LoRA adapter layers (only used with --use-lora)")
@@ -873,11 +899,30 @@ def main() -> None:
     parser.add_argument("--run-diagnostic", action=argparse.BooleanOptionalAction, default=False, help="Run the post-training AUROC/F1 diagnostic (see run_diagnostic()) against the in-memory model right after training finishes, instead of needing a separate later script run against a re-downloaded checkpoint")
     parser.add_argument("--diagnostic-max-val-samples", type=int, default=2000, help="Validation examples to use for --run-diagnostic (independent of --max-val-samples, which controls the training loop's own per-epoch validation pass and may be set much smaller for a quick calibration trial)")
     parser.add_argument("--nnpu", action=argparse.BooleanOptionalAction, default=False, help="Replace BCE with the nnPU risk (Kiryo, Niu, du Plessis & Sugiyama 2017) for labels with a cached class prior -- see experiments/pu_learning_plan.md. Labels without a cached, above-floor prior keep today's plain BCE (with --unknown-target-value/--label-smoothing applying to them as before). Requires --class-priors-path.")
-    parser.add_argument("--class-priors-path", default=None, help="Path to the class_priors_km2.json cache written by experiments/scripts/estimate_class_priors_km2.py. Required by --nnpu.")
+    parser.add_argument("--class-priors-path", default=None, help="Path to a class-priors cache (class_priors_km2.json from experiments/scripts/estimate_class_priors_km2.py, or class_priors_spy_heldout.json from estimate_class_priors_spy_heldout.py, the current recommended source -- see --class-priors-min-source-positives). Required by --nnpu.")
+    parser.add_argument("--class-priors-min-source-positives", type=int, default=2000,
+                         help="A cached prior is only trusted if the ESTIMATOR itself saw at least this many "
+                              "positives for that term (the cache's own 'n_positives' field) -- an eligibility "
+                              "floor on the prior's reliability, separate from --nnpu-min-term-positives (which "
+                              "guards THIS run's positive-anchor batch composition instead). Calibrated against "
+                              "the real held-out spy retrain (2026-09-20): pi_spy_heldout/true_prevalence ratio "
+                              "was a clean, monotonic function of source positive count, from ~109x median "
+                              "overestimation at 100-200 positives down to 1.1x-4.7x at >=2000 -- see "
+                              "project_pu_learning_nnpu_km2.md v1.3. Set to 0 to disable (trust every cached, "
+                              "above-nnpu-min-term-positives entry, the pre-v1.3 behavior).")
     parser.add_argument("--nnpu-min-term-positives", type=int, default=20, help="A label needs at least this many positives in THIS run's training split to be nnPU-eligible even if it has a cached prior -- protects the positive-anchor batch (see --nnpu-positive-batch-size) from being built on too few real examples in a small/scale-limited run.")
     parser.add_argument("--nnpu-positive-batch-size", type=int, default=32, help="Size of the dedicated positive-anchor batch forwarded once per training step alongside the ordinary batch, so every nnPU-eligible label has real positive rows to compute its R_p+/R_p- risk terms from -- real positives are far too rare (0.556% observed rate) to show up reliably within an ordinary batch. Drawn from all train-split proteins with >=1 eligible-label positive, independent of --max-train-samples.")
     parser.add_argument("--nnpu-beta", type=float, default=0.0, help="Kiryo et al.'s non-negative-risk correction threshold: when a label's empirical (R_u- - pi*R_p-) drops below -beta, gradient ascent is applied to it instead of continuing to descend (prevents the classic uPU overfitting failure mode on flexible/deep models).")
     parser.add_argument("--nnpu-gamma", type=float, default=1.0, help="Scale of the gradient-ascent correction applied when a label's negative risk drops below -beta (see --nnpu-beta).")
+    parser.add_argument("--nnpu-detach-anchor-backbone", action=argparse.BooleanOptionalAction, default=True,
+                         help="v1.4: run the positive-anchor batch's backbone forward pass under no_grad, so its "
+                              "backward pass only updates the classifier head, not the shared unfrozen backbone "
+                              "layers. Diagnosed as necessary after a real trial showed --nnpu degrading AUROC on "
+                              "the ~650+ NON-eligible labels by roughly the same amount whether 11 or 437 terms "
+                              "were nnPU-eligible -- a training-dynamics cost from the anchor batch's gradient "
+                              "reshaping the shared backbone, independent of prior calibration. Pass "
+                              "--no-nnpu-detach-anchor-backbone to restore the old (pre-v1.4) behavior for an "
+                              "ablation comparison.")
     args = parser.parse_args()
 
     torch.manual_seed(args.seed)
@@ -904,6 +949,7 @@ def main() -> None:
         unique_items=label_names,
         label2id=label2id,
         mask_sparse_negatives_max_total_terms=args.mask_sparse_negatives_max_total_terms,
+        loss_mask_from_dataset=args.loss_mask_from_dataset,
     )
 
     processed_dataset = {
@@ -975,7 +1021,21 @@ def main() -> None:
             raise ValueError("--nnpu requires --class-priors-path (see experiments/scripts/estimate_class_priors_km2.py)")
         with open(args.class_priors_path) as f:
             cached_priors = json.load(f)["priors"]
+        # v1.3 (2026-09-20, see pu_learning_plan.md / project_pu_learning_nnpu_km2.md): KM2 and the
+        # old classifier-probability pi_spy (scored by the SAME checkpoint trained on those exact
+        # positives -- not a real held-out spy at all) both failed empirically, as did a
+        # centroid-based ratio estimator. estimate_class_priors_spy_heldout.py fixes both the
+        # held-out-ness (a genuine spy retrain, from a fresh backbone, that never saw the held-out
+        # positives) and the formula (the actual Elkan-Noto ratio E[g|unlabeled]/E[g|known positive],
+        # not just the numerator alone). Result: NOT uniform garbage like the prior three attempts --
+        # a clean, monotonic relationship between a term's source positive count and how close the
+        # ratio lands to 1.0 (median ~109x at 100-200 positives, down to 1.1x-4.7x at >=2000). Below
+        # --class-priors-min-source-positives the estimate is still too noisy (small-sample variance
+        # in a tiny mean, not a lack of underlying signal) to trust, so those terms keep plain BCE
+        # rather than getting a wrong-scale nnPU correction the way the v1.2 full trial demonstrated
+        # (a badly-scaled pi moves the loss surface's minimum away from the correct answer entirely).
         n_below_floor = 0
+        n_below_source_floor = 0
         for term_name, entry in cached_priors.items():
             if term_name not in label2id:
                 continue
@@ -983,25 +1043,17 @@ def main() -> None:
             if label_counts[idx].item() < args.nnpu_min_term_positives:
                 n_below_floor += 1
                 continue
+            if entry.get("n_positives", 0) < args.class_priors_min_source_positives:
+                n_below_source_floor += 1
+                continue
             eligible_mask[idx] = True
-            # v1.1 deviation (2026-09-15, see pu_learning_plan.md): pi_km2 is NOT used here.
-            # Verified against the real embeddings/checkpoint that KM2's D(kappa) curve never
-            # exhibits the flat-then-rising shape the method depends on -- it decreases
-            # monotonically all the way to kappa=1 for every term checked, in both the pooled
-            # backbone embedding space and the classifier-probability space, with near-identical
-            # curves for terms whose true prevalence differs by 8x. That's not a tuning artifact;
-            # it means kernel-mean-matching finds no separable per-term structure in either
-            # feature space tried, so pi_km2 is uninformative (it lands on ~the same value,
-            # ~0.14-0.16, for 435/437 terms regardless of true prevalence). Falling back to the
-            # Elkan-Noto spy mean alone, which does vary sensibly per term -- still carries its
-            # own known optimism bias (same checkpoint the spy positives were trained on), just no
-            # longer cross-checked/ceilinged against a second estimator.
-            class_priors_tensor[idx] = entry["pi_spy"]
+            class_priors_tensor[idx] = entry.get("pi_spy_heldout", entry.get("pi_tice", entry.get("pi_spy")))
         n_eligible = int(eligible_mask.sum().item())
-        n_uncached = len(label_names) - n_eligible - n_below_floor
+        n_uncached = len(label_names) - n_eligible - n_below_floor - n_below_source_floor
         print(f"[INFO] --nnpu: {n_eligible} labels eligible for nnPU ({n_below_floor} cached but below "
-              f"--nnpu-min-term-positives={args.nnpu_min_term_positives}, {n_uncached} not in cache -- "
-              f"both groups keep plain BCE)")
+              f"--nnpu-min-term-positives={args.nnpu_min_term_positives}, {n_below_source_floor} cached but "
+              f"below --class-priors-min-source-positives={args.class_priors_min_source_positives}, "
+              f"{n_uncached} not in cache -- all three groups keep plain BCE)")
         if n_eligible == 0:
             raise ValueError("--nnpu: no labels eligible after applying --nnpu-min-term-positives; "
                               "check --class-priors-path or lower the floor")
@@ -1108,7 +1160,7 @@ def main() -> None:
         pos_weight = ratio.pow(args.pos_weight_exponent).to(device)
         print(f"[INFO] Using --pos-weight (exponent={args.pos_weight_exponent}): "
               f"min={pos_weight.min():.2f} median={pos_weight.median():.2f} max={pos_weight.max():.2f}")
-    use_loss_mask = args.mask_sparse_negatives_max_total_terms is not None
+    use_loss_mask = args.mask_sparse_negatives_max_total_terms is not None or args.loss_mask_from_dataset
     criterion = torch.nn.BCEWithLogitsLoss(pos_weight=pos_weight, reduction="none" if use_loss_mask else "mean")
 
     run_name = args.run_name or f"{args.model_name.split('/')[-1]}-epochs{args.epochs}-bs{args.batch_size}-device{device.type}"
@@ -1173,16 +1225,32 @@ def main() -> None:
                     else:
                         standard_loss = torch.zeros((), device=device)
                     pos_batch = next(positive_iter)
-                    pos_kwargs = {
-                        "input_ids": pos_batch["input_ids"].to(device),
-                        "attention_mask": pos_batch["attention_mask"].to(device),
-                    }
-                    if args.use_aspect_input:
-                        pos_kwargs["aspect_input"] = pos_batch["aspect_input"].to(device)
+                    pos_input_ids = pos_batch["input_ids"].to(device)
+                    pos_attention_mask = pos_batch["attention_mask"].to(device)
                     pos_hard_labels = pos_batch["labels"].to(device)
-                    pos_outputs = model_esm(**pos_kwargs)
+                    if args.nnpu_detach_anchor_backbone:
+                        # v1.4 (see project_pu_learning_nnpu_km2.md): the positive-anchor batch's
+                        # backward pass shared the same unfrozen backbone layers as the main batch,
+                        # which measurably degraded AUROC on the ~650+ non-eligible labels by
+                        # roughly the same amount regardless of how many/which terms were actually
+                        # nnPU-eligible (11 vs 437, see the floor2000 trial) -- a training-dynamics
+                        # cost paid unconditionally just by enabling --nnpu, independent of prior
+                        # calibration quality. Running the anchor batch's backbone forward pass
+                        # under no_grad and only letting gradient flow through the classifier head
+                        # isolates its influence to the eligible labels' own classifier rows: the
+                        # head's parameters still get correct gradients from nnpu_component, only
+                        # the path back INTO the shared backbone is cut.
+                        with torch.no_grad():
+                            pos_hidden = model_esm.esm(input_ids=pos_input_ids, attention_mask=pos_attention_mask).last_hidden_state
+                        classifier_kwargs = {"aspect_input": pos_batch["aspect_input"].to(device)} if args.use_aspect_input else {}
+                        pos_logits = model_esm.classifier(pos_hidden, **classifier_kwargs)
+                    else:
+                        pos_kwargs = {"input_ids": pos_input_ids, "attention_mask": pos_attention_mask}
+                        if args.use_aspect_input:
+                            pos_kwargs["aspect_input"] = pos_batch["aspect_input"].to(device)
+                        pos_logits = model_esm(**pos_kwargs).logits
                     nnpu_component = nnpu_loss(
-                        logits, hard_labels, pos_outputs.logits, pos_hard_labels,
+                        logits, hard_labels, pos_logits, pos_hard_labels,
                         class_priors_tensor, eligible_mask, beta=args.nnpu_beta, gamma=args.nnpu_gamma,
                     )
                     # Weighted by label-count share so overall loss scale stays comparable to the

@@ -14,6 +14,10 @@ __pycache__/
 # training_run.py --nnpu) is small and kept tracked.
 /experiments/pu_cache/*.npy
 /experiments/pu_cache/protein_meta.json
+/experiments/pu_cache/mf_pooling_diag/*.npy
+/experiments/pu_cache/mf_pooling_diag/meta.json
+/experiments/pu_cache/spy_holdout/*.npy
+/experiments/pu_cache/spy_holdout/protein_meta.json
 
 # Podman sandbox files
 .podman/

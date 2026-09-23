@@ -1,0 +1,24 @@
+[INFO] Loaded 54395 embedded proteins, 668 labels
+[INFO] 437/668 terms eligible (>= 100 positives)
+[STEP] term 25/437 (GO:0000981): pi_tice=0.0217 c=0.3104 true=0.0067 ratio=3.22 elapsed=26s eta=437s
+[STEP] term 50/437 (GO:0003723): pi_tice=0.0431 c=0.4878 true=0.0210 ratio=2.05 elapsed=53s eta=412s
+[STEP] term 75/437 (GO:0005516): pi_tice=0.1777 c=0.0157 true=0.0028 ratio=63.58 elapsed=80s eta=385s
+[STEP] term 100/437 (GO:0005777): pi_tice=0.0682 c=0.1172 true=0.0080 ratio=8.53 elapsed=106s eta=358s
+[STEP] term 125/437 (GO:0006302): pi_tice=0.2705 c=0.0076 true=0.0021 ratio=131.35 elapsed=133s eta=332s
+[STEP] term 150/437 (GO:0006914): pi_tice=0.0649 c=0.0453 true=0.0029 ratio=22.06 elapsed=159s eta=304s
+[STEP] term 175/437 (GO:0007368): pi_tice=nan c=0.0000 true=0.0018 ratio=nan elapsed=185s eta=278s
+[STEP] term 200/437 (GO:0008380): pi_tice=0.0387 c=0.0537 true=0.0021 ratio=18.63 elapsed=212s eta=251s
+[STEP] term 225/437 (GO:0009636): pi_tice=nan c=0.0000 true=0.0022 ratio=nan elapsed=238s eta=224s
+[STEP] term 250/437 (GO:0010976): pi_tice=nan c=0.0000 true=0.0021 ratio=nan elapsed=264s eta=198s
+[STEP] term 275/437 (GO:0022627): pi_tice=0.0093 c=0.5052 true=0.0047 ratio=1.98 elapsed=290s eta=171s
+[STEP] term 300/437 (GO:0031267): pi_tice=0.0766 c=0.0487 true=0.0037 ratio=20.52 elapsed=316s eta=145s
+[STEP] term 325/437 (GO:0035556): pi_tice=0.0319 c=0.1240 true=0.0040 ratio=8.07 elapsed=343s eta=118s
+[STEP] term 350/437 (GO:0043197): pi_tice=0.1307 c=0.0165 true=0.0022 ratio=60.78 elapsed=369s eta=92s
+[STEP] term 375/437 (GO:0045893): pi_tice=0.0415 c=0.4373 true=0.0181 ratio=2.29 elapsed=395s eta=65s
+[STEP] term 400/437 (GO:0051321): pi_tice=nan c=0.0000 true=0.0018 ratio=nan elapsed=421s eta=39s
+[STEP] term 425/437 (GO:0090575): pi_tice=0.0256 c=0.0939 true=0.0024 ratio=10.65 elapsed=447s eta=13s
+[STEP] term 437/437 (GO:1990904): pi_tice=0.0320 c=0.0742 true=0.0024 ratio=13.48 elapsed=460s eta=0s
+[DONE] 437 terms estimated in 460s
+[SUMMARY] pi_tice / true_prevalence: median=12.04x mean=56.35x min=1.16x max=543.95x
+[SUMMARY] within [0.5x, 2x] of true prevalence: 25/376 (6.6%)
+[INFO] Wrote experiments/pu_cache/class_priors_tice.json

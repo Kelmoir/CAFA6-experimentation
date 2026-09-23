@@ -1,0 +1,6 @@
+[INFO] Loaded 54395 scored proteins, 668 labels
+[INFO] 437 eligible terms in spy-holdout metadata (spy_fraction=0.2, min_term_positives=100)
+[DONE] 437 terms estimated
+[SUMMARY] pi_spy_heldout / true_prevalence: median=73.67x mean=94.35x min=1.13x max=421.80x
+[SUMMARY] within [0.5x, 2x] of true prevalence: 4/437 (0.9%)
+[INFO] Wrote experiments/pu_cache/class_priors_spy_heldout.json

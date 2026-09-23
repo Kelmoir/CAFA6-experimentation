@@ -1,0 +1,16 @@
+[INFO] Loaded 54395 embedded proteins, 668 labels
+[INFO] 437/668 terms eligible (>= 100 positives)
+[INFO] Precomputed normalized embeddings in 0.1s
+[STEP] term 50/437 (GO:0003723): pi_raw=0.5857 pi_centered=0.0000 true=0.0210 elapsed=1.0s
+[STEP] term 100/437 (GO:0005777): pi_raw=0.6693 pi_centered=0.0265 true=0.0080 elapsed=1.9s
+[STEP] term 150/437 (GO:0006914): pi_raw=0.7883 pi_centered=0.0111 true=0.0029 elapsed=2.8s
+[STEP] term 200/437 (GO:0008380): pi_raw=0.4601 pi_centered=0.0000 true=0.0021 elapsed=3.7s
+[STEP] term 250/437 (GO:0010976): pi_raw=0.6330 pi_centered=0.0131 true=0.0021 elapsed=4.6s
+[STEP] term 300/437 (GO:0031267): pi_raw=0.6823 pi_centered=0.0128 true=0.0037 elapsed=5.4s
+[STEP] term 350/437 (GO:0043197): pi_raw=0.5743 pi_centered=0.0186 true=0.0022 elapsed=6.3s
+[STEP] term 400/437 (GO:0051321): pi_raw=0.5986 pi_centered=0.0000 true=0.0018 elapsed=7.2s
+[STEP] term 437/437 (GO:1990904): pi_raw=0.4877 pi_centered=0.0000 true=0.0024 elapsed=7.8s
+[DONE] 437 terms estimated in 7.8s
+[SUMMARY] pi_centroid_raw / true_prevalence: median=187.90x mean=190.38x min=1.99x max=457.28x
+[SUMMARY] pi_centroid_centered / true_prevalence: median=0.77x mean=3.22x min=0.00x max=28.56x
+[INFO] Wrote experiments/pu_cache/class_priors_centroid.json

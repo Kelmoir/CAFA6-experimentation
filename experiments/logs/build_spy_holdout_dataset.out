@@ -1,0 +1,9 @@
+[INFO] 437/668 terms eligible (>= 100 positives)
+[INFO] 36897 (protein, term) pairs held out as spies across 437 terms
+[INFO] split=train: modified 18779/42369 rows
+[INFO] split=validation: modified 5382/12026 rows
+Saving the dataset (0/1 shards):   0%|          | 0/42369 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 42369/42369 [00:00<00:00, 548053.27 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 42369/42369 [00:00<00:00, 546946.74 examples/s]
+Saving the dataset (0/1 shards):   0%|          | 0/12026 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 12026/12026 [00:00<00:00, 364603.45 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 12026/12026 [00:00<00:00, 362948.01 examples/s]
+Saving the dataset (0/1 shards):   0%|          | 0/12043 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 12043/12043 [00:00<00:00, 441102.78 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 12043/12043 [00:00<00:00, 438769.33 examples/s]
+[DONE] Wrote spy-holdout dataset to data/cafa-6-protein-function-prediction/dataset_raw_spy_holdout in 6s
+[INFO] Wrote spy-holdout metadata to experiments/pu_cache/spy_holdout_meta.json
