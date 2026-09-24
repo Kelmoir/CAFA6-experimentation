@@ -15,7 +15,41 @@ terms) is completely unmodified, ordinary weight-1 BCE. `training_run.py --loss-
 (new flag) reuses the EXISTING `loss_mask`/`compute_loss` machinery built for
 `--mask-sparse-negatives-max-total-terms` — no new training-time code path. First real run at the
 same 2000-source-positive floor nnPU used (11 terms), 43,250 (protein, term) cells excluded across
-27,137 proteins; trial pending.
+27,137 proteins.
+
+**Trial result: aggregate AUROC unchanged (no regression anywhere, a first for this whole
+investigation), per-term effect on the 11 targeted terms small and directionally positive (+0.0012
+mean, 8 up/3 down).** But that AUROC comparison (`compare_checkpoints_per_term_auroc.py`, same as
+every earlier nnPU trial) turned out to be the wrong instrument for this specific mechanism, caught
+by a user question rather than by the process itself: it scores against `dataset_raw`'s ORIGINAL,
+unmodified hard labels, so the exact cells `build_two_tier_dataset.py` excludes from the loss
+(flagged likely-hidden-positive) are still scored as confirmed-negative ground truth. If the
+mechanism worked — the model becoming less confident those cells are negative, precisely because
+training stopped punishing that — the metric would register it as a false positive against the old
+incomplete labels, not a win. Near-zero aggregate movement was therefore uninformative either way
+about whether the mechanism did anything.
+
+Built a direct check instead (`check_two_tier_excluded_cell_effect.py`): for each of the 11 terms,
+split VALIDATION rows (never used in any gradient update, either checkpoint) into known-positive /
+confirmed-negative-kept / excluded-as-likely-hidden-positive, and compare each group's mean
+predicted probability, baseline vs. two-tier checkpoint. Result: **all 11/11 terms show the excluded
+group's probability rising several times more than the confirmed-negative group's** (ratios 2.6x-51x
+across terms), often rising to roughly the same magnitude as the known-positive group's own shift or
+higher (6 of 11 terms). Since this is validation data, the shift reflects generalization from the
+excluded training cells, not memorization of the exact rows — real evidence the mechanism does what
+it was built to do (move belief on flagged cells, specifically, not just globally).
+
+This does NOT independently prove the excluded cells are truly positive. The exclusion mask was
+built from the baseline checkpoint's own predicted-probability ranking, so a shift in that direction
+is partly expected by construction — the two-tier model was rewarded for agreeing with cells the
+baseline ranked highly. What the validation-split/control-group design adds is that the shift is
+specific (it doesn't happen to confirmed-negative cells at similar baseline probability) and
+generalizes (held-out rows), which rules out pure memorization/overfitting as the explanation — but
+"internally consistent with the mechanism's own design" is not the same claim as "these cells are
+genuinely positive," and nothing in this dataset can independently arbitrate that (would need
+external evidence, e.g. later-curated annotations, not available here). This is a structural
+property of the whole two-step/spy tiering technique family, not a defect specific to this
+implementation — see [[project_pu_learning_nnpu_km2]] for the memory-level version.
 
 **v1.3, 2026-09-20 to 2026-09-22: three more prior/mechanism attempts against `--nnpu`, all
 documented here before the v2.0 decision to close it.**

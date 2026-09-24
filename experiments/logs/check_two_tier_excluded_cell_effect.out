@@ -1,0 +1,49 @@
+[INFO] Scoring checkpoint A (baseline): models/pu-baseline-trial001/best_checkpoint
+Loading weights:   0%|          | 0/213 [00:00<?, ?it/s]Loading weights:  73%|███████▎  | 156/213 [00:00<00:00, 1542.81it/s]Loading weights: 100%|██████████| 213/213 [00:00<00:00, 1529.08it/s]
+[INFO] Scoring checkpoint B (two-tier): models/pu-two-tier-trial001/best_checkpoint
+Loading weights:   0%|          | 0/213 [00:00<?, ?it/s]Loading weights:  73%|███████▎  | 155/213 [00:00<00:00, 1514.39it/s]Loading weights: 100%|██████████| 213/213 [00:00<00:00, 1559.37it/s]
+term           group                             n  prob_a(base)  prob_b(2tier)    shift
+GO:0005515     known_positive (label=1)       5392        0.5444         0.5698  +0.0254
+GO:0005515     confirmed_negative (label=0, kept)   4518        0.3468         0.3510  +0.0041
+GO:0005515     excluded (label=0, flagged hidden-pos)   2116        0.5350         0.5622  +0.0273
+----------------------------------------------------------------------------------------------------
+GO:0005576     known_positive (label=1)        567        0.1944         0.2101  +0.0157
+GO:0005576     confirmed_negative (label=0, kept)  11249        0.0260         0.0274  +0.0015
+GO:0005576     excluded (label=0, flagged hidden-pos)    210        0.2207         0.2375  +0.0169
+----------------------------------------------------------------------------------------------------
+GO:0005634     known_positive (label=1)       2139        0.3241         0.3618  +0.0377
+GO:0005634     confirmed_negative (label=0, kept)   8562        0.1002         0.1049  +0.0047
+GO:0005634     excluded (label=0, flagged hidden-pos)   1325        0.3387         0.3807  +0.0420
+----------------------------------------------------------------------------------------------------
+GO:0005654     known_positive (label=1)        788        0.1661         0.1815  +0.0154
+GO:0005654     confirmed_negative (label=0, kept)  10787        0.0495         0.0514  +0.0019
+GO:0005654     excluded (label=0, flagged hidden-pos)    451        0.2006         0.2227  +0.0221
+----------------------------------------------------------------------------------------------------
+GO:0005737     known_positive (label=1)       1521        0.1845         0.2591  +0.0747
+GO:0005737     confirmed_negative (label=0, kept)   7812        0.0994         0.1215  +0.0221
+GO:0005737     excluded (label=0, flagged hidden-pos)   2693        0.1962         0.2784  +0.0822
+----------------------------------------------------------------------------------------------------
+GO:0005739     known_positive (label=1)        982        0.4301         0.4628  +0.0327
+GO:0005739     confirmed_negative (label=0, kept)  10611        0.0544         0.0549  +0.0005
+GO:0005739     excluded (label=0, flagged hidden-pos)    433        0.3755         0.4011  +0.0257
+----------------------------------------------------------------------------------------------------
+GO:0005783     known_positive (label=1)        468        0.1387         0.1641  +0.0254
+GO:0005783     confirmed_negative (label=0, kept)  11055        0.0395         0.0436  +0.0041
+GO:0005783     excluded (label=0, flagged hidden-pos)    503        0.1498         0.1794  +0.0296
+----------------------------------------------------------------------------------------------------
+GO:0005829     known_positive (label=1)       2114        0.2720         0.3264  +0.0544
+GO:0005829     confirmed_negative (label=0, kept)   7483        0.1128         0.1269  +0.0141
+GO:0005829     excluded (label=0, flagged hidden-pos)   2429        0.2744         0.3312  +0.0568
+----------------------------------------------------------------------------------------------------
+GO:0005886     known_positive (label=1)       1591        0.3060         0.3622  +0.0562
+GO:0005886     confirmed_negative (label=0, kept)   9474        0.0696         0.0741  +0.0045
+GO:0005886     excluded (label=0, flagged hidden-pos)    961        0.3148         0.3749  +0.0602
+----------------------------------------------------------------------------------------------------
+GO:0016020     known_positive (label=1)        582        0.0808         0.1145  +0.0337
+GO:0016020     confirmed_negative (label=0, kept)  10245        0.0397         0.0493  +0.0097
+GO:0016020     excluded (label=0, flagged hidden-pos)   1199        0.0938         0.1378  +0.0440
+----------------------------------------------------------------------------------------------------
+GO:0042802     known_positive (label=1)        566        0.0605         0.0739  +0.0134
+GO:0042802     confirmed_negative (label=0, kept)  10185        0.0440         0.0505  +0.0065
+GO:0042802     excluded (label=0, flagged hidden-pos)   1275        0.0694         0.0865  +0.0171
+----------------------------------------------------------------------------------------------------

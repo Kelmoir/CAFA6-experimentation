@@ -1,0 +1,18 @@
+[INFO] Comparing 11 terms: ['GO:0005515', 'GO:0005576', 'GO:0005634', 'GO:0005654', 'GO:0005737', 'GO:0005739', 'GO:0005783', 'GO:0005829', 'GO:0005886', 'GO:0016020', 'GO:0042802']
+[INFO] Scoring checkpoint A: models/pu-baseline-trial001/best_checkpoint
+Loading weights:   0%|          | 0/213 [00:00<?, ?it/s]Loading weights: 100%|██████████| 213/213 [00:00<00:00, 6098.49it/s]
+[INFO] Scoring checkpoint B: models/pu-two-tier-trial001/best_checkpoint
+Loading weights:   0%|          | 0/213 [00:00<?, ?it/s]Loading weights: 100%|██████████| 213/213 [00:00<00:00, 5589.57it/s]
+term           n_pos(val)  AUROC_a(base)  AUROC_b(nnpu)    delta
+GO:0005515           1942         0.7200         0.7204  +0.0004
+GO:0005576            184         0.8977         0.8982  +0.0005
+GO:0005634            801         0.8112         0.8114  +0.0002
+GO:0005654            389         0.8205         0.8204  -0.0001
+GO:0005737            531         0.7010         0.7048  +0.0038
+GO:0005739            320         0.8500         0.8508  +0.0009
+GO:0005783            167         0.8376         0.8394  +0.0018
+GO:0005829            790         0.7482         0.7501  +0.0018
+GO:0005886            551         0.8471         0.8470  -0.0001
+GO:0016020            213         0.7247         0.7242  -0.0006
+GO:0042802            200         0.6540         0.6588  +0.0047
+[SUMMARY] mean delta (nnpu - baseline) = +0.0012, 8/11 terms improved, 3/11 terms worsened
