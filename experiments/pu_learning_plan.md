@@ -1,5 +1,35 @@
 # Positive-Unlabeled (PU) learning for GO label refinement — plan
 
+**v2.1, 2026-09-24: two-tier mechanism verified working, but the whole PU-learning approach
+SHELVED as scope-limited to the point of being close to worthless for the actual CAFA-6 metric.**
+The two-tier mechanism itself is real (see the "Trial result" note in v2.0 below): all 11 targeted
+terms show a specific, validation-generalizing probability shift on the cells it flags. But two
+compounding scope limits make that a narrow, low-value win rather than a general PU-learning
+solution:
+- **Coverage**: only 11 of 437 examined terms (out of ~667 total labels in `dataset_raw`) ever
+  cleared the `--class-priors-min-source-positives=2000` floor where TIcE — the best of five
+  calibration methods tried — gets within ~2x of true prevalence. Below that floor, every
+  estimator tried (TIcE, held-out spy retrain, centroid-ratio, KM2) degrades to noise or gross
+  overestimation. This is a hard data-availability wall inherent to per-term calibration with a
+  Hoeffding-bound-style estimate, not a tuning gap — confirmed across four independently-designed
+  estimators, all failing the same way below ~1000-2000 positives.
+- **Value**: the 11 reachable terms (nucleus, cytoplasm, protein binding, membrane, etc.) are also
+  the *least valuable* ones to fix under CAFA's actual Fmax scoring, which weights each term by
+  information content (roughly `-log2(term frequency)`) — the most common terms carry the lowest
+  per-term weight, while the rare/specific terms CAFA rewards most are exactly the ones with too
+  few positives for any prior estimator tried here to trust.
+
+**Decision (user-confirmed 2026-09-24): shelve the PU-learning line of investigation entirely**,
+not just `--nnpu`. `--loss-mask-from-dataset`/`build_two_tier_dataset.py` stay in the codebase
+(mechanism verified correct and working, not broken), but the current per-term-isolated
+calibration approach shouldn't be extended to more terms without a fundamentally different
+estimator — most plausibly one that borrows statistical strength across the GO ancestor/sibling
+hierarchy (`generate_dataset.py`'s dependency graph already has this structure available) rather
+than estimating each term from its own positives alone. That idea is untested and would need its
+own validation pass (checked against true prevalence, same as every estimator above) before it
+could justify reopening this line — don't resume PU-learning on a hunch without that check. See
+[[project_pu_learning_nnpu_km2]] for the memory-level version.
+
 **v2.0, 2026-09-23: `--nnpu` CLOSED (not just shelved) — pivoted to a two-tier discrete relabeling
 design using TIcE.** See the v1.3 note below for the full trail of what was tried against `--nnpu`
 and why it's closed rather than reopened again. The revived design (the ORIGINAL two-step
