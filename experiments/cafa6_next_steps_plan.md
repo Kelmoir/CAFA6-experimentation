@@ -67,6 +67,15 @@ depth/annotation-count ceiling on the vocabulary) is a prerequisite, followed by
 plateau-first regularization pass on it, per [[feedback_plateau_first_sweep_strategy]]. Neither of
 these exists today.
 
+**Decision (user-confirmed 2026-09-26): build the full-label-space dataset generation first,
+before scoping any Tier 1 item.** This becomes its own dedicated implementation plan (effectively a
+Tier 0 prerequisite) — a `generate_dataset` variant producing the full ancestor closure over every
+GO term present in `train_terms.tsv` (no depth cap, no annotation-count threshold on the vocabulary,
+extending `generate_dataset.py`'s existing propagation machinery rather than `dataset_raw`'s
+no-propagation approach), followed by a plateau-first regularization pass on it per
+[[feedback_plateau_first_sweep_strategy]] to produce the actually-tuned baseline every Tier 1/2 item
+needs. Not started yet.
+
 ## Tier 1 — highest expected impact, actionable with current infrastructure
 
 ### 1. Ensembling / orthogonal evidence fusion
