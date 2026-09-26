@@ -35,19 +35,37 @@ dataset/train set, not a reduced label space chosen to make an experiment cheape
   documented as a separate, superseded label space (CLAUDE.md's Architecture notes). This is
   forward-looking guidance for new work, not a mandate to redo old trials.
 
-## Open question to resolve before starting ANY item below
+## Open question — RESOLVED 2026-09-26, and it surfaced a bigger blocker
 
-**Has the current `dataset_raw`-based baseline (`pu-baseline-trial001` and its lineage) been through
-its own plateau-first regularization pass, or is it inheriting hyperparameters tuned for the old,
-now-superseded 383-term coarse ancestor-propagated label space (`experiments/ancestor_sweep/`)?**
-`experiments/sequential_cascade_plan.md` explicitly gates its own start on "the current pipeline's
-flat classifier must be tuned properly and confirmed at production scale first" — that gate was
-written for the coarse-term pipeline and it's not established whether an equivalent
-confirmed-HEALTHY, plateau-located baseline exists for the current raw-label-space pipeline
-(`dataset_raw`, ~667 labels) this session's PU-learning work trained against. Per
-[[feedback_plateau_first_sweep_strategy]]: find the plateau at cheap scale before scaling up
-anything below — don't assume `pu-baseline-trial001`'s settings are already tuned for this label
-space just because they run without crashing.
+**Original question:** has the current `dataset_raw`-based baseline (`pu-baseline-trial001` and its
+lineage) been through its own plateau-first regularization pass, or is it inheriting hyperparameters
+tuned for the old, now-superseded 383-term coarse ancestor-propagated label space
+(`experiments/ancestor_sweep/`)?
+
+**Answer: no plateau-first pass at all.** Checked `experiments/logs/pu_trial_baseline.out` directly.
+`pu-baseline-trial001` is a single one-off run — `esm2_t12_35M_UR50D`, 3 epochs, batch_size=16,
+lr=5e-5 constant schedule, `unfreeze_last_n=2`, no LoRA, no mixed precision, 16,000 train /
+4,000 val examples (a small subsample, not the full training set) — with no sweep, no config
+comparison, no regularization search behind it. `sweep_log.md` has zero references to
+`dataset_raw`/`generate_dataset_raw.py` — the entire beam-search sweep infrastructure was run only
+against the old coarse propagated space. This checkpoint was built purely as a shared substrate for
+comparing PU-learning variants against each other, not as a tuned, production-scale baseline; it
+does **not** satisfy `sequential_cascade_plan.md`'s gate ("the current pipeline's flat classifier
+must be tuned properly and confirmed at production scale first").
+
+**Bigger blocker found while checking this, directly relevant to the 2026-09-26 full-label-space
+scope constraint above:** `dataset_raw` (`generate_dataset_raw.py`) is itself a partial GO-term
+selection, not the full label space. It selects only the 668 terms with ≥100 **directly-asserted,
+unpropagated** annotations (`RAW_MIN_ANNOTATIONS = 100` in `select_raw_terms`), and — by explicit
+design (see the module docstring) — does **no ancestor-closure propagation at all**, the opposite of
+what the new scope constraint asks for. `generate_dataset.py`'s own coarse space (383 terms,
+depth≤2, ≥50 annotations after propagation) is thresholded and depth-capped too. **Neither existing
+dataset variant is the full label space (all GO terms in `train_terms.tsv` + ancestor closure) the
+2026-09-26 scope constraint now requires.** This means Tier 1 item 1 (ensembling) can't be scoped
+yet against a compliant baseline — a new dataset-generation pass (full ancestor closure, no
+depth/annotation-count ceiling on the vocabulary) is a prerequisite, followed by a genuine
+plateau-first regularization pass on it, per [[feedback_plateau_first_sweep_strategy]]. Neither of
+these exists today.
 
 ## Tier 1 — highest expected impact, actionable with current infrastructure
 
