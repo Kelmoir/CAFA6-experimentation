@@ -64,4 +64,40 @@ default at this scale going forward -- prefer shrinking physical batch size + ra
 
 | id | model | unfreeze | lr | out_drop | esm_drop | attn_drop | grad_clip | wd | epochs | max_len | batch | grad_accum | train_n | val_n | verdict | next_action |
 |----|-------|----------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
-| trial-001 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 3 | 4192 | 1 | 16 | 16000 | 4000 | *pending* | *pending* |
+| trial-001 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 3 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, still improving | extend epochs (6) to find the plateau before touching unfreeze/model size |
+
+## trial-001
+
+**Config**: `esm2_t12_35M_UR50D`, unfreeze=2, lr=5e-5, out_drop=0.2, esm_drop=0.0, attn_drop=0.0,
+grad_clip=1.0, wd=0.01, epochs=3, max_length=4192, batch_size=1, grad_accum_steps=16 (effective
+batch 16), train_n=16000, val_n=4000, seed=42, `--data-path dataset_full` / `kelmoir/cafa6-full`
+(27,191-term trainable vocabulary). Log: `experiments/full_label_sweep/logs/trial-001.out`.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_f1 | val_f1 | wall_clock |
+|-------|-----------|----------|----------|--------|------------|
+| 1 | 0.0068 | 0.0069 | 0.2188 | 0.2359 | 561.6s |
+| 2 | 0.0066 | 0.0067 | 0.2457 | 0.2490 | 559.8s |
+| 3 | 0.0063 | 0.0066 | 0.2583 | 0.2526 | 567.7s |
+
+**Diagnostic** (2000 val examples): 9,401/27,191 labels evaluable (both classes present).
+Per-label AUROC: mean=0.7923 median=0.8364 min=0.0028 max=1.0000 (8,668/9,401 labels >0.5,
+7,207/9,401 >0.7). Pooled AUROC=0.9674. Best F1=0.3834@threshold=0.16. Pooled accuracy/recall
+at threshold 0.5 (0.9984/0.1532) is not the judging signal here, per this log's own note above
+-- only reported for completeness.
+
+**Verdict: HEALTHY.** Train/val loss decrease together every epoch, gap stays small and
+constant (0.0001-0.0003), no divergence, no spikes/NaN -- rules out OVERFITTING and UNSTABLE.
+Mean/median per-label AUROC well above 0.5 with strong tail performance (77% of evaluable
+labels >0.7 AUROC) rules out DEAD, despite this being a much larger, sparser vocabulary
+(27,191 terms) than any prior sweep tackled.
+
+**Next action**: per [[feedback_plateau_first_sweep_strategy]], loss was still decreasing at
+epoch 3 with no sign of flattening -- extend epochs (e.g. 6) at this same cheap
+scale/data-volume to locate the actual plateau before changing `--unfreeze-last-n` or model
+size. Not yet at a decision point for model-size/data-volume scaling.
+
+**Also noted**: `[WARN] Final checkpoint push failed: cannot import name 'XetSession' from
+'hf_xet'` -- fixed in `training_run.py` (commit `823cf46`, `os.environ.setdefault` before
+`import huggingface_hub`) after this trial ran; not expected to recur in trial-002.
