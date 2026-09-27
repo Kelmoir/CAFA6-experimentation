@@ -28,7 +28,7 @@ dataset/train set, not a reduced label space chosen to make an experiment cheape
   reason a subset is unavoidable at the prototyping stage — and even then, the item isn't done until
   its *final* reported result is against the full space, not the prototyping subset.
 - This is most relevant to items 3/4/5 (hierarchy-consistency loss, IA-weighted loss, DAG-consistency
-  post-processing) and item 10 (graph-embedding, if reopened) — the GO-DAG-related items are the ones
+  post-processing) and item 12 (graph-embedding, if reopened) — the GO-DAG-related items are the ones
   most tempted to restrict to a depth-limited slice for tractability. That's fine for a first
   correctness check of the mechanism itself, but not as the reported result.
 - Doesn't retroactively reopen the old `ancestor_sweep` coarse-label results — those are already
@@ -188,11 +188,40 @@ shelved as currently documented; if it succeeds, this becomes the first Tier 1 c
 re-opening that line specifically (not the current per-term-calibration approach — see Deprioritized
 below).
 
-### 8. Auxiliary sequence-based prediction tasks (user's own idea: predict positional annotations, etc.)
+### 8. Label-embedding output setup: predict a functional description, embed it, score against GO-term embeddings
+**Source:** your own inference from the deep-research report — "Not directly predicting GO-terms, but
+the descriptive text... yields better results" — the ProTranslator/TALE label-embedding pattern
+already cited in `experiments/graph_embedding_plan.md`'s "Learning points" section, but keyed off GO
+terms' own textual definitions (`go-basic.obo` has these) rather than graph-structural (node2vec/GNN)
+embeddings — complementary to that plan, not competing with it.
+**Why this is now a prerequisite, not just another Tier 3 candidate (user correction, 2026-09-27):**
+item 9 below (auxiliary sequence-based prediction tasks) needs a flexible, non-fixed-classifier-head
+output mechanism to be worth building at all — under a flat per-term classification head, every new
+auxiliary target needs its own dedicated trained output layer, which doesn't scale past a handful of
+hand-picked tasks and cuts directly against the 2026-09-26 full-label-space scope constraint's
+~30k+-term vocabulary. A label-embedding architecture (predict a description/representation, embed
+it, score compatibility against precomputed target embeddings) sidesteps both problems: a new
+auxiliary target, or a new GO term, just needs its own embedding, not a newly trained head.
+**Item 9 cannot be properly scoped until this exists — build this one first.**
+**Additional relevance:** may also answer the full-label-space vocabulary-scaling question left open
+at the end of the Tier 0 discussion above — a compatibility-score head over GO-term text embeddings
+doesn't need one classifier weight per term the way a flat sigmoid output layer does. Worth evaluating
+as the actual output architecture for the Tier 0 full-label-space baseline itself, not only as an
+auxiliary-task enabler — not decided yet, flag for the Tier 0 implementation plan.
+**Why Tier 3, not Tier 1:** its own unresolved feasibility questions — what encodes the predicted
+description and the GO term definitions into a shared space (reuse ESM's own representations vs. a
+separate text encoder), whether GO term definitions are distinctive enough in embedding space to
+separate closely related terms, and how compatibility-score training interacts with the existing
+BCE-based training loop. Needs its own feasibility spike, same bar as item 7.
+
+### 9. Auxiliary sequence-based prediction tasks (user's own idea: predict positional annotations, etc.)
+**Depends on item 8 above (label-embedding setup)** — this item's auxiliary targets are meant to be
+implemented as embedding predictions/compatibility scores under that architecture, not as new flat
+classifier heads; don't scope this before item 8 has at least a working feasibility result.
 **Source:** not directly evidenced in the research (no source reviewed combined multi-task sequence
 objectives with GO prediction), but consistent with two things the research does support: (a) the
 general principle that orthogonal evidence sources help (item 1), and (b) the finding that structure
-specifically delivers only modest gains (item 10 below) — so a sequence-based auxiliary task avoids
+specifically delivers only modest gains (item 11 below) — so a sequence-based auxiliary task avoids
 paying that cost while still targeting "broader representation learning" the same way structure
 was meant to.
 **Why Tier 3:** untested idea, no direct precedent found. Per
@@ -202,7 +231,7 @@ change per-term AUROC on terms it's plausibly related to?), not just whether the
 trains — that discipline was the exact gap that caused the two-tier PU trial to initially look like a
 null result.
 
-### 9. Reopening the shelved two-tier PU-learning mechanism, conditional on a materially stronger base predictor
+### 10. Reopening the shelved two-tier PU-learning mechanism, conditional on a materially stronger base predictor
 **Source:** [[project_pu_learning_nnpu_km2]] (this session) + report §"The open-world annotation
 problem is acknowledged everywhere but corrected almost nowhere." The shelving decision
 (2026-09-24) was driven by two compounding limits: only 11/437 terms ever calibrate usefully with
@@ -224,7 +253,7 @@ scope limit doesn't change — only the mechanism's effect *size* on those terms
 
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
-### 9. Structure-based (AlphaFold-predicted structure) features
+### 11. Structure-based (AlphaFold-predicted structure) features
 **Source:** report §"Structure and ontology awareness..." — an independent 14-method benchmark found
 pure-sequence, ontology-aware DeepGOZero+ beat the structure-integrating DeepGraphGO (0.463 vs. 0.427
 Fmax on biological process); DeepFRI's and GAT-GO's structural gains are characterized as only
@@ -235,7 +264,7 @@ structural, auxiliary tasks) rather than contradicting it.
 revisit only if a specific benchmark surfaces showing structure helps *on top of* a well-built
 sequence+ontology pipeline specifically (the comparisons found so far are against weaker baselines).
 
-### 10. Full GO graph-embedding/GNN approach (`experiments/graph_embedding_plan.md`)
+### 12. Full GO graph-embedding/GNN approach (`experiments/graph_embedding_plan.md`)
 **Status: stays gated**, per that document's own explicit condition — "the Open World Assumption (OWA)
 problem must be tackled to at least some extent first" — and the PU-learning line that was the
 project's attempt at that prerequisite was just shelved
@@ -247,7 +276,7 @@ noise-inheriting. Re-open only if item 7 (temporal validation) succeeds and give
 tell a shared-embedding model's borrowed signal apart from borrowed noise.
 
 Reopening per-term PU-learning class-prior *calibration* specifically (as opposed to rechecking the
-already-built two-tier mechanism's effect size, which is Tier 3 item 9 above) stays out of scope: the
+already-built two-tier mechanism's effect size, which is Tier 3 item 10 above) stays out of scope: the
 report independently confirms classical PU estimators (Elkan-Noto, KM2, TIcE) assume SCAR, which GO's
 "rich-get-richer" annotation bias (Gini coefficient 0.25→0.47, 2001-2017) demonstrably violates, and
 that the wall this project hit (needing ≥2000 positives per term to calibrate) is a real field-wide
