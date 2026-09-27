@@ -65,6 +65,7 @@ default at this scale going forward -- prefer shrinking physical batch size + ra
 | id | model | unfreeze | lr | out_drop | esm_drop | attn_drop | grad_clip | wd | epochs | max_len | batch | grad_accum | train_n | val_n | verdict | next_action |
 |----|-------|----------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
 | trial-001 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 3 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, still improving | extend epochs (6) to find the plateau before touching unfreeze/model size |
+| trial-002 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 6 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, val_loss flat but AUROC/F1 still rising | extend epochs (10), switch --checkpoint-selection to f1 |
 
 ## trial-001
 
@@ -101,3 +102,48 @@ size. Not yet at a decision point for model-size/data-volume scaling.
 **Also noted**: `[WARN] Final checkpoint push failed: cannot import name 'XetSession' from
 'hf_xet'` -- fixed in `training_run.py` (commit `823cf46`, `os.environ.setdefault` before
 `import huggingface_hub`) after this trial ran; not expected to recur in trial-002.
+
+## trial-002
+
+**Config**: identical to trial-001 except `--epochs 6` (was 3). Log:
+`experiments/full_label_sweep/logs/trial-002.out`.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_f1 | val_f1 | wall_clock |
+|-------|-----------|----------|----------|--------|------------|
+| 1 | 0.0068 | 0.0069 | 0.2188 | 0.2359 | 564.3s |
+| 2 | 0.0066 | 0.0067 | 0.2457 | 0.2490 | 564.4s |
+| 3 | 0.0063 | 0.0066 | 0.2583 | 0.2526 | 563.2s |
+| 4 | 0.0062 | 0.0065 | 0.2639 | 0.2555 | 571.5s |
+| 5 | 0.0061 | 0.0065 | 0.2759 | 0.2731 | 579.0s |
+| 6 | 0.0061 | 0.0064 | 0.2789 | 0.2919 | 565.2s |
+
+Epochs 1-3 are bit-for-bit identical to trial-001's epochs 1-3, as expected (same seed, same
+data ordering, same hyperparameters up to that point -- confirms determinism, not a bug).
+
+**Diagnostic** (2000 val examples): 9,401/27,191 labels evaluable (same set as trial-001,
+depends on the validation sample, not epoch count). Per-label AUROC: mean=0.8225
+median=0.8659 min=0.0000 max=1.0000 (8,903/9,401 labels >0.5, 7,704/9,401 >0.7). Pooled
+AUROC=0.9717. Best F1=0.3937@threshold=0.20 -- every one of these numbers improved over
+trial-001's (mean AUROC 0.7923->0.8225, median 0.8364->0.8659, pooled 0.9674->0.9717,
+>0.7-AUROC share 76.7%->81.9%).
+
+**Notable pattern (not a bug, already documented in CLAUDE.md's checkpoint-selection notes)**:
+`val_loss` essentially flattened over the last 3 epochs (0.0065/0.0065/0.0064) while AUROC and
+F1 kept improving meaningfully the whole time (val_f1 0.2526->0.2555->0.2731->0.2919). Under
+this task's severe class imbalance, BCE loss barely moves once the easy majority-negative
+predictions are dialed in, even while real ranking quality on the rare positive terms keeps
+improving -- so `--checkpoint-selection val_loss` (this trial's setting) would treat epochs
+4-6 as roughly equally "best" despite epoch 6 clearly being the strongest on the metric that
+actually matters here.
+
+**No overfitting signal**: train/val loss gap stayed small and roughly constant; val_f1 was
+actually *higher* than train_f1 at every epoch, the opposite of what overfitting would show.
+
+**Verdict: still HEALTHY, real plateau not yet reached** -- AUROC/F1 (the metrics this sweep
+judges by, per this log's own note above) were still climbing meaningfully at epoch 6, even
+though val_loss looked flat. Per [[feedback_plateau_first_sweep_strategy]]: extend epochs
+further (10) before touching unfreeze/model size, and switch `--checkpoint-selection f1` for
+trial-003 onward given the flat-val-loss-but-rising-F1 dynamic just confirmed empirically on
+this label space, not just the coarse one CLAUDE.md originally documented it for.
