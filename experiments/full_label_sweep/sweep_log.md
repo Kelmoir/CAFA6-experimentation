@@ -66,6 +66,7 @@ default at this scale going forward -- prefer shrinking physical batch size + ra
 |----|-------|----------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
 | trial-001 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 3 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, still improving | extend epochs (6) to find the plateau before touching unfreeze/model size |
 | trial-002 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 6 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, val_loss flat but AUROC/F1 still rising | extend epochs (10), switch --checkpoint-selection to f1 |
+| trial-003 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 10 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, plateau reached at this data volume | scale train_n up (more data, not more epochs) before touching unfreeze/model size |
 
 ## trial-001
 
@@ -147,3 +148,63 @@ though val_loss looked flat. Per [[feedback_plateau_first_sweep_strategy]]: exte
 further (10) before touching unfreeze/model size, and switch `--checkpoint-selection f1` for
 trial-003 onward given the flat-val-loss-but-rising-F1 dynamic just confirmed empirically on
 this label space, not just the coarse one CLAUDE.md originally documented it for.
+
+## trial-003
+
+**Config**: identical to trial-002 except `--epochs 10` (was 6) and
+`--checkpoint-selection f1` (was the `val_loss` default). Log:
+`experiments/full_label_sweep/logs/trial-003.out`.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_f1 | val_f1 | wall_clock |
+|-------|-----------|----------|----------|--------|------------|
+| 1 | 0.0068 | 0.0069 | 0.2188 | 0.2359 | -- |
+| 2 | 0.0066 | 0.0067 | 0.2457 | 0.2490 | -- |
+| 3 | 0.0063 | 0.0066 | 0.2583 | 0.2526 | -- |
+| 4 | 0.0062 | 0.0065 | 0.2639 | 0.2555 | -- |
+| 5 | 0.0061 | 0.0065 | 0.2759 | 0.2731 | -- |
+| 6 | 0.0061 | 0.0064 | 0.2789 | 0.2919 | -- |
+| 7 | 0.0060 | 0.0064 | 0.2876 | 0.2692 | -- |
+| 8 | 0.0059 | 0.0063 | 0.2899 | 0.2955 | -- |
+| 9 | 0.0058 | 0.0063 | 0.2955 | 0.2888 | -- |
+| 10 | 0.0058 | 0.0063 | 0.2990 | 0.2896 | -- |
+
+Epochs 1-6 are bit-for-bit identical to trial-002's epochs 1-6 (same seed/data/hyperparameters
+up to that point, as expected). `--checkpoint-selection f1` picked **epoch 8** (val_f1=0.2955)
+as best, not epoch 10 -- the first trial in this sweep where the selected checkpoint isn't the
+final epoch, confirming the switch away from `val_loss` selection was warranted.
+
+**Diagnostic** (2000 val examples): 9,401/27,191 labels evaluable (same set as trial-001/002).
+Per-label AUROC: mean=0.8356 median=0.8791 min=0.0110 max=1.0000. Pooled AUROC=0.9734. Best
+F1=0.3993@threshold=0.20. Still an improvement over trial-002 (mean AUROC 0.8225->0.8356,
+median 0.8659->0.8791, pooled 0.9717->0.9734), but a much smaller step than trial-002's jump
+over trial-001.
+
+**Plateau signature found**: unlike trial-002's smooth monotonic `val_f1` climb through all 6
+epochs, trial-003's epochs 6-10 **oscillate** around 0.27-0.30 (0.2919 -> 0.2692 -> 0.2955 ->
+0.2888 -> 0.2896) rather than climbing every epoch. The per-epoch rate of mean-AUROC
+improvement also slowed sharply: +0.0302 over epochs 3->6 (trial-002's extension) vs. only
++0.0131 over epochs 6->10 (trial-003's extension), despite the same epoch budget. `val_loss`
+stayed flat at 0.0063-0.0064 across the last 4 epochs. This combination -- noisy oscillation
+around a ceiling instead of a still-climbing curve, on both the loss and the ranking metrics --
+is the actual plateau shape this sweep has been hunting for, not just a flat-loss/rising-F1
+false plateau like trial-002's.
+
+**No overfitting signal**: train/val loss gap stayed small and roughly constant throughout;
+val_f1 tracked train_f1 closely (sometimes exceeding it), the opposite of an overfitting
+signature.
+
+**Verdict: HEALTHY, plateau reached at this data volume (16k train / 4k val samples/epoch).**
+Per [[feedback_plateau_first_sweep_strategy]]'s own logic -- find the plateau at cheap scale
+before scaling up -- this is the decision point: further epochs at 16k samples aren't likely to
+move the needle further (the oscillation is now bigger than the trend). Per the sweep's own
+search-strategy priority order ("(3) scale dataset size/epochs only once HEALTHY"), the next
+trial should scale **train_n** (more data per epoch, since 16k is a small slice of the ~52.7k
+protein train split), not add more epochs at the same data volume or touch unfreeze/model size
+yet.
+
+**Next action**: trial-004, same config as trial-003 but with a larger `--max-train-samples`
+(e.g. the full ~52,579-row train split, or an intermediate step like 32000 first) and enough
+epochs to re-locate the plateau at that new scale -- per this sweep's own strategy, re-derive
+the plateau at the new scale rather than assuming trial-003's epoch count transfers.
