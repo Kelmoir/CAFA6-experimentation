@@ -103,8 +103,9 @@ def main():
   dataset_dict.save_to_disk(out_path)
   export_dependency_graph(obonet_graph, full_terms, out_path / "go_dependency_graph.json",
                           selection_rule={"min_annotations": None, "propagated": True, "depth_cap": None})
+  dataset_dict.push_to_hub("kelmoir/cafa6-full", private=False)
 
-  print("\nFull-label-space dataset created successfully (not yet pushed to Hub -- see Task 3).")
+  print("\nFull-label-space dataset created successfully.")
 
 
 if __name__ == "__main__":
