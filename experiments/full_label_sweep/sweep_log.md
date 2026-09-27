@@ -49,17 +49,19 @@ a reason to assume DEAD-basin defaults again. Change one axis per trial; priorit
 mean clearly above 0.5, on a real evaluable-label count), (2) resolve over/underfitting,
 (3) scale dataset size/epochs only once HEALTHY.
 
-**Memory note specific to this sweep:** `MAX_LENGTH=4192` is ~4.1x `dataset`/`dataset_raw`'s
-1024, and self-attention memory scales roughly quadratically with sequence length -- trial-001
-starts at a conservative `--batch-size 4` with `--gradient-checkpointing` enabled (neither
-needed at the old 1024-length scale) rather than reusing the old sweep's `--batch-size 16`
-outright. Treat the first trial partly as a memory-fit check: if it comfortably fits with
-headroom to spare, batch size is a legitimate axis to raise in a later trial; if it OOMs,
-that's the first thing to fix (lower batch size further, or try `--mixed-precision bf16`)
-before judging DEAD/OVERFITTING/HEALTHY at all.
+**Memory/throughput note specific to this sweep:** `MAX_LENGTH=4192` is ~4.1x
+`dataset`/`dataset_raw`'s 1024, and self-attention memory scales roughly quadratically with
+sequence length. User-determined (2026-09-28, empirical, own hardware testing): **small
+physical `--batch-size` (1) + `--grad-accum-steps 16` (effective batch 16) is both the memory-
+and throughput-optimal choice at this sequence length** -- matrix multiplications are actually
+faster at smaller physical batch sizes here, and `--gradient-checkpointing` was tried and
+rejected for greatly slowing training (trades compute for memory, and memory wasn't actually
+the bottleneck once physical batch size was small). Don't reach for gradient checkpointing by
+default at this scale going forward -- prefer shrinking physical batch size + raising
+`--grad-accum-steps` to hit a target effective batch size instead.
 
 ## Trial index
 
-| id | model | unfreeze | lr | out_drop | esm_drop | attn_drop | grad_clip | wd | epochs | max_len | batch | grad_ckpt | train_n | val_n | verdict | next_action |
+| id | model | unfreeze | lr | out_drop | esm_drop | attn_drop | grad_clip | wd | epochs | max_len | batch | grad_accum | train_n | val_n | verdict | next_action |
 |----|-------|----------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
-| trial-001 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 3 | 4192 | 4 | yes | 16000 | 4000 | *pending* | *pending* |
+| trial-001 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 3 | 4192 | 1 | 16 | 16000 | 4000 | *pending* | *pending* |
