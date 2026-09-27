@@ -1290,7 +1290,9 @@ def main() -> None:
             train_loss += loss.item()
 
             if tracker is not None:
-                tracker.log({"epoch": epoch, "step": len(train_dataloader) * epoch + 1, "train_loss": loss.item(), **finalize_metrics(batch_metrics)})
+                # "step" is a trackio-reserved key (silently renamed to "__step" with a
+                # UserWarning if used directly) -- "global_step" avoids the collision.
+                tracker.log({"epoch": epoch, "global_step": len(train_dataloader) * epoch + 1, "train_loss": loss.item(), **finalize_metrics(batch_metrics)})
 
         train_loss /= max(1, len(train_dataloader))
         train_metrics = finalize_metrics(train_metrics_acc)
