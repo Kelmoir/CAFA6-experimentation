@@ -62,3 +62,50 @@ def select_full_terms(propagated_terms: dict, depths: dict) -> dict:
       term: {"depth": depths.get(term), "count": count}
       for term, count in counts.items()
   }
+
+
+def main():
+  data_path = Path("./data/cafa-6-protein-function-prediction")
+  prot_sequences = {}
+  for sequence in SeqIO.parse(data_path / "Train/train_sequences.fasta", "fasta"):
+    prot_sequences[sequence.id.split("|")[1]] = str(sequence.seq).upper().replace(r"[UZOB]", "X")
+  train_df = pd.read_csv(data_path / "Train/train_terms.tsv", delimiter="\t")
+  obonet_graph = obonet.read_obo(data_path / "Train/go-basic.obo")
+
+  true_path_graph = restrict_to_true_path(obonet_graph)
+  depths = compute_depths(true_path_graph)
+  propagated_terms = propagate_protein_terms(train_df, true_path_graph)
+  full_terms = select_full_terms(propagated_terms, depths)
+  print(f"[INFO] Selected {len(full_terms)} full GO terms "
+        f"(every propagated term, no depth cap, no annotation-count threshold)")
+
+  label2id = {term: idx for idx, term in enumerate(sorted(full_terms))}
+
+  protein_to_labels = {
+      protein_id: sorted(terms & full_terms.keys())
+      for protein_id, terms in propagated_terms.items()
+  }
+
+  unique_protein_ids = list(train_df["EntryID"].unique())
+  split_assignment = compute_cluster_aware_split(unique_protein_ids)
+  train_ids = [pid for pid in unique_protein_ids if split_assignment[pid] == "train"]
+  val_ids = [pid for pid in unique_protein_ids if split_assignment[pid] == "validation"]
+  test_ids = [pid for pid in unique_protein_ids if split_assignment[pid] == "test"]
+  print(f"Splitting IDs: Train={len(train_ids)}, Val={len(val_ids)}, Test={len(test_ids)}")
+
+  dataset_dict = datasets.DatasetDict({
+      "train": generate_dataset(train_ids, protein_to_labels, label2id, prot_sequences),
+      "validation": generate_dataset(val_ids, protein_to_labels, label2id, prot_sequences),
+      "test": generate_dataset(test_ids, protein_to_labels, label2id, prot_sequences),
+  })
+
+  out_path = data_path / "dataset_full"
+  dataset_dict.save_to_disk(out_path)
+  export_dependency_graph(obonet_graph, full_terms, out_path / "go_dependency_graph.json",
+                          selection_rule={"min_annotations": None, "propagated": True, "depth_cap": None})
+
+  print("\nFull-label-space dataset created successfully (not yet pushed to Hub -- see Task 3).")
+
+
+if __name__ == "__main__":
+  main()
