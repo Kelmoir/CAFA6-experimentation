@@ -9,6 +9,13 @@ from functools import partial
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+# Known env gotcha (see CLAUDE.md): huggingface_hub/hf_xet version mismatches on this host
+# can raise "ImportError: cannot import name 'XetSession' from 'hf_xet'" on any push/upload.
+# huggingface_hub.constants reads this env var at IMPORT time (not lazily at push time), so
+# it must be set before `import huggingface_hub` runs, not just before the push call itself.
+# setdefault (not a direct assignment) leaves an explicit user override alone.
+os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
+
 import numpy as np
 import torch
 from datasets import load_dataset, load_from_disk

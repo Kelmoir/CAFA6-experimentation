@@ -37,7 +37,12 @@ scripts above are the source of truth.
 
 ## Environment setup
 
-A local virtualenv lives in `env/` (not committed). Activate it before running anything locally:
+A local **conda** environment lives at `env/` (not committed) — created with something like
+`conda create --prefix ./env`, not a plain `venv`/`virtualenv` and not managed by `uv` (confirmed via
+`conda info --envs`, which lists this path). `source env/bin/activate` happens to work for it (conda
+environments created with `--prefix` get an `activate` script too), but prefer running scripts via the
+env's own interpreter directly (`env/bin/python script.py`) when a full shell activation isn't needed —
+and if the env ever needs recreating, use `conda create --prefix ./env`/`conda install`, not `venv`/`uv`.
 
 ```bash
 source env/bin/activate
@@ -91,7 +96,11 @@ There is no test suite, linter, or CI configured in this repo.
 can fail with `ImportError: cannot import name 'XetSession' from 'hf_xet'` on this host — a version
 mismatch between the installed `huggingface_hub` and `hf_xet` packages, not a code bug. Fix: set
 `HF_HUB_DISABLE_XET=1` in the environment before running the push (falls back to the older, non-xet
-upload path).
+upload path). `training_run.py` sets this itself now (`os.environ.setdefault("HF_HUB_DISABLE_XET", "1")`,
+placed before `import huggingface_hub` since the constant is read at import time, not lazily at push
+time) — its own checkpoint pushes don't need this set manually anymore. `generate_dataset*.py`'s dataset
+pushes still do (they don't import `training_run.py`), e.g. `HF_HUB_DISABLE_XET=1 env/bin/python
+generate_dataset_full.py`.
 
 ## Experiments directory layout
 
