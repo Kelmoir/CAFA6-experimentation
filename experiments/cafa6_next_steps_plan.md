@@ -74,7 +74,26 @@ GO term present in `train_terms.tsv` (no depth cap, no annotation-count threshol
 extending `generate_dataset.py`'s existing propagation machinery rather than `dataset_raw`'s
 no-propagation approach), followed by a plateau-first regularization pass on it per
 [[feedback_plateau_first_sweep_strategy]] to produce the actually-tuned baseline every Tier 1/2 item
-needs. Not started yet.
+needs.
+
+**Dataset-generation half DONE (2026-09-27/28), plateau sweep NOT started.**
+`generate_dataset_full.py` builds and pushes this variant (`kelmoir/cafa6-full`,
+implementation plan: `docs/superpowers/plans/2026-09-27-full-label-space-dataset-and-plateau-sweep.md`).
+Two follow-up refinements after the initial build: (1) the sequence-length ceiling
+(`generate_dataset()`'s shared `max_length` filter, which excludes rather than truncates
+over-length proteins) was raised from the shared 1024 default to 4192, based on a direct
+analysis showing only 191/29,386 terms are ever zero-train-positive purely due to a length
+cutoff, 81% of which are already recoverable by ~4096 — going further needs proteins up to
+35,213 residues for a handful more terms, a bad trade under quadratic self-attention; (2) a
+new `select_trainable_terms()` step drops any term with zero examples among train-split
+proteins actually usable at that cutoff from the *trainable classifier head* specifically —
+not from the label space's definition, which stays the full closure for scoring purposes,
+per the scope constraint above — since a zero-example term can't produce gradient signal
+under any architecture and only dilutes BCE loss / wastes classifier-head compute otherwise.
+**Final vocabulary: 27,191 trainable terms** (down from the initial 29,386; 2,195 genuinely
+unlearnable terms dropped), **removed-protein fraction 0.22%** (down from 9.25% at the
+original 1024 cutoff). All integrity checks pass. The plateau-first regularization sweep
+itself (this decision's second half) has not started.
 
 ## Tier 1 — highest expected impact, actionable with current infrastructure
 
