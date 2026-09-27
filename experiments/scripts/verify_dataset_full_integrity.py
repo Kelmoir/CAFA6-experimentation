@@ -6,13 +6,17 @@ import sys
 from pathlib import Path
 
 import datasets
+import obonet
 import pandas as pd
+from Bio import SeqIO
 
 # Add the project root to sys.path so we can import split_utils (same fix
 # verify_select_full_terms.py applies, for the same reason: this script lives in
 # experiments/scripts/, not the repo root).
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
+from generate_dataset import compute_depths, propagate_protein_terms, restrict_to_true_path
+from generate_dataset_full import select_full_terms
 from split_utils import compute_cluster_aware_split
 
 DATA_PATH = "data/cafa-6-protein-function-prediction"
@@ -51,19 +55,57 @@ def test_vocabulary_larger_than_existing_variants():
 
 
 def test_no_labels_removed_silently():
-  """generate_dataset()'s 'no labels in vocab' safety net should remove close to zero
-  proteins here (every protein propagates to at least an aspect root, which is always in
-  a no-threshold vocabulary) -- a large removed count would mean something upstream broke.
+  """generate_dataset()'s 'no labels in vocab' safety net should remove exactly zero
+  proteins here -- every protein propagates to at least an aspect root, and select_full_terms
+  includes every term that appears in ANY protein's propagated closure (no threshold), so by
+  construction protein_to_labels[pid] == propagated_terms[pid] whenever the latter is
+  non-empty. A nonzero count here would mean that invariant broke upstream.
+
+  generate_dataset() reports removals as a single combined counter (sequence missing/too-long
+  OR no labels in vocab), which conflates that invariant with an entirely separate, expected
+  baseline: the independent max_length=1024 sequence-length truncation shared by every
+  generate_dataset*.py variant (out of this task's scope to change -- generate_dataset.py is
+  shared code). An earlier version of this check asserted on the combined counter directly
+  (removed_fraction < 0.05) and failed at the real 9.25% figure -- investigated and traced
+  entirely to the truncation baseline: dataset_full's row counts (47766/13513/13502) are
+  numerically IDENTICAL to the already-shipped dataset (383-term coarse) variant's, despite a
+  completely different label vocabulary, and a manual decomposition found exactly 0 proteins
+  dropped for "no labels in vocab" specifically. This version decomposes the two removal
+  conditions itself (re-deriving prot_sequences/propagated_terms/full_terms the same way
+  main() does) so the assertion targets only the failure mode it's meant to catch.
   """
-  dataset_full = datasets.load_from_disk(f"{DATA_PATH}/dataset_full")
+  data_path_obj = Path(DATA_PATH)
+  prot_sequences = {}
+  for sequence in SeqIO.parse(data_path_obj / "Train/train_sequences.fasta", "fasta"):
+    prot_sequences[sequence.id.split("|")[1]] = str(sequence.seq).upper().replace(r"[UZOB]", "X")
   train_df = pd.read_csv(f"{DATA_PATH}/Train/train_terms.tsv", delimiter="\t")
-  n_input_proteins = train_df["EntryID"].nunique()
-  n_output_proteins = sum(len(dataset_full[s]) for s in ("train", "validation", "test"))
-  removed_fraction = 1 - (n_output_proteins / n_input_proteins)
-  assert removed_fraction < 0.05, (
-      f"{removed_fraction:.1%} of proteins were dropped (too-long sequence or no labels) -- "
-      "expected close to 0% for a no-threshold vocabulary, investigate before trusting this dataset")
-  print(f"[OK] test_no_labels_removed_silently ({removed_fraction:.2%} dropped)")
+  obonet_graph = obonet.read_obo(data_path_obj / "Train/go-basic.obo")
+
+  true_path_graph = restrict_to_true_path(obonet_graph)
+  depths = compute_depths(true_path_graph)
+  propagated_terms = propagate_protein_terms(train_df, true_path_graph)
+  full_terms = select_full_terms(propagated_terms, depths)
+
+  too_long_or_missing_seq = 0
+  no_labels_in_vocab = 0
+  for protein_id in train_df["EntryID"].unique():
+    seq = prot_sequences.get(protein_id)
+    if seq is None or len(seq) > 1024:
+      too_long_or_missing_seq += 1
+      continue
+    labels = [term for term in propagated_terms.get(protein_id, []) if term in full_terms]
+    if not labels:
+      no_labels_in_vocab += 1
+
+  print(f"[INFO] removed - too-long/missing sequence (independent baseline, not asserted "
+        f"on): {too_long_or_missing_seq}")
+  print(f"[INFO] removed - no labels in vocab: {no_labels_in_vocab}")
+  assert no_labels_in_vocab == 0, (
+      f"{no_labels_in_vocab} proteins had zero in-vocabulary labels despite a no-threshold "
+      "full label space -- every protein should propagate to at least an aspect root, "
+      "investigate before trusting this dataset")
+  print(f"[OK] test_no_labels_removed_silently (0 proteins removed for missing vocab labels; "
+        f"{too_long_or_missing_seq} removed for the separate, expected sequence-length baseline)")
 
 
 def test_dependency_graph_selection_rule():
