@@ -42,37 +42,45 @@ def test_split_matches_existing_variants():
   print("[OK] test_split_matches_existing_variants")
 
 
-def test_vocabulary_larger_than_existing_variants():
-  """The full closure (no threshold) must be a strict superset in spirit of the existing,
-  thresholded variants -- at minimum, far larger than dataset_raw's 668 terms.
-  """
-  dataset_full = datasets.load_from_disk(f"{DATA_PATH}/dataset_full")
-  vocab_size = dataset_full["train"].features["labels"].feature.num_classes
-  assert vocab_size > 668, (
-      f"full-label-space vocabulary ({vocab_size} terms) is not larger than dataset_raw's "
-      "668-term thresholded space -- select_full_terms may be filtering when it shouldn't")
-  print(f"[OK] test_vocabulary_larger_than_existing_variants ({vocab_size} terms)")
+def test_full_label_space_matches_disk():
+  """Combines two checks that both need the same from-scratch recomputation of
+  propagated_terms/full_terms, and both need to validate the REAL on-disk dataset_full
+  artifact directly rather than just the recomputation in isolation (a from-scratch-only
+  check can only ever catch select_full_terms regressing, never a bug in main()'s dataset
+  assembly/save/push path):
 
+  1. "no labels removed silently" -- generate_dataset()'s 'no labels in vocab' safety net
+     should remove exactly zero proteins here -- every protein propagates to at least an
+     aspect root, and select_full_terms includes every term that appears in ANY protein's
+     propagated closure (no threshold), so by construction protein_to_labels[pid] ==
+     propagated_terms[pid] whenever the latter is non-empty. A nonzero count here would mean
+     that invariant broke upstream.
 
-def test_no_labels_removed_silently():
-  """generate_dataset()'s 'no labels in vocab' safety net should remove exactly zero
-  proteins here -- every protein propagates to at least an aspect root, and select_full_terms
-  includes every term that appears in ANY protein's propagated closure (no threshold), so by
-  construction protein_to_labels[pid] == propagated_terms[pid] whenever the latter is
-  non-empty. A nonzero count here would mean that invariant broke upstream.
+     generate_dataset() reports removals as a single combined counter (sequence
+     missing/too-long OR no labels in vocab), which conflates that invariant with an entirely
+     separate, expected baseline: the independent max_length=1024 sequence-length truncation
+     shared by every generate_dataset*.py variant (out of this task's scope to change --
+     generate_dataset.py is shared code). An earlier version of this check asserted on the
+     combined counter directly (removed_fraction < 0.05) and failed at the real 9.25% figure
+     -- investigated and traced entirely to the truncation baseline: dataset_full's row counts
+     (47766/13513/13502) are numerically IDENTICAL to the already-shipped dataset (383-term
+     coarse) variant's, despite a completely different label vocabulary, and a manual
+     decomposition found exactly 0 proteins dropped for "no labels in vocab" specifically.
+     This version decomposes the two removal conditions itself (re-deriving
+     prot_sequences/propagated_terms/full_terms the same way main() does) so the assertion
+     targets only the failure mode it's meant to catch.
 
-  generate_dataset() reports removals as a single combined counter (sequence missing/too-long
-  OR no labels in vocab), which conflates that invariant with an entirely separate, expected
-  baseline: the independent max_length=1024 sequence-length truncation shared by every
-  generate_dataset*.py variant (out of this task's scope to change -- generate_dataset.py is
-  shared code). An earlier version of this check asserted on the combined counter directly
-  (removed_fraction < 0.05) and failed at the real 9.25% figure -- investigated and traced
-  entirely to the truncation baseline: dataset_full's row counts (47766/13513/13502) are
-  numerically IDENTICAL to the already-shipped dataset (383-term coarse) variant's, despite a
-  completely different label vocabulary, and a manual decomposition found exactly 0 proteins
-  dropped for "no labels in vocab" specifically. This version decomposes the two removal
-  conditions itself (re-deriving prot_sequences/propagated_terms/full_terms the same way
-  main() does) so the assertion targets only the failure mode it's meant to catch.
+  2. "on-disk artifact matches the recomputed surviving set, per split, exactly" -- every
+     surviving protein_id (computed independently of the on-disk dataset) is bucketed by its
+     EXPECTED split (compute_cluster_aware_split, the same call main() makes) and then checked
+     for exact set equality against dataset_full[split]["protein"]. This is strictly stronger
+     than a one-sided subset check: it catches a protein missing from a split (silently
+     dropped or reassigned) just as readily as it catches an unexpected extra one, and it
+     would catch a split ending up empty (survivors[split] would be non-empty while
+     actual_ids was empty, so the equality fails). It also ties the on-disk ClassLabel
+     vocabulary (both size and exact name set) back to the real, freshly-recomputed
+     full_terms selection, closing the gap where "larger than 668" was true but not
+     necessarily EXACTLY the selected vocabulary.
   """
   data_path_obj = Path(DATA_PATH)
   prot_sequences = {}
@@ -86,9 +94,13 @@ def test_no_labels_removed_silently():
   propagated_terms = propagate_protein_terms(train_df, true_path_graph)
   full_terms = select_full_terms(propagated_terms, depths)
 
+  unique_protein_ids = list(train_df["EntryID"].unique())
+  expected_split = compute_cluster_aware_split(unique_protein_ids)
+
   too_long_or_missing_seq = 0
   no_labels_in_vocab = 0
-  for protein_id in train_df["EntryID"].unique():
+  survivors = {"train": set(), "validation": set(), "test": set()}
+  for protein_id in unique_protein_ids:
     seq = prot_sequences.get(protein_id)
     if seq is None or len(seq) > 1024:
       too_long_or_missing_seq += 1
@@ -96,6 +108,8 @@ def test_no_labels_removed_silently():
     labels = [term for term in propagated_terms.get(protein_id, []) if term in full_terms]
     if not labels:
       no_labels_in_vocab += 1
+      continue
+    survivors[expected_split[protein_id]].add(protein_id)
 
   print(f"[INFO] removed - too-long/missing sequence (independent baseline, not asserted "
         f"on): {too_long_or_missing_seq}")
@@ -104,8 +118,33 @@ def test_no_labels_removed_silently():
       f"{no_labels_in_vocab} proteins had zero in-vocabulary labels despite a no-threshold "
       "full label space -- every protein should propagate to at least an aspect root, "
       "investigate before trusting this dataset")
-  print(f"[OK] test_no_labels_removed_silently (0 proteins removed for missing vocab labels; "
-        f"{too_long_or_missing_seq} removed for the separate, expected sequence-length baseline)")
+
+  dataset_full = datasets.load_from_disk(f"{DATA_PATH}/dataset_full")
+  for split_name in ("train", "validation", "test"):
+    actual_ids = set(dataset_full[split_name]["protein"])
+    expected_ids = survivors[split_name]
+    missing = expected_ids - actual_ids
+    unexpected = actual_ids - expected_ids
+    assert actual_ids == expected_ids, (
+        f"{split_name}: on-disk dataset_full protein IDs don't exactly match the "
+        f"recomputed surviving set -- {len(missing)} expected proteins missing from disk "
+        f"(e.g. {list(missing)[:5]}), {len(unexpected)} unexpected proteins on disk (e.g. "
+        f"{list(unexpected)[:5]}) -- dataset_full may have silently lost, gained, or "
+        "misassigned rows relative to select_full_terms/compute_cluster_aware_split")
+
+  vocab_feature = dataset_full["train"].features["labels"].feature
+  assert vocab_feature.num_classes == len(full_terms), (
+      f"on-disk vocabulary ({vocab_feature.num_classes} terms) does not exactly equal the "
+      f"freshly recomputed full_terms selection ({len(full_terms)} terms) -- select_full_terms "
+      "may be filtering, or the on-disk dataset is stale relative to the current pipeline")
+  assert vocab_feature.names == sorted(full_terms.keys()), (
+      "on-disk ClassLabel names do not exactly equal sorted(full_terms.keys()) -- the "
+      "artifact's label ordering/content has drifted from the real selection")
+
+  print(f"[OK] test_full_label_space_matches_disk (0 proteins removed for missing vocab "
+        f"labels; {too_long_or_missing_seq} removed for the separate, expected "
+        f"sequence-length baseline; all 3 splits match exactly; vocab size "
+        f"{vocab_feature.num_classes} matches full_terms exactly)")
 
 
 def test_dependency_graph_selection_rule():
@@ -126,7 +165,6 @@ def test_dependency_graph_selection_rule():
 
 if __name__ == "__main__":
   test_split_matches_existing_variants()
-  test_vocabulary_larger_than_existing_variants()
-  test_no_labels_removed_silently()
+  test_full_label_space_matches_disk()
   test_dependency_graph_selection_rule()
   print("[OK] all integrity checks passed")
