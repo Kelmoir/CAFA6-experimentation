@@ -37,6 +37,15 @@ from generate_dataset import (
 )
 from split_utils import compute_cluster_aware_split
 
+# Sequence-length ceiling for dataset inclusion (generate_dataset()'s max_length filter).
+# Raised from generate_dataset.py's/generate_dataset_raw.py's shared 1024 default: those
+# proteins aren't just truncated, they're excluded from the dataset ENTIRELY, taking every
+# one of their labels with them -- disproportionately hurting rare/singleton terms whose only
+# supporting proteins happen to be long. 2048 recovers those proteins' labels; see
+# experiments/scripts/verify_dataset_full_integrity.py, which imports this same constant so
+# the two can't drift out of sync with each other.
+MAX_LENGTH = 2048
+
 
 def select_full_terms(propagated_terms: dict, depths: dict) -> dict:
   """EVERY GO term that appears anywhere in any protein's propagated ancestor closure --
@@ -94,9 +103,9 @@ def main():
   print(f"Splitting IDs: Train={len(train_ids)}, Val={len(val_ids)}, Test={len(test_ids)}")
 
   dataset_dict = datasets.DatasetDict({
-      "train": generate_dataset(train_ids, protein_to_labels, label2id, prot_sequences),
-      "validation": generate_dataset(val_ids, protein_to_labels, label2id, prot_sequences),
-      "test": generate_dataset(test_ids, protein_to_labels, label2id, prot_sequences),
+      "train": generate_dataset(train_ids, protein_to_labels, label2id, prot_sequences, max_length=MAX_LENGTH),
+      "validation": generate_dataset(val_ids, protein_to_labels, label2id, prot_sequences, max_length=MAX_LENGTH),
+      "test": generate_dataset(test_ids, protein_to_labels, label2id, prot_sequences, max_length=MAX_LENGTH),
   })
 
   out_path = data_path / "dataset_full"

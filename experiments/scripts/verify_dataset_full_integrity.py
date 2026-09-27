@@ -16,7 +16,7 @@ from Bio import SeqIO
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from generate_dataset import compute_depths, propagate_protein_terms, restrict_to_true_path
-from generate_dataset_full import select_full_terms
+from generate_dataset_full import MAX_LENGTH, select_full_terms
 from split_utils import compute_cluster_aware_split
 
 DATA_PATH = "data/cafa-6-protein-function-prediction"
@@ -58,9 +58,12 @@ def test_full_label_space_matches_disk():
 
      generate_dataset() reports removals as a single combined counter (sequence
      missing/too-long OR no labels in vocab), which conflates that invariant with an entirely
-     separate, expected baseline: the independent max_length=1024 sequence-length truncation
-     shared by every generate_dataset*.py variant (out of this task's scope to change --
-     generate_dataset.py is shared code). An earlier version of this check asserted on the
+     separate, expected baseline: the independent max_length sequence-length truncation
+     (generate_dataset.py's/generate_dataset_raw.py's shared default is 1024;
+     generate_dataset_full.py raises this to MAX_LENGTH=2048 specifically to recover
+     labels from proteins that default would otherwise exclude entirely -- out of this
+     check's scope to change generate_dataset.py itself, which is shared code). An earlier
+     version of this check asserted on the
      combined counter directly (removed_fraction < 0.05) and failed at the real 9.25% figure
      -- investigated and traced entirely to the truncation baseline: dataset_full's row counts
      (47766/13513/13502) are numerically IDENTICAL to the already-shipped dataset (383-term
@@ -102,7 +105,7 @@ def test_full_label_space_matches_disk():
   survivors = {"train": set(), "validation": set(), "test": set()}
   for protein_id in unique_protein_ids:
     seq = prot_sequences.get(protein_id)
-    if seq is None or len(seq) > 1024:
+    if seq is None or len(seq) > MAX_LENGTH:
       too_long_or_missing_seq += 1
       continue
     labels = [term for term in propagated_terms.get(protein_id, []) if term in full_terms]
