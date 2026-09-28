@@ -68,6 +68,7 @@ default at this scale going forward -- prefer shrinking physical batch size + ra
 | trial-002 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 6 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, val_loss flat but AUROC/F1 still rising | extend epochs (10), switch --checkpoint-selection to f1 |
 | trial-003 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 10 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, plateau reached at this data volume | scale train_n up (more data, not more epochs) before touching unfreeze/model size |
 | trial-004 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 6 | 4192 | 1 | 16 | 32000 | 4000 | HEALTHY, doubling train_n did not beat trial-003's plateau -- capacity-limited, not data-limited | raise --unfreeze-last-n (2->4), revert train_n to 16000 (32k showed no benefit) |
+| trial-005 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 10 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, unfreezing more layers broke past trial-003's ceiling, still climbing at epoch 10 | extend epochs (15) to relocate the plateau at unfreeze=4 |
 
 ## trial-001
 
@@ -254,3 +255,50 @@ next -- trial-005 should raise `--unfreeze-last-n` (2 -> 4), reverting `--max-tr
 back to 16000 (32k showed no benefit, no reason to pay its extra wall-clock cost while probing
 this axis) and keeping `--epochs 10` (trial-003's already-located plateau epoch count for this
 data volume) as the starting point.
+
+## trial-005
+
+**Config**: identical to trial-003 except `--unfreeze-last-n 4` (was 2). Log:
+`experiments/full_label_sweep/logs/trial-005.out`.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_f1 | val_f1 |
+|-------|-----------|----------|----------|--------|
+| 1 | 0.0068 | 0.0069 | 0.2261 | 0.2485 |
+| 2 | 0.0065 | 0.0067 | 0.2529 | 0.2495 |
+| 3 | 0.0062 | 0.0065 | 0.2641 | 0.2569 |
+| 4 | 0.0061 | 0.0065 | 0.2714 | 0.2613 |
+| 5 | 0.0060 | 0.0064 | 0.2856 | 0.2798 |
+| 6 | 0.0060 | 0.0063 | 0.2902 | 0.2901 |
+| 7 | 0.0058 | 0.0063 | 0.3016 | 0.2778 |
+| 8 | 0.0057 | 0.0063 | 0.3081 | 0.2966 |
+| 9 | 0.0056 | 0.0063 | 0.3193 | 0.2858 |
+| 10 | 0.0055 | 0.0063 | 0.3264 | 0.3001 |
+
+`--checkpoint-selection f1` picked **epoch 10** (val_f1=0.3001) as best -- unlike trial-003,
+where the best epoch was 8 and the last 4-5 epochs oscillated without net gain, here `val_f1`
+is noisy epoch-to-epoch (small dips at 2, 7, 9) but its *trend* keeps climbing, ending at its
+highest value yet on the final epoch.
+
+**Diagnostic** (2000 val examples): 9,401/27,191 labels evaluable (same set every trial).
+Per-label AUROC: mean=0.8476 median=0.8904 min not recorded here. Pooled AUROC=0.9744. Best
+F1=0.4027@threshold=0.18. **Beats trial-003 on every figure** (mean AUROC 0.8356->0.8476,
+median 0.8791->0.8904, pooled 0.9734->0.9744, best F1 0.3993->0.4027) -- the first trial in
+this sweep to clear the ceiling trial-003/004 converged to regardless of data volume.
+
+**No overfitting signal**: train/val loss gap stayed small and constant; val_f1 sometimes dips
+below train_f1's trend but never diverges, consistent with a still-improving fit rather than
+memorization.
+
+**Verdict: HEALTHY, confirms the capacity-bottleneck hypothesis from trial-004.** Unfreezing 2
+more encoder layers (2->4) raised the achievable ceiling on every diagnostic metric, and unlike
+trial-003/004, this trial is still climbing (not oscillating around a fixed ceiling) at epoch
+10 -- the plateau for `--unfreeze-last-n 4` hasn't been located yet.
+
+**Next action**: per [[feedback_plateau_first_sweep_strategy]], extend epochs further (e.g. 15)
+at this same `--unfreeze-last-n 4` / 16k-train_n scale to relocate the new plateau, mirroring
+the trial-001->002->003 epoch-extension pattern that worked for `--unfreeze-last-n 2`. Only
+after that plateau is found does it make sense to decide whether to push `--unfreeze-last-n`
+even higher, scale train_n again (now that capacity is less constrained), or move to a larger
+model.
