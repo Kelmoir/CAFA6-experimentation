@@ -69,6 +69,7 @@ default at this scale going forward -- prefer shrinking physical batch size + ra
 | trial-003 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 10 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, plateau reached at this data volume | scale train_n up (more data, not more epochs) before touching unfreeze/model size |
 | trial-004 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 6 | 4192 | 1 | 16 | 32000 | 4000 | HEALTHY, doubling train_n did not beat trial-003's plateau -- capacity-limited, not data-limited | raise --unfreeze-last-n (2->4), revert train_n to 16000 (32k showed no benefit) |
 | trial-005 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 10 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, unfreezing more layers broke past trial-003's ceiling, still climbing at epoch 10 | extend epochs (15) to relocate the plateau at unfreeze=4 |
+| trial-006 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 15 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, plateau forming but train/val f1 gap widening -- early overfitting warning | retry train_n=32000 at unfreeze=4 (more data may both help and narrow the gap) |
 
 ## trial-001
 
@@ -302,3 +303,47 @@ the trial-001->002->003 epoch-extension pattern that worked for `--unfreeze-last
 after that plateau is found does it make sense to decide whether to push `--unfreeze-last-n`
 even higher, scale train_n again (now that capacity is less constrained), or move to a larger
 model.
+
+## trial-006
+
+**Config**: identical to trial-005 except `--epochs 15` (was 10). Log:
+`experiments/full_label_sweep/logs/trial-006.out`.
+
+**Per-epoch metrics** (epochs 1-10 bit-for-bit identical to trial-005, as expected; only
+epochs 11-15 shown beyond that point):
+
+| epoch | train_loss | val_loss | train_f1 | val_f1 |
+|-------|-----------|----------|----------|--------|
+| 11 | 0.0054 | 0.0063 | 0.3385 | 0.2897 |
+| 12 | 0.0054 | 0.0062 | 0.3465 | 0.3105 |
+| 13 | 0.0053 | 0.0062 | 0.3538 | 0.3049 |
+| 14 | 0.0051 | 0.0062 | 0.3661 | 0.3169 |
+| 15 | 0.0051 | 0.0063 | 0.3732 | 0.3030 |
+
+`--checkpoint-selection f1` picked **epoch 14** (val_f1=0.3169) as best; epoch 15 dipped.
+
+**Diagnostic** (2000 val examples): 9,401/27,191 labels evaluable (same set every trial).
+Per-label AUROC: mean=0.8563 median=0.9002. Pooled AUROC=0.9758. Best F1=0.4059@threshold=0.20.
+Still an improvement over trial-005 (mean AUROC 0.8476->0.8563, median 0.8904->0.9002, pooled
+0.9744->0.9758, best F1 0.4027->0.4059), but a noticeably smaller step than trial-005's jump
+over trial-003 -- consistent with a plateau starting to form at this capacity level too.
+
+**Emerging overfitting signal (new, not seen in trial-001 through -005)**: the train/val F1 gap
+widened steadily through these 5 epochs -- 0.0263 at epoch 10 (0.3264 vs 0.3001) growing to
+0.0702 by epoch 15 (0.3732 vs 0.3030). `train_loss` kept dropping smoothly (0.0055->0.0051)
+while `val_loss` flattened and ticked back up slightly at the last epoch (0.0062->0.0063). Not
+severe (val_loss isn't clearly diverging, val_f1 isn't collapsing), but the first early warning
+of overfitting in this sweep -- worth flagging now rather than waiting for it to worsen with
+more epochs at this same data volume.
+
+**Verdict: HEALTHY, plateau forming for `--unfreeze-last-n 4`, but with an early overfitting
+warning this sweep hasn't seen before.** Diagnostic metrics still improved, but the shrinking
+step size plus the widening train/val gap together suggest more epochs at 16k train_n is the
+wrong lever to pull next -- it would likely trade a little more val_f1 for a worse overfitting
+profile, not find genuinely new signal.
+
+**Next action**: rather than extending epochs further at this capacity/data combination, retry
+`--max-train-samples 32000` now at `--unfreeze-last-n 4` (trial-004 tested 32k only at
+unfreeze=2, where it didn't help -- untested whether more data helps once capacity is less
+constrained). More data is also the standard remedy for a widening train/val gap, so this trial
+doubles as both an axis probe and a check on the overfitting signal above.
