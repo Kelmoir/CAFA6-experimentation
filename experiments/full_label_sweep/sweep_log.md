@@ -67,6 +67,7 @@ default at this scale going forward -- prefer shrinking physical batch size + ra
 | trial-001 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 3 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, still improving | extend epochs (6) to find the plateau before touching unfreeze/model size |
 | trial-002 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 6 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, val_loss flat but AUROC/F1 still rising | extend epochs (10), switch --checkpoint-selection to f1 |
 | trial-003 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 10 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, plateau reached at this data volume | scale train_n up (more data, not more epochs) before touching unfreeze/model size |
+| trial-004 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 6 | 4192 | 1 | 16 | 32000 | 4000 | HEALTHY, doubling train_n did not beat trial-003's plateau -- capacity-limited, not data-limited | raise --unfreeze-last-n (2->4), revert train_n to 16000 (32k showed no benefit) |
 
 ## trial-001
 
@@ -208,3 +209,48 @@ yet.
 (e.g. the full ~52,579-row train split, or an intermediate step like 32000 first) and enough
 epochs to re-locate the plateau at that new scale -- per this sweep's own strategy, re-derive
 the plateau at the new scale rather than assuming trial-003's epoch count transfers.
+
+## trial-004
+
+**Config**: identical to trial-003 except `--max-train-samples 32000` (was 16000) and
+`--epochs 6` (was 10, since the plan was to re-locate the plateau at the new data volume rather
+than assume trial-003's epoch count). Log: `experiments/full_label_sweep/logs/trial-004.out`.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_f1 | val_f1 |
+|-------|-----------|----------|----------|--------|
+| 1 | 0.0067 | 0.0067 | 0.2327 | 0.2653 |
+| 2 | 0.0063 | 0.0065 | 0.2617 | 0.2617 |
+| 3 | 0.0061 | 0.0064 | 0.2774 | 0.3010 |
+| 4 | 0.0060 | 0.0063 | 0.2866 | 0.2801 |
+| 5 | 0.0058 | 0.0063 | 0.2960 | 0.2920 |
+| 6 | 0.0057 | 0.0062 | 0.3073 | 0.2825 |
+
+`--checkpoint-selection f1` picked **epoch 3** (val_f1=0.3010) as best -- `val_f1` was already
+noisy by epoch 2-3, never showing trial-002's early smooth monotonic climb despite twice the
+per-epoch data.
+
+**Diagnostic** (2000 val examples): 9,401/27,191 labels evaluable (same set every trial).
+Per-label AUROC: mean=0.8302 median=0.8740. Pooled AUROC=0.9723. Best F1=0.3941@threshold=0.20.
+**Worse than trial-003** on every one of these figures (mean AUROC 0.8356->0.8302, pooled
+0.9734->0.9723, best F1 0.3993->0.3941) despite double the train_n.
+
+**No overfitting signal**: train/val gap stayed small throughout; final train_f1 (0.3073) only
+modestly exceeds val_f1 (0.2825), consistent with capacity-limited rather than
+overfitting-limited behavior.
+
+**Verdict: HEALTHY, but scaling train_n did NOT beat trial-003's plateau.** Doubling per-epoch
+data volume produced a *slightly worse* result on every diagnostic metric than trial-003's
+16k/10-epoch run, at greater compute cost per epoch. Combined with trial-003's finding (val_f1
+oscillation, not a climbing trend, once near this ceiling) and the fact that both trials
+converge to essentially the same AUROC/F1 band regardless of data volume, this points at a
+**capacity bottleneck, not a data-volume bottleneck**: only the classifier head plus the last 2
+encoder layers (`--unfreeze-last-n 2`) are trainable, and that's plausibly saturated for a
+27,191-term label space already.
+
+**Next action**: per the sweep's coordinate-descent search strategy, move to the capacity axis
+next -- trial-005 should raise `--unfreeze-last-n` (2 -> 4), reverting `--max-train-samples`
+back to 16000 (32k showed no benefit, no reason to pay its extra wall-clock cost while probing
+this axis) and keeping `--epochs 10` (trial-003's already-located plateau epoch count for this
+data volume) as the starting point.
