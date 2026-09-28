@@ -62,15 +62,16 @@ default at this scale going forward -- prefer shrinking physical batch size + ra
 
 ## Trial index
 
-| id | model | unfreeze | lr | out_drop | esm_drop | attn_drop | grad_clip | wd | epochs | max_len | batch | grad_accum | train_n | val_n | verdict | next_action |
+| id | model | unfreeze | lr | out_drop | esm_drop | attn_drop | grad_clip | wd | lbl_smooth | epochs | max_len | batch | grad_accum | train_n | val_n | verdict | next_action |
 |----|-------|----------|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
-| trial-001 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 3 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, still improving | extend epochs (6) to find the plateau before touching unfreeze/model size |
-| trial-002 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 6 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, val_loss flat but AUROC/F1 still rising | extend epochs (10), switch --checkpoint-selection to f1 |
-| trial-003 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 10 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, plateau reached at this data volume | scale train_n up (more data, not more epochs) before touching unfreeze/model size |
-| trial-004 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 6 | 4192 | 1 | 16 | 32000 | 4000 | HEALTHY, doubling train_n did not beat trial-003's plateau -- capacity-limited, not data-limited | raise --unfreeze-last-n (2->4), revert train_n to 16000 (32k showed no benefit) |
-| trial-005 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 10 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, unfreezing more layers broke past trial-003's ceiling, still climbing at epoch 10 | extend epochs (15) to relocate the plateau at unfreeze=4 |
-| trial-006 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 15 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, plateau forming but train/val f1 gap widening -- early overfitting warning | retry train_n=32000 at unfreeze=4 (more data may both help and narrow the gap) |
-| trial-007 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 10 | 4192 | 1 | 16 | 32000 | 4000 | HEALTHY, best diagnostics of the sweep so far but overfitting onset tied to total gradient exposure, not resolved by more data | revert train_n to 16000 (cheaper, no proven gain), raise esm/attn dropout off 0.0 -- first real regularization-axis trial |
+| trial-001 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 0.0 | 3 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, still improving | extend epochs (6) to find the plateau before touching unfreeze/model size |
+| trial-002 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 0.0 | 6 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, val_loss flat but AUROC/F1 still rising | extend epochs (10), switch --checkpoint-selection to f1 |
+| trial-003 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 0.0 | 10 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, plateau reached at this data volume | scale train_n up (more data, not more epochs) before touching unfreeze/model size |
+| trial-004 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 0.0 | 6 | 4192 | 1 | 16 | 32000 | 4000 | HEALTHY, doubling train_n did not beat trial-003's plateau -- capacity-limited, not data-limited | raise --unfreeze-last-n (2->4), revert train_n to 16000 (32k showed no benefit) |
+| trial-005 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 0.0 | 10 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, unfreezing more layers broke past trial-003's ceiling, still climbing at epoch 10 | extend epochs (15) to relocate the plateau at unfreeze=4 |
+| trial-006 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 0.0 | 15 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, plateau forming but train/val f1 gap widening -- early overfitting warning | retry train_n=32000 at unfreeze=4 (more data may both help and narrow the gap) |
+| trial-007 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 0.0 | 10 | 4192 | 1 | 16 | 32000 | 4000 | HEALTHY, best diagnostics of the sweep so far but overfitting onset tied to total gradient exposure, not resolved by more data | revert train_n to 16000 (cheaper, no proven gain), raise esm/attn dropout off 0.0 -- first real regularization-axis trial |
+| trial-008 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.0 | 15 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, overfitting signal fully resolved, matches trial-007's diagnostics at half the data cost, still climbing at epoch 15 | add --label-smoothing 0.1 (user's usual value on this problem), same dropout/epoch settings |
 
 ## trial-001
 
@@ -402,6 +403,60 @@ unfreeze=4) without ever clearly buying a better generalization profile -- time 
 it and move to the regularization axis the sweep is nominally about.
 
 **Next action**: revert `--max-train-samples` to 16000 (cheaper; 32k bought better peak metrics
-but not a better overfitting profile) and raise `--esm-dropout`/`--attn-dropout` off their 0.0
-floor for the first time this sweep, holding `--unfreeze-last-n 4` and `--epochs 15` (matches
+but not a better overfitting profile) and raise `--esm-dropout`/`--attention-dropout` off their
+0.0 floor for the first time this sweep, holding `--unfreeze-last-n 4` and `--epochs 15` (matches
 trial-006 exactly except for the new dropout values, to isolate their effect cleanly).
+
+## trial-008
+
+**Config**: identical to trial-006 except `--esm-dropout 0.1` and `--attention-dropout 0.1`
+(both were 0.0 through trial-007; note the correct flag is `--attention-dropout`, not
+`--attn-dropout` as first drafted -- fixed before the trial ran). Log:
+`experiments/full_label_sweep/logs/trial-008.out`.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_f1 | val_f1 | gap (train-val) |
+|-------|-----------|----------|----------|--------|------------------|
+| 1 | 0.0068 | 0.0069 | 0.2224 | 0.2494 | -0.0270 |
+| 2 | 0.0066 | 0.0067 | 0.2492 | 0.2532 | -0.0040 |
+| 3 | 0.0063 | 0.0066 | 0.2581 | 0.2592 | -0.0011 |
+| 4 | 0.0062 | 0.0065 | 0.2641 | 0.2602 | 0.0039 |
+| 5 | 0.0061 | 0.0065 | 0.2773 | 0.2798 | -0.0025 |
+| 6 | 0.0061 | 0.0064 | 0.2801 | 0.2859 | -0.0058 |
+| 7 | 0.0060 | 0.0064 | 0.2875 | 0.2788 | 0.0087 |
+| 8 | 0.0059 | 0.0063 | 0.2914 | 0.2995 | -0.0081 |
+| 9 | 0.0058 | 0.0063 | 0.2956 | 0.2896 | 0.0060 |
+| 10 | 0.0058 | 0.0062 | 0.2985 | 0.2991 | -0.0006 |
+| 11 | 0.0057 | 0.0063 | 0.3060 | 0.2924 | 0.0136 |
+| 12 | 0.0057 | 0.0062 | 0.3087 | 0.3073 | 0.0014 |
+| 13 | 0.0056 | 0.0062 | 0.3133 | 0.3035 | 0.0098 |
+| 14 | 0.0055 | 0.0062 | 0.3192 | 0.3071 | 0.0121 |
+| 15 | 0.0055 | 0.0062 | 0.3226 | 0.3120 | 0.0106 |
+
+`--checkpoint-selection f1` picked **epoch 15** (val_f1=0.3120) as best -- the final epoch, still
+climbing, no dip. First trial at `--unfreeze-last-n 4` where `best_epoch` lands on the last
+epoch rather than regressing before it.
+
+**Diagnostic** (2000 val examples): 9,401/27,191 labels evaluable. Per-label AUROC: mean=0.8560
+median=0.9021. Pooled AUROC=0.9762. Best F1=0.4095@threshold=0.20. Essentially matches trial-007's
+peak diagnostics (mean 0.8568, median 0.9025, pooled 0.9755, best F1 0.4096) -- at half trial-007's
+data cost (16k vs 32k train_n) and without trial-007's late-epoch regression.
+
+**Overfitting signal fully resolved**: the train/val F1 gap stayed small and non-monotonic
+throughout all 15 epochs (roughly -0.03 to +0.014, no directional trend), a sharp contrast with
+trial-006's steady widening (0.0263 at epoch 10 -> 0.0702 at epoch 15) under identical
+data/capacity settings. `esm-dropout`/`attention-dropout` at 0.1 each directly targeted the
+mechanism (the unfrozen encoder layers memorizing) and it worked cleanly, at effectively no cost
+to peak diagnostic quality.
+
+**Verdict: HEALTHY, first fully clean result at `--unfreeze-last-n 4`** -- no overfitting
+signal, matches the best diagnostics seen so far, and still improving at the final epoch (not yet
+at this config's plateau).
+
+**Next action**: per the user's instruction (2026-09-28: "label smoothing worked really well on
+this problem... the next should consider that axis"), add `--label-smoothing 0.1` (the user's
+usual value) on top of trial-008's settings, holding everything else fixed (same dropouts, same
+15 epochs) to isolate its effect cleanly. Since trial-008 was still climbing at epoch 15, epoch
+extension is also owed to this config -- queued for whichever trial comes after label smoothing
+is evaluated, rather than confounding both changes in the same trial.
