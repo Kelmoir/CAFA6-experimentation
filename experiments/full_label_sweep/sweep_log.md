@@ -70,6 +70,7 @@ default at this scale going forward -- prefer shrinking physical batch size + ra
 | trial-004 | esm2_t12_35M_UR50D | 2 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 6 | 4192 | 1 | 16 | 32000 | 4000 | HEALTHY, doubling train_n did not beat trial-003's plateau -- capacity-limited, not data-limited | raise --unfreeze-last-n (2->4), revert train_n to 16000 (32k showed no benefit) |
 | trial-005 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 10 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, unfreezing more layers broke past trial-003's ceiling, still climbing at epoch 10 | extend epochs (15) to relocate the plateau at unfreeze=4 |
 | trial-006 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 15 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, plateau forming but train/val f1 gap widening -- early overfitting warning | retry train_n=32000 at unfreeze=4 (more data may both help and narrow the gap) |
+| trial-007 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 10 | 4192 | 1 | 16 | 32000 | 4000 | HEALTHY, best diagnostics of the sweep so far but overfitting onset tied to total gradient exposure, not resolved by more data | revert train_n to 16000 (cheaper, no proven gain), raise esm/attn dropout off 0.0 -- first real regularization-axis trial |
 
 ## trial-001
 
@@ -347,3 +348,60 @@ profile, not find genuinely new signal.
 unfreeze=2, where it didn't help -- untested whether more data helps once capacity is less
 constrained). More data is also the standard remedy for a widening train/val gap, so this trial
 doubles as both an axis probe and a check on the overfitting signal above.
+
+## trial-007
+
+**Config**: identical to trial-006 except `--max-train-samples 32000` (was 16000) and
+`--epochs 10` (was 15 -- reset conservatively since trial-006's overfitting signal only
+appeared past epoch 10, mirroring how trial-004 reset epoch count the first time train_n
+changed). Log: `experiments/full_label_sweep/logs/trial-007.out`.
+
+**Per-epoch metrics** (fresh run -- train_n changed, so no epochs are bit-for-bit identical to
+a prior trial):
+
+| epoch | train_loss | val_loss | train_f1 | val_f1 | gap (train-val) |
+|-------|-----------|----------|----------|--------|------------------|
+| 1 | 0.0067 | 0.0067 | 0.2387 | 0.2676 | -0.0289 |
+| 2 | 0.0062 | 0.0065 | 0.2677 | 0.2711 | -0.0034 |
+| 3 | 0.0060 | 0.0063 | 0.2855 | 0.2994 | -0.0139 |
+| 4 | 0.0058 | 0.0063 | 0.2988 | 0.2892 | 0.0096 |
+| 5 | 0.0056 | 0.0062 | 0.3153 | 0.3014 | 0.0139 |
+| 6 | 0.0055 | 0.0062 | 0.3347 | 0.2811 | 0.0536 |
+| 7 | 0.0053 | 0.0062 | 0.3520 | 0.3058 | 0.0462 |
+| 8 | 0.0051 | 0.0062 | 0.3685 | 0.3107 | 0.0578 |
+| 9 | 0.0050 | 0.0062 | 0.3854 | 0.3254 | 0.0600 |
+| 10 | 0.0049 | 0.0063 | 0.4010 | 0.3136 | 0.0874 |
+
+`--checkpoint-selection f1` picked **epoch 9** (val_f1=0.3254) as best; epoch 10 dipped, same
+pattern as trial-006's final epoch.
+
+**Diagnostic** (2000 val examples): 9,401/27,191 labels evaluable (same set every trial).
+Per-label AUROC: mean=0.8568 median=0.9025. Pooled AUROC=0.9755. Best F1=0.4096@threshold=0.20.
+Best-of-sweep on every figure except pooled AUROC, which ticked down within noise (trial-006:
+mean 0.8563, median 0.9002, pooled 0.9758, best F1 0.4059 -> trial-007: 0.8568, 0.9025, 0.9755,
+0.4096).
+
+**Overfitting onset tracks total gradient exposure, not epoch count or train_n alone (new
+finding)**: a 32k-sample epoch does 2x the gradient steps of a 16k-sample epoch, so "epoch
+number" isn't a fair comparison across trial-006 and trial-007 -- total examples processed is.
+At matched exposure (trial-007 epoch 5 = 160k examples processed ~= trial-006 epoch 10 = 160k
+examples processed), trial-007's train/val gap is 0.0139 vs. trial-006's 0.0263 at that same
+point -- doubling train_n roughly halved the gap early on, as hoped. But the gap kept widening
+past that: by trial-007 epoch 9 (288k examples processed) the gap is 0.0600, comparable to
+trial-006's epoch 15 gap of 0.0702 at 240k examples processed -- a similar order of magnitude at
+a similar total-exposure budget. `best_epoch=9` (not the final epoch) confirms the same
+plateau-then-regress signature trial-006 showed, now reached at a similar total-gradient-exposure
+point rather than a later one. Conclusion: more data delayed the overfitting onset when measured
+in epochs (because each epoch does more work), but did not raise the total-exposure budget
+before it sets in -- scaling `--max-train-samples` further is unlikely to fix this on its own.
+
+**Verdict: HEALTHY, best diagnostics of the sweep so far, but confirms the overfitting signal
+from trial-006 is a real ceiling tied to total training volume rather than a data-scarcity
+artifact.** The data axis has now been tested twice (trial-004 at unfreeze=2, trial-007 at
+unfreeze=4) without ever clearly buying a better generalization profile -- time to stop pulling
+it and move to the regularization axis the sweep is nominally about.
+
+**Next action**: revert `--max-train-samples` to 16000 (cheaper; 32k bought better peak metrics
+but not a better overfitting profile) and raise `--esm-dropout`/`--attn-dropout` off their 0.0
+floor for the first time this sweep, holding `--unfreeze-last-n 4` and `--epochs 15` (matches
+trial-006 exactly except for the new dropout values, to isolate their effect cleanly).
