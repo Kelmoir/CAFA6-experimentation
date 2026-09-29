@@ -1018,7 +1018,11 @@ def main() -> None:
         prior_bias = torch.log(label_priors / (1 - label_priors)).to(device)
         with torch.no_grad():
             model_esm.classifier.out_proj.bias.copy_(prior_bias)
-        print(f"[INFO] Initialized classifier bias to label priors: {dict(zip(label_names, label_priors.tolist()))}")
+        print(
+            f"[INFO] Initialized classifier bias to label priors for {len(label_names)} labels "
+            f"(mean={label_priors.mean().item():.4f}, min={label_priors.min().item():.4f}, "
+            f"max={label_priors.max().item():.4f})"
+        )
 
     class_priors_tensor = torch.zeros(len(label_names), device=device)
     eligible_mask = torch.zeros(len(label_names), dtype=torch.bool, device=device)
