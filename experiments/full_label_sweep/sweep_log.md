@@ -72,6 +72,7 @@ default at this scale going forward -- prefer shrinking physical batch size + ra
 | trial-006 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 0.0 | 15 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, plateau forming but train/val f1 gap widening -- early overfitting warning | retry train_n=32000 at unfreeze=4 (more data may both help and narrow the gap) |
 | trial-007 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 0.0 | 10 | 4192 | 1 | 16 | 32000 | 4000 | HEALTHY, best diagnostics of the sweep so far but overfitting onset tied to total gradient exposure, not resolved by more data | revert train_n to 16000 (cheaper, no proven gain), raise esm/attn dropout off 0.0 -- first real regularization-axis trial |
 | trial-008 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.0 | 15 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, overfitting signal fully resolved, matches trial-007's diagnostics at half the data cost, still climbing at epoch 15 | add --label-smoothing 0.1 (user's usual value on this problem), same dropout/epoch settings |
+| trial-009 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.1 | 15 | 4192 | 1 | 16 | 16000 | 4000 | DEAD -- label_smoothing=0.1 collapsed ranking ability (mean AUROC 0.856->0.513, near chance) | revert label_smoothing to 0.0, resume trial-008's config (proven good), extend epochs |
 
 ## trial-001
 
@@ -460,3 +461,65 @@ usual value) on top of trial-008's settings, holding everything else fixed (same
 15 epochs) to isolate its effect cleanly. Since trial-008 was still climbing at epoch 15, epoch
 extension is also owed to this config -- queued for whichever trial comes after label smoothing
 is evaluated, rather than confounding both changes in the same trial.
+
+## trial-009
+
+**Config**: identical to trial-008 except `--label-smoothing 0.1` (was 0.0). Log:
+`experiments/full_label_sweep/logs/trial-009.out`.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_f1 | val_f1 |
+|-------|-----------|----------|----------|--------|
+| 1 | 0.2330 | 0.0555 | 0.1915 | 0.1575 |
+| 2 | 0.2032 | 0.0576 | 0.1892 | 0.1923 |
+| 3 | 0.2030 | 0.0569 | 0.1917 | 0.1910 |
+| 4 | 0.2029 | 0.0562 | 0.1893 | 0.1760 |
+| 5 | 0.2028 | 0.0581 | 0.1927 | 0.1760 |
+| 6 | 0.2027 | 0.0550 | 0.1918 | 0.1760 |
+| 7 | 0.2026 | 0.0568 | 0.1896 | 0.1760 |
+| 8 | 0.2026 | 0.0578 | 0.1908 | 0.1923 |
+| 9 | 0.2025 | 0.0571 | 0.1921 | 0.1760 |
+| 10 | 0.2025 | 0.0560 | 0.1938 | 0.1760 |
+| 11 | 0.2024 | 0.0565 | 0.1926 | 0.1760 |
+| 12 | 0.2024 | 0.0561 | 0.1920 | 0.1760 |
+| 13 | 0.2024 | 0.0567 | 0.1877 | 0.1760 |
+| 14 | 0.2023 | 0.0557 | 0.1924 | 0.1760 |
+| 15 | 0.2023 | 0.0579 | 0.1937 | 0.1760 |
+
+(`train_loss`/`val_loss` aren't comparable to trial-008's -- BCE against smoothed 0.1/0.9
+targets has a much higher floor than against hard 0/1 targets, so the ~0.20 vs ~0.055 scale
+jump is expected and not itself a signal.) `--checkpoint-selection f1` picked **epoch 2**;
+`val_f1` is bit-for-bit identical (0.1760) across 8 of the remaining 13 epochs -- the training
+loop found a degenerate, static output distribution almost immediately and never moved off it.
+
+**Diagnostic** (2000 val examples): 9,401/27,191 labels evaluable (same set every trial).
+Per-label AUROC: mean=**0.5133** median=**0.5304** -- both essentially at chance (0.5 = random
+ranking). Pooled AUROC collapsed to 0.8814 (from trial-008's 0.9762). Best F1=0.3104@0.18 looks
+survivable in isolation, but the AUROC collapse means the model has lost almost all per-label
+ranking signal underneath it -- the exact false-alarm pattern this sweep's own diagnostic
+tooling exists to catch (see CLAUDE.md's "Post-training diagnostic" section): a single
+threshold-0.5-adjacent metric can look tolerable while the ranking model underneath has
+effectively died.
+
+**Label smoothing at this scale/value is destructive, not mildly unhelpful**: the old
+`ancestor_sweep`'s trial-020 (coarse, 383-term label space) found `label_smoothing=0.05` only
+*slightly* underperformed its seed. At the full 27,191-term ancestor-closure label space, with
+~3.58% average positive rate, symmetric smoothing at 0.1 pushes essentially every one of a
+protein's ~27k mostly-negative targets from a hard 0 up to 0.1 -- at this label-space size that
+soft-negative pressure appears to dominate the loss landscape and the model gives up on
+per-label discrimination almost immediately (`best_epoch=2`, then flat). This is a much larger
+and more label-space-size-sensitive effect than the mild one seen in the old coarse-label sweep.
+
+**Verdict: DEAD.** Ranking ability (AUROC) collapsed to near-chance within 2 epochs and never
+recovered; not a case of "underperforms but still healthy," but the pattern CLAUDE.md's
+diagnostic section was written to catch: don't trust threshold-0.5 metrics alone at this severe
+class imbalance.
+
+**Next action**: revert `--label-smoothing` to 0.0 and resume from trial-008's proven-good
+config (esm/attention-dropout=0.1, no label smoothing) -- extend `--epochs` past 15 there, since
+trial-008 was still climbing at its final epoch and that thread was interrupted to test label
+smoothing. If label smoothing is worth revisiting at all at this label-space scale, it would
+need a far smaller value (e.g. 0.01) or the existing `--unknown-target-value` flag (soft-targets
+only the *unknown* side, not confirmed negatives) rather than full symmetric smoothing at 0.1 --
+flagged for the user to decide, not attempted unprompted.
