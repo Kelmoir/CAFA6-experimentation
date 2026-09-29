@@ -74,6 +74,7 @@ default at this scale going forward -- prefer shrinking physical batch size + ra
 | trial-008 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.0 | 15 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, overfitting signal fully resolved, matches trial-007's diagnostics at half the data cost, still climbing at epoch 15 | add --label-smoothing 0.1 (user's usual value on this problem), same dropout/epoch settings |
 | trial-009 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.1 | 15 | 4192 | 1 | 16 | 16000 | 4000 | DEAD -- label_smoothing=0.1 collapsed ranking ability (mean AUROC 0.856->0.513, near chance) | revert label_smoothing to 0.0, resume trial-008's config (proven good), extend epochs |
 | trial-010 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.0 | 25 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, best diagnostics of the sweep, but mild overfitting onset appears past epoch ~18 | decide: extend further to confirm true plateau, or accept ~epoch 18-20 as this config's ceiling and move to next axis |
+| trial-011 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.05 | 0.0 | 20 | 4192 | 1 | 16 | 16000 | 4000 | NEGATIVE/NEUTRAL -- weight_decay=0.05 doesn't help, diagnostics slightly below trial-008/010, genuine early peak (epoch 18) followed by clean decline | revert weight_decay to 0.01, move to next axis (train_n) |
 
 ## trial-001
 
@@ -591,3 +592,68 @@ whether the gap keeps widening toward a trial-006-style blowup or the metrics ge
 versus accepting ~epoch 18-20 as this config's effective ceiling (e.g. via early stopping at that
 point) and moving to the next regularization/scale axis (weight decay, or revisiting train_n now
 that dropout is in place). Flagged for the user to decide rather than picked unprompted.
+
+User's decision: accept ~epoch 18-20 as this config's practical ceiling for now and move to the
+next axis, but keep the door open to raising epochs again in a later trial specifically if that
+trial's curve doesn't show a plateau by epoch 25.
+
+## trial-011
+
+**Config**: identical to trial-010 (`--esm-dropout 0.1 --attention-dropout 0.1`, no label
+smoothing) except `--weight-decay 0.05` (was 0.01, untouched default since trial-001) and
+`--epochs 20` (was 25, per the user's decision above to cap at this config's identified ceiling
+rather than extend further). Log: `experiments/full_label_sweep/logs/trial-011.out`.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_f1 | val_f1 | gap (train-val) |
+|-------|-----------|----------|----------|--------|------------------|
+| 1 | 0.0068 | 0.0069 | 0.2223 | 0.2491 | -0.0268 |
+| 2 | 0.0066 | 0.0067 | 0.2491 | 0.2531 | -0.0040 |
+| 3 | 0.0063 | 0.0066 | 0.2580 | 0.2590 | -0.0010 |
+| 4 | 0.0062 | 0.0065 | 0.2638 | 0.2597 | 0.0041 |
+| 5 | 0.0061 | 0.0065 | 0.2771 | 0.2797 | -0.0026 |
+| 6 | 0.0061 | 0.0064 | 0.2798 | 0.2857 | -0.0059 |
+| 7 | 0.0060 | 0.0064 | 0.2871 | 0.2782 | 0.0089 |
+| 8 | 0.0059 | 0.0063 | 0.2911 | 0.2988 | -0.0077 |
+| 9 | 0.0058 | 0.0063 | 0.2951 | 0.2890 | 0.0061 |
+| 10 | 0.0058 | 0.0062 | 0.2979 | 0.2992 | -0.0013 |
+| 11 | 0.0057 | 0.0063 | 0.3054 | 0.2910 | 0.0144 |
+| 12 | 0.0057 | 0.0062 | 0.3081 | 0.3081 | 0.0000 |
+| 13 | 0.0056 | 0.0062 | 0.3127 | 0.3025 | 0.0102 |
+| 14 | 0.0055 | 0.0062 | 0.3187 | 0.3071 | 0.0116 |
+| 15 | 0.0055 | 0.0062 | 0.3218 | 0.3115 | 0.0103 |
+| 16 | 0.0055 | 0.0062 | 0.3250 | 0.3110 | 0.0140 |
+| 17 | 0.0055 | 0.0061 | 0.3290 | 0.3155 | 0.0135 |
+| 18 | 0.0055 | 0.0061 | 0.3318 | 0.3197 | 0.0121 |
+| 19 | 0.0053 | 0.0061 | 0.3378 | 0.3119 | 0.0259 |
+| 20 | 0.0053 | 0.0062 | 0.3448 | 0.3026 | 0.0422 |
+
+Through epoch 18 this tracks trial-010 almost exactly (e.g. epoch 18: train_f1=0.3318/val_f1=0.3197
+here vs 0.3328/0.3215 there -- the higher weight decay isn't visibly doing anything different yet).
+`--checkpoint-selection f1` picked **epoch 18** (val_f1=0.3197) as best -- a genuine, decisive peak:
+val_f1 then *declines* monotonically through epoch 20 (0.3119, 0.3026), unlike trial-010's noisy
+climb/recovery past its own equivalent point.
+
+**Diagnostic** (2000 val examples): 9,401/27,191 labels evaluable. Per-label AUROC: mean=**0.8543**,
+median=**0.9035**. Pooled AUROC=0.9760. Best F1=0.4120@threshold=0.20. All four metrics are
+**slightly worse** than trial-010 (mean -0.0086, median -0.0063, pooled -0.0013, best F1 -0.0012)
+and mean AUROC is even slightly below trial-008's 0.8560, despite trial-011 training 3 more epochs
+than trial-008 did.
+
+**Weight decay increase doesn't resolve the overfitting gap, and mildly hurts**: the gap still
+widens past epoch 18 (0.0259 at 19, 0.0422 at 20) just as it did in trial-010 -- `--weight-decay
+0.05` bought no visible stabilization of the gap-widening pattern, while the post-peak decline is
+cleaner/more monotonic (not noisy-with-recovery like trial-010's). Combined with the across-the-
+board diagnostic regression vs. both trial-008 and trial-010, this reads as weight decay at this
+value being a step sideways-to-negative, not a fix.
+
+**Verdict: NEGATIVE/NEUTRAL for `--weight-decay 0.05`** -- doesn't resolve the overfitting gap,
+diagnostics land slightly below trial-008 and trial-010, and the early peak (epoch 18) is followed
+by a clean decline rather than a plateau. Not DEAD (still learns real ranking signal, comparable
+scale to prior trials) but not an improvement either.
+
+**Next action**: revert `--weight-decay` to 0.01 (trial-010's still-best value) and move to the
+next axis -- `train_n`, per trial-010's own flagged options, now that dropout-based regularization
+is locked in and weight decay has been ruled out as a lever. Unambiguous enough to proceed directly
+rather than asking the user again.
