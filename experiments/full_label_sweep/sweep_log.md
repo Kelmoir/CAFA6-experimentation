@@ -73,6 +73,7 @@ default at this scale going forward -- prefer shrinking physical batch size + ra
 | trial-007 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.0 | 0.0 | 1.0 | 0.01 | 0.0 | 10 | 4192 | 1 | 16 | 32000 | 4000 | HEALTHY, best diagnostics of the sweep so far but overfitting onset tied to total gradient exposure, not resolved by more data | revert train_n to 16000 (cheaper, no proven gain), raise esm/attn dropout off 0.0 -- first real regularization-axis trial |
 | trial-008 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.0 | 15 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, overfitting signal fully resolved, matches trial-007's diagnostics at half the data cost, still climbing at epoch 15 | add --label-smoothing 0.1 (user's usual value on this problem), same dropout/epoch settings |
 | trial-009 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.1 | 15 | 4192 | 1 | 16 | 16000 | 4000 | DEAD -- label_smoothing=0.1 collapsed ranking ability (mean AUROC 0.856->0.513, near chance) | revert label_smoothing to 0.0, resume trial-008's config (proven good), extend epochs |
+| trial-010 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.0 | 25 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, best diagnostics of the sweep, but mild overfitting onset appears past epoch ~18 | decide: extend further to confirm true plateau, or accept ~epoch 18-20 as this config's ceiling and move to next axis |
 
 ## trial-001
 
@@ -523,3 +524,70 @@ smoothing. If label smoothing is worth revisiting at all at this label-space sca
 need a far smaller value (e.g. 0.01) or the existing `--unknown-target-value` flag (soft-targets
 only the *unknown* side, not confirmed negatives) rather than full symmetric smoothing at 0.1 --
 flagged for the user to decide, not attempted unprompted.
+
+## trial-010
+
+**Config**: identical to trial-008 (`--esm-dropout 0.1 --attention-dropout 0.1`,
+`--label-smoothing` reverted to 0.0/unset) except `--epochs 25` (was 15) -- resuming the epoch-
+extension thread that trial-009's label-smoothing detour interrupted. Log:
+`experiments/full_label_sweep/logs/trial-010.out`.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_f1 | val_f1 | gap (train-val) |
+|-------|-----------|----------|----------|--------|------------------|
+| 1 | 0.0068 | 0.0069 | 0.2224 | 0.2494 | -0.0270 |
+| 2 | 0.0066 | 0.0067 | 0.2492 | 0.2532 | -0.0040 |
+| 3 | 0.0063 | 0.0066 | 0.2581 | 0.2592 | -0.0011 |
+| 4 | 0.0062 | 0.0065 | 0.2641 | 0.2602 | 0.0039 |
+| 5 | 0.0061 | 0.0065 | 0.2773 | 0.2798 | -0.0025 |
+| 6 | 0.0061 | 0.0064 | 0.2801 | 0.2859 | -0.0058 |
+| 7 | 0.0060 | 0.0064 | 0.2875 | 0.2788 | 0.0087 |
+| 8 | 0.0059 | 0.0063 | 0.2914 | 0.2995 | -0.0081 |
+| 9 | 0.0058 | 0.0063 | 0.2956 | 0.2896 | 0.0060 |
+| 10 | 0.0058 | 0.0062 | 0.2985 | 0.2991 | -0.0006 |
+| 11 | 0.0057 | 0.0063 | 0.3060 | 0.2924 | 0.0136 |
+| 12 | 0.0057 | 0.0062 | 0.3087 | 0.3073 | 0.0014 |
+| 13 | 0.0056 | 0.0062 | 0.3133 | 0.3035 | 0.0098 |
+| 14 | 0.0055 | 0.0062 | 0.3192 | 0.3071 | 0.0121 |
+| 15 | 0.0055 | 0.0062 | 0.3226 | 0.3120 | 0.0106 |
+| 16 | 0.0055 | 0.0061 | 0.3260 | 0.3148 | 0.0112 |
+| 17 | 0.0054 | 0.0061 | 0.3301 | 0.3182 | 0.0119 |
+| 18 | 0.0054 | 0.0061 | 0.3328 | 0.3215 | 0.0113 |
+| 19 | 0.0053 | 0.0061 | 0.3389 | 0.3118 | 0.0271 |
+| 20 | 0.0053 | 0.0061 | 0.3456 | 0.3063 | 0.0393 |
+| 21 | 0.0053 | 0.0061 | 0.3474 | 0.3279 | 0.0195 |
+| 22 | 0.0053 | 0.0061 | 0.3490 | 0.3130 | 0.0360 |
+| 23 | 0.0052 | 0.0061 | 0.3524 | 0.3099 | 0.0425 |
+| 24 | 0.0052 | 0.0061 | 0.3560 | 0.3186 | 0.0374 |
+| 25 | 0.0052 | 0.0061 | 0.3587 | 0.3401 | 0.0186 |
+
+Epochs 1-15 exactly reproduce trial-008 (same seed, same config up to that point, as expected).
+`--checkpoint-selection f1` picked **epoch 25** (val_f1=0.3401) as best -- still the final epoch,
+no regression before it, val_loss essentially flat from epoch 16 on (0.0061 throughout).
+
+**Diagnostic** (2000 val examples): 9,401/27,191 labels evaluable. Per-label AUROC: mean=**0.8629**
+median=**0.9097**. Pooled AUROC=0.9773. Best F1=0.4132@threshold=0.22. All four metrics improved
+over trial-008 (mean +0.0069, median +0.0076, pooled +0.0011, best F1 +0.0037) -- the best
+diagnostics of the sweep so far, but the gains from 10 additional epochs are markedly smaller than
+the jump from trial-007->008.
+
+**Mild overfitting onset past epoch ~18, but contained**: the train/val F1 gap stayed in
+trial-008's clean -0.03/+0.014 band through epoch 18, then widened to a noisier 0.02-0.04 band
+from epoch 19 on (peak 0.0425 at epoch 23) -- a real trend, but far short of trial-006's runaway
+widening (0.0263->0.0702 over just 5 epochs at the same unfreeze/data settings with dropout at
+0.0). Notably epoch 25 itself pulled the gap back down to 0.0186 on a val_f1 jump, so this isn't a
+clean monotonic blowup either -- it looks more like the point where this config's returns start
+diminishing and noise increases, not a config that's about to collapse the way trial-006's did.
+
+**Verdict: HEALTHY, best diagnostics of the sweep, with a mild but real overfitting signal
+appearing past epoch ~18** -- `best_epoch` still lands on the final epoch (25), so the config
+hasn't definitively stopped improving, but the shrinking marginal gain (+0.007 mean AUROC over 10
+epochs, vs +0.02+ that dropout alone bought in trial-008) combined with the emerging gap suggests
+this config is approaching, not clearly past, its ceiling.
+
+**Next action**: ambiguous between two reasonable paths -- extend further (e.g. 35 epochs) to see
+whether the gap keeps widening toward a trial-006-style blowup or the metrics genuinely plateau,
+versus accepting ~epoch 18-20 as this config's effective ceiling (e.g. via early stopping at that
+point) and moving to the next regularization/scale axis (weight decay, or revisiting train_n now
+that dropout is in place). Flagged for the user to decide rather than picked unprompted.
