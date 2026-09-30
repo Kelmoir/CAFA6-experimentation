@@ -75,6 +75,7 @@ default at this scale going forward -- prefer shrinking physical batch size + ra
 | trial-009 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.1 | 15 | 4192 | 1 | 16 | 16000 | 4000 | DEAD -- label_smoothing=0.1 collapsed ranking ability (mean AUROC 0.856->0.513, near chance) | revert label_smoothing to 0.0, resume trial-008's config (proven good), extend epochs |
 | trial-010 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.0 | 25 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, best diagnostics of the sweep, but mild overfitting onset appears past epoch ~18 | decide: extend further to confirm true plateau, or accept ~epoch 18-20 as this config's ceiling and move to next axis |
 | trial-011 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.05 | 0.0 | 20 | 4192 | 1 | 16 | 16000 | 4000 | NEGATIVE/NEUTRAL -- weight_decay=0.05 doesn't help, diagnostics slightly below trial-008/010, genuine early peak (epoch 18) followed by clean decline | revert weight_decay to 0.01, move to next axis (train_n) |
+| trial-012 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.0 | 20 | 4192 | 2 | 8 | 32000 | 4000 | POSITIVE -- doubling train_n improves all diagnostics over trial-010 (mean AUROC +0.0060, median +0.0080, pooled +0.0005, best F1 +0.0059) and reaches a higher val_f1 peak earlier (epoch 15 vs trial-010's epoch 25) | push train_n further (e.g. 64000) to see if the win continues |
 
 ## trial-001
 
@@ -657,3 +658,72 @@ scale to prior trials) but not an improvement either.
 next axis -- `train_n`, per trial-010's own flagged options, now that dropout-based regularization
 is locked in and weight decay has been ruled out as a lever. Unambiguous enough to proceed directly
 rather than asking the user again.
+
+## trial-012
+
+**Config**: identical to trial-010 (`--esm-dropout 0.1 --attention-dropout 0.1`, `--weight-decay
+0.01`, no label smoothing) except `--max-train-samples 32000` (was 16000 -- the train_n axis flagged
+by trial-010/011, now retested with dropout regularization in place, unlike its earlier pre-dropout
+tests in trial-004/007) and `--batch-size 2 --grad-accum-steps 8` (was `--batch-size 1
+--grad-accum-steps 16` -- same effective batch size of 16, purely the user's confirmed
+batch-size-2-is-fastest speed finding, not a learning-dynamics change). Log:
+`experiments/full_label_sweep/logs/trial-012.out`.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_f1 | val_f1 | gap (train-val) |
+|-------|-----------|----------|----------|--------|------------------|
+| 1 | 0.0067 | 0.0067 | 0.2347 | 0.2655 | -0.0308 |
+| 2 | 0.0063 | 0.0065 | 0.2622 | 0.2686 | -0.0064 |
+| 3 | 0.0061 | 0.0064 | 0.2782 | 0.3029 | -0.0247 |
+| 4 | 0.0060 | 0.0063 | 0.2868 | 0.2793 | 0.0075 |
+| 5 | 0.0058 | 0.0063 | 0.2947 | 0.3032 | -0.0085 |
+| 6 | 0.0057 | 0.0062 | 0.3048 | 0.2899 | 0.0149 |
+| 7 | 0.0056 | 0.0062 | 0.3134 | 0.2967 | 0.0167 |
+| 8 | 0.0055 | 0.0062 | 0.3200 | 0.3061 | 0.0139 |
+| 9 | 0.0054 | 0.0062 | 0.3289 | 0.3252 | 0.0037 |
+| 10 | 0.0054 | 0.0061 | 0.3361 | 0.3290 | 0.0071 |
+| 11 | 0.0053 | 0.0061 | 0.3450 | 0.3145 | 0.0305 |
+| 12 | 0.0052 | 0.0061 | 0.3508 | 0.3111 | 0.0397 |
+| 13 | 0.0051 | 0.0061 | 0.3577 | 0.3250 | 0.0327 |
+| 14 | 0.0051 | 0.0060 | 0.3672 | 0.3374 | 0.0298 |
+| 15 | 0.0050 | 0.0061 | 0.3716 | 0.3465 | 0.0251 |
+| 16 | 0.0050 | 0.0060 | 0.3775 | 0.3381 | 0.0394 |
+| 17 | 0.0049 | 0.0061 | 0.3843 | 0.3356 | 0.0487 |
+| 18 | 0.0049 | 0.0061 | 0.3901 | 0.3333 | 0.0568 |
+| 19 | 0.0048 | 0.0061 | 0.3952 | 0.3441 | 0.0511 |
+| 20 | 0.0048 | 0.0061 | 0.4009 | 0.3357 | 0.0652 |
+
+No reproduction check against trial-010 is possible here (train_n itself changed, so the data seen
+each epoch differs). `--checkpoint-selection f1` picked **epoch 15** (val_f1=0.3465) as best --
+notably *earlier and higher* than trial-010's epoch-25 peak (val_f1=0.3401): doubling train_n let
+the model reach a better validation optimum in 10 fewer epochs. Past epoch 15 val_f1 oscillates down
+(0.3381, 0.3356, 0.3333) with a partial recovery at epoch 19 (0.3441) before falling again at 20
+(0.3357) -- a noisy decline similar in shape to trial-010's post-peak behavior, not a clean collapse.
+
+**Diagnostic** (2000 val examples): 9,401/27,191 labels evaluable. Per-label AUROC: mean=**0.8689**,
+median=**0.9177**. Pooled AUROC=0.9778. Best F1=0.4191@threshold=0.22. All four metrics **improved**
+over trial-010 (mean +0.0060, median +0.0080, pooled +0.0005, best F1 +0.0059) -- the best
+diagnostics of the sweep so far, surpassing trial-010 on every axis.
+
+**Train_n finally pays off now that dropout regularization is in place**: unlike its two earlier,
+pre-dropout tests (trial-004 at unfreeze=2/no-dropout: no benefit; trial-007 at unfreeze=4/no-dropout:
+overfitting tied to gradient exposure, not resolved by more data), doubling train_n to 32000 on top
+of trial-008/010's esm/attention-dropout=0.1 config produces a clear win on every diagnostic metric
+*and* reaches its validation peak sooner (epoch 15 vs 25) -- more data plus dropout is a
+combination that actually helps, where more data alone previously wasn't enough. The train/val F1
+gap still widens past the peak (0.0251 at epoch 15 -> 0.0652 at epoch 20), essentially the same
+overfitting-onset shape seen in trial-010/011, just arriving earlier in wall-clock epochs because
+there's more signal to learn from sooner -- `--checkpoint-selection f1` already neutralizes this by
+picking epoch 15's checkpoint rather than the final one. The `--batch-size 2`/`--grad-accum-steps 8`
+change ran clean (no OOM, no warnings/errors in the log) and is treated as a pure speed lever, not a
+confound, since it holds the effective batch size at 16, same as every prior trial.
+
+**Verdict: POSITIVE for `train_n=32000`** -- best diagnostics of the sweep yet, and the first trial
+where increasing train_n has clearly helped now that dropout is locked in. Confirms the axis trial-010
+flagged as worth retesting was correctly identified.
+
+**Next action**: push `train_n` further (e.g. 64000) to see whether the win continues or where it
+tapers off, keeping `--weight-decay 0.01`, `--epochs 20`, and `--batch-size 2`/`--grad-accum-steps 8`
+fixed at trial-012's now-proven values. Unambiguous enough to proceed directly rather than asking the
+user again.

@@ -1,0 +1,596 @@
+[CONFIG] {"device": "cuda", "epochs": 20, "batch_size": 2, "learning_rate": 5e-05, "max_length": 4192, "model_name": "facebook/esm2_t12_35M_UR50D", "unfreeze_last_n": 4, "max_train_samples": 32000, "max_val_samples": 4000, "data_path": "data/cafa-6-protein-function-prediction/dataset_full", "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "dataset_repo_id": "kelmoir/cafa6-full", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.1, "attention_dropout": 0.1, "grad_clip_norm": 1.0, "weight_decay": 0.01, "max_minutes": null, "run_name": "full-label-trial012-trainN32k-bs2", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": null, "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "unknown_target_value": null, "decouple_bias_wd": false, "grad_accum_steps": 8, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": false, "use_lora": false, "use_aspect_input": false, "mask_sparse_negatives_max_total_terms": null, "loss_mask_from_dataset": false, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": null, "mixed_precision": "no", "gradient_checkpointing": false, "checkpoint_selection": "f1", "run_diagnostic": true, "diagnostic_max_val_samples": 2000, "nnpu": false, "class_priors_path": null, "class_priors_min_source_positives": 2000, "nnpu_min_term_positives": 20, "nnpu_positive_batch_size": 32, "nnpu_beta": 0.0, "nnpu_gamma": 1.0, "nnpu_detach_anchor_backbone": true}
+Loading weights:   0%|          | 0/209 [00:00<?, ?it/s]Loading weights: 100%|██████████| 209/209 [00:00<00:00, 3760.30it/s]
+[1mEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t12_35M_UR50D
+Key                         | Status     | 
+----------------------------+------------+-
+lm_head.bias                | UNEXPECTED | 
+lm_head.layer_norm.weight   | UNEXPECTED | 
+lm_head.dense.weight        | UNEXPECTED | 
+esm.embeddings.position_ids | UNEXPECTED | 
+lm_head.layer_norm.bias     | UNEXPECTED | 
+lm_head.dense.bias          | UNEXPECTED | 
+classifier.dense.bias       | MISSING    | 
+classifier.out_proj.bias    | MISSING    | 
+classifier.dense.weight     | MISSING    | 
+classifier.out_proj.weight  | MISSING    | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING[3m	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.[0m
+Model layers: 12, request unfreeze layers: 4
+[INFO] Initialized classifier bias to label priors for 27191 labels (mean=0.0016, min=0.0001, max=0.7321)
+* Trackio project initialized: cafa6
+* Trackio metrics logged to: /home/kelmoir/.cache/huggingface/trackio
+* View dashboard by running in your terminal:
+[1m[38;5;208mtrackio show --project "cafa6"[0m
+* or by running in Python: trackio.show(project="cafa6")
+* psutil detected, enabling automatic CPU/system metrics logging
+* Created new run: full-label-trial012-trainN32k-bs2
+[INFO] HF token resolved via huggingface_hub cache
+[STEP] epoch=1 step=640/16000 loss=0.0162
+[STEP] epoch=1 step=1280/16000 loss=0.0049
+[STEP] epoch=1 step=1920/16000 loss=0.0032
+[STEP] epoch=1 step=2560/16000 loss=0.0118
+[STEP] epoch=1 step=3200/16000 loss=0.0040
+[STEP] epoch=1 step=3840/16000 loss=0.0069
+[STEP] epoch=1 step=4480/16000 loss=0.0031
+[STEP] epoch=1 step=5120/16000 loss=0.0025
+[STEP] epoch=1 step=5760/16000 loss=0.0031
+[STEP] epoch=1 step=6400/16000 loss=0.0023
+[STEP] epoch=1 step=7040/16000 loss=0.0028
+[STEP] epoch=1 step=7680/16000 loss=0.0052
+[STEP] epoch=1 step=8320/16000 loss=0.0077
+[STEP] epoch=1 step=8960/16000 loss=0.0151
+[STEP] epoch=1 step=9600/16000 loss=0.0052
+[STEP] epoch=1 step=10240/16000 loss=0.0028
+[STEP] epoch=1 step=10880/16000 loss=0.0049
+[STEP] epoch=1 step=11520/16000 loss=0.0064
+[STEP] epoch=1 step=12160/16000 loss=0.0028
+[STEP] epoch=1 step=12800/16000 loss=0.0029
+[STEP] epoch=1 step=13440/16000 loss=0.0045
+[STEP] epoch=1 step=14080/16000 loss=0.0064
+[STEP] epoch=1 step=14720/16000 loss=0.0140
+[STEP] epoch=1 step=15360/16000 loss=0.0050
+[STEP] epoch=1 step=16000/16000 loss=0.0059
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.75it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.74it/s]
+Epoch 1/20 | train_loss=0.0067 | val_loss=0.0067 | train_acc=0.9985 | val_acc=0.9985 | train_recall=0.0005 | val_recall=0.0007 | train_f1=0.2347 | val_f1=0.2655
+[TIMING] epoch 1 elapsed=1090.0s
+[STEP] epoch=2 step=640/16000 loss=0.0060
+[STEP] epoch=2 step=1280/16000 loss=0.0034
+[STEP] epoch=2 step=1920/16000 loss=0.0084
+[STEP] epoch=2 step=2560/16000 loss=0.0140
+[STEP] epoch=2 step=3200/16000 loss=0.0020
+[STEP] epoch=2 step=3840/16000 loss=0.0047
+[STEP] epoch=2 step=4480/16000 loss=0.0052
+[STEP] epoch=2 step=5120/16000 loss=0.0128
+[STEP] epoch=2 step=5760/16000 loss=0.0049
+[STEP] epoch=2 step=6400/16000 loss=0.0103
+[STEP] epoch=2 step=7040/16000 loss=0.0052
+[STEP] epoch=2 step=7680/16000 loss=0.0054
+[STEP] epoch=2 step=8320/16000 loss=0.0054
+[STEP] epoch=2 step=8960/16000 loss=0.0032
+[STEP] epoch=2 step=9600/16000 loss=0.0041
+[STEP] epoch=2 step=10240/16000 loss=0.0031
+[STEP] epoch=2 step=10880/16000 loss=0.0271
+[STEP] epoch=2 step=11520/16000 loss=0.0038
+[STEP] epoch=2 step=12160/16000 loss=0.0028
+[STEP] epoch=2 step=12800/16000 loss=0.0085
+[STEP] epoch=2 step=13440/16000 loss=0.0040
+[STEP] epoch=2 step=14080/16000 loss=0.0077
+[STEP] epoch=2 step=14720/16000 loss=0.0042
+[STEP] epoch=2 step=15360/16000 loss=0.0026
+[STEP] epoch=2 step=16000/16000 loss=0.0015
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.26it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.26it/s]
+Epoch 2/20 | train_loss=0.0063 | val_loss=0.0065 | train_acc=0.9985 | val_acc=0.9985 | train_recall=0.0007 | val_recall=0.0009 | train_f1=0.2622 | val_f1=0.2686
+[TIMING] epoch 2 elapsed=1091.7s
+[STEP] epoch=3 step=640/16000 loss=0.0043
+[STEP] epoch=3 step=1280/16000 loss=0.0096
+[STEP] epoch=3 step=1920/16000 loss=0.0035
+[STEP] epoch=3 step=2560/16000 loss=0.0054
+[STEP] epoch=3 step=3200/16000 loss=0.0031
+[STEP] epoch=3 step=3840/16000 loss=0.0052
+[STEP] epoch=3 step=4480/16000 loss=0.0020
+[STEP] epoch=3 step=5120/16000 loss=0.0037
+[STEP] epoch=3 step=5760/16000 loss=0.0070
+[STEP] epoch=3 step=6400/16000 loss=0.0044
+[STEP] epoch=3 step=7040/16000 loss=0.0020
+[STEP] epoch=3 step=7680/16000 loss=0.0027
+[STEP] epoch=3 step=8320/16000 loss=0.0044
+[STEP] epoch=3 step=8960/16000 loss=0.0058
+[STEP] epoch=3 step=9600/16000 loss=0.0015
+[STEP] epoch=3 step=10240/16000 loss=0.0035
+[STEP] epoch=3 step=10880/16000 loss=0.0048
+[STEP] epoch=3 step=11520/16000 loss=0.0058
+[STEP] epoch=3 step=12160/16000 loss=0.0106
+[STEP] epoch=3 step=12800/16000 loss=0.0041
+[STEP] epoch=3 step=13440/16000 loss=0.0029
+[STEP] epoch=3 step=14080/16000 loss=0.0027
+[STEP] epoch=3 step=14720/16000 loss=0.0121
+[STEP] epoch=3 step=15360/16000 loss=0.0045
+[STEP] epoch=3 step=16000/16000 loss=0.0026
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.36it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.36it/s]
+Epoch 3/20 | train_loss=0.0061 | val_loss=0.0064 | train_acc=0.9986 | val_acc=0.9985 | train_recall=0.0009 | val_recall=0.0014 | train_f1=0.2782 | val_f1=0.3029
+[TIMING] epoch 3 elapsed=1109.2s
+[STEP] epoch=4 step=640/16000 loss=0.0057
+[STEP] epoch=4 step=1280/16000 loss=0.0158
+[STEP] epoch=4 step=1920/16000 loss=0.0149
+[STEP] epoch=4 step=2560/16000 loss=0.0024
+[STEP] epoch=4 step=3200/16000 loss=0.0198
+[STEP] epoch=4 step=3840/16000 loss=0.0137
+[STEP] epoch=4 step=4480/16000 loss=0.0027
+[STEP] epoch=4 step=5120/16000 loss=0.0084
+[STEP] epoch=4 step=5760/16000 loss=0.0057
+[STEP] epoch=4 step=6400/16000 loss=0.0014
+[STEP] epoch=4 step=7040/16000 loss=0.0097
+[STEP] epoch=4 step=7680/16000 loss=0.0085
+[STEP] epoch=4 step=8320/16000 loss=0.0143
+[STEP] epoch=4 step=8960/16000 loss=0.0040
+[STEP] epoch=4 step=9600/16000 loss=0.0038
+[STEP] epoch=4 step=10240/16000 loss=0.0068
+[STEP] epoch=4 step=10880/16000 loss=0.0028
+[STEP] epoch=4 step=11520/16000 loss=0.0048
+[STEP] epoch=4 step=12160/16000 loss=0.0047
+[STEP] epoch=4 step=12800/16000 loss=0.0028
+[STEP] epoch=4 step=13440/16000 loss=0.0029
+[STEP] epoch=4 step=14080/16000 loss=0.0083
+[STEP] epoch=4 step=14720/16000 loss=0.0054
+[STEP] epoch=4 step=15360/16000 loss=0.0067
+[STEP] epoch=4 step=16000/16000 loss=0.0033
+Epoch 4/20 | train_loss=0.0060 | val_loss=0.0063 | train_acc=0.9986 | val_acc=0.9985 | train_recall=0.0011 | val_recall=0.0011 | train_f1=0.2868 | val_f1=0.2793
+[TIMING] epoch 4 elapsed=1080.7s
+[STEP] epoch=5 step=640/16000 loss=0.0079
+[STEP] epoch=5 step=1280/16000 loss=0.0030
+[STEP] epoch=5 step=1920/16000 loss=0.0041
+[STEP] epoch=5 step=2560/16000 loss=0.0029
+[STEP] epoch=5 step=3200/16000 loss=0.0071
+[STEP] epoch=5 step=3840/16000 loss=0.0031
+[STEP] epoch=5 step=4480/16000 loss=0.0043
+[STEP] epoch=5 step=5120/16000 loss=0.0051
+[STEP] epoch=5 step=5760/16000 loss=0.0134
+[STEP] epoch=5 step=6400/16000 loss=0.0015
+[STEP] epoch=5 step=7040/16000 loss=0.0025
+[STEP] epoch=5 step=7680/16000 loss=0.0152
+[STEP] epoch=5 step=8320/16000 loss=0.0028
+[STEP] epoch=5 step=8960/16000 loss=0.0022
+[STEP] epoch=5 step=9600/16000 loss=0.0030
+[STEP] epoch=5 step=10240/16000 loss=0.0022
+[STEP] epoch=5 step=10880/16000 loss=0.0093
+[STEP] epoch=5 step=11520/16000 loss=0.0098
+[STEP] epoch=5 step=12160/16000 loss=0.0068
+[STEP] epoch=5 step=12800/16000 loss=0.0016
+[STEP] epoch=5 step=13440/16000 loss=0.0067
+[STEP] epoch=5 step=14080/16000 loss=0.0062
+[STEP] epoch=5 step=14720/16000 loss=0.0045
+[STEP] epoch=5 step=15360/16000 loss=0.0048
+[STEP] epoch=5 step=16000/16000 loss=0.0013
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.64it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.64it/s]
+Epoch 5/20 | train_loss=0.0058 | val_loss=0.0063 | train_acc=0.9986 | val_acc=0.9985 | train_recall=0.0013 | val_recall=0.0016 | train_f1=0.2947 | val_f1=0.3032
+[TIMING] epoch 5 elapsed=1104.8s
+[STEP] epoch=6 step=640/16000 loss=0.0055
+[STEP] epoch=6 step=1280/16000 loss=0.0058
+[STEP] epoch=6 step=1920/16000 loss=0.0050
+[STEP] epoch=6 step=2560/16000 loss=0.0048
+[STEP] epoch=6 step=3200/16000 loss=0.0021
+[STEP] epoch=6 step=3840/16000 loss=0.0056
+[STEP] epoch=6 step=4480/16000 loss=0.0062
+[STEP] epoch=6 step=5120/16000 loss=0.0027
+[STEP] epoch=6 step=5760/16000 loss=0.0025
+[STEP] epoch=6 step=6400/16000 loss=0.0013
+[STEP] epoch=6 step=7040/16000 loss=0.0018
+[STEP] epoch=6 step=7680/16000 loss=0.0104
+[STEP] epoch=6 step=8320/16000 loss=0.0143
+[STEP] epoch=6 step=8960/16000 loss=0.0162
+[STEP] epoch=6 step=9600/16000 loss=0.0078
+[STEP] epoch=6 step=10240/16000 loss=0.0041
+[STEP] epoch=6 step=10880/16000 loss=0.0035
+[STEP] epoch=6 step=11520/16000 loss=0.0039
+[STEP] epoch=6 step=12160/16000 loss=0.0104
+[STEP] epoch=6 step=12800/16000 loss=0.0012
+[STEP] epoch=6 step=13440/16000 loss=0.0018
+[STEP] epoch=6 step=14080/16000 loss=0.0039
+[STEP] epoch=6 step=14720/16000 loss=0.0043
+[STEP] epoch=6 step=15360/16000 loss=0.0127
+[STEP] epoch=6 step=16000/16000 loss=0.0025
+Epoch 6/20 | train_loss=0.0057 | val_loss=0.0062 | train_acc=0.9986 | val_acc=0.9985 | train_recall=0.0015 | val_recall=0.0014 | train_f1=0.3048 | val_f1=0.2899
+[TIMING] epoch 6 elapsed=1077.8s
+[STEP] epoch=7 step=640/16000 loss=0.0132
+[STEP] epoch=7 step=1280/16000 loss=0.0082
+[STEP] epoch=7 step=1920/16000 loss=0.0034
+[STEP] epoch=7 step=2560/16000 loss=0.0029
+[STEP] epoch=7 step=3200/16000 loss=0.0065
+[STEP] epoch=7 step=3840/16000 loss=0.0101
+[STEP] epoch=7 step=4480/16000 loss=0.0061
+[STEP] epoch=7 step=5120/16000 loss=0.0158
+[STEP] epoch=7 step=5760/16000 loss=0.0088
+[STEP] epoch=7 step=6400/16000 loss=0.0016
+[STEP] epoch=7 step=7040/16000 loss=0.0073
+[STEP] epoch=7 step=7680/16000 loss=0.0030
+[STEP] epoch=7 step=8320/16000 loss=0.0065
+[STEP] epoch=7 step=8960/16000 loss=0.0042
+[STEP] epoch=7 step=9600/16000 loss=0.0038
+[STEP] epoch=7 step=10240/16000 loss=0.0015
+[STEP] epoch=7 step=10880/16000 loss=0.0114
+[STEP] epoch=7 step=11520/16000 loss=0.0081
+[STEP] epoch=7 step=12160/16000 loss=0.0036
+[STEP] epoch=7 step=12800/16000 loss=0.0010
+[STEP] epoch=7 step=13440/16000 loss=0.0026
+[STEP] epoch=7 step=14080/16000 loss=0.0038
+[STEP] epoch=7 step=14720/16000 loss=0.0066
+[STEP] epoch=7 step=15360/16000 loss=0.0031
+[STEP] epoch=7 step=16000/16000 loss=0.0046
+Epoch 7/20 | train_loss=0.0056 | val_loss=0.0062 | train_acc=0.9986 | val_acc=0.9985 | train_recall=0.0017 | val_recall=0.0016 | train_f1=0.3134 | val_f1=0.2967
+[TIMING] epoch 7 elapsed=1089.1s
+[STEP] epoch=8 step=640/16000 loss=0.0104
+[STEP] epoch=8 step=1280/16000 loss=0.0063
+[STEP] epoch=8 step=1920/16000 loss=0.0131
+[STEP] epoch=8 step=2560/16000 loss=0.0030
+[STEP] epoch=8 step=3200/16000 loss=0.0006
+[STEP] epoch=8 step=3840/16000 loss=0.0087
+[STEP] epoch=8 step=4480/16000 loss=0.0064
+[STEP] epoch=8 step=5120/16000 loss=0.0042
+[STEP] epoch=8 step=5760/16000 loss=0.0077
+[STEP] epoch=8 step=6400/16000 loss=0.0020
+[STEP] epoch=8 step=7040/16000 loss=0.0034
+[STEP] epoch=8 step=7680/16000 loss=0.0058
+[STEP] epoch=8 step=8320/16000 loss=0.0081
+[STEP] epoch=8 step=8960/16000 loss=0.0042
+[STEP] epoch=8 step=9600/16000 loss=0.0007
+[STEP] epoch=8 step=10240/16000 loss=0.0032
+[STEP] epoch=8 step=10880/16000 loss=0.0051
+[STEP] epoch=8 step=11520/16000 loss=0.0040
+[STEP] epoch=8 step=12160/16000 loss=0.0042
+[STEP] epoch=8 step=12800/16000 loss=0.0009
+[STEP] epoch=8 step=13440/16000 loss=0.0032
+[STEP] epoch=8 step=14080/16000 loss=0.0252
+[STEP] epoch=8 step=14720/16000 loss=0.0036
+[STEP] epoch=8 step=15360/16000 loss=0.0201
+[STEP] epoch=8 step=16000/16000 loss=0.0024
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.44it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.44it/s]
+Epoch 8/20 | train_loss=0.0055 | val_loss=0.0062 | train_acc=0.9986 | val_acc=0.9985 | train_recall=0.0019 | val_recall=0.0018 | train_f1=0.3200 | val_f1=0.3061
+[TIMING] epoch 8 elapsed=1096.9s
+[STEP] epoch=9 step=640/16000 loss=0.0016
+[STEP] epoch=9 step=1280/16000 loss=0.0146
+[STEP] epoch=9 step=1920/16000 loss=0.0068
+[STEP] epoch=9 step=2560/16000 loss=0.0026
+[STEP] epoch=9 step=3200/16000 loss=0.0014
+[STEP] epoch=9 step=3840/16000 loss=0.0042
+[STEP] epoch=9 step=4480/16000 loss=0.0028
+[STEP] epoch=9 step=5120/16000 loss=0.0050
+[STEP] epoch=9 step=5760/16000 loss=0.0074
+[STEP] epoch=9 step=6400/16000 loss=0.0007
+[STEP] epoch=9 step=7040/16000 loss=0.0026
+[STEP] epoch=9 step=7680/16000 loss=0.0033
+[STEP] epoch=9 step=8320/16000 loss=0.0030
+[STEP] epoch=9 step=8960/16000 loss=0.0020
+[STEP] epoch=9 step=9600/16000 loss=0.0011
+[STEP] epoch=9 step=10240/16000 loss=0.0046
+[STEP] epoch=9 step=10880/16000 loss=0.0021
+[STEP] epoch=9 step=11520/16000 loss=0.0020
+[STEP] epoch=9 step=12160/16000 loss=0.0014
+[STEP] epoch=9 step=12800/16000 loss=0.0020
+[STEP] epoch=9 step=13440/16000 loss=0.0054
+[STEP] epoch=9 step=14080/16000 loss=0.0033
+[STEP] epoch=9 step=14720/16000 loss=0.0024
+[STEP] epoch=9 step=15360/16000 loss=0.0029
+[STEP] epoch=9 step=16000/16000 loss=0.0011
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.36it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.36it/s]
+Epoch 9/20 | train_loss=0.0054 | val_loss=0.0062 | train_acc=0.9986 | val_acc=0.9985 | train_recall=0.0022 | val_recall=0.0025 | train_f1=0.3289 | val_f1=0.3252
+[TIMING] epoch 9 elapsed=1098.6s
+[STEP] epoch=10 step=640/16000 loss=0.0029
+[STEP] epoch=10 step=1280/16000 loss=0.0079
+[STEP] epoch=10 step=1920/16000 loss=0.0059
+[STEP] epoch=10 step=2560/16000 loss=0.0071
+[STEP] epoch=10 step=3200/16000 loss=0.0015
+[STEP] epoch=10 step=3840/16000 loss=0.0020
+[STEP] epoch=10 step=4480/16000 loss=0.0010
+[STEP] epoch=10 step=5120/16000 loss=0.0033
+[STEP] epoch=10 step=5760/16000 loss=0.0042
+[STEP] epoch=10 step=6400/16000 loss=0.0038
+[STEP] epoch=10 step=7040/16000 loss=0.0040
+[STEP] epoch=10 step=7680/16000 loss=0.0058
+[STEP] epoch=10 step=8320/16000 loss=0.0040
+[STEP] epoch=10 step=8960/16000 loss=0.0089
+[STEP] epoch=10 step=9600/16000 loss=0.0021
+[STEP] epoch=10 step=10240/16000 loss=0.0042
+[STEP] epoch=10 step=10880/16000 loss=0.0041
+[STEP] epoch=10 step=11520/16000 loss=0.0102
+[STEP] epoch=10 step=12160/16000 loss=0.0016
+[STEP] epoch=10 step=12800/16000 loss=0.0035
+[STEP] epoch=10 step=13440/16000 loss=0.0125
+[STEP] epoch=10 step=14080/16000 loss=0.0052
+[STEP] epoch=10 step=14720/16000 loss=0.0258
+[STEP] epoch=10 step=15360/16000 loss=0.0128
+[STEP] epoch=10 step=16000/16000 loss=0.0037
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.58it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.58it/s]
+Epoch 10/20 | train_loss=0.0054 | val_loss=0.0061 | train_acc=0.9986 | val_acc=0.9985 | train_recall=0.0025 | val_recall=0.0025 | train_f1=0.3361 | val_f1=0.3290
+[TIMING] epoch 10 elapsed=1108.2s
+[STEP] epoch=11 step=640/16000 loss=0.0047
+[STEP] epoch=11 step=1280/16000 loss=0.0095
+[STEP] epoch=11 step=1920/16000 loss=0.0062
+[STEP] epoch=11 step=2560/16000 loss=0.0030
+[STEP] epoch=11 step=3200/16000 loss=0.0015
+[STEP] epoch=11 step=3840/16000 loss=0.0043
+[STEP] epoch=11 step=4480/16000 loss=0.0110
+[STEP] epoch=11 step=5120/16000 loss=0.0102
+[STEP] epoch=11 step=5760/16000 loss=0.0043
+[STEP] epoch=11 step=6400/16000 loss=0.0028
+[STEP] epoch=11 step=7040/16000 loss=0.0030
+[STEP] epoch=11 step=7680/16000 loss=0.0046
+[STEP] epoch=11 step=8320/16000 loss=0.0036
+[STEP] epoch=11 step=8960/16000 loss=0.0053
+[STEP] epoch=11 step=9600/16000 loss=0.0020
+[STEP] epoch=11 step=10240/16000 loss=0.0044
+[STEP] epoch=11 step=10880/16000 loss=0.0027
+[STEP] epoch=11 step=11520/16000 loss=0.0021
+[STEP] epoch=11 step=12160/16000 loss=0.0061
+[STEP] epoch=11 step=12800/16000 loss=0.0027
+[STEP] epoch=11 step=13440/16000 loss=0.0006
+[STEP] epoch=11 step=14080/16000 loss=0.0033
+[STEP] epoch=11 step=14720/16000 loss=0.0107
+[STEP] epoch=11 step=15360/16000 loss=0.0071
+[STEP] epoch=11 step=16000/16000 loss=0.0045
+Epoch 11/20 | train_loss=0.0053 | val_loss=0.0061 | train_acc=0.9986 | val_acc=0.9985 | train_recall=0.0028 | val_recall=0.0025 | train_f1=0.3450 | val_f1=0.3145
+[TIMING] epoch 11 elapsed=1095.7s
+[STEP] epoch=12 step=640/16000 loss=0.0034
+[STEP] epoch=12 step=1280/16000 loss=0.0057
+[STEP] epoch=12 step=1920/16000 loss=0.0054
+[STEP] epoch=12 step=2560/16000 loss=0.0040
+[STEP] epoch=12 step=3200/16000 loss=0.0011
+[STEP] epoch=12 step=3840/16000 loss=0.0029
+[STEP] epoch=12 step=4480/16000 loss=0.0023
+[STEP] epoch=12 step=5120/16000 loss=0.0044
+[STEP] epoch=12 step=5760/16000 loss=0.0079
+[STEP] epoch=12 step=6400/16000 loss=0.0050
+[STEP] epoch=12 step=7040/16000 loss=0.0026
+[STEP] epoch=12 step=7680/16000 loss=0.0102
+[STEP] epoch=12 step=8320/16000 loss=0.0058
+[STEP] epoch=12 step=8960/16000 loss=0.0049
+[STEP] epoch=12 step=9600/16000 loss=0.0015
+[STEP] epoch=12 step=10240/16000 loss=0.0065
+[STEP] epoch=12 step=10880/16000 loss=0.0111
+[STEP] epoch=12 step=11520/16000 loss=0.0409
+[STEP] epoch=12 step=12160/16000 loss=0.0029
+[STEP] epoch=12 step=12800/16000 loss=0.0052
+[STEP] epoch=12 step=13440/16000 loss=0.0057
+[STEP] epoch=12 step=14080/16000 loss=0.0020
+[STEP] epoch=12 step=14720/16000 loss=0.0053
+[STEP] epoch=12 step=15360/16000 loss=0.0046
+[STEP] epoch=12 step=16000/16000 loss=0.0094
+Epoch 12/20 | train_loss=0.0052 | val_loss=0.0061 | train_acc=0.9986 | val_acc=0.9985 | train_recall=0.0032 | val_recall=0.0025 | train_f1=0.3508 | val_f1=0.3111
+[TIMING] epoch 12 elapsed=1096.5s
+[STEP] epoch=13 step=640/16000 loss=0.0045
+[STEP] epoch=13 step=1280/16000 loss=0.0022
+[STEP] epoch=13 step=1920/16000 loss=0.0063
+[STEP] epoch=13 step=2560/16000 loss=0.0102
+[STEP] epoch=13 step=3200/16000 loss=0.0012
+[STEP] epoch=13 step=3840/16000 loss=0.0022
+[STEP] epoch=13 step=4480/16000 loss=0.0032
+[STEP] epoch=13 step=5120/16000 loss=0.0050
+[STEP] epoch=13 step=5760/16000 loss=0.0047
+[STEP] epoch=13 step=6400/16000 loss=0.0030
+[STEP] epoch=13 step=7040/16000 loss=0.0025
+[STEP] epoch=13 step=7680/16000 loss=0.0063
+[STEP] epoch=13 step=8320/16000 loss=0.0036
+[STEP] epoch=13 step=8960/16000 loss=0.0051
+[STEP] epoch=13 step=9600/16000 loss=0.0031
+[STEP] epoch=13 step=10240/16000 loss=0.0087
+[STEP] epoch=13 step=10880/16000 loss=0.0030
+[STEP] epoch=13 step=11520/16000 loss=0.0029
+[STEP] epoch=13 step=12160/16000 loss=0.0085
+[STEP] epoch=13 step=12800/16000 loss=0.0048
+[STEP] epoch=13 step=13440/16000 loss=0.0020
+[STEP] epoch=13 step=14080/16000 loss=0.0100
+[STEP] epoch=13 step=14720/16000 loss=0.0201
+[STEP] epoch=13 step=15360/16000 loss=0.0137
+[STEP] epoch=13 step=16000/16000 loss=0.0017
+Epoch 13/20 | train_loss=0.0051 | val_loss=0.0061 | train_acc=0.9986 | val_acc=0.9985 | train_recall=0.0034 | val_recall=0.0030 | train_f1=0.3577 | val_f1=0.3250
+[TIMING] epoch 13 elapsed=1126.9s
+[STEP] epoch=14 step=640/16000 loss=0.0033
+[STEP] epoch=14 step=1280/16000 loss=0.0038
+[STEP] epoch=14 step=1920/16000 loss=0.0078
+[STEP] epoch=14 step=2560/16000 loss=0.0066
+[STEP] epoch=14 step=3200/16000 loss=0.0019
+[STEP] epoch=14 step=3840/16000 loss=0.0065
+[STEP] epoch=14 step=4480/16000 loss=0.0010
+[STEP] epoch=14 step=5120/16000 loss=0.0066
+[STEP] epoch=14 step=5760/16000 loss=0.0057
+[STEP] epoch=14 step=6400/16000 loss=0.0010
+[STEP] epoch=14 step=7040/16000 loss=0.0022
+[STEP] epoch=14 step=7680/16000 loss=0.0007
+[STEP] epoch=14 step=8320/16000 loss=0.0028
+[STEP] epoch=14 step=8960/16000 loss=0.0069
+[STEP] epoch=14 step=9600/16000 loss=0.0084
+[STEP] epoch=14 step=10240/16000 loss=0.0078
+[STEP] epoch=14 step=10880/16000 loss=0.0020
+[STEP] epoch=14 step=11520/16000 loss=0.0040
+[STEP] epoch=14 step=12160/16000 loss=0.0033
+[STEP] epoch=14 step=12800/16000 loss=0.0048
+[STEP] epoch=14 step=13440/16000 loss=0.0088
+[STEP] epoch=14 step=14080/16000 loss=0.0016
+[STEP] epoch=14 step=14720/16000 loss=0.0019
+[STEP] epoch=14 step=15360/16000 loss=0.0085
+[STEP] epoch=14 step=16000/16000 loss=0.0013
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.38it/s]
+Epoch 14/20 | train_loss=0.0051 | val_loss=0.0060 | train_acc=0.9986 | val_acc=0.9985 | train_recall=0.0038 | val_recall=0.0037 | train_f1=0.3672 | val_f1=0.3374
+[TIMING] epoch 14 elapsed=1085.5s
+[STEP] epoch=15 step=640/16000 loss=0.0107
+[STEP] epoch=15 step=1280/16000 loss=0.0048
+[STEP] epoch=15 step=1920/16000 loss=0.0078
+[STEP] epoch=15 step=2560/16000 loss=0.0057
+[STEP] epoch=15 step=3200/16000 loss=0.0028
+[STEP] epoch=15 step=3840/16000 loss=0.0101
+[STEP] epoch=15 step=4480/16000 loss=0.0036
+[STEP] epoch=15 step=5120/16000 loss=0.0076
+[STEP] epoch=15 step=5760/16000 loss=0.0045
+[STEP] epoch=15 step=6400/16000 loss=0.0018
+[STEP] epoch=15 step=7040/16000 loss=0.0010
+[STEP] epoch=15 step=7680/16000 loss=0.0097
+[STEP] epoch=15 step=8320/16000 loss=0.0066
+[STEP] epoch=15 step=8960/16000 loss=0.0020
+[STEP] epoch=15 step=9600/16000 loss=0.0021
+[STEP] epoch=15 step=10240/16000 loss=0.0034
+[STEP] epoch=15 step=10880/16000 loss=0.0046
+[STEP] epoch=15 step=11520/16000 loss=0.0061
+[STEP] epoch=15 step=12160/16000 loss=0.0058
+[STEP] epoch=15 step=12800/16000 loss=0.0046
+[STEP] epoch=15 step=13440/16000 loss=0.0029
+[STEP] epoch=15 step=14080/16000 loss=0.0027
+[STEP] epoch=15 step=14720/16000 loss=0.0060
+[STEP] epoch=15 step=15360/16000 loss=0.0098
+[STEP] epoch=15 step=16000/16000 loss=0.0016
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.45it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.45it/s]
+Epoch 15/20 | train_loss=0.0050 | val_loss=0.0061 | train_acc=0.9987 | val_acc=0.9985 | train_recall=0.0043 | val_recall=0.0039 | train_f1=0.3716 | val_f1=0.3465
+[TIMING] epoch 15 elapsed=1080.2s
+[STEP] epoch=16 step=640/16000 loss=0.0013
+[STEP] epoch=16 step=1280/16000 loss=0.0022
+[STEP] epoch=16 step=1920/16000 loss=0.0136
+[STEP] epoch=16 step=2560/16000 loss=0.0059
+[STEP] epoch=16 step=3200/16000 loss=0.0018
+[STEP] epoch=16 step=3840/16000 loss=0.0076
+[STEP] epoch=16 step=4480/16000 loss=0.0032
+[STEP] epoch=16 step=5120/16000 loss=0.0043
+[STEP] epoch=16 step=5760/16000 loss=0.0022
+[STEP] epoch=16 step=6400/16000 loss=0.0013
+[STEP] epoch=16 step=7040/16000 loss=0.0033
+[STEP] epoch=16 step=7680/16000 loss=0.0043
+[STEP] epoch=16 step=8320/16000 loss=0.0023
+[STEP] epoch=16 step=8960/16000 loss=0.0033
+[STEP] epoch=16 step=9600/16000 loss=0.0014
+[STEP] epoch=16 step=10240/16000 loss=0.0040
+[STEP] epoch=16 step=10880/16000 loss=0.0055
+[STEP] epoch=16 step=11520/16000 loss=0.0028
+[STEP] epoch=16 step=12160/16000 loss=0.0044
+[STEP] epoch=16 step=12800/16000 loss=0.0016
+[STEP] epoch=16 step=13440/16000 loss=0.0029
+[STEP] epoch=16 step=14080/16000 loss=0.0033
+[STEP] epoch=16 step=14720/16000 loss=0.0020
+[STEP] epoch=16 step=15360/16000 loss=0.0093
+[STEP] epoch=16 step=16000/16000 loss=0.0013
+Epoch 16/20 | train_loss=0.0050 | val_loss=0.0060 | train_acc=0.9987 | val_acc=0.9985 | train_recall=0.0046 | val_recall=0.0039 | train_f1=0.3775 | val_f1=0.3381
+[TIMING] epoch 16 elapsed=1091.6s
+[STEP] epoch=17 step=640/16000 loss=0.0028
+[STEP] epoch=17 step=1280/16000 loss=0.0031
+[STEP] epoch=17 step=1920/16000 loss=0.0022
+[STEP] epoch=17 step=2560/16000 loss=0.0063
+[STEP] epoch=17 step=3200/16000 loss=0.0043
+[STEP] epoch=17 step=3840/16000 loss=0.0024
+[STEP] epoch=17 step=4480/16000 loss=0.0087
+[STEP] epoch=17 step=5120/16000 loss=0.0103
+[STEP] epoch=17 step=5760/16000 loss=0.0061
+[STEP] epoch=17 step=6400/16000 loss=0.0047
+[STEP] epoch=17 step=7040/16000 loss=0.0070
+[STEP] epoch=17 step=7680/16000 loss=0.0037
+[STEP] epoch=17 step=8320/16000 loss=0.0113
+[STEP] epoch=17 step=8960/16000 loss=0.0049
+[STEP] epoch=17 step=9600/16000 loss=0.0046
+[STEP] epoch=17 step=10240/16000 loss=0.0045
+[STEP] epoch=17 step=10880/16000 loss=0.0019
+[STEP] epoch=17 step=11520/16000 loss=0.0034
+[STEP] epoch=17 step=12160/16000 loss=0.0026
+[STEP] epoch=17 step=12800/16000 loss=0.0008
+[STEP] epoch=17 step=13440/16000 loss=0.0057
+[STEP] epoch=17 step=14080/16000 loss=0.0029
+[STEP] epoch=17 step=14720/16000 loss=0.0048
+[STEP] epoch=17 step=15360/16000 loss=0.0022
+[STEP] epoch=17 step=16000/16000 loss=0.0010
+Epoch 17/20 | train_loss=0.0049 | val_loss=0.0061 | train_acc=0.9987 | val_acc=0.9985 | train_recall=0.0050 | val_recall=0.0040 | train_f1=0.3843 | val_f1=0.3356
+[TIMING] epoch 17 elapsed=1093.9s
+[STEP] epoch=18 step=640/16000 loss=0.0028
+[STEP] epoch=18 step=1280/16000 loss=0.0101
+[STEP] epoch=18 step=1920/16000 loss=0.0044
+[STEP] epoch=18 step=2560/16000 loss=0.0035
+[STEP] epoch=18 step=3200/16000 loss=0.0046
+[STEP] epoch=18 step=3840/16000 loss=0.0044
+[STEP] epoch=18 step=4480/16000 loss=0.0060
+[STEP] epoch=18 step=5120/16000 loss=0.0060
+[STEP] epoch=18 step=5760/16000 loss=0.0046
+[STEP] epoch=18 step=6400/16000 loss=0.0035
+[STEP] epoch=18 step=7040/16000 loss=0.0048
+[STEP] epoch=18 step=7680/16000 loss=0.0045
+[STEP] epoch=18 step=8320/16000 loss=0.0097
+[STEP] epoch=18 step=8960/16000 loss=0.0029
+[STEP] epoch=18 step=9600/16000 loss=0.0036
+[STEP] epoch=18 step=10240/16000 loss=0.0055
+[STEP] epoch=18 step=10880/16000 loss=0.0028
+[STEP] epoch=18 step=11520/16000 loss=0.0029
+[STEP] epoch=18 step=12160/16000 loss=0.0045
+[STEP] epoch=18 step=12800/16000 loss=0.0015
+[STEP] epoch=18 step=13440/16000 loss=0.0038
+[STEP] epoch=18 step=14080/16000 loss=0.0017
+[STEP] epoch=18 step=14720/16000 loss=0.0042
+[STEP] epoch=18 step=15360/16000 loss=0.0081
+[STEP] epoch=18 step=16000/16000 loss=0.0011
+Epoch 18/20 | train_loss=0.0049 | val_loss=0.0061 | train_acc=0.9987 | val_acc=0.9985 | train_recall=0.0055 | val_recall=0.0040 | train_f1=0.3901 | val_f1=0.3333
+[TIMING] epoch 18 elapsed=1102.6s
+[STEP] epoch=19 step=640/16000 loss=0.0027
+[STEP] epoch=19 step=1280/16000 loss=0.0065
+[STEP] epoch=19 step=1920/16000 loss=0.0040
+[STEP] epoch=19 step=2560/16000 loss=0.0053
+[STEP] epoch=19 step=3200/16000 loss=0.0017
+[STEP] epoch=19 step=3840/16000 loss=0.0066
+[STEP] epoch=19 step=4480/16000 loss=0.0030
+[STEP] epoch=19 step=5120/16000 loss=0.0041
+[STEP] epoch=19 step=5760/16000 loss=0.0118
+[STEP] epoch=19 step=6400/16000 loss=0.0017
+[STEP] epoch=19 step=7040/16000 loss=0.0054
+[STEP] epoch=19 step=7680/16000 loss=0.0023
+[STEP] epoch=19 step=8320/16000 loss=0.0082
+[STEP] epoch=19 step=8960/16000 loss=0.0063
+[STEP] epoch=19 step=9600/16000 loss=0.0020
+[STEP] epoch=19 step=10240/16000 loss=0.0037
+[STEP] epoch=19 step=10880/16000 loss=0.0051
+[STEP] epoch=19 step=11520/16000 loss=0.0058
+[STEP] epoch=19 step=12160/16000 loss=0.0060
+[STEP] epoch=19 step=12800/16000 loss=0.0007
+[STEP] epoch=19 step=13440/16000 loss=0.0012
+[STEP] epoch=19 step=14080/16000 loss=0.0035
+[STEP] epoch=19 step=14720/16000 loss=0.0074
+[STEP] epoch=19 step=15360/16000 loss=0.0041
+[STEP] epoch=19 step=16000/16000 loss=0.0014
+Epoch 19/20 | train_loss=0.0048 | val_loss=0.0061 | train_acc=0.9987 | val_acc=0.9985 | train_recall=0.0058 | val_recall=0.0046 | train_f1=0.3952 | val_f1=0.3441
+[TIMING] epoch 19 elapsed=1102.3s
+[STEP] epoch=20 step=640/16000 loss=0.0034
+[STEP] epoch=20 step=1280/16000 loss=0.0024
+[STEP] epoch=20 step=1920/16000 loss=0.0037
+[STEP] epoch=20 step=2560/16000 loss=0.0024
+[STEP] epoch=20 step=3200/16000 loss=0.0047
+[STEP] epoch=20 step=3840/16000 loss=0.0083
+[STEP] epoch=20 step=4480/16000 loss=0.0055
+[STEP] epoch=20 step=5120/16000 loss=0.0036
+[STEP] epoch=20 step=5760/16000 loss=0.0024
+[STEP] epoch=20 step=6400/16000 loss=0.0008
+[STEP] epoch=20 step=7040/16000 loss=0.0015
+[STEP] epoch=20 step=7680/16000 loss=0.0047
+[STEP] epoch=20 step=8320/16000 loss=0.0057
+[STEP] epoch=20 step=8960/16000 loss=0.0032
+[STEP] epoch=20 step=9600/16000 loss=0.0024
+[STEP] epoch=20 step=10240/16000 loss=0.0066
+[STEP] epoch=20 step=10880/16000 loss=0.0020
+[STEP] epoch=20 step=11520/16000 loss=0.0043
+[STEP] epoch=20 step=12160/16000 loss=0.0020
+[STEP] epoch=20 step=12800/16000 loss=0.0025
+[STEP] epoch=20 step=13440/16000 loss=0.0021
+[STEP] epoch=20 step=14080/16000 loss=0.0025
+[STEP] epoch=20 step=14720/16000 loss=0.0079
+[STEP] epoch=20 step=15360/16000 loss=0.0061
+[STEP] epoch=20 step=16000/16000 loss=0.0025
+Epoch 20/20 | train_loss=0.0048 | val_loss=0.0061 | train_acc=0.9987 | val_acc=0.9985 | train_recall=0.0064 | val_recall=0.0043 | train_f1=0.4009 | val_f1=0.3357
+[TIMING] epoch 20 elapsed=1085.3s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.78it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  3.77it/s]
+model.safetensors:   0%|          | 0.00/186M [00:00<?, ?B/s]model.safetensors:   0%|          | 262k/186M [00:00<01:11, 2.60MB/s]model.safetensors:   0%|          | 852k/186M [00:00<01:01, 3.02MB/s]model.safetensors:   1%|          | 1.64M/186M [00:00<00:41, 4.47MB/s]model.safetensors:   1%|▏         | 2.56M/186M [00:00<00:32, 5.59MB/s]model.safetensors:   2%|▏         | 3.34M/186M [00:00<00:29, 6.23MB/s]model.safetensors:   2%|▏         | 4.19M/186M [00:00<00:28, 6.46MB/s]model.safetensors:   3%|▎         | 5.24M/186M [00:00<00:27, 6.71MB/s]model.safetensors:   4%|▎         | 6.55M/186M [00:01<00:25, 7.04MB/s]model.safetensors:   4%|▍         | 8.00M/186M [00:01<00:25, 7.08MB/s]model.safetensors:   5%|▍         | 8.78M/186M [00:01<00:25, 7.08MB/s]model.safetensors:   5%|▌         | 9.70M/186M [00:01<00:24, 7.20MB/s]model.safetensors:   6%|▌         | 10.7M/186M [00:01<00:24, 7.21MB/s]model.safetensors:   6%|▋         | 11.7M/186M [00:01<00:24, 7.18MB/s]model.safetensors:   7%|▋         | 12.9M/186M [00:01<00:24, 7.15MB/s]model.safetensors:   8%|▊         | 14.2M/186M [00:02<00:23, 7.32MB/s]model.safetensors:   8%|▊         | 15.6M/186M [00:02<00:24, 7.00MB/s]model.safetensors:   9%|▉         | 16.3M/186M [00:02<00:49, 3.43MB/s]model.safetensors:  11%|█         | 20.2M/186M [00:03<00:25, 6.53MB/s]model.safetensors:  12%|█▏        | 21.7M/186M [00:03<00:25, 6.41MB/s]model.safetensors:  12%|█▏        | 23.1M/186M [00:03<00:25, 6.29MB/s]model.safetensors:  13%|█▎        | 24.5M/186M [00:03<00:26, 6.22MB/s]model.safetensors:  14%|█▍        | 25.9M/186M [00:04<00:26, 6.15MB/s]model.safetensors:  15%|█▍        | 27.3M/186M [00:04<00:26, 6.10MB/s]model.safetensors:  15%|█▌        | 28.8M/186M [00:04<00:25, 6.09MB/s]model.safetensors:  16%|█▌        | 30.2M/186M [00:04<00:25, 6.05MB/s]model.safetensors:  17%|█▋        | 31.6M/186M [00:05<00:25, 6.02MB/s]model.safetensors:  17%|█▋        | 32.3M/186M [00:05<00:44, 3.43MB/s]model.safetensors:  19%|█▉        | 36.2M/186M [00:06<00:24, 6.23MB/s]model.safetensors:  20%|██        | 37.8M/186M [00:06<00:23, 6.30MB/s]model.safetensors:  21%|██        | 39.2M/186M [00:06<00:23, 6.16MB/s]model.safetensors:  22%|██▏       | 40.7M/186M [00:06<00:24, 6.01MB/s]model.safetensors:  23%|██▎       | 42.1M/186M [00:06<00:24, 6.00MB/s]model.safetensors:  23%|██▎       | 43.5M/186M [00:07<00:23, 5.99MB/s]model.safetensors:  24%|██▍       | 45.0M/186M [00:07<00:23, 5.99MB/s]model.safetensors:  25%|██▍       | 46.4M/186M [00:07<00:23, 6.01MB/s]model.safetensors:  26%|██▌       | 47.9M/186M [00:07<00:23, 5.99MB/s]model.safetensors:  26%|██▌       | 48.5M/186M [00:08<00:38, 3.58MB/s]model.safetensors:  28%|██▊       | 52.2M/186M [00:08<00:21, 6.23MB/s]model.safetensors:  29%|██▉       | 53.6M/186M [00:09<00:21, 6.10MB/s]model.safetensors:  30%|██▉       | 55.1M/186M [00:09<00:21, 6.02MB/s]model.safetensors:  30%|███       | 56.6M/186M [00:09<00:21, 6.03MB/s]model.safetensors:  31%|███       | 58.0M/186M [00:09<00:21, 6.04MB/s]model.safetensors:  32%|███▏      | 59.5M/186M [00:10<00:21, 6.01MB/s]model.safetensors:  33%|███▎      | 60.9M/186M [00:10<00:20, 6.00MB/s]model.safetensors:  33%|███▎      | 62.4M/186M [00:10<00:20, 6.02MB/s]model.safetensors:  34%|███▍      | 63.8M/186M [00:10<00:20, 6.03MB/s]model.safetensors:  35%|███▍      | 64.5M/186M [00:11<00:39, 3.11MB/s]model.safetensors:  37%|███▋      | 68.2M/186M [00:11<00:21, 5.57MB/s]model.safetensors:  37%|███▋      | 69.8M/186M [00:12<00:20, 5.64MB/s]model.safetensors:  38%|███▊      | 71.3M/186M [00:12<00:21, 5.46MB/s]model.safetensors:  39%|███▉      | 73.1M/186M [00:12<00:19, 5.84MB/s]model.safetensors:  40%|████      | 74.6M/186M [00:12<00:18, 6.00MB/s]model.safetensors:  41%|████      | 76.1M/186M [00:13<00:18, 6.06MB/s]model.safetensors:  42%|████▏     | 77.5M/186M [00:13<00:17, 6.09MB/s]model.safetensors:  42%|████▏     | 78.9M/186M [00:13<00:17, 6.07MB/s]model.safetensors:  43%|████▎     | 80.1M/186M [00:14<00:31, 3.42MB/s]model.safetensors:  45%|████▌     | 84.2M/186M [00:14<00:16, 6.14MB/s]model.safetensors:  46%|████▌     | 85.7M/186M [00:14<00:16, 6.08MB/s]model.safetensors:  47%|████▋     | 87.1M/186M [00:15<00:16, 6.00MB/s]model.safetensors:  48%|████▊     | 88.6M/186M [00:15<00:16, 6.01MB/s]model.safetensors:  48%|████▊     | 90.0M/186M [00:15<00:16, 6.00MB/s]model.safetensors:  49%|████▉     | 91.5M/186M [00:15<00:15, 6.03MB/s]model.safetensors:  50%|████▉     | 92.9M/186M [00:16<00:19, 4.81MB/s]model.safetensors:  51%|█████     | 94.7M/186M [00:16<00:16, 5.53MB/s]model.safetensors:  52%|█████▏    | 96.1M/186M [00:17<00:23, 3.89MB/s]model.safetensors:  54%|█████▍    | 100M/186M [00:17<00:13, 6.58MB/s] model.safetensors:  55%|█████▍    | 102M/186M [00:17<00:13, 6.49MB/s]model.safetensors:  55%|█████▌    | 103M/186M [00:17<00:13, 6.39MB/s]model.safetensors:  56%|█████▌    | 105M/186M [00:18<00:12, 6.33MB/s]model.safetensors:  57%|█████▋    | 106M/186M [00:18<00:12, 6.27MB/s]model.safetensors:  58%|█████▊    | 107M/186M [00:18<00:12, 6.20MB/s]model.safetensors:  58%|█████▊    | 109M/186M [00:18<00:12, 6.14MB/s]model.safetensors:  59%|█████▉    | 110M/186M [00:18<00:12, 6.13MB/s]model.safetensors:  60%|█████▉    | 112M/186M [00:19<00:12, 6.10MB/s]model.safetensors:  60%|██████    | 112M/186M [00:19<00:21, 3.50MB/s]model.safetensors:  62%|██████▏   | 116M/186M [00:20<00:11, 6.23MB/s]model.safetensors:  63%|██████▎   | 118M/186M [00:20<00:10, 6.25MB/s]model.safetensors:  64%|██████▍   | 119M/186M [00:20<00:10, 6.25MB/s]model.safetensors:  65%|██████▍   | 121M/186M [00:20<00:10, 6.16MB/s]model.safetensors:  65%|██████▌   | 122M/186M [00:21<00:10, 6.12MB/s]model.safetensors:  66%|██████▌   | 123M/186M [00:21<00:10, 6.11MB/s]model.safetensors:  67%|██████▋   | 125M/186M [00:21<00:10, 6.10MB/s]model.safetensors:  68%|██████▊   | 126M/186M [00:21<00:09, 6.08MB/s]model.safetensors:  69%|██████▊   | 128M/186M [00:21<00:09, 6.08MB/s]model.safetensors:  69%|██████▉   | 128M/186M [00:22<00:17, 3.40MB/s]model.safetensors:  71%|███████   | 132M/186M [00:22<00:08, 6.11MB/s]model.safetensors:  72%|███████▏  | 134M/186M [00:23<00:08, 6.16MB/s]model.safetensors:  73%|███████▎  | 135M/186M [00:23<00:08, 6.14MB/s]model.safetensors:  73%|███████▎  | 137M/186M [00:23<00:08, 6.12MB/s]model.safetensors:  74%|███████▍  | 138M/186M [00:23<00:07, 6.11MB/s]model.safetensors:  75%|███████▍  | 139M/186M [00:24<00:07, 6.10MB/s]model.safetensors:  76%|███████▌  | 141M/186M [00:24<00:07, 6.07MB/s]model.safetensors:  76%|███████▋  | 142M/186M [00:24<00:07, 6.06MB/s]model.safetensors:  77%|███████▋  | 144M/186M [00:24<00:07, 5.81MB/s]model.safetensors:  77%|███████▋  | 144M/186M [00:25<00:12, 3.46MB/s]model.safetensors:  80%|███████▉  | 148M/186M [00:25<00:06, 6.26MB/s]model.safetensors:  80%|████████  | 150M/186M [00:25<00:05, 6.27MB/s]model.safetensors:  81%|████████  | 151M/186M [00:26<00:05, 6.22MB/s]model.safetensors:  82%|████████▏ | 153M/186M [00:26<00:05, 6.19MB/s]model.safetensors:  83%|████████▎ | 154M/186M [00:26<00:05, 6.14MB/s]model.safetensors:  83%|████████▎ | 155M/186M [00:26<00:05, 6.12MB/s]model.safetensors:  84%|████████▍ | 157M/186M [00:27<00:04, 6.11MB/s]model.safetensors:  85%|████████▍ | 158M/186M [00:27<00:04, 6.09MB/s]model.safetensors:  86%|████████▌ | 160M/186M [00:27<00:04, 6.09MB/s]model.safetensors:  86%|████████▌ | 160M/186M [00:28<00:07, 3.43MB/s]model.safetensors:  88%|████████▊ | 164M/186M [00:28<00:03, 6.19MB/s]model.safetensors:  89%|████████▉ | 166M/186M [00:28<00:03, 6.16MB/s]model.safetensors:  90%|████████▉ | 167M/186M [00:28<00:03, 6.22MB/s]model.safetensors:  90%|█████████ | 169M/186M [00:29<00:02, 6.18MB/s]model.safetensors:  91%|█████████ | 170M/186M [00:29<00:02, 6.15MB/s]model.safetensors:  92%|█████████▏| 171M/186M [00:29<00:02, 6.03MB/s]model.safetensors:  93%|█████████▎| 173M/186M [00:29<00:02, 6.14MB/s]model.safetensors:  94%|█████████▎| 174M/186M [00:30<00:01, 6.10MB/s]model.safetensors:  94%|█████████▍| 176M/186M [00:30<00:01, 6.08MB/s]model.safetensors:  95%|█████████▍| 176M/186M [00:30<00:02, 3.46MB/s]model.safetensors:  97%|█████████▋| 180M/186M [00:31<00:00, 6.18MB/s]model.safetensors:  98%|█████████▊| 182M/186M [00:31<00:00, 6.21MB/s]model.safetensors:  98%|█████████▊| 183M/186M [00:31<00:00, 6.16MB/s]model.safetensors:  99%|█████████▉| 185M/186M [00:31<00:00, 6.15MB/s]model.safetensors: 100%|█████████▉| 186M/186M [00:32<00:00, 6.12MB/s]model.safetensors: 100%|██████████| 186M/186M [00:32<00:00, 5.69MB/s]
+[INFO] Pushed final-epoch checkpoint (epoch 20) to kelmoir/cafa6-esm@full-label-trial012-trainN32k-bs2
+[SUMMARY] {"run_name": "full-label-trial012-trainN32k-bs2", "epochs_completed": 20, "final_train_loss": 0.004782225813107288, "final_val_loss": 0.006090574927569833, "train_accuracy": 0.9986823581332058, "val_accuracy": 0.9984802784009414, "train_recall": 0.006407859735190868, "val_recall": 0.004331111442297697, "train_f1": 0.4009384521388451, "val_f1": 0.3357191881552276, "checkpoint_selection": "f1", "best_epoch": 15, "best_score": 0.3465486321185502, "best_val_loss": 0.0060527128435787746, "best_metrics": {"train_loss": 0.0050216103907314395, "val_loss": 0.0060527128435787746, "train_accuracy": 0.9986518022967158, "val_accuracy": 0.9984811058806222, "train_recall": 0.00428022351115942, "val_recall": 0.003915684297680855, "train_precision": 0.7025600075721741, "val_precision": 0.6326415538787842, "train_f1": 0.37155336368610653, "val_f1": 0.3465486321185502}}
+[INFO] Using best checkpoint (epoch 15, selected by --checkpoint-selection=f1=0.3465, val_loss=0.0061) for diagnostic/promotion, not the last epoch (20, val_loss=0.0061)
+Loading weights:   0%|          | 0/213 [00:00<?, ?it/s]Loading weights: 100%|██████████| 213/213 [00:00<00:00, 3668.17it/s]
+[INFO] Running post-training AUROC/F1 diagnostic on the best-checkpoint model...
+
+======================================================================
+DIAGNOSTIC: 9401/27191 labels evaluable (both classes present), 2000 val examples
+======================================================================
+Per-label AUROC: mean=0.8689 median=0.9177 min=0.0033 max=1.0000
+  labels with AUROC > 0.5: 9103/9401
+  labels with AUROC > 0.7: 8360/9401
+Pooled @ threshold 0.5: accuracy=0.9985 (trivial baseline=0.9983) precision=0.6461 recall=0.2355 f1=0.3452
+Pooled AUROC=0.9778  Best F1=0.4191@threshold=0.22
+[DIAGNOSTIC] {"n_val_examples": 2000, "n_labels_evaluable": 9401, "n_labels_total": 27191, "mean_auroc": 0.8689308723512715, "median_auroc": 0.9176537298387095, "pooled_auroc": 0.9778086111759816, "accuracy_at_0.5": 0.9984525394431981, "trivial_baseline_accuracy": 0.9982680482789874, "precision_at_0.5": 0.6461130690587348, "recall_at_0.5": 0.23552082559161716, "f1_at_0.5": 0.34520696776196974, "best_f1": 0.41907784736588544, "best_f1_threshold": 0.22}
+* Run finished. Uploading logs to Trackio (please wait...)
