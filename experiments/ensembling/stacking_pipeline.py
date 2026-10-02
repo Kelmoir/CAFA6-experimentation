@@ -85,6 +85,24 @@ def assert_no_overlap():
     )
 
 
+def fit_meta_model(X_train, y_train):
+    import xgboost as xgb
+
+    model = xgb.XGBClassifier(
+        objective="binary:logistic", tree_method="hist",
+        eval_metric="auc", random_state=42,
+    )
+    model.fit(X_train, y_train)
+
+    train_preds = model.predict_proba(X_train)[:, 1]
+    assert train_preds.std() > 1e-6, (
+        "meta-model predictions collapsed to a near-constant value on its own training "
+        "data -- likely needs negative subsampling (see the design spec's Meta-model "
+        "risk note) before being trusted on the real meta-train set"
+    )
+    return model
+
+
 def compute_meta_train_slice(start, end):
     """Builds (protein x term) score matrices for validation rows [start:end), reusing
     the already-built BLAST database and the resumable checkpoint-every-20-batches
