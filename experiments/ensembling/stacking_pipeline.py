@@ -103,6 +103,55 @@ def fit_meta_model(X_train, y_train):
     return model
 
 
+def report_results(model, X_eval, meta_eval):
+    from sklearn.metrics import roc_auc_score
+
+    val_labels = meta_eval["val_labels"]
+    n_rows, n_labels = val_labels.shape
+    stacked_scores = model.predict_proba(X_eval)[:, 1].reshape(n_rows, n_labels)
+
+    evaluable = [j for j in range(n_labels) if val_labels[:, j].min() != val_labels[:, j].max()]
+    assert len(evaluable) == 9401, f"n_labels_evaluable={len(evaluable)}, expected 9401"
+
+    model_auroc = np.array([roc_auc_score(val_labels[:, j], meta_eval["esm_prob"][:, j]) for j in evaluable])
+    blast_auroc = np.array([roc_auc_score(val_labels[:, j], meta_eval["blast_score"][:, j]) for j in evaluable])
+    stacked_auroc = np.array([roc_auc_score(val_labels[:, j], stacked_scores[:, j]) for j in evaluable])
+
+    print(f"[RESULT] n_labels_evaluable={len(evaluable)}")
+    print(f"[RESULT] model   mean_auroc={model_auroc.mean():.4f} median={np.median(model_auroc):.4f}")
+    print(f"[RESULT] blast   mean_auroc={blast_auroc.mean():.4f} median={np.median(blast_auroc):.4f}")
+    print(f"[RESULT] stacked mean_auroc={stacked_auroc.mean():.4f} median={np.median(stacked_auroc):.4f}")
+
+    # Bright-spot subset: same `evaluable` index set, not a separately recomputed one.
+    diff_blast_model = blast_auroc - model_auroc
+    bright_spot_mask = diff_blast_model >= 0.05
+    print(f"[RESULT] bright-spot subset (BLAST beat model by >=0.05 on meta-eval): {bright_spot_mask.sum()} terms")
+    print(
+        f"[RESULT] on bright-spot subset: model mean_auroc={model_auroc[bright_spot_mask].mean():.4f} "
+        f"stacked mean_auroc={stacked_auroc[bright_spot_mask].mean():.4f}"
+    )
+
+
+def main():
+    assert_no_overlap()
+
+    print("[INFO] Loading cached meta-eval slice (rows 0:2000)...")
+    meta_eval = load_cached_meta_eval()
+
+    print(f"[INFO] Computing/loading meta-train slice (rows {META_TRAIN_START}:{META_TRAIN_END})...")
+    meta_train = compute_meta_train_slice(META_TRAIN_START, META_TRAIN_END)
+
+    print("[INFO] Building flattened features...")
+    X_train, y_train = build_features(meta_train)
+    X_eval, _ = build_features(meta_eval)
+
+    print("[INFO] Fitting XGBoost meta-model on meta-train...")
+    model = fit_meta_model(X_train, y_train)
+
+    print("[INFO] Evaluating on meta-eval...")
+    report_results(model, X_eval, meta_eval)
+
+
 def compute_meta_train_slice(start, end):
     """Builds (protein x term) score matrices for validation rows [start:end), reusing
     the already-built BLAST database and the resumable checkpoint-every-20-batches
@@ -221,3 +270,7 @@ def compute_meta_train_slice(start, end):
         "esm_prob": esm_prob, "blast_score": blast_score, "val_labels": val_labels,
         "train_labels": train_labels, "label_names": label_names,
     }
+
+
+if __name__ == "__main__":
+    main()
