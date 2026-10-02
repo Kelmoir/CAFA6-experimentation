@@ -92,8 +92,19 @@ per the scope constraint above — since a zero-example term can't produce gradi
 under any architecture and only dilutes BCE loss / wastes classifier-head compute otherwise.
 **Final vocabulary: 27,191 trainable terms** (down from the initial 29,386; 2,195 genuinely
 unlearnable terms dropped), **removed-protein fraction 0.22%** (down from 9.25% at the
-original 1024 cutoff). All integrity checks pass. The plateau-first regularization sweep
-itself (this decision's second half) has not started.
+original 1024 cutoff). All integrity checks pass.
+
+**Plateau sweep DONE (2026-09-28/10-02), baseline promoted.** 13 trials, logged in
+`experiments/full_label_sweep/sweep_log.md`: landed on `esm2_t12_35M_UR50D`,
+`unfreeze_last_n=4`, `esm_dropout=attention_dropout=0.1` (resolved the overfitting seen at
+dropout=0.0), `weight_decay=0.01` (0.05 tested and rejected), no label smoothing (0.1 collapsed
+AUROC to near-chance at this label-space size), `batch_size=2`/`grad_accum_steps=8` (fastest
+on the user's hardware at this sequence length), and the full ~52.7k-example train split
+(trial-012/013 confirmed more data keeps helping once dropout is in place, unlike the earlier
+pre-dropout train_n tests). Trial-013 (30 epochs, full train split) is the sweep's best result —
+mean per-label AUROC 0.8731, median 0.9259, best val_f1 0.3741 at epoch 23 — and was promoted via
+`experiments/full_label_sweep/promote_trial013.py` to `kelmoir/cafa6-esm@main` as the Tier-0
+baseline. **Tier 0 is complete; Tier 1 work can now build on a real, plateau-tuned checkpoint.**
 
 ## Tier 1 — highest expected impact, actionable with current infrastructure
 
