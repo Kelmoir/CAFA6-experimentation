@@ -190,6 +190,32 @@ prediction, not a standalone predictor) rather than running further probes on it
 further tuning (K, bitscore vs. e-value weighting, excluding self-hits) is better spent inside
 a real stacking setup than as another isolated decorrelation check.
 
+**Stacking build completed (2026-10-02), result: naive version underperforms, including on its
+own target subset.** `experiments/ensembling/stacking_pipeline.py` (plan:
+`docs/superpowers/plans/2026-10-02-ensembling-stacking-pipeline.md`, spec:
+`docs/superpowers/specs/2026-10-02-ensembling-stacking-pipeline-design.md`) fits a single global
+`xgboost.XGBClassifier` over `[esm_prob, blast_score, log1p(term_freq)]` on a new 2000-row
+meta-train slice (validation rows 2000:4000, ~54.4M flattened (protein, term) rows), then
+evaluates on the original 2000-row meta-eval slice (rows 0:2000, same one every prior probe in
+this line used). Results: stacked mean AUROC **0.6179**, median **0.6497** -- *worse* than the
+model alone (0.8731/0.9259) and even slightly worse than BLAST alone (0.6854/0.6547) on the
+headline numbers. More tellingly, on the 639-term bright-spot subset (where real BLAST already
+beat the model by >=0.05 -- exactly the subset this build was meant to help most) the stacked
+score scores **0.4522** mean AUROC, *below* the model's own **0.6048** on that same subset.
+
+**Reading this result:** this is a real negative finding about the naive build, not evidence
+against stacking as a technique. The most likely cause: `log1p(term_freq)` is a near-unique
+per-term key (only ~27,191 distinct values, each appearing in exactly 2,000 meta-train rows),
+which gives unregularized default-depth XGBoost an easy path to effectively memorize a
+per-term rule from meta-train's small, specific 2,000-protein window rather than learning a
+genuinely general combination rule -- a classic overfit-to-a-small-per-group-sample failure
+mode, not a sign that ESM+BLAST fusion itself doesn't work. **Not a dead end for Tier 1 item 1,
+but the current naive build is not worth promoting or iterating on blindly** -- the next step
+before spending more BLAST/compute on a bigger meta-train set would be a cheap regularization
+check (shallow trees / fewer estimators / L2, or dropping `term_freq` entirely and retrying
+with just `[esm_prob, blast_score]`) to confirm the overfitting diagnosis before deciding
+whether stacking is worth pursuing further here.
+
 ### 2. Partial-Knowledge (PK) conditioning
 **Source:** report §"CAFA-6 keeps CAFA-5's evaluation regime, and partial knowledge now dominates the
 score" — PK (proteins that already carry *some* GO annotations, need new ones predicted) is 69.7% of
