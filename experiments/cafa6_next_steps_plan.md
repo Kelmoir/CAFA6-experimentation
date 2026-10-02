@@ -166,6 +166,30 @@ building a full fusion pipeline around; worth a cheap follow-up (install BLAST+/
 the same comparison with real local alignment) before deciding whether to pursue this further or
 move to another Tier 1 item.**
 
+**Follow-up with real BLAST+ (2026-10-02): meaningfully stronger, still a minority signal.**
+NCBI BLAST+ 2.17.0 installed in an isolated conda env (`./blast_env/`, kept separate from the
+training env to avoid a dependency-graph conflict with torch/tensorflow -- the first attempt to
+install it directly into the training env stalled conda's classic solver for 30+ minutes and had
+to be abandoned). `experiments/ensembling/blast_knn_probe_real.py` reruns the identical comparison
+(same validation slice, same evaluable-label filter, same bitscore-weighted KNN transfer, K=10)
+with real gapped local alignment instead of k-mer cosine similarity. Results: BLAST mean AUROC
+**0.6854** (up from k-mer's 0.6186), median **0.6547** (up from 0.5000 -- real alignment finds
+genuine above-chance ranking signal for a majority of terms, unlike the k-mer version). Per-label
+AUROC correlation with the model: **0.3462** (up from 0.2984). BLAST beats the model by >=0.05
+AUROC on 639/9,401 terms (6.8%, up from 378/9,401=4.0% with k-mer); model still beats BLAST by
+>=0.05 on 6,362/9,401 (68%).
+
+**Verdict: real homology signal confirmed, but still clearly secondary to the deep model overall.**
+BLAST-KNN is a genuine, non-trivial complementary source -- not noise, unlike what the crude k-mer
+approximation suggested -- beating the model outright on a real ~7% minority of terms (plausibly
+those with close training-set homologs/conserved motifs). This is exactly the kind of orthogonal
+evidence Tier 1 item 1 is looking for, though at this K/weighting scheme it's far from
+strong enough on its own to replace or dominate the model. **Worth carrying into an actual
+ensembling/stacking build** (e.g. as one input feature per term alongside the model's own
+prediction, not a standalone predictor) rather than running further probes on it in isolation --
+further tuning (K, bitscore vs. e-value weighting, excluding self-hits) is better spent inside
+a real stacking setup than as another isolated decorrelation check.
+
 ### 2. Partial-Knowledge (PK) conditioning
 **Source:** report §"CAFA-6 keeps CAFA-5's evaluation regime, and partial knowledge now dominates the
 score" — PK (proteins that already carry *some* GO annotations, need new ones predicted) is 69.7% of

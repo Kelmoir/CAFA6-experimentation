@@ -9,6 +9,11 @@ __pycache__/
 /models/*
 !/models/.gitkeep
 
+# Isolated BLAST+ conda env (experiments/ensembling/blast_knn_probe_real.py) and its
+# regeneratable working files (FASTA dumps, BLAST db, results, inference checkpoint)
+/blast_env/*
+/experiments/ensembling/blast_work/*
+
 # extract_protein_embeddings.py's large per-protein cache (~250MB combined); regeneratable
 # one-time cost from a checkpoint. class_priors_km2.json (the actual pipeline output consumed by
 # training_run.py --nnpu) is small and kept tracked.
