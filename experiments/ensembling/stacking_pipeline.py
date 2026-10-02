@@ -62,6 +62,29 @@ def load_cached_meta_eval():
     }
 
 
+def build_features(slice_dict):
+    """Flattens a (protein x term) slice dict (from load_cached_meta_eval() or
+    compute_meta_train_slice()) into row-per-(protein, term) features:
+    [esm_prob, blast_score, log1p(term_freq)]."""
+    term_freq = np.log1p(slice_dict["train_labels"].sum(axis=0)).astype(np.float32)
+    n_rows, n_labels = slice_dict["val_labels"].shape
+    X = np.stack([
+        slice_dict["esm_prob"].ravel(),
+        slice_dict["blast_score"].ravel(),
+        np.tile(term_freq, n_rows),
+    ], axis=1).astype(np.float32)
+    y = slice_dict["val_labels"].ravel().astype(np.float32)
+    assert np.isfinite(X).all(), "non-finite value in constructed features"
+    return X, y
+
+
+def assert_no_overlap():
+    assert META_TRAIN_START >= MAX_VAL_SAMPLES, (
+        f"meta-train range [{META_TRAIN_START}:{META_TRAIN_END}) overlaps meta-eval's "
+        f"[0:{MAX_VAL_SAMPLES}) rows -- would leak eval rows into training"
+    )
+
+
 def compute_meta_train_slice(start, end):
     """Builds (protein x term) score matrices for validation rows [start:end), reusing
     the already-built BLAST database and the resumable checkpoint-every-20-batches
