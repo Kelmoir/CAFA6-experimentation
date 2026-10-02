@@ -76,6 +76,7 @@ default at this scale going forward -- prefer shrinking physical batch size + ra
 | trial-010 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.0 | 25 | 4192 | 1 | 16 | 16000 | 4000 | HEALTHY, best diagnostics of the sweep, but mild overfitting onset appears past epoch ~18 | decide: extend further to confirm true plateau, or accept ~epoch 18-20 as this config's ceiling and move to next axis |
 | trial-011 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.05 | 0.0 | 20 | 4192 | 1 | 16 | 16000 | 4000 | NEGATIVE/NEUTRAL -- weight_decay=0.05 doesn't help, diagnostics slightly below trial-008/010, genuine early peak (epoch 18) followed by clean decline | revert weight_decay to 0.01, move to next axis (train_n) |
 | trial-012 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.0 | 20 | 4192 | 2 | 8 | 32000 | 4000 | POSITIVE -- doubling train_n improves all diagnostics over trial-010 (mean AUROC +0.0060, median +0.0080, pooled +0.0005, best F1 +0.0059) and reaches a higher val_f1 peak earlier (epoch 15 vs trial-010's epoch 25) | push train_n further (e.g. 64000) to see if the win continues |
+| trial-013 | esm2_t12_35M_UR50D | 4 | 5e-5 | 0.2 | 0.1 | 0.1 | 1.0 | 0.01 | 0.0 | 30 | 4192 | 2 | 8 | full (~52.7k) | 4000 | HEALTHY, best diagnostics of the sweep (mean AUROC 0.8731, median 0.9259, best val_f1 0.3741@epoch23) -- user ran 30 epochs intending this as the sweep-closing baseline | pending: promote this checkpoint (push-to-hub) as the Tier-0 baseline for Tier-1 work |
 
 ## trial-001
 
@@ -727,3 +728,80 @@ flagged as worth retesting was correctly identified.
 tapers off, keeping `--weight-decay 0.01`, `--epochs 20`, and `--batch-size 2`/`--grad-accum-steps 8`
 fixed at trial-012's now-proven values. Unambiguous enough to proceed directly rather than asking the
 user again.
+
+## trial-013
+
+**Config**: identical to trial-012 except `--max-train-samples` dropped entirely (uses the full
+~52.7k-example train split -- 64000 would have exceeded it anyway, per
+`split_utils.py:compute_cluster_aware_split`'s `test_frac=0.18`/`val_frac_of_remainder=0.22` applied
+to 82,404 total proteins) and `--epochs 30` (was 20 -- the user's own call, running this as the
+intended sweep-closing baseline rather than a quick axis probe). Log:
+`experiments/full_label_sweep/logs/trial-013.out`.
+
+**Per-epoch metrics**:
+
+| epoch | train_loss | val_loss | train_f1 | val_f1 | gap (train-val) |
+|-------|-----------|----------|----------|--------|------------------|
+| 1 | 0.0066 | 0.0066 | 0.2440 | 0.2704 | -0.0264 |
+| 2 | 0.0061 | 0.0064 | 0.2749 | 0.2968 | -0.0219 |
+| 3 | 0.0059 | 0.0062 | 0.2924 | 0.3053 | -0.0129 |
+| 4 | 0.0057 | 0.0062 | 0.3050 | 0.3146 | -0.0096 |
+| 5 | 0.0056 | 0.0061 | 0.3185 | 0.3177 | 0.0008 |
+| 6 | 0.0054 | 0.0061 | 0.3310 | 0.3283 | 0.0027 |
+| 7 | 0.0053 | 0.0061 | 0.3432 | 0.3199 | 0.0233 |
+| 8 | 0.0052 | 0.0061 | 0.3552 | 0.3253 | 0.0299 |
+| 9 | 0.0051 | 0.0061 | 0.3666 | 0.3175 | 0.0491 |
+| 10 | 0.0050 | 0.0060 | 0.3768 | 0.3517 | 0.0251 |
+| 11 | 0.0049 | 0.0061 | 0.3865 | 0.3400 | 0.0465 |
+| 12 | 0.0048 | 0.0061 | 0.3951 | 0.3495 | 0.0456 |
+| 13 | 0.0047 | 0.0061 | 0.4045 | 0.3489 | 0.0556 |
+| 14 | 0.0047 | 0.0061 | 0.4130 | 0.3489 | 0.0641 |
+| 15 | 0.0046 | 0.0061 | 0.4203 | 0.3442 | 0.0761 |
+| 16 | 0.0045 | 0.0061 | 0.4277 | 0.3472 | 0.0805 |
+| 17 | 0.0045 | 0.0061 | 0.4359 | 0.3583 | 0.0776 |
+| 18 | 0.0044 | 0.0061 | 0.4423 | 0.3463 | 0.0960 |
+| 19 | 0.0044 | 0.0061 | 0.4491 | 0.3544 | 0.0947 |
+| 20 | 0.0043 | 0.0061 | 0.4549 | 0.3626 | 0.0923 |
+| 21 | 0.0043 | 0.0062 | 0.4617 | 0.3675 | 0.0942 |
+| 22 | 0.0042 | 0.0062 | 0.4683 | 0.3589 | 0.1094 |
+| 23 | 0.0042 | 0.0061 | 0.4733 | 0.3741 | 0.0992 |
+| 24 | 0.0041 | 0.0061 | 0.4791 | 0.3717 | 0.1074 |
+| 25 | 0.0041 | 0.0062 | 0.4842 | 0.3601 | 0.1241 |
+| 26 | 0.0041 | 0.0062 | 0.4897 | 0.3614 | 0.1283 |
+| 27 | 0.0040 | 0.0063 | 0.4956 | 0.3557 | 0.1399 |
+| 28 | 0.0040 | 0.0063 | 0.4996 | 0.3565 | 0.1431 |
+| 29 | 0.0039 | 0.0063 | 0.5043 | 0.3703 | 0.1340 |
+| 30 | 0.0039 | 0.0063 | 0.5082 | 0.3680 | 0.1402 |
+
+`--checkpoint-selection f1` picked **epoch 23** (val_f1=0.3741) as best -- the global peak of a
+noisy plateau, not a sharp single maximum: val_f1 oscillates in a roughly 0.34-0.37 band from
+epoch 10 through 30 without a clean trend either way (epoch 20: 0.3626, 21: 0.3675, 29: 0.3703, 30:
+0.3680, all close to epoch 23's 0.3741), while train_f1 climbs steadily and almost monotonically
+the entire time (0.2440 -> 0.5082) as train_loss keeps dropping (0.0066 -> 0.0039). The train/val
+gap widens far more than any prior trial in absolute terms -- 0.0251 at epoch 10, 0.0923 at epoch
+20, 0.1402 at epoch 30 -- because train_f1 keeps climbing on the much larger train set while val_f1
+has essentially saturated/plateaued since epoch ~10. This is the same qualitative overfitting-onset
+shape seen in trial-010/012 (train keeps improving, val stops), just far more pronounced in gap size
+at this scale and epoch count, and harmless in practice since `--checkpoint-selection f1` already
+picks the plateau's best point rather than the final epoch.
+
+**Diagnostic** (2000 val examples): 9,401/27,191 labels evaluable. Per-label AUROC: mean=**0.8731**,
+median=**0.9259**. Pooled AUROC=0.9773. Best F1=0.4197@threshold=0.26. Mean AUROC (+0.0042), median
+AUROC (+0.0082), and best val_f1 (0.3741 vs trial-012's 0.3465, +0.0276) all improve over trial-012;
+pooled AUROC is flat/marginally down (-0.0005) and the best-F1-sweep value is essentially flat
+(+0.0006) -- both within noise. **Best diagnostics of the entire sweep.**
+
+**Verdict: HEALTHY -- best diagnostics of the sweep, confirms the full train split is this config's
+practical scale ceiling**. Going from 32k to the full ~52.7k train examples continues the positive
+trend trial-012 found, though with diminishing per-example returns (mean AUROC gain per added
+training example is far smaller than the 16k->32k jump bought) and a much wider train/val gap by
+epoch 30 -- but `--checkpoint-selection f1`'s epoch-23 pick is unaffected by that gap and represents
+the strongest validated checkpoint produced anywhere in this sweep. The user ran this trial at 30
+epochs specifically intending it as the sweep-closing baseline, and the plateau shape (noisy-flat
+val_f1 from epoch ~10 on, best point at 23, no later epoch meaningfully beating it) supports treating
+it that way rather than as one more axis probe.
+
+**Next action**: pending the user's confirmation, promote this checkpoint via `--push-to-hub` to
+`kelmoir/cafa6-esm@main` as the Tier-0 baseline `experiments/cafa6_next_steps_plan.md`'s Tier 1 work
+(ensembling, PK-conditioning, DAG-consistency) builds on. This is a Hub push (visible, hard to fully
+undo), so it's flagged for explicit go-ahead rather than run directly.
