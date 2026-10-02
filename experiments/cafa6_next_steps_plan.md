@@ -198,23 +198,40 @@ own target subset.** `experiments/ensembling/stacking_pipeline.py` (plan:
 meta-train slice (validation rows 2000:4000, ~54.4M flattened (protein, term) rows), then
 evaluates on the original 2000-row meta-eval slice (rows 0:2000, same one every prior probe in
 this line used). Results: stacked mean AUROC **0.6179**, median **0.6497** -- *worse* than the
-model alone (0.8731/0.9259) and even slightly worse than BLAST alone (0.6854/0.6547) on the
-headline numbers. More tellingly, on the 639-term bright-spot subset (where real BLAST already
-beat the model by >=0.05 -- exactly the subset this build was meant to help most) the stacked
-score scores **0.4522** mean AUROC, *below* the model's own **0.6048** on that same subset.
+model alone (0.8731/0.9259) and worse than BLAST alone on mean AUROC too (0.6854 vs 0.6179,
+though the medians are close: 0.6547 vs 0.6497). More tellingly, on the 639-term bright-spot
+subset (where real BLAST already beat the model by >=0.05 -- exactly the subset this build was
+meant to help most) the stacked score scores **0.4522** mean AUROC, *below* the model's own
+**0.6048** on that same subset.
 
-**Reading this result:** this is a real negative finding about the naive build, not evidence
-against stacking as a technique. The most likely cause: `log1p(term_freq)` is a near-unique
-per-term key (only ~27,191 distinct values, each appearing in exactly 2,000 meta-train rows),
-which gives unregularized default-depth XGBoost an easy path to effectively memorize a
-per-term rule from meta-train's small, specific 2,000-protein window rather than learning a
-genuinely general combination rule -- a classic overfit-to-a-small-per-group-sample failure
-mode, not a sign that ESM+BLAST fusion itself doesn't work. **Not a dead end for Tier 1 item 1,
-but the current naive build is not worth promoting or iterating on blindly** -- the next step
-before spending more BLAST/compute on a bigger meta-train set would be a cheap regularization
-check (shallow trees / fewer estimators / L2, or dropping `term_freq` entirely and retrying
-with just `[esm_prob, blast_score]`) to confirm the overfitting diagnosis before deciding
-whether stacking is worth pursuing further here.
+**Reading this result (corrected 2026-10-02 after a final whole-branch review caught the
+original diagnosis below was wrong):** this is a real negative finding about the naive build,
+not evidence against stacking as a technique -- but the mechanism is **not** overfitting via
+`log1p(term_freq)`. That feature has only **997** distinct values across 27,191 terms (not
+"near-unique" as first written here), and an in-sample check (fit and score on the *same* 2000
+rows -- the best possible case for overfitting to show up) still collapses to mean AUROC 0.642,
+barely better with `term_freq` dropped entirely (0.657). A fit that were truly overfitting
+would score well in-sample; this one doesn't even there.
+
+The real mechanism, confirmed directly: per-label **ranking resolution collapses**. Each
+evaluable term's `esm_prob` column has a median of ~1991 distinct values across 2000 proteins;
+the stacked score has only ~24-33. The pooled `binary:logloss` objective, fit across all
+(protein, term) rows at once, spends its splits separating terms by base rate (which pooled
+accuracy/std rewards) rather than ranking within each term (which is all per-label AUROC
+measures) -- so most of a term's 2000 rows end up tied at the same predicted value, and ties
+pull AUROC toward 0.5. `fit_meta_model()`'s degeneracy guard has been strengthened
+(`_check_label_resolution()`, commit `f9f14f3`) to catch exactly this directly from training
+data, rather than needing a second post-hoc diagnostic to find it -- re-running
+`stacking_pipeline.py` now fails loudly at the fit step instead of silently producing the
+0.6179 result above.
+
+**Not a dead end for Tier 1 item 1, but the current naive build needs a different fix than
+originally written here** -- shallower trees/fewer estimators/L2/dropping `term_freq` would
+not help (less resolution, not more; measured directly above). Credible next steps, in
+rough order of effort: a ranking objective grouped by term (`rank:pairwise` with `qid=term`,
+which matches the spec's own "learning to rank" framing better than pooled binary
+classification does), monotone constraints on `esm_prob`/`blast_score`, a larger `max_bin`, or
+per-term rank/logit-transformed input features.
 
 ### 2. Partial-Knowledge (PK) conditioning
 **Source:** report §"CAFA-6 keeps CAFA-5's evaluation regime, and partial knowledge now dominates the
