@@ -2,6 +2,8 @@
 XGBoost meta-model, per experiments/cafa6_next_steps_plan.md Tier 1 item 1 and
 docs/superpowers/specs/2026-10-02-ensembling-stacking-pipeline-design.md.
 """
+import os
+import subprocess
 import sys
 from pathlib import Path
 
@@ -85,7 +87,27 @@ def assert_no_overlap():
     )
 
 
-def fit_meta_model(X_train, y_train):
+def _check_label_resolution(preds, reference_feature, n_labels):
+    """Raises if `preds` has far less per-label distinct-value resolution than
+    `reference_feature` (a known-good input, e.g. esm_prob). Pooled std cannot see
+    this: a fit can separate terms by base rate (plenty of pooled spread) while
+    producing almost no within-term ranking signal at all, which is exactly what
+    per-label AUROC measures and pooled std does not (final-review finding, 2026-10-02
+    -- see cafa6_next_steps_plan.md's corrected write-up)."""
+    n_rows = len(preds) // n_labels
+    preds_by_label = preds.reshape(n_rows, n_labels)
+    ref_by_label = reference_feature.reshape(n_rows, n_labels)
+    median_preds = np.median([len(np.unique(preds_by_label[:, j])) for j in range(n_labels)])
+    median_ref = np.median([len(np.unique(ref_by_label[:, j])) for j in range(n_labels)])
+    assert median_preds >= 0.1 * median_ref, (
+        f"per-label prediction resolution collapsed: median {median_preds:.0f} distinct "
+        f"values/label vs the reference feature's {median_ref:.0f} -- the fit is likely "
+        "separating terms by base rate rather than ranking within each term, which pooled "
+        "std can't detect"
+    )
+
+
+def fit_meta_model(X_train, y_train, n_labels):
     import xgboost as xgb
 
     model = xgb.XGBClassifier(
@@ -100,6 +122,7 @@ def fit_meta_model(X_train, y_train):
         "data -- likely needs negative subsampling (see the design spec's Meta-model "
         "risk note) before being trusted on the real meta-train set"
     )
+    _check_label_resolution(train_preds, X_train[:, 0], n_labels)
     return model
 
 
@@ -146,10 +169,21 @@ def main():
     X_eval, _ = build_features(meta_eval)
 
     print("[INFO] Fitting XGBoost meta-model on meta-train...")
-    model = fit_meta_model(X_train, y_train)
+    model = fit_meta_model(X_train, y_train, len(meta_train["label_names"]))
 
     print("[INFO] Evaluating on meta-eval...")
     report_results(model, X_eval, meta_eval)
+
+
+def _blastp_atomic(argv_builder, out_path):
+    """Runs a blastp-style command atomically: writes to a temp file first and renames
+    into place only after the subprocess succeeds, so a `timeout`-induced kill mid-run
+    (the plan's own documented retry pattern) can never leave a partial file at
+    out_path -- which the next invocation's `out_path.exists()` cache check would
+    otherwise silently treat as a complete result (final-review finding, 2026-10-02)."""
+    tmp_path = out_path.with_suffix(out_path.suffix + ".tmp")
+    subprocess.run(argv_builder(tmp_path), check=True, capture_output=True, text=True)
+    os.replace(tmp_path, out_path)
 
 
 def compute_meta_train_slice(start, end):
@@ -157,7 +191,6 @@ def compute_meta_train_slice(start, end):
     the already-built BLAST database and the resumable checkpoint-every-20-batches
     inference pattern blast_knn_probe_real.py validated. Cache filenames are keyed by
     (start, end) so a smoke-test range never collides with the real 2000:4000 run."""
-    import subprocess
     from functools import partial
 
     import torch
@@ -192,11 +225,13 @@ def compute_meta_train_slice(start, end):
     else:
         write_fasta(metatrain_fasta, val_ids, val_subset["sequence"])
         print(f"[INFO] Running blastp for rows [{start}:{end}) against the existing train_blastdb...")
-        subprocess.run(
-            [str(BLAST_BIN_DIR / "blastp"), "-query", str(metatrain_fasta), "-db", str(blast_db),
-             "-out", str(blast_out), "-outfmt", "6 qseqid sseqid bitscore pident",
-             "-max_target_seqs", "10", "-num_threads", "8"],
-            check=True, capture_output=True, text=True,
+        _blastp_atomic(
+            lambda tmp: [
+                str(BLAST_BIN_DIR / "blastp"), "-query", str(metatrain_fasta), "-db", str(blast_db),
+                "-out", str(tmp), "-outfmt", "6 qseqid sseqid bitscore pident",
+                "-max_target_seqs", "10", "-num_threads", "8",
+            ],
+            blast_out,
         )
 
     hits_by_query = {qid: [] for qid in val_ids}
