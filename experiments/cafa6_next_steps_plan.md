@@ -129,6 +129,17 @@ predictions under a second, independently-trained checkpoint (cheap decorrelatio
 non-experimental/electronic-annotation feature (GOA's own IEA-code annotations, used by 3rd place
 CAFA-5 and the verified CAFA-6 11th-place solution).
 
+**Candidate (a) ruled out as a decorrelation check (2026-10-02):** a frequency-prior baseline
+(`--class-priors-path`'s KM2/Spy estimators -- see `training_run.py:908-1070`) assigns one scalar
+score per GO term, identical across every protein. AUROC measures ranking; a constant score is
+fully tied, so its AUROC against any validation set is *exactly* 0.5 by construction, not something
+an experiment reveals -- it cannot "get different proteins right" since it never varies by protein
+in the first place. Its only real role (a calibration floor) is already answered by every
+`run_diagnostic()` call's `trivial_baseline_accuracy` field, which trial-013 already beats by a wide
+margin (precision/recall/F1@0.5 of 0.60/0.27/0.34 vs. the always-negative floor). **Skip (a); start
+the decorrelation check at (b) BLAST-KNN**, the cheapest candidate that actually produces a
+per-protein-varying score.
+
 ### 2. Partial-Knowledge (PK) conditioning
 **Source:** report §"CAFA-6 keeps CAFA-5's evaluation regime, and partial knowledge now dominates the
 score" — PK (proteins that already carry *some* GO annotations, need new ones predicted) is 69.7% of
