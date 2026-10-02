@@ -140,6 +140,32 @@ margin (precision/recall/F1@0.5 of 0.60/0.27/0.34 vs. the always-negative floor)
 the decorrelation check at (b) BLAST-KNN**, the cheapest candidate that actually produces a
 per-protein-varying score.
 
+**Candidate (b) probed (2026-10-02), result: weak overall, narrow bright spot — not yet a
+Tier 1 build.** No `blastp`/BLAST+ install available locally, so `experiments/ensembling/
+blast_knn_probe.py` approximates sequence similarity with amino-acid k-mer (k=3) cosine
+similarity + similarity-weighted KNN label transfer (K=10) against the full ~52.6k-example train
+split, scored against the identical 2000-example validation slice and evaluable-label filter
+`run_diagnostic()` used for trial-013 (confirmed matching: `n_labels_evaluable=9401`, and the
+model's own mean/median AUROC reproduced exactly: 0.8731/0.9259). Results: KNN mean AUROC
+**0.6186**, median **0.5000** (chance, across roughly half of evaluable terms) -- far below
+trial-013's model (0.8731/0.9259). Per-label AUROC correlation between the two scorers: **0.2984**.
+Model beats KNN by >=0.05 AUROC on 7,685/9,401 terms (82%); KNN beats the model by >=0.05 on only
+378/9,401 (4%).
+
+**Reading this result:** the low correlation is NOT by itself evidence of a good ensembling
+candidate here -- median AUROC sitting exactly at chance across half the evaluable terms means
+k-mer KNN has no real ranking signal for most of them, so much of the "decorrelation" is KNN being
+noise, not a genuinely different valid signal. The one real finding is the narrow 378-term (4%)
+minority where KNN clearly beats the model by a wide margin -- plausibly terms driven by literal
+close homologs/conserved motifs a learned embedding doesn't capture as sharply as raw sequence
+identity does. This crude k-mer approximation (global trigram cosine similarity, no gapped local
+alignment, no e-value filtering) is a materially weaker homology detector than real BLAST+, so this
+negative-leaning result doesn't rule out a properly-built BLAST/MMseqs2 retrieval baseline --
+it mainly rules out *this cheap approximation* as a blanket ensembling source. **Not yet worth
+building a full fusion pipeline around; worth a cheap follow-up (install BLAST+/MMseqs2, re-run
+the same comparison with real local alignment) before deciding whether to pursue this further or
+move to another Tier 1 item.**
+
 ### 2. Partial-Knowledge (PK) conditioning
 **Source:** report §"CAFA-6 keeps CAFA-5's evaluation regime, and partial knowledge now dominates the
 score" — PK (proteins that already carry *some* GO annotations, need new ones predicted) is 69.7% of
