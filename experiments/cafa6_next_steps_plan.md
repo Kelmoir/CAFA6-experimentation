@@ -354,6 +354,41 @@ on `rank_esm`/`rank_blast`, already on the original deferred list) as the next, 
 motivated thing to try -- not a shot in the dark, but a direct test of a mechanism the data
 itself just ruled the alternatives out in favor of.
 
+**Monotone constraints tried (2026-10-03), result: closes the gap to parity with the
+baseline.** `experiments/ensembling/monotone_constraints_probe.py` adds `monotone_constraints=(1, 1, 0)`
+to `fit_meta_model()` (now an optional parameter, `check_monotone_constraints.py` proves it's
+actually applied to the fitted booster and that predictions are empirically non-decreasing in
+the constrained features) -- forcing the score to be non-decreasing in `rank_esm`/`rank_blast`
+while leaving `log1p(term_freq)` unconstrained, on top of the already-tried rank-transformed
+features. A quick in-sample check first (fit and score on the same 2000 rows) showed the model
+beating the baseline for the first time in this whole investigation: mean AUROC **0.8861** vs.
+baseline's 0.8853. Out-of-sample (fit on meta-train, evaluated on meta-eval, the result that
+actually matters):
+
+| | mean AUROC | median AUROC |
+|---|---|---|
+| model alone | 0.8731 | 0.9259 |
+| blast alone | 0.6854 | 0.6547 |
+| stacked (rank features + monotone constraints) | **0.8854** | 0.9398 |
+| baseline (untrained) | 0.8853 | 0.9421 |
+
+Stacked mean AUROC (0.8854) now **ties the baseline** (0.8853 -- a 0.0001 difference, i.e. noise,
+not a real win) instead of trailing it by 0.012-0.017 as every previous attempt did. Median AUROC
+is still slightly behind (0.9398 vs. 0.9421). On the (now-known-to-be-non-generalizing, see above)
+bright-spot subset, stacked (0.6949) edges past the baseline (0.6909) for the first time; on the
+other 8,762 terms the two are essentially identical (0.8993 vs. 0.8995). **This confirms the
+non-monotonicity hypothesis was the real mechanism**, not a coincidence: going from "clearly
+worse than baseline" (every raw-feature and rank-feature-only attempt) to "statistically tied"
+required exactly the fix that targets tree non-monotonicity, and nothing else tried did.
+
+**Where this leaves Tier 1 item 1:** the meta-model has gone from a clear loser (0.6179 at the
+start of this investigation) to parity with a trivial, parameter-free baseline -- real, honest
+progress, but not yet evidence that learned stacking adds value over the free blend. The natural
+next increment (untried) is tuning around this configuration -- e.g. a non-zero `weight` other
+than 50/50 in the closed-form baseline for comparison, or a wider monotone-constrained
+hyperparameter sweep (tree depth, learning rate, `max_bin`) -- rather than another new mechanism,
+since the diagnosis (tree non-monotonicity) is now confirmed rather than speculative.
+
 ### 2. Partial-Knowledge (PK) conditioning
 **Source:** report §"CAFA-6 keeps CAFA-5's evaluation regime, and partial knowledge now dominates the
 score" — PK (proteins that already carry *some* GO annotations, need new ones predicted) is 69.7% of
