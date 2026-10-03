@@ -233,6 +233,34 @@ which matches the spec's own "learning to rank" framing better than pooled binar
 classification does), monotone constraints on `esm_prob`/`blast_score`, a larger `max_bin`, or
 per-term rank/logit-transformed input features.
 
+**Ranking objective tried (2026-10-03), result: fixes the collapse, and the bright-spot
+subset shows a real win.** Swapped the pooled `XGBClassifier(binary:logistic)` for
+`xgboost.XGBRanker(objective="rank:pairwise")`, grouped by term via `qid` -- the within-term
+ordering `rank:pairwise` optimizes is exactly what per-label AUROC measures, unlike the
+pooled classifier's base-rate-driven loss. One real dependency behavior confirmed directly,
+not assumed (`check_xgbranker_qid_ordering.py`): this xgboost build (3.2.0) requires rows
+pre-sorted by `qid` -- `fit_meta_model()` sorts internally so callers don't need to think
+about it. The old distinct-value-count degeneracy guard (`_check_label_resolution()`) had to
+be replaced too: it falsely flagged this fit as collapsed (median 109 distinct values/label
+vs. `esm_prob`'s ~1991), when the in-sample AUROC was actually fine (0.8839, beating the
+model-alone baseline of 0.8731) -- a tree-based ranker legitimately produces far fewer
+distinct prediction values than a continuous probability without losing ranking signal, so
+comparing raw counts was the wrong proxy. The guard (`_check_ranking_signal()`, commit
+history around 2026-10-03) now measures per-label AUROC directly against the training labels
+instead.
+
+Real result on the same meta-train (rows 2000:4000) / meta-eval (rows 0:2000) slices: stacked
+mean AUROC **0.8732**, median **0.9239** -- back in line with the model alone (0.8731/0.9259),
+no longer catastrophically worse. More importantly, on the 639-term bright-spot subset (where
+BLAST beats the model by >=0.05, the subset this build specifically targets): model alone
+**0.6048** mean AUROC, stacked **0.6777** -- a genuine **+0.073** win, with no corresponding
+loss on the other ~93% of terms. This is the first positive, concrete result for Tier 1 item
+1 and confirms the plan's original hypothesis (BLAST-KNN has real complementary signal on a
+term subset, and stacking can capture it) once the model/loss actually match the eval metric.
+Monotone constraints, larger `max_bin`, and per-term rank/logit-transformed features remain
+untried -- not needed to reach this result, so deferred unless a further push on the
+bright-spot subset's remaining gap (0.6777 vs. a hypothetical ceiling) turns out to matter.
+
 ### 2. Partial-Knowledge (PK) conditioning
 **Source:** report §"CAFA-6 keeps CAFA-5's evaluation regime, and partial knowledge now dominates the
 score" — PK (proteins that already carry *some* GO annotations, need new ones predicted) is 69.7% of

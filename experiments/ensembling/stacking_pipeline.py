@@ -57,7 +57,10 @@ def load_cached_meta_eval(dataset=None):
 def build_features(slice_dict):
     """Flattens a (protein x term) slice dict (from load_cached_meta_eval() or
     compute_meta_train_slice()) into row-per-(protein, term) features:
-    [esm_prob, blast_score, log1p(term_freq)]."""
+    [esm_prob, blast_score, log1p(term_freq)], plus a qid array (the term index per
+    row) for the rank:pairwise-grouped-by-term meta-model -- same row-major-by-protein
+    order as X/y, not sorted (sorting is fit_meta_model's concern, not feature
+    construction's)."""
     term_freq = np.log1p(slice_dict["train_labels"].sum(axis=0)).astype(np.float32)
     n_rows, n_labels = slice_dict["val_labels"].shape
     X = np.stack([
@@ -66,8 +69,9 @@ def build_features(slice_dict):
         np.tile(term_freq, n_rows),
     ], axis=1).astype(np.float32)
     y = slice_dict["val_labels"].ravel().astype(np.float32)
+    qid = np.tile(np.arange(n_labels), n_rows)
     assert np.isfinite(X).all(), "non-finite value in constructed features"
-    return X, y
+    return X, y, qid
 
 
 def assert_no_overlap():
@@ -97,41 +101,54 @@ def assert_meta_eval_matches_logged(meta_eval):
     assert abs(blast_auroc.mean() - 0.6854) < 0.001, f"blast mean AUROC {blast_auroc.mean():.4f}, expected ~0.6854"
 
 
-def _check_label_resolution(preds, reference_feature, n_labels):
-    """Raises if `preds` has far less per-label distinct-value resolution than
-    `reference_feature` (a known-good input, e.g. esm_prob). Pooled std cannot see
-    this: a fit can separate terms by base rate (plenty of pooled spread) while
-    producing almost no within-term ranking signal at all, which is exactly what
-    per-label AUROC measures and pooled std does not (final-review finding, 2026-10-02
-    -- see cafa6_next_steps_plan.md's corrected write-up)."""
+def _check_ranking_signal(preds, y_train, n_labels):
+    """Raises if per-label AUROC computed in-sample (against the training labels
+    themselves) is barely above chance. Pooled std cannot see this: a fit can separate
+    terms by base rate (plenty of pooled spread) while producing almost no within-term
+    ranking signal at all, which is exactly what per-label AUROC measures and pooled
+    std does not (final-review finding, 2026-10-02 -- see cafa6_next_steps_plan.md's
+    corrected write-up). Supersedes an earlier distinct-value-count proxy: that
+    heuristic falsely flagged a healthy rank:pairwise fit, since a tree-based ranker
+    legitimately produces far fewer distinct prediction values than a continuous
+    probability output without any loss of ranking signal -- measuring AUROC directly
+    (we have y_train on hand, no need for a proxy) avoids that false positive."""
+    from sklearn.metrics import roc_auc_score
+
     n_rows = len(preds) // n_labels
     preds_by_label = preds.reshape(n_rows, n_labels)
-    ref_by_label = reference_feature.reshape(n_rows, n_labels)
-    median_preds = np.median([len(np.unique(preds_by_label[:, j])) for j in range(n_labels)])
-    median_ref = np.median([len(np.unique(ref_by_label[:, j])) for j in range(n_labels)])
-    assert median_preds >= 0.1 * median_ref, (
-        f"per-label prediction resolution collapsed: median {median_preds:.0f} distinct "
-        f"values/label vs the reference feature's {median_ref:.0f} -- the fit is likely "
-        "separating terms by base rate rather than ranking within each term, which pooled "
-        "std can't detect"
+    y_by_label = y_train.reshape(n_rows, n_labels)
+    evaluable = [j for j in range(n_labels) if y_by_label[:, j].min() != y_by_label[:, j].max()]
+    aurocs = np.array([roc_auc_score(y_by_label[:, j], preds_by_label[:, j]) for j in evaluable])
+    assert np.median(aurocs) > 0.55, (
+        f"per-label ranking signal collapsed: median in-sample AUROC {np.median(aurocs):.4f} "
+        "is barely above chance -- the fit is likely separating terms by base rate rather "
+        "than ranking within each term, which pooled std can't detect"
     )
 
 
-def fit_meta_model(X_train, y_train, n_labels):
+def fit_meta_model(X_train, y_train, qid_train, n_labels):
+    """Fits a ranking meta-model grouped by term (qid), not a pooled classifier --
+    rank:pairwise optimizes within-term ordering directly, which is what per-label
+    AUROC measures and what the pooled binary:logistic fit failed to do (final-review
+    finding, 2026-10-02; see cafa6_next_steps_plan.md). XGBRanker requires rows
+    pre-sorted by qid (confirmed against the real install via
+    check_xgbranker_qid_ordering.py, not assumed) -- X_train/y_train/qid_train are
+    taken in their original row-major-by-protein order and sorted here, internally,
+    so callers don't need to think about it."""
     import xgboost as xgb
 
-    model = xgb.XGBClassifier(
-        objective="binary:logistic", tree_method="hist", random_state=42,
-    )
-    model.fit(X_train, y_train)
+    order = np.argsort(qid_train, kind="stable")
+    model = xgb.XGBRanker(objective="rank:pairwise", tree_method="hist", random_state=42)
+    model.fit(X_train[order], y_train[order], qid=qid_train[order])
 
-    train_preds = model.predict_proba(X_train)[:, 1]
+    train_preds = np.empty(len(y_train), dtype=np.float32)
+    train_preds[order] = model.predict(X_train[order])
     assert train_preds.std() > 1e-6, (
         "meta-model predictions collapsed to a near-constant value on its own training "
         "data -- likely needs negative subsampling (see the design spec's Meta-model "
         "risk note) before being trusted on the real meta-train set"
     )
-    _check_label_resolution(train_preds, X_train[:, 0], n_labels)
+    _check_ranking_signal(train_preds, y_train, n_labels)
     return model
 
 
@@ -140,7 +157,7 @@ def report_results(model, X_eval, meta_eval):
 
     val_labels = meta_eval["val_labels"]
     n_rows, n_labels = val_labels.shape
-    stacked_scores = model.predict_proba(X_eval)[:, 1].reshape(n_rows, n_labels)
+    stacked_scores = model.predict(X_eval).reshape(n_rows, n_labels)
 
     evaluable = [j for j in range(n_labels) if val_labels[:, j].min() != val_labels[:, j].max()]
     assert len(evaluable) == 9401, f"n_labels_evaluable={len(evaluable)}, expected 9401"
@@ -181,11 +198,11 @@ def main():
     meta_train = compute_meta_train_slice(META_TRAIN_START, META_TRAIN_END, dataset=dataset)
 
     print("[INFO] Building flattened features...")
-    X_train, y_train = build_features(meta_train)
-    X_eval, _ = build_features(meta_eval)
+    X_train, y_train, qid_train = build_features(meta_train)
+    X_eval, _, _ = build_features(meta_eval)
 
-    print("[INFO] Fitting XGBoost meta-model on meta-train...")
-    model = fit_meta_model(X_train, y_train, len(meta_train["label_names"]))
+    print("[INFO] Fitting XGBoost ranking meta-model on meta-train...")
+    model = fit_meta_model(X_train, y_train, qid_train, len(meta_train["label_names"]))
 
     print("[INFO] Evaluating on meta-eval...")
     report_results(model, X_eval, meta_eval)
