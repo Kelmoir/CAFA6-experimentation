@@ -1,65 +1,47 @@
-"""Self-contained GPU hyperparameter search for the CAFA-6 stacking meta-model --
-run this on a GPU-backed Colab session, not in this repo's sandbox (see the handoff
-instructions in the chat that pointed you here). Needs only numpy, scipy, xgboost,
-and the uploaded meta_train_for_hpo.npz (exported by export_meta_train_for_hpo.py) --
-no dataset, no BLAST, no ESM-2 checkpoint, no repo clone.
+"""Hyperparameter search for the CAFA-6 stacking meta-model, run on your own
+machine's GPU directly -- not inside the sandboxed session (which can't see it; the
+sandbox's torch.cuda.is_available() is False even though the host has a real GPU) and
+not on Colab (retired for this project -- see the hardware_local_gpu memory note).
 
-What it does: rank-transforms esm_prob/blast_score per term (matching
-build_rank_features() in stacking_pipeline.py exactly), then runs a random
-hyperparameter search for xgboost.XGBRanker(objective="rank:pairwise"), each config
-scored by 4-fold cross-validation split BY PROTEIN (never by term -- a term's rows
-must stay together within a fold, or the per-term AUROC the search optimizes for
-would be meaningless) over meta-train's 2000 proteins. The monotone_constraints
-variant is itself part of the search space (confirmed to matter a lot: an earlier
-finding showed (1,1,0) took this model from clearly losing to a trivial baseline to
-tying it).
+Run via (the `!` prefix runs outside the sandbox, on the host, where the GPU is
+actually reachable):
+    ! env/bin/python experiments/ensembling/local_hpo_search.py
+
+Reuses stacking_pipeline.py directly (same repo, same env, no need to re-export data
+to a standalone file -- that indirection only existed for shipping to a separate
+Colab VM). Runs a random hyperparameter search for xgboost.XGBRanker
+(objective="rank:pairwise"), each config scored by 4-fold cross-validation split BY
+PROTEIN (never by term -- a term's rows must stay together within a fold, or the
+per-term AUROC the search optimizes for would be meaningless) over meta-train's 2000
+proteins. monotone_constraints is itself part of the search space (confirmed to
+matter a lot: (1,1,0) took this model from clearly losing to a trivial baseline to
+tying it -- see cafa6_next_steps_plan.md).
 
 Writes every trial's config + CV score to hpo_results.json (incrementally, after
-each trial, so a disconnect doesn't lose progress) and prints a [TRIAL]/[BEST] log
-line per trial. Download hpo_results.json back and hand the top entry to the
-stacking_pipeline.py pipeline's fit_meta_model(..., monotone_constraints=...,
-extra_params=...) for the final, honest evaluation on the untouched meta-eval slice
-(done locally, not here -- this script never sees meta-eval).
-
-Usage (on Colab, after uploading meta_train_for_hpo.npz to the same directory):
-    pip install -q xgboost scipy numpy
-    python colab_hpo_search.py
+each trial, so an interruption doesn't lose progress) and prints a
+[TRIAL]/[BEST SO FAR] log line per trial.
 """
 import json
-import subprocess
-import sys
 import time
 from pathlib import Path
 
-try:
-    import scipy  # noqa: F401
-    import xgboost  # noqa: F401
-except ImportError:
-    # Mirrors training_run.py's own Colab bootstrap convention (CLAUDE.md): pip-install
-    # missing heavy deps at import time rather than assuming the Colab image has them.
-    subprocess.run([sys.executable, "-m", "pip", "install", "-q", "xgboost", "scipy"], check=True)
-
 import numpy as np
-from scipy.stats import rankdata
 
-NPZ_PATH = Path("meta_train_for_hpo.npz")
-RESULTS_PATH = Path("hpo_results.json")
+from stacking_pipeline import (
+    META_TRAIN_END, META_TRAIN_START, build_rank_features, compute_meta_train_slice,
+)
+
+RESULTS_PATH = Path(__file__).resolve().parent / "hpo_results.json"
 N_TRIALS = 40
 K_FOLDS = 4
 SEED = 42
 
 
-def rank_transform(matrix):
-    n_rows = matrix.shape[0]
-    return np.apply_along_axis(rankdata, 0, matrix) / n_rows
-
-
 def gpu_available():
-    """Checks the *resolved* device on the fitted booster, not just whether .fit()
+    """Checks the *resolved* device on a fitted booster, not just whether .fit()
     raised -- this xgboost build doesn't raise on a missing GPU, it silently falls
-    back to CPU with only a UserWarning, so "fit() didn't raise" is not evidence of
-    a working GPU (caught directly by a smoke test on a CPU-only machine, 2026-10-03:
-    it claimed cuda was available there)."""
+    back to CPU with only a UserWarning (caught directly by a smoke test, 2026-10-03:
+    it claimed cuda was available on a CPU-only machine)."""
     import xgboost as xgb
 
     try:
@@ -129,21 +111,10 @@ def cv_score(X, y, qid, protein_idx, n_rows, config, device):
 
 
 def main():
-    print(f"[INFO] Loading {NPZ_PATH}...")
-    data = np.load(NPZ_PATH)
-    esm_prob, blast_score, val_labels, term_freq = (
-        data["esm_prob"].astype(np.float32), data["blast_score"].astype(np.float32),
-        data["val_labels"].astype(np.float32), data["term_freq"].astype(np.float32),
-    )
-    n_rows, n_labels = val_labels.shape
-    print(f"[INFO] n_rows={n_rows} n_labels={n_labels}")
-
-    print("[INFO] Rank-transforming esm_prob/blast_score per term...")
-    rank_esm = rank_transform(esm_prob)
-    rank_blast = rank_transform(blast_score)
-    X = np.stack([rank_esm.ravel(), rank_blast.ravel(), np.tile(term_freq, n_rows)], axis=1).astype(np.float32)
-    y = val_labels.ravel().astype(np.float32)
-    qid = np.tile(np.arange(n_labels), n_rows).astype(np.int64)
+    print(f"[INFO] Computing/loading meta-train slice (rows {META_TRAIN_START}:{META_TRAIN_END})...")
+    meta_train = compute_meta_train_slice(META_TRAIN_START, META_TRAIN_END)
+    X, y, qid = build_rank_features(meta_train)
+    n_rows, n_labels = meta_train["val_labels"].shape
     protein_idx = np.repeat(np.arange(n_rows), n_labels)
 
     device = "cuda" if gpu_available() else "cpu"
