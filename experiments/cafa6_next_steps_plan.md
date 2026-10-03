@@ -284,6 +284,45 @@ lower-priority than the rank-transform change, since they don't address the scal
 directly. **Tier 1 item 1 still has no result that beats a trivial baseline** -- the
 rank-transform-features attempt is the next thing to try before concluding anything stronger.
 
+**Bright-spot subset tested out-of-sample (2026-10-03), result: does not replicate -- it was
+winner's-curse, not a real term-level property.** The 639-term bright-spot subset (where BLAST
+beat the model by >=0.05 AUROC) was defined using meta-eval's own 2000 rows and then evaluated
+on those same 2000 rows -- a textbook selection-bias setup (any subset selected for "BLAST wins
+here" on a small sample will show BLAST winning there, whether or not it's a real property of
+those terms). `experiments/ensembling/bright_spot_test_set_probe.py` resolves this directly:
+freezes the 639 term *indices* exactly as derived from meta-eval, then scores model/BLAST/
+baseline/stacked AUROC on an independent 5000-row slice of the held-out, really-labeled `test`
+split (distinct proteins, same label space -- not Kaggle's unlabeled submission test set),
+without re-selecting the subset from the new data. Of the 639 frozen terms, 472 had both
+classes present in this sample (sparse terms don't always survive subsampling). Result:
+
+| | mean AUROC | median AUROC |
+|---|---|---|
+| model alone | 0.8577 | 0.8975 |
+| BLAST alone | 0.7092 | 0.7040 |
+| stacked (XGBRanker) | 0.8669 | 0.9087 |
+| baseline (untrained) | 0.8803 | 0.9239 |
+
+On meta-eval these same 639 terms showed BLAST beating the model by **+0.1554** mean AUROC
+(0.7735 vs. 0.6048). On the independent test sample the gap **reverses**: the model beats BLAST
+by **-0.1484** (0.8577 vs. 0.7092) -- essentially the same pattern as the other 13,140 evaluable
+test terms (model 0.8809 vs. BLAST 0.6903), i.e. these aren't special terms at all out-of-sample.
+**The bright spot was a sampling artifact of a 2000-row evaluation slice, not a real,
+exploitable term-level property.** A better ranking algorithm targeting "terms where BLAST has
+genuine complementary signal" has no such target to aim at, at least not this one -- the premise
+itself doesn't hold up. This also retroactively explains why the trained stacked model's
+bright-spot-subset "win" over the model alone on meta-eval (0.6777 vs. 0.6048, logged above) was
+never something to chase: it was measured on exactly the circularly-selected sample where any
+BLAST-containing blend was essentially guaranteed to look good.
+
+One consistent thread survives this result, though: the untrained rank-average baseline still
+beats both the model alone and the trained stacked ranker on *this* independent test sample too
+(0.8803/0.9239, vs. model's 0.8577/0.8975 and stacked's 0.8669/0.9087 on the bright-spot-frozen
+terms; 0.8923 vs. 0.8809/0.8793 on the other terms) -- the per-term rank-transform idea stays the
+credible next step, just without any bright-spot framing attached to it. Any future ensembling
+attempt on this line should drop "bright-spot subset" as a target entirely and just aim to beat
+the baseline across the full evaluable label space.
+
 ### 2. Partial-Knowledge (PK) conditioning
 **Source:** report §"CAFA-6 keeps CAFA-5's evaluation regime, and partial knowledge now dominates the
 score" — PK (proteins that already carry *some* GO annotations, need new ones predicted) is 69.7% of

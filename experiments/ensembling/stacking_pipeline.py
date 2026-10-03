@@ -259,11 +259,15 @@ def _blastp_atomic(argv_builder, out_path):
     os.replace(tmp_path, out_path)
 
 
-def compute_meta_train_slice(start, end, dataset=None):
-    """Builds (protein x term) score matrices for validation rows [start:end), reusing
-    the already-built BLAST database and the resumable checkpoint-every-20-batches
-    inference pattern blast_knn_probe_real.py validated. Cache filenames are keyed by
-    (start, end) so a smoke-test range never collides with the real 2000:4000 run.
+def compute_meta_train_slice(start, end, dataset=None, split_name="validation"):
+    """Builds (protein x term) score matrices for rows [start:end) of `split_name`,
+    reusing the already-built BLAST database and the resumable checkpoint-every-20-
+    batches inference pattern blast_knn_probe_real.py validated. Cache filenames are
+    keyed by (split_name, start, end) so a smoke-test range, the real meta-train range,
+    and a probe against a different split (e.g. "test") never collide. `split_name`
+    defaults to "validation" so existing callers and their already-cached files are
+    unaffected -- only a non-default split gets the split_name-prefixed tag, to avoid
+    invalidating the already-cached validation-split files.
     Pass `dataset` (an already-loaded DatasetDict) to avoid reloading it when the
     caller also needs it for load_cached_meta_eval()."""
     from functools import partial
@@ -278,20 +282,21 @@ def compute_meta_train_slice(start, end, dataset=None):
 
     if dataset is None:
         dataset = load_from_disk(str(DATA_PATH))
-    train_split, val_split = dataset["train"], dataset["validation"]
+    train_split, val_split = dataset["train"], dataset[split_name]
     label_names = [str(name) for name in train_split.features["labels"].feature.names]
     label2id = {name: i for i, name in enumerate(label_names)}
 
     val_subset = val_split.select(range(start, end))
     n_rows = end - start
-    val_ids = [f"metatrain_{i}" for i in range(n_rows)]
+    id_prefix = "metatrain" if split_name == "validation" else split_name
+    val_ids = [f"{id_prefix}_{i}" for i in range(n_rows)]
     train_ids = [f"train_{i}" for i in range(len(train_split))]
     train_id_to_idx = {tid: i for i, tid in enumerate(train_ids)}
 
     train_labels = labels_to_multihot(train_split["labels"], label_names, label2id)
     val_labels = labels_to_multihot(val_subset["labels"], label_names, label2id)
 
-    tag = f"{start}_{end}"
+    tag = f"{start}_{end}" if split_name == "validation" else f"{split_name}_{start}_{end}"
     metatrain_fasta = WORK_DIR / f"metatrain_{tag}.fasta"
     blast_db = WORK_DIR / "train_blastdb"
     blast_out = WORK_DIR / f"blast_results_metatrain_{tag}.tsv"
