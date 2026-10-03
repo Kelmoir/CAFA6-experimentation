@@ -132,7 +132,7 @@ def _check_ranking_signal(preds, y_train, reference_feature, n_labels):
     )
 
 
-def fit_meta_model(X_train, y_train, qid_train, n_labels, monotone_constraints=None):
+def fit_meta_model(X_train, y_train, qid_train, n_labels, monotone_constraints=None, extra_params=None):
     """Fits a ranking meta-model grouped by term (qid), not a pooled classifier --
     rank:pairwise optimizes within-term ordering directly, which is what per-label
     AUROC measures and what the pooled binary:logistic fit failed to do (final-review
@@ -146,11 +146,16 @@ def fit_meta_model(X_train, y_train, qid_train, n_labels, monotone_constraints=N
     non-decreasing in the constrained features: a final-review finding (2026-10-03)
     showed an unconstrained fit underperforms a strictly-monotonic closed-form
     baseline even in-sample (zero generalization gap), pointing at tree-ensemble
-    non-monotonicity -- not overfitting or feature scale -- as the likely cause."""
+    non-monotonicity -- not overfitting or feature scale -- as the likely cause.
+
+    `extra_params` (optional dict, e.g. {"max_depth": 4, "learning_rate": 0.1}) passes
+    through arbitrary XGBRanker constructor kwargs -- lets a winning hyperparameter
+    config found by an external search (colab_hpo_search.py) be applied here without
+    any further code changes."""
     import xgboost as xgb
 
     order = np.argsort(qid_train, kind="stable")
-    ranker_kwargs = {}
+    ranker_kwargs = dict(extra_params) if extra_params else {}
     if monotone_constraints is not None:
         ranker_kwargs["monotone_constraints"] = monotone_constraints
     model = xgb.XGBRanker(objective="rank:pairwise", tree_method="hist", random_state=42, **ranker_kwargs)
