@@ -13,7 +13,7 @@ from datasets import load_from_disk
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from blast_knn_probe_real import (  # noqa: E402
     BLAST_BIN_DIR, CHECKPOINT_DIR, DATA_PATH, WORK_DIR,
-    labels_to_multihot, write_fasta,
+    labels_to_multihot, transfer_labels_via_blast, write_fasta,
 )
 
 MAX_VAL_SAMPLES = 2000  # meta-eval slice: validation rows 0:2000 (matches run_diagnostic())
@@ -21,10 +21,13 @@ META_TRAIN_START = 2000
 META_TRAIN_END = 4000
 
 
-def load_cached_meta_eval():
+def load_cached_meta_eval(dataset=None):
     """Re-derives meta-eval's (protein x term) score matrices from the cache files
-    blast_knn_probe_real.py already wrote -- no new BLAST/inference, just parsing."""
-    dataset = load_from_disk(str(DATA_PATH))
+    blast_knn_probe_real.py already wrote -- no new BLAST/inference, just parsing.
+    Pass `dataset` (an already-loaded DatasetDict) to avoid reloading it when the
+    caller also needs it for compute_meta_train_slice()."""
+    if dataset is None:
+        dataset = load_from_disk(str(DATA_PATH))
     train_split, val_split = dataset["train"], dataset["validation"]
     label_names = [str(name) for name in train_split.features["labels"].feature.names]
     label2id = {name: i for i, name in enumerate(label_names)}
@@ -38,20 +41,7 @@ def load_cached_meta_eval():
     val_labels = labels_to_multihot(val_subset["labels"], label_names, label2id)
 
     blast_out = WORK_DIR / "blast_results.tsv"
-    hits_by_query = {qid: [] for qid in val_ids}
-    with open(blast_out) as f:
-        for line in f:
-            qseqid, sseqid, bitscore, pident = line.strip().split("\t")
-            hits_by_query[qseqid].append((sseqid, float(bitscore)))
-
-    blast_score = np.zeros_like(val_labels)
-    for i, qid in enumerate(val_ids):
-        hits = hits_by_query.get(qid, [])
-        if not hits:
-            continue
-        weights = np.array([b for _, b in hits], dtype=np.float32)
-        neighbor_idx = [train_id_to_idx[sseqid] for sseqid, _ in hits]
-        blast_score[i] = (train_labels[neighbor_idx] * weights[:, None]).sum(axis=0) / weights.sum()
+    blast_score = transfer_labels_via_blast(blast_out, val_ids, train_id_to_idx, train_labels)
 
     esm_prob = np.load(WORK_DIR / "model_probs_partial.npy")
     assert esm_prob.shape == val_labels.shape, (
@@ -87,6 +77,26 @@ def assert_no_overlap():
     )
 
 
+def assert_meta_eval_matches_logged(meta_eval):
+    """Confirms load_cached_meta_eval() reproduces the exact numbers already logged in
+    experiments/cafa6_next_steps_plan.md for the real-BLAST probe -- called by main()
+    before the expensive meta-train BLAST/inference step is spent, so a broken cache
+    fails fast instead of only being caught by the standalone regression check
+    (final-review minor finding, 2026-10-02)."""
+    from sklearn.metrics import roc_auc_score
+
+    val_labels, esm_prob, blast_score = (
+        meta_eval["val_labels"], meta_eval["esm_prob"], meta_eval["blast_score"]
+    )
+    evaluable = [j for j in range(val_labels.shape[1]) if val_labels[:, j].min() != val_labels[:, j].max()]
+    assert len(evaluable) == 9401, f"n_labels_evaluable={len(evaluable)}, expected 9401"
+
+    model_auroc = np.array([roc_auc_score(val_labels[:, j], esm_prob[:, j]) for j in evaluable])
+    blast_auroc = np.array([roc_auc_score(val_labels[:, j], blast_score[:, j]) for j in evaluable])
+    assert abs(model_auroc.mean() - 0.8731) < 0.001, f"model mean AUROC {model_auroc.mean():.4f}, expected ~0.8731"
+    assert abs(blast_auroc.mean() - 0.6854) < 0.001, f"blast mean AUROC {blast_auroc.mean():.4f}, expected ~0.6854"
+
+
 def _check_label_resolution(preds, reference_feature, n_labels):
     """Raises if `preds` has far less per-label distinct-value resolution than
     `reference_feature` (a known-good input, e.g. esm_prob). Pooled std cannot see
@@ -111,8 +121,7 @@ def fit_meta_model(X_train, y_train, n_labels):
     import xgboost as xgb
 
     model = xgb.XGBClassifier(
-        objective="binary:logistic", tree_method="hist",
-        eval_metric="auc", random_state=42,
+        objective="binary:logistic", tree_method="hist", random_state=42,
     )
     model.fit(X_train, y_train)
 
@@ -145,8 +154,13 @@ def report_results(model, X_eval, meta_eval):
     print(f"[RESULT] blast   mean_auroc={blast_auroc.mean():.4f} median={np.median(blast_auroc):.4f}")
     print(f"[RESULT] stacked mean_auroc={stacked_auroc.mean():.4f} median={np.median(stacked_auroc):.4f}")
 
-    # Bright-spot subset: same `evaluable` index set, not a separately recomputed one.
+    # Same correlation/">=0.05 beats" breakdown the two prior probes used, for direct
+    # comparability (spec's Evaluation section; final-review minor finding, 2026-10-02).
     diff_blast_model = blast_auroc - model_auroc
+    print(f"[RESULT] per-label AUROC correlation (model vs blast) = {np.corrcoef(model_auroc, blast_auroc)[0, 1]:.4f}")
+    print(f"[RESULT] per-label AUROC correlation (stacked vs model) = {np.corrcoef(stacked_auroc, model_auroc)[0, 1]:.4f}")
+    print(f"[RESULT] labels where BLAST beats model by >=0.05 AUROC: {(diff_blast_model >= 0.05).sum()} / {len(evaluable)}")
+    print(f"[RESULT] labels where model beats BLAST by >=0.05 AUROC: {(diff_blast_model <= -0.05).sum()} / {len(evaluable)}")
     bright_spot_mask = diff_blast_model >= 0.05
     print(f"[RESULT] bright-spot subset (BLAST beat model by >=0.05 on meta-eval): {bright_spot_mask.sum()} terms")
     print(
@@ -157,12 +171,14 @@ def report_results(model, X_eval, meta_eval):
 
 def main():
     assert_no_overlap()
+    dataset = load_from_disk(str(DATA_PATH))
 
     print("[INFO] Loading cached meta-eval slice (rows 0:2000)...")
-    meta_eval = load_cached_meta_eval()
+    meta_eval = load_cached_meta_eval(dataset=dataset)
+    assert_meta_eval_matches_logged(meta_eval)
 
     print(f"[INFO] Computing/loading meta-train slice (rows {META_TRAIN_START}:{META_TRAIN_END})...")
-    meta_train = compute_meta_train_slice(META_TRAIN_START, META_TRAIN_END)
+    meta_train = compute_meta_train_slice(META_TRAIN_START, META_TRAIN_END, dataset=dataset)
 
     print("[INFO] Building flattened features...")
     X_train, y_train = build_features(meta_train)
@@ -186,11 +202,13 @@ def _blastp_atomic(argv_builder, out_path):
     os.replace(tmp_path, out_path)
 
 
-def compute_meta_train_slice(start, end):
+def compute_meta_train_slice(start, end, dataset=None):
     """Builds (protein x term) score matrices for validation rows [start:end), reusing
     the already-built BLAST database and the resumable checkpoint-every-20-batches
     inference pattern blast_knn_probe_real.py validated. Cache filenames are keyed by
-    (start, end) so a smoke-test range never collides with the real 2000:4000 run."""
+    (start, end) so a smoke-test range never collides with the real 2000:4000 run.
+    Pass `dataset` (an already-loaded DatasetDict) to avoid reloading it when the
+    caller also needs it for load_cached_meta_eval()."""
     from functools import partial
 
     import torch
@@ -201,7 +219,8 @@ def compute_meta_train_slice(start, end):
         sys.path.insert(0, str(repo_root))
     from training_run import data_collate_function, preprocess_batch  # noqa: E402
 
-    dataset = load_from_disk(str(DATA_PATH))
+    if dataset is None:
+        dataset = load_from_disk(str(DATA_PATH))
     train_split, val_split = dataset["train"], dataset["validation"]
     label_names = [str(name) for name in train_split.features["labels"].feature.names]
     label2id = {name: i for i, name in enumerate(label_names)}
@@ -234,20 +253,7 @@ def compute_meta_train_slice(start, end):
             blast_out,
         )
 
-    hits_by_query = {qid: [] for qid in val_ids}
-    with open(blast_out) as f:
-        for line in f:
-            qseqid, sseqid, bitscore, pident = line.strip().split("\t")
-            hits_by_query[qseqid].append((sseqid, float(bitscore)))
-
-    blast_score = np.zeros_like(val_labels)
-    for i, qid in enumerate(val_ids):
-        hits = hits_by_query.get(qid, [])
-        if not hits:
-            continue
-        weights = np.array([b for _, b in hits], dtype=np.float32)
-        neighbor_idx = [train_id_to_idx[sseqid] for sseqid, _ in hits]
-        blast_score[i] = (train_labels[neighbor_idx] * weights[:, None]).sum(axis=0) / weights.sum()
+    blast_score = transfer_labels_via_blast(blast_out, val_ids, train_id_to_idx, train_labels)
 
     model = AutoModelForSequenceClassification.from_pretrained(CHECKPOINT_DIR)
     tokenizer = AutoTokenizer.from_pretrained(CHECKPOINT_DIR)

@@ -49,6 +49,27 @@ def labels_to_multihot(raw_labels_list, label_names, label2id):
     return mat
 
 
+def transfer_labels_via_blast(blast_out_path, query_ids, train_id_to_idx, train_labels):
+    """Parses a BLAST+ outfmt-6 hits file and bitscore-weight-transfers training labels
+    to each query. Shared by this probe and stacking_pipeline.py's two slices -- was
+    copy-pasted in three places before (final-review minor finding, 2026-10-02)."""
+    hits_by_query = {qid: [] for qid in query_ids}
+    with open(blast_out_path) as f:
+        for line in f:
+            qseqid, sseqid, bitscore, pident = line.strip().split("\t")
+            hits_by_query[qseqid].append((sseqid, float(bitscore)))
+
+    scores = np.zeros((len(query_ids), train_labels.shape[1]), dtype=np.float32)
+    for i, qid in enumerate(query_ids):
+        hits = hits_by_query.get(qid, [])
+        if not hits:
+            continue
+        weights = np.array([b for _, b in hits], dtype=np.float32)
+        neighbor_idx = [train_id_to_idx[sseqid] for sseqid, _ in hits]
+        scores[i] = (train_labels[neighbor_idx] * weights[:, None]).sum(axis=0) / weights.sum()
+    return scores
+
+
 def main():
     WORK_DIR.mkdir(exist_ok=True)
 
@@ -93,30 +114,15 @@ def main():
             check=True, capture_output=True, text=True,
         )
 
-    print("[INFO] Parsing BLAST hits...")
-    hits_by_query = {qid: [] for qid in val_ids}
-    with open(blast_out) as f:
-        for line in f:
-            qseqid, sseqid, bitscore, pident = line.strip().split("\t")
-            hits_by_query[qseqid].append((sseqid, float(bitscore)))
-
     train_id_to_idx = {tid: i for i, tid in enumerate(train_ids)}
 
     print("[INFO] Building label matrices...")
     train_labels = labels_to_multihot(train_split["labels"], label_names, label2id)
     val_labels = labels_to_multihot(val_subset["labels"], label_names, label2id)
 
-    print("[INFO] Transferring labels via bitscore-weighted BLAST hits...")
-    blast_scores = np.zeros_like(val_labels)
-    n_no_hits = 0
-    for i, qid in enumerate(val_ids):
-        hits = hits_by_query.get(qid, [])
-        if not hits:
-            n_no_hits += 1
-            continue
-        weights = np.array([bitscore for _, bitscore in hits], dtype=np.float32)
-        neighbor_idx = [train_id_to_idx[sseqid] for sseqid, _ in hits]
-        blast_scores[i] = (train_labels[neighbor_idx] * weights[:, None]).sum(axis=0) / weights.sum()
+    print("[INFO] Parsing BLAST hits and transferring labels via bitscore weighting...")
+    blast_scores = transfer_labels_via_blast(blast_out, val_ids, train_id_to_idx, train_labels)
+    n_no_hits = int((blast_scores.sum(axis=1) == 0).sum())
     print(f"[INFO] {n_no_hits}/{n_val} validation proteins had zero BLAST hits (scored all-zero)")
 
     print("[INFO] Loading trial-013 checkpoint for comparison (CPU)...")
