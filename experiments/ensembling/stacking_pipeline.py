@@ -158,20 +158,53 @@ def fit_meta_model(X_train, y_train, qid_train, n_labels):
     return model
 
 
+def _per_term_rank_transform(matrix):
+    """Rank-transforms each column (term) independently to (0, 1] -- so a term's
+    wildly different raw-value scale/sparsity (e.g. blast_score is nonzero for <1% of
+    rows on ~64% of terms, but >50% of rows on others -- confirmed directly, 2026-10-03)
+    can't dominate or starve a shared scorer the way raw values do. Shared by
+    _per_term_rank_average() and build_rank_features()."""
+    from scipy.stats import rankdata
+
+    n_rows = matrix.shape[0]
+    return np.apply_along_axis(rankdata, 0, matrix) / n_rows
+
+
 def _per_term_rank_average(esm_prob, blast_score, weight=0.5):
     """A trivial, untrained baseline: rank-transforms each term's column
-    independently (so esm_prob's and blast_score's differing scales/distributions
-    across terms don't dominate each other the way raw values would in a pooled
-    tree fit), then averages with `weight` on esm_prob. Every meta-model should be
+    independently, then averages with `weight` on esm_prob. Every meta-model should be
     reported against this -- a final-review pass (2026-10-03) found the trained
     ranker didn't actually beat it, which wasn't visible until this baseline was
     computed and compared directly."""
-    from scipy.stats import rankdata
-
-    n_rows = esm_prob.shape[0]
-    rank_esm = np.apply_along_axis(rankdata, 0, esm_prob) / n_rows
-    rank_blast = np.apply_along_axis(rankdata, 0, blast_score) / n_rows
+    rank_esm = _per_term_rank_transform(esm_prob)
+    rank_blast = _per_term_rank_transform(blast_score)
     return weight * rank_esm + (1 - weight) * rank_blast
+
+
+def build_rank_features(slice_dict):
+    """Like build_features(), but esm_prob/blast_score are rank-transformed per term
+    (see _per_term_rank_transform()) before flattening, instead of using raw values.
+    `log1p(term_freq)` is kept raw (it's constant within a term/qid group, so it can't
+    help rank rows within a term directly, but it still varies *across* groups and the
+    shared trees can use it to decide how to weight rank_esm vs. rank_blast
+    differently per term -- a real potential edge over the baseline's fixed 50/50
+    weighting). This directly tests the diagnosed mechanism for why the trained
+    ranker underperformed a trivial rank-average baseline: a pointwise tree scorer
+    can't infer each term's raw-value scale from the raw values alone (2026-10-03
+    spike)."""
+    rank_esm = _per_term_rank_transform(slice_dict["esm_prob"])
+    rank_blast = _per_term_rank_transform(slice_dict["blast_score"])
+    term_freq = np.log1p(slice_dict["train_labels"].sum(axis=0)).astype(np.float32)
+    n_rows, n_labels = slice_dict["val_labels"].shape
+    X = np.stack([
+        rank_esm.ravel(),
+        rank_blast.ravel(),
+        np.tile(term_freq, n_rows),
+    ], axis=1).astype(np.float32)
+    y = slice_dict["val_labels"].ravel().astype(np.float32)
+    qid = np.tile(np.arange(n_labels), n_rows)
+    assert np.isfinite(X).all(), "non-finite value in constructed rank features"
+    return X, y, qid
 
 
 def report_results(model, X_eval, meta_eval):

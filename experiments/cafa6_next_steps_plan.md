@@ -323,6 +323,37 @@ credible next step, just without any bright-spot framing attached to it. Any fut
 attempt on this line should drop "bright-spot subset" as a target entirely and just aim to beat
 the baseline across the full evaluable label space.
 
+**Rank-transformed features tried (2026-10-03), result: does NOT close the gap -- the
+raw-value-scale hypothesis is refuted.** `experiments/ensembling/rank_features_probe.py` fed the
+exact same pipeline (same meta-train/meta-eval slices, same `fit_meta_model()`,
+`report_results()`) per-term rank-transformed `esm_prob`/`blast_score` (via the new
+`build_rank_features()`) instead of raw values, to test the hypothesis that a pointwise tree
+scorer underperforms the baseline because it can't infer each term's wildly different raw-value
+scale/sparsity on its own (confirmed directly: `blast_score` is nonzero for <1% of rows on
+6,061/9,401 evaluable terms, but >50% of rows on others). Result: stacked mean/median AUROC
+**0.8688/0.9225** -- *worse* than the raw-feature version (0.8732/0.9239), and still below both
+the model alone (0.8731/0.9259) and the baseline (0.8853/0.9421). Rank-transforming the inputs
+did not help; if anything it made the headline numbers slightly worse (bright-spot subset
+improved marginally, 0.6827 vs. 0.6777, but the other 8,762 terms got slightly worse, 0.8824 vs.
+0.8874).
+
+A follow-up in-sample check ruled out both standing hypotheses in one shot: fitting and scoring
+on the *identical* 2000 meta-eval rows (the best possible case -- zero generalization gap, and
+features already rank-normalized) still only reaches stacked mean AUROC **0.8834**, which is
+*still below the baseline's 0.8853*, even here. That means the trained model's shortfall is
+**not** overfitting to meta-train (ruled out: even a zero-generalization-gap in-sample fit
+can't clear the bar) and **not** raw-feature scale miscalibration (ruled out: the features were
+already rank-normalized for this check). The most likely remaining explanation: XGBoost's
+default-hyperparameter trees have no built-in bias toward a monotonic function of their inputs,
+and a flexible tree ensemble fit via noisy per-term pairwise comparisons (many terms have only a
+handful of positives in 2000 rows) can easily introduce small rank-order-violating quirks that a
+strictly-monotonic, zero-variance closed-form blend (the baseline) structurally cannot have --
+hurting a fine-grained per-label ranking metric like AUROC even when the model has access to
+equal or better information. This points directly at **monotone constraints** (`monotone_constraints`
+on `rank_esm`/`rank_blast`, already on the original deferred list) as the next, now better-
+motivated thing to try -- not a shot in the dark, but a direct test of a mechanism the data
+itself just ruled the alternatives out in favor of.
+
 ### 2. Partial-Knowledge (PK) conditioning
 **Source:** report §"CAFA-6 keeps CAFA-5's evaluation regime, and partial knowledge now dominates the
 score" — PK (proteins that already carry *some* GO annotations, need new ones predicted) is 69.7% of
