@@ -122,6 +122,9 @@ def main():
 
     print("[INFO] Parsing BLAST hits and transferring labels via bitscore weighting...")
     blast_scores = transfer_labels_via_blast(blast_out, val_ids, train_id_to_idx, train_labels)
+    # Approximates "zero BLAST hits" via an all-zero score row; also counts the
+    # practically-negligible case of a protein with hits whose neighbors carry no
+    # labels at all (final-review minor finding, 2026-10-03).
     n_no_hits = int((blast_scores.sum(axis=1) == 0).sum())
     print(f"[INFO] {n_no_hits}/{n_val} validation proteins had zero BLAST hits (scored all-zero)")
 

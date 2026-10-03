@@ -101,28 +101,34 @@ def assert_meta_eval_matches_logged(meta_eval):
     assert abs(blast_auroc.mean() - 0.6854) < 0.001, f"blast mean AUROC {blast_auroc.mean():.4f}, expected ~0.6854"
 
 
-def _check_ranking_signal(preds, y_train, n_labels):
+def _check_ranking_signal(preds, y_train, reference_feature, n_labels):
     """Raises if per-label AUROC computed in-sample (against the training labels
-    themselves) is barely above chance. Pooled std cannot see this: a fit can separate
+    themselves) is far below a known-good reference feature's own in-sample AUROC
+    (e.g. esm_prob -- X_train[:, 0]). Pooled std cannot see this: a fit can separate
     terms by base rate (plenty of pooled spread) while producing almost no within-term
     ranking signal at all, which is exactly what per-label AUROC measures and pooled
     std does not (final-review finding, 2026-10-02 -- see cafa6_next_steps_plan.md's
-    corrected write-up). Supersedes an earlier distinct-value-count proxy: that
-    heuristic falsely flagged a healthy rank:pairwise fit, since a tree-based ranker
-    legitimately produces far fewer distinct prediction values than a continuous
-    probability output without any loss of ranking signal -- measuring AUROC directly
-    (we have y_train on hand, no need for a proxy) avoids that false positive."""
+    corrected write-up). An earlier version of this guard used a fixed absolute
+    threshold (median AUROC > 0.55); a second final-review pass (2026-10-03) found
+    that threshold too weak to catch the real failure it was written for -- the
+    original collapsed pooled binary:logistic fit actually reaches in-sample median
+    AUROC ~0.70 on this data, comfortably clearing 0.55. Comparing against the
+    reference feature's own in-sample AUROC instead scales the bar to what's actually
+    achievable on this data, rather than an arbitrary constant."""
     from sklearn.metrics import roc_auc_score
 
     n_rows = len(preds) // n_labels
     preds_by_label = preds.reshape(n_rows, n_labels)
     y_by_label = y_train.reshape(n_rows, n_labels)
+    ref_by_label = reference_feature.reshape(n_rows, n_labels)
     evaluable = [j for j in range(n_labels) if y_by_label[:, j].min() != y_by_label[:, j].max()]
-    aurocs = np.array([roc_auc_score(y_by_label[:, j], preds_by_label[:, j]) for j in evaluable])
-    assert np.median(aurocs) > 0.55, (
-        f"per-label ranking signal collapsed: median in-sample AUROC {np.median(aurocs):.4f} "
-        "is barely above chance -- the fit is likely separating terms by base rate rather "
-        "than ranking within each term, which pooled std can't detect"
+    pred_aurocs = np.array([roc_auc_score(y_by_label[:, j], preds_by_label[:, j]) for j in evaluable])
+    ref_aurocs = np.array([roc_auc_score(y_by_label[:, j], ref_by_label[:, j]) for j in evaluable])
+    assert np.median(pred_aurocs) >= np.median(ref_aurocs) - 0.05, (
+        f"per-label ranking signal collapsed: median in-sample AUROC {np.median(pred_aurocs):.4f} "
+        f"is far below the reference feature's own median in-sample AUROC {np.median(ref_aurocs):.4f} "
+        "-- the fit is likely separating terms by base rate rather than ranking within each "
+        "term, which pooled std can't detect"
     )
 
 
@@ -148,8 +154,24 @@ def fit_meta_model(X_train, y_train, qid_train, n_labels):
         "data -- likely needs negative subsampling (see the design spec's Meta-model "
         "risk note) before being trusted on the real meta-train set"
     )
-    _check_ranking_signal(train_preds, y_train, n_labels)
+    _check_ranking_signal(train_preds, y_train, X_train[:, 0], n_labels)
     return model
+
+
+def _per_term_rank_average(esm_prob, blast_score, weight=0.5):
+    """A trivial, untrained baseline: rank-transforms each term's column
+    independently (so esm_prob's and blast_score's differing scales/distributions
+    across terms don't dominate each other the way raw values would in a pooled
+    tree fit), then averages with `weight` on esm_prob. Every meta-model should be
+    reported against this -- a final-review pass (2026-10-03) found the trained
+    ranker didn't actually beat it, which wasn't visible until this baseline was
+    computed and compared directly."""
+    from scipy.stats import rankdata
+
+    n_rows = esm_prob.shape[0]
+    rank_esm = np.apply_along_axis(rankdata, 0, esm_prob) / n_rows
+    rank_blast = np.apply_along_axis(rankdata, 0, blast_score) / n_rows
+    return weight * rank_esm + (1 - weight) * rank_blast
 
 
 def report_results(model, X_eval, meta_eval):
@@ -158,6 +180,7 @@ def report_results(model, X_eval, meta_eval):
     val_labels = meta_eval["val_labels"]
     n_rows, n_labels = val_labels.shape
     stacked_scores = model.predict(X_eval).reshape(n_rows, n_labels)
+    baseline_scores = _per_term_rank_average(meta_eval["esm_prob"], meta_eval["blast_score"])
 
     evaluable = [j for j in range(n_labels) if val_labels[:, j].min() != val_labels[:, j].max()]
     assert len(evaluable) == 9401, f"n_labels_evaluable={len(evaluable)}, expected 9401"
@@ -165,11 +188,17 @@ def report_results(model, X_eval, meta_eval):
     model_auroc = np.array([roc_auc_score(val_labels[:, j], meta_eval["esm_prob"][:, j]) for j in evaluable])
     blast_auroc = np.array([roc_auc_score(val_labels[:, j], meta_eval["blast_score"][:, j]) for j in evaluable])
     stacked_auroc = np.array([roc_auc_score(val_labels[:, j], stacked_scores[:, j]) for j in evaluable])
+    baseline_auroc = np.array([roc_auc_score(val_labels[:, j], baseline_scores[:, j]) for j in evaluable])
 
     print(f"[RESULT] n_labels_evaluable={len(evaluable)}")
-    print(f"[RESULT] model   mean_auroc={model_auroc.mean():.4f} median={np.median(model_auroc):.4f}")
-    print(f"[RESULT] blast   mean_auroc={blast_auroc.mean():.4f} median={np.median(blast_auroc):.4f}")
-    print(f"[RESULT] stacked mean_auroc={stacked_auroc.mean():.4f} median={np.median(stacked_auroc):.4f}")
+    print(f"[RESULT] model    mean_auroc={model_auroc.mean():.4f} median={np.median(model_auroc):.4f}")
+    print(f"[RESULT] blast    mean_auroc={blast_auroc.mean():.4f} median={np.median(blast_auroc):.4f}")
+    print(f"[RESULT] stacked  mean_auroc={stacked_auroc.mean():.4f} median={np.median(stacked_auroc):.4f}")
+    print(
+        f"[RESULT] baseline mean_auroc={baseline_auroc.mean():.4f} median={np.median(baseline_auroc):.4f} "
+        "(untrained 50/50 per-term rank average of esm_prob/blast_score -- the bar the "
+        "trained meta-model actually needs to clear)"
+    )
 
     # Same correlation/">=0.05 beats" breakdown the two prior probes used, for direct
     # comparability (spec's Evaluation section; final-review minor finding, 2026-10-02).
@@ -178,11 +207,22 @@ def report_results(model, X_eval, meta_eval):
     print(f"[RESULT] per-label AUROC correlation (stacked vs model) = {np.corrcoef(stacked_auroc, model_auroc)[0, 1]:.4f}")
     print(f"[RESULT] labels where BLAST beats model by >=0.05 AUROC: {(diff_blast_model >= 0.05).sum()} / {len(evaluable)}")
     print(f"[RESULT] labels where model beats BLAST by >=0.05 AUROC: {(diff_blast_model <= -0.05).sum()} / {len(evaluable)}")
+
+    # Bright-spot subset AND its complement, both reported -- a final-review pass
+    # (2026-10-03) found the bright-spot-only view hid a real loss on the other
+    # ~93% of terms that an aggregate-only "no loss elsewhere" claim had missed.
     bright_spot_mask = diff_blast_model >= 0.05
+    other_mask = ~bright_spot_mask
     print(f"[RESULT] bright-spot subset (BLAST beat model by >=0.05 on meta-eval): {bright_spot_mask.sum()} terms")
     print(
         f"[RESULT] on bright-spot subset: model mean_auroc={model_auroc[bright_spot_mask].mean():.4f} "
-        f"stacked mean_auroc={stacked_auroc[bright_spot_mask].mean():.4f}"
+        f"stacked mean_auroc={stacked_auroc[bright_spot_mask].mean():.4f} "
+        f"baseline mean_auroc={baseline_auroc[bright_spot_mask].mean():.4f}"
+    )
+    print(
+        f"[RESULT] on other {other_mask.sum()} terms: model mean_auroc={model_auroc[other_mask].mean():.4f} "
+        f"stacked mean_auroc={stacked_auroc[other_mask].mean():.4f} "
+        f"baseline mean_auroc={baseline_auroc[other_mask].mean():.4f}"
     )
 
 

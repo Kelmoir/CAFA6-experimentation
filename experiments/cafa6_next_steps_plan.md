@@ -233,33 +233,56 @@ which matches the spec's own "learning to rank" framing better than pooled binar
 classification does), monotone constraints on `esm_prob`/`blast_score`, a larger `max_bin`, or
 per-term rank/logit-transformed input features.
 
-**Ranking objective tried (2026-10-03), result: fixes the collapse, and the bright-spot
-subset shows a real win.** Swapped the pooled `XGBClassifier(binary:logistic)` for
-`xgboost.XGBRanker(objective="rank:pairwise")`, grouped by term via `qid` -- the within-term
-ordering `rank:pairwise` optimizes is exactly what per-label AUROC measures, unlike the
-pooled classifier's base-rate-driven loss. One real dependency behavior confirmed directly,
-not assumed (`check_xgbranker_qid_ordering.py`): this xgboost build (3.2.0) requires rows
-pre-sorted by `qid` -- `fit_meta_model()` sorts internally so callers don't need to think
-about it. The old distinct-value-count degeneracy guard (`_check_label_resolution()`) had to
-be replaced too: it falsely flagged this fit as collapsed (median 109 distinct values/label
-vs. `esm_prob`'s ~1991), when the in-sample AUROC was actually fine (0.8839, beating the
-model-alone baseline of 0.8731) -- a tree-based ranker legitimately produces far fewer
-distinct prediction values than a continuous probability without losing ranking signal, so
-comparing raw counts was the wrong proxy. The guard (`_check_ranking_signal()`, commit
-history around 2026-10-03) now measures per-label AUROC directly against the training labels
-instead.
+**Ranking objective tried (2026-10-03), result: fixes the collapse, but doesn't yet beat a
+trivial untrained baseline (corrected 2026-10-03 after a second final-review pass).** Swapped
+the pooled `XGBClassifier(binary:logistic)` for `xgboost.XGBRanker(objective="rank:pairwise")`,
+grouped by term via `qid` -- the within-term ordering `rank:pairwise` optimizes is exactly what
+per-label AUROC measures, unlike the pooled classifier's base-rate-driven loss. One real
+dependency behavior confirmed directly, not assumed (`check_xgbranker_qid_ordering.py`): this
+xgboost build (3.2.0) requires rows pre-sorted by `qid` -- `fit_meta_model()` sorts internally
+so callers don't need to think about it.
 
-Real result on the same meta-train (rows 2000:4000) / meta-eval (rows 0:2000) slices: stacked
-mean AUROC **0.8732**, median **0.9239** -- back in line with the model alone (0.8731/0.9259),
-no longer catastrophically worse. More importantly, on the 639-term bright-spot subset (where
-BLAST beats the model by >=0.05, the subset this build specifically targets): model alone
-**0.6048** mean AUROC, stacked **0.6777** -- a genuine **+0.073** win, with no corresponding
-loss on the other ~93% of terms. This is the first positive, concrete result for Tier 1 item
-1 and confirms the plan's original hypothesis (BLAST-KNN has real complementary signal on a
-term subset, and stacking can capture it) once the model/loss actually match the eval metric.
-Monotone constraints, larger `max_bin`, and per-term rank/logit-transformed features remain
-untried -- not needed to reach this result, so deferred unless a further push on the
-bright-spot subset's remaining gap (0.6777 vs. a hypothetical ceiling) turns out to matter.
+The degeneracy guard needed two corrections, not one. The first replacement
+(`_check_label_resolution()` → `_check_ranking_signal()`, comparing per-label AUROC against a
+fixed `> 0.55` threshold instead of raw distinct-value counts) was itself too weak: the
+original collapsed pooled classifier actually reaches in-sample median AUROC ~0.70, comfortably
+clearing 0.55 -- so the guard would have let the original failure straight through. The second
+pass made the threshold relative to a reference feature's own in-sample AUROC
+(`median(pred_auroc) >= median(reference_auroc) - 0.05`) and restored a real-data regression
+check (`check_fit_degeneracy.py`) proving the guard actually raises on the real historically-
+collapsed classifier, not just on synthetic noise.
+
+Real result on the same meta-train (rows 2000:4000) / meta-eval (rows 0:2000) slices, now also
+compared against an untrained **baseline** (50/50 per-term rank average of `esm_prob` and
+`blast_score` -- no fitting at all, just rank-transforming each term's column so the two
+features' differing scales don't dominate each other):
+
+| | mean AUROC | median AUROC | bright-spot (639 terms) | other 8,762 terms |
+|---|---|---|---|---|
+| model alone | 0.8731 | 0.9259 | 0.6048 | 0.8927 |
+| stacked (XGBRanker) | 0.8732 | 0.9239 | 0.6777 | 0.8874 |
+| **baseline (untrained)** | **0.8853** | **0.9421** | **0.6909** | **0.8995** |
+
+The ranking objective genuinely fixed the catastrophic collapse (stacked is no longer far below
+both model and BLAST), and it does beat the model alone on the bright-spot subset (+0.073). But
+**the trained meta-model currently loses to the free, untrained baseline on every slice** --
+including the bright-spot subset it was specifically meant to help -- and it also loses ~0.005
+mean AUROC to the model alone on the other 8,762 terms, which an earlier version of this
+write-up (now corrected) claimed didn't happen. The earlier "no corresponding loss elsewhere"
+claim was wrong: it came from comparing only the aggregate mean (where the bright-spot gain
+happens to roughly cancel the broader loss) without ever computing the non-bright-spot subset
+directly. `report_results()` now prints the baseline and both subset breakdowns every run, so
+this can't recur silently.
+
+**Reading this result:** a pooled tree fit over raw `[esm_prob, blast_score, log1p(term_freq)]`
+apparently still can't out-rank a baseline that sidesteps the scale problem entirely via
+per-term rank transforms, even with the objective now matching the eval metric. The credible
+next step is exactly what was already listed below as untried: feed the meta-model per-term
+rank- or logit-transformed features instead of raw scores, so it sees the same scale-normalized
+signal the baseline does. Monotone constraints and a larger `max_bin` remain untried and
+lower-priority than the rank-transform change, since they don't address the scale mismatch
+directly. **Tier 1 item 1 still has no result that beats a trivial baseline** -- the
+rank-transform-features attempt is the next thing to try before concluding anything stronger.
 
 ### 2. Partial-Knowledge (PK) conditioning
 **Source:** report §"CAFA-6 keeps CAFA-5's evaluation regime, and partial knowledge now dominates the

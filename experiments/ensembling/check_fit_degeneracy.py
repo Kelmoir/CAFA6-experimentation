@@ -1,20 +1,39 @@
-"""Standalone check (no pytest in this repo): fits the meta-model on the cheap,
-already-cached meta-eval slice. Originally written to confirm predictions aren't
-collapsed to a pooled constant; the final whole-branch review (2026-10-02) found that
-check alone couldn't detect per-label ranking-resolution collapse, which the old
-pooled binary:logistic fit actually had on this slice (see cafa6_next_steps_plan.md's
-corrected write-up and _check_label_resolution() in stacking_pipeline.py). Now that
-fit_meta_model fits a rank:pairwise objective grouped by term instead, this confirms
-the resolution-collapse guard passes cleanly on this slice -- i.e. the fix actually
-fixes the failure this guard exists to catch, not just that the guard still fires.
+"""Standalone check (no pytest in this repo): two real-data proofs against the cheap,
+already-cached meta-eval slice.
+
+1. fit_meta_model() (the real rank:pairwise fit) must pass its own in-sample
+   degeneracy guard cleanly.
+2. The guard itself (_check_ranking_signal()) must still correctly raise on the
+   original, historically-collapsed pooled XGBClassifier(binary:logistic) fit. A
+   final-review pass (2026-10-03) found the first version of this check deleted
+   exactly this proof when the guard's threshold changed from an absolute cutoff to
+   a relative one -- and the *absolute* cutoff (median AUROC > 0.55) it replaced had
+   turned out to pass the real collapsed classifier undetected (in-sample median
+   AUROC ~0.70, comfortably above 0.55). This check fits that classifier for real
+   and confirms the relative guard does catch it.
+
 Run via:
     env/bin/python experiments/ensembling/check_fit_degeneracy.py
 """
-from stacking_pipeline import build_features, fit_meta_model, load_cached_meta_eval
+from stacking_pipeline import _check_ranking_signal, build_features, fit_meta_model, load_cached_meta_eval
 
 meta_eval = load_cached_meta_eval()
 X, y, qid = build_features(meta_eval)
 n_labels = len(meta_eval["label_names"])
 
 fit_meta_model(X, y, qid, n_labels)
-print("[PASS] fit_meta_model check: resolution-collapse guard passes cleanly with the rank:pairwise objective")
+print("[PASS] fit_meta_model (rank:pairwise) passes its own in-sample degeneracy guard cleanly")
+
+import xgboost as xgb  # noqa: E402
+
+old_model = xgb.XGBClassifier(objective="binary:logistic", tree_method="hist", random_state=42)
+old_model.fit(X, y)
+old_preds = old_model.predict_proba(X)[:, 1]
+try:
+    _check_ranking_signal(old_preds, y, X[:, 0], n_labels)
+    raise SystemExit(
+        "[FAIL] expected _check_ranking_signal to raise on the original collapsed "
+        "pooled classifier -- did the guard regress again?"
+    )
+except AssertionError as e:
+    print(f"[PASS] guard correctly raises on the real historically-collapsed classifier: {e}")
