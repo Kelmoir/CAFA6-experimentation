@@ -449,17 +449,41 @@ with no way to condition on a protein's already-known annotations, it is optimiz
 (NK/LK) of the real scoring surface. This reframes PK from "predict function for this protein" to
 "predict the REST of this protein's function given what's already known" — closer to link prediction
 on a partially-observed graph than to sequence classification.
-**Prerequisite check, not yet done:** confirm whether `generate_dataset.py`/`training_run.py`'s
-current task setup already reflects a PK-style split (partial annotations as input) or is pure
-NK-style (predict everything from sequence with zero annotation context) — this determines whether
-item 2 is a data-generation change, a model-input change, or both. Scope this as its own investigation
-before writing an implementation plan.
-**CAFA-5 dataset as PK baseline source (user note, 2026-09-26):** the fastest path to a PK baseline is
-likely CAFA-5's own released train/test annotation snapshots, since that competition's evaluation
-regime already implements the PK/LK/NK split methodology this item targets (see item 2's report
-source above) — rather than inventing a PK split from scratch against CAFA-6 data, check CAFA-5's
-data availability/format first and build the baseline against that before deciding whether a
-CAFA-6-native PK split is even needed.
+**Prerequisite check (done, 2026-10-04):** current setup is pure NK. `generate_dataset.py`'s
+`protein_to_labels` is each protein's *full* true-path-propagated annotation closure — there is no
+"known subset held out as input" anywhere. `training_run.py`'s only non-sequence input channel,
+`aspect_input`, is a static 3-way C/F/P namespace one-hot (from a precomputed `aspect_labels` column),
+not conditioning on any of the protein's own ground-truth labels. Train/val/test is split whole-protein
+(cluster-aware CD-HIT), never by partial-annotation masking within a protein. So item 2 is **both** a
+data-generation change (need a per-protein known/novel annotation split) and a model-input change
+(need a new input channel carrying the "known" subset, analogous to how `aspect_input` already injects
+side-information into the classifier head).
+**CAFA-5 dataset as PK baseline source — checked and refuted (2026-10-04):** CAFA-5's own Kaggle
+release (`train_terms.tsv`, UniProtKB snapshot 2022-11-17 + `testsuperset`) is a **single annotation
+snapshot**, structurally identical in shape to CAFA-6's own `train_terms.tsv` — one full annotation
+closure per protein, no known/novel split, no ready PK data. The actual NK/LK/PK ground truth is
+computed by CAFA's assessors *post-hoc*, outside the Kaggle download, by diffing **two independently-
+dated UniProt-GOA experimental-annotation snapshots** (t0 = submission deadline, t1/te = later
+accrual): a protein is PK if it already has an experimental annotation in aspect S at t0 and gains a
+*novel* one in S by t1; only the novel terms score, with the t0 terms collected into a `known_terms.tsv`
+file the official evaluator (`cafaeval`/`protea`, and the `CAFA-Challenge/CAFA_evaluation` GitHub repo)
+consumes via a `-known`/`--exclude` flag to suppress credit for repeating prior annotations. That
+`known_terms.tsv`/t1-ground-truth pair is not bundled with the Kaggle competition data — the official
+eval repo instead points to a separately-hosted FigShare archive for benchmark ground truth, consistent
+with organizers holding t1 data back for scoring rather than shipping it to participants. The one
+documented community attempt to reconstruct a time-delayed holdout from CAFA-5 data (`wanglab/cafa5` on
+Hugging Face, "temporal holdout test set (2023-2025)...with annotation date tracking") only achieves
+NK/LK, not full PK, and required going back to dated UniProt-GOA snapshots to build it — confirming
+there is no one-click PK download, from CAFA-5 or otherwise. **Conclusion: no shortcut.** Building a
+genuine, temporally-faithful PK split costs the same two-snapshot GOA-diffing work regardless of
+whether it's keyed to CAFA-5's or CAFA-6's protein set, so there's no reason to prefer CAFA-5's data for
+this. The two real options going forward are: (a) a **synthetic/approximate PK split** built directly
+from CAFA-6's own `train_terms.tsv` — reveal a random subset of each protein's own true annotation
+closure as "known" input, predict the rest — buildable immediately from data already in hand, at the
+cost of not capturing genuine temporal/scrutiny-order bias in which terms get annotated first; or (b) a
+**real time-delayed split** by fetching two dated UniProt-GOA snapshots and diffing them the way CAFA's
+own evaluator does — more faithful, but a standalone data-acquisition task of its own. Recommend (a) as
+the Tier-1-scoped first cut, with (b) noted as a possible later refinement.
 
 ### 3. GO-DAG true-path-rule consistency, as a *lightweight* training/inference constraint — NOT the
 full graph-embedding plan
