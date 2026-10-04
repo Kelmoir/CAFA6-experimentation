@@ -425,6 +425,20 @@ objective + monotone constraints) is confirmed and tuned close to its ceiling ag
 baseline; there's no demonstrated case yet for shipping learned stacking over the free rank-average
 blend**, though it no longer costs anything to use either.
 
+**Decision (2026-10-04): closing out Tier 1 item 1 -- not adopting the stacking meta-model.**
+The win margin over the untrained 50/50 rank-average baseline (+0.0004 mean AUROC) is within
+noise at this sample size, after real tuning effort (ranking objective, monotone constraints, a
+40-config HPO search) closed what started as a large, clear loss. Keeping it simple: there's no
+case for shipping the extra complexity (a trained XGBRanker, its HPO config, the qid-sort
+plumbing) over the free blend for a result this close. The investigation itself was not wasted --
+it produced and fixed two real bugs in the meta-model's own degeneracy guard, confirmed BLAST-KNN
+genuinely has no exploitable per-term "bright spot" (tested out-of-sample, not assumed), and
+leaves a validated, reusable per-term rank-average baseline on record for any future ensembling
+attempt to beat. All of `experiments/ensembling/`'s scripts stay as the historical record (same
+convention as the two BLAST probes before them); no further work planned here unless a
+fundamentally different signal (not just a retuned combination of the same two inputs) comes
+along.
+
 ### 2. Partial-Knowledge (PK) conditioning
 **Source:** report §"CAFA-6 keeps CAFA-5's evaluation regime, and partial knowledge now dominates the
 score" — PK (proteins that already carry *some* GO annotations, need new ones predicted) is 69.7% of
