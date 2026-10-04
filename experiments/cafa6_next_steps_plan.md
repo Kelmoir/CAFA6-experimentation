@@ -389,6 +389,42 @@ than 50/50 in the closed-form baseline for comparison, or a wider monotone-const
 hyperparameter sweep (tree depth, learning rate, `max_bin`) -- rather than another new mechanism,
 since the diagnosis (tree non-monotonicity) is now confirmed rather than speculative.
 
+**Hyperparameter search tried (2026-10-04), result: barely, consistently ahead of the baseline
+for the first time.** Ran that hyperparameter sweep -- `experiments/ensembling/local_hpo_search.py`,
+a 40-config random search (depth, learning rate, `n_estimators`, `min_child_weight`, `subsample`,
+`colsample_bytree`, `reg_lambda`, `max_bin`, and the monotone-constraints variant itself) scored
+by 4-fold CV split by protein over meta-train, run on the user's local GPU (Colab is retired for
+this project -- see the hardware_local_gpu memory note; a sandboxed-session design that defaulted
+to a Colab upload/exec workflow was corrected before implementation). Caught and fixed a severe
+performance bug before trusting any results: the CV scoring loop recomputed a full boolean mask
+over the ~13.6M-element validation array once per term (up to 27,191 times) per fold -- an
+O(n_terms x n_val_rows) cost that made a real run take ~17 hours for 40 trials. Fixed via reshape
++ column-slicing plus a fully vectorized rank-sum AUROC (verified to match `sklearn.roc_auc_score`
+exactly, including on ties) instead of calling it once per term -- the bug was purely about speed,
+not correctness, so the already-completed search's results remained valid throughout.
+
+Winning config (trial 33, CV mean AUROC 0.8913): `max_depth=7, learning_rate=0.1235,
+n_estimators=300, min_child_weight=1, subsample=0.6495, colsample_bytree=0.9710,
+reg_lambda=0.6240, max_bin=1024, monotone_constraints=(1,1,0)`. Refit on the real meta-train and
+evaluated once, honestly, on the never-touched meta-eval slice:
+
+| | mean AUROC | median AUROC |
+|---|---|---|
+| model alone | 0.8731 | 0.9259 |
+| stacked (HPO-tuned) | **0.8857** | **0.9418** |
+| baseline (untrained) | 0.8853 | 0.9421 |
+
+For the first time in this entire investigation, the trained model is (very slightly) ahead of
+the baseline on *every* reported breakdown, not just tied on the headline number: mean (+0.0004),
+the other 8,762 terms (0.8997 vs. 0.8995), and the (known non-generalizing, see above) bright-spot
+subset (0.6934 vs. 0.6909). Median is nearly tied (0.9418 vs. 0.9421, closer than the untuned
+monotone-constrained config's 0.9398). These margins are tiny -- almost certainly within noise on
+a 2,000-row/9,401-term evaluation -- so this should be read as "no longer behind, and directionally
+ahead everywhere" rather than a decisive win. **Tier 1 item 1's honest status: the mechanism (rank
+objective + monotone constraints) is confirmed and tuned close to its ceiling against this
+baseline; there's no demonstrated case yet for shipping learned stacking over the free rank-average
+blend**, though it no longer costs anything to use either.
+
 ### 2. Partial-Knowledge (PK) conditioning
 **Source:** report §"CAFA-6 keeps CAFA-5's evaluation regime, and partial knowledge now dominates the
 score" — PK (proteins that already carry *some* GO annotations, need new ones predicted) is 69.7% of
