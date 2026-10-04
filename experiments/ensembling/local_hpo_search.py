@@ -60,6 +60,29 @@ def gpu_available():
         return False
 
 
+def _vectorized_per_label_auroc(preds, labels):
+    """Computes per-column (per-term) AUROC for every label at once via the
+    Wilcoxon-Mann-Whitney rank-sum identity (AUROC = (sum of positive-class ranks -
+    n_pos*(n_pos+1)/2) / (n_pos*n_neg)), instead of calling sklearn.roc_auc_score once
+    per label in a Python loop -- that per-call overhead, not just the earlier
+    O(n_terms x n_rows) masking bug, dominated runtime once n_labels reached the
+    thousands (confirmed directly, 2026-10-04: a 2000-label per-term loop still took
+    ~9s after the masking bug was fixed). Verified to match sklearn exactly, including
+    with ties, by check_vectorized_auroc.py. Returns NaN for a column with only one
+    class present (not evaluable)."""
+    from scipy.stats import rankdata
+
+    n_rows = preds.shape[0]
+    ranks = rankdata(preds, axis=0, method="average")
+    n_pos = labels.sum(axis=0)
+    n_neg = n_rows - n_pos
+    pos_rank_sum = np.where(labels > 0, ranks, 0.0).sum(axis=0)
+    with np.errstate(invalid="ignore", divide="ignore"):
+        auroc = (pos_rank_sum - n_pos * (n_pos + 1) / 2) / (n_pos * n_neg)
+    auroc[(n_pos == 0) | (n_neg == 0)] = np.nan
+    return auroc
+
+
 def sample_config(rng):
     return {
         "max_depth": int(rng.choice([3, 4, 5, 6, 7, 8])),
@@ -75,9 +98,20 @@ def sample_config(rng):
 
 
 def cv_score(X, y, qid, protein_idx, n_rows, config, device):
+    """Scores one hyperparameter config via K_FOLDS-fold CV, split by protein (a
+    term's rows must stay together within a fold). Reshapes each fold's validation
+    predictions/labels back to (n_val_proteins, n_labels) and column-slices per term
+    -- NOT a per-term boolean rescan of the flattened array (`val_qid == term` inside
+    a loop over every term), which is what the first version of this function did.
+    That earlier version took ~17 hours for a real 40-trial search: it was
+    O(n_terms x n_val_rows) just to build each term's mask, instead of O(n_val_rows)
+    total via reshape+slice (confirmed directly: caught by check_cv_score_perf.py,
+    2026-10-04). protein_idx/qid are constructed by build_rank_features() via
+    np.tile/np.repeat, so boolean-indexing by a per-protein fold mask always selects
+    whole, in-order n_labels-sized blocks -- the reshape below is exact, not a guess."""
     import xgboost as xgb
-    from sklearn.metrics import roc_auc_score
 
+    n_labels = int(qid.max()) + 1
     fold_of_protein = np.arange(n_rows) % K_FOLDS
     np.random.default_rng(SEED).shuffle(fold_of_protein)
     protein_fold = fold_of_protein[protein_idx]
@@ -95,18 +129,13 @@ def cv_score(X, y, qid, protein_idx, n_rows, config, device):
         )
         model.fit(X[train_mask][order], y[train_mask][order], qid=qid[train_mask][order])
 
-        val_preds = model.predict(X[val_mask])
-        val_qid = qid[val_mask]
-        val_y = y[val_mask]
-        aurocs = []
-        for term in np.unique(val_qid):
-            term_mask = val_qid == term
-            term_y = val_y[term_mask]
-            if term_y.min() == term_y.max():
-                continue
-            aurocs.append(roc_auc_score(term_y, val_preds[term_mask]))
-        if aurocs:
-            fold_aurocs.append(float(np.mean(aurocs)))
+        n_val_proteins = int(val_mask.sum()) // n_labels
+        val_preds = model.predict(X[val_mask]).reshape(n_val_proteins, n_labels)
+        val_y = y[val_mask].reshape(n_val_proteins, n_labels)
+        aurocs = _vectorized_per_label_auroc(val_preds, val_y)
+        aurocs = aurocs[~np.isnan(aurocs)]
+        if len(aurocs):
+            fold_aurocs.append(float(aurocs.mean()))
     return float(np.mean(fold_aurocs)) if fold_aurocs else float("nan")
 
 
