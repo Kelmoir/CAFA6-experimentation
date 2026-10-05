@@ -132,6 +132,48 @@ def summarize_categories(added_rows: list, unseen_rows: list) -> dict:
   return summary
 
 
+def write_outputs(balanced_added: list, balanced_unseen: list, label_names: list, out_dir: Path) -> None:
+  import datasets as hf_datasets
+
+  all_rows = balanced_added + balanced_unseen
+  label_feature = hf_datasets.Sequence(hf_datasets.ClassLabel(names=label_names))
+  features = hf_datasets.Features({
+      "protein_id": hf_datasets.Value("string"),
+      "sequence": hf_datasets.Value("string"),
+      "known_labels": label_feature,
+      "novel_labels": label_feature,
+      "category_C": hf_datasets.Value("string"),
+      "category_F": hf_datasets.Value("string"),
+      "category_P": hf_datasets.Value("string"),
+      "pool": hf_datasets.Value("string"),
+  })
+
+  columns = {key: [] for key in features}
+  gt_lines, known_lines = [], []
+  for row in all_rows:
+    columns["protein_id"].append(row["protein_id"])
+    columns["sequence"].append(row["sequence"])
+    known_sorted = sorted(row["known_by_aspect"]["C"] | row["known_by_aspect"]["F"] | row["known_by_aspect"]["P"])
+    novel_sorted = sorted(row["novel_by_aspect"]["C"] | row["novel_by_aspect"]["F"] | row["novel_by_aspect"]["P"])
+    columns["known_labels"].append(known_sorted)
+    columns["novel_labels"].append(novel_sorted)
+    for aspect in ("C", "F", "P"):
+      columns[f"category_{aspect}"].append(row["category_by_aspect"][aspect] or "none")
+    columns["pool"].append(row["pool"])
+    for term in novel_sorted:
+      gt_lines.append(f"{row['protein_id']}\t{term}")
+    for term in known_sorted:
+      known_lines.append(f"{row['protein_id']}\t{term}")
+
+  dataset = hf_datasets.Dataset.from_dict(columns, features=features)
+  dataset.save_to_disk(str(out_dir / "temporal_pk_validation"))
+
+  flat_dir = out_dir / "temporal_pk_validation_flat"
+  flat_dir.mkdir(parents=True, exist_ok=True)
+  (flat_dir / "ground_truth.tsv").write_text("\n".join(gt_lines) + "\n" if gt_lines else "")
+  (flat_dir / "known_terms.tsv").write_text("\n".join(known_lines) + "\n" if known_lines else "")
+
+
 def _self_test():
   obonet_graph = obonet.read_obo(GO_OBO_PATH)
   true_path_graph = restrict_to_true_path(obonet_graph)
@@ -211,6 +253,44 @@ def _self_test():
   assert summary["unseen_protein"] == len(unseen_rows)
   assert set(summary["added_annotation"].keys()) <= {"C", "F", "P"}
   print("[OK] balance_pools/summarize_categories self-test passed")
+
+  import shutil
+  import tempfile
+
+  import datasets as hf_datasets
+
+  scratch_dir = Path(tempfile.mkdtemp())
+  try:
+    toy_added = [{
+        "protein_id": "T0001", "sequence": "MKV",
+        "known_by_aspect": {"C": set(), "F": {label_names[0]}, "P": set()},
+        "novel_by_aspect": {"C": set(), "F": set(), "P": {label_names[1]}},
+        "category_by_aspect": {"C": None, "F": None, "P": "LK"},
+        "pool": "added_annotation",
+    }]
+    toy_unseen = [{
+        "protein_id": "T0002", "sequence": "MKA",
+        "known_by_aspect": {"C": set(), "F": set(), "P": set()},
+        "novel_by_aspect": {"C": {label_names[2]}, "F": set(), "P": set()},
+        "category_by_aspect": {"C": "NK", "F": None, "P": None},
+        "pool": "unseen_protein",
+    }]
+    write_outputs(toy_added, toy_unseen, label_names, scratch_dir)
+
+    ds = hf_datasets.load_from_disk(str(scratch_dir / "temporal_pk_validation"))
+    assert len(ds) == 2
+    assert set(ds[0].keys()) >= {"protein_id", "sequence", "known_labels", "novel_labels",
+                                  "category_C", "category_F", "category_P", "pool"}
+
+    gt_path = scratch_dir / "temporal_pk_validation_flat" / "ground_truth.tsv"
+    known_path = scratch_dir / "temporal_pk_validation_flat" / "known_terms.tsv"
+    gt_df = pd.read_csv(gt_path, sep="\t", header=None, names=["protein_id", "term"])
+    known_df = pd.read_csv(known_path, sep="\t", header=None, names=["protein_id", "term"])
+    assert set(gt_df["protein_id"]) == {"T0001", "T0002"}
+    assert list(known_df["protein_id"]) == ["T0001"]  # only the added_annotation row has known terms
+    print("[OK] write_outputs self-test passed")
+  finally:
+    shutil.rmtree(scratch_dir)
 
 
 if __name__ == "__main__":
