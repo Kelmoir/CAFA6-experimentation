@@ -149,10 +149,12 @@ loading convention introduced.
 rows, the standard CAFA submission shape), run it once against Output 2's flat files,
 confirm it matches the hand-rolled Fmax within tolerance.
 
-**Expected wrinkle, not a bug:** current checkpoints are trained over the 383-term coarse
-label space, while ground truth here is full-term-space. A coarse model will score lower
-on fine-grained novel terms simply because it structurally can't predict them — a real
-finding about current-model PK/LK/NK performance, not a scoring artifact to correct away.
+**No label-space mismatch to worry about:** current checkpoints (trial-013 onward, the
+basis for all active ensembling/HPO work) are trained on `dataset_full`/`kelmoir/cafa6-full`
+— the full 27,191-term label space (`n_labels_evaluable=9401`) — the same vocabulary this
+validation set's `known_labels`/`novel_labels` vectors already use. The 383-term coarse
+space only applied to the superseded `ancestor_sweep` trials (001-049) and isn't relevant
+to any checkpoint this harness would actually score.
 
 ## Files
 
@@ -186,8 +188,6 @@ math in `score_temporal_pk_eval.py`.
 - **Streaming the 700MB `uniprot_sprot.dat.gz`:** one-time cost, reuses the exact
   `Bio.SwissProt.parse()` streaming pattern already proven in `experiments/mf_span`
   (never fully decompressed into memory at once).
-- **Coarse label-space checkpoints scoring low on fine-grained novel terms:** expected and
-  informative (see "Expected wrinkle" above), not something to special-case away.
 
 ## Non-goals / explicit follow-ups
 
