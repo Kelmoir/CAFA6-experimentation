@@ -35,6 +35,22 @@ def build_t0_index(train_terms_path, true_path_graph, label2id, term_to_aspect) 
   return t0_index
 
 
+def categorize_protein(known_by_aspect: dict, t1_novel_by_aspect: dict) -> dict:
+  has_any_t0_annotation = any(known_by_aspect[a] for a in ("C", "F", "P"))
+  result = {}
+  for aspect in ("C", "F", "P"):
+    if not t1_novel_by_aspect.get(aspect):
+      result[aspect] = None
+      continue
+    if known_by_aspect[aspect]:
+      result[aspect] = "PK"
+    elif has_any_t0_annotation:
+      result[aspect] = "LK"
+    else:
+      result[aspect] = "NK"
+  return result
+
+
 def _self_test():
   obonet_graph = obonet.read_obo(GO_OBO_PATH)
   true_path_graph = restrict_to_true_path(obonet_graph)
@@ -60,6 +76,23 @@ def _self_test():
   assert q5["P"], "expected non-empty P bucket for Q5W0B1"
 
   print(f"[OK] build_t0_index self-test passed ({len(t0_index)} proteins)")
+
+  # --- categorize_protein: all four outcomes, hand-constructed ---
+  has_any_known = {"C": {"GO:x"}, "F": set(), "P": set()}
+  result = categorize_protein(has_any_known, {"C": set(), "F": {"GO:novel1"}, "P": set()})
+  assert result["C"] is None, result  # no novel term in C -> no example
+  assert result["F"] == "LK", result  # empty known_F, but known_C is non-empty -> LK
+  assert result["P"] is None, result
+
+  no_known_at_all = {"C": set(), "F": set(), "P": set()}
+  result2 = categorize_protein(no_known_at_all, {"C": {"GO:novel2"}, "F": set(), "P": set()})
+  assert result2["C"] == "NK", result2
+
+  known_in_same_aspect = {"C": set(), "F": {"GO:known1"}, "P": set()}
+  result3 = categorize_protein(known_in_same_aspect, {"C": set(), "F": {"GO:novel3"}, "P": set()})
+  assert result3["F"] == "PK", result3
+
+  print("[OK] categorize_protein self-test passed")
 
 
 if __name__ == "__main__":
