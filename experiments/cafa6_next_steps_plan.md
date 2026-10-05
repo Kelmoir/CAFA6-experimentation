@@ -485,6 +485,43 @@ cost of not capturing genuine temporal/scrutiny-order bias in which terms get an
 own evaluator does — more faithful, but a standalone data-acquisition task of its own. Recommend (a) as
 the Tier-1-scoped first cut, with (b) noted as a possible later refinement.
 
+**Direction revised (2026-10-05): option (b) turns out free, no need to wait for CAFA-7.** This repo
+already has a genuinely later UniProt snapshot cached locally — `data/uniprot/uniprot_sprot.dat.gz`
+(fetched 2026-08-01 for the unrelated `mf_span` side-project) — against `train_terms.tsv`'s October
+2025 vintage, ~9-10 months of real temporal distance with zero new fetching. Built
+`experiments/pk_eval/scripts/build_temporal_pk_eval.py` (see
+`docs/superpowers/specs/2026-10-05-temporal-pk-eval-design.md` and
+`docs/superpowers/plans/2026-10-05-temporal-pk-eval.md`): diffs t0 (`train_terms.tsv`) against t1 (the
+cached Swiss-Prot dump), per-aspect PK/LK/NK categorization matching CAFA's own methodology, plus an
+`unseen_protein` pool (Swiss-Prot accessions absent from `train_terms.tsv` entirely — proteins never
+seen anywhere in the existing pipeline). This is item 2 part (A), an **evaluation harness only** — no
+training/architecture change yet; part (B) (an actual "known annotations" model input channel) is a
+deliberate follow-up once (A)'s numbers are in hand.
+
+**(A) run (2026-10-05):** 92.1% of t0's ~82.4k proteins matched ≥1 novel experimental annotation in the
+cached dump. Balanced 5,242/5,242 `added_annotation`/`unseen_protein` (seed 42) →
+`experiments/pk_eval/temporal_pk_validation/` (10,484 rows, full 27,191-term label space). Scored
+`trial-013` (`kelmoir/cafa6-esm@main`) against it with real IA-weighted Fmax
+(`experiments/pk_eval/scripts/score_temporal_pk_eval.py`, known-terms stripped from predictions before
+scoring, cross-checked once against the real `cafaeval` 1.3.0 package):
+
+| aspect | PK (n) | LK (n) | unseen (n) |
+|---|---|---|---|
+| C | 0.0052 (3834) | 0.5697 (18) | 0.1726 (5242) |
+| F | 0.0038 (2947) | 0.5619 (12) | 0.3171 (5242) |
+| P | 0.0049 (3848) | 0.3759 (37) | 0.2267 (5242) |
+
+**Interpretation:** the current pure-NK-trained model collapses almost completely on genuine PK
+examples (Fmax ~0.004–0.005 — barely above a trivial floor) despite PK being the dominant category by
+volume (3834–3848 proteins vs. 12–37 for LK), while it does comparatively well on LK and unseen (novel
+proteins it never saw known-annotation context for at all). This is close to the CAFA-5-documented
+"PK methods aren't built for this setting" gap the report flagged, and is the strongest evidence yet
+*for* building part (B)'s known-annotation input channel: a plausible mechanism (not yet directly
+verified — this harness measures the aggregate gap, not per-prediction attribution) is that the model,
+having no way to know which terms are already known, spends its confidence on exactly those (likely the
+easiest, most sequence-obvious ones) and has little signal left for the novel terms once known ones are
+stripped at scoring time — the kind of problem a known-annotation input channel exists to fix.
+
 ### 3. GO-DAG true-path-rule consistency, as a *lightweight* training/inference constraint — NOT the
 full graph-embedding plan
 **Source:** report §"Structure and ontology awareness pay off mostly at the long tail of rare GO
