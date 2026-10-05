@@ -108,8 +108,14 @@ def compute_ia_weighted_fmax(probs, known, novel, ia_weights, thresholds):
   """
   known = known.astype(bool)
   novel_mask = novel.astype(bool)
-  has_novel = novel_mask.any(axis=1)
   novel_ia_total = (novel_mask * ia_weights).sum(axis=1)
+  # A protein can have a novel term whose IA weight is exactly 0.0 (e.g. GO:0000001) and
+  # nothing else novel - term-presence (novel_mask.any()) and weight-presence
+  # (novel_ia_total > 0) diverge for that row. Gate on weight, matching has_pred's own
+  # `pred_ia_total > 0` convention below, so that row is excluded from the recall
+  # average (zero information gained, by IA's own accounting) instead of dividing by
+  # zero.
+  has_novel = novel_ia_total > 0
 
   best_f, best_t, best_pr, best_rc = 0.0, float(thresholds[0]), 0.0, 0.0
   for t in thresholds:
@@ -188,6 +194,23 @@ def _self_test():
     assert abs(fmax - 0.75) < 1e-9, fmax
     assert best_t == 0.5
     assert abs(pr - 0.75) < 1e-9 and abs(rc - 0.75) < 1e-9
+
+    # --- compute_ia_weighted_fmax: a protein whose only novel term has IA weight 0.0
+    # (a real case - e.g. GO:0000001 in IA.tsv) must be excluded from the recall
+    # average, not divide by a zero novel_ia_total (found via the real Task 9 run:
+    # this previously raised "RuntimeWarning: invalid value encountered in divide") ---
+    import warnings
+    probs_zero_ia = np.array([[0.9, 0.1]])
+    known_zero_ia = np.array([[0, 0]], dtype=bool)
+    novel_zero_ia = np.array([[0, 1]], dtype=bool)  # term 1 is the only novel term
+    ia_weights_zero = np.array([1.0, 0.0])  # term 1's IA weight is 0.0
+    with warnings.catch_warnings():
+      warnings.simplefilter("error")  # any RuntimeWarning now fails the test
+      fmax_zero_ia, _, _, rc_zero_ia = compute_ia_weighted_fmax(
+          probs_zero_ia, known_zero_ia, novel_zero_ia, ia_weights_zero,
+          thresholds=np.array([0.5]))
+    assert fmax_zero_ia == 0.0, fmax_zero_ia  # the only "has_novel" row contributes zero IA
+    assert rc_zero_ia == 0.0, rc_zero_ia
 
     print("[OK] pk_eval_common self-test passed")
 
