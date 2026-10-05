@@ -51,6 +51,62 @@ def categorize_protein(known_by_aspect: dict, t1_novel_by_aspect: dict) -> dict:
   return result
 
 
+SWISSPROT_DUMP_PATH = Path("data/uniprot/uniprot_sprot.dat.gz")
+
+
+def stream_diff(dump_path, t0_index, true_path_graph, label2id, term_to_aspect,
+                record_limit=None) -> tuple:
+  import gzip
+  import itertools
+
+  from Bio import SwissProt
+
+  from pk_eval_common import extract_experimental_go_terms, propagate_terms
+
+  added_rows, unseen_rows = [], []
+  ancestor_cache = {}
+
+  with gzip.open(dump_path, "rt") as fh:
+    records = SwissProt.parse(fh)
+    if record_limit is not None:
+      records = itertools.islice(records, record_limit)
+    for record in records:
+      accession = record.accessions[0]
+      raw_terms = extract_experimental_go_terms(record)
+      if not raw_terms:
+        continue  # e.g. Q6GZX4: 100% electronic annotation, nothing to diff against
+      propagated = propagate_terms(raw_terms, true_path_graph, ancestor_cache)
+      vocab_terms = filter_to_vocab(propagated, label2id)
+      novel_by_aspect = split_by_aspect(vocab_terms, term_to_aspect)
+      if not any(novel_by_aspect.values()):
+        continue  # every term dropped by vocab filtering -> no scoreable example
+
+      if accession in t0_index:
+        known_by_aspect = t0_index[accession]
+        category_by_aspect = categorize_protein(known_by_aspect, novel_by_aspect)
+        if not any(category_by_aspect.values()):
+          continue  # no aspect actually gained a novel term -> no example
+        added_rows.append({
+            "protein_id": accession,
+            "sequence": record.sequence,
+            "known_by_aspect": known_by_aspect,
+            "novel_by_aspect": novel_by_aspect,
+            "category_by_aspect": category_by_aspect,
+            "pool": "added_annotation",
+        })
+      else:
+        unseen_rows.append({
+            "protein_id": accession,
+            "sequence": record.sequence,
+            "known_by_aspect": {"C": set(), "F": set(), "P": set()},
+            "novel_by_aspect": novel_by_aspect,
+            "category_by_aspect": {a: ("NK" if novel_by_aspect[a] else None) for a in ("C", "F", "P")},
+            "pool": "unseen_protein",
+        })
+
+  return added_rows, unseen_rows
+
+
 def _self_test():
   obonet_graph = obonet.read_obo(GO_OBO_PATH)
   true_path_graph = restrict_to_true_path(obonet_graph)
@@ -93,6 +149,22 @@ def _self_test():
   assert result3["F"] == "PK", result3
 
   print("[OK] categorize_protein self-test passed")
+
+  added_rows, unseen_rows = stream_diff(
+      SWISSPROT_DUMP_PATH, t0_index, true_path_graph, label2id, term_to_aspect,
+      record_limit=3000)
+  assert len(added_rows) > 0, "expected at least one added_annotation row in first 3000 records"
+  assert len(unseen_rows) > 0, "expected at least one unseen_protein row in first 3000 records"
+  valid_categories = {"PK", "LK", "NK", None}
+  for row in added_rows:
+    assert set(row["category_by_aspect"].values()) <= valid_categories
+    assert row["pool"] == "added_annotation"
+    assert any(row["novel_by_aspect"].values()), "added row must have >=1 novel term somewhere"
+  for row in unseen_rows:
+    assert row["pool"] == "unseen_protein"
+    assert all(not s for s in row["known_by_aspect"].values()), "unseen rows must have empty known"
+    assert any(row["novel_by_aspect"].values())
+  print(f"[OK] stream_diff smoke test passed ({len(added_rows)} added, {len(unseen_rows)} unseen, first 3000 records)")
 
 
 if __name__ == "__main__":
