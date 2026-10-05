@@ -57,17 +57,20 @@ Two requirements files exist for different purposes:
 ## Common commands
 
 ```bash
-# Generate the train/val/test HF dataset from raw Kaggle data (data/cafa-6-protein-function-prediction/)
-python generate_dataset.py
+# Generate the CURRENT full-label-space train/val/test HF dataset (27,191 terms) from raw Kaggle
+# data -- generate_dataset.py's own coarse 383-term output is legacy (see Architecture notes).
+python generate_dataset_full.py
 
-# Train the ESM classifier (defaults: facebook/esm2_t12_35M_UR50D, 1 epoch, batch size 2)
-python training_run.py --epochs 3 --batch-size 8 --learning-rate 5e-5
+# Train the ESM classifier against the current full label space. --data-path's argparse default
+# points at the legacy coarse dataset, so this must be passed explicitly (defaults otherwise:
+# facebook/esm2_t12_35M_UR50D, 1 epoch, batch size 2).
+python training_run.py --data-path data/cafa-6-protein-function-prediction/dataset_full --epochs 3 --batch-size 8 --learning-rate 5e-5
 
 # Train on a subset for a quick smoke test
-python training_run.py --max-train-samples 100 --max-val-samples 50 --device cpu
+python training_run.py --data-path data/cafa-6-protein-function-prediction/dataset_full --max-train-samples 100 --max-val-samples 50 --device cpu
 
 # Train and push the resulting model to the HF Hub
-python training_run.py --push-to-hub --hf-repo-id kelmoir/cafa6-esm
+python training_run.py --data-path data/cafa-6-protein-function-prediction/dataset_full --push-to-hub --hf-repo-id kelmoir/cafa6-esm
 
 # Launch a ~1h regularization-sweep trial on a Colab T4 (see experiments/ancestor_sweep/sweep_log.md).
 # Colab Secrets are NOT reachable from CLI-provisioned sessions (confirmed via
@@ -118,11 +121,19 @@ top level:
   `experiments/mf_span/mf_span_postmortem.md` for why it was shelved), covering both its data-prep
   phase (`positional_mf_*.json`, `llm_term_review/`) and training phase (`mf_span_*.md`), plus its
   dedicated `scripts/`/`logs/` subfolders.
+- `experiments/full_label_sweep/` — the plateau-first regularization sweep run against the
+  **current** full label space (`dataset_full`/`kelmoir/cafa6-full`, 27,191 terms — see the
+  Architecture notes' label-space bullet below), superseding `ancestor_sweep/`'s hyperparameter
+  conclusions for anything touching this label space. 13 trials (`sweep_log.md`), landed on
+  `esm2_t12_35M_UR50D`, `unfreeze_last_n=4`, `esm_dropout=attention_dropout=0.1`,
+  `weight_decay=0.01`, no label smoothing, `batch_size=2`/`grad_accum_steps=8`. `trial-013` (mean
+  per-label AUROC 0.8731, median 0.9259) is the promoted Tier-0 baseline — pushed via
+  `promote_trial013.py` to `kelmoir/cafa6-esm@main`. Every Tier 1 item in
+  `experiments/cafa6_next_steps_plan.md` builds on top of this checkpoint.
 - Everything else directly under `experiments/` (`dataset_refinement_pilot.py`,
   `analyze_go_term_pareto.py`, `sequential_cascade_plan.md`, `graph_embedding_plan.md`,
-  `check_label_encoding.py`, `smoke_test.py`, and `experiments/logs/`) is current/active material,
-  working directly with the real human-annotated CAFA-6 label space rather than the old
-  ancestor-propagated coarse one.
+  `check_label_encoding.py`, `smoke_test.py`, `experiments/ensembling/`, and `experiments/logs/`)
+  is current/active material, working against that same current full label space.
 
 ## Data layout
 
@@ -131,9 +142,15 @@ top level:
   - `Train/train_sequences.fasta` — protein sequences, parsed with Biopython (`SeqIO`).
   - `Train/train_terms.tsv` — `EntryID` → GO `term` → `aspect` (C/F/P) annotations.
   - `Train/go-basic.obo` — GO ontology graph, loaded with `obonet`.
-- `data/cafa-6-protein-function-prediction/dataset/` — output of `generate_dataset.py`
-  (`DatasetDict.save_to_disk`), also the default local path `training_run.py` looks for before
-  falling back to `load_dataset("kelmoir/CAFA6")` from the Hub.
+- `data/cafa-6-protein-function-prediction/dataset/` — output of `generate_dataset.py`'s legacy
+  383-term coarse space (`DatasetDict.save_to_disk`), also the default local path
+  `training_run.py --data-path` looks for before falling back to `load_dataset("kelmoir/CAFA6")`
+  from the Hub. **Not what current work trains on** — see `dataset_full/` below and the
+  Architecture notes' label-space bullets.
+- `data/cafa-6-protein-function-prediction/dataset_full/` — output of `generate_dataset_full.py`'s
+  full ancestor-closure label space (27,191 trainable terms), pushed to `kelmoir/cafa6-full` on the
+  Hub. **This is what all current/active work trains and evaluates against** — always pass it
+  explicitly via `training_run.py --data-path data/cafa-6-protein-function-prediction/dataset_full`.
 - `data/exports/` — ad hoc exports produced from the notebooks (git-ignored).
 - `data/uniprot/uniprot_sprot.dat.gz` — bulk Swiss-Prot flat-file dump (git-ignored, ~700MB),
   fetched once via `experiments/mf_span/scripts/fetch_uniprot_positional_features.py` for the positional
@@ -158,7 +175,27 @@ top level:
 
 ## Architecture notes
 
-- **Label space**: `training_run.py` classifies proteins over a set of **coarse GO terms** (not just
+- **Which label space is current**: `generate_dataset.py`'s 383-term coarse space (full mechanism
+  described in the next bullet) and `generate_dataset_raw.py`'s 668-term directly-asserted,
+  unpropagated space are both **legacy/superseded** — kept only for the old
+  `experiments/ancestor_sweep/` lineage and early PU-learning work respectively. Since the
+  2026-09-26 "full label space, no partial GO-term selection" scope constraint
+  (`experiments/cafa6_next_steps_plan.md`), **all current/active work uses
+  `generate_dataset_full.py`'s output** — `data/cafa-6-protein-function-prediction/dataset_full` /
+  `kelmoir/cafa6-full` on the Hub — the full ancestor-closure label space (every GO term appearing
+  anywhere in any protein's propagated closure, no depth cap, no annotation-count threshold on the
+  vocabulary itself), reduced only by a `select_trainable_terms()` step that drops terms with zero
+  train-split-usable support at `MAX_LENGTH=4192` from the *trainable classifier head* specifically
+  (not from the scored label space) — 27,191 trainable terms as of the last regeneration, down from
+  29,386. The Tier-0 baseline (`trial-013`, promoted to `kelmoir/cafa6-esm@main` — see
+  `experiments/full_label_sweep/sweep_log.md` above) and every Tier 1 item built on it use this
+  space. **Footgun:** `training_run.py --data-path`'s argparse default still points at the legacy
+  coarse `dataset/` path, not `dataset_full/` — every current invocation must pass
+  `--data-path data/cafa-6-protein-function-prediction/dataset_full` (or
+  `--dataset-repo-id kelmoir/cafa6-full`) explicitly, or it silently trains against the superseded
+  383-term space instead.
+- **Legacy coarse label space** (`generate_dataset.py`, superseded — see the bullet above for
+  what's current): classifies proteins over a set of **coarse GO terms** (not just
   the 3 top-level aspects) as a multi-label problem — `id2label`/`label2id` are derived from
   `dataset["train"].features["labels"].feature.names`, so the script itself is label-space-agnostic;
   what the label space actually contains is decided entirely in `generate_dataset.py`. That script
