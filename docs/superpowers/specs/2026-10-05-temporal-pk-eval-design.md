@@ -116,10 +116,15 @@ row per protein:
 - `category_C`/`category_F`/`category_P` ∈ {PK, LK, NK, none}
 - `pool` ∈ {added_annotation, unseen_protein}
 
-**Output 2 — flat CAFA-assessor files (secondary, cross-check only),**
-`experiments/pk_eval/temporal_pk_validation_flat/`: `ground_truth.tsv` (novel terms, same
-3-column shape as `train_terms.tsv` itself) + `known_terms.tsv` (t0 subset, non-empty only
-for `added_annotation` rows) — in `cafaeval`/`protea`'s expected input format.
+**Output 2 — flat files for the cafaeval cross-check (secondary),**
+`experiments/pk_eval/temporal_pk_validation_flat/`: `ground_truth.tsv` (novel terms only,
+2-column `protein_id\tterm` — real `cafaeval` 1.3.0's actual format, verified directly by
+installing it and inspecting its CLI/example data; it has no aspect column and no
+built-in known-terms-exclusion flag) + `known_terms.tsv` (t0 subset, non-empty only for
+`added_annotation` rows) — the latter consumed by *our own* cross-check script, not by
+`cafaeval` itself, to strip known terms from the prediction file before handing it to
+`cafaeval`, reproducing the hand-rolled scorer's known-exclusion behavior so the two are
+comparing the same effective inputs.
 
 **Sidecar:** `experiments/pk_eval/category_summary.json` — per-aspect×category protein
 counts, for sanity-checking the real yields before scoring.
@@ -144,10 +149,14 @@ each threshold τ swept 0.01–1.00:
 already uses (including the LoRA-adapter-vs-full-model branch where applicable) — no new
 loading convention introduced.
 
-**Cross-check:** convert the model's raw per-protein term/score output into
-`cafaeval`/`protea`'s expected prediction-file format (protein-ID header line + term/score
-rows, the standard CAFA submission shape), run it once against Output 2's flat files,
-confirm it matches the hand-rolled Fmax within tolerance.
+**Cross-check:** write the model's raw per-protein term/score output as a 3-column
+`protein_id\tterm\tscore` prediction TSV with known terms already stripped (per
+`known_terms.tsv`), then run the real `python -m cafaeval <go-basic.obo> <pred_dir>
+<ground_truth.tsv> -ia IA.tsv -out_dir ...` CLI (verified directly: `pip install
+cafaeval`, ran its bundled example) and compare its `evaluation_best_f.tsv` **`f`** column
+(macro F-measure at its own best threshold — matches our macro per-protein averaging
+convention; `f_micro` is the pooled variant and not the one to compare against) to the
+hand-rolled Fmax, within tolerance.
 
 **No label-space mismatch to worry about:** current checkpoints (trial-013 onward, the
 basis for all active ensembling/HPO work) are trained on `dataset_full`/`kelmoir/cafa6-full`
