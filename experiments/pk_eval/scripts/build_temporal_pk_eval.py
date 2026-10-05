@@ -107,6 +107,31 @@ def stream_diff(dump_path, t0_index, true_path_graph, label2id, term_to_aspect,
   return added_rows, unseen_rows
 
 
+def balance_pools(added_rows: list, unseen_rows: list, seed: int = 42) -> tuple:
+  import random
+  if not added_rows or not unseen_rows:
+    raise ValueError(
+        f"cannot balance: added_annotation={len(added_rows)}, unseen_protein={len(unseen_rows)} "
+        "- both pools must be non-empty")
+  n = min(len(added_rows), len(unseen_rows))
+  rng = random.Random(seed)
+  balanced_added = rng.sample(added_rows, n) if len(added_rows) > n else list(added_rows)
+  rng2 = random.Random(seed)
+  balanced_unseen = rng2.sample(unseen_rows, n) if len(unseen_rows) > n else list(unseen_rows)
+  return balanced_added, balanced_unseen
+
+
+def summarize_categories(added_rows: list, unseen_rows: list) -> dict:
+  summary = {"added_annotation": {"C": {}, "F": {}, "P": {}}, "unseen_protein": len(unseen_rows)}
+  for row in added_rows:
+    for aspect in ("C", "F", "P"):
+      category = row["category_by_aspect"][aspect]
+      if category is not None:
+        summary["added_annotation"][aspect][category] = (
+            summary["added_annotation"][aspect].get(category, 0) + 1)
+  return summary
+
+
 def _self_test():
   obonet_graph = obonet.read_obo(GO_OBO_PATH)
   true_path_graph = restrict_to_true_path(obonet_graph)
@@ -165,6 +190,27 @@ def _self_test():
     assert all(not s for s in row["known_by_aspect"].values()), "unseen rows must have empty known"
     assert any(row["novel_by_aspect"].values())
   print(f"[OK] stream_diff smoke test passed ({len(added_rows)} added, {len(unseen_rows)} unseen, first 3000 records)")
+
+  # --- balance_pools: synthetic unequal pools ---
+  fake_added = [{"protein_id": f"A{i}"} for i in range(7)]
+  fake_unseen = [{"protein_id": f"U{i}"} for i in range(3)]
+  balanced_added, balanced_unseen = balance_pools(fake_added, fake_unseen, seed=42)
+  assert len(balanced_added) == 3 and len(balanced_unseen) == 3
+  balanced_added_2, _ = balance_pools(fake_added, fake_unseen, seed=42)
+  assert [r["protein_id"] for r in balanced_added] == [r["protein_id"] for r in balanced_added_2], (
+      "same seed must reproduce the same subsample")
+
+  empty_unseen_should_fail = False
+  try:
+    balance_pools(fake_added, [], seed=42)
+  except ValueError:
+    empty_unseen_should_fail = True
+  assert empty_unseen_should_fail, "balancing against an empty pool must raise, not silently produce 0 rows"
+
+  summary = summarize_categories(added_rows, unseen_rows)
+  assert summary["unseen_protein"] == len(unseen_rows)
+  assert set(summary["added_annotation"].keys()) <= {"C", "F", "P"}
+  print("[OK] balance_pools/summarize_categories self-test passed")
 
 
 if __name__ == "__main__":
