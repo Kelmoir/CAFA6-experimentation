@@ -293,5 +293,56 @@ def _self_test():
     shutil.rmtree(scratch_dir)
 
 
+def main():
+  import json
+
+  import datasets as hf_datasets
+
+  print("[INFO] Loading go-basic.obo and building true-path graph + term->aspect map...")
+  obonet_graph = obonet.read_obo(GO_OBO_PATH)
+  true_path_graph = restrict_to_true_path(obonet_graph)
+  from pk_eval_common import build_term_to_aspect
+  term_to_aspect = build_term_to_aspect(obonet_graph)
+
+  dataset_full = hf_datasets.load_from_disk(str(DATA_ROOT / "dataset_full"))
+  label_names = dataset_full["train"].features["labels"].feature.names
+  label2id = {name: i for i, name in enumerate(label_names)}
+
+  print("[INFO] Building t0 (train_terms.tsv) known-terms index...")
+  t0_index = build_t0_index(TRAIN_TERMS_PATH, true_path_graph, label2id, term_to_aspect)
+  print(f"[INFO] t0 index covers {len(t0_index)} proteins")
+
+  print("[INFO] Streaming the full Swiss-Prot dump (one-time, ~700MB, a few minutes)...")
+  added_rows, unseen_rows = stream_diff(
+      SWISSPROT_DUMP_PATH, t0_index, true_path_graph, label2id, term_to_aspect)
+  print(f"[INFO] Raw yields: added_annotation={len(added_rows)}, unseen_protein={len(unseen_rows)}")
+
+  # Visibility into Review Focus item 2: a meaningful fraction of t0 (train_terms.tsv)
+  # proteins are expected to have no matching Swiss-Prot record at all (CAFA-6 also
+  # draws from TrEMBL, which this harness deliberately excludes - see spec), and those
+  # are silently absent from added_rows by construction (stream_diff only emits a row
+  # for accessions it actually visits while streaming). This count is a lower bound on
+  # "matched in the dump" (it excludes matched-but-no-novel-term proteins too), but
+  # still the right cheap signal that the match rate isn't suspiciously low.
+  t0_proteins_with_a_novel_term = {row["protein_id"] for row in added_rows}
+  print(f"[INFO] t0 proteins with >=1 novel annotation by t1 (lower bound on matched): "
+        f"{len(t0_proteins_with_a_novel_term)}/{len(t0_index)} "
+        f"({len(t0_proteins_with_a_novel_term) / len(t0_index):.1%})")
+
+  balanced_added, balanced_unseen = balance_pools(added_rows, unseen_rows, seed=42)
+  summary = summarize_categories(balanced_added, balanced_unseen)
+  print(f"[INFO] Balanced: added_annotation={len(balanced_added)}, unseen_protein={len(balanced_unseen)}")
+  print(f"[RESULT] category_summary={json.dumps(summary)}")
+
+  out_dir = Path("experiments/pk_eval")
+  write_outputs(balanced_added, balanced_unseen, label_names, out_dir)
+  (out_dir / "category_summary.json").write_text(json.dumps(summary, indent=2))
+  print(f"[INFO] Wrote outputs under {out_dir}")
+
+
 if __name__ == "__main__":
-  _self_test()
+  import sys
+  if "--self-test" in sys.argv:
+    _self_test()
+  else:
+    main()
