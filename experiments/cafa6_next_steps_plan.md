@@ -522,6 +522,20 @@ having no way to know which terms are already known, spends its confidence on ex
 easiest, most sequence-obvious ones) and has little signal left for the novel terms once known ones are
 stripped at scoring time — the kind of problem a known-annotation input channel exists to fix.
 
+**Scope caveat (found via the `cafaeval` cross-check, 2026-10-06): these Fmax numbers are not directly
+comparable to official CAFA leaderboard scores.** They're computed over `dataset_full`'s 27,191-term
+*trainable* vocabulary (the model structurally cannot predict outside it — see Architecture notes), not
+the full GO ontology. Confirmed by root-causing an initial cross-check failure: the real `cafaeval`
+package propagates both predictions and ground truth through its own complete per-namespace ontology
+(25,949/10,130/4,040 terms for P/F/C) before scoring, vs. our vocabulary-scoped 18,263/6,244/2,684 —
+feeding `cafaeval`'s own matrices into our hand-rolled formula reproduces its IA-weighted `f_w` within
+0.003 for every aspect, proving the *formula* is correct; the gap is purely about which terms get
+scored. The relative pattern above (PK collapsing vs. LK/unseen) is real and vocabulary-scope-independent,
+but the absolute Fmax values would be somewhat higher under a full-ontology scoring (more generic
+ancestor terms, which propagation makes easy credit, would be included). Not something to "fix" here —
+a different, deliberate truncation (`select_trainable_terms`) made this same trade-off for the whole
+pipeline already, for good reason (zero-train-example terms can't produce gradient signal regardless).
+
 ### 3. GO-DAG true-path-rule consistency, as a *lightweight* training/inference constraint — NOT the
 full graph-embedding plan
 **Source:** report §"Structure and ontology awareness pay off mostly at the long tail of rare GO
