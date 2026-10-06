@@ -29,6 +29,8 @@ __pycache__/
 # category_summary.json is small and kept tracked, same as class_priors_km2.json above.
 /experiments/pk_eval/temporal_pk_validation/*
 /experiments/pk_eval/temporal_pk_validation_flat/*
+/experiments/pk_eval/temporal_pk_validation_flat/predictions/*
+/experiments/pk_eval/cafaeval_crosscheck/*
 
 # Podman sandbox files
 .podman/
