@@ -603,6 +603,40 @@ shelved as currently documented; if it succeeds, this becomes the first Tier 1 c
 re-opening that line specifically (not the current per-term-calibration approach — see Deprioritized
 below).
 
+**Feasibility check DONE (2026-10-07), using the temporal PK/LK/NK harness's own infrastructure —
+PU-learning stays PARKED, not reopened.** The feasibility gate is resolved decisively yes: 100%
+(54,389/54,395, and separately 27,135/27,137 for the flagged-cell subset) of the two-tier mechanism's
+train+validation proteins matched in the cached Swiss-Prot dump. Found and corrected a real
+data-quality artifact along the way: 30.5% of the 43,250 "flagged likely-hidden-positive" cells were
+already true in `train_terms.tsv`'s full propagated closure — `dataset_raw`'s narrow, unpropagated
+668-term view had mislabeled them as unknown; excluded before the real comparison.
+
+On the actual evidence question — does a later GOA release confirm the flagged cells are real, non-
+circularly — the first naive pooled-vs-random-baseline check showed a 6.7x elevation, but that didn't
+control for the fact that SCAR doesn't hold here (real curation isn't a uniform random sample of true
+positives; some terms/proteins are just gaining annotations faster right now, independent of any
+mechanism). Redone with two confound controls: **(a) per-term matched** (flagged vs not-flagged
+within the same term, not pooled across terms) — pooled result 0.60% vs 0.19%, **3.23x**, holding
+directionally for 9/11 terms; **(b) per-protein matched** (same protein's flagged term vs its own
+other eligible-but-not-flagged terms) — 0.60% vs 0.18%, **3.30x**, ruling out "just hot proteins get
+flagged more." Both independent controls land within rounding of each other — a real, non-circular,
+bias-controlled signal that the mechanism finds genuine information, not just self-training noise.
+
+**Decision (user-confirmed 2026-10-07): PU-learning stays PARKED despite this stronger confirmation.**
+The controlled 3.2x signal validates that the mechanism *works* as designed, but doesn't move the
+actual reason it was shelved (`project_pu_learning_nnpu_km2.md` v2.1) — it still only ever reaches the
+same 11 terms that clear the ≥2000-source-positive TIcE calibration floor, and those 11 (nucleus,
+cytoplasm, protein binding, membrane, etc.) are the lowest-IA-weight terms under CAFA's own Fmax
+scoring. Not resuming now; may be worth reintroducing at a later spot in the training pipeline if it
+measurably improves results once other items land, not as a renewed standalone push.
+
+**More promising angle surfaced, not yet scoped:** the temporal t0/t1 infrastructure itself doesn't
+need an estimator (TIcE/KM2/spy) at all — a confirmed t0→t1 annotation is a *directly observed*
+hidden positive, not a statistically inferred one, removing the ≥2000-positives calibration floor
+entirely. That could in principle reach the rare, high-IA terms CAFA actually rewards, at the cost of
+only catching positives that happened to get annotated in the ~9-10 months between t0 and the cached
+t1 snapshot. Noted here for later; not pursued this session — item 2 part (B) is next instead.
+
 ### 8. Label-embedding output setup: predict a functional description, embed it, score against GO-term embeddings
 **Source:** your own inference from the deep-research report — "Not directly predicting GO-terms, but
 the descriptive text... yields better results" — the ProTranslator/TALE label-embedding pattern
