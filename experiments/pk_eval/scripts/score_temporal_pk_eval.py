@@ -107,6 +107,7 @@ def main():
   import torch
   from huggingface_hub import hf_hub_download
 
+  import obonet
   import training_run
   from pk_eval_common import build_term_to_aspect
 
@@ -162,7 +163,7 @@ def main():
   known = densify_term_lists(validation["known_labels"], n_labels)
   novel = densify_term_lists(validation["novel_labels"], n_labels)
 
-  obonet_graph = __import__("obonet").read_obo(
+  obonet_graph = obonet.read_obo(
       "data/cafa-6-protein-function-prediction/Train/go-basic.obo")
   term_to_aspect = build_term_to_aspect(obonet_graph)
   aspect_vector = np.array([term_to_aspect.get(name) for name in label_names])

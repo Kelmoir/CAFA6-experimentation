@@ -31,6 +31,15 @@ def write_prediction_tsv(probs, known, protein_ids, label_names, out_path, thres
   out_path.write_text("\n".join(lines) + "\n" if lines else "")
 
 
+def has_namespace_data(gt: dict, cafaeval_pred: dict, ns: str) -> bool:
+  """cafaeval.parser.gt_parser/pred_parser only populate an entry for a namespace that
+  has >=1 matching ground-truth/prediction line - a namespace absent from either dict
+  (e.g. a thin future rebuild with zero rows for one aspect) must be skipped cleanly
+  rather than KeyError-ing on gt[ns]/cafaeval_pred[ns] later.
+  """
+  return ns in gt and ns in cafaeval_pred
+
+
 def _self_test():
   import tempfile
 
@@ -46,11 +55,21 @@ def _self_test():
     assert not any(line.startswith("T0001\tGO:AAA") for line in lines), lines
     assert any(line.startswith("T0001\tGO:BBB") for line in lines), lines  # 0.02 >= floor
     assert any(line.startswith("T0002\tGO:AAA") for line in lines), lines
+
+  # --- has_namespace_data: cafaeval.parser.gt_parser/pred_parser only create a
+  # GroundTruth/Prediction entry for a namespace that actually has >=1 matching line -
+  # a namespace missing from either dict (e.g. a thin rebuild with zero ground-truth
+  # rows for cellular_component) must be detected cleanly, not KeyError later. ---
+  fake_gt = {"biological_process": object(), "molecular_function": object()}
+  fake_pred = {"biological_process": object()}
+  assert has_namespace_data(fake_gt, fake_pred, "biological_process") is True
+  assert has_namespace_data(fake_gt, fake_pred, "molecular_function") is False  # missing from pred
+  assert has_namespace_data(fake_gt, fake_pred, "cellular_component") is False  # missing from both
+
   print("[OK] crosscheck_cafaeval self-test passed")
 
 
 def main():
-  import csv
   import subprocess
 
   import datasets as hf_datasets
@@ -137,8 +156,12 @@ def main():
 
   thresholds = np.arange(0.01, 1.0, 0.01)
   namespace_to_letter = {"biological_process": "P", "molecular_function": "F", "cellular_component": "C"}
+  f_w_rows = pd.read_csv(cross_out_dir / "evaluation_best_f_w.tsv", sep="\t")
   print(f"{'aspect':<8}{'our formula on cafaeval matrices':<36}")
   for ns, letter in namespace_to_letter.items():
+    if not has_namespace_data(gt, cafaeval_pred, ns):
+      print(f"{letter:<8}skipped - no ground truth/prediction data for this namespace")
+      continue
     ont = ontologies[ns]
     toi_ia = ont.toi_ia
     gt_w = gt[ns].matrix[:, toi_ia]
@@ -146,8 +169,6 @@ def main():
     ia_w = ont.ia[toi_ia]
     fmax, _, _, _ = compute_ia_weighted_fmax(
         pred_w, np.zeros_like(gt_w, dtype=bool), gt_w, ia_w, thresholds)
-    cafaeval_f_w_path = cross_out_dir / "evaluation_best_f_w.tsv"
-    f_w_rows = pd.read_csv(cafaeval_f_w_path, sep="\t")
     cafaeval_f_w = f_w_rows.loc[
         (f_w_rows["filename"] == "model.tsv") & (f_w_rows["ns"] == ns), "f_w"
     ].iloc[0]
