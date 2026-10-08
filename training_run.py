@@ -2,6 +2,7 @@ import argparse
 import json
 import math
 import os
+import random
 import subprocess
 import sys
 import time
@@ -358,6 +359,11 @@ def preprocess_batch(
     max_length: int = MAX_LENGTH,
     mask_sparse_negatives_max_total_terms: Optional[int] = None,
     loss_mask_from_dataset: bool = False,
+    use_known_input: bool = False,
+    known_mix_zero_frac: float = 0.3,
+    known_reveal_max: float = 1.0,
+    known_terms_from_dataset: bool = False,
+    rng: Optional[random.Random] = None,
 ):
     seq_key = "sequence" if "sequence" in examples else "input_ids"
     if seq_key not in examples:
@@ -464,6 +470,40 @@ def preprocess_batch(
         if not isinstance(raw_aspects, list):
             raw_aspects = [raw_aspects]
         output_dict["aspect_input"] = [torch.tensor(a, dtype=torch.float) for a in raw_aspects]
+
+    if use_known_input:
+        if known_terms_from_dataset:
+            if "known_labels" not in examples:
+                raise ValueError("known_terms_from_dataset=True requires a known_labels column")
+            raw_known = examples["known_labels"]
+            if not isinstance(raw_known, list):
+                raw_known = [raw_known]
+            known_ids_list = [[int(i) for i in ids] for ids in raw_known]
+        else:
+            if "labels" not in examples:
+                raise ValueError("use_known_input (synthetic mode) requires a labels column")
+            # labels_list is built above whenever "labels" in examples - reused here
+            # rather than re-decoding raw_labels, since it's already a dense
+            # per-example tensor over unique_items.
+            active_rng = rng if rng is not None else random
+            known_ids_list = []
+            for labels in labels_list:
+                positive_ids = torch.nonzero(labels, as_tuple=True)[0].tolist()
+                if not positive_ids or active_rng.random() < known_mix_zero_frac:
+                    known_ids_list.append([])
+                    continue
+                reveal_frac = active_rng.uniform(0.0, known_reveal_max)
+                n_reveal = int(reveal_frac * len(positive_ids))
+                known_ids_list.append(active_rng.sample(positive_ids, n_reveal))
+
+        output_dict["known_term_ids"] = known_ids_list
+        loss_mask_list = []
+        for known_ids in known_ids_list:
+            mask = torch.ones((len(unique_items),), dtype=torch.float)
+            for idx in known_ids:
+                mask[idx] = 0.0
+            loss_mask_list.append(mask)
+        output_dict["loss_mask"] = loss_mask_list
 
     return output_dict
 
@@ -886,6 +926,20 @@ def main() -> None:
     parser.add_argument("--quiet", action=argparse.BooleanOptionalAction, default=False, help="Suppress per-step [STEP] prints (only needed to keep a colab-cli exec websocket alive; noisy for interactive/notebook use)")
     parser.add_argument("--use-lora", action=argparse.BooleanOptionalAction, default=False, help="Fine-tune via LoRA adapters (peft) instead of freeze-mostly/unfreeze-last-n: freezes the entire backbone and trains small low-rank adapters plus the classifier head, letting a much bigger model fit in limited VRAM. --unfreeze-last-n is ignored when this is set")
     parser.add_argument("--use-aspect-input", action=argparse.BooleanOptionalAction, default=False, help="Feed the dataset's ground-truth aspect_labels column (a 3-way [C,F,P] multi-hot, see generate_dataset_depth1.py) into the classifier head as an auxiliary input, concatenated to the pooled ESM sequence representation. Requires a dataset with an aspect_labels column (e.g. kelmoir/cafa6-depth1); not implemented with --use-lora")
+    parser.add_argument("--use-known-input", action=argparse.BooleanOptionalAction, default=False,
+                         help="Synthetically reveal a random subset of each training example's own "
+                              "positive GO terms as a 'known' input to the classifier head (see "
+                              "KnownAwareClassificationHead / docs/superpowers/specs/"
+                              "2026-10-08-known-annotation-conditioning-design.md), excluding revealed "
+                              "terms from the loss. Re-randomized every epoch (on-the-fly, no new "
+                              "dataset). Mutually exclusive with --use-aspect-input, --use-lora, "
+                              "--mask-sparse-negatives-max-total-terms, and --loss-mask-from-dataset.")
+    parser.add_argument("--known-mix-zero-frac", type=float, default=0.3,
+                         help="Fraction of --use-known-input draws forced to zero known terms (pure "
+                              "NK), so the model doesn't forget how to perform the original NK task.")
+    parser.add_argument("--known-reveal-max", type=float, default=1.0,
+                         help="Upper bound of the Uniform(0, known_reveal_max) reveal-fraction "
+                              "sampling range for non-zero --use-known-input draws. Must be in (0, 1].")
     parser.add_argument("--mask-sparse-negatives-max-total-terms", type=int, default=None, help="Exclude 'negative' (0) labels from the loss for proteins whose total_terms (raw GO annotation count across all aspects, see generate_dataset_aspect.py) is <= this value - an annotation-completeness proxy for GO's Open World Assumption (absence of annotation != absence of function). Positive (1) labels are always trusted regardless of total_terms. Requires a dataset with a total_terms column (e.g. kelmoir/cafa6-aspect); no-op otherwise")
     parser.add_argument("--loss-mask-from-dataset", action=argparse.BooleanOptionalAction, default=False,
                          help="Two-tier discrete relabeling (see experiments/scripts/build_two_tier_dataset.py, "
@@ -932,9 +986,20 @@ def main() -> None:
                               "ablation comparison.")
     args = parser.parse_args()
 
+    if args.use_known_input:
+        if args.mask_sparse_negatives_max_total_terms is not None or args.loss_mask_from_dataset:
+            raise ValueError(
+                "--use-known-input cannot be combined with --mask-sparse-negatives-max-total-terms "
+                "or --loss-mask-from-dataset -- all three write loss_mask and there's no defined "
+                "combined semantics (see docs/superpowers/specs/"
+                "2026-10-08-known-annotation-conditioning-design.md)")
+        if not (0.0 < args.known_reveal_max <= 1.0):
+            raise ValueError(f"--known-reveal-max must be in (0, 1], got {args.known_reveal_max}")
+
     torch.manual_seed(args.seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(args.seed)
+    random.seed(args.seed)
 
     config = vars(args)
     print(f"[CONFIG] {json.dumps(config, default=str)}")
@@ -957,6 +1022,9 @@ def main() -> None:
         label2id=label2id,
         mask_sparse_negatives_max_total_terms=args.mask_sparse_negatives_max_total_terms,
         loss_mask_from_dataset=args.loss_mask_from_dataset,
+        use_known_input=args.use_known_input,
+        known_mix_zero_frac=args.known_mix_zero_frac,
+        known_reveal_max=args.known_reveal_max,
     )
 
     processed_dataset = {
