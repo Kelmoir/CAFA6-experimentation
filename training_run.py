@@ -283,6 +283,8 @@ def create_esm(
     lora_layers_to_transform: Optional[int] = None,
     gradient_checkpointing: bool = False,
     use_aspect_input: bool = False,
+    use_known_input: bool = False,
+    known_embed_dim: int = 64,
 ):
     if id2label is None or label2id is None:
         raise ValueError("id2label and label2id must be provided")
@@ -291,6 +293,17 @@ def create_esm(
         raise NotImplementedError(
             "--use-aspect-input + --use-lora is not implemented - AspectConditionedEsmForSequenceClassification "
             "only replaces the plain (non-LoRA) classifier head."
+        )
+
+    if use_known_input and use_lora:
+        raise NotImplementedError(
+            "--use-known-input + --use-lora is not implemented - KnownConditionedEsmForSequenceClassification "
+            "only replaces the plain (non-LoRA) classifier head."
+        )
+    if use_known_input and use_aspect_input:
+        raise NotImplementedError(
+            "--use-known-input + --use-aspect-input is not implemented - no classifier head "
+            "concatenates both auxiliary inputs today (see the design spec's non-goals)."
         )
 
     if use_lora:
@@ -387,7 +400,12 @@ def create_esm(
         set_classifier_dropout(model, output_dropout)
         return model
 
-    model_cls = AspectConditionedEsmForSequenceClassification if use_aspect_input else AutoModelForSequenceClassification
+    model_cls = (
+        KnownConditionedEsmForSequenceClassification if use_known_input
+        else AspectConditionedEsmForSequenceClassification if use_aspect_input
+        else AutoModelForSequenceClassification
+    )
+    extra_model_kwargs = {"known_embed_dim": known_embed_dim} if use_known_input else {}
     model = model_cls.from_pretrained(
         model_type,
         num_labels=len(id2label),
@@ -395,6 +413,7 @@ def create_esm(
         label2id=label2id,
         problem_type="multi_label_classification",
         revision=revision,
+        **extra_model_kwargs,
     )
 
     for param in model.esm.parameters():
@@ -842,6 +861,7 @@ def run_diagnostic(
     max_val_samples: int = 2000,
     batch_size: int = 16,
     use_aspect_input: bool = False,
+    use_known_input: bool = False,
 ) -> Dict[str, Any]:
     """Post-hoc AUROC/F1 diagnostic, run against the model already resident in memory
     (GPU, post-training) rather than reloading a checkpoint from the Hub - originally a
@@ -879,6 +899,9 @@ def run_diagnostic(
             model_kwargs = {"input_ids": input_ids, "attention_mask": attention_mask}
             if use_aspect_input:
                 model_kwargs["aspect_input"] = batch["aspect_input"].to(device)
+            if use_known_input:
+                model_kwargs["known_indices"] = batch["known_indices"].to(device)
+                model_kwargs["known_offsets"] = batch["known_offsets"].to(device)
             with torch.autocast(device_type="cuda", dtype=autocast_dtype, enabled=use_amp):
                 logits = model(**model_kwargs).logits
             all_probs.append(torch.sigmoid(logits.float()).cpu())
@@ -1018,6 +1041,9 @@ def main() -> None:
     parser.add_argument("--known-reveal-max", type=float, default=1.0,
                          help="Upper bound of the Uniform(0, known_reveal_max) reveal-fraction "
                               "sampling range for non-zero --use-known-input draws. Must be in (0, 1].")
+    parser.add_argument("--known-embed-dim", type=int, default=64,
+                         help="Embedding dimension per GO term for --use-known-input's "
+                              "nn.EmbeddingBag known-term pooling.")
     parser.add_argument("--mask-sparse-negatives-max-total-terms", type=int, default=None, help="Exclude 'negative' (0) labels from the loss for proteins whose total_terms (raw GO annotation count across all aspects, see generate_dataset_aspect.py) is <= this value - an annotation-completeness proxy for GO's Open World Assumption (absence of annotation != absence of function). Positive (1) labels are always trusted regardless of total_terms. Requires a dataset with a total_terms column (e.g. kelmoir/cafa6-aspect); no-op otherwise")
     parser.add_argument("--loss-mask-from-dataset", action=argparse.BooleanOptionalAction, default=False,
                          help="Two-tier discrete relabeling (see experiments/scripts/build_two_tier_dataset.py, "
@@ -1145,6 +1171,8 @@ def main() -> None:
         lora_layers_to_transform=args.lora_layers_to_transform,
         gradient_checkpointing=args.gradient_checkpointing,
         use_aspect_input=args.use_aspect_input,
+        use_known_input=args.use_known_input,
+        known_embed_dim=args.known_embed_dim,
     ).to(device)
     # Computed unconditionally (not just on a fresh start) since --pos-weight needs it
     # regardless of whether we're resuming from a checkpoint.
@@ -1317,7 +1345,8 @@ def main() -> None:
         pos_weight = ratio.pow(args.pos_weight_exponent).to(device)
         print(f"[INFO] Using --pos-weight (exponent={args.pos_weight_exponent}): "
               f"min={pos_weight.min():.2f} median={pos_weight.median():.2f} max={pos_weight.max():.2f}")
-    use_loss_mask = args.mask_sparse_negatives_max_total_terms is not None or args.loss_mask_from_dataset
+    use_loss_mask = (args.mask_sparse_negatives_max_total_terms is not None
+                      or args.loss_mask_from_dataset or args.use_known_input)
     criterion = torch.nn.BCEWithLogitsLoss(pos_weight=pos_weight, reduction="none" if use_loss_mask else "mean")
 
     run_name = args.run_name or f"{args.model_name.split('/')[-1]}-epochs{args.epochs}-bs{args.batch_size}-device{device.type}"
@@ -1365,6 +1394,9 @@ def main() -> None:
             model_kwargs = {"input_ids": input_ids, "attention_mask": attention_mask}
             if args.use_aspect_input:
                 model_kwargs["aspect_input"] = batch["aspect_input"].to(device)
+            if args.use_known_input:
+                model_kwargs["known_indices"] = batch["known_indices"].to(device)
+                model_kwargs["known_offsets"] = batch["known_offsets"].to(device)
             loss_mask = batch["loss_mask"].to(device) if use_loss_mask else None
             with torch.autocast(device_type="cuda", dtype=autocast_dtype, enabled=use_amp):
                 outputs = model_esm(**model_kwargs)
@@ -1465,6 +1497,9 @@ def main() -> None:
                 model_kwargs = {"input_ids": input_ids, "attention_mask": attention_mask}
                 if args.use_aspect_input:
                     model_kwargs["aspect_input"] = batch["aspect_input"].to(device)
+                if args.use_known_input:
+                    model_kwargs["known_indices"] = batch["known_indices"].to(device)
+                    model_kwargs["known_offsets"] = batch["known_offsets"].to(device)
                 loss_mask = batch["loss_mask"].to(device) if use_loss_mask else None
                 with torch.autocast(device_type="cuda", dtype=autocast_dtype, enabled=use_amp):
                     outputs = model_esm(**model_kwargs)
@@ -1625,6 +1660,15 @@ def main() -> None:
                 label2id=label2id,
                 lora_base_dtype=lora_base_dtype,
             ).to(device)
+        elif args.use_known_input:
+            best_model = KnownConditionedEsmForSequenceClassification.from_pretrained(
+                str(best_checkpoint_dir),
+                num_labels=len(id2label),
+                id2label=id2label,
+                label2id=label2id,
+                problem_type="multi_label_classification",
+                known_embed_dim=args.known_embed_dim,
+            ).to(device)
         else:
             best_model_cls = AspectConditionedEsmForSequenceClassification if args.use_aspect_input else AutoModelForSequenceClassification
             best_model = best_model_cls.from_pretrained(
@@ -1648,6 +1692,7 @@ def main() -> None:
             max_val_samples=args.diagnostic_max_val_samples,
             batch_size=args.batch_size,
             use_aspect_input=args.use_aspect_input,
+            use_known_input=args.use_known_input,
         )
 
     if args.push_to_hub:
