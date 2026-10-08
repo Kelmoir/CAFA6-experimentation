@@ -198,6 +198,72 @@ class AspectConditionedEsmForSequenceClassification(EsmForSequenceClassification
         )
 
 
+class KnownAwareClassificationHead(torch.nn.Module):
+    """Like AspectAwareClassificationHead (above), but the auxiliary input is a
+    variable-size set of known GO term ids rather than a fixed 3-dim aspect vector:
+    pooled via a learned per-term embedding + sum (nn.EmbeddingBag), not concatenated
+    directly. A raw one-hot concat of the full 27,191-dim label space was rejected --
+    see docs/superpowers/specs/2026-10-08-known-annotation-conditioning-design.md's
+    "Alternatives considered": it would add ~27191*hidden_size parameters to one dense
+    layer and tends to memorize specific known-term combinations rather than
+    generalize across related GO terms. The embedding table's vocabulary size is
+    config.num_labels -- every term is both a known-input candidate and a prediction
+    target, the same vocabulary either way.
+    """
+
+    def __init__(self, config, known_embed_dim: int = 64):
+        super().__init__()
+        self.known_embed_dim = known_embed_dim
+        self.known_embedding = torch.nn.EmbeddingBag(config.num_labels, known_embed_dim, mode="sum")
+        self.dense = torch.nn.Linear(config.hidden_size + known_embed_dim, config.hidden_size)
+        self.dropout = torch.nn.Dropout(config.hidden_dropout_prob)
+        self.out_proj = torch.nn.Linear(config.hidden_size, config.num_labels)
+
+    def forward(self, features: torch.Tensor, known_indices: Optional[torch.Tensor] = None,
+                known_offsets: Optional[torch.Tensor] = None, **kwargs) -> torch.Tensor:
+        if known_indices is None or known_offsets is None:
+            raise ValueError("KnownAwareClassificationHead requires known_indices/known_offsets "
+                              "(flattened EmbeddingBag inputs -- see data_collate_function)")
+        x = features[:, 0, :]  # <s>/CLS token, matching EsmClassificationHead
+        x = self.dropout(x)
+        known_vec = self.known_embedding(known_indices, known_offsets)
+        x = torch.cat([x, known_vec.to(dtype=x.dtype, device=x.device)], dim=-1)
+        x = self.dense(x)
+        x = torch.tanh(x)
+        x = self.dropout(x)
+        x = self.out_proj(x)
+        return x
+
+
+class KnownConditionedEsmForSequenceClassification(EsmForSequenceClassification):
+    """EsmForSequenceClassification with its classifier head swapped for
+    KnownAwareClassificationHead. Mirrors AspectConditionedEsmForSequenceClassification
+    exactly (above) -- loss is computed externally by training_run.py, not here.
+    """
+
+    def __init__(self, config, known_embed_dim: int = 64):
+        super().__init__(config)
+        self.classifier = KnownAwareClassificationHead(config, known_embed_dim=known_embed_dim)
+        std = getattr(config, "initializer_range", None) or 0.02
+        with torch.no_grad():
+            for module in self.classifier.modules():
+                if isinstance(module, torch.nn.Linear):
+                    module.weight.normal_(mean=0.0, std=std)
+                    if module.bias is not None:
+                        module.bias.zero_()
+
+    def forward(self, input_ids=None, attention_mask=None, known_indices=None,
+                known_offsets=None, **kwargs) -> SequenceClassifierOutput:
+        outputs = self.esm(input_ids, attention_mask=attention_mask, **kwargs)
+        sequence_output = outputs[0]
+        logits = self.classifier(sequence_output, known_indices=known_indices, known_offsets=known_offsets)
+        return SequenceClassifierOutput(
+            logits=logits,
+            hidden_states=outputs.hidden_states,
+            attentions=outputs.attentions,
+        )
+
+
 def create_esm(
     unfreeze_last_n: int = 2,
     model_type: str = "facebook/esm2_t30_150M_UR50D",
