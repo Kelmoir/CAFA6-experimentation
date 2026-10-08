@@ -533,6 +533,18 @@ def data_collate_function(preprocessed_batch: List[Dict[str, Any]], tokenizer: E
     if loss_mask:
         collated_data["loss_mask"] = torch.stack(loss_mask)
 
+    known_term_ids = [sample["known_term_ids"] for sample in preprocessed_batch if "known_term_ids" in sample]
+    if known_term_ids:
+        flat_indices: List[int] = []
+        offsets: List[int] = []
+        cursor = 0
+        for ids in known_term_ids:
+            offsets.append(cursor)
+            flat_indices.extend(ids)
+            cursor += len(ids)
+        collated_data["known_indices"] = torch.tensor(flat_indices, dtype=torch.long)
+        collated_data["known_offsets"] = torch.tensor(offsets, dtype=torch.long)
+
     # preprocess_batch attaches "protein" per-sample but this function never gathered it into the
     # batch -- added for experiments/scripts/dataset_refinement_pilot.py, which needs to know
     # which batch row belongs to which protein to patch in its per-run label overrides. A plain
