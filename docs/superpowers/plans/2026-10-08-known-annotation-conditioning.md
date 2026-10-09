@@ -995,12 +995,20 @@ env/bin/python training_run.py \
   --batch-size 2 --grad-accum-steps 8 --epochs 3 \
   --use-known-input --known-mix-zero-frac 0.3 --known-reveal-max 1.0 --known-embed-dim 64 \
   --run-diagnostic --run-name known-input-trial-001 \
-  --push-to-hub --hf-repo-id kelmoir/cafa6-esm --checkpoint-mode final
+  --hf-repo-id kelmoir/cafa6-esm --checkpoint-mode final
 ```
 
 (Hyperparameters other than the new `--known-*` flags are the Tier-0 plateau sweep's
 settled defaults — `experiments/full_label_sweep/sweep_log.md` — reused as-is since this
-item doesn't re-sweep regularization; see this plan's Global Constraints.)
+item doesn't re-sweep regularization; see this plan's Global Constraints. **No
+`--push-to-hub`**: per `CLAUDE.md`, that flag unconditionally promotes the run's best
+checkpoint to `kelmoir/cafa6-esm@main` — reserved for a config already confirmed HEALTHY
+at target scale, not a first exploratory trial of a new architecture.
+`--checkpoint-mode final` alone already pushes the trial's own dedicated branch,
+`kelmoir/cafa6-esm@known-input-trial-001`, which is all this step needs. An earlier draft
+of this command included `--push-to-hub` and briefly overwrote `@main`'s Tier-0 baseline
+with this trial's checkpoint; it was caught and reverted — see git history around
+2026-10-09 for the recovery.)
 
 Expected: a completed trial pushed to `kelmoir/cafa6-esm@known-input-trial-001`, with a
 `--run-diagnostic` AUROC/F1 summary printed and saved in that branch's
