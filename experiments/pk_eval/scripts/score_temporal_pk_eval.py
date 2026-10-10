@@ -76,7 +76,8 @@ def _self_test():
   print("[OK] score_temporal_pk_eval self-test passed")
 
 
-def run_inference(model, tokenizer, dataset, device, batch_size: int = 16) -> np.ndarray:
+def run_inference(model, tokenizer, dataset, device, batch_size: int = 16,
+                   use_known_input: bool = False) -> np.ndarray:
   import torch
   from functools import partial
 
@@ -90,9 +91,14 @@ def run_inference(model, tokenizer, dataset, device, batch_size: int = 16) -> np
   all_probs = []
   with torch.inference_mode():
     for batch in loader:
-      input_ids = batch["input_ids"].to(device)
-      attention_mask = batch["attention_mask"].to(device)
-      logits = model(input_ids=input_ids, attention_mask=attention_mask).logits
+      model_kwargs = {
+          "input_ids": batch["input_ids"].to(device),
+          "attention_mask": batch["attention_mask"].to(device),
+      }
+      if use_known_input:
+        model_kwargs["known_indices"] = batch["known_indices"].to(device)
+        model_kwargs["known_offsets"] = batch["known_offsets"].to(device)
+      logits = model(**model_kwargs).logits
       all_probs.append(torch.sigmoid(logits.float()).cpu())
   if was_training:
     model.train()
@@ -137,6 +143,8 @@ def main():
   trial_config = json.loads(Path(trial_metrics_path).read_text())["config"]
   model_name = trial_config["model_name"]
   use_lora = trial_config.get("use_lora", False)
+  use_known_input = trial_config.get("use_known_input", False)
+  known_embed_dim = trial_config.get("known_embed_dim", 64)
 
   device = torch.device(args.device)
   tokenizer = training_run.create_esm_tokenizer(model_name)
@@ -145,21 +153,30 @@ def main():
         model_type=model_name, use_lora=True, lora_resume_repo_id=args.hf_repo_id,
         revision=args.revision, id2label=id2label, label2id=label2id,
     ).to(device)
+  elif use_known_input:
+    model = training_run.create_esm(
+        unfreeze_last_n=1, model_type=args.hf_repo_id, revision=args.revision,
+        id2label=id2label, label2id=label2id,
+        use_known_input=True, known_embed_dim=known_embed_dim,
+    ).to(device)
   else:
     model = training_run.create_esm(
         unfreeze_last_n=1, model_type=args.hf_repo_id, revision=args.revision,
         id2label=id2label, label2id=label2id,
     ).to(device)
   model.eval()
-  print(f"[INFO] Loaded {args.hf_repo_id}@{args.revision} ({model_name}, use_lora={use_lora})")
+  print(f"[INFO] Loaded {args.hf_repo_id}@{args.revision} ({model_name}, use_lora={use_lora}, "
+        f"use_known_input={use_known_input})")
 
   validation = hf_datasets.load_from_disk(str(VALIDATION_PATH))
   from functools import partial
   preprocess = partial(training_run.preprocess_batch, tokenizer=tokenizer,
-                       unique_items=label_names, label2id=label2id)
+                       unique_items=label_names, label2id=label2id,
+                       use_known_input=use_known_input, known_terms_from_dataset=True)
   tokenized = validation.with_transform(transform=preprocess)
 
-  probs = run_inference(model, tokenizer, tokenized, device, batch_size=args.batch_size)
+  probs = run_inference(model, tokenizer, tokenized, device, batch_size=args.batch_size,
+                        use_known_input=use_known_input)
   known = densify_term_lists(validation["known_labels"], n_labels)
   novel = densify_term_lists(validation["novel_labels"], n_labels)
 

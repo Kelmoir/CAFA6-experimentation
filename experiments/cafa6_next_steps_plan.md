@@ -558,7 +558,31 @@ test is whether this checkpoint closes the Fmax gap on genuine PK examples from 
 PK mechanism works; the PK-eval harness is the metric that can actually see the effect
 ([[feedback_check_metric_can_see_the_effect]]).
 
-**Process note:** an earlier version of this trial's hand-off command included `--push-to-hub`,
+**Task 6 PK-eval harness result (2026-10-10): negative on this first trial.** Wired
+`score_temporal_pk_eval.py` to feed each PK/LK row's real t0 known terms through
+`known-input-trial-001`'s `KnownConditionedEsmForSequenceClassification` (NK/unseen rows get an
+empty bag, same as training). Fmax vs. the pure-NK `trial-013` baseline, same harness/vocabulary:
+
+| aspect | PK: baseline → known-input (n) | LK: baseline → known-input (n) | unseen: baseline → known-input (n) |
+|---|---|---|---|
+| C | 0.0052 → 0.0043 (3834) | 0.5697 → 0.5833 (18) | 0.1726 → 0.1632 (5242) |
+| F | 0.0038 → 0.0024 (2947) | 0.5619 → 0.3475 (12) | 0.3171 → 0.2683 (5242) |
+| P | 0.0049 → 0.0047 (3848) | 0.3759 → 0.2681 (37) | 0.2267 → 0.1931 (5242) |
+
+**PK did not improve — it's flat-to-slightly-worse on all three aspects**, and LK/unseen are
+mostly worse too (C-aspect LK is the one exception, +0.014). The known-annotation input channel
+has not yet closed the PK gap this harness exists to measure.
+
+**Confound, not yet controlled for:** `known-input-trial-001` trained for only 3 epochs vs.
+`trial-013`'s 23 — the diagnostic AUROC comparison above already flagged this gap, and the
+PK-eval result is consistent with "undertrained on everything," not necessarily "the mechanism
+doesn't work." The known-term `EmbeddingBag` is newly-initialized, with its own parameters to
+learn from scratch alongside the classifier head's adjustment to the wider input — 3 epochs may
+simply not be enough for the model to learn to *use* the known-term signal at all, let alone
+learn it well enough to outweigh having ~8x less total training. **Before drawing any conclusion
+about whether this mechanism works, re-run at a comparable epoch/step budget to `trial-013`** —
+this first trial answers "does it break anything" (no) and "is it a free win out of the box" (no),
+not yet "does the mechanism work when given a fair chance." an earlier version of this trial's hand-off command included `--push-to-hub`,
 which per this repo's own convention unconditionally promotes a run's best checkpoint to
 `kelmoir/cafa6-esm@main` — briefly overwriting the Tier-0 baseline with this unvetted trial's
 checkpoint. Caught and reverted the same session (see git history around 2026-10-09); the plan
