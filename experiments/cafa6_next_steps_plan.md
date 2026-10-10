@@ -558,6 +558,14 @@ test is whether this checkpoint closes the Fmax gap on genuine PK examples from 
 PK mechanism works; the PK-eval harness is the metric that can actually see the effect
 ([[feedback_check_metric_can_see_the_effect]]).
 
+**Caveat added after the final review (2026-10-10):** the `mean_auroc=0.8483`/`pooled_auroc=0.9755`
+figures above were computed by a diagnostic that scored revealed/known cells as prediction targets
+even though the model had them as input — not a fair comparison against `trial-013`'s pure-NK
+diagnostic, which has no such cells at all. Fixed in `run_diagnostic` (now excludes known cells from
+AUROC/F1 the same way `compute_loss` already excludes them from training), but this specific number
+was logged before the fix and hasn't been recomputed. Don't treat `0.8483` as a validated
+same-ballpark comparison; the PK-eval harness result just below is the number that matters anyway.
+
 **Task 6 PK-eval harness result (2026-10-10): negative on this first trial.** Wired
 `score_temporal_pk_eval.py` to feed each PK/LK row's real t0 known terms through
 `known-input-trial-001`'s `KnownConditionedEsmForSequenceClassification` (NK/unseen rows get an
