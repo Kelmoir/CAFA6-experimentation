@@ -536,6 +536,34 @@ ancestor terms, which propagation makes easy credit, would be included). Not som
 a different, deliberate truncation (`select_trainable_terms`) made this same trade-off for the whole
 pipeline already, for good reason (zero-train-example terms can't produce gradient signal regardless).
 
+**(B) built and first-trialed (2026-10-09/10):** training-time known-annotation conditioning —
+see `docs/superpowers/specs/2026-10-08-known-annotation-conditioning-design.md` and
+`docs/superpowers/plans/2026-10-08-known-annotation-conditioning.md`. Each training example's own
+t0 annotation closure is split on the fly, per epoch, into a "known" (revealed) subset and a
+"novel" (hidden, scored) subset; the known subset is pooled through a learned per-term
+`nn.EmbeddingBag` (sum-pooling, `known_embed_dim=64`) and concatenated into the classifier head
+alongside the pooled CLS representation (`KnownConditionedEsmForSequenceClassification`), with the
+revealed terms excluded from the loss via the existing `loss_mask` mechanism. No new dataset
+artifact — the masking lives entirely in `preprocess_batch`, re-randomized every epoch.
+
+First real GPU trial (`known-input-trial-001`, `facebook/esm2_t12_35M_UR50D`, otherwise the Tier-0
+plateau sweep's settled hyperparameters, 3 epochs, `kelmoir/cafa6-esm@known-input-trial-001`):
+`--run-diagnostic` reported `mean_auroc=0.8483`, `pooled_auroc=0.9755`,
+`best_f1=0.4243@threshold=0.16` — in the same ballpark as the Tier-0 baseline's own diagnostic
+(`trial-013`: mean AUROC 0.8731), on only 3 epochs with no hyperparameter re-tuning for the new
+input channel. This is a first-cut sanity check, not yet a PK-eval-harness comparison: the real
+test is whether this checkpoint closes the Fmax gap on genuine PK examples from part (A)'s harness
+(`experiments/pk_eval/`), which is part (B)'s remaining step (Task 6: wire real known-terms into
+`score_temporal_pk_eval.py`) — a plausible-looking diagnostic AUROC doesn't by itself confirm the
+PK mechanism works; the PK-eval harness is the metric that can actually see the effect
+([[feedback_check_metric_can_see_the_effect]]).
+
+**Process note:** an earlier version of this trial's hand-off command included `--push-to-hub`,
+which per this repo's own convention unconditionally promotes a run's best checkpoint to
+`kelmoir/cafa6-esm@main` — briefly overwriting the Tier-0 baseline with this unvetted trial's
+checkpoint. Caught and reverted the same session (see git history around 2026-10-09); the plan
+doc was corrected to drop that flag for future trials of this kind.
+
 ### 3. GO-DAG true-path-rule consistency, as a *lightweight* training/inference constraint — NOT the
 full graph-embedding plan
 **Source:** report §"Structure and ontology awareness pay off mostly at the long tail of rare GO
