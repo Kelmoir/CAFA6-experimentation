@@ -88,10 +88,36 @@ def check_missing_labels_raises():
     print("[OK] use_known_input without a labels column raises ValueError")
 
 
+def check_known_split_seed_is_deterministic_per_example():
+    # Validation/test must NOT re-randomize their known/novel split every epoch
+    # (code review finding, Important #1) -- known_split_seed derives a per-example
+    # rng from the example's own sequence, independent of call order/global state.
+    examples = {"sequence": ["MKT", "MKTG"], "labels": [[0, 1, 2], [0, 1, 2]]}
+    out1 = _run(examples, use_known_input=True, known_mix_zero_frac=0.0,
+               known_reveal_max=1.0, known_split_seed=42)
+    out2 = _run(examples, use_known_input=True, known_mix_zero_frac=0.0,
+               known_reveal_max=1.0, known_split_seed=42)
+    assert out1["known_term_ids"] == out2["known_term_ids"], (
+        out1["known_term_ids"], out2["known_term_ids"])
+    # Same sequence (both rows are "MKT"-shaped via index 0) gets the same draw
+    # within one call -- the seed is keyed on the sequence, not the row position.
+    examples_dup = {"sequence": ["MKT", "MKT"], "labels": [[0, 1, 2], [0, 1, 2]]}
+    out3 = _run(examples_dup, use_known_input=True, known_mix_zero_frac=0.0,
+               known_reveal_max=1.0, known_split_seed=42)
+    assert out3["known_term_ids"][0] == out3["known_term_ids"][1], out3["known_term_ids"]
+    # A different seed must actually change the draw (seed isn't silently ignored).
+    out4 = _run(examples, use_known_input=True, known_mix_zero_frac=0.0,
+               known_reveal_max=1.0, known_split_seed=43)
+    assert out1["known_term_ids"] != out4["known_term_ids"], (
+        "different known_split_seed produced an identical draw -- seed is being ignored")
+    print("[OK] known_split_seed makes the known/novel split reproducible per example")
+
+
 if __name__ == "__main__":
     check_forced_zero_known()
     check_partial_reveal_properties()
     check_few_positives_edge_case()
     check_known_terms_from_dataset()
     check_missing_labels_raises()
+    check_known_split_seed_is_deterministic_per_example()
     print("[OK] all checks passed")

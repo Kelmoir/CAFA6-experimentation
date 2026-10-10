@@ -449,6 +449,7 @@ def preprocess_batch(
     known_reveal_max: float = 1.0,
     known_terms_from_dataset: bool = False,
     rng: Optional[random.Random] = None,
+    known_split_seed: Optional[int] = None,
 ):
     seq_key = "sequence" if "sequence" in examples else "input_ids"
     if seq_key not in examples:
@@ -570,9 +571,18 @@ def preprocess_batch(
             # labels_list is built above whenever "labels" in examples - reused here
             # rather than re-decoding raw_labels, since it's already a dense
             # per-example tensor over unique_items.
-            active_rng = rng if rng is not None else random
             known_ids_list = []
-            for labels in labels_list:
+            for seq_idx, labels in enumerate(labels_list):
+                # known_split_seed keys a per-example rng off the example's own
+                # sequence, not call order/global state -- without this, validation/
+                # test's known/novel split (same preprocess_batch, re-evaluated lazily
+                # by with_transform on every epoch) would re-randomize every epoch too,
+                # making val_loss/best-checkpoint-selection and the diagnostic AUROC
+                # noisy across epochs instead of a fixed holdout (code review finding).
+                if known_split_seed is not None:
+                    active_rng = random.Random(f"{known_split_seed}:{sequences[seq_idx]}")
+                else:
+                    active_rng = rng if rng is not None else random
                 positive_ids = torch.nonzero(labels, as_tuple=True)[0].tolist()
                 if not positive_ids or active_rng.random() < known_mix_zero_frac:
                     known_ids_list.append([])
@@ -850,6 +860,76 @@ def push_checkpoint(
     )
 
 
+def _diagnostic_metrics_from_arrays(probs: np.ndarray, labels: np.ndarray,
+                                     loss_mask: Optional[np.ndarray] = None):
+    """Shared AUROC/F1 computation for run_diagnostic. loss_mask follows the same
+    convention as compute_loss's loss_mask (1 = score this cell, 0 = exclude) and
+    defaults to all-ones (every cell scored, the original behavior). With
+    --use-known-input, revealed/known cells are visible to the model as INPUT, not
+    something it predicted -- scoring them too would make the diagnostic trivially
+    "predict what you were just handed" rather than measuring the same novel-term
+    prediction task the training loss is restricted to (final-review finding: an
+    earlier version scored every cell regardless of loss_mask, making its AUROC
+    incomparable to a pure-NK run like trial-013's).
+
+    Returns (result_dict, per_label_auroc_array) -- the array is kept separate from
+    the dict since it isn't JSON-serializable and run_diagnostic's own print output
+    needs its raw min/max.
+    """
+    if loss_mask is None:
+        loss_mask = np.ones_like(labels, dtype=bool)
+    else:
+        loss_mask = loss_mask.astype(bool)
+
+    per_label_auroc = []
+    for j in range(labels.shape[1]):
+        col_mask = loss_mask[:, j]
+        y_true = labels[col_mask, j]
+        if y_true.size == 0 or y_true.min() == y_true.max():
+            continue  # not evaluable: no unmasked examples, or single-class
+        per_label_auroc.append(roc_auc_score(y_true, probs[col_mask, j]))
+    per_label_auroc = np.array(per_label_auroc)
+
+    flat_mask = loss_mask.ravel()
+    flat_labels = labels.ravel()[flat_mask]
+    flat_probs = probs.ravel()[flat_mask]
+    preds_at_half = (flat_probs >= 0.5).astype(float)
+
+    prior = float(flat_labels.mean()) if flat_labels.size else 0.0
+    tp = ((preds_at_half == 1) & (flat_labels == 1)).sum()
+    fp = ((preds_at_half == 1) & (flat_labels == 0)).sum()
+    fn = ((preds_at_half == 0) & (flat_labels == 1)).sum()
+    accuracy = float((preds_at_half == flat_labels).mean()) if flat_labels.size else 0.0
+    precision = tp / (tp + fp + 1e-8)
+    recall = tp / (tp + fn + 1e-8)
+    f1 = 2 * precision * recall / (precision + recall + 1e-8)
+    pooled_auroc = (roc_auc_score(flat_labels, flat_probs)
+                    if flat_labels.size and flat_labels.min() != flat_labels.max() else None)
+
+    best_f1, best_thresh = 0.0, 0.5
+    for t in np.arange(0.02, 0.51, 0.02):
+        f1_t = f1_score(flat_labels, (flat_probs >= t).astype(float), zero_division=0)
+        if f1_t > best_f1:
+            best_f1, best_thresh = f1_t, t
+
+    result = {
+        "n_val_examples": int(labels.shape[0]),
+        "n_labels_evaluable": int(len(per_label_auroc)),
+        "n_labels_total": int(labels.shape[1]),
+        "mean_auroc": float(per_label_auroc.mean()) if per_label_auroc.size else None,
+        "median_auroc": float(np.median(per_label_auroc)) if per_label_auroc.size else None,
+        "pooled_auroc": float(pooled_auroc) if pooled_auroc is not None else None,
+        "accuracy_at_0.5": accuracy,
+        "trivial_baseline_accuracy": float(1 - prior),
+        "precision_at_0.5": float(precision),
+        "recall_at_0.5": float(recall),
+        "f1_at_0.5": float(f1),
+        "best_f1": float(best_f1),
+        "best_f1_threshold": float(best_thresh),
+    }
+    return result, per_label_auroc
+
+
 def run_diagnostic(
     model,
     tokenizer: EsmTokenizer,
@@ -891,7 +971,7 @@ def run_diagnostic(
 
     was_training = model.training
     model.eval()
-    all_probs, all_labels = [], []
+    all_probs, all_labels, all_loss_masks = [], [], []
     with torch.inference_mode():
         for batch in loader:
             input_ids = batch["input_ids"].to(device)
@@ -906,52 +986,27 @@ def run_diagnostic(
                 logits = model(**model_kwargs).logits
             all_probs.append(torch.sigmoid(logits.float()).cpu())
             all_labels.append(batch["labels"])
+            if use_known_input:
+                all_loss_masks.append(batch["loss_mask"])
     if was_training:
         model.train()
 
     probs = torch.cat(all_probs).numpy()
     labels = torch.cat(all_labels).numpy()
-    preds_at_half = (probs >= 0.5).astype(float)
-
-    per_label_auroc = []
-    for j in range(labels.shape[1]):
-        y_true = labels[:, j]
-        if y_true.min() == y_true.max():
-            continue  # roc_auc_score is undefined for a single-class label
-        per_label_auroc.append(roc_auc_score(y_true, probs[:, j]))
-    per_label_auroc = np.array(per_label_auroc)
-
-    prior = labels.mean()
-    tp = ((preds_at_half == 1) & (labels == 1)).sum()
-    fp = ((preds_at_half == 1) & (labels == 0)).sum()
-    fn = ((preds_at_half == 0) & (labels == 1)).sum()
-    accuracy = (preds_at_half == labels).mean()
-    precision = tp / (tp + fp + 1e-8)
-    recall = tp / (tp + fn + 1e-8)
-    f1 = 2 * precision * recall / (precision + recall + 1e-8)
-    pooled_auroc = roc_auc_score(labels.ravel(), probs.ravel())
-
-    best_f1, best_thresh = 0.0, 0.5
-    for t in np.arange(0.02, 0.51, 0.02):
-        f1_t = f1_score(labels.ravel(), (probs.ravel() >= t).astype(float), zero_division=0)
-        if f1_t > best_f1:
-            best_f1, best_thresh = f1_t, t
-
-    result = {
-        "n_val_examples": int(len(labels)),
-        "n_labels_evaluable": int(len(per_label_auroc)),
-        "n_labels_total": int(labels.shape[1]),
-        "mean_auroc": float(per_label_auroc.mean()) if per_label_auroc.size else None,
-        "median_auroc": float(np.median(per_label_auroc)) if per_label_auroc.size else None,
-        "pooled_auroc": float(pooled_auroc),
-        "accuracy_at_0.5": float(accuracy),
-        "trivial_baseline_accuracy": float(1 - prior),
-        "precision_at_0.5": float(precision),
-        "recall_at_0.5": float(recall),
-        "f1_at_0.5": float(f1),
-        "best_f1": float(best_f1),
-        "best_f1_threshold": float(best_thresh),
-    }
+    # use_known_input: exclude revealed/known cells from the diagnostic the same way
+    # compute_loss already excludes them from training - they're model INPUT, not
+    # something it predicted, so scoring them isn't a fair comparison against a
+    # pure-NK run (final-review finding).
+    loss_mask = torch.cat(all_loss_masks).numpy() if all_loss_masks else None
+    result, per_label_auroc = _diagnostic_metrics_from_arrays(probs, labels, loss_mask)
+    accuracy = result["accuracy_at_0.5"]
+    prior = 1 - result["trivial_baseline_accuracy"]
+    precision = result["precision_at_0.5"]
+    recall = result["recall_at_0.5"]
+    f1 = result["f1_at_0.5"]
+    pooled_auroc = result["pooled_auroc"]
+    best_f1 = result["best_f1"]
+    best_thresh = result["best_f1_threshold"]
 
     print("\n" + "=" * 70)
     print(f"DIAGNOSTIC: {result['n_labels_evaluable']}/{result['n_labels_total']} labels evaluable "
@@ -966,7 +1021,8 @@ def run_diagnostic(
         print("Per-label AUROC: no evaluable labels (every label single-class in this val slice)")
     print(f"Pooled @ threshold 0.5: accuracy={accuracy:.4f} (trivial baseline={1 - prior:.4f}) "
           f"precision={precision:.4f} recall={recall:.4f} f1={f1:.4f}")
-    print(f"Pooled AUROC={pooled_auroc:.4f}  Best F1={best_f1:.4f}@threshold={best_thresh:.2f}")
+    pooled_auroc_str = f"{pooled_auroc:.4f}" if pooled_auroc is not None else "n/a (single-class)"
+    print(f"Pooled AUROC={pooled_auroc_str}  Best F1={best_f1:.4f}@threshold={best_thresh:.2f}")
     print(f"[DIAGNOSTIC] {json.dumps(result, default=str)}")
 
     return result
@@ -1130,11 +1186,18 @@ def main() -> None:
         known_mix_zero_frac=args.known_mix_zero_frac,
         known_reveal_max=args.known_reveal_max,
     )
+    # Validation/test get a FIXED known/novel split (known_split_seed), not the
+    # training split's intentional per-epoch re-randomization: with_transform is
+    # lazy, so re-using preprocess_batch_partial as-is would re-randomize val/test on
+    # every epoch too, making val_loss (which drives best-checkpoint selection) and
+    # --run-diagnostic's AUROC noisy across epochs instead of a fixed holdout (code
+    # review finding on this plan's final review).
+    eval_preprocess_batch_partial = partial(preprocess_batch_partial, known_split_seed=args.seed)
 
     processed_dataset = {
         "train": dataset["train"].with_transform(transform=preprocess_batch_partial),
-        "validation": dataset["validation"].with_transform(transform=preprocess_batch_partial),
-        "test": dataset["test"].with_transform(transform=preprocess_batch_partial),
+        "validation": dataset["validation"].with_transform(transform=eval_preprocess_batch_partial),
+        "test": dataset["test"].with_transform(transform=eval_preprocess_batch_partial),
     }
 
     # train stays unsliced here (unlike validation) so each epoch can draw a different
