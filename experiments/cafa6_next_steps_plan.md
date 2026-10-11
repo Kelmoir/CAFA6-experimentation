@@ -596,6 +596,34 @@ which per this repo's own convention unconditionally promotes a run's best check
 checkpoint. Caught and reverted the same session (see git history around 2026-10-09); the plan
 doc was corrected to drop that flag for future trials of this kind.
 
+**Confound resolved (2026-10-11): re-ran at `trial-013`'s own budget — still negative.**
+`known-input-trial-002`, identical config to `trial-001` except `--epochs 30
+--checkpoint-selection f1` (matching `trial-013` exactly; best epoch 29, `val_f1=0.4282`),
+pushed to `kelmoir/cafa6-esm@known-input-trial-002`. The diagnostic (post-review-fix, known
+cells masked out) now clearly beats `trial-013`'s: mean AUROC 0.9173 vs 0.8731, median 0.9586
+vs 0.9259, pooled AUROC 0.9848 vs 0.9773, best F1 0.4440@0.24 vs 0.4197@0.26 — so "undertrained"
+is ruled out as an explanation; given a fair training budget, the model learns to use the
+known-term channel and generalizes better overall. The PK-eval harness result, same
+baseline/vocabulary as above:
+
+| aspect | PK: baseline → known-input-002 (n) | LK: baseline → known-input-002 (n) | unseen: baseline → known-input-002 (n) |
+|---|---|---|---|
+| C | 0.0052 → 0.0045 (3834) | 0.5697 → 0.4540 (18) | 0.1726 → 0.1726 (5242) |
+| F | 0.0038 → 0.0027 (2947) | 0.5619 → 0.4446 (12) | 0.3171 → 0.3224 (5242) |
+| P | 0.0049 → 0.0040 (3848) | 0.3759 → 0.2514 (37) | 0.2267 → 0.2273 (5242) |
+
+**PK is still flat (within noise of `trial-001`'s already-flat numbers), and LK got worse across
+all three aspects** despite the general diagnostic improving. Conclusion: this isn't an
+undertraining artifact — a model that's unambiguously better on ordinary held-out AUROC/F1 still
+does not use the known-term channel to do better on genuinely held-out (PK) proteins, and LK (the
+case the mechanism should help most directly, since those proteins' PK-style history is exactly
+what's being revealed) gets worse, not better. The mechanism as designed — a single sum-pooled
+`EmbeddingBag` of revealed terms concatenated into the classifier head — does not close the PK
+gap. Shelving part (B) rather than iterating further on this architecture; the reviewer's
+noted second confound (uniform-random reveal vs. ancestor-closed reveal, logged as a ruling above)
+is the one unexplored lever, but LK getting worse with more training is a more fundamental signal
+against this approach than a sampling-strategy tweak is likely to fix.
+
 ### 3. GO-DAG true-path-rule consistency, as a *lightweight* training/inference constraint — NOT the
 full graph-embedding plan
 **Source:** report §"Structure and ontology awareness pay off mostly at the long tail of rare GO
