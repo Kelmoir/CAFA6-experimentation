@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional
 # setdefault (not a direct assignment) leaves an explicit user override alone.
 os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
 
+import networkx as nx
 import numpy as np
 import torch
 from datasets import load_dataset, load_from_disk
@@ -709,6 +710,50 @@ def compute_loss(criterion, logits: torch.Tensor, labels: torch.Tensor, loss_mas
     return (per_element_loss * loss_mask).sum() / loss_mask.sum().clamp(min=1)
 
 
+def build_hierarchy_edge_index(label2id: Dict[str, int], graph_path: Path) -> torch.LongTensor:
+    """Restrict generate_dataset_full.py's exported GO graph (go_dependency_graph.json)
+    to direct is_a/part_of edges where both endpoints are in the current trainable
+    vocabulary (label2id) -- the transitive ancestor closure is NOT used here (see the
+    design spec's "Why direct edges, not full ancestor closure"): if every direct edge
+    satisfies parent_score >= child_score, transitive consistency over any longer chain
+    follows automatically, so penalizing the full closure would roughly square the edge
+    count for no additional constraint power. Returns a (E, 2) LongTensor of
+    (child_label_idx, parent_label_idx) pairs, or a (0, 2) tensor if nothing matches --
+    cheap enough (well under a second, ~47k edges at the current 27,191-term vocabulary)
+    to build once per run and keep resident on device for the whole training loop.
+    """
+    payload = json.loads(graph_path.read_text())
+    graph = nx.readwrite.json_graph.node_link_graph(payload["graph"], edges="links")
+    true_path_relationships = set(payload["true_path_relationships"])
+    edges = [
+        (label2id[u], label2id[v])
+        for u, v, key in graph.edges(keys=True)
+        if key in true_path_relationships and u in label2id and v in label2id
+    ]
+    if not edges:
+        return torch.zeros((0, 2), dtype=torch.long)
+    return torch.tensor(edges, dtype=torch.long)
+
+
+def hierarchy_consistency_penalty(logits: torch.Tensor, edge_index: torch.Tensor) -> torch.Tensor:
+    """Mean hinge violation of GO's true-path rule over edge_index's direct
+    (child_idx, parent_idx) pairs: relu(child_logit - parent_logit), averaged over every
+    edge and every example in the batch. Zero when every edge already satisfies
+    parent_logit >= child_logit for every example; monotonic with sigmoid, so this
+    constrains predicted probabilities (parent_prob >= child_prob) without needing to
+    compute probabilities at all.
+    """
+    if edge_index.numel() == 0:
+        return torch.zeros((), device=logits.device)
+    # Upcast to fp32 before subtracting: two fp16 logits near the dtype's extremes
+    # (e.g. +-60000) can subtract to a value past fp16's max (65504), producing inf
+    # that would otherwise feed straight into GradScaler under --mixed-precision fp16.
+    logits32 = logits.float()
+    child_logits = logits32[:, edge_index[:, 0]]
+    parent_logits = logits32[:, edge_index[:, 1]]
+    return torch.relu(child_logits - parent_logits).mean()
+
+
 def nnpu_loss(
     logits_u: torch.Tensor,
     hard_labels_u: torch.Tensor,
@@ -858,6 +903,33 @@ def push_checkpoint(
         commit_message=f"epoch {epoch}: val_loss={metrics.get('val_loss', float('nan')):.4f}",
         delete_patterns=delete_patterns,
     )
+
+
+def compute_hierarchy_violations(probs: np.ndarray, edge_index: np.ndarray,
+                                  chunk_size: int = 256) -> Dict[str, float]:
+    """Direct measurement of what hierarchy_consistency_penalty targets, computed on
+    predicted PROBABILITIES (one level removed from the logit-space loss itself) over
+    every (validation example, edge) pair: a violation is child_prob > parent_prob,
+    regardless of margin. Processed in example-chunks rather than materializing the
+    full (n_examples, n_edges) array at once -- negligible at today's ~2000x47068 scale
+    but keeps this safe if --diagnostic-max-val-samples is raised well beyond that.
+    """
+    if len(edge_index) == 0:
+        return {"violation_rate": 0.0, "mean_violation_magnitude": 0.0, "n_edges": 0}
+    child_idx, parent_idx = edge_index[:, 0], edge_index[:, 1]
+    n_violations, violation_sum, total_pairs = 0, 0.0, 0
+    for start in range(0, len(probs), chunk_size):
+        chunk = probs[start:start + chunk_size]
+        diff = chunk[:, child_idx] - chunk[:, parent_idx]
+        violated = diff > 0
+        n_violations += int(violated.sum())
+        violation_sum += float(diff[violated].sum())
+        total_pairs += diff.size
+    return {
+        "violation_rate": n_violations / total_pairs if total_pairs else 0.0,
+        "mean_violation_magnitude": violation_sum / n_violations if n_violations else 0.0,
+        "n_edges": int(len(edge_index)),
+    }
 
 
 def _diagnostic_metrics_from_arrays(probs: np.ndarray, labels: np.ndarray,
