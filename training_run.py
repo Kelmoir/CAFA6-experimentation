@@ -1028,6 +1028,8 @@ def run_diagnostic(
     batch_size: int = 16,
     use_aspect_input: bool = False,
     use_known_input: bool = False,
+    hierarchy_edge_index: Optional[np.ndarray] = None,
+    label_is_rare: Optional[np.ndarray] = None,
 ) -> Dict[str, Any]:
     """Post-hoc AUROC/F1 diagnostic, run against the model already resident in memory
     (GPU, post-training) rather than reloading a checkpoint from the Hub - originally a
@@ -1084,7 +1086,9 @@ def run_diagnostic(
     # something it predicted, so scoring them isn't a fair comparison against a
     # pure-NK run (final-review finding).
     loss_mask = torch.cat(all_loss_masks).numpy() if all_loss_masks else None
-    result, per_label_auroc = _diagnostic_metrics_from_arrays(probs, labels, loss_mask)
+    result, per_label_auroc = _diagnostic_metrics_from_arrays(probs, labels, loss_mask, label_is_rare)
+    if hierarchy_edge_index is not None:
+        result.update(compute_hierarchy_violations(probs, hierarchy_edge_index))
     accuracy = result["accuracy_at_0.5"]
     prior = 1 - result["trivial_baseline_accuracy"]
     precision = result["precision_at_0.5"]
@@ -1109,6 +1113,14 @@ def run_diagnostic(
           f"precision={precision:.4f} recall={recall:.4f} f1={f1:.4f}")
     pooled_auroc_str = f"{pooled_auroc:.4f}" if pooled_auroc is not None else "n/a (single-class)"
     print(f"Pooled AUROC={pooled_auroc_str}  Best F1={best_f1:.4f}@threshold={best_thresh:.2f}")
+    if "rare_mean_auroc" in result:
+        rare_str = f"{result['rare_mean_auroc']:.4f}" if result["rare_mean_auroc"] is not None else "n/a"
+        common_str = f"{result['common_mean_auroc']:.4f}" if result["common_mean_auroc"] is not None else "n/a"
+        print(f"Rarity-stratified AUROC: rare mean={rare_str} (n={result['rare_n_labels_evaluable']})  "
+              f"common mean={common_str} (n={result['common_n_labels_evaluable']})")
+    if "violation_rate" in result:
+        print(f"Hierarchy violations: rate={result['violation_rate']:.4f} "
+              f"mean_magnitude={result['mean_violation_magnitude']:.4f} (n_edges={result['n_edges']})")
     print(f"[DIAGNOSTIC] {json.dumps(result, default=str)}")
 
     return result
@@ -1886,6 +1898,8 @@ def main() -> None:
             batch_size=args.batch_size,
             use_aspect_input=args.use_aspect_input,
             use_known_input=args.use_known_input,
+            hierarchy_edge_index=hierarchy_edge_index.numpy() if hierarchy_edge_index is not None else None,
+            label_is_rare=(label_counts.numpy() < args.rare_term_threshold),
         )
 
     if args.push_to_hub:
