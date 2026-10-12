@@ -933,7 +933,8 @@ def compute_hierarchy_violations(probs: np.ndarray, edge_index: np.ndarray,
 
 
 def _diagnostic_metrics_from_arrays(probs: np.ndarray, labels: np.ndarray,
-                                     loss_mask: Optional[np.ndarray] = None):
+                                     loss_mask: Optional[np.ndarray] = None,
+                                     label_is_rare: Optional[np.ndarray] = None):
     """Shared AUROC/F1 computation for run_diagnostic. loss_mask follows the same
     convention as compute_loss's loss_mask (1 = score this cell, 0 = exclude) and
     defaults to all-ones (every cell scored, the original behavior). With
@@ -954,12 +955,16 @@ def _diagnostic_metrics_from_arrays(probs: np.ndarray, labels: np.ndarray,
         loss_mask = loss_mask.astype(bool)
 
     per_label_auroc = []
+    rare_auroc, common_auroc = [], []
     for j in range(labels.shape[1]):
         col_mask = loss_mask[:, j]
         y_true = labels[col_mask, j]
         if y_true.size == 0 or y_true.min() == y_true.max():
             continue  # not evaluable: no unmasked examples, or single-class
-        per_label_auroc.append(roc_auc_score(y_true, probs[col_mask, j]))
+        auroc_j = roc_auc_score(y_true, probs[col_mask, j])
+        per_label_auroc.append(auroc_j)
+        if label_is_rare is not None:
+            (rare_auroc if label_is_rare[j] else common_auroc).append(auroc_j)
     per_label_auroc = np.array(per_label_auroc)
 
     flat_mask = loss_mask.ravel()
@@ -999,6 +1004,15 @@ def _diagnostic_metrics_from_arrays(probs: np.ndarray, labels: np.ndarray,
         "best_f1": float(best_f1),
         "best_f1_threshold": float(best_thresh),
     }
+    if label_is_rare is not None:
+        rare_auroc = np.array(rare_auroc)
+        common_auroc = np.array(common_auroc)
+        result["rare_mean_auroc"] = float(rare_auroc.mean()) if rare_auroc.size else None
+        result["rare_median_auroc"] = float(np.median(rare_auroc)) if rare_auroc.size else None
+        result["rare_n_labels_evaluable"] = int(rare_auroc.size)
+        result["common_mean_auroc"] = float(common_auroc.mean()) if common_auroc.size else None
+        result["common_median_auroc"] = float(np.median(common_auroc)) if common_auroc.size else None
+        result["common_n_labels_evaluable"] = int(common_auroc.size)
     return result, per_label_auroc
 
 
