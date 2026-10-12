@@ -1172,6 +1172,21 @@ def main() -> None:
     parser.add_argument("--known-embed-dim", type=int, default=64,
                          help="Embedding dimension per GO term for --use-known-input's "
                               "nn.EmbeddingBag known-term pooling.")
+    parser.add_argument("--hierarchy-loss-weight", type=float, default=0.0,
+                         help="Weight on a training-time hinge penalty (relu(child_logit - "
+                              "parent_logit), see hierarchy_consistency_penalty) that discourages "
+                              "scoring a GO term's child higher than its parent -- GO's true-path "
+                              "rule, a logical fact independent of annotation completeness (see "
+                              "docs/superpowers/specs/2026-10-11-go-dag-hierarchy-consistency-"
+                              "design.md). 0.0 (default) disables the mechanism entirely -- no edge "
+                              "index is built, no change to any existing invocation.")
+    parser.add_argument("--go-dependency-graph-path", default=None,
+                         help="Path to generate_dataset_full.py's exported GO graph (see "
+                              "export_dependency_graph in generate_dataset.py). Defaults to "
+                              "<--data-path>/go_dependency_graph.json. Required (and must exist) "
+                              "when --hierarchy-loss-weight > 0; optional for --run-diagnostic's "
+                              "violation-rate reporting, which degrades gracefully (a [WARN] and "
+                              "skipped fields) if the file isn't found.")
     parser.add_argument("--mask-sparse-negatives-max-total-terms", type=int, default=None, help="Exclude 'negative' (0) labels from the loss for proteins whose total_terms (raw GO annotation count across all aspects, see generate_dataset_aspect.py) is <= this value - an annotation-completeness proxy for GO's Open World Assumption (absence of annotation != absence of function). Positive (1) labels are always trusted regardless of total_terms. Requires a dataset with a total_terms column (e.g. kelmoir/cafa6-aspect); no-op otherwise")
     parser.add_argument("--loss-mask-from-dataset", action=argparse.BooleanOptionalAction, default=False,
                          help="Two-tier discrete relabeling (see experiments/scripts/build_two_tier_dataset.py, "
@@ -1191,6 +1206,13 @@ def main() -> None:
     parser.add_argument("--checkpoint-selection", choices=["val_loss", "f1", "recall"], default="val_loss", help="Metric that decides which epoch's weights get saved as best_checkpoint (and therefore used for --run-diagnostic/--push-to-hub/Hub promotion). 'val_loss' (default, lower is better) preserves prior behavior. 'f1'/'recall' (higher is better) select by the same pooled-f1/macro-recall numbers now printed every epoch (see finalize_metrics()) instead -- val_loss can look flat or even worsen slightly while ranking quality (f1/recall) keeps improving, especially under this task's severe class imbalance (see compute_metrics's docstring / trial-050), so it isn't always the metric that actually reflects which epoch is best. Mirrors experiments/mf_span/scripts/train_mf_span_model.py's --checkpoint-selection.")
     parser.add_argument("--run-diagnostic", action=argparse.BooleanOptionalAction, default=False, help="Run the post-training AUROC/F1 diagnostic (see run_diagnostic()) against the in-memory model right after training finishes, instead of needing a separate later script run against a re-downloaded checkpoint")
     parser.add_argument("--diagnostic-max-val-samples", type=int, default=2000, help="Validation examples to use for --run-diagnostic (independent of --max-val-samples, which controls the training loop's own per-epoch validation pass and may be set much smaller for a quick calibration trial)")
+    parser.add_argument("--rare-term-threshold", type=int, default=100,
+                         help="Train-split annotation-count boundary between 'rare' and 'common' "
+                              "for --run-diagnostic's rarity-stratified AUROC breakdown (a term "
+                              "with fewer than this many positive examples in the train split is "
+                              "'rare'). Matches this item's roadmap source's own rare-term "
+                              "definition (docs/superpowers/specs/2026-10-11-go-dag-hierarchy-"
+                              "consistency-design.md).")
     parser.add_argument("--nnpu", action=argparse.BooleanOptionalAction, default=False, help="Replace BCE with the nnPU risk (Kiryo, Niu, du Plessis & Sugiyama 2017) for labels with a cached class prior -- see experiments/pu_learning_plan.md. Labels without a cached, above-floor prior keep today's plain BCE (with --unknown-target-value/--label-smoothing applying to them as before). Requires --class-priors-path.")
     parser.add_argument("--class-priors-path", default=None, help="Path to a class-priors cache (class_priors_km2.json from experiments/scripts/estimate_class_priors_km2.py, or class_priors_spy_heldout.json from estimate_class_priors_spy_heldout.py, the current recommended source -- see --class-priors-min-source-positives). Required by --nnpu.")
     parser.add_argument("--class-priors-min-source-positives", type=int, default=2000,
@@ -1228,6 +1250,13 @@ def main() -> None:
         if not (0.0 < args.known_reveal_max <= 1.0):
             raise ValueError(f"--known-reveal-max must be in (0, 1], got {args.known_reveal_max}")
 
+    go_dependency_graph_path = (Path(args.go_dependency_graph_path) if args.go_dependency_graph_path
+                                 else Path(args.data_path) / "go_dependency_graph.json")
+    if args.hierarchy_loss_weight > 0 and not go_dependency_graph_path.exists():
+        raise ValueError(
+            f"--hierarchy-loss-weight={args.hierarchy_loss_weight} requires the GO dependency "
+            f"graph at {go_dependency_graph_path} (see --go-dependency-graph-path) -- not found.")
+
     torch.manual_seed(args.seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(args.seed)
@@ -1244,6 +1273,17 @@ def main() -> None:
     label_names = [str(name) for name in dataset_train.features["labels"].feature.names]
     id2label = {index: item for index, item in enumerate(label_names)}
     label2id = {value: key for key, value in id2label.items()}
+
+    hierarchy_edge_index = None
+    if args.hierarchy_loss_weight > 0 or args.run_diagnostic:
+        if go_dependency_graph_path.exists():
+            hierarchy_edge_index = build_hierarchy_edge_index(label2id, go_dependency_graph_path)
+            print(f"[INFO] Built hierarchy edge index: {hierarchy_edge_index.shape[0]} true-path "
+                  f"edges within the {len(label2id)}-term trainable vocabulary")
+        elif args.hierarchy_loss_weight == 0:
+            print(f"[WARN] --run-diagnostic requested violation-rate reporting but "
+                  f"{go_dependency_graph_path} was not found -- skipping hierarchy-violation "
+                  f"diagnostic fields (rarity-stratified AUROC is unaffected).")
 
     tokenizer = create_esm_tokenizer(args.model_name)
     preprocess_batch_partial = partial(
@@ -1483,6 +1523,7 @@ def main() -> None:
     use_loss_mask = (args.mask_sparse_negatives_max_total_terms is not None
                       or args.loss_mask_from_dataset or args.use_known_input)
     criterion = torch.nn.BCEWithLogitsLoss(pos_weight=pos_weight, reduction="none" if use_loss_mask else "mean")
+    hierarchy_edge_index_device = hierarchy_edge_index.to(device) if hierarchy_edge_index is not None else None
 
     run_name = args.run_name or f"{args.model_name.split('/')[-1]}-epochs{args.epochs}-bs{args.batch_size}-device{device.type}"
     tracker = init_trackio_run(run_name, space_id=args.trackio_space_id, config=config)
@@ -1583,6 +1624,9 @@ def main() -> None:
                     loss = eligible_frac * nnpu_component + (1 - eligible_frac) * standard_loss
                 else:
                     loss = compute_loss(criterion, logits, labels, loss_mask)
+                if args.hierarchy_loss_weight > 0:
+                    loss = loss + args.hierarchy_loss_weight * hierarchy_consistency_penalty(
+                        logits, hierarchy_edge_index_device)
             scaled_loss = scaler.scale(loss / args.grad_accum_steps) if use_grad_scaler else (loss / args.grad_accum_steps)
             scaled_loss.backward()
 
