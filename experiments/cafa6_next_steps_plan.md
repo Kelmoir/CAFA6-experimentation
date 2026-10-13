@@ -642,6 +642,45 @@ that same consistency on the model's *predicted scores*, which is orthogonal to 
 not blocked by the same gate. Don't conflate the two when scoping this — a hierarchy-consistency loss
 add is Tier 1; a full graph-embedding architecture is not.
 
+**Result (2026-10-13): mechanism works as a structural fix, roughly neutral on AUROC/F1.**
+Implemented per `docs/superpowers/plans/2026-10-11-go-dag-hierarchy-consistency.md`: a
+`relu(child_logit - parent_logit)` hinge over 47,068 direct `is_a`/`part_of` edges (both
+endpoints in-vocab), added to training loss only, plus a diagnostic violation-rate/
+rarity-stratified-AUROC backfill so `trial-013` has a real control number it never
+originally computed. `hierarchy-loss-trial-001` (`--hierarchy-loss-weight 0.1`, otherwise
+identical to `trial-013`'s config — same 30 epochs, `--checkpoint-selection f1`, best
+epoch 29 at `val_f1=0.3708`), pushed to `kelmoir/cafa6-esm@hierarchy-loss-trial-001`:
+
+| metric | `trial-013` (backfilled control) | `hierarchy-loss-trial-001` |
+|---|---|---|
+| mean / median AUROC | 0.8731 / 0.9259 | 0.8744 / 0.9270 |
+| pooled AUROC | 0.9773 | 0.9777 |
+| best F1 @ threshold | 0.4197 @ 0.26 | 0.4197 @ 0.24 |
+| rare-term mean AUROC (n=7014) | 0.8801 | 0.8827 |
+| common-term mean AUROC (n=2387) | 0.8526 | 0.8502 |
+| **hierarchy violation rate** | **0.1196 (11.96%)** | **0.0004 (0.04%)** |
+| mean violation magnitude | 0.000195 | 0.0160 |
+
+**The mechanism's direct, mechanical claim is unambiguously confirmed**: the violation rate
+collapses by ~300x (11.96% → 0.04% of (example, edge) pairs where the model still scores a
+child above its parent) with a training-time weight of only 0.1. **The claimed downstream
+benefit — concentrated AUROC gains on rare terms — did not materialize**: rare-term AUROC
+moved +0.0026 (0.8801 → 0.8827) and common-term AUROC moved -0.0024 (0.8526 → 0.8502) —
+both well within noise, net a wash. Pooled/mean/median AUROC and best-F1 are likewise flat.
+One honest caveat on the violation-rate number itself: among the few edges that still
+violate, the mean violation *magnitude* went up 80x (0.000195 → 0.0160) even as the *rate*
+collapsed — consistent with the easy, large-population violations being fixed first at this
+weight, leaving a small number of genuinely harder cases with a bigger remaining margin, not
+with the mechanism failing on those cases wholesale.
+
+**Verdict:** this is a cheap, correct structural fix (predictions now respect GO's true-path
+rule almost everywhere) that is worth keeping on priors (not harmful, logically more correct,
+costs 47,068 cheap edge lookups once per run), but it is not the rare-term accuracy lever the
+DeepGOZero/TALE precedent predicted at `--hierarchy-loss-weight 0.1`. Not escalating to a
+weight sweep without a stronger reason to believe a different weight would move the AUROC
+numbers rather than just the violation rate further — logging as a mild positive (ship the
+consistency fix) rather than iterating on this item further for now.
+
 ## Tier 2 — cheap, well-evidenced, low implementation risk
 
 ### 4. Replace flat BCE with an IA-weighted or ranking loss
