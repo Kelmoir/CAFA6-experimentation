@@ -660,26 +660,40 @@ epoch 29 at `val_f1=0.3708`), pushed to `kelmoir/cafa6-esm@hierarchy-loss-trial-
 | common-term mean AUROC (n=2387) | 0.8526 | 0.8502 |
 | **hierarchy violation rate** | **0.1196 (11.96%)** | **0.0004 (0.04%)** |
 | mean violation magnitude | 0.000195 | 0.0160 |
+| expected violation mass (rate × magnitude) | 2.33e-5 | 6.23e-6 |
 
-**The mechanism's direct, mechanical claim is unambiguously confirmed**: the violation rate
-collapses by ~300x (11.96% → 0.04% of (example, edge) pairs where the model still scores a
-child above its parent) with a training-time weight of only 0.1. **The claimed downstream
-benefit — concentrated AUROC gains on rare terms — did not materialize**: rare-term AUROC
-moved +0.0026 (0.8801 → 0.8827) and common-term AUROC moved -0.0024 (0.8526 → 0.8502) —
-both well within noise, net a wash. Pooled/mean/median AUROC and best-F1 are likewise flat.
-One honest caveat on the violation-rate number itself: among the few edges that still
-violate, the mean violation *magnitude* went up 80x (0.000195 → 0.0160) even as the *rate*
-collapsed — consistent with the easy, large-population violations being fixed first at this
-weight, leaving a small number of genuinely harder cases with a bigger remaining margin, not
-with the mechanism failing on those cases wholesale.
+**Correction (2026-10-13, final review caught this before merge):** the violation-rate
+number alone overstates the effect. Rate collapses ~308x (11.96% → 0.04%), but mean
+violation *magnitude* among the pairs that still violate grows ~82x (0.000195 → 0.0160) in
+the same comparison — the easy, near-zero-margin violations that dominated the control's
+count are gone, but a residual population of harder violations with much bigger margins
+remains. The honest single number is **expected violation mass** (rate × mean magnitude,
+the quantity the hinge loss actually minimizes in expectation): control 2.33e-5 → trial
+6.23e-6, a real but far more modest **~3.75x reduction**, not ~300x. Treat the raw rate
+number as misleading on its own; mass is what the loss term is actually driving down.
 
-**Verdict:** this is a cheap, correct structural fix (predictions now respect GO's true-path
-rule almost everywhere) that is worth keeping on priors (not harmful, logically more correct,
-costs 47,068 cheap edge lookups once per run), but it is not the rare-term accuracy lever the
-DeepGOZero/TALE precedent predicted at `--hierarchy-loss-weight 0.1`. Not escalating to a
-weight sweep without a stronger reason to believe a different weight would move the AUROC
-numbers rather than just the violation rate further — logging as a mild positive (ship the
-consistency fix) rather than iterating on this item further for now.
+**The mechanism's direct, mechanical claim holds, at a more modest size than the raw rate
+suggests**: training-time expected violation mass drops ~3.75x with a weight of only 0.1,
+and the vast majority of (example, edge) pairs that used to violate the true-path rule at
+all now don't (rate -308x), even though the few that remain do so by a larger margin.
+**The claimed downstream benefit — concentrated AUROC gains on rare terms — did not
+materialize**: rare-term AUROC moved +0.0026 (0.8801 → 0.8827) and common-term AUROC moved
+-0.0024 (0.8526 → 0.8502) — both well within noise (no formal significance test run; at
+2,000 val examples rare-term AUROCs rest on few positives per term), net a wash.
+Pooled/mean/median AUROC and best-F1 are likewise flat. Both checkpoints' configs were
+confirmed identical on the Hub (`max_length` 4192, epochs 30, f1 selection, unfreeze 4,
+bs 2/accum 8, wd 0.01, dropouts 0.1, seed 42, lr 5e-5) except the new flag, so the
+comparison is fair.
+
+**Verdict:** this is a cheap, directionally-correct structural fix (real, if partial,
+reduction in true-path violations, not harmful) worth keeping on priors, but it is not the
+rare-term accuracy lever the DeepGOZero/TALE precedent predicted at
+`--hierarchy-loss-weight 0.1`, and the violations that remain are the larger-margin kind a
+higher weight would need to address, not the vast population of noise-level ones the rate
+number alone suggested were representative. Not escalating to a weight sweep without a
+stronger reason to believe a different weight would move the AUROC numbers rather than
+just violation mass further — logging as a mild positive (ship the consistency fix)
+rather than iterating on this item further for now.
 
 ## Tier 2 — cheap, well-evidenced, low implementation risk
 
