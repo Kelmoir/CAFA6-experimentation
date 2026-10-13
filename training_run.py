@@ -1576,6 +1576,7 @@ def main() -> None:
         epoch_start = time.time()
         model_esm.train()
         train_loss = 0.0
+        train_hierarchy_penalty_sum = 0.0
         train_metrics_acc = {"correct": 0.0, "total": 0, "tp": torch.zeros(len(label_names), device=device), "fp": torch.zeros(len(label_names), device=device), "fn": torch.zeros(len(label_names), device=device)}
 
         log_every = max(1, len(train_dataloader) // 25)
@@ -1650,9 +1651,16 @@ def main() -> None:
                     loss = eligible_frac * nnpu_component + (1 - eligible_frac) * standard_loss
                 else:
                     loss = compute_loss(criterion, logits, labels, loss_mask)
+                hierarchy_penalty_contribution = 0.0
                 if args.hierarchy_loss_weight > 0:
-                    loss = loss + args.hierarchy_loss_weight * hierarchy_consistency_penalty(
+                    # Tracked separately (not folded silently into train_loss) per final-review
+                    # finding: with the flag on, train_loss would otherwise become BCE+penalty
+                    # combined, making it misleading to compare against val_loss (pure BCE,
+                    # unchanged) or against any earlier trial's train_loss curve.
+                    hierarchy_penalty_term = args.hierarchy_loss_weight * hierarchy_consistency_penalty(
                         logits, hierarchy_edge_index_device)
+                    loss = loss + hierarchy_penalty_term
+                    hierarchy_penalty_contribution = hierarchy_penalty_term.item()
             scaled_loss = scaler.scale(loss / args.grad_accum_steps) if use_grad_scaler else (loss / args.grad_accum_steps)
             scaled_loss.backward()
 
@@ -1682,6 +1690,7 @@ def main() -> None:
             train_metrics_acc["fp"] += batch_metrics["fp"]
             train_metrics_acc["fn"] += batch_metrics["fn"]
             train_loss += loss.item()
+            train_hierarchy_penalty_sum += hierarchy_penalty_contribution
 
             if tracker is not None:
                 # "step" is a trackio-reserved key (silently renamed to "__step" with a
@@ -1689,6 +1698,7 @@ def main() -> None:
                 tracker.log({"epoch": epoch, "global_step": len(train_dataloader) * epoch + 1, "train_loss": loss.item(), **finalize_metrics(batch_metrics)})
 
         train_loss /= max(1, len(train_dataloader))
+        train_hierarchy_penalty = train_hierarchy_penalty_sum / max(1, len(train_dataloader))
         train_metrics = finalize_metrics(train_metrics_acc)
 
         validation_loss = 0.0
@@ -1733,6 +1743,10 @@ def main() -> None:
             "train_f1": train_metrics["f1"],
             "val_f1": validation_metrics["f1"],
         }
+        if args.hierarchy_loss_weight > 0:
+            # Only added when the flag is actually in use -- keeps every existing invocation's
+            # metrics dict/trial_metrics.json byte-for-byte unchanged (Global Constraint).
+            latest_metrics["train_hierarchy_penalty"] = train_hierarchy_penalty
 
         # --checkpoint-selection picks which epoch's weights get saved as best_checkpoint.
         # val_loss (default) is lower-is-better; f1/recall (val_f1/val_recall, both already
@@ -1763,12 +1777,15 @@ def main() -> None:
             model_esm.save_pretrained(best_checkpoint_dir)
             tokenizer.save_pretrained(best_checkpoint_dir)
 
+        hierarchy_penalty_str = (f" | train_hierarchy_penalty={train_hierarchy_penalty:.4f}"
+                                 if args.hierarchy_loss_weight > 0 else "")
         print(
             f"Epoch {epoch + 1}/{args.start_epoch + args.epochs} | "
             f"train_loss={train_loss:.4f} | val_loss={validation_loss:.4f} | "
             f"train_acc={train_metrics['accuracy']:.4f} | val_acc={validation_metrics['accuracy']:.4f} | "
             f"train_recall={train_metrics['recall']:.4f} | val_recall={validation_metrics['recall']:.4f} | "
             f"train_f1={train_metrics['f1']:.4f} | val_f1={validation_metrics['f1']:.4f}"
+            f"{hierarchy_penalty_str}"
         )
         print(f"[TIMING] epoch {epoch + 1} elapsed={time.time() - epoch_start:.1f}s")
 
