@@ -56,6 +56,34 @@ def check_run_diagnostic_accepts_and_reports_hierarchy_fields():
           f"rare_n={result['rare_n_labels_evaluable']})")
 
 
+def check_run_diagnostic_reports_clamped_fields_with_zero_violations():
+    # Tier 2 item 5 (experiments/cafa6_next_steps_plan.md): post-hoc clamping fields,
+    # computed unconditionally whenever hierarchy_edge_index is passed (same gate as the
+    # unclamped violation-rate fields). After clamping, violation_rate must be exactly 0.0
+    # regardless of what the raw (unclamped) rate was.
+    model = training_run.create_esm(
+        unfreeze_last_n=1, model_type="facebook/esm2_t6_8M_UR50D",
+        id2label=ID2LABEL, label2id=LABEL2ID,
+    )
+    tokenizer = training_run.create_esm_tokenizer("facebook/esm2_t6_8M_UR50D")
+    val_ds = _fabricate_val_dataset().with_transform(
+        transform=lambda ex: training_run.preprocess_batch(
+            ex, tokenizer=tokenizer, unique_items=LABEL_NAMES, label2id=LABEL2ID))
+    device = torch.device("cpu")
+    edge_index = np.array([[0, 1], [2, 3]])
+
+    result = training_run.run_diagnostic(
+        model, tokenizer, val_ds, LABEL_NAMES, device,
+        max_val_samples=10, batch_size=2, hierarchy_edge_index=edge_index,
+    )
+    assert "clamped_violation_rate" in result, result
+    assert result["clamped_violation_rate"] == 0.0, result
+    assert "clamped_mean_auroc" in result, result
+    assert result["clamped_n_edges"] == 2, result
+    print(f"[OK] run_diagnostic reports clamped_* fields with violation_rate exactly 0.0 "
+          f"(raw rate was {result['violation_rate']:.4f})")
+
+
 def check_run_diagnostic_without_hierarchy_args_is_unchanged():
     model = training_run.create_esm(
         unfreeze_last_n=1, model_type="facebook/esm2_t6_8M_UR50D",
@@ -71,10 +99,12 @@ def check_run_diagnostic_without_hierarchy_args_is_unchanged():
     )
     assert "violation_rate" not in result, result
     assert "rare_mean_auroc" not in result, result
+    assert "clamped_violation_rate" not in result, result
     print("[OK] omitting the new kwargs leaves run_diagnostic's output unchanged")
 
 
 if __name__ == "__main__":
     check_run_diagnostic_accepts_and_reports_hierarchy_fields()
+    check_run_diagnostic_reports_clamped_fields_with_zero_violations()
     check_run_diagnostic_without_hierarchy_args_is_unchanged()
     print("[OK] all checks passed")

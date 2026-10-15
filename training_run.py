@@ -932,6 +932,43 @@ def compute_hierarchy_violations(probs: np.ndarray, edge_index: np.ndarray,
     }
 
 
+def clamp_hierarchy_consistency(probs: np.ndarray, edge_index: np.ndarray,
+                                 max_iterations: int = 32) -> np.ndarray:
+    """Post-hoc inference-time fix for GO's true-path rule (Tier 2 item 5 of
+    experiments/cafa6_next_steps_plan.md): for every direct (child, parent) edge, raise
+    parent_prob to at least child_prob. Complementary to the training-time
+    hierarchy_consistency_penalty (item 3) -- this works on ANY model's output
+    probabilities, including one with no hierarchy-aware training at all.
+
+    edge_index lists only DIRECT edges, so one sweep over them isn't enough to fully
+    propagate a leaf's high score up a multi-hop chain (e.g. grandchild -> child ->
+    parent): after one sweep, "child" has absorbed its own children's scores, but
+    "parent" was updated from child's PRE-sweep value. Repeating the sweep lets each
+    hop's update ripple one level further up per iteration; since a full sweep with no
+    change means every edge is already consistent (a fixed point), iterating until that
+    happens -- or until max_iterations, a generous bound well above GO's real max
+    depth -- guarantees full transitive propagation without needing an explicit
+    topological sort over the vocabulary.
+    """
+    clamped = probs.copy()
+    if len(edge_index) == 0:
+        return clamped
+    child_idx, parent_idx = edge_index[:, 0], edge_index[:, 1]
+    for _ in range(max_iterations):
+        before = clamped[:, parent_idx].copy()
+        # np.maximum.at, not a plain `clamped[:, parent_idx] = ...` assignment: when two
+        # edges share the same parent (a term with multiple direct children -- the
+        # common case, unlike the rarer multi-parent case), plain fancy-index assignment
+        # is last-write-wins per duplicate target and silently drops every child but the
+        # last one's contribution. ufunc.at applies each edge's update in turn against
+        # the same underlying buffer, so duplicate parents correctly accumulate the max
+        # over every one of their children.
+        np.maximum.at(clamped, (slice(None), parent_idx), clamped[:, child_idx])
+        if np.array_equal(clamped[:, parent_idx], before):
+            break
+    return clamped
+
+
 def _diagnostic_metrics_from_arrays(probs: np.ndarray, labels: np.ndarray,
                                      loss_mask: Optional[np.ndarray] = None,
                                      label_is_rare: Optional[np.ndarray] = None):
@@ -1089,6 +1126,14 @@ def run_diagnostic(
     result, per_label_auroc = _diagnostic_metrics_from_arrays(probs, labels, loss_mask, label_is_rare)
     if hierarchy_edge_index is not None:
         result.update(compute_hierarchy_violations(probs, hierarchy_edge_index))
+        # Tier 2 item 5 (experiments/cafa6_next_steps_plan.md): post-hoc clamping, applied
+        # here regardless of whether this checkpoint was trained with --hierarchy-loss-weight
+        # (item 3) -- this measures what a free inference-time fix alone is worth on ANY
+        # model, and whether it adds anything on top of training-time awareness.
+        clamped_probs = clamp_hierarchy_consistency(probs, hierarchy_edge_index)
+        clamped_result, _ = _diagnostic_metrics_from_arrays(clamped_probs, labels, loss_mask, label_is_rare)
+        clamped_result.update(compute_hierarchy_violations(clamped_probs, hierarchy_edge_index))
+        result.update({f"clamped_{key}": value for key, value in clamped_result.items()})
     accuracy = result["accuracy_at_0.5"]
     prior = 1 - result["trivial_baseline_accuracy"]
     precision = result["precision_at_0.5"]
@@ -1121,6 +1166,11 @@ def run_diagnostic(
     if "violation_rate" in result:
         print(f"Hierarchy violations: rate={result['violation_rate']:.4f} "
               f"mean_magnitude={result['mean_violation_magnitude']:.4f} (n_edges={result['n_edges']})")
+    if "clamped_violation_rate" in result:
+        print(f"After post-hoc clamping: mean_auroc={result['clamped_mean_auroc']:.4f} "
+              f"pooled_auroc={result['clamped_pooled_auroc']:.4f} "
+              f"violation_rate={result['clamped_violation_rate']:.4f} "
+              f"(n_edges={result['clamped_n_edges']})")
     print(f"[DIAGNOSTIC] {json.dumps(result, default=str)}")
 
     return result
