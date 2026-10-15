@@ -15,9 +15,18 @@ e.g.:
     env/bin/python experiments/scripts/rerun_diagnostic_full.py main 2000 100
 """
 import json
+import os
 import sys
 from functools import partial
 from pathlib import Path
+
+# Known env gotcha (see CLAUDE.md): huggingface_hub/hf_xet version mismatches on this host
+# can raise "ImportError: cannot import name 'XetFileInfo'/'XetSession' from 'hf_xet'" on
+# any download/push that isn't already cache-hit. huggingface_hub.constants reads this env
+# var at IMPORT time, so it must be set before `from huggingface_hub import ...` runs --
+# training_run.py sets it too, but only in time for ITS OWN import, which happens below
+# this one. setdefault (not a direct assignment) leaves an explicit user override alone.
+os.environ.setdefault("HF_HUB_DISABLE_XET", "1")
 
 import torch
 from huggingface_hub import hf_hub_download
