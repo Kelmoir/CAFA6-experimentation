@@ -713,6 +713,43 @@ underlying model has no hierarchy-aware training signal at all.
 and current pipeline's flat multi-label classifier has no such step today. Worth adding regardless of
 whether item 3's training-time version also gets built — they're complementary, not redundant.
 
+**Result (2026-10-16): a free win on its own, and it's not clear item 3's training-time cost
+is still earning its keep once this exists.** `clamp_hierarchy_consistency(probs, edge_index)`
+(iteratively raises each parent's probability to at least its direct children's, converging
+to a fixed point — same `experiments/scripts/rerun_diagnostic_full.py` backfill re-run, no
+retraining) wired into `run_diagnostic` as unconditional `clamped_*` fields whenever
+`hierarchy_edge_index` is available:
+
+| | mean AUROC | pooled AUROC | best F1 | violation rate |
+|---|---|---|---|---|
+| `trial-013` (raw, no hierarchy awareness at all) | 0.8731 | 0.9773 | 0.4197 | 11.96% |
+| `trial-013` + post-hoc clamping | 0.8733 | **0.9778** | **0.4217** | **0.00%** |
+| `hierarchy-loss-trial-001` (raw, item 3's trained loss) | 0.8733 | 0.9772 | 0.4186 | 0.035% |
+| `hierarchy-loss-trial-001` + post-hoc clamping | 0.8733 | 0.9772 | 0.4202 | **0.00%** |
+
+**Clamping alone, on the untouched `trial-013` checkpoint, fixes the violation completely**
+(11.96% → exactly 0%, a hard constraint rather than item 3's soft penalty) **at zero
+retraining cost, and every quality metric moves up, not down**: mean AUROC +0.0002, pooled
+AUROC +0.0005, best F1 +0.0020. No tradeoff to weigh — this is a straightforwardly free win
+and should just be left on by default for any checkpoint with a graph path available.
+
+**Clamping composes cleanly with item 3's training-time loss too**: applied on top of
+`hierarchy-loss-trial-001`, it mops up the tiny residual violation rate (0.035% → 0%) the
+training-time penalty didn't fully reach, with best F1 nudging up slightly (+0.0016).
+
+**Honest complication, logged rather than smoothed over**: comparing the two *clamped* rows
+against each other, `trial-013`+clamping ties-or-beats `hierarchy-loss-trial-001`+clamping on
+every single metric — mean AUROC tied (0.8733 both), pooled AUROC 0.9778 vs. 0.9772, best F1
+0.4217 vs. 0.4202. Once this free post-hoc fix exists, item 3's 30-epoch retrain with
+`--hierarchy-loss-weight` doesn't appear to add anything measurable on top of it, and trails
+slightly on two of three metrics. This doesn't retroactively make item 3 a mistake — it
+genuinely fixed a real structural problem on its own terms, cheaply, before item 5 existed —
+but it does mean **future work on this axis should default to post-hoc clamping alone**
+rather than paying for a hierarchy-aware retrain, unless a reason surfaces to still want
+the training-time signal (e.g. if it ever helps a model learn to use hierarchy-consistent
+*reasoning* rather than just outputting hierarchy-consistent *scores* — not something this
+comparison tests either way).
+
 ### 6. Stop scaling PLM backbone size further; redirect that compute
 **Source:** report §"...table stakes, not the winning move" — GOCurator (CAFA-5, self-reported 1st
 place) found "little difference" between ESM-1b/ESM-2/ProtT5 once embeddings are one ingredient among
