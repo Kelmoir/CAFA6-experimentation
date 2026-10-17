@@ -123,18 +123,9 @@ def load_true_path_graph(dep_graph_file: Path) -> nx.MultiDiGraph:
     return generate_dataset.restrict_to_true_path(graph)
 
 
-def load_ia_weights(ia_file: Path, term_names: List[str]) -> np.ndarray:
-    weights = {}
-    for line in ia_file.read_text().splitlines():
-        parts = line.rstrip("\n").split("\t")
-        if len(parts) == 2:
-            weights[parts[0]] = float(parts[1])
-    missing = [name for name in term_names if name not in weights]
-    if missing:
-        print(f"[WARN] {len(missing)} term(s) missing from {ia_file}, defaulting IA=0.0 "
-              f"(contributes nothing to weighted precision/recall): {missing[:10]}"
-              f"{'...' if len(missing) > 10 else ''}")
-    return np.array([weights.get(name, 0.0) for name in term_names], dtype=np.float64)
+load_ia_weights = training_run.load_ia_weights  # moved to training_run.py (Tier 2 item 4) -
+# that module now needs it too for --soft-f1-loss-weight, and importing it back from HERE
+# would be circular since this module imports training_run at the top.
 
 
 def build_descendant_index(true_path_graph: nx.MultiDiGraph, term_names: List[str]) -> Dict[int, List[int]]:

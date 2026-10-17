@@ -754,6 +754,51 @@ def hierarchy_consistency_penalty(logits: torch.Tensor, edge_index: torch.Tensor
     return torch.relu(child_logits - parent_logits).mean()
 
 
+def load_ia_weights(ia_file: Path, term_names: List[str]) -> np.ndarray:
+    """Relocated from evaluate_cafa_score.py (Tier 2 item 4): that module imports
+    training_run at module level, so training_run importing FROM it would be circular --
+    this is now the one home for both callers, and evaluate_cafa_score.py imports it
+    back from here.
+    """
+    weights = {}
+    for line in ia_file.read_text().splitlines():
+        parts = line.rstrip("\n").split("\t")
+        if len(parts) == 2:
+            weights[parts[0]] = float(parts[1])
+    missing = [name for name in term_names if name not in weights]
+    if missing:
+        print(f"[WARN] {len(missing)} term(s) missing from {ia_file}, defaulting IA=0.0 "
+              f"(contributes nothing to weighted precision/recall): {missing[:10]}"
+              f"{'...' if len(missing) > 10 else ''}")
+    return np.array([weights.get(name, 0.0) for name in term_names], dtype=np.float64)
+
+
+def soft_f1_loss(logits: torch.Tensor, labels: torch.Tensor, ia_weights: torch.Tensor,
+                  eps: float = 1e-7) -> torch.Tensor:
+    """Differentiable, per-protein (row-wise) surrogate for the official CAFA weighted-Fmax
+    metric (see evaluate_cafa_score.py's cafa_weighted_fmax): IA-weighted soft TP/FP/FN
+    summed per example, not pooled across the batch -- works at any batch size, unlike a
+    term-level variant would at this project's --batch-size 2 (a 2-example micro-batch has
+    almost no positives for any given one of 27,191 terms, making per-micro-batch term-level
+    precision/recall mostly noise). Two independent CAFA-5 top-6 teams (Evans, Freddolino
+    Lab) report this class of loss beating plain BCE at this label cardinality/imbalance.
+
+    Rows with no IA-weighted true annotation among the scored labels are excluded from the
+    mean (true_ia_sum == 0 -> soft-F1 is undefined, same convention cafa_weighted_fmax uses
+    for its eval_mask), rather than contributing a meaningless eps-dominated loss of ~1.
+    """
+    logits32 = logits.float()
+    probs = torch.sigmoid(logits32)
+    weighted_tp = (ia_weights * probs * labels).sum(dim=1)
+    weighted_fp = (ia_weights * probs * (1 - labels)).sum(dim=1)
+    weighted_fn = (ia_weights * (1 - probs) * labels).sum(dim=1)
+    soft_f1 = (2 * weighted_tp) / (2 * weighted_tp + weighted_fp + weighted_fn + eps)
+    scored = (ia_weights * labels).sum(dim=1) > 0
+    if not scored.any():
+        return torch.zeros((), device=logits.device)
+    return (1 - soft_f1[scored]).mean()
+
+
 def nnpu_loss(
     logits_u: torch.Tensor,
     hard_labels_u: torch.Tensor,
@@ -1263,6 +1308,17 @@ def main() -> None:
                               "when --hierarchy-loss-weight > 0; optional for --run-diagnostic's "
                               "violation-rate reporting, which degrades gracefully (a [WARN] and "
                               "skipped fields) if the file isn't found.")
+    parser.add_argument("--soft-f1-loss-weight", type=float, default=0.0,
+                         help="Weight on an additive, IA-weighted soft-F1 loss term (see "
+                              "soft_f1_loss) computed per protein and added to BCE -- two "
+                              "independent CAFA-5 top-6 teams (Evans, Freddolino Lab) found this "
+                              "beat plain BCE at this label cardinality/imbalance. 0.0 (default) "
+                              "disables the mechanism entirely -- no IA file is read, no change "
+                              "to any existing invocation.")
+    parser.add_argument("--ia-file", default="data/cafa-6-protein-function-prediction/IA.tsv",
+                         help="Path to the CAFA Information Accretion weights file (GO:ID<tab>"
+                              "float per line, see load_ia_weights). Only read when "
+                              "--soft-f1-loss-weight > 0.")
     parser.add_argument("--mask-sparse-negatives-max-total-terms", type=int, default=None, help="Exclude 'negative' (0) labels from the loss for proteins whose total_terms (raw GO annotation count across all aspects, see generate_dataset_aspect.py) is <= this value - an annotation-completeness proxy for GO's Open World Assumption (absence of annotation != absence of function). Positive (1) labels are always trusted regardless of total_terms. Requires a dataset with a total_terms column (e.g. kelmoir/cafa6-aspect); no-op otherwise")
     parser.add_argument("--loss-mask-from-dataset", action=argparse.BooleanOptionalAction, default=False,
                          help="Two-tier discrete relabeling (see experiments/scripts/build_two_tier_dataset.py, "
@@ -1333,6 +1389,12 @@ def main() -> None:
             f"--hierarchy-loss-weight={args.hierarchy_loss_weight} requires the GO dependency "
             f"graph at {go_dependency_graph_path} (see --go-dependency-graph-path) -- not found.")
 
+    ia_file_path = Path(args.ia_file)
+    if args.soft_f1_loss_weight > 0 and not ia_file_path.exists():
+        raise ValueError(
+            f"--soft-f1-loss-weight={args.soft_f1_loss_weight} requires the IA weights file at "
+            f"{ia_file_path} (see --ia-file) -- not found.")
+
     torch.manual_seed(args.seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(args.seed)
@@ -1360,6 +1422,12 @@ def main() -> None:
             print(f"[WARN] --run-diagnostic requested violation-rate reporting but "
                   f"{go_dependency_graph_path} was not found -- skipping hierarchy-violation "
                   f"diagnostic fields (rarity-stratified AUROC is unaffected).")
+
+    ia_weights = None
+    if args.soft_f1_loss_weight > 0:
+        ia_weights = torch.tensor(load_ia_weights(ia_file_path, label_names), dtype=torch.float32)
+        print(f"[INFO] Loaded IA weights for {len(label_names)} terms "
+              f"(mean={ia_weights.mean():.4f}, nonzero={int((ia_weights > 0).sum())})")
 
     tokenizer = create_esm_tokenizer(args.model_name)
     preprocess_batch_partial = partial(
@@ -1600,6 +1668,7 @@ def main() -> None:
                       or args.loss_mask_from_dataset or args.use_known_input)
     criterion = torch.nn.BCEWithLogitsLoss(pos_weight=pos_weight, reduction="none" if use_loss_mask else "mean")
     hierarchy_edge_index_device = hierarchy_edge_index.to(device) if hierarchy_edge_index is not None else None
+    ia_weights_device = ia_weights.to(device) if ia_weights is not None else None
 
     run_name = args.run_name or f"{args.model_name.split('/')[-1]}-epochs{args.epochs}-bs{args.batch_size}-device{device.type}"
     tracker = init_trackio_run(run_name, space_id=args.trackio_space_id, config=config)
@@ -1627,6 +1696,7 @@ def main() -> None:
         model_esm.train()
         train_loss = 0.0
         train_hierarchy_penalty_sum = 0.0
+        train_soft_f1_sum = 0.0
         train_metrics_acc = {"correct": 0.0, "total": 0, "tp": torch.zeros(len(label_names), device=device), "fp": torch.zeros(len(label_names), device=device), "fn": torch.zeros(len(label_names), device=device)}
 
         log_every = max(1, len(train_dataloader) // 25)
@@ -1711,6 +1781,13 @@ def main() -> None:
                         logits, hierarchy_edge_index_device)
                     loss = loss + hierarchy_penalty_term
                     hierarchy_penalty_contribution = hierarchy_penalty_term.item()
+                soft_f1_contribution = 0.0
+                if args.soft_f1_loss_weight > 0:
+                    # Same separate-tracking rationale as train_hierarchy_penalty above --
+                    # don't let train_loss silently become BCE+soft_f1 combined.
+                    soft_f1_term = args.soft_f1_loss_weight * soft_f1_loss(logits, labels, ia_weights_device)
+                    loss = loss + soft_f1_term
+                    soft_f1_contribution = soft_f1_term.item()
             scaled_loss = scaler.scale(loss / args.grad_accum_steps) if use_grad_scaler else (loss / args.grad_accum_steps)
             scaled_loss.backward()
 
@@ -1741,6 +1818,7 @@ def main() -> None:
             train_metrics_acc["fn"] += batch_metrics["fn"]
             train_loss += loss.item()
             train_hierarchy_penalty_sum += hierarchy_penalty_contribution
+            train_soft_f1_sum += soft_f1_contribution
 
             if tracker is not None:
                 # "step" is a trackio-reserved key (silently renamed to "__step" with a
@@ -1749,6 +1827,7 @@ def main() -> None:
 
         train_loss /= max(1, len(train_dataloader))
         train_hierarchy_penalty = train_hierarchy_penalty_sum / max(1, len(train_dataloader))
+        train_soft_f1 = train_soft_f1_sum / max(1, len(train_dataloader))
         train_metrics = finalize_metrics(train_metrics_acc)
 
         validation_loss = 0.0
@@ -1797,6 +1876,8 @@ def main() -> None:
             # Only added when the flag is actually in use -- keeps every existing invocation's
             # metrics dict/trial_metrics.json byte-for-byte unchanged (Global Constraint).
             latest_metrics["train_hierarchy_penalty"] = train_hierarchy_penalty
+        if args.soft_f1_loss_weight > 0:
+            latest_metrics["train_soft_f1_loss"] = train_soft_f1
 
         # --checkpoint-selection picks which epoch's weights get saved as best_checkpoint.
         # val_loss (default) is lower-is-better; f1/recall (val_f1/val_recall, both already
@@ -1829,13 +1910,15 @@ def main() -> None:
 
         hierarchy_penalty_str = (f" | train_hierarchy_penalty={train_hierarchy_penalty:.4f}"
                                  if args.hierarchy_loss_weight > 0 else "")
+        soft_f1_str = (f" | train_soft_f1_loss={train_soft_f1:.4f}"
+                       if args.soft_f1_loss_weight > 0 else "")
         print(
             f"Epoch {epoch + 1}/{args.start_epoch + args.epochs} | "
             f"train_loss={train_loss:.4f} | val_loss={validation_loss:.4f} | "
             f"train_acc={train_metrics['accuracy']:.4f} | val_acc={validation_metrics['accuracy']:.4f} | "
             f"train_recall={train_metrics['recall']:.4f} | val_recall={validation_metrics['recall']:.4f} | "
             f"train_f1={train_metrics['f1']:.4f} | val_f1={validation_metrics['f1']:.4f}"
-            f"{hierarchy_penalty_str}"
+            f"{hierarchy_penalty_str}{soft_f1_str}"
         )
         print(f"[TIMING] epoch {epoch + 1} elapsed={time.time() - epoch_start:.1f}s")
 
