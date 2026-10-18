@@ -705,6 +705,49 @@ cardinality/imbalance and switched to IA-weighted soft-F1-style or ranking losse
 but the expected per-point gain is smaller and less central than items 1–3; do this alongside or
 right after Tier 1 work, not before it.
 
+**Result (2026-10-18): `--soft-f1-loss-weight 1.0` makes every metric worse, not better —
+diagnosed as a loss-scale mismatch, not a dead end.** Implemented `soft_f1_loss` (protein-level
+only, per the explicit scoping decision made before implementation — see git history) as an
+additive term on top of BCE (`train_loss = bce + weight * soft_f1_loss`), computed per-protein
+with the same IA-weighting convention as `evaluate_cafa_score.py`'s `cafa_weighted_fmax`, excluding
+rows with zero true-IA annotation from the mean. Ran a real 30-epoch GPU trial
+(`soft-f1-trial-001`) at `trial-013`'s exact config (`esm2_t12_35M_UR50D`, `unfreeze_last_n=4`,
+`batch_size=2`/`grad_accum_steps=8`, `max_length=4192`, full ~52.7k train split) plus
+`--soft-f1-loss-weight 1.0`, ~17.7 wall-clock hours (63,666s / 30 epochs, ~2,122s/epoch — materially
+more expensive to iterate on than item 3/5's trials):
+
+| | mean AUROC | pooled AUROC | best F1 | rare AUROC | common AUROC |
+|---|---|---|---|---|---|
+| `trial-013` (pure BCE) | **0.8731** | **0.9772** | **0.4186** | **0.8812** | **0.8500** |
+| `soft-f1-trial-001` (BCE + 1.0×soft-F1) | 0.7681 | 0.9239 | 0.3990 | 0.7658 | 0.7747 |
+
+Every single metric is worse, not just flat — this is a real regression against the baseline, not
+noise.
+
+**Root cause, confirmed by back-calculating the BCE component from the logged fields (not just
+guessed): the weight is miscalibrated by roughly 60×, so the model trained almost entirely on
+soft-F1 and barely on BCE at all.** `train_soft_f1_loss` and `train_loss` track each other almost
+exactly across all 30 epochs (e.g. epoch 1: `train_loss=0.8388`, `train_soft_f1_loss=0.8277`;
+epoch 30: `train_loss=0.6100`, `train_soft_f1_loss=0.6009`) — subtracting gives an implied BCE
+contribution of only ~0.009–0.011 per epoch, matching `val_loss` (pure BCE, untouched by the new
+term) almost exactly throughout (0.0112 → 0.0113). At this task's label cardinality (27,191 terms,
+severe positive-rate imbalance), BCE's own natural loss scale is tiny; soft-F1's `1 - score`
+formulation starts near its ceiling and stays there, bounded in [0, 1]. A weight of `1.0` treats
+the two terms as comparable in scale when they aren't even close — in practice this wasn't an
+*additive refinement* of the well-tuned BCE dynamics at all, it was a near-total replacement by an
+objective the 35M-parameter model, at this scale/epoch budget, ranks worse under than plain BCE
+does.
+
+**Not retested yet at a properly calibrated weight.** The fix implied by the diagnosis is a much
+smaller `--soft-f1-loss-weight` (order ~0.01–0.02, matched to BCE's own ~0.01 scale so soft-F1
+acts as a genuine nudge rather than dominating the gradient) — but given how expensive a full
+30-epoch trial is to iterate on (~17.7h each), the next step should be a short calibration run
+(a handful of epochs, like the plateau-first strategy already used for the regularization sweep)
+at a small weight to sanity-check the direction before committing another full-length trial.
+Leaving this open rather than closing it out as a negative result — the loss function itself
+(two independent CAFA-5 top-6 teams' own evidence) isn't disqualified, only this specific
+(1.0) weight choice is.
+
 ### 5. GO-DAG-consistency post-processing at inference
 **Source:** report §"Stacked ensembles..." — multiple CAFA-5 top solutions apply a cheap final step
 propagating/clamping predicted scores so parent terms never score below their children, even when the
