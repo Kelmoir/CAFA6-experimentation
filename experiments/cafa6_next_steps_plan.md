@@ -738,15 +738,31 @@ the two terms as comparable in scale when they aren't even close — in practice
 objective the 35M-parameter model, at this scale/epoch budget, ranks worse under than plain BCE
 does.
 
-**Not retested yet at a properly calibrated weight.** The fix implied by the diagnosis is a much
-smaller `--soft-f1-loss-weight` (order ~0.01–0.02, matched to BCE's own ~0.01 scale so soft-F1
-acts as a genuine nudge rather than dominating the gradient) — but given how expensive a full
-30-epoch trial is to iterate on (~17.7h each), the next step should be a short calibration run
-(a handful of epochs, like the plateau-first strategy already used for the regularization sweep)
-at a small weight to sanity-check the direction before committing another full-length trial.
-Leaving this open rather than closing it out as a negative result — the loss function itself
-(two independent CAFA-5 top-6 teams' own evidence) isn't disqualified, only this specific
-(1.0) weight choice is.
+**Follow-up (2026-10-19): a 5-epoch calibration run at `--soft-f1-loss-weight 0.02` confirms the
+scale diagnosis and looks genuinely promising, not just "no longer broken."** `soft-f1-trial-002`
+(otherwise identical config, 5 epochs only): `train_loss`/`train_soft_f1_loss` now diverge as
+intended (epoch 1: `train_loss=0.0242` vs. `train_soft_f1_loss=0.0171`, implying a BCE component
+of ~0.0071 — within the same order of magnitude as `val_loss=0.0068`, not 60× smaller like
+`trial-001`), so the term is now a genuine nudge rather than dominating the gradient.
+
+| | mean AUROC | pooled AUROC | best F1 | val_f1 @ epoch 5 |
+|---|---|---|---|---|
+| `trial-013` @ epoch 5 (pure BCE, 30-epoch run's own 5th epoch) | — (not computed mid-run) | — | — | 0.3177 |
+| `soft-f1-trial-002` @ epoch 5 (BCE + 0.02×soft-F1, 5-epoch run) | 0.8361 | 0.9701 | 0.4061 | **0.3780** |
+| `trial-013` final (pure BCE, converged @ 30 epochs, for reference) | 0.8731 | 0.9772 | 0.4186 | — |
+
+At the *same* 5-epoch budget, the calibrated soft-F1 run's val_f1 (0.3780) clearly beats
+`trial-013`'s own epoch-5 val_f1 (0.3177) — and its AUROC after only 5 epochs (mean 0.8361, pooled
+0.9701) is already most of the way to `trial-013`'s fully-converged 30-epoch numbers (mean 0.8731,
+pooled 0.9772). Both numbers are measured the same way at both epoch counts, so the comparison is
+fair even though `compute_metrics`'s threshold-0.5 val_f1 is a known-noisy metric on its own (see
+`compute_metrics`'s docstring/trial-050) — this looks like faster early convergence, not just "not
+broken anymore."
+
+**Next step: a full 30-epoch run at `--soft-f1-loss-weight 0.02`** (same `trial-013` config) to get
+the real apples-to-apples final-AUROC comparison this item still needs before being called done —
+the 5-epoch signal justifies the ~17.7h cost this time, unlike the blind weight=1.0 guess. Still
+open, not yet closed out either way.
 
 ### 5. GO-DAG-consistency post-processing at inference
 **Source:** report §"Stacked ensembles..." — multiple CAFA-5 top solutions apply a cheap final step
