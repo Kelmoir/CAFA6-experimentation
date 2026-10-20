@@ -759,10 +759,35 @@ fair even though `compute_metrics`'s threshold-0.5 val_f1 is a known-noisy metri
 `compute_metrics`'s docstring/trial-050) — this looks like faster early convergence, not just "not
 broken anymore."
 
-**Next step: a full 30-epoch run at `--soft-f1-loss-weight 0.02`** (same `trial-013` config) to get
-the real apples-to-apples final-AUROC comparison this item still needs before being called done —
-the 5-epoch signal justifies the ~17.7h cost this time, unlike the blind weight=1.0 guess. Still
-open, not yet closed out either way.
+**Follow-up (2026-10-20): the first full 30-epoch run (`soft-f1-trial-003`) used a mismatched
+checkpoint-selection metric, invalidating its diagnostic — not a finding about the loss term
+itself.** Ran `soft-f1-trial-003` (full `trial-013` config + `--soft-f1-loss-weight 0.02`, 30
+epochs) without realizing `trial-013`'s own row in `experiments/full_label_sweep/sweep_log.md`
+records it was selected by **`--checkpoint-selection f1`** ("best val_f1 0.3741@epoch23"), not
+the script's `val_loss` default. `soft-f1-trial-003` was run with the default, so it picked epoch
+4 (val_loss=0.0066) as "best" and ran `--run-diagnostic` against that checkpoint — while `val_f1`
+kept climbing for the rest of training, peaking at **0.3973 @ epoch 29** (already beating
+`trial-013`'s own 0.3741), with no catastrophic-overfitting signal (val_loss only drifts from
+0.0066→0.0073 over 26 epochs, val_f1 keeps trending up almost the whole way):
+
+| epoch | val_loss | val_f1 |
+|---|---|---|
+| 4 (picked by val_loss, used for the diagnostic below) | 0.0066 | 0.3739 |
+| 23 (`trial-013`'s own selected epoch) | 0.0071 | 0.3929 |
+| 29 (actual val_f1 peak) | 0.0071 | **0.3973** |
+
+Diagnostic run against the wrong (epoch 4, badly under-trained) checkpoint: mean AUROC 0.8361,
+median 0.8844 — worse than `trial-013`'s 0.8731/0.9259, but this is comparing a 4-epoch model to
+a 23-epoch one, not a fair test of the loss term. The in-memory best-checkpoint tracking only
+keeps the epoch selected by whatever `--checkpoint-selection` was actually passed, so epoch 29's
+weights are gone — this can't be salvaged from the existing run; it has to be rerun with the
+selection metric matched to the baseline.
+
+**Next step: rerun with `--checkpoint-selection f1` added** (`soft-f1-trial-004`, same config
+otherwise) to finally get the real apples-to-apples comparison against `trial-013`. Still open,
+not yet closed out either way — the per-epoch `val_f1` trend above is a good sign, but the AUROC
+diagnostic (the metric this item is actually judged on) hasn't been measured on a fairly-selected
+checkpoint yet.
 
 ### 5. GO-DAG-consistency post-processing at inference
 **Source:** report §"Stacked ensembles..." — multiple CAFA-5 top solutions apply a cheap final step
