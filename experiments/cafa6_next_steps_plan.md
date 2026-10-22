@@ -962,6 +962,55 @@ eventually produces, to see whether the effect size grew. Cheap to recheck oppor
 better baseline exists; not worth deliberately chasing on its own before then. The 11-term/low-IA-weight
 scope limit doesn't change — only the mechanism's effect *size* on those terms is in question.
 
+### 13. Lab/database annotator-identity bias — predictability check, then temporal-bias-conditioned PU-learning
+**Source:** user's own idea (2026-10-22) — the hypothesis that annotating labs/databases have
+persistent preferences (which GO terms/aspects they tend to annotate), driven by research-direction
+continuity within a lab across successive generations of researchers, not purely by the biology of
+the proteins themselves. If provable, this is evidence that part of what CAFA scores is which labs
+happen to be active/publishing in the eval window, not pure protein biology — valuable to know, and
+(the user's own words) "very, very valuable and possibly painful" if true.
+
+**Mechanism, in three gated steps:**
+1. **Attribution dataset (two chained one-time batch pulls).** GAF format (GO Consortium / EBI
+   GOA) carries `Date` (column 14, `YYYYMMDD`), `Assigned_By` (column 15, e.g. `SGD`, `UniProtKB`,
+   `FB`), and `DB:Reference` (column 6, a `PMID:...` citation) on every annotation row.
+   `goa_uniprot_all_noiea.gaf.gz` (excludes algorithmic/IEA annotations, which carry no
+   human-curation bias to find) filtered to CAFA6's protein ID set is pull #1 — a single
+   one-shot fetch, no incremental/repeated fetching.
+   **Granularity, corrected (2026-10-22, user call): `Assigned_By` alone is too coarse to use as
+   the lab key.** It has only ~30-40 distinct values total (per the GO Consortium's own
+   contributing-groups list); ~15-20 are genuinely organism-scoped curation teams, but a few
+   mega-buckets — chiefly `UniProtKB`'s own internal curation team — span every organism and
+   thousands of unrelated papers/labs, i.e. exactly the "almost everything could go there" problem.
+   **Real lab identity needs one level deeper:** pull #2 is a single batched NCBI PubMed E-utils
+   query over the unique PMIDs collected from `DB:Reference` in pull #1, resolving each paper's
+   last/corresponding author — by biology convention, the PI, used as the stable "lab" identity
+   key (no need to model the mentor/mentee graph itself; the PI persists while the people under
+   them rotate, which already captures the continuity the user expects). **Store both values per
+   annotation row** — the raw `Assigned_By` group/database *and* the PubMed-resolved last-author
+   "lab" key — so either granularity is available later, including building a **mentor-mentee DAG** on top of the
+   stored last-author identities (e.g. a last-author who appears as first/non-last-author under a
+   different last-author earlier in their publication history, inferred from the same PubMed
+   metadata) as an additional measurement, without needing a second data pull to add it.
+2. **Cheap predictability check (go/no-go gate).** Train a cheap classifier (XGBoost) to predict
+   which `Assigned_By` lab/database produced a given (protein, term) annotation. If lab identity
+   isn't learnably distinct from chance, the premise is wrong and this stops here — cheap to find
+   out before committing to step 3.
+3. **Temporal-bias-conditioned PU-learning (conditional on step 2 succeeding).** Determine which
+   labs/databases are likely to be active annotators within a CAFA-style future delta-t window, take
+   their most likely top-N predicted terms, and bias PU-learning toward those protein×term pairs as
+   stronger positive candidates — test whether this measurably changes future-prediction accuracy on
+   the existing temporal t0/t1 harness (`experiments/pk_eval/`, built for item 2/item 7) rather than
+   building new infrastructure.
+
+**Why Tier 3, not Tier 1/2:** entirely gated on step 2's own go/no-go result, same pattern as items 7
+and 10 — don't build step 3 before step 2 confirms there's a real, learnable lab-identity signal to
+condition on.
+**Relationship to other items:** reuses item 2/item 7's cached Swiss-Prot/temporal infrastructure
+rather than duplicating it; if it works, it's a second, independent line of evidence (alongside item
+7's "later annotation confirms flagged cells") that CAFA's future ground truth carries real
+sociological signal, not just biology.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features
