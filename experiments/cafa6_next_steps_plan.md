@@ -944,6 +944,56 @@ separate text encoder), whether GO term definitions are distinctive enough in em
 separate closely related terms, and how compatibility-score training interacts with the existing
 BCE-based training loop. Needs its own feasibility spike, same bar as item 7.
 
+**Feasibility spike (2026-10-23): question 1 resolved easily, question 2 fails decisively —
+not pursuing this item as scoped.** `experiments/label_embedding/feasibility_probe.py`.
+
+**Q1 (encoder choice): resolved.** ESM itself is a non-starter — its tokenizer only knows amino
+acids, not English text. A small off-the-shelf sentence-embedding checkpoint
+(`sentence-transformers/all-MiniLM-L6-v2`) loads and runs fine through the `transformers`
+dependency already in the stack (`AutoModel`/`AutoTokenizer` + manual mean-pooling) — no new
+package needed. All 40,122/40,122 `go-basic.obo` terms have a usable `def:` field, so coverage
+isn't a concern either.
+
+**Q2 (distinctiveness): fails, for a large and important sub-vocabulary.** Embedded every term
+definition with the encoder above and compared cosine similarity across three pair types (500
+random pairs, 500 sibling pairs sharing a direct `is_a` parent, and every
+`positive_regulation_of_X` / `negative_regulation_of_X` antonym pair found — 2,612 of them):
+
+| pair type | n | mean cosine | median | min | max |
+|---|---|---|---|---|---|
+| random (unrelated) | 500 | 0.2342 | 0.2207 | -0.1210 | 0.6824 |
+| sibling (shares a parent) | 500 | 0.7374 | 0.7738 | 0.1900 | 0.9964 |
+| **antonym (pos_reg vs. neg_reg)** | **2,612** | **0.9154** | **0.9138** | 0.4820 | 0.9980 |
+
+A generic sentence encoder rates `positive regulation of X` and `negative regulation of X` as
+*more similar to each other* (mean 0.9154) than ordinary siblings are to each other (0.7374) —
+these are opposite biological effects the model absolutely needs to tell apart, and the single
+most common regulation-direction naming pattern in GO (2,612 such pairs found from this one
+pattern alone, pervasive across `biological_process`) collapses to near-identical embeddings.
+Concrete examples: `positive regulation of mitochondrial RNA catabolic process` vs. its negative
+counterpart scores 0.9476; `positive/negative regulation of type I hypersensitivity` scores
+0.8972. This isn't a rare edge case to work around later — it's a systemic blind spot in exactly
+the kind of off-the-shelf encoder this architecture needs, baked into the encoder's generic
+semantic-similarity training objective (which reasonably treats "X" and "regulation of X" as the
+dominant shared signal, direction as a minor modifier).
+
+**Q3 (training-loop integration): moot given Q2, but architecturally sound if revisited.** A
+compatibility score (`scale * cosine_sim(protein_proj, term_embedding) + bias`) is a drop-in
+replacement for the classifier's logit computation only — `BCEWithLogitsLoss`, the hierarchy-loss
+hinge (item 3), and the existing loss-masking mechanism all operate on logits and don't care how
+they were produced. Not a blocker, didn't need a code spike to confirm.
+
+**Verdict: not pursuing item 8 (or item 9, which depends on it) as scoped.** The architecture's
+entire premise — that a term's text-derived embedding carries enough signal to discriminate it
+from related terms — fails for a large, central part of the vocabulary with an off-the-shelf
+encoder. A workaround exists in principle (fine-tune a GO-definition-specific contrastive
+encoder that's explicitly trained to separate regulation-direction pairs, rather than using a
+generic STS checkpoint frozen as-is), but that's a substantially bigger undertaking than this
+spike's scope — training data for "which GO term pairs must be kept apart" would itself need to
+be built, and it stops being a cheap feasibility-gated Tier 3 item at that point. Logging this as
+the blocker for anyone revisiting this line later, rather than scoping a bigger build around it
+now.
+
 ### 9. Auxiliary sequence-based prediction tasks (user's own idea: predict positional annotations, etc.)
 **Depends on item 8 above (label-embedding setup)** — this item's auxiliary targets are meant to be
 implemented as embedding predictions/compatibility scores under that architecture, not as new flat
