@@ -1026,15 +1026,17 @@ of`.
 | increased / decreased | 0 |
 | (total terms in `go-basic.obo`) | 40,122 |
 
-The regulation-direction pattern dominates every other explicit antonym-naming convention
-combined by two orders of magnitude (5,660 vs. 48) — one regex rule covers ~14% of the entire
-vocabulary and is close to the ceiling of what hand-rolled pattern rules can reach for *this*
-kind of lexical antonym. A small, fixed set of such rules (5-6 known GO modifier-word pairs)
-plausibly covers the large majority of the "opposite biological effect, near-identical topic"
-failure mode cheaply. What it does **not** cover: antonym-like pairs that are semantically
-opposite without sharing an explicit marker word at all (not counted/quantified here) — those
-would still need either more rules or a genuinely trained contrastive encoder (route (c), not
-attempted).
+**Correction (caught during step 2 below): that table counted one-sided name hits, not
+confirmed pairs.** Checked directly whether the three minor patterns ever have *both* sides
+present (shared suffix on the positive and negative side) anywhere in `go-basic.obo`: zero
+matched pairs for all three (`activation of`: 25 terms vs. `inhibition of`: 9, 0 shared
+suffixes; `agonist activity`: 1 vs. `antagonist activity`: 9, 0 shared; `stimulation of`: 0 vs.
+`suppression of`: 4, 0 shared). These terms exist, but never as an actual antonym pair that
+needs separating — `positive/negative regulation of` isn't just the dominant antonym-collapse
+pattern in GO, it's effectively the **only** one expressed as a shared-suffix naming
+convention. What it does **not** cover: antonym-like pairs that are semantically opposite
+without any shared marker word at all (not counted/quantified here) — those would still need
+either more rules or a genuinely trained contrastive encoder (route (c), not attempted).
 
 **Revised verdict: reopening item 8, scoped around the structural-flag fix, not a trained
 encoder.** The original "not pursuing" call was based on an incomplete picture — it tested only
@@ -1045,6 +1047,34 @@ regex flags (regulation of as the dominant one, the four smaller patterns above 
 additions); treat "semantically opposite but no shared marker word" as a known residual gap, not
 yet measured, and re-evaluate Q2's distinctiveness check after the flags are added rather than
 assuming the earlier failure numbers still apply.
+
+**Implementation progress (2026-10-23):**
+
+**Step 1 (precompute, done).** `experiments/label_embedding/build_term_embeddings.py`
+embeds all 27,191 *trainable* terms' definitions (not just the full 40,122-term ontology),
+in the dataset's own `label2id` order, with the direction flag generalized to all 4 known
+patterns. Direction flag fires on 3,692/27,191 terms (~13.6%, consistent with the earlier
+~14% full-ontology estimate). All 27,191 trainable terms had a usable `def:` field — no
+missing-def fallback needed. Output cached to `term_embeddings.pt` (gitignored, ~40MB,
+regeneratable).
+
+**Step 2 (revisit Q2 at full trainable-vocabulary scale, done — gate passes).**
+`experiments/label_embedding/validate_term_embeddings.py` reran the distinctiveness check
+against the actual cached, flag-augmented 27,191-term embeddings, not the 2,612-pair sample
+the salvage probe used:
+
+| pair type | n | mean cosine |
+|---|---|---|
+| random | 500 | 0.1994 |
+| sibling | 500 | 0.4887 |
+| **antonym (positive/negative regulation of)** | **1,411** | **-0.6175** |
+| activation of / inhibition of | 0 | — (no matched pairs, see correction above) |
+| agonist / antagonist activity | 0 | — (no matched pairs) |
+| stimulation of / suppression of | 0 | — (no matched pairs) |
+
+Matches the salvage probe's numbers closely (-0.6175 vs. -0.6169) at the real scale this will
+train against — antonym pairs fully separated, siblings (0.4887) still clearly more similar
+than random (0.1994). **Gate passes — proceeding to step 3 (model integration).**
 
 ### 9. Auxiliary sequence-based prediction tasks (user's own idea: predict positional annotations, etc.)
 **Depends on item 8 above (label-embedding setup)** — this item's auxiliary targets are meant to be
