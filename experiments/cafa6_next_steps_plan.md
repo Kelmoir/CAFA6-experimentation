@@ -983,21 +983,77 @@ replacement for the classifier's logit computation only — `BCEWithLogitsLoss`,
 hinge (item 3), and the existing loss-masking mechanism all operate on logits and don't care how
 they were produced. Not a blocker, didn't need a code spike to confirm.
 
-**Verdict: not pursuing item 8 (or item 9, which depends on it) as scoped.** The architecture's
-entire premise — that a term's text-derived embedding carries enough signal to discriminate it
-from related terms — fails for a large, central part of the vocabulary with an off-the-shelf
-encoder. A workaround exists in principle (fine-tune a GO-definition-specific contrastive
-encoder that's explicitly trained to separate regulation-direction pairs, rather than using a
-generic STS checkpoint frozen as-is), but that's a substantially bigger undertaking than this
-spike's scope — training data for "which GO term pairs must be kept apart" would itself need to
-be built, and it stops being a cheap feasibility-gated Tier 3 item at that point. Logging this as
-the blocker for anyone revisiting this line later, rather than scoping a bigger build around it
-now.
+**Salvage follow-up (2026-10-23): Q2's failure is fixable, cheaply, for the pattern that
+dominates it — reopening item 8.** `experiments/label_embedding/salvage_probe.py`. Tested three
+routes to recover antonym-pair distinctiveness:
+
+| fix | random | sibling | antonym |
+|---|---|---|---|
+| (baseline: definition only) | 0.2342 | 0.7374 | 0.9154 |
+| name + definition concatenated | 0.1975 | 0.7278 | 0.9082 |
+| name only (no definition) | 0.1553 | 0.6841 | 0.9614 |
+| **definition + 1-dim regex direction flag** | 0.1981 | 0.5345 | **-0.6169** |
+
+Text reformatting (rows 2-3) — i.e. "just adjust the descriptions" or "remove the noise" —
+**doesn't work**: prepending the name barely moves antonym similarity (0.9154 → 0.9082), and
+dropping the definition entirely to keep only the name makes it *worse* (0.9614). The encoder
+isn't missing the direction word for lack of visibility; it structurally discounts "positive" /
+"negative" as a minor modifier against the shared topical content no matter how the text is
+arranged. This refutes the text-engineering hypothesis specifically.
+
+What does work: augmenting the frozen definition embedding with one extra deterministic
+dimension — a regex over the term name (`^(positive|negative) regulation of `) emitting
++1/-1/0, scaled and concatenated before re-normalizing. This flips mean antonym similarity to
+**-0.6169** (fully separated) while leaving random pairs basically unchanged (0.1981) and
+siblings still clearly more similar than random (0.5345 — lower than the 0.7374 baseline,
+plausibly because some siblings genuinely are direction-opposite pairs that arguably *should*
+end up pushed apart). No training involved — this is a hand-written structural feature, not a
+trained fix for route (c) ("train an embedding setup specifically for those"), but it's
+suggestive evidence in that direction: once the direction signal is captured at all, the rest of
+the embedding geometry is healthy enough to cleanly separate antonym from random/sibling pairs.
+
+Checked how far this generalizes before trusting it as the fix: counted how many GO term names
+match other explicit opposite-effect naming conventions besides `positive/negative regulation
+of`.
+
+| naming pattern | term count |
+|---|---|
+| positive/negative regulation of | 5,660 |
+| activation of / inhibition of | 34 |
+| agonist / antagonist activity | 10 |
+| stimulation of / suppression of | 4 |
+| up-regulation / down-regulation | 0 |
+| increased / decreased | 0 |
+| (total terms in `go-basic.obo`) | 40,122 |
+
+The regulation-direction pattern dominates every other explicit antonym-naming convention
+combined by two orders of magnitude (5,660 vs. 48) — one regex rule covers ~14% of the entire
+vocabulary and is close to the ceiling of what hand-rolled pattern rules can reach for *this*
+kind of lexical antonym. A small, fixed set of such rules (5-6 known GO modifier-word pairs)
+plausibly covers the large majority of the "opposite biological effect, near-identical topic"
+failure mode cheaply. What it does **not** cover: antonym-like pairs that are semantically
+opposite without sharing an explicit marker word at all (not counted/quantified here) — those
+would still need either more rules or a genuinely trained contrastive encoder (route (c), not
+attempted).
+
+**Revised verdict: reopening item 8, scoped around the structural-flag fix, not a trained
+encoder.** The original "not pursuing" call was based on an incomplete picture — it tested only
+the frozen encoder's raw definition embedding and didn't check whether a cheap augmentation could
+fix the dominant failure mode. It can. Scoping note for whoever picks this up: ship the compatibility-score
+architecture with definition embeddings augmented by a small, explicit set of direction-modifier
+regex flags (regulation of as the dominant one, the four smaller patterns above as cheap
+additions); treat "semantically opposite but no shared marker word" as a known residual gap, not
+yet measured, and re-evaluate Q2's distinctiveness check after the flags are added rather than
+assuming the earlier failure numbers still apply.
 
 ### 9. Auxiliary sequence-based prediction tasks (user's own idea: predict positional annotations, etc.)
 **Depends on item 8 above (label-embedding setup)** — this item's auxiliary targets are meant to be
 implemented as embedding predictions/compatibility scores under that architecture, not as new flat
 classifier heads; don't scope this before item 8 has at least a working feasibility result.
+**Status update (2026-10-23):** item 8 is reopened (see its salvage follow-up above) rather than
+dead, so this item is viable again in principle — but still blocked until item 8's
+structural-flag-augmented architecture is actually built and its revisited Q2 check passes, not
+just spiked.
 **Source:** not directly evidenced in the research (no source reviewed combined multi-task sequence
 objectives with GO prediction), but consistent with two things the research does support: (a) the
 general principle that orthogonal evidence sources help (item 1), and (b) the finding that structure
