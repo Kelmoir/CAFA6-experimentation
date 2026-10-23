@@ -278,6 +278,16 @@ class LabelEmbeddingClassificationHead(torch.nn.Module):
     distinctive enough for antonym term pairs -- build_term_embeddings.py's definition
     embeddings are augmented with a direction-antonym flag to fix this; this head doesn't care
     how the embeddings were produced, only that they're already fixed and normalized).
+
+    bias is per-term ([num_labels], not a single global scalar) -- a first cheap-scale
+    comparison with a global scalar bias collapsed to chance-level AUROC (0.4999): with no
+    per-term calibration slot, the only way to cheaply fit this task's ~99.8%-negative class
+    imbalance is to shrink `scale` toward zero, which flattens every term's cosine-similarity
+    signal at once and destroys ranking everywhere simultaneously. A per-term bias (still only
+    O(num_labels) parameters, nowhere near the flat classifier's O(hidden_size * num_labels)
+    weight matrix -- a new term still just needs its own embedding row plus one bias scalar)
+    gives the model the same prior-calibration slack AspectConditioned/plain classifier heads
+    get via get_classifier_bias_param's prior-bias init, without needing scale to move at all.
     """
 
     def __init__(self, config, term_embeddings: torch.Tensor):
@@ -293,7 +303,7 @@ class LabelEmbeddingClassificationHead(torch.nn.Module):
         self.proj = torch.nn.Linear(config.hidden_size, term_embeddings.shape[1])
         self.register_buffer("term_embeddings", term_embeddings, persistent=False)
         self.scale = torch.nn.Parameter(torch.tensor(10.0))
-        self.bias = torch.nn.Parameter(torch.tensor(0.0))
+        self.bias = torch.nn.Parameter(torch.zeros(term_embeddings.shape[0]))
 
     def forward(self, features: torch.Tensor, **kwargs) -> torch.Tensor:
         x = features[:, 0, :]  # <s>/CLS token, matching EsmClassificationHead
@@ -507,10 +517,13 @@ def create_esm(
         # types _init_weights recognizes (nn.Linear, etc, matched by isinstance) - verified
         # directly: classifier.proj's Linear weight/bias come out correctly initialized
         # (std=0.02/zeros), but classifier.scale/classifier.bias are bare nn.Parameter
-        # scalars with no such isinstance match, so they're left as whatever uninitialized
-        # meta-device garbage they happened to contain (~1e-29), silently overwriting the
-        # 10.0/0.0 LabelEmbeddingClassificationHead.__init__ already set. Only re-applied on
-        # a fresh start (revision is None) - a --resume-from-revision load has real trained
+        # tensors (a scalar and a [num_labels] vector respectively) with no such isinstance
+        # match, so they're left as whatever uninitialized meta-device garbage they happened
+        # to contain (~1e-29), silently overwriting the 10.0/all-zeros
+        # LabelEmbeddingClassificationHead.__init__ already set. This fill_ is just a
+        # transient placeholder anyway - main()'s per-term prior-bias init overwrites
+        # classifier.bias properly right after create_esm() returns on a fresh start. Only
+        # re-applied when revision is None - a --resume-from-revision load has real trained
         # scale/bias values in the checkpoint's state dict, not missing/garbage ones.
         #
         # term_embeddings is hit even harder regardless of revision - verified directly it
@@ -1638,22 +1651,22 @@ def main() -> None:
 
     if args.resume_from_revision:
         print(f"[INFO] Resumed model weights from {args.hf_repo_id}@{args.resume_from_revision}")
-    elif args.use_label_embedding_head:
-        # The per-term prior-bias trick below needs one bias per term (out_proj.bias,
-        # shape [num_labels]) to saturate toward each label's own prior. LabelEmbeddingClassificationHead
-        # has a single global scale/bias instead (shared across every term by construction --
-        # that's the whole point of not having a per-term weight) -- there's no per-term slot
-        # to initialize this way, so it's skipped rather than attempted on the wrong shape.
-        print("[INFO] --use-label-embedding-head set: skipping per-term prior-bias init "
-              "(the head's scale/bias are global, not per-term).")
     else:
         # BCE with an imbalanced label prior otherwise wastes early gradient budget just
         # learning the bias (saturating logits toward the prior), which shrinks per-example
         # gradient magnitude and starves the weight matrix of signal to actually discriminate.
+        # LabelEmbeddingClassificationHead's bias is per-term too (see its docstring -- a
+        # global scalar bias collapsed cheap-scale AUROC to chance, 0.4999, since shrinking
+        # the shared `scale` toward zero was the only calibration escape hatch available), so
+        # this applies identically to both head types; only the attribute path differs.
         label_priors = (label_counts / max(1, len(raw_train_labels))).clamp(1e-4, 1 - 1e-4)
         prior_bias = torch.log(label_priors / (1 - label_priors)).to(device)
+        bias_param = (
+            model_esm.classifier.bias if args.use_label_embedding_head
+            else model_esm.classifier.out_proj.bias
+        )
         with torch.no_grad():
-            model_esm.classifier.out_proj.bias.copy_(prior_bias)
+            bias_param.copy_(prior_bias)
         print(
             f"[INFO] Initialized classifier bias to label priors for {len(label_names)} labels "
             f"(mean={label_priors.mean().item():.4f}, min={label_priors.min().item():.4f}, "
