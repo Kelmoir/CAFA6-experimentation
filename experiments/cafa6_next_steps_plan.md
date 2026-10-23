@@ -1055,6 +1055,40 @@ mutated sequence as a new training example with:
 **Why Tier 3:** step 1 is a cheap, immediate diagnostic; step 2 is explicitly conditional on step
 1 finding a real problem, not built speculatively.
 
+### 15. Mining UniProt's own curated evidence for more trustworthy known-positive/known-negative examples
+**Source:** user's own idea (2026-10-23), generalizing item 14's single mechanism (synthesize a
+disruptive mutation yourself) into systematically mining evidence UniProt curators have *already*
+published, ranked by trust, cheapest/most-direct first:
+1. **`FT MUTAGEN` features (primary).** Already-published, experimentally-measured site-directed
+   mutagenesis results, with a free-text `/note` describing the effect (e.g. "Loss of kinase
+   activity") and usually an experimental evidence code + PubMed reference — a real negative, not
+   a guessed one. Parseable today from the already-cached `data/uniprot/uniprot_sprot.dat.gz` via
+   `Bio.SwissProt.parse()`'s `record.features`.
+2. **Natural inactive paralogs/pseudoenzymes (`CC CAUTION` comments, secondary).** Free natural
+   knockouts UniProt already documents in prose (e.g. "lacks the conserved active-site residue...
+   probably non-catalytic") — no mutation construction needed, but harder to mine systematically
+   since the evidence is unstructured free text, not a feature with coordinates.
+3. **Disease-variant loss-of-function alleles (`FT VARIANT`, tertiary, noisiest).** Usable only
+   when the variant carries its own experimental-evidence code for a specific molecular
+   consequence, not just a clinical/phenotype association — most disease variants don't clear
+   that bar.
+Same text-pattern/evidence-mapping work `build_positional_mf_links.py` already did for the mf_span
+project applies here — mapping a `/note` description to a specific GO term — not a new
+data-acquisition problem.
+
+**Deliverable, once mining is done (not yet — logged for later pickup):** a summary of how many
+new known-positive and known-negative `(protein, term)` pairs this recovers, broken out by
+evidence category and by whether the protein is already in the CAFA6 train/val/test split or new
+(some `MUTAGEN`/`CAUTION`-documented proteins may not currently be in `train_terms.tsv` at all —
+Swiss-Prot already has their sequences, so adding them is just a `generate_dataset_full.py`-style
+inclusion, not a new fetch).
+
+**Why this matters beyond item 14:** that summary is what decides whether there's enough new, real
+evidence to justify a broader "mask genuinely-unknown terms instead of treating every unannotated
+term as an implicit negative" training strategy — directly relevant to this project's long-running
+OWA/PU-learning tension ([[project_pu_learning_nnpu_km2]]). Unconditional on item 14's step 1
+result (unlike item 14's step 2) — this is useful regardless of what the attention-map check finds.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features
