@@ -265,6 +265,72 @@ class KnownConditionedEsmForSequenceClassification(EsmForSequenceClassification)
         )
 
 
+class LabelEmbeddingClassificationHead(torch.nn.Module):
+    """Item 8's compatibility-score head (see experiments/cafa6_next_steps_plan.md): replaces
+    the flat per-term classifier weight ([hidden_size, num_labels]) with a small learned
+    projection into a precomputed, frozen GO-term-embedding space ([hidden_size, embed_dim]),
+    scored by cosine similarity against every term's embedding. A new term just needs its own
+    embedding row (see experiments/label_embedding/build_term_embeddings.py), not a newly
+    trained output weight -- the premise item 9 needs to be worth building.
+
+    term_embeddings must already be L2-normalized and in exactly the label2id row order (the
+    feasibility spike/salvage follow-up found a generic sentence encoder alone isn't
+    distinctive enough for antonym term pairs -- build_term_embeddings.py's definition
+    embeddings are augmented with a direction-antonym flag to fix this; this head doesn't care
+    how the embeddings were produced, only that they're already fixed and normalized).
+    """
+
+    def __init__(self, config, term_embeddings: torch.Tensor):
+        super().__init__()
+        if term_embeddings.shape[0] != config.num_labels:
+            raise ValueError(
+                f"term_embeddings has {term_embeddings.shape[0]} rows but config.num_labels="
+                f"{config.num_labels} -- regenerate experiments/label_embedding/"
+                "build_term_embeddings.py against the dataset actually in use, the cached "
+                "term order must exactly match label2id"
+            )
+        self.dropout = torch.nn.Dropout(config.hidden_dropout_prob)
+        self.proj = torch.nn.Linear(config.hidden_size, term_embeddings.shape[1])
+        self.register_buffer("term_embeddings", term_embeddings, persistent=False)
+        self.scale = torch.nn.Parameter(torch.tensor(10.0))
+        self.bias = torch.nn.Parameter(torch.tensor(0.0))
+
+    def forward(self, features: torch.Tensor, **kwargs) -> torch.Tensor:
+        x = features[:, 0, :]  # <s>/CLS token, matching EsmClassificationHead
+        x = self.dropout(x)
+        x = self.proj(x)
+        x = torch.nn.functional.normalize(x, dim=-1)
+        sims = x @ self.term_embeddings.to(dtype=x.dtype).T
+        return self.scale * sims + self.bias
+
+
+class LabelEmbeddingEsmForSequenceClassification(EsmForSequenceClassification):
+    """EsmForSequenceClassification with its classifier head swapped for
+    LabelEmbeddingClassificationHead. Mirrors AspectConditionedEsmForSequenceClassification
+    exactly (above) -- loss is computed externally by training_run.py, not here.
+    """
+
+    def __init__(self, config, term_embeddings: Optional[torch.Tensor] = None):
+        super().__init__(config)
+        if term_embeddings is None:
+            raise ValueError("LabelEmbeddingEsmForSequenceClassification requires term_embeddings")
+        self.classifier = LabelEmbeddingClassificationHead(config, term_embeddings)
+        std = getattr(config, "initializer_range", None) or 0.02
+        with torch.no_grad():
+            self.classifier.proj.weight.normal_(mean=0.0, std=std)
+            self.classifier.proj.bias.zero_()
+
+    def forward(self, input_ids=None, attention_mask=None, **kwargs) -> SequenceClassifierOutput:
+        outputs = self.esm(input_ids, attention_mask=attention_mask, **kwargs)
+        sequence_output = outputs[0]
+        logits = self.classifier(sequence_output)
+        return SequenceClassifierOutput(
+            logits=logits,
+            hidden_states=outputs.hidden_states,
+            attentions=outputs.attentions,
+        )
+
+
 def create_esm(
     unfreeze_last_n: int = 2,
     model_type: str = "facebook/esm2_t30_150M_UR50D",
@@ -286,6 +352,8 @@ def create_esm(
     use_aspect_input: bool = False,
     use_known_input: bool = False,
     known_embed_dim: int = 64,
+    use_label_embedding_head: bool = False,
+    term_embeddings: Optional[torch.Tensor] = None,
 ):
     if id2label is None or label2id is None:
         raise ValueError("id2label and label2id must be provided")
@@ -306,6 +374,18 @@ def create_esm(
             "--use-known-input + --use-aspect-input is not implemented - no classifier head "
             "concatenates both auxiliary inputs today (see the design spec's non-goals)."
         )
+    if use_label_embedding_head and use_lora:
+        raise NotImplementedError(
+            "--use-label-embedding-head + --use-lora is not implemented - "
+            "LabelEmbeddingEsmForSequenceClassification only replaces the plain (non-LoRA) classifier head."
+        )
+    if use_label_embedding_head and (use_known_input or use_aspect_input):
+        raise NotImplementedError(
+            "--use-label-embedding-head is mutually exclusive with --use-known-input/--use-aspect-input - "
+            "only one classifier-head swap mechanism is implemented at a time."
+        )
+    if use_label_embedding_head and term_embeddings is None:
+        raise ValueError("--use-label-embedding-head requires term_embeddings (see --label-embeddings-path)")
 
     if use_lora:
         if get_peft_model is None:
@@ -404,9 +484,14 @@ def create_esm(
     model_cls = (
         KnownConditionedEsmForSequenceClassification if use_known_input
         else AspectConditionedEsmForSequenceClassification if use_aspect_input
+        else LabelEmbeddingEsmForSequenceClassification if use_label_embedding_head
         else AutoModelForSequenceClassification
     )
-    extra_model_kwargs = {"known_embed_dim": known_embed_dim} if use_known_input else {}
+    extra_model_kwargs = (
+        {"known_embed_dim": known_embed_dim} if use_known_input
+        else {"term_embeddings": term_embeddings} if use_label_embedding_head
+        else {}
+    )
     model = model_cls.from_pretrained(
         model_type,
         num_labels=len(id2label),
@@ -416,6 +501,31 @@ def create_esm(
         revision=revision,
         **extra_model_kwargs,
     )
+
+    if use_label_embedding_head:
+        # from_pretrained's fast meta-device init path only properly initializes module
+        # types _init_weights recognizes (nn.Linear, etc, matched by isinstance) - verified
+        # directly: classifier.proj's Linear weight/bias come out correctly initialized
+        # (std=0.02/zeros), but classifier.scale/classifier.bias are bare nn.Parameter
+        # scalars with no such isinstance match, so they're left as whatever uninitialized
+        # meta-device garbage they happened to contain (~1e-29), silently overwriting the
+        # 10.0/0.0 LabelEmbeddingClassificationHead.__init__ already set. Only re-applied on
+        # a fresh start (revision is None) - a --resume-from-revision load has real trained
+        # scale/bias values in the checkpoint's state dict, not missing/garbage ones.
+        #
+        # term_embeddings is hit even harder regardless of revision - verified directly it
+        # comes back as all zeros, since it's constructed (under __init__) while
+        # from_pretrained's meta-device context is active, which silently redirects any
+        # tensor creation to a placeholder regardless of the real data passed in. It's also
+        # registered non-persistent (never saved to/loaded from a checkpoint's state dict,
+        # see LabelEmbeddingClassificationHead), so it always needs recopying from the
+        # term_embeddings argument, resume or not.
+        if revision is None:
+            with torch.no_grad():
+                model.classifier.scale.fill_(10.0)
+                model.classifier.bias.fill_(0.0)
+        with torch.no_grad():
+            model.classifier.term_embeddings.copy_(term_embeddings)
 
     for param in model.esm.parameters():
         param.requires_grad = False
@@ -1293,6 +1403,16 @@ def main() -> None:
     parser.add_argument("--known-embed-dim", type=int, default=64,
                          help="Embedding dimension per GO term for --use-known-input's "
                               "nn.EmbeddingBag known-term pooling.")
+    parser.add_argument("--use-label-embedding-head", action=argparse.BooleanOptionalAction, default=False,
+                         help="Item 8 (see experiments/cafa6_next_steps_plan.md): replace the flat "
+                              "classifier weight with LabelEmbeddingClassificationHead, a small learned "
+                              "projection scored by cosine similarity against precomputed GO-term "
+                              "embeddings (--label-embeddings-path). Mutually exclusive with --use-lora, "
+                              "--use-aspect-input, --use-known-input.")
+    parser.add_argument("--label-embeddings-path", default="experiments/label_embedding/term_embeddings.pt",
+                         help="Cached term-embedding tensor from experiments/label_embedding/"
+                              "build_term_embeddings.py, used only when --use-label-embedding-head is set. "
+                              "Its term order must exactly match the dataset's own label2id ordering.")
     parser.add_argument("--hierarchy-loss-weight", type=float, default=0.0,
                          help="Weight on a training-time hinge penalty (relu(child_logit - "
                               "parent_logit), see hierarchy_consistency_penalty) that discourages "
@@ -1429,6 +1549,19 @@ def main() -> None:
         print(f"[INFO] Loaded IA weights for {len(label_names)} terms "
               f"(mean={ia_weights.mean():.4f}, nonzero={int((ia_weights > 0).sum())})")
 
+    term_embeddings = None
+    if args.use_label_embedding_head:
+        cached = torch.load(args.label_embeddings_path)
+        if cached["terms"] != label_names:
+            raise ValueError(
+                f"{args.label_embeddings_path}'s cached term order does not match this dataset's "
+                "label2id ordering -- regenerate experiments/label_embedding/build_term_embeddings.py "
+                "against the dataset actually in use at --data-path/--dataset-repo-id."
+            )
+        term_embeddings = cached["embeddings"]
+        print(f"[INFO] Loaded term embeddings for --use-label-embedding-head: "
+              f"{term_embeddings.shape} from {args.label_embeddings_path}")
+
     tokenizer = create_esm_tokenizer(args.model_name)
     preprocess_batch_partial = partial(
         preprocess_batch,
@@ -1492,6 +1625,8 @@ def main() -> None:
         use_aspect_input=args.use_aspect_input,
         use_known_input=args.use_known_input,
         known_embed_dim=args.known_embed_dim,
+        use_label_embedding_head=args.use_label_embedding_head,
+        term_embeddings=term_embeddings,
     ).to(device)
     # Computed unconditionally (not just on a fresh start) since --pos-weight needs it
     # regardless of whether we're resuming from a checkpoint.
@@ -1503,6 +1638,14 @@ def main() -> None:
 
     if args.resume_from_revision:
         print(f"[INFO] Resumed model weights from {args.hf_repo_id}@{args.resume_from_revision}")
+    elif args.use_label_embedding_head:
+        # The per-term prior-bias trick below needs one bias per term (out_proj.bias,
+        # shape [num_labels]) to saturate toward each label's own prior. LabelEmbeddingClassificationHead
+        # has a single global scale/bias instead (shared across every term by construction --
+        # that's the whole point of not having a per-term weight) -- there's no per-term slot
+        # to initialize this way, so it's skipped rather than attempted on the wrong shape.
+        print("[INFO] --use-label-embedding-head set: skipping per-term prior-bias init "
+              "(the head's scale/bias are global, not per-term).")
     else:
         # BCE with an imbalanced label prior otherwise wastes early gradient budget just
         # learning the bias (saturating logits toward the prior), which shrinks per-example

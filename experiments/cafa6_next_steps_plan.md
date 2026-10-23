@@ -1076,6 +1076,34 @@ Matches the salvage probe's numbers closely (-0.6175 vs. -0.6169) at the real sc
 train against — antonym pairs fully separated, siblings (0.4887) still clearly more similar
 than random (0.1994). **Gate passes — proceeding to step 3 (model integration).**
 
+**Step 3 (model integration, done).** `training_run.py`: `LabelEmbeddingClassificationHead` +
+`LabelEmbeddingEsmForSequenceClassification`, wired in behind `--use-label-embedding-head`
+(mutually exclusive with `--use-lora`/`--use-aspect-input`/`--use-known-input`, same pattern as
+those existing head-swap flags) + `--label-embeddings-path`. `create_esm()` validates the
+cached tensor's term order matches the dataset's own `label2id` before building the model, and
+the per-term prior-bias-init trick (which needs one bias per label) is skipped for this head
+with an explanatory log line, since the head has one global scale/bias instead.
+
+**Bug found and fixed during the smoke test, worth flagging for future custom heads:**
+`from_pretrained`'s fast meta-device init path only properly initializes module types
+`_init_weights` recognizes by `isinstance` (`nn.Linear`, etc) — confirmed `classifier.proj`'s
+weight/bias came out correctly initialized this way. But bare `nn.Parameter` scalars not
+wrapped in a recognized module type (`classifier.scale`, `classifier.bias`) silently come back
+as uninitialized meta-device garbage (~1e-29) instead of the 10.0/0.0 the head's `__init__`
+set — and the non-persistent `term_embeddings` buffer is hit even harder, coming back as all
+zeros, since it's allocated while `from_pretrained`'s meta-device context is active regardless
+of the real tensor passed to `__init__`. First smoke-test run silently trained with scale/bias
+≈1e-29 and all-zero term embeddings — loss exploded to ~511,000 (BCE loss on effectively-zero
+logits that should have stayed small) instead of crashing, which is the dangerous failure mode
+here: it looks like a diverging run, not a wiring bug, unless the loss magnitude is checked
+against what a sane logit range should produce. Fixed in `create_esm()` by explicitly
+re-filling `scale`/`bias` (fresh start only — a `--resume-from-revision` load has real trained
+values in the checkpoint) and re-copying `term_embeddings` from the passed-in tensor
+(unconditionally, since it's never in any checkpoint's state dict) right after
+`from_pretrained()` returns. Re-verified after the fix: logits land in a sane range (-2.19 to
+2.07) and a 20-example/1-epoch CPU smoke test's train_loss drops cleanly step over step (0.59 →
+0.24).
+
 ### 9. Auxiliary sequence-based prediction tasks (user's own idea: predict positional annotations, etc.)
 **Depends on item 8 above (label-embedding setup)** — this item's auxiliary targets are meant to be
 implemented as embedding predictions/compatibility scores under that architecture, not as new flat
