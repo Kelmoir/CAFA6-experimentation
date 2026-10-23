@@ -28,6 +28,10 @@ __pycache__/
 # -- regeneratable from the cached data/uniprot/uniprot_sprot.dat.gz + train_terms.tsv.
 # category_summary.json is small and kept tracked, same as class_priors_km2.json above.
 /experiments/pk_eval/temporal_pk_validation/*
+
+# Item 8 label-embedding cache (experiments/label_embedding/build_term_embeddings.py) -- ~40MB,
+# regeneratable from go-basic.obo + dataset_full's label list + the frozen sentence encoder.
+/experiments/label_embedding/term_embeddings.pt
 /experiments/pk_eval/temporal_pk_validation_flat/*
 /experiments/pk_eval/temporal_pk_validation_flat/predictions/*
 /experiments/pk_eval/cafaeval_crosscheck/*
