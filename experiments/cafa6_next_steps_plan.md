@@ -1011,6 +1011,50 @@ rather than duplicating it; if it works, it's a second, independent line of evid
 7's "later annotation confirms flagged cells") that CAFA's future ground truth carries real
 sociological signal, not just biology.
 
+### 14. Attention-map validity check on positioned MF spans, then targeted counterfactual "broken-span" negatives
+**Source:** user's own idea (2026-10-23), reusing ground-truth assets built for the shelved
+mf_span sub-project ([[project_mf_span_shelved]]) for a different purpose. **This does not reopen
+that shelved line:** it never trains or scores the dedicated span-prediction model from
+`experiments/mf_span/` or relies on its discredited token-level metric (see
+`experiments/mf_span/mf_span_postmortem.md` — Fmax 0.18 vs. reported F1 0.82). Only the
+*ground-truth* residue-span data that project produced survives into this new use, applied to the
+**main** pipeline's classifier (trial-013 lineage) instead.
+
+**Ground truth already in hand:** `experiments/mf_span/positional_mf_links.json` maps each of
+82,396 proteins to `{go_id, start, end, source, ...}` localized MF-term spans. **Caveat found
+while checking this (2026-10-23):** many entries have `source="domain_whole_protein_fallback"`
+with `start=0, end=sequence_length` — i.e. no real localization, just the whole sequence as a
+fallback. Only the tighter, genuinely-localized entries (e.g. a `binding_ligand` source with a
+narrow span, sometimes a single catalytic/binding residue) are usable here — the fallback rows
+must be filtered out, not treated as ground truth spans.
+
+**Step 1 — attention-map validity check (interpretability probe, no training).** For proteins
+where the main classifier correctly predicts an MF term with a known, tightly-localized span,
+extract the model's attention weights (`output_attentions=True`, standard HF — not yet verified
+directly against this repo's `AutoModelForSequenceClassification` wrapping, the first concrete
+thing to confirm) and check whether attention mass concentrates on the ground-truth span more
+than chance (e.g. mean attention-to-span vs. attention-to-rest-of-sequence, aggregated over
+heads/layers). Cheap, no GPU training — answers a yes/no question: does the model's internal
+attention already track the biologically relevant residues, or not.
+
+**Step 2 — conditional on step 1 finding a real gap.** If attention is clearly not concentrating
+on the relevant span for terms the model is supposedly basing its prediction on, build a targeted
+counterfactual augmentation: take a protein with a known tightly-localized span for term X, mutate
+the span's residues to ones expected to disrupt that specific function (the same kind of
+catalytic/binding-residue knockout real IDA/mutagenesis evidence is built from), and add the
+mutated sequence as a new training example with:
+- term X labeled a confirmed **negative** (the one deliberately, mechanistically broken
+  function) — a genuinely true negative, valuable because explicit correct negatives are
+  otherwise essentially absent under this project's OWA/PU-learning problem
+  ([[project_pu_learning_nnpu_km2]]);
+- every other term **masked out of the loss** (via the existing `--unknown-target-value`/
+  `loss_mask` mechanism already in `training_run.py`), since breaking one local motif says
+  nothing trustworthy about the protein's other annotations (global stability, other binding
+  sites, etc.) — assuming they're unaffected would be its own unverified guess.
+
+**Why Tier 3:** step 1 is a cheap, immediate diagnostic; step 2 is explicitly conditional on step
+1 finding a real problem, not built speculatively.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features
