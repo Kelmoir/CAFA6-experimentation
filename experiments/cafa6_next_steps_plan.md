@@ -783,11 +783,30 @@ keeps the epoch selected by whatever `--checkpoint-selection` was actually passe
 weights are gone — this can't be salvaged from the existing run; it has to be rerun with the
 selection metric matched to the baseline.
 
-**Next step: rerun with `--checkpoint-selection f1` added** (`soft-f1-trial-004`, same config
-otherwise) to finally get the real apples-to-apples comparison against `trial-013`. Still open,
-not yet closed out either way — the per-epoch `val_f1` trend above is a good sign, but the AUROC
-diagnostic (the metric this item is actually judged on) hasn't been measured on a fairly-selected
-checkpoint yet.
+**Result (2026-10-23): `soft-f1-trial-004` (`--checkpoint-selection f1`, matching `trial-013`
+exactly) gives the real apples-to-apples comparison — net negative, closing out this item.**
+Best epoch 29 (val_f1=0.3975), diagnostic run against that checkpoint:
+
+| | mean AUROC | median AUROC | pooled AUROC | best F1 | rare AUROC | common AUROC | violation rate |
+|---|---|---|---|---|---|---|---|
+| `trial-013` (pure BCE) | **0.8731** | **0.9259** | **0.9773** | 0.4197 | **0.8812** | **0.8500** | **11.96%** |
+| `soft-f1-trial-004` (BCE + 0.02×soft-F1) | 0.8493 | 0.9064 | 0.9647 | **0.4204** | 0.8569 | 0.8268 | 27.55% |
+
+Every AUROC metric (the ranking-quality numbers this whole item is judged on, per the source
+report's own framing) is worse — mean -0.0238, median -0.0195, pooled -0.0126, rare -0.0243,
+common -0.0232 — and the hierarchy-violation rate more than doubles (11.96%→27.55%, though
+free post-hoc clamping from item 5 fixes both checkpoints to 0% anyway). The only things that
+improved are threshold-dependent: best F1 (+0.0007, within noise) and val_f1 at the selected
+epoch (0.3975 vs 0.3741, +0.0234). The earlier 5-epoch "promising" signal (`soft-f1-trial-002`)
+was real but misleading — it only measured early-training speed on a threshold metric, not where
+either run actually converges, and the weight=1.0/0.02 exploration never found a setting that
+beats plain BCE on the metric that matters.
+
+**Closing this item: soft-F1-weighted loss, at least in this additive/protein-level-only form,
+does not improve on plain BCE for this task** — it trades ranking quality for a marginal,
+noise-level gain in thresholded F1. Not recommending further weight tuning on this lever; `item
+3` (hierarchy loss) and `item 5` (post-hoc clamping) remain the validated Tier 1/2 wins to build
+on instead.
 
 ### 5. GO-DAG-consistency post-processing at inference
 **Source:** report §"Stacked ensembles..." — multiple CAFA-5 top solutions apply a cheap final step
