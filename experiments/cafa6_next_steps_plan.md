@@ -1583,6 +1583,34 @@ no informational value" was wrong about the mechanism, even though the underlyin
 evaluation-side fix (always score against the root-excluded label set) is the part that mattered
 and stays.
 
+**Status update (2026-10-24): two pre-big-run checks, before committing more scale.** Added
+`run_full_label_diagnostic()` (generate()'s already-full-vocabulary `best_logit_per_label`
+scored against each protein's complete, untruncated label set — item 8's classifier baseline
+convention, no truncation caveat) and a stop-head calibration print in `run_dense_diagnostic()`
+(mean |predicted stop step − true length|). Same scale as the prior A/B (2,000/500 examples, 20
+epochs, `--ar-include-roots-in-training`, default seed — this run reproduced the prior one's
+epoch curve bit-for-bit, so it's a determinism check, not an independent second seed):
+
+- **Full-label-set AUROC: mean 0.6433, median 0.6613, 6,820/27,191 labels evaluable** — the real,
+  fair number against item 8's classifier baseline (`mean_auroc=0.6577`, same 2,000/500-example
+  scale, though that baseline was only 5 epochs vs. this run's 20). Landing within ~0.014
+  absolute of a baseline that's a proven, competitive architecture at this scale is a genuinely
+  good result — the autoregressive decoder isn't just "better than item 8's broken single-point
+  head" anymore, it's in the same tier as the classifier baseline.
+- **Stop-head calibration is weak: mean |predicted_stop_step − true_length| = 29.58 steps**
+  (max_steps=64) — roughly on the order of a typical sequence length itself, meaning the
+  dedicated stop head doesn't reliably find the real cutoff point. This doesn't taint any AUROC
+  number reported so far (every diagnostic forces the full `max_steps` decode budget,
+  sidestepping the stop head's own cutoff decision entirely), but it would matter for any
+  realistic variable-length inference/submission use of `generate()`. Flagged as a known gap to
+  fix before relying on the stop head operationally — not blocking the ranking-quality
+  conclusion above, but on the list before any real submission path.
+
+**Green light for more scale on the ranking question; stop-head calibration is the next thing
+to fix, not epoch/data count** — CE loss plateaus by ~epoch 13 at this scale (noted in the
+longer-run status update above), so the lever that would move the full-label AUROC further is
+likely more training data, not more epochs on the same 2,000 examples.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features
