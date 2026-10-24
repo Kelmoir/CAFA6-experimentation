@@ -53,8 +53,15 @@ def build_label_order(raw_label_ids: List[int], depth: torch.Tensor, max_steps: 
     ancestor of a kept label is emitted before it (see compute_label_depth); truncating drops the
     deepest/most specific long-tail labels first, keeping the general ones a protein almost
     certainly has.
+
+    Depth-0 labels (the 3 GO aspect roots -- molecular_function/biological_process/
+    cellular_component) are dropped entirely, not just deprioritized: a protein is annotated
+    under an aspect almost by definition, so these carry no real discriminative signal and would
+    otherwise be free, trivially-correct predictions inflating both the CE loss and top-1
+    accuracy without reflecting any actual functional-prediction ability.
     """
-    ordered = sorted(raw_label_ids, key=lambda idx: (int(depth[idx]), idx))
+    non_root = [idx for idx in raw_label_ids if int(depth[idx]) > 0]
+    ordered = sorted(non_root, key=lambda idx: (int(depth[idx]), idx))
     return ordered[:max_steps]
 
 
@@ -235,12 +242,15 @@ def main() -> None:
           f"max={depth.max().item()} mean={depth.float().mean():.2f} "
           f"({int((depth == 0).sum())} depth-0 roots)")
 
-    train_label_counts_per_example = [len(labs) for labs in dataset_train["labels"]]
+    train_label_counts_per_example = [
+        sum(1 for idx in labs if int(depth[idx]) > 0) for labs in dataset_train["labels"]
+    ]
     n_truncated = sum(1 for n in train_label_counts_per_example if n > args.ar_max_decode_steps)
     print(f"[INFO] --ar-max-decode-steps={args.ar_max_decode_steps}: {n_truncated}/"
           f"{len(train_label_counts_per_example)} training proteins "
-          f"({100 * n_truncated / len(train_label_counts_per_example):.2f}%) have more true "
-          f"labels than the cap and get truncated (deepest/most-specific labels dropped first).")
+          f"({100 * n_truncated / len(train_label_counts_per_example):.2f}%) have more non-root "
+          f"true labels than the cap and get truncated (deepest/most-specific labels dropped first; "
+          f"the 3 depth-0 aspect roots are excluded from this count -- they're never targets).")
 
     cached = torch.load(args.label_embeddings_path)
     if cached["terms"] != label_names:
