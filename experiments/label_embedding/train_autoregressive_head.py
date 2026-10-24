@@ -270,6 +270,43 @@ def run_full_label_diagnostic(model, loader, device, max_steps, label_names, lab
     return result
 
 
+def print_example_predictions(model, tokenizer, examples, depth, label_names, device,
+                               max_length, max_steps, n_show=20):
+    """Qualitative sanity check, not a metric: for a few actual validation proteins, print the
+    true (depth-ordered) label set against generate()'s predicted sequence and per-step stop
+    probability, so a human can directly see whether decode order/content/stopping look
+    sensible rather than reading that off an aggregate AUROC/MAE number alone.
+    """
+    model.eval()
+    sequences = [ex["sequence"] for ex in examples]
+    tokenized = tokenizer(sequences, max_length=max_length, truncation=True, padding=True,
+                           return_tensors="pt")
+    input_ids = tokenized["input_ids"].to(device)
+    attention_mask = tokenized["attention_mask"].to(device)
+    with torch.no_grad():
+        predicted_ids, stop_at, _, stop_logits = model.generate(input_ids, attention_mask, max_steps)
+    stop_probs = torch.sigmoid(stop_logits).cpu()
+    print("\n" + "=" * 70)
+    print("EXAMPLE PREDICTIONS (qualitative check, not a metric)")
+    print("=" * 70)
+    for i, ex in enumerate(examples):
+        true_ids_sorted = sorted(ex["labels"], key=lambda idx: (int(depth[idx]), idx))
+        true_names = [label_names[idx] for idx in true_ids_sorted]
+        pred_names = [label_names[idx] for idx in predicted_ids[i].tolist()]
+        threshold_stop = int(stop_at[i].item())
+        argmax_stop = int(stop_logits[i].argmax().item())
+        print(f"\n--- Example {i} ({len(true_names)} true labels) ---")
+        print(f"True (depth-ordered):      {true_names[:n_show]}"
+              f"{' ...' if len(true_names) > n_show else ''}")
+        print(f"Predicted (full budget):   {pred_names[:n_show]}"
+              f"{' ...' if len(pred_names) > n_show else ''}")
+        print(f"  0.5-threshold stop={threshold_stop:2d} -> predicted[:stop]: {pred_names[:threshold_stop + 1]}")
+        print(f"  argmax stop={argmax_stop:2d}        -> predicted[:stop]: {pred_names[:argmax_stop + 1]}")
+        print(f"Stop probabilities (first {n_show} steps): "
+              f"{[round(p, 3) for p in stop_probs[i][:n_show].tolist()]}")
+    print("=" * 70)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Item 16: autoregressive label-embedding decoder spike")
     parser.add_argument("--data-path", default="data/cafa-6-protein-function-prediction/dataset_full")
@@ -488,6 +525,10 @@ def main() -> None:
             diagnostic_ds, batch_size=args.batch_size, collate_fn=full_label_collate_fn)
         run_full_label_diagnostic(model, full_label_loader, device, args.ar_max_decode_steps,
                                    label_names, label_counts, args.rare_term_threshold)
+
+        example_examples = [diagnostic_ds[i] for i in range(min(3, len(diagnostic_ds)))]
+        print_example_predictions(model, tokenizer, example_examples, depth, label_names,
+                                   device, args.max_length, args.ar_max_decode_steps)
 
     print(f"[SUMMARY] run_name={args.run_name} done")
 
