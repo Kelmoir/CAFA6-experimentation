@@ -1130,31 +1130,47 @@ improvement in isolation (loss is sane instead of exploding, and it closes a gen
 per-term capacity gap), but it did not touch the actual root cause — the two cheap-scale runs failed
 for different proximate reasons, and neither produced any per-label ranking signal.
 
-**Revised root-cause read:** the architectural bottleneck, not the bias term. The label-embedding
-head routes every one of the 27,191 labels through one *shared* learnable map (`proj`,
-`hidden_size × 385`) composed with a **fixed** per-label direction (the term's frozen text
-embedding) — unlike the flat classifier, which gives each label its own independently-learned
-direction (`hidden_size × num_labels`). This only works if the frozen text-embedding geometry is
-actually predictive of which proteins carry which terms. Step 2's checks (random/sibling/antonym
-cosine similarity) only validated *term-term* text-similarity structure — they never tested
-whether that geometry aligns with real protein-level co-occurrence, which is the thing that
-actually matters for classification. Plausibly compounding this: with the per-term bias already
-initialized to match each label's prior, BCE's achievable loss reduction from the bias alone is
-large under this imbalance, leaving little gradient pressure to push `proj`/`scale` toward
-anything discriminative at all (consistent with `train_loss` barely moving post-fix) — but this
-doesn't fully explain the gap on its own, since the flat classifier has the same per-term bias
-init and still reached 0.6577 AUROC; the shared-map bottleneck is the more likely primary cause.
+**Revised root-cause read, corrected again (user's catch, 2026-10-24): a single-point multi-label
+capacity cap, not just a shared-map bottleneck.** `proj(pooled)` produces exactly **one** unit
+vector per protein; every one of the 27,191 per-term logits is that single point's cosine
+similarity to a fixed term embedding. For multi-label prediction to work, a protein's *entire*
+true-label set must be simultaneously close to that one point — unlike the flat classifier, where
+each label reads off the full hidden representation through its own independent weight vector, so
+labels never compete for a shared direction.
+
+Checked directly whether a protein's true GO terms actually cluster tightly enough in this
+embedding space for that to be geometrically plausible (500 sampled training proteins, all
+pairwise cosine similarities among each protein's own true labels):
+
+| pair type | n | mean cosine |
+|---|---|---|
+| random term pairs (Step 2 baseline) | 500 | 0.1994 |
+| **a protein's own true-label pairs** | 1,017,024 | **0.3309** |
+| sibling term pairs (Step 2 baseline) | 500 | 0.4887 |
+
+Proteins average **43.7 true labels** (median 31, min 3, max 451) — and those true labels sit
+*between* random and sibling similarity, only mildly more clustered than two unrelated terms
+picked at random. Asking one unit vector to score ~30-40 only-loosely-clustered targets as "high"
+while scoring the other ~27,150 as "low" is a real geometric bottleneck independent of training —
+it matches the observed flat chance-level AUROC and near-zero training signal far better than the
+bias-capacity story. (The shared-projection-map framing in the previous paragraph is still true as
+a secondary factor — the map itself is also less expressive than the classifier's per-label
+weights — but the single-point multi-label constraint is the more fundamental limit and the one
+that actually explains why training produced no signal at all, not just a weaker one.)
 
 **Verdict: closing out item 8 again, for a different reason than the first time.** The salvage
 fix (direction-flag augmentation) was real and did what it claimed — it fixed the antonym-collapse
-failure in the *text*-embedding geometry (Step 2's gate passed cleanly). But two independent
-cheap-scale trials now show that fixed geometry doesn't transfer into a working classification
-signal once wired into the model: the compatibility-score architecture's shared-projection
-bottleneck appears unable to learn real per-label ranking at this scale, for reasons that go
-beyond the specific bugs found and fixed along the way (meta-device init, global bias capacity).
-Escalating further (bigger embed dim, more data/epochs, or testing whether the text-embedding
-geometry correlates with real co-occurrence before trying to learn through it) would be new,
-unvalidated investment rather than finishing already-committed work — not pursued further here.
+failure in the *text*-embedding geometry (Step 2's gate passed cleanly). But the architecture built
+on top of that geometry has a capacity limit the Q2 checks never tested for: a single-vector
+compatibility score structurally can't represent an arbitrary ~30-40-term multi-label target set
+per protein when those true labels are only loosely clustered (0.33 mean cosine — barely above the
+0.1994 random baseline, nowhere near the 0.4887 sibling baseline). That's a limit on this specific
+single-point-per-example architecture, not on label-text embeddings in general — a per-aspect head
+(one point per GO aspect, where true labels might cluster tighter) or a multi-vector/set-based
+scoring scheme could in principle route around it, but either is new architecture, not a tweak.
+Escalating further (bigger embed dim, more data/epochs, or chasing another bias-term variant)
+would be guessing at symptoms of a problem that's now understood at the structural level — not
+pursued further here.
 
 ### 9. Auxiliary sequence-based prediction tasks (user's own idea: predict positional annotations, etc.)
 **Depends on item 8 above (label-embedding setup)** — this item's auxiliary targets are meant to be
