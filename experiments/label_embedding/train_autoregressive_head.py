@@ -165,17 +165,24 @@ def run_dense_diagnostic(model, loader, device, max_steps, label_names, label_co
     """
     model.eval()
     all_best_logits, all_labels = [], []
-    stop_abs_err_sum, stop_n = 0.0, 0
+    stop_abs_err_sum, stop_argmax_abs_err_sum, stop_n = 0.0, 0.0, 0
     with torch.no_grad():
         for batch in loader:
             input_ids = batch["input_ids"].to(device)
             attention_mask = batch["attention_mask"].to(device)
-            _, stop_at, best_logit = model.generate(input_ids, attention_mask, max_steps)
+            _, stop_at, best_logit, stop_logits = model.generate(input_ids, attention_mask, max_steps)
             all_best_logits.append(best_logit.cpu().numpy())
             seq_mask = batch["seq_mask"]
             label_seq = batch["label_seq"]
             true_len = seq_mask.sum(dim=1).to(device)
-            stop_abs_err_sum += (stop_at - true_len).abs().sum().item()
+            # 0-based index of the true last real step (is_last_step's training target index).
+            true_last_idx = (true_len - 1).clamp(min=0, max=max_steps - 1)
+            stop_abs_err_sum += (stop_at - true_last_idx).abs().sum().item()
+            # Ranking-only variant: the single highest-scoring step, immune to the fixed 0.5
+            # threshold -- separates "the stop head hasn't learned timing at all" from "it has,
+            # but 0.5 is miscalibrated given how rare a true stop step is per sequence."
+            argmax_stop = stop_logits.argmax(dim=1)
+            stop_argmax_abs_err_sum += (argmax_stop - true_last_idx).abs().sum().item()
             stop_n += true_len.shape[0]
             dense = np.zeros((input_ids.shape[0], len(label_names)), dtype=np.float32)
             for i in range(input_ids.shape[0]):
@@ -192,8 +199,10 @@ def run_dense_diagnostic(model, loader, device, max_steps, label_names, label_co
     print(f"DIAGNOSTIC (dense adapter): {result['n_labels_evaluable']}/{result['n_labels_total']} "
           f"labels evaluable, {result['n_val_examples']} val examples")
     print("=" * 70)
-    print(f"Stop-head calibration: mean |predicted_stop_step - true_length| = "
-          f"{stop_abs_err_sum / max(1, stop_n):.2f} steps (max_steps={max_steps})")
+    print(f"Stop-head calibration: mean |predicted_stop_step - true_last_step_idx| = "
+          f"{stop_abs_err_sum / max(1, stop_n):.2f} steps (0.5-threshold) vs. "
+          f"{stop_argmax_abs_err_sum / max(1, stop_n):.2f} steps (argmax-ranking, threshold-free) "
+          f"(max_steps={max_steps})")
     if per_label_auroc.size:
         print(f"Per-label AUROC: mean={result['mean_auroc']:.4f} median={result['median_auroc']:.4f} "
               f"min={per_label_auroc.min():.4f} max={per_label_auroc.max():.4f}")
@@ -236,7 +245,7 @@ def run_full_label_diagnostic(model, loader, device, max_steps, label_names, lab
         for batch in loader:
             input_ids = batch["input_ids"].to(device)
             attention_mask = batch["attention_mask"].to(device)
-            _, _, best_logit = model.generate(input_ids, attention_mask, max_steps)
+            _, _, best_logit, _ = model.generate(input_ids, attention_mask, max_steps)
             all_best_logits.append(best_logit.cpu().numpy())
             dense = np.zeros((input_ids.shape[0], len(label_names)), dtype=np.float32)
             for i, labs in enumerate(batch["labels"]):
@@ -387,6 +396,22 @@ def main() -> None:
     print(f"[INFO] Initialized classifier bias to label priors for {len(label_names)} labels "
           f"(mean={label_priors.mean().item():.4f}, min={label_priors.min().item():.4f}, "
           f"max={label_priors.max().item():.4f})")
+
+    # Same rationale, applied to the stop head: is_last_step's target is 1 at exactly one step
+    # per protein and 0 at every other real step, so with a zero-initialized bias (sigmoid=0.5)
+    # the easiest way to cut loss is to predict "not last" almost everywhere -- exactly the
+    # single-point-head bias-capacity failure mode item 8 hit, just for this binary target
+    # instead of 27,191 multi-label ones. Prior rate = 1 positive per protein / mean capped
+    # sequence length.
+    capped_counts = [min(n, args.ar_max_decode_steps) for n in train_label_counts_per_example]
+    total_real_steps = sum(capped_counts)
+    stop_prior_rate = min(max(len(capped_counts) / max(1, total_real_steps), 1e-4), 1 - 1e-4)
+    stop_prior_bias = float(np.log(stop_prior_rate / (1 - stop_prior_rate)))
+    with torch.no_grad():
+        model.classifier.stop_head.bias.fill_(stop_prior_bias)
+    print(f"[INFO] Initialized stop_head bias to prior stop rate {stop_prior_rate:.4f} "
+          f"(bias={stop_prior_bias:.4f}, mean capped sequence length "
+          f"{total_real_steps / max(1, len(capped_counts)):.1f} steps)")
 
     optimizer = torch.optim.AdamW(
         [p for p in model.parameters() if p.requires_grad],

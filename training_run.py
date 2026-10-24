@@ -469,6 +469,11 @@ class AutoregressiveLabelEmbeddingEsmForSequenceClassification(EsmForSequenceCla
               max_steps if it never did) -- the realistic prediction is predicted_label_ids[:, :stop_at].
           best_logit_per_label: [batch, num_labels] float, the max over all max_steps steps of
               each label's logit -- used as a dense AUROC-comparable score per label.
+          stop_logits: [batch, max_steps] float, the raw stop logit at every step -- lets a
+              caller compute an argmax-based stop position (highest-scoring step, immune to the
+              fixed 0.5 threshold) to separate "the stop head hasn't learned timing" from "it has,
+              but 0.5 is the wrong cutoff given severe per-step class imbalance" (see
+              train_autoregressive_head.py's stop-head calibration diagnostic).
         """
         state = self.encode_pooled(input_ids, attention_mask)
         batch_size = state.shape[0]
@@ -480,17 +485,19 @@ class AutoregressiveLabelEmbeddingEsmForSequenceClassification(EsmForSequenceCla
         stop_at = torch.full((batch_size,), max_steps, dtype=torch.long, device=device)
         stopped = torch.zeros(batch_size, dtype=torch.bool, device=device)
         predicted = []
+        stop_logits_history = []
         for t in range(max_steps):
             state, label_logits, stop_logit = self.classifier.step(state, prev)
             best_logit = torch.maximum(best_logit, label_logits)
             masked_logits = label_logits.masked_fill(emitted_mask, float("-inf"))
             prev = masked_logits.argmax(dim=-1)
             predicted.append(prev)
+            stop_logits_history.append(stop_logit)
             emitted_mask = emitted_mask.scatter(1, prev.unsqueeze(1), True)
             newly_stopped = (torch.sigmoid(stop_logit) > 0.5) & ~stopped
             stop_at = torch.where(newly_stopped, torch.full_like(stop_at, t), stop_at)
             stopped = stopped | newly_stopped
-        return torch.stack(predicted, dim=1), stop_at, best_logit
+        return torch.stack(predicted, dim=1), stop_at, best_logit, torch.stack(stop_logits_history, dim=1)
 
 
 def create_esm(
