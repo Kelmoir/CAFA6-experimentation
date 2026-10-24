@@ -1461,10 +1461,52 @@ a directly fair comparison yet, just evidence the mechanism ranks real signal ra
 at chance. (2) only 4,258/27,191 labels were evaluable at this val-sample count (both classes
 present), same general caveat every cheap-scale AUROC in this project carries.
 
-**Not closing this out — open question is how far it goes with more scale**, not whether it
-works at all (item 8's question). Candidate next steps, not yet decided: a longer/bigger cheap
-run (more epochs and/or train examples) to see where `val_loss` actually plateaus, a fairer
-diagnostic against the FULL label set (not truncated) to get a real head-to-head number, or
+**Status update (2026-10-24): longer run (20 epochs, same 2,000/500-example scale) — bug hunt
+came back clean, and the mechanism keeps improving with more training.** Per the user's explicit
+request to use this run to hunt for setup errors first, two diagnostics were added before
+scaling epochs: truncation-rate logging and masked top-1 token accuracy (train+val). Neither
+turned up a bug:
+
+- **Truncation rate at the real cap** (`--ar-max-decode-steps 64`): 20.10% (10,570/52,579
+  training proteins) — far gentler than the 71% seen at the toy cap of 16 used in CPU smoke
+  tests, and not alarming at this cap size.
+- **Top-1 token accuracy** rises from 6.8%/10.1% (epoch 1, train/val) to 21-26% by epoch 20 on a
+  27,191-way vocabulary — thousands of times above the ~0.004% chance rate, confirming the model
+  is genuinely discriminating between labels, not just riding the prior-bias-init loss curve
+  down.
+- **One real (non-bug) finding the diagnostics surfaced:** `train_top1_acc` peaks at epoch 11
+  (0.2252) then goes flat/slightly noisy through epoch 20, while `val_top1_acc` keeps climbing
+  smoothly the whole time (0.1010→0.2597). This split starts exactly at epoch 7, when scheduled
+  sampling begins ramping in — train's forward pass increasingly feeds the model its own
+  (sometimes wrong) predictions as decode history, making the train-side metric strictly harder,
+  while val always uses full teacher forcing. This is scheduled sampling working as designed, not
+  a wiring error.
+- **The CE loss component (the ranking-relevant half of the loss) nearly plateaus by ~epoch 13**
+  (4.5953→4.5026 over the last 7 epochs, essentially flat), while `val_loss`'s continued decrease
+  after that point is almost entirely the stop head getting more confident (0.4362→0.2673) — a
+  simpler length-prior signal, not more label-ranking learning. So the real CE plateau at this
+  2,000-example scale is around epoch 13-15, not epoch 20.
+
+Despite the CE plateau, the dense diagnostic's AUROC kept improving meaningfully with more
+epochs:
+
+| metric | epoch 5 (first trial) | epoch 20 (this run) |
+|---|---|---|
+| mean per-label AUROC | 0.5814 | **0.6428** |
+| median per-label AUROC | 0.5869 | 0.6654 |
+| rare-term mean AUROC | 0.5875 (n=2,248) | 0.6541 (n=2,248) |
+| common-term mean AUROC | 0.5745 (n=2,010) | 0.6302 (n=2,010) |
+
+A real, repeatable improvement from more training (not noise at the same n=1,000 val sample
+count), and now a clearly convincing margin over item 8's two flat 0.4999/0.5028 trials — both
+caveats from the first status update (ground-truth truncation to 64 labels; only 4,258/27,191
+labels evaluable) still apply unchanged.
+
+**Not closing this out.** The bug hunt came back clean, so the remaining open question is the
+same as before: how far this goes with more scale, not whether it works. Candidate next steps,
+still not yet decided: a bigger cheap run (more train examples, since epochs alone are now
+showing diminishing CE returns past ~epoch 13), a fairer diagnostic against the FULL label set
+(not truncated) for a real head-to-head number against item 8's classifier baseline, or
 promoting this into `training_run.py`'s main() loop once confidence is higher.
 
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
