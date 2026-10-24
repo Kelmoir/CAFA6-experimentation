@@ -1542,6 +1542,47 @@ This is now the honest number to carry forward as item 16's result at this cheap
 AUROC 0.6158 on non-trivial GO terms only**, both truncation-to-64 and
 4,373/27,191-evaluable-labels caveats still apply.
 
+**Status update (2026-10-24): controlled A/B says keep the roots in training after all —
+correcting the framing above.** The comparison above conflated two things: removing roots from
+training *and* changing which labels got evaluated (truncation freed up slots for different,
+harder terms). Added `--ar-include-roots-in-training` to separate them: it controls only
+whether roots are training targets; evaluation (`run_eval_pass` and `--run-diagnostic`) now
+always scores against the same fixed, root-excluded label set regardless of the flag, via a
+dedicated `eval_collate_fn`. Re-ran both configurations at the same scale (2,000/500 examples,
+20 epochs) and confirmed `n_labels_evaluable=4373` matched exactly in both logs — a genuine
+same-task comparison this time:
+
+| metric | roots excluded from training | roots included in training |
+|---|---|---|
+| mean AUROC (same 4,373 labels) | 0.6158 | **0.6430** |
+| median AUROC | 0.6287 | 0.6657 |
+| rare-term mean AUROC | 0.6309 | 0.6530 |
+| common-term mean AUROC | 0.5984 | 0.6314 |
+| val_top1_acc (epoch 20, same eval) | 0.2146 | 0.1884 |
+
+Training **with** root supervision scores *higher* on the exact same non-trivial terms (+0.027
+absolute mean AUROC, +0.037 median) — the opposite of what the previous status update assumed.
+Reassuringly, 0.6430 lands almost exactly on the original uncontrolled with-roots run's 0.6428,
+while the without-roots condition is consistently lower in both the controlled and uncontrolled
+measurements — suggestive of a real effect rather than pure run-to-run noise, though this is
+still a single seed per condition, not a replicated result.
+
+One instructive wrinkle: `val_top1_acc` moves the *other* direction (0.2146 without-roots vs.
+0.1884 with-roots) — teacher-forced exact-next-token accuracy gets slightly worse with roots in
+the sequence, even though `generate()`'s autonomous-decode AUROC ranking gets better. Best
+current guess: the root steps act as a short, easy "warm-up" that commits the GRU's hidden state
+to an aspect before the harder specific terms follow, which costs a little raw per-token
+sharpness but apparently helps downstream ranking quality — plus a few extra supervised steps
+per protein that add useful gradient signal at this data-starved cheap scale. Not fully
+explained; worth revisiting if this result doesn't hold up at larger scale.
+
+**Revised takeaway: keep `--ar-include-roots-in-training` on by default going forward** (it's
+currently opt-in via the flag) — the earlier instinct to exclude roots as "pure free credit with
+no informational value" was wrong about the mechanism, even though the underlying observation
+(roots are near-trivially true, so their own per-label AUROC is uninteresting) still holds. The
+evaluation-side fix (always score against the root-excluded label set) is the part that mattered
+and stays.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features

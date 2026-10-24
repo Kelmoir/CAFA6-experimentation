@@ -220,12 +220,15 @@ def main() -> None:
                               "order (compute_label_depth), dropping the most specific long-tail "
                               "terms first, not the general ones.")
     parser.add_argument("--ar-include-roots-in-training", action=argparse.BooleanOptionalAction,
-                         default=False,
+                         default=True,
                          help="Include the 3 depth-0 GO aspect roots as decode targets during "
                               "training. Evaluation (per-epoch top1_acc/loss and --run-diagnostic) "
                               "always excludes roots regardless of this flag, so the two settings "
                               "are a fair A/B on how well the model predicts the same non-trivial "
-                              "label set either way.")
+                              "label set either way. Default True: a controlled A/B at cheap scale "
+                              "(see plan doc item 16) found training WITH root supervision scores "
+                              "higher on the same root-excluded eval set (0.6430 vs 0.6158 mean "
+                              "AUROC), not just free credit from trivially-true labels.")
     parser.add_argument("--ar-decoder-hidden-dim", type=int, default=256)
     parser.add_argument("--ar-scheduled-sampling-final-prob", type=float, default=0.25)
     parser.add_argument("--ar-scheduled-sampling-warmup-frac", type=float, default=0.3)
