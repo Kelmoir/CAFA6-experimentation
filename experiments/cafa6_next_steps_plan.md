@@ -1509,6 +1509,39 @@ showing diminishing CE returns past ~epoch 13), a fairer diagnostic against the 
 (not truncated) for a real head-to-head number against item 8's classifier baseline, or
 promoting this into `training_run.py`'s main() loop once confidence is higher.
 
+**Status update (2026-10-24): aspect-root labels excluded from targets — real signal survives,
+reduced from an inflated baseline.** User's catch: the 3 GO aspect roots
+(molecular_function/biological_process/cellular_component) are near-universally true for any
+protein — a trivially-correct, free prediction that was inflating both CE loss improvement and
+top-1 accuracy without reflecting real functional discrimination. `build_label_order()` now
+drops depth-0 labels before building the per-protein decode target sequence, and the dense
+diagnostic's AUROC excludes them automatically (their ground-truth column becomes single-class
+once they're never emitted as targets). Same 2,000/500-example, 20-epoch scale as the prior run,
+for a direct before/after comparison:
+
+| metric | with roots (inflated) | roots excluded (real) |
+|---|---|---|
+| mean per-label AUROC | 0.6428 | **0.6158** |
+| median per-label AUROC | 0.6654 | 0.6287 |
+| rare-term mean AUROC | 0.6541 (n=2,248) | 0.6309 (n=2,343) |
+| common-term mean AUROC | 0.6302 (n=2,010) | 0.5984 (n=2,030) |
+| val_top1_acc (epoch 20) | 0.2597 | 0.2146 |
+| train_top1_acc | 0.2105 (peaked 0.2252 @ epoch 11) | 0.1673 (plateaus ~epoch 9-10) |
+| truncation rate (cap 64) | 20.10% | 18.62% (3 fewer forced slots/protein) |
+
+Roots were worth roughly 0.027 absolute mean AUROC and ~0.045 absolute top-1 accuracy of "free"
+credit — real, but a modest fraction of the total. **The key result: 0.6158 still clears item
+8's chance-level trials (0.4999/0.5028) by a wide, convincing margin** — this was not a case
+where the apparent signal was mostly trivial root predictions; the decoder genuinely
+discriminates between real, non-trivial functional terms. `train_top1_acc` now plateaus earlier
+and flatter (~epoch 9-10) than before, while `val_top1_acc` still creeps up through epoch 20 —
+the same scheduled-sampling-driven train/val split noted in the prior status update, just more
+visible now that the easy 3-root boost no longer smooths over it.
+
+This is now the honest number to carry forward as item 16's result at this cheap scale: **mean
+AUROC 0.6158 on non-trivial GO terms only**, both truncation-to-64 and
+4,373/27,191-evaluable-labels caveats still apply.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features

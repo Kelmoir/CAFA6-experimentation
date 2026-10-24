@@ -1,0 +1,60 @@
+[INFO] label depth within trainable vocabulary: min=0 max=17 mean=6.92 (3 depth-0 roots)
+[INFO] --ar-max-decode-steps=64: 9791/52579 training proteins (18.62%) have more non-root true labels than the cap and get truncated (deepest/most-specific labels dropped first; the 3 depth-0 aspect roots are excluded from this count -- they're never targets).
+Loading weights:   0%|          | 0/209 [00:00<?, ?it/s]Loading weights: 100%|██████████| 209/209 [00:00<00:00, 4110.06it/s]
+[1mAutoregressiveLabelEmbeddingEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t12_35M_UR50D
+Key                           | Status     | 
+------------------------------+------------+-
+lm_head.layer_norm.weight     | UNEXPECTED | 
+esm.embeddings.position_ids   | UNEXPECTED | 
+lm_head.bias                  | UNEXPECTED | 
+lm_head.dense.weight          | UNEXPECTED | 
+lm_head.layer_norm.bias       | UNEXPECTED | 
+lm_head.dense.bias            | UNEXPECTED | 
+classifier.stop_head.weight   | MISSING    | 
+classifier.init_state.bias    | MISSING    | 
+classifier.cell.bias_hh       | MISSING    | 
+classifier.cell.bias_ih       | MISSING    | 
+classifier.stop_head.bias     | MISSING    | 
+classifier.init_state.weight  | MISSING    | 
+classifier.bias               | MISSING    | 
+classifier.proj.weight        | MISSING    | 
+classifier.cell.weight_hh     | MISSING    | 
+classifier.proj.bias          | MISSING    | 
+classifier.label_embed.weight | MISSING    | 
+classifier.scale              | MISSING    | 
+classifier.cell.weight_ih     | MISSING    | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING[3m	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.[0m
+Model layers: 12, request unfreeze layers: 4
+[INFO] Initialized classifier bias to label priors for 27191 labels (mean=0.0016, min=0.0001, max=0.7321)
+Epoch 1/20 | train_loss=7.4176 (ce=6.7487 stop=0.6689) | val_loss=7.1118 (ce=6.4681 stop=0.6437) | train_top1_acc=0.0416 val_top1_acc=0.0640 | scheduled_sampling_prob=0.000
+Epoch 2/20 | train_loss=7.0756 (ce=6.4467 stop=0.6289) | val_loss=6.6848 (ce=6.0667 stop=0.6181) | train_top1_acc=0.0623 val_top1_acc=0.0913 | scheduled_sampling_prob=0.000
+Epoch 3/20 | train_loss=6.6753 (ce=6.0632 stop=0.6121) | val_loss=6.3961 (ce=5.7881 stop=0.6080) | train_top1_acc=0.0909 val_top1_acc=0.1196 | scheduled_sampling_prob=0.000
+Epoch 4/20 | train_loss=6.5025 (ce=5.9009 stop=0.6016) | val_loss=6.1981 (ce=5.5997 stop=0.5985) | train_top1_acc=0.1118 val_top1_acc=0.1368 | scheduled_sampling_prob=0.000
+Epoch 5/20 | train_loss=6.3219 (ce=5.7308 stop=0.5911) | val_loss=6.0409 (ce=5.4553 stop=0.5856) | train_top1_acc=0.1285 val_top1_acc=0.1534 | scheduled_sampling_prob=0.000
+Epoch 6/20 | train_loss=6.1738 (ce=5.5951 stop=0.5787) | val_loss=5.9102 (ce=5.3369 stop=0.5732) | train_top1_acc=0.1460 val_top1_acc=0.1729 | scheduled_sampling_prob=0.000
+Epoch 7/20 | train_loss=6.0223 (ce=5.4582 stop=0.5641) | val_loss=5.8029 (ce=5.2447 stop=0.5582) | train_top1_acc=0.1594 val_top1_acc=0.1816 | scheduled_sampling_prob=0.018
+Epoch 8/20 | train_loss=5.9382 (ce=5.3888 stop=0.5494) | val_loss=5.7173 (ce=5.1753 stop=0.5419) | train_top1_acc=0.1651 val_top1_acc=0.1855 | scheduled_sampling_prob=0.036
+Epoch 9/20 | train_loss=5.8818 (ce=5.3504 stop=0.5314) | val_loss=5.6348 (ce=5.1105 stop=0.5243) | train_top1_acc=0.1678 val_top1_acc=0.1928 | scheduled_sampling_prob=0.053
+Epoch 10/20 | train_loss=5.8621 (ce=5.3500 stop=0.5121) | val_loss=5.5717 (ce=5.0676 stop=0.5041) | train_top1_acc=0.1698 val_top1_acc=0.1948 | scheduled_sampling_prob=0.071
+Epoch 11/20 | train_loss=5.7170 (ce=5.2259 stop=0.4911) | val_loss=5.5136 (ce=5.0284 stop=0.4852) | train_top1_acc=0.1791 val_top1_acc=0.1937 | scheduled_sampling_prob=0.089
+Epoch 12/20 | train_loss=5.7852 (ce=5.3158 stop=0.4694) | val_loss=5.4498 (ce=4.9871 stop=0.4627) | train_top1_acc=0.1750 val_top1_acc=0.2045 | scheduled_sampling_prob=0.107
+Epoch 13/20 | train_loss=5.7333 (ce=5.2852 stop=0.4481) | val_loss=5.3873 (ce=4.9477 stop=0.4396) | train_top1_acc=0.1723 val_top1_acc=0.2058 | scheduled_sampling_prob=0.125
+Epoch 14/20 | train_loss=5.6248 (ce=5.2056 stop=0.4192) | val_loss=5.3367 (ce=4.9225 stop=0.4143) | train_top1_acc=0.1782 val_top1_acc=0.2059 | scheduled_sampling_prob=0.143
+Epoch 15/20 | train_loss=5.6653 (ce=5.2681 stop=0.3972) | val_loss=5.2945 (ce=4.9029 stop=0.3916) | train_top1_acc=0.1722 val_top1_acc=0.2098 | scheduled_sampling_prob=0.161
+Epoch 16/20 | train_loss=5.6067 (ce=5.2348 stop=0.3720) | val_loss=5.2505 (ce=4.8867 stop=0.3637) | train_top1_acc=0.1730 val_top1_acc=0.2105 | scheduled_sampling_prob=0.178
+Epoch 17/20 | train_loss=5.5921 (ce=5.2477 stop=0.3444) | val_loss=5.2103 (ce=4.8720 stop=0.3383) | train_top1_acc=0.1711 val_top1_acc=0.2114 | scheduled_sampling_prob=0.196
+Epoch 18/20 | train_loss=5.6087 (ce=5.2947 stop=0.3140) | val_loss=5.1692 (ce=4.8572 stop=0.3120) | train_top1_acc=0.1711 val_top1_acc=0.2124 | scheduled_sampling_prob=0.214
+Epoch 19/20 | train_loss=5.5511 (ce=5.2579 stop=0.2932) | val_loss=5.1374 (ce=4.8470 stop=0.2904) | train_top1_acc=0.1702 val_top1_acc=0.2141 | scheduled_sampling_prob=0.232
+Epoch 20/20 | train_loss=5.5262 (ce=5.2522 stop=0.2740) | val_loss=5.1125 (ce=4.8391 stop=0.2734) | train_top1_acc=0.1673 val_top1_acc=0.2146 | scheduled_sampling_prob=0.250
+
+======================================================================
+[CAVEAT] ground truth truncated to each protein's first 64 depth-ordered true labels -- NOT directly comparable to a full-27191-label-set baseline AUROC.
+DIAGNOSTIC (dense adapter): 4373/27191 labels evaluable, 1000 val examples
+======================================================================
+Per-label AUROC: mean=0.6158 median=0.6287 min=0.0000 max=1.0000
+Rarity-stratified AUROC: rare mean=0.6309406382404305 common mean=0.5983817094627506
+[DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 4373, "n_labels_total": 27191, "mean_auroc": 0.6158263859150954, "median_auroc": 0.6287324886978847, "pooled_auroc": 0.9672891112540757, "accuracy_at_0.5": 0.9921832223897613, "trivial_baseline_accuracy": 0.9987341031664982, "precision_at_0.5": 0.09040236572095665, "recall_at_0.5": 0.571075796751817, "f1_at_0.5": 0.1560946534013393, "best_f1": 0.15609465576113715, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.6309406382404305, "rare_median_auroc": 0.6766766766766767, "rare_n_labels_evaluable": 2343, "common_mean_auroc": 0.5983817094627506, "common_median_auroc": 0.602654006712123, "common_n_labels_evaluable": 2030}
+[SUMMARY] run_name=item16-cheap-autoregressive-noroots done
