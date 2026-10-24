@@ -1341,6 +1341,105 @@ term as an implicit negative" training strategy — directly relevant to this pr
 OWA/PU-learning tension ([[project_pu_learning_nnpu_km2]]). Unconditional on item 14's step 1
 result (unlike item 14's step 2) — this is useful regardless of what the attention-map check finds.
 
+### 16. Autoregressive decoder over item 8's term-embedding vocabulary (user's own idea, 2026-10-24)
+**Source:** direct follow-up to item 8's closure. Item 8's single-point compatibility-score head
+(`proj(pooled)` → one unit vector per protein, scored against every label's frozen term embedding
+at once) turned out to have a structural multi-label capacity cap: a protein's true labels (mean
+43.7/protein) sit at only 0.33 mean mutual cosine in that embedding space — barely above the 0.1994
+random-pair baseline, nowhere near the 0.4887 sibling-pair baseline — too loosely clustered for one
+static point to score ~30-40 of them "high" simultaneously while scoring the other ~27,150 "low".
+User's proposed fix: emit labels one at a time instead of all at once, so each decode step only has
+to match ONE target. This is a known, named approach in the literature (sequence-generation models
+for multi-label classification, e.g. Yang et al. 2018's SGM), not a novel mechanism being invented
+here — item 9's own auxiliary targets (variable-cardinality positional annotations) need the same
+"emit one result, update state, decide whether to continue" loop regardless of whether what's being
+emitted is a GO term or a sequence span, which is part of why this is being built now rather than
+treating item 9 as separately blocked.
+
+**Why not the cheaper sibling alternative (fixed-K parallel query slots, DETR-style set
+prediction):** considered and rejected per the user's own reasoning — item 9's longer prediction
+chains need variable, open-ended cardinality (same long tail item 8 already measured: mean 43.7
+labels/protein, median 31, **max 451**), and a fixed K would cap representable cardinality by
+construction the same way item 8's single point did, just at a less severe choke point. An
+autoregressive decoder's output length isn't fixed in advance, so it doesn't reintroduce a capacity
+ceiling of the same kind this item exists to fix.
+
+**Design (implemented 2026-10-24, training_run.py + experiments/label_embedding/
+train_autoregressive_head.py):**
+- `AutoregressiveLabelEmbeddingHead`/`AutoregressiveLabelEmbeddingEsmForSequenceClassification` in
+  `training_run.py`, mirroring the existing head-swap class pattern (`AspectConditioned...`,
+  `LabelEmbedding...`). A GRUCell decoder: `init_state = Linear(pooled)` seeds the first step;
+  each step embeds the previously-emitted label (a `label_embed` table with one extra row for a
+  START token, kept separate from the frozen scoring vocabulary so START can never be predicted as
+  an output label), updates the GRU state, projects into the same frozen `term_embeddings` space
+  item 8 built and validated (`experiments/label_embedding/term_embeddings.pt`, reused byte-for-byte,
+  no changes needed), and scores via cosine similarity exactly like item 8's head
+  (`scale * sims + per_term_bias`). A separate linear `stop_head` off the same decoder state
+  predicts, per step, whether this was the last label (plain BCE target, kept separate from the
+  27,191-way softmax rather than diluting it with an extra "STOP" vocabulary entry).
+- **Label ordering for teacher forcing:** `compute_label_depth()` (new, next to
+  `build_hierarchy_edge_index`) layers the same direct is_a/part_of edges item 3's hierarchy-loss
+  work already extracts from `go_dependency_graph.json`, via Kahn's algorithm, taking the MAX depth
+  over all in-vocabulary parents — this guarantees every one of a label's in-vocabulary ancestors
+  has strictly smaller depth, so sorting a protein's true labels ascending by this depth always
+  emits ancestors before descendants. Reuses existing infrastructure rather than inventing a new
+  ordering scheme, and happens to bake in the same ancestor-before-descendant property item 3's
+  consistency loss targets separately.
+- **Max-steps cap (exposure to the long tail):** `--ar-max-decode-steps` (default 64) truncates each
+  protein's depth-ordered label sequence, both for training targets and for `generate()`'s decode
+  budget. Truncation drops the *deepest/most specific* labels first (ascending-depth order), not a
+  random subset — keeping the general terms a protein almost certainly has representable, at the
+  cost of the architecture being unable to ever name a protein's longest-tail, most-specific
+  annotations at all under this cap. Not yet measured how much true-label mass this truncation
+  actually discards at the chosen cap (max 451 labels/protein exists; mean 43.7/median 31 suggests
+  most proteins fit, but the tail doesn't) — flagged as a known gap, not yet quantified.
+- **Exposure bias:** scheduled sampling (Bengio et al. 2015) — `--ar-scheduled-sampling-final-prob`
+  (default 0.25) linearly ramped in after `--ar-scheduled-sampling-warmup-frac` (default 0.3) of
+  training, so the decoder is gradually exposed to its own (possibly wrong) predictions during
+  training rather than only ever seeing ground-truth history, which is all it would get at
+  inference otherwise.
+- **Repeat-prevention:** a per-example `emitted_mask` over the 27,191-label vocabulary, updated
+  after every step with whichever label was actually fed forward (true or scheduled-sampled, kept
+  consistent between training and inference) — a simple deterministic mask, no learned mechanism
+  needed.
+- **Stopping/inference:** greedy (argmax) decode, step count bounded by `--ar-max-decode-steps`;
+  the dedicated `stop_head` output (sigmoid > 0.5) decides when a realistic prediction set actually
+  ends. No beam search — greedy is the standard first choice and the simplest decode strategy that
+  works; only escalate if greedy measurably underperforms.
+- **Meta-device init bug (same class of bug item 8's Step 3 found, pre-empted here):** verified
+  directly that `classifier.cell`'s GRUCell parameters (`weight_ih`/`weight_hh`/`bias_ih`/
+  `bias_hh`) are NOT isinstance-matched by `EsmPreTrainedModel._init_weights` (only
+  `nn.Linear`/`nn.Embedding`/`nn.LayerNorm` are) and so come back as the same kind of meta-device
+  garbage `scale`/`bias` did for item 8 — `create_esm()`'s fresh-start-only fix block now also
+  calls `model.classifier.cell.reset_parameters()` alongside the existing `scale`/`bias`/
+  `term_embeddings` re-fills.
+- **Diagnostic adapter, with an explicit caveat:** `run_dense_diagnostic()` in the standalone
+  script runs `generate()` for the full `--ar-max-decode-steps` budget regardless of the stop head
+  (so every label gets a score), takes the max logit any label received across all steps as its
+  AUROC-comparable score, and reuses `_diagnostic_metrics_from_arrays()` directly rather than
+  reimplementing the AUROC/F1 math. **Important asymmetry:** ground truth for this diagnostic is
+  also truncated to each protein's first `--ar-max-decode-steps` depth-ordered true labels, the
+  same truncation training uses — this measures "how well does this architecture do on what it can
+  represent at all," not a fair apples-to-apples number against the classifier/item-8 baselines'
+  full-27,191-label-set AUROC. Any comparison across architectures needs this caveat stated
+  alongside the number, not silently dropped.
+- **Deliberately not wired into `training_run.py`'s main() training loop.** That loop's loss/
+  metrics/batching all assume a fixed-shape dense multi-hot target; this mechanism's variable-length
+  sequential decode doesn't produce one. Lives in its own standalone script
+  (`experiments/label_embedding/train_autoregressive_head.py`), reusing `create_esm()`/
+  `create_esm_tokenizer()`/`compute_label_depth()`/`build_hierarchy_edge_index()`/
+  `_diagnostic_metrics_from_arrays()`/`load_training_data()` from `training_run.py` rather than
+  duplicating that logic — same precedent as `experiments/mf_span/scripts/train_mf_span_model.py`
+  and `experiments/pk_eval/scripts/*.py` being their own dedicated scripts rather than main()
+  branches. Only promote into `training_run.py`'s own CLI if a cheap-scale spike's result
+  justifies it — the same validate-cheap-first ordering item 8 itself followed (precompute →
+  validate → only then integrate).
+
+**Status (2026-10-24): CPU-smoke-tested, cheap-scale GPU spike not yet run.** Not claiming this
+works yet — item 8's own history (two burned cheap-scale GPU trials on plausible-looking fixes
+that turned out not to address the real bottleneck) is reason enough to gate on a real cheap-scale
+result before investing further, exactly the discipline that caught both of item 8's failures.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features

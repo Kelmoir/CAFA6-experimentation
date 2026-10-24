@@ -6,6 +6,7 @@ import random
 import subprocess
 import sys
 import time
+from collections import deque
 from functools import partial
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -341,6 +342,157 @@ class LabelEmbeddingEsmForSequenceClassification(EsmForSequenceClassification):
         )
 
 
+class AutoregressiveLabelEmbeddingHead(torch.nn.Module):
+    """Item 16 (see experiments/cafa6_next_steps_plan.md): a sequential decoder over item 8's
+    term-embedding vocabulary, replacing the single-point compatibility-score head item 8 found
+    structurally incapable of multi-label prediction. That head's proj(pooled) produces exactly
+    ONE unit vector per protein, scored against every label's frozen embedding at once -- but a
+    protein's true labels (mean 43.7/protein) sit at only 0.33 mean mutual cosine in this
+    embedding space (random pairs: 0.1994, sibling pairs: 0.4887), too loosely clustered for one
+    static point to score all of them "high" simultaneously. Emitting one label per decode step
+    means each step only has to match ONE target, conditioned on a running state that moves
+    between labels across steps -- the same fix multi-label sequence-generation models use
+    (Yang et al. 2018's SGM is the usual citation).
+
+    term_embeddings: the same frozen, L2-normalized [num_labels, embed_dim] cache item 8 built
+    (experiments/label_embedding/term_embeddings.pt) -- reused as-is. A START token is NOT added
+    to term_embeddings itself (it must stay exactly the scoring vocabulary); label_embed's table
+    has num_labels+1 rows instead, with the extra row reserved for START, so START can never be
+    predicted as an output label.
+    """
+
+    def __init__(self, config, term_embeddings: torch.Tensor, decoder_hidden_dim: int = 256):
+        super().__init__()
+        if term_embeddings.shape[0] != config.num_labels:
+            raise ValueError(
+                f"term_embeddings has {term_embeddings.shape[0]} rows but config.num_labels="
+                f"{config.num_labels} -- see LabelEmbeddingClassificationHead's identical check."
+            )
+        self.num_labels = term_embeddings.shape[0]
+        embed_dim = term_embeddings.shape[1]
+        self.register_buffer("term_embeddings", term_embeddings, persistent=False)
+        self.dropout = torch.nn.Dropout(config.hidden_dropout_prob)
+        self.init_state = torch.nn.Linear(config.hidden_size, decoder_hidden_dim)
+        self.label_embed = torch.nn.Embedding(self.num_labels + 1, decoder_hidden_dim)  # last row = START
+        self.cell = torch.nn.GRUCell(decoder_hidden_dim, decoder_hidden_dim)
+        self.proj = torch.nn.Linear(decoder_hidden_dim, embed_dim)
+        self.scale = torch.nn.Parameter(torch.tensor(10.0))
+        self.bias = torch.nn.Parameter(torch.zeros(self.num_labels))
+        self.stop_head = torch.nn.Linear(decoder_hidden_dim, 1)
+
+    def step(self, state: torch.Tensor, prev_label_idx: torch.Tensor):
+        """One decode step. state/prev_label_idx are the PREVIOUS step's state and the label fed
+        as input this step (or init_state(pooled)/START for the very first step). Returns the
+        updated state plus this step's label logits ([batch, num_labels], unmasked -- callers
+        handle repeat-prevention) and stop logit ([batch])."""
+        state = self.cell(self.label_embed(prev_label_idx), state)
+        x = self.dropout(state)
+        x = torch.nn.functional.normalize(self.proj(x), dim=-1)
+        sims = x @ self.term_embeddings.to(dtype=x.dtype).T
+        label_logits = self.scale * sims + self.bias
+        stop_logit = self.stop_head(state).squeeze(-1)
+        return state, label_logits, stop_logit
+
+
+class AutoregressiveLabelEmbeddingEsmForSequenceClassification(EsmForSequenceClassification):
+    """EsmForSequenceClassification with its classifier head swapped for
+    AutoregressiveLabelEmbeddingHead (item 16). Unlike every other head-swap variant above, this
+    one does NOT implement the standard forward()->SequenceClassifierOutput contract -- a
+    variable-length autoregressive decode has no fixed-shape logits tensor to return that way.
+    Training/eval go through forward_teacher_forced()/generate() instead, driven from a dedicated
+    standalone script (experiments/label_embedding/train_autoregressive_head.py), not
+    training_run.py's main() loop -- that loop's loss/metrics/batching all assume a fixed-shape
+    dense multi-hot target, which this mechanism doesn't produce. Only promote this into
+    training_run.py's own CLI if a cheap-scale spike's result justifies it, same ordering item 8
+    followed (validate cheap, only then integrate).
+    """
+
+    def __init__(self, config, term_embeddings: Optional[torch.Tensor] = None,
+                 ar_decoder_hidden_dim: int = 256):
+        super().__init__(config)
+        if term_embeddings is None:
+            raise ValueError("AutoregressiveLabelEmbeddingEsmForSequenceClassification requires term_embeddings")
+        self.classifier = AutoregressiveLabelEmbeddingHead(config, term_embeddings, ar_decoder_hidden_dim)
+        std = getattr(config, "initializer_range", None) or 0.02
+        with torch.no_grad():
+            self.classifier.proj.weight.normal_(mean=0.0, std=std)
+            self.classifier.proj.bias.zero_()
+
+    def encode_pooled(self, input_ids, attention_mask=None, **kwargs) -> torch.Tensor:
+        outputs = self.esm(input_ids, attention_mask=attention_mask, **kwargs)
+        pooled = outputs[0][:, 0, :]  # <s>/CLS token, matching EsmClassificationHead
+        return self.classifier.init_state(pooled)
+
+    def forward_teacher_forced(self, input_ids, attention_mask, label_seq: torch.Tensor,
+                                seq_mask: torch.Tensor, scheduled_sampling_prob: float = 0.0):
+        """label_seq/seq_mask: [batch, max_steps], the depth-ordered true-label ids per example
+        (padded with 0 where seq_mask is False -- callers must mask those steps out of any loss).
+        scheduled_sampling_prob (Bengio et al. 2015): the probability, per example per step, of
+        feeding the decoder its OWN greedy prediction instead of the true next label -- without
+        this, training only ever exposes the decoder to ground-truth history, but inference
+        (generate(), below) only ever has its own, possibly wrong, history (exposure bias).
+        Repeat-prevention masks whichever label was actually fed forward (true or sampled), not
+        always the ground truth, so train/inference stay consistent on this point.
+
+        Returns per-step label logits [batch, max_steps, num_labels] and stop logits
+        [batch, max_steps] for the caller to compute masked cross-entropy/BCE losses against.
+        """
+        state = self.encode_pooled(input_ids, attention_mask)
+        batch_size, max_steps = label_seq.shape
+        device = state.device
+        prev = torch.full((batch_size,), self.classifier.num_labels, dtype=torch.long, device=device)  # START
+        emitted_mask = torch.zeros(batch_size, self.classifier.num_labels, dtype=torch.bool, device=device)
+        all_label_logits, all_stop_logits = [], []
+        for t in range(max_steps):
+            state, label_logits, stop_logit = self.classifier.step(state, prev)
+            all_label_logits.append(label_logits)
+            all_stop_logits.append(stop_logit)
+            true_next = label_seq[:, t]
+            if scheduled_sampling_prob > 0:
+                sampled = label_logits.masked_fill(emitted_mask, float("-inf")).argmax(dim=-1)
+                use_model = torch.rand(batch_size, device=device) < scheduled_sampling_prob
+                prev = torch.where(use_model, sampled, true_next)
+            else:
+                prev = true_next
+            emitted_mask = emitted_mask.scatter(1, prev.unsqueeze(1), True)
+        return torch.stack(all_label_logits, dim=1), torch.stack(all_stop_logits, dim=1)
+
+    @torch.no_grad()
+    def generate(self, input_ids, attention_mask, max_steps: int):
+        """Greedy, repeat-masked decode for exactly max_steps steps regardless of the stop head,
+        so a dense per-label score is always available for AUROC-style evaluation even though
+        real usage would stop early (see train_autoregressive_head.py's diagnostic adapter).
+
+        Returns:
+          predicted_label_ids: [batch, max_steps] long, the greedily chosen label at each step.
+          stop_at: [batch] long, the 0-based step index at which stop_prob first exceeded 0.5 (or
+              max_steps if it never did) -- the realistic prediction is predicted_label_ids[:, :stop_at].
+          best_logit_per_label: [batch, num_labels] float, the max over all max_steps steps of
+              each label's logit -- used as a dense AUROC-comparable score per label.
+        """
+        state = self.encode_pooled(input_ids, attention_mask)
+        batch_size = state.shape[0]
+        num_labels = self.classifier.num_labels
+        device = state.device
+        prev = torch.full((batch_size,), num_labels, dtype=torch.long, device=device)  # START
+        emitted_mask = torch.zeros(batch_size, num_labels, dtype=torch.bool, device=device)
+        best_logit = torch.full((batch_size, num_labels), float("-inf"), device=device)
+        stop_at = torch.full((batch_size,), max_steps, dtype=torch.long, device=device)
+        stopped = torch.zeros(batch_size, dtype=torch.bool, device=device)
+        predicted = []
+        for t in range(max_steps):
+            state, label_logits, stop_logit = self.classifier.step(state, prev)
+            best_logit = torch.maximum(best_logit, label_logits)
+            masked_logits = label_logits.masked_fill(emitted_mask, float("-inf"))
+            prev = masked_logits.argmax(dim=-1)
+            predicted.append(prev)
+            emitted_mask = emitted_mask.scatter(1, prev.unsqueeze(1), True)
+            newly_stopped = (torch.sigmoid(stop_logit) > 0.5) & ~stopped
+            stop_at = torch.where(newly_stopped, torch.full_like(stop_at, t), stop_at)
+            stopped = stopped | newly_stopped
+        return torch.stack(predicted, dim=1), stop_at, best_logit
+
+
 def create_esm(
     unfreeze_last_n: int = 2,
     model_type: str = "facebook/esm2_t30_150M_UR50D",
@@ -364,6 +516,8 @@ def create_esm(
     known_embed_dim: int = 64,
     use_label_embedding_head: bool = False,
     term_embeddings: Optional[torch.Tensor] = None,
+    use_autoregressive_label_head: bool = False,
+    ar_decoder_hidden_dim: int = 256,
 ):
     if id2label is None or label2id is None:
         raise ValueError("id2label and label2id must be provided")
@@ -396,6 +550,13 @@ def create_esm(
         )
     if use_label_embedding_head and term_embeddings is None:
         raise ValueError("--use-label-embedding-head requires term_embeddings (see --label-embeddings-path)")
+    if use_autoregressive_label_head and (use_lora or use_known_input or use_aspect_input or use_label_embedding_head):
+        raise NotImplementedError(
+            "--use-autoregressive-label-head is mutually exclusive with every other head-swap "
+            "mechanism -- only one is implemented at a time."
+        )
+    if use_autoregressive_label_head and term_embeddings is None:
+        raise ValueError("--use-autoregressive-label-head requires term_embeddings (see --label-embeddings-path)")
 
     if use_lora:
         if get_peft_model is None:
@@ -494,11 +655,14 @@ def create_esm(
     model_cls = (
         KnownConditionedEsmForSequenceClassification if use_known_input
         else AspectConditionedEsmForSequenceClassification if use_aspect_input
+        else AutoregressiveLabelEmbeddingEsmForSequenceClassification if use_autoregressive_label_head
         else LabelEmbeddingEsmForSequenceClassification if use_label_embedding_head
         else AutoModelForSequenceClassification
     )
     extra_model_kwargs = (
         {"known_embed_dim": known_embed_dim} if use_known_input
+        else {"term_embeddings": term_embeddings, "ar_decoder_hidden_dim": ar_decoder_hidden_dim}
+        if use_autoregressive_label_head
         else {"term_embeddings": term_embeddings} if use_label_embedding_head
         else {}
     )
@@ -537,6 +701,23 @@ def create_esm(
             with torch.no_grad():
                 model.classifier.scale.fill_(10.0)
                 model.classifier.bias.fill_(0.0)
+        with torch.no_grad():
+            model.classifier.term_embeddings.copy_(term_embeddings)
+
+    if use_autoregressive_label_head:
+        # Same meta-device fast-init gap as use_label_embedding_head above (see its comment),
+        # plus one more case: classifier.cell is a torch.nn.GRUCell, whose weight_ih/weight_hh/
+        # bias_ih/bias_hh are plain attributes HF's _init_weights doesn't isinstance-match
+        # either (only nn.Linear/nn.Embedding/nn.LayerNorm are), so they come back as the same
+        # kind of meta-device garbage scale/bias do -- verified directly, not assumed. Only
+        # reset on a fresh start (revision is None): a resumed checkpoint's real trained cell/
+        # scale/bias values get restored correctly by from_pretrained's own state-dict loading,
+        # which runs (and overwrites by name, regardless of module type) after this block.
+        if revision is None:
+            with torch.no_grad():
+                model.classifier.scale.fill_(10.0)
+                model.classifier.bias.fill_(0.0)
+            model.classifier.cell.reset_parameters()
         with torch.no_grad():
             model.classifier.term_embeddings.copy_(term_embeddings)
 
@@ -856,6 +1037,42 @@ def build_hierarchy_edge_index(label2id: Dict[str, int], graph_path: Path) -> to
     if not edges:
         return torch.zeros((0, 2), dtype=torch.long)
     return torch.tensor(edges, dtype=torch.long)
+
+
+def compute_label_depth(label2id: Dict[str, int], graph_path: Path) -> torch.LongTensor:
+    """Item 16 (see experiments/cafa6_next_steps_plan.md): a canonical per-label depth, used to
+    order a protein's true labels for the autoregressive decoder's teacher forcing (shallow/
+    general terms emitted before deep/specific descendants). Reuses build_hierarchy_edge_index's
+    same (child_idx, parent_idx) edges -- restricted to direct is_a/part_of edges with both
+    endpoints in the trainable vocabulary -- then layers them via Kahn's algorithm: depth 0 for
+    any label with no in-vocabulary parent edge, depth[child] = 1 + max(depth[parent] for parent
+    in its in-vocabulary parents) otherwise. Taking the MAX over parents (not just any one of
+    them) guarantees every one of a label's in-vocabulary ancestors has a strictly smaller depth,
+    so sorting a label set ascending by this depth always puts ancestors before descendants.
+
+    This is a depth within the trainable-vocabulary-restricted subgraph, not true GO-graph depth
+    (a label whose real parent was dropped from the trainable vocabulary gets depth 0 here) --
+    fine for its only purpose, a deterministic generation order, not a biological claim.
+    """
+    edge_index = build_hierarchy_edge_index(label2id, graph_path)
+    num_labels = len(label2id)
+    children_of: List[List[int]] = [[] for _ in range(num_labels)]
+    indegree = [0] * num_labels
+    for child, parent in edge_index.tolist():
+        children_of[parent].append(child)
+        indegree[child] += 1
+
+    depth = [0] * num_labels
+    queue = deque(i for i in range(num_labels) if indegree[i] == 0)
+    remaining_indegree = list(indegree)
+    while queue:
+        node = queue.popleft()
+        for child in children_of[node]:
+            depth[child] = max(depth[child], depth[node] + 1)
+            remaining_indegree[child] -= 1
+            if remaining_indegree[child] == 0:
+                queue.append(child)
+    return torch.tensor(depth, dtype=torch.long)
 
 
 def hierarchy_consistency_penalty(logits: torch.Tensor, edge_index: torch.Tensor) -> torch.Tensor:
