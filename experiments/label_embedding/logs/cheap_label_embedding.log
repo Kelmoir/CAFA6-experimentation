@@ -1,0 +1,203 @@
+[CONFIG] {"device": "cuda", "epochs": 5, "batch_size": 2, "learning_rate": 5e-05, "max_length": 1024, "model_name": "facebook/esm2_t12_35M_UR50D", "unfreeze_last_n": 4, "max_train_samples": 2000, "max_val_samples": 500, "data_path": "data/cafa-6-protein-function-prediction/dataset_full", "push_to_hub": false, "hf_repo_id": "kelmoir/cafa6-esm", "dataset_repo_id": "kelmoir/CAFA6", "seed": 42, "output_dropout": 0.2, "esm_dropout": 0.1, "attention_dropout": 0.1, "grad_clip_norm": 1.0, "weight_decay": 0.01, "max_minutes": null, "run_name": "item8-cheap-label-embedding", "trackio_space_id": null, "checkpoint_mode": "final", "checkpoint_branch": null, "hf_token_file": null, "resume_from_revision": null, "start_epoch": 0, "lr_schedule": "constant", "warmup_steps": null, "label_smoothing": 0.0, "unknown_target_value": null, "decouple_bias_wd": false, "grad_accum_steps": 8, "pos_weight": false, "pos_weight_exponent": 0.5, "quiet": false, "use_lora": false, "use_aspect_input": false, "use_known_input": false, "known_mix_zero_frac": 0.3, "known_reveal_max": 1.0, "known_embed_dim": 64, "use_label_embedding_head": true, "label_embeddings_path": "experiments/label_embedding/term_embeddings.pt", "hierarchy_loss_weight": 0.0, "go_dependency_graph_path": null, "soft_f1_loss_weight": 0.0, "ia_file": "data/cafa-6-protein-function-prediction/IA.tsv", "mask_sparse_negatives_max_total_terms": null, "loss_mask_from_dataset": false, "lora_r": 16, "lora_alpha": 32, "lora_dropout": 0.05, "lora_target_modules": null, "lora_layers_to_transform": null, "mixed_precision": "no", "gradient_checkpointing": false, "checkpoint_selection": "f1", "run_diagnostic": true, "diagnostic_max_val_samples": 1000, "rare_term_threshold": 100, "nnpu": false, "class_priors_path": null, "class_priors_min_source_positives": 2000, "nnpu_min_term_positives": 20, "nnpu_positive_batch_size": 32, "nnpu_beta": 0.0, "nnpu_gamma": 1.0, "nnpu_detach_anchor_backbone": true}
+[INFO] Built hierarchy edge index: 47068 true-path edges within the 27191-term trainable vocabulary
+[INFO] Loaded term embeddings for --use-label-embedding-head: torch.Size([27191, 385]) from experiments/label_embedding/term_embeddings.pt
+Loading weights:   0%|          | 0/209 [00:00<?, ?it/s]Loading weights: 100%|██████████| 209/209 [00:00<00:00, 3943.38it/s]
+[1mLabelEmbeddingEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t12_35M_UR50D
+Key                         | Status     | 
+----------------------------+------------+-
+lm_head.dense.bias          | UNEXPECTED | 
+lm_head.bias                | UNEXPECTED | 
+lm_head.layer_norm.bias     | UNEXPECTED | 
+lm_head.layer_norm.weight   | UNEXPECTED | 
+esm.embeddings.position_ids | UNEXPECTED | 
+lm_head.dense.weight        | UNEXPECTED | 
+classifier.proj.bias        | MISSING    | 
+classifier.bias             | MISSING    | 
+classifier.proj.weight      | MISSING    | 
+classifier.scale            | MISSING    | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING[3m	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.[0m
+Model layers: 12, request unfreeze layers: 4
+[INFO] --use-label-embedding-head set: skipping per-term prior-bias init (the head's scale/bias are global, not per-term).
+* Trackio project initialized: cafa6
+* Trackio metrics logged to: /home/kelmoir/.cache/huggingface/trackio
+* View dashboard by running in your terminal:
+[1m[38;5;208mtrackio show --project "cafa6"[0m
+* or by running in Python: trackio.show(project="cafa6")
+* psutil detected, enabling automatic CPU/system metrics logging
+* Created new run: item8-cheap-label-embedding
+[INFO] HF token resolved via huggingface_hub cache
+[STEP] epoch=1 step=40/1000 loss=0.6042
+[STEP] epoch=1 step=80/1000 loss=0.5974
+[STEP] epoch=1 step=120/1000 loss=0.5223
+[STEP] epoch=1 step=160/1000 loss=0.4650
+[STEP] epoch=1 step=200/1000 loss=0.4160
+[STEP] epoch=1 step=240/1000 loss=0.3003
+[STEP] epoch=1 step=280/1000 loss=0.2723
+[STEP] epoch=1 step=320/1000 loss=0.2084
+[STEP] epoch=1 step=360/1000 loss=0.1538
+[STEP] epoch=1 step=400/1000 loss=0.0991
+[STEP] epoch=1 step=440/1000 loss=0.0927
+[STEP] epoch=1 step=480/1000 loss=0.0679
+[STEP] epoch=1 step=520/1000 loss=0.0619
+[STEP] epoch=1 step=560/1000 loss=0.0528
+[STEP] epoch=1 step=600/1000 loss=0.0524
+[STEP] epoch=1 step=640/1000 loss=0.0425
+[STEP] epoch=1 step=680/1000 loss=0.0403
+[STEP] epoch=1 step=720/1000 loss=0.0433
+[STEP] epoch=1 step=760/1000 loss=0.0466
+[STEP] epoch=1 step=800/1000 loss=0.0415
+[STEP] epoch=1 step=840/1000 loss=0.0365
+[STEP] epoch=1 step=880/1000 loss=0.0355
+[STEP] epoch=1 step=920/1000 loss=0.0361
+[STEP] epoch=1 step=960/1000 loss=0.0347
+[STEP] epoch=1 step=1000/1000 loss=0.0400
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.45it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.44it/s]
+Epoch 1/5 | train_loss=0.1828 | val_loss=0.0328 | train_acc=0.9585 | val_acc=0.9982 | train_recall=0.0129 | val_recall=0.0000 | train_f1=0.0022 | val_f1=0.0000
+[TIMING] epoch 1 elapsed=60.2s
+[STEP] epoch=2 step=40/1000 loss=0.0379
+[STEP] epoch=2 step=80/1000 loss=0.0371
+[STEP] epoch=2 step=120/1000 loss=0.0340
+[STEP] epoch=2 step=160/1000 loss=0.0367
+[STEP] epoch=2 step=200/1000 loss=0.0382
+[STEP] epoch=2 step=240/1000 loss=0.0337
+[STEP] epoch=2 step=280/1000 loss=0.0398
+[STEP] epoch=2 step=320/1000 loss=0.0440
+[STEP] epoch=2 step=360/1000 loss=0.0339
+[STEP] epoch=2 step=400/1000 loss=0.0299
+[STEP] epoch=2 step=440/1000 loss=0.0338
+[STEP] epoch=2 step=480/1000 loss=0.0343
+[STEP] epoch=2 step=520/1000 loss=0.0317
+[STEP] epoch=2 step=560/1000 loss=0.0289
+[STEP] epoch=2 step=600/1000 loss=0.0360
+[STEP] epoch=2 step=640/1000 loss=0.0301
+[STEP] epoch=2 step=680/1000 loss=0.0392
+[STEP] epoch=2 step=720/1000 loss=0.0359
+[STEP] epoch=2 step=760/1000 loss=0.0615
+[STEP] epoch=2 step=800/1000 loss=0.0316
+[STEP] epoch=2 step=840/1000 loss=0.0400
+[STEP] epoch=2 step=880/1000 loss=0.0327
+[STEP] epoch=2 step=920/1000 loss=0.0293
+[STEP] epoch=2 step=960/1000 loss=0.0338
+[STEP] epoch=2 step=1000/1000 loss=0.0305
+Epoch 2/5 | train_loss=0.0357 | val_loss=0.0314 | train_acc=0.9984 | val_acc=0.9982 | train_recall=0.0000 | val_recall=0.0000 | train_f1=0.0000 | val_f1=0.0000
+[TIMING] epoch 2 elapsed=59.9s
+[STEP] epoch=3 step=40/1000 loss=0.0338
+[STEP] epoch=3 step=80/1000 loss=0.0367
+[STEP] epoch=3 step=120/1000 loss=0.0298
+[STEP] epoch=3 step=160/1000 loss=0.0313
+[STEP] epoch=3 step=200/1000 loss=0.0357
+[STEP] epoch=3 step=240/1000 loss=0.0397
+[STEP] epoch=3 step=280/1000 loss=0.0393
+[STEP] epoch=3 step=320/1000 loss=0.0433
+[STEP] epoch=3 step=360/1000 loss=0.0283
+[STEP] epoch=3 step=400/1000 loss=0.0307
+[STEP] epoch=3 step=440/1000 loss=0.0275
+[STEP] epoch=3 step=480/1000 loss=0.0369
+[STEP] epoch=3 step=520/1000 loss=0.0364
+[STEP] epoch=3 step=560/1000 loss=0.0294
+[STEP] epoch=3 step=600/1000 loss=0.0284
+[STEP] epoch=3 step=640/1000 loss=0.0387
+[STEP] epoch=3 step=680/1000 loss=0.0315
+[STEP] epoch=3 step=720/1000 loss=0.0316
+[STEP] epoch=3 step=760/1000 loss=0.0356
+[STEP] epoch=3 step=800/1000 loss=0.0275
+[STEP] epoch=3 step=840/1000 loss=0.0316
+[STEP] epoch=3 step=880/1000 loss=0.0452
+[STEP] epoch=3 step=920/1000 loss=0.0340
+[STEP] epoch=3 step=960/1000 loss=0.0291
+[STEP] epoch=3 step=1000/1000 loss=0.0282
+Epoch 3/5 | train_loss=0.0333 | val_loss=0.0311 | train_acc=0.9985 | val_acc=0.9982 | train_recall=0.0000 | val_recall=0.0000 | train_f1=0.0000 | val_f1=0.0000
+[TIMING] epoch 3 elapsed=59.9s
+[STEP] epoch=4 step=40/1000 loss=0.0361
+[STEP] epoch=4 step=80/1000 loss=0.0308
+[STEP] epoch=4 step=120/1000 loss=0.0320
+[STEP] epoch=4 step=160/1000 loss=0.0447
+[STEP] epoch=4 step=200/1000 loss=0.0285
+[STEP] epoch=4 step=240/1000 loss=0.0275
+[STEP] epoch=4 step=280/1000 loss=0.0339
+[STEP] epoch=4 step=320/1000 loss=0.0406
+[STEP] epoch=4 step=360/1000 loss=0.0291
+[STEP] epoch=4 step=400/1000 loss=0.0290
+[STEP] epoch=4 step=440/1000 loss=0.0313
+[STEP] epoch=4 step=480/1000 loss=0.0368
+[STEP] epoch=4 step=520/1000 loss=0.0436
+[STEP] epoch=4 step=560/1000 loss=0.0342
+[STEP] epoch=4 step=600/1000 loss=0.0264
+[STEP] epoch=4 step=640/1000 loss=0.0317
+[STEP] epoch=4 step=680/1000 loss=0.0310
+[STEP] epoch=4 step=720/1000 loss=0.0326
+[STEP] epoch=4 step=760/1000 loss=0.0312
+[STEP] epoch=4 step=800/1000 loss=0.0275
+[STEP] epoch=4 step=840/1000 loss=0.0280
+[STEP] epoch=4 step=880/1000 loss=0.0272
+[STEP] epoch=4 step=920/1000 loss=0.0317
+[STEP] epoch=4 step=960/1000 loss=0.0302
+[STEP] epoch=4 step=1000/1000 loss=0.0280
+Epoch 4/5 | train_loss=0.0323 | val_loss=0.0310 | train_acc=0.9984 | val_acc=0.9982 | train_recall=0.0000 | val_recall=0.0000 | train_f1=0.0000 | val_f1=0.0000
+[TIMING] epoch 4 elapsed=60.8s
+[STEP] epoch=5 step=40/1000 loss=0.0360
+[STEP] epoch=5 step=80/1000 loss=0.0287
+[STEP] epoch=5 step=120/1000 loss=0.0273
+[STEP] epoch=5 step=160/1000 loss=0.0438
+[STEP] epoch=5 step=200/1000 loss=0.0290
+[STEP] epoch=5 step=240/1000 loss=0.0346
+[STEP] epoch=5 step=280/1000 loss=0.0347
+[STEP] epoch=5 step=320/1000 loss=0.0429
+[STEP] epoch=5 step=360/1000 loss=0.0357
+[STEP] epoch=5 step=400/1000 loss=0.0307
+[STEP] epoch=5 step=440/1000 loss=0.0272
+[STEP] epoch=5 step=480/1000 loss=0.0287
+[STEP] epoch=5 step=520/1000 loss=0.0297
+[STEP] epoch=5 step=560/1000 loss=0.0274
+[STEP] epoch=5 step=600/1000 loss=0.0277
+[STEP] epoch=5 step=640/1000 loss=0.0295
+[STEP] epoch=5 step=680/1000 loss=0.0279
+[STEP] epoch=5 step=720/1000 loss=0.0401
+[STEP] epoch=5 step=760/1000 loss=0.0368
+[STEP] epoch=5 step=800/1000 loss=0.0302
+[STEP] epoch=5 step=840/1000 loss=0.0271
+[STEP] epoch=5 step=880/1000 loss=0.0255
+[STEP] epoch=5 step=920/1000 loss=0.0307
+[STEP] epoch=5 step=960/1000 loss=0.0305
+[STEP] epoch=5 step=1000/1000 loss=0.0281
+Epoch 5/5 | train_loss=0.0318 | val_loss=0.0308 | train_acc=0.9984 | val_acc=0.9982 | train_recall=0.0000 | val_recall=0.0000 | train_f1=0.0000 | val_f1=0.0000
+[TIMING] epoch 5 elapsed=60.8s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.69it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  5.68it/s]
+model.safetensors:   0%|          | 0.00/134M [00:00<?, ?B/s]model.safetensors:   0%|          | 328k/134M [00:00<00:49, 2.72MB/s]model.safetensors:   1%|          | 1.05M/134M [00:00<00:30, 4.39MB/s]model.safetensors:   1%|▏         | 1.84M/134M [00:00<00:24, 5.47MB/s]model.safetensors:   2%|▏         | 2.75M/134M [00:00<00:20, 6.29MB/s]model.safetensors:   3%|▎         | 3.74M/134M [00:00<00:20, 6.48MB/s]model.safetensors:   4%|▎         | 4.98M/134M [00:00<00:15, 8.17MB/s]model.safetensors:   4%|▍         | 5.83M/134M [00:00<00:19, 6.56MB/s]model.safetensors:   5%|▍         | 6.55M/134M [00:01<00:19, 6.55MB/s]model.safetensors:   6%|▌         | 7.41M/134M [00:01<00:18, 6.76MB/s]model.safetensors:   6%|▌         | 8.26M/134M [00:01<00:18, 6.71MB/s]model.safetensors:   7%|▋         | 9.24M/134M [00:01<00:18, 6.86MB/s]model.safetensors:   8%|▊         | 10.3M/134M [00:01<00:17, 6.87MB/s]model.safetensors:   9%|▊         | 11.4M/134M [00:01<00:17, 6.91MB/s]model.safetensors:   9%|▉         | 12.7M/134M [00:01<00:17, 7.05MB/s]model.safetensors:  10%|█         | 14.0M/134M [00:02<00:17, 6.92MB/s]model.safetensors:  12%|█▏        | 15.5M/134M [00:02<00:18, 6.46MB/s]model.safetensors:  12%|█▏        | 16.1M/134M [00:03<00:37, 3.11MB/s]model.safetensors:  15%|█▌        | 20.3M/134M [00:03<00:18, 6.23MB/s]model.safetensors:  16%|█▌        | 21.7M/134M [00:03<00:18, 6.17MB/s]model.safetensors:  17%|█▋        | 23.1M/134M [00:03<00:18, 6.03MB/s]model.safetensors:  18%|█▊        | 24.5M/134M [00:04<00:18, 5.90MB/s]model.safetensors:  19%|█▉        | 26.0M/134M [00:04<00:18, 5.88MB/s]model.safetensors:  20%|██        | 27.4M/134M [00:04<00:18, 5.83MB/s]model.safetensors:  22%|██▏       | 28.8M/134M [00:04<00:17, 5.84MB/s]model.safetensors:  23%|██▎       | 30.3M/134M [00:05<00:18, 5.75MB/s]model.safetensors:  24%|██▎       | 31.7M/134M [00:05<00:17, 5.81MB/s]model.safetensors:  24%|██▍       | 32.3M/134M [00:05<00:30, 3.31MB/s]model.safetensors:  27%|██▋       | 36.3M/134M [00:06<00:16, 6.07MB/s]model.safetensors:  28%|██▊       | 37.7M/134M [00:06<00:16, 5.88MB/s]model.safetensors:  29%|██▉       | 39.3M/134M [00:06<00:15, 5.96MB/s]model.safetensors:  30%|███       | 40.7M/134M [00:06<00:15, 5.86MB/s]model.safetensors:  31%|███▏      | 42.2M/134M [00:07<00:15, 5.84MB/s]model.safetensors:  33%|███▎      | 43.5M/134M [00:07<00:15, 5.80MB/s]model.safetensors:  34%|███▎      | 45.0M/134M [00:07<00:15, 5.84MB/s]model.safetensors:  35%|███▍      | 46.4M/134M [00:07<00:14, 5.83MB/s]model.safetensors:  36%|███▌      | 47.9M/134M [00:08<00:14, 5.88MB/s]model.safetensors:  36%|███▌      | 48.5M/134M [00:08<00:24, 3.50MB/s]model.safetensors:  39%|███▉      | 52.3M/134M [00:09<00:14, 5.46MB/s]model.safetensors:  41%|████      | 54.6M/134M [00:09<00:12, 6.25MB/s]model.safetensors:  42%|████▏     | 55.9M/134M [00:09<00:12, 6.10MB/s]model.safetensors:  43%|████▎     | 57.4M/134M [00:09<00:12, 6.02MB/s]model.safetensors:  44%|████▍     | 58.8M/134M [00:10<00:12, 5.97MB/s]model.safetensors:  45%|████▌     | 60.3M/134M [00:10<00:12, 5.98MB/s]model.safetensors:  46%|████▌     | 61.8M/134M [00:10<00:11, 6.05MB/s]model.safetensors:  47%|████▋     | 63.2M/134M [00:10<00:11, 5.99MB/s]model.safetensors:  48%|████▊     | 64.1M/134M [00:11<00:20, 3.48MB/s]model.safetensors:  51%|█████     | 68.2M/134M [00:11<00:10, 6.38MB/s]model.safetensors:  52%|█████▏    | 69.6M/134M [00:12<00:10, 6.24MB/s]model.safetensors:  53%|█████▎    | 71.1M/134M [00:12<00:10, 6.06MB/s]model.safetensors:  54%|█████▍    | 72.5M/134M [00:12<00:10, 5.96MB/s]model.safetensors:  55%|█████▌    | 73.9M/134M [00:12<00:10, 5.91MB/s]model.safetensors:  56%|█████▋    | 75.3M/134M [00:13<00:09, 5.94MB/s]model.safetensors:  57%|█████▋    | 76.8M/134M [00:13<00:09, 5.95MB/s]model.safetensors:  58%|█████▊    | 78.2M/134M [00:13<00:09, 5.94MB/s]model.safetensors:  60%|█████▉    | 79.7M/134M [00:13<00:09, 5.96MB/s]model.safetensors:  60%|██████    | 80.3M/134M [00:14<00:15, 3.49MB/s]model.safetensors:  63%|██████▎   | 84.2M/134M [00:14<00:07, 6.33MB/s]model.safetensors:  64%|██████▍   | 85.6M/134M [00:14<00:07, 6.21MB/s]model.safetensors:  65%|██████▌   | 87.1M/134M [00:15<00:07, 6.04MB/s]model.safetensors:  66%|██████▌   | 88.5M/134M [00:15<00:07, 5.90MB/s]model.safetensors:  67%|██████▋   | 90.0M/134M [00:15<00:07, 5.88MB/s]model.safetensors:  68%|██████▊   | 91.3M/134M [00:15<00:07, 5.84MB/s]model.safetensors:  69%|██████▉   | 92.8M/134M [00:16<00:07, 5.81MB/s]model.safetensors:  70%|███████   | 94.2M/134M [00:16<00:08, 4.59MB/s]model.safetensors:  72%|███████▏  | 95.7M/134M [00:16<00:07, 5.38MB/s]model.safetensors:  72%|███████▏  | 96.4M/134M [00:17<00:13, 2.73MB/s]model.safetensors:  75%|███████▍  | 100M/134M [00:17<00:06, 5.12MB/s] model.safetensors:  76%|███████▌  | 102M/134M [00:18<00:06, 4.86MB/s]model.safetensors:  77%|███████▋  | 103M/134M [00:18<00:06, 4.93MB/s]model.safetensors:  78%|███████▊  | 105M/134M [00:18<00:05, 5.14MB/s]model.safetensors:  79%|███████▉  | 106M/134M [00:19<00:05, 5.38MB/s]model.safetensors:  80%|████████  | 107M/134M [00:19<00:04, 5.51MB/s]model.safetensors:  81%|████████▏ | 109M/134M [00:19<00:04, 5.62MB/s]model.safetensors:  82%|████████▏ | 110M/134M [00:19<00:04, 5.72MB/s]model.safetensors:  84%|████████▎ | 112M/134M [00:19<00:03, 5.81MB/s]model.safetensors:  84%|████████▍ | 112M/134M [00:20<00:06, 3.37MB/s]model.safetensors:  87%|████████▋ | 116M/134M [00:20<00:02, 6.09MB/s]model.safetensors:  88%|████████▊ | 118M/134M [00:21<00:02, 6.06MB/s]model.safetensors:  89%|████████▉ | 119M/134M [00:21<00:02, 6.05MB/s]model.safetensors:  90%|█████████ | 121M/134M [00:21<00:02, 6.01MB/s]model.safetensors:  91%|█████████ | 122M/134M [00:21<00:01, 5.97MB/s]model.safetensors:  92%|█████████▏| 123M/134M [00:22<00:01, 5.91MB/s]model.safetensors:  93%|█████████▎| 125M/134M [00:22<00:01, 5.44MB/s]model.safetensors:  94%|█████████▍| 126M/134M [00:22<00:01, 5.05MB/s]model.safetensors:  95%|█████████▌| 128M/134M [00:23<00:01, 4.85MB/s]model.safetensors:  96%|█████████▌| 128M/134M [00:23<00:01, 2.85MB/s]model.safetensors:  99%|█████████▉| 132M/134M [00:23<00:00, 5.57MB/s]model.safetensors: 100%|█████████▉| 134M/134M [00:24<00:00, 5.38MB/s]model.safetensors: 100%|██████████| 134M/134M [00:25<00:00, 5.35MB/s]
+[INFO] Pushed final-epoch checkpoint (epoch 5) to kelmoir/cafa6-esm@item8-cheap-label-embedding
+[SUMMARY] {"run_name": "item8-cheap-label-embedding", "epochs_completed": 5, "final_train_loss": 0.03183657102845609, "final_val_loss": 0.030817551769316196, "train_accuracy": 0.9984186311647236, "val_accuracy": 0.9982300025743812, "train_recall": 0.0, "val_recall": 0.0, "train_f1": 0.0, "val_f1": 0.0, "checkpoint_selection": "f1", "best_epoch": 1, "best_score": 0.0, "best_val_loss": 0.03281277431547642, "best_metrics": {"train_loss": 0.18275641812197865, "val_loss": 0.03281277431547642, "train_accuracy": 0.9585092677724247, "val_accuracy": 0.9982300025743812, "train_recall": 0.012882458046078682, "val_recall": 0.0, "train_precision": 0.0011507421731948853, "val_precision": 0.0, "train_f1": 0.0022154812119171722, "val_f1": 0.0}}
+[INFO] Using best checkpoint (epoch 1, selected by --checkpoint-selection=f1=0.0000, val_loss=0.0328) for diagnostic/promotion, not the last epoch (5, val_loss=0.0308)
+Loading weights:   0%|          | 0/209 [00:00<?, ?it/s]Loading weights: 100%|██████████| 209/209 [00:00<00:00, 4418.84it/s]
+[1mEsmForSequenceClassification LOAD REPORT[0m from: models/item8-cheap-label-embedding/best_checkpoint
+Key                        | Status     | 
+---------------------------+------------+-
+classifier.proj.bias       | UNEXPECTED | 
+classifier.proj.weight     | UNEXPECTED | 
+classifier.bias            | UNEXPECTED | 
+classifier.scale           | UNEXPECTED | 
+classifier.out_proj.weight | MISSING    | 
+classifier.out_proj.bias   | MISSING    | 
+classifier.dense.weight    | MISSING    | 
+classifier.dense.bias      | MISSING    | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING[3m	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.[0m
+[INFO] Running post-training AUROC/F1 diagnostic on the best-checkpoint model...
+
+======================================================================
+DIAGNOSTIC: 6820/27191 labels evaluable (both classes present), 1000 val examples
+======================================================================
+Per-label AUROC: mean=0.5000 median=0.4985 min=0.0000 max=1.0000
+  labels with AUROC > 0.5: 3385/6820
+  labels with AUROC > 0.7: 1400/6820
+Pooled @ threshold 0.5: accuracy=0.4950 (trivial baseline=0.9982) precision=0.0018 recall=0.5257 f1=0.0037
+Pooled AUROC=0.5047  Best F1=0.0037@threshold=0.50
+Rarity-stratified AUROC: rare mean=0.4992 (n=4498)  common mean=0.5014 (n=2322)
+Hierarchy violations: rate=0.4994 mean_magnitude=0.0181 (n_edges=47068)
+After post-hoc clamping: mean_auroc=0.5053 pooled_auroc=0.8998 violation_rate=0.0000 (n_edges=47068)
+[DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 6820, "n_labels_total": 27191, "mean_auroc": 0.499959297383534, "median_auroc": 0.4984984984984985, "pooled_auroc": 0.5046586915689494, "accuracy_at_0.5": 0.4949669375896436, "trivial_baseline_accuracy": 0.9982369901845232, "precision_at_0.5": 0.0018347533741988231, "recall_at_0.5": 0.5256790020441976, "f1_at_0.5": 0.0036567437135259485, "best_f1": 0.003656743782846302, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.49920700650553546, "rare_median_auroc": 0.4964947412342202, "rare_n_labels_evaluable": 4498, "common_mean_auroc": 0.5014165774736449, "common_median_auroc": 0.4995121566272481, "common_n_labels_evaluable": 2322, "violation_rate": 0.49936748958953003, "mean_violation_magnitude": 0.018136148499063722, "n_edges": 47068, "clamped_n_val_examples": 1000, "clamped_n_labels_evaluable": 6820, "clamped_n_labels_total": 27191, "clamped_mean_auroc": 0.5052811982583363, "clamped_median_auroc": 0.5045045045045045, "clamped_pooled_auroc": 0.8998416640981665, "clamped_accuracy_at_0.5": 0.30929461954323123, "clamped_trivial_baseline_accuracy": 0.9982369901845232, "clamped_precision_at_0.5": 0.0024733668469831328, "clamped_recall_at_0.5": 0.9713379782216673, "clamped_f1_at_0.5": 0.004934169518653291, "clamped_best_f1": 0.0049341695693219355, "clamped_best_f1_threshold": 0.5, "clamped_rare_mean_auroc": 0.5057928188964829, "clamped_rare_median_auroc": 0.501001503007521, "clamped_rare_n_labels_evaluable": 4498, "clamped_common_mean_auroc": 0.5042901260660956, "clamped_common_median_auroc": 0.5059292536830177, "clamped_common_n_labels_evaluable": 2322, "clamped_violation_rate": 0.0, "clamped_mean_violation_magnitude": 0.0, "clamped_n_edges": 47068}
+* Run finished. Uploading logs to Trackio (please wait...)

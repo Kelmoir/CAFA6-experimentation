@@ -1104,14 +1104,67 @@ values in the checkpoint) and re-copying `term_embeddings` from the passed-in te
 2.07) and a 20-example/1-epoch CPU smoke test's train_loss drops cleanly step over step (0.59 →
 0.24).
 
+**Step 4 (cheap-scale GPU comparison vs. the classifier baseline, done — negative result,
+closing out item 8).** 2,000 train / 500 val examples, 5 epochs, `esm2_t12_35M_UR50D`,
+identical hyperparameters to the classifier baseline (`unfreeze_last_n=4`, dropout 0.1/0.1,
+weight_decay 0.01, batch_size 2/grad_accum 8, `--checkpoint-selection f1`, matching the
+baseline's own convention per [[feedback_match_checkpoint_selection_to_baseline]]).
+
+First run (global scalar `bias`): classifier baseline reached `mean_auroc=0.6577`; the
+label-embedding head collapsed to `mean_auroc=0.4999` — exact chance — with `val_recall`/`val_f1`
+pinned at 0.0 from epoch 2 on despite `train_loss` decreasing smoothly (0.18 → 0.032). Diagnosed
+as the global `scale` collapsing toward zero: with no per-term calibration slot, the cheapest way
+to fit this task's ~99.8%-negative imbalance is to flatten every term's cosine-similarity signal
+at once, destroying ranking everywhere simultaneously.
+
+Fix applied and committed (`afcdf62`): changed `bias` from a scalar to a per-term `[num_labels]`
+vector (still `O(num_labels)` parameters, nowhere near the classifier's `O(hidden_size ×
+num_labels)` weight matrix), and unified the prior-bias-init logic so both head types get their
+bias initialized to each label's own log-odds. A CPU smoke test (20/10 examples, 1 epoch) looked
+healthy: loss immediately sane (0.0073 → 0.0028), `val_f1=0.1937` vs. 0.0 pre-fix.
+
+Rerun at the same cheap GPU scale with the fix: `mean_auroc=0.5028` — **unchanged from chance**,
+and no better than the pre-fix 0.4999. `val_recall` stayed pinned at ~0.0003-0.0004 across all 5
+epochs; `train_loss` barely moved (0.0070 → 0.0066). The per-term bias fix was a real, correct
+improvement in isolation (loss is sane instead of exploding, and it closes a genuine global/
+per-term capacity gap), but it did not touch the actual root cause — the two cheap-scale runs failed
+for different proximate reasons, and neither produced any per-label ranking signal.
+
+**Revised root-cause read:** the architectural bottleneck, not the bias term. The label-embedding
+head routes every one of the 27,191 labels through one *shared* learnable map (`proj`,
+`hidden_size × 385`) composed with a **fixed** per-label direction (the term's frozen text
+embedding) — unlike the flat classifier, which gives each label its own independently-learned
+direction (`hidden_size × num_labels`). This only works if the frozen text-embedding geometry is
+actually predictive of which proteins carry which terms. Step 2's checks (random/sibling/antonym
+cosine similarity) only validated *term-term* text-similarity structure — they never tested
+whether that geometry aligns with real protein-level co-occurrence, which is the thing that
+actually matters for classification. Plausibly compounding this: with the per-term bias already
+initialized to match each label's prior, BCE's achievable loss reduction from the bias alone is
+large under this imbalance, leaving little gradient pressure to push `proj`/`scale` toward
+anything discriminative at all (consistent with `train_loss` barely moving post-fix) — but this
+doesn't fully explain the gap on its own, since the flat classifier has the same per-term bias
+init and still reached 0.6577 AUROC; the shared-map bottleneck is the more likely primary cause.
+
+**Verdict: closing out item 8 again, for a different reason than the first time.** The salvage
+fix (direction-flag augmentation) was real and did what it claimed — it fixed the antonym-collapse
+failure in the *text*-embedding geometry (Step 2's gate passed cleanly). But two independent
+cheap-scale trials now show that fixed geometry doesn't transfer into a working classification
+signal once wired into the model: the compatibility-score architecture's shared-projection
+bottleneck appears unable to learn real per-label ranking at this scale, for reasons that go
+beyond the specific bugs found and fixed along the way (meta-device init, global bias capacity).
+Escalating further (bigger embed dim, more data/epochs, or testing whether the text-embedding
+geometry correlates with real co-occurrence before trying to learn through it) would be new,
+unvalidated investment rather than finishing already-committed work — not pursued further here.
+
 ### 9. Auxiliary sequence-based prediction tasks (user's own idea: predict positional annotations, etc.)
 **Depends on item 8 above (label-embedding setup)** — this item's auxiliary targets are meant to be
 implemented as embedding predictions/compatibility scores under that architecture, not as new flat
 classifier heads; don't scope this before item 8 has at least a working feasibility result.
-**Status update (2026-10-23):** item 8 is reopened (see its salvage follow-up above) rather than
-dead, so this item is viable again in principle — but still blocked until item 8's
-structural-flag-augmented architecture is actually built and its revisited Q2 check passes, not
-just spiked.
+**Status update (2026-10-24):** item 8 is closed out again — the structural-flag fix resolved the
+text-embedding geometry (Step 2's gate passed) but two independent cheap-scale GPU trials showed
+the resulting architecture still can't learn real per-label ranking (`mean_auroc` stuck at chance,
+~0.50, both before and after fixing the global-bias capacity gap). This item stays blocked; it has
+no viable embedding-compatibility architecture to build auxiliary targets on top of.
 **Source:** not directly evidenced in the research (no source reviewed combined multi-task sequence
 objectives with GO prediction), but consistent with two things the research does support: (a) the
 general principle that orthogonal evidence sources help (item 1), and (b) the finding that structure
