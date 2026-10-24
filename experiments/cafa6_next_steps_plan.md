@@ -1435,10 +1435,37 @@ train_autoregressive_head.py):**
   justifies it — the same validate-cheap-first ordering item 8 itself followed (precompute →
   validate → only then integrate).
 
-**Status (2026-10-24): CPU-smoke-tested, cheap-scale GPU spike not yet run.** Not claiming this
-works yet — item 8's own history (two burned cheap-scale GPU trials on plausible-looking fixes
-that turned out not to address the real bottleneck) is reason enough to gate on a real cheap-scale
-result before investing further, exactly the discipline that caught both of item 8's failures.
+**Status (2026-10-24): cheap-scale GPU spike run — real positive signal, not yet proven
+competitive.** Same scale as item 8's trials (2,000 train / 500 val, 5 epochs,
+`esm2_t12_35M_UR50D`, `unfreeze_last_n=4`, dropout 0.1/0.1, weight_decay 0.01, batch_size
+2/grad_accum 8), `--ar-max-decode-steps 64`:
+
+| metric | item 8, single-point head (both trials) | item 16, autoregressive decoder |
+|---|---|---|
+| mean per-label AUROC | 0.4999 / 0.5028 (chance, flat) | **0.5814** |
+| median per-label AUROC | — | 0.5869 |
+| rare-term mean AUROC | — | 0.5875 (n=2,248) |
+| common-term mean AUROC | — | 0.5745 (n=2,010) |
+| val_loss trajectory | flat/stuck by epoch 2 | still decreasing every epoch through epoch 5 (6.79→5.77) |
+
+This is a real, qualitatively different result from item 8's two chance-level failures: ranking
+signal above 0.5 for the first time on this label-embedding research line, rare/common terms
+roughly balanced (no collapse), and — unlike item 8's trials, which had already flatlined by this
+scale — `val_loss` was still improving at epoch 5, suggesting cheap scale is understating this
+mechanism's ceiling rather than revealing it.
+
+**Two caveats before trusting 0.5814 as *the* number:** (1) the diagnostic's ground truth is
+truncated to each protein's first 64 depth-ordered true labels (the same cap training uses), not
+the full true-label set item 8's classifier baseline (0.6577) was scored against — so this isn't
+a directly fair comparison yet, just evidence the mechanism ranks real signal rather than sitting
+at chance. (2) only 4,258/27,191 labels were evaluable at this val-sample count (both classes
+present), same general caveat every cheap-scale AUROC in this project carries.
+
+**Not closing this out — open question is how far it goes with more scale**, not whether it
+works at all (item 8's question). Candidate next steps, not yet decided: a longer/bigger cheap
+run (more epochs and/or train examples) to see where `val_loss` actually plateaus, a fairer
+diagnostic against the FULL label set (not truncated) to get a real head-to-head number, or
+promoting this into `training_run.py`'s main() loop once confidence is higher.
 
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
