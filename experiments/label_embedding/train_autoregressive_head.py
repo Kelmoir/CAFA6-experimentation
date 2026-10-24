@@ -109,8 +109,14 @@ def step_losses(label_logits: torch.Tensor, stop_logits: torch.Tensor, label_seq
 
 
 def run_eval_pass(model, loader, device, max_steps):
+    """Teacher-forced eval (scheduled_sampling_prob=0, i.e. pure ground-truth history) --
+    cheap diagnostic in addition to loss: top-1 token accuracy (is argmax(label_logits) the
+    true next label, at each real step) distinguishes "the model learned to discriminate
+    between labels" from "the model just rode the prior-bias-init curve down" (both can show
+    a similarly decreasing loss; only the former should show accuracy rising meaningfully
+    above the single-label base rate of predicting whatever's globally most frequent)."""
     model.eval()
-    ce_sum, stop_sum, n_batches = 0.0, 0.0, 0
+    ce_sum, stop_sum, correct_sum, mask_sum, n_batches = 0.0, 0.0, 0.0, 0.0, 0
     with torch.no_grad():
         for batch in loader:
             input_ids = batch["input_ids"].to(device)
@@ -122,8 +128,13 @@ def run_eval_pass(model, loader, device, max_steps):
             ce, stop_loss = step_losses(label_logits, stop_logits, label_seq, seq_mask, max_steps)
             ce_sum += ce.item()
             stop_sum += stop_loss.item()
+            mask_f = seq_mask.float()
+            correct = (label_logits.argmax(dim=-1) == label_seq).float() * mask_f
+            correct_sum += correct.sum().item()
+            mask_sum += mask_f.sum().item()
             n_batches += 1
-    return ce_sum / max(1, n_batches), stop_sum / max(1, n_batches)
+    top1_acc = correct_sum / max(1, mask_sum)
+    return ce_sum / max(1, n_batches), stop_sum / max(1, n_batches), top1_acc
 
 
 def run_dense_diagnostic(model, loader, device, max_steps, label_names, label_counts, rare_term_threshold):
@@ -224,6 +235,13 @@ def main() -> None:
           f"max={depth.max().item()} mean={depth.float().mean():.2f} "
           f"({int((depth == 0).sum())} depth-0 roots)")
 
+    train_label_counts_per_example = [len(labs) for labs in dataset_train["labels"]]
+    n_truncated = sum(1 for n in train_label_counts_per_example if n > args.ar_max_decode_steps)
+    print(f"[INFO] --ar-max-decode-steps={args.ar_max_decode_steps}: {n_truncated}/"
+          f"{len(train_label_counts_per_example)} training proteins "
+          f"({100 * n_truncated / len(train_label_counts_per_example):.2f}%) have more true "
+          f"labels than the cap and get truncated (deepest/most-specific labels dropped first).")
+
     cached = torch.load(args.label_embeddings_path)
     if cached["terms"] != label_names:
         raise ValueError(
@@ -290,6 +308,7 @@ def main() -> None:
             train_subset, batch_size=args.batch_size, shuffle=True, collate_fn=collate_fn)
 
         ce_sum, stop_sum, n_batches = 0.0, 0.0, 0
+        train_correct_sum, train_mask_sum = 0.0, 0.0
         optimizer.zero_grad()
         for step, batch in enumerate(train_loader):
             input_ids = batch["input_ids"].to(device)
@@ -309,6 +328,10 @@ def main() -> None:
             ce_sum += ce.item()
             stop_sum += stop_loss.item()
             n_batches += 1
+            with torch.no_grad():
+                mask_f = seq_mask.float()
+                train_correct_sum += ((label_logits.argmax(dim=-1) == label_seq).float() * mask_f).sum().item()
+                train_mask_sum += mask_f.sum().item()
 
             is_accum_boundary = (step + 1) % args.grad_accum_steps == 0 or (step + 1) == len(train_loader)
             if is_accum_boundary:
@@ -318,10 +341,12 @@ def main() -> None:
                 global_step += 1
 
         train_ce, train_stop = ce_sum / max(1, n_batches), stop_sum / max(1, n_batches)
-        val_ce, val_stop = run_eval_pass(model, val_loader, device, args.ar_max_decode_steps)
+        train_top1_acc = train_correct_sum / max(1, train_mask_sum)
+        val_ce, val_stop, val_top1_acc = run_eval_pass(model, val_loader, device, args.ar_max_decode_steps)
         print(f"Epoch {epoch + 1}/{args.epochs} | train_loss={train_ce + train_stop:.4f} "
               f"(ce={train_ce:.4f} stop={train_stop:.4f}) | val_loss={val_ce + val_stop:.4f} "
-              f"(ce={val_ce:.4f} stop={val_stop:.4f}) | scheduled_sampling_prob={ss_prob:.3f}")
+              f"(ce={val_ce:.4f} stop={val_stop:.4f}) | train_top1_acc={train_top1_acc:.4f} "
+              f"val_top1_acc={val_top1_acc:.4f} | scheduled_sampling_prob={ss_prob:.3f}")
 
     if args.run_diagnostic:
         diagnostic_ds = dataset["validation"].select(
