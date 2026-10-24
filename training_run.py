@@ -378,19 +378,28 @@ class AutoregressiveLabelEmbeddingHead(torch.nn.Module):
         self.proj = torch.nn.Linear(decoder_hidden_dim, embed_dim)
         self.scale = torch.nn.Parameter(torch.tensor(10.0))
         self.bias = torch.nn.Parameter(torch.zeros(self.num_labels))
-        self.stop_head = torch.nn.Linear(decoder_hidden_dim, 1)
+        # +1 input: step_frac (current step / max_steps), explicitly telling the stop head how
+        # far into the decode budget it is. Without this, "when to stop" has to be inferred
+        # purely from how the GRU's hidden state happens to drift with step count -- nothing
+        # forces that to happen, and a cheap-scale A/B found the stop head learns essentially no
+        # state-dependent timing signal without it (flat stop_loss across 20 epochs, MAE ~30/64
+        # steps). See plan doc item 16's stop-head calibration status update.
+        self.stop_head = torch.nn.Linear(decoder_hidden_dim + 1, 1)
 
-    def step(self, state: torch.Tensor, prev_label_idx: torch.Tensor):
+    def step(self, state: torch.Tensor, prev_label_idx: torch.Tensor, step_frac: torch.Tensor):
         """One decode step. state/prev_label_idx are the PREVIOUS step's state and the label fed
-        as input this step (or init_state(pooled)/START for the very first step). Returns the
-        updated state plus this step's label logits ([batch, num_labels], unmasked -- callers
-        handle repeat-prevention) and stop logit ([batch])."""
+        as input this step (or init_state(pooled)/START for the very first step). step_frac is
+        [batch], the current decode step divided by max_steps -- an explicit positional signal
+        for the stop head (see its docstring above). Returns the updated state plus this step's
+        label logits ([batch, num_labels], unmasked -- callers handle repeat-prevention) and stop
+        logit ([batch])."""
         state = self.cell(self.label_embed(prev_label_idx), state)
         x = self.dropout(state)
         x = torch.nn.functional.normalize(self.proj(x), dim=-1)
         sims = x @ self.term_embeddings.to(dtype=x.dtype).T
         label_logits = self.scale * sims + self.bias
-        stop_logit = self.stop_head(state).squeeze(-1)
+        stop_input = torch.cat([state, step_frac.unsqueeze(-1).to(state.dtype)], dim=-1)
+        stop_logit = self.stop_head(stop_input).squeeze(-1)
         return state, label_logits, stop_logit
 
 
@@ -444,7 +453,8 @@ class AutoregressiveLabelEmbeddingEsmForSequenceClassification(EsmForSequenceCla
         emitted_mask = torch.zeros(batch_size, self.classifier.num_labels, dtype=torch.bool, device=device)
         all_label_logits, all_stop_logits = [], []
         for t in range(max_steps):
-            state, label_logits, stop_logit = self.classifier.step(state, prev)
+            step_frac = torch.full((batch_size,), t / max_steps, device=device, dtype=state.dtype)
+            state, label_logits, stop_logit = self.classifier.step(state, prev, step_frac)
             all_label_logits.append(label_logits)
             all_stop_logits.append(stop_logit)
             true_next = label_seq[:, t]
@@ -487,7 +497,8 @@ class AutoregressiveLabelEmbeddingEsmForSequenceClassification(EsmForSequenceCla
         predicted = []
         stop_logits_history = []
         for t in range(max_steps):
-            state, label_logits, stop_logit = self.classifier.step(state, prev)
+            step_frac = torch.full((batch_size,), t / max_steps, device=device, dtype=state.dtype)
+            state, label_logits, stop_logit = self.classifier.step(state, prev, step_frac)
             best_logit = torch.maximum(best_logit, label_logits)
             masked_logits = label_logits.masked_fill(emitted_mask, float("-inf"))
             prev = masked_logits.argmax(dim=-1)
