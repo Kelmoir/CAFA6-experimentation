@@ -157,17 +157,26 @@ def run_dense_diagnostic(model, loader, device, max_steps, label_names, label_co
     comparison to "what this architecture can represent at all" rather than penalizing it for a
     cap every cheap-scale trial in this line has used; still, the resulting AUROC number is NOT
     directly apples-to-apples with the (full-label-set) baselines without noting that caveat.
+
+    Also reports stop-head calibration (mean absolute error between the predicted stop step and
+    the true, possibly-truncated sequence length) -- generate() always runs the full max_steps
+    budget for AUROC purposes, so this is the only place that checks whether the dedicated stop
+    head would have picked a sane cutoff in realistic (not forced-length) usage.
     """
     model.eval()
     all_best_logits, all_labels = [], []
+    stop_abs_err_sum, stop_n = 0.0, 0
     with torch.no_grad():
         for batch in loader:
             input_ids = batch["input_ids"].to(device)
             attention_mask = batch["attention_mask"].to(device)
-            _, _, best_logit = model.generate(input_ids, attention_mask, max_steps)
+            _, stop_at, best_logit = model.generate(input_ids, attention_mask, max_steps)
             all_best_logits.append(best_logit.cpu().numpy())
             seq_mask = batch["seq_mask"]
             label_seq = batch["label_seq"]
+            true_len = seq_mask.sum(dim=1).to(device)
+            stop_abs_err_sum += (stop_at - true_len).abs().sum().item()
+            stop_n += true_len.shape[0]
             dense = np.zeros((input_ids.shape[0], len(label_names)), dtype=np.float32)
             for i in range(input_ids.shape[0]):
                 ids = label_seq[i][seq_mask[i]].tolist()
@@ -183,6 +192,8 @@ def run_dense_diagnostic(model, loader, device, max_steps, label_names, label_co
     print(f"DIAGNOSTIC (dense adapter): {result['n_labels_evaluable']}/{result['n_labels_total']} "
           f"labels evaluable, {result['n_val_examples']} val examples")
     print("=" * 70)
+    print(f"Stop-head calibration: mean |predicted_stop_step - true_length| = "
+          f"{stop_abs_err_sum / max(1, stop_n):.2f} steps (max_steps={max_steps})")
     if per_label_auroc.size:
         print(f"Per-label AUROC: mean={result['mean_auroc']:.4f} median={result['median_auroc']:.4f} "
               f"min={per_label_auroc.min():.4f} max={per_label_auroc.max():.4f}")
@@ -190,6 +201,63 @@ def run_dense_diagnostic(model, loader, device, max_steps, label_names, label_co
           f"common mean={result.get('common_mean_auroc')}")
     import json as _json
     print(f"[DIAGNOSTIC] {_json.dumps(result, default=str)}")
+    return result
+
+
+def make_full_label_eval_collate_fn(tokenizer, max_length: int):
+    """Unlike make_collate_fn, ground truth here is each protein's FULL, untruncated true-label
+    set (including roots) -- the same convention item 8's run_diagnostic() scores its classifier
+    baseline against. generate()'s best_logit_per_label is already a full-vocab [batch,
+    num_labels] score regardless of max_steps (every decode step scores all 27191 labels, not
+    just the ones selected into the sequence), so only the ground truth needs to change here to
+    get an apples-to-apples number against that baseline -- the model/inference path is
+    identical to run_dense_diagnostic.
+    """
+    def collate(examples: List[Dict[str, Any]]) -> Dict[str, Any]:
+        sequences = [ex["sequence"] for ex in examples]
+        tokenized = tokenizer(sequences, max_length=max_length, truncation=True, padding=True,
+                               return_tensors="pt")
+        return {
+            "input_ids": tokenized["input_ids"],
+            "attention_mask": tokenized["attention_mask"],
+            "labels": [ex["labels"] for ex in examples],
+        }
+    return collate
+
+
+def run_full_label_diagnostic(model, loader, device, max_steps, label_names, label_counts, rare_term_threshold):
+    """Same generate()-based scoring as run_dense_diagnostic, but against the FULL untruncated
+    true-label set -- the fair, directly-comparable number against item 8's classifier baseline
+    (0.6577 mean AUROC) and the label-embedding-head baseline, with no truncation caveat.
+    """
+    model.eval()
+    all_best_logits, all_labels = [], []
+    with torch.no_grad():
+        for batch in loader:
+            input_ids = batch["input_ids"].to(device)
+            attention_mask = batch["attention_mask"].to(device)
+            _, _, best_logit = model.generate(input_ids, attention_mask, max_steps)
+            all_best_logits.append(best_logit.cpu().numpy())
+            dense = np.zeros((input_ids.shape[0], len(label_names)), dtype=np.float32)
+            for i, labs in enumerate(batch["labels"]):
+                dense[i, labs] = 1.0
+            all_labels.append(dense)
+    probs = 1.0 / (1.0 + np.exp(-np.concatenate(all_best_logits, axis=0)))
+    labels_arr = np.concatenate(all_labels, axis=0)
+    label_is_rare = label_counts.numpy() < rare_term_threshold
+    result, per_label_auroc = _diagnostic_metrics_from_arrays(probs, labels_arr, label_is_rare=label_is_rare)
+    print("\n" + "=" * 70)
+    print(f"FULL-LABEL-SET DIAGNOSTIC (no truncation, directly comparable to item 8's 0.6577 "
+          f"baseline): {result['n_labels_evaluable']}/{result['n_labels_total']} labels "
+          f"evaluable, {result['n_val_examples']} val examples")
+    print("=" * 70)
+    if per_label_auroc.size:
+        print(f"Per-label AUROC: mean={result['mean_auroc']:.4f} median={result['median_auroc']:.4f} "
+              f"min={per_label_auroc.min():.4f} max={per_label_auroc.max():.4f}")
+    print(f"Rarity-stratified AUROC: rare mean={result.get('rare_mean_auroc')} "
+          f"common mean={result.get('common_mean_auroc')}")
+    import json as _json
+    print(f"[FULL_LABEL_DIAGNOSTIC] {_json.dumps(result, default=str)}")
     return result
 
 
@@ -389,6 +457,12 @@ def main() -> None:
         diag_loader = torch.utils.data.DataLoader(diagnostic_ds, batch_size=args.batch_size, collate_fn=eval_collate_fn)
         run_dense_diagnostic(model, diag_loader, device, args.ar_max_decode_steps,
                               label_names, label_counts, args.rare_term_threshold)
+
+        full_label_collate_fn = make_full_label_eval_collate_fn(tokenizer, args.max_length)
+        full_label_loader = torch.utils.data.DataLoader(
+            diagnostic_ds, batch_size=args.batch_size, collate_fn=full_label_collate_fn)
+        run_full_label_diagnostic(model, full_label_loader, device, args.ar_max_decode_steps,
+                                   label_names, label_counts, args.rare_term_threshold)
 
     print(f"[SUMMARY] run_name={args.run_name} done")
 
