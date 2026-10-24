@@ -47,7 +47,8 @@ from training_run import (
 )
 
 
-def build_label_order(raw_label_ids: List[int], depth: torch.Tensor, max_steps: int) -> List[int]:
+def build_label_order(raw_label_ids: List[int], depth: torch.Tensor, max_steps: int,
+                       include_roots: bool = False) -> List[int]:
     """Sort a protein's true label ids ascending by GO-DAG depth (ties broken by id, for
     determinism), then truncate to max_steps. Ascending depth guarantees every in-vocabulary
     ancestor of a kept label is emitted before it (see compute_label_depth); truncating drops the
@@ -55,17 +56,20 @@ def build_label_order(raw_label_ids: List[int], depth: torch.Tensor, max_steps: 
     certainly has.
 
     Depth-0 labels (the 3 GO aspect roots -- molecular_function/biological_process/
-    cellular_component) are dropped entirely, not just deprioritized: a protein is annotated
-    under an aspect almost by definition, so these carry no real discriminative signal and would
-    otherwise be free, trivially-correct predictions inflating both the CE loss and top-1
-    accuracy without reflecting any actual functional-prediction ability.
+    cellular_component) are dropped unless include_roots=True: a protein is annotated under an
+    aspect almost by definition, so these carry little real discriminative signal and would
+    otherwise be free, near-trivially-correct predictions inflating both the CE loss and top-1
+    accuracy without reflecting much actual functional-prediction ability. include_roots exists
+    only to let a --ar-include-roots-in-training A/B run train with them present while still
+    being scored by a root-excluding diagnostic (see main()) for a fair comparison.
     """
-    non_root = [idx for idx in raw_label_ids if int(depth[idx]) > 0]
-    ordered = sorted(non_root, key=lambda idx: (int(depth[idx]), idx))
+    pool = raw_label_ids if include_roots else [idx for idx in raw_label_ids if int(depth[idx]) > 0]
+    ordered = sorted(pool, key=lambda idx: (int(depth[idx]), idx))
     return ordered[:max_steps]
 
 
-def make_collate_fn(tokenizer, depth: torch.Tensor, max_steps: int, max_length: int):
+def make_collate_fn(tokenizer, depth: torch.Tensor, max_steps: int, max_length: int,
+                     include_roots: bool = False):
     def collate(examples: List[Dict[str, Any]]) -> Dict[str, torch.Tensor]:
         sequences = [ex["sequence"] for ex in examples]
         tokenized = tokenizer(sequences, max_length=max_length, truncation=True, padding=True,
@@ -74,7 +78,7 @@ def make_collate_fn(tokenizer, depth: torch.Tensor, max_steps: int, max_length: 
         label_seq = torch.zeros(batch_size, max_steps, dtype=torch.long)
         seq_mask = torch.zeros(batch_size, max_steps, dtype=torch.bool)
         for i, ex in enumerate(examples):
-            order = build_label_order(ex["labels"], depth, max_steps)
+            order = build_label_order(ex["labels"], depth, max_steps, include_roots=include_roots)
             label_seq[i, :len(order)] = torch.tensor(order, dtype=torch.long)
             seq_mask[i, :len(order)] = True
         return {
@@ -215,6 +219,13 @@ def main() -> None:
                               "to the shallowest --ar-max-decode-steps labels by GO-DAG depth "
                               "order (compute_label_depth), dropping the most specific long-tail "
                               "terms first, not the general ones.")
+    parser.add_argument("--ar-include-roots-in-training", action=argparse.BooleanOptionalAction,
+                         default=False,
+                         help="Include the 3 depth-0 GO aspect roots as decode targets during "
+                              "training. Evaluation (per-epoch top1_acc/loss and --run-diagnostic) "
+                              "always excludes roots regardless of this flag, so the two settings "
+                              "are a fair A/B on how well the model predicts the same non-trivial "
+                              "label set either way.")
     parser.add_argument("--ar-decoder-hidden-dim", type=int, default=256)
     parser.add_argument("--ar-scheduled-sampling-final-prob", type=float, default=0.25)
     parser.add_argument("--ar-scheduled-sampling-warmup-frac", type=float, default=0.3)
@@ -242,15 +253,20 @@ def main() -> None:
           f"max={depth.max().item()} mean={depth.float().mean():.2f} "
           f"({int((depth == 0).sum())} depth-0 roots)")
 
-    train_label_counts_per_example = [
-        sum(1 for idx in labs if int(depth[idx]) > 0) for labs in dataset_train["labels"]
-    ]
+    if args.ar_include_roots_in_training:
+        train_label_counts_per_example = [len(labs) for labs in dataset_train["labels"]]
+        root_note = "including the 3 depth-0 aspect roots, per --ar-include-roots-in-training"
+    else:
+        train_label_counts_per_example = [
+            sum(1 for idx in labs if int(depth[idx]) > 0) for labs in dataset_train["labels"]
+        ]
+        root_note = "the 3 depth-0 aspect roots are excluded from this count -- they're never targets"
     n_truncated = sum(1 for n in train_label_counts_per_example if n > args.ar_max_decode_steps)
     print(f"[INFO] --ar-max-decode-steps={args.ar_max_decode_steps}: {n_truncated}/"
           f"{len(train_label_counts_per_example)} training proteins "
-          f"({100 * n_truncated / len(train_label_counts_per_example):.2f}%) have more non-root "
-          f"true labels than the cap and get truncated (deepest/most-specific labels dropped first; "
-          f"the 3 depth-0 aspect roots are excluded from this count -- they're never targets).")
+          f"({100 * n_truncated / len(train_label_counts_per_example):.2f}%) have more true "
+          f"labels than the cap and get truncated (deepest/most-specific labels dropped first; "
+          f"{root_note}).")
 
     cached = torch.load(args.label_embeddings_path)
     if cached["terms"] != label_names:
@@ -261,7 +277,13 @@ def main() -> None:
     term_embeddings = cached["embeddings"]
 
     tokenizer = create_esm_tokenizer(args.model_name)
-    collate_fn = make_collate_fn(tokenizer, depth, args.ar_max_decode_steps, args.max_length)
+    collate_fn = make_collate_fn(tokenizer, depth, args.ar_max_decode_steps, args.max_length,
+                                  include_roots=args.ar_include_roots_in_training)
+    # Evaluation always scores against the same root-excluded ground truth regardless of
+    # --ar-include-roots-in-training, so a with-roots-training run is a fair A/B against a
+    # without-roots-training run on the same non-trivial label set.
+    eval_collate_fn = make_collate_fn(tokenizer, depth, args.ar_max_decode_steps, args.max_length,
+                                       include_roots=False)
 
     val_ds = dataset["validation"]
     if args.max_val_samples is not None:
@@ -307,7 +329,7 @@ def main() -> None:
     global_step = 0
     ss_prob = 0.0
 
-    val_loader = torch.utils.data.DataLoader(val_ds, batch_size=args.batch_size, collate_fn=collate_fn)
+    val_loader = torch.utils.data.DataLoader(val_ds, batch_size=args.batch_size, collate_fn=eval_collate_fn)
 
     for epoch in range(args.epochs):
         model.train()
@@ -361,7 +383,7 @@ def main() -> None:
     if args.run_diagnostic:
         diagnostic_ds = dataset["validation"].select(
             range(min(args.diagnostic_max_val_samples, len(dataset["validation"]))))
-        diag_loader = torch.utils.data.DataLoader(diagnostic_ds, batch_size=args.batch_size, collate_fn=collate_fn)
+        diag_loader = torch.utils.data.DataLoader(diagnostic_ds, batch_size=args.batch_size, collate_fn=eval_collate_fn)
         run_dense_diagnostic(model, diag_loader, device, args.ar_max_decode_steps,
                               label_names, label_counts, args.rare_term_threshold)
 
