@@ -1611,6 +1611,47 @@ to fix, not epoch/data count** — CE loss plateaus by ~epoch 13 at this scale (
 longer-run status update above), so the lever that would move the full-label AUROC further is
 likely more training data, not more epochs on the same 2,000 examples.
 
+**Status update (2026-10-24): tried fixing stop-head calibration directly, reverted — the real
+cause is content starvation, not architecture.** Two attempts: (1) a prior-bias init for
+`stop_head.bias` (same rationale as the label head's bias fix) — genuinely helped overall AUROC
+(0.6433 → 0.6580, matching item 8's classifier baseline) by no longer wasting early training on
+bias learning, but left calibration itself unchanged (MAE ~30/64 steps, both before and after).
+(2) Feeding an explicit `step_frac` (current step / max_steps) into `stop_head` — reverted,
+no improvement to calibration and coincided with an AUROC regression (0.6580 → 0.6153, likely
+RNG-stream noise from the parameter-count change rather than a causal effect, since `stop_head`'s
+calibration has no mathematical path to affect AUROC at all — `generate()`'s AUROC score never
+reads `stop_at`). Dataset checks ruled out two other hypotheses: no protein has duplicate label
+ids (0/5000 sampled), and 80.4% have an unambiguous single deepest/leaf-like true label (tie
+ambiguity only affects ~20% of proteins, nowhere near enough to explain a ~30-step MAE).
+
+Added a qualitative example printer (`print_example_predictions()`) to see what's actually
+happening, and it found the real cause: at this cheap scale (2,000 examples), the model predicts
+**nearly the same generic sequence for every protein** regardless of true content — a protein
+with only 3 true labels and one with 75 true labels (totally different domains: Golgi-apparatus
+vs. transport/metabolism) both decode into the same generic "3 roots + nucleus/RNA-processing
+cluster" profile past the first few steps. The stop head's weak, nearly-content-independent
+timing signal (same slowly-rising probability curve for both examples) is a direct symptom of
+this, not an independent architecture bug — a stop head can't learn protein-specific timing when
+the model's own belief about "what this protein is" barely varies across genuinely different
+proteins. Fixing this needs the model to first learn real content differentiation, which is a
+data-scale problem, not a stop-head problem — confirms the "more training data" lever is the
+right next move, now with concrete evidence of *why* rather than just the CE-loss-plateau
+argument.
+
+**Parked idea, not pursued now:** user raised whether this maps onto Matryoshka representation
+learning + RL, given the natural coarse-to-fine (root → general → specific) decode structure.
+Agreed assessment: the intuition about coarse-to-fine structure is right, and RL-style
+sequence-level reward *would* elegantly unify ranking + stopping into one objective instead of
+two competing surrogate losses — but (1) GO is a DAG with multi-parent inheritance, not a clean
+single axis Matryoshka nesting needs (already hit this exact issue with depth ties), and (2) RL
+methods are more sample-hungry than supervised CE, the wrong direction when the diagnosed problem
+is sample starvation. User's own counter-point: **term frequency is a clean, always-computable
+total order on GO terms, unlike graph depth** (no multi-parent ambiguity, no ties in practice) —
+worth remembering as an alternative decode-ordering scheme (`build_label_order` currently sorts
+by `(depth, id)`; frequency could replace or supplement depth) independent of whether RL is ever
+revisited. Explicitly deferred: establish the more-data baseline first, revisit alternatives only
+if that doesn't resolve the content-differentiation problem.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features
