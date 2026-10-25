@@ -348,6 +348,13 @@ def main() -> None:
     parser.add_argument("--ar-scheduled-sampling-warmup-frac", type=float, default=0.3)
     parser.add_argument("--run-diagnostic", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument("--diagnostic-max-val-samples", type=int, default=1000)
+    parser.add_argument("--diagnostic-every-n-epochs", type=int, default=0,
+                         help="If >0, also run the (truncated, cheaper) dense diagnostic every "
+                              "N epochs during training -- val_ce trending down is NOT evidence "
+                              "that generate()-based AUROC is still improving too, since one is "
+                              "teacher-forced and the other is greedy self-fed decode (exposure "
+                              "bias can make them decouple). 0 = only run at the very end, as "
+                              "before.")
     parser.add_argument("--rare-term-threshold", type=int, default=100)
     parser.add_argument("--run-name", default="ar-spike")
     parser.add_argument("--seed", type=int, default=42)
@@ -464,6 +471,13 @@ def main() -> None:
 
     val_loader = torch.utils.data.DataLoader(val_ds, batch_size=args.batch_size, collate_fn=eval_collate_fn)
 
+    diagnostic_ds = None
+    diag_loader = None
+    if args.run_diagnostic or args.diagnostic_every_n_epochs > 0:
+        diagnostic_ds = dataset["validation"].select(
+            range(min(args.diagnostic_max_val_samples, len(dataset["validation"]))))
+        diag_loader = torch.utils.data.DataLoader(diagnostic_ds, batch_size=args.batch_size, collate_fn=eval_collate_fn)
+
     for epoch in range(args.epochs):
         model.train()
         train_subset = dataset_train
@@ -513,10 +527,14 @@ def main() -> None:
               f"(ce={val_ce:.4f} stop={val_stop:.4f}) | train_top1_acc={train_top1_acc:.4f} "
               f"val_top1_acc={val_top1_acc:.4f} | scheduled_sampling_prob={ss_prob:.3f}")
 
+        is_last_epoch = (epoch + 1) == args.epochs
+        if (args.diagnostic_every_n_epochs > 0 and (epoch + 1) % args.diagnostic_every_n_epochs == 0
+                and not is_last_epoch):
+            print(f"[MID-TRAINING CHECKPOINT: epoch {epoch + 1}]")
+            run_dense_diagnostic(model, diag_loader, device, args.ar_max_decode_steps,
+                                  label_names, label_counts, args.rare_term_threshold)
+
     if args.run_diagnostic:
-        diagnostic_ds = dataset["validation"].select(
-            range(min(args.diagnostic_max_val_samples, len(dataset["validation"]))))
-        diag_loader = torch.utils.data.DataLoader(diagnostic_ds, batch_size=args.batch_size, collate_fn=eval_collate_fn)
         run_dense_diagnostic(model, diag_loader, device, args.ar_max_decode_steps,
                               label_names, label_counts, args.rare_term_threshold)
 
