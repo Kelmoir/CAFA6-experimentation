@@ -1,0 +1,185 @@
+[INFO] label depth within trainable vocabulary: min=0 max=17 mean=6.92 (3 depth-0 roots)
+[INFO] --ar-max-decode-steps=64: 10570/52579 training proteins (20.10%) have more true labels than the cap and get truncated (deepest/most-specific labels dropped first; including the 3 depth-0 aspect roots, per --ar-include-roots-in-training).
+Loading weights:   0%|          | 0/209 [00:00<?, ?it/s]Loading weights: 100%|██████████| 209/209 [00:00<00:00, 5926.44it/s]
+[1mAutoregressiveLabelEmbeddingEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t12_35M_UR50D
+Key                           | Status     | 
+------------------------------+------------+-
+lm_head.bias                  | UNEXPECTED | 
+lm_head.dense.weight          | UNEXPECTED | 
+esm.embeddings.position_ids   | UNEXPECTED | 
+lm_head.layer_norm.weight     | UNEXPECTED | 
+lm_head.layer_norm.bias       | UNEXPECTED | 
+lm_head.dense.bias            | UNEXPECTED | 
+classifier.init_state.weight  | MISSING    | 
+classifier.bias               | MISSING    | 
+classifier.stop_head.bias     | MISSING    | 
+classifier.scale              | MISSING    | 
+classifier.stop_head.weight   | MISSING    | 
+classifier.cell.weight_hh     | MISSING    | 
+classifier.init_state.bias    | MISSING    | 
+classifier.proj.bias          | MISSING    | 
+classifier.cell.bias_ih       | MISSING    | 
+classifier.proj.weight        | MISSING    | 
+classifier.label_embed.weight | MISSING    | 
+classifier.cell.bias_hh       | MISSING    | 
+classifier.cell.weight_ih     | MISSING    | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING[3m	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.[0m
+Model layers: 12, request unfreeze layers: 4
+[INFO] Initialized classifier bias to label priors for 27191 labels (mean=0.0016, min=0.0001, max=0.7321)
+[INFO] Initialized stop_head bias to prior stop rate 0.0295 (bias=-3.4943, mean capped sequence length 33.9 steps)
+Epoch 1/40 | train_loss=5.9483 (ce=5.7770 stop=0.1713) | val_loss=5.8698 (ce=5.6770 stop=0.1928) | train_top1_acc=0.1357 val_top1_acc=0.1289 | scheduled_sampling_prob=0.000
+Epoch 2/40 | train_loss=5.1237 (ce=4.9482 stop=0.1756) | val_loss=5.4601 (ce=5.2683 stop=0.1918) | train_top1_acc=0.2191 val_top1_acc=0.1767 | scheduled_sampling_prob=0.000
+Epoch 3/40 | train_loss=4.8128 (ce=4.6394 stop=0.1734) | val_loss=5.2679 (ce=5.0769 stop=0.1910) | train_top1_acc=0.2486 val_top1_acc=0.1975 | scheduled_sampling_prob=0.000
+Epoch 4/40 | train_loss=4.6244 (ce=4.4503 stop=0.1741) | val_loss=5.1420 (ce=4.9518 stop=0.1901) | train_top1_acc=0.2662 val_top1_acc=0.2131 | scheduled_sampling_prob=0.000
+Epoch 5/40 | train_loss=4.5298 (ce=4.3615 stop=0.1684) | val_loss=5.0509 (ce=4.8614 stop=0.1895) | train_top1_acc=0.2830 val_top1_acc=0.2244 | scheduled_sampling_prob=0.000
+[MID-TRAINING CHECKPOINT: epoch 5]
+
+======================================================================
+[CAVEAT] ground truth truncated to each protein's first 64 depth-ordered true labels -- NOT directly comparable to a full-27191-label-set baseline AUROC.
+DIAGNOSTIC (dense adapter): 4373/27191 labels evaluable, 1000 val examples
+======================================================================
+Stop-head calibration: mean |predicted_stop_step - true_last_step_idx| = 30.58 steps (0.5-threshold) vs. 23.56 steps (argmax-ranking, threshold-free) (max_steps=64)
+Per-label AUROC: mean=0.5851 median=0.5993 min=0.0000 max=0.9990
+Rarity-stratified AUROC: rare mean=0.5819238238898649 common mean=0.58867799864815
+[DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 4373, "n_labels_total": 27191, "mean_auroc": 0.5850591942898921, "median_auroc": 0.5992943548387096, "pooled_auroc": 0.9645346027562113, "accuracy_at_0.5": 0.9916085469456806, "trivial_baseline_accuracy": 0.9987341031664982, "precision_at_0.5": 0.08615953761175936, "recall_at_0.5": 0.5859504372329143, "f1_at_0.5": 0.15022903951371405, "best_f1": 0.15022904174891066, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.5819238238898649, "rare_median_auroc": 0.6086086086086085, "rare_n_labels_evaluable": 2343, "common_mean_auroc": 0.58867799864815, "common_median_auroc": 0.5945447720447721, "common_n_labels_evaluable": 2030}
+Epoch 6/40 | train_loss=4.4403 (ce=4.2716 stop=0.1687) | val_loss=4.9878 (ce=4.7990 stop=0.1887) | train_top1_acc=0.2920 val_top1_acc=0.2350 | scheduled_sampling_prob=0.000
+Epoch 7/40 | train_loss=4.3477 (ce=4.1775 stop=0.1702) | val_loss=4.9325 (ce=4.7445 stop=0.1880) | train_top1_acc=0.3031 val_top1_acc=0.2473 | scheduled_sampling_prob=0.000
+Epoch 8/40 | train_loss=4.2969 (ce=4.1274 stop=0.1695) | val_loss=4.8857 (ce=4.6988 stop=0.1869) | train_top1_acc=0.3099 val_top1_acc=0.2479 | scheduled_sampling_prob=0.000
+Epoch 9/40 | train_loss=4.2436 (ce=4.0760 stop=0.1676) | val_loss=4.8657 (ce=4.6798 stop=0.1860) | train_top1_acc=0.3179 val_top1_acc=0.2521 | scheduled_sampling_prob=0.000
+Epoch 10/40 | train_loss=4.1936 (ce=4.0266 stop=0.1670) | val_loss=4.8126 (ce=4.6276 stop=0.1850) | train_top1_acc=0.3255 val_top1_acc=0.2556 | scheduled_sampling_prob=0.000
+[MID-TRAINING CHECKPOINT: epoch 10]
+
+======================================================================
+[CAVEAT] ground truth truncated to each protein's first 64 depth-ordered true labels -- NOT directly comparable to a full-27191-label-set baseline AUROC.
+DIAGNOSTIC (dense adapter): 4373/27191 labels evaluable, 1000 val examples
+======================================================================
+Stop-head calibration: mean |predicted_stop_step - true_last_step_idx| = 30.58 steps (0.5-threshold) vs. 21.51 steps (argmax-ranking, threshold-free) (max_steps=64)
+Per-label AUROC: mean=0.5934 median=0.6101 min=0.0000 max=1.0000
+Rarity-stratified AUROC: rare mean=0.5930654593874038 common mean=0.5937728038731572
+[DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 4373, "n_labels_total": 27191, "mean_auroc": 0.5933938173352838, "median_auroc": 0.6100502512562814, "pooled_auroc": 0.9645854525006322, "accuracy_at_0.5": 0.990672244492663, "trivial_baseline_accuracy": 0.9987341031664982, "precision_at_0.5": 0.08009286573545217, "recall_at_0.5": 0.6073617849566814, "f1_at_0.5": 0.1415230666889468, "best_f1": 0.14152306874760953, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.5930654593874038, "rare_median_auroc": 0.6297595190380761, "rare_n_labels_evaluable": 2343, "common_mean_auroc": 0.5937728038731572, "common_median_auroc": 0.6017503930860126, "common_n_labels_evaluable": 2030}
+Epoch 11/40 | train_loss=4.1602 (ce=3.9964 stop=0.1638) | val_loss=4.7658 (ce=4.5819 stop=0.1839) | train_top1_acc=0.3326 val_top1_acc=0.2648 | scheduled_sampling_prob=0.000
+Epoch 12/40 | train_loss=4.1291 (ce=3.9652 stop=0.1640) | val_loss=4.7502 (ce=4.5673 stop=0.1828) | train_top1_acc=0.3345 val_top1_acc=0.2680 | scheduled_sampling_prob=0.000
+Epoch 13/40 | train_loss=4.1266 (ce=3.9614 stop=0.1652) | val_loss=4.7142 (ce=4.5327 stop=0.1815) | train_top1_acc=0.3351 val_top1_acc=0.2753 | scheduled_sampling_prob=0.009
+Epoch 14/40 | train_loss=4.0814 (ce=3.9173 stop=0.1641) | val_loss=4.6919 (ce=4.5122 stop=0.1797) | train_top1_acc=0.3406 val_top1_acc=0.2784 | scheduled_sampling_prob=0.018
+Epoch 15/40 | train_loss=4.0652 (ce=3.9029 stop=0.1623) | val_loss=4.6651 (ce=4.4870 stop=0.1781) | train_top1_acc=0.3416 val_top1_acc=0.2787 | scheduled_sampling_prob=0.027
+[MID-TRAINING CHECKPOINT: epoch 15]
+
+======================================================================
+[CAVEAT] ground truth truncated to each protein's first 64 depth-ordered true labels -- NOT directly comparable to a full-27191-label-set baseline AUROC.
+DIAGNOSTIC (dense adapter): 4373/27191 labels evaluable, 1000 val examples
+======================================================================
+Stop-head calibration: mean |predicted_stop_step - true_last_step_idx| = 30.58 steps (0.5-threshold) vs. 22.82 steps (argmax-ranking, threshold-free) (max_steps=64)
+Per-label AUROC: mean=0.6029 median=0.6229 min=0.0010 max=1.0000
+Rarity-stratified AUROC: rare mean=0.6039614420212188 common mean=0.6016496346276882
+[DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 4373, "n_labels_total": 27191, "mean_auroc": 0.6028882727989763, "median_auroc": 0.6229145728643216, "pooled_auroc": 0.9651277102090855, "accuracy_at_0.5": 0.9909072119451289, "trivial_baseline_accuracy": 0.9987341031664982, "precision_at_0.5": 0.08220420502954191, "recall_at_0.5": 0.6082623979545603, "f1_at_0.5": 0.14483459716355251, "best_f1": 0.1448345992611962, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.6039614420212188, "rare_median_auroc": 0.6486486486486487, "rare_n_labels_evaluable": 2343, "common_mean_auroc": 0.6016496346276882, "common_median_auroc": 0.6115344490218861, "common_n_labels_evaluable": 2030}
+Epoch 16/40 | train_loss=4.0741 (ce=3.9166 stop=0.1575) | val_loss=4.6450 (ce=4.4685 stop=0.1765) | train_top1_acc=0.3419 val_top1_acc=0.2844 | scheduled_sampling_prob=0.036
+Epoch 17/40 | train_loss=4.0612 (ce=3.9051 stop=0.1561) | val_loss=4.6163 (ce=4.4423 stop=0.1740) | train_top1_acc=0.3414 val_top1_acc=0.2919 | scheduled_sampling_prob=0.045
+Epoch 18/40 | train_loss=4.0634 (ce=3.9101 stop=0.1533) | val_loss=4.6002 (ce=4.4285 stop=0.1717) | train_top1_acc=0.3420 val_top1_acc=0.2922 | scheduled_sampling_prob=0.054
+Epoch 19/40 | train_loss=4.0485 (ce=3.8970 stop=0.1515) | val_loss=4.5735 (ce=4.4045 stop=0.1690) | train_top1_acc=0.3423 val_top1_acc=0.2991 | scheduled_sampling_prob=0.062
+Epoch 20/40 | train_loss=4.0352 (ce=3.8853 stop=0.1499) | val_loss=4.5773 (ce=4.4116 stop=0.1657) | train_top1_acc=0.3418 val_top1_acc=0.2978 | scheduled_sampling_prob=0.071
+[MID-TRAINING CHECKPOINT: epoch 20]
+
+======================================================================
+[CAVEAT] ground truth truncated to each protein's first 64 depth-ordered true labels -- NOT directly comparable to a full-27191-label-set baseline AUROC.
+DIAGNOSTIC (dense adapter): 4373/27191 labels evaluable, 1000 val examples
+======================================================================
+Stop-head calibration: mean |predicted_stop_step - true_last_step_idx| = 30.58 steps (0.5-threshold) vs. 24.64 steps (argmax-ranking, threshold-free) (max_steps=64)
+Per-label AUROC: mean=0.6104 median=0.6318 min=0.0010 max=1.0000
+Rarity-stratified AUROC: rare mean=0.6110803380604829 common mean=0.6095938441736911
+[DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 4373, "n_labels_total": 27191, "mean_auroc": 0.6103902894462164, "median_auroc": 0.6317771084337349, "pooled_auroc": 0.9644752914016194, "accuracy_at_0.5": 0.9913195174874039, "trivial_baseline_accuracy": 0.9987341031664982, "precision_at_0.5": 0.08391807555144284, "recall_at_0.5": 0.5906568664476365, "f1_at_0.5": 0.1469570946761121, "best_f1": 0.14695709685463673, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.6110803380604829, "rare_median_auroc": 0.6538076152304608, "rare_n_labels_evaluable": 2343, "common_mean_auroc": 0.6095938441736911, "common_median_auroc": 0.6177798990532968, "common_n_labels_evaluable": 2030}
+Epoch 21/40 | train_loss=4.0543 (ce=3.9071 stop=0.1472) | val_loss=4.5742 (ce=4.4109 stop=0.1634) | train_top1_acc=0.3399 val_top1_acc=0.2983 | scheduled_sampling_prob=0.080
+Epoch 22/40 | train_loss=4.0542 (ce=3.9106 stop=0.1435) | val_loss=4.5396 (ce=4.3795 stop=0.1600) | train_top1_acc=0.3402 val_top1_acc=0.2989 | scheduled_sampling_prob=0.089
+Epoch 23/40 | train_loss=4.0410 (ce=3.9006 stop=0.1404) | val_loss=4.5358 (ce=4.3782 stop=0.1576) | train_top1_acc=0.3393 val_top1_acc=0.3031 | scheduled_sampling_prob=0.098
+Epoch 24/40 | train_loss=4.0227 (ce=3.8850 stop=0.1378) | val_loss=4.5169 (ce=4.3620 stop=0.1548) | train_top1_acc=0.3409 val_top1_acc=0.3013 | scheduled_sampling_prob=0.107
+Epoch 25/40 | train_loss=4.0364 (ce=3.9023 stop=0.1340) | val_loss=4.5206 (ce=4.3677 stop=0.1529) | train_top1_acc=0.3390 val_top1_acc=0.3060 | scheduled_sampling_prob=0.116
+[MID-TRAINING CHECKPOINT: epoch 25]
+
+======================================================================
+[CAVEAT] ground truth truncated to each protein's first 64 depth-ordered true labels -- NOT directly comparable to a full-27191-label-set baseline AUROC.
+DIAGNOSTIC (dense adapter): 4373/27191 labels evaluable, 1000 val examples
+======================================================================
+Stop-head calibration: mean |predicted_stop_step - true_last_step_idx| = 30.38 steps (0.5-threshold) vs. 24.34 steps (argmax-ranking, threshold-free) (max_steps=64)
+Per-label AUROC: mean=0.6119 median=0.6269 min=0.0000 max=1.0000
+Rarity-stratified AUROC: rare mean=0.6076850387160141 common mean=0.6168290937598512
+[DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 4373, "n_labels_total": 27191, "mean_auroc": 0.6119298207281315, "median_auroc": 0.6269282360831656, "pooled_auroc": 0.9650369019922965, "accuracy_at_0.5": 0.9904684638299437, "trivial_baseline_accuracy": 0.9987341031664982, "precision_at_0.5": 0.07861768466681121, "recall_at_0.5": 0.60910490688806, "f1_at_0.5": 0.13926085136788163, "best_f1": 0.13926085339284766, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.6076850387160141, "rare_median_auroc": 0.6366366366366366, "rare_n_labels_evaluable": 2343, "common_mean_auroc": 0.6168290937598512, "common_median_auroc": 0.6226583607155897, "common_n_labels_evaluable": 2030}
+Epoch 26/40 | train_loss=4.0373 (ce=3.9030 stop=0.1343) | val_loss=4.4957 (ce=4.3449 stop=0.1508) | train_top1_acc=0.3376 val_top1_acc=0.3075 | scheduled_sampling_prob=0.125
+Epoch 27/40 | train_loss=4.0345 (ce=3.9042 stop=0.1303) | val_loss=4.4929 (ce=4.3441 stop=0.1488) | train_top1_acc=0.3372 val_top1_acc=0.3048 | scheduled_sampling_prob=0.134
+Epoch 28/40 | train_loss=4.0305 (ce=3.9028 stop=0.1277) | val_loss=4.4882 (ce=4.3408 stop=0.1475) | train_top1_acc=0.3372 val_top1_acc=0.3056 | scheduled_sampling_prob=0.143
+Epoch 29/40 | train_loss=4.0543 (ce=3.9276 stop=0.1267) | val_loss=4.5030 (ce=4.3566 stop=0.1464) | train_top1_acc=0.3335 val_top1_acc=0.3046 | scheduled_sampling_prob=0.152
+Epoch 30/40 | train_loss=4.0545 (ce=3.9311 stop=0.1234) | val_loss=4.4778 (ce=4.3319 stop=0.1459) | train_top1_acc=0.3333 val_top1_acc=0.3062 | scheduled_sampling_prob=0.161
+[MID-TRAINING CHECKPOINT: epoch 30]
+
+======================================================================
+[CAVEAT] ground truth truncated to each protein's first 64 depth-ordered true labels -- NOT directly comparable to a full-27191-label-set baseline AUROC.
+DIAGNOSTIC (dense adapter): 4373/27191 labels evaluable, 1000 val examples
+======================================================================
+Stop-head calibration: mean |predicted_stop_step - true_last_step_idx| = 28.30 steps (0.5-threshold) vs. 22.58 steps (argmax-ranking, threshold-free) (max_steps=64)
+Per-label AUROC: mean=0.6345 median=0.6486 min=0.0040 max=1.0000
+Rarity-stratified AUROC: rare mean=0.6404686464085438 common mean=0.627548007725199
+[DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 4373, "n_labels_total": 27191, "mean_auroc": 0.6344707281539841, "median_auroc": 0.6486486486486487, "pooled_auroc": 0.967266498679992, "accuracy_at_0.5": 0.9913299253429444, "trivial_baseline_accuracy": 0.9987341031664982, "precision_at_0.5": 0.08562584129518971, "recall_at_0.5": 0.6043113215767688, "f1_at_0.5": 0.14999819504962883, "best_f1": 0.14999819722372454, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.6404686464085438, "rare_median_auroc": 0.6866866866866868, "rare_n_labels_evaluable": 2343, "common_mean_auroc": 0.627548007725199, "common_median_auroc": 0.6259668321527314, "common_n_labels_evaluable": 2030}
+Epoch 31/40 | train_loss=4.0513 (ce=3.9257 stop=0.1256) | val_loss=4.4739 (ce=4.3269 stop=0.1470) | train_top1_acc=0.3303 val_top1_acc=0.3052 | scheduled_sampling_prob=0.170
+Epoch 32/40 | train_loss=4.0593 (ce=3.9387 stop=0.1206) | val_loss=4.4731 (ce=4.3262 stop=0.1469) | train_top1_acc=0.3315 val_top1_acc=0.3080 | scheduled_sampling_prob=0.179
+Epoch 33/40 | train_loss=4.0480 (ce=3.9275 stop=0.1205) | val_loss=4.4635 (ce=4.3184 stop=0.1451) | train_top1_acc=0.3291 val_top1_acc=0.3054 | scheduled_sampling_prob=0.187
+Epoch 34/40 | train_loss=4.0394 (ce=3.9196 stop=0.1198) | val_loss=4.4743 (ce=4.3280 stop=0.1463) | train_top1_acc=0.3289 val_top1_acc=0.3069 | scheduled_sampling_prob=0.196
+Epoch 35/40 | train_loss=4.0537 (ce=3.9343 stop=0.1194) | val_loss=4.4630 (ce=4.3169 stop=0.1461) | train_top1_acc=0.3270 val_top1_acc=0.3045 | scheduled_sampling_prob=0.205
+[MID-TRAINING CHECKPOINT: epoch 35]
+
+======================================================================
+[CAVEAT] ground truth truncated to each protein's first 64 depth-ordered true labels -- NOT directly comparable to a full-27191-label-set baseline AUROC.
+DIAGNOSTIC (dense adapter): 4373/27191 labels evaluable, 1000 val examples
+======================================================================
+Stop-head calibration: mean |predicted_stop_step - true_last_step_idx| = 26.49 steps (0.5-threshold) vs. 21.43 steps (argmax-ranking, threshold-free) (max_steps=64)
+Per-label AUROC: mean=0.6688 median=0.6841 min=0.0050 max=1.0000
+Rarity-stratified AUROC: rare mean=0.6838122385317686 common mean=0.651454624267758
+[DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 4373, "n_labels_total": 27191, "mean_auroc": 0.6687914388619901, "median_auroc": 0.6841002269565855, "pooled_auroc": 0.9696880295930147, "accuracy_at_0.5": 0.9908753999485124, "trivial_baseline_accuracy": 0.9987341031664982, "precision_at_0.5": 0.08400626075580389, "recall_at_0.5": 0.6268266465237423, "f1_at_0.5": 0.14815679307054733, "best_f1": 0.14815679515482783, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.6838122385317686, "rare_median_auroc": 0.7387387387387387, "rare_n_labels_evaluable": 2343, "common_mean_auroc": 0.651454624267758, "common_median_auroc": 0.6516703534221187, "common_n_labels_evaluable": 2030}
+Epoch 36/40 | train_loss=4.0836 (ce=3.9656 stop=0.1180) | val_loss=4.4652 (ce=4.3159 stop=0.1492) | train_top1_acc=0.3246 val_top1_acc=0.3085 | scheduled_sampling_prob=0.214
+Epoch 37/40 | train_loss=4.0669 (ce=3.9489 stop=0.1180) | val_loss=4.4612 (ce=4.3161 stop=0.1450) | train_top1_acc=0.3220 val_top1_acc=0.3079 | scheduled_sampling_prob=0.223
+Epoch 38/40 | train_loss=4.0438 (ce=3.9272 stop=0.1166) | val_loss=4.4577 (ce=4.3133 stop=0.1444) | train_top1_acc=0.3250 val_top1_acc=0.3057 | scheduled_sampling_prob=0.232
+Epoch 39/40 | train_loss=4.0800 (ce=3.9640 stop=0.1160) | val_loss=4.4352 (ce=4.2885 stop=0.1467) | train_top1_acc=0.3219 val_top1_acc=0.3073 | scheduled_sampling_prob=0.241
+Epoch 40/40 | train_loss=4.0771 (ce=3.9623 stop=0.1148) | val_loss=4.4525 (ce=4.3036 stop=0.1488) | train_top1_acc=0.3193 val_top1_acc=0.3090 | scheduled_sampling_prob=0.250
+
+======================================================================
+[CAVEAT] ground truth truncated to each protein's first 64 depth-ordered true labels -- NOT directly comparable to a full-27191-label-set baseline AUROC.
+DIAGNOSTIC (dense adapter): 4373/27191 labels evaluable, 1000 val examples
+======================================================================
+Stop-head calibration: mean |predicted_stop_step - true_last_step_idx| = 22.70 steps (0.5-threshold) vs. 21.89 steps (argmax-ranking, threshold-free) (max_steps=64)
+Per-label AUROC: mean=0.6807 median=0.7024 min=0.0030 max=1.0000
+Rarity-stratified AUROC: rare mean=0.693436408176342 common mean=0.6659373956556597
+[DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 4373, "n_labels_total": 27191, "mean_auroc": 0.6806710307656434, "median_auroc": 0.702440655299231, "pooled_auroc": 0.9708764078667352, "accuracy_at_0.5": 0.991929719392446, "trivial_baseline_accuracy": 0.9987341031664982, "precision_at_0.5": 0.093095166880725, "recall_at_0.5": 0.614886261293799, "f1_at_0.5": 0.16170745734636158, "best_f1": 0.16170745963043753, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.693436408176342, "rare_median_auroc": 0.7527527527527528, "rare_n_labels_evaluable": 2343, "common_mean_auroc": 0.6659373956556597, "common_median_auroc": 0.6681890147363293, "common_n_labels_evaluable": 2030}
+
+======================================================================
+FULL-LABEL-SET DIAGNOSTIC (no truncation, directly comparable to item 8's 0.6577 baseline): 6820/27191 labels evaluable, 1000 val examples
+======================================================================
+Per-label AUROC: mean=0.6671 median=0.6849 min=0.0000 max=1.0000
+Rarity-stratified AUROC: rare mean=0.671572602181948 common mean=0.6583407420494688
+[FULL_LABEL_DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 6820, "n_labels_total": 27191, "mean_auroc": 0.6670675612394823, "median_auroc": 0.6848697394789579, "pooled_auroc": 0.9493106495238017, "accuracy_at_0.5": 0.9917237321172446, "trivial_baseline_accuracy": 0.9982369901845232, "precision_at_0.5": 0.11050460087618494, "recall_at_0.5": 0.5240727606490626, "f1_at_0.5": 0.18252290057683196, "best_f1": 0.18252290345313602, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.671572602181948, "rare_median_auroc": 0.7111723446893787, "rare_n_labels_evaluable": 4498, "common_mean_auroc": 0.6583407420494688, "common_median_auroc": 0.6553013954826643, "common_n_labels_evaluable": 2322}
+
+======================================================================
+EXAMPLE PREDICTIONS (qualitative check, not a metric)
+======================================================================
+
+--- Example 0 (15 true labels) ---
+True (depth-ordered):      ['GO:0005575', 'GO:0110165', 'GO:0005622', 'GO:0012505', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0031984', 'GO:0043231', 'GO:0005794', 'GO:0098791', 'GO:0005795', 'GO:0031985', 'GO:0000138']
+Predicted (full budget):   ['GO:0005575', 'GO:0110165', 'GO:0005622', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043231', 'GO:0005634', 'GO:0005739', 'GO:0009536', 'GO:0009507', 'GO:0009532', 'GO:0009570', 'GO:0009941', 'GO:0042170', 'GO:0042651', 'GO:0055035', 'GO:0009535', 'GO:0031976'] ...
+  0.5-threshold stop=18 -> predicted[:stop]: ['GO:0005575', 'GO:0110165', 'GO:0005622', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043231', 'GO:0005634', 'GO:0005739', 'GO:0009536', 'GO:0009507', 'GO:0009532', 'GO:0009570', 'GO:0009941', 'GO:0042170', 'GO:0042651', 'GO:0055035', 'GO:0009535']
+  argmax stop=18        -> predicted[:stop]: ['GO:0005575', 'GO:0110165', 'GO:0005622', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043231', 'GO:0005634', 'GO:0005739', 'GO:0009536', 'GO:0009507', 'GO:0009532', 'GO:0009570', 'GO:0009941', 'GO:0042170', 'GO:0042651', 'GO:0055035', 'GO:0009535']
+Stop probabilities (first 20 steps): [0.0, 0.002, 0.039, 0.062, 0.045, 0.075, 0.036, 0.063, 0.24, 0.154, 0.169, 0.175, 0.136, 0.244, 0.353, 0.282, 0.155, 0.158, 0.898, 0.776]
+
+--- Example 1 (3 true labels) ---
+True (depth-ordered):      ['GO:0003674', 'GO:0005488', 'GO:0005515']
+Predicted (full budget):   ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005488', 'GO:0009987', 'GO:0110165', 'GO:0005515', 'GO:0005622', 'GO:0008152', 'GO:0012505', 'GO:0016020', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043231', 'GO:0005634', 'GO:0005739', 'GO:0070013', 'GO:0031981'] ...
+  0.5-threshold stop=63 -> predicted[:stop]: ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005488', 'GO:0009987', 'GO:0110165', 'GO:0005515', 'GO:0005622', 'GO:0008152', 'GO:0012505', 'GO:0016020', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043231', 'GO:0005634', 'GO:0005739', 'GO:0070013', 'GO:0031981', 'GO:0005654', 'GO:0005730', 'GO:0005829', 'GO:0043228', 'GO:0043232', 'GO:0043233', 'GO:0044238', 'GO:0044281', 'GO:0006082', 'GO:0006629', 'GO:0006796', 'GO:0019637', 'GO:0031090', 'GO:0031967', 'GO:0031982', 'GO:0065010', 'GO:0097708', 'GO:0031410', 'GO:0070062', 'GO:1903561', 'GO:0030139', 'GO:0045335', 'GO:0031974', 'GO:0005783', 'GO:0005789', 'GO:0005576', 'GO:0071944', 'GO:0005886', 'GO:0005615', 'GO:0098588', 'GO:0000139', 'GO:0005794', 'GO:0098827', 'GO:0030659', 'GO:0010008', 'GO:0012506', 'GO:0030662', 'GO:0030666', 'GO:0030665', 'GO:0030120', 'GO:0030669', 'GO:0030125', 'GO:0030128', 'GO:0030122']
+  argmax stop=63        -> predicted[:stop]: ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005488', 'GO:0009987', 'GO:0110165', 'GO:0005515', 'GO:0005622', 'GO:0008152', 'GO:0012505', 'GO:0016020', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043231', 'GO:0005634', 'GO:0005739', 'GO:0070013', 'GO:0031981', 'GO:0005654', 'GO:0005730', 'GO:0005829', 'GO:0043228', 'GO:0043232', 'GO:0043233', 'GO:0044238', 'GO:0044281', 'GO:0006082', 'GO:0006629', 'GO:0006796', 'GO:0019637', 'GO:0031090', 'GO:0031967', 'GO:0031982', 'GO:0065010', 'GO:0097708', 'GO:0031410', 'GO:0070062', 'GO:1903561', 'GO:0030139', 'GO:0045335', 'GO:0031974', 'GO:0005783', 'GO:0005789', 'GO:0005576', 'GO:0071944', 'GO:0005886', 'GO:0005615', 'GO:0098588', 'GO:0000139', 'GO:0005794', 'GO:0098827', 'GO:0030659', 'GO:0010008', 'GO:0012506', 'GO:0030662', 'GO:0030666', 'GO:0030665', 'GO:0030120', 'GO:0030669', 'GO:0030125', 'GO:0030128', 'GO:0030122']
+Stop probabilities (first 20 steps): [0.0, 0.007, 0.028, 0.012, 0.026, 0.008, 0.011, 0.022, 0.02, 0.025, 0.017, 0.022, 0.013, 0.024, 0.012, 0.024, 0.111, 0.074, 0.087, 0.062]
+
+--- Example 2 (75 true labels) ---
+True (depth-ordered):      ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005215', 'GO:0009987', 'GO:0032501', 'GO:0051179', 'GO:0065007', 'GO:0110165', 'GO:0003008', 'GO:0007586', 'GO:0008152', 'GO:0016020', 'GO:0022857', 'GO:0045178', 'GO:0051234', 'GO:0065008', 'GO:0071944', 'GO:0005886', 'GO:0006575'] ...
+Predicted (full budget):   ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005215', 'GO:0009987', 'GO:0051179', 'GO:0110165', 'GO:0005622', 'GO:0016020', 'GO:0022857', 'GO:0043226', 'GO:0051234', 'GO:0071944', 'GO:0005886', 'GO:0006810', 'GO:0015075', 'GO:0015318', 'GO:0022804', 'GO:0043227', 'GO:0043229'] ...
+  0.5-threshold stop=64 -> predicted[:stop]: ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005215', 'GO:0009987', 'GO:0051179', 'GO:0110165', 'GO:0005622', 'GO:0016020', 'GO:0022857', 'GO:0043226', 'GO:0051234', 'GO:0071944', 'GO:0005886', 'GO:0006810', 'GO:0015075', 'GO:0015318', 'GO:0022804', 'GO:0043227', 'GO:0043229', 'GO:0008324', 'GO:0015267', 'GO:0022890', 'GO:0031090', 'GO:0031967', 'GO:0043231', 'GO:0046873', 'GO:0005261', 'GO:0015079', 'GO:0022832', 'GO:0005244', 'GO:0005267', 'GO:0005249', 'GO:0005242', 'GO:0015271', 'GO:0022843', 'GO:0005245', 'GO:0005216', 'GO:0006811', 'GO:0022836', 'GO:0098655', 'GO:0098662', 'GO:0005262', 'GO:0006816', 'GO:0034704', 'GO:0015276', 'GO:0022834', 'GO:0034703', 'GO:0034705', 'GO:0008076', 'GO:0034702', 'GO:0043167', 'GO:0046872', 'GO:0005509', 'GO:0031981', 'GO:0005515', 'GO:0005737', 'GO:0031974', 'GO:0012505', 'GO:0005488', 'GO:0065007', 'GO:0042802', 'GO:0043169', 'GO:0043228']
+  argmax stop=36        -> predicted[:stop]: ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005215', 'GO:0009987', 'GO:0051179', 'GO:0110165', 'GO:0005622', 'GO:0016020', 'GO:0022857', 'GO:0043226', 'GO:0051234', 'GO:0071944', 'GO:0005886', 'GO:0006810', 'GO:0015075', 'GO:0015318', 'GO:0022804', 'GO:0043227', 'GO:0043229', 'GO:0008324', 'GO:0015267', 'GO:0022890', 'GO:0031090', 'GO:0031967', 'GO:0043231', 'GO:0046873', 'GO:0005261', 'GO:0015079', 'GO:0022832', 'GO:0005244', 'GO:0005267', 'GO:0005249', 'GO:0005242', 'GO:0015271', 'GO:0022843', 'GO:0005245']
+Stop probabilities (first 20 steps): [0.0, 0.003, 0.019, 0.01, 0.003, 0.002, 0.003, 0.005, 0.007, 0.011, 0.016, 0.01, 0.009, 0.037, 0.019, 0.02, 0.024, 0.018, 0.016, 0.009]
+======================================================================
+[SUMMARY] run_name=item16-cheap-autoregressive-bigdata20ep-curve done

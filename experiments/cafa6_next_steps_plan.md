@@ -1652,6 +1652,46 @@ by `(depth, id)`; frequency could replace or supplement depth) independent of wh
 revisited. Explicitly deferred: establish the more-data baseline first, revisit alternatives only
 if that doesn't resolve the content-differentiation problem.
 
+**Status update (2026-10-25): no plateau at 20 epochs after all — AUROC still climbing through
+epoch 40, now beats item 8's classifier baseline for the first time.** User correctly challenged
+the earlier "CE plateaus by ~epoch 13 / more data has peaked" framing: a CE plateau under teacher
+forcing is not evidence that `generate()`-based AUROC (greedy, self-fed decode) has also
+plateaued — these can decouple via exactly the exposure-bias mechanism scheduled sampling exists
+to mitigate. Added `--diagnostic-every-n-epochs` to measure the actual metric periodically during
+training instead of inferring from the CE proxy. Same 10,000-example run, extended to 40 epochs
+(user's own call), dense/truncated mean AUROC at each checkpoint:
+
+| epoch | mean AUROC | 0.5-threshold stop MAE |
+|---|---|---|
+| 5 | 0.5851 | 30.58 (flat floor, same every prior run) |
+| 10 | 0.5934 | 30.58 |
+| 15 | 0.6029 | 30.58 |
+| 20 | 0.6104 | 30.58 |
+| 25 | 0.6119 | 30.38 |
+| 30 | 0.6345 | 28.30 |
+| 35 | 0.6688 | 26.49 |
+| 40 (final) | 0.6807 | 22.70 |
+
+Still climbing at epoch 40, with the largest gains in the *last* 10 epochs — no sign of
+flattening. **Full-label-set AUROC at epoch 40: 0.6671, finally exceeding item 8's classifier
+baseline (0.6577)** for the first time anywhere in this research line (previous best was 0.6580
+at the smaller 2,000-example/20-epoch scale, which trailed the baseline).
+
+**The stop-head calibration improved as a direct side effect, exactly as the content-starvation
+diagnosis predicted** — not from any architecture change, just from giving the model enough
+training exposure to actually have specific content to decide a stopping point from. The
+0.5-threshold MAE had been stuck at a flat 30.58 in *every single prior run* (meaning
+`sigmoid(stop_logit)` never once crossed 0.5) — it only starts moving around epoch 25-30, reaching
+22.70 by epoch 40 and nearly converging with the argmax-ranking variant (21.89). Qualitatively,
+the transport-heavy example (75 true labels, `GO:0005215`/`GO:0022857`) now decodes into a
+genuinely coherent, domain-specific cascade (transporter → transmembrane transporter → cation
+channel → potassium channel activity) rather than a generic fallback profile.
+
+**Not yet at a true plateau — AUROC is still rising, so the real ceiling at this 10,000-example
+scale hasn't been found yet.** Candidate next step: push further (60-80 epochs) using the now-
+working periodic-diagnostic instrumentation to actually locate where it tops out, rather than
+guess again.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features
