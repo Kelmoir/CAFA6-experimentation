@@ -1692,6 +1692,43 @@ scale hasn't been found yet.** Candidate next step: push further (60-80 epochs) 
 working periodic-diagnostic instrumentation to actually locate where it tops out, rather than
 guess again.
 
+**Status update (2026-10-31): pushed to 80 epochs — still no plateau, stop head has effectively
+converged, clear margin over item 8's baseline.** Same 10,000-example run extended to 80 epochs
+(user's own call again), full AUROC-vs-epoch curve:
+
+| epoch | mean AUROC (dense) | 0.5-threshold stop MAE | argmax stop MAE |
+|---|---|---|---|
+| 10 | 0.5923 | 30.58 | 24.16 |
+| 20 | 0.5846 | 30.58 | 22.88 |
+| 30 | 0.6041 | 28.47 | 20.69 |
+| 40 | 0.6114 | 25.26 | 21.48 |
+| 50 | 0.6448 | 23.86 | 20.46 |
+| 60 | 0.6780 | 21.86 | 20.89 |
+| 70 | 0.6905 | 21.42 | 20.97 |
+| 80 (final) | 0.7015 | 21.04 | 20.45 |
+
+**Full-label-set AUROC at epoch 80: 0.6877** — a clear, growing margin over item 8's classifier
+baseline (0.6577), not just barely crossing it as at epoch 40 (0.6671). Still rising at the very
+end (0.6905→0.7015, epoch 70→80), no flattening visible yet even now. (Note: epoch 20 dipped
+slightly below epoch 10 — non-monotonic blip, not a trend reversal; sustained climb resumes from
+epoch 30 on.)
+
+**The stop head has effectively converged, with zero architecture changes** — the 0.5-threshold
+and argmax-ranking MAEs, which differed by ~6-9 steps through epoch 40, are now nearly identical
+(21.04 vs 20.45 at epoch 80). `sigmoid(stop_logit)` reliably crosses 0.5 at a sensible point now,
+confirming end-to-end that stop-head calibration was always downstream of content
+differentiation, never an architecture problem to be fixed directly (consistent with both the
+earlier `stop_head.bias`-fix and reverted `step_frac` attempts).
+
+**Real cost: `time` reports 17.5 hours (`real 1052m2s`) for this single run** — roughly linear
+with the 40-epoch run's extrapolated ~9-10h, confirming the compute-scaling model held. This is
+well outside "cheap-scale exploration" territory in wall-clock terms now, even though the data
+scale (10,000/52,579 ≈ 19% of the full training set) is still a fraction of full-dataset
+training. Not yet decided: whether to keep pushing epochs at this same 10,000-example scale
+(curve still rising, cost roughly doubles each time), pivot to a full-dataset run now that "more
+exposure reliably helps" is well-established, or treat 0.6877 as sufficient evidence to promote
+this into `training_run.py`'s main() training loop.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features
