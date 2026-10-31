@@ -1,0 +1,95 @@
+[INFO] label depth within trainable vocabulary: min=0 max=17 mean=6.92 (3 depth-0 roots)
+[INFO] --ar-max-decode-steps=64: 10570/52579 training proteins (20.10%) have more true labels than the cap and get truncated (deepest/most-specific labels dropped first; including the 3 depth-0 aspect roots, per --ar-include-roots-in-training).
+Loading weights:   0%|          | 0/209 [00:00<?, ?it/s]Loading weights: 100%|██████████| 209/209 [00:00<00:00, 4301.41it/s]
+[1mAutoregressiveLabelEmbeddingEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t12_35M_UR50D
+Key                           | Status     | 
+------------------------------+------------+-
+lm_head.layer_norm.weight     | UNEXPECTED | 
+lm_head.dense.bias            | UNEXPECTED | 
+esm.embeddings.position_ids   | UNEXPECTED | 
+lm_head.layer_norm.bias       | UNEXPECTED | 
+lm_head.bias                  | UNEXPECTED | 
+lm_head.dense.weight          | UNEXPECTED | 
+classifier.cell.bias_hh       | MISSING    | 
+classifier.cell.bias_ih       | MISSING    | 
+classifier.init_state.bias    | MISSING    | 
+classifier.stop_head.weight   | MISSING    | 
+classifier.label_embed.weight | MISSING    | 
+classifier.init_state.weight  | MISSING    | 
+classifier.cell.weight_hh     | MISSING    | 
+classifier.proj.weight        | MISSING    | 
+classifier.scale              | MISSING    | 
+classifier.cell.weight_ih     | MISSING    | 
+classifier.bias               | MISSING    | 
+classifier.proj.bias          | MISSING    | 
+classifier.stop_head.bias     | MISSING    | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING[3m	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.[0m
+Model layers: 12, request unfreeze layers: 4
+[INFO] Initialized classifier bias to label priors for 27191 labels (mean=0.0016, min=0.0001, max=0.7321)
+[INFO] Initialized stop_head bias to prior stop rate 0.0295 (bias=-3.4943, mean capped sequence length 33.9 steps)
+Epoch 1/20 | train_loss=6.5995 (ce=6.4272 stop=0.1723) | val_loss=6.8327 (ce=6.6388 stop=0.1939) | train_top1_acc=0.0689 val_top1_acc=0.0424 | scheduled_sampling_prob=0.000
+Epoch 2/20 | train_loss=6.2298 (ce=6.0600 stop=0.1699) | val_loss=6.4123 (ce=6.2188 stop=0.1935) | train_top1_acc=0.1075 val_top1_acc=0.0712 | scheduled_sampling_prob=0.000
+Epoch 3/20 | train_loss=5.8160 (ce=5.6435 stop=0.1725) | val_loss=6.1722 (ce=5.9791 stop=0.1932) | train_top1_acc=0.1437 val_top1_acc=0.0943 | scheduled_sampling_prob=0.000
+Epoch 4/20 | train_loss=5.6406 (ce=5.4663 stop=0.1743) | val_loss=5.9531 (ce=5.7602 stop=0.1929) | train_top1_acc=0.1661 val_top1_acc=0.1130 | scheduled_sampling_prob=0.000
+Epoch 5/20 | train_loss=5.4712 (ce=5.3035 stop=0.1676) | val_loss=5.8677 (ce=5.6749 stop=0.1928) | train_top1_acc=0.1839 val_top1_acc=0.1308 | scheduled_sampling_prob=0.000
+Epoch 6/20 | train_loss=5.3289 (ce=5.1627 stop=0.1662) | val_loss=5.7613 (ce=5.5687 stop=0.1926) | train_top1_acc=0.1989 val_top1_acc=0.1477 | scheduled_sampling_prob=0.000
+Epoch 7/20 | train_loss=5.1963 (ce=5.0248 stop=0.1714) | val_loss=5.6586 (ce=5.4663 stop=0.1924) | train_top1_acc=0.2131 val_top1_acc=0.1598 | scheduled_sampling_prob=0.018
+Epoch 8/20 | train_loss=5.1287 (ce=4.9525 stop=0.1762) | val_loss=5.5773 (ce=5.3851 stop=0.1922) | train_top1_acc=0.2201 val_top1_acc=0.1627 | scheduled_sampling_prob=0.036
+Epoch 9/20 | train_loss=5.0887 (ce=4.9166 stop=0.1721) | val_loss=5.5399 (ce=5.3479 stop=0.1920) | train_top1_acc=0.2227 val_top1_acc=0.1685 | scheduled_sampling_prob=0.053
+Epoch 10/20 | train_loss=5.0819 (ce=4.9135 stop=0.1684) | val_loss=5.4981 (ce=5.3062 stop=0.1918) | train_top1_acc=0.2224 val_top1_acc=0.1753 | scheduled_sampling_prob=0.071
+Epoch 11/20 | train_loss=4.9544 (ce=4.7823 stop=0.1721) | val_loss=5.4532 (ce=5.2615 stop=0.1917) | train_top1_acc=0.2334 val_top1_acc=0.1704 | scheduled_sampling_prob=0.089
+Epoch 12/20 | train_loss=5.0322 (ce=4.8618 stop=0.1704) | val_loss=5.3785 (ce=5.1870 stop=0.1915) | train_top1_acc=0.2286 val_top1_acc=0.1860 | scheduled_sampling_prob=0.107
+Epoch 13/20 | train_loss=5.0086 (ce=4.8347 stop=0.1739) | val_loss=5.3457 (ce=5.1545 stop=0.1913) | train_top1_acc=0.2275 val_top1_acc=0.1874 | scheduled_sampling_prob=0.125
+Epoch 14/20 | train_loss=4.9228 (ce=4.7535 stop=0.1693) | val_loss=5.3131 (ce=5.1220 stop=0.1911) | train_top1_acc=0.2348 val_top1_acc=0.1919 | scheduled_sampling_prob=0.143
+Epoch 15/20 | train_loss=4.9728 (ce=4.7938 stop=0.1790) | val_loss=5.3025 (ce=5.1115 stop=0.1910) | train_top1_acc=0.2273 val_top1_acc=0.1994 | scheduled_sampling_prob=0.161
+Epoch 16/20 | train_loss=4.9358 (ce=4.7655 stop=0.1704) | val_loss=5.2754 (ce=5.0845 stop=0.1909) | train_top1_acc=0.2313 val_top1_acc=0.1964 | scheduled_sampling_prob=0.178
+Epoch 17/20 | train_loss=4.9328 (ce=4.7589 stop=0.1739) | val_loss=5.2521 (ce=5.0615 stop=0.1906) | train_top1_acc=0.2307 val_top1_acc=0.2007 | scheduled_sampling_prob=0.196
+Epoch 18/20 | train_loss=4.9828 (ce=4.8223 stop=0.1606) | val_loss=5.2512 (ce=5.0606 stop=0.1906) | train_top1_acc=0.2276 val_top1_acc=0.2031 | scheduled_sampling_prob=0.214
+Epoch 19/20 | train_loss=4.9407 (ce=4.7698 stop=0.1708) | val_loss=5.2486 (ce=5.0582 stop=0.1904) | train_top1_acc=0.2292 val_top1_acc=0.2048 | scheduled_sampling_prob=0.232
+Epoch 20/20 | train_loss=4.9318 (ce=4.7603 stop=0.1715) | val_loss=5.2153 (ce=5.0250 stop=0.1903) | train_top1_acc=0.2277 val_top1_acc=0.2055 | scheduled_sampling_prob=0.250
+
+======================================================================
+[CAVEAT] ground truth truncated to each protein's first 64 depth-ordered true labels -- NOT directly comparable to a full-27191-label-set baseline AUROC.
+DIAGNOSTIC (dense adapter): 4373/27191 labels evaluable, 1000 val examples
+======================================================================
+Stop-head calibration: mean |predicted_stop_step - true_last_step_idx| = 30.58 steps (0.5-threshold) vs. 23.62 steps (argmax-ranking, threshold-free) (max_steps=64)
+Per-label AUROC: mean=0.6548 median=0.6795 min=0.0020 max=1.0000
+Rarity-stratified AUROC: rare mean=0.6738133076906232 common mean=0.6327949247482308
+[DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 4373, "n_labels_total": 27191, "mean_auroc": 0.6547720734411248, "median_auroc": 0.6794949494949495, "pooled_auroc": 0.9672990337343698, "accuracy_at_0.5": 0.99264061638042, "trivial_baseline_accuracy": 0.9987341031664982, "precision_at_0.5": 0.0956462319406435, "recall_at_0.5": 0.5693036227882488, "f1_at_0.5": 0.16377699805098558, "best_f1": 0.16377700051399702, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.6738133076906232, "rare_median_auroc": 0.7277277277277276, "rare_n_labels_evaluable": 2343, "common_mean_auroc": 0.6327949247482308, "common_median_auroc": 0.6428981252304131, "common_n_labels_evaluable": 2030}
+
+======================================================================
+FULL-LABEL-SET DIAGNOSTIC (no truncation, directly comparable to item 8's 0.6577 baseline): 6820/27191 labels evaluable, 1000 val examples
+======================================================================
+Per-label AUROC: mean=0.6580 median=0.6786 min=0.0000 max=1.0000
+Rarity-stratified AUROC: rare mean=0.6654973666875973 common mean=0.6434252111777048
+[FULL_LABEL_DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 6820, "n_labels_total": 27191, "mean_auroc": 0.6579824773776309, "median_auroc": 0.6785520182759447, "pooled_auroc": 0.94764038362429, "accuracy_at_0.5": 0.9924270530690302, "trivial_baseline_accuracy": 0.9982369901845232, "precision_at_0.5": 0.1144621241702404, "recall_at_0.5": 0.48919437606898725, "f1_at_0.5": 0.18551685094823647, "best_f1": 0.18551685402147, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.6654973666875973, "rare_median_auroc": 0.7066850166800067, "rare_n_labels_evaluable": 4498, "common_mean_auroc": 0.6434252111777048, "common_median_auroc": 0.6453517793508037, "common_n_labels_evaluable": 2322}
+
+======================================================================
+EXAMPLE PREDICTIONS (qualitative check, not a metric)
+======================================================================
+
+--- Example 0 (15 true labels) ---
+True (depth-ordered):      ['GO:0005575', 'GO:0110165', 'GO:0005622', 'GO:0012505', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0031984', 'GO:0043231', 'GO:0005794', 'GO:0098791', 'GO:0005795', 'GO:0031985', 'GO:0000138']
+Predicted (full budget):   ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005488', 'GO:0009987', 'GO:0110165', 'GO:0005515', 'GO:0005622', 'GO:0008152', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043233', 'GO:0044238', 'GO:0005829', 'GO:0043231', 'GO:0005634', 'GO:0005739', 'GO:0070013'] ...
+  0.5-threshold stop=64 -> predicted[:stop]: ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005488', 'GO:0009987', 'GO:0110165', 'GO:0005515', 'GO:0005622', 'GO:0008152', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043233', 'GO:0044238', 'GO:0005829', 'GO:0043231', 'GO:0005634', 'GO:0005739', 'GO:0070013', 'GO:0031981', 'GO:0005654', 'GO:0005730', 'GO:0016070', 'GO:0003676', 'GO:0003723', 'GO:0090304', 'GO:0032774', 'GO:0006396', 'GO:0006351', 'GO:0010467', 'GO:0034654', 'GO:0006139', 'GO:0043170', 'GO:0009059', 'GO:0019538', 'GO:0043228', 'GO:0043232', 'GO:0071840', 'GO:0016043', 'GO:0022402', 'GO:0010556', 'GO:0060255', 'GO:0080090', 'GO:1990837', 'GO:0000976', 'GO:0009889', 'GO:0010604', 'GO:0019219', 'GO:0010468', 'GO:0051252', 'GO:2001141', 'GO:0006355', 'GO:0006357', 'GO:0045893', 'GO:0045944', 'GO:1902680', 'GO:0048518', 'GO:0050794', 'GO:0050789', 'GO:0065007', 'GO:0140110', 'GO:0003700', 'GO:0043565']
+  argmax stop=51        -> predicted[:stop]: ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005488', 'GO:0009987', 'GO:0110165', 'GO:0005515', 'GO:0005622', 'GO:0008152', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043233', 'GO:0044238', 'GO:0005829', 'GO:0043231', 'GO:0005634', 'GO:0005739', 'GO:0070013', 'GO:0031981', 'GO:0005654', 'GO:0005730', 'GO:0016070', 'GO:0003676', 'GO:0003723', 'GO:0090304', 'GO:0032774', 'GO:0006396', 'GO:0006351', 'GO:0010467', 'GO:0034654', 'GO:0006139', 'GO:0043170', 'GO:0009059', 'GO:0019538', 'GO:0043228', 'GO:0043232', 'GO:0071840', 'GO:0016043', 'GO:0022402', 'GO:0010556', 'GO:0060255', 'GO:0080090', 'GO:1990837', 'GO:0000976', 'GO:0009889', 'GO:0010604', 'GO:0019219', 'GO:0010468', 'GO:0051252', 'GO:2001141']
+Stop probabilities (first 20 steps): [0.022, 0.031, 0.032, 0.033, 0.034, 0.033, 0.033, 0.034, 0.034, 0.034, 0.033, 0.033, 0.034, 0.034, 0.034, 0.034, 0.034, 0.036, 0.035, 0.036]
+
+--- Example 1 (3 true labels) ---
+True (depth-ordered):      ['GO:0003674', 'GO:0005488', 'GO:0005515']
+Predicted (full budget):   ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005488', 'GO:0009987', 'GO:0110165', 'GO:0005515', 'GO:0005622', 'GO:0008152', 'GO:0012505', 'GO:0016020', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043233', 'GO:0044238', 'GO:0005829', 'GO:0043231', 'GO:0005634'] ...
+  0.5-threshold stop=64 -> predicted[:stop]: ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005488', 'GO:0009987', 'GO:0110165', 'GO:0005515', 'GO:0005622', 'GO:0008152', 'GO:0012505', 'GO:0016020', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043233', 'GO:0044238', 'GO:0005829', 'GO:0043231', 'GO:0005634', 'GO:0005739', 'GO:0070013', 'GO:0031981', 'GO:0005654', 'GO:0005730', 'GO:0005840', 'GO:0010467', 'GO:0034654', 'GO:0016070', 'GO:0003676', 'GO:0032774', 'GO:0006396', 'GO:0006351', 'GO:0006366', 'GO:0006357', 'GO:0000375', 'GO:0000377', 'GO:0000398', 'GO:0008380', 'GO:0005684', 'GO:0005681', 'GO:0016071', 'GO:0051252', 'GO:2001141', 'GO:0006355', 'GO:0010468', 'GO:0060255', 'GO:0080090', 'GO:0010556', 'GO:0019219', 'GO:0010608', 'GO:0050789', 'GO:0065007', 'GO:0140110', 'GO:0003700', 'GO:0043565', 'GO:1990837', 'GO:0000976', 'GO:0048518', 'GO:0050794', 'GO:0019222', 'GO:0023051', 'GO:0048583', 'GO:0009966']
+  argmax stop=39        -> predicted[:stop]: ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005488', 'GO:0009987', 'GO:0110165', 'GO:0005515', 'GO:0005622', 'GO:0008152', 'GO:0012505', 'GO:0016020', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043233', 'GO:0044238', 'GO:0005829', 'GO:0043231', 'GO:0005634', 'GO:0005739', 'GO:0070013', 'GO:0031981', 'GO:0005654', 'GO:0005730', 'GO:0005840', 'GO:0010467', 'GO:0034654', 'GO:0016070', 'GO:0003676', 'GO:0032774', 'GO:0006396', 'GO:0006351', 'GO:0006366', 'GO:0006357', 'GO:0000375', 'GO:0000377', 'GO:0000398', 'GO:0008380', 'GO:0005684']
+Stop probabilities (first 20 steps): [0.023, 0.032, 0.032, 0.033, 0.034, 0.033, 0.033, 0.034, 0.034, 0.034, 0.034, 0.034, 0.033, 0.033, 0.034, 0.034, 0.034, 0.034, 0.034, 0.036]
+
+--- Example 2 (75 true labels) ---
+True (depth-ordered):      ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005215', 'GO:0009987', 'GO:0032501', 'GO:0051179', 'GO:0065007', 'GO:0110165', 'GO:0003008', 'GO:0007586', 'GO:0008152', 'GO:0016020', 'GO:0022857', 'GO:0045178', 'GO:0051234', 'GO:0065008', 'GO:0071944', 'GO:0005886', 'GO:0006575'] ...
+Predicted (full budget):   ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005488', 'GO:0009987', 'GO:0110165', 'GO:0005515', 'GO:0005622', 'GO:0008152', 'GO:0012505', 'GO:0016020', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043233', 'GO:0044238', 'GO:0005829', 'GO:0043231', 'GO:0005634'] ...
+  0.5-threshold stop=64 -> predicted[:stop]: ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005488', 'GO:0009987', 'GO:0110165', 'GO:0005515', 'GO:0005622', 'GO:0008152', 'GO:0012505', 'GO:0016020', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043233', 'GO:0044238', 'GO:0005829', 'GO:0043231', 'GO:0005634', 'GO:0005739', 'GO:0070013', 'GO:0031981', 'GO:0005654', 'GO:0005730', 'GO:0005840', 'GO:0010467', 'GO:0034654', 'GO:0016070', 'GO:0003676', 'GO:0032774', 'GO:0006396', 'GO:0006351', 'GO:0006366', 'GO:0006357', 'GO:0000375', 'GO:0000377', 'GO:0000398', 'GO:0008380', 'GO:0005684', 'GO:0005681', 'GO:0016071', 'GO:0051252', 'GO:2001141', 'GO:0006355', 'GO:0010468', 'GO:0060255', 'GO:0080090', 'GO:0010556', 'GO:0019219', 'GO:0010608', 'GO:0050789', 'GO:0065007', 'GO:0140110', 'GO:0003700', 'GO:0043565', 'GO:1990837', 'GO:0000976', 'GO:0048518', 'GO:0050794', 'GO:0019222', 'GO:0023051', 'GO:0048583', 'GO:0009966']
+  argmax stop=39        -> predicted[:stop]: ['GO:0003674', 'GO:0005575', 'GO:0008150', 'GO:0005488', 'GO:0009987', 'GO:0110165', 'GO:0005515', 'GO:0005622', 'GO:0008152', 'GO:0012505', 'GO:0016020', 'GO:0043226', 'GO:0005737', 'GO:0043227', 'GO:0043229', 'GO:0043233', 'GO:0044238', 'GO:0005829', 'GO:0043231', 'GO:0005634', 'GO:0005739', 'GO:0070013', 'GO:0031981', 'GO:0005654', 'GO:0005730', 'GO:0005840', 'GO:0010467', 'GO:0034654', 'GO:0016070', 'GO:0003676', 'GO:0032774', 'GO:0006396', 'GO:0006351', 'GO:0006366', 'GO:0006357', 'GO:0000375', 'GO:0000377', 'GO:0000398', 'GO:0008380', 'GO:0005684']
+Stop probabilities (first 20 steps): [0.022, 0.031, 0.032, 0.033, 0.034, 0.033, 0.033, 0.034, 0.034, 0.035, 0.034, 0.034, 0.033, 0.034, 0.034, 0.034, 0.034, 0.034, 0.034, 0.036]
+======================================================================
+[SUMMARY] run_name=item16-cheap-autoregressive-example done

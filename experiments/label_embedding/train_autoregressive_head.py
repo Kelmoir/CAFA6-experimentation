@@ -358,6 +358,15 @@ def main() -> None:
     parser.add_argument("--rare-term-threshold", type=int, default=100)
     parser.add_argument("--run-name", default="ar-spike")
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--checkpoint-dir", default=None,
+                         help="If set, saves model+optimizer+epoch state here at every "
+                              "--diagnostic-every-n-epochs interval and at the end of training. "
+                              "Was unset during the cheap-scale 10k spike (ephemeral by design); "
+                              "a full-dataset run is long enough that losing it to a crash is a "
+                              "real cost, so it's load-bearing from here on.")
+    parser.add_argument("--resume-from-checkpoint", default=None,
+                         help="Path to a checkpoint file saved by --checkpoint-dir; resumes "
+                              "model/optimizer state and epoch count from it.")
     args = parser.parse_args()
 
     random.seed(args.seed)
@@ -462,11 +471,19 @@ def main() -> None:
         lr=args.learning_rate, weight_decay=args.weight_decay,
     )
 
+    start_epoch = 0
+    if args.resume_from_checkpoint:
+        ckpt = torch.load(args.resume_from_checkpoint, map_location=device)
+        model.load_state_dict(ckpt["model"])
+        optimizer.load_state_dict(ckpt["optimizer"])
+        start_epoch = ckpt["epoch"]
+        print(f"[INFO] Resumed from {args.resume_from_checkpoint} at epoch {start_epoch}")
+
     n_train = min(args.max_train_samples, len(dataset_train)) if args.max_train_samples else len(dataset_train)
     steps_per_epoch = max(1, n_train // args.batch_size)
     optimizer_steps_per_epoch = max(1, steps_per_epoch // args.grad_accum_steps)
     total_optimizer_steps = optimizer_steps_per_epoch * args.epochs
-    global_step = 0
+    global_step = optimizer_steps_per_epoch * start_epoch
     ss_prob = 0.0
 
     val_loader = torch.utils.data.DataLoader(val_ds, batch_size=args.batch_size, collate_fn=eval_collate_fn)
@@ -478,7 +495,10 @@ def main() -> None:
             range(min(args.diagnostic_max_val_samples, len(dataset["validation"]))))
         diag_loader = torch.utils.data.DataLoader(diagnostic_ds, batch_size=args.batch_size, collate_fn=eval_collate_fn)
 
-    for epoch in range(args.epochs):
+    if args.checkpoint_dir:
+        Path(args.checkpoint_dir).mkdir(parents=True, exist_ok=True)
+
+    for epoch in range(start_epoch, args.epochs):
         model.train()
         train_subset = dataset_train
         if args.max_train_samples is not None:
@@ -528,11 +548,18 @@ def main() -> None:
               f"val_top1_acc={val_top1_acc:.4f} | scheduled_sampling_prob={ss_prob:.3f}")
 
         is_last_epoch = (epoch + 1) == args.epochs
-        if (args.diagnostic_every_n_epochs > 0 and (epoch + 1) % args.diagnostic_every_n_epochs == 0
-                and not is_last_epoch):
+        is_diag_epoch = (args.diagnostic_every_n_epochs > 0
+                          and (epoch + 1) % args.diagnostic_every_n_epochs == 0)
+        if is_diag_epoch and not is_last_epoch:
             print(f"[MID-TRAINING CHECKPOINT: epoch {epoch + 1}]")
             run_dense_diagnostic(model, diag_loader, device, args.ar_max_decode_steps,
                                   label_names, label_counts, args.rare_term_threshold)
+
+        if args.checkpoint_dir and (is_diag_epoch or is_last_epoch):
+            ckpt_path = Path(args.checkpoint_dir) / f"epoch_{epoch + 1}.pt"
+            torch.save({"model": model.state_dict(), "optimizer": optimizer.state_dict(),
+                        "epoch": epoch + 1}, ckpt_path)
+            print(f"[INFO] Saved checkpoint to {ckpt_path}")
 
     if args.run_diagnostic:
         run_dense_diagnostic(model, diag_loader, device, args.ar_max_decode_steps,

@@ -1,0 +1,69 @@
+[INFO] label depth within trainable vocabulary: min=0 max=17 mean=6.92 (3 depth-0 roots)
+[INFO] --ar-max-decode-steps=64: 10570/52579 training proteins (20.10%) have more true labels than the cap and get truncated (deepest/most-specific labels dropped first; including the 3 depth-0 aspect roots, per --ar-include-roots-in-training).
+Loading weights:   0%|          | 0/209 [00:00<?, ?it/s]Loading weights: 100%|██████████| 209/209 [00:00<00:00, 4291.03it/s]
+[1mAutoregressiveLabelEmbeddingEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t12_35M_UR50D
+Key                           | Status     | 
+------------------------------+------------+-
+lm_head.dense.weight          | UNEXPECTED | 
+lm_head.bias                  | UNEXPECTED | 
+lm_head.dense.bias            | UNEXPECTED | 
+lm_head.layer_norm.weight     | UNEXPECTED | 
+lm_head.layer_norm.bias       | UNEXPECTED | 
+esm.embeddings.position_ids   | UNEXPECTED | 
+classifier.init_state.weight  | MISSING    | 
+classifier.scale              | MISSING    | 
+classifier.init_state.bias    | MISSING    | 
+classifier.proj.bias          | MISSING    | 
+classifier.bias               | MISSING    | 
+classifier.cell.bias_hh       | MISSING    | 
+classifier.stop_head.weight   | MISSING    | 
+classifier.cell.weight_ih     | MISSING    | 
+classifier.stop_head.bias     | MISSING    | 
+classifier.proj.weight        | MISSING    | 
+classifier.label_embed.weight | MISSING    | 
+classifier.cell.weight_hh     | MISSING    | 
+classifier.cell.bias_ih       | MISSING    | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING[3m	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.[0m
+Model layers: 12, request unfreeze layers: 4
+[INFO] Initialized classifier bias to label priors for 27191 labels (mean=0.0016, min=0.0001, max=0.7321)
+[INFO] Initialized stop_head bias to prior stop rate 0.0295 (bias=-3.4943, mean capped sequence length 33.9 steps)
+Epoch 1/20 | train_loss=6.5842 (ce=6.4090 stop=0.1752) | val_loss=6.8614 (ce=6.6673 stop=0.1941) | train_top1_acc=0.0688 val_top1_acc=0.0350 | scheduled_sampling_prob=0.000
+Epoch 2/20 | train_loss=6.2483 (ce=6.0779 stop=0.1704) | val_loss=6.4097 (ce=6.2162 stop=0.1935) | train_top1_acc=0.1121 val_top1_acc=0.0751 | scheduled_sampling_prob=0.000
+Epoch 3/20 | train_loss=5.8248 (ce=5.6509 stop=0.1739) | val_loss=6.1515 (ce=5.9582 stop=0.1933) | train_top1_acc=0.1439 val_top1_acc=0.1032 | scheduled_sampling_prob=0.000
+Epoch 4/20 | train_loss=5.6237 (ce=5.4440 stop=0.1797) | val_loss=5.9550 (ce=5.7619 stop=0.1930) | train_top1_acc=0.1659 val_top1_acc=0.1215 | scheduled_sampling_prob=0.000
+Epoch 5/20 | train_loss=5.4683 (ce=5.2988 stop=0.1696) | val_loss=5.8633 (ce=5.6704 stop=0.1929) | train_top1_acc=0.1853 val_top1_acc=0.1352 | scheduled_sampling_prob=0.000
+Epoch 6/20 | train_loss=5.3617 (ce=5.1981 stop=0.1637) | val_loss=5.7403 (ce=5.5476 stop=0.1927) | train_top1_acc=0.2004 val_top1_acc=0.1512 | scheduled_sampling_prob=0.000
+Epoch 7/20 | train_loss=5.1748 (ce=4.9935 stop=0.1813) | val_loss=5.6616 (ce=5.4691 stop=0.1925) | train_top1_acc=0.2110 val_top1_acc=0.1578 | scheduled_sampling_prob=0.018
+Epoch 8/20 | train_loss=5.1377 (ce=4.9635 stop=0.1743) | val_loss=5.5859 (ce=5.3936 stop=0.1923) | train_top1_acc=0.2181 val_top1_acc=0.1640 | scheduled_sampling_prob=0.036
+Epoch 9/20 | train_loss=5.0878 (ce=4.9133 stop=0.1745) | val_loss=5.5142 (ce=5.3221 stop=0.1921) | train_top1_acc=0.2222 val_top1_acc=0.1689 | scheduled_sampling_prob=0.053
+Epoch 10/20 | train_loss=5.0965 (ce=4.9281 stop=0.1683) | val_loss=5.4819 (ce=5.2899 stop=0.1920) | train_top1_acc=0.2218 val_top1_acc=0.1742 | scheduled_sampling_prob=0.071
+Epoch 11/20 | train_loss=4.9516 (ce=4.7758 stop=0.1757) | val_loss=5.4234 (ce=5.2317 stop=0.1917) | train_top1_acc=0.2332 val_top1_acc=0.1820 | scheduled_sampling_prob=0.089
+Epoch 12/20 | train_loss=5.0145 (ce=4.8446 stop=0.1700) | val_loss=5.3708 (ce=5.1792 stop=0.1916) | train_top1_acc=0.2299 val_top1_acc=0.1818 | scheduled_sampling_prob=0.107
+Epoch 13/20 | train_loss=5.0467 (ce=4.8765 stop=0.1702) | val_loss=5.3580 (ce=5.1666 stop=0.1914) | train_top1_acc=0.2268 val_top1_acc=0.1885 | scheduled_sampling_prob=0.125
+Epoch 14/20 | train_loss=4.9338 (ce=4.7640 stop=0.1698) | val_loss=5.3438 (ce=5.1526 stop=0.1913) | train_top1_acc=0.2333 val_top1_acc=0.1912 | scheduled_sampling_prob=0.143
+Epoch 15/20 | train_loss=4.9710 (ce=4.7891 stop=0.1819) | val_loss=5.2839 (ce=5.0928 stop=0.1910) | train_top1_acc=0.2272 val_top1_acc=0.1979 | scheduled_sampling_prob=0.161
+Epoch 16/20 | train_loss=4.9153 (ce=4.7470 stop=0.1683) | val_loss=5.2940 (ce=5.1031 stop=0.1909) | train_top1_acc=0.2316 val_top1_acc=0.1973 | scheduled_sampling_prob=0.178
+Epoch 17/20 | train_loss=4.9392 (ce=4.7651 stop=0.1741) | val_loss=5.2683 (ce=5.0776 stop=0.1907) | train_top1_acc=0.2295 val_top1_acc=0.1997 | scheduled_sampling_prob=0.196
+Epoch 18/20 | train_loss=4.9640 (ce=4.8011 stop=0.1629) | val_loss=5.2618 (ce=5.0711 stop=0.1907) | train_top1_acc=0.2284 val_top1_acc=0.2027 | scheduled_sampling_prob=0.214
+Epoch 19/20 | train_loss=4.9309 (ce=4.7584 stop=0.1724) | val_loss=5.2338 (ce=5.0433 stop=0.1905) | train_top1_acc=0.2296 val_top1_acc=0.2059 | scheduled_sampling_prob=0.232
+Epoch 20/20 | train_loss=4.9238 (ce=4.7482 stop=0.1756) | val_loss=5.2211 (ce=5.0308 stop=0.1903) | train_top1_acc=0.2261 val_top1_acc=0.2064 | scheduled_sampling_prob=0.250
+
+======================================================================
+[CAVEAT] ground truth truncated to each protein's first 64 depth-ordered true labels -- NOT directly comparable to a full-27191-label-set baseline AUROC.
+DIAGNOSTIC (dense adapter): 4373/27191 labels evaluable, 1000 val examples
+======================================================================
+Stop-head calibration: mean |predicted_stop_step - true_last_step_idx| = 30.58 steps (0.5-threshold) vs. 24.50 steps (argmax-ranking, threshold-free) (max_steps=64)
+Per-label AUROC: mean=0.6110 median=0.6202 min=0.0035 max=1.0000
+Rarity-stratified AUROC: rare mean=0.6086249653889462 common mean=0.6137516267959202
+[DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 4373, "n_labels_total": 27191, "mean_auroc": 0.6110048242172466, "median_auroc": 0.6202404809619239, "pooled_auroc": 0.9651956780085186, "accuracy_at_0.5": 0.9921578463462175, "trivial_baseline_accuracy": 0.9987341031664982, "precision_at_0.5": 0.0893746986015069, "recall_at_0.5": 0.5653525464104572, "f1_at_0.5": 0.15434889277094696, "best_f1": 0.15434889512841257, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.6086249653889462, "rare_median_auroc": 0.6326326326326326, "rare_n_labels_evaluable": 2343, "common_mean_auroc": 0.6137516267959202, "common_median_auroc": 0.6153881800582308, "common_n_labels_evaluable": 2030}
+
+======================================================================
+FULL-LABEL-SET DIAGNOSTIC (no truncation, directly comparable to item 8's 0.6577 baseline): 6820/27191 labels evaluable, 1000 val examples
+======================================================================
+Per-label AUROC: mean=0.6153 median=0.6272 min=0.0020 max=1.0000
+Rarity-stratified AUROC: rare mean=0.6156960113222545 common mean=0.6145904359475642
+[FULL_LABEL_DIAGNOSTIC] {"n_val_examples": 1000, "n_labels_evaluable": 6820, "n_labels_total": 27191, "mean_auroc": 0.615319596949816, "median_auroc": 0.6272149782681378, "pooled_auroc": 0.941056370508106, "accuracy_at_0.5": 0.991934647493656, "trivial_baseline_accuracy": 0.9982369901845232, "precision_at_0.5": 0.10647805818999671, "recall_at_0.5": 0.4836246818806618, "f1_at_0.5": 0.17453034073554724, "best_f1": 0.17453034369318673, "best_f1_threshold": 0.5, "rare_mean_auroc": 0.6156960113222545, "rare_median_auroc": 0.6406406406406406, "rare_n_labels_evaluable": 4498, "common_mean_auroc": 0.6145904359475642, "common_median_auroc": 0.6141959689866104, "common_n_labels_evaluable": 2322}
+[SUMMARY] run_name=item16-cheap-autoregressive-stepfrac done
