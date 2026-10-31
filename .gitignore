@@ -32,6 +32,11 @@ __pycache__/
 # Item 8 label-embedding cache (experiments/label_embedding/build_term_embeddings.py) -- ~40MB,
 # regeneratable from go-basic.obo + dataset_full's label list + the frozen sentence encoder.
 /experiments/label_embedding/term_embeddings.pt
+
+# Item 16 autoregressive-head training checkpoints (train_autoregressive_head.py
+# --checkpoint-dir) -- GB-scale .pt files, kept locally only; promoted checkpoints get pushed
+# to the HF Hub instead (see training_run.py's push_checkpoint()), never committed to git.
+/experiments/label_embedding/checkpoints/
 /experiments/pk_eval/temporal_pk_validation_flat/*
 /experiments/pk_eval/temporal_pk_validation_flat/predictions/*
 /experiments/pk_eval/cafaeval_crosscheck/*
