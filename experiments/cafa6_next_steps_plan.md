@@ -1729,6 +1729,47 @@ training. Not yet decided: whether to keep pushing epochs at this same 10,000-ex
 exposure reliably helps" is well-established, or treat 0.6877 as sufficient evidence to promote
 this into `training_run.py`'s main() training loop.
 
+**Status update (2026-11-01): pivoted to the full dataset (52,579 examples), 20 epochs — new
+best result, still not plateaued.** Before this run, added real checkpoint persistence
+(`--checkpoint-dir`/`--resume-from-checkpoint`, `torch.save` of model+optimizer+epoch) to
+`train_autoregressive_head.py` — the 10k-scale spikes were ephemeral by design, but a run this
+long needs crash recovery. Checkpoints are gitignored (`/experiments/label_embedding/checkpoints/`)
+and never committed; a promoted checkpoint would go to the HF Hub instead, same path item 8's
+baseline uses. (Separately confirmed the project's GitHub LFS bandwidth complaint was unrelated —
+121+27 historical revisions of the shelved mf_span experiment's `positional_mf_links.json`/
+`positional_mf_gaps.json`, ~18GB, already on `origin/master` since 2026-09-06 — not this item;
+left as-is per the user's call, since it's pre-existing remote state, not new growth.)
+
+Dense/truncated mean AUROC per `--diagnostic-every-n-epochs 2`, same non-monotonic-but-rising
+shape as every prior scale:
+
+| epoch | mean AUROC (dense, truncated) |
+|---|---|
+| 2 | 0.5695 |
+| 4 | 0.6016 |
+| 6 | 0.5961 |
+| 8 | 0.5986 |
+| 10 | 0.6188 |
+| 12 | 0.6538 |
+| 14 | 0.6872 |
+| 16 | 0.6831 |
+| 18 | 0.6897 |
+| 20 (final) | 0.7159 |
+
+**Full-label-set AUROC: 0.6987** (6820/27191 labels evaluable) — the new best result, ahead of
+item 8's baseline (0.6577) and the previous best 10k/80-epoch run (0.6877). Still rising through
+epoch 20 (0.6897→0.7159, epoch 18→20) with no flattening — the full dataset hasn't even reached
+the epoch count the 10k subset needed before *it* showed real convergence signs (stop-head MAE
+convergence, slowing AUROC growth), so there's no reason to expect this has converged either.
+
+**Real cost: `real 1484m31s` (~24.7h)** for 20 epochs — matches the pre-run extrapolation
+(~23-24.5h) from the 10k-scale timing, confirming the scaling model holds at this data size too.
+Per-epoch cost (~74 min) is now the right unit to reason about extending: a `--resume-from-checkpoint`
+continuation is cheap incrementally (no restart tax) compared to the first 24.7h. Not yet decided:
+extend this run further via resume (more epochs, same full dataset, cost ~74min/epoch) to chase
+the still-rising curve, or treat 0.6987 — already a clear margin over item 8's baseline at full
+data scale — as sufficient to promote into `training_run.py`'s own `main()` loop now.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features
