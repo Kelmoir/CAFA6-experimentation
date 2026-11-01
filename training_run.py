@@ -1648,8 +1648,24 @@ def main() -> None:
                               "--use-aspect-input, --use-known-input.")
     parser.add_argument("--label-embeddings-path", default="experiments/label_embedding/term_embeddings.pt",
                          help="Cached term-embedding tensor from experiments/label_embedding/"
-                              "build_term_embeddings.py, used only when --use-label-embedding-head is set. "
-                              "Its term order must exactly match the dataset's own label2id ordering.")
+                              "build_term_embeddings.py, used by --use-label-embedding-head or "
+                              "--use-autoregressive-label-head. Its term order must exactly match "
+                              "the dataset's own label2id ordering.")
+    parser.add_argument("--use-autoregressive-label-head", action=argparse.BooleanOptionalAction, default=False,
+                         help="Item 16 (see experiments/cafa6_next_steps_plan.md): emit GO terms "
+                              "one at a time via AutoregressiveLabelEmbeddingHead instead of "
+                              "scoring the full label set from a single static point -- fixes the "
+                              "single-point multi-label capacity cap item 8 hit. Full-dataset/"
+                              "20-epoch result: 0.6987 full-label-set mean AUROC, ahead of item "
+                              "8's 0.6577 baseline, still rising (no plateau found at any scale "
+                              "tested). Short-circuits main() into run_autoregressive_training "
+                              "(experiments/label_embedding/train_autoregressive_head.py) right "
+                              "after argument parsing -- its training loop, loss, batching, and "
+                              "diagnostics are all sequence-shaped, not the fixed-shape dense "
+                              "multi-hot path the rest of this file assumes, so almost none of "
+                              "main()'s other machinery (preprocess_batch, compute_loss, nnPU, "
+                              "LoRA, hierarchy penalty, etc.) applies once this is set. Mutually "
+                              "exclusive with every other head-swap flag.")
     parser.add_argument("--hierarchy-loss-weight", type=float, default=0.0,
                          help="Weight on a training-time hinge penalty (relu(child_logit - "
                               "parent_logit), see hierarchy_consistency_penalty) that discourages "
@@ -1727,7 +1743,23 @@ def main() -> None:
                               "reshaping the shared backbone, independent of prior calibration. Pass "
                               "--no-nnpu-detach-anchor-backbone to restore the old (pre-v1.4) behavior for an "
                               "ablation comparison.")
+    # Deferred import: experiments/label_embedding/train_autoregressive_head.py imports FROM
+    # this module (create_esm, create_esm_tokenizer, etc.) at its own top level, so importing
+    # it back at this module's top level would be circular. By the time main() runs, this
+    # module is already fully loaded, so a local import here is safe either way.
+    from experiments.label_embedding.train_autoregressive_head import (
+        add_autoregressive_args, run_autoregressive_training)
+    add_autoregressive_args(parser)
     args = parser.parse_args()
+
+    if args.use_autoregressive_label_head and (
+            args.use_lora or args.use_known_input or args.use_aspect_input or args.use_label_embedding_head):
+        raise ValueError(
+            "--use-autoregressive-label-head is mutually exclusive with every other head-swap "
+            "flag (--use-lora/--use-known-input/--use-aspect-input/--use-label-embedding-head)")
+    if args.use_autoregressive_label_head:
+        run_autoregressive_training(args)
+        return
 
     if args.use_known_input:
         if args.mask_sparse_negatives_max_total_terms is not None or args.loss_mask_from_dataset:

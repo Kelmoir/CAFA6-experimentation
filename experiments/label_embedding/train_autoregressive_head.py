@@ -307,26 +307,13 @@ def print_example_predictions(model, tokenizer, examples, depth, label_names, de
     print("=" * 70)
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="Item 16: autoregressive label-embedding decoder spike")
-    parser.add_argument("--data-path", default="data/cafa-6-protein-function-prediction/dataset_full")
-    parser.add_argument("--dataset-repo-id", default="kelmoir/cafa6-full")
-    parser.add_argument("--label-embeddings-path", default="experiments/label_embedding/term_embeddings.pt")
-    parser.add_argument("--go-dependency-graph-path", default=None)
-    parser.add_argument("--model-name", default="facebook/esm2_t12_35M_UR50D")
-    parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
-    parser.add_argument("--unfreeze-last-n", type=int, default=4)
-    parser.add_argument("--esm-dropout", type=float, default=0.1)
-    parser.add_argument("--attention-dropout", type=float, default=0.1)
-    parser.add_argument("--output-dropout", type=float, default=0.1)
-    parser.add_argument("--weight-decay", type=float, default=0.01)
-    parser.add_argument("--learning-rate", type=float, default=5e-5)
-    parser.add_argument("--batch-size", type=int, default=2)
-    parser.add_argument("--grad-accum-steps", type=int, default=8)
-    parser.add_argument("--max-train-samples", type=int, default=None)
-    parser.add_argument("--max-val-samples", type=int, default=None)
-    parser.add_argument("--epochs", type=int, default=1)
-    parser.add_argument("--max-length", type=int, default=4192)
+def add_autoregressive_args(parser: argparse.ArgumentParser) -> None:
+    """Adds only the flags specific to this training path (decode-step cap, root-inclusion A/B,
+    decoder sizing, scheduled sampling, mid-training diagnostics, checkpointing). Flags shared
+    with the dense multi-hot path (--data-path, --model-name, --epochs, --run-diagnostic, etc.)
+    are expected to already exist on the parser -- training_run.py's own has all of them;
+    main() below adds them itself for standalone use.
+    """
     parser.add_argument("--ar-max-decode-steps", type=int, default=64,
                          help="Cap on decode steps/protein. Proteins average 43.7 true labels "
                               "(median 31) but a long tail reaches 451; sequences are truncated "
@@ -346,8 +333,6 @@ def main() -> None:
     parser.add_argument("--ar-decoder-hidden-dim", type=int, default=256)
     parser.add_argument("--ar-scheduled-sampling-final-prob", type=float, default=0.25)
     parser.add_argument("--ar-scheduled-sampling-warmup-frac", type=float, default=0.3)
-    parser.add_argument("--run-diagnostic", action=argparse.BooleanOptionalAction, default=False)
-    parser.add_argument("--diagnostic-max-val-samples", type=int, default=1000)
     parser.add_argument("--diagnostic-every-n-epochs", type=int, default=0,
                          help="If >0, also run the (truncated, cheaper) dense diagnostic every "
                               "N epochs during training -- val_ce trending down is NOT evidence "
@@ -355,20 +340,25 @@ def main() -> None:
                               "teacher-forced and the other is greedy self-fed decode (exposure "
                               "bias can make them decouple). 0 = only run at the very end, as "
                               "before.")
-    parser.add_argument("--rare-term-threshold", type=int, default=100)
-    parser.add_argument("--run-name", default="ar-spike")
-    parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--checkpoint-dir", default=None,
                          help="If set, saves model+optimizer+epoch state here at every "
                               "--diagnostic-every-n-epochs interval and at the end of training. "
-                              "Was unset during the cheap-scale 10k spike (ephemeral by design); "
-                              "a full-dataset run is long enough that losing it to a crash is a "
-                              "real cost, so it's load-bearing from here on.")
+                              "A full-dataset run is long enough that losing it to a crash is a "
+                              "real cost.")
     parser.add_argument("--resume-from-checkpoint", default=None,
                          help="Path to a checkpoint file saved by --checkpoint-dir; resumes "
                               "model/optimizer state and epoch count from it.")
-    args = parser.parse_args()
 
+
+def run_autoregressive_training(args: argparse.Namespace) -> None:
+    """The actual training loop, factored out of main() so training_run.py's own CLI can call
+    it directly (--use-autoregressive-label-head) once this spike's results justified promoting
+    it -- see experiments/cafa6_next_steps_plan.md item 16. Takes the same argparse.Namespace
+    shape main() builds below; training_run.py's parser already carries every flag this needs
+    under the same names (data_path, model_name, epochs, run_diagnostic, ... plus
+    add_autoregressive_args' own ar_*/checkpoint_dir/diagnostic_every_n_epochs flags), so no
+    translation layer is needed between the two CLIs.
+    """
     random.seed(args.seed)
     torch.manual_seed(args.seed)
     device = torch.device(args.device)
@@ -576,6 +566,36 @@ def main() -> None:
                                    device, args.max_length, args.ar_max_decode_steps)
 
     print(f"[SUMMARY] run_name={args.run_name} done")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Item 16: autoregressive label-embedding decoder spike")
+    parser.add_argument("--data-path", default="data/cafa-6-protein-function-prediction/dataset_full")
+    parser.add_argument("--dataset-repo-id", default="kelmoir/cafa6-full")
+    parser.add_argument("--label-embeddings-path", default="experiments/label_embedding/term_embeddings.pt")
+    parser.add_argument("--go-dependency-graph-path", default=None)
+    parser.add_argument("--model-name", default="facebook/esm2_t12_35M_UR50D")
+    parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
+    parser.add_argument("--unfreeze-last-n", type=int, default=4)
+    parser.add_argument("--esm-dropout", type=float, default=0.1)
+    parser.add_argument("--attention-dropout", type=float, default=0.1)
+    parser.add_argument("--output-dropout", type=float, default=0.1)
+    parser.add_argument("--weight-decay", type=float, default=0.01)
+    parser.add_argument("--learning-rate", type=float, default=5e-5)
+    parser.add_argument("--batch-size", type=int, default=2)
+    parser.add_argument("--grad-accum-steps", type=int, default=8)
+    parser.add_argument("--max-train-samples", type=int, default=None)
+    parser.add_argument("--max-val-samples", type=int, default=None)
+    parser.add_argument("--epochs", type=int, default=1)
+    parser.add_argument("--max-length", type=int, default=4192)
+    add_autoregressive_args(parser)
+    parser.add_argument("--run-diagnostic", action=argparse.BooleanOptionalAction, default=False)
+    parser.add_argument("--diagnostic-max-val-samples", type=int, default=1000)
+    parser.add_argument("--rare-term-threshold", type=int, default=100)
+    parser.add_argument("--run-name", default="ar-spike")
+    parser.add_argument("--seed", type=int, default=42)
+    args = parser.parse_args()
+    run_autoregressive_training(args)
 
 
 if __name__ == "__main__":
