@@ -1770,6 +1770,40 @@ extend this run further via resume (more epochs, same full dataset, cost ~74min/
 the still-rising curve, or treat 0.6987 — already a clear margin over item 8's baseline at full
 data scale — as sufficient to promote into `training_run.py`'s own `main()` loop now.
 
+**Status update (2026-11-02): promoted into `training_run.py`'s own CLI, then extended the full-
+dataset run to 40 epochs via resume — the epoch 20 checkpoint turns out to be the best one, not
+epoch 40.** `training_run.py --use-autoregressive-label-head` now short-circuits `main()` into
+`run_autoregressive_training()`, factored out of `train_autoregressive_head.py`'s own `main()`
+(imported, not duplicated — the autoregressive training loop/loss/batching/diagnostics stay in
+that file since they're sequence-shaped and don't fit the rest of `main()`'s fixed-shape dense
+multi-hot machinery; the reverse import is deferred inside `training_run.py`'s `main()` to avoid
+a circular import). Verified on CPU smoke tests before committing, then verified for real by
+using the new path itself to resume the full-dataset run from the epoch-20 checkpoint out to 40
+epochs (`--checkpoint-dir`/`--resume-from-checkpoint` both exercised on a real 22h GPU run, not
+just the short CPU tests):
+
+| epoch | mean AUROC (dense, truncated) | full-label-set AUROC | val_top1_acc |
+|---|---|---|---|
+| 20 (prior run) | 0.7159 | **0.6987** | — |
+| 24 | — (dense only) | — | 0.3581 |
+| 28 | — (dense only) | — | 0.3630 |
+| 32 | — (dense only) | — | 0.3639 |
+| 36 | 0.7148 | — (dense only) | 0.3627 |
+| 40 (final) | 0.7070 | 0.6865 | 0.3630 |
+
+**Extending past epoch 20 did not help — it's a mild regression, not further improvement.**
+Full-label-set AUROC dropped from 0.6987 (epoch 20) to 0.6865 (epoch 40), and `val_top1_acc`
+plateaued/wobbled in a narrow 0.363-0.370 band from epoch ~28 onward while `train_top1_acc` kept
+creeping up (0.4169→0.4257) as `scheduled_sampling_prob` ramped from 0.08 to 0.25 — a train/val
+divergence consistent with mild overfitting, not a wiring bug (the same scheduled-sampling-driven
+split noted in earlier status updates, just past the point where it still helps). **The epoch-20
+checkpoint (`experiments/label_embedding/checkpoints/item16-fulldata/epoch_20.pt`) is the best
+result found anywhere in this research line and the one to promote/push to the Hub, not epoch
+40** — this reverses the "still rising, not yet plateaued" framing from the 2026-11-01 update;
+the plateau was in fact right around epoch 20 on the full dataset, not later.
+
+Not yet done: pushing the epoch-20 checkpoint to the HF Hub (same path item 8's baseline uses).
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features
