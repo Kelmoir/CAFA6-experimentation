@@ -85,20 +85,14 @@ def generate_stop_truncated(model, input_ids, attention_mask, max_steps):
     return best_logit
 
 
-def run_ar_inference(model, tokenizer, sequences, device, batch_size, max_length, max_steps,
-                      respect_stop_head: bool = False, use_raw_logit: bool = False) -> np.ndarray:
+def run_ar_inference_raw(model, tokenizer, sequences, device, batch_size, max_length, max_steps,
+                          respect_stop_head: bool = False) -> np.ndarray:
     """Same generate()-based scoring as train_autoregressive_head.run_full_label_diagnostic:
     best_logit is already a full-[batch, num_labels] score at every decode step regardless of
-    max_steps, so no truncation caveat applies here -- just sigmoid it into [0,1]. With
-    --respect-stop-head, uses generate_stop_truncated instead, which drops each example's
-    post-stop decode tail from the max.
-
-    With --use-raw-logit: skip the sigmoid and min-max scale the raw logits into [0,1] instead.
-    The AR decoder's trained `scale` (step()'s shared scalar, training_run.py) pushes most
-    best_logit magnitudes past ~20, where sigmoid saturates to exactly 0.0/1.0 in float
-    precision -- destroying rank information the thresholds sweep could otherwise use. A
-    min-max affine map is monotonic (preserves the same ranking sigmoid would, were it not
-    saturated) but keeps full separation instead of collapsing it.
+    max_steps, so no truncation caveat applies here. Returns raw (unsquashed) logits -- callers
+    decide how to turn them into probabilities. With --respect-stop-head, uses
+    generate_stop_truncated instead, which drops each example's post-stop decode tail from the
+    max.
     """
     model.eval()
     all_best_logits = []
@@ -117,11 +111,67 @@ def run_ar_inference(model, tokenizer, sequences, device, batch_size, max_length
             done = min(start + batch_size, len(sequences))
             if done % (batch_size * 20) == 0 or done == len(sequences):
                 print(f"[INFO] AR decoder inference: {done}/{len(sequences)} proteins")
-    logits = np.concatenate(all_best_logits, axis=0)
+    return np.concatenate(all_best_logits, axis=0)
+
+
+def run_ar_inference(model, tokenizer, sequences, device, batch_size, max_length, max_steps,
+                      respect_stop_head: bool = False, use_raw_logit: bool = False) -> np.ndarray:
+    """run_ar_inference_raw, turned into [0,1] probabilities. With --use-raw-logit: skip the
+    sigmoid and min-max scale the raw logits into [0,1] instead. The AR decoder's trained
+    `scale` (step()'s shared scalar, training_run.py) pushes most best_logit magnitudes past
+    ~20, where sigmoid saturates to exactly 0.0/1.0 in float precision -- destroying rank
+    information the thresholds sweep could otherwise use. A min-max affine map is monotonic
+    (preserves the same ranking sigmoid would, were it not saturated) but keeps full separation
+    instead of collapsing it.
+    """
+    logits = run_ar_inference_raw(model, tokenizer, sequences, device, batch_size, max_length,
+                                   max_steps, respect_stop_head=respect_stop_head)
     if use_raw_logit:
         lo, hi = logits.min(), logits.max()
         return (logits - lo) / (hi - lo + 1e-9)
     return 1.0 / (1.0 + np.exp(-logits))
+
+
+def fit_per_label_calibration(cal_logits: np.ndarray, cal_labels: np.ndarray,
+                               min_pos: int = 5, min_neg: int = 5) -> tuple:
+    """Per-label Platt scaling: fit independent (scale, bias) for each label via 1-D logistic
+    regression against held-out ground truth, so sigmoid(a[j]*logit + b[j]) is calibrated
+    against label j's OWN base rate -- unlike a global rescale (sigmoid, --use-raw-logit), this
+    can change labels' scores relative to EACH OTHER at a shared threshold, which is exactly
+    what the AR decoder's shared softmax-CE `scale` never had to get right (softmax only ever
+    compares labels within one decode step, never calibrates one label's absolute score against
+    another's across the full label space the way the baseline's independent per-label BCE
+    does). Labels with too few positive/negative examples in the calibration set to fit
+    reliably fall back to one pooled (global) fit across every (logit, label) pair.
+    """
+    from sklearn.linear_model import LogisticRegression
+
+    n_samples, n_labels = cal_logits.shape
+    a = np.ones(n_labels)
+    b = np.zeros(n_labels)
+    fit_mask = np.zeros(n_labels, dtype=bool)
+    for j in range(n_labels):
+        y = cal_labels[:, j]
+        n_pos = int(y.sum())
+        if n_pos < min_pos or (n_samples - n_pos) < min_neg:
+            continue
+        clf = LogisticRegression(C=1.0, max_iter=200)
+        clf.fit(cal_logits[:, j].reshape(-1, 1), y)
+        a[j], b[j] = clf.coef_[0, 0], clf.intercept_[0]
+        fit_mask[j] = True
+
+    global_clf = LogisticRegression(C=1.0, max_iter=200)
+    global_clf.fit(cal_logits.reshape(-1, 1), cal_labels.reshape(-1).astype(int))
+    a[~fit_mask] = global_clf.coef_[0, 0]
+    b[~fit_mask] = global_clf.intercept_[0]
+    print(f"[INFO] Per-label calibration: fit {fit_mask.sum()}/{n_labels} labels directly "
+          f"(>={min_pos} positives, >={min_neg} negatives in {n_samples}-sample calibration "
+          f"set); {(~fit_mask).sum()} fell back to a pooled global fit.")
+    return a, b
+
+
+def apply_calibration(logits: np.ndarray, a: np.ndarray, b: np.ndarray) -> np.ndarray:
+    return 1.0 / (1.0 + np.exp(-(a * logits + b)))
 
 
 def load_ar_model(checkpoint_path: Path, label_embeddings_path: Path, model_name: str,
@@ -190,6 +240,17 @@ def main() -> None:
                      help="Skip sigmoid and min-max scale raw best_logit values into [0,1] "
                           "instead, to recover rank resolution lost to sigmoid saturation at "
                           "the AR decoder's large trained scale.")
+    ap.add_argument("--calibrate", action="store_true",
+                     help="Fit per-label Platt scaling (independent scale/bias per label) on "
+                          "--calibration-split, then apply it to the AR decoder's test-split "
+                          "logits instead of the plain sigmoid/--use-raw-logit. Overrides "
+                          "--use-raw-logit when both are passed.")
+    ap.add_argument("--calibration-split", default="validation")
+    ap.add_argument("--calibration-max-samples", type=int, default=4000)
+    ap.add_argument("--calib-min-pos", type=int, default=5,
+                     help="Minimum positive examples in the calibration set for a label to get "
+                          "its own fit instead of falling back to the pooled global fit.")
+    ap.add_argument("--calib-min-neg", type=int, default=5)
 
     ap.add_argument("--skip-baseline", action="store_true")
     ap.add_argument("--skip-ar", action="store_true")
@@ -247,15 +308,37 @@ def main() -> None:
         ar_model = load_ar_model(Path(args.ar_checkpoint), Path(args.label_embeddings_path),
                                   args.ar_model_name, args.ar_decoder_hidden_dim, label_names, device)
         ar_tokenizer = training_run.create_esm_tokenizer(args.ar_model_name)
-        ar_probs = run_ar_inference(ar_model, ar_tokenizer, sequences, device, args.ar_batch_size,
-                                     args.max_length, args.ar_max_decode_steps,
-                                     respect_stop_head=args.respect_stop_head,
-                                     use_raw_logit=args.use_raw_logit)
         ar_label = "AUTOREGRESSIVE (item 16)"
         if args.respect_stop_head:
             ar_label += ", stop-head-truncated"
-        if args.use_raw_logit:
-            ar_label += ", raw-logit"
+        if args.calibrate:
+            cal_split = dataset[args.calibration_split]
+            if len(cal_split) > args.calibration_max_samples:
+                cal_split = cal_split.select(range(args.calibration_max_samples))
+            cal_sequences = list(cal_split["sequence"])
+            cal_labels_matrix = ecs.extract_labels_matrix(cal_split, len(label_names))
+            print(f"[INFO] Fitting per-label calibration on {len(cal_sequences)} proteins from "
+                  f"'{args.calibration_split}' split")
+            cal_logits = run_ar_inference_raw(ar_model, ar_tokenizer, cal_sequences, device,
+                                               args.ar_batch_size, args.max_length,
+                                               args.ar_max_decode_steps,
+                                               respect_stop_head=args.respect_stop_head)
+            cal_a, cal_b = fit_per_label_calibration(cal_logits, cal_labels_matrix,
+                                                      args.calib_min_pos, args.calib_min_neg)
+            test_logits = run_ar_inference_raw(ar_model, ar_tokenizer, sequences, device,
+                                                args.ar_batch_size, args.max_length,
+                                                args.ar_max_decode_steps,
+                                                respect_stop_head=args.respect_stop_head)
+            ar_probs = apply_calibration(test_logits, cal_a, cal_b)
+            ar_label += ", per-label-calibrated"
+        else:
+            ar_probs = run_ar_inference(ar_model, ar_tokenizer, sequences, device,
+                                         args.ar_batch_size, args.max_length,
+                                         args.ar_max_decode_steps,
+                                         respect_stop_head=args.respect_stop_head,
+                                         use_raw_logit=args.use_raw_logit)
+            if args.use_raw_logit:
+                ar_label += ", raw-logit"
         results["autoregressive"] = score(ar_label, ar_probs, labels_matrix,
                                            known, ia_weights, descendant_idx, thresholds)
 
