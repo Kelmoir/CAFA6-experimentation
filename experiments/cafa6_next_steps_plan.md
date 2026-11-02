@@ -1804,6 +1804,44 @@ the plateau was in fact right around epoch 20 on the full dataset, not later.
 
 Not yet done: pushing the epoch-20 checkpoint to the HF Hub (same path item 8's baseline uses).
 
+**Status update (2026-11-02): scored against the real CAFA metric and the real baseline —
+the decoder clearly loses, correcting the entire AUROC-based narrative above.** User's
+challenge: "the change in quality is so tiny" (re: the AUROC margin over 0.6577), prompting an
+actual test-scoring run under the real competition rule (IA-weighted Fmax, DAG-propagated,
+threshold-swept — `experiments/label_embedding/evaluate_cafa_fmax.py`, reusing
+`compute_ia_weighted_fmax` already cross-checked against the real `cafaeval` package) instead of
+AUROC, and against the real Tier-0 baseline (`trial-013`, `kelmoir/cafa6-esm@main`) instead of
+item 8's throwaway 2,000-example control run. 2,000-protein test-split subset, same label space,
+same proteins, both models DAG-propagated identically:
+
+| | Fmax | precision | recall | @threshold |
+|---|---|---|---|---|
+| **Baseline** (trial-013, full scale) | **0.3807** | 0.4056 | 0.3586 | 0.25 |
+| **Autoregressive decoder** (epoch 20) | 0.2610 | 0.2663 | 0.2559 | 0.98 |
+
+**The decoder loses by a wide margin (−0.12 absolute, −31% relative) on the metric that actually
+matters.** This retroactively reframes every "beats the baseline" claim above: those were all
+against `mean_auroc=0.6577`, a cheap 2,000-example/5-epoch dense-classifier control run item 8
+built for its own ablation, never a real checkpoint — not against `trial-013`, the project's
+actual promoted Tier-0 model, which reaches **0.8731 mean AUROC** at full scale (CLAUDE.md). Item
+16's decoder (0.6987 full-label AUROC) was never ahead of the real best model on AUROC either; it
+only looked competitive against a strawman. The AR decoder's own high confidence threshold
+(0.98) at its best Fmax point also suggests its probability outputs are poorly calibrated
+relative to the classifier's (best threshold 0.25) — consistent with a model that ranks
+real signal (positive AUROC margin over chance) but whose absolute confidence scores don't
+translate into good precision/recall trade-offs the way the dense classifier's do.
+
+**Net assessment: item 16 should not be promoted as a replacement for the Tier-0 baseline.** The
+promotion work into `training_run.py`'s CLI stays (it's real, reusable infrastructure, and this
+scoring script benefited from it), but the autoregressive decoder itself does not currently beat
+the thing that matters. Candidate next steps, not yet decided: investigate why Fmax calibration
+is so much worse than the classifier's despite a positive AUROC margin over chance (probability
+scale/temperature, the weak early stop-head story, or a structural mismatch between per-step
+softmax-style scores and a flat sigmoid classifier's scores); abandon this architecture for the
+full-label-space task; or treat it as validated infrastructure for item 9's variable-cardinality
+auxiliary prediction use case (where no fixed-shape baseline exists to lose against) rather than
+as a GO-term classifier replacement.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features

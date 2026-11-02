@@ -1,0 +1,39 @@
+{
+  "config": {
+    "data_path": "/home/kelmoir/Dokumente/python/CAFA_6_protein_challenge/data/cafa-6-protein-function-prediction/dataset_full",
+    "dataset_repo_id": "kelmoir/cafa6-full",
+    "split": "test",
+    "max_samples": 2000,
+    "ia_file": "/home/kelmoir/Dokumente/python/CAFA_6_protein_challenge/data/cafa-6-protein-function-prediction/IA.tsv",
+    "dep_graph_file": null,
+    "threshold_step": 0.01,
+    "device": "cuda",
+    "baseline_repo": "kelmoir/cafa6-esm",
+    "baseline_revision": "main",
+    "baseline_batch_size": 16,
+    "ar_checkpoint": "/home/kelmoir/Dokumente/python/CAFA_6_protein_challenge/experiments/label_embedding/checkpoints/item16-fulldata/epoch_20.pt",
+    "ar_model_name": "facebook/esm2_t12_35M_UR50D",
+    "ar_decoder_hidden_dim": 256,
+    "ar_max_decode_steps": 64,
+    "ar_batch_size": 8,
+    "label_embeddings_path": "/home/kelmoir/Dokumente/python/CAFA_6_protein_challenge/experiments/label_embedding/term_embeddings.pt",
+    "max_length": 1024,
+    "skip_baseline": false,
+    "skip_ar": false,
+    "results_out": "experiments/label_embedding/logs/item16_cafa_fmax_vs_baseline.json"
+  },
+  "n_proteins": 2000,
+  "n_labels": 27191,
+  "baseline": {
+    "fmax": 0.38067884978313055,
+    "threshold": 0.25,
+    "precision": 0.4056391597755445,
+    "recall": 0.35861225944742287
+  },
+  "autoregressive": {
+    "fmax": 0.2610067663055679,
+    "threshold": 0.98,
+    "precision": 0.26632224293429935,
+    "recall": 0.25589931889925854
+  }
+}
