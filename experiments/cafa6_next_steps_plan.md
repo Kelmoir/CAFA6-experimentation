@@ -1900,6 +1900,39 @@ across the full 27,191-label space the way independent per-label BCE training do
 next thing worth trying before concluding the architecture itself needs a training-time
 redesign or should be retargeted at item 9 instead.
 
+**Follow-up (2026-11-02): tried per-label calibration -- helps, but doesn't close the gap.**
+Added `--calibrate` to `evaluate_cafa_fmax.py`: fits independent per-label Platt scaling
+(`sigmoid(a[j]*logit + b[j])`, 1-D logistic regression per label via sklearn) against 4,000
+held-out **validation**-split proteins (disjoint from the 2,000-protein test split used for
+every comparison so far), falling back to one pooled global fit for labels too rare to fit
+directly (`--calib-min-pos`/`--calib-min-neg`, default 5 each) -- 3,747/27,191 labels got a
+direct fit, the remaining 23,444 (too few positives in 4,000 samples) fell back to the pooled
+fit. Applied to the same test-split logits used throughout, then re-scored.
+
+Result: **Fmax 0.2919 @threshold=0.18** (precision=0.3079, recall=0.2775) -- up from 0.2610
+uncalibrated, a real **+0.031** absolute gain, not noise (unlike the global-rescale variants,
+which all landed within 0.008 of each other). This confirms the per-label cross-label-ordering
+hypothesis was onto something real: some of the Fmax loss WAS an artifact of the shared-scale
+softmax-CE objective never calibrating one label's absolute score against another's. But it
+only recovers about a quarter of the gap to the baseline (0.1197 -> 0.0888 remaining,
+~26% closed) -- most of the deficit survives calibration, meaning most of it is a genuine
+discriminative-power gap, not a calibration artifact. Per-label Platt scaling with only 4,000
+calibration samples also can't meaningfully help the 23,444 labels too rare to fit directly
+(the large majority of the label space), so this result likely understates what a better-
+resourced calibration (more calibration data, or calibration folded into training itself)
+could recover -- but even an generous reading doesn't suggest it would fully close a 0.09 Fmax
+gap.
+
+**Net-net on item 16**: real signal exists (positive AUROC, and calibration recovers real Fmax),
+but the architecture as built loses meaningfully to the Tier-0 baseline on the metric that
+actually matters, and no cheap post-hoc fix available so far (decode truncation, raw-logit
+rescaling, per-label Platt scaling) closes that gap. Promoting it as a baseline replacement is
+not warranted. Worth keeping in mind for item 9's variable-cardinality use case, where there's
+no fixed-shape baseline to lose a calibration fight against; a training-time redesign (replacing
+or supplementing the shared-scale softmax CE with something that also pressures absolute,
+per-label-calibrated scores) is the only remaining path to making this a GO-term classifier
+replacement, and hasn't been attempted.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features
