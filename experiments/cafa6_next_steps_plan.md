@@ -1868,6 +1868,38 @@ full-label-space GO-term classification task; or treat it as validated infrastru
 lose against, and relative ranking/sequence structure may matter more than absolute
 calibration) rather than as a GO-term classifier replacement.
 
+**Follow-up (2026-11-02): tried the cheapest post-hoc calibration test (`--use-raw-logit`) --
+no improvement.** Before attempting a real temperature/Platt fit, checked the cheapest possible
+version of hypothesis (2) first: `step()`'s trained `scale` (shared across all 27,191 labels and
+every decode step) pushes most `best_logit` magnitudes past ~20, where `sigmoid` saturates to
+exactly 0.0/1.0 in float precision -- which would *also* destroy real rank information
+regardless of training-objective quality, independent of calibration. Added `--use-raw-logit`
+(skips the sigmoid, min-max scales raw `best_logit` into `[0,1]` instead, a monotonic transform
+that preserves whatever ranking the saturated sigmoid would have, minus the precision loss).
+Result: **Fmax 0.2628 @threshold=0.76** -- statistically indistinguishable from both the default
+sigmoid scoring (0.2610 @0.98) and the stop-truncated variant (0.2688 @0.97). All three variants
+land in the same 0.26-0.27 band, ~0.12 below the baseline's 0.3807, regardless of how the decode
+or the logit-to-probability mapping is handled.
+
+This rules out float-precision saturation as well: it isn't that a real, strong ranking signal
+is hiding behind a collapsed sigmoid -- the `best_logit` ranking itself carries less
+discriminative power at the precision/recall operating point Fmax cares about than the
+baseline's independently-calibrated per-label BCE logits do. Any *global* monotonic rescaling
+(sigmoid, min-max raw-logit, stop-truncated raw-logit -- all a single affine map applied
+uniformly across every label) cannot manufacture discriminative power that isn't there: it
+preserves the same ranking both within and across labels, so it's already fully explored by the
+existing threshold sweep (a global Platt/temperature fit -- single `a`,`b` for every label --
+would be mathematically redundant with `--use-raw-logit`'s result, not a new data point).
+
+What IS still untested: **per-label** calibration (independent scale/bias fit per label,
+against held-out ground truth). Unlike a global rescale, this changes each label's score
+*relative to every other label* at a shared global threshold -- exactly the thing a single
+shared softmax-CE `scale` never had to get right, since softmax CE only ever compares labels
+*within* the same decode step, never calibrates one label's absolute score against another's
+across the full 27,191-label space the way independent per-label BCE training does. This is the
+next thing worth trying before concluding the architecture itself needs a training-time
+redesign or should be retargeted at item 9 instead.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features
