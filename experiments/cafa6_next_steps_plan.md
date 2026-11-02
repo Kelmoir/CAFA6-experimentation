@@ -1834,13 +1834,39 @@ translate into good precision/recall trade-offs the way the dense classifier's d
 **Net assessment: item 16 should not be promoted as a replacement for the Tier-0 baseline.** The
 promotion work into `training_run.py`'s CLI stays (it's real, reusable infrastructure, and this
 scoring script benefited from it), but the autoregressive decoder itself does not currently beat
-the thing that matters. Candidate next steps, not yet decided: investigate why Fmax calibration
-is so much worse than the classifier's despite a positive AUROC margin over chance (probability
-scale/temperature, the weak early stop-head story, or a structural mismatch between per-step
-softmax-style scores and a flat sigmoid classifier's scores); abandon this architecture for the
-full-label-space task; or treat it as validated infrastructure for item 9's variable-cardinality
-auxiliary prediction use case (where no fixed-shape baseline exists to lose against) rather than
-as a GO-term classifier replacement.
+the thing that matters.
+
+**Root-cause follow-up (2026-11-02): isolated to a training-objective/calibration mismatch, not
+decode length.** Two competing hypotheses for the AUROC-vs-Fmax gap: (1) `generate()`'s
+`best_logit_per_label` always maxes over the full `--ar-max-decode-steps` budget "regardless of
+the stop head" (by design, so every label gets a dense score), but `make_collate_fn`'s
+`seq_mask` only supervises steps up to each protein's true label count -- most proteins (mean
+43.7/median 31 labels, cap 64) spend a real fraction of that decode in a never-trained,
+self-fed-back extrapolation regime, which could be injecting pure noise into every label's
+score; or (2) `label_logits = scale * cosine_sim + bias` is trained via per-step **softmax**
+cross-entropy (`step_losses`) over a single **shared scalar** `scale` across all 27,191 labels
+and every step -- this only has to win a relative ranking within each step, never an absolute,
+per-label-calibrated marginal probability the way the baseline's independent BCE-trained logits
+are, which is consistent with the pathologically high best-F1 threshold (0.98) seen in both
+AUROC and Fmax scoring.
+
+Added `--respect-stop-head` to `evaluate_cafa_fmax.py` (drops each protein's post-stop decode
+tail from the max instead of always running the full budget) to separate these. Result: **Fmax
+0.2610 -> 0.2688, essentially unchanged (threshold 0.98 -> 0.97)** -- hypothesis (1) is ruled
+out, the untrained decode tail is not the dominant cause. This isolates the problem to (2): a
+structural training-objective mismatch (per-step softmax CE over a shared scale parameter vs.
+the classifier's per-label BCE), not a decode-length or stop-head-calibration bug. Fixing it
+would mean either post-hoc calibration (temperature/Platt scaling `best_logit` against held-out
+data before thresholding) or a training-time redesign (something that also pressures absolute,
+per-label-calibrated scale, not just relative per-step ranking) -- a real architecture change,
+not a parameter tweak.
+
+Candidate next steps, not yet decided: attempt post-hoc calibration as a cheap test of whether
+this alone closes enough of the Fmax gap to be worth it; abandon this architecture for the
+full-label-space GO-term classification task; or treat it as validated infrastructure for item
+9's variable-cardinality auxiliary prediction use case (where no fixed-shape baseline exists to
+lose against, and relative ranking/sequence structure may matter more than absolute
+calibration) rather than as a GO-term classifier replacement.
 
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 

@@ -1,0 +1,45 @@
+[INFO] Scoring 2000 proteins from 'test' split, 27191 labels (2000 proteins have >=1 true label)
+Loading weights:   0%|          | 0/209 [00:00<?, ?it/s]Loading weights: 100%|██████████| 209/209 [00:00<00:00, 3857.67it/s]
+[1mAutoregressiveLabelEmbeddingEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t12_35M_UR50D
+Key                           | Status     | 
+------------------------------+------------+-
+lm_head.dense.bias            | UNEXPECTED | 
+lm_head.layer_norm.weight     | UNEXPECTED | 
+esm.embeddings.position_ids   | UNEXPECTED | 
+lm_head.layer_norm.bias       | UNEXPECTED | 
+lm_head.bias                  | UNEXPECTED | 
+lm_head.dense.weight          | UNEXPECTED | 
+classifier.stop_head.bias     | MISSING    | 
+classifier.cell.bias_hh       | MISSING    | 
+classifier.init_state.bias    | MISSING    | 
+classifier.proj.bias          | MISSING    | 
+classifier.cell.weight_hh     | MISSING    | 
+classifier.init_state.weight  | MISSING    | 
+classifier.proj.weight        | MISSING    | 
+classifier.cell.bias_ih       | MISSING    | 
+classifier.stop_head.weight   | MISSING    | 
+classifier.bias               | MISSING    | 
+classifier.label_embed.weight | MISSING    | 
+classifier.cell.weight_ih     | MISSING    | 
+classifier.scale              | MISSING    | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING[3m	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.[0m
+[INFO] Loaded AR decoder from /home/kelmoir/Dokumente/python/CAFA_6_protein_challenge/experiments/label_embedding/checkpoints/item16-fulldata/epoch_20.pt (checkpoint epoch 20)
+[INFO] AR decoder inference: 160/2000 proteins
+[INFO] AR decoder inference: 320/2000 proteins
+[INFO] AR decoder inference: 480/2000 proteins
+[INFO] AR decoder inference: 640/2000 proteins
+[INFO] AR decoder inference: 800/2000 proteins
+[INFO] AR decoder inference: 960/2000 proteins
+[INFO] AR decoder inference: 1120/2000 proteins
+[INFO] AR decoder inference: 1280/2000 proteins
+[INFO] AR decoder inference: 1440/2000 proteins
+[INFO] AR decoder inference: 1600/2000 proteins
+[INFO] AR decoder inference: 1760/2000 proteins
+[INFO] AR decoder inference: 1920/2000 proteins
+[INFO] AR decoder inference: 2000/2000 proteins
+
+[AUTOREGRESSIVE, stop-head-truncated (item 16)] Fmax=0.2688 @threshold=0.97 precision=0.2792 recall=0.2591
+[INFO] Wrote results -> experiments/label_embedding/logs/item16_cafa_fmax_stop_truncated.json
