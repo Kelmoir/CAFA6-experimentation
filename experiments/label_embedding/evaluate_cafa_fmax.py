@@ -53,10 +53,45 @@ DEFAULT_AR_CHECKPOINT = (REPO_ROOT / "experiments" / "label_embedding" / "checkp
 DEFAULT_LABEL_EMBEDDINGS_PATH = REPO_ROOT / "experiments" / "label_embedding" / "term_embeddings.pt"
 
 
-def run_ar_inference(model, tokenizer, sequences, device, batch_size, max_length, max_steps) -> np.ndarray:
+@torch.no_grad()
+def generate_stop_truncated(model, input_ids, attention_mask, max_steps):
+    """Same decode loop as AutoregressiveLabelEmbeddingEsmForSequenceClassification.generate()
+    (training_run.py), but best_logit per example stops accumulating once that example's own
+    stop head has fired, instead of unconditionally maxing over the full max_steps budget --
+    isolates whether the untrained-past-stop decode tail (seq_mask in make_collate_fn never
+    supervises steps past a protein's true label count, yet generate() always decodes all
+    max_steps "regardless of the stop head") is what's destroying Fmax calibration. See
+    experiments/cafa6_next_steps_plan.md item 16's 2026-11-02 status update.
+    """
+    state = model.encode_pooled(input_ids, attention_mask)
+    batch_size = state.shape[0]
+    num_labels = model.classifier.num_labels
+    device = state.device
+    prev = torch.full((batch_size,), num_labels, dtype=torch.long, device=device)  # START
+    emitted_mask = torch.zeros(batch_size, num_labels, dtype=torch.bool, device=device)
+    best_logit = torch.full((batch_size, num_labels), float("-inf"), device=device)
+    stopped = torch.zeros(batch_size, dtype=torch.bool, device=device)
+    for _ in range(max_steps):
+        state, label_logits, stop_logit = model.classifier.step(state, prev)
+        active = (~stopped).unsqueeze(1)
+        # The step where stop fires is itself included (matches step_losses' is_last_step
+        # training target, which is placed AT the true last index, not one before it) --
+        # `stopped` only gates steps AFTER this one.
+        best_logit = torch.where(active, torch.maximum(best_logit, label_logits), best_logit)
+        masked_logits = label_logits.masked_fill(emitted_mask, float("-inf"))
+        prev = masked_logits.argmax(dim=-1)
+        emitted_mask = emitted_mask.scatter(1, prev.unsqueeze(1), True)
+        stopped = stopped | (torch.sigmoid(stop_logit) > 0.5)
+    return best_logit
+
+
+def run_ar_inference(model, tokenizer, sequences, device, batch_size, max_length, max_steps,
+                      respect_stop_head: bool = False) -> np.ndarray:
     """Same generate()-based scoring as train_autoregressive_head.run_full_label_diagnostic:
     best_logit is already a full-[batch, num_labels] score at every decode step regardless of
-    max_steps, so no truncation caveat applies here -- just sigmoid it into [0,1].
+    max_steps, so no truncation caveat applies here -- just sigmoid it into [0,1]. With
+    --respect-stop-head, uses generate_stop_truncated instead, which drops each example's
+    post-stop decode tail from the max.
     """
     model.eval()
     all_best_logits = []
@@ -67,7 +102,10 @@ def run_ar_inference(model, tokenizer, sequences, device, batch_size, max_length
                              return_tensors="pt")
             input_ids = enc["input_ids"].to(device)
             attention_mask = enc["attention_mask"].to(device)
-            _, _, best_logit, _ = model.generate(input_ids, attention_mask, max_steps)
+            if respect_stop_head:
+                best_logit = generate_stop_truncated(model, input_ids, attention_mask, max_steps)
+            else:
+                _, _, best_logit, _ = model.generate(input_ids, attention_mask, max_steps)
             all_best_logits.append(best_logit.cpu().numpy())
             done = min(start + batch_size, len(sequences))
             if done % (batch_size * 20) == 0 or done == len(sequences):
@@ -132,6 +170,12 @@ def main() -> None:
     ap.add_argument("--ar-batch-size", type=int, default=8)
     ap.add_argument("--label-embeddings-path", default=str(DEFAULT_LABEL_EMBEDDINGS_PATH))
     ap.add_argument("--max-length", type=int, default=training_run.MAX_LENGTH)
+    ap.add_argument("--respect-stop-head", action="store_true",
+                     help="Drop each protein's post-stop decode tail from best_logit instead of "
+                          "maxing over the full --ar-max-decode-steps budget regardless of the "
+                          "stop head (generate()'s default/diagnostic convention). Isolates "
+                          "whether the untrained decode tail is responsible for the AR decoder's "
+                          "poor Fmax calibration vs. the real baseline.")
 
     ap.add_argument("--skip-baseline", action="store_true")
     ap.add_argument("--skip-ar", action="store_true")
@@ -190,8 +234,11 @@ def main() -> None:
                                   args.ar_model_name, args.ar_decoder_hidden_dim, label_names, device)
         ar_tokenizer = training_run.create_esm_tokenizer(args.ar_model_name)
         ar_probs = run_ar_inference(ar_model, ar_tokenizer, sequences, device, args.ar_batch_size,
-                                     args.max_length, args.ar_max_decode_steps)
-        results["autoregressive"] = score("AUTOREGRESSIVE (item 16)", ar_probs, labels_matrix,
+                                     args.max_length, args.ar_max_decode_steps,
+                                     respect_stop_head=args.respect_stop_head)
+        ar_label = ("AUTOREGRESSIVE, stop-head-truncated (item 16)" if args.respect_stop_head
+                    else "AUTOREGRESSIVE (item 16)")
+        results["autoregressive"] = score(ar_label, ar_probs, labels_matrix,
                                            known, ia_weights, descendant_idx, thresholds)
 
     if "baseline" in results and "autoregressive" in results:
