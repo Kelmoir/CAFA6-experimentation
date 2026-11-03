@@ -1945,16 +1945,33 @@ architecture could be read as "a list generator" in practice -- and that per-lab
 calibration (0.2919) is still the best result found so far, precisely because it doesn't depend
 on the stop head's accuracy at all.
 
+**Follow-up (2026-11-03): epoch 40 beats epoch 20 on calibrated Fmax, despite its weaker AUROC.**
+The 2026-11-02 continuation-run finding was that epoch 40's full-label AUROC (0.6865) is slightly
+worse than epoch 20's (0.6987), and epoch 20 was picked as "the best checkpoint" on that basis.
+Re-ran the per-label-calibrated Fmax comparison against `epoch_40.pt` (same 2,000-protein test
+split, same 4,000-protein validation calibration fit) to check whether that AUROC-based pick
+still holds on the metric that actually matters.
+
+Result: **Fmax 0.2995 @threshold=0.20** (precision=0.3328, recall=0.2722) -- **better** than
+epoch 20's 0.2919, by +0.0076. The AUROC regression does not carry over to Fmax once per-label
+calibration is applied: AUROC and Fmax are measuring different things for this model (ranking
+quality vs. where the per-label probability actually crosses a shared threshold), so a model that
+ranks slightly worse can still calibrate to a better operating point. Gap to the real baseline
+narrows slightly (0.3807 - 0.2995 = 0.0812, was 0.0888) but remains substantial. Worth checking
+later epochs too if training continues -- AUROC alone is not a reliable proxy for which checkpoint
+is actually best on Fmax for this architecture, now that the two metrics have diverged this
+noticeably.
+
 **Net-net on item 16**: real signal exists (positive AUROC, and calibration recovers real Fmax),
 but the architecture as built loses meaningfully to the Tier-0 baseline on the metric that
 actually matters, and no cheap post-hoc fix tried so far (decode truncation, raw-logit rescaling,
-per-label Platt scaling, hard stop-head-gated list scoring) closes that gap. Promoting it as a
-baseline replacement is not warranted. Worth keeping in mind for item 9's variable-cardinality use
-case, where there's no fixed-shape baseline to lose a calibration fight against; a training-time
-redesign (replacing or supplementing the shared-scale softmax CE with something that also
-pressures absolute, per-label-calibrated scores, and/or giving the stop head substantially more
-training signal) is the only remaining path to making this a GO-term classifier replacement, and
-hasn't been attempted.
+per-label Platt scaling, hard stop-head-gated list scoring, later checkpoint) closes that gap.
+Promoting it as a baseline replacement is not warranted. Worth keeping in mind for item 9's
+variable-cardinality use case, where there's no fixed-shape baseline to lose a calibration fight
+against; a training-time redesign (replacing or supplementing the shared-scale softmax CE with
+something that also pressures absolute, per-label-calibrated scores, and/or giving the stop head
+substantially more training signal) is the only remaining path to making this a GO-term classifier
+replacement, and hasn't been attempted.
 
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
