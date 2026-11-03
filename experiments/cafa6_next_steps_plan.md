@@ -1972,11 +1972,14 @@ of the epoch-40 gain showing up between epoch 32 and 40, not gradually across th
 |---|---|
 | 20 | 0.2919 |
 | 32 | 0.2927 |
+| 36 | 0.2947 |
 | 40 | 0.2995 |
 
-Not enough points to call this a trend -- could be a genuine late-training uptick, or noise
-around a plateau that happened to land slightly higher at 40. Would need more epochs (60, 80, ...)
-to tell apart.
+(Epoch 36 added after a follow-up run; precision=0.3223, recall=0.2714.) Not enough points to
+call this a trend -- could be a genuine late-training uptick, or noise around a plateau that
+happened to land slightly higher at 40. The 32->36->40 stretch reads as a small, fairly steady
+climb though (+0.0020, then +0.0048), unlike the flat 20->32 stretch -- would need more epochs
+(60, 80, ...) to tell a real late-training improvement from noise with any confidence.
 
 **Follow-up (2026-11-03): checked whether the AUROC numbers themselves are a sigmoid-saturation
 artifact -- ruled out.** Given the Fmax-side saturation finding (`--use-raw-logit`,
