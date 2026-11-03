@@ -1923,15 +1923,38 @@ resourced calibration (more calibration data, or calibration folded into trainin
 could recover -- but even an generous reading doesn't suggest it would fully close a 0.09 Fmax
 gap.
 
+**Follow-up (2026-11-03): tried scoring the decoder's actual generated list -- doesn't help
+either.** All of the above still scores the decoder as a dense per-label probability source
+(AUROC's native framing), even though item 16's actual purpose (per the class docstring in
+`training_run.py`) is to emit a LIST of labels and stop -- `generate()` already returns
+`predicted_label_ids` (greedy decode order) and `stop_at` (the step its own stop head first
+fires); real usage is `predicted_label_ids[:, :stop_at]`. Added `--binary-list` to
+`evaluate_cafa_fmax.py`: every label emitted before stop gets a hard prediction of 1.0,
+everything else 0.0 -- no probability, no threshold sweep to game, scored exactly the way the
+architecture is meant to be read.
+
+Result: **Fmax 0.2574** (precision=0.2976, recall=0.2267) -- essentially the same as the plain
+uncalibrated sigmoid score (0.2610) and *worse* than per-label-calibrated (0.2919). The idea was
+sound (sidesteps the probability-calibration question entirely), but it swaps one calibration
+problem for another: now the result is gated directly by the stop head's own timing, and that
+head's MAE is ~21-22 steps out of a 64-step budget (2026-11-02 status update, same checkpoint) --
+far too imprecise to serve as a hard list-length cutoff. Proteins where it fires too early lose
+recall outright; proteins where it fires too late pick up extra noise past the real list. This
+confirms the stop head itself, not just the per-label score scale, needs real work before this
+architecture could be read as "a list generator" in practice -- and that per-label Platt
+calibration (0.2919) is still the best result found so far, precisely because it doesn't depend
+on the stop head's accuracy at all.
+
 **Net-net on item 16**: real signal exists (positive AUROC, and calibration recovers real Fmax),
 but the architecture as built loses meaningfully to the Tier-0 baseline on the metric that
-actually matters, and no cheap post-hoc fix available so far (decode truncation, raw-logit
-rescaling, per-label Platt scaling) closes that gap. Promoting it as a baseline replacement is
-not warranted. Worth keeping in mind for item 9's variable-cardinality use case, where there's
-no fixed-shape baseline to lose a calibration fight against; a training-time redesign (replacing
-or supplementing the shared-scale softmax CE with something that also pressures absolute,
-per-label-calibrated scores) is the only remaining path to making this a GO-term classifier
-replacement, and hasn't been attempted.
+actually matters, and no cheap post-hoc fix tried so far (decode truncation, raw-logit rescaling,
+per-label Platt scaling, hard stop-head-gated list scoring) closes that gap. Promoting it as a
+baseline replacement is not warranted. Worth keeping in mind for item 9's variable-cardinality use
+case, where there's no fixed-shape baseline to lose a calibration fight against; a training-time
+redesign (replacing or supplementing the shared-scale softmax CE with something that also
+pressures absolute, per-label-calibrated scores, and/or giving the stop head substantially more
+training signal) is the only remaining path to making this a GO-term classifier replacement, and
+hasn't been attempted.
 
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
