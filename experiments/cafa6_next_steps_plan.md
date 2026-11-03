@@ -1962,6 +1962,51 @@ later epochs too if training continues -- AUROC alone is not a reliable proxy fo
 is actually best on Fmax for this architecture, now that the two metrics have diverged this
 noticeably.
 
+**Follow-up (2026-11-03): epoch 32 checked for monotonicity -- flat, not a clean climb.** Same
+per-label-calibrated Fmax comparison against `epoch_32.pt`: **Fmax 0.2927** (precision=0.3173,
+recall=0.2717) -- essentially unchanged from epoch 20's 0.2919 (+0.0008, noise-level), with all
+of the epoch-40 gain showing up between epoch 32 and 40, not gradually across the whole
+20-to-40 range:
+
+| Epoch | Fmax (calibrated) |
+|---|---|
+| 20 | 0.2919 |
+| 32 | 0.2927 |
+| 40 | 0.2995 |
+
+Not enough points to call this a trend -- could be a genuine late-training uptick, or noise
+around a plateau that happened to land slightly higher at 40. Would need more epochs (60, 80, ...)
+to tell apart.
+
+**Follow-up (2026-11-03): checked whether the AUROC numbers themselves are a sigmoid-saturation
+artifact -- ruled out.** Given the Fmax-side saturation finding (`--use-raw-logit`,
+2026-11-02), the same question applies to AUROC: `run_full_label_diagnostic`
+(`train_autoregressive_head.py`) computes per-label AUROC via sklearn's `roc_auc_score` on
+`sigmoid(best_logit)`, the identical saturating transform. `roc_auc_score` is invariant to any
+*monotonic* rescaling of its score argument unless that rescaling introduces new ties -- and a
+saturating sigmoid is exactly a tie-introducing transform once logit magnitude exceeds ~20 (many
+distinct values collapse to the same float 1.0/0.0). Ties only ever pull AUROC down, never up, so
+if this were happening, the "epoch 40 regressed on AUROC" call could have been comparing two
+different amounts of a scoring artifact rather than real ranking quality.
+
+Added `check_auroc_saturation.py`: recomputes the identical 1000-example-validation-subset
+AUROC (matching `run_full_label_diagnostic`'s own `diagnostic_ds` convention exactly) two ways,
+on `sigmoid(best_logit)` and on raw `best_logit` directly, for both epoch 20 and epoch 40.
+Result: **zero saturated entries at either checkpoint** (out of 27,191,000 scored entries each),
+raw-logit AUROC identical to sigmoid AUROC to four decimal places (0.6996 vs. 0.6996 at epoch 20,
+0.6865 vs. 0.6865 at epoch 40, delta exactly +0.0000 both times). The saturation hypothesis is
+ruled out for AUROC specifically -- this model's logit magnitudes at these checkpoints never
+actually reach the range where sigmoid loses precision, so the reported AUROC regression is
+real, not a measurement artifact.
+
+This sharpens rather than overturns the earlier finding: AUROC is correctly measuring a real,
+small drop in per-label ranking quality from epoch 20 to 40, while calibrated Fmax genuinely
+improved over the same interval. The two metrics haven't diverged because one of them is broken
+-- they're measuring genuinely different things (rank order vs. where a calibrated probability
+lands relative to one shared threshold), and for this model those two axes have decoupled for
+real. AUROC remains a poor proxy for "which checkpoint is best on Fmax" here, but not because
+it's buggy.
+
 **Net-net on item 16**: real signal exists (positive AUROC, and calibration recovers real Fmax),
 but the architecture as built loses meaningfully to the Tier-0 baseline on the metric that
 actually matters, and no cheap post-hoc fix tried so far (decode truncation, raw-logit rescaling,

@@ -1,0 +1,40 @@
+[INFO] 1000 validation proteins, 27191 labels
+Loading weights:   0%|          | 0/209 [00:00<?, ?it/s]Loading weights: 100%|██████████| 209/209 [00:00<00:00, 4784.15it/s]
+[1mAutoregressiveLabelEmbeddingEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t12_35M_UR50D
+Key                           | Status     | 
+------------------------------+------------+-
+lm_head.dense.bias            | UNEXPECTED | 
+lm_head.bias                  | UNEXPECTED | 
+lm_head.layer_norm.weight     | UNEXPECTED | 
+esm.embeddings.position_ids   | UNEXPECTED | 
+lm_head.layer_norm.bias       | UNEXPECTED | 
+lm_head.dense.weight          | UNEXPECTED | 
+classifier.bias               | MISSING    | 
+classifier.cell.bias_hh       | MISSING    | 
+classifier.init_state.bias    | MISSING    | 
+classifier.cell.weight_ih     | MISSING    | 
+classifier.cell.bias_ih       | MISSING    | 
+classifier.proj.bias          | MISSING    | 
+classifier.label_embed.weight | MISSING    | 
+classifier.stop_head.bias     | MISSING    | 
+classifier.init_state.weight  | MISSING    | 
+classifier.stop_head.weight   | MISSING    | 
+classifier.proj.weight        | MISSING    | 
+classifier.cell.weight_hh     | MISSING    | 
+classifier.scale              | MISSING    | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING[3m	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.[0m
+[INFO] Loaded AR decoder from experiments/label_embedding/checkpoints/item16-fulldata/epoch_40.pt (checkpoint epoch 40)
+[INFO] AR decoder inference: 160/1000 proteins
+[INFO] AR decoder inference: 320/1000 proteins
+[INFO] AR decoder inference: 480/1000 proteins
+[INFO] AR decoder inference: 640/1000 proteins
+[INFO] AR decoder inference: 800/1000 proteins
+[INFO] AR decoder inference: 960/1000 proteins
+[INFO] AR decoder inference: 1000/1000 proteins
+[INFO] 0 entries saturated to ~1.0, 0 to ~0.0 out of 27191000 total
+[SIGMOID]    mean_auroc=0.6865 median_auroc=0.7117 n_evaluable=6820
+[RAW LOGIT]  mean_auroc=0.6865 median_auroc=0.7117 n_evaluable=6820
+[DELTA] raw - sigmoid mean_auroc = +0.0000

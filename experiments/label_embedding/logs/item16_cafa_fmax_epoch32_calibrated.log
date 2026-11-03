@@ -1,0 +1,72 @@
+[INFO] Scoring 2000 proteins from 'test' split, 27191 labels (2000 proteins have >=1 true label)
+Loading weights:   0%|          | 0/209 [00:00<?, ?it/s]Loading weights: 100%|██████████| 209/209 [00:00<00:00, 4160.92it/s]
+[1mAutoregressiveLabelEmbeddingEsmForSequenceClassification LOAD REPORT[0m from: facebook/esm2_t12_35M_UR50D
+Key                           | Status     | 
+------------------------------+------------+-
+lm_head.bias                  | UNEXPECTED | 
+lm_head.dense.weight          | UNEXPECTED | 
+lm_head.layer_norm.bias       | UNEXPECTED | 
+esm.embeddings.position_ids   | UNEXPECTED | 
+lm_head.dense.bias            | UNEXPECTED | 
+lm_head.layer_norm.weight     | UNEXPECTED | 
+classifier.proj.weight        | MISSING    | 
+classifier.bias               | MISSING    | 
+classifier.scale              | MISSING    | 
+classifier.stop_head.bias     | MISSING    | 
+classifier.proj.bias          | MISSING    | 
+classifier.stop_head.weight   | MISSING    | 
+classifier.cell.bias_ih       | MISSING    | 
+classifier.cell.weight_hh     | MISSING    | 
+classifier.init_state.bias    | MISSING    | 
+classifier.cell.bias_hh       | MISSING    | 
+classifier.label_embed.weight | MISSING    | 
+classifier.init_state.weight  | MISSING    | 
+classifier.cell.weight_ih     | MISSING    | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING[3m	:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.[0m
+[INFO] Loaded AR decoder from experiments/label_embedding/checkpoints/item16-fulldata/epoch_32.pt (checkpoint epoch 32)
+[INFO] Fitting per-label calibration on 4000 proteins from 'validation' split
+[INFO] AR decoder inference: 160/4000 proteins
+[INFO] AR decoder inference: 320/4000 proteins
+[INFO] AR decoder inference: 480/4000 proteins
+[INFO] AR decoder inference: 640/4000 proteins
+[INFO] AR decoder inference: 800/4000 proteins
+[INFO] AR decoder inference: 960/4000 proteins
+[INFO] AR decoder inference: 1120/4000 proteins
+[INFO] AR decoder inference: 1280/4000 proteins
+[INFO] AR decoder inference: 1440/4000 proteins
+[INFO] AR decoder inference: 1600/4000 proteins
+[INFO] AR decoder inference: 1760/4000 proteins
+[INFO] AR decoder inference: 1920/4000 proteins
+[INFO] AR decoder inference: 2080/4000 proteins
+[INFO] AR decoder inference: 2240/4000 proteins
+[INFO] AR decoder inference: 2400/4000 proteins
+[INFO] AR decoder inference: 2560/4000 proteins
+[INFO] AR decoder inference: 2720/4000 proteins
+[INFO] AR decoder inference: 2880/4000 proteins
+[INFO] AR decoder inference: 3040/4000 proteins
+[INFO] AR decoder inference: 3200/4000 proteins
+[INFO] AR decoder inference: 3360/4000 proteins
+[INFO] AR decoder inference: 3520/4000 proteins
+[INFO] AR decoder inference: 3680/4000 proteins
+[INFO] AR decoder inference: 3840/4000 proteins
+[INFO] AR decoder inference: 4000/4000 proteins
+[INFO] Per-label calibration: fit 3747/27191 labels directly (>=5 positives, >=5 negatives in 4000-sample calibration set); 23444 fell back to a pooled global fit.
+[INFO] AR decoder inference: 160/2000 proteins
+[INFO] AR decoder inference: 320/2000 proteins
+[INFO] AR decoder inference: 480/2000 proteins
+[INFO] AR decoder inference: 640/2000 proteins
+[INFO] AR decoder inference: 800/2000 proteins
+[INFO] AR decoder inference: 960/2000 proteins
+[INFO] AR decoder inference: 1120/2000 proteins
+[INFO] AR decoder inference: 1280/2000 proteins
+[INFO] AR decoder inference: 1440/2000 proteins
+[INFO] AR decoder inference: 1600/2000 proteins
+[INFO] AR decoder inference: 1760/2000 proteins
+[INFO] AR decoder inference: 1920/2000 proteins
+[INFO] AR decoder inference: 2000/2000 proteins
+
+[AUTOREGRESSIVE (item 16), per-label-calibrated] Fmax=0.2927 @threshold=0.19 precision=0.3173 recall=0.2717
+[INFO] Wrote results -> experiments/label_embedding/logs/item16_cafa_fmax_epoch32_calibrated.json
