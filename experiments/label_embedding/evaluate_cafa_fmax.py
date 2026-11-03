@@ -85,6 +85,40 @@ def generate_stop_truncated(model, input_ids, attention_mask, max_steps):
     return best_logit
 
 
+@torch.no_grad()
+def run_ar_inference_list(model, tokenizer, sequences, device, batch_size, max_length,
+                           max_steps) -> np.ndarray:
+    """The decoder's actual intended use: a generated LIST of labels, not a dense per-label
+    score. generate() (training_run.py) already returns predicted_label_ids (the greedy decode
+    order) and stop_at (the step its own stop head first fires) -- real usage is
+    predicted_label_ids[:, :stop_at]. Every label emitted before stop gets a hard prediction of
+    1.0, everything else 0.0 -- sidesteps the whole probability-calibration question (item 16's
+    2026-11-02/03 status updates) since there's no probability left to miscalibrate, only a
+    binary in/out-of-the-list decision exactly the way the architecture was meant to be read.
+    """
+    model.eval()
+    num_labels = model.classifier.num_labels
+    all_preds = []
+    for start in range(0, len(sequences), batch_size):
+        batch_seqs = sequences[start:start + batch_size]
+        enc = tokenizer(batch_seqs, max_length=max_length, truncation=True, padding=True,
+                         return_tensors="pt")
+        input_ids = enc["input_ids"].to(device)
+        attention_mask = enc["attention_mask"].to(device)
+        predicted_ids, stop_at, _, _ = model.generate(input_ids, attention_mask, max_steps)
+        bsz = predicted_ids.shape[0]
+        step_idx = torch.arange(max_steps, device=device).unsqueeze(0)
+        keep = step_idx < stop_at.unsqueeze(1)  # [bsz, max_steps] -- steps before this example's stop
+        batch_idx = torch.arange(bsz, device=device).unsqueeze(1).expand(-1, max_steps)
+        pred_matrix = torch.zeros(bsz, num_labels, dtype=torch.bool, device=device)
+        pred_matrix[batch_idx[keep], predicted_ids[keep]] = True
+        all_preds.append(pred_matrix.cpu().numpy())
+        done = min(start + batch_size, len(sequences))
+        if done % (batch_size * 20) == 0 or done == len(sequences):
+            print(f"[INFO] AR decoder inference: {done}/{len(sequences)} proteins")
+    return np.concatenate(all_preds, axis=0).astype(np.float32)
+
+
 def run_ar_inference_raw(model, tokenizer, sequences, device, batch_size, max_length, max_steps,
                           respect_stop_head: bool = False) -> np.ndarray:
     """Same generate()-based scoring as train_autoregressive_head.run_full_label_diagnostic:
@@ -260,6 +294,11 @@ def main() -> None:
                           "--calibration-split, then apply it to the AR decoder's test-split "
                           "logits instead of the plain sigmoid/--use-raw-logit. Overrides "
                           "--use-raw-logit when both are passed.")
+    ap.add_argument("--binary-list", action="store_true",
+                     help="Score the decoder's actual generated list (predicted_label_ids before "
+                          "its own stop head fires) as a hard 0/1 prediction instead of any "
+                          "probability/calibration variant. Takes priority over --calibrate/"
+                          "--use-raw-logit/--respect-stop-head when passed.")
     ap.add_argument("--calibration-split", default="validation")
     ap.add_argument("--calibration-max-samples", type=int, default=4000)
     ap.add_argument("--calib-min-pos", type=int, default=5,
@@ -330,9 +369,14 @@ def main() -> None:
                                   args.ar_model_name, args.ar_decoder_hidden_dim, label_names, device)
         ar_tokenizer = training_run.create_esm_tokenizer(args.ar_model_name)
         ar_label = "AUTOREGRESSIVE (item 16)"
-        if args.respect_stop_head:
-            ar_label += ", stop-head-truncated"
-        if args.calibrate:
+        if args.binary_list:
+            ar_probs = run_ar_inference_list(ar_model, ar_tokenizer, sequences, device,
+                                              args.ar_batch_size, args.max_length,
+                                              args.ar_max_decode_steps)
+            ar_label += ", stop-head binary list"
+        elif args.calibrate:
+            if args.respect_stop_head:
+                ar_label += ", stop-head-truncated"
             cal_split = dataset[args.calibration_split]
             if len(cal_split) > args.calibration_max_samples:
                 cal_split = cal_split.select(range(args.calibration_max_samples))
