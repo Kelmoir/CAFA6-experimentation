@@ -203,6 +203,21 @@ def score(name: str, raw_probs: np.ndarray, labels_matrix: np.ndarray, known: np
     return {"fmax": fmax, "threshold": best_t, "precision": pr, "recall": rc}
 
 
+def score_histogram(probs: np.ndarray, labels_matrix: np.ndarray, n_bins: int = 20) -> dict:
+    """Bucket every (protein, label) prediction score into n_bins equal-width [0,1] bins,
+    split by whether the ground truth at that entry is a true label or not -- the raw
+    data behind a 'where is this model right/wrong by confidence' histogram. Scored on the
+    same DAG-propagated probabilities compute_ia_weighted_fmax actually thresholds, not the
+    model's raw pre-propagation output.
+    """
+    edges = np.linspace(0.0, 1.0, n_bins + 1)
+    is_true = labels_matrix.astype(bool)
+    pos_counts, _ = np.histogram(probs[is_true], bins=edges)
+    neg_counts, _ = np.histogram(probs[~is_true], bins=edges)
+    return {"edges": edges.tolist(), "true_label_counts": pos_counts.tolist(),
+            "false_label_counts": neg_counts.tolist()}
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--data-path", default=str(DEFAULT_DATA_PATH))
@@ -255,6 +270,12 @@ def main() -> None:
     ap.add_argument("--skip-baseline", action="store_true")
     ap.add_argument("--skip-ar", action="store_true")
     ap.add_argument("--results-out", default=None)
+    ap.add_argument("--score-histogram-out", default=None,
+                     help="Write per-model score histograms (counts of true-label vs. "
+                          "false-label entries per confidence bin, on the same DAG-propagated "
+                          "probabilities Fmax thresholds) to this JSON path, for visualizing "
+                          "where each model is right/wrong by confidence bucket.")
+    ap.add_argument("--score-histogram-bins", type=int, default=20)
     args = ap.parse_args()
 
     if args.skip_baseline and args.skip_ar:
@@ -350,6 +371,19 @@ def main() -> None:
     if args.results_out:
         Path(args.results_out).write_text(json.dumps(results, indent=2, default=str))
         print(f"[INFO] Wrote results -> {args.results_out}")
+
+    if args.score_histogram_out:
+        histograms = {}
+        if not args.skip_baseline:
+            baseline_propagated = ecs.propagate_predictions(baseline_probs, descendant_idx)
+            histograms["baseline"] = score_histogram(baseline_propagated, labels_matrix,
+                                                       args.score_histogram_bins)
+        if not args.skip_ar:
+            ar_propagated = ecs.propagate_predictions(ar_probs, descendant_idx)
+            histograms["autoregressive"] = score_histogram(ar_propagated, labels_matrix,
+                                                             args.score_histogram_bins)
+        Path(args.score_histogram_out).write_text(json.dumps(histograms, indent=2))
+        print(f"[INFO] Wrote score histogram -> {args.score_histogram_out}")
 
 
 if __name__ == "__main__":
