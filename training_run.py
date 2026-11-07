@@ -458,10 +458,17 @@ class AutoregressiveLabelEmbeddingEsmForSequenceClassification(EsmForSequenceCla
         return torch.stack(all_label_logits, dim=1), torch.stack(all_stop_logits, dim=1)
 
     @torch.no_grad()
-    def generate(self, input_ids, attention_mask, max_steps: int):
+    def generate(self, input_ids, attention_mask, max_steps: int, stop_as_vocab_token: bool = False):
         """Greedy, repeat-masked decode for exactly max_steps steps regardless of the stop head,
         so a dense per-label score is always available for AUROC-style evaluation even though
         real usage would stop early (see train_autoregressive_head.py's diagnostic adapter).
+
+        stop_as_vocab_token (2026-11-07, plan doc item 16): changes ONLY the stop_at decision
+        rule, to match how --ar-stop-as-vocab-token trained this checkpoint -- "has STOP's logit
+        overtaken the best still-available real label at this step" (an argmax-over-one-shared-
+        distribution rule, the way a standard LLM's EOS token competes against every other token
+        in the same softmax) instead of an independent sigmoid(stop_logit) > 0.5 threshold. Every
+        other return value is computed identically either way.
 
         Returns:
           predicted_label_ids: [batch, max_steps] long, the greedily chosen label at each step.
@@ -494,7 +501,10 @@ class AutoregressiveLabelEmbeddingEsmForSequenceClassification(EsmForSequenceCla
             predicted.append(prev)
             stop_logits_history.append(stop_logit)
             emitted_mask = emitted_mask.scatter(1, prev.unsqueeze(1), True)
-            newly_stopped = (torch.sigmoid(stop_logit) > 0.5) & ~stopped
+            if stop_as_vocab_token:
+                newly_stopped = (stop_logit > masked_logits.max(dim=-1).values) & ~stopped
+            else:
+                newly_stopped = (torch.sigmoid(stop_logit) > 0.5) & ~stopped
             stop_at = torch.where(newly_stopped, torch.full_like(stop_at, t), stop_at)
             stopped = stopped | newly_stopped
         return torch.stack(predicted, dim=1), stop_at, best_logit, torch.stack(stop_logits_history, dim=1)

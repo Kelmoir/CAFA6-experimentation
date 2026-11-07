@@ -111,6 +111,23 @@ def scheduled_sampling_prob(step: int, total_steps: int, warmup_frac: float, fin
     return min(final_prob, final_prob * progress)
 
 
+def calib_loss_from_logits(label_logits: torch.Tensor, seq_mask: torch.Tensor,
+                            full_labels: torch.Tensor):
+    """Auxiliary per-label BCE from the max-over-real-decode-steps label logit (the same
+    "best_logit_per_label" dense score generate() exposes for inference/eval) against each
+    protein's FULL true-label set -- see --ar-calib-loss-weight. Orthogonal to how stop is
+    modeled (step_losses vs. step_losses_stop_as_token both call this the same way), since STOP
+    is never a real label and never competes for this loss's target. Steps beyond the protein's
+    real (masked) sequence length are excluded from the max -- teacher forcing keeps decoding
+    past the true stop (fed label 0 repeatedly), and those phantom states would otherwise inject
+    meaningless scores into the calibration target.
+    """
+    masked_logits = label_logits.masked_fill(~seq_mask.unsqueeze(-1), float("-inf"))
+    calib_logits = masked_logits.max(dim=1).values
+    calib_logits = calib_logits.masked_fill(torch.isinf(calib_logits), -30.0)
+    return torch.nn.functional.binary_cross_entropy_with_logits(calib_logits, full_labels)
+
+
 def step_losses(label_logits: torch.Tensor, stop_logits: torch.Tensor, label_seq: torch.Tensor,
                  seq_mask: torch.Tensor, max_steps: int, full_labels: torch.Tensor = None,
                  stop_pos_weight: float = None):
@@ -120,6 +137,11 @@ def step_losses(label_logits: torch.Tensor, stop_logits: torch.Tensor, label_seq
     ever pressures step-local RELATIVE ranking ("is the true next label ranked above the others
     at this step"), never each label's ABSOLUTE score on the shared 0-1 scale Fmax thresholds
     against, which is exactly the gap post-hoc Platt calibration was only ever partially closing.
+
+    Stop is modeled as a SEPARATE, independently-trained binary head here (stop_logits' own BCE
+    loss, decoupled from the label CE above) -- see step_losses_stop_as_token for the alternative
+    where stop instead competes as an ordinary vocabulary class in ONE shared softmax, the way a
+    standard LLM predicts its EOS token (--ar-stop-as-vocab-token).
     """
     mask_f = seq_mask.float()
     ce = torch.nn.functional.cross_entropy(
@@ -135,21 +157,43 @@ def step_losses(label_logits: torch.Tensor, stop_logits: torch.Tensor, label_seq
         stop_logits, is_last_step, pos_weight=pos_weight, reduction="none")
     stop_loss = (stop_loss * mask_f).sum() / mask_f.sum().clamp(min=1)
 
-    calib_loss = label_logits.new_zeros(())
-    if full_labels is not None:
-        # Max over decode steps = the same "best_logit_per_label" dense score generate() exposes
-        # for inference/eval, so training directly optimizes the quantity Fmax is computed from.
-        # Steps beyond the protein's real (masked) sequence length are excluded from the max --
-        # teacher forcing keeps decoding past the true stop (fed label 0 repeatedly), and those
-        # phantom states would otherwise inject meaningless scores into the calibration target.
-        masked_logits = label_logits.masked_fill(~seq_mask.unsqueeze(-1), float("-inf"))
-        calib_logits = masked_logits.max(dim=1).values
-        calib_logits = calib_logits.masked_fill(torch.isinf(calib_logits), -30.0)
-        calib_loss = torch.nn.functional.binary_cross_entropy_with_logits(calib_logits, full_labels)
+    calib_loss = (calib_loss_from_logits(label_logits, seq_mask, full_labels)
+                  if full_labels is not None else label_logits.new_zeros(()))
     return ce, stop_loss, calib_loss
 
 
-def run_eval_pass(model, loader, device, max_steps, stop_pos_weight=None):
+def step_losses_stop_as_token(label_logits: torch.Tensor, stop_logits: torch.Tensor,
+                               label_seq: torch.Tensor, seq_mask: torch.Tensor, max_steps: int):
+    """--ar-stop-as-vocab-token (2026-11-07, plan doc item 16): stop modeled as an ORDINARY
+    vocabulary class -- index num_labels, right after every real GO term -- competing in ONE
+    softmax with every real label, exactly the way a standard LLM's EOS token competes against
+    every other token in the same distribution. Replaces step_losses' CE (labels) + independent
+    BCE (stop) with a single joint cross-entropy; there is no separate stop_loss term at all.
+
+    The extra STOP step is only appended where there's spare room within max_steps (a protein
+    truncated to exactly max_steps real labels never gets a supervised STOP target, same as an
+    LLM gives no EOS supervision to a document that fills the whole context window).
+    """
+    stop_class = label_logits.shape[-1]
+    joint_logits = torch.cat([label_logits, stop_logits.unsqueeze(-1)], dim=-1)
+
+    seq_lengths = seq_mask.sum(dim=1).clamp(min=0, max=max_steps)
+    target = label_seq.clone()
+    extended_mask = seq_mask.clone()
+    has_room = seq_lengths < max_steps
+    stop_positions = seq_lengths.clamp(max=max_steps - 1)
+    batch_idx = torch.arange(label_seq.shape[0], device=label_seq.device)
+    target[batch_idx[has_room], stop_positions[has_room]] = stop_class
+    extended_mask[batch_idx[has_room], stop_positions[has_room]] = True
+
+    ce = torch.nn.functional.cross_entropy(
+        joint_logits.reshape(-1, stop_class + 1), target.reshape(-1), reduction="none"
+    ).reshape(seq_mask.shape)
+    mask_f = extended_mask.float()
+    return (ce * mask_f).sum() / mask_f.sum().clamp(min=1)
+
+
+def run_eval_pass(model, loader, device, max_steps, stop_pos_weight=None, stop_as_vocab_token=False):
     """Teacher-forced eval (scheduled_sampling_prob=0, i.e. pure ground-truth history) --
     cheap diagnostic in addition to loss: top-1 token accuracy (is argmax(label_logits) the
     true next label, at each real step) distinguishes "the model learned to discriminate
@@ -166,8 +210,12 @@ def run_eval_pass(model, loader, device, max_steps, stop_pos_weight=None):
             seq_mask = batch["seq_mask"].to(device)
             label_logits, stop_logits = model.forward_teacher_forced(
                 input_ids, attention_mask, label_seq, seq_mask, scheduled_sampling_prob=0.0)
-            ce, stop_loss, _ = step_losses(label_logits, stop_logits, label_seq, seq_mask, max_steps,
-                                            stop_pos_weight=stop_pos_weight)
+            if stop_as_vocab_token:
+                ce = step_losses_stop_as_token(label_logits, stop_logits, label_seq, seq_mask, max_steps)
+                stop_loss = label_logits.new_zeros(())
+            else:
+                ce, stop_loss, _ = step_losses(label_logits, stop_logits, label_seq, seq_mask, max_steps,
+                                                stop_pos_weight=stop_pos_weight)
             ce_sum += ce.item()
             stop_sum += stop_loss.item()
             mask_f = seq_mask.float()
@@ -179,7 +227,8 @@ def run_eval_pass(model, loader, device, max_steps, stop_pos_weight=None):
     return ce_sum / max(1, n_batches), stop_sum / max(1, n_batches), top1_acc
 
 
-def run_dense_diagnostic(model, loader, device, max_steps, label_names, label_counts, rare_term_threshold):
+def run_dense_diagnostic(model, loader, device, max_steps, label_names, label_counts, rare_term_threshold,
+                          stop_as_vocab_token=False):
     """Converts the sequential decode into the same dense [n_examples, n_labels] probability
     matrix run_diagnostic() expects, via generate()'s forced-full-length best_logit_per_label.
     Ground truth here is also truncated to each protein's first max_steps depth-ordered true
@@ -201,7 +250,8 @@ def run_dense_diagnostic(model, loader, device, max_steps, label_names, label_co
         for batch in loader:
             input_ids = batch["input_ids"].to(device)
             attention_mask = batch["attention_mask"].to(device)
-            _, stop_at, best_logit, stop_logits = model.generate(input_ids, attention_mask, max_steps)
+            _, stop_at, best_logit, stop_logits = model.generate(
+                input_ids, attention_mask, max_steps, stop_as_vocab_token=stop_as_vocab_token)
             all_best_logits.append(best_logit.cpu().numpy())
             seq_mask = batch["seq_mask"]
             label_seq = batch["label_seq"]
@@ -265,7 +315,8 @@ def make_full_label_eval_collate_fn(tokenizer, max_length: int):
     return collate
 
 
-def run_full_label_diagnostic(model, loader, device, max_steps, label_names, label_counts, rare_term_threshold):
+def run_full_label_diagnostic(model, loader, device, max_steps, label_names, label_counts, rare_term_threshold,
+                               stop_as_vocab_token=False):
     """Same generate()-based scoring as run_dense_diagnostic, but against the FULL untruncated
     true-label set -- the fair, directly-comparable number against item 8's classifier baseline
     (0.6577 mean AUROC) and the label-embedding-head baseline, with no truncation caveat.
@@ -276,7 +327,8 @@ def run_full_label_diagnostic(model, loader, device, max_steps, label_names, lab
         for batch in loader:
             input_ids = batch["input_ids"].to(device)
             attention_mask = batch["attention_mask"].to(device)
-            _, _, best_logit, _ = model.generate(input_ids, attention_mask, max_steps)
+            _, _, best_logit, _ = model.generate(
+                input_ids, attention_mask, max_steps, stop_as_vocab_token=stop_as_vocab_token)
             all_best_logits.append(best_logit.cpu().numpy())
             dense = np.zeros((input_ids.shape[0], len(label_names)), dtype=np.float32)
             for i, labs in enumerate(batch["labels"]):
@@ -302,7 +354,7 @@ def run_full_label_diagnostic(model, loader, device, max_steps, label_names, lab
 
 
 def print_example_predictions(model, tokenizer, examples, depth, label_names, device,
-                               max_length, max_steps, n_show=20):
+                               max_length, max_steps, n_show=20, stop_as_vocab_token=False):
     """Qualitative sanity check, not a metric: for a few actual validation proteins, print the
     true (depth-ordered) label set against generate()'s predicted sequence and per-step stop
     probability, so a human can directly see whether decode order/content/stopping look
@@ -315,7 +367,8 @@ def print_example_predictions(model, tokenizer, examples, depth, label_names, de
     input_ids = tokenized["input_ids"].to(device)
     attention_mask = tokenized["attention_mask"].to(device)
     with torch.no_grad():
-        predicted_ids, stop_at, _, stop_logits = model.generate(input_ids, attention_mask, max_steps)
+        predicted_ids, stop_at, _, stop_logits = model.generate(
+            input_ids, attention_mask, max_steps, stop_as_vocab_token=stop_as_vocab_token)
     stop_probs = torch.sigmoid(stop_logits).cpu()
     print("\n" + "=" * 70)
     print("EXAMPLE PREDICTIONS (qualitative check, not a metric)")
@@ -394,7 +447,17 @@ def add_autoregressive_args(parser: argparse.ArgumentParser) -> None:
                               "despite ~1 true positive per ~34 real steps/protein on average -- a "
                               "likely cause of its ~21-step mean |predicted-true| error. Default "
                               "(None): auto-computed per run as the mean real (capped) decode "
-                              "sequence length. Pass 1.0 to restore the original unweighted loss.")
+                              "sequence length. Pass 1.0 to restore the original unweighted loss. "
+                              "Ignored entirely when --ar-stop-as-vocab-token is set (no separate "
+                              "stop BCE loss exists in that path).")
+    parser.add_argument("--ar-stop-as-vocab-token", action="store_true",
+                         help="Model stop as an ORDINARY vocabulary class (index num_labels, right "
+                              "after every real label) competing in ONE softmax with every real "
+                              "label, trained via a single joint cross-entropy -- the way a "
+                              "standard LLM predicts its EOS token -- instead of the default: a "
+                              "separate stop_head trained with its own independent BCE loss, "
+                              "decoupled entirely from label ranking. Default False (original "
+                              "item-16 objective, two separate losses).")
 
 
 def run_autoregressive_training(args: argparse.Namespace) -> None:
@@ -562,9 +625,16 @@ def run_autoregressive_training(args: argparse.Namespace) -> None:
                 args.ar_scheduled_sampling_warmup_frac, args.ar_scheduled_sampling_final_prob)
             label_logits, stop_logits = model.forward_teacher_forced(
                 input_ids, attention_mask, label_seq, seq_mask, scheduled_sampling_prob=ss_prob)
-            ce, stop_loss, calib_loss = step_losses(
-                label_logits, stop_logits, label_seq, seq_mask, args.ar_max_decode_steps,
-                full_labels=full_labels, stop_pos_weight=stop_pos_weight)
+            if args.ar_stop_as_vocab_token:
+                ce = step_losses_stop_as_token(label_logits, stop_logits, label_seq, seq_mask,
+                                                args.ar_max_decode_steps)
+                stop_loss = label_logits.new_zeros(())
+                calib_loss = (calib_loss_from_logits(label_logits, seq_mask, full_labels)
+                              if full_labels is not None else label_logits.new_zeros(()))
+            else:
+                ce, stop_loss, calib_loss = step_losses(
+                    label_logits, stop_logits, label_seq, seq_mask, args.ar_max_decode_steps,
+                    full_labels=full_labels, stop_pos_weight=stop_pos_weight)
             loss = (ce + stop_loss + args.ar_calib_loss_weight * calib_loss) / args.grad_accum_steps
             loss.backward()
 
@@ -589,7 +659,8 @@ def run_autoregressive_training(args: argparse.Namespace) -> None:
         train_calib = calib_sum / max(1, n_batches)
         train_top1_acc = train_correct_sum / max(1, train_mask_sum)
         val_ce, val_stop, val_top1_acc = run_eval_pass(model, val_loader, device, args.ar_max_decode_steps,
-                                                        stop_pos_weight=stop_pos_weight)
+                                                        stop_pos_weight=stop_pos_weight,
+                                                        stop_as_vocab_token=args.ar_stop_as_vocab_token)
         train_loss = train_ce + train_stop + args.ar_calib_loss_weight * train_calib
         print(f"Epoch {epoch + 1}/{args.epochs} | train_loss={train_loss:.4f} "
               f"(ce={train_ce:.4f} stop={train_stop:.4f} calib={train_calib:.4f}) | "
@@ -603,7 +674,8 @@ def run_autoregressive_training(args: argparse.Namespace) -> None:
         if is_diag_epoch and not is_last_epoch:
             print(f"[MID-TRAINING CHECKPOINT: epoch {epoch + 1}]")
             run_dense_diagnostic(model, diag_loader, device, args.ar_max_decode_steps,
-                                  label_names, label_counts, args.rare_term_threshold)
+                                  label_names, label_counts, args.rare_term_threshold,
+                                  stop_as_vocab_token=args.ar_stop_as_vocab_token)
 
         if args.checkpoint_dir and (is_diag_epoch or is_last_epoch):
             ckpt_path = Path(args.checkpoint_dir) / f"epoch_{epoch + 1}.pt"
@@ -613,17 +685,20 @@ def run_autoregressive_training(args: argparse.Namespace) -> None:
 
     if args.run_diagnostic:
         run_dense_diagnostic(model, diag_loader, device, args.ar_max_decode_steps,
-                              label_names, label_counts, args.rare_term_threshold)
+                              label_names, label_counts, args.rare_term_threshold,
+                              stop_as_vocab_token=args.ar_stop_as_vocab_token)
 
         full_label_collate_fn = make_full_label_eval_collate_fn(tokenizer, args.max_length)
         full_label_loader = torch.utils.data.DataLoader(
             diagnostic_ds, batch_size=args.batch_size, collate_fn=full_label_collate_fn)
         run_full_label_diagnostic(model, full_label_loader, device, args.ar_max_decode_steps,
-                                   label_names, label_counts, args.rare_term_threshold)
+                                   label_names, label_counts, args.rare_term_threshold,
+                                   stop_as_vocab_token=args.ar_stop_as_vocab_token)
 
         example_examples = [diagnostic_ds[i] for i in range(min(3, len(diagnostic_ds)))]
         print_example_predictions(model, tokenizer, example_examples, depth, label_names,
-                                   device, args.max_length, args.ar_max_decode_steps)
+                                   device, args.max_length, args.ar_max_decode_steps,
+                                   stop_as_vocab_token=args.ar_stop_as_vocab_token)
 
     print(f"[SUMMARY] run_name={args.run_name} done")
 
