@@ -2044,6 +2044,37 @@ of improvement, and still sits 0.0794 below the Tier-0 baseline (0.3807). Traini
 the gap, but slowly enough that there's no indication a further 20-40 epochs alone would close it;
 the training-time redesign noted above remains the only lever likely to change that trajectory.
 
+**Update 2026-11-07 — training-time redesign implemented**: every fix tried up to this point was
+post-hoc (re-scoring an already-trained, fixed checkpoint); none changed what the model is actually
+optimized against. `train_autoregressive_head.py`'s objective is a shared-scale softmax CE per decode
+step, which only ever pressures step-local *relative* ranking ("is the true next label ranked above
+the others right now") — it has no term that pressures a label's *absolute* score on the shared 0-1
+scale Fmax thresholds against, which is exactly why post-hoc Platt calibration helped (+0.031 Fmax)
+but could only partially close the gap: it can only re-map what the model already expressed, not
+train in per-label discrimination the objective never asked for.
+
+Added two changes to the training objective itself (model/checkpoint format unchanged, so existing
+checkpoints still load):
+- `--ar-calib-loss-weight` (default 1.0): an auxiliary per-label BCE loss, computed from the max-over-
+  decode-steps label logit (the same `best_logit_per_label` dense score `generate()` already exposes
+  for eval) against each protein's FULL true-label set (not just the truncated/depth-ordered CE
+  target) — directly optimizes the quantity Fmax is computed from, instead of leaving it to be
+  inferred post-hoc. Steps past a protein's real decode length are excluded from the max (teacher
+  forcing keeps decoding past the true stop; those phantom states would otherwise pollute the target).
+- `--ar-stop-pos-weight` (default: auto, mean real decode sequence length, ~34): the stop head's BCE
+  was previously unweighted despite ~1 true positive per ~34 real steps/protein — a plausible
+  contributor to its ~21-step mean timing error. Both default on; 0/1.0 respectively restore the
+  original item-16 objective for an A/B.
+
+CPU-smoke-tested (wiring only, not a result): both terms compute without crashing, `--ar-calib-loss-
+weight 0 --ar-stop-pos-weight 1.0` reproduces the original loss values exactly, and resuming from the
+real `epoch_60.pt` checkpoint under the new loss code loads cleanly (no architecture change).
+
+Not yet run at real scale. Rather than bolt this onto the existing 60-epoch run (mixing objectives
+mid-training would make the result hard to interpret), the next step is a **fresh** run at the same
+20-epoch budget as the very first item16-fulldata run, for a clean, apples-to-apples A/B against its
+0.2919 calibrated Fmax / 0.6987 full-label AUROC before deciding whether to extend further.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features

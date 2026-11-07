@@ -69,7 +69,7 @@ def build_label_order(raw_label_ids: List[int], depth: torch.Tensor, max_steps: 
 
 
 def make_collate_fn(tokenizer, depth: torch.Tensor, max_steps: int, max_length: int,
-                     include_roots: bool = False):
+                     num_labels: int, include_roots: bool = False):
     def collate(examples: List[Dict[str, Any]]) -> Dict[str, torch.Tensor]:
         sequences = [ex["sequence"] for ex in examples]
         tokenized = tokenizer(sequences, max_length=max_length, truncation=True, padding=True,
@@ -77,15 +77,22 @@ def make_collate_fn(tokenizer, depth: torch.Tensor, max_steps: int, max_length: 
         batch_size = len(examples)
         label_seq = torch.zeros(batch_size, max_steps, dtype=torch.long)
         seq_mask = torch.zeros(batch_size, max_steps, dtype=torch.bool)
+        # Full, untruncated true-label set (roots included, independent of include_roots --
+        # which only governs the decode-order/CE target) -- the calibration-loss target in
+        # step_losses, matching exactly the ground truth run_full_label_diagnostic scores
+        # against (make_full_label_eval_collate_fn's batch["labels"]).
+        full_labels = torch.zeros(batch_size, num_labels, dtype=torch.float32)
         for i, ex in enumerate(examples):
             order = build_label_order(ex["labels"], depth, max_steps, include_roots=include_roots)
             label_seq[i, :len(order)] = torch.tensor(order, dtype=torch.long)
             seq_mask[i, :len(order)] = True
+            full_labels[i, ex["labels"]] = 1.0
         return {
             "input_ids": tokenized["input_ids"],
             "attention_mask": tokenized["attention_mask"],
             "label_seq": label_seq,
             "seq_mask": seq_mask,
+            "full_labels": full_labels,
         }
     return collate
 
@@ -105,7 +112,15 @@ def scheduled_sampling_prob(step: int, total_steps: int, warmup_frac: float, fin
 
 
 def step_losses(label_logits: torch.Tensor, stop_logits: torch.Tensor, label_seq: torch.Tensor,
-                 seq_mask: torch.Tensor, max_steps: int):
+                 seq_mask: torch.Tensor, max_steps: int, full_labels: torch.Tensor = None,
+                 stop_pos_weight: float = None):
+    """full_labels/stop_pos_weight are optional (default None -> original item-16 objective,
+    unchanged): see add_autoregressive_args' --ar-calib-loss-weight/--ar-stop-pos-weight for why
+    they exist (2026-11-07 update, plan doc item 16) -- the shared-scale softmax CE below only
+    ever pressures step-local RELATIVE ranking ("is the true next label ranked above the others
+    at this step"), never each label's ABSOLUTE score on the shared 0-1 scale Fmax thresholds
+    against, which is exactly the gap post-hoc Platt calibration was only ever partially closing.
+    """
     mask_f = seq_mask.float()
     ce = torch.nn.functional.cross_entropy(
         label_logits.reshape(-1, label_logits.shape[-1]), label_seq.reshape(-1), reduction="none"
@@ -114,12 +129,27 @@ def step_losses(label_logits: torch.Tensor, stop_logits: torch.Tensor, label_seq
 
     seq_lengths = seq_mask.sum(dim=1).clamp(min=1, max=max_steps)
     is_last_step = torch.nn.functional.one_hot(seq_lengths - 1, max_steps).float()
-    stop_loss = torch.nn.functional.binary_cross_entropy_with_logits(stop_logits, is_last_step, reduction="none")
+    pos_weight = (torch.tensor(stop_pos_weight, device=stop_logits.device)
+                  if stop_pos_weight is not None else None)
+    stop_loss = torch.nn.functional.binary_cross_entropy_with_logits(
+        stop_logits, is_last_step, pos_weight=pos_weight, reduction="none")
     stop_loss = (stop_loss * mask_f).sum() / mask_f.sum().clamp(min=1)
-    return ce, stop_loss
+
+    calib_loss = label_logits.new_zeros(())
+    if full_labels is not None:
+        # Max over decode steps = the same "best_logit_per_label" dense score generate() exposes
+        # for inference/eval, so training directly optimizes the quantity Fmax is computed from.
+        # Steps beyond the protein's real (masked) sequence length are excluded from the max --
+        # teacher forcing keeps decoding past the true stop (fed label 0 repeatedly), and those
+        # phantom states would otherwise inject meaningless scores into the calibration target.
+        masked_logits = label_logits.masked_fill(~seq_mask.unsqueeze(-1), float("-inf"))
+        calib_logits = masked_logits.max(dim=1).values
+        calib_logits = calib_logits.masked_fill(torch.isinf(calib_logits), -30.0)
+        calib_loss = torch.nn.functional.binary_cross_entropy_with_logits(calib_logits, full_labels)
+    return ce, stop_loss, calib_loss
 
 
-def run_eval_pass(model, loader, device, max_steps):
+def run_eval_pass(model, loader, device, max_steps, stop_pos_weight=None):
     """Teacher-forced eval (scheduled_sampling_prob=0, i.e. pure ground-truth history) --
     cheap diagnostic in addition to loss: top-1 token accuracy (is argmax(label_logits) the
     true next label, at each real step) distinguishes "the model learned to discriminate
@@ -136,7 +166,8 @@ def run_eval_pass(model, loader, device, max_steps):
             seq_mask = batch["seq_mask"].to(device)
             label_logits, stop_logits = model.forward_teacher_forced(
                 input_ids, attention_mask, label_seq, seq_mask, scheduled_sampling_prob=0.0)
-            ce, stop_loss = step_losses(label_logits, stop_logits, label_seq, seq_mask, max_steps)
+            ce, stop_loss, _ = step_losses(label_logits, stop_logits, label_seq, seq_mask, max_steps,
+                                            stop_pos_weight=stop_pos_weight)
             ce_sum += ce.item()
             stop_sum += stop_loss.item()
             mask_f = seq_mask.float()
@@ -348,6 +379,22 @@ def add_autoregressive_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--resume-from-checkpoint", default=None,
                          help="Path to a checkpoint file saved by --checkpoint-dir; resumes "
                               "model/optimizer state and epoch count from it.")
+    parser.add_argument("--ar-calib-loss-weight", type=float, default=1.0,
+                         help="Weight on an auxiliary per-label BCE loss, computed from the max-"
+                              "over-decode-steps label logit (the same dense score generate() "
+                              "exposes for eval) against each protein's FULL true-label set (not "
+                              "just the truncated/depth-ordered decode target) -- pressures the "
+                              "model to get each label's ABSOLUTE score right during training, not "
+                              "just step-local relative ranking, which the shared-scale softmax CE "
+                              "below never trains for on its own (2026-11-07, plan doc item 16: "
+                              "post-hoc Platt calibration only partially closed this gap). 0 "
+                              "restores the original item-16 objective.")
+    parser.add_argument("--ar-stop-pos-weight", type=float, default=None,
+                         help="pos_weight for the stop head's BCE loss, previously unweighted "
+                              "despite ~1 true positive per ~34 real steps/protein on average -- a "
+                              "likely cause of its ~21-step mean |predicted-true| error. Default "
+                              "(None): auto-computed per run as the mean real (capped) decode "
+                              "sequence length. Pass 1.0 to restore the original unweighted loss.")
 
 
 def run_autoregressive_training(args: argparse.Namespace) -> None:
@@ -401,12 +448,12 @@ def run_autoregressive_training(args: argparse.Namespace) -> None:
 
     tokenizer = create_esm_tokenizer(args.model_name)
     collate_fn = make_collate_fn(tokenizer, depth, args.ar_max_decode_steps, args.max_length,
-                                  include_roots=args.ar_include_roots_in_training)
+                                  len(label_names), include_roots=args.ar_include_roots_in_training)
     # Evaluation always scores against the same root-excluded ground truth regardless of
     # --ar-include-roots-in-training, so a with-roots-training run is a fair A/B against a
     # without-roots-training run on the same non-trivial label set.
     eval_collate_fn = make_collate_fn(tokenizer, depth, args.ar_max_decode_steps, args.max_length,
-                                       include_roots=False)
+                                       len(label_names), include_roots=False)
 
     val_ds = dataset["validation"]
     if args.max_val_samples is not None:
@@ -452,9 +499,13 @@ def run_autoregressive_training(args: argparse.Namespace) -> None:
     stop_prior_bias = float(np.log(stop_prior_rate / (1 - stop_prior_rate)))
     with torch.no_grad():
         model.classifier.stop_head.bias.fill_(stop_prior_bias)
+    mean_seq_len = total_real_steps / max(1, len(capped_counts))
     print(f"[INFO] Initialized stop_head bias to prior stop rate {stop_prior_rate:.4f} "
-          f"(bias={stop_prior_bias:.4f}, mean capped sequence length "
-          f"{total_real_steps / max(1, len(capped_counts)):.1f} steps)")
+          f"(bias={stop_prior_bias:.4f}, mean capped sequence length {mean_seq_len:.1f} steps)")
+
+    stop_pos_weight = args.ar_stop_pos_weight if args.ar_stop_pos_weight is not None else mean_seq_len
+    print(f"[INFO] stop-head BCE pos_weight={stop_pos_weight:.2f} "
+          f"({'explicit --ar-stop-pos-weight' if args.ar_stop_pos_weight is not None else 'auto, from mean sequence length'})")
 
     optimizer = torch.optim.AdamW(
         [p for p in model.parameters() if p.requires_grad],
@@ -496,7 +547,7 @@ def run_autoregressive_training(args: argparse.Namespace) -> None:
         train_loader = torch.utils.data.DataLoader(
             train_subset, batch_size=args.batch_size, shuffle=True, collate_fn=collate_fn)
 
-        ce_sum, stop_sum, n_batches = 0.0, 0.0, 0
+        ce_sum, stop_sum, calib_sum, n_batches = 0.0, 0.0, 0.0, 0
         train_correct_sum, train_mask_sum = 0.0, 0.0
         optimizer.zero_grad()
         for step, batch in enumerate(train_loader):
@@ -504,18 +555,22 @@ def run_autoregressive_training(args: argparse.Namespace) -> None:
             attention_mask = batch["attention_mask"].to(device)
             label_seq = batch["label_seq"].to(device)
             seq_mask = batch["seq_mask"].to(device)
+            full_labels = batch["full_labels"].to(device) if args.ar_calib_loss_weight > 0 else None
 
             ss_prob = scheduled_sampling_prob(
                 global_step, total_optimizer_steps,
                 args.ar_scheduled_sampling_warmup_frac, args.ar_scheduled_sampling_final_prob)
             label_logits, stop_logits = model.forward_teacher_forced(
                 input_ids, attention_mask, label_seq, seq_mask, scheduled_sampling_prob=ss_prob)
-            ce, stop_loss = step_losses(label_logits, stop_logits, label_seq, seq_mask, args.ar_max_decode_steps)
-            loss = (ce + stop_loss) / args.grad_accum_steps
+            ce, stop_loss, calib_loss = step_losses(
+                label_logits, stop_logits, label_seq, seq_mask, args.ar_max_decode_steps,
+                full_labels=full_labels, stop_pos_weight=stop_pos_weight)
+            loss = (ce + stop_loss + args.ar_calib_loss_weight * calib_loss) / args.grad_accum_steps
             loss.backward()
 
             ce_sum += ce.item()
             stop_sum += stop_loss.item()
+            calib_sum += calib_loss.item()
             n_batches += 1
             with torch.no_grad():
                 mask_f = seq_mask.float()
@@ -529,13 +584,18 @@ def run_autoregressive_training(args: argparse.Namespace) -> None:
                 optimizer.zero_grad()
                 global_step += 1
 
-        train_ce, train_stop = ce_sum / max(1, n_batches), stop_sum / max(1, n_batches)
+        train_ce = ce_sum / max(1, n_batches)
+        train_stop = stop_sum / max(1, n_batches)
+        train_calib = calib_sum / max(1, n_batches)
         train_top1_acc = train_correct_sum / max(1, train_mask_sum)
-        val_ce, val_stop, val_top1_acc = run_eval_pass(model, val_loader, device, args.ar_max_decode_steps)
-        print(f"Epoch {epoch + 1}/{args.epochs} | train_loss={train_ce + train_stop:.4f} "
-              f"(ce={train_ce:.4f} stop={train_stop:.4f}) | val_loss={val_ce + val_stop:.4f} "
-              f"(ce={val_ce:.4f} stop={val_stop:.4f}) | train_top1_acc={train_top1_acc:.4f} "
-              f"val_top1_acc={val_top1_acc:.4f} | scheduled_sampling_prob={ss_prob:.3f}")
+        val_ce, val_stop, val_top1_acc = run_eval_pass(model, val_loader, device, args.ar_max_decode_steps,
+                                                        stop_pos_weight=stop_pos_weight)
+        train_loss = train_ce + train_stop + args.ar_calib_loss_weight * train_calib
+        print(f"Epoch {epoch + 1}/{args.epochs} | train_loss={train_loss:.4f} "
+              f"(ce={train_ce:.4f} stop={train_stop:.4f} calib={train_calib:.4f}) | "
+              f"val_loss={val_ce + val_stop:.4f} (ce={val_ce:.4f} stop={val_stop:.4f}) | "
+              f"train_top1_acc={train_top1_acc:.4f} val_top1_acc={val_top1_acc:.4f} | "
+              f"scheduled_sampling_prob={ss_prob:.3f}")
 
         is_last_epoch = (epoch + 1) == args.epochs
         is_diag_epoch = (args.diagnostic_every_n_epochs > 0
