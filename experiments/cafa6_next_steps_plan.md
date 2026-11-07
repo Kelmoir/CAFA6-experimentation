@@ -2021,6 +2021,29 @@ something that also pressures absolute, per-label-calibrated scores, and/or givi
 substantially more training signal) is the only remaining path to making this a GO-term classifier
 replacement, and hasn't been attempted.
 
+**Update 2026-11-07 — 20 more epochs (40→60), both metrics recover rather than keep declining**:
+ran `--resume-from-checkpoint epoch_40.pt --epochs 60` (same hyperparameters, `scheduled_sampling_prob`
+already saturated at 0.25 since before epoch 40, so no discontinuity from the resume). Full-label-set
+AUROC (same 6820/27191-evaluable, 1000-val-sample diagnostic used for every prior checkpoint)
+**recovered** to 0.6993 at epoch 60 — essentially back to epoch 20's 0.6987, not a continuation of the
+dip seen at epoch 40 (0.6865). Calibrated Fmax kept climbing: 0.3013 at epoch 60, up from 0.2995 at
+epoch 40.
+
+| Epoch | Fmax (calibrated) | Full-label AUROC |
+|---|---|---|
+| 20 | 0.2919 | 0.6987 |
+| 32 | 0.2927 | — |
+| 36 | 0.2947 | — |
+| 40 | 0.2995 | 0.6865 |
+| 60 | 0.3013 | 0.6993 |
+
+So the epoch-40 AUROC dip was real but transient, not the start of a monotonic decline — both metrics
+are noisily rising with more training, just not in lockstep epoch-to-epoch. Calibrated Fmax has risen
+0.0094 over these last 20 epochs (vs. 0.0076 over the previous 20), a similar or slightly slower rate
+of improvement, and still sits 0.0794 below the Tier-0 baseline (0.3807). Training longer is closing
+the gap, but slowly enough that there's no indication a further 20-40 epochs alone would close it;
+the training-time redesign noted above remains the only lever likely to change that trajectory.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features
