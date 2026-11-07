@@ -2075,6 +2075,39 @@ mid-training would make the result hard to interpret), the next step is a **fres
 20-epoch budget as the very first item16-fulldata run, for a clean, apples-to-apples A/B against its
 0.2919 calibrated Fmax / 0.6987 full-label AUROC before deciding whether to extend further.
 
+**Update 2026-11-07 — stop modeled as a vocabulary token, like a standard LLM's EOS**: the stop
+mechanism above is itself a second, independent deviation from how a normal LLM predicts "done" --
+it's a separate head with its own BCE loss, entirely decoupled from label ranking, rather than one
+more vocabulary entry competing in the same softmax as every other token. Added
+`--ar-stop-as-vocab-token`: stop occupies index `num_labels`, trained with one joint cross-entropy
+alongside the real labels (no separate stop loss at all), with `generate()`'s stop rule changed to
+match ("has STOP's logit overtaken the best still-available real label" instead of an arbitrary
+`sigmoid(stop_logit) > 0.5` threshold). CPU-smoke-tested end to end including `--run-diagnostic`;
+not yet run at real scale.
+
+Asked directly: what else still separates this setup from "just training a standard LLM, then
+reading off a list"? The other real deviations, left as-is for now since they're intrinsic to this
+being a structured *set*-generation task, not an LLM-training oversight:
+- **A GRU hidden-state recurrence, not transformer self-attention** over the decode history -- the
+  biggest remaining architectural gap. Swapping this for real decoder self-attention would be a
+  much larger redesign, not a config flag.
+- **Frozen, cosine-similarity-scored output "vocabulary"** (item 8's frozen term embeddings) instead
+  of a freely-learned output projection -- scores are bounded to `scale * cos_sim + bias`, a more
+  constrained parameterization than a standard LLM's learned `lm_head`.
+- **An imposed depth-ascending supervision order** for each protein's (unordered) true-label set --
+  a real LLM's token order comes for free from the text; here we choose it, which the model then has
+  to learn to reproduce.
+- **Scheduled sampling** (ramping in the model's own predictions during training) -- deliberately
+  kept, not a bug: standard LLM pretraining never does this (pure teacher forcing throughout), but it
+  specifically exists here to counter *this* model's severe exposure bias at inference-time greedy
+  decode; removing it would likely hurt, not help, the "basic LLM" comparison.
+- **Prior-bias classifier/stop-head initialization** for extreme class imbalance -- a real LLM
+  doesn't need this (natural language token frequencies aren't anywhere near this skewed); keeping it
+  is a reasonable imbalance-specific engineering choice, not something worth reverting for purity.
+
+None of these were changed -- only the stop-as-token mechanism was, since that one was both clearly
+identified as a real, fixable architectural mismatch AND cheap to isolate as its own flag.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features
