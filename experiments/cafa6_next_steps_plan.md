@@ -2108,6 +2108,31 @@ being a structured *set*-generation task, not an LLM-training oversight:
 None of these were changed -- only the stop-as-token mechanism was, since that one was both clearly
 identified as a real, fixable architectural mismatch AND cheap to isolate as its own flag.
 
+**Result 2026-11-07/08 — the calibration loss made things WORSE, not better**: ran the fresh 20-epoch
+`--ar-calib-loss-weight 1.0` trial. Full-label AUROC at epoch 20: 0.6737 (vs. the original
+objective's 0.6987 at the same epoch) -- a real drop in ranking quality, not noise. Fmax:
+
+| Variant (epoch 20) | Uncalibrated Fmax | + Platt-calibrated Fmax |
+|---|---|---|
+| Original objective | 0.2610 | 0.2919 |
+| + calib-loss (weight 1.0) | 0.2475 | 0.2797 |
+
+Both numbers are worse, not better -- the auxiliary loss did NOT produce better-calibrated raw
+scores on its own (0.2475 < 0.2610), and it cost enough ranking quality that even re-applying
+post-hoc Platt calibration on top couldn't close back up to the original combo. Likely explanation:
+the calib loss and the step-local softmax CE pull the SAME shared `scale`/`bias` parameters in
+different directions (CE wants them shaped for correct per-step normalization; calib loss wants
+them shaped for absolute per-label sigmoid probability pooled across all steps) -- and post-hoc
+Platt calibration already captures most of the available calibration benefit without that ranking
+cost, making the training-time version largely redundant with it, plus a net loss here specifically.
+
+**Not yet tried**: a much smaller `--ar-calib-loss-weight` (e.g. 0.05-0.1) might recover the ranking
+cost while keeping some calibration benefit -- untested. As currently weighted, this specific fix is
+not promoted; it stays available as an opt-in flag (default weight 1.0) but shouldn't be assumed
+beneficial without re-tuning. The `--ar-stop-as-vocab-token` run (queued next) still includes the
+calib loss at its default weight 1.0 for now -- worth re-running without it, or at a lower weight,
+once that result is in, before drawing conclusions about the stop-as-token change in isolation.
+
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
 ### 11. Structure-based (AlphaFold-predicted structure) features
