@@ -2129,9 +2129,30 @@ cost, making the training-time version largely redundant with it, plus a net los
 **Not yet tried**: a much smaller `--ar-calib-loss-weight` (e.g. 0.05-0.1) might recover the ranking
 cost while keeping some calibration benefit -- untested. As currently weighted, this specific fix is
 not promoted; it stays available as an opt-in flag (default weight 1.0) but shouldn't be assumed
-beneficial without re-tuning. The `--ar-stop-as-vocab-token` run (queued next) still includes the
-calib loss at its default weight 1.0 for now -- worth re-running without it, or at a lower weight,
-once that result is in, before drawing conclusions about the stop-as-token change in isolation.
+beneficial without re-tuning.
+
+**Result 2026-11-09 -- stop-as-vocab-token also underperforms the original, 3-way comparison at
+epoch 20** (`--ar-stop-as-vocab-token`, run with `--ar-calib-loss-weight 0` this time, isolating the
+stop-mechanism change from the calib-loss regression above):
+
+| Variant (epoch 20) | full-label mean AUROC | stop-timing error (mean steps off) | Uncalibrated Fmax | + Platt-calibrated Fmax |
+|---|---|---|---|---|
+| Original (separate stop head, no calib loss) | 0.6987 | ~21 | 0.2610 | 0.2919 |
+| + calib-loss (weight 1.0) | 0.6737 | -- | 0.2475 | 0.2797 |
+| + stop-as-vocab-token (calib loss off) | 0.6758 | 20.34 | 0.2521 | 0.2861 |
+
+Folding stop into the joint softmax did not help: AUROC and both Fmax numbers land in between the
+original and the harmful calib-loss variant, closer to the latter, and the stop-timing error barely
+moved (20.3 vs. ~21 steps -- functionally unchanged). Likely the same shared-parameter story as the
+calib loss: every real-label training step must now also push STOP's logit down inside the same
+softmax, competing with that step's actual job (ranking the true next label above the other 27,190)
+for the same `scale`/`bias`/GRU gradient, for a timing-accuracy payoff that didn't materialize.
+
+**Conclusion**: neither training-time redesign beat the original two-separate-objectives decoder, and
+both are now parked (available as opt-in flags, not recommended as defaults). Of all item 16 AR-decoder
+variants tried, `item16-fulldata`'s original objective at epoch 60 (0.3013 calibrated Fmax, see above)
+remains the best, still well short of the real Tier-0 baseline (trial-013, Fmax 0.3807) this item set
+out to beat.
 
 ## Deprioritized — evidence says skip, or an existing project gate says not yet
 
