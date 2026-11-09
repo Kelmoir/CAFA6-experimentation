@@ -902,6 +902,21 @@ the training-time signal (e.g. if it ever helps a model learn to use hierarchy-c
 *reasoning* rather than just outputting hierarchy-consistent *scores* — not something this
 comparison tests either way).
 
+**Already shipped on the one real prediction-output path that exists (2026-11-09, found
+while asking "is this wired into real predictions"):** `evaluate_cafa_score.py`'s
+`propagate_predictions()` (max-propagates each term's score up through its full ontological
+descendant set in one pass) is applied unconditionally to every TSV it writes via
+`--predictions-out` — and predates `clamp_hierarchy_consistency` entirely (git history:
+`propagate_predictions` shipped in that script's original commit, `clamp_hierarchy_consistency`
+only later, for item 5 specifically). The two are different implementations of the same fixed
+point (one-shot full-descendant max vs. iterating direct edges to convergence), so this item's
+effect was already present on real output before item 5 was even written; `run_diagnostic`'s
+`clamp_*` fields were the only place it was actually missing, and that's now fixed too. **No
+remaining gap on this axis for data this repo can score** — the actual missing piece is a
+different one: nothing in this repo predicts over the blind Kaggle `testsuperset.fasta` or
+writes a real competition submission file at all (`evaluate_cafa_score.py`'s own docstring is
+explicit about this scope limit). That's a separate, not-yet-started task, not part of item 5.
+
 ### 6. Stop scaling PLM backbone size further; redirect that compute
 **Source:** report §"...table stakes, not the winning move" — GOCurator (CAFA-5, self-reported 1st
 place) found "little difference" between ESM-1b/ESM-2/ProtT5 once embeddings are one ingredient among
