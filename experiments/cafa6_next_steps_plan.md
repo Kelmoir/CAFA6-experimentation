@@ -425,6 +425,46 @@ objective + monotone constraints) is confirmed and tuned close to its ceiling ag
 baseline; there's no demonstrated case yet for shipping learned stacking over the free rank-average
 blend**, though it no longer costs anything to use either.
 
+**Candidate (d) probed (2026-11-09): weaker than even the crude k-mer BLAST approximation --
+not a decorrelation win either.** `experiments/ensembling/goa_iea_probe.py` approximates GOA's
+non-experimental/electronic-annotation evidence via each validation protein's real Pfam/InterPro/
+PROSITE domain cross-references (from the already-cached Swiss-Prot dump), mapped to GO terms
+through the GO Consortium's `*2go` tables (`data/go_mappings/`) and propagated to full ancestor
+closure -- the same mechanism UniProt's own automatic/IEA-evidence-code pipeline uses internally,
+via a generic domain-to-GO *rule table* rather than any per-protein database record (see the
+leakage note below for why that distinction matters). Same validation slice, evaluable-label
+filter, and cached trial-013 model probs as the BLAST probes. Result:
+
+| | mean AUROC | median AUROC | correlation w/ model | beats model by >=0.05 |
+|---|---|---|---|---|
+| model alone | 0.8731 | 0.9259 | -- | -- |
+| k-mer BLAST (ruled out) | 0.6186 | 0.5000 | 0.2984 | 378/9401 (4.0%) |
+| real BLAST+ | 0.6854 | 0.6547 | 0.3462 | 639/9401 (6.8%, didn't replicate OOS) |
+| **GOA IEA-transfer** | **0.5472** | **0.5000** | **0.1765** | 334/9401 (3.6%) |
+
+Median sitting exactly at chance (same pattern the k-mer BLAST probe showed) means this signal has
+no real ranking information for roughly half of evaluable terms -- most of the lower correlation
+with the model is this candidate being noisier, not a genuinely different valid signal, same
+reading convention applied to k-mer BLAST above. Model dominance is also the most lopsided of any
+candidate tried (beats IEA-transfer by >=0.05 on 8460/9401 = 90%, vs. 82%/68% for the two BLAST
+variants) -- consistent with the report's own "PLM alone gets 90-95% of the lift" finding: domain
+presence is largely information an ESM embedding already encodes implicitly, so this electronic-
+annotation proxy is mostly redundant with the model, not orthogonal to it. **Not worth carrying
+into a stacking build.**
+
+**Leakage trap found and avoided while building this probe**: Swiss-Prot's own flat-file DR lines
+carry UniProt's *own* direct, per-protein GO annotations with real evidence codes attached (e.g.
+`DR   GO; GO:0005829; C:cytosol; IDA:UniProtKB.`) -- a much more direct-looking proxy for "GOA's
+IEA annotations" than the domain-rule-table approach actually used above. **Deliberately not
+used**: our own dataset's val/test ground truth almost certainly derives from this same real
+UniProt/GOA database, and the locally-cached dump is a *current* snapshot, not frozen at whatever
+cutoff the Kaggle competition's labels were drawn from -- reading a protein's own DR GO lines back
+as a "prediction feature" risks literally reading (a near-superset of) the held-out answer back
+from a live database snapshot, not using independent orthogonal evidence. The domain-rule-table
+version used above is safe from this specific trap because it only consumes a protein's detected
+sequence *features* (which domains it has) through a generic, protein-agnostic mapping table --
+never any database's own direct protein-to-GO-term record.
+
 **Decision (2026-10-04): closing out Tier 1 item 1 -- not adopting the stacking meta-model.**
 The win margin over the untrained 50/50 rank-average baseline (+0.0004 mean AUROC) is within
 noise at this sample size, after real tuning effort (ranking objective, monotone constraints, a
@@ -438,6 +478,15 @@ attempt to beat. All of `experiments/ensembling/`'s scripts stay as the historic
 convention as the two BLAST probes before them); no further work planned here unless a
 fundamentally different signal (not just a retuned combination of the same two inputs) comes
 along.
+
+**Update 2026-11-09**: candidate (d) (GOA IEA-code annotations, the only originally-listed
+candidate not yet tried as of this decision) was probed above and also came back weak/redundant
+with the model. Of the original four candidates, only real BLAST+ showed a genuine (if narrow,
+non-generalizing-as-a-"bright-spot") complementary signal, and even that couldn't beat a free
+untrained baseline once stacked. **Tier 1 item 1 is now fully exhausted against its original
+candidate list** -- any future attempt needs a source not on that list (candidate (c), a second
+independently-trained checkpoint, remains untried but is explicitly flagged by the source report
+as the historically weakest ensembling pattern).
 
 ### 2. Partial-Knowledge (PK) conditioning
 **Source:** report §"CAFA-6 keeps CAFA-5's evaluation regime, and partial knowledge now dominates the
