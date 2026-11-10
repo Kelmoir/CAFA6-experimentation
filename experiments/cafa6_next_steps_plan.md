@@ -1327,6 +1327,73 @@ rather than duplicating it; if it works, it's a second, independent line of evid
 7's "later annotation confirms flagged cells") that CAFA's future ground truth carries real
 sociological signal, not just biology.
 
+**Step 1 done (2026-11-10): both pulls complete, with one source correction.** The plan's named
+convenience file (`goa_uniprot_all_noiea.gaf.gz`) no longer exists at EBI's GOA FTP -- the current
+full dump (`goa_uniprot_all.gaf.gz`) is 28.4GB, and CAFA6's ~82k proteins are a tiny fraction of
+the ~250M+ annotations it holds, so downloading it whole would be very wasteful. Used EBI QuickGO's
+`/annotation/downloadSearch` bulk-TSV endpoint instead (confirmed directly: a batched,
+comma-separated `geneProductId` query returns the exact same columns -- date, evidence code,
+assigned-by, PMID/GO_REF reference -- with no row-count pagination cap, unlike the interactive JSON
+search's 200-row page limit). `experiments/annotator_bias/scripts/fetch_goa_attributions.py`
+pulled all 82,404 unique CAFA6 training proteins in 413 batches of 200: **2,336,168 annotation
+rows**, 82,040/82,404 proteins matched (99.6%), 508,756 (21.8%) IEA rows excluded from everything
+downstream per the plan's own "no human-curation bias to find" rationale, 56 distinct
+`Assigned_By` values among the 1,827,412 non-IEA rows remaining.
+
+`experiments/annotator_bias/scripts/fetch_pubmed_lastauthors.py` then resolved all 170,866 unique
+PMIDs referenced by those non-IEA rows via NCBI's ESummary endpoint, which returns a ready-made
+`lastauthor` field per record (confirmed directly, not assumed) -- 170,856/170,866 resolved
+(10 missing, negligible). One transient 502 from NCBI crashed the first attempt partway through;
+the resumable per-batch-chunk design picked up cleanly from batch 182/855, and a retry-with-backoff
+wrapper was added afterward so a future re-run needs no manual intervention for this. Known,
+unaddressed limitation worth flagging: common CJK surname+initial combinations (e.g. "Wang X",
+"Chen J", "Zhang Y" are the single biggest `lastauthor` buckets, 130-150+ papers each) almost
+certainly collapse many distinct real PIs into one string key -- the plan's "no need to model the
+mentor/mentee graph, last-author persists as the stable identity" simplification assumes
+name-uniqueness that doesn't hold evenly across naming conventions; step 3 should treat any
+same-surname-cluster finding with extra skepticism until this is resolved (e.g. via ORCID or a
+name+affiliation-history disambiguation pass), not a blocker for step 2's go/no-go gate itself
+since that gate only uses `Assigned_By`, not `lastauthor`.
+
+**Step 2 done (2026-11-10): go/no-go gate PASSES -- real, non-organism-driven signal found.**
+`experiments/annotator_bias/scripts/check_assignedby_predictability.py` trains a cheap XGBoost
+multi-class classifier (features: GO term + aspect, optionally taxon ID; protein-ID-grouped
+80/20 split, same convention as the main pipeline's own splits) to predict `Assigned_By` from a
+single annotation row. Deliberately split into three variants to isolate the real hypothesis from
+an obvious confound: many `Assigned_By` values are near-organism-exclusive curation databases
+(MGI=mouse, FlyBase=fly, SGD=yeast, ...), so taxon ID alone would trivially predict those --
+uninteresting, and not what the user's hypothesis (persistent *topical* preference, independent of
+organism biology) is actually about:
+
+| variant | accuracy | macro-F1 | majority-class baseline |
+|---|---|---|---|
+| WITH taxon_id (not a reliable reading, see below) | 0.0942 | 0.0275 | 0.2166 |
+| WITHOUT taxon_id (real hypothesis test) | 0.4687 | 0.1507 | 0.2166 |
+| WITHOUT taxon_id, thematic-only subset (cleanest test) | **0.5723** | **0.2683** | 0.2736 |
+
+The "thematic-only" subset keeps only the 19/56 `Assigned_By` values that annotate >=10 distinct
+species in this data (UniProt, GO_Central, IntAct, Reactome, ComplexPortal, BHF-UCL, ARUK-UCL,
+ParkinsonsUK-UCL, SynGO, CACAO, PHI-base, AgBase, DisProt, HGNC-UCL, SigSci, CAFA, MGI, FlyBase,
+WB) -- excluding clearly organism-exclusive single-species curation groups, so within this subset
+organism identity structurally cannot be doing the predicting. Result: **GO term identity alone
+predicts which lab/database made the annotation at roughly 2x the majority-class baseline, on both
+accuracy and macro-F1, with the organism confound explicitly controlled for.** This is a real,
+learnable, non-circular signal -- the gate passes.
+
+**The "WITH taxon_id" row is not a counter-finding and shouldn't be read as one**: scoring *below*
+its own majority-class baseline despite having strictly more information available is not a
+sensible result for organism identity to produce (many `Assigned_By` values are near-deterministic
+functions of taxon alone). Most likely explanation: taxon_id's high cardinality (hundreds of
+distinct values) overwhelmed this shallow, untuned, cheap-gate-check model's limited split budget
+under a protein-grouped test split, displacing the go_term signal that otherwise generalizes fine
+-- a capacity/tuning artifact of this specific cheap check, not evidence organism information is
+unlearnable. Not worth fixing for the gate's purposes (the WITHOUT-taxon/thematic-only rows are
+the actual hypothesis test and already give a clean answer); flagged here rather than silently
+left inconsistent.
+
+**Status: gate passed, step 3 (temporal-bias-conditioned PU-learning) is next but not yet
+started.**
+
 ### 14. Attention-map validity check on positioned MF spans, then targeted counterfactual "broken-span" negatives
 **Source:** user's own idea (2026-10-23), reusing ground-truth assets built for the shelved
 mf_span sub-project ([[project_mf_span_shelved]]) for a different purpose. **This does not reopen

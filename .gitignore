@@ -40,6 +40,12 @@ __pycache__/
 /experiments/pk_eval/temporal_pk_validation_flat/*
 /experiments/pk_eval/temporal_pk_validation_flat/predictions/*
 /experiments/pk_eval/cafaeval_crosscheck/*
+# Item 13 GOA/PubMed attribution pull (experiments/annotator_bias/scripts/fetch_goa_attributions.py) -- ~300MB
+/experiments/annotator_bias/goa_attributions.tsv
+/experiments/annotator_bias/goa_attributions_chunks/*
+/experiments/annotator_bias/pubmed_lastauthors.tsv
+/experiments/annotator_bias/pubmed_lastauthors_chunks/*
+/experiments/annotator_bias/*.log
 
 # Podman sandbox files
 .podman/
