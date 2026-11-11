@@ -1474,6 +1474,36 @@ mutated sequence as a new training example with:
 **Why Tier 3:** step 1 is a cheap, immediate diagnostic; step 2 is explicitly conditional on step
 1 finding a real problem, not built speculatively.
 
+**Step 1 done (2026-11-11): a real but modest gap found.** 500 randomly sampled validation
+proteins (seed 42, capped at 1024 residues so `output_attentions=True` stays memory-tractable),
+331 (protein, term) pairs where the trial-013 checkpoint correctly predicts (prob > 0.5) an MF
+term with a genuinely localized span (`domain_whole_protein_fallback` entries excluded).
+**Non-obvious fix needed first:** this checkpoint loads with the `sdpa` attention backend by
+default, which silently doesn't support `output_attentions` (`model(...).attentions` comes back
+empty) — fixed by passing `attn_implementation="eager"` at `from_pretrained`. Metric: the ground-
+truth span's mean last-layer CLS-attention (the layer that actually feeds the classifier, mean
+over heads) ranked as a percentile against every other equal-width sliding window in the same
+protein — controls for span width and any protein-level positional attention bias, chance = 50.
+
+| aggregation | mean percentile | median percentile |
+|---|---|---|
+| last layer only | 58.2 | 62.7 |
+| mean across all layers | 51.1 | 47.2 |
+
+Last-layer attention tracks the biologically relevant residues somewhat better than chance (median
+~63rd percentile); averaging over all layers washes it out to chance, consistent with early/middle
+layers building generic context rather than the task-relevant signal. Read as: attention already
+somewhat represents the right thing, not a null result, but not tight concentration either.
+
+**Step 2 deferred into item 15, not built standalone (2026-11-11, user call):** step 2's synthetic
+disruptive-mutation mechanism is exactly what item 15 generalizes into real, already-published
+`FT MUTAGEN` evidence instead of a guessed one — building it here first would duplicate item 15's
+first, cheapest tier. Given step 1's result is a real-but-modest gap (not a clear failure demanding
+an immediate fix) rather than a null result (nothing to revisit), the lower-risk order is: do item
+15's data gathering first, then decide whether a further gap analysis is still worth it once real
+mined evidence is in hand, rather than building synthetic negatives that item 15 would make
+redundant anyway.
+
 ### 15. Mining UniProt's own curated evidence for more trustworthy known-positive/known-negative examples
 **Source:** user's own idea (2026-10-23), generalizing item 14's single mechanism (synthesize a
 disruptive mutation yourself) into systematically mining evidence UniProt curators have *already*
