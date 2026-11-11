@@ -47,6 +47,12 @@ __pycache__/
 /experiments/annotator_bias/pubmed_lastauthors_chunks/*
 /experiments/annotator_bias/*.log
 
+# Item 15 local-LLM review loop (experiments/curated_evidence/scripts/local_llm_review_mutagen.py)
+# -- the user's own exploratory runs against their LM Studio instance, iterated/discarded across
+# several before/after prompt-fix rounds; not a single canonical result set to commit.
+/experiments/curated_evidence/mutagen_review_results*.jsonl
+/experiments/curated_evidence/mutagen_review_debug.log
+
 # Podman sandbox files
 .podman/
 *.token

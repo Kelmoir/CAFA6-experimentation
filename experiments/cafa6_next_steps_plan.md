@@ -1612,13 +1612,71 @@ already in context, so this is closed-set matching against text fully present in
   completed task; re-running only re-queries tasks missing or last recorded as
   `UNPARSED`/`INVALID_VERDICT`.
 
-**Not yet run** -- needs the user to run it against their LM Studio instance:
+**Iterated via 3 rounds of before/after smoke testing (2026-11-11-12), real fixes found by
+example, not guessed speculatively:**
+1. **Convergence**: a native reasoning model (chain-of-thought off) still burns its own internal
+   `<think>` budget regardless of the flag -- raised default `--max-tokens` 256 -> 1024 -> (user
+   tested) 2048, and added raw-response logging to `mutagen_review_debug.log` on any
+   `UNPARSED`/`INVALID_VERDICT` result (previously only a canned reason string was kept, making
+   this undiagnosable without digging through LM Studio's own UI).
+2. **Named-specific-partner overreach**: a note naming one specific interaction partner (e.g.
+   "loss of interaction with MPDZ"/"PATJ") doesn't by itself confirm an unrelated generic listed
+   term just because both involve the same protein -- found force-matching onto e.g. "identical
+   protein binding"/"protein-containing complex binding" repeatedly across unrelated proteins.
+   Fixed via an explicit instruction + a bounded, mf_span-style per-candidate 1-10 scoring pass
+   (ported from `local_llm_review_loop.py`'s `THINKING_INSTRUCTIONS`) instead of an open-ended
+   "consider each, then answer" scaffold -- confirmed fixed on 4/4 repeat cases in round 3.
+3. **Partial/near-total loss wording**: "partial loss of X" was being read as a complete loss
+   (the word "loss" alone isn't enough); the first fix for this then overcorrected the *opposite*
+   direction -- "strong loss"/"almost complete loss" started getting rejected too, because only
+   the disqualifying example ("partial") had been spelled out, not which magnitude words DO count
+   as near-total (strong/severe/almost-complete/...). Fixed by enumerating both word lists
+   explicitly instead of relying on the model to infer the boundary.
+4. **Generic-activity-name ambiguity**: "Loss of catalytic activity" with 3-4 plausible candidate
+   terms was getting force-matched to one of them; fixed with an explicit one-vs-many rule
+   (NONE when >1 candidate could plausibly be meant). This rule's sole-candidate exception (for a
+   genuine is-a case, e.g. a note saying "hydrolase activity" when the one candidate IS a specific
+   hydrolase) was then found being used as a blanket license to pick whichever term happened to be
+   the only one on record even when it was thematically unrelated to the note (a "mitogenic
+   activity" note matched to an unrelated single "epimerase activity" candidate) -- tightened to
+   require the sole candidate to genuinely be the same activity class, not merely the only option
+   present.
+5. **Compound-clause misattribution**: an ongoing/unchanged-behavior clause ("inhibits X") sitting
+   next to an unrelated negated clause ("no loss of Y") was misread as its own independent loss
+   finding. Fixed by having the model classify every clause (NEGATED/INCOMPLETE/ONGOING-UNCHANGED/
+   GENUINE LOSS) before any candidate scoring, short-circuiting straight to NONE when no clause is
+   a genuine loss.
+6. **Missing-ancestor candidates (user call, 2026-11-12)**: the candidate list only ever included
+   each protein's *directly asserted* real MF terms -- a note describing something that maps
+   cleanly to a BROADER term, true only implicitly under GO's own true-path rule (never spelled
+   out as its own UniProt annotation row), had no chance of matching since that term was never
+   offered as an option at all. Fixed in `build_mutagen_review_tasks.py`: every asserted term's
+   full is_a/part_of ancestor closure (via `restrict_to_true_path`, same mechanism used throughout
+   this project, root `GO:0003674` excluded as definitionally too generic to ever be a meaningful
+   match) is now added to its candidates too -- confirmed working (one protein's candidate list
+   grew from 3 to 11 terms). Hierarchy-consistency clean-up of the resulting matches (the same
+   protein confirming both a term and one of its own ancestors from different notes) is left for
+   later, not handled at this stage.
+
+Two remaining open, non-blocking judgment calls from round 3, not yet resolved: whether a note
+describing a specific sub-event that mechanistically *implies* a broader listed activity (e.g.
+"loss of viral RNA template recruitment" implying "RNA binding"; "complete loss of activity
+towards muscle receptor" implying the one listed, subtype-non-specific "acetylcholine receptor
+inhibitor activity") should match -- left conservative (NONE) for now, pending more examples
+before loosening; and the `CONDITIONAL` flag's instability for a "complementation by a separately-
+mutated copy of the same protein" pattern, which the current schema (defined only for "other
+mutations elsewhere in the same protein") doesn't cleanly cover -- low priority, the GO-id verdict
+itself has been stable and correct across all three rounds, only this secondary flag wobbles.
+
+**Still not run at full scale** -- the task file was just rebuilt with the ancestor-closure fix
+(step 6 above), which changes candidate lists, so prior partial `mutagen_review_results*.jsonl`
+runs are archived exploration artifacts, not a continuable partial run. Command to run fresh
+against the user's LM Studio instance:
 ```
 python3 experiments/curated_evidence/scripts/local_llm_review_mutagen.py \
-    --host http://<lm-studio-host>:1234 --concurrency 4
+    --host http://<lm-studio-host>:1234 --concurrency 4 --chain-of-thought --max-tokens 2048
 ```
-Add `--chain-of-thought` (with `--max-tokens` raised, e.g. 1024) for a smaller/non-reasoning model,
-same recommendation as `local_llm_review_loop.py`. `--limit N` caps total tasks for a smoke test.
+`--limit N` caps total tasks for a smoke test.
 
 ### 16. Autoregressive decoder over item 8's term-embedding vocabulary (user's own idea, 2026-10-24)
 **Source:** direct follow-up to item 8's closure. Item 8's single-point compatibility-score head
