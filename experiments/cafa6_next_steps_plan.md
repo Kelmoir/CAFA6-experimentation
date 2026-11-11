@@ -1584,6 +1584,42 @@ training examples, not before.
 the actual mutant sequences and adding them as training examples (the "deliverable" this was
 scoped to feed, not yet started).
 
+**Tier 1 matching redone via local LLM, prep stage done (2026-11-11), user call.** The token-
+overlap matcher above has two real failure modes found by direct inspection: it can't tell a
+negated clause ("does not abolish X") from a real loss, and it can't bridge a synonym/paraphrase
+the note uses instead of a GO term's literal name -- the latter almost certainly undercounts real
+losses silently. Rather than build a bigger keyword dictionary, reused the exact local-LLM-review
+infrastructure the mf_span project already proved works for this class of problem
+(`experiments/mf_span/scripts/local_llm_review_loop.py`, an LM Studio HTTP loop the user runs
+directly, not something this sandbox can reach over its network namespace). Same underlying
+design principle carried over directly: the model is never asked to recall a GO term from its own
+training -- every task hands it the protein's own real MF terms with their official
+name+definition (from go-basic.obo, via `prepare_term_review_files.py`'s `load_go_term_info`)
+already in context, so this is closed-set matching against text fully present in the prompt.
+
+- `experiments/curated_evidence/scripts/build_mutagen_review_tasks.py` reuses
+  `mine_mutagen_evidence.py`'s `LOSS_PATTERN`/`real_mf_terms` funnel unchanged but skips its
+  token-overlap matching step entirely -- every loss-language-flagged note becomes one task
+  carrying the protein's FULL real-MF-term candidate list (not pre-filtered by any heuristic).
+  Produced **22,488 review tasks** (vs. 23,696 loss-pattern-flagged notes; the gap is proteins with
+  a loss-pattern note but zero real MF-term annotation at all, i.e. nothing for the model to pick
+  from) -> `experiments/curated_evidence/mutagen_review_tasks.json`.
+- `experiments/curated_evidence/scripts/local_llm_review_mutagen.py` reuses `call_local_llm`/
+  `discover_model`/`LocalLLMError` from `local_llm_review_loop.py` unchanged (imported, not
+  duplicated); new prompt/parse logic for this task's schema (`VERDICT`/`CONDITIONAL`/
+  `REASONING`, validated against the task's own candidate id list so a hallucinated id is caught
+  as `INVALID_VERDICT` rather than silently accepted). Resumable JSONL output, one line per
+  completed task; re-running only re-queries tasks missing or last recorded as
+  `UNPARSED`/`INVALID_VERDICT`.
+
+**Not yet run** -- needs the user to run it against their LM Studio instance:
+```
+python3 experiments/curated_evidence/scripts/local_llm_review_mutagen.py \
+    --host http://<lm-studio-host>:1234 --concurrency 4
+```
+Add `--chain-of-thought` (with `--max-tokens` raised, e.g. 1024) for a smaller/non-reasoning model,
+same recommendation as `local_llm_review_loop.py`. `--limit N` caps total tasks for a smoke test.
+
 ### 16. Autoregressive decoder over item 8's term-embedding vocabulary (user's own idea, 2026-10-24)
 **Source:** direct follow-up to item 8's closure. Item 8's single-point compatibility-score head
 (`proj(pooled)` → one unit vector per protein, scored against every label's frozen term embedding
