@@ -1538,6 +1538,52 @@ term as an implicit negative" training strategy — directly relevant to this pr
 OWA/PU-learning tension ([[project_pu_learning_nnpu_km2]]). Unconditional on item 14's step 1
 result (unlike item 14's step 2) — this is useful regardless of what the attention-map check finds.
 
+**Tier 1 (`FT MUTAGEN`) data gathering done (2026-11-11).**
+`experiments/curated_evidence/scripts/mine_mutagen_evidence.py` streams the cached Swiss-Prot dump
+once (no go-basic.obo lookup needed — each record's own GO cross-references already carry the
+aspect + English term name, e.g. `('GO', 'GO:0004672', 'F:protein kinase activity', ...)`), flags
+`MUTAGEN` notes matching a conservative "definite loss" language pattern (`loss of`, `abolish`,
+`ablat`, `eliminat`, `no detectable`, `completely lose/lost/abolished` — deliberately excluding
+softer "reduced"/"impaired"/"decreased" language as too noisy for this tier), then confirms a
+candidate only if the note's content words (stopword-filtered) overlap with one of the protein's
+own already-annotated real molecular_function term names — same token-overlap idea
+`build_positional_mf_links.py` already uses for domain-description bridging.
+
+| | count |
+|---|---|
+| proteins with >=1 `MUTAGEN` feature | 21,977 |
+| total `MUTAGEN` features | 110,338 |
+| notes matching the loss-of-function language pattern | 23,696 |
+| confirmed (protein, term) negative candidates | **14,436**, across 2,798 proteins |
+| of those, protein already in CAFA6's `train_terms.tsv` set | 11,693 (81.0%) |
+
+Top matched terms by frequency are biologically sensible, not noise artifacts: `GO:0003677` DNA
+binding (535), `GO:0004674` protein serine/threonine kinase activity (474), `GO:0106310` protein
+serine kinase activity (453), `GO:0003723` RNA binding (288), `GO:0004672` protein kinase activity
+(276), `GO:0005524` ATP binding (193) — kinases, nucleic-acid-binding proteins, and ATPases are
+exactly the enzyme classes mutagenesis studies most often target.
+
+**Known, measured imprecision — negation.** The loss-language pattern and the term-overlap check
+each look at the whole note independently, so a compound note with one real loss clause and one
+unrelated "no effect on Y" clause can still confirm correctly (the match is on the real clause);
+but a note where the *matched* term's own overlapping words happen to sit inside a negated clause
+("does not abolish...", "no loss of binding to X") is a genuine false positive — found directly by
+spot-checking (e.g. `Q9GZU1`/potassium channel activity: "does not abolish channel inward
+rectification" matched as a loss because "abolish" appears, ignoring the "does not"). Measured
+upper bound: 3,143/14,436 (21.8%) of matches have *some* negation marker (`no effect`, `does not`,
+`no loss`, `without loss`, `unaffected`, `not abolish`, `not eliminate`, `no change`) anywhere in
+the note; manual spot-checking of a sample suggests most of these are the compound-note case (the
+match itself is still on a real, unnegated loss clause) rather than the genuine-false-positive
+case, but a real subset is the latter — true precision is somewhere between 78% and ~100%, not
+pinned down further here. Not fixed now (would need sentence-scoped matching instead of whole-note
+matching) since this step is explicitly a feasibility/count deliverable, not the final negative-
+example set — tightening this is the natural next step if this data actually gets used to build
+training examples, not before.
+
+**Not yet done:** tiers 2 (`CC CAUTION`) and 3 (`FT VARIANT`) from the ranked list above; building
+the actual mutant sequences and adding them as training examples (the "deliverable" this was
+scoped to feed, not yet started).
+
 ### 16. Autoregressive decoder over item 8's term-embedding vocabulary (user's own idea, 2026-10-24)
 **Source:** direct follow-up to item 8's closure. Item 8's single-point compatibility-score head
 (`proj(pooled)` → one unit vector per protein, scored against every label's frozen term embedding
