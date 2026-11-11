@@ -20,6 +20,27 @@ DEFAULT_OLD = Path(__file__).resolve().parent.parent / "mutagen_review_results_o
 DEFAULT_NEW = Path(__file__).resolve().parent.parent / "mutagen_review_results.jsonl"
 
 
+def normalize(records: dict) -> dict:
+    """Upgrades legacy single-verdict records ({"verdict", "conditional"}, pre multi-verdict
+    schema) to the current {"status", "verdicts"} shape in place, so an old archived results file
+    can still be diffed against a current run -- this project's own convention is to archive
+    rather than delete prior exploration rounds, so comparisons spanning a schema change are
+    expected to come up, not a one-off."""
+    for rec in records.values():
+        if "verdicts" in rec:
+            continue
+        verdict = rec.pop("verdict")
+        conditional = rec.pop("conditional", False)
+        if verdict == "NONE":
+            rec["status"], rec["verdicts"] = "NONE", []
+        elif verdict in ("UNPARSED", "INVALID_VERDICT"):
+            rec["status"], rec["verdicts"] = verdict, []
+        else:
+            rec["status"] = "OK"
+            rec["verdicts"] = [{"go_id": verdict, "conditional": conditional}]
+    return records
+
+
 def verdict_set(rec):
     return frozenset((v["go_id"], v["conditional"]) for v in rec.get("verdicts", []))
 
@@ -38,8 +59,8 @@ def main():
     args = ap.parse_args()
 
     tasks = {t["id"]: t for t in json.loads(TASKS_PATH.read_text())}
-    old = load_done(args.old)
-    new = load_done(args.new)
+    old = normalize(load_done(args.old))
+    new = normalize(load_done(args.new))
     common_ids = sorted(set(old) & set(new))
     print(f"[INFO] {len(old)} old results, {len(new)} new results, {len(common_ids)} ids in both\n")
 
