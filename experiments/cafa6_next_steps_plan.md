@@ -1391,8 +1391,44 @@ unlearnable. Not worth fixing for the gate's purposes (the WITHOUT-taxon/themati
 the actual hypothesis test and already give a clean answer); flagged here rather than silently
 left inconsistent.
 
-**Status: gate passed, step 3 (temporal-bias-conditioned PU-learning) is next but not yet
-started.**
+**Step 2 corrected (2026-11-11): the `Assigned_By` test above answers a different, less
+interesting question than the one asked.** User caught this directly: `Assigned_By` values (MGI,
+FlyBase, UniProt, GO_Central, Reactome, ComplexPortal, DisProt, SynGO, ...) are institutional
+curation databases/consortia, not individual labs, and several are themselves topically scoped *by
+charter* (ComplexPortal annotates complexes, Reactome annotates pathways, DisProt annotates
+disordered regions) — "GO term predicts `Assigned_By`" for those is close to tautological, not
+evidence of persistent human bias. The thematic-only filter removed the organism confound but not
+this one.
+
+The real test of the hypothesis uses the PubMed-resolved `lastauthor` (pull #2, above) as the
+prediction target instead — an individual-researcher identity key — with
+`experiments/annotator_bias/scripts/check_lastauthor_predictability.py`. Confound control this
+time: restricted to `TAXON ID == 9606` (human) only, rather than approximating it with a taxa-count
+filter, since a lab's own research naturally concentrates on one organism and there's no clean
+multi-species subset of individual labs the way there was for institutional databases. Human alone
+gives 446,303 non-IEA, PMID-resolved rows across 16,675 proteins and 24,106 unique last authors;
+restricted further to the 881 last authors with >=50 rows each (276,469 rows) so the multiclass fit
+isn't dominated by thousands of one-row singleton classes.
+
+| variant | accuracy | macro-F1 | majority-class baseline |
+|---|---|---|---|
+| `Assigned_By`, thematic-only (prior, answers a different question) | 0.5723 | 0.2683 | 0.2736 |
+| `lastauthor`, human-only, >=50 rows/author (the real test) | 0.3397 | **0.0247** | 0.3049 |
+
+Accuracy barely clears its own baseline (+0.035), and that lift is explained by a handful of
+extreme outliers once inspected directly: the top last authors by row count (Calderwood MA
+81,266 rows; Vidal M 27,922; Wanker EE 19,075; Travé G 16,536; Gygi SP 9,176) are PIs behind
+large-scale systematic human-interactome/proteomics mapping papers — a single such paper generates
+tens of thousands of near-identical "binding"/protein-complex GO rows citing the same last author,
+which is a dataset-scale artifact of how that kind of study is published, not evidence of a
+persistent topical *preference*. Macro-F1 (0.0247, near chance) is the metric that reflects whether
+a *typical* one of the 881 individuals is distinguishable from another, and it isn't.
+
+**Conclusion: with the hypothesis isolated correctly (individual lab identity, organism held
+constant), the signal is not there.** Item 13 is closed as a negative result; step 3
+(temporal-bias-conditioned PU-learning) does not proceed — it was explicitly gated on a real step-2
+signal, and the signal that originally looked real turned out to be measuring database/charter
+scope and high-throughput-study dataset size, not lab bias.
 
 ### 14. Attention-map validity check on positioned MF spans, then targeted counterfactual "broken-span" negatives
 **Source:** user's own idea (2026-10-23), reusing ground-truth assets built for the shelved
