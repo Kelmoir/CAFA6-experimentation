@@ -22,6 +22,13 @@ Usage:
 Resumable: results append to mutagen_review_results.jsonl, one line per completed task, keyed by
 task id. Re-running only re-queries tasks that are missing or whose last recorded verdict was
 UNPARSED/INVALID (a genuine NONE or a real GO id is never re-queried) -- safe to Ctrl-C any time.
+
+Whenever a response doesn't parse to a clean VERDICT, the raw model text is saved to
+mutagen_review_debug.log (not just a canned reason string) -- the first smoke test against a
+native reasoning model showed exactly why this matters: its own internal <think>-style
+deliberation ran past max_tokens before ever reaching VERDICT, and without the raw text saved
+there was no way to tell that apart from a genuine formatting failure without digging the
+transcript out of LM Studio's own UI by hand.
 """
 import argparse
 import concurrent.futures
@@ -36,6 +43,7 @@ from local_llm_review_loop import LocalLLMError, call_local_llm, discover_model 
 
 TASKS_PATH = Path(__file__).resolve().parent.parent / "mutagen_review_tasks.json"
 RESULTS_PATH = Path(__file__).resolve().parent.parent / "mutagen_review_results.jsonl"
+DEBUG_LOG_PATH = Path(__file__).resolve().parent.parent / "mutagen_review_debug.log"
 
 TASK_DESCRIPTION = (
     "You are reviewing a site-directed mutagenesis (MUTAGEN) annotation from UniProt, to decide "
@@ -122,6 +130,17 @@ def parse_response(text: str, valid_go_ids: set):
 
 
 _write_lock = threading.Lock()
+_debug_lock = threading.Lock()
+
+
+def log_debug(task_id, accession, tag, raw_text):
+    """Saves the raw model response whenever parsing didn't produce a clean, usable verdict --
+    without this, diagnosing a failure (e.g. a native reasoning model burning its whole token
+    budget on internal deliberation before ever reaching VERDICT) means digging the transcript
+    out of LM Studio's own UI by hand, which is what happened before this existed."""
+    with _debug_lock:
+        with open(DEBUG_LOG_PATH, "a") as f:
+            f.write(f"=== task {task_id} ({accession}) [{tag}] ===\n{raw_text}\n\n")
 
 
 def load_done(results_path: Path) -> dict:
@@ -148,14 +167,17 @@ def review_task(host, model, system_prompt, task, request_timeout, max_tokens,
             host, model, system_prompt, prompt, max_tokens, timeout=request_timeout,
             capacity_retries=capacity_retries, capacity_retry_delay=capacity_retry_delay)
     except LocalLLMError as e:
+        log_debug(task["id"], task["accession"], f"HTTP {e.status} {e.reason}", e.body)
         return {"id": task["id"], "verdict": "UNPARSED", "conditional": False,
                 "reasoning": f"HTTP {e.status} {e.reason}"}
     except (OSError, TimeoutError) as e:
         return {"id": task["id"], "verdict": "UNPARSED", "conditional": False,
                 "reasoning": f"request failed: {e}"}
     verdict, conditional, reasoning = parse_response(raw, valid_go_ids)
-    if verdict == "UNPARSED" and finish_reason == "length":
-        reasoning = f"hit max_tokens ({max_tokens}) before VERDICT appeared"
+    if verdict in ("UNPARSED", "INVALID_VERDICT"):
+        if verdict == "UNPARSED" and finish_reason == "length":
+            reasoning = f"hit max_tokens ({max_tokens}) before VERDICT appeared"
+        log_debug(task["id"], task["accession"], f"{verdict} finish_reason={finish_reason}", raw)
     return {"id": task["id"], "accession": task["accession"], "verdict": verdict,
             "conditional": conditional, "reasoning": reasoning}
 
@@ -167,13 +189,25 @@ def main():
     ap.add_argument("--concurrency", type=int, default=4,
                      help="Matches the throughput sweet spot found for LM Studio in the mf_span "
                           "review loop -- 4 concurrent requests measurably raised tokens/sec there.")
-    ap.add_argument("--request-timeout", type=int, default=120)
-    ap.add_argument("--max-tokens", type=int, default=256,
-                     help="Short answer (VERDICT/CONDITIONAL/REASONING, no reasoning trace by "
-                          "default) -- raise substantially if --chain-of-thought is set.")
+    ap.add_argument("--request-timeout", type=int, default=180)
+    ap.add_argument("--max-tokens", type=int, default=1024,
+                     help="Generation budget per task. A NATIVE REASONING model (QwQ, "
+                          "DeepSeek-R1-distill, Qwen3-thinking, etc.) burns hundreds-to-thousands "
+                          "of tokens on its own internal <think> deliberation before it ever "
+                          "reaches the requested VERDICT line -- regardless of --chain-of-thought, "
+                          "which only adds a SEPARATE scaffolded THINKING field for models that "
+                          "DON'T already reason internally. For a native reasoning model, raise "
+                          "this further (2048+) if mutagen_review_debug.log shows real responses "
+                          "getting cut off mid-thought (finish_reason=length), and check whether "
+                          "that model's chat template supports a lightweight no-think directive "
+                          "(e.g. Qwen3's \"/no_think\" suffix) to skip the internal deliberation "
+                          "entirely for a task this size.")
     ap.add_argument("--chain-of-thought", action="store_true",
-                     help="Let the model reason in a THINKING field before answering -- recommended "
-                          "for smaller/non-reasoning models; needs --max-tokens raised accordingly.")
+                     help="Adds a scaffolded THINKING field to the requested answer format -- for "
+                          "models that DON'T already reason internally on their own. Do not combine "
+                          "with a native reasoning model; it already deliberates before answering, "
+                          "and stacking a second, separately-prompted reasoning field on top of that "
+                          "just adds more unbounded text for it to get lost in.")
     ap.add_argument("--capacity-retries", type=int, default=3)
     ap.add_argument("--capacity-retry-delay", type=float, default=2.0)
     ap.add_argument("--limit", type=int, default=None, help="Cap total tasks processed (smoke test)")
@@ -213,6 +247,10 @@ def main():
                 print(f"[INFO] {n_done}/{len(todo)} processed", flush=True)
 
     print(f"[INFO] Done. {n_done} tasks processed this run -> {RESULTS_PATH}")
+    if DEBUG_LOG_PATH.exists():
+        print(f"[INFO] Some responses didn't parse cleanly -- raw text saved to {DEBUG_LOG_PATH} "
+              f"for inspection. Those tasks are UNPARSED/INVALID_VERDICT in the results file and "
+              f"will be retried automatically next run.")
 
 
 if __name__ == "__main__":
