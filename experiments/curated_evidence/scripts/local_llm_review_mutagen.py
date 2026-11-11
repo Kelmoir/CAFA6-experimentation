@@ -56,16 +56,24 @@ TASK_DESCRIPTION = (
 INSTRUCTIONS = (
     "Decide which ONE of the listed terms (if any) is described as being clearly and "
     "unconditionally LOST or ABOLISHED by this specific mutation.\n"
-    "- If the description negates the loss (e.g. \"no loss of X\", \"does not abolish Y\", \"no "
-    "effect on Z activity\", \"normal X\"), that term is NOT lost -- do not select it.\n"
+    "- If the description negates the loss (e.g. \"no loss of X\", \"no significant loss of X\", "
+    "\"does not abolish Y\", \"no effect on Z activity\", \"normal X\"), that term is NOT lost -- "
+    "do not select it. Read the whole clause: \"no\"/\"not\"/\"normal\" immediately changes the "
+    "meaning of the loss-language that follows it.\n"
     "- If the loss is described as depending on OTHER mutations elsewhere in the protein (e.g. "
     "\"when associated with...\", \"in combination with...\"), select the term but set CONDITIONAL "
     "to YES -- this single mutation alone may not be sufficient evidence on its own.\n"
     "- The note may use different wording than a term's official name (a synonym, abbreviation, "
     "or more specific/general phrasing) -- still match it if the underlying biological activity is "
     "clearly the same.\n"
-    "- If no listed term is clearly and specifically described as lost, or the match is too vague "
-    "to be confident, answer NONE -- do not force a match."
+    "- A description that only names a SPECIFIC interaction partner or process (e.g. \"loss of "
+    "interaction with MPDZ\") does NOT by itself confirm any listed term unless that term's own "
+    "definition is clearly about that same kind of interaction -- a loss affecting one specific, "
+    "unlisted partner/process does not transfer onto an unrelated listed term just because both "
+    "involve this protein.\n"
+    "- Most tasks genuinely have NO correct match among the listed terms -- answering NONE is the "
+    "expected, common outcome, not a failure to find something. Never force a weak or speculative "
+    "match just to avoid answering NONE."
 )
 
 ANSWER_FORMAT = (
@@ -75,11 +83,29 @@ ANSWER_FORMAT = (
     "REASONING: <one sentence, plain text>"
 )
 
+THINKING_INSTRUCTIONS = (
+    "In the THINKING block, follow these steps in order, and do not repeat a step once it is done:\n"
+    "- Restate the MUTAGEN description in your own words. State plainly whether it describes a "
+    "genuine loss, or is negated/absent (\"no loss\", \"no significant loss\", \"no effect\", "
+    "\"does not abolish\", \"normal\"). If it is negated or says there was no effect, stop here and "
+    "go straight to VERDICT: NONE -- no candidate needs to be considered at all.\n"
+    "- Otherwise, for each listed GO term, in turn, EXACTLY ONCE: state whether the description's "
+    "own wording -- or a very well-known, unambiguous fact, not a guess -- connects it to that "
+    "term's specific definition, and rate your confidence 1 (no real connection) to 10 (the "
+    "description names or is mechanistically specific to this exact activity). A description that "
+    "only names a specific interaction partner or process without itself stating a general class of "
+    "activity does not confirm a listed term just because both involve the same protein -- rate it "
+    "low unless you are genuinely confident the named partner/process matches that term's own "
+    "definition.\n"
+    "- Once every term has been rated exactly once, stop analyzing. Use the highest-scoring term if "
+    "its score is >=7; otherwise answer NONE. Do not revisit or re-score a term already rated, and "
+    "do not force an answer just to avoid NONE -- most tasks genuinely have no correct match."
+)
+
 COT_ANSWER_FORMAT = (
     "Respond in this order, starting with THINKING (nothing before it):\n"
-    "THINKING: <briefly consider each candidate term in turn against the note; name which one (if "
-    "any) matches and say plainly whether the note negates it or makes it conditional on another "
-    "mutation. Then settle on an answer below.>\n"
+    "THINKING: <follow the numbered steps given above. Can span as many lines as needed; there is "
+    "no length limit, but each term is rated once, not revisited.>\n"
     "VERDICT: <GO id exactly as listed above, or NONE>\n"
     "CONDITIONAL: YES or NO (NO if VERDICT is NONE)\n"
     "REASONING: <one sentence, plain text, summarizing the conclusion your THINKING reached>"
@@ -87,8 +113,9 @@ COT_ANSWER_FORMAT = (
 
 
 def build_system_prompt(chain_of_thought: bool) -> str:
-    fmt = COT_ANSWER_FORMAT if chain_of_thought else ANSWER_FORMAT
-    return f"{TASK_DESCRIPTION}\n\n{INSTRUCTIONS}\n\n{fmt}"
+    if chain_of_thought:
+        return f"{TASK_DESCRIPTION}\n\n{INSTRUCTIONS}\n\n{THINKING_INSTRUCTIONS}\n\n{COT_ANSWER_FORMAT}"
+    return f"{TASK_DESCRIPTION}\n\n{INSTRUCTIONS}\n\n{ANSWER_FORMAT}"
 
 
 def build_prompt(task: dict) -> str:
