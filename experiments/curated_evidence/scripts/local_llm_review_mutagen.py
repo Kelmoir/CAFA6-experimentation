@@ -54,15 +54,18 @@ TASK_DESCRIPTION = (
 )
 
 INSTRUCTIONS = (
-    "Decide which ONE of the listed terms (if any) is described as being clearly and "
-    "unconditionally LOST or ABOLISHED by this specific mutation.\n"
+    "Decide which of the listed terms are described as being clearly and unconditionally LOST or "
+    "ABOLISHED by this specific mutation. Usually this is zero or one term -- only list more than "
+    "one when the note describes multiple SEPARATE, independently-supported losses (different "
+    "clauses, different activities), never as a way to hedge; each term you list must "
+    "independently satisfy every rule below on its own.\n"
     "- If the description negates the loss (e.g. \"no loss of X\", \"no significant loss of X\", "
     "\"does not abolish Y\", \"no effect on Z activity\", \"normal X\"), that term is NOT lost -- "
     "do not select it. Read the whole clause: \"no\"/\"not\"/\"normal\" immediately changes the "
     "meaning of the loss-language that follows it.\n"
-    "- If the loss is described as depending on OTHER mutations elsewhere in the protein (e.g. "
-    "\"when associated with...\", \"in combination with...\"), select the term but set CONDITIONAL "
-    "to YES -- this single mutation alone may not be sufficient evidence on its own.\n"
+    "- If a term's loss is described as depending on OTHER mutations elsewhere in the protein (e.g. "
+    "\"when associated with...\", \"in combination with...\"), still list it but mark it "
+    "\"(conditional)\" -- this single mutation alone may not be sufficient evidence on its own.\n"
     "- An INCOMPLETE loss is NOT a clear, unconditional loss, even though the word \"loss\" "
     "appears -- do not select a term for it. Words that mean INCOMPLETE: \"partial\", \"reduced\", "
     "\"decreased\", \"diminished\", \"mild\", \"modest\", or a percentage that is not near zero. "
@@ -117,16 +120,20 @@ INSTRUCTIONS = (
     "clause using ongoing/unchanged-behavior language (\"inhibits X\", \"promotes Y\", \"maintains "
     "Z\", stated without comparison to the wild-type) is NOT itself evidence of a loss, even if it "
     "immediately follows an unrelated negated clause -- it does not inherit loss-status from a "
-    "neighboring clause about a different finding, and does not gain it either.\n"
+    "neighboring clause about a different finding, and does not gain it either. If more than one "
+    "clause each independently supports its OWN distinct term, list all of them. But never list "
+    "both a term and its own ancestor for the SAME single clause/finding -- that is not two "
+    "independent losses, just one finding at two levels of generality; list only the more specific "
+    "one for that finding (see SPECIFICITY above).\n"
     "- Most tasks genuinely have NO correct match among the listed terms -- answering NONE is the "
     "expected, common outcome, not a failure to find something. Never force a weak or speculative "
     "match just to avoid answering NONE."
 )
 
 ANSWER_FORMAT = (
-    "Respond with EXACTLY three lines, nothing else, no markdown, no commentary:\n"
-    "VERDICT: <GO id exactly as listed above, or NONE>\n"
-    "CONDITIONAL: YES or NO (NO if VERDICT is NONE)\n"
+    "Respond with EXACTLY two lines, nothing else, no markdown, no commentary:\n"
+    "VERDICTS: <comma-separated GO ids exactly as listed above, each optionally followed by "
+    "\"(conditional)\", or the single word NONE>\n"
     "REASONING: <one sentence, plain text>"
 )
 
@@ -143,7 +150,7 @@ THINKING_INSTRUCTIONS = (
     "\"drastic\", \"abolished\", \"no detectable X\", or a tiny residual percent of wild-type -- "
     "these are NOT weaker than a bare loss, do not downgrade them to INCOMPLETE). If every clause "
     "is NEGATED, INCOMPLETE, or ONGOING/UNCHANGED -- none is a GENUINE LOSS -- stop here and go "
-    "straight to VERDICT: NONE.\n"
+    "straight to VERDICTS: NONE.\n"
     "- Otherwise, using only the genuine-loss clause(s): if a clause names only ONE SPECIFIC "
     "interaction partner or process (e.g. \"loss of interaction with MPDZ\"), that is NOT a general "
     "class of activity -- do not let a shared word like \"binding\"/\"interaction\" count as a "
@@ -178,17 +185,20 @@ THINKING_INSTRUCTIONS = (
     "must still genuinely match what was described, not just be the only option present. If MORE "
     "THAN ONE listed term could plausibly be the specific one meant, rate all of them low -- you "
     "cannot tell which one, so this should still end in NONE.\n"
-    "- Once every term has been rated exactly once, stop analyzing. Use the highest-scoring term if "
-    "its score is >=7; otherwise answer NONE. Do not revisit or re-score a term already rated, and "
-    "do not force an answer just to avoid NONE -- most tasks genuinely have no correct match."
+    "- Once every term has been rated exactly once, stop analyzing. Collect every term scoring >=7 "
+    "across all clauses -- usually zero or one, but list more than one if separate clauses each "
+    "independently support a different term. Never include both a term and its own ancestor for "
+    "the same single clause/finding -- only the more specific one for that finding. If nothing "
+    "scores >=7 anywhere, answer NONE. Do not revisit or re-score a term already rated, and do not "
+    "force an answer just to avoid NONE -- most tasks genuinely have no correct match."
 )
 
 COT_ANSWER_FORMAT = (
     "Respond in this order, starting with THINKING (nothing before it):\n"
     "THINKING: <follow the numbered steps given above. Can span as many lines as needed; there is "
     "no length limit, but each term is rated once, not revisited.>\n"
-    "VERDICT: <GO id exactly as listed above, or NONE>\n"
-    "CONDITIONAL: YES or NO (NO if VERDICT is NONE)\n"
+    "VERDICTS: <comma-separated GO ids exactly as listed above, each optionally followed by "
+    "\"(conditional)\", or the single word NONE>\n"
     "REASONING: <one sentence, plain text, summarizing the conclusion your THINKING reached>"
 )
 
@@ -219,22 +229,36 @@ def _last_match(pattern, text, flags=0):
     return matches[-1] if matches else None
 
 
+VERDICT_TOKEN_RE = re.compile(r"^(GO:\d+)\s*(\(conditional\))?$", re.I)
+
+
 def parse_response(text: str, valid_go_ids: set):
-    v = _last_match(r"VERDICT:\s*(\S+)", text, re.I)
-    c = _last_match(r"CONDITIONAL:\s*(YES|NO)", text, re.I)
+    """Returns (status, verdicts, reasoning). status is one of OK/NONE/UNPARSED/INVALID_VERDICT;
+    verdicts is a list of {"go_id", "conditional"} dicts (empty for NONE/UNPARSED/INVALID_VERDICT).
+    Multiple verdicts are allowed -- a note can genuinely describe more than one separate loss
+    (e.g. "strong loss of ATPase AND inorganic triphosphatase activities" supports two distinct
+    terms at once); any single hallucinated/unlisted id invalidates the whole response rather than
+    silently dropping just that one token, consistent with the single-verdict version's guard."""
+    v = _last_match(r"VERDICTS?:\s*(.+)", text, re.I)
     r = _last_match(r"REASONING:\s*(.+)", text, re.I)
-    raw_verdict = v.group(1).rstrip(".,:;") if v else None
-    if raw_verdict is None:
-        verdict = "UNPARSED"
-    elif raw_verdict.upper() == "NONE":
-        verdict = "NONE"
-    elif raw_verdict.upper() in valid_go_ids:
-        verdict = raw_verdict.upper()
-    else:
-        verdict = "INVALID_VERDICT"  # hallucinated an id not in this task's candidate list
-    conditional = (c.group(1).upper() == "YES") if c else False
     reasoning = r.group(1).strip().split("\n")[0][:400] if r else "(no reasoning extracted)"
-    return verdict, conditional, reasoning
+    if v is None:
+        return "UNPARSED", [], reasoning
+    raw = v.group(1).strip().rstrip(".")
+    if raw.upper() == "NONE":
+        return "NONE", [], reasoning
+    verdicts = []
+    for token in raw.split(","):
+        m = VERDICT_TOKEN_RE.match(token.strip())
+        if not m:
+            return "INVALID_VERDICT", [], reasoning
+        go_id = m.group(1).upper()
+        if go_id not in valid_go_ids:
+            return "INVALID_VERDICT", [], reasoning  # hallucinated an id not in this task's list
+        verdicts.append({"go_id": go_id, "conditional": bool(m.group(2))})
+    if not verdicts:
+        return "INVALID_VERDICT", [], reasoning
+    return "OK", verdicts, reasoning
 
 
 _write_lock = threading.Lock()
@@ -254,7 +278,7 @@ def log_debug(task_id, accession, tag, raw_text):
 def load_done(results_path: Path) -> dict:
     """task id -> last recorded result. UNPARSED/INVALID_VERDICT results are kept in the file for
     visibility but intentionally excluded from the returned dict's "done" sense via the caller
-    checking the verdict -- see main()."""
+    checking status -- see main()."""
     done = {}
     if results_path.exists():
         with open(results_path) as f:
@@ -276,18 +300,18 @@ def review_task(host, model, system_prompt, task, request_timeout, max_tokens,
             capacity_retries=capacity_retries, capacity_retry_delay=capacity_retry_delay)
     except LocalLLMError as e:
         log_debug(task["id"], task["accession"], f"HTTP {e.status} {e.reason}", e.body)
-        return {"id": task["id"], "verdict": "UNPARSED", "conditional": False,
-                "reasoning": f"HTTP {e.status} {e.reason}"}
+        return {"id": task["id"], "accession": task["accession"], "status": "UNPARSED",
+                "verdicts": [], "reasoning": f"HTTP {e.status} {e.reason}"}
     except (OSError, TimeoutError) as e:
-        return {"id": task["id"], "verdict": "UNPARSED", "conditional": False,
-                "reasoning": f"request failed: {e}"}
-    verdict, conditional, reasoning = parse_response(raw, valid_go_ids)
-    if verdict in ("UNPARSED", "INVALID_VERDICT"):
-        if verdict == "UNPARSED" and finish_reason == "length":
-            reasoning = f"hit max_tokens ({max_tokens}) before VERDICT appeared"
-        log_debug(task["id"], task["accession"], f"{verdict} finish_reason={finish_reason}", raw)
-    return {"id": task["id"], "accession": task["accession"], "verdict": verdict,
-            "conditional": conditional, "reasoning": reasoning}
+        return {"id": task["id"], "accession": task["accession"], "status": "UNPARSED",
+                "verdicts": [], "reasoning": f"request failed: {e}"}
+    status, verdicts, reasoning = parse_response(raw, valid_go_ids)
+    if status in ("UNPARSED", "INVALID_VERDICT"):
+        if status == "UNPARSED" and finish_reason == "length":
+            reasoning = f"hit max_tokens ({max_tokens}) before VERDICTS appeared"
+        log_debug(task["id"], task["accession"], f"{status} finish_reason={finish_reason}", raw)
+    return {"id": task["id"], "accession": task["accession"], "status": status,
+            "verdicts": verdicts, "reasoning": reasoning}
 
 
 def main():
@@ -326,13 +350,13 @@ def main():
         tasks = tasks[:args.limit]
     done = load_done(RESULTS_PATH)
 
-    def has_valid_verdict(task_id):
+    def is_resolved(task_id):
         result = done.get(task_id)
-        return result is not None and result["verdict"] not in ("UNPARSED", "INVALID_VERDICT")
+        return result is not None and result["status"] not in ("UNPARSED", "INVALID_VERDICT")
 
-    todo = [t for t in tasks if not has_valid_verdict(t["id"])]
+    todo = [t for t in tasks if not is_resolved(t["id"])]
     print(f"[INFO] {len(tasks)} total tasks, {len(todo)} to process "
-          f"({len(tasks) - len(todo)} already have a valid verdict)")
+          f"({len(tasks) - len(todo)} already resolved)")
 
     model = args.model or discover_model(args.host)
     system_prompt = build_system_prompt(args.chain_of_thought)

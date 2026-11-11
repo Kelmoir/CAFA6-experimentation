@@ -3,8 +3,9 @@ change (e.g. the bounded-scoring --chain-of-thought fix) against a prior run's r
 same tasks -- built for the specific before/after workflow of renaming an existing
 mutagen_review_results.jsonl to _old.jsonl and regenerating a fresh batch to diff against it.
 
-Only prints tasks present in both files whose verdict actually changed (including either side
-being UNPARSED/INVALID_VERDICT) -- an unchanged verdict isn't interesting for this comparison.
+Only prints tasks present in both files whose result actually changed (status, or the verdict set
+-- a result is a set of {go_id, conditional} pairs now that multiple verdicts per task are
+allowed) -- an unchanged result isn't interesting for this comparison.
 """
 import argparse
 import json
@@ -17,6 +18,17 @@ from local_llm_review_mutagen import load_done  # noqa: E402
 TASKS_PATH = Path(__file__).resolve().parent.parent / "mutagen_review_tasks.json"
 DEFAULT_OLD = Path(__file__).resolve().parent.parent / "mutagen_review_results_old.jsonl"
 DEFAULT_NEW = Path(__file__).resolve().parent.parent / "mutagen_review_results.jsonl"
+
+
+def verdict_set(rec):
+    return frozenset((v["go_id"], v["conditional"]) for v in rec.get("verdicts", []))
+
+
+def format_verdicts(rec):
+    vs = rec.get("verdicts", [])
+    if not vs:
+        return rec["status"]
+    return ", ".join(f"{v['go_id']}{' (conditional)' if v['conditional'] else ''}" for v in vs)
 
 
 def main():
@@ -32,8 +44,8 @@ def main():
     print(f"[INFO] {len(old)} old results, {len(new)} new results, {len(common_ids)} ids in both\n")
 
     changed = [i for i in common_ids
-               if (old[i]["verdict"], old[i].get("conditional")) != (new[i]["verdict"], new[i].get("conditional"))]
-    print(f"[INFO] {len(changed)}/{len(common_ids)} changed verdict or conditional flag\n")
+               if (old[i]["status"], verdict_set(old[i])) != (new[i]["status"], verdict_set(new[i]))]
+    print(f"[INFO] {len(changed)}/{len(common_ids)} changed result\n")
 
     for i in changed:
         task = tasks.get(i)
@@ -45,21 +57,18 @@ def main():
         else:
             print(f"id {i}  (task not found in {TASKS_PATH.name})")
         o, n = old[i], new[i]
-        print(f"OLD: verdict={o['verdict']}  conditional={o.get('conditional')}  "
-              f"reasoning={o.get('reasoning', '')!r}")
-        print(f"NEW: verdict={n['verdict']}  conditional={n.get('conditional')}  "
-              f"reasoning={n.get('reasoning', '')!r}")
+        print(f"OLD: {format_verdicts(o)}  reasoning={o.get('reasoning', '')!r}")
+        print(f"NEW: {format_verdicts(n)}  reasoning={n.get('reasoning', '')!r}")
 
     # Quick categorical breakdown -- which direction did changes mostly go.
-    to_none = sum(1 for i in changed if old[i]["verdict"] != "NONE" and new[i]["verdict"] == "NONE")
-    from_none = sum(1 for i in changed if old[i]["verdict"] == "NONE" and new[i]["verdict"] != "NONE")
-    other_go_id = sum(1 for i in changed if old[i]["verdict"] not in ("NONE", "UNPARSED", "INVALID_VERDICT")
-                       and new[i]["verdict"] not in ("NONE", "UNPARSED", "INVALID_VERDICT")
-                       and old[i]["verdict"] != new[i]["verdict"])
+    to_none = sum(1 for i in changed if verdict_set(old[i]) and not verdict_set(new[i]))
+    from_none = sum(1 for i in changed if not verdict_set(old[i]) and verdict_set(new[i]))
+    swapped = sum(1 for i in changed if verdict_set(old[i]) and verdict_set(new[i])
+                   and verdict_set(old[i]) != verdict_set(new[i]))
     print("\n" + "=" * 80)
-    print(f"[SUMMARY] changed to NONE: {to_none}  |  changed away from NONE: {from_none}  |  "
-          f"swapped to a different GO id: {other_go_id}  |  other (parse-status changes etc.): "
-          f"{len(changed) - to_none - from_none - other_go_id}")
+    print(f"[SUMMARY] gained an empty result: {to_none}  |  gained a non-empty result: {from_none}  "
+          f"|  verdict set changed (swap/add/drop): {swapped}  |  other (parse-status changes "
+          f"etc.): {len(changed) - to_none - from_none - swapped}")
 
 
 if __name__ == "__main__":
