@@ -212,7 +212,16 @@ def call_local_llm(host, model, system_prompt, prompt, max_tokens, timeout=120,
   cache -- so a short wait-and-retry is the correct remedy, unlike a truly malformed request (a
   real code bug), which would fail identically every time and shouldn't waste retries pretending
   otherwise. Raises LocalLLMError once retries are exhausted, or immediately for any HTTP error
-  whose body doesn't match a capacity hint."""
+  whose body doesn't match a capacity hint.
+
+  cache_prompt=True asks llama.cpp's server (what LM Studio runs on) to reuse a slot's existing KV
+  cache for whatever prefix of this request's prompt matches what it last processed on that slot,
+  instead of recomputing from scratch -- a real win here since every call in a run sends the exact
+  same (large) system_prompt and only the small per-task user message differs, so after each slot's
+  first request, only that slot's new user message needs computing. The reuse is per slot, not
+  global, so it only pays off when --concurrency doesn't exceed the server's configured number of
+  parallel slots (each new slot starts cold); LM Studio's own setting for this is usually labeled
+  "Number of Expert/Parallel Slots" or similar in its server config."""
   url = host.rstrip("/") + "/v1/chat/completions"
   payload = {
       "model": model,
@@ -222,6 +231,7 @@ def call_local_llm(host, model, system_prompt, prompt, max_tokens, timeout=120,
       ],
       "temperature": 0.2,
       "max_tokens": max_tokens,
+      "cache_prompt": True,
   }
   data = json.dumps(payload).encode()
   headers = {"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"}

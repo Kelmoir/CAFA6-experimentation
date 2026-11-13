@@ -308,7 +308,16 @@ def main():
     ap.add_argument("--model", default=None, help="Model id; auto-detected from /v1/models if omitted")
     ap.add_argument("--concurrency", type=int, default=4,
                      help="Matches the throughput sweet spot found for LM Studio in the mf_span "
-                          "review loop -- 4 concurrent requests measurably raised tokens/sec there.")
+                          "review loop -- 4 concurrent requests measurably raised tokens/sec there, "
+                          "for a smaller model. Every call here reuses the exact same system prompt "
+                          "(see call_local_llm's cache_prompt=True), which only pays off within a "
+                          "given LM Studio parallel slot -- so this should match LM Studio's own "
+                          "configured slot count, not exceed it, or extra requests just start cold "
+                          "on a fresh slot instead of hitting cache. For a ~27B-class model (e.g. "
+                          "Qwen3), each slot's KV cache is far larger than the smaller model this "
+                          "default was tuned against, so check LM Studio's slot count/VRAM budget "
+                          "before assuming 4 still fits -- fewer, cache-hitting slots can beat more, "
+                          "cache-missing ones.")
     ap.add_argument("--request-timeout", type=int, default=180)
     ap.add_argument("--max-tokens", type=int, default=1024,
                      help="Generation budget per task. A NATIVE REASONING model (QwQ, "
