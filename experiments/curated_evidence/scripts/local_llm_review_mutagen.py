@@ -41,14 +41,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent / "mf_span/scripts"))
 from local_llm_review_loop import LocalLLMError, call_local_llm, discover_model  # noqa: E402
 
-import obonet  # noqa: E402
-import networkx as nx  # noqa: E402
-
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent.parent))
-from generate_dataset import restrict_to_true_path  # noqa: E402
-
-GO_OBO_PATH = (Path(__file__).resolve().parent.parent.parent.parent
-               / "data/cafa-6-protein-function-prediction/Train/go-basic.obo")
 TASKS_PATH = Path(__file__).resolve().parent.parent / "mutagen_review_tasks.json"
 RESULTS_PATH = Path(__file__).resolve().parent.parent / "mutagen_review_results.jsonl"
 DEBUG_LOG_PATH = Path(__file__).resolve().parent.parent / "mutagen_review_debug.log"
@@ -97,11 +89,8 @@ INSTRUCTIONS = (
     "often itself sitting in the list (e.g. a note saying \"catalytic activity\" with \"catalytic "
     "activity\" itself listed). If the note's own wording directly names a GENERAL CLASS of "
     "activity (not a specific named partner -- see above) matching one listed term's exact name, "
-    "synonym, or abbreviation, that is a confident match. A bare \"loss of activity\" or \"loss of "
-    "function\" (no specific activity named at all) counts as directly naming \"catalytic "
-    "activity\" whenever GO:0003824 is itself listed -- treat it exactly like a note that says "
-    "\"loss of catalytic activity\", not as an unmatched generic class. Fall through to the rules "
-    "below only when no listed term directly matches the note's wording this way.\n"
+    "synonym, or abbreviation, that is a confident match. Fall through to the rules below only "
+    "when no listed term directly matches the note's wording this way.\n"
     "- SPECIFICITY: once you have a confident match (from the priority rule or the is-a fallback "
     "below), check whether a MORE SPECIFIC listed term is also validly supported -- by its own "
     "direct name match, or because it is this protein's own real annotation that the matched "
@@ -110,29 +99,14 @@ INSTRUCTIONS = (
     "a general match when an equally well-supported, more specific one is available (e.g. if "
     "\"loss of activity\" matches both the general listed \"catalytic activity\" and this "
     "protein's own specific real enzyme activity, report the specific enzyme activity, not the "
-    "general one). Use each term's own listed Broader/Narrower lines to tell a real single chain "
-    "apart from genuine sibling ambiguity: if a candidate you're unsure about is listed as a "
-    "Narrower (or Broader) term of another candidate you're considering, they are NOT competing "
-    "siblings -- they're the same chain, so climb to the narrowest one, same as any other "
-    "single-chain case. Only treat candidates as genuinely competing, unrelated siblings when "
-    "NEITHER lists the other as Broader or Narrower. BUT if this check finds TWO OR MORE genuinely "
-    "unrelated, equally-plausible specific siblings with no way to tell which one is meant (e.g. "
-    "the protein has both a mannosidase and an unrelated xylosidase activity, and the note just "
-    "says \"loss of catalytic activity\" with nothing to pick between them), do NOT discard your "
-    "original match or answer NONE -- the ambiguity is only about which more-specific sibling, not "
-    "about whether the original, already-confirmed general term was lost. First check whether the "
-    "competing siblings share a common Broader term that is itself listed and MORE SPECIFIC than "
-    "your original general match (e.g. both siblings list the same narrower-than-root ancestor as "
-    "Broader) -- if so, report that shared term instead, since it's more informative and still "
-    "unambiguous. Otherwise keep and report the original, more general match. This is different "
-    "from climbing a single, unambiguous chain of ancestors to one specific leaf term (always do "
-    "that) -- it only applies when there are multiple competing, unrelated specific siblings.\n"
-    "- Decide using only the note's own wording and the listed terms' names/definitions/Broader/"
-    "Narrower relationships -- never your own outside knowledge about what this specific protein "
-    "(by its accession or identity) actually is or does, even if you recognize it. If the note's "
-    "wording is generic and the listed terms alone don't disambiguate which specific one is meant, "
-    "that is the sibling-ambiguity case above, regardless of what you believe you know about this "
-    "particular protein from training.\n"
+    "general one). BUT if this check finds TWO OR MORE unrelated, equally-plausible specific "
+    "candidates with no way to tell which one is meant (e.g. the protein has both a mannosidase "
+    "and an unrelated xylosidase activity, and the note just says \"loss of catalytic activity\" "
+    "with nothing to pick between them), do NOT discard your original match or answer NONE -- the "
+    "ambiguity is only about which more-specific sibling, not about whether the original, already-"
+    "confirmed general term was lost. Keep and report the original match. This is different from "
+    "climbing a single, unambiguous chain of ancestors to one specific leaf term (always do that) "
+    "-- it only applies when there are multiple competing, unrelated specific siblings.\n"
     "- If the description names a GENERIC class of activity with NO direct name match (the "
     "priority rule above didn't apply) and more than one listed term could plausibly be the "
     "specific one meant, you cannot tell which -- answer NONE rather than guessing.\n"
@@ -179,19 +153,14 @@ THINKING_INSTRUCTIONS = (
     "above (a clause naming only one interaction partner or process is never a match to a broad, "
     "nearly-universal candidate term just because a word like \"binding\"/\"interaction\" "
     "overlaps textually). Then apply the PRIORITY RULE above -- check every listed term's name "
-    "directly against the clause's own wording, remembering a bare \"loss of activity\"/\"loss of "
-    "function\" counts as naming \"catalytic activity\" per that rule -- and if a direct match is "
-    "found, apply the SPECIFICITY rule above to see whether an even more specific valid match "
-    "exists; use each candidate's own Broader/Narrower lines to tell a real single chain apart "
-    "from genuine sibling ambiguity before concluding there's a conflict. Use the most specific "
-    "one found via a single chain, unless that check turns up multiple genuinely unrelated "
-    "siblings (neither Broader nor Narrower of each other) with no way to pick between them -- "
-    "then check for a shared, more-specific-than-general Broader term common to all of them and "
-    "report that if one exists, otherwise keep the original, already-confirmed general match "
-    "instead (per SPECIFICITY above), don't discard it either way. Never use outside knowledge "
-    "about what this specific protein is to break a tie the listed terms themselves don't break. "
-    "Once you have a match this way, that is the answer at high confidence -- skip the scoring "
-    "pass below entirely for this clause, since this is more reliable than any inference.\n"
+    "directly against the clause's own wording -- and if a direct match is found, apply the "
+    "SPECIFICITY rule above to see whether an even more specific valid match exists; use the most "
+    "specific one found, unless that check turns up multiple competing unrelated siblings with no "
+    "way to pick between them -- then keep the original, already-confirmed match instead (per "
+    "SPECIFICITY above), don't discard it. Once you have a match this way, that is the answer at "
+    "high confidence -- "
+    "skip the scoring pass below entirely for this clause, since this is more reliable than any "
+    "inference.\n"
     "- Only if no listed term directly names what the clause says: for each listed GO term in "
     "turn, EXACTLY ONCE, state whether the clause's own wording -- or a very well-known, "
     "unambiguous fact, not a guess -- connects it to that term's specific definition, and rate "
@@ -226,45 +195,18 @@ def build_system_prompt(chain_of_thought: bool) -> str:
     return f"{TASK_DESCRIPTION}\n\n{INSTRUCTIONS}\n\n{ANSWER_FORMAT}"
 
 
-_go_graph = None
-_ancestor_cache = {}
-
-
-def _ancestors_of(go_id):
-    """True is_a/part_of ancestors of go_id (obonet's child->parent edges, so nx.descendants from
-    a child node reaches its ancestors) -- same construction as build_mutagen_review_tasks.py's
-    own ancestor lookup, loaded lazily here since not every import of this module needs it."""
-    global _go_graph
-    if _go_graph is None:
-        _go_graph = restrict_to_true_path(obonet.read_obo(str(GO_OBO_PATH)))
-    if go_id not in _ancestor_cache:
-        _ancestor_cache[go_id] = nx.descendants(_go_graph, go_id) if go_id in _go_graph else set()
-    return _ancestor_cache[go_id]
-
-
 def build_prompt(task: dict) -> str:
-    candidate_ids = {c["go_id"] for c in task["candidates"]}
     lines = [
         f"Protein {task['accession']}, mutation at residues {task['start'] + 1}-{task['end']} "
         f"(1-indexed):",
         "",
         f'MUTAGEN description: "{task["note"]}"',
         "",
-        "This protein's known molecular-function GO terms. \"Broader\"/\"Narrower\" on a term "
-        "shows its is_a/part_of relationship to OTHER terms in this same list -- two terms with "
-        "neither relationship to each other are genuinely unrelated (true siblings), not just "
-        "two terms that happen to both be listed:",
+        "This protein's known molecular-function GO terms:",
     ]
     for c in task["candidates"]:
-        go_id = c["go_id"]
-        broader = sorted(_ancestors_of(go_id) & candidate_ids)
-        narrower = sorted(cid for cid in candidate_ids if cid != go_id and go_id in _ancestors_of(cid))
-        lines.append(f"- {go_id}: {c['name']}")
+        lines.append(f"- {c['go_id']}: {c['name']}")
         lines.append(f"  Definition: {c['def'] or '(no definition available)'}")
-        if broader:
-            lines.append(f"  Broader (ancestor) terms also listed: {', '.join(broader)}")
-        if narrower:
-            lines.append(f"  Narrower (descendant) terms also listed: {', '.join(narrower)}")
     return "\n".join(lines)
 
 
