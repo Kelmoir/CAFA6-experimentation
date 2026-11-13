@@ -301,6 +301,7 @@ def review_task(host, model, system_prompt, task, request_timeout, max_tokens,
 
 
 def main():
+    global DEBUG_LOG_PATH
     ap = argparse.ArgumentParser()
     ap.add_argument("--host", required=True, help="LM Studio server, e.g. http://192.168.1.122:1234")
     ap.add_argument("--model", default=None, help="Model id; auto-detected from /v1/models if omitted")
@@ -329,12 +330,20 @@ def main():
     ap.add_argument("--capacity-retries", type=int, default=3)
     ap.add_argument("--capacity-retry-delay", type=float, default=2.0)
     ap.add_argument("--limit", type=int, default=None, help="Cap total tasks processed (smoke test)")
+    ap.add_argument("--results-path", type=Path, default=RESULTS_PATH,
+                     help="Override the output file -- use a distinct path per independent run "
+                          "(e.g. mutagen_review_results_run1.jsonl / _run2.jsonl) so multiple full "
+                          "passes over the same tasks can be kept separate and reconciled later, "
+                          "instead of each run resuming/overwriting into the same file.")
+    ap.add_argument("--debug-log-path", type=Path, default=DEBUG_LOG_PATH,
+                     help="Override the raw-response debug log path; defaults alongside --results-path's constant.")
     args = ap.parse_args()
+    DEBUG_LOG_PATH = args.debug_log_path
 
     tasks = json.loads(TASKS_PATH.read_text())
     if args.limit:
         tasks = tasks[:args.limit]
-    done = load_done(RESULTS_PATH)
+    done = load_done(args.results_path)
 
     def is_resolved(task_id):
         result = done.get(task_id)
@@ -358,13 +367,13 @@ def main():
         for fut in concurrent.futures.as_completed(futures):
             result = fut.result()
             with _write_lock:
-                with open(RESULTS_PATH, "a") as f:
+                with open(args.results_path, "a") as f:
                     f.write(json.dumps(result) + "\n")
             n_done += 1
             if n_done % 50 == 0:
                 print(f"[INFO] {n_done}/{len(todo)} processed", flush=True)
 
-    print(f"[INFO] Done. {n_done} tasks processed this run -> {RESULTS_PATH}")
+    print(f"[INFO] Done. {n_done} tasks processed this run -> {args.results_path}")
     if DEBUG_LOG_PATH.exists():
         print(f"[INFO] Some responses didn't parse cleanly -- raw text saved to {DEBUG_LOG_PATH} "
               f"for inspection. Those tasks are UNPARSED/INVALID_VERDICT in the results file and "
