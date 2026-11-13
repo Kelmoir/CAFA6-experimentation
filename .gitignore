@@ -52,6 +52,9 @@ __pycache__/
 # several before/after prompt-fix rounds; not a single canonical result set to commit.
 /experiments/curated_evidence/mutagen_review_results*.jsonl
 /experiments/curated_evidence/mutagen_review_debug.log
+# ...except the curated ground-truth file (build_claude_ground_truth.py), the one canonical
+# reference set for benchmarking candidate local models against.
+!/experiments/curated_evidence/mutagen_review_results_claude.jsonl
 
 # Podman sandbox files
 .podman/
