@@ -277,13 +277,14 @@ def load_done(results_path: Path) -> dict:
 
 
 def review_task(host, model, system_prompt, task, request_timeout, max_tokens,
-                 capacity_retries, capacity_retry_delay):
+                 capacity_retries, capacity_retry_delay, api_key):
     valid_go_ids = {c["go_id"] for c in task["candidates"]}
     prompt = build_prompt(task)
     try:
         raw, finish_reason = call_local_llm(
             host, model, system_prompt, prompt, max_tokens, timeout=request_timeout,
-            capacity_retries=capacity_retries, capacity_retry_delay=capacity_retry_delay)
+            capacity_retries=capacity_retries, capacity_retry_delay=capacity_retry_delay,
+            api_key=api_key)
     except LocalLLMError as e:
         log_debug(task["id"], task["accession"], f"HTTP {e.status} {e.reason}", e.body)
         return {"id": task["id"], "accession": task["accession"], "status": "UNPARSED",
@@ -337,6 +338,11 @@ def main():
                           "instead of each run resuming/overwriting into the same file.")
     ap.add_argument("--debug-log-path", type=Path, default=DEBUG_LOG_PATH,
                      help="Override the raw-response debug log path; defaults alongside --results-path's constant.")
+    ap.add_argument("--api-key", default="lm-studio",
+                     help="Bearer token for the server's Authorization header. LM Studio ignores "
+                          "this (any value works), but some other OpenAI-compatible local servers "
+                          "enforce a real token even for local/LAN requests -- set it here instead "
+                          "of hardcoding one.")
     args = ap.parse_args()
     DEBUG_LOG_PATH = args.debug_log_path
 
@@ -353,7 +359,7 @@ def main():
     print(f"[INFO] {len(tasks)} total tasks, {len(todo)} to process "
           f"({len(tasks) - len(todo)} already resolved)")
 
-    model = args.model or discover_model(args.host)
+    model = args.model or discover_model(args.host, api_key=args.api_key)
     system_prompt = build_system_prompt(args.chain_of_thought)
     print(f"[INFO] Using model: {model} @ {args.host}"
           + (" (chain-of-thought enabled)" if args.chain_of_thought else ""))
@@ -362,7 +368,7 @@ def main():
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as executor:
         futures = [executor.submit(review_task, args.host, model, system_prompt, t,
                                     args.request_timeout, args.max_tokens,
-                                    args.capacity_retries, args.capacity_retry_delay)
+                                    args.capacity_retries, args.capacity_retry_delay, args.api_key)
                    for t in todo]
         for fut in concurrent.futures.as_completed(futures):
             result = fut.result()

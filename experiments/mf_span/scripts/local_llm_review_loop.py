@@ -196,7 +196,7 @@ CAPACITY_ERROR_HINTS = ("kv cache", "context length", "context window", "n_ctx",
 
 
 def call_local_llm(host, model, system_prompt, prompt, max_tokens, timeout=120,
-                    capacity_retries=3, capacity_retry_delay=2.0):
+                    capacity_retries=3, capacity_retry_delay=2.0, api_key="lm-studio"):
   """Returns (content, finish_reason). finish_reason is the OpenAI-compatible API's own account of
   why generation stopped ("stop" = model concluded normally, "length" = it hit max_tokens mid-
   generation) -- authoritative, unlike guessing from the absence of expected fields in the text,
@@ -224,7 +224,7 @@ def call_local_llm(host, model, system_prompt, prompt, max_tokens, timeout=120,
       "max_tokens": max_tokens,
   }
   data = json.dumps(payload).encode()
-  headers = {"Content-Type": "application/json", "Authorization": "Bearer lm-studio"}
+  headers = {"Content-Type": "application/json", "Authorization": f"Bearer {api_key}"}
   for attempt in range(capacity_retries + 1):
     req = urllib.request.Request(url, data=data, method="POST", headers=headers)
     try:
@@ -240,9 +240,9 @@ def call_local_llm(host, model, system_prompt, prompt, max_tokens, timeout=120,
       time.sleep(capacity_retry_delay * (attempt + 1))
 
 
-def discover_model(host, timeout=10):
+def discover_model(host, timeout=10, api_key="lm-studio"):
   url = host.rstrip("/") + "/v1/models"
-  req = urllib.request.Request(url, headers={"Authorization": "Bearer lm-studio"})
+  req = urllib.request.Request(url, headers={"Authorization": f"Bearer {api_key}"})
   with urllib.request.urlopen(req, timeout=timeout) as resp:
     body = json.loads(resp.read().decode())
   models = body.get("data", [])
