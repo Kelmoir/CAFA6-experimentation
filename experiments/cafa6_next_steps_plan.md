@@ -1658,25 +1658,62 @@ example, not guessed speculatively:**
    protein confirming both a term and one of its own ancestors from different notes) is left for
    later, not handled at this stage.
 
-Two remaining open, non-blocking judgment calls from round 3, not yet resolved: whether a note
-describing a specific sub-event that mechanistically *implies* a broader listed activity (e.g.
-"loss of viral RNA template recruitment" implying "RNA binding"; "complete loss of activity
-towards muscle receptor" implying the one listed, subtype-non-specific "acetylcholine receptor
-inhibitor activity") should match -- left conservative (NONE) for now, pending more examples
-before loosening; and the `CONDITIONAL` flag's instability for a "complementation by a separately-
-mutated copy of the same protein" pattern, which the current schema (defined only for "other
-mutations elsewhere in the same protein") doesn't cleanly cover -- low priority, the GO-id verdict
-itself has been stable and correct across all three rounds, only this secondary flag wobbles.
+**Specific-substrate/receptor-subtype exclusion: resolved, conservative by deliberate choice
+(2026-11-13).** A recurring pattern across rounds 4-5: a note naming a specific substrate/
+receptor-subtype that the listed term's own activity is measured against (e.g. "loss of KcsA
+potassium channel blocking activity" vs. the listed, substrate-non-specific "potassium channel
+regulator activity"; a toxin losing potency against one receptor subtype vs. the one listed,
+subtype-non-specific "toxin activity"; "loss of interaction with EIF4E" vs. the listed
+"eukaryotic initiation factor 4E binding", which literally names EIF4E) gets excluded by the same
+specific-partner rule that correctly excludes a genuinely unrelated partner (MPDZ/PATJ/NOXA1's
+PDZ-scaffold docking, which no listed term describes at all) -- these are a different kind of
+"specific" (a substrate of the *same* activity, not an unrelated side interaction), but the
+current rule doesn't distinguish them. **User's call: leave it conservative, do not carve out an
+exception.** Rationale: this data becomes training negatives, so a missed match (false negative)
+just means less data, while a wrong one (false positive) poisons a label -- asymmetric cost,
+conservative is the right default. Noted for later, not started: revisiting the resulting `NONE`
+population with a second pass/different model/different approach specifically aimed at recovering
+the real matches hiding in these false negatives, rather than trying to get this in one pass.
 
-**Still not run at full scale** -- the task file was just rebuilt with the ancestor-closure fix
-(step 6 above), which changes candidate lists, so prior partial `mutagen_review_results*.jsonl`
-runs are archived exploration artifacts, not a continuable partial run. Command to run fresh
-against the user's LM Studio instance:
+**Prompt iterated through 5 before/after comparison rounds total (2026-11-11 to 2026-11-13),
+each fix verified against real examples, not guessed speculatively:**
+4. (round 4) GO-DAG ancestor closure added to candidate lists (see step 6 above) surfaced a new
+   failure: the priority rule's "direct name/synonym match" started treating a bare shared word
+   ("interaction"/"binding") as license to match an unrelated, nearly-universal catch-all term
+   ("protein binding") -- regressing every specific-partner case step 2's fix had already resolved.
+   Fixed by moving the specific-partner exclusion to run BEFORE the priority rule and requiring the
+   priority rule's match to be against a genuinely stated general class, not a shared generic word.
+   Same round also added a SPECIFICITY tiebreak (prefer a more specific valid term over a general
+   one once matched) and allowed multiple verdicts per task (`VERDICTS:` is now a comma-separated
+   list, each optionally marked `(conditional)`) -- the ATPase/inorganic-triphosphatase compound
+   notes (8 sibling mutations on the same protein) had been getting inconsistent single-verdict
+   picks across near-identical notes; with multi-verdict, all 8 now correctly report both losses.
+5. (round 5) Prompt text compressed (-20% COT / -10% non-COT chars) via a subagent using the
+   caveman skill's compression *principles* (not its CLI, which excludes `.py` files and whose
+   default terse/pidgin style would hurt a receiving LLM's instruction-following) -- verified
+   independently afterward that all prior rules survived with correct ordering, not just taken on
+   the subagent's own report. Same round's real-data comparison found the SPECIFICITY tiebreak
+   could discard an already-valid generic match (e.g. "catalytic activity") when its upgrade-check
+   found multiple unrelated specific siblings with no way to pick between them (two different
+   enzyme families, not a single ancestor chain) -- fixed by keeping the original match in that
+   case instead of falling through to NONE; distinguished from climbing a single unambiguous
+   ancestor chain to one specific leaf term, which is correct and still happens.
+
+Remaining known, low-priority, non-blocking issue: the `CONDITIONAL` flag's instability for a
+"complementation by a separately-mutated copy of the same protein" pattern, which the current
+schema (defined only for "other mutations elsewhere in the same protein") doesn't cleanly cover --
+the GO-id verdict itself has been stable and correct across every round, only this secondary flag
+wobbles.
+
+**Still not run at full scale.** Command to run fresh against the user's LM Studio instance:
 ```
 python3 experiments/curated_evidence/scripts/local_llm_review_mutagen.py \
     --host http://<lm-studio-host>:1234 --concurrency 4 --chain-of-thought --max-tokens 2048
 ```
-`--limit N` caps total tasks for a smoke test.
+`--limit N` caps total tasks for a smoke test. Prior partial `mutagen_review_results*.jsonl` runs
+are archived exploration artifacts (schema changed twice since, most recently to multi-verdict) --
+`compare_review_runs.py` upgrades old-schema records on load, so they remain diffable against a
+current run, but are not a continuable partial run themselves.
 
 ### 16. Autoregressive decoder over item 8's term-embedding vocabulary (user's own idea, 2026-10-24)
 **Source:** direct follow-up to item 8's closure. Item 8's single-point compatibility-score head
