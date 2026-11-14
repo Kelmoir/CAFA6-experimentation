@@ -56,9 +56,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--old", type=Path, default=DEFAULT_OLD)
     ap.add_argument("--new", type=Path, default=DEFAULT_NEW)
+    ap.add_argument("--tasks-path", type=Path, default=TASKS_PATH,
+                     help="Override the tasks file used for context (note/candidates) printing -- "
+                          "e.g. mutagen_review_tasks_leaf.json when diffing a --leaf-only run. "
+                          "Defaults to the regular ancestor-expanded tasks.json, which prints the "
+                          "WRONG candidate list for a leaf-only run's task ids.")
     args = ap.parse_args()
 
-    tasks = {t["id"]: t for t in json.loads(TASKS_PATH.read_text())}
+    tasks = {t["id"]: t for t in json.loads(args.tasks_path.read_text())}
     old = normalize(load_done(args.old))
     new = normalize(load_done(args.new))
     common_ids = sorted(set(old) & set(new))
