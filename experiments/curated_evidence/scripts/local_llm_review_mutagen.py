@@ -165,6 +165,98 @@ ANSWER_FORMAT = (
     "REASONING: <one sentence, plain text>"
 )
 
+# For --prompt-level simplified/minimal, used only with a LEAF-ONLY tasks file (built via
+# build_mutagen_review_tasks.py --leaf-only), where every candidate is already this protein's own
+# real, directly-asserted MF annotation -- no ancestor closure, so none of the is_a/specificity/
+# sibling-ambiguity machinery in INSTRUCTIONS applies or is included. The negation/magnitude-word/
+# specific-partner-exclusion/no-outside-knowledge rules are kept here, in full for "simplified" and
+# tightened for "minimal" -- these address basic text-comprehension failures an early model showed
+# even on trivial candidate lists, not DAG complexity, so they're not simplification targets.
+SIMPLIFIED_INSTRUCTIONS = (
+    "Decide which of the listed terms are described as being clearly and unconditionally LOST or "
+    "ABOLISHED by this specific mutation. Usually this is zero or one term -- only list more than "
+    "one when the note describes multiple SEPARATE, independently-supported losses (different "
+    "clauses, different activities), never as a way to hedge; each term you list must "
+    "independently satisfy every rule below on its own. Every listed term is this protein's own "
+    "real, already-known molecular-function annotation (not a generalization of it).\n"
+    "- If the description negates the loss (e.g. \"no loss of X\", \"no significant loss of X\", "
+    "\"does not abolish Y\", \"no effect on Z activity\", \"normal X\"), that term is NOT lost. "
+    "Read the whole clause -- \"no\"/\"not\"/\"normal\" immediately change the meaning of the "
+    "loss-language that follows.\n"
+    "- If a term's loss is described as depending on OTHER mutations elsewhere in the protein (e.g. "
+    "\"when associated with...\", \"in combination with...\"), still list it but mark it "
+    "\"(conditional)\" -- this mutation alone may not be sufficient evidence on its own.\n"
+    "- An INCOMPLETE loss is NOT a clear, unconditional loss, even though the word \"loss\" "
+    "appears. INCOMPLETE words (do NOT count): \"partial\", \"reduced\", \"decreased\", "
+    "\"diminished\", \"mild\", \"modest\", or a percentage not near zero. NEAR-TOTAL words (DO "
+    "count, same as a bare \"loss of X\"): \"complete\"/\"almost complete\"/\"near-complete\"/"
+    "\"nearly complete\", \"strong\", \"severe\", \"substantial\", \"significant\", \"drastic\", "
+    "\"abolished\", \"no detectable X\", or a tiny residual percent of wild-type (e.g. 0.02%). "
+    "NEAR-TOTAL words are never weaker evidence than a bare \"loss of X\" -- do not downgrade "
+    "them.\n"
+    "- CHECK THIS FIRST, before matching below: a clause naming ONE SPECIFIC interaction partner "
+    "or process (e.g. \"loss of interaction with MPDZ\", \"loss of binding to ABL1/NOXA1\") "
+    "describes that ONE relationship, not a general activity class -- even when words like "
+    "\"binding\"/\"interaction\" textually overlap with a broad candidate term's name (\"binding\", "
+    "\"protein binding\"), that overlap is NOT a match. Losing one named partner does not mean the "
+    "general capability covering every other partner was lost too. Only select such a broad term "
+    "if the clause itself states the GENERAL class in its own words (e.g. \"loss of DNA-binding "
+    "activity\", not \"loss of binding to DNMT1\"), OR if a listed term is itself specifically "
+    "about that exact named partner (e.g. a term literally named \"eukaryotic initiation factor 4E "
+    "binding\" for a clause about losing interaction with EIF4E -- that is a direct match to the "
+    "named partner, not a forbidden generalization).\n"
+    "- MATCHING: decide whether the note's wording identifies one listed term's SPECIFIC activity "
+    "as lost -- by its exact name, a well-known synonym/abbreviation, or an unambiguous paraphrase. "
+    "A generic word like bare \"activity\"/\"function\" with no specific activity named still "
+    "counts as a match when exactly ONE listed term remains plausible, or when the note's own "
+    "wording otherwise clearly singles out one listed term over the others. If more than one "
+    "listed term remains plausible and nothing in the note distinguishes between them, you cannot "
+    "tell which one is meant -- answer NONE rather than guessing.\n"
+    "- Decide using only the note's own wording and the listed terms' names/definitions -- never "
+    "your own outside knowledge about what this specific protein (by its accession or identity) "
+    "actually is or does, even if you recognize it.\n"
+    "- A compound note may describe SEVERAL separate findings -- judge each clause on its own. A "
+    "clause using ongoing/unchanged-behavior language (\"inhibits X\", \"promotes Y\", "
+    "\"maintains Z\", stated without comparison to the wild-type) is NOT itself evidence of a "
+    "loss, even if it immediately follows an unrelated negated clause -- it neither inherits "
+    "loss-status from a neighboring clause about a different finding, nor gains it. If more than "
+    "one clause each independently supports its OWN distinct term, list all of them.\n"
+    "- Most tasks genuinely have NO correct match among the listed terms -- answering NONE is the "
+    "expected, common outcome, not a failure to find something. Never force a weak or speculative "
+    "match just to avoid answering NONE."
+)
+
+# Drops the sole-candidate carve-out and the compound-clause elaboration down to one-liners, but
+# keeps negation/magnitude-word/partner-exclusion/no-outside-knowledge in full -- per the explicit
+# call that these address basic comprehension, not something to compress further.
+MINIMAL_INSTRUCTIONS = (
+    "Decide which of the listed terms (each one of this protein's own real, already-known "
+    "molecular-function annotations) are clearly and unconditionally LOST by this mutation. "
+    "Usually zero or one; list more than one only for genuinely separate, independently-supported "
+    "losses.\n"
+    "- Negated (\"no loss of X\", \"no significant loss of X\", \"does not abolish Y\", \"no "
+    "effect on Z\", \"normal X\") means NOT lost.\n"
+    "- A loss that depends on another mutation elsewhere (\"when associated with...\", \"in "
+    "combination with...\") is still listed, but marked \"(conditional)\".\n"
+    "- INCOMPLETE words (\"partial\", \"reduced\", \"decreased\", \"diminished\", \"mild\", "
+    "\"modest\", a percentage not near zero) do NOT count as a loss. NEAR-TOTAL words "
+    "(\"complete\", \"almost complete\", \"near-complete\", \"nearly complete\", \"strong\", "
+    "\"severe\", \"substantial\", \"significant\", \"drastic\", \"abolished\", \"no detectable X\", "
+    "a tiny residual percent) count the same as a bare \"loss of X\" -- never downgrade them.\n"
+    "- A clause naming only ONE SPECIFIC interaction partner (e.g. \"loss of binding to ABL1\") is "
+    "not evidence that a general, nearly-universal term like \"protein binding\" was lost, even "
+    "though the words overlap -- unless a listed term is itself specifically about that exact "
+    "named partner.\n"
+    "- Report a term only if the note's own wording clearly identifies that specific activity as "
+    "lost -- by name, a well-known synonym/abbreviation, or an unambiguous paraphrase, never by "
+    "outside knowledge of what this protein is. If you can't tell which listed term (if any) is "
+    "meant, answer NONE rather than guessing.\n"
+    "- A note may describe more than one separate loss -- judge each independently. Ongoing/"
+    "unchanged language (\"inhibits X\", \"promotes Y\", no comparison to wild-type) is not "
+    "evidence of loss.\n"
+    "- NONE is the common, expected answer -- don't force a match."
+)
+
 THINKING_INSTRUCTIONS = (
     "In the THINKING block, follow these steps in order, and do not repeat a step once it is done:\n"
     "- Split the MUTAGEN description into its separate clauses/findings, and restate each in your "
@@ -220,10 +312,16 @@ COT_ANSWER_FORMAT = (
 )
 
 
-def build_system_prompt(chain_of_thought: bool) -> str:
-    if chain_of_thought:
-        return f"{TASK_DESCRIPTION}\n\n{INSTRUCTIONS}\n\n{THINKING_INSTRUCTIONS}\n\n{COT_ANSWER_FORMAT}"
-    return f"{TASK_DESCRIPTION}\n\n{INSTRUCTIONS}\n\n{ANSWER_FORMAT}"
+def build_system_prompt(prompt_level: str, chain_of_thought: bool) -> str:
+    """chain_of_thought is only meaningful for prompt_level="full" -- the DAG-reasoning steps it
+    scaffolds don't exist in the simplified/minimal (leaf-only) prompts, so those two never offer
+    a THINKING field; main() rejects --chain-of-thought with a non-full --prompt-level up front."""
+    if prompt_level == "full":
+        if chain_of_thought:
+            return f"{TASK_DESCRIPTION}\n\n{INSTRUCTIONS}\n\n{THINKING_INSTRUCTIONS}\n\n{COT_ANSWER_FORMAT}"
+        return f"{TASK_DESCRIPTION}\n\n{INSTRUCTIONS}\n\n{ANSWER_FORMAT}"
+    instructions = SIMPLIFIED_INSTRUCTIONS if prompt_level == "simplified" else MINIMAL_INSTRUCTIONS
+    return f"{TASK_DESCRIPTION}\n\n{instructions}\n\n{ANSWER_FORMAT}"
 
 
 _go_graph = None
@@ -242,8 +340,25 @@ def _ancestors_of(go_id):
     return _ancestor_cache[go_id]
 
 
-def build_prompt(task: dict) -> str:
+def build_prompt(task: dict, prompt_level: str = "full") -> str:
+    header = [
+        f"Protein {task['accession']}, mutation at residues {task['start'] + 1}-{task['end']} "
+        f"(1-indexed):",
+        "",
+        f'MUTAGEN description: "{task["note"]}"',
+        "",
+    ]
     candidates = task["candidates"]
+
+    if prompt_level != "full":
+        # Leaf-only candidates (build_mutagen_review_tasks.py --leaf-only): every candidate is
+        # already this protein's own real annotation, so there's no ancestor closure to render.
+        lines = header + ["This protein's known molecular-function GO terms:"]
+        for c in candidates:
+            lines.append(f"- {c['go_id']}: {c['name']}")
+            lines.append(f"  Definition: {c['def'] or '(no definition available)'}")
+        return "\n".join(lines)
+
     candidate_ids = {c["go_id"] for c in candidates}
     # ancestors of each candidate, restricted to this task's own candidate set
     in_list_ancestors = {c["go_id"]: _ancestors_of(c["go_id"]) & candidate_ids for c in candidates}
@@ -252,12 +367,7 @@ def build_prompt(task: dict) -> str:
     ordered = sorted(candidates, key=lambda c: (len(in_list_ancestors[c["go_id"]]), c["go_id"]))
     index_of = {c["go_id"]: i for i, c in enumerate(ordered, start=1)}
 
-    lines = [
-        f"Protein {task['accession']}, mutation at residues {task['start'] + 1}-{task['end']} "
-        f"(1-indexed):",
-        "",
-        f'MUTAGEN description: "{task["note"]}"',
-        "",
+    lines = header + [
         "This protein's known molecular-function GO terms, numbered broadest (1) to most "
         "specific, each followed by \"is_a (N)\" naming the earlier, more general listed term(s) "
         "it is a direct child of -- omitted when this term has no such parent in this list.",
@@ -348,9 +458,9 @@ def load_done(results_path: Path) -> dict:
 
 
 def review_task(host, model, system_prompt, task, request_timeout, max_tokens,
-                 capacity_retries, capacity_retry_delay, api_key):
+                 capacity_retries, capacity_retry_delay, api_key, prompt_level):
     valid_go_ids = {c["go_id"] for c in task["candidates"]}
-    prompt = build_prompt(task)
+    prompt = build_prompt(task, prompt_level)
     try:
         raw, finish_reason = call_local_llm(
             host, model, system_prompt, prompt, max_tokens, timeout=request_timeout,
@@ -407,7 +517,25 @@ def main():
                           "models that DON'T already reason internally on their own. Do not combine "
                           "with a native reasoning model; it already deliberates before answering, "
                           "and stacking a second, separately-prompted reasoning field on top of that "
-                          "just adds more unbounded text for it to get lost in.")
+                          "just adds more unbounded text for it to get lost in. Only valid with "
+                          "--prompt-level full -- the simplified/minimal prompts scaffold no DAG "
+                          "reasoning to think through.")
+    ap.add_argument("--prompt-level", choices=["full", "simplified", "minimal"], default="full",
+                     help="\"full\" (default): the current is_a-indexed, ancestor-aware prompt -- "
+                          "use with the regular ancestor-expanded tasks.json. \"simplified\"/"
+                          "\"minimal\": no is_a/specificity/sibling-ambiguity rules at all -- use "
+                          "with a --leaf-only tasks file (build_mutagen_review_tasks.py "
+                          "--leaf-only), where every candidate is already this protein's own real "
+                          "annotation, so there's no DAG to reason about. Both keep the negation/"
+                          "magnitude-word/specific-partner-exclusion/no-outside-knowledge rules in "
+                          "full, since those fix basic text-comprehension gaps, not DAG complexity "
+                          "-- \"minimal\" additionally compresses the sole-candidate and compound-"
+                          "clause guidance down to one-liners, to test how far that can be cut "
+                          "without losing correctness.")
+    ap.add_argument("--tasks-path", type=Path, default=TASKS_PATH,
+                     help="Override the input tasks file -- e.g. mutagen_review_tasks_leaf.json "
+                          "for a --leaf-only build, so a leaf-only benchmarking run doesn't need "
+                          "the default ancestor-expanded mutagen_review_tasks.json.")
     ap.add_argument("--capacity-retries", type=int, default=3)
     ap.add_argument("--capacity-retry-delay", type=float, default=2.0)
     ap.add_argument("--limit", type=int, default=None, help="Cap total tasks processed (smoke test)")
@@ -424,9 +552,11 @@ def main():
                           "enforce a real token even for local/LAN requests -- set it here instead "
                           "of hardcoding one.")
     args = ap.parse_args()
+    if args.chain_of_thought and args.prompt_level != "full":
+        ap.error("--chain-of-thought requires --prompt-level full")
     DEBUG_LOG_PATH = args.debug_log_path
 
-    tasks = json.loads(TASKS_PATH.read_text())
+    tasks = json.loads(args.tasks_path.read_text())
     if args.limit:
         tasks = tasks[:args.limit]
     done = load_done(args.results_path)
@@ -440,15 +570,16 @@ def main():
           f"({len(tasks) - len(todo)} already resolved)")
 
     model = args.model or discover_model(args.host, api_key=args.api_key)
-    system_prompt = build_system_prompt(args.chain_of_thought)
-    print(f"[INFO] Using model: {model} @ {args.host}"
+    system_prompt = build_system_prompt(args.prompt_level, args.chain_of_thought)
+    print(f"[INFO] Using model: {model} @ {args.host}, prompt-level={args.prompt_level}"
           + (" (chain-of-thought enabled)" if args.chain_of_thought else ""))
 
     n_done = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as executor:
         futures = [executor.submit(review_task, args.host, model, system_prompt, t,
                                     args.request_timeout, args.max_tokens,
-                                    args.capacity_retries, args.capacity_retry_delay, args.api_key)
+                                    args.capacity_retries, args.capacity_retry_delay, args.api_key,
+                                    args.prompt_level)
                    for t in todo]
         for fut in concurrent.futures.as_completed(futures):
             result = fut.result()

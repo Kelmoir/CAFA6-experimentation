@@ -29,6 +29,7 @@ confident about. Hierarchy-consistency clean-up of the resulting matches (e.g. t
 confirming both a term and one of its own ancestors as independently "lost" from different notes)
 is left for later, not handled here.
 """
+import argparse
 import gzip
 import json
 import sys
@@ -66,12 +67,28 @@ def build_ancestor_lookup():
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--output", type=Path, default=OUTPUT_PATH,
+                     help="Override the output path -- use a distinct path (e.g. "
+                          "mutagen_review_tasks_leaf.json) so a --leaf-only build doesn't overwrite "
+                          "the existing ancestor-expanded tasks.json, which is still needed for "
+                          "benchmarking against it.")
+    ap.add_argument("--leaf-only", action="store_true",
+                     help="Candidates are ONLY this protein's own real, directly-asserted MF terms "
+                          "(real_mf_terms(record), aspect F) -- no is_a/part_of ancestor closure at "
+                          "all. For testing whether the review task can be posed as a much smaller "
+                          "closed yes/no question per already-known leaf term, instead of picking "
+                          "among the full ancestor-expanded candidate set.")
+    args = ap.parse_args()
+
     print("[INFO] Loading go-basic.obo term name/definition table...")
     go_info = load_go_term_info()
     print(f"[INFO] {len(go_info)} GO terms with name/definition")
 
-    print("[INFO] Building is_a/part_of ancestor lookup from go-basic.obo...")
-    ancestors_of = build_ancestor_lookup()
+    ancestors_of = None
+    if not args.leaf_only:
+        print("[INFO] Building is_a/part_of ancestor lookup from go-basic.obo...")
+        ancestors_of = build_ancestor_lookup()
 
     tasks = []
     n_proteins_with_mutagen = 0
@@ -92,8 +109,9 @@ def main():
                 if mf_terms is None:
                     mf_terms = real_mf_terms(record)
                     candidate_ids = {go_id for go_id, _ in mf_terms}
-                    for go_id, _ in mf_terms:
-                        candidate_ids |= ancestors_of(go_id)
+                    if not args.leaf_only:
+                        for go_id, _ in mf_terms:
+                            candidate_ids |= ancestors_of(go_id)
                     candidate_ids.discard(MF_ROOT)
                     candidates = [
                         {"go_id": go_id, "name": go_info[go_id].get("name", ""),
@@ -116,9 +134,9 @@ def main():
                 print(f"[INFO] {n_proteins_with_mutagen} MUTAGEN-bearing proteins scanned, "
                       f"{len(tasks)} review tasks so far", flush=True)
 
-    OUTPUT_PATH.write_text(json.dumps(tasks, indent=2))
+    args.output.write_text(json.dumps(tasks, indent=2))
     print(f"[RESULT] {len(tasks)} review tasks (loss-pattern note + >=1 real MF-term candidate)")
-    print(f"[INFO] wrote -> {OUTPUT_PATH}")
+    print(f"[INFO] wrote -> {args.output}")
 
 
 if __name__ == "__main__":
