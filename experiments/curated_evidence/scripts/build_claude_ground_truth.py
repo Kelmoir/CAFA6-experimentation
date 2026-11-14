@@ -90,6 +90,11 @@ ROUND_2_CORRECTIONS = {
          "(GO:0000215, verified descendant of GO:0016773 and GO:0140101, not a sibling of either)."),
     88: ("OK", [{"go_id": "GO:0008253", "conditional": False}, {"go_id": "GO:0000215", "conditional": False}],
          "Same protein/chains as 87 (\"almost complete\" is NEAR-TOTAL, same as unconditional)."),
+    89: ("OK", [{"go_id": "GO:0008253", "conditional": False}, {"go_id": "GO:0000215", "conditional": False}],
+         "Stale entry fixed: the round-5 reasoning text described matching GO:0008252/GO:0016772, but "
+         "its own status/verdicts were NONE (never one of the audited ids, so never caught). Same "
+         "protein/chains as 87 -- the general picks it described weren't even this protein's real "
+         "leaf terms; GO:0008253/GO:0000215 are."),
     90: ("OK", [{"go_id": "GO:0000215", "conditional": False}],
          "Nucleotidase clause is explicitly negated (\"no effect\"); only the phosphotransferase "
          "clause is a genuine loss, climbing the same verified chain to GO:0000215."),
