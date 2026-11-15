@@ -598,12 +598,31 @@ def main():
                           "this (any value works), but some other OpenAI-compatible local servers "
                           "enforce a real token even for local/LAN requests -- set it here instead "
                           "of hardcoding one.")
+    ap.add_argument("--print-id", type=int, default=None,
+                     help="Print task --print-id's exact prompt (system + user, as the model would "
+                          "see it) and its recorded result if any, then exit without contacting any "
+                          "model -- for manually checking why UniProt itself doesn't already flag "
+                          "the loss this way.")
     args = ap.parse_args()
     if args.chain_of_thought and args.prompt_level != "full":
         ap.error("--chain-of-thought requires --prompt-level full")
     DEBUG_LOG_PATH = args.debug_log_path
 
     tasks = json.loads(args.tasks_path.read_text())
+
+    if args.print_id is not None:
+        task = next((t for t in tasks if t["id"] == args.print_id), None)
+        if task is None:
+            ap.error(f"id {args.print_id} not found in {args.tasks_path}")
+        print("=== SYSTEM PROMPT ===")
+        print(build_system_prompt(args.prompt_level, args.chain_of_thought))
+        print("\n=== USER PROMPT ===")
+        print(build_prompt(task, args.prompt_level))
+        result = load_done(args.results_path).get(args.print_id)
+        print("\n=== RESULT ===")
+        print(json.dumps(result, indent=2) if result else "(no recorded result)")
+        return
+
     if args.limit:
         tasks = tasks[:args.limit]
     done = load_done(args.results_path)
