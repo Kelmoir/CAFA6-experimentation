@@ -52,6 +52,9 @@ __pycache__/
 # several before/after prompt-fix rounds; not a single canonical result set to commit.
 /experiments/curated_evidence/mutagen_review_results*.jsonl
 /experiments/curated_evidence/mutagen_review_debug.log
+# build_mutagen_review_tasks.py's generated task files -- regeneratable from the UniProt dump +
+# go-basic.obo, and mutagen_review_tasks.json alone is 100MB+ (over GitHub's push limit).
+/experiments/curated_evidence/mutagen_review_tasks*.json
 # ...except the curated ground-truth files (build_claude_ground_truth.py / _leaf.py), the
 # canonical reference sets for benchmarking candidate local models against.
 !/experiments/curated_evidence/mutagen_review_results_claude.jsonl
