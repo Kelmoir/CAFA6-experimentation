@@ -23,12 +23,6 @@ Resumable: results append to mutagen_review_results.jsonl, one line per complete
 task id. Re-running only re-queries tasks that are missing or whose last recorded verdict was
 UNPARSED/INVALID (a genuine NONE or a real GO id is never re-queried) -- safe to Ctrl-C any time.
 
-UNPARSED tasks (model ran out of --max-tokens mid-thought on a harder note) are also retried once
-at the END of the SAME run, with a bigger --retry-max-tokens budget (default 4x) and a timeout
-scaled to match -- rather than waiting for the next invocation. A warning prints before that retry
-pass starts, naming how many tasks and what budget it's using. --no-retry skips this and falls back
-to the old next-run-only behavior.
-
 Whenever a response doesn't parse to a clean VERDICT, the raw model text is saved to
 mutagen_review_debug.log (not just a canned reason string) -- the first smoke test against a
 native reasoning model showed exactly why this matters: its own internal <think>-style
@@ -535,32 +529,6 @@ def review_task(host, model, system_prompt, task, request_timeout, max_tokens,
             "verdicts": verdicts, "reasoning": reasoning}
 
 
-def run_pass(tasks, host, model, system_prompt, request_timeout, max_tokens, capacity_retries,
-             capacity_retry_delay, api_key, prompt_level, results_path, concurrency, label):
-    """Runs one batch of tasks through review_task, appending each result to results_path as it
-    completes. Returns the ids that came back UNPARSED, for the caller to retry with a bigger
-    budget."""
-    n_done = 0
-    unparsed_ids = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=concurrency) as executor:
-        futures = [executor.submit(review_task, host, model, system_prompt, t, request_timeout,
-                                    max_tokens, capacity_retries, capacity_retry_delay, api_key,
-                                    prompt_level)
-                   for t in tasks]
-        for fut in concurrent.futures.as_completed(futures):
-            result = fut.result()
-            with _write_lock:
-                with open(results_path, "a") as f:
-                    f.write(json.dumps(result) + "\n")
-            if result["status"] == "UNPARSED":
-                unparsed_ids.append(result["id"])
-            n_done += 1
-            if n_done % 50 == 0:
-                print(f"[INFO] [{label}] {n_done}/{len(tasks)} processed", flush=True)
-    print(f"[INFO] [{label}] done. {n_done} tasks processed -> {results_path}")
-    return unparsed_ids
-
-
 def main():
     global DEBUG_LOG_PATH
     ap = argparse.ArgumentParser()
@@ -617,15 +585,6 @@ def main():
                           "the default ancestor-expanded mutagen_review_tasks.json.")
     ap.add_argument("--capacity-retries", type=int, default=3)
     ap.add_argument("--capacity-retry-delay", type=float, default=2.0)
-    ap.add_argument("--retry-max-tokens", type=int, default=None,
-                     help="Max-tokens budget for the end-of-run retry pass over tasks that came "
-                          "back UNPARSED in the main pass -- defaults to 4x --max-tokens. UNPARSED "
-                          "usually means the model ran out of its token budget mid-thought on a "
-                          "harder note, so the retry trades speed for more room to actually reach "
-                          "a VERDICT; --request-timeout is scaled by the same ratio for the retry.")
-    ap.add_argument("--no-retry", action="store_true",
-                     help="Skip the end-of-run UNPARSED retry pass -- they'll still be retried "
-                          "automatically the next time this script runs, same as before.")
     ap.add_argument("--limit", type=int, default=None, help="Cap total tasks processed (smoke test)")
     ap.add_argument("--results-path", type=Path, default=RESULTS_PATH,
                      help="Override the output file -- use a distinct path per independent run "
@@ -647,7 +606,6 @@ def main():
     tasks = json.loads(args.tasks_path.read_text())
     if args.limit:
         tasks = tasks[:args.limit]
-    tasks_by_id = {t["id"]: t for t in tasks}
     done = load_done(args.results_path)
 
     def is_resolved(task_id):
@@ -663,28 +621,23 @@ def main():
     print(f"[INFO] Using model: {model} @ {args.host}, prompt-level={args.prompt_level}"
           + (" (chain-of-thought enabled)" if args.chain_of_thought else ""))
 
-    unparsed_ids = run_pass(todo, args.host, model, system_prompt, args.request_timeout,
-                             args.max_tokens, args.capacity_retries, args.capacity_retry_delay,
-                             args.api_key, args.prompt_level, args.results_path, args.concurrency,
-                             "main")
+    n_done = 0
+    with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as executor:
+        futures = [executor.submit(review_task, args.host, model, system_prompt, t,
+                                    args.request_timeout, args.max_tokens,
+                                    args.capacity_retries, args.capacity_retry_delay, args.api_key,
+                                    args.prompt_level)
+                   for t in todo]
+        for fut in concurrent.futures.as_completed(futures):
+            result = fut.result()
+            with _write_lock:
+                with open(args.results_path, "a") as f:
+                    f.write(json.dumps(result) + "\n")
+            n_done += 1
+            if n_done % 50 == 0:
+                print(f"[INFO] {n_done}/{len(todo)} processed", flush=True)
 
-    if unparsed_ids and not args.no_retry:
-        retry_max_tokens = args.retry_max_tokens or args.max_tokens * 4
-        retry_timeout = max(args.request_timeout,
-                             round(args.request_timeout * retry_max_tokens / args.max_tokens))
-        print(f"[WARNING] {len(unparsed_ids)} task(s) came back UNPARSED -- usually the model "
-              f"ran out of --max-tokens={args.max_tokens} mid-thought on a harder note. Retrying "
-              f"them now with --max-tokens={retry_max_tokens} and --request-timeout={retry_timeout}s "
-              f"(pass --no-retry to skip this and just let next run's normal resume pick them up).")
-        retry_tasks = [tasks_by_id[i] for i in unparsed_ids]
-        still_unparsed = run_pass(retry_tasks, args.host, model, system_prompt, retry_timeout,
-                                   retry_max_tokens, args.capacity_retries,
-                                   args.capacity_retry_delay, args.api_key, args.prompt_level,
-                                   args.results_path, args.concurrency, "retry")
-        print(f"[INFO] [retry] {len(unparsed_ids) - len(still_unparsed)}/{len(unparsed_ids)} "
-              f"recovered a usable result; {len(still_unparsed)} still UNPARSED (will be retried "
-              f"again next run).")
-
+    print(f"[INFO] Done. {n_done} tasks processed this run -> {args.results_path}")
     if DEBUG_LOG_PATH.exists():
         print(f"[INFO] Some responses didn't parse cleanly -- raw text saved to {DEBUG_LOG_PATH} "
               f"for inspection. Those tasks are UNPARSED/INVALID_VERDICT in the results file and "
